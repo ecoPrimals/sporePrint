@@ -59,6 +59,31 @@ Format: `[version] — date — description`
 
 ---
 
+## [0.2.0] — 2026-03-17 — Data, analysis, and polish
+
+### Added
+
+- `technical/HARDWARE_COST_ANALYSIS.md` — The f64 Vulkan discovery ($0.044/run,
+  9.9× DF64 uplift, $15K basement vs ICER/cloud cost analysis, NUCLEUS scaling
+  math, GPU DF64 TFLOPS table for consumer cards)
+- `architecture/EVOLUTION_TIMELINE.md` — Day-by-day 27-day sprint record.
+  Velocity analysis (checks/day per sprint), what the timeline proves about
+  K-Nome methodology, the infrastructure that made velocity possible
+- `science/CROSS_SPRING_EVIDENCE_MAP.md` — The Anderson thread across 5 domains,
+  paper-by-paper cross-spring dependency tables, convergent predictions where
+  independent springs agree on the same number, the groundSpring anomaly,
+  open questions awaiting wet-lab validation
+
+### Updated
+
+- `README.md` — Added "The Five Numbers" table ($0.044, 9.9×, 27 days, 20,695+,
+  175+), new Hardware/Cost reading path, references to 3 new docs, improved
+  document map with annotations
+
+### Document count at v0.2.0: 47 files
+
+---
+
 ## Roadmap
 
 ### [0.2.0] — Methodology completion

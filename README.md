@@ -42,6 +42,22 @@ a direct comparison against proprietary tools across 8 scientific domains.
 
 ---
 
+## The Five Numbers
+
+| Number | What It Means |
+|--------|--------------|
+| **20,695+** | Quantitative science checks — binaries that exit 0 on pass, 1 on failure |
+| **175+** | Published papers reproduced across 7 domains |
+| **$0.044** | Electricity cost for a paper-parity lattice QCD molecular dynamics run (RTX 4070) |
+| **9.9×** | f64 precision uplift on consumer GPUs via WebGPU vs CUDA-reported spec |
+| **27 days** | Time from first spring to 10,796+ checks across 5 domains |
+
+See [technical/HARDWARE_COST_ANALYSIS.md](technical/HARDWARE_COST_ANALYSIS.md)
+for the full analysis, and [architecture/EVOLUTION_TIMELINE.md](architecture/EVOLUTION_TIMELINE.md)
+for the day-by-day sprint record.
+
+---
+
 ## The Ecosystem at a Glance
 
 ### Seven Science Springs (All Public, AGPL-3.0)
@@ -130,6 +146,16 @@ whitepaper are verified. No institutional access required. No API keys. No cloud
 3. **[methodology/P_NP_ENZYME_THESIS.md](methodology/P_NP_ENZYME_THESIS.md)** —
    Theoretical extension: enzymes as evidence that P ≠ NP.
 
+### For Someone Evaluating the Cost / Hardware
+
+1. **[technical/HARDWARE_COST_ANALYSIS.md](technical/HARDWARE_COST_ANALYSIS.md)** —
+   The f64 Vulkan discovery, the $0.044 run, $15K basement vs ICER/cloud cost
+   analysis, NUCLEUS scaling math.
+
+2. **[audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md](audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md)** —
+   What your GPU actually does, how to build toward the NUCLEUS bonding model,
+   Games@Home distributed compute.
+
 ### For Someone Evaluating the Infrastructure
 
 1. **[architecture/ECOSYSTEM_ARCHITECTURE.md](architecture/ECOSYSTEM_ARCHITECTURE.md)** —
@@ -188,54 +214,61 @@ multiple domains.
 order guides for microbiologists, physicists, soil scientists, immunologists,
 GPU researchers, game designers, economists, and field genomics researchers.
 
+→ **[science/CROSS_SPRING_EVIDENCE_MAP.md](science/CROSS_SPRING_EVIDENCE_MAP.md)** —
+how baseCamp papers draw from multiple springs, where independent implementations
+converge on the same results, and what's still open.
+
 ---
 
 ## Document Map
 
 ```
 sporePrint/
-├── README.md                     ← this file (whitepaper index)
-├── LICENSE                       ← CC-BY-SA 4.0 (docs) + AGPL-3.0 (code)
-├── CHANGELOG.md                  ← whitepaper evolution log
+├── README.md                       ← this file (whitepaper index)
+├── LICENSE                         ← CC-BY-SA 4.0 (docs) + AGPL-3.0 (code)
+├── CHANGELOG.md                    ← whitepaper evolution log
 │
-├── audience/                     ← start here — find your reading path
-│   ├── FOR_FACULTY_AND_PIS.md
+├── audience/                       ← start here — find your reading path
+│   ├── FOR_FACULTY_AND_PIS.md      ← what it replaces, costs, benchmarks
 │   ├── FOR_STUDENTS_AND_CORE_FACILITIES.md
 │   ├── FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md
 │   ├── FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md
-│   └── CAPABILITY_PARITY_BRIEF.md
+│   └── CAPABILITY_PARITY_BRIEF.md  ← 8-domain parity vs proprietary tools
 │
-├── technical/                    ← capability and collaboration docs
-│   ├── DRUG_DISCOVERY_PIPELINE.md
-│   ├── MSU_ASSET_ACCELERATION.md
-│   ├── GRANT_TECHNICAL_APPENDIX.md
-│   └── KNOME_TEACHING_BRIEF.md
+├── technical/                      ← capability and collaboration docs
+│   ├── DRUG_DISCOVERY_PIPELINE.md  ← Anderson MATRIX, 329/329 checks
+│   ├── MSU_ASSET_ACCELERATION.md   ← Genomics Core, ICER, ADDRC integration
+│   ├── GRANT_TECHNICAL_APPENDIX.md ← NIH/NSF/USDA/DOE evidence tables
+│   ├── KNOME_TEACHING_BRIEF.md     ← K-Nome pedagogy
+│   └── HARDWARE_COST_ANALYSIS.md   ← $0.044/run, f64 Vulkan discovery, $15K HPC
 │
-├── methodology/                  ← how it was built
-│   ├── CONSTRAINED_EVOLUTION_FORMAL.md
-│   ├── K_NOME_PROGRAMMING.md
-│   └── P_NP_ENZYME_THESIS.md
+├── methodology/                    ← how it was built
+│   ├── CONSTRAINED_EVOLUTION_FORMAL.md ← the methodology paper
+│   ├── K_NOME_PROGRAMMING.md           ← K-Nome operational framework
+│   └── P_NP_ENZYME_THESIS.md           ← P≠NP enzyme argument
 │
-├── architecture/                 ← what was built
-│   ├── ECOSYSTEM_ARCHITECTURE.md
-│   ├── PRIMAL_CATALOG.md
-│   ├── SPRING_CATALOG.md
-│   └── SOVEREIGN_PRIOR_ART_CATALOG.md
+├── architecture/                   ← what was built
+│   ├── ECOSYSTEM_ARCHITECTURE.md   ← UniBin/ecoBin/NUCLEUS/Neural API
+│   ├── PRIMAL_CATALOG.md           ← 14 primals, capabilities, test counts
+│   ├── SPRING_CATALOG.md           ← 7 springs, checks, papers, data flow
+│   ├── SOVEREIGN_PRIOR_ART_CATALOG.md
+│   └── EVOLUTION_TIMELINE.md       ← 27-day sprint, day-by-day record
 │
-└── science/                      ← the baseCamp papers
-    ├── README.md                 ← science index + reading order by discipline
-    ├── 01_anderson_qs.md
+└── science/                        ← the baseCamp papers
+    ├── README.md                   ← science index + reading order by discipline
+    ├── CROSS_SPRING_EVIDENCE_MAP.md ← convergence across springs, open questions
+    ├── 01_anderson_qs.md           ← Paper 01: Anderson QS (W_c = 16.26 ± 0.95)
     ├── 02_ltee_extensions.md
     ├── 03_bioag_microbiome.md
     ├── 04_sentinel_microbes.md
     ├── 05_cross_species_signaling.md
-    ├── 06_notill_anderson.md
-    ├── 07_sovereign_wdm.md
+    ├── 06_notill_anderson.md       ← Paper 06: dimensional collapse in soil
+    ├── 07_sovereign_wdm.md         ← Paper 07: $0.044 lattice QCD
     ├── 08_npu_agricultural_iot.md
     ├── 09_field_genomics.md
     ├── 10_dynamical_qcd_production.md
     ├── 11_bingocube_nautilus_shell.md
-    ├── 12_immunological_anderson.md
+    ├── 12_immunological_anderson.md ← Paper 12: Anderson in cytokines (329/329)
     ├── 13_sovereign_human_health.md
     ├── 15_precision_brain_heterogeneous_gpu.md
     ├── 16_anaerobic_aerobic_qs.md
