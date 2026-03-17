@@ -152,7 +152,12 @@ whitepaper are verified. No institutional access required. No API keys. No cloud
    The f64 Vulkan discovery, the $0.044 run, $15K basement vs ICER/cloud cost
    analysis, NUCLEUS scaling math.
 
-2. **[audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md](audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md)** —
+2. **[technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md](technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md)** —
+   What we've already replaced (CUDA runtime, cuBLAS, nvcc, NVIDIA driver),
+   current performance vs Kokkos, the 3/6/12-month roadmap, and the full
+   sovereign stack diagram.
+
+3. **[audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md](audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md)** —
    What your GPU actually does, how to build toward the NUCLEUS bonding model,
    Games@Home distributed compute.
 
@@ -218,6 +223,12 @@ GPU researchers, game designers, economists, and field genomics researchers.
 how baseCamp papers draw from multiple springs, where independent implementations
 converge on the same results, and what's still open.
 
+→ **[science/STRUCTURE_PREDICTION_ROADMAP.md](science/STRUCTURE_PREDICTION_ROADMAP.md)** —
+coralForge: sovereign AlphaFold-quality structure prediction. Current status
+(154/154 checks), the isomorphism proof, LTEE application ($1K vs $83K cloud),
+and what it enables beyond protein folding (drug docking, metagenomics,
+enzyme engineering).
+
 ---
 
 ## Document Map
@@ -240,12 +251,14 @@ sporePrint/
 │   ├── MSU_ASSET_ACCELERATION.md   ← Genomics Core, ICER, ADDRC integration
 │   ├── GRANT_TECHNICAL_APPENDIX.md ← NIH/NSF/USDA/DOE evidence tables
 │   ├── KNOME_TEACHING_BRIEF.md     ← K-Nome pedagogy
-│   └── HARDWARE_COST_ANALYSIS.md   ← $0.044/run, f64 Vulkan discovery, $15K HPC
+│   ├── HARDWARE_COST_ANALYSIS.md   ← $0.044/run, f64 Vulkan discovery, $15K HPC
+│   └── SOVEREIGN_GPU_PIPELINE_PROFILE.md ← vendor replacement: what's done, what's next
 │
 ├── methodology/                    ← how it was built
 │   ├── CONSTRAINED_EVOLUTION_FORMAL.md ← the methodology paper
 │   ├── K_NOME_PROGRAMMING.md           ← K-Nome operational framework
-│   └── P_NP_ENZYME_THESIS.md           ← P≠NP enzyme argument
+│   ├── P_NP_ENZYME_THESIS.md           ← P≠NP enzyme argument
+│   └── KNOWLEDGE_COMMONS_TARGETS.md    ← what others can build, scyBorg permanence
 │
 ├── architecture/                   ← what was built
 │   ├── ECOSYSTEM_ARCHITECTURE.md   ← UniBin/ecoBin/NUCLEUS/Neural API
@@ -256,7 +269,8 @@ sporePrint/
 │
 └── science/                        ← the baseCamp papers
     ├── README.md                   ← science index + reading order by discipline
-    ├── CROSS_SPRING_EVIDENCE_MAP.md ← convergence across springs, open questions
+    ├── CROSS_SPRING_EVIDENCE_MAP.md   ← convergence across springs, open questions
+    ├── STRUCTURE_PREDICTION_ROADMAP.md ← coralForge → AlphaFold-quality, LTEE
     ├── 01_anderson_qs.md           ← Paper 01: Anderson QS (W_c = 16.26 ± 0.95)
     ├── 02_ltee_extensions.md
     ├── 03_bioag_microbiome.md
@@ -294,6 +308,14 @@ public-facing capability documentation. It does not contain:
   for non-anonymous academic handoff; not included in the public science repo
 - **Faculty outreach materials** — internal, in private whitePaper layers
 - **wateringHole** — internal ecosystem guidance for primals; not public
+
+### What Others Can Build
+
+**[methodology/KNOWLEDGE_COMMONS_TARGETS.md](methodology/KNOWLEDGE_COMMONS_TARGETS.md)** —
+Domains ready for someone else to pick up with existing primals + public data:
+antibiotic resistance, wastewater surveillance, marine ecology, materials science,
+climate crop modeling, veterinary PK/PD, and more. Why public data + consumer
+hardware + scyBorg = permanently secured knowledge commons.
 
 The companion repo `guidePost/` (planned) will hold `atlasHugged/` — the
 ethical, human, and philosophical layer: five questions for John Galt, the

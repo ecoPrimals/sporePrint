@@ -84,6 +84,37 @@ Format: `[version] — date — description`
 
 ---
 
+## [0.3.0] — 2026-03-17 — Spring profiling, sovereign pipeline, knowledge commons
+
+### Added
+
+- `technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md` — Complete vendor replacement
+  story: what's already replaced (CUDA runtime, cuBLAS, nvcc, nvidia.ko →
+  toadStool, BarraCuda, coralReef, coral-glowplug), current performance vs
+  Kokkos (27×→3.7× gap closure), 3/6/12-month roadmap, proprietary cost table,
+  full sovereign stack diagram. 27,169+ combined tests across 4 primals.
+- `science/STRUCTURE_PREDICTION_ROADMAP.md` — coralForge: sovereign AlphaFold-
+  quality structure prediction. The isomorphism proof (6 universal primitives),
+  current status (154/154 checks), performance targets (~3 min/sequence on
+  consumer GPU), LTEE at scale ($1K vs $83K cloud), drug docking and enzyme
+  engineering extensions.
+- `methodology/KNOWLEDGE_COMMONS_TARGETS.md` — What others can pick up with
+  existing primals: 9 Tier 1 domains ready now (antibiotic resistance,
+  wastewater surveillance, marine ecology, veterinary PK/PD, climate crops,
+  materials science, educational games, fermentation, environmental tox).
+  The three-lock guarantee (AGPL + ORC + CC-BY-SA). Velocity projection
+  (75,000+ checks by March 2027). Why it can't be taken back.
+
+### Updated
+
+- `README.md` — Added sovereign GPU pipeline reading path, structure prediction
+  in science section, knowledge commons in "what others can build" section,
+  document map annotations for all new files.
+
+### Document count at v0.3.0: 50 files
+
+---
+
 ## Roadmap
 
 ### [0.2.0] — Methodology completion
