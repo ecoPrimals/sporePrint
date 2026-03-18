@@ -1,7 +1,9 @@
 # sporePrint — ecoPrimals: Sovereign Scientific Computing
 
-**A spore print is the permanent impression an organism leaves for others to
-identify, reproduce, and grow from.**
+**The public record and verification portal for ecoPrimals, a sovereign
+scientific computing ecosystem where the science is executable, the
+infrastructure is inspectable, and the claims can be reproduced by anyone
+with commodity hardware.**
 
 **Author:** ecoPrimals — human + synthetic intelligence  
 **License:** CC-BY-SA 4.0 (documents) · AGPL-3.0-or-later (code)  
@@ -10,25 +12,92 @@ identify, reproduce, and grow from.**
 
 ---
 
-## What This Is
+## What You Can Do With This
 
-The ecoPrimals project is a sovereign scientific computing ecosystem — 14
-production primals, 7 validated science springs, 20,000+ quantitative science
-checks — built by one developer over approximately 10 months using a methodology
-called K-Nome.
+ecoPrimals lets you:
 
-This repository is the spore print: the public record of what was built, how,
-and why. Every claim is verifiable. Every spring is public. Every binary exits
-0 on pass, 1 on failure.
+- **Run real scientific pipelines locally** — genomics, protein structure,
+  lattice QCD, pharmacometrics, precision agriculture, signal processing
+- **Reproduce published results** — 175+ papers across 7 domains, each as a
+  binary you can run and verify
+- **Use any GPU** — NVIDIA, AMD, Intel — no CUDA lock-in, no vendor toolchain
+- **Own your data and compute** — nothing leaves your machine, no cloud, no
+  API keys, no institutional access required
+- **Scale from one desktop to a lab cluster** — same code, same binaries
 
-**The science lives in public repositories. Clone one and run it.** Nothing
-here requires institutional access, proprietary software, or cloud infrastructure.
+**In 5 minutes, you can verify this yourself:**
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+git clone https://github.com/ecoPrimals/wetSpring && cd wetSpring/barracuda
+cargo test --workspace          # 1,443+ tests, 0 failures
+cargo run --release --bin validate_anderson_3d   # exit 0 = pass
+cargo deny check                # zero license violations, zero C dependencies
+```
+
+If those commands run, the claims in this repository are verified. No
+institutional access. No proprietary software. No cloud.
 
 ---
 
-## The Four Audiences
+## How the System Works
 
-This whitepaper is written for four distinct readers. Start here:
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    What You See (Public)                     │
+│                                                             │
+│  sporePrint ──── this repo: proof and documentation         │
+│       │                                                     │
+│       ▼                                                     │
+│  Springs ──────── 7 science repos, each with executable     │
+│  (wetSpring,      experiments that reproduce published      │
+│   hotSpring,      papers on commodity hardware              │
+│   neuralSpring,                                             │
+│   airSpring,          ┌──────────────────────────┐          │
+│   groundSpring,       │  What Powers It (Public)  │          │
+│   healthSpring,       │                          │          │
+│   ludoSpring)         │  BarraCuda ── 806 GPU    │          │
+│       │               │    math shaders (the     │          │
+│       │               │    sovereign cuBLAS)     │          │
+│       ▼               │                          │          │
+│  Validation ────────► │  ToadStool ── hardware   │          │
+│  binaries that        │    discovery + compute   │          │
+│  exit 0 on pass,      │    orchestration         │          │
+│  1 on failure         │                          │          │
+│                       │  coralReef ── sovereign  │          │
+│                       │    GPU compiler (the     │          │
+│                       │    sovereign nvcc)       │          │
+│                       └──────────────────────────┘          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Springs** are validation environments — Rust binaries that reproduce
+published science. **Primals** are infrastructure components — the math
+engine, the hardware orchestrator, the compiler. Everything is pure Rust,
+AGPL-3.0, zero C dependencies.
+
+---
+
+## The Numbers
+
+| | |
+|---|---|
+| **20,695+** checks | Validation binaries across 7 scientific domains — exit 0 on pass |
+| **175+** papers | Reproduced from peer-reviewed literature |
+| **$0.044** per run | Electricity cost for paper-parity lattice QCD (RTX 4070) |
+| **9.9×** f64 uplift | Consumer GPUs via DF64/WebGPU vs CUDA native f64 |
+| **27 days** | From first spring to 10,796+ checks across 5 domains |
+| **27,169+** tests | Combined across BarraCuda, ToadStool, and coralReef infrastructure |
+| **$15K** total hardware | The entire system runs on consumer hardware in a basement |
+
+See [technical/HARDWARE_COST_ANALYSIS.md](technical/HARDWARE_COST_ANALYSIS.md)
+for the full cost analysis and
+[architecture/EVOLUTION_TIMELINE.md](architecture/EVOLUTION_TIMELINE.md)
+for the day-by-day velocity record.
+
+---
+
+## Find Your Path
 
 | You are... | Start with |
 |------------|-----------|
@@ -39,22 +108,6 @@ This whitepaper is written for four distinct readers. Start here:
 
 Not sure? Read the [Capability Parity Brief](audience/CAPABILITY_PARITY_BRIEF.md) —
 a direct comparison against proprietary tools across 8 scientific domains.
-
----
-
-## The Five Numbers
-
-| Number | What It Means |
-|--------|--------------|
-| **20,695+** | Quantitative science checks — binaries that exit 0 on pass, 1 on failure |
-| **175+** | Published papers reproduced across 7 domains |
-| **$0.044** | Electricity cost for a paper-parity lattice QCD molecular dynamics run (RTX 4070) |
-| **9.9×** | f64 precision uplift on consumer GPUs via WebGPU vs CUDA-reported spec |
-| **27 days** | Time from first spring to 10,796+ checks across 5 domains |
-
-See [technical/HARDWARE_COST_ANALYSIS.md](technical/HARDWARE_COST_ANALYSIS.md)
-for the full analysis, and [architecture/EVOLUTION_TIMELINE.md](architecture/EVOLUTION_TIMELINE.md)
-for the day-by-day sprint record.
 
 ---
 
@@ -83,34 +136,6 @@ science and validate computational methods against known results.
 | ToadStool | Universal compute orchestration — CPU, GPU, NPU, edge | [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) |
 | BarraCuda | Pure mathematics — 806 WGSL f64 shaders, precision strategy | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) |
 | coralReef | Sovereign WGSL→native GPU compiler | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) |
-
----
-
-## The Five-Minute Verification
-
-```bash
-# Install Rust (one time, ~5 minutes)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Clone any spring
-git clone https://github.com/ecoPrimals/wetSpring
-cd wetSpring/barracuda
-
-# Run the full test suite
-cargo test --workspace
-# Expected: 1,443+ tests, 0 failures
-
-# Run a specific validation binary (exit 0 = all checks pass)
-cargo run --release --bin validate_diversity
-cargo run --release --bin validate_anderson_3d
-
-# Audit licenses and dependencies
-cargo deny check
-# Expected: no violations (AGPL-3.0, zero C dependencies)
-```
-
-If those commands run and produce the expected output, the claims in this
-whitepaper are verified. No institutional access required. No API keys. No cloud.
 
 ---
 
@@ -323,18 +348,17 @@ orthogonal synthesis, the new city, the love letter, the temptation of kingdoms.
 
 ---
 
-## The Headline Number
+## Why "sporePrint"
 
-**20,000+ quantitative science checks across 7 domains, all passing, produced
-by one developer over ~10 months on consumer hardware costing $15K.**
+A spore print is how mycologists identify species they have never seen before.
+You press the cap to paper and leave it overnight. In the morning: the permanent
+record of what the organism is, what it can produce, and how to grow it yourself.
 
-Every check is a validation binary. Every binary exits 0 on pass, 1 on failure.
-The science is not a paper claim — it is executable evidence.
+This repository is the spore print for ecoPrimals. The permanent, public,
+verifiable impression of a sovereign scientific computing ecosystem. Clone it.
+Run it. Verify it. Grow from it.
 
 ---
 
-*A spore print is how mycologists identify species they have never seen before.
-You press the cap to paper and leave it overnight. In the morning: the permanent
-record of what the organism is, what it can produce, and how to grow it yourself.*
-
-*This is ours.*
+*20,695+ checks. 175+ papers. 7 domains. Consumer hardware. One system. AGPL-3.0.*  
+*The science is not a claim — it is executable evidence.*
