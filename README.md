@@ -172,6 +172,11 @@ science and validate computational methods against known results.
 3. **[methodology/P_NP_ENZYME_THESIS.md](methodology/P_NP_ENZYME_THESIS.md)** —
    Theoretical extension: enzymes as evidence that P ≠ NP.
 
+4. **[methodology/HOW_TO_START_A_SPRING.md](methodology/HOW_TO_START_A_SPRING.md)** —
+   The operational playbook. You don't need to know how to code. You need
+   to know how to talk. Phase 0→1→2→3+ protocol, conversation patterns,
+   concrete example (fermentation spring), what it costs, what it produces.
+
 ### For Someone Evaluating the Cost / Hardware
 
 1. **[technical/HARDWARE_COST_ANALYSIS.md](technical/HARDWARE_COST_ANALYSIS.md)** —
@@ -284,7 +289,8 @@ sporePrint/
 │   ├── CONSTRAINED_EVOLUTION_FORMAL.md ← the methodology paper
 │   ├── K_NOME_PROGRAMMING.md           ← K-Nome operational framework
 │   ├── P_NP_ENZYME_THESIS.md           ← P≠NP enzyme argument
-│   └── KNOWLEDGE_COMMONS_TARGETS.md    ← what others can build, scyBorg permanence
+│   ├── KNOWLEDGE_COMMONS_TARGETS.md    ← what others can build, scyBorg permanence
+│   └── HOW_TO_START_A_SPRING.md        ← operational playbook: anyone can do this
 │
 ├── architecture/                   ← what was built
 │   ├── ECOSYSTEM_ARCHITECTURE.md   ← UniBin/ecoBin/NUCLEUS/Neural API
@@ -337,8 +343,13 @@ public-facing capability documentation. It does not contain:
 
 ### What Others Can Build
 
+**[methodology/HOW_TO_START_A_SPRING.md](methodology/HOW_TO_START_A_SPRING.md)** —
+The operational playbook for starting your own spring. You don't need a CS
+degree, prior Rust experience, or institutional access. You need domain
+knowledge (in anything), focus, patience, and a used GPU.
+
 **[methodology/KNOWLEDGE_COMMONS_TARGETS.md](methodology/KNOWLEDGE_COMMONS_TARGETS.md)** —
-Domains ready for someone else to pick up with existing primals + public data:
+9 domains ready now with existing primals + public data:
 antibiotic resistance, wastewater surveillance, marine ecology, materials science,
 climate crop modeling, veterinary PK/PD, and more. Why public data + consumer
 hardware + scyBorg = permanently secured knowledge commons.
