@@ -5,7 +5,8 @@ scientific computing ecosystem where the science is executable, the
 infrastructure is inspectable, and the claims can be reproduced by anyone
 with commodity hardware.**
 
-**Author:** ecoPrimals — human + synthetic intelligence  
+**Developer:** ecoPrimal — human + synthetic intelligence  
+**Organization:** ecoPrimals  
 **License:** CC-BY-SA 4.0 (documents) · AGPL-3.0-or-later (code)  
 **Status:** Living document — grows with the ecosystem  
 **Last Updated:** March 17, 2026
@@ -166,7 +167,7 @@ science and validate computational methods against known results.
    Knowledge-Numeric Observed & Mentored Evolutionary Programming. The
    operational methodology that produced this ecosystem. Darwinian substrate
    (compiler selects) + Lamarckian process (human expertise heritable through
-   mentoring). 69,000+ iterations, 51B tokens, 185-day streak, one developer.
+   mentoring). 69,000+ iterations, 51B tokens, 185-day streak, one dev (ecoPrimal).
 
 3. **[methodology/P_NP_ENZYME_THESIS.md](methodology/P_NP_ENZYME_THESIS.md)** —
    Theoretical extension: enzymes as evidence that P ≠ NP.

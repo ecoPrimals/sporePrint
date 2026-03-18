@@ -1,7 +1,8 @@
 # baseCamp: Independent Explorations Alongside the Constrained Evolution Thesis
 
 **Date:** March 17, 2026 (standalone barraCuda v0.3.5 at `03986ce`, airSpring v0.8.9 (891 lib tests, `PRIMAL_NAME`/`PRIMAL_DOMAIN` constants, `OnceLock` GPU probe, `cast` module, `DispatchOutcome<T>`, coralReef/Squirrel discovery, `mul_add()` FMA, 4→19 module smart refactors, composition guidance), wetSpring V127 (376 experiments, 5,707+ checks, 1,443+ tests, V127: `RetryPolicy` + `CircuitBreaker` IPC resilience, 4-format capability parsing, `extract_rpc_result()`, `anderson_spectral` batch sweep module, `numerics` stable FP helpers, `GemmCached::execute_ex()` transpose. V126: `DispatchOutcome<T>`, health probes, `IpcError` query helpers. 24 capabilities, 16 domains, 214 named tolerances, 354 binaries, leverage guide published), hotSpring v0.6.31, neuralSpring S147, groundSpring V114, healthSpring V35 (613 tests, 79 capabilities, IPC resilience, sovereign dispatch via `CoralReefDevice`), toadStool S156+, coralReef Phase 10 Iteration 52+, ludoSpring V22)
-**Author:** ecoPrimals — human + synthetic intelligence
+**Developer:** ecoPrimal — human + synthetic intelligence  
+**Organization:** ecoPrimals
 
 ---
 

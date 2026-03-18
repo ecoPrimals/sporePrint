@@ -1,6 +1,7 @@
 # ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment
 
-**From:** ecoPrimals — human + synthetic intelligence
+**From:** ecoPrimal — human + synthetic intelligence  
+**Organization:** ecoPrimals
 **Date:** March 17, 2026
 **License:** All code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
 **Repositories:** github.com/ecoPrimals (wetSpring, neuralSpring, airSpring, groundSpring, hotSpring, healthSpring, ludoSpring)

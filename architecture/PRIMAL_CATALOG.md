@@ -8,7 +8,7 @@
 
 ## Abstract
 
-This document catalogs every primal in the ecoPrimals ecosystem as of February 2026. It records what was built, how far it has evolved, and what it can demonstrate. The ecosystem was constructed by a single developer with AI assistance over approximately 6-8 months, using the constrained evolution methodology described in `CONSTRAINED_EVOLUTION_FORMAL.md`. The results documented here are the empirical evidence for that methodology.
+This document catalogs every primal in the ecoPrimals ecosystem as of February 2026. It records what was built, how far it has evolved, and what it can demonstrate. The ecosystem was constructed by ecoPrimal (human + synthetic intelligence) over approximately 6-8 months, using the constrained evolution methodology described in `CONSTRAINED_EVOLUTION_FORMAL.md`. The results documented here are the empirical evidence for that methodology.
 
 The primals are organized into two tiers:
 

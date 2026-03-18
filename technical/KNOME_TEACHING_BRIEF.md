@@ -30,7 +30,7 @@ K-Nome is a proposed remedy.
 **Knowledge-Numeric Observed & Mentored Evolutionary Programming** is the
 operational methodology that produced ecoPrimals — 14 production primals,
 7 validated science springs, 27,000+ tests, and 15,000+ quantitative science
-checks — built by one developer (BS Microbiology, MS Data Science, MSU) over
+checks — built by ecoPrimal (human + synthetic intelligence) over
 approximately 10 months using Cursor IDE as the sole tool.
 
 K-Nome is not a programming technique. It is a **human-expertise-transfer

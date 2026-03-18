@@ -1,6 +1,7 @@
 # ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab
 
-**From:** ecoPrimals — human + synthetic intelligence
+**From:** ecoPrimal — human + synthetic intelligence  
+**Organization:** ecoPrimals
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
@@ -182,6 +183,6 @@ Total across all springs: **70+ papers reproduced, 27,000+ tests, 15,334+ valida
 
 ## Contact
 
-ecoPrimals — github.com/ecoPrimals
-Written and developed by ecoPrimals: human + synthetic intelligence.
+ecoPrimal — github.com/ecoPrimals
+Written and developed by ecoPrimal: human + synthetic intelligence.
 Built on ~$15,000 of consumer hardware in a basement. Zero cloud bills. Zero licenses.

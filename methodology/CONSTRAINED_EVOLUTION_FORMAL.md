@@ -212,7 +212,7 @@ The initial paper cited specific improvement factors (7-35x faster, 10-50x fewer
 
 What can be stated honestly:
 
-- **A single developer with AI assistance built a 6-primal production ecosystem (with 5 more in active development) in ~6-8 months.** This is a factual observation. The same scope would typically require a team and a longer timeline, but "7-35x faster" implies a precision of measurement that does not exist.
+- **ecoPrimal (human + synthetic intelligence) built a 6-primal production ecosystem (with 5 more in active development) in ~6-8 months.** This is a factual observation. The same scope would typically require a team and a longer timeline, but "7-35x faster" implies a precision of measurement that does not exist.
 
 - **Zero unsafe code blocks in production.** This is a factual observation verified by compiler enforcement. The constraint made this the default, not a achievement requiring heroic effort.
 

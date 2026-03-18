@@ -1,6 +1,7 @@
 # ecoPrimals for Hardware Builders, Hobbyists, and Gamers
 
-**From:** ecoPrimals — human + synthetic intelligence
+**From:** ecoPrimal — human + synthetic intelligence  
+**Organization:** ecoPrimals
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
