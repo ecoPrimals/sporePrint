@@ -1,8 +1,8 @@
 # ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab
 
-**From:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)
+**From:** ecoPrimals — human + synthetic intelligence
 **Date:** March 17, 2026
-**Repositories:** github.com/syntheticChemistry — all AGPL-3.0-or-later
+**Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
 ---
 
@@ -146,8 +146,8 @@ Every intermediate result is signed. The provenance chain maps to
 
 ```bash
 # Pick the spring relevant to your domain:
-git clone git@github.com:syntheticChemistry/healthSpring.git  # PK/PD, clinical
-git clone git@github.com:syntheticChemistry/wetSpring.git     # 16S, metagenomics, LC-MS
+git clone git@github.com:ecoPrimals/healthSpring.git  # PK/PD, clinical
+git clone git@github.com:ecoPrimals/wetSpring.git     # 16S, metagenomics, LC-MS
 
 # Build (requires Rust 1.87+ from rustup.rs — 2 minute install)
 cd healthSpring && cargo test --workspace   # 613 tests, 0 failures
@@ -182,6 +182,6 @@ Total across all springs: **70+ papers reproduced, 27,000+ tests, 15,334+ valida
 
 ## Contact
 
-Kevin Mok — github.com/syntheticChemistry
-BS Microbiology (MSU 2018), MS Data Science (MSU 2025)
+ecoPrimals — github.com/ecoPrimals
+Written and developed by ecoPrimals: human + synthetic intelligence.
 Built on ~$15,000 of consumer hardware in a basement. Zero cloud bills. Zero licenses.

@@ -292,9 +292,9 @@ dispatch 3 + mixed hardware 7).
 
 ```bash
 # Clone the springs (all public, AGPL-3.0)
-git clone https://github.com/syntheticChemistry/wetSpring
-git clone https://github.com/syntheticChemistry/neuralSpring
-git clone https://github.com/syntheticChemistry/healthSpring
+git clone https://github.com/ecoPrimals/wetSpring
+git clone https://github.com/ecoPrimals/neuralSpring
+git clone https://github.com/ecoPrimals/healthSpring
 
 # Run the drug discovery validation suite
 cd healthSpring && cargo test --release

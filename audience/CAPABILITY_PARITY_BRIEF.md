@@ -1,9 +1,9 @@
 # ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment
 
-**From:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)
+**From:** ecoPrimals — human + synthetic intelligence
 **Date:** March 17, 2026
 **License:** All code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
-**Repositories:** github.com/syntheticChemistry (wetSpring, neuralSpring, airSpring, groundSpring, hotSpring, healthSpring, ludoSpring)
+**Repositories:** github.com/ecoPrimals (wetSpring, neuralSpring, airSpring, groundSpring, hotSpring, healthSpring, ludoSpring)
 
 ---
 
@@ -35,7 +35,7 @@ what proprietary tools still do better, and where to find everything.
 
 ### ecoPrimals Replacement: wetSpring
 
-**Repository:** github.com/syntheticChemistry/wetSpring
+**Repository:** github.com/ecoPrimals/wetSpring
 **Status:** V127 — 1,443+ tests, 306 validation binaries, 376 experiments, 5,707+ checks
 
 | Capability | Parity Level | Notes |
@@ -73,7 +73,7 @@ what proprietary tools still do better, and where to find everything.
 ### Where to Find / Rebuild
 
 ```bash
-git clone git@github.com:syntheticChemistry/wetSpring.git
+git clone git@github.com:ecoPrimals/wetSpring.git
 cd wetSpring/barracuda
 cargo test --workspace                    # 1,443+ tests
 cargo run --release --bin validate_diversity  # Diversity index validation
@@ -98,7 +98,7 @@ cargo run --release --bin validate_dada2_full # DADA2 pipeline validation
 
 ### ecoPrimals Replacement: healthSpring
 
-**Repository:** github.com/syntheticChemistry/healthSpring
+**Repository:** github.com/ecoPrimals/healthSpring
 **Status:** V35 — 613 tests, 73 experiments, 113/113 cross-validation checks, 6 WGSL shaders
 
 | Capability | Parity Level | Notes |
@@ -130,7 +130,7 @@ cargo run --release --bin validate_dada2_full # DADA2 pipeline validation
 ### Where to Find / Rebuild
 
 ```bash
-git clone git@github.com:syntheticChemistry/healthSpring.git
+git clone git@github.com:ecoPrimals/healthSpring.git
 cd healthSpring
 cargo test --workspace                     # 613 tests
 cargo run --release --bin exp001_hill      # Hill dose-response (Gonzales IC50)
@@ -361,7 +361,7 @@ Every spring is a self-contained Cargo workspace. To rebuild any capability:
 # Optional: GPU (any Vulkan-capable card for GPU tests)
 
 # Clone the spring you need
-git clone git@github.com:syntheticChemistry/<spring>.git
+git clone git@github.com:ecoPrimals/<spring>.git
 cd <spring>
 
 # Build and test
@@ -380,8 +380,8 @@ no pip, no npm. One `cargo build` compiles everything from source.
 
 ```bash
 cd Development/ecoPrimals
-git clone git@github.com:syntheticChemistry/barraCuda.git  # renamed from barraCUDA
-git clone git@github.com:syntheticChemistry/wetSpring.git
+git clone git@github.com:ecoPrimals/barraCuda.git  # renamed from barraCUDA
+git clone git@github.com:ecoPrimals/wetSpring.git
 # Cargo.toml points to ../../barraCuda/crates/barracuda
 ```
 

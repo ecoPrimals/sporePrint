@@ -232,7 +232,7 @@ All spring repositories are public and require only Rust (stable):
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-git clone https://github.com/syntheticChemistry/wetSpring
+git clone https://github.com/ecoPrimals/wetSpring
 cd wetSpring/barracuda
 cargo test --workspace    # 1,443+ tests, should exit 0
 ```
@@ -247,5 +247,5 @@ No CUDA, no conda, no spack, no module file conflicts.
 ---
 
 *Contact for collaboration and access: see `contacts.md` in this directory.*  
-*Spring repositories: github.com/syntheticChemistry/*  
+*Spring repositories: github.com/ecoPrimals/*  
 *Infrastructure repositories: github.com/ecoPrimals/*

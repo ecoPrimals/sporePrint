@@ -221,4 +221,4 @@ from wherever it lands.
 
 *scyBorg licensing: `wateringHole/SCYBORG_PROVENANCE_TRIO_GUIDANCE.md`  
 Lysogeny protocol: `wateringHole/LYSOGENY_PROTOCOL.md`  
-Spring repositories: github.com/syntheticChemistry/*
+Spring repositories: github.com/ecoPrimals/*

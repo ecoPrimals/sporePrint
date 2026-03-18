@@ -1,8 +1,8 @@
 # ecoPrimals for Hardware Builders, Hobbyists, and Gamers
 
-**From:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)
+**From:** ecoPrimals — human + synthetic intelligence
 **Date:** March 17, 2026
-**Repositories:** github.com/syntheticChemistry — all AGPL-3.0-or-later
+**Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
 ---
 
@@ -196,8 +196,8 @@ At a conservative 2.5% participation rate, citizen hardware provides
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # 2. Clone
-git clone git@github.com:syntheticChemistry/barraCuda.git
-git clone git@github.com:syntheticChemistry/wetSpring.git
+git clone git@github.com:ecoPrimals/barraCuda.git
+git clone git@github.com:ecoPrimals/wetSpring.git
 
 # 3. Build everything
 cd wetSpring/barracuda && cargo build --release
@@ -248,4 +248,4 @@ to a $50K ICER node or $30K/year in cloud bills.
 All repositories are public under AGPL-3.0. Clone, build, verify, extend.
 Every claim has a validation binary. The science is in the code.
 
-github.com/syntheticChemistry
+github.com/ecoPrimals

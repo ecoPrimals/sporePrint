@@ -231,5 +231,5 @@ gets better for everyone, permanently.
 
 *Source: `whitePaper/coralForge/` (20 documents), neuralSpring `src/coral_forge/`  
 Validation: 154/154 checks PASS (62 Python + 55 Rust + 37 GPU)  
-Repositories: [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring),
+Repositories: [ecoPrimals/neuralSpring](https://github.com/ecoPrimals/neuralSpring),
 [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda)*

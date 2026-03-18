@@ -224,7 +224,7 @@ production-quality computational implementations of that domain's methods
 faster than teams of domain-naive programmers.
 
 This is a testable claim. The ecoPrimals project is one data point. The
-syntheticChemistry spring repos are the public evidence. The claim should be
+ecoPrimals spring repos are the public evidence. The claim should be
 tested with MSDS students building real science pipelines, evaluated not on
 model accuracy (which is easy to fake) but on correctness against published
 ground truth (which is not).
@@ -240,7 +240,7 @@ works in.
 
 1. Clone any public spring repo:
    ```bash
-   git clone https://github.com/syntheticChemistry/wetSpring
+   git clone https://github.com/ecoPrimals/wetSpring
    cd wetSpring/barracuda
    cargo test --workspace
    cargo run --release --bin validate_diversity
@@ -257,5 +257,5 @@ works in.
 ---
 
 *Pre-thesis writeup. Formal pedagogy paper to follow.*  
-*ecoPrimals spring repos: github.com/syntheticChemistry/*  
+*ecoPrimals spring repos: github.com/ecoPrimals/*  
 *K-Nome source: `whitePaper/gen3/about/K_NOME_PROGRAMMING.md`*

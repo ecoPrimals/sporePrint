@@ -3,7 +3,7 @@
 **A spore print is the permanent impression an organism leaves for others to
 identify, reproduce, and grow from.**
 
-**Author:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)  
+**Author:** ecoPrimals — human + synthetic intelligence  
 **License:** CC-BY-SA 4.0 (documents) · AGPL-3.0-or-later (code)  
 **Status:** Living document — grows with the ecosystem  
 **Last Updated:** March 17, 2026
@@ -67,13 +67,13 @@ science and validate computational methods against known results.
 
 | Spring | Domain | Repository | Checks |
 |--------|--------|-----------|:------:|
-| wetSpring | Life science, microbiome, quorum sensing, field genomics | [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) | 5,707+ |
-| airSpring | Precision agriculture, ET₀, soil hydrology, phenology | [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring) | 3,123+ |
-| neuralSpring | ML primitives, reservoir computing, spectral analysis | [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) | 4,500+ |
-| hotSpring | Plasma physics, lattice QCD, GPU sovereign compute | [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring) | 664+ |
-| groundSpring | Uncertainty quantification, noise, spectral theory | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) | 535+ |
-| healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) | 474+ |
-| ludoSpring | Game science, HCI, provenance, distributed compute | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) | 1,692+ |
+| wetSpring | Life science, microbiome, quorum sensing, field genomics | [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring) | 5,707+ |
+| airSpring | Precision agriculture, ET₀, soil hydrology, phenology | [ecoPrimals/airSpring](https://github.com/ecoPrimals/airSpring) | 3,123+ |
+| neuralSpring | ML primitives, reservoir computing, spectral analysis | [ecoPrimals/neuralSpring](https://github.com/ecoPrimals/neuralSpring) | 4,500+ |
+| hotSpring | Plasma physics, lattice QCD, GPU sovereign compute | [ecoPrimals/hotSpring](https://github.com/ecoPrimals/hotSpring) | 664+ |
+| groundSpring | Uncertainty quantification, noise, spectral theory | [ecoPrimals/groundSpring](https://github.com/ecoPrimals/groundSpring) | 535+ |
+| healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [ecoPrimals/healthSpring](https://github.com/ecoPrimals/healthSpring) | 474+ |
+| ludoSpring | Game science, HCI, provenance, distributed compute | [ecoPrimals/ludoSpring](https://github.com/ecoPrimals/ludoSpring) | 1,692+ |
 | **Total** | | | **16,695+** |
 
 ### Three Public Infrastructure Primals (All AGPL-3.0)
@@ -93,7 +93,7 @@ science and validate computational methods against known results.
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Clone any spring
-git clone https://github.com/syntheticChemistry/wetSpring
+git clone https://github.com/ecoPrimals/wetSpring
 cd wetSpring/barracuda
 
 # Run the full test suite

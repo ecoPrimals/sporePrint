@@ -1,9 +1,9 @@
 # ecoPrimals — Compliance, Regulatory, and Institutional Review Reference
 
-**From:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)
+**From:** ecoPrimals — human + synthetic intelligence
 **Date:** March 17, 2026
 **License:** All source code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
-**Repositories:** github.com/syntheticChemistry
+**Repositories:** github.com/ecoPrimals
 
 ---
 

@@ -283,7 +283,7 @@ Any reviewer, without contacting the authors:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Clone any spring
-git clone https://github.com/syntheticChemistry/wetSpring
+git clone https://github.com/ecoPrimals/wetSpring
 cd wetSpring/barracuda
 
 # Full test suite
@@ -305,6 +305,6 @@ No API keys, no cloud accounts, no proprietary software.
 
 ---
 
-*All spring repositories: github.com/syntheticChemistry/*  
+*All spring repositories: github.com/ecoPrimals/*  
 *Infrastructure: github.com/ecoPrimals/*  
 *Full science catalog: see `CAPABILITY_PARITY_BRIEF.md` for domain-by-domain comparison vs proprietary tools*

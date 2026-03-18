@@ -1,8 +1,8 @@
 # ecoPrimals for Students, Lab Technicians, and Core Facilities
 
-**From:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)
+**From:** ecoPrimals — human + synthetic intelligence
 **Date:** March 17, 2026
-**Repositories:** github.com/syntheticChemistry — all AGPL-3.0-or-later
+**Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
 ---
 
@@ -33,11 +33,11 @@ rustc --version  # Should show 1.87+
 
 | If your lab does... | Clone this | What you get |
 |--------------------|-----------|-------------|
-| 16S metagenomics | `git clone git@github.com:syntheticChemistry/wetSpring.git` | Full FASTQ→diversity pipeline |
-| LC-MS / PFAS | `git clone git@github.com:syntheticChemistry/wetSpring.git` | mzML parsing, peak detection, PFAS screening |
-| PK/PD modeling | `git clone git@github.com:syntheticChemistry/healthSpring.git` | Hill dose-response, population PK, NLME |
+| 16S metagenomics | `git clone git@github.com:ecoPrimals/wetSpring.git` | Full FASTQ→diversity pipeline |
+| LC-MS / PFAS | `git clone git@github.com:ecoPrimals/wetSpring.git` | mzML parsing, peak detection, PFAS screening |
+| PK/PD modeling | `git clone git@github.com:ecoPrimals/healthSpring.git` | Hill dose-response, population PK, NLME |
 | Drug repurposing | Both wetSpring + healthSpring | NMF, TransE, MATRIX scoring |
-| Biosignal (ECG/PPG) | `git clone git@github.com:syntheticChemistry/healthSpring.git` | Pan-Tompkins, HRV, SpO2, arrhythmia |
+| Biosignal (ECG/PPG) | `git clone git@github.com:ecoPrimals/healthSpring.git` | Pan-Tompkins, HRV, SpO2, arrhythmia |
 
 ### Step 3: Build and Test
 
@@ -179,7 +179,7 @@ the expected vs actual values were.
 | `rustc not found` | Restart terminal after installing Rust |
 | `cargo test` has compilation errors | Run `rustup update` to ensure Rust 1.87+ |
 | GPU tests fail | Add `--features gpu` and ensure Vulkan drivers are installed |
-| barraCuda not found | Clone barraCuda alongside the spring: `git clone git@github.com:syntheticChemistry/barraCuda.git` in the same parent directory |
+| barraCuda not found | Clone barraCuda alongside the spring: `git clone git@github.com:ecoPrimals/barraCuda.git` in the same parent directory |
 | Tests pass but I don't understand the output | Each `validate_*` binary prints human-readable pass/fail with tolerances |
 
 ---
