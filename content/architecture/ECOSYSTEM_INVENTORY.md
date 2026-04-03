@@ -22,14 +22,14 @@ These form the [NUCLEUS](@/architecture/NUCLEUS_ARCHITECTURE.md) deployment arch
 
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
-| 🐻🐕 bearDog | Cryptography, identity, Dark Forest | Source publishing in progress | 5,041 |
-| 🎵🐦 songBird | Networking, mesh, discovery | Source publishing in progress | 1,763 |
-| 🪺🔒 nestGate | Content-addressed storage, CAS | Source publishing in progress | 1,474 |
-| 🐸🍄 [toadStool](https://github.com/ecoPrimals/toadStool) | Universal compute orchestration | **Public** | 1,000+ |
-| 🐿️🧠 [squirrel](https://github.com/ecoPrimals/squirrel) | AI coordination, MCP, inference | **Public** | 7,165 |
-| 🌿🖥️ biomeOS | Orchestration, Neural API, NUCLEUS | Source publishing in progress | 661+ |
-| 🪸🌊 [coralReef](https://github.com/ecoPrimals/coralReef) | Shader compiler, GPU dispatch | **Public** | 3,038 |
-| 🐟⚡ [barraCuda](https://github.com/ecoPrimals/barraCuda) | Pure math, WGSL f64 shaders | **Public** | 3,348+ |
+| 🐻🐕 bearDog | Cryptographic spine — Tower Atomic, Dark Forest, Pure Rust Tor | Source publishing in progress | 5,041 |
+| 🎵🐦 songBird | Nervous system — TLS 1.3, O(n) discovery hub, 4-tier NAT | Source publishing in progress | 1,763 |
+| 🪺🔒 nestGate | Data layer — content-addressed storage, ZFS, isomorphic IPC | Source publishing in progress | 1,474 |
+| 🐸🍄 [toadStool](https://github.com/ecoPrimals/toadStool) | Compute layer — GPU/NPU/CPU dispatch, f64 discovery | **Public** | 1,000+ |
+| 🐿️🧠 [squirrel](https://github.com/ecoPrimals/squirrel) | AI brain — vendor-agnostic MCP routing, sovereign inference | **Public** | 7,165 |
+| 🌿🖥️ biomeOS | Conductor — Neural API, NUCLEUS composition, Dark Forest | Source publishing in progress | 661+ |
+| 🪸🌊 [coralReef](https://github.com/ecoPrimals/coralReef) | Sovereign compiler — WGSL to native GPU, no LLVM/Mesa/vendor SDK | **Public** | 3,038 |
+| 🐟⚡ [barraCuda](https://github.com/ecoPrimals/barraCuda) | Math engine — 800+ WGSL shaders, f64 science on consumer GPUs | **Public** | 3,348+ |
 
 ### Post-NUCLEUS Primals (5)
 
@@ -37,20 +37,20 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
-| 🌸👅 petalTongue | Content delivery, visualization, accessibility | Source publishing in progress | — |
-| 🌱🔐 rhizoCrypt | Ephemeral DAG workspace, Merkle verification | Source publishing in progress | 509 |
-| 🍯🌾 sweetGrass | Attribution, citation, provenance tracking | Source publishing in progress | 496 |
-| 🪨📖 loamSpine | Immutable linear history, certificates | Source publishing in progress | 416 |
-| 🦨🦇 skunkBat | Defensive security, threat detection | Source publishing in progress | — |
+| 🌸👅 petalTongue | The face — 5-mode UniBin UI (desktop, TUI, web, headless, status) | Source publishing in progress | — |
+| 🌱🔐 rhizoCrypt | Scratch pad — ephemeral DAG, 6 slice modes, dehydration to LoamSpine | Source publishing in progress | 509 |
+| 🍯🌾 sweetGrass | Attribution — W3C PROV-O provenance, Braid model, fair credit | Source publishing in progress | 496 |
+| 🪨📖 loamSpine | Fossil record — immutable ledger, Loam certificates, federation | Source publishing in progress | 416 |
+| 🦨🦇 skunkBat | Immune system — metadata-only threat detection, graduated response | Source publishing in progress | — |
 
 ### Tooling & Infrastructure (8)
 
 | Repository | Purpose | Status |
 |------------|---------|--------|
-| 🍞🧪 sourDough | Scaffolding & packaging CLI — generates primals, produces genomeBin artifacts | Source publishing in progress |
-| 🎲🔒 bingoCube | Human-verifiable cryptographic commitment (BLAKE3 progressive reveal) | Publishing soon |
-| 🧪🤖 agentReagents | AI agent toolkit — reagent patterns for sovereign AI composition | Publishing soon |
-| ⚖️📊 benchScale | Benchmark & performance characterization, cross-primal scaling | Publishing soon |
+| 🍞🧪 sourDough | Starter culture — scaffolds new primals, produces genomeBin packages | Source publishing in progress |
+| 🎲🔒 bingoCube | Human trust bridge — BLAKE3 progressive reveal, visual/audio identity verification | Publishing soon |
+| 🧪🤖 agentReagents | Agent chemistry — composable reagent patterns for sovereign AI agents | Publishing soon |
+| ⚖️📊 benchScale | Scaling studies — cross-primal benchmarks, composition cost characterization | Publishing soon |
 | 💧📡 [wateringHole](https://github.com/ecoPrimals/wateringHole) | Ecosystem communications, standards, glossary — shared dev context | **Public** |
 | 🖨️🌐 [sporePrint](https://github.com/ecoPrimals/sporePrint) | This website — [primals.eco](https://primals.eco) | **Public** |
 | 🧬📦 [plasmidBin](https://github.com/ecoPrimals/plasmidBin) | Binary distribution surface — genomeBins, ecoBins, metadata.toml | **Public** |
@@ -99,9 +99,9 @@ User-facing products that compose primals into complete applications. Each produ
 
 | Product | What | Status | Repo |
 |---------|------|--------|------|
-| 🔮🕸️ esotericWebb | Cross-evolution CRPG — composes rhizoCrypt, loamSpine, sweetGrass via JSON-RPC | **Public** | [sporeGarden/esotericWebb](https://github.com/sporeGarden/esotericWebb) |
-| 🧬👁️ helixVision | Sovereign structure prediction — AlphaFold2/3 in pure Rust f64, formerly coralForge | Moving to sporeGarden | sporeGarden/helixVision (pending) |
-| 🐟🔵 blueFish | Sovereign data pipeline/ETL — NCBI integration, format conversion | Moving from syntheticChemistry | sporeGarden/blueFish (pending) |
+| 🔮🕸️ esotericWebb | Cross-evolution CRPG — player state as DAG, save games as Loam certificates | **Public** | [sporeGarden/esotericWebb](https://github.com/sporeGarden/esotericWebb) |
+| 🧬👁️ helixVision | Sovereign structure prediction — AlphaFold2/3 reimagined in pure Rust f64 | Moving to sporeGarden | sporeGarden/helixVision (pending) |
+| 🐟🔵 blueFish | Sovereign data pipeline — NCBI/UniProt/PDB ingestion, format conversion | Moving from syntheticChemistry | sporeGarden/blueFish (pending) |
 
 ---
 
