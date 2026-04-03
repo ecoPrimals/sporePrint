@@ -127,6 +127,24 @@ a direct comparison against proprietary tools across 8 scientific domains.
 
 ---
 
+## The Three Organizations
+
+ecoPrimals is distributed across three GitHub organizations, each with a
+distinct role in the ecosystem:
+
+| Organization | Role | Contains | GitHub |
+|-------------|------|----------|--------|
+| **ecoPrimals** | Infrastructure primals | barraCuda, toadStool, coralReef, biomeOS, BearDog, NestGate, Songbird, petalTongue, Squirrel, and the infrastructure repos (sporePrint, wateringHole, whitePaper) | [github.com/ecoPrimals](https://github.com/ecoPrimals) |
+| **syntheticChemistry** | Science validation springs | wetSpring, hotSpring, airSpring, neuralSpring, groundSpring, healthSpring, ludoSpring, primalSpring | [github.com/syntheticChemistry](https://github.com/syntheticChemistry) |
+| **sporeGarden** | User-facing products | esotericWebb (CRPG engine), helixVision (genomics platform, planned), and future tools for scientists, creatives, and educators | [github.com/sporeGarden](https://github.com/sporeGarden) |
+
+**Primals** build capabilities. **Springs** validate that those capabilities
+produce correct science. **Products** compose validated capabilities into tools
+people use. The three organizations mirror this separation: infrastructure,
+validation, and delivery.
+
+---
+
 ## The Ecosystem at a Glance
 
 ### Seven Science Springs (All Public, AGPL-3.0)
@@ -136,13 +154,13 @@ science and validate computational methods against known results.
 
 | Spring | Domain | Repository | Checks |
 |--------|--------|-----------|:------:|
-| wetSpring | Life science, microbiome, quorum sensing, field genomics | [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring) | 5,707+ |
-| airSpring | Precision agriculture, ET₀, soil hydrology, phenology | [ecoPrimals/airSpring](https://github.com/syntheticChemistry/airSpring) | 3,123+ |
-| neuralSpring | ML primitives, reservoir computing, spectral analysis | [ecoPrimals/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) | 4,500+ |
-| hotSpring | Plasma physics, lattice QCD, GPU sovereign compute | [ecoPrimals/hotSpring](https://github.com/syntheticChemistry/hotSpring) | 664+ |
-| groundSpring | Uncertainty quantification, noise, spectral theory | [ecoPrimals/groundSpring](https://github.com/syntheticChemistry/groundSpring) | 535+ |
-| healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [ecoPrimals/healthSpring](https://github.com/syntheticChemistry/healthSpring) | 474+ |
-| ludoSpring | Game science, HCI, provenance, distributed compute | [ecoPrimals/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) | 1,692+ |
+| wetSpring | Life science, microbiome, quorum sensing, field genomics | [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) | 5,707+ |
+| airSpring | Precision agriculture, ET₀, soil hydrology, phenology | [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring) | 3,123+ |
+| neuralSpring | ML primitives, reservoir computing, spectral analysis | [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) | 4,500+ |
+| hotSpring | Plasma physics, lattice QCD, GPU sovereign compute | [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring) | 664+ |
+| groundSpring | Uncertainty quantification, noise, spectral theory | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) | 535+ |
+| healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) | 474+ |
+| ludoSpring | Game science, HCI, provenance, distributed compute | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) | 1,692+ |
 | **Total** | | | **16,695+** |
 
 ### Three Public Infrastructure Primals (All AGPL-3.0)

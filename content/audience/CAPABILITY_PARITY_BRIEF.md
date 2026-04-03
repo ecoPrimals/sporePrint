@@ -10,7 +10,7 @@ date = 2026-03-17
 **Organization:** ecoPrimals
 **Date:** March 17, 2026
 **License:** All code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
-**Repositories:** github.com/ecoPrimals (wetSpring, neuralSpring, airSpring, groundSpring, hotSpring, healthSpring, ludoSpring)
+**Repositories:** Springs at github.com/syntheticChemistry · Primals at github.com/ecoPrimals · Products at github.com/sporeGarden
 
 ---
 
@@ -80,7 +80,7 @@ what proprietary tools still do better, and where to find everything.
 ### Where to Find / Rebuild
 
 ```bash
-git clone git@github.com:ecoPrimals/wetSpring.git
+git clone git@github.com:syntheticChemistry/wetSpring.git
 cd wetSpring/barracuda
 cargo test --workspace                    # 1,443+ tests
 cargo run --release --bin validate_diversity  # Diversity index validation
@@ -137,7 +137,7 @@ cargo run --release --bin validate_dada2_full # DADA2 pipeline validation
 ### Where to Find / Rebuild
 
 ```bash
-git clone git@github.com:ecoPrimals/healthSpring.git
+git clone git@github.com:syntheticChemistry/healthSpring.git
 cd healthSpring
 cargo test --workspace                     # 613 tests
 cargo run --release --bin exp001_hill      # Hill dose-response (Gonzales IC50)
@@ -368,7 +368,7 @@ Every spring is a self-contained Cargo workspace. To rebuild any capability:
 # Optional: GPU (any Vulkan-capable card for GPU tests)
 
 # Clone the spring you need
-git clone git@github.com:ecoPrimals/<spring>.git
+git clone git@github.com:syntheticChemistry/<spring>.git
 cd <spring>
 
 # Build and test
@@ -388,7 +388,7 @@ no pip, no npm. One `cargo build` compiles everything from source.
 ```bash
 cd Development/ecoPrimals
 git clone git@github.com:ecoPrimals/barraCuda.git  # renamed from barraCUDA
-git clone git@github.com:ecoPrimals/wetSpring.git
+git clone git@github.com:syntheticChemistry/wetSpring.git
 # Cargo.toml points to ../../barraCuda/crates/barracuda
 ```
 

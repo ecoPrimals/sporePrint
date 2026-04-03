@@ -153,8 +153,8 @@ Every intermediate result is signed. The provenance chain maps to
 
 ```bash
 # Pick the spring relevant to your domain:
-git clone git@github.com:ecoPrimals/healthSpring.git  # PK/PD, clinical
-git clone git@github.com:ecoPrimals/wetSpring.git     # 16S, metagenomics, LC-MS
+git clone git@github.com:syntheticChemistry/healthSpring.git  # PK/PD, clinical
+git clone git@github.com:syntheticChemistry/wetSpring.git     # 16S, metagenomics, LC-MS
 
 # Build (requires Rust 1.87+ from rustup.rs — 2 minute install)
 cd healthSpring && cargo test --workspace   # 613 tests, 0 failures

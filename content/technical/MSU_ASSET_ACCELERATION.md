@@ -253,5 +253,5 @@ No CUDA, no conda, no spack, no module file conflicts.
 ---
 
 *Contact for collaboration and access: see `contacts.md` in this directory.*  
-*Spring repositories: github.com/ecoPrimals/*  
-*Infrastructure repositories: github.com/ecoPrimals/*
+*Spring repositories: github.com/syntheticChemistry/*  
+*Primal repositories: github.com/ecoPrimals/*

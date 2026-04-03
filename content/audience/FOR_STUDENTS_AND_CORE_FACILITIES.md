@@ -40,11 +40,11 @@ rustc --version  # Should show 1.87+
 
 | If your lab does... | Clone this | What you get |
 |--------------------|-----------|-------------|
-| 16S metagenomics | `git clone git@github.com:ecoPrimals/wetSpring.git` | Full FASTQ→diversity pipeline |
-| LC-MS / PFAS | `git clone git@github.com:ecoPrimals/wetSpring.git` | mzML parsing, peak detection, PFAS screening |
-| PK/PD modeling | `git clone git@github.com:ecoPrimals/healthSpring.git` | Hill dose-response, population PK, NLME |
+| 16S metagenomics | `git clone git@github.com:syntheticChemistry/wetSpring.git` | Full FASTQ→diversity pipeline |
+| LC-MS / PFAS | `git clone git@github.com:syntheticChemistry/wetSpring.git` | mzML parsing, peak detection, PFAS screening |
+| PK/PD modeling | `git clone git@github.com:syntheticChemistry/healthSpring.git` | Hill dose-response, population PK, NLME |
 | Drug repurposing | Both wetSpring + healthSpring | NMF, TransE, MATRIX scoring |
-| Biosignal (ECG/PPG) | `git clone git@github.com:ecoPrimals/healthSpring.git` | Pan-Tompkins, HRV, SpO2, arrhythmia |
+| Biosignal (ECG/PPG) | `git clone git@github.com:syntheticChemistry/healthSpring.git` | Pan-Tompkins, HRV, SpO2, arrhythmia |
 
 ### Step 3: Build and Test
 

@@ -37,7 +37,7 @@ The springs are organized into two tiers:
 **Grade**: Most mature spring — Phase A through F complete, 21 experiments, 39/39 validation suites
 **Checks**: 197+ quantitative checks pass (~697 tests, 78 binaries, 62 WGSL shaders)
 **Faculty**: Michael Murillo (CMSE, MSU — MSDS professor), Alexei Bazavov (CMSE + Physics, MSU — master's professor), Ilya Kachkovskiy (Math, MSU — spectral theory), Rika Anderson (Biology, Carleton — *Sulfolobus* in Yellowstone hot springs, Taq corollary)
-**Repository**: git@github.com:ecoPrimals/hotSpring.git
+**Repository**: git@github.com:syntheticChemistry/hotSpring.git
 **License**: AGPL-3.0
 
 **What it validates**: hotSpring proves BarraCuda can do first-principles computational physics on consumer hardware. Sarkas Yukawa MD runs at paper parity (N=10,000, 80k production steps) on a $600 RTX 4070 for $0.044 in electricity. The full AME2020 nuclear dataset (2,042 nuclei, 39x the published paper) runs on a single consumer GPU. Lattice QCD production β-scans (32⁴, 12 temperatures) resolve the deconfinement transition on a $500 RTX 3090 for $0.58. A $300 Akida NPU runs ESN inference at 2.8μs/step — 1000× faster than GPU for streaming workloads. GPU ESN dispatch via WGSL crosses over CPU at reservoir size ≈512 (8.2× faster at 1024).
@@ -77,7 +77,7 @@ The springs are organized into two tiers:
 **Grade**: Full Python→Rust→GPU→metalForge→NUCLEUS pipeline complete
 **Checks**: 1,237/1,237 Python + 827 lib + 186 forge tests (27 GPU fail: upstream wgpu 28) + 381/381 validation + 146/146 evolution + 78 experiments
 **Faculty**: Younsuk Dong (BAE, MSU — new lab 2026)
-**Repository**: git@github.com:ecoPrimals/airSpring.git
+**Repository**: git@github.com:syntheticChemistry/airSpring.git
 **License**: AGPL-3.0-or-later
 
 **What it validates**: airSpring proves BarraCuda can replace the Python/Excel toolchain for precision agriculture at every stage — from paper reproduction through GPU-accelerated sovereign computation on consumer hardware. 57 papers reproduced with full provenance. FAO-56 ET₀ computed in Rust matches Python to 1e-5 tolerance across 75 cross-validated values. Real data from 100 Michigan stations (15,300 station-days) achieves R²=0.97. 19.8× geometric mean Rust speedup over Python (24 algorithms), 13,000× atlas-scale. 25 Tier A GPU modules + 6 f64-canonical local GPU ops + fused Welford (hotSpring S58) + fused Pearson (neuralSpring S69). Cross-spring shader provenance: hotSpring (precision/DF64), wetSpring (bio/diversity), neuralSpring (ML/stats), groundSpring (MC/uncertainty). NUCLEUS primal with 30 science capabilities.
@@ -110,7 +110,7 @@ The springs are organized into two tiers:
 **Grade**: V127 — 47 CPU + 47 GPU bio modules, 1 runtime dependency (flate2)
 **Checks**: 5,707+ validation checks across 376 experiments. 1,443+ Rust tests (0 failures), 214 named tolerances, 354 binaries (306 validate + 23 benchmark + 25 other). 63/63 papers reproduced, 46 at full CPU+GPU+metalForge. barraCuda v0.3.5 (150+ primitives consumed). IPC resilience (`RetryPolicy` + `CircuitBreaker`), 4-format capability parsing, batch Anderson spectral module, stable numerics (`log_sum_exp`, Kahan summation). 24 capabilities across 16 domains. JSON-RPC 2.0 server with batch requests and notifications. Zero local WGSL, zero unsafe, zero TODO/FIXME, zero mocks in production. Leverage guide: `wateringHole/WETSPRING_LEVERAGE_GUIDE.md`.
 **Faculty**: Christopher Waters (MMG, MSU — undergrad professor), Kevin Liu (CMSE, MSU — master's professor), Jesse Cahill & Chuck Smallwood (Sandia), A. Daniel Jones (BMB/Chemistry, MSU — PFAS job), Rika Anderson (Biology, Carleton — vent metagenomics, pangenomics, phage ecology), Andrea J. Gonzales (Pharmacology & Toxicology, MSU — cytokine signaling, AD, dose-response), Erika Lisabeth (ADDRC Director, MSU — HTS, drug repurposing, EphA3), Richard Neubig (Drug Discovery Director, MSU — GPCR, Rho/MRTF/SRF skin fibrosis)
-**Repository**: git@github.com:ecoPrimals/wetSpring.git
+**Repository**: git@github.com:syntheticChemistry/wetSpring.git
 **License**: AGPL-3.0
 
 **What it validates**: wetSpring proves BarraCuda can replace the Galaxy/QIIME2/Python bioinformatics stack with sovereign Rust. The complete 16S pipeline (FASTQ→quality→merge→derep→DADA2→chimera→taxonomy→diversity→UniFrac) runs in Rust with 1 runtime dependency (flate2 for gzip). GPU spectral cosine matching achieves **1,077x speedup** over CPU. The sovereign XML parser eliminates `quick-xml`; the sovereign FASTQ parser eliminates `needletail`.
@@ -150,7 +150,7 @@ The springs are organized into two tiers:
 **Grade**: Phase 0 (Python) + Phase 1 (Rust) + Phase 2 (GPU) + Phase 3 (Hardware) + Phase 4 (NUCLEUS) — V104
 **Checks**: 395/395 Rust validation checks (all PASS), 936 Rust tests, 287 Python tests, 102 barraCuda delegations (61 CPU + 41 GPU)
 **Faculty**: Alexei Bazavov (CMSE + Physics, MSU), Christopher Waters (MMG, MSU), Kevin Liu (CMSE, MSU), Emily Dolson (CSE, MSU), Ilya Kachkovskiy (Math, MSU — Anderson localization, Almost-Mathieu, transport, band edge), Rika Anderson (Biology, Carleton — stochastic vs deterministic evolution, drift, uncertainty bridge, rare biosphere), Andrea J. Gonzales (Paper 12 — immunological Anderson, tissue geometry, drug scoring)
-**Repository**: git@github.com:ecoPrimals/groundSpring.git
+**Repository**: git@github.com:syntheticChemistry/groundSpring.git
 **License**: AGPL-3.0-or-later
 
 **What it validates**: groundSpring establishes the uncertainty budget for every other spring. It decomposes measurement error into correctable bias and irreducible noise, quantifies which inputs dominate output uncertainty, and demonstrates how noise propagates through inverse problems. The framework — decompose, identify dominant source, quantify noise floor — is universal across domains. 37 Rust modules across 5 pillars: Signal vs Noise, Inverse Problems, Sensing Systems, Temporal Dynamics, Spatial Propagation. 102 barraCuda delegations cover stats, spectral, ops, linalg, optimize, bio, and ESN domains. metalForge provides cross-substrate dispatch (CPU, GPU via RTX 4070/Titan V, NPU via AKD1000).
@@ -194,7 +194,7 @@ The springs are organized into two tiers:
 **Grade**: Phase 0 → 0+ → 0++ → Rust → BarraCuda CPU → GPU Tensor → metalForge WGSL → Pipeline → Cross-dispatch → Mixed-hardware → Multi-GPU → coralForge. **Most complete validation pipeline of any spring.**
 **Checks**: 397/397 Python + 4000+ Rust+GPU = **4,500+ total** (1128 lib + 61 playGround + 73 forge tests, 260 binaries, 220/220 validate\_all, zero C deps via Tower Atomic, OrExit<T> zero-panic, deny.toml, structured logging, structured IpcError, typed compute.dispatch)
 **Faculty**: Emily Dolson (CSE, MSU — master's professor), Kevin Liu (CMSE, MSU — master's professor), Christopher Waters (MMG, MSU — undergrad professor), Alexei Bazavov (CMSE + Physics, MSU), Ilya Kachkovskiy (Math, MSU — spectral/optimization landscape), Rika Anderson (Biology, Carleton — pangenomics, constrained evolution empirics), Andrea J. Gonzales (Pharmacology & Toxicology, MSU — Hill equation, PK modeling, CytokineBrain)
-**Repository**: git@github.com:ecoPrimals/neuralSpring.git
+**Repository**: git@github.com:syntheticChemistry/neuralSpring.git
 **License**: AGPL-3.0
 
 **What it validates**: neuralSpring proves the **Isomorphism Theorem** — all neural architectures decompose into 6 fundamental primitives (GEMM, Attention, Normalization, Nonlinearity, Reduction, Gating), and BarraCuda's WGSL shader library covers all 6. Phase 0++ extended to 15 papers across 4 faculty groups and 5 disciplines. **coralForge** is the sovereign structure prediction engine — pure Rust f64 implementations of AlphaFold2/AlphaFold3 primitives (Evoformer, IPA, diffusion, pairformer, confidence), validated against NumPy baselines and accelerated via BarraCuda/ToadStool. Pure Rust is **83.6× faster** than Python/NumPy (geomean, 11 domains).
@@ -233,7 +233,7 @@ The springs are organized into two tiers:
 **Grade**: V27 — 7 tracks, 73 experiments, 601 tests, Tier 0+1+2+3 complete
 **Checks**: 601 Rust tests + 194 Python cross-validation = **795 healthSpring checks**
 **Faculty**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Dr. Charles Mok (Allure Medical — clinical TRT reference)
-**Repository**: git@github.com:ecoPrimals/healthSpring.git
+**Repository**: git@github.com:syntheticChemistry/healthSpring.git
 **License**: AGPL-3.0-or-later
 
 **What it validates**: healthSpring proves the ecoPrimals math infrastructure extends to human clinical applications. PK/PD models validated against canine data in neuralSpring transfer directly to human therapeutics via allometric scaling. The Anderson localization framework from wetSpring/hotSpring applies to gut microbiome colonization resistance. The "claim verification pipeline" — extracting quantifiable claims from clinical practice literature (Mok 2018) and validating against published registry data (Saad, Sharma, Kapoor) — is a novel methodology. The testosterone-gut axis (Exp037) bridges microbiome diversity and endocrine outcomes via Anderson localization, validating the cross-track hypothesis. V25 extends to comparative medicine (species-agnostic PK, cross-species Anderson, canine AD models) and drug discovery (MATRIX scoring, ADDRC HTS, compound screening, iPSC validation). V27 absorbs ODE→WGSL codegen from wetSpring (3 `OdeSystem` impls via barraCuda `BatchedOdeRK4`), uncertainty quantification from groundSpring (bootstrap/jackknife/bias-variance/Monte Carlo), and hardens IPC cast safety.
@@ -271,7 +271,7 @@ The springs are organized into two tiers:
 **Grade**: V6 — 44 experiments, 410 checks, 11 tracks, 2 playable prototypes, 3 external control groups, 4 cross-spring experiments
 **Checks**: 410 validation checks + 144 unit/integration tests = **554 ludoSpring checks**
 **Faculty**: Csikszentmihalyi (Flow, 1990), Fitts (1954), Yannakakis & Togelius (2018), Lazzaro (Four Keys, 2004), Hunicke (DDA, 2005), Perlin (1985), Gumin (WFC, 2016), Lindenmayer (1968), Tufte (1983)
-**Repository**: git@github.com:ecoPrimals/ludoSpring.git
+**Repository**: git@github.com:syntheticChemistry/ludoSpring.git
 **License**: AGPL-3.0-or-later
 
 **What it validates**: ludoSpring proves the ecoPrimals Python→Rust→GPU pipeline produces validated science in interactive systems — the most demanding real-time domain humans build. 13 foundational HCI models validated against published research. Game genres are interaction architectures, not aesthetic categories: FPS = molecular explorer, roguelike = parameter space exploration, RTS = systems biology dashboard. External control groups prove the metrics framework is content-agnostic. **Key finding**: Flow state (Csikszentmihalyi) discriminates game quality; engagement alone measures activity, not optimal experience. 110× 60Hz raycaster headroom on CPU, 0.93× fastnoise-lite (C). **Cross-spring**: Anderson QS explorer (Perlin noise as disorder landscape, QS propagation with localization transition), live NCBI data integration, Tower Atomic (BearDog+Songbird) validated. Game metrics generalize to scientific exploration sessions.

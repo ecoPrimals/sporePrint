@@ -227,4 +227,4 @@ to hardware lifecycle management — belongs to the user.
 [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) ·
 [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) ·
 [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) ·
-[ecoPrimals/hotSpring](https://github.com/syntheticChemistry/hotSpring)*
+[syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring)*

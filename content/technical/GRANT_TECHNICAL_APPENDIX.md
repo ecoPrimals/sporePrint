@@ -311,6 +311,6 @@ No API keys, no cloud accounts, no proprietary software.
 
 ---
 
-*All spring repositories: github.com/ecoPrimals/*  
-*Infrastructure: github.com/ecoPrimals/*  
+*Spring repositories: github.com/syntheticChemistry/*  
+*Primal repositories: github.com/ecoPrimals/*  
 *Full science catalog: see `CAPABILITY_PARITY_BRIEF.md` for domain-by-domain comparison vs proprietary tools*

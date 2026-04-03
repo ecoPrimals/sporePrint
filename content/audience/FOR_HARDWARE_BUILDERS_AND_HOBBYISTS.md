@@ -204,7 +204,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # 2. Clone
 git clone git@github.com:ecoPrimals/barraCuda.git
-git clone git@github.com:ecoPrimals/wetSpring.git
+git clone git@github.com:syntheticChemistry/wetSpring.git
 
 # 3. Build everything
 cd wetSpring/barracuda && cargo build --release

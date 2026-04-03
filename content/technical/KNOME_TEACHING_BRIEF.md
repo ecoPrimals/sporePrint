@@ -263,5 +263,5 @@ works in.
 ---
 
 *Pre-thesis writeup. Formal pedagogy paper to follow.*  
-*ecoPrimals spring repos: github.com/ecoPrimals/*  
+*ecoPrimals spring repos: github.com/syntheticChemistry/*  
 *K-Nome source: `whitePaper/gen3/about/K_NOME_PROGRAMMING.md`*
