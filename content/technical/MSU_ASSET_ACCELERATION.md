@@ -134,7 +134,7 @@ a drug hits the right pathway but whether it can physically reach its target.
 ADDRC compound library (8,000+ compounds)
     → Anderson-augmented MATRIX scoring (ecoPrimals nS-605)
     → Priority ranking with tissue geometry rationale
-    → Gonzales iPSC validation of top candidates
+    → iPSC validation of top candidates (literature-aligned MSU Pharmacology benchmarks)
     → Medicinal chemistry optimization (Ellsworth)
 ```
 
@@ -148,9 +148,9 @@ ADDRC compound library (8,000+ compounds)
 **Integration path:**
 1. ADDRC provides compound metadata (existing GREENScreen data) as CSV
 2. ecoPrimals scoring pipeline produces ranked list with geometry rationale
-3. Gonzales lab selects top candidates for iPSC validation
+3. Top candidates proceed to iPSC validation against published Pharmacology benchmarks
 4. HTS data from the screen feeds back into Anderson model refinement
-5. Neubig Rho/MRTF inhibitors evaluated for AD cross-talk using same scoring
+5. Rho/MRTF inhibitor literature (Neubig group) evaluated for AD cross-talk using same scoring
 
 ---
 
@@ -173,13 +173,15 @@ ecoPrimals springs. Adapted as a pedagogy:
 
 **What MSDS students can contribute:**
 
-| Domain | Faculty Anchor | Spring | Student Project |
-|--------|---------------|--------|----------------|
-| Pharmacology | Gonzales lab | healthSpring | Reproduce a PK/PD paper from the Gonzales catalog; port to Rust; validate against Python |
-| Precision Ag | Dong lab (BAE) | airSpring | Reproduce FAO-56 ET₀ for a new sensor dataset; port to Rust; validate against R baseline |
-| Computational Physics | Murillo lab (CMSE) | hotSpring | Reproduce one MD transport simulation from published code; port to Rust; GPU validation |
-| Microbiome | Waters lab (MMG) | wetSpring | Reproduce 16S diversity analysis from a public BioProject; port to Rust; validate |
-| Spectral Theory | Kachkovskiy lab (Math) | groundSpring | Reproduce one Anderson localization calculation; port to Rust; physics validation |
+ecoPrimals springs validate against published methods and datasets in each domain; capstone projects reproduce a peer-reviewed result and port it to sovereign Rust.
+
+| Domain | Published-work anchor (MSU) | Spring | Student Project |
+|--------|----------------------------|--------|----------------|
+| Pharmacology | Gonzales-group PK/PD and screening literature | healthSpring | Reproduce a PK/PD paper from the public Gonzales catalog; port to Rust; validate against Python |
+| Precision Ag | Dong-group irrigation and ET₀ literature (BAE) | airSpring | Reproduce FAO-56 ET₀ for a new sensor dataset; port to Rust; validate against R baseline |
+| Computational Physics | Murillo-group plasma MD literature (CMSE) | hotSpring | Reproduce one MD transport simulation from published code; port to Rust; GPU validation |
+| Microbiome | Waters-group quorum sensing and 16S literature (MMG) | wetSpring | Reproduce 16S diversity analysis from a public BioProject; port to Rust; validate |
+| Spectral Theory | Kachkovskiy-group Anderson localization literature (Math) | groundSpring | Reproduce one Anderson localization calculation; port to Rust; physics validation |
 
 **Student outcome:** A validated, reproducible, publicly documented implementation
 of a key paper from their advisor's domain. Runs on any hardware. Independent of
@@ -202,12 +204,12 @@ hardware into a coordinated mesh. Three bonding types:
 | Bond | What It Connects | How |
 |------|-----------------|-----|
 | Covalent | Same-family gates (lab machines) | Automatic via genetic lineage — all lab machines are one compute pool |
-| Ionic | Collaborating lab machines (Gonzales + ADDRC) | Metered contract — shared compute, scoped data access |
+| Ionic | Collaborating institutional machines (ADDRC + department compute) | Metered contract — shared compute, scoped data access |
 | Metallic | ICER nodes | Institutional enrollment — idle ICER GPUs become ecoPrimals nodes |
 
 **What this enables:**
 
-- A wetSpring analysis started on Gonzales lab workstation can dispatch heavy
+- A wetSpring analysis started on a department workstation can dispatch heavy
   GPU computation to ICER overnight — automatically, without manual job submission
 - Results appear on the lab workstation with full provenance
 - ADDRC HTS data stays on ADDRC hardware — only the computation crosses the

@@ -232,7 +232,7 @@ The springs are organized into two tiers:
 **Domain**: Pharmacokinetics, dose-response, population modeling, gut microbiome analytics, ECG biosignal processing, testosterone replacement therapy, endocrinology, comparative medicine, drug discovery, NLME
 **Grade**: V27 — 7 tracks, 73 experiments, 601 tests, Tier 0+1+2+3 complete
 **Checks**: 601 Rust tests + 194 Python cross-validation = **795 healthSpring checks**
-**Faculty**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Dr. Charles Mok (Allure Medical — clinical TRT reference)
+**Faculty**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Dr. Charles Mok (clinical endocrinology, TRT literature)
 **Repository**: git@github.com:syntheticChemistry/healthSpring.git
 **License**: AGPL-3.0-or-later
 
@@ -308,7 +308,7 @@ The springs are organized into two tiers:
 | Scientific domains covered | Physics, agriculture, biology, chemistry, geophysics, ML, neuromorphic computing, **human health (PK/PD, microbiome, biosignal, endocrinology)**, **game science (HCI, PCG, interactive systems)** |
 | Papers reproduced | 70+ (published, peer-reviewed, across all springs) |
 | Papers queued for review | 60+ candidates across all springs + 8 Mok-derived experiments |
-| Faculty connected | 14 professors (MSU + Sandia + Carleton + Allure Medical) across 9 departments |
+| Faculty literature map | 14 professors (MSU + Sandia + Carleton + clinical practice) across 9 departments |
 | BarraCuda kernels validated by springs | 79+ distinct GPU/NPU primitives (wetSpring alone consumes 79 via ToadStool S68) |
 | BarraCuda bugs found by springs | 6 (5 upstream in Sarkas, 1 in ToadStool log_f64) |
 | Rust validation checks | 1,008 (wetSpring) + 4,000+ (neuralSpring) + 3,123+ (airSpring) + ~697 (hotSpring) + 236 (groundSpring) |
@@ -379,23 +379,23 @@ ludoSpring (game science — 410 checks, 44 experiments, 13 HCI models)
 
 ### 2.4 Faculty → Spring Mapping
 
-| Professor | Department | Connection | Springs |
-|-----------|-----------|-----------|---------|
-| Michael Murillo | CMSE, MSU | MSDS professor | hotSpring |
-| Younsuk Dong | BAE, MSU | New lab 2026 | airSpring |
-| Christopher Waters | MMG, MSU | Undergrad professor | wetSpring, groundSpring, neuralSpring |
-| Kevin Liu | CMSE, MSU | Master's professor | wetSpring, groundSpring, neuralSpring |
-| Alexei Bazavov | CMSE + Physics, MSU | Master's professor | hotSpring, groundSpring, neuralSpring |
-| Emily Dolson | CSE, MSU | Master's professor | neuralSpring, groundSpring |
-| Ilya Kachkovskiy | Math, MSU | Sold NucBox M6 (FB Marketplace) | hotSpring, groundSpring, neuralSpring |
-| Jesse Cahill | Sandia (Bioscience) | Time at Sandia | wetSpring |
-| Chuck Smallwood | Sandia (Bioscience) | Time at Sandia | wetSpring |
-| A. Daniel Jones | BMB/Chemistry, MSU | PFAS job | wetSpring |
-| Rika Anderson | Biology, Carleton College | Literature search | hotSpring, wetSpring, groundSpring, neuralSpring |
-| Andrea J. Gonzales | Pharmacology & Toxicology, MSU | March 2026 interview | wetSpring, neuralSpring, airSpring, **healthSpring** |
-| Erika Lisabeth | Pharmacology & Toxicology, MSU (ADDRC) | Gonzales referral | wetSpring |
-| Richard Neubig | Pharmacology & Toxicology, MSU (Drug Discovery) | Gonzales referral | wetSpring, neuralSpring |
-| **Charles Mok** | **Allure Medical, Shelby Township MI** | **Clinical TRT reference (2018 book)** | **healthSpring** |
+| Professor | Department | Published Domain | Springs |
+|-----------|-----------|------------------|---------|
+| Michael Murillo | CMSE, MSU | Dense plasmas, WDM, molecular dynamics | hotSpring |
+| Younsuk Dong | BAE, MSU | Precision agriculture, irrigation | airSpring |
+| Christopher Waters | MMG, MSU | Quorum sensing, c-di-GMP | wetSpring, groundSpring, neuralSpring |
+| Kevin Liu | CMSE, MSU | Comparative genomics, phylogenetics | wetSpring, groundSpring, neuralSpring |
+| Alexei Bazavov | CMSE + Physics, MSU | Lattice QCD, thermodynamics | hotSpring, groundSpring, neuralSpring |
+| Emily Dolson | CSE, MSU | Evolutionary computation | neuralSpring, groundSpring |
+| Ilya Kachkovskiy | Math, MSU | Spectral theory, Anderson localization | hotSpring, groundSpring, neuralSpring |
+| Jesse Cahill | Sandia (Bioscience) | Biosurveillance | wetSpring |
+| Chuck Smallwood | Sandia (Bioscience) | Biosurveillance | wetSpring |
+| A. Daniel Jones | BMB/Chemistry, MSU | Mass spectrometry, PFAS | wetSpring |
+| Rika Anderson | Biology, Carleton College | Vent metagenomics, pangenomics | hotSpring, wetSpring, groundSpring, neuralSpring |
+| Andrea J. Gonzales | Pharmacology & Toxicology, MSU | Pharmacology, cytokine signaling | wetSpring, neuralSpring, airSpring, **healthSpring** |
+| Erika Lisabeth | Pharmacology & Toxicology, MSU (ADDRC) | Drug discovery, HTS | wetSpring |
+| Richard Neubig | Pharmacology & Toxicology, MSU (Drug Discovery) | GPCR signaling, fibrosis | wetSpring, neuralSpring |
+| **Charles Mok** | **Clinical Practice** | **Clinical endocrinology, TRT** | **healthSpring** |
 
 Full profiles: `data/FACULTY_SPRING_PROFILES.md`
 

@@ -171,8 +171,8 @@ cargo run --release --bin validate_diversity # Shannon/Simpson/Pielou/Chao1
 
 ## Faculty Already Evaluating This Work
 
-| Faculty | Department | Domain | Spring | Papers Reproduced |
-|---------|-----------|--------|--------|:-----------------:|
+| Faculty | Department | Published domain | Spring | Papers Reproduced |
+|---------|-----------|------------------|--------|:-----------------:|
 | Christopher Waters | MMG, MSU | Quorum sensing, biofilm | wetSpring | 7 |
 | Kevin Liu | CMSE, MSU | Phylogenetics, HMM | wetSpring | 6 |
 | Michael Murillo | CMSE, MSU | Plasma physics, MD | hotSpring | 22 |
@@ -191,4 +191,4 @@ Total across all springs: **70+ papers reproduced, 27,000+ tests, 15,334+ valida
 
 ecoPrimal — github.com/ecoPrimals
 Written and developed by ecoPrimal: human + synthetic intelligence.
-Built on ~$15,000 of consumer hardware in a basement. Zero cloud bills. Zero licenses.
+Built on ~$15,000 of consumer hardware. Zero cloud bills. Zero licenses.

@@ -107,7 +107,7 @@ AGPL-3.0, zero C dependencies.
 | **9.9×** f64 uplift | Consumer GPUs via DF64/WebGPU vs CUDA native f64 |
 | **27 days** | From first spring to 10,796+ checks across 5 domains |
 | **27,169+** tests | Combined across BarraCuda, ToadStool, and coralReef infrastructure |
-| **$15K** total hardware | The entire system runs on consumer hardware in a basement |
+| **$15K** total hardware | The entire system runs on consumer hardware |
 | **5 substrates** | guideStone cross-validated: x86_64, aarch64, NVIDIA, AMD, Alpine |
 
 ---
@@ -210,7 +210,7 @@ architectures with 40/40 bit-identical cross-substrate observables.
 ### For Someone Evaluating the Cost / Hardware
 
 1. **[Hardware Cost Analysis](@/technical/HARDWARE_COST_ANALYSIS.md)** —
-   The $0.044 run, $15K basement vs cloud.
+   The $0.044 run, $15K consumer hardware vs cloud.
 
 2. **[Sovereign GPU Pipeline Profile](@/technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md)** —
    Vendor replacement: what's done, what's next.

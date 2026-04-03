@@ -1,10 +1,10 @@
 +++
-title = "Hardware Cost Analysis: $15K Basement vs Institutional HPC"
-description = "The f64 Vulkan discovery, $0.044/run, $15K basement vs cloud"
+title = "Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure"
+description = "The f64 Vulkan discovery, $0.044/run, sovereign consumer hardware vs cloud"
 date = 2026-03-17
 +++
 
-# Hardware Cost Analysis: $15K Basement vs Institutional HPC
+# Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure
 
 **The f64 GPU discovery, the $0.044 run, and what consumer hardware actually does.**
 
@@ -15,7 +15,7 @@ date = 2026-03-17
 
 ## The Headline Numbers
 
-| Metric | Consumer Basement | Institutional HPC | Cloud (AWS/GCP) |
+| Metric | Sovereign cluster | Institutional HPC | Cloud (AWS/GCP) |
 |--------|:-----------------:|:-----------------:|:---------------:|
 | **Hardware cost** | $15K (one-time) | $0 (shared allocation) | $0 (per-use) |
 | **f64 GPU TFLOPS** | 3.24 (DF64, RTX 3090) | 9.7 (A100 SXM, native) | 9.7 (A100 SXM) |
@@ -28,7 +28,7 @@ date = 2026-03-17
 
 **The $0.044 number:** A paper-parity molecular dynamics run (N=10,000 atoms,
 80,000 timesteps, Yukawa OCP at plasma physics conditions) costs $0.044 in
-electricity on an RTX 4070. The equivalent ICER/HPC allocation is estimated
+electricity on an RTX 4070. The equivalent university HPC allocation is estimated
 at $50–500 depending on node type, queue priority, and facility pricing.
 
 ---
@@ -77,28 +77,28 @@ the open Vulkan standard rather than NVIDIA's proprietary CUDA layer.
 
 ---
 
-## The Basement HPC — Hardware Inventory
+## The sovereign cluster — hardware inventory
 
 Total investment: ~$15,000, accumulated over ~8 months.
 
 ### Compute Nodes
 
-| Gate | Primary GPU | Work GPU(s) | CPU | RAM |
-|------|------------|-------------|-----|-----|
-| northGate | RTX 5090 | — | 16-core | 64 GB |
-| southGate | RTX 4060 | swappable | 12-core | 64 GB |
-| eastGate | RTX 4070 | — | 8-core | 32 GB |
-| gate-04 | — | RTX 3090 + RX 6950 XT | 12-core | 64 GB |
-| biomeGate | RTX 5060 | 2× Titan V + 2× MI50 | 16-core | 128 GB |
-| westGate | RTX 2070S | — | 12-core | 32 GB |
-| 4× fieldmouse | — | — | 4-core | 16 GB each |
+| Gate | Primary GPU | Work GPU(s) | CPU | RAM | NVMe / bulk storage |
+|------|------------|-------------|-----|-----|----------------------|
+| northGate | RTX 5090 | — | 16-core | 64 GB | ~8 TB NVMe |
+| southGate | RTX 4060 | swappable | 12-core | 64 GB | — |
+| eastGate | RTX 4070 | — | 8-core | 32 GB | — |
+| strandGate | — | RTX 3090 + RX 6950 XT | 12-core | 64 GB | ~20 TB NVMe |
+| biomeGate | RTX 5060 (display) | Titan V + Tesla K80 | 16-core | 128 GB | ~5 TB NVMe |
+| westGate | — | — | 12-core | 32 GB | 2 TB NVMe cache + ~76 TB HDD ZFS |
+| 4× fieldmouse | — | — | 4-core | 16 GB each | — |
 
-**GPU VRAM pool:** RTX 5090 (32 GB) + RTX 3090 (24 GB) + RX 6950 XT (16 GB)
-+ 2× Titan V (12 GB each) + 2× MI50 (32 GB each) + RTX 5060 (8 GB) + RTX 4060
-(8 GB) + RTX 4070 (12 GB) + RTX 2070S (8 GB) ≈ **~196 GB total GPU VRAM**
+**GPU VRAM pool:** RTX 5090 (32 GB) + 2× RTX 3090 (24 GB each) + RX 6950 XT (16 GB)
++ Titan V (12 GB) + Tesla K80 (24 GB) + RTX 5060 (8 GB) + RTX 4060 (8 GB) + RTX 4070
+(12 GB) + RTX 2070S (8 GB) ≈ **~168 GB total GPU VRAM**
 
 **Network:** 10G backbone (gate interconnect), 1G edge (fieldmice)  
-**Storage:** 76 TB ZFS on westGate
+**Storage:** ~49 TB NVMe (all gates) + 76 TB HDD ZFS (westGate) = ~125 TB total
 
 ### Why Used Consumer Hardware Works
 
@@ -126,7 +126,7 @@ the same WGSL to native code on all these GPUs without vendor toolchains.
 
 ### Bioinformatics (wetSpring)
 
-| Experiment | Hardware | Time | ICER Equivalent |
+| Experiment | Hardware | Time | University HPC equivalent |
 |-----------|----------|:----:|:---------------:|
 | 16S DADA2 full pipeline (1,000 samples) | RTX 4070 | ~5 min | 30–120 min (queue + run) |
 | GPU spectral cosine matching (10K spectra) | RTX 4070 | ~0.1 sec | ~110 sec (CPU Python) |
@@ -155,9 +155,9 @@ the same WGSL to native code on all these GPUs without vendor toolchains.
 
 ### The Queue Problem
 
-ICER queue times for GPU nodes: 2–48 hours depending on load. On the basement
-hardware, the queue is zero. A researcher who wants to run 50 parameter sweeps
-before lunch can do it. The same researcher on ICER waits until the next day.
+University HPC queue times for GPU nodes: 2–48 hours depending on load. On consumer
+hardware you control, the queue is zero. A researcher who wants to run 50 parameter sweeps
+before lunch can do it. The same researcher on a shared university cluster waits until the next day.
 
 The actual cost of computation is not the electricity or the allocation charge.
 It is the researcher's time waiting for queues. A researcher who can iterate in
@@ -165,8 +165,8 @@ minutes instead of hours or days produces more science.
 
 ### The Data Problem
 
-When you run on ICER, your data is on ICER. When ICER has a maintenance window,
-your data is inaccessible. When you leave the university, your allocation ends.
+When you run on a shared university HPC cluster, your data lives on that facility’s systems. When the facility has a maintenance window,
+your data may be inaccessible. When you leave the university, your allocation ends.
 When the HPC policy changes, your workflow changes.
 
 ecoPrimals runs on hardware you own. The data never leaves. There is no allocation
@@ -174,7 +174,7 @@ expiration. There is no policy change that can break your pipeline.
 
 ### The Reproducibility Problem
 
-ICER software stacks change. Module versions are updated. The Conda environment
+University HPC software stacks change. Module versions are updated. The Conda environment
 you used last year may not install the same way today. Your collaborator at
 another institution cannot reproduce your analysis because they cannot access
 your module configuration.
@@ -192,26 +192,25 @@ multiple gates into a coordinated mesh. When activated:
 
 | Bond Type | What It Adds |
 |-----------|-------------|
-| Covalent (family gates) | All 6 basement gates work as one machine. 196 GB VRAM pool. |
+| Covalent (family gates) | All six sovereign cluster gates work as one machine. ~168 GB VRAM pool. |
 | Ionic (faculty lab) | A professor's GPU joins under a metered contract. They contribute compute, receive BarraCuda validated results. |
-| Metallic (ICER HPC) | Every idle campus GPU becomes a BarraCuda node. The same $0.044 science runs across 1,000 ICER GPUs simultaneously. |
+| Metallic (university HPC) | Idle GPUs on participating university clusters become BarraCuda nodes. The same $0.044 science can run at scale when institutions opt in. |
 
 **The NUCLEUS scaling equation:**
 
 ```
-NUCLEUS at ICER scale:
-  Idle ICER GPU-hours per day: estimated 10,000+
+NUCLEUS at university HPC scale (illustrative):
+  Idle GPU-hours per day on large shared clusters: can reach 10,000+
   ecoBin binary: no conda, no module load, no CUDA version conflict
-  BarraCuda WGSL: vendor-agnostic (NVIDIA + AMD ICER nodes)
-  = 10,000 GPU-hours of validated science per day
-    at $0.044/run electricity cost
-    with zero allocation charge
-    and zero queue time for the researcher
+  BarraCuda WGSL: vendor-agnostic (NVIDIA + AMD on typical HPC nodes)
+  = large-scale GPU-hours of validated science per day
+    at $0.044/run electricity cost on owned hardware
+    with zero allocation charge on sovereign gear
+    and zero queue time when you control the machine
 ```
 
 This is not speculative. Every component exists. The NUCLEUS bonding model is
-implemented. The ecoBin binaries run on ICER today. The only remaining step is
-the institutional enrollment contract.
+implemented. The ecoBin binaries are designed to run on standard university HPC stacks where policy allows. The remaining step is institutional enrollment contracts.
 
 ---
 
@@ -230,10 +229,10 @@ The short version:
 | RX 6950 XT (AMD) | 23.7 TFLOPS f32, native f64 | **Full f64 via Vulkan, no throttle** |
 
 Your gaming GPU is doing lattice QCD. The $500 used RTX 3090 is running the same
-physics that requires a $20,000 ICER GPU-hour allocation when accessed through
+physics that requires a $20,000 university HPC GPU-hour allocation when accessed through
 CUDA. The silicon was always capable. The throttle was always artificial.
 
 ---
 
-*Hardware inventory verified March 2026. Cost estimates for ICER/cloud are
-based on publicly available MSU ICER rate cards and AWS/GCP GPU pricing.*
+*Hardware inventory verified March 2026. Cost estimates for university HPC and cloud are
+based on publicly published facility rate cards (where available) and AWS/GCP GPU pricing.*

@@ -33,7 +33,7 @@ transport spectral analysis.
 
 This document profiles the hardware we have, maps what each card can do across
 the three tiers, surveys the used market for expansion, and identifies array
-configurations that turn a basement HPC cluster into a sovereign science engine.
+configurations that turn a consumer-grade local cluster into a sovereign science engine.
 
 ## 1. The Three Precision Tiers
 
@@ -851,7 +851,7 @@ bit solver ensures portability. Layer 10 root cause found (BOOTVEC). Adaptive
 experiment loop with personality sweep, JSONL journal, observer traits. 4,065 tests
 pass workspace-wide. Deep code debt burned: 60+ hardcoded offsets → constants,
 4 unsafe blocks eliminated, NonNull DMA, safe volatile wrappers.
-Built in a basement in Lansing.*
+Built on consumer hardware.*
 
 ---
 

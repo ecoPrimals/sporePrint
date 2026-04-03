@@ -218,7 +218,7 @@ With atomics:
 - Failures are isolated: NestGate crash does not affect networking
 - New capabilities are added without modifying existing primals
 
-The physical reality makes this concrete. In the basement HPC:
+The physical reality makes this concrete. On the deployed gate mesh:
 - **Westgate** (i7-4771, 76TB ZFS) is optimized for cold storage → heavy Nest Atomic, lightweight Node
 - **Northgate** (i9-14900K, RTX 5090, 192GB) is optimized for AI compute → heavy Node Atomic
 - **Strandgate** (Dual EPYC 7452, 256GB ECC) is optimized for parallel bioinformatics → CPU-bound Node
@@ -236,7 +236,7 @@ This is a chemistry metaphor applied to distributed systems. Just as molecular b
 
 ### 4.1 Covalent Bonding - Shared Electrons, Family Trust
 
-**Physical context**: The gates in a basement HPC - Northgate, Southgate, Strandgate, Westgate - each running their own NUCLEUS, sharing a common family seed. BearDog on each gate verifies genetic lineage. Songbird discovers peers via BirdSong encrypted multicast on the local network.
+**Physical context**: The gates in a local NUCLEUS mesh — Northgate, Southgate, Strandgate, Westgate — each running their own NUCLEUS, sharing a common family seed. BearDog on each gate verifies genetic lineage. Songbird discovers peers via BirdSong encrypted multicast on the local network.
 
 **Behavior**: When a workload arrives at Northgate that exceeds its capacity, biomeOS distributes it to Southgate or Strandgate without contract negotiation. Trust is genetic - shared family seed means automatic capability sharing. A compute job can be split across GPUs on three gates as naturally as threads split across cores on one machine.
 
@@ -271,7 +271,7 @@ This is a chemistry metaphor applied to distributed systems. Just as molecular b
 A running deployment exhibits multiple bonding types simultaneously:
 
 ```
-Basement HPC Mesh (Covalent)
+Local gate mesh (Covalent)
   ├── Northgate ←→ Southgate ←→ Strandgate ←→ Westgate
   │   (genetic trust, free workload distribution)
   │
