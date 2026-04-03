@@ -1,10 +1,15 @@
 +++
-title = "Structure Prediction Roadmap: From coralForge to AlphaFold-Quality"
-description = "coralForge roadmap — sovereign AlphaFold-quality protein structure prediction from existing primal infrastructure."
-date = 2026-03-17
+title = "Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality"
+description = "helixVision (formerly helixVision) — sovereign AlphaFold-quality protein structure prediction in pure Rust f64, moving to sporeGarden."
+date = 2026-03-31
 +++
 
-# Structure Prediction Roadmap: From coralForge to AlphaFold-Quality
+# Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality
+
+> **Note:** helixVision was previously known as helixVision. The codebase originated in
+> [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) and is
+> moving to sporeGarden/helixVision as a
+> standalone product. Source code references may still use `coral_forge` module names during transition.
 
 **Sovereign protein structure prediction on consumer hardware.
 No cloud. No PyTorch. No CUDA. No data leaves the lab.**
@@ -22,7 +27,7 @@ sequence data to external servers. For any lab handling pre-publication
 sequences, patient genomics, or proprietary protein engineering — this
 is a non-starter.
 
-**coralForge** is the ecoPrimals path to sovereign structure prediction:
+**helixVision** is the ecoPrimals path to sovereign structure prediction:
 AlphaFold2/3-quality results running locally on consumer hardware in
 pure Rust, with full data sovereignty and cryptographic provenance.
 
@@ -85,7 +90,7 @@ The blocks are proven. The pipeline is next.
 
 ### Phase C — BarraCuda Integration (Next)
 
-Wire coralForge primitives to BarraCuda canonical operations:
+Wire helixVision primitives to BarraCuda canonical operations:
 - `GemmF64::execute_gemm_ex()` for all GEMM ops
 - GPU attention via existing `BatchedScaledDotProduct`
 - GPU LayerNorm via existing `BatchedLayerNorm`
@@ -114,13 +119,13 @@ FASTA sequence → MSA search → Feature embedding
 
 The primary scientific application. Lenski's Long-Term Evolution Experiment:
 75,000+ generations of *E. coli* under glucose-minimal constraint, frozen
-at 500-generation intervals. coralForge predicts structures at each
+at 500-generation intervals. helixVision predicts structures at each
 timepoint and population.
 
 **Scale:** ~8.3 million predictions (4,600 genes × 150 timepoints × 12
 populations).
 
-**Questions only coralForge can answer:**
+**Questions only helixVision can answer:**
 - Do independently evolved populations converge on the same structural
   solutions? (Structural convergence beyond sequence convergence)
 - Do structural changes follow power-law dynamics?
@@ -133,14 +138,14 @@ populations).
 
 ### Phase F — Standalone Publication
 
-Standalone `coral-forge` crate on crates.io. Companion paper documenting
+Standalone `helix-vision` crate on crates.io. Companion paper documenting
 the isomorphism proof, validation evidence, and LTEE application.
 
 ---
 
 ## Performance Targets vs AlphaFold
 
-| Metric | Cloud AlphaFold | coralForge (consumer GPU) |
+| Metric | Cloud AlphaFold | helixVision (consumer GPU) |
 |--------|:---------------:|:-------------------------:|
 | Time per sequence | ~5 min (A100) | **~3 min** (RTX 4070, target) |
 | Precision | f32 (PyTorch default) | **f64** (native or DF64) |
@@ -161,13 +166,13 @@ For a lab doing structural genomics at scale, this is the difference between
 
 ## Beyond AlphaFold: What Sovereign Structure Prediction Enables
 
-### Drug Discovery (Paper 12 + coralForge)
+### Drug Discovery (Paper 12 + helixVision)
 
 The Anderson-augmented MATRIX scoring pipeline (329/329 checks validated)
-currently uses published IC50 and pathway data. coralForge adds:
+currently uses published IC50 and pathway data. helixVision adds:
 
 ```
-Drug candidate → coralForge structure → binding site geometry
+Drug candidate → helixVision structure → binding site geometry
   → Anderson tissue penetration model → combined score
 ```
 
@@ -177,11 +182,11 @@ No commercial docking software (Schrödinger ~$50K/yr, MOE ~$20K/yr).
 ### Metagenomic Structural Census
 
 wetSpring's sovereign 16S pipeline identifies what organisms are present.
-coralForge predicts what their proteins look like:
+helixVision predicts what their proteins look like:
 
 ```
 Environmental sample → wetSpring 16S → community composition
-  → Gene calling → coralForge structure → structural diversity index
+  → Gene calling → helixVision structure → structural diversity index
   → Anderson W(structural) — disorder measured in protein space
 ```
 
@@ -194,7 +199,7 @@ Structural prediction + provenance = a signed record of every design
 iteration from target selection to final construct:
 
 ```
-Pathogen genome → coralForge structure → epitope identification
+Pathogen genome → helixVision structure → epitope identification
   → Antigen design → rhizoCrypt DAG (design history)
   → loamSpine cert (design certificate) → sweetGrass (attribution)
 ```
@@ -203,11 +208,11 @@ Pathogen genome → coralForge structure → epitope identification
 
 The P≠NP enzyme thesis (methodology/P_NP_ENZYME_THESIS.md) argues that
 enzymes are nature's generative solutions to chemical NP problems.
-coralForge enables computational enzyme design:
+helixVision enables computational enzyme design:
 
 ```
 Target reaction → retrosynthetic analysis → enzyme class identification
-  → coralForge structure → active site engineering → validation
+  → helixVision structure → active site engineering → validation
 ```
 
 If you can predict structure from sequence, and you can design sequence
@@ -217,10 +222,10 @@ for function, you have a sovereign enzyme engineering pipeline.
 
 ## What Someone Else Could Pick Up
 
-coralForge is in neuralSpring (public, AGPL-3.0). The primitives are
+helixVision is in neuralSpring (public, AGPL-3.0). The primitives are
 validated. Anyone with Rust and a GPU can:
 
-1. **Complete Phase C** — wire BarraCuda GEMM to coralForge Evoformer
+1. **Complete Phase C** — wire BarraCuda GEMM to helixVision Evoformer
    (estimated 2–4 weeks for a competent Rust developer)
 2. **Build the MSA search** — MMseqs2 is open-source; a Rust port is
    tractable (estimated 4–8 weeks)
@@ -235,7 +240,7 @@ gets better for everyone, permanently.
 
 ---
 
-*Source: `whitePaper/coralForge/` (20 documents), neuralSpring `src/coral_forge/`  
+*Source: `whitePaper/helixVision/` (20 documents), neuralSpring `src/coral_forge/`  
 Validation: 154/154 checks PASS (62 Python + 55 Rust + 37 GPU)  
 Repositories: [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring),
 [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda)*

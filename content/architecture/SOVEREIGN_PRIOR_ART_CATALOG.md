@@ -303,7 +303,7 @@ via ecoPrimals.
 | Cross-spring spectral rewire | **Novel** | hotSpring diagnostics (bandwidth, condition number, phase) absorbed into `WeightSpectralResult`. GPU ESN via BarraCuda tensors. 41/41 validated. |
 | WDM ESN regime classifier | **Novel** | GPU echo state network for warm dense matter regime classification. 96.5% accuracy. |
 | Isomorphic primitive catalog | **Novel** | Maps shared ML primitives across 8+ domains to BarraCuda ops. Same MatMul/Attention/LayerNorm serves protein, language, physics, spectral, evolution. |
-| coralForge protein structure | **Novel** | Sovereign AlphaFold2/3-style structure prediction (Evoformer, Pairformer, diffusion, IPA) in pure Rust + WGSL. |
+| helixVision protein structure | **Novel** | Sovereign AlphaFold2/3-style structure prediction (Evoformer, Pairformer, diffusion, IPA) in pure Rust + WGSL. |
 | ESN (Jaeger) | Established | CPU + GPU reservoir computing. Sovereign implementation. |
 | HMM forward/backward/Viterbi | Established | Liu et al. phylogenetics. GPU-accelerated. |
 | Anderson localization (spectral) | Established | Bourgain-Kachkovskiy. Shared with hotSpring. |
@@ -471,7 +471,7 @@ implementations that cannot be captured:
 | Phylogenetics | 5+ | HMM, SATe, NJ, Felsenstein, DTL, bootstrap | neuralSpring + wetSpring |
 | Game theory / QS | 3+ | Replicator dynamics, Hill regulatory, cooperation | neuralSpring + wetSpring |
 | Population genetics | 2+ | FST, Mantel, pangenome, molecular clock | neuralSpring + wetSpring |
-| Protein structure | 1 | AlphaFold2/3 (Evoformer, Pairformer, diffusion) | neuralSpring (coralForge) |
+| Protein structure | 1 | AlphaFold2/3 (Evoformer, Pairformer, diffusion) | neuralSpring (helixVision) |
 | 16S rRNA microbial ecology | 10 | DADA2, chimera, taxonomy, UniFrac, diversity | wetSpring |
 | Deep-sea metagenomics | 6 | ANI, SNP, dN/dS, pangenomics, rare biosphere | wetSpring |
 | Analytical chemistry / PFAS | 4 | mzML, EIC, peak detection, KMD, spectral matching | wetSpring |

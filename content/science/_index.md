@@ -12,4 +12,4 @@ results on commodity hardware. Papers are grouped by domain below.
 See also: [Cross-Spring Evidence Map](@/science/CROSS_SPRING_EVIDENCE_MAP.md)
 for convergence across springs, and
 [Structure Prediction Roadmap](@/science/STRUCTURE_PREDICTION_ROADMAP.md)
-for the coralForge sovereign AlphaFold-quality pipeline.
+for the helixVision (formerly coralForge) sovereign AlphaFold-quality pipeline.

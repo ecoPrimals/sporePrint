@@ -84,7 +84,7 @@ science without building any new infrastructure.
 
 | Target Domain | What's Needed | What's Already Done |
 |--------------|---------------|---------------------|
-| **Protein structure prediction** | Phase C–D of coralForge (see STRUCTURE_PREDICTION_ROADMAP.md) | 154/154 primitive checks, 15 DF64 shaders |
+| **Protein structure prediction** | Phase C–D of helixVision (see STRUCTURE_PREDICTION_ROADMAP.md) | 154/154 primitive checks, 15 DF64 shaders |
 | **Nanopore field genomics** | MinION hardware + Rust basecall module | FAST5/POD5 format spec defined, NPU validated on AKD1000 |
 | **Real-time HAB detection** | Edge NPU + field sensor integration | 3 ESN classifiers validated on live AKD1000 hardware |
 | **Population-scale NLME** | MIMIC-IV credentialed access | FOCE + SAEM validated on synthetic data |
@@ -94,7 +94,7 @@ science without building any new infrastructure.
 
 | Target Domain | What's Needed | Why It Matters |
 |--------------|---------------|----------------|
-| **LTEE structural evolution** | coralForge Phase D + LTEE frozen fossils | 8.3M predictions, $1K vs $83K cloud |
+| **LTEE structural evolution** | helixVision Phase D + LTEE frozen fossils | 8.3M predictions, $1K vs $83K cloud |
 | **Full sovereign GPU stack** | coralReef compute dispatch via VFIO | Zero vendor dependency end-to-end |
 | **Distributed lattice QCD** | NUCLEUS metallic bonding on ICER-scale cluster | Consumer GPUs doing CERN-scale physics |
 | **Precision medicine** | Clinical data partnerships + HIPAA compliance | Per-patient Anderson models from real data |
@@ -157,7 +157,7 @@ Extrapolating conservatively:
 
 | Timeframe | Conservative Estimate | What It Covers |
 |-----------|:--------------------:|----------------|
-| +3 months (June 2026) | 30,000+ checks | coralForge Phase C–D, sovereign GPU dispatch, multi-GPU |
+| +3 months (June 2026) | 30,000+ checks | helixVision Phase C–D, sovereign GPU dispatch, multi-GPU |
 | +6 months (Sep 2026) | 45,000+ checks | AlphaFold-quality structure prediction, AMD production |
 | +12 months (Mar 2027) | 75,000+ checks | LTEE structural evolution, distributed compute, 4-vendor GPU |
 

@@ -295,7 +295,7 @@ demonstrates that:
 neuralSpring contributes validated ML surrogates, spectral analysis, and
 df64-validated protein folding primitives directly to WDM science:
 
-- **df64 core streaming** (Session 88): All 15 coralForge WGSL shaders
+- **df64 core streaming** (Session 88): All 15 helixVision WGSL shaders
   evolved to the hotSpring/ToadStool three-zone pattern (f64 buffer I/O →
   df64 compute → f64 output). Validates that df64 generalizes from nuclear
   physics to ML workloads. Two precision tiers: arithmetic 3.6e-8 to 5.6e-7,

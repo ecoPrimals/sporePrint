@@ -82,9 +82,9 @@ distinct role:
 
 | | Organization | Role | Contains | GitHub |
 |---|-------------|------|----------|--------|
-| 🔧 | **ecoPrimals** | Infrastructure | 14 primals (4 public, 10 private) + plasmidBin (binary distribution) + infra repos · [Full catalog](@/architecture/PRIMAL_CATALOG.md) | [github.com/ecoPrimals](https://github.com/ecoPrimals) |
-| 🧪 | **syntheticChemistry** | Science validation | 8 springs (7 science + 1 meta): wetSpring 💧♨️, hotSpring 🔥♨️, airSpring 🌬️♨️, primalSpring 🧬♨️, and 4 more · [Full catalog](@/architecture/SPRING_CATALOG.md) | [github.com/syntheticChemistry](https://github.com/syntheticChemistry) |
-| 🌱 | **sporeGarden** | Products | esotericWebb 🔮🕸️, helixVision 🧬👁️, and future tools for scientists and creatives | [github.com/sporeGarden](https://github.com/sporeGarden) |
+| 🔧 | **ecoPrimals** | Infrastructure | ~21 repos: 17 primals/tooling + 4 infra repos · [Full catalog](@/architecture/PRIMAL_CATALOG.md) | [github.com/ecoPrimals](https://github.com/ecoPrimals) |
+| 🧪 | **syntheticChemistry** | Science validation | ~10 repos: 8 springs (all public) + rustChip + ionChannel · [Full catalog](@/architecture/SPRING_CATALOG.md) | [github.com/syntheticChemistry](https://github.com/syntheticChemistry) |
+| 🌱 | **sporeGarden** | Products | 3 products: esotericWebb 🔮🕸️, helixVision 🧬👁️, blueFish 🐟🔵 · [Product pages](@/products/_index.md) | [github.com/sporeGarden](https://github.com/sporeGarden) |
 
 **Primals** build capabilities. **Springs** validate that those capabilities
 produce correct science. **Products** compose validated capabilities into tools
@@ -103,9 +103,11 @@ verification class — it certifies that the output is reproducible,
 self-verifying, and tolerance-documented. **plasmidBin** is the binary
 distribution surface — pre-built primal binaries, checksummed and versioned,
 so products and users never need to compile primal source.
-Everything is pure Rust, AGPL-3.0, zero C dependencies.
-See the [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) for how
-binaries flow from primals to users.
+Everything is pure Rust, scyBorg-licensed, zero C dependencies.
+See the [NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md) for how
+primals compose into a system, and the
+[Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) for how binaries flow
+from primals to users.
 
 ### ♨️ Eight Springs (All Public, AGPL-3.0)
 
@@ -118,7 +120,7 @@ binaries flow from primals to users.
 | ⛰️ | groundSpring | Uncertainty quantification, noise, spectral theory | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) | 535+ |
 | ❤️ | healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) | 474+ |
 | 🎮 | ludoSpring | Game science, HCI, provenance, distributed compute | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) | 1,692+ |
-| 🧬 | primalSpring | Composition validation — deploy graphs, bonding, BYOB | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) | — |
+| 🧬 | primalSpring | Composition validation — deploy graphs, bonding, BYOB | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) | 303+ |
 | | **Total** | 7 science domains + 1 meta-spring | | **16,695+** |
 
 ### 🔧 Four Public Infrastructure Primals (All AGPL-3.0)
@@ -130,12 +132,14 @@ binaries flow from primals to users.
 | 🪸🌊 | coralReef | Sovereign WGSL→native GPU compiler | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) |
 | 🐿️🧠 | Squirrel | AI coordination — MCP, vendor-agnostic inference, 7,165 tests | [ecoPrimals/squirrel](https://github.com/ecoPrimals/squirrel) |
 
-10 additional primals (BearDog 🐻🐕, Songbird 🎵🐦, NestGate 🪺🔒, biomeOS 🌿🖥️,
-petalTongue 🌸👅, rhizoCrypt 🌱🔐, sweetGrass 🍯🌾, loamSpine 🪨📖, skunkBat 🦨🦇,
-sourDough 🍞🧪) are private repositories with pre-built binaries available via
-[plasmidBin](https://github.com/ecoPrimals/plasmidBin). Source is available on
-request per AGPL-3.0. See the [full Primal Catalog](@/architecture/PRIMAL_CATALOG.md)
-for details on all 14.
+13 additional primals and tooling have source publishing in progress, with
+pre-built binaries available now via
+[plasmidBin](https://github.com/ecoPrimals/plasmidBin). Three more — bingoCube 🎲🔒,
+agentReagents 🧪🤖, and benchScale ⚖️📊 — are publishing to GitHub imminently.
+All are scyBorg-licensed (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0). See the
+[full Primal Catalog](@/architecture/PRIMAL_CATALOG.md) for details on all 17,
+or the [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for every repo
+across all three organizations.
 
 ### 🪨 guideStone — The Verification Class (gen4)
 
@@ -170,4 +174,4 @@ you need domain knowledge, focus, patience, and a used GPU. No CS degree require
 *20,695+ checks. 175+ papers. 8 domains. Consumer hardware. One system. AGPL-3.0.*
 *🍄 The science is not a claim — it is executable evidence.*
 
-**License:** CC-BY-SA 4.0 (documents) · AGPL-3.0-or-later (code) · **Developer:** ecoPrimal — human + synthetic intelligence
+**License:** scyBorg — AGPL-3.0-or-later (code) · ORC (game mechanics) · CC-BY-SA 4.0 (creative/docs) · **Developer:** ecoPrimal — human + synthetic intelligence

@@ -192,14 +192,14 @@ The springs are organized into three sections:
 
 ### 1.5 neuralSpring — Machine Learning Primitives, Isomorphic Patterns & Sovereign Structure Prediction
 
-**Domain**: Neural surrogates, transformers, sequence models, transfer learning, scholarly reproduction, structure prediction (coralForge)
-**Grade**: Phase 0 → 0+ → 0++ → Rust → BarraCuda CPU → GPU Tensor → metalForge WGSL → Pipeline → Cross-dispatch → Mixed-hardware → Multi-GPU → coralForge. **Most complete validation pipeline of any spring.**
+**Domain**: Neural surrogates, transformers, sequence models, transfer learning, scholarly reproduction, structure prediction (helixVision, formerly coralForge)
+**Grade**: Phase 0 → 0+ → 0++ → Rust → BarraCuda CPU → GPU Tensor → metalForge WGSL → Pipeline → Cross-dispatch → Mixed-hardware → Multi-GPU → helixVision. **Most complete validation pipeline of any spring.**
 **Checks**: 397/397 Python + 4000+ Rust+GPU = **4,500+ total** (1128 lib + 61 playGround + 73 forge tests, 260 binaries, 220/220 validate\_all, zero C deps via Tower Atomic, OrExit<T> zero-panic, deny.toml, structured logging, structured IpcError, typed compute.dispatch)
 **Faculty**: Emily Dolson (CSE, MSU — master's professor), Kevin Liu (CMSE, MSU — master's professor), Christopher Waters (MMG, MSU — undergrad professor), Alexei Bazavov (CMSE + Physics, MSU), Ilya Kachkovskiy (Math, MSU — spectral/optimization landscape), Rika Anderson (Biology, Carleton — pangenomics, constrained evolution empirics), Andrea J. Gonzales (Pharmacology & Toxicology, MSU — Hill equation, PK modeling, CytokineBrain)
 **Repository**: git@github.com:syntheticChemistry/neuralSpring.git
 **License**: AGPL-3.0
 
-**What it validates**: neuralSpring proves the **Isomorphism Theorem** — all neural architectures decompose into 6 fundamental primitives (GEMM, Attention, Normalization, Nonlinearity, Reduction, Gating), and BarraCuda's WGSL shader library covers all 6. Phase 0++ extended to 15 papers across 4 faculty groups and 5 disciplines. **coralForge** is the sovereign structure prediction engine — pure Rust f64 implementations of AlphaFold2/AlphaFold3 primitives (Evoformer, IPA, diffusion, pairformer, confidence), validated against NumPy baselines and accelerated via BarraCuda/ToadStool. Pure Rust is **83.6× faster** than Python/NumPy (geomean, 11 domains).
+**What it validates**: neuralSpring proves the **Isomorphism Theorem** — all neural architectures decompose into 6 fundamental primitives (GEMM, Attention, Normalization, Nonlinearity, Reduction, Gating), and BarraCuda's WGSL shader library covers all 6. Phase 0++ extended to 15 papers across 4 faculty groups and 5 disciplines. **helixVision** (formerly coralForge) is the sovereign structure prediction engine — pure Rust f64 implementations of AlphaFold2/AlphaFold3 primitives (Evoformer, IPA, diffusion, pairformer, confidence), validated against NumPy baselines and accelerated via BarraCuda/ToadStool. Pure Rust is **83.6× faster** than Python/NumPy (geomean, 11 domains).
 
 **Phase inventory**:
 
@@ -213,19 +213,19 @@ The springs are organized into three sections:
 | 3 (GPU Tensor) | 23/25 papers (92%), metalForge 15/25, pipeline 15/25 | 272+ | CPU→GPU portability proven |
 | 4 (Dispatch) | 47 CPU→GPU ops, dispatch parity 30/30, mixed-hardware 47/47 | 124+ | ~97% math on GPU |
 | 5 (Multi-GPU) | RTX 4070 + TITAN V (NVK) — 384/384 bit-identical | 384 | Architecture-independent |
-| coralForge | AlphaFold2/3 Evoformer, IPA, diffusion, pairformer, confidence | 62 Py + 55 Rs | Sovereign structure prediction |
+| helixVision | AlphaFold2/3 Evoformer, IPA, diffusion, pairformer, confidence | 62 Py + 55 Rs | Sovereign structure prediction |
 | WDM | 5 warm dense matter surrogates | 186/186 | Physics surrogates validated |
 | baseCamp | 5 biophysical AI sub-theses | 128/128 | GPU pure 5/5 |
 
-**Studies reproduced**: All 25 papers from Phase 0++ + 5 Phase 0/0+ studies + 5 WDM surrogates + 3 publication experiments + coralForge nF-01/02/03 (AlphaFold2 Evoformer + AlphaFold3 diffusion/pairformer/confidence).
+**Studies reproduced**: All 25 papers from Phase 0++ + 5 Phase 0/0+ studies + 5 WDM surrogates + 3 publication experiments + helixVision nF-01/02/03 (AlphaFold2 Evoformer + AlphaFold3 diffusion/pairformer/confidence).
 
 **BarraCuda primitives validated**: 219+ import sites across 45+ submodules. 47 GPU-promoted dispatch ops (7 domain files). 46 upstream rewires. 25 absorbed workloads, 1 local remaining. 42 metalForge WGSL shaders. All gaps from original audit closed: HMM Viterbi (done), Gillespie (done), Lanczos (done via hotSpring lineage), pairwise distance (PairwiseL2Gpu), LogSumExp (upstream). playGround compute triangle: ToadStool/coralReef IPC clients, hot/cold dispatch benchmarks (7–45× pipeline reuse speedup).
 
 **BarraCuda gaps remaining**: None critical. L-BFGS optimizer and compute_graph (lazy execution) are future Phase 5 items. All 17 shortcomings (S-01..S-17) resolved upstream.
 
-**Critical gen3 connection**: Dolson's Iram et al. (2020) Nature Physics on counterdiabatic driving of evolution — **reproduced and validated** (Paper 011). coralForge extends the isomorphism to protein structure prediction: the same 6 primitives that serve language models serve AlphaFold.
+**Critical gen3 connection**: Dolson's Iram et al. (2020) Nature Physics on counterdiabatic driving of evolution — **reproduced and validated** (Paper 011). helixVision extends the isomorphism to protein structure prediction: the same 6 primitives that serve language models serve AlphaFold.
 
-**Participates in**: biomeOS PathwayLearner (validated ML primitives), Squirrel (MCP adapter — 14 tool definitions, interactive runner), ToadStool (typed IPC client, live coordination verified), coralReef (compiler client, sovereign dispatch path), NUCLEUS (isomorphic kernel sharing), all springs (surrogates, transfer learning), coralForge sovereign protein pipeline, HuggingFace Model Lab (GPT-2 inference on barraCuda).
+**Participates in**: biomeOS PathwayLearner (validated ML primitives), Squirrel (MCP adapter — 14 tool definitions, interactive runner), ToadStool (typed IPC client, live coordination verified), coralReef (compiler client, sovereign dispatch path), NUCLEUS (isomorphic kernel sharing), all springs (surrogates, transfer learning), helixVision sovereign protein pipeline, HuggingFace Model Lab (GPT-2 inference on barraCuda).
 
 ---
 
@@ -270,8 +270,8 @@ The springs are organized into three sections:
 ### 1.7 ludoSpring — Game Science, HCI, Procedural Generation
 
 **Domain**: Game design, human-computer interaction, procedural content generation, real-time interactive systems, computational game science
-**Grade**: V6 — 44 experiments, 410 checks, 11 tracks, 2 playable prototypes, 3 external control groups, 4 cross-spring experiments
-**Checks**: 410 validation checks + 144 unit/integration tests = **554 ludoSpring checks**
+**Grade**: V30 — 75 experiments, 1,692 checks, 13 validated HCI models, 11 tracks, 2 playable prototypes, 3 external control groups, 4 cross-spring experiments
+**Checks**: 1,692 validation checks + unit/integration tests
 **Faculty**: Csikszentmihalyi (Flow, 1990), Fitts (1954), Yannakakis & Togelius (2018), Lazzaro (Four Keys, 2004), Hunicke (DDA, 2005), Perlin (1985), Gumin (WFC, 2016), Lindenmayer (1968), Tufte (1983)
 **Repository**: git@github.com:syntheticChemistry/ludoSpring.git
 **License**: AGPL-3.0-or-later
@@ -302,7 +302,8 @@ The springs are organized into three sections:
 ### 1.8 primalSpring — Composition Validation (Meta-Spring)
 
 **Domain**: Primal composition, deploy graph validation, cross-gate bonding, BYOB verification  
-**Grade**: Phase 13, v0.7.0  
+**Grade**: Phase 13, v0.7.0 — 51 experiments, 303 tests, 22 deploy graphs  
+**Checks**: 303 tests across 51 experiments  
 **Repository**: git@github.com:syntheticChemistry/primalSpring.git  
 **License**: AGPL-3.0
 

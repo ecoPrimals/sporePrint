@@ -146,7 +146,7 @@ patterns per iteration:
 
 | Target | What Changes |
 |--------|-------------|
-| coralForge Phase D | End-to-end protein structure prediction pipeline (FASTA→MSA→Evoformer→structure) |
+| helixVision Phase D | End-to-end protein structure prediction pipeline (FASTA→MSA→Evoformer→structure) |
 | AlphaFold timing parity | ~3 min/sequence on consumer GPU vs ~5 min cloud AlphaFold |
 | Intel backend | Arc GPUs via coralReef third backend |
 | genomeBin deployment | Self-extracting single-file sovereign GPU stack |

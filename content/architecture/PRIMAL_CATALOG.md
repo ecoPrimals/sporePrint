@@ -1,6 +1,6 @@
 +++
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
-description = "All 14 primals — capabilities, test counts, production status, repository visibility"
+description = "All 17 primals and tooling — capabilities, test counts, production status, repository visibility"
 date = 2026-03-31
 +++
 
@@ -24,30 +24,30 @@ The primals are organized into three tiers:
 
 - **Meta-Primals & Tooling** (§3): sourDough is scaffolding and packaging tooling — it generates new primals and produces genomeBin artifacts, but does not run as a NUCLEUS service at runtime. wateringHole, whitePaper, and sporePrint are documentation/standards infrastructure.
 
-**Total**: 14 primals (8 foundation + 5 post-NUCLEUS + 1 meta/tooling) across three tiers.
+**Total**: 17 primals and tooling (8 foundation + 5 post-NUCLEUS + 1 meta/tooling + 3 publishing soon) across three tiers.
 
 ### Repository Visibility
 
-Not all primal repositories are public yet. Binaries for all primals are available through [plasmidBin](@/architecture/DEPLOYMENT_MODEL.md), the ecosystem's binary distribution surface. Source is progressively published as primals mature; per AGPL-3.0, source for any distributed binary is available on request.
+All primals are **scyBorg-licensed** (AGPL-3.0-or-later for code, ORC for game mechanics, CC-BY-SA 4.0 for creative/docs) and intended to be fully public. Some are already on GitHub; the rest have source publishing in progress. Binaries for all primals are available through [plasmidBin](@/architecture/DEPLOYMENT_MODEL.md). Per AGPL-3.0, source for any distributed binary is available on request.
 
 | Primal | Repo | Visibility |
 |--------|------|------------|
-| 🐻🐕 BearDog | ecoPrimals/bearDog | Private (binary via plasmidBin) |
-| 🎵🐦 Songbird | ecoPrimals/songBird | Private (binary via plasmidBin) |
-| 🪺🔒 NestGate | ecoPrimals/NestGate | Private (binary via plasmidBin) |
+| 🐻🐕 BearDog | ecoPrimals/bearDog | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🎵🐦 Songbird | ecoPrimals/songBird | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🪺🔒 NestGate | ecoPrimals/NestGate | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
 | 🐸🍄 ToadStool | [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) | **Public** |
 | 🐿️🧠 Squirrel | [ecoPrimals/squirrel](https://github.com/ecoPrimals/squirrel) | **Public** |
-| 🌿🖥️ biomeOS | ecoPrimals/biomeOS | Private (binary via plasmidBin) |
+| 🌿🖥️ biomeOS | ecoPrimals/biomeOS | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
 | 🪸🌊 coralReef | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) | **Public** |
 | 🐟⚡ barraCuda | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) | **Public** |
-| 🌸👅 petalTongue | ecoPrimals/petalTongue | Private (binary via plasmidBin) |
-| 🌱🔐 rhizoCrypt | ecoPrimals/rhizoCrypt | Private (binary via plasmidBin) |
-| 🍯🌾 sweetGrass | ecoPrimals/sweetGrass | Private (binary via plasmidBin) |
-| 🪨📖 loamSpine | ecoPrimals/loamSpine | Private (binary via plasmidBin) |
-| 🦨🦇 skunkBat | ecoPrimals/skunkBat | Private (binary via plasmidBin) |
-| 🍞🧪 sourDough | ecoPrimals/sourDough | Private (CLI tooling) |
+| 🌸👅 petalTongue | ecoPrimals/petalTongue | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🌱🔐 rhizoCrypt | ecoPrimals/rhizoCrypt | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🍯🌾 sweetGrass | ecoPrimals/sweetGrass | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🪨📖 loamSpine | ecoPrimals/loamSpine | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🦨🦇 skunkBat | ecoPrimals/skunkBat | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| 🍞🧪 sourDough | ecoPrimals/sourDough | Source publishing in progress (CLI tooling) |
 
-Four primals are fully public on GitHub: **toadStool**, **squirrel**, **coralReef**, and **barraCuda**. All springs (syntheticChemistry org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
+Four primals are fully public on GitHub: **toadStool**, **squirrel**, **coralReef**, and **barraCuda**. All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
 
 ---
 
@@ -280,6 +280,67 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 
 ---
 
+### 1.7 coralReef - Shader Compiler Primal
+
+**Domain**: GPU shader compilation — WGSL/SPIR-V/GLSL to native GPU binaries  
+**Grade**: A+ (Phase 10, Iteration 59)  
+**Tests**: 3,038 passing (0 failed)  
+**Coverage**: 65.8% line (79.6% non-hardware), 72.9% function  
+**Safety**: `#![forbid(unsafe_code)]` on 8/9 crates, zero clippy warnings (pedantic+nursery)  
+**Repository**: [github.com/ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) — **Public**
+
+**What it does**: coralReef is the sovereign GPU shader compiler. It takes WGSL, SPIR-V, or GLSL compute shaders and compiles them to native GPU binaries — NVIDIA SASS (SM70–SM89) and AMD ISA (RDNA2/GFX1030) — with full f64 transcendental support. coralDriver provides userspace GPU dispatch via DRM ioctls (amdgpu, nouveau, nvidia-drm/UVM) and VFIO BAR0/DMA. Zero C dependencies, zero vendor SDK, zero FFI.
+
+**Primitive catalog**:
+
+| Category | Primitives |
+|----------|-----------|
+| Compilation | `shader.compile.spirv`, `shader.compile.wgsl`, `shader.compile.wgsl.multi`, `shader.compile.status`, `shader.compile.capabilities` |
+| NVIDIA Backend | SM70–SM89 SASS, f64 transcendentals via Newton-Raphson (sqrt, rcp, exp2, log2, sin, cos) |
+| AMD Backend | GFX1030, native `v_fma_f64` / `v_sqrt_f64` / `v_rcp_f64`, 1,446 opcodes from AMD XML |
+| Compiler Core | naga frontend, SSA IR, copy propagation, DCE, register allocation, legalization/encoding |
+| Dispatch | coralDriver (DRM ioctls), coralGpu (unified compile+dispatch), VFIO sovereign dispatch |
+
+**Key achievement**: 93/93 cross-spring WGSL shaders compile to SM70 SASS. AMD end-to-end verified: WGSL → compile → PM4 → GPU → readback on RX 6950 XT. f64 lowering complete on both NVIDIA (DFMA software) and AMD (native hardware).
+
+**Architecture highlights**: The boundary is precise — barraCuda writes math, coralReef compiles it, ToadStool dispatches it. coralReef owns `shader.*` in the capability namespace. JSON-RPC 2.0 + tarpc, zero-copy `bytes::Bytes`, differentiated errors, FMA policy awareness.
+
+**Participates in**: Sovereign Compute Pipeline (barraCuda → ToadStool → coralReef → native binary → coralDriver → hardware), Node Atomic, NUCLEUS.
+
+---
+
+### 1.8 barraCuda - Math Primal
+
+**Domain**: Pure mathematics — WGSL f64 shaders, precision strategy, naga IR optimization  
+**Grade**: A+ (Production Ready)  
+**Version**: v0.3.5  
+**Tests**: 3,348+ passing  
+**Safety**: Zero unsafe, zero clippy warnings  
+**Repository**: [github.com/ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) — **Public**
+
+**What it does**: barraCuda is the math engine. All mathematics in the ecosystem originates as WGSL in f64 as canonical precision. barraCuda does not own hardware — it authors mathematics; coralReef compiles it; ToadStool discovers and dispatches it. The `Fp64Strategy` (f32/f64/df64) is the precision interface with coralReef. naga-IR optimization (FMA fusion ~1.3x, dead code elimination) operates on the math, not hardware. Budded from ToadStool at S93 into its own repository.
+
+**Primitive catalog**:
+
+| Category | Primitives |
+|----------|-----------|
+| Core | 800+ WGSL f64 shaders: matmul, relu, softmax, gelu, layer_norm, transpose, elementwise, reduce (incl. DF64), broadcast |
+| Linear Algebra | solve, Cholesky, QR, SVD, LU, sparse eigensolve (Lanczos), GEMM f64, inverse |
+| Scientific | Crank-Nicolson PDE, Richards equation, MD forces, PPPM electrostatics, HFB nuclear physics |
+| Lattice QCD | 14 GPU shaders + host: Wilson, HMC, Dirac, CG, pseudofermion, Polyakov |
+| Special Functions | Bessel, Laguerre, Hermite, Legendre, spherical harmonics, digamma, beta, gamma, erf |
+| ML | Attention (7 variants), losses (10), optimizers (5), CNN ops |
+| Bioinformatics | 31 GPU bio ops: kmer, taxonomy FC, UniFrac, ANI, RF inference, HMM, DADA2, Gillespie, Wright-Fisher |
+| Precision | `Fp64Strategy` (Native/Hybrid/Sovereign/Concurrent), `PrecisionRoutingAdvice` |
+
+**Key achievement**: Five-spring ingestion — hotSpring, neuralSpring, wetSpring, airSpring, groundSpring all consume barraCuda math. DF64 delivers 9.9x native f64 throughput on FP32 GPU cores. 800+ production WGSL shaders across 10 scientific domains.
+
+**Architecture highlights**: barraCuda owns `math.*` in the capability namespace. WGSL-first: every operation is authored in WGSL f64, then precision-routed via `Fp64Strategy`. Springs consume math without pulling hardware runtime or compiler dependencies.
+
+**Participates in**: Node Atomic (via ToadStool), NUCLEUS compute layer, Sovereign Compute Pipeline.
+
+---
+
 ## 2. Post-NUCLEUS Primals
 
 These primals represent capabilities that emerge after NUCLEUS is deployed. They compose into higher-order patterns (RootPulse, Memory & Attribution Stack) coordinated by biomeOS via the Neural API. Each has been started — functional code, passing tests, showcase demonstrations — but they receive less focus until NUCLEUS is stable as a deployable composition. They are the next evolutionary phase: once the 8 foundation primals are solid, these 5 primals build emergent behaviors on top.
@@ -458,6 +519,49 @@ These are not runtime primals but essential ecosystem infrastructure:
 | sporePrint | 🍄🖨️ | Public-facing website and verification portal (this site) |
 | [plasmidBin](https://github.com/ecoPrimals/plasmidBin) | 🧬📦 | Binary distribution surface — pre-built primal binaries, checksummed and versioned. See [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) |
 
+### 3.3 Additional Tooling (Publishing Soon)
+
+These three repositories are active codebases, scyBorg-licensed, and will be published to GitHub imminently. Binaries are available via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
+
+#### bingoCube — Human-Verifiable Cryptographic Commitment
+
+**Domain**: Verifiable commitment, BLAKE3 progressive reveal, visual/audio identity verification  
+**Repository**: ecoPrimals/bingoCube — publishing soon
+
+**What it does**: bingoCube provides human-verifiable cryptographic commitment using BLAKE3 progressive reveal. It generates visual and audio identity verification patterns — a "bingo card" that a human can check without understanding cryptography. This bridges the gap between mathematical proof and human trust: you don't need to read hex to verify identity.
+
+**Key capabilities**:
+- BLAKE3-based progressive reveal (commit → partial reveal → full reveal)
+- Visual verification patterns (human-recognizable, not hex strings)
+- Audio identity verification (tonal fingerprints)
+- Integration with BearDog identity and Dark Forest discovery
+
+#### agentReagents — AI Agent Toolkit
+
+**Domain**: AI agent composition, reagent patterns, sovereign AI orchestration  
+**Repository**: ecoPrimals/agentReagents — publishing soon
+
+**What it does**: agentReagents provides reusable patterns ("reagents") for composing sovereign AI agents. Rather than building AI agents from scratch, developers compose reagents — pre-validated behavioral building blocks — into agents that respect data sovereignty and run locally. Complements Squirrel's MCP coordination with higher-level agent architecture patterns.
+
+**Key capabilities**:
+- Reagent pattern library (composable agent behaviors)
+- Sovereign AI composition (no cloud dependency)
+- Integration with Squirrel MCP for tool orchestration
+- Vendor-agnostic inference routing
+
+#### benchScale — Benchmark & Performance Characterization
+
+**Domain**: Cross-primal benchmarking, performance characterization, scaling studies  
+**Repository**: ecoPrimals/benchScale — publishing soon
+
+**What it does**: benchScale provides standardized benchmarking and performance characterization across the primal ecosystem. It measures how primals scale individually and in composition, identifies bottlenecks, and produces reproducible performance reports. The scaling studies inform deploy graph optimization and BYOB composition presets.
+
+**Key capabilities**:
+- Cross-primal benchmark suites
+- Scaling characterization (single primal through full NUCLEUS)
+- Reproducible performance reports
+- Deploy graph optimization data
+
 ---
 
 ## 4. Ecosystem Summary
@@ -469,9 +573,12 @@ These are not runtime primals but essential ecosystem infrastructure:
 | Foundation primals (production) | 8 (BearDog, Songbird, NestGate, ToadStool, Squirrel, biomeOS, coralReef, barraCuda) |
 | Post-NUCLEUS primals (started) | 5 (petalTongue, rhizoCrypt, sweetGrass, LoamSpine, skunkBat) |
 | Meta/tooling | 1 (sourDough) + 4 infra repos |
+| Additional tooling (publishing soon) | 3 (bingoCube, agentReagents, benchScale) |
 | Public primal repos | 4 (toadStool, squirrel, coralReef, barraCuda) |
+| sporeGarden products | 3 (esotericWebb, helixVision, blueFish) |
 | Binary distribution | [plasmidBin](https://github.com/ecoPrimals/plasmidBin) — 18 entries (12 primals + 6 springs) |
-| Total tests | ~12,000+ passing across ecosystem |
+| License | **scyBorg** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
+| Total tests | ~25,000+ passing across ecosystem |
 | Development time | ~6-8 months |
 | Developer count | 1 (with AI assistance) |
 | C dependencies | Zero (entire ecosystem) |
