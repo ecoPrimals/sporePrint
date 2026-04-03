@@ -1,5 +1,5 @@
 +++
-title = "guideStone"
+title = "🪨 guideStone"
 description = "The verification class — how computation becomes proof. Self-leveling benchmark. Deployable artifact standard."
 sort_by = "weight"
 template = "section.html"

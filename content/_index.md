@@ -3,7 +3,7 @@ title = "sporePrint"
 description = "Sovereign scientific computing. The science is executable, the infrastructure is inspectable, the claims can be reproduced by anyone with commodity hardware."
 +++
 
-The public record and verification portal for **ecoPrimals**, a sovereign
+🍄 The public record and verification portal for **ecoPrimals**, a sovereign
 scientific computing ecosystem where the science is executable, the
 infrastructure is inspectable, and the claims can be reproduced by anyone
 with commodity hardware.
@@ -16,20 +16,20 @@ with commodity hardware.
 
 ---
 
-## What You Can Do With This
+## 🚀 What You Can Do With This
 
 ecoPrimals lets you:
 
-- **Run real scientific pipelines locally** — genomics, protein structure,
+- 🧬 **Run real scientific pipelines locally** — genomics, protein structure,
   lattice QCD, pharmacometrics, precision agriculture, signal processing
-- **Reproduce published results** — 175+ papers across 8 domains, each as a
+- 📄 **Reproduce published results** — 175+ papers across 8 domains, each as a
   binary you can run and verify
-- **Use any GPU** — NVIDIA, AMD, Intel — no CUDA lock-in, no vendor toolchain
-- **Own your data and compute** — nothing leaves your machine, no cloud, no
+- ⚡ **Use any GPU** — NVIDIA, AMD, Intel — no CUDA lock-in, no vendor toolchain
+- 🔒 **Own your data and compute** — nothing leaves your machine, no cloud, no
   API keys, no institutional access required
-- **Validate with guideStone** — self-verifying artifacts that prove their own
+- ✅ **Validate with guideStone** — self-verifying artifacts that prove their own
   correctness on any hardware, any architecture
-- **Scale from one desktop to a lab cluster** — same code, same binaries
+- 📈 **Scale from one desktop to a lab cluster** — same code, same binaries
 
 **In 5 minutes, you can verify this yourself:**
 
@@ -54,7 +54,7 @@ institutional access. No proprietary software. No cloud.
 
 ---
 
-## How the System Works
+## ⚙️ How the System Works
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -97,46 +97,46 @@ AGPL-3.0, zero C dependencies.
 
 ---
 
-## The Numbers
+## 📊 The Numbers
 
 | | |
 |---|---|
-| **20,695+** checks | Validation binaries across 8 scientific domains — exit 0 on pass |
-| **175+** papers | Reproduced from peer-reviewed literature |
-| **$0.044** per run | Electricity cost for paper-parity lattice QCD (RTX 4070) |
-| **9.9×** f64 uplift | Consumer GPUs via DF64/WebGPU vs CUDA native f64 |
-| **27 days** | From first spring to 10,796+ checks across 5 domains |
-| **27,169+** tests | Combined across BarraCuda, ToadStool, and coralReef infrastructure |
-| **$15K** total hardware | The entire system runs on consumer hardware |
-| **5 substrates** | guideStone cross-validated: x86_64, aarch64, NVIDIA, AMD, Alpine |
+| ✅ **20,695+** checks | Validation binaries across 8 scientific domains — exit 0 on pass |
+| 📄 **175+** papers | Reproduced from peer-reviewed literature |
+| ⚡ **$0.044** per run | Electricity cost for paper-parity lattice QCD (RTX 4070) |
+| 📈 **9.9×** f64 uplift | Consumer GPUs via DF64/WebGPU vs CUDA native f64 |
+| ⏱️ **27 days** | From first spring to 10,796+ checks across 5 domains |
+| 🧪 **27,169+** tests | Combined across BarraCuda 🐟⚡, ToadStool 🐸🍄, and coralReef 🪸🌊 infrastructure |
+| 💰 **$15K** total hardware | The entire system runs on consumer hardware |
+| 🔬 **5 substrates** | guideStone cross-validated: x86_64, aarch64, NVIDIA, AMD, Alpine |
 
 ---
 
-## Find Your Path
+## 🧭 Find Your Path
 
-| You are... | Start with |
-|------------|-----------|
-| **A faculty member or PI** evaluating this work | [For Faculty and PIs](@/audience/FOR_FACULTY_AND_PIS.md) |
-| **A student or core facility** wanting to use it | [For Students and Core Facilities](@/audience/FOR_STUDENTS_AND_CORE_FACILITIES.md) |
-| **A hardware builder or hobbyist** with a GPU | [For Hardware Builders and Hobbyists](@/audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md) |
-| **A compliance officer, IRB, or legal reviewer** | [For Compliance and Institutional Review](@/audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md) |
-| **A physicist or computational scientist** | [guideStone](@/guidestone/_index.md) — the self-leveling benchmark and deployment artifact |
+| | You are... | Start with |
+|---|------------|-----------|
+| 🎓 | **A faculty member or PI** evaluating this work | [For Faculty and PIs](@/audience/FOR_FACULTY_AND_PIS.md) |
+| 🔬 | **A student or core facility** wanting to use it | [For Students and Core Facilities](@/audience/FOR_STUDENTS_AND_CORE_FACILITIES.md) |
+| 🛠️ | **A hardware builder or hobbyist** with a GPU | [For Hardware Builders and Hobbyists](@/audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md) |
+| 📋 | **A compliance officer, IRB, or legal reviewer** | [For Compliance and Institutional Review](@/audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md) |
+| ⚛️ | **A physicist or computational scientist** | [guideStone](@/guidestone/_index.md) — the self-leveling benchmark and deployment artifact |
 
 Not sure? Read the [Capability Parity Brief](@/audience/CAPABILITY_PARITY_BRIEF.md) —
 a direct comparison against proprietary tools across 8 scientific domains.
 
 ---
 
-## The Three Organizations
+## 🏗️ The Three Organizations
 
 ecoPrimals is distributed across three GitHub organizations, each with a
 distinct role in the ecosystem:
 
-| Organization | Role | Contains | GitHub |
-|-------------|------|----------|--------|
-| **ecoPrimals** | Infrastructure primals | barraCuda, toadStool, coralReef, biomeOS, BearDog, NestGate, Songbird, petalTongue, Squirrel, and the infrastructure repos (sporePrint, wateringHole, whitePaper) | [github.com/ecoPrimals](https://github.com/ecoPrimals) |
-| **syntheticChemistry** | Science validation springs | wetSpring, hotSpring, airSpring, neuralSpring, groundSpring, healthSpring, ludoSpring, primalSpring | [github.com/syntheticChemistry](https://github.com/syntheticChemistry) |
-| **sporeGarden** | User-facing products | esotericWebb (CRPG engine), helixVision (genomics platform, planned), and future tools for scientists, creatives, and educators | [github.com/sporeGarden](https://github.com/sporeGarden) |
+| | Organization | Role | Contains | GitHub |
+|---|-------------|------|----------|--------|
+| 🔧 | **ecoPrimals** | Infrastructure primals | barraCuda 🐟⚡, toadStool 🐸🍄, coralReef 🪸🌊, biomeOS 🌿🖥️, BearDog 🐻🐕, NestGate 🪺🔒, Songbird 🎵🐦, petalTongue 🌸👅, Squirrel 🐿️🧠, and infra repos (sporePrint 🍄🖨️, wateringHole 💧🕳️, whitePaper 📄✍️) | [github.com/ecoPrimals](https://github.com/ecoPrimals) |
+| 🧪 | **syntheticChemistry** | Science validation springs | wetSpring 💧♨️, hotSpring 🔥♨️, airSpring 🌬️♨️, neuralSpring 🧠♨️, groundSpring ⛰️♨️, healthSpring ❤️♨️, ludoSpring 🎮♨️, primalSpring 🧬♨️ | [github.com/syntheticChemistry](https://github.com/syntheticChemistry) |
+| 🌱 | **sporeGarden** | User-facing products | esotericWebb 🔮🕸️ (CRPG engine), helixVision 🧬👁️ (genomics platform, planned), and future tools for scientists, creatives, and educators | [github.com/sporeGarden](https://github.com/sporeGarden) |
 
 **Primals** build capabilities. **Springs** validate that those capabilities
 produce correct science. **Products** compose validated capabilities into tools
@@ -147,31 +147,31 @@ validation, and delivery.
 
 ## The Ecosystem at a Glance
 
-### Seven Science Springs (All Public, AGPL-3.0)
+### ♨️ Seven Science Springs (All Public, AGPL-3.0)
 
 Springs are validation environments — Rust binaries that reproduce published
 science and validate computational methods against known results.
 
-| Spring | Domain | Repository | Checks |
-|--------|--------|-----------|:------:|
-| wetSpring | Life science, microbiome, quorum sensing, field genomics | [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) | 5,707+ |
-| airSpring | Precision agriculture, ET₀, soil hydrology, phenology | [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring) | 3,123+ |
-| neuralSpring | ML primitives, reservoir computing, spectral analysis | [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) | 4,500+ |
-| hotSpring | Plasma physics, lattice QCD, GPU sovereign compute | [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring) | 664+ |
-| groundSpring | Uncertainty quantification, noise, spectral theory | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) | 535+ |
-| healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) | 474+ |
-| ludoSpring | Game science, HCI, provenance, distributed compute | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) | 1,692+ |
-| **Total** | | | **16,695+** |
+| | Spring | Domain | Repository | Checks |
+|---|--------|--------|-----------|:------:|
+| 💧 | wetSpring | Life science, microbiome, quorum sensing, field genomics | [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) | 5,707+ |
+| 🌬️ | airSpring | Precision agriculture, ET₀, soil hydrology, phenology | [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring) | 3,123+ |
+| 🧠 | neuralSpring | ML primitives, reservoir computing, spectral analysis | [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) | 4,500+ |
+| 🔥 | hotSpring | Plasma physics, lattice QCD, GPU sovereign compute | [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring) | 664+ |
+| ⛰️ | groundSpring | Uncertainty quantification, noise, spectral theory | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) | 535+ |
+| ❤️ | healthSpring | Human health, PK/PD, microbiome, biosignal, drug discovery | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) | 474+ |
+| 🎮 | ludoSpring | Game science, HCI, provenance, distributed compute | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) | 1,692+ |
+| | **Total** | | | **16,695+** |
 
-### Three Public Infrastructure Primals (All AGPL-3.0)
+### 🔧 Three Public Infrastructure Primals (All AGPL-3.0)
 
-| Primal | Domain | Repository |
-|--------|--------|-----------|
-| ToadStool | Universal compute orchestration — CPU, GPU, NPU, edge | [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) |
-| BarraCuda | Pure mathematics — 806+ WGSL f64 shaders, precision strategy | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) |
-| coralReef | Sovereign WGSL→native GPU compiler | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) |
+| | Primal | Domain | Repository |
+|---|--------|--------|-----------|
+| 🐸🍄 | ToadStool | Universal compute orchestration — CPU, GPU, NPU, edge | [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) |
+| 🐟⚡ | BarraCuda | Pure mathematics — 806+ WGSL f64 shaders, precision strategy | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) |
+| 🪸🌊 | coralReef | Sovereign WGSL→native GPU compiler | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) |
 
-### guideStone — The Verification Class (gen4)
+### 🪨 guideStone — The Verification Class (gen4)
 
 guideStone certifies that an artifact produces reproducible, self-verifying
 output. Five properties: deterministic, reference-traceable, self-verifying,
@@ -183,7 +183,7 @@ architectures with 40/40 bit-identical cross-substrate observables.
 
 ---
 
-## Reading Guide
+## 📖 Reading Guide
 
 ### For a Scientist Evaluating the Science
 
@@ -240,7 +240,7 @@ Validation evidence by agency program (NIH, NSF, USDA, DOE, ARPA-H).
 
 ---
 
-## The Science Papers (baseCamp)
+## 🔬 The Science Papers (baseCamp)
 
 ### Foundation Papers
 
@@ -265,7 +265,7 @@ coralForge: sovereign AlphaFold-quality prediction.
 
 ---
 
-## What Is Not Here
+## 📦 What Is Not Here
 
 This site contains the science, methodology, architecture, and public-facing
 capability documentation. It does not contain:
@@ -286,7 +286,7 @@ a used GPU. No CS degree required.
 
 ---
 
-## Why "sporePrint"
+## 🍄 Why "sporePrint"
 
 A spore print is how mycologists identify species they have never seen before.
 You press the cap to paper and leave it overnight. In the morning: the permanent
@@ -299,4 +299,4 @@ Verify it. Grow from it.
 ---
 
 *20,695+ checks. 175+ papers. 8 domains. Consumer hardware. One system. AGPL-3.0.*
-*The science is not a claim — it is executable evidence.*
+*🍄 The science is not a claim — it is executable evidence.*
