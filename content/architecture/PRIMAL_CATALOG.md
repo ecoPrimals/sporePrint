@@ -1,28 +1,53 @@
 +++
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
-description = "All 14 primals — capabilities, test counts, production status"
-date = 2026-03-17
+description = "All 14 primals — capabilities, test counts, production status, repository visibility"
+date = 2026-03-31
 +++
 
 # ecoPrimals Primal Catalog: Status, Capabilities, and Achievements
 
 **Status**: Working paper  
 **Lineage**: Implementation companion to `ECOSYSTEM_ARCHITECTURE.md`  
-**Last Updated**: February 7, 2026
+**Last Updated**: March 31, 2026
 
 ---
 
 ## Abstract
 
-This document catalogs every primal in the ecoPrimals ecosystem as of February 2026. It records what was built, how far it has evolved, and what it can demonstrate. The ecosystem was constructed by ecoPrimal (human + synthetic intelligence) over approximately 6-8 months, using the constrained evolution methodology described in `CONSTRAINED_EVOLUTION_FORMAL.md`. The results documented here are the empirical evidence for that methodology.
+This document catalogs every primal in the ecoPrimals ecosystem. It records what was built, how far it has evolved, and what it can demonstrate. The ecosystem was constructed by ecoPrimal (human + synthetic intelligence) over approximately 6-8 months, using the constrained evolution methodology described in `CONSTRAINED_EVOLUTION_FORMAL.md`. The results documented here are the empirical evidence for that methodology.
 
-The primals are organized into two tiers:
+The primals are organized into three tiers:
 
 - **Foundation Primals** (§1): The bedrock of the ecosystem. Eight primals — BearDog, Songbird, NestGate, ToadStool, Squirrel, biomeOS, coralReef, and barraCuda — are production-ready, extensively tested, and form the NUCLEUS deployment architecture. coralReef and barraCuda were promoted from ToadStool sub-crates to independent primals (#13, #14) as the Sovereign Compute Pipeline matured.
 
-- **Post-NUCLEUS Primals** (§2): Primals designed for capabilities that emerge after NUCLEUS is deployed. These primals (petalTongue, rhizoCrypt, sweetGrass, LoamSpine, skunkBat, sourDough) compose into higher-order patterns like RootPulse and the Memory & Attribution Stack. Each has been started and has functional code and tests, but they receive less focus until NUCLEUS is stable. They represent the next evolutionary phase.
+- **Post-NUCLEUS Primals** (§2): Primals designed for capabilities that emerge after NUCLEUS is deployed. These primals (petalTongue, rhizoCrypt, sweetGrass, LoamSpine, skunkBat) compose into higher-order patterns like RootPulse and the Memory & Attribution Stack. Each has been started and has functional code and tests, but they receive less focus until NUCLEUS is stable. They represent the next evolutionary phase.
 
-**Total**: 14 primals across two phases. See `gen3/primals/` for individual profiles.
+- **Meta-Primals & Tooling** (§3): sourDough is scaffolding and packaging tooling — it generates new primals and produces genomeBin artifacts, but does not run as a NUCLEUS service at runtime. wateringHole, whitePaper, and sporePrint are documentation/standards infrastructure.
+
+**Total**: 14 primals (8 foundation + 5 post-NUCLEUS + 1 meta/tooling) across three tiers.
+
+### Repository Visibility
+
+Not all primal repositories are public yet. Binaries for all primals are available through [plasmidBin](@/architecture/DEPLOYMENT_MODEL.md), the ecosystem's binary distribution surface. Source is progressively published as primals mature; per AGPL-3.0, source for any distributed binary is available on request.
+
+| Primal | Repo | Visibility |
+|--------|------|------------|
+| 🐻🐕 BearDog | ecoPrimals/bearDog | Private (binary via plasmidBin) |
+| 🎵🐦 Songbird | ecoPrimals/songBird | Private (binary via plasmidBin) |
+| 🪺🔒 NestGate | ecoPrimals/NestGate | Private (binary via plasmidBin) |
+| 🐸🍄 ToadStool | [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) | **Public** |
+| 🐿️🧠 Squirrel | [ecoPrimals/squirrel](https://github.com/ecoPrimals/squirrel) | **Public** |
+| 🌿🖥️ biomeOS | ecoPrimals/biomeOS | Private (binary via plasmidBin) |
+| 🪸🌊 coralReef | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) | **Public** |
+| 🐟⚡ barraCuda | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) | **Public** |
+| 🌸👅 petalTongue | ecoPrimals/petalTongue | Private (binary via plasmidBin) |
+| 🌱🔐 rhizoCrypt | ecoPrimals/rhizoCrypt | Private (binary via plasmidBin) |
+| 🍯🌾 sweetGrass | ecoPrimals/sweetGrass | Private (binary via plasmidBin) |
+| 🪨📖 loamSpine | ecoPrimals/loamSpine | Private (binary via plasmidBin) |
+| 🦨🦇 skunkBat | ecoPrimals/skunkBat | Private (binary via plasmidBin) |
+| 🍞🧪 sourDough | ecoPrimals/sourDough | Private (CLI tooling) |
+
+Four primals are fully public on GitHub: **toadStool**, **squirrel**, **coralReef**, and **barraCuda**. All springs (syntheticChemistry org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
 
 ---
 
@@ -186,28 +211,33 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 
 **Domain**: AI model coordination and sovereign inference  
 **Grade**: A++ (98/100)  
-**Version**: 0.1.0-alpha.7  
-**Tests**: 4,819 passing / 0 failed / 140 ignored across 22 crates  
-**Coverage**: 69% line coverage (cargo-llvm-cov)  
-**Safety**: `#![forbid(unsafe_code)]` on all 22 crates; `#![deny(clippy::unwrap_used, clippy::expect_used)]` in production
+**Version**: 0.1.0-alpha.33  
+**Tests**: 7,165 passing / 0 failed / 110 ignored  
+**Coverage**: ~85.3% line coverage (cargo-llvm-cov)  
+**Safety**: `#![forbid(unsafe_code)]` workspace-wide; `#![deny(clippy::unwrap_used, clippy::expect_used)]` in production  
+**Repository**: [github.com/ecoPrimals/squirrel](https://github.com/ecoPrimals/squirrel) — **Public**
 
-**What it does**: Squirrel provides sovereign AI capabilities through the Model Context Protocol (MCP). It routes AI tasks to appropriate models (local or remote), manages context windows, and coordinates multi-model workflows - all without compile-time coupling to any AI vendor. Built as 22 workspace crates on Edition 2024 (Rust 1.85+). Pure Rust: zero C dependencies in default build (ecoBin compliant). Typed errors via thiserror (no Box<dyn Error> in library code). Structured logging via tracing. Zero-copy patterns: Arc<str>, bytes::Bytes, Arc<dyn Trait> on hot paths.
+**What it does**: Squirrel provides sovereign AI capabilities through the Model Context Protocol (MCP). It routes AI tasks to appropriate models (local or remote), manages context windows, and coordinates multi-model workflows — all without compile-time coupling to any AI vendor. Built as a multi-crate workspace on Edition 2024 (Rust 1.85+). Pure Rust: zero C dependencies in default build (ecoBin compliant). Typed errors via thiserror (no `Box<dyn Error>` in library code). Structured logging via tracing. Zero-copy patterns: `Arc<str>`, `bytes::Bytes`, `Arc<dyn Trait>` on hot paths. No HTTP server by default — Unix socket IPC; HTTP pieces are feature-gated.
 
 **Primitive catalog**:
 
 | Category | Primitives |
 |----------|-----------|
-| Inference | Model inference routing, multi-provider (OpenAI, Anthropic, Ollama, local) |
-| Context | Advanced context window management, memory optimization |
-| Task Routing | Intelligent routing based on task requirements and model capabilities |
-| MCP | Multi-MCP coordination, sovereign operation |
-| Integration | Vendor-agnostic AI, zero compile-time coupling |
+| Inference | `ai.query`, `ai.complete`, `ai.chat`, `ai.list_providers` — multi-provider (OpenAI, Anthropic, Ollama, local) |
+| Context | `context.create`, `context.update`, `context.summarize` — session-scoped memory |
+| Discovery | `capabilities.list`, `discovery.peers` — runtime capability matching |
+| Tools | `tool.execute`, `tool.list` — MCP tool orchestration |
+| Lifecycle | `lifecycle.register`, `lifecycle.status` — biomeOS heartbeat integration |
+| Graph | `graph.parse`, `graph.validate` — BYOB deploy graph support |
+| Identity | `identity.get` — primal self-knowledge |
+| Health | `health.check`, `health.liveness`, `health.readiness` |
+| Human Dignity | `DignityEvaluator` / `DignityGuard` — discrimination, oversight, manipulation checks |
 
-**Architecture highlights**: TRUE PRIMAL architecture (runtime service discovery via capabilities), isomorphic IPC (validated on Android Pixel 8a with SELinux), multi-protocol (JSON-RPC + tarpc with automatic negotiation), universal transport, discovery file system, capability-based discovery.
+**Architecture highlights**: TRUE PRIMAL architecture (runtime service discovery via capabilities — no hardcoded primal names), isomorphic IPC (validated on Android Pixel 8a with SELinux), multi-protocol (JSON-RPC + tarpc with automatic negotiation), universal transport, capability-based discovery (`PRIMAL_DOMAIN = "ai"`), biomeOS Neural API registration with 30s heartbeat. Recent work: 65K+ lines of dead code removed, `CommandRegistry` `Mutex` → `RwLock`, capability-domain naming throughout.
 
 **Showcase**: Isomorphic IPC demonstration (validated on Android Pixel 8a), universal transport abstractions, capability-based discovery system.
 
-**Participates in**: Full NUCLEUS (all atomics + AI), RootPulse (intelligent merge resolution).
+**Participates in**: Full NUCLEUS (all atomics + AI), RootPulse (intelligent merge resolution), biomeOS Neural API (`ai` domain).
 
 ---
 
@@ -252,7 +282,7 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 
 ## 2. Post-NUCLEUS Primals
 
-These primals represent capabilities that emerge after NUCLEUS is deployed. They compose into higher-order patterns (RootPulse, Memory & Attribution Stack) coordinated by biomeOS via the Neural API. Each has been started - functional code, passing tests, showcase demonstrations - but they receive less focus until NUCLEUS is stable as a deployable composition. They are the next evolutionary phase: once the 6 foundation primals are solid, these primals build emergent behaviors on top.
+These primals represent capabilities that emerge after NUCLEUS is deployed. They compose into higher-order patterns (RootPulse, Memory & Attribution Stack) coordinated by biomeOS via the Neural API. Each has been started — functional code, passing tests, showcase demonstrations — but they receive less focus until NUCLEUS is stable as a deployable composition. They are the next evolutionary phase: once the 8 foundation primals are solid, these 5 primals build emergent behaviors on top.
 
 ---
 
@@ -406,14 +436,41 @@ These primals represent capabilities that emerge after NUCLEUS is deployed. They
 
 ---
 
-## 3. Ecosystem Summary
+## 3. Meta-Primals & Tooling
 
-### 3.1 By the Numbers
+### 3.1 sourDough — Scaffolding & Packaging
+
+**Domain**: Primal scaffolding, genomeBin packaging, ecosystem CLI tooling  
+**Classification**: Meta-primal — generates primals but does not run as a NUCLEUS service at runtime
+
+**What it does**: sourDough is the "starter culture" for new primals. `sourdough scaffold` generates a new primal skeleton with correct IPC, capability, and genomeBin structure. It also handles genomeBin packaging — producing the deployable binary artifacts that flow into plasmidBin. Generated primals do not depend on sourDough at runtime; it is a build-time tool, not a service.
+
+**Participates in**: plasmidBin (produces genomeBin packages), wateringHole (validates structure standards).
+
+### 3.2 Infrastructure Repositories (metaPrimals)
+
+These are not runtime primals but essential ecosystem infrastructure:
+
+| Repo | Emoji | Purpose |
+|------|-------|---------|
+| wateringHole | 💧🕳️ | Shared standards, glossary, handoffs — the "dev tool" repo available to all ecosystem projects |
+| whitePaper | 📄✍️ | Research documentation, baseCamp papers, gen3/gen4 architecture |
+| sporePrint | 🍄🖨️ | Public-facing website and verification portal (this site) |
+| [plasmidBin](https://github.com/ecoPrimals/plasmidBin) | 🧬📦 | Binary distribution surface — pre-built primal binaries, checksummed and versioned. See [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) |
+
+---
+
+## 4. Ecosystem Summary
+
+### 4.1 By the Numbers
 
 | Metric | Value |
 |--------|-------|
 | Foundation primals (production) | 8 (BearDog, Songbird, NestGate, ToadStool, Squirrel, biomeOS, coralReef, barraCuda) |
-| Post-NUCLEUS primals (started) | 6 (petalTongue, rhizoCrypt, sweetGrass, LoamSpine, skunkBat, sourDough) |
+| Post-NUCLEUS primals (started) | 5 (petalTongue, rhizoCrypt, sweetGrass, LoamSpine, skunkBat) |
+| Meta/tooling | 1 (sourDough) + 4 infra repos |
+| Public primal repos | 4 (toadStool, squirrel, coralReef, barraCuda) |
+| Binary distribution | [plasmidBin](https://github.com/ecoPrimals/plasmidBin) — 18 entries (12 primals + 6 springs) |
 | Total tests | ~12,000+ passing across ecosystem |
 | Development time | ~6-8 months |
 | Developer count | 1 (with AI assistance) |
@@ -423,7 +480,7 @@ These primals represent capabilities that emerge after NUCLEUS is deployed. They
 | IPC protocol | JSON-RPC 2.0 (universal) |
 | Platforms | Linux, macOS, Android, Windows, FreeBSD, illumos, WASM |
 
-### 3.2 Key Achievements
+### 4.2 Key Achievements
 
 **Tower Atomic - Pure Rust HTTPS**: BearDog + Songbird achieve TLS 1.3 with 93% validation rate across 87 production sites, zero C dependencies, 366ms average latency. No other Pure Rust project has achieved this at comparable scale.
 
@@ -437,7 +494,7 @@ These primals represent capabilities that emerge after NUCLEUS is deployed. They
 
 **Accessibility-First UI**: petalTongue provides 6 accessibility scenarios (blind, deaf, nonverbal, illiterate, motor disability, deaf-blind) as first-class demonstrations, not afterthoughts.
 
-### 3.3 Composed Systems
+### 4.3 Composed Systems
 
 | System | Primals Involved | Status |
 |--------|-----------------|--------|
@@ -450,7 +507,7 @@ These primals represent capabilities that emerge after NUCLEUS is deployed. They
 | Dark Forest | BearDog + Songbird + biomeOS | Production (A++ LEGENDARY) |
 | Sovereign NAT | Songbird + BearDog (Tower) | Production (Tiers 1-3) |
 
-### 3.4 Showcase Inventory
+### 4.4 Showcase Inventory
 
 Every foundation primal has demonstration material. Most post-NUCLEUS primals have extensive showcase suites:
 
@@ -470,9 +527,9 @@ Every foundation primal has demonstration material. Most post-NUCLEUS primals ha
 
 ---
 
-## 4. The Evidence
+## 5. The Evidence
 
-This catalog documents what 6-8 months of constrained evolution produced. The primary focus has been the 6 foundation primals that form NUCLEUS - getting the core deployment architecture stable. The post-NUCLEUS primals have been started and have functional code, but receive less focus until NUCLEUS is solid. The methodology paper (`CONSTRAINED_EVOLUTION_FORMAL.md`) makes claims about how environmental constraints drive specialization. This catalog is the evidence.
+This catalog documents what 6-8 months of constrained evolution produced. The primary focus has been the 8 foundation primals that form NUCLEUS — getting the core deployment architecture stable. The post-NUCLEUS primals have been started and have functional code, but receive less focus until NUCLEUS is solid. The methodology paper (`CONSTRAINED_EVOLUTION_FORMAL.md`) makes claims about how environmental constraints drive specialization. This catalog is the evidence.
 
 **Claim**: Constraints drive specialization, not predetermined solutions.  
 **Evidence**: Tower Atomic was not planned. The Pure Rust constraint eliminated OpenSSL, which forced the composition pattern, which produced Pure Rust HTTPS.

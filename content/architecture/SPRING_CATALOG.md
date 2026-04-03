@@ -1,27 +1,29 @@
 +++
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
-description = "All 7 springs — checks, papers reproduced, cross-spring data flow"
-date = 2026-03-17
+description = "All 8 springs — 7 science domains + 1 meta-spring — checks, papers reproduced, cross-spring data flow"
+date = 2026-03-31
 +++
 
 # ecoPrimals Spring Catalog: Status, Science, and Evolution
 
 **Status**: Working paper
 **Lineage**: Science validation companion to `PRIMAL_CATALOG.md`
-**Last Updated**: March 1, 2026
+**Last Updated**: March 31, 2026
 **License**: AGPL-3.0 — All springs are aggressively open science
 
 ---
 
 ## Abstract
 
-This document catalogs every spring in the ecoPrimals ecosystem as of February 2026. Where the Primal Catalog (§`PRIMAL_CATALOG.md`) documents the Rust infrastructure that was built, this catalog documents the **scientific validation** that proves the infrastructure computes real physics, biology, chemistry, and mathematics correctly.
+This document catalogs every spring in the ecoPrimals ecosystem as of March 2026. Where the Primal Catalog (§`PRIMAL_CATALOG.md`) documents the Rust infrastructure that was built, this catalog documents the **scientific validation** that proves the infrastructure computes real physics, biology, chemistry, and mathematics correctly.
 
 The springs exist because BarraCuda's claim — "Pure Rust GPU compute can replace the Python scientific stack" — requires evidence from every scientific domain the ecosystem intends to serve. Each spring takes published, peer-reviewed work and asks: can we reproduce it? First in Python (the original tool). Then in Rust. Then on GPU. If the answers are yes, the science is validated and the BarraCuda kernel is proven.
 
-The springs are organized into two tiers:
+The springs are organized into three sections:
 
-- **Established Springs** (§1): Complete Phase 0 validation with passing quantitative checks. Each has Python baselines, whitePaper documentation, specs directories, and either Rust ports or GPU validation. These springs have been handed off to sub-teams for continued evolution.
+- **Science Springs** (§1): Seven domain springs, each complete through Phase 0 validation with passing quantitative checks. Each has Python baselines, whitePaper documentation, specs directories, and either Rust ports or GPU validation. All are public repositories under the syntheticChemistry GitHub organization.
+
+- **Meta-Spring** (§1.8): primalSpring 🧬♨️ — the eighth spring — validates primal composition, deploy graphs, and cross-gate bonding rather than a scientific domain.
 
 - **The Spring Network** (§2): How springs connect to each other, to the primals, and to the faculty network that grounds them in published science.
 
@@ -297,13 +299,38 @@ The springs are organized into two tiers:
 
 ---
 
+### 1.8 primalSpring — Composition Validation (Meta-Spring)
+
+**Domain**: Primal composition, deploy graph validation, cross-gate bonding, BYOB verification  
+**Grade**: Phase 13, v0.7.0  
+**Repository**: git@github.com:syntheticChemistry/primalSpring.git  
+**License**: AGPL-3.0
+
+**What it validates**: primalSpring is not a science domain spring — it validates that **primals compose correctly**. Where other springs ask "does the math match the paper?", primalSpring asks "does the deploy graph wire correctly?", "do primals bond across gates?", and "does BYOB composition produce the expected emergent behavior?". It is the integration test suite for the ecosystem's composition model.
+
+**Key capabilities**:
+
+| Category | What it validates |
+|----------|-------------------|
+| Deploy Graphs | TOML DAG parsing, validation, topological ordering |
+| Atomics | Tower, Node, Nest, NUCLEUS composition correctness |
+| Bonding | Cross-gate primal bonding via Songbird + BearDog |
+| BYOB | Bring-Your-Own-Biome composition from plasmidBin artifacts |
+| Coordination | biomeOS Neural API routing under composition |
+
+**Why it matters**: Every spring depends on primals composing correctly. primalSpring is the spring that validates *that* assumption, closing the loop. If primalSpring passes, the composition model works. If it fails, the error is in the wiring, not the science.
+
+**Participates in**: biomeOS (composition testing), plasmidBin (validates packaged artifacts compose correctly), all springs indirectly (guarantees the infrastructure they depend on).
+
+---
+
 ## 2. The Spring Network
 
 ### 2.1 By the Numbers
 
 | Metric | Value |
 |--------|-------|
-| Total springs | 7 (5 established + healthSpring + ludoSpring) |
+| Total springs | 8 (7 science domain + 1 meta-spring) |
 | Total quantitative checks | **12,510+** passing (11,161 established + 795 healthSpring + 554 ludoSpring) |
 | Scientific domains covered | Physics, agriculture, biology, chemistry, geophysics, ML, neuromorphic computing, **human health (PK/PD, microbiome, biosignal, endocrinology)**, **game science (HCI, PCG, interactive systems)** |
 | Papers reproduced | 70+ (published, peer-reviewed, across all springs) |
