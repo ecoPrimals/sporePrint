@@ -1,0 +1,30 @@
+base_url = "https://primals.eco"
+title = "sporePrint — ecoPrimals"
+description = "Sovereign scientific computing. The science is executable, the infrastructure is inspectable, the claims can be reproduced by anyone with commodity hardware."
+compile_sass = false
+build_search_index = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+minify_html = true
+
+taxonomies = []
+
+[markdown]
+smart_punctuation = true
+
+[markdown.highlighting]
+enabled = true
+light_theme = "github-light"
+dark_theme = "github-dark"
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+
+[extra]
+author = "ecoPrimal"
+org = "ecoPrimals"
+license_docs = "CC-BY-SA 4.0"
+license_code = "AGPL-3.0-or-later"

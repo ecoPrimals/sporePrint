@@ -5,6 +5,65 @@ Format: `[version] — date — description`
 
 ---
 
+## [1.0.0] — 2026-04-03 — Zola: Rust to the Very Edge
+
+**The site becomes sovereign infrastructure. Zola (Rust static site
+generator) replaces raw GitHub Markdown rendering. Full content refresh.
+guideStone section. Missing papers added. Search enabled.**
+
+### Architecture
+
+- **Zola 0.22.1** — single Rust binary, zero runtime dependencies
+- Custom theme: dark mode (prefers-color-scheme), responsive sidebar,
+  accessible (skip links, ARIA, focus outlines, semantic HTML)
+- Built-in search via Elasticlunr (no external JS frameworks)
+- GitHub Actions CI/CD: build with Zola, deploy to GitHub Pages
+- CNAME moved to `static/CNAME` for Zola's build pipeline
+
+### Content Migration
+
+- All Markdown files migrated from flat directories to `content/` with
+  TOML front matter (title, description, date, extras)
+- Section indexes (`_index.md`) for audience, science, architecture,
+  methodology, technical, guidestone
+- Landing page (`content/_index.md`) replaces root README as site content
+- New repo README for developer documentation
+
+### New Content
+
+- **`content/guidestone/_index.md`** — The verification class: five properties,
+  first deployment artifact (hotSpring-guideStone-v0.7.0), self-leveling
+  benchmark, onboarding pattern, cross-substrate validation (5 substrates,
+  40/40 bit-identical), metrological analogy
+- **Missing science papers added:**
+  - Paper 14: Sovereign Compute Hardware (131+ experiments, deep debt evolution)
+  - Paper 23: Mass-Energy-Information Equivalence (unifying hypothesis)
+  - Paper 24: All-Silicon Science (sovereign GPU pipeline, both vendors)
+  - Paper 24b: Esoteric Webb Composition Patterns (gen4 creative infrastructure)
+  - Paper 25: Self-Tuning Simulation (physics-validated parameter discovery)
+
+### Content Refresh
+
+- Landing page updated: guideStone verification path, pre-built artifact
+  verification option (no Rust required), gen4 references, updated ecosystem
+  diagram with guideStone layer, physicist/collaborator audience path
+- "Last Updated" date bumped to April 3, 2026
+- guideStone callout in ecosystem glance section
+- Foundation papers table updated with guideStone certification references
+
+### Design Principles
+
+- **Rust to the edge**: Zola generates the site. No Ruby, no Node, no Python.
+- **Markdown-first**: All content stays in `.md` with TOML front matter.
+  Agents and humans read and edit identically.
+- **Self-contained**: No CDN, no Google Fonts, no analytics scripts.
+- **Accessible**: Semantic HTML, ARIA landmarks, skip links, keyboard nav.
+- **No external theme dependency**: Custom templates and CSS.
+
+### Document count at v1.0.0: 49 pages, 6 sections
+
+---
+
 ## [0.1.0] — 2026-03-17 — Initial Scaffold
 
 **First spore print.**
@@ -140,19 +199,9 @@ Format: `[version] — date — description`
 
 ## Roadmap
 
-### [0.2.0] — Methodology completion
-- Complete baseCamp Paper 14 (sovereign compute hardware) and add to science/
-- Add `methodology/CONSTRAINED_EVOLUTION_FORMAL.md` companion diagrams
-- Add `architecture/` diagrams (NUCLEUS bonding model, spring data flow)
-
-### [0.3.0] — Cross-validation + living data
+### [1.1.0] — Living data + CI integration
 - Wire check counts to live CI badges from spring repositories
-- Add `science/CROSS_SPRING_EVIDENCE_MAP.md` — how baseCamp papers draw from multiple springs
-- Begin peer review prep for Paper 01 (Anderson QS)
-
-### [1.0.0] — Standalone published whitepaper
-- Own git history (extracted from ecoPrimals monorepo)
-- GitHub Pages rendering (academic layout)
+- Auto-update numbers via GitHub Actions on spring release events
 - DOI via Zenodo
 - ORCID attribution
 - Citable as: Mok K. (2026). *sporePrint: Sovereign Scientific Computing
@@ -160,5 +209,9 @@ Format: `[version] — date — description`
 
 ### Future — guidePost/
 - `guidePost/` companion repo for atlasHugged — the human, ethical, and
-  philosophical side: five questions for John Galt, the orthogonal synthesis,
-  the love letter, the temptation of kingdoms. The story of why, not just what.
+  philosophical side. The story of why, not just what.
+
+### Future — petalTongue integration
+- Conversational navigation of site content
+- Audio narration from Markdown source
+- Accessibility-first interface for all users

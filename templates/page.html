@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<div class="page-layout">
+  {% if page.toc %}
+  <aside class="toc" aria-label="Table of contents">
+    <details open>
+      <summary>Contents</summary>
+      <nav>
+        <ul>
+          {% for h in page.toc %}
+          <li>
+            <a href="{{ h.permalink }}">{{ h.title }}</a>
+            {% if h.children %}
+            <ul>
+              {% for child in h.children %}
+              <li><a href="{{ child.permalink }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </details>
+  </aside>
+  {% endif %}
+
+  <article class="page-content">
+    <header>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="{{ config.base_url }}">Home</a>
+        {% if page.ancestors %}
+        {% for ancestor in page.ancestors %}
+        {% set anc_section = get_section(path=ancestor) %}
+        <span aria-hidden="true">/</span>
+        <a href="{{ anc_section.permalink }}">{{ anc_section.title }}</a>
+        {% endfor %}
+        {% endif %}
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ page.title }}</span>
+      </nav>
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}
+      <p class="page-desc">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    <div class="content">
+      {{ page.content | safe }}
+    </div>
+  </article>
+</div>
+{% endblock content %}

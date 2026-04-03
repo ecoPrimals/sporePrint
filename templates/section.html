@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} — {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description }}{% endblock description %}
+
+{% block content %}
+<article class="section-page">
+  <header class="section-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ section.title }}</span>
+    </nav>
+    <h1>{{ section.title }}</h1>
+    {% if section.description %}
+    <p class="section-desc">{{ section.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if section.content %}
+  <div class="content">
+    {{ section.content | safe }}
+  </div>
+  {% endif %}
+
+  {% if section.pages %}
+  <nav class="page-listing" aria-label="Pages in this section">
+    <ul>
+      {% for page in section.pages %}
+      <li>
+        <a href="{{ page.permalink }}">
+          <strong>{{ page.title }}</strong>
+          {% if page.description %}<span>{{ page.description }}</span>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+</article>
+{% endblock content %}

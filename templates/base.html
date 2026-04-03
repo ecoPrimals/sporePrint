@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+  <link rel="stylesheet" href="{{ get_url(path='css/main.css') }}">
+  {% if config.build_search_index %}
+  <link rel="stylesheet" href="{{ get_url(path='search.css', trailing_slash=false) }}">
+  {% endif %}
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml') }}">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="{{ config.base_url }}" class="nav-brand">sporePrint</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="{{ get_url(path='@/audience/_index.md') }}">Audience</a></li>
+        <li><a href="{{ get_url(path='@/science/_index.md') }}">Science</a></li>
+        <li><a href="{{ get_url(path='@/architecture/_index.md') }}">Architecture</a></li>
+        <li><a href="{{ get_url(path='@/methodology/_index.md') }}">Methodology</a></li>
+        <li><a href="{{ get_url(path='@/technical/_index.md') }}">Technical</a></li>
+        <li><a href="{{ get_url(path='@/guidestone/_index.md') }}">guideStone</a></li>
+        <li><a href="https://github.com/ecoPrimals" rel="noopener">GitHub</a></li>
+      </ul>
+      {% if config.build_search_index %}
+      <div class="nav-search">
+        <input type="search" id="search-input" placeholder="Search..." aria-label="Search site">
+        <div id="search-results" class="search-results" aria-live="polite"></div>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+
+  <main id="main" class="site-main">
+    {% block content %}{% endblock content %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>
+        <strong>ecoPrimals</strong> — sovereign scientific computing.<br>
+        Docs: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0</a> ·
+        Code: <a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL-3.0-or-later</a>
+      </p>
+      <p class="footer-tagline">The science is not a claim — it is executable evidence.</p>
+    </div>
+  </footer>
+
+  {% if config.build_search_index %}
+  <script src="{{ get_url(path='elasticlunr.min.js', trailing_slash=false) }}"></script>
+  <script src="{{ get_url(path='search_index.en.js', trailing_slash=false) }}"></script>
+  <script>
+    (function() {
+      var input = document.getElementById('search-input');
+      var results = document.getElementById('search-results');
+      if (!input || !window.elasticlunr) return;
+      var index = elasticlunr.Index.load(window.searchIndex);
+      input.addEventListener('input', function() {
+        var query = this.value.trim();
+        if (query.length < 2) { results.innerHTML = ''; return; }
+        var hits = index.search(query, { expand: true }).slice(0, 8);
+        results.innerHTML = hits.map(function(h) {
+          var doc = h.doc;
+          return '<a class="search-result" href="' + doc.id + '">' +
+            '<strong>' + doc.title + '</strong>' +
+            (doc.description ? '<span>' + doc.description + '</span>' : '') +
+            '</a>';
+        }).join('');
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-search')) results.innerHTML = '';
+      });
+    })();
+  </script>
+  {% endif %}
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        links.classList.toggle('open');
+      });
+    })();
+  </script>
+</body>
+</html>
