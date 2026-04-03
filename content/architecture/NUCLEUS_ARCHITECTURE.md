@@ -37,10 +37,10 @@ Nest adds persistent storage. NestGate provides content-addressed storage (CAS) 
 
 ### Full NUCLEUS
 
-**Composition**: All 8 foundation primals + Squirrel  
+**Composition**: All 8 foundation primals  
 **What emerges**: AI-coordinated sovereign computing
 
-Full NUCLEUS is the complete foundation: networking (Tower), compute (Node), storage (Nest), orchestration (biomeOS), and AI coordination (Squirrel). biomeOS reads deploy graphs, germinates primals, wires capabilities, and routes requests via the Neural API. Squirrel adds vendor-agnostic AI inference and MCP tool orchestration.
+Full NUCLEUS is the complete foundation: networking (Tower), compute (Node), storage (Nest), orchestration (biomeOS), and AI coordination (Squirrel). biomeOS reads deploy graphs, germinates primals, wires capabilities, and routes requests via the Neural API. Squirrel — one of the eight — adds vendor-agnostic AI inference and MCP tool orchestration.
 
 ```
 ┌─────────────────────────────────────────────────┐

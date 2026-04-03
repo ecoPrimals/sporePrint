@@ -332,7 +332,7 @@ The springs are organized into three sections:
 | Metric | Value |
 |--------|-------|
 | Total springs | 8 (7 science domain + 1 meta-spring) |
-| Total quantitative checks | **12,510+** passing (11,161 established + 795 healthSpring + 554 ludoSpring) |
+| Total quantitative checks | **13,648+** passing (11,161 established + 795 healthSpring + 1,692 ludoSpring) |
 | Scientific domains covered | Physics, agriculture, biology, chemistry, geophysics, ML, neuromorphic computing, **human health (PK/PD, microbiome, biosignal, endocrinology)**, **game science (HCI, PCG, interactive systems)** |
 | Papers reproduced | 70+ (published, peer-reviewed, across all springs) |
 | Papers queued for review | 60+ candidates across all springs + 8 Mok-derived experiments |
@@ -342,7 +342,7 @@ The springs are organized into three sections:
 | Rust validation checks | 1,008 (wetSpring) + 4,000+ (neuralSpring) + 3,123+ (airSpring) + ~697 (hotSpring) + 236 (groundSpring) |
 | WGSL shaders | 700+ cross-spring via ToadStool S68 universal precision |
 | Languages | Python (Phase 0), Rust (Phase 1+), WGSL shaders (Phase 2+) |
-| License | AGPL-3.0 (all springs, no exceptions) |
+| License | scyBorg — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
 | Institutional access required | Zero |
 | Proprietary software required | Zero |
 | Time from first spring to 11,161+ checks | ~27 days |

@@ -170,9 +170,9 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 **Domain**: Universal compute orchestration  
 **Grade**: A++ GOLD STANDARD  
 **Tests**: 1,000+ passing  
-**BarraCuda**: 124/263 operations with universal WGSL shaders
+**Repository**: [github.com/ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) — **Public**
 
-**What it does**: ToadStool enables isomorphic workload execution across any compute substrate. Its BarraCuda library provides universal tensor operations that run identically on CPU, GPU (NVIDIA, AMD), neuromorphic hardware (BrainChip Akida), WebAssembly, and containers. Same math, every substrate.
+**What it does**: ToadStool enables isomorphic workload execution across any compute substrate — CPU, GPU (NVIDIA, AMD), neuromorphic hardware (BrainChip Akida), WebAssembly, and containers. ToadStool discovers hardware and dispatches workloads; barraCuda (§1.8) provides the math; coralReef (§1.7) compiles shaders to native GPU binaries. barraCuda budded from ToadStool at S93 into its own primal as the Sovereign Compute Pipeline matured.
 
 **Primitive catalog**:
 
@@ -305,7 +305,7 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 
 **Architecture highlights**: The boundary is precise — barraCuda writes math, coralReef compiles it, ToadStool dispatches it. coralReef owns `shader.*` in the capability namespace. JSON-RPC 2.0 + tarpc, zero-copy `bytes::Bytes`, differentiated errors, FMA policy awareness.
 
-**Participates in**: Sovereign Compute Pipeline (barraCuda → ToadStool → coralReef → native binary → coralDriver → hardware), Node Atomic, NUCLEUS.
+**Participates in**: Sovereign Compute Pipeline (barraCuda → coralReef → native binary → ToadStool/coralDriver → hardware), Node Atomic, NUCLEUS.
 
 ---
 

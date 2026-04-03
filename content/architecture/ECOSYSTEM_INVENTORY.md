@@ -22,12 +22,12 @@ These form the [NUCLEUS](@/architecture/NUCLEUS_ARCHITECTURE.md) deployment arch
 
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
-| 🐻🐕 bearDog | Cryptography, identity, Dark Forest | Source publishing in progress | 2,312+ |
-| 🎵🐦 songBird | Networking, mesh, discovery | Source publishing in progress | 2,100+ |
-| 🪺🔒 nestGate | Content-addressed storage, CAS | Source publishing in progress | 1,500+ |
+| 🐻🐕 bearDog | Cryptography, identity, Dark Forest | Source publishing in progress | 5,041 |
+| 🎵🐦 songBird | Networking, mesh, discovery | Source publishing in progress | 1,763 |
+| 🪺🔒 nestGate | Content-addressed storage, CAS | Source publishing in progress | 1,474 |
 | 🐸🍄 [toadStool](https://github.com/ecoPrimals/toadStool) | Universal compute orchestration | **Public** | 1,000+ |
 | 🐿️🧠 [squirrel](https://github.com/ecoPrimals/squirrel) | AI coordination, MCP, inference | **Public** | 7,165 |
-| 🌿🖥️ biomeOS | Orchestration, Neural API, NUCLEUS | Source publishing in progress | 3,000+ |
+| 🌿🖥️ biomeOS | Orchestration, Neural API, NUCLEUS | Source publishing in progress | 661+ |
 | 🪸🌊 [coralReef](https://github.com/ecoPrimals/coralReef) | Shader compiler, GPU dispatch | **Public** | 3,038 |
 | 🐟⚡ [barraCuda](https://github.com/ecoPrimals/barraCuda) | Pure math, WGSL f64 shaders | **Public** | 3,348+ |
 
@@ -37,11 +37,11 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
-| 🌸👅 petalTongue | Content delivery, visualization, accessibility | Source publishing in progress | 800+ |
-| 🌱🔐 rhizoCrypt | Ephemeral DAG workspace, Merkle verification | Source publishing in progress | 600+ |
-| 🍯🌾 sweetGrass | Attribution, citation, provenance tracking | Source publishing in progress | 400+ |
-| 🪨📖 loamSpine | Immutable linear history, certificates | Source publishing in progress | 500+ |
-| 🦨🦇 skunkBat | Defensive security, threat detection | Source publishing in progress | 300+ |
+| 🌸👅 petalTongue | Content delivery, visualization, accessibility | Source publishing in progress | — |
+| 🌱🔐 rhizoCrypt | Ephemeral DAG workspace, Merkle verification | Source publishing in progress | 509 |
+| 🍯🌾 sweetGrass | Attribution, citation, provenance tracking | Source publishing in progress | 496 |
+| 🪨📖 loamSpine | Immutable linear history, certificates | Source publishing in progress | 416 |
+| 🦨🦇 skunkBat | Defensive security, threat detection | Source publishing in progress | — |
 
 ### Tooling & Infrastructure (8)
 
@@ -99,7 +99,7 @@ User-facing products that compose primals into complete applications. Each produ
 
 | Product | What | Status | Repo |
 |---------|------|--------|------|
-| 🔮🕸️ [esotericWebb](https://github.com/sporeGarden/esotericWebb) | Cross-evolution CRPG — composes rhizoCrypt, loamSpine, sweetGrass via JSON-RPC | **Public** | [sporeGarden/esotericWebb](https://github.com/sporeGarden/esotericWebb) |
+| 🔮🕸️ esotericWebb | Cross-evolution CRPG — composes rhizoCrypt, loamSpine, sweetGrass via JSON-RPC | **Public** | [sporeGarden/esotericWebb](https://github.com/sporeGarden/esotericWebb) |
 | 🧬👁️ helixVision | Sovereign structure prediction — AlphaFold2/3 in pure Rust f64, formerly coralForge | Moving to sporeGarden | sporeGarden/helixVision (pending) |
 | 🐟🔵 blueFish | Sovereign data pipeline/ETL — NCBI integration, format conversion | Moving from syntheticChemistry | sporeGarden/blueFish (pending) |
 

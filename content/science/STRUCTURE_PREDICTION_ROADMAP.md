@@ -1,12 +1,12 @@
 +++
 title = "Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality"
-description = "helixVision (formerly helixVision) — sovereign AlphaFold-quality protein structure prediction in pure Rust f64, moving to sporeGarden."
+description = "helixVision (formerly coralForge) — sovereign AlphaFold-quality protein structure prediction in pure Rust f64, moving to sporeGarden."
 date = 2026-03-31
 +++
 
 # Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality
 
-> **Note:** helixVision was previously known as helixVision. The codebase originated in
+> **Note:** helixVision was previously known as coralForge. The codebase originated in
 > [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) and is
 > moving to sporeGarden/helixVision as a
 > standalone product. Source code references may still use `coral_forge` module names during transition.
@@ -14,7 +14,7 @@ date = 2026-03-31
 **Sovereign protein structure prediction on consumer hardware.
 No cloud. No PyTorch. No CUDA. No data leaves the lab.**
 
-**Last Updated:** March 17, 2026  
+**Last Updated:** March 31, 2026  
 **License:** CC-BY-SA 4.0
 
 ---
