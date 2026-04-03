@@ -1,10 +1,11 @@
 +++
 title = "Sovereign WDM Simulation on Consumer GPU"
-description = "Plasma Physics x Distributed Computing"
+description = "Plasma Physics x GPU Compute — warm dense matter on consumer GPU, guideStone v0.7.0 certified. hotSpring. 59/59 checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 7
+domain = "Physics and Materials"
 +++
 
 # Sub-Thesis 07: Sovereign Warm Dense Matter Simulation on Consumer GPU

@@ -120,6 +120,7 @@ body {
   transition: background 0.15s;
 }
 .nav-links a:hover { background: var(--c-accent-light); color: var(--c-accent); }
+.nav-links a.active { background: var(--c-accent-light); color: var(--c-accent); font-weight: 600; }
 .nav-toggle {
   display: none;
   background: none;
@@ -238,6 +239,9 @@ body {
 /* Content typography */
 .content {
   max-width: var(--max-w);
+}
+.landing .content {
+  max-width: var(--max-w-wide);
 }
 .content h1 { font-size: 1.8rem; margin: 2rem 0 1rem; font-weight: 700; letter-spacing: -0.02em; }
 .content h2 { font-size: 1.4rem; margin: 2rem 0 0.75rem; font-weight: 700; padding-bottom: 0.3rem; border-bottom: 1px solid var(--c-border); }
@@ -414,6 +418,17 @@ body {
   letter-spacing: -0.02em;
 }
 .page-desc { color: var(--c-text-muted); font-size: 1rem; margin: 0 0 1.5rem; }
+
+/* Domain groups (science section) */
+.domain-group { margin-bottom: 2rem; }
+.domain-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-text);
+}
 
 /* Footer */
 .site-footer {

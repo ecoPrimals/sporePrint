@@ -1,10 +1,11 @@
 +++
 title = "RPGPT Sovereign RPG Engine"
-description = "Game Design x Provenance x AI"
+description = "Game Design x Provenance — sovereign RPG engine with ingestible rulesets and provenance-backed world state. ludoSpring. 105+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 18
+domain = "Game Science and Systems"
 +++
 
 # Paper 18: RPGPT — Sovereign RPG Engine with Ingestible Rulesets and Provenance-Backed World State

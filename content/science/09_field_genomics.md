@@ -1,10 +1,11 @@
 +++
 title = "Field Genomics"
-description = "Environmental Genomics x Portable Sequencing"
+description = "Field Genomics x Portable Sequencing — sovereign NCBI-to-Anderson pipeline for real-time environmental DNA. wetSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 9
+domain = "Agriculture and Field Science"
 +++
 
 # Sub-Thesis 09: Sovereign Field Genomics — Nanopore Sequencing + Neuromorphic Edge Classification

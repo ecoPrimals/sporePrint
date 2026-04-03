@@ -1,10 +1,11 @@
 +++
 title = "Anderson Localization as QS Null Hypothesis"
-description = "Physics x Microbiology — 3,100+ checks"
+description = "Physics x Microbiology — W_c = 16.26 from 3D Anderson model as quorum sensing null hypothesis. wetSpring. 3,700+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 1
+domain = "Microbiology and Ecology"
 +++
 
 # Sub-Thesis 01: Anderson Localization as a Null Hypothesis for Microbial Quorum Sensing

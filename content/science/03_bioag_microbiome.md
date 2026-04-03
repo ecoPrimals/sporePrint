@@ -1,10 +1,11 @@
 +++
 title = "BioAg Microbiome"
-description = "Agricultural Microbiology x Soil Ecology"
+description = "Agricultural Microbiology x Soil Ecology — Anderson-derived microbiome design for perennial tree crops. wetSpring + airSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 3
+domain = "Microbiology and Ecology"
 +++
 
 # Sub-Thesis 03: Precision Microbiome Engineering for Perennial Tree Crops

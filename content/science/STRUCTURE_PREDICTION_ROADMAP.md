@@ -1,6 +1,6 @@
 +++
 title = "Structure Prediction Roadmap: From coralForge to AlphaFold-Quality"
-description = "coralForge — sovereign AlphaFold-quality structure prediction roadmap"
+description = "coralForge roadmap — sovereign AlphaFold-quality protein structure prediction from existing primal infrastructure."
 date = 2026-03-17
 +++
 

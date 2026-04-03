@@ -1,6 +1,6 @@
 +++
 title = "Cross-Spring Evidence Map"
-description = "How baseCamp papers draw from multiple springs and where independent implementations converge"
+description = "Convergence analysis across all 7 springs — shared mathematical structures, open questions, and cross-domain validation."
 date = 2026-03-17
 +++
 

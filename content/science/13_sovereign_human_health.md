@@ -1,10 +1,11 @@
 +++
 title = "Sovereign Human Health"
-description = "Precision Medicine x Pharmacometrics"
+description = "Precision Medicine x Pharmacometrics — sovereign PK/PD modeling, biosignal analysis, drug discovery. healthSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 13
+domain = "Human Health"
 +++
 
 # Paper 13: Sovereign Human Health Computing — Per-Person Translation of PK/PD, Microbiome, Biosignal, and Endocrine Pipelines

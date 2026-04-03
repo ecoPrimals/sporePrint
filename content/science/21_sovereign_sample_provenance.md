@@ -1,10 +1,11 @@
 +++
 title = "Sovereign Sample Provenance"
-description = "Field Genomics x Fraud Detection"
+description = "Field Genomics x Fraud Detection — field-to-publication chain-of-custody with BearDog signing. ludoSpring. 152+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 21
+domain = "Economics and Provenance"
 +++
 
 # Paper 21: Sovereign Sample Provenance — Field-to-Publication Chain-of-Custody

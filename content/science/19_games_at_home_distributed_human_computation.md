@@ -1,10 +1,11 @@
 +++
 title = "Games@Home Distributed Human Computation"
-description = "Game x Distributed Computing"
+description = "Distributed Computing x Games — composable multi-player coordination via primal architecture. ludoSpring. 127/127 checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 19
+domain = "Game Science and Systems"
 +++
 
 # Paper 19: Games@Home — Distributed Human Computation via Interactive Systems

@@ -1,10 +1,11 @@
 +++
 title = "Anderson as No-Till Soil Health Mechanism"
-description = "Soil Ecology x Physics — dimensional collapse"
+description = "Soil Ecology x Physics — no-till as dimensional collapse of QS geometry. 9 papers reproduced, full three-tier. wetSpring + airSpring. 321+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 6
+domain = "Microbiology and Ecology"
 +++
 
 # Sub-Thesis 06: Anderson Localization as the Mechanism Behind No-Till Soil Health

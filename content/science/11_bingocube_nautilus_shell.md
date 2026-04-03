@@ -1,10 +1,11 @@
 +++
 title = "BingoCube Nautilus Shell"
-description = "Mathematical Physics x Visualization"
+description = "Mathematical Physics x Complexity — Nautilus shell as NP-structure validator, Turing-complete card games. ludoSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 11
+domain = "Game Science and Systems"
 +++
 
 # baseCamp 11: The Nautilus Shell — Evolutionary Reservoir Computing from Bingo Boards

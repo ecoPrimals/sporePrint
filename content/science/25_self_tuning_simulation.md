@@ -1,10 +1,11 @@
 +++
 title = "Self-Tuning Simulation"
-description = "Lattice QCD x Adaptive Algorithms — physics-validated parameter discovery"
+description = "Lattice QCD x Adaptive Algorithms — runtime spectral discovery eliminates all hand-tuned simulation parameters. hotSpring."
 date = 2026-03-30
 
 [extra]
 paper_number = 25
+domain = "Physics and Materials"
 +++
 
 # Sub-Thesis 25: Self-Tuning Simulation — Physics-Validated Parameter Discovery for Lattice QCD

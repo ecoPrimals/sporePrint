@@ -1,10 +1,11 @@
 +++
 title = "Anderson in Immunological Signaling"
-description = "Immunology x Physics — 329/329 checks"
+description = "Immunology x Physics — Anderson localization in immune signaling, drug repurposing pipeline. healthSpring. 329/329 checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 12
+domain = "Human Health"
 +++
 
 # baseCamp Paper 12: Anderson Localization in Immunological Signaling — Cytokine Propagation, Drug Geometry, and the Fajgenbaum Repurposing Bridge

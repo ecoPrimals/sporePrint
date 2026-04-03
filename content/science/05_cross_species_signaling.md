@@ -1,10 +1,11 @@
 +++
 title = "Cross-Species Signaling"
-description = "Comparative Biology x Signal Processing"
+description = "Symbiotic Ecology x Signal Processing — cold seep metagenomes, cross-kingdom QS, eavesdropper enrichment. wetSpring. 40+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 5
+domain = "Microbiology and Ecology"
 +++
 
 # Sub-Thesis 05: Cross-Species Signaling in Symbiotic Systems

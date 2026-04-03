@@ -1,10 +1,11 @@
 +++
 title = "Sentinel Microbes"
-description = "Biosurveillance x Environmental Monitoring"
+description = "Biosurveillance x NPU — ESN classifiers on live AKD1000 neuromorphic silicon, 1.4 uJ/infer. wetSpring + neuralSpring. 60+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 4
+domain = "Microbiology and Ecology"
 +++
 
 # Sub-Thesis 04: Microbial Sentinels — Community Shifts as Biosensors for Contamination and Disease

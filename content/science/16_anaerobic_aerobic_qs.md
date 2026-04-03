@@ -1,10 +1,11 @@
 +++
 title = "Anaerobic-Aerobic QS"
-description = "Microbial Ecology x Quorum Sensing"
+description = "Microbial Ecology x Quorum Sensing — anaerobic-aerobic transition modeling via Anderson framework. wetSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 16
+domain = "Microbiology and Ecology"
 +++
 
 # Paper 16: Anaerobic-Aerobic QS Phase Transition — Microbial Signaling Across Oxygen Regimes

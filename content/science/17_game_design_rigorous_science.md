@@ -1,10 +1,11 @@
 +++
 title = "Game Design as Rigorous Science"
-description = "Game Science x HCI — 1,692 checks"
+description = "Game Science x HCI — 13 foundational models validated through Python-to-Rust-to-GPU pipeline. ludoSpring. 1,692 checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 17
+domain = "Game Science and Systems"
 +++
 
 # Paper 17: Game Design as Rigorous Science — Validated HCI Models for Interactive Systems

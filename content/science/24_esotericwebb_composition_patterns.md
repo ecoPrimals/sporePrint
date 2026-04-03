@@ -1,10 +1,11 @@
 +++
 title = "Esoteric Webb — Primal Composition as Creative Infrastructure"
-description = "Game Design x Provenance — primal composition patterns for creative tools"
+description = "Creative Infrastructure x Composition — Disco Elysium-inspired CRPG proving primal composition patterns. esotericWebb. 342 tests."
 date = 2026-03-30
 
 [extra]
 paper_number = 24
+domain = "Game Science and Systems"
 +++
 
 <!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->

@@ -1,10 +1,11 @@
 +++
 title = "Novel Ferment Transcript Economics"
-description = "Economics x Provenance"
+description = "Economics x Provenance — radiating attribution through provenance chains, novel ferment transcripts. ludoSpring. 89/89 checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 20
+domain = "Economics and Provenance"
 +++
 
 # Paper 20: Novel Ferment Transcript Economics — Radiating Attribution Through Provenance

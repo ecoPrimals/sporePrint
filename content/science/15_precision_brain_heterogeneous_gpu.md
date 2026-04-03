@@ -1,10 +1,11 @@
 +++
 title = "Precision Brain on Heterogeneous GPU"
-description = "Neuroscience x GPU Computing"
+description = "Neuroscience x GPU Computing — brain simulation on heterogeneous consumer GPU cluster, precision routing. neuralSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 15
+domain = "Physics and Materials"
 +++
 
 # Sub-Thesis 15: Self-Routing Precision Brain for Heterogeneous GPU Compute

@@ -1,10 +1,11 @@
 +++
 title = "Sovereign Compute Hardware"
-description = "Hardware Architecture x Sovereign Computing — precision tiers, market economics, 131+ experiments"
+description = "Hardware Architecture x Sovereign Computing — precision tier taxonomy, temporal arbitrage, heterogeneous GPU mesh. 131+ experiments."
 date = 2026-03-30
 
 [extra]
 paper_number = 14
+domain = "Physics and Materials"
 +++
 
 # Sub-Thesis 14: Sovereign Compute Hardware — Precision Tiers, Market Economics, and the Science They Unlock

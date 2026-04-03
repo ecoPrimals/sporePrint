@@ -1,10 +1,11 @@
 +++
 title = "Zero-Knowledge Medical Provenance"
-description = "Medical x Privacy"
+description = "Medical x Privacy — patient-owned records with consent certificates, zero-knowledge proofs. ludoSpring + healthSpring. 148+ checks."
 date = 2026-03-17
 
 [extra]
 paper_number = 22
+domain = "Human Health"
 +++
 
 # Paper 22: Zero-Knowledge Medical Provenance — Patient-Owned Records with Consent Certificates

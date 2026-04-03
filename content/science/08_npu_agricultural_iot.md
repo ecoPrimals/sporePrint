@@ -1,10 +1,11 @@
 +++
 title = "NPU Agricultural IoT"
-description = "Precision Agriculture x Edge Computing"
+description = "Precision Agriculture x Neuromorphic — Akida NPU for real-time soil/crop monitoring at coin-cell power. airSpring + neuralSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 8
+domain = "Agriculture and Field Science"
 +++
 
 # Sub-Thesis 08: Neuromorphic Edge Intelligence for Sovereign Agricultural IoT

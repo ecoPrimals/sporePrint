@@ -1,10 +1,11 @@
 +++
 title = "First Dynamical QCD Production on Consumer GPU"
-description = "Lattice QCD x GPU Compute — guideStone certified"
+description = "Lattice QCD x GPU Compute — first dynamical fermion production on consumer GPU, guideStone certified. hotSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 10
+domain = "Physics and Materials"
 +++
 
 # baseCamp 10: First Dynamical QCD Production on Consumer GPU

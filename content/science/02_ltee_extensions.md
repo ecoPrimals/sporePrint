@@ -1,10 +1,11 @@
 +++
 title = "LTEE Extensions"
-description = "Evolutionary Biology x Computational Genomics"
+description = "Evolutionary Biology x Genomics — falsifiable Anderson-QS predictions for LTEE populations, sovereign structure prediction. wetSpring."
 date = 2026-03-17
 
 [extra]
 paper_number = 2
+domain = "Microbiology and Ecology"
 +++
 
 # Sub-Thesis 02: Extending the Frozen Fossil Record — LTEE, Permafrost, and Agricultural Time Series

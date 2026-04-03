@@ -1,10 +1,11 @@
 +++
 title = "Mass-Energy-Information Equivalence"
-description = "Information Theory x Thermodynamics — why all springs share the same math"
+description = "Information Theory x Thermodynamics — unifying hypothesis for why all springs share the same barraCuda primitives. All springs."
 date = 2026-03-30
 
 [extra]
 paper_number = 23
+domain = "Physics and Materials"
 +++
 
 # Paper 23: Mass-Energy-Information Equivalence — Why All Springs Share the Same Math

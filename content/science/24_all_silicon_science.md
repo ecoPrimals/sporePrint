@@ -1,10 +1,11 @@
 +++
 title = "All-Silicon Science"
-description = "GPU Hardware x Computational Physics — repurposing every hardware unit for science"
+description = "GPU Hardware x Computational Physics — systematic mapping of physics to all 9 GPU silicon unit types, sovereign compiler. hotSpring + coralReef."
 date = 2026-03-30
 
 [extra]
 paper_number = 24
+domain = "Physics and Materials"
 +++
 
 # Sub-Thesis 24: All-Silicon Science — Repurposing Every GPU Hardware Unit for Computational Physics
