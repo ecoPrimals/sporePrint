@@ -246,7 +246,7 @@ works in.
 
 1. Clone any public spring repo:
    ```bash
-   git clone https://github.com/ecoPrimals/wetSpring
+   git clone https://github.com/syntheticChemistry/wetSpring
    cd wetSpring/barracuda
    cargo test --workspace
    cargo run --release --bin validate_diversity

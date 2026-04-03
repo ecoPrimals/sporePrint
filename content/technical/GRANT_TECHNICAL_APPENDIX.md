@@ -289,7 +289,7 @@ Any reviewer, without contacting the authors:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Clone any spring
-git clone https://github.com/ecoPrimals/wetSpring
+git clone https://github.com/syntheticChemistry/wetSpring
 cd wetSpring/barracuda
 
 # Full test suite

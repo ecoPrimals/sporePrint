@@ -393,7 +393,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # → cursor.com
 
 # 3. Clone an existing spring to see the pattern
-git clone https://github.com/ecoPrimals/wetSpring
+git clone https://github.com/syntheticChemistry/wetSpring
 cd wetSpring && cargo test --workspace
 
 # 4. Start your own

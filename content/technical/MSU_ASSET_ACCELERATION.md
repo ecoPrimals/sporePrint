@@ -238,7 +238,7 @@ All spring repositories are public and require only Rust (stable):
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-git clone https://github.com/ecoPrimals/wetSpring
+git clone https://github.com/syntheticChemistry/wetSpring
 cd wetSpring/barracuda
 cargo test --workspace    # 1,443+ tests, should exit 0
 ```

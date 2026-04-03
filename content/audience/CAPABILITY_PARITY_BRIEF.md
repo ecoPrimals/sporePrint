@@ -42,7 +42,7 @@ what proprietary tools still do better, and where to find everything.
 
 ### ecoPrimals Replacement: wetSpring
 
-**Repository:** github.com/ecoPrimals/wetSpring
+**Repository:** github.com/syntheticChemistry/wetSpring
 **Status:** V127 — 1,443+ tests, 306 validation binaries, 376 experiments, 5,707+ checks
 
 | Capability | Parity Level | Notes |
@@ -105,7 +105,7 @@ cargo run --release --bin validate_dada2_full # DADA2 pipeline validation
 
 ### ecoPrimals Replacement: healthSpring
 
-**Repository:** github.com/ecoPrimals/healthSpring
+**Repository:** github.com/syntheticChemistry/healthSpring
 **Status:** V35 — 613 tests, 73 experiments, 113/113 cross-validation checks, 6 WGSL shaders
 
 | Capability | Parity Level | Notes |
