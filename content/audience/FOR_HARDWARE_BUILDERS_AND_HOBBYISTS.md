@@ -112,12 +112,12 @@ trusted via shared cryptographic seed (SoloKey FIDO2).
 ### Tier 4: Community Mesh (ionic bonding)
 
 ```
-Your cluster ──── Faculty lab ──── Another builder
+Your cluster ──── Research lab ──── Another builder
                       │
                       └── ICER HPC (metallic bonding)
 ```
 
-Faculty collaborators get "ionic" bond status — scoped access via contract.
+Institutional connections get "ionic" bond status — scoped access via contract.
 University HPC (ICER, NERSC, XSEDE) is "metallic" — homogeneous, queue-based,
 delocalized compute. All three coexist.
 

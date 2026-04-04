@@ -74,7 +74,7 @@ what proprietary tools still do better, and where to find everything.
 | Plugin ecosystem | No third-party plugin system | IPC capability discovery enables composition |
 | Training documentation | No tutorials, no workshops | K-Nome methodology document exists; formal curriculum pending |
 | Multi-user web interface | Single-user, local execution | biomeOS IPC enables multi-client; web UI not planned |
-| Established community | One developer, public repos | Faculty validation network (10+ professors) |
+| Established community | One developer, public repos | 70+ papers reproduced, 27K+ tests, all validation executable |
 | Cloud deployment | Local/LAN only | NUCLEUS bonding model supports distributed deployment |
 
 ### Where to Find / Rebuild

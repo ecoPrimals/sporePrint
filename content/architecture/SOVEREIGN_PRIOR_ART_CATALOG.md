@@ -358,7 +358,7 @@ via ecoPrimals.
 |-----------|------|-------------|
 | Cross-domain noise framework | **Novel** | Unified bias-variance decomposition across agriculture, meteorology, microbiology, and seismology. Same uncertainty budget methodology applied to every spring's measurements. |
 | Uncertainty budget for springs | **Novel** | Provides measurement error labels that neuralSpring uses for robust training. Every spring's "ground truth" passes through groundSpring's uncertainty quantification. |
-| Faculty extension roadmap | **Novel** | Connects Bazavov (lattice QCD), Waters (QS), Liu (phylogenetics), Kachkovskiy (spectral) research to measurement uncertainty. |
+| Literature extension roadmap | **Novel** | Connects Bazavov (lattice QCD), Waters (QS), Liu (phylogenetics), Kachkovskiy (spectral) published research to measurement uncertainty. |
 | Monte Carlo error propagation | Established | Standard MC uncertainty. Sovereign Python implementation. |
 | Seismic travel-time inversion | Established | 1D inversion with Nelder-Mead. Standard geophysics. |
 | Multinomial rarefaction | Established | Standard microbial ecology. |

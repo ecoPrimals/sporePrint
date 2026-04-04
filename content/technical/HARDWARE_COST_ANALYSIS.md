@@ -193,7 +193,7 @@ multiple gates into a coordinated mesh. When activated:
 | Bond Type | What It Adds |
 |-----------|-------------|
 | Covalent (family gates) | All six sovereign cluster gates work as one machine. ~168 GB VRAM pool. |
-| Ionic (faculty lab) | A professor's GPU joins under a metered contract. They contribute compute, receive BarraCuda validated results. |
+| Ionic (research lab) | A lab's GPU joins under a metered contract. They contribute compute, receive BarraCuda validated results. |
 | Metallic (university HPC) | Idle GPUs on participating university clusters become BarraCuda nodes. The same $0.044 science can run at scale when institutions opt in. |
 
 **The NUCLEUS scaling equation:**

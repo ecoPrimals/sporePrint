@@ -19,9 +19,9 @@ The primals prove that Rust can build a sovereign computing ecosystem. The sprin
 
 The name is ecological: springs feed the ecosystem. Each spring produces validated kernels that flow into the primal infrastructure, just as geological springs feed rivers that sustain ecosystems. But springs are also *acceptance tests* — not for the science (which is already published and peer-reviewed), but for the infrastructure. barraCuda claims "Pure Rust GPU compute can replace the Python scientific stack." That claim requires evidence from every scientific domain the ecosystem intends to serve. A single-domain validation would prove the kernels work for plasma physics, not that the approach generalizes.
 
-Every spring follows the same phased validation protocol: **Phase 0** (Python control — reproduce published results in the original language), **Phase 1** (Rust — cross-validate against Python within 1e-5), **Phase 2** (GPU — validate GPU output against both), **Phase 3+** (extensions — real data, cross-spring connections, faculty paper reproductions). Every check is automated and binary: pass or fail, no subjective "looks about right."
+Every spring follows the same phased validation protocol: **Phase 0** (Python control — reproduce published results in the original language), **Phase 1** (Rust — cross-validate against Python within 1e-5), **Phase 2** (GPU — validate GPU output against both), **Phase 3+** (extensions — real data, cross-spring connections, published paper reproductions). Every check is automated and binary: pass or fail, no subjective "looks about right."
 
-Each spring is grounded in published work by faculty the ecosystem has documented connections to. This is not a social nicety — it is methodological: the faculty's published papers define the acceptance criteria. The springs reproduce their work; the faculty's reputation is the quality bar.
+Each spring is grounded in published, peer-reviewed work. The published papers define the acceptance criteria — the springs reproduce their results independently, in Rust, with automated cross-validation. This is replication with rigor and full provenance: the science is already established; the question is whether a pure Rust infrastructure can reproduce it faithfully.
 
 - **Science Springs** (§1): Seven domain springs covering physics, agriculture, biology, chemistry, geophysics, ML, health, and game science. All are public repositories under the syntheticChemistry GitHub organization.
 - **Meta-Spring** (§1.8): primalSpring 🧬♨️ validates primal composition, deploy graphs, and cross-gate bonding rather than a scientific domain.
@@ -38,7 +38,7 @@ Each spring is grounded in published work by faculty the ecosystem has documente
 **Domain**: Dense plasmas, nuclear structure, molecular dynamics, lattice QCD, spectral theory, neuromorphic computing  
 **Grade**: Most mature spring — Phases A through F complete, 39/39 validation suites  
 **Checks**: 697+ tests, 78 binaries, 62 WGSL shaders  
-**Faculty**: Michael Murillo (CMSE, MSU), Alexei Bazavov (CMSE + Physics, MSU), Ilya Kachkovskiy (Math, MSU), Rika Anderson (Biology, Carleton)  
+**Reproduces work by**: Michael Murillo (CMSE, MSU), Alexei Bazavov (CMSE + Physics, MSU), Ilya Kachkovskiy (Math, MSU), Rika Anderson (Biology, Carleton)  
 **Repository**: [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring)
 
 hotSpring is the primary GPU science driver — the spring that proves barraCuda can do first-principles computational physics on consumer hardware. It is the most mature spring because physics has the least room to hide: 0.000% energy drift or the simulation is wrong.
@@ -66,7 +66,7 @@ hotSpring is the primary GPU science driver — the spring that proves barraCuda
 **Domain**: Evapotranspiration (8 methods), soil moisture, IoT irrigation, Richards PDE, coupled hydrology, yield response  
 **Grade**: Full Python→Rust→GPU→metalForge→NUCLEUS pipeline complete  
 **Checks**: 1,237 Python + 827 lib + 186 forge + 381 validation + 146 evolution  
-**Faculty**: Younsuk Dong (BAE, MSU)  
+**Reproduces work by**: Younsuk Dong (BAE, MSU)  
 **Repository**: [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring)
 
 airSpring proves barraCuda can replace the Python/Excel toolchain for precision agriculture at every stage — from paper reproduction through GPU-accelerated sovereign computation on consumer hardware. The complete pipeline (weather data → evapotranspiration → crop coefficients → water balance → yield response) runs in Rust, on GPU, with zero institutional access required.
@@ -92,7 +92,7 @@ airSpring proves barraCuda can replace the Python/Excel toolchain for precision 
 **Domain**: 16S metagenomics, LC-MS feature extraction, PFAS screening, microbial ecology  
 **Grade**: V127 — 47 CPU + 47 GPU bio modules, 1 runtime dependency (flate2)  
 **Checks**: 5,707+ across 376 experiments, 63/63 papers reproduced  
-**Faculty**: Christopher Waters (MMG, MSU), Kevin Liu (CMSE, MSU), Jesse Cahill & Chuck Smallwood (Sandia), A. Daniel Jones (BMB/Chemistry, MSU), Rika Anderson (Biology, Carleton), Andrea J. Gonzales (MSU), Erika Lisabeth (ADDRC, MSU), Richard Neubig (Drug Discovery, MSU)  
+**Reproduces work by**: Christopher Waters (MMG, MSU), Kevin Liu (CMSE, MSU), Jesse Cahill & Chuck Smallwood (Sandia), A. Daniel Jones (BMB/Chemistry, MSU), Rika Anderson (Biology, Carleton), Andrea J. Gonzales (MSU), Erika Lisabeth (ADDRC, MSU), Richard Neubig (Drug Discovery, MSU)  
 **Repository**: [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 
 wetSpring proves barraCuda can replace the Galaxy/QIIME2/Python bioinformatics stack with sovereign Rust. The complete 16S pipeline — FASTQ→quality→merge→dereplicate→DADA2→chimera→taxonomy→diversity→UniFrac — runs in Rust with **1 runtime dependency** (flate2 for gzip). The sovereign XML parser eliminates `quick-xml`; the sovereign FASTQ parser eliminates `needletail`. 1,077× GPU speedup for spectral cosine matching.
@@ -117,14 +117,14 @@ wetSpring proves barraCuda can replace the Galaxy/QIIME2/Python bioinformatics s
 **Domain**: Sensor noise, inverse problems, error propagation, spectral theory, quasispecies, rare biosphere  
 **Grade**: V104 — 37 Rust modules across 5 pillars, 102 barraCuda delegations  
 **Checks**: 395/395 Rust + 287 Python + 936 Rust tests  
-**Faculty**: Alexei Bazavov (MSU), Christopher Waters (MSU), Kevin Liu (MSU), Emily Dolson (MSU), Ilya Kachkovskiy (MSU), Rika Anderson (Carleton), Andrea J. Gonzales (MSU)  
+**Reproduces work by**: Alexei Bazavov (MSU), Christopher Waters (MSU), Kevin Liu (MSU), Emily Dolson (MSU), Ilya Kachkovskiy (MSU), Rika Anderson (Carleton), Andrea J. Gonzales (MSU)  
 **Repository**: [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring)
 
 groundSpring establishes the uncertainty budget for every other spring. It decomposes measurement error into correctable bias and irreducible noise, quantifies which inputs dominate output uncertainty, and demonstrates how noise propagates through inverse problems. The framework — **decompose, identify dominant source, quantify noise floor** — is universal across domains.
 
 **Why it matters**: groundSpring is the only spring that contributes to every baseCamp paper. Exp 003 told airSpring that humidity sensors matter most (66% of ET₀ uncertainty). Exp 004 told wetSpring that 5,000 reads is the genus saturation depth. Exp 001 told neuralSpring how much sensor noise to expect. Bazavov experiments (019-021) connect directly to hotSpring lattice QCD: jackknife provides the standard error estimation used in every lattice QCD publication. Combined pipeline: hotSpring (GPU simulation) → groundSpring (inverse problem + error bars) → neuralSpring (surrogate acceleration).
 
-**30+ papers reproduced** across 7 faculty: Waters (signal specificity, bistable QS), Liu (RAWR, resampling), Kachkovskiy (Anderson, Almost-Mathieu, transport, band edge), Dolson (quasispecies), R. Anderson (drift, rare biosphere), Bazavov (jackknife, freeze-out, spectral recon), Gonzales (tissue Anderson, drug scoring).
+**30+ papers reproduced** across 7 researchers: Waters (signal specificity, bistable QS), Liu (RAWR, resampling), Kachkovskiy (Anderson, Almost-Mathieu, transport, band edge), Dolson (quasispecies), R. Anderson (drift, rare biosphere), Bazavov (jackknife, freeze-out, spectral recon), Gonzales (tissue Anderson, drug scoring).
 
 | Phase | Key Result |
 |-------|------------|
@@ -141,14 +141,14 @@ groundSpring establishes the uncertainty budget for every other spring. It decom
 **Domain**: Neural surrogates, transformers, sequence models, transfer learning, structure prediction (helixVision)  
 **Grade**: Most complete validation pipeline of any spring — Python → Rust → GPU → metalForge → Multi-GPU → helixVision  
 **Checks**: 4,500+ total (397 Python + 4,000+ Rust/GPU)  
-**Faculty**: Emily Dolson (CSE, MSU), Kevin Liu (CMSE, MSU), Christopher Waters (MMG, MSU), Alexei Bazavov (MSU), Ilya Kachkovskiy (MSU), Rika Anderson (Carleton), Andrea J. Gonzales (MSU)  
+**Reproduces work by**: Emily Dolson (CSE, MSU), Kevin Liu (CMSE, MSU), Christopher Waters (MMG, MSU), Alexei Bazavov (MSU), Ilya Kachkovskiy (MSU), Rika Anderson (Carleton), Andrea J. Gonzales (MSU)  
 **Repository**: [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring)
 
 neuralSpring proves the **Isomorphism Theorem** — all neural architectures decompose into 6 fundamental primitives (GEMM, Attention, Normalization, Nonlinearity, Reduction, Gating), and barraCuda's WGSL shader library covers all 6. This means the same GPU kernels that serve LLaMA serve OpenFold serve ResNet serve LSTM weather models. Pure Rust is **83.6× faster** than Python/NumPy (geomean, 11 domains).
 
 **helixVision** (formerly coralForge) extends the isomorphism to protein structure prediction: pure Rust f64 implementations of AlphaFold2/AlphaFold3 primitives (Evoformer, IPA, diffusion, pairformer, confidence), validated against NumPy baselines and accelerated via barraCuda/ToadStool. The same 6 primitives that serve language models serve AlphaFold.
 
-**What the constraint revealed**: 25 papers across 4 faculty groups and 5 disciplines decompose into the same 6 primitives. 47 CPU operations promoted to GPU with 30/30 dispatch parity. Multi-GPU validation (RTX 4070 + Titan V) shows 384/384 bit-identical results — architecture-independent. Dolson's Iram et al. (2020) Nature Physics on counterdiabatic driving of evolution was reproduced and validated. All 17 original barraCuda shortcomings resolved upstream.
+**What the constraint revealed**: 25 papers across 4 research groups and 5 disciplines decompose into the same 6 primitives. 47 CPU operations promoted to GPU with 30/30 dispatch parity. Multi-GPU validation (RTX 4070 + Titan V) shows 384/384 bit-identical results — architecture-independent. Dolson's Iram et al. (2020) Nature Physics on counterdiabatic driving of evolution was reproduced and validated. All 17 original barraCuda shortcomings resolved upstream.
 
 | Phase | Key Result |
 |-------|------------|
@@ -166,7 +166,7 @@ neuralSpring proves the **Isomorphism Theorem** — all neural architectures dec
 **Domain**: Pharmacokinetics, gut microbiome, biosignal processing, endocrinology, comparative medicine, drug discovery, NLME  
 **Grade**: V27 — 7 tracks, 73 experiments, Tier 0+1+2+3 complete  
 **Checks**: 795 (601 Rust + 194 Python cross-validation)  
-**Faculty**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Dr. Charles Mok (clinical endocrinology)  
+**Reproduces work by**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Charles Mok (clinical endocrinology)  
 **Repository**: [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring)
 
 healthSpring proves the ecoPrimals math infrastructure extends to human clinical applications. PK/PD models validated against canine data in neuralSpring transfer directly to human therapeutics via allometric scaling. The Anderson localization framework from wetSpring/hotSpring applies to gut microbiome colonization resistance. The **"claim verification pipeline"** — extracting quantifiable claims from clinical practice literature and validating against published registry data — is a novel methodology that generalizes to any medical reference.
@@ -194,7 +194,7 @@ healthSpring proves the ecoPrimals math infrastructure extends to human clinical
 **Domain**: Game design, human-computer interaction, procedural content generation, real-time interactive systems  
 **Grade**: V30 — 75 experiments, 1,692 checks, 13 validated HCI models, 11 tracks  
 **Checks**: 1,692 validation checks + unit/integration tests  
-**Faculty**: Csikszentmihalyi (Flow), Fitts (1954), Yannakakis & Togelius (2018), Lazzaro (2004), Hunicke (2005), Perlin (1985), Tufte (1983)  
+**Reproduces work by**: Csikszentmihalyi (Flow), Fitts (1954), Yannakakis & Togelius (2018), Lazzaro (2004), Hunicke (2005), Perlin (1985), Tufte (1983)  
 **Repository**: [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring)
 
 ludoSpring proves the ecoPrimals pipeline produces validated science in interactive systems — the most demanding real-time domain humans build. 13 foundational HCI models validated against published research. Game genres are **interaction architectures**, not aesthetic categories: FPS = molecular explorer, roguelike = parameter space exploration, RTS = systems biology dashboard.
@@ -235,7 +235,7 @@ Every spring depends on primals composing correctly. primalSpring closes the loo
 | Scientific domains covered | Physics, agriculture, biology, chemistry, geophysics, ML, neuromorphic computing, **human health (PK/PD, microbiome, biosignal, endocrinology)**, **game science (HCI, PCG, interactive systems)** |
 | Papers reproduced | 70+ (published, peer-reviewed, across all springs) |
 | Papers queued for review | 60+ candidates across all springs + 8 Mok-derived experiments |
-| Faculty literature map | 14 professors (MSU + Sandia + Carleton + clinical practice) across 9 departments |
+| Published work reproduced from | 14 researchers (MSU + Sandia + Carleton + clinical practice) across 9 departments |
 | BarraCuda kernels validated by springs | 79+ distinct GPU/NPU primitives (wetSpring alone consumes 79 via ToadStool S68) |
 | BarraCuda bugs found by springs | 6 (5 upstream in Sarkas, 1 in ToadStool log_f64) |
 | Rust validation checks | 1,008 (wetSpring) + 4,000+ (neuralSpring) + 3,123+ (airSpring) + ~697 (hotSpring) + 236 (groundSpring) |
@@ -304,10 +304,12 @@ ludoSpring (game science — 410 checks, 44 experiments, 13 HCI models)
 | **healthSpring** | ToadStool/BarraCuda (population PK, Anderson gut, biosignal) | NestGate (NCBI clinical data), biomeOS NUCLEUS (distributed health pipeline) |
 | **ludoSpring** | ToadStool/BarraCuda (game math: noise, raycaster, metrics) | petalTongue (live dashboards), biomeOS NUCLEUS (Tower Atomic validated), wetSpring (Anderson QS cross-spring), nestgate (NCBI QS data), all springs (HCI models for any interactive system) |
 
-### 2.4 Faculty → Spring Mapping
+### 2.4 Published Work Reproduced — Researcher × Spring Map
 
-| Professor | Department | Published Domain | Springs |
-|-----------|-----------|------------------|---------|
+Each spring reproduces published, peer-reviewed science as its acceptance criteria. The table maps researchers to the springs that reimplement their work — independently, in Rust, with automated cross-validation against the original results. This is replication with rigor and full provenance, not collaboration or endorsement.
+
+| Researcher | Department | Published Domain | Springs Reproducing Their Work |
+|------------|-----------|------------------|-------------------------------|
 | Michael Murillo | CMSE, MSU | Dense plasmas, WDM, molecular dynamics | hotSpring |
 | Younsuk Dong | BAE, MSU | Precision agriculture, irrigation | airSpring |
 | Christopher Waters | MMG, MSU | Quorum sensing, c-di-GMP | wetSpring, groundSpring, neuralSpring |
@@ -319,28 +321,28 @@ ludoSpring (game science — 410 checks, 44 experiments, 13 HCI models)
 | Chuck Smallwood | Sandia (Bioscience) | Biosurveillance | wetSpring |
 | A. Daniel Jones | BMB/Chemistry, MSU | Mass spectrometry, PFAS | wetSpring |
 | Rika Anderson | Biology, Carleton College | Vent metagenomics, pangenomics | hotSpring, wetSpring, groundSpring, neuralSpring |
-| Andrea J. Gonzales | Pharmacology & Toxicology, MSU | Pharmacology, cytokine signaling | wetSpring, neuralSpring, airSpring, **healthSpring** |
+| Andrea J. Gonzales | Pharmacology & Toxicology, MSU | Pharmacology, cytokine signaling | wetSpring, neuralSpring, airSpring, healthSpring |
 | Erika Lisabeth | Pharmacology & Toxicology, MSU (ADDRC) | Drug discovery, HTS | wetSpring |
 | Richard Neubig | Pharmacology & Toxicology, MSU (Drug Discovery) | GPCR signaling, fibrosis | wetSpring, neuralSpring |
-| **Charles Mok** | **Clinical Practice** | **Clinical endocrinology, TRT** | **healthSpring** |
+| Charles Mok | Clinical Practice | Clinical endocrinology, TRT | healthSpring |
 
 Full profiles: `data/FACULTY_SPRING_PROFILES.md`
 
 ### 2.5 BarraCuda Gap Summary (Across All Springs)
 
-| Gap | Requesting Springs | Priority | Faculty Driver | Status |
-|-----|-------------------|----------|---------------|--------|
-| FFT | hotSpring (lattice QCD), groundSpring (spectral recon), wetSpring (signal) | P0 | Bazavov | **Resolved** — hotSpring |
-| ODE solver (RK4) | wetSpring (c-di-GMP), groundSpring (bifurcation) | P0 | Waters | **Resolved** — wetSpring bistable, capacitor, qs_ode validated |
-| Lanczos eigensolve | hotSpring (Dirac spectrum), groundSpring (Anderson), neuralSpring (Hessian) | P1 | Kachkovskiy | **Resolved** — wetSpring + hotSpring: `lanczos`, `lanczos_eigenvalues` validated (CPU + GPU) |
-| SpMV (sparse matrix-vector) | hotSpring (lattice gauge), groundSpring (spectral), neuralSpring (sparse) | P1 | Kachkovskiy | **Resolved** — implemented for Lanczos + Anderson 3D |
-| HMM Viterbi | neuralSpring (PhyloNet-HMM), wetSpring (metagenomics) | P1 | Liu | **Resolved** — wetSpring `phylohmm` module validated |
-| Evolutionary optimization | neuralSpring (counterdiabatic), groundSpring (Dolson) | P1 | Dolson | Open — unlocks constrained evolution validation |
-| Smith-Waterman alignment | wetSpring (genomics), neuralSpring (sequence models) | P1 | Liu | **Resolved** — wetSpring Exp028 validated |
-| Gillespie simulation | wetSpring (quorum sensing), groundSpring (biological noise) | P1 | Waters | **Resolved** — wetSpring stochastic modules validated |
-| Matrix exponentiation | hotSpring (SU(3) HMC), groundSpring (transport) | P2 | Kachkovskiy, Bazavov | Open — general exp(A) for time evolution |
-| L-BFGS optimizer | neuralSpring (PINN improvement) | P2 | Raissi | Open — closes PINN error gap (5.1% → ~0.06%) |
-| Cholesky solve batch | groundSpring (jackknife, spectral recon) | P1 | Bazavov | Open — main NEW gap |
+| Gap | Requesting Springs | Priority | Published Source | Status |
+|-----|-------------------|----------|-----------------|--------|
+| FFT | hotSpring (lattice QCD), groundSpring (spectral recon), wetSpring (signal) | P0 | Bazavov papers | **Resolved** — hotSpring |
+| ODE solver (RK4) | wetSpring (c-di-GMP), groundSpring (bifurcation) | P0 | Waters papers | **Resolved** — wetSpring bistable, capacitor, qs_ode validated |
+| Lanczos eigensolve | hotSpring (Dirac spectrum), groundSpring (Anderson), neuralSpring (Hessian) | P1 | Kachkovskiy papers | **Resolved** — wetSpring + hotSpring: `lanczos`, `lanczos_eigenvalues` validated (CPU + GPU) |
+| SpMV (sparse matrix-vector) | hotSpring (lattice gauge), groundSpring (spectral), neuralSpring (sparse) | P1 | Kachkovskiy papers | **Resolved** — implemented for Lanczos + Anderson 3D |
+| HMM Viterbi | neuralSpring (PhyloNet-HMM), wetSpring (metagenomics) | P1 | Liu papers | **Resolved** — wetSpring `phylohmm` module validated |
+| Evolutionary optimization | neuralSpring (counterdiabatic), groundSpring (Dolson) | P1 | Dolson papers | Open — unlocks constrained evolution validation |
+| Smith-Waterman alignment | wetSpring (genomics), neuralSpring (sequence models) | P1 | Liu papers | **Resolved** — wetSpring Exp028 validated |
+| Gillespie simulation | wetSpring (quorum sensing), groundSpring (biological noise) | P1 | Waters papers | **Resolved** — wetSpring stochastic modules validated |
+| Matrix exponentiation | hotSpring (SU(3) HMC), groundSpring (transport) | P2 | Kachkovskiy, Bazavov papers | Open — general exp(A) for time evolution |
+| L-BFGS optimizer | neuralSpring (PINN improvement) | P2 | Raissi papers | Open — closes PINN error gap (5.1% → ~0.06%) |
+| Cholesky solve batch | groundSpring (jackknife, spectral recon) | P1 | Bazavov papers | Open — main NEW gap |
 
 ---
 

@@ -13,7 +13,7 @@ domain = "Physics and Materials"
 **Status**: Conceptual framework — unifying hypothesis for cross-spring mathematical identity
 **Date**: March 18, 2026
 **Domain**: Information Theory × Thermodynamics × Computational Architecture × Biology
-**Faculty Anchor**: Einstein (1905, mass-energy equivalence), Shannon (1948, information entropy), Landauer (1961, information-energy bound), Bekenstein (1981, information-mass bound), Wheeler (1990, "It from Bit"), Popp (1984, biophoton emission), Anderson (1958, localization)
+**Literature Anchor**: Einstein (1905, mass-energy equivalence), Shannon (1948, information entropy), Landauer (1961, information-energy bound), Bekenstein (1981, information-mass bound), Wheeler (1990, "It from Bit"), Popp (1984, biophoton emission), Anderson (1958, localization)
 **Springs**: All — this paper provides the conceptual underpinning for why barraCuda primitives serve every spring identically
 **Depends on**: Papers 01 (Anderson QS), 07 (sovereign WDM), 11 (Nautilus Shell), 15 (Precision Brain), 17 (game design as science)
 **License**: AGPL-3.0-or-later
@@ -477,7 +477,7 @@ Either way, the framework generates experiments. That is what makes it useful.
 
 ---
 
-## Faculty Anchors
+## Literature Anchors
 
 - Einstein, A. (1905) — mass-energy equivalence (E=mc²)
 - Shannon, C.E. (1948) — information entropy, noisy channel theorem

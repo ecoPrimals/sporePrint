@@ -12,7 +12,7 @@ domain = "Game Science and Systems"
 
 **Status**: Architecture validated — exp045 validates ruleset control systems (49 checks: PF2e, FATE, Cairn), exp046 validates text adventure DAG (33 checks), exp047 validates MTG card provenance (23 checks). exp053 proves anti-cheat = chain-of-custody thesis with 12 fraud types across 3 tiers. ludoSpring V23: session decomposition, typed `TransitionIssue` enum, pluggable `ValidationSink`, toadStool direct dispatch, zero-panic validation (groundSpring V109), `#[expect(reason)]` dictionary, `deny.toml`, 9 RPGPT dialogue plane experiments (321 checks).
 **Date**: March 16, 2026
-**Faculty Anchor**: Gygax & Arneson (1974, tabletop RPG structure), Cook (Pathfinder 2e, 3-action economy), Csikszentmihalyi (1990, Flow), Yannakakis & Togelius (2018, computational game science)
+**Literature Anchor**: Gygax & Arneson (1974, tabletop RPG structure), Cook (Pathfinder 2e, 3-action economy), Csikszentmihalyi (1990, Flow), Yannakakis & Togelius (2018, computational game science)
 **Springs**: ludoSpring (game science + HCI metrics), rhizoCrypt (ephemeral DAG — game state), sweetGrass (creative attribution), loamSpine (permanence — rulesets, characters, world lore), Squirrel (AI/MCP — narration), biomeOS (orchestration), BearDog (anti-cheat signing)
 **Open Systems**: Pathfinder 2e (ORC License), FATE Core (CC-BY), Powered by the Apocalypse (CC-BY), Cypher System (Open License), Cairn (CC-BY-SA)
 **License**: ORC License for game mechanics; ecoPrimals code AGPL-3.0-or-later

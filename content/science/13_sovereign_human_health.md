@@ -14,7 +14,7 @@ domain = "Human Health"
 **Domain**: Human Health × Pharmacology × Microbiome × Biosignal × Endocrinology × NLME × Clinical Translation × Comparative Medicine × Drug Discovery × biomeOS Niche Deployment
 **License**: AGPL-3.0-or-later
 **Date**: March 17, 2026
-**Faculty**: Dr. Andrea J. Gonzales (MSU Pharmacology & Toxicology), Dr. Charles Mok
+**Reproduces work by**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Charles Mok (clinical endocrinology)
 **Status**: **IPC Resilience + Sovereign Dispatch** — V35: 7 tracks complete, 613 tests, 113/113 cross-validation checks, 6 WGSL shaders, 79 JSON-RPC capabilities. Sovereign GPU dispatch via `CoralReefDevice`; IPC resilience patterns: `CircuitBreaker`, `RetryPolicy`, `DispatchOutcome`. Composition guidance: `GROUNDSPRING_V114_PRIMAL_COMPOSITION_GUIDANCE_MAR17_2026.md`. V34: Deep debt evolution. V33: `IpcError::is_recoverable()`, `ipc::protocol` module, centralized `cast` module. V32: Structured `tracing`, `health.liveness`/`health.readiness` probes, resilient provenance trio IPC. V31: `OrExit<T>`, `IpcError`, enriched `capability.list`, `#![forbid(unsafe_code)]`. Zero clippy warnings workspace-wide (pedantic + nursery), zero unsafe, zero TODO/FIXME, zero `#[allow()]`, all files under 1000 LOC. AGPL-3.0-or-later across all files.
 
 ---

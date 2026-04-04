@@ -12,7 +12,7 @@ domain = "Microbiology and Ecology"
 
 **Status**: Stage 1 in progress — computational foundation complete (V108). **neuralSpring Paper 027 benchmark COMPLETE (S142)**: ESN methane yield predictor, 36/36 CPU + 23/23 bC/gT PASS
 **Date**: March 10, 2026
-**Faculty Anchor**: Wei Liao (ADREC, MSU BAE)
+**Literature Anchor**: Wei Liao (ADREC, MSU BAE)
 **Springs**: wetSpring (QS framework), healthSpring (anaerobic gut), airSpring (soil O₂ zones), neuralSpring (ML), groundSpring (spectral)
 **Bench Source**: MSUBI bioreactor experience (5 years), ADREC interview (2024)
 

@@ -143,7 +143,7 @@ Every intermediate result is signed. The provenance chain maps to
 | **GUI workflow builder** | CLI + validation binaries only | petalTongue provides dashboards; Galaxy-style builder not planned |
 | **Multi-user web interface** | Local/LAN only | biomeOS IPC supports multi-client; web tier not planned |
 | **Instrument control** | Analysis only, no instrument drivers | We analyze what instruments produce, not drive them |
-| **Established community** | One developer + faculty network | Public repos, 27K+ tests, 70+ papers reproduced |
+| **Established community** | One developer, public repos | 27K+ tests, 70+ papers reproduced, all validation executable |
 | **Formal GxP audit** | Architecture maps to GxP; no auditor has reviewed it | Needs institutional partner |
 | **Training/workshops** | No formal curriculum | K-Nome methodology documented; course design planned |
 
@@ -169,10 +169,12 @@ cargo run --release --bin validate_diversity # Shannon/Simpson/Pielou/Chao1
 
 ---
 
-## Faculty Already Evaluating This Work
+## Published Work Reproduced With Full Provenance
 
-| Faculty | Department | Published domain | Spring | Papers Reproduced |
-|---------|-----------|------------------|--------|:-----------------:|
+The springs reproduce published, peer-reviewed science as acceptance tests for the infrastructure. Each entry below is a researcher whose published work has been independently reimplemented in Rust, cross-validated against the original Python/R/MATLAB results, and promoted to GPU — with every check automated, every tolerance explicit, and every result fully public under the scyBorg license.
+
+| Researcher | Department | Published Domain | Spring | Papers Reproduced |
+|------------|-----------|------------------|--------|:-----------------:|
 | Christopher Waters | MMG, MSU | Quorum sensing, biofilm | wetSpring | 7 |
 | Kevin Liu | CMSE, MSU | Phylogenetics, HMM | wetSpring | 6 |
 | Michael Murillo | CMSE, MSU | Plasma physics, MD | hotSpring | 22 |
@@ -183,7 +185,7 @@ cargo run --release --bin validate_diversity # Shannon/Simpson/Pielou/Chao1
 | Jesse Cahill | Sandia | Algal monitoring | wetSpring | 1 |
 | Chuck Smallwood | Sandia | Bloom surveillance | wetSpring | 1 |
 
-Total across all springs: **70+ papers reproduced, 27,000+ tests, 15,334+ validation checks.**
+Total across all springs: **70+ papers reproduced, 27,000+ tests, 15,334+ validation checks.** Every reproduction is executable: `cargo run --release --bin validate_*` reproduces the result on your hardware.
 
 ---
 
