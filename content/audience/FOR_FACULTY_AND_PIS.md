@@ -28,6 +28,18 @@ You can clone the repo and verify on your own hardware.
 
 ---
 
+## Find Your Domain
+
+**Physics & Materials** — The {{ entity(name="guidestone") }} deployment artifact validates published lattice QCD, plasma physics, molecular dynamics, and spectral theory results on commodity hardware. A single binary, no CUDA, no vendor SDK. Consumer GPUs do real f64 science via Vulkan. See the [guideStone](@/guidestone/_index.md) section and [Papers 01, 06, 07, 10, 14, 23, 25](@/science/_index.md).
+
+**Pharmacology & Immunology** — The {{ entity(name="basecamp") }} paper program has reproduced dose-response curves, pharmacokinetics, tissue-geometry modeling, and drug repurposing scoring from published veterinary and human data. Anderson localization applied to cytokine signaling is original work. See [Papers 12, 13, 22](@/science/_index.md).
+
+**Microbiology & Genomics** — Sovereign 16S pipelines, metagenomics, phylogenetics, PFAS detection, and quorum sensing models — all in pure Rust, all reproducing published results. See [Papers 02, 03, 04, 05, 09, 16](@/science/_index.md).
+
+**Game Science & Creative Computing** — Rigorous HCI models, game design as science, distributed computation, and {{ entity(name="esotericwebb") }} as a proof that sovereign infrastructure produces real creative software. See [Papers 17, 18, 19, 24](@/science/_index.md).
+
+---
+
 ## What You Actually Save
 
 | Tool | What You Pay | {{ entity(name="ecoprimals") }} Replacement | Status |

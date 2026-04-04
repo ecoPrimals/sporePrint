@@ -164,5 +164,36 @@ output is the measurement. The mathematics is the invariant substrate.
 
 ---
 
+## Get the Artifact
+
+The first {{ entity(name="guidestone") }} artifact — `hotSpring-guideStone-v0.7.0` — is available
+for collaborators and anyone who wants to verify.
+
+**For collaborators and reviewers:**
+
+Contact ecoPrimal for a tarball, USB drive, or OCI container image.
+The artifact runs on any x86_64 or aarch64 Linux with zero dependencies.
+CPU-only validation takes approximately 3 minutes. GPU acceleration is
+automatic when a Vulkan-capable adapter is present.
+
+| Delivery | Command |
+|----------|---------|
+| scp / tarball | `tar xf hotspring-guidestone-v0.7.0.tar.gz && ./hotspring validate` |
+| USB drive | Plug in, `cd` to the drive, `./hotspring validate` |
+| OCI container | `docker load < hotspring-guidestone.tar && docker run hotspring validate` |
+| Windows | `hotspring.bat` (WSL2 with Docker fallback) |
+
+**For the curious:**
+
+- The spring repositories at [syntheticChemistry](https://github.com/syntheticChemistry)
+  contain the source — all public, all AGPL-3.0-or-later.
+- {{ entity(name="plasmidbin") }} distributes pre-built primal binaries.
+- The [Science](@/science/_index.md) section has the 25 {{ entity(name="basecamp") }} papers
+  organized by domain.
+
+The artifact is the conversation starter. The physics speaks for itself.
+
+---
+
 *The wolf was always falling. The plaquette was always 0.59. The {{ entity(name="guidestone") }} does
 not create the truth. It makes the truth portable.*
