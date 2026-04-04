@@ -13,7 +13,7 @@ springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 **Date:** March 1, 2026
-**Status:** **Validated on Real AKD1000 Hardware** — Full NPU pipeline running on live neuromorphic silicon: ESN reservoir → int8 quantization → DMA → AKD1000 inference → classification. Bloom sentinel (Exp118, 123: 20 checks), QS phase classifier (Exp114: 13 checks), spectral triage (Exp124: 10 checks). All three-tier validated. PFAS screening pipeline (Exp041-042: 23 checks). Communication mode analysis (Exp147, 152: 15 checks) — 4/6 modes subject to Anderson localization. V59: NPU sentinel real stream (Exp188 — 10 checks). **V60 Live AKD1000 (Exp193-195, 60 checks)**: 3 ESN classifiers validated sim↔hardware (QS 49%/34%, Bloom 25%/25%, Disorder 33%/32%); 18.8K Hz inference throughput; reservoir weight loading 37 MB/s; online readout switching 86 µs (weight mutation); batch 20.7K infer/sec; 1.4 µJ/infer (coin-cell 11 years); PUF fingerprint 6.34 bits entropy; online (1+1)-ES evolution 136 gen/sec; 12.9K Hz temporal streaming p99=76 µs; Anderson disorder sweep on NPU mesh; cross-reservoir crosstalk 12.8K switch/sec. **Pure Rust driver** via ToadStool `akida-driver` — Phase C sovereign driver achieved (zero SDK/vendor dependency)
+**Status:** **Validated on Real AKD1000 Hardware** — Full NPU pipeline running on live neuromorphic silicon: ESN reservoir → int8 quantization → DMA → AKD1000 inference → classification. Bloom sentinel (Exp118, 123: 20 checks), QS phase classifier (Exp114: 13 checks), spectral triage (Exp124: 10 checks). All three-tier validated. PFAS screening pipeline (Exp041-042: 23 checks). Communication mode analysis (Exp147, 152: 15 checks) — 4/6 modes subject to Anderson localization. V59: NPU sentinel real stream (Exp188 — 10 checks). **V60 Live AKD1000 (Exp193-195, 60 checks)**: 3 ESN classifiers validated sim↔hardware (QS 49%/34%, Bloom 25%/25%, Disorder 33%/32%); 18.8K Hz inference throughput; reservoir weight loading 37 MB/s; online readout switching 86 µs (weight mutation); batch 20.7K infer/sec; 1.4 µJ/infer (coin-cell 11 years); PUF fingerprint 6.34 bits entropy; online (1+1)-ES evolution 136 gen/sec; 12.9K Hz temporal streaming p99=76 µs; Anderson disorder sweep on NPU mesh; cross-reservoir crosstalk 12.8K switch/sec. **Pure Rust driver** via {{ entity(name="toadstool") }} `akida-driver` — Phase C sovereign driver achieved (zero SDK/vendor dependency)
 **Domain:** Environmental microbiology, biosensing, contamination monitoring
 **Novelty:** Anderson regime shift as a measurable signal for environmental
 perturbation; ESN/reservoir computing for real-time anomaly detection on
@@ -34,7 +34,7 @@ from community composition data.
 
 The framework connects three threads: (1) Anderson localization as a
 community health metric, (2) echo state networks (ESN) / reservoir computing
-(validated in wetSpring Exp114-119) for real-time anomaly detection on
+(validated in {{ entity(name="wetspring") }} Exp114-119) for real-time anomaly detection on
 community time series, and (3) specific applications to PFAS contamination,
 harmful algal blooms, and pathogen emergence.
 
@@ -109,7 +109,7 @@ contamination produces:
    toward lower disorder
 2. **Functional gene shift** → QS gene expression changes (PFAS-stressed
    communities may upregulate QS for coordinated efflux pump expression)
-3. **Detectable via 16S time series** using wetSpring sovereign pipeline
+3. **Detectable via 16S time series** using {{ entity(name="wetspring") }} sovereign pipeline
 
 Detection threshold: the Anderson regime shift becomes detectable before
 PFAS reaches levels harmful to humans — microbial communities are more
@@ -208,12 +208,12 @@ Environmental sample (weekly 16S)
 
 ### 5.2 ESN and LSTM Anomaly Detection
 
-The echo state network (ESN) approach validated in neuralSpring and wetSpring
+The echo state network (ESN) approach validated in {{ entity(name="neuralspring") }} and {{ entity(name="wetspring") }}
 (Exp114-119, reservoir computing primitives) is designed for exactly this
 task: detecting anomalous patterns in time series without explicit model
 specification.
 
-**S134 directly validates this pipeline**: neuralSpring now has two
+**S134 directly validates this pipeline**: {{ entity(name="neuralspring") }} now has two
 reservoir computing surrogates with full Python→Rust cross-language parity:
 
 - **nW-05 ESN regime classifier** (`wdm_esn.rs`): 2-step ESN with tanh
@@ -236,12 +236,12 @@ Both reservoir models use fixed random weights + ridge regression readout —
 no backpropagation needed. This makes them suitable for NPU deployment
 (deterministic, lightweight inference) and edge-device monitoring.
 
-neuralSpring's LSTM (Study 004, NSE=0.849 on ERA5 weather data) provides a
+{{ entity(name="neuralspring") }}'s LSTM (Study 004, NSE=0.849 on ERA5 weather data) provides a
 complementary deep learning approach for longer-horizon predictions. The LSTM
 captures temporal dependencies across seasons, while the ESN excels at
 real-time anomaly detection with minimal computational overhead.
 
-neuralSpring also contributes spectral analysis primitives (`eigh_f64`, IPR,
+{{ entity(name="neuralspring") }} also contributes spectral analysis primitives (`eigh_f64`, IPR,
 level spacing ratio) for characterizing community structure shifts — the same
 primitives validated against Kachkovskiy Papers 022-023 (150+ tolerances,
 46 upstream rewires). S135 total: 966 lib tests, 232 binaries, 220/220
@@ -258,7 +258,7 @@ a calibrated threshold trigger an alert.
 ### 5.3 NPU Deployment
 
 The ESN runs on the neuromorphic processing unit (NPU) at the edge — no cloud
-dependency, no data exfiltration, real-time inference. This is the ecoPrimals
+dependency, no data exfiltration, real-time inference. This is the {{ entity(name="ecoprimals") }}
 sovereign compute advantage: environmental monitoring that runs on local
 hardware with no external dependencies.
 
@@ -273,7 +273,7 @@ hardware with no external dependencies.
 
 ## 7. groundSpring Connections
 
-groundSpring provides the uncertainty calibration that separates real sentinel
+{{ entity(name="groundspring") }} provides the uncertainty calibration that separates real sentinel
 alerts from false positives:
 
 - **Exp 001 — Sensor noise decomposition**: Quantifies how much of a detected
@@ -301,10 +301,10 @@ alerts from false positives:
   deployments, environmental covariates must be measured with calibrated
   uncertainty. 15/15 Rust checks
 
-**Sentinel calibration pipeline**: groundSpring (sensor noise floor +
-uncertainty propagation) → wetSpring (16S pipeline → diversity → Anderson
-regime) → neuralSpring (ESN anomaly detection) → hotSpring (NPU int8
-deployment). groundSpring's uncertainty budget determines the ESN's
+**Sentinel calibration pipeline**: {{ entity(name="groundspring") }} (sensor noise floor +
+uncertainty propagation) → {{ entity(name="wetspring") }} (16S pipeline → diversity → Anderson
+regime) → {{ entity(name="neuralspring") }} (ESN anomaly detection) → {{ entity(name="hotspring") }} (NPU int8
+deployment). {{ entity(name="groundspring") }}'s uncertainty budget determines the ESN's
 detection threshold — without it, the sentinel cannot distinguish signal
 from noise.
 

@@ -14,7 +14,7 @@ springs = ["ludospring", "wetspring"]
 
 **Status**: Active | **Date**: March 13, 2026
 **Depends on**: Papers 04 (Sentinels), 09 (Field Genomics), 16 (Anaerobic QS), 20 (NFT Economics)
-**Validated by**: ludoSpring exp062_field_sample_provenance (39/39 checks), exp064_beardog_signed_chain (39/39 checks), exp065_cross_domain_fraud (74/74 checks)
+**Validated by**: {{ entity(name="ludospring") }} exp062_field_sample_provenance (39/39 checks), exp064_beardog_signed_chain (39/39 checks), exp065_cross_domain_fraud (74/74 checks)
 **License**: AGPL-3.0-or-later
 
 ---
@@ -22,11 +22,11 @@ springs = ["ludospring", "wetspring"]
 ## Abstract
 
 The same provenance architecture that tracks game items tracks biological
-samples. This paper demonstrates that rhizoCrypt DAG + loamSpine certificate +
-sweetGrass braid + BearDog signature provides complete field-to-publication
+samples. This paper demonstrates that {{ entity(name="rhizocrypt") }} DAG + {{ entity(name="loamspine") }} certificate +
+{{ entity(name="sweetgrass") }} braid + {{ entity(name="beardog") }} signature provides complete field-to-publication
 chain-of-custody for scientific samples. Fraud detection reduces to graph
 analysis — the same code that catches item duplication in gaming catches phantom
-samples in a laboratory. Every biological sample is a Novel Ferment Transcript.
+samples in a laboratory. Every biological sample is a {{ entity(name="nft") }}.
 
 ---
 
@@ -79,8 +79,8 @@ Collect ─► Transport ─► Store ─► Extract ─► Amplify ─► Seque
  [cert]    [custody]   [custody]  [process]  [process]   [process]  [process]
 ```
 
-Each node is a rhizoCrypt vertex. Each transition is a custody transfer or
-processing step recorded in the DAG. The loamSpine certificate carries the
+Each node is a {{ entity(name="rhizocrypt") }} vertex. Each transition is a custody transfer or
+processing step recorded in the DAG. The {{ entity(name="loamspine") }} certificate carries the
 sample's persistent identity — its accession number, sample type, collection
 metadata, and condition.
 
@@ -88,22 +88,22 @@ metadata, and condition.
 
 | Type | Description | Provenance Mapping |
 |------|-------------|-------------------|
-| `SampleType` | Soil, Water, Swab, Tissue, Blood, Isolate | loamSpine cert attribute |
-| `SampleCondition` | Fresh, Refrigerated, Frozen, Degraded, Destroyed | loamSpine cert state |
-| `CustodyTransfer` | from_did, to_did, location, condition, temperature | rhizoCrypt vertex + loamSpine transfer |
-| `ProcessingStep` | DNA extraction, PCR, sequencing, bioinformatics, QC | rhizoCrypt vertex |
-| `SampleCertificate` | loamSpine cert with GPS, datetime, collector DID, accession | loamSpine mint |
-| `SampleDag` | Full lifecycle DAG | rhizoCrypt session |
-| `SampleAttribution` | Collector, transporter, technician, analyst, PI | sweetGrass braids |
+| `SampleType` | Soil, Water, Swab, Tissue, Blood, Isolate | {{ entity(name="loamspine") }} cert attribute |
+| `SampleCondition` | Fresh, Refrigerated, Frozen, Degraded, Destroyed | {{ entity(name="loamspine") }} cert state |
+| `CustodyTransfer` | from_did, to_did, location, condition, temperature | {{ entity(name="rhizocrypt") }} vertex + {{ entity(name="loamspine") }} transfer |
+| `ProcessingStep` | DNA extraction, PCR, sequencing, bioinformatics, QC | {{ entity(name="rhizocrypt") }} vertex |
+| `SampleCertificate` | {{ entity(name="loamspine") }} cert with GPS, datetime, collector DID, accession | {{ entity(name="loamspine") }} mint |
+| `SampleDag` | Full lifecycle DAG | {{ entity(name="rhizocrypt") }} session |
+| `SampleAttribution` | Collector, transporter, technician, analyst, PI | {{ entity(name="sweetgrass") }} braids |
 
 ### Mapping to Standards
 
-| ecoPrimals | ISO 17025 | ISO 15189 | HIPAA (tissue) |
+| {{ entity(name="ecoprimals") }} | ISO 17025 | ISO 15189 | HIPAA (tissue) |
 |-----------|-----------|-----------|----------------|
-| loamSpine cert | Test item identification | Sample identification | Specimen tracking |
-| rhizoCrypt DAG | Traceability chain | Pre-examination process | Chain of custody |
-| sweetGrass braid | Personnel records | Competence records | Authorized personnel |
-| BearDog signature | Data integrity | Information system security | Audit controls |
+| {{ entity(name="loamspine") }} cert | Test item identification | Sample identification | Specimen tracking |
+| {{ entity(name="rhizocrypt") }} DAG | Traceability chain | Pre-examination process | Chain of custody |
+| {{ entity(name="sweetgrass") }} braid | Personnel records | Competence records | Authorized personnel |
+| {{ entity(name="beardog") }} signature | Data integrity | Information system security | Audit controls |
 
 ---
 
@@ -143,7 +143,7 @@ types are identical — only the names change.
 
 ### What wetSpring Gets
 
-exp062 provides a concrete Rust pattern that maps directly to wetSpring's
+exp062 provides a concrete Rust pattern that maps directly to {{ entity(name="wetspring") }}'s
 existing field genomics architecture (sub_thesis_06):
 
 ```
@@ -156,16 +156,16 @@ publication_record           ←─►   publish()
 quality_control_step         ←─►   process(QualityControl)
 ```
 
-wetSpring teams adopt the domain model and fraud detectors directly. The
-BearDog-signed chain (exp064) makes every custody transfer cryptographically
+{{ entity(name="wetspring") }} teams adopt the domain model and fraud detectors directly. The
+{{ entity(name="beardog") }}-signed chain (exp064) makes every custody transfer cryptographically
 non-repudiable.
 
 ### Integration Path
 
-1. wetSpring reads exp062 as a reference implementation
+1. {{ entity(name="wetspring") }} reads exp062 as a reference implementation
 2. Adapts `SampleType` and `ProcessingStep` to their specific pipelines
-3. Deploys rhizoCrypt + loamSpine + sweetGrass as biomeOS graph services
-4. BearDog signs every operation via IPC (JSON-RPC over Unix socket)
+3. Deploys {{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }} as {{ entity(name="biomeos") }} graph services
+4. {{ entity(name="beardog") }} signs every operation via IPC (JSON-RPC over Unix socket)
 5. songbird discovers the provenance trio services at runtime
 6. The fraud detectors become the automated QC pipeline
 
@@ -176,7 +176,7 @@ non-repudiable.
 ### The Value Chain
 
 When a scientific sample generates value — a publication, a patent, a dataset —
-the sweetGrass attribution chain records every contributor:
+the {{ entity(name="sweetgrass") }} attribution chain records every contributor:
 
 ```
 Field collector (Creator)
@@ -208,10 +208,10 @@ Every operation in the sample lifecycle is signed:
 
 | Operation | Signing Target | Verification |
 |-----------|---------------|-------------|
-| collect_sample | loamSpine cert mint | BearDog Ed25519 on cert content |
-| custody_transfer | loamSpine transfer + DAG vertex | BearDog Ed25519 on both |
-| process | DAG vertex | BearDog Ed25519 on vertex |
-| publish | DAG vertex + sweetGrass braid | BearDog Ed25519 on both |
+| collect_sample | {{ entity(name="loamspine") }} cert mint | {{ entity(name="beardog") }} Ed25519 on cert content |
+| custody_transfer | {{ entity(name="loamspine") }} transfer + DAG vertex | {{ entity(name="beardog") }} Ed25519 on both |
+| process | DAG vertex | {{ entity(name="beardog") }} Ed25519 on vertex |
+| publish | DAG vertex + {{ entity(name="sweetgrass") }} braid | {{ entity(name="beardog") }} Ed25519 on both |
 
 The `ProvenanceChainVerifier` (exp064) walks the entire chain and verifies
 every signature. A single tampered vertex is detected at its exact position.
@@ -236,18 +236,18 @@ Total: **193 checks, 0 failures**.
 | Paper | Connection |
 |-------|-----------|
 | 04 — Sentinels | Sample monitoring extends sentinel architecture |
-| 09 — Field Genomics | Direct scaffold for wetSpring sample processing |
+| 09 — Field Genomics | Direct scaffold for {{ entity(name="wetspring") }} sample processing |
 | 16 — Anaerobic QS | Quorum sensing models for sample colony analysis |
 | 17 — Game Design | Same provenance patterns, different domain vocabulary |
 | 18 — RPGPT | Anti-cheat = chain-of-custody (proven in exp065) |
-| 20 — NFT Economics | Every sample is a Novel Ferment Transcript |
+| 20 — NFT Economics | Every sample is a {{ entity(name="nft") }} |
 
 ---
 
 ## 9. Future Work
 
-- **wetSpring adoption**: Direct integration with field genomics pipeline
-- **Real BearDog signing**: Replace model signatures with live IPC
+- **{{ entity(name="wetspring") }} adoption**: Direct integration with field genomics pipeline
+- **Real {{ entity(name="beardog") }} signing**: Replace model signatures with live IPC
 - **Public anchor**: Optional blockchain anchoring for regulatory proof
 - **Cross-institution provenance**: songbird discovery for multi-lab chains
 - **ISO 17025 compliance matrix**: Formal mapping of all requirements to provenance trio operations

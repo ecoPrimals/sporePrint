@@ -13,8 +13,8 @@ springs = ["hotspring"]
 +++
 
 **Date:** March 9, 2026
-**Status:** Complete (all 17 β points finished, 1,071 trajectories). **Chuna Papers 43-45: 44/44 overnight checks pass** (v0.6.24). Dynamical N_f=4 ext 3/3 complete. coralReef sovereign compilation: 44/46 shaders, full `GpuBackend` impl.
-**Spring:** hotSpring (v0.6.24)
+**Status:** Complete (all 17 β points finished, 1,071 trajectories). **Chuna Papers 43-45: 44/44 overnight checks pass** (v0.6.24). Dynamical N_f=4 ext 3/3 complete. {{ entity(name="coralreef") }} sovereign compilation: 44/46 shaders, full `GpuBackend` impl.
+**Spring:** {{ entity(name="hotspring") }} (v0.6.24)
 **Hardware:** RTX 3090 (GPU) + BrainChip AKD1000 (NPU) + Titan V (DRM testing)
 **License:** AGPL-3.0-only
 
@@ -46,7 +46,7 @@ approximately 5.0–5.5 (dynamical, 1 flavor).
 
 ## 1. Background: Why This Run Matters
 
-baseCamp 07 established quenched SU(3) lattice QCD on consumer hardware:
+{{ entity(name="basecamp") }} 07 established quenched SU(3) lattice QCD on consumer hardware:
 two production scans at 32⁴ showing β_c = 5.69 (matching literature to
 three significant figures), DF64 hybrid arithmetic (2× speedup), and
 NPU adaptive steering (2.5× more useful statistics at same wall time).
@@ -426,15 +426,15 @@ specifications.
 
 ### Connection to other baseCamp papers
 
-- **baseCamp 01 (Anderson QS)**: The CG–disorder correlation observed
+- **{{ entity(name="basecamp") }} 01 (Anderson QS)**: The CG–disorder correlation observed
   here directly validates the Anderson localization framework. Gauge
   fluctuations at strong coupling (high plaquette variance = high
   effective disorder) produce harder CG solves, exactly as Anderson
   predicts.
-- **baseCamp 07 (WDM/QCD)**: This run extends paper 07 from quenched to
+- **{{ entity(name="basecamp") }} 07 (WDM/QCD)**: This run extends paper 07 from quenched to
   dynamical. The DF64 arithmetic, NPU steering, and vendor-agnostic
   shader stack carry over unchanged.
-- **baseCamp 04 (Sentinels)**: The multi-head NPU architecture
+- **{{ entity(name="basecamp") }} 04 (Sentinels)**: The multi-head NPU architecture
   demonstrated here (14 heads, real-time steering) is the same pattern
   used for environmental biosensing — cheap inference guiding expensive
   measurement.
@@ -472,7 +472,7 @@ beta point.
 
 ## Addendum: Deep Debt Resolution (v0.6.18, 2026-03-06)
 
-hotSpring v0.6.18 completed a comprehensive technical debt audit (Exp 041):
+{{ entity(name="hotspring") }} v0.6.18 completed a comprehensive technical debt audit (Exp 041):
 Clippy 0 warnings (pedantic+nursery), file-size compliance (<1000 lines), unwrap/expect
 removal from production sites, SPDX 100% AGPL-3.0-only. Brain B2 (memory pressure)
 and D1 (force anomaly) evolved from placeholder to real runtime estimates. 685 lib

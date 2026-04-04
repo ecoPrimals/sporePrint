@@ -13,7 +13,7 @@ springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 **Date:** March 1, 2026
-**Status:** 3,700+ validation checks across 82 experiments (Exp107-156, 170-182, 184-186, 190-192), all PASS; W_c = 16.26 ± 0.95 (finite-size scaling); Track 4 soil QS complete (9 papers, full three-tier: CPU + GPU + metalForge); 9 extension papers validated (cold seep, wave synthesis, burst stats, eavesdroppers, interkingdom, physical comm, density correlation, cAMP relay); correlated disorder + dilution effects quantified; V59: real NCBI sovereign pipeline (Exp184 — NCBI→FASTA→diversity→Anderson), cold seep metagenomes (Exp185 — 50 communities, Bray-Curtis, Anderson classification), dynamic W(t) models (Exp186 — tillage/antibiotic/seasonal perturbation); three-tier controls (Exp190 CPU 75 checks, Exp191 GPU 29 checks, Exp192 metalForge 36 checks). **V84:** 32 papers math-controlled (Exp251), 26 CPU domains validated (Exp252), Python parity proven across 15 domains (Exp253, bit-identical to SciPy), GPU portability extended to 21 domains (Exp254), 6-stage unidirectional streaming (Exp255, 0.10ms overhead). **V85:** EMP-scale Anderson Atlas (Exp256) — 30,002 synthetic samples across 14 EMPO biome categories processed in 55ms, confirms Paper 01 prediction at scale (all natural 3D biomes produce extended states). NUCLEUS three-tier data routing validated (Exp257). Genomic Vault organ model (Exp259) — consent-gated encrypted storage for sovereign genomic data. **V86:** Cross-spring evolution validated (23/23 checks across 5 Springs). ESN bridge to ToadStool esn_v2 enables bio multi-head classifiers. Deep debt elimination: all modules under 652 lines, 0 magic numbers, 0 unsafe, 0 mocks in production. **V92C:** 272 experiments, 7,220+ checks, 1,276 tests, 93 ToadStool primitives (S79), 103 named tolerances, provenance headers on all 255 binaries. New specs: `CROSS_SPRING_EVOLUTION.md` documents full shader lineage.
+**Status:** 3,700+ validation checks across 82 experiments (Exp107-156, 170-182, 184-186, 190-192), all PASS; W_c = 16.26 ± 0.95 (finite-size scaling); Track 4 soil QS complete (9 papers, full three-tier: CPU + GPU + {{ entity(name="metalforge") }}); 9 extension papers validated (cold seep, wave synthesis, burst stats, eavesdroppers, interkingdom, physical comm, density correlation, cAMP relay); correlated disorder + dilution effects quantified; V59: real NCBI sovereign pipeline (Exp184 — NCBI→FASTA→diversity→Anderson), cold seep metagenomes (Exp185 — 50 communities, Bray-Curtis, Anderson classification), dynamic W(t) models (Exp186 — tillage/antibiotic/seasonal perturbation); three-tier controls (Exp190 CPU 75 checks, Exp191 GPU 29 checks, Exp192 {{ entity(name="metalforge") }} 36 checks). **V84:** 32 papers math-controlled (Exp251), 26 CPU domains validated (Exp252), Python parity proven across 15 domains (Exp253, bit-identical to SciPy), GPU portability extended to 21 domains (Exp254), 6-stage unidirectional streaming (Exp255, 0.10ms overhead). **V85:** EMP-scale Anderson Atlas (Exp256) — 30,002 synthetic samples across 14 EMPO biome categories processed in 55ms, confirms Paper 01 prediction at scale (all natural 3D biomes produce extended states). {{ entity(name="nucleus") }} three-tier data routing validated (Exp257). Genomic Vault organ model (Exp259) — consent-gated encrypted storage for sovereign genomic data. **V86:** Cross-spring evolution validated (23/23 checks across 5 Springs). ESN bridge to {{ entity(name="toadstool") }} esn_v2 enables bio multi-head classifiers. Deep debt elimination: all modules under 652 lines, 0 magic numbers, 0 unsafe, 0 mocks in production. **V92C:** 272 experiments, 7,220+ checks, 1,276 tests, 93 {{ entity(name="toadstool") }} primitives (S79), 103 named tolerances, provenance headers on all 255 binaries. New specs: `CROSS_SPRING_EVOLUTION.md` documents full shader lineage.
 **Domain:** Condensed matter physics applied to microbial ecology
 **Novelty:** No prior work applies Anderson localization to QS signaling
 (confirmed via literature search, February 2026)
@@ -212,33 +212,33 @@ outperform broadcast inoculation — the model explains why.
 
 ## 7. neuralSpring Connections
 
-neuralSpring validates the same spectral primitives (`eigh_f64`, `BatchIprGpu`,
+{{ entity(name="neuralspring") }} validates the same spectral primitives (`eigh_f64`, `BatchIprGpu`,
 level spacing ratio) used in this sub-thesis — Kachkovskiy Papers 022-023 are
-shared anchors. neuralSpring's own baseCamp Sub-01 (weight matrices as disordered
+shared anchors. {{ entity(name="neuralspring") }}'s own {{ entity(name="basecamp") }} Sub-01 (weight matrices as disordered
 Hamiltonians) applies the **same Anderson localization framework** to neural
 network weight matrices that gen3 Sub-01 uses on microbial communities:
 
 - **Shared primitives**: `eigh_f64` eigendecomposition, IPR calculation,
   level spacing ratio `r`, Wigner-Dyson vs Poisson statistics
 - **Cross-validation**: If Anderson localization governs both microbial QS
-  geometry (gen3) and neural network weight spectra (neuralSpring), the
+  geometry (gen3) and neural network weight spectra ({{ entity(name="neuralspring") }}), the
   framework gains biological AND computational evidence simultaneously
-- **ESN regime classifier** (nW-05, S134): neuralSpring's ESN classifier
+- **ESN regime classifier** (nW-05, S134): {{ entity(name="neuralspring") }}'s ESN classifier
   validates the reservoir computing pattern used for regime detection — the
   same architecture can classify Anderson regimes (extended/localized/marginal)
   from community time-series features, directly applicable to QS regime
   monitoring (Sub-thesis 04, 06)
-- **Current status**: neuralSpring S135 — 966 lib tests, 232 binaries,
+- **Current status**: {{ entity(name="neuralspring") }} S135 — 966 lib tests, 232 binaries,
   220/220 validate_all, 3,034+ total checks, 5 WDM surrogates complete (nW-01..05),
   150+ named tolerances, 46 upstream rewires, `spectral_entropy` delegated to
   `barracuda::stats::shannon_from_frequencies`
 
 ## 8. groundSpring Connections
 
-groundSpring provides the independent mathematical validation of the Anderson
-framework that underpins this entire sub-thesis. While wetSpring applies Anderson
-localization to biological communities and hotSpring uses spectral theory for
-lattice QCD, groundSpring validates the core mathematics in isolation — pure
+{{ entity(name="groundspring") }} provides the independent mathematical validation of the Anderson
+framework that underpins this entire sub-thesis. While {{ entity(name="wetspring") }} applies Anderson
+localization to biological communities and {{ entity(name="hotspring") }} uses spectral theory for
+lattice QCD, {{ entity(name="groundspring") }} validates the core mathematics in isolation — pure
 spectral theory, transport, and inverse problems with benchmark-grade precision:
 
 - **Exp 008 — Anderson localization** (Bourgain & Kachkovskiy 2018): 1D/2D/3D
@@ -267,16 +267,16 @@ spectral theory, transport, and inverse problems with benchmark-grade precision:
   Parallels the disorder threshold (W_c) where Anderson localization
   destroys signal propagation. 6/6 Rust checks
 
-**Mathematical grounding**: groundSpring's Kachkovskiy experiments validate
+**Mathematical grounding**: {{ entity(name="groundspring") }}'s Kachkovskiy experiments validate
 all four spectral theory papers that provide the rigorous mathematical
 foundation for this sub-thesis. The combined evidence — 52 Rust checks
 across 4 Kachkovskiy papers, all at benchmark-grade numerical precision —
 establishes that the Anderson framework is not merely borrowed from
-condensed matter physics but independently validated in the ecoPrimals stack.
+condensed matter physics but independently validated in the {{ entity(name="ecoprimals") }} stack.
 
-**Future**: As groundSpring migrates to BarraCuda GPU (Phase 2b), the same
+**Future**: As {{ entity(name="groundspring") }} migrates to BarraCuda GPU (Phase 2b), the same
 Anderson spectral computations will run on GPU via the three-tier pattern
-(Exp190-192) already established in wetSpring — enabling direct cross-spring
+(Exp190-192) already established in {{ entity(name="wetspring") }} — enabling direct cross-spring
 verification of GPU Anderson eigensolves.
 
 ## 9. Reproducibility

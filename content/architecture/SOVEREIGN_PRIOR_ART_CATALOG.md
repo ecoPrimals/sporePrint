@@ -30,7 +30,7 @@ it cannot be absorbed into proprietary stacks.
 
 **Novel prior art**: Capabilities, architectures, or integrations that do
 not exist in any other open-source project. These are new to technology
-via ecoPrimals.
+via {{ entity(name="ecoprimals") }}.
 
 ---
 
@@ -40,9 +40,9 @@ via ecoPrimals.
 
 | Capability | Type | Description |
 |-----------|------|-------------|
-| Tower Atomic pattern | **Novel** | Crypto provider (BearDog) separated from protocol (Songbird) via JSON-RPC IPC. No other system cleanly separates crypto operations from transport this way. |
+| {{ entity(name="toweratomic") }} pattern | **Novel** | Crypto provider ({{ entity(name="beardog") }}) separated from protocol ({{ entity(name="songbird") }}) via JSON-RPC IPC. No other system cleanly separates crypto operations from transport this way. |
 | Genetic lineage | **Novel** | Device seed derivation from root key, lineage certificates, challenge-response authentication. Cryptographic proof of device ancestry. |
-| Dark Forest beacon | **Novel** | Zero-metadata beacon keys via `genetic.derive_lineage_beacon_key`. HKDF + domain separation for discoverable-but-private service advertisement. |
+| {{ entity(name="darkforest") }} beacon | **Novel** | Zero-metadata beacon keys via `genetic.derive_lineage_beacon_key`. HKDF + domain separation for discoverable-but-private service advertisement. |
 | Multi-family isolation | **Novel** | Per-family `--family-id` instances with fully isolated key derivation trees. |
 | Tor v3 crypto in pure Rust | Established | Onion address derivation, ntor handshake, cell encryption. Standard Tor spec, novel in pure Rust without C dependencies. |
 | RustCrypto primitives | Established | Ed25519, X25519, AES-GCM, ChaCha20-Poly1305, BLAKE3, SHA-2/3, HKDF, Argon2id. Standard crypto, sovereign implementation. |
@@ -57,9 +57,9 @@ via ecoPrimals.
 | Capability | Type | Description |
 |-----------|------|-------------|
 | Pure Rust Tor stack | **Novel** | Full directory, circuit, stream, onion service in pure Rust. Most Tor implementations use C (arti is Rust but not AGPL). This is the only AGPL-3.0 Tor stack. |
-| Sovereign Onion service | **Novel** | P2P encrypted service with all crypto delegated to BearDog via IPC. No local crypto state in the network layer. |
-| NFC Genesis pairing | **Novel** | Dark Forest mobile pairing with low metadata leakage. Zero-knowledge device introduction. |
-| 100% crypto delegation | **Novel** | Zero cryptographic operations in the network layer. All delegated to BearDog via JSON-RPC IPC. No other networking stack operates this way. |
+| Sovereign Onion service | **Novel** | P2P encrypted service with all crypto delegated to {{ entity(name="beardog") }} via IPC. No local crypto state in the network layer. |
+| NFC Genesis pairing | **Novel** | {{ entity(name="darkforest") }} mobile pairing with low metadata leakage. Zero-knowledge device introduction. |
+| 100% crypto delegation | **Novel** | Zero cryptographic operations in the network layer. All delegated to {{ entity(name="beardog") }} via JSON-RPC IPC. No other networking stack operates this way. |
 | Infant Discovery | **Novel** | O(n) discovery via central hub instead of O(n²) mesh. Scalable service discovery without broadcast storms. |
 | QUIC + TLS 1.3 | Established | Standard protocols, sovereign implementation. |
 | STUN + IGD NAT traversal | Established | RFC 5389 + UPnP IGD, sovereign implementation. |
@@ -171,17 +171,17 @@ via ecoPrimals.
 
 | Capability | Type | Description |
 |-----------|------|-------------|
-| NUCLEUS atomic composition | **Novel** | Tower/Node/Nest/Full pre-composed atomic patterns. Chemical bonding model (Ionic/Covalent/Metallic/Weak) for distributed system composition. No other system uses chemical bonding metaphors for microservice topology. |
-| Neural API (165+ translations) | **Novel** | Semantic capability routing. Primals compose by capability string, not by name or address. 13 domains, 165+ translations. No hardcoded primal references anywhere. |
-| Plasmodium collective | **Novel** | Physarum polycephalum-inspired decentralized orchestration. HTTP JSON-RPC collective with dynamic join/leave. No central coordinator. Emergent routing. |
-| Dark Forest beacon genetics | **Novel** | Zero-metadata discovery. Genetic lineage = decryption key. Privacy beyond Signal or Tor — metadata itself is invisible, not just encrypted. |
+| {{ entity(name="nucleus") }} atomic composition | **Novel** | Tower/Node/Nest/Full pre-composed atomic patterns. Chemical bonding model (Ionic/Covalent/Metallic/Weak) for distributed system composition. No other system uses chemical bonding metaphors for microservice topology. |
+| {{ entity(name="neuralapi") }} (165+ translations) | **Novel** | Semantic capability routing. Primals compose by capability string, not by name or address. 13 domains, 165+ translations. No hardcoded primal references anywhere. |
+| {{ entity(name="plasmodium") }} collective | **Novel** | Physarum polycephalum-inspired decentralized orchestration. HTTP JSON-RPC collective with dynamic join/leave. No central coordinator. Emergent routing. |
+| {{ entity(name="darkforest") }} beacon genetics | **Novel** | Zero-metadata discovery. Genetic lineage = decryption key. Privacy beyond Signal or Tor — metadata itself is invisible, not just encrypted. |
 | Mitochondrial + Nuclear DNA model | **Novel** | Two-seed identity: beacon seed (mitochondrial, service discovery) + lineage seed (nuclear, trust chain). Distinct security semantics from biological analogy. |
 | ContinuousExecutor graph engine | **Novel** | Fixed-timestep graph loops with feedback edges. 60Hz tick clock for game loops, 90Hz for surgical simulation. Graph-based continuous execution with domain-specific tick rates. |
 | Surgical VR deployment graph | **Novel** | Anatomy + tissue physics + biosignals + pharmacokinetics composed as a single graph. Integrated medical simulation pipeline from primal composition. |
-| Cross-spring ecology graphs | **Novel** | airSpring → wetSpring → neuralSpring pipeline defined in TOML. Domain-specific ecology where springs feed each other's outputs. |
-| genomeBin v3 deployment | **Novel** | Binary isomorphic format. Same binary, same behavior, any substrate. Deterministic deployment with genetic lineage tracking. |
-| LifecycleManager auto-resurrection | Established | Health monitoring with auto-restart. Pattern known; sovereign Rust implementation with NUCLEUS integration. |
-| 4-tier NAT traversal | Established | LAN/punch/coordinated/relay. Standard pattern; sovereign strategy with BearDog crypto. |
+| Cross-spring ecology graphs | **Novel** | {{ entity(name="airspring") }} → {{ entity(name="wetspring") }} → {{ entity(name="neuralspring") }} pipeline defined in TOML. Domain-specific ecology where springs feed each other's outputs. |
+| {{ entity(name="genomebin") }} v3 deployment | **Novel** | Binary isomorphic format. Same binary, same behavior, any substrate. Deterministic deployment with genetic lineage tracking. |
+| LifecycleManager auto-resurrection | Established | Health monitoring with auto-restart. Pattern known; sovereign Rust implementation with {{ entity(name="nucleus") }} integration. |
+| 4-tier NAT traversal | Established | LAN/punch/coordinated/relay. Standard pattern; sovereign strategy with {{ entity(name="beardog") }} crypto. |
 | Federation & sub-federation | Established | Hierarchical trust. Standard pattern; sovereign with genetic lineage gating. |
 
 **26 crates | 191,658 lines Rust | 3,670+ tests | 71.47% coverage | 0 unsafe**
@@ -192,12 +192,12 @@ via ecoPrimals.
 
 | Capability | Type | Description |
 |-----------|------|-------------|
-| UniBin five-mode rendering | **Novel** | Single binary renders to GUI (egui), TUI (ratatui), web (axum), headless, and status. ~84% size reduction vs separate binaries. No other UI framework offers five modalities from one binary. |
+| {{ entity(name="unibin") }} five-mode rendering | **Novel** | Single binary renders to GUI (egui), TUI (ratatui), web (axum), headless, and status. ~84% size reduction vs separate binaries. No other UI framework offers five modalities from one binary. |
 | Proprioception (SAME DAVE) | **Novel** | UI self-awareness of its own outputs and inputs. Diagnostic events. The UI knows what it is displaying and can reason about its own state. |
 | Universal representation engine | **Novel** | One data model → terminal, SVG, PNG, egui, audio sonification, future VR. Modality-agnostic rendering from a single source of truth (DataService). |
-| Human entropy capture | **Novel** | Multi-modal entropy from audio, visual, narrative, and gesture inputs. Fed to BearDog for cryptographic randomness. Human interaction as entropy source. |
-| Discovery → performance split | **Novel** | biomeOS JSON-RPC for service discovery, tarpc for hot-path data. Automatic protocol upgrade from discovery to high-performance. |
-| UIBackend trait system | **Novel** | Pluggable display backends (eframe, framebuffer, ToadStool GPU). Same rendering logic regardless of display technology. |
+| Human entropy capture | **Novel** | Multi-modal entropy from audio, visual, narrative, and gesture inputs. Fed to {{ entity(name="beardog") }} for cryptographic randomness. Human interaction as entropy source. |
+| Discovery → performance split | **Novel** | {{ entity(name="biomeos") }} JSON-RPC for service discovery, tarpc for hot-path data. Automatic protocol upgrade from discovery to high-performance. |
+| UIBackend trait system | **Novel** | Pluggable display backends (eframe, framebuffer, {{ entity(name="toadstool") }} GPU). Same rendering logic regardless of display technology. |
 | DataService single source of truth | **Novel** | Event-driven broadcast to all modalities. One data model, broadcast updates, any renderer subscribes. |
 | Graph sonification | **Novel** | Graph topology rendered as audio. Accessibility and multi-modal representation of network state. |
 | egui/eframe GUI | Established | Immediate-mode GUI. Standard framework, sovereign integration. |
@@ -216,10 +216,10 @@ via ecoPrimals.
 |-----------|------|-------------|
 | Loam certificates with lending | **Novel** | Sovereign lendable certificates with `LoanTerms` (duration, grace, auto_return). `CertificateManager.process_expired_loans()` auto-reverts. Full provenance via `MintInfo`, `CertificateLocation`, `OwnershipRecord`. No blockchain required. |
 | Waypoint spines | **Novel** | Local permanence for borrowed state without upward propagation. Waypoint-only entry types (`SliceAnchor`, `SliceOperation`, `SliceDeparture`). Borrowed data stays locally permanent without polluting the origin spine. |
-| Infant Discovery pattern | **Novel** | Zero-config startup. Five-tier discovery: env vars → DNS-SRV → service registry HTTP → mDNS → dev fallback. Capability-based ("Who can sign?") not name-based ("Where is BearDog?"). |
+| Infant Discovery pattern | **Novel** | Zero-config startup. Five-tier discovery: env vars → DNS-SRV → service registry HTTP → mDNS → dev fallback. Capability-based ("Who can sign?") not name-based ("Where is {{ entity(name="beardog") }}?"). |
 | Temporal Moments | **Novel** | Domain-agnostic time with `Moment`, `MomentContext` (CodeChange, ArtCreation, LifeEvent), and four anchor types (Crypto, Atomic, Causal, Consensus). Timestamps mean different things in different contexts. |
 | 15 entry types | **Novel** | Genesis, SessionCommit, SliceCheckout/Return, DataAnchor, BraidCommit, CertificateMint/Transfer/Loan/Return, SliceAnchor/Operation/Departure, TemporalMoment, Custom. Richer than any append-only ledger. |
-| `permanent-storage.*` wire compat | **Novel** | rhizoCrypt dehydration commits arrive via JSON-RPC `permanent-storage.commitSession` — loamSpine speaks rhizoCrypt's wire format natively. |
+| `permanent-storage.*` wire compat | **Novel** | {{ entity(name="rhizocrypt") }} dehydration commits arrive via JSON-RPC `permanent-storage.commitSession` — {{ entity(name="loamspine") }} speaks {{ entity(name="rhizocrypt") }}'s wire format natively. |
 | Hash-linked spine chain | Established | BLAKE3, append-only, signed entries. Standard pattern; sovereign with Sled pure Rust backend. |
 | Inclusion/Certificate/Provenance proofs | Established | Path-to-tip proofs, mint+transfer chains, custody chains. Standard crypto proofs; sovereign. |
 
@@ -232,10 +232,10 @@ via ecoPrimals.
 | Capability | Type | Description |
 |-----------|------|-------------|
 | Six slice modes | **Novel** | Copy (no lineage), Loan (auto-return on expiry), Consignment (possession without ownership, auction semantics), Escrow (multi-party confirmation), Waypoint (local spine anchoring), Transfer (full ownership). Each has distinct resolution routes. No other content-addressed storage offers this. |
-| Rhizo-Loam layering | **Novel** | Ephemeral DAG (rhizoCrypt) over permanent linear spine (loamSpine). Working memory crystallizes into permanent record via dehydration. Biological metaphor: root network feeding into trunk. |
+| Rhizo-Loam layering | **Novel** | Ephemeral DAG ({{ entity(name="rhizocrypt") }}) over permanent linear spine ({{ entity(name="loamspine") }}). Working memory crystallizes into permanent record via dehydration. Biological metaphor: root network feeding into trunk. |
 | Philosophy of forgetting | **Novel** | Ephemeral by default; persistent only by consent. Sessions expire. Data that isn't dehydrated is garbage collected. Anti-pattern to "store everything forever." |
 | Conditional resolution routing | **Novel** | Five resolution routes: `ReturnToOrigin`, `CommitToOrigin`, `RouteToSpine`, `WaypointReturn`, `Conditional`. Outcome-based and event-based routing of slice resolution. |
-| Dehydration protocol | **Novel** | Freeze → Merkle root (topological sort) → summary → resolve slices → collect attestations → commit to LoamSpine. Multi-step crystallization of ephemeral state into permanent record. |
+| Dehydration protocol | **Novel** | Freeze → Merkle root (topological sort) → summary → resolve slices → collect attestations → commit to {{ entity(name="loamspine") }}. Multi-step crystallization of ephemeral state into permanent record. |
 | Session lifecycle state machine | **Novel** | `Active → Paused | Resolving → Committed | Discarded → Expired`. `DashMap` lock-free concurrency. Full GC after commit/discard. |
 | BLAKE3 content-addressed DAG | Established | Vertex = BLAKE3(canonical CBOR). Multi-parent DAG. Standard content-addressing; sovereign with deterministic CBOR encoding. |
 | Merkle tree with proofs | Established | Binary Merkle over topological vertex order. Standard construction; sovereign implementation. |
@@ -251,10 +251,10 @@ via ecoPrimals.
 | Braid attribution with decay | **Novel** | 12 configurable agent roles with weights (Creator 0.40, Contributor 0.25, Transformer 0.20, Curator 0.10, Publisher 0.05). Inheritance decay `0.5^depth` across derivation chains. `calculate_rewards()` maps shares to value. No blockchain. |
 | 0/1/Many compression | **Novel** | Session analysis → Discard/Single/Multiple strategy. Meta-Braids summarize Braid collections. DAG compression with configurable outcomes. |
 | Inter-primal contribution API | **Novel** | `ContributionRecord` and `SessionContribution` for any primal to report work. `sweetgrass.recordContribution` JSON-RPC. Domain metadata keys for chemistry, ML, games. Any primal can attribute. |
-| Niche-configurable semantics | **Novel** | Same codebase adapts attribution behavior per biomeOS niche: Distributed Science, Gaming, Audit Trail. Context-dependent provenance. |
+| {{ entity(name="niche") }}-configurable semantics | **Novel** | Same codebase adapts attribution behavior per {{ entity(name="biomeos") }} niche: Distributed Science, Gaming, Audit Trail. Context-dependent provenance. |
 | GDPR-inspired data rights | **Novel** | Five data subject requests (Access, Rectification, Erasure, Portability, Objection). Consent tracking (Explicit, Implicit, Withdrawn). Five retention policies. Five privacy levels. Applied to scientific provenance — not just personal data. |
 | Domain metadata keys | **Novel** | Well-known keys for chemistry (`CHEMISTRY_*`), ML (`ML_*`), games (`GAME_*`). Extensible attribution vocabulary for scientific domains. |
-| W3C PROV-O export | Established | Entity, Activity, Agent → JSON-LD with `@context`/`@graph`. `prov`, `xsd`, `rdfs`, `schema`, `ecop` namespaces. Standard ontology; sovereign with ecoPrimals extensions. |
+| W3C PROV-O export | Established | Entity, Activity, Agent → JSON-LD with `@context`/`@graph`. `prov`, `xsd`, `rdfs`, `schema`, `ecop` namespaces. Standard ontology; sovereign with {{ entity(name="ecoprimals") }} extensions. |
 | Multi-backend storage | Established | Memory, PostgreSQL (with migrations), Sled (pure Rust). Standard pluggable storage. |
 
 **9 crates | 553 tests | 3 fuzz targets | proptest | #![forbid(unsafe_code)] | AGPL-3.0**
@@ -300,15 +300,15 @@ via ecoPrimals.
 
 | Capability | Type | Description |
 |-----------|------|-------------|
-| Nautilus Shell bridge | **Novel** | Feed-forward evolutionary reservoir replacing recurrent ESN. Board populations instead of temporal feedback. Cross-spring integration with hotSpring brain architecture. |
-| baseCamp biophysical AI | **Novel** | Weight matrices as disordered Hamiltonians, information flow as wave propagation, loss landscapes as energy landscapes, neural networks as PGMs, multi-agent AI as quorum sensing. 5 sub-theses, 128/128 validation. |
-| Cross-spring spectral rewire | **Novel** | hotSpring diagnostics (bandwidth, condition number, phase) absorbed into `WeightSpectralResult`. GPU ESN via BarraCuda tensors. 41/41 validated. |
+| Nautilus Shell bridge | **Novel** | Feed-forward evolutionary reservoir replacing recurrent ESN. Board populations instead of temporal feedback. Cross-spring integration with {{ entity(name="hotspring") }} brain architecture. |
+| {{ entity(name="basecamp") }} biophysical AI | **Novel** | Weight matrices as disordered Hamiltonians, information flow as wave propagation, loss landscapes as energy landscapes, neural networks as PGMs, multi-agent AI as quorum sensing. 5 sub-theses, 128/128 validation. |
+| Cross-spring spectral rewire | **Novel** | {{ entity(name="hotspring") }} diagnostics (bandwidth, condition number, phase) absorbed into `WeightSpectralResult`. GPU ESN via BarraCuda tensors. 41/41 validated. |
 | WDM ESN regime classifier | **Novel** | GPU echo state network for warm dense matter regime classification. 96.5% accuracy. |
 | Isomorphic primitive catalog | **Novel** | Maps shared ML primitives across 8+ domains to BarraCuda ops. Same MatMul/Attention/LayerNorm serves protein, language, physics, spectral, evolution. |
-| helixVision protein structure | **Novel** | Sovereign AlphaFold2/3-style structure prediction (Evoformer, Pairformer, diffusion, IPA) in pure Rust + WGSL. |
+| {{ entity(name="helixvision") }} protein structure | **Novel** | Sovereign AlphaFold2/3-style structure prediction (Evoformer, Pairformer, diffusion, IPA) in pure Rust + WGSL. |
 | ESN (Jaeger) | Established | CPU + GPU reservoir computing. Sovereign implementation. |
 | HMM forward/backward/Viterbi | Established | Liu et al. phylogenetics. GPU-accelerated. |
-| Anderson localization (spectral) | Established | Bourgain-Kachkovskiy. Shared with hotSpring. |
+| Anderson localization (spectral) | Established | Bourgain-Kachkovskiy. Shared with {{ entity(name="hotspring") }}. |
 | Replicator dynamics / game theory | Established | Bruger-Waters QS cooperation. GPU spatial payoff. |
 | PINN / DeepONet | Established | Raissi 2019, Lu 2021. Sovereign implementations. |
 | LeNet-5, MLP, LSTM, Transformer | Established | Standard architectures, sovereign GPU implementations. |
@@ -334,7 +334,7 @@ via ecoPrimals.
 | Drug repurposing (NMF, TransE) | Established | Pathway scoring, knowledge graph embedding. Sovereign Rust. |
 | Quorum sensing ODE systems | Established | Waters, bistable, cooperation, phage defense. Sovereign Gillespie SSA. |
 
-**3 crates | 0 local shaders (79 ToadStool primitives consumed) | 1,073 Rust tests + 5,061 validation checks | 52 papers reproduced | 6 scientific tracks**
+**3 crates | 0 local shaders (79 {{ entity(name="toadstool") }} primitives consumed) | 1,073 Rust tests + 5,061 validation checks | 52 papers reproduced | 6 scientific tracks**
 
 ---
 
@@ -359,7 +359,7 @@ via ecoPrimals.
 | Capability | Type | Description |
 |-----------|------|-------------|
 | Cross-domain noise framework | **Novel** | Unified bias-variance decomposition across agriculture, meteorology, microbiology, and seismology. Same uncertainty budget methodology applied to every spring's measurements. |
-| Uncertainty budget for springs | **Novel** | Provides measurement error labels that neuralSpring uses for robust training. Every spring's "ground truth" passes through groundSpring's uncertainty quantification. |
+| Uncertainty budget for springs | **Novel** | Provides measurement error labels that {{ entity(name="neuralspring") }} uses for robust training. Every spring's "ground truth" passes through {{ entity(name="groundspring") }}'s uncertainty quantification. |
 | Literature extension roadmap | **Novel** | Connects Bazavov (lattice QCD), Waters (QS), Liu (phylogenetics), Kachkovskiy (spectral) published research to measurement uncertainty. |
 | Monte Carlo error propagation | Established | Standard MC uncertainty. Sovereign Python implementation. |
 | Seismic travel-time inversion | Established | 1D inversion with Nelder-Mead. Standard geophysics. |
@@ -377,30 +377,30 @@ These capabilities exist NOWHERE else in open source:
 
 | # | Innovation | Primal | Why It's Novel |
 |---|-----------|--------|---------------|
-| 1 | Userspace GPU driver in Rust via VFIO | coralReef + toadStool | Nobody has built a GPU compute driver in userspace Rust. DPDK did this for NICs. |
-| 2 | WGSL → native GPU ISA compiler (AGPL) | coralReef | No AGPL shader compiler exists. The only ones are in Mesa (MIT) and NVIDIA (proprietary). |
+| 1 | Userspace GPU driver in Rust via VFIO | {{ entity(name="coralreef") }} + toadStool | Nobody has built a GPU compute driver in userspace Rust. DPDK did this for NICs. |
+| 2 | WGSL → native GPU ISA compiler (AGPL) | {{ entity(name="coralreef") }} | No AGPL shader compiler exists. The only ones are in Mesa (MIT) and NVIDIA (proprietary). |
 | 3 | Self-teaching GPU hardware learning | toadStool hw-learn | Observe → distill → apply → share. GPUs teach each other initialization sequences. |
-| 4 | Hardware-atheistic DF64 precision | barraCuda | FP64 precision on any GPU via f32×2, with per-shader precision routing. |
-| 5 | 806 scientific WGSL shaders (AGPL) | barraCuda | Largest open scientific shader library under copyleft. |
+| 4 | Hardware-atheistic DF64 precision | {{ entity(name="barracuda") }} | FP64 precision on any GPU via f32×2, with per-shader precision routing. |
+| 5 | 806 scientific WGSL shaders (AGPL) | {{ entity(name="barracuda") }} | Largest open scientific shader library under copyleft. |
 | 6 | PrecisionBrain routing | toadStool | Domain-aware precision selection with NVVM transcendental risk detection. |
 | 7 | Pure Rust Tor stack (AGPL) | songBird | Only AGPL-3.0 Tor implementation. Full directory/circuit/stream/onion. |
-| 8 | Tower Atomic crypto delegation | bearDog + songBird | Network layer has zero crypto state. All delegated via IPC. |
-| 9 | Genetic lineage identity | bearDog + biomeOS | Cryptographic device ancestry modeled on biology (mitochondrial + nuclear). |
-| 10 | Dark Forest discovery | bearDog + songBird | Zero-metadata service advertisement. Discoverable but private. |
-| 11 | Neural API (165+ translations) | biomeOS | Semantic capability composition. Primals compose by capability, not name. |
-| 12 | Plasmodium orchestration | biomeOS | Slime-mold-inspired decentralized coordination without central authority. |
-| 13 | Six-mode content slicing | rhizoCrypt | Copy/Loan/Consignment/Escrow/Waypoint/Transfer with distinct resolution routes. |
-| 14 | Rhizo-Loam ephemeral→permanent layering | rhizoCrypt + loamSpine | Working memory crystallizes into permanent record via dehydration protocol. |
-| 15 | Philosophy of forgetting | rhizoCrypt | Ephemeral by default, persistent by consent. Anti-"store everything forever." |
-| 16 | Braid attribution with inheritance decay | sweetGrass | 12 roles, configurable weights, `0.5^depth` decay, `calculate_rewards()`. No blockchain. |
-| 17 | 0/1/Many compression | sweetGrass | Session→Discard/Single/Multiple. Meta-Braids. DAG compression. |
-| 18 | Inter-primal contribution API | sweetGrass | Any primal reports work via `ContributionRecord`. Domain metadata keys. |
-| 19 | Loam certificates with auto-reversion | loamSpine | `LoanTerms`, `process_expired_loans()`, full provenance chain. No blockchain. |
-| 20 | Waypoint spines | loamSpine | Local permanence for borrowed state without upward propagation. |
-| 21 | Temporal Moments (4 anchor types) | loamSpine | Domain-agnostic time: Crypto, Atomic, Causal, Consensus anchors. |
-| 22 | Infant Discovery (5-tier) | loamSpine | env → DNS-SRV → registry → mDNS → fallback. Capability-based. |
-| 23 | GDPR data rights on scientific provenance | sweetGrass | Access/Rectification/Erasure/Portability/Objection applied to compute provenance. |
-| 24 | Metadata-only threat detection | skunkBat | Privacy-preserving security: detects threats without reading content. |
+| 8 | {{ entity(name="toweratomic") }} crypto delegation | bearDog + songBird | Network layer has zero crypto state. All delegated via IPC. |
+| 9 | Genetic lineage identity | bearDog + {{ entity(name="biomeos") }} | Cryptographic device ancestry modeled on biology (mitochondrial + nuclear). |
+| 10 | {{ entity(name="darkforest") }} discovery | bearDog + songBird | Zero-metadata service advertisement. Discoverable but private. |
+| 11 | {{ entity(name="neuralapi") }} (165+ translations) | {{ entity(name="biomeos") }} | Semantic capability composition. Primals compose by capability, not name. |
+| 12 | {{ entity(name="plasmodium") }} orchestration | {{ entity(name="biomeos") }} | Slime-mold-inspired decentralized coordination without central authority. |
+| 13 | Six-mode content slicing | {{ entity(name="rhizocrypt") }} | Copy/Loan/Consignment/Escrow/Waypoint/Transfer with distinct resolution routes. |
+| 14 | Rhizo-Loam ephemeral→permanent layering | {{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} | Working memory crystallizes into permanent record via dehydration protocol. |
+| 15 | Philosophy of forgetting | {{ entity(name="rhizocrypt") }} | Ephemeral by default, persistent by consent. Anti-"store everything forever." |
+| 16 | Braid attribution with inheritance decay | {{ entity(name="sweetgrass") }} | 12 roles, configurable weights, `0.5^depth` decay, `calculate_rewards()`. No blockchain. |
+| 17 | 0/1/Many compression | {{ entity(name="sweetgrass") }} | Session→Discard/Single/Multiple. Meta-Braids. DAG compression. |
+| 18 | Inter-primal contribution API | {{ entity(name="sweetgrass") }} | Any primal reports work via `ContributionRecord`. Domain metadata keys. |
+| 19 | Loam certificates with auto-reversion | {{ entity(name="loamspine") }} | `LoanTerms`, `process_expired_loans()`, full provenance chain. No blockchain. |
+| 20 | Waypoint spines | {{ entity(name="loamspine") }} | Local permanence for borrowed state without upward propagation. |
+| 21 | Temporal Moments (4 anchor types) | {{ entity(name="loamspine") }} | Domain-agnostic time: Crypto, Atomic, Causal, Consensus anchors. |
+| 22 | Infant Discovery (5-tier) | {{ entity(name="loamspine") }} | env → DNS-SRV → registry → mDNS → fallback. Capability-based. |
+| 23 | GDPR data rights on scientific provenance | {{ entity(name="sweetgrass") }} | Access/Rectification/Erasure/Portability/Objection applied to compute provenance. |
+| 24 | Metadata-only threat detection | {{ entity(name="skunkbat") }} | Privacy-preserving security: detects threats without reading content. |
 | 25 | Isomorphic IPC (single binary) | nestGate | Platform-adaptive transport selection at runtime. |
 | 26 | NPU driver in pure Rust (VFIO) | toadStool | Only Rust driver for BrainChip Akida neuromorphic processor. |
 | 27 | Spring absorption methodology | toadStool | Write→Absorb→Lean: springs evolve capabilities, primals absorb proven patterns. |
@@ -409,35 +409,35 @@ These capabilities exist NOWHERE else in open source:
 
 | # | Innovation | Primal | Why It's Novel |
 |---|-----------|--------|---------------|
-| 28 | NUCLEUS chemical bonding model | biomeOS | Ionic/Covalent/Metallic/Weak bonds for distributed system composition. |
-| 29 | ContinuousExecutor graph engine | biomeOS | Fixed-timestep graph loops with feedback edges. 60Hz game, 90Hz surgical. |
-| 30 | UniBin five-mode rendering | petalTongue | Single binary → GUI, TUI, web, headless, status. One binary, five modalities. |
-| 31 | Proprioception (SAME DAVE) | petalTongue | UI self-awareness. The interface knows what it is displaying. |
-| 32 | Human entropy capture | petalTongue | Multi-modal entropy (audio, visual, narrative, gesture) fed to BearDog. |
-| 33 | Graph sonification | petalTongue | Network topology rendered as audio. Accessibility + multi-modal representation. |
-| 34 | DataService universal broadcast | petalTongue | One data model, event-driven broadcast to any renderer modality. |
-| 35 | Cross-spring ecology graphs | biomeOS | Domain-specific spring composition in TOML. Springs feed each other. |
-| 36 | genomeBin v3 deployment | biomeOS | Binary isomorphic format with genetic lineage tracking. |
+| 28 | {{ entity(name="nucleus") }} chemical bonding model | {{ entity(name="biomeos") }} | Ionic/Covalent/Metallic/Weak bonds for distributed system composition. |
+| 29 | ContinuousExecutor graph engine | {{ entity(name="biomeos") }} | Fixed-timestep graph loops with feedback edges. 60Hz game, 90Hz surgical. |
+| 30 | {{ entity(name="unibin") }} five-mode rendering | {{ entity(name="petaltongue") }} | Single binary → GUI, TUI, web, headless, status. One binary, five modalities. |
+| 31 | Proprioception (SAME DAVE) | {{ entity(name="petaltongue") }} | UI self-awareness. The interface knows what it is displaying. |
+| 32 | Human entropy capture | {{ entity(name="petaltongue") }} | Multi-modal entropy (audio, visual, narrative, gesture) fed to {{ entity(name="beardog") }}. |
+| 33 | Graph sonification | {{ entity(name="petaltongue") }} | Network topology rendered as audio. Accessibility + multi-modal representation. |
+| 34 | DataService universal broadcast | {{ entity(name="petaltongue") }} | One data model, event-driven broadcast to any renderer modality. |
+| 35 | Cross-spring ecology graphs | {{ entity(name="biomeos") }} | Domain-specific spring composition in TOML. Springs feed each other. |
+| 36 | {{ entity(name="genomebin") }} v3 deployment | {{ entity(name="biomeos") }} | Binary isomorphic format with genetic lineage tracking. |
 
 ### Scientific & Domain (37–52)
 
 | # | Innovation | Spring | Why It's Novel |
 |---|-----------|--------|---------------|
-| 37 | NPU physics pipeline (9,017× less energy) | hotSpring | First neuromorphic silicon in lattice QCD / plasma physics pipeline. |
-| 38 | Lattice QCD phase detection without FFT | hotSpring | NPU phase classification from position-space observables. Bypasses Fourier transform. |
-| 39 | 10 NPU SDK assumptions overturned | hotSpring | Proved vendor wrong about their own hardware. Documented. |
-| 40 | Heterogeneous real-time HMC monitor | hotSpring | Live phase detection at 0.09% overhead with predictive steering. |
-| 41 | Backend-agnostic MD engine | hotSpring | `MdEngine<B: GpuBackend>` — same physics, any dispatch (wgpu, VFIO, DRM). |
-| 42 | Nautilus Shell bridge | neuralSpring | Feed-forward evolutionary reservoir replacing recurrent ESN. |
-| 43 | baseCamp biophysical AI (5 sub-theses) | neuralSpring | Weight matrices as Hamiltonians, loss as energy, NN as PGM, multi-agent as QS. 128/128 validated. |
-| 44 | Cross-spring spectral rewire | neuralSpring | hotSpring diagnostics absorbed into neural weight analysis. 41/41 validated. |
-| 45 | WDM ESN regime classifier | neuralSpring | GPU echo state network for warm dense matter. 96.5% accuracy. |
-| 46 | Anderson-QS coupling | wetSpring | Anderson localization applied to quorum sensing. W_c ≈ 16.5, geometry-dependent. New theoretical connection. |
-| 47 | 3D Anderson dimensional phase diagram | wetSpring | 1D→2D→3D sweep. 28-biome global atlas mapping geometry to QS regime. |
-| 48 | Pure GPU streaming bio pipeline | wetSpring | Zero CPU round-trips. 441–837× speedup. |
-| 49 | Nanopore signal bridge (no ONT SDK) | wetSpring | Sovereign POD5/NRS parsing. Only open-source nanopore reader in Rust. |
-| 50 | GPU agricultural science | airSpring | BatchedEt0, KrigingInterpolator, SeasonalReducer on GPU. No other ag framework uses GPU. |
-| 51 | Cross-domain noise framework | groundSpring | Unified bias-variance across agriculture, meteorology, microbiology, seismology. |
+| 37 | NPU physics pipeline (9,017× less energy) | {{ entity(name="hotspring") }} | First neuromorphic silicon in lattice QCD / plasma physics pipeline. |
+| 38 | Lattice QCD phase detection without FFT | {{ entity(name="hotspring") }} | NPU phase classification from position-space observables. Bypasses Fourier transform. |
+| 39 | 10 NPU SDK assumptions overturned | {{ entity(name="hotspring") }} | Proved vendor wrong about their own hardware. Documented. |
+| 40 | Heterogeneous real-time HMC monitor | {{ entity(name="hotspring") }} | Live phase detection at 0.09% overhead with predictive steering. |
+| 41 | Backend-agnostic MD engine | {{ entity(name="hotspring") }} | `MdEngine<B: GpuBackend>` — same physics, any dispatch (wgpu, VFIO, DRM). |
+| 42 | Nautilus Shell bridge | {{ entity(name="neuralspring") }} | Feed-forward evolutionary reservoir replacing recurrent ESN. |
+| 43 | {{ entity(name="basecamp") }} biophysical AI (5 sub-theses) | {{ entity(name="neuralspring") }} | Weight matrices as Hamiltonians, loss as energy, NN as PGM, multi-agent as QS. 128/128 validated. |
+| 44 | Cross-spring spectral rewire | {{ entity(name="neuralspring") }} | {{ entity(name="hotspring") }} diagnostics absorbed into neural weight analysis. 41/41 validated. |
+| 45 | WDM ESN regime classifier | {{ entity(name="neuralspring") }} | GPU echo state network for warm dense matter. 96.5% accuracy. |
+| 46 | Anderson-QS coupling | {{ entity(name="wetspring") }} | Anderson localization applied to quorum sensing. W_c ≈ 16.5, geometry-dependent. New theoretical connection. |
+| 47 | 3D Anderson dimensional phase diagram | {{ entity(name="wetspring") }} | 1D→2D→3D sweep. 28-biome global atlas mapping geometry to QS regime. |
+| 48 | Pure GPU streaming bio pipeline | {{ entity(name="wetspring") }} | Zero CPU round-trips. 441–837× speedup. |
+| 49 | Nanopore signal bridge (no ONT SDK) | {{ entity(name="wetspring") }} | Sovereign POD5/NRS parsing. Only open-source nanopore reader in Rust. |
+| 50 | GPU agricultural science | {{ entity(name="airspring") }} | BatchedEt0, KrigingInterpolator, SeasonalReducer on GPU. No other ag framework uses GPU. |
+| 51 | Cross-domain noise framework | {{ entity(name="groundspring") }} | Unified bias-variance across agriculture, meteorology, microbiology, seismology. |
 | 52 | Constrained evolution methodology | ecosystem | AI as mutation operator, Rust as natural selection, physics as fitness. 69K invocations, 51B tokens. |
 
 ---
@@ -462,27 +462,27 @@ implementations that cannot be captured:
 
 | Domain | Papers | Algorithms Locked | Source |
 |--------|--------|-------------------|--------|
-| Dense plasma physics | 5+ | Yukawa OCP MD, Green-Kubo transport, TTM | hotSpring |
-| Nuclear physics | 2+ | SEMF, HFB, AME2020 EOS | hotSpring |
-| Lattice gauge theory | 6+ | SU(3) Wilson, HMC, gradient flow, staggered Dirac, CG | hotSpring |
-| Spectral theory | 9+ | Anderson 1D/2D/3D, Hofstadter, Aubry-Andre, Lanczos | hotSpring + neuralSpring |
-| Abelian Higgs | 1 | U(1)+Higgs HMC | hotSpring |
-| Dielectric response | 3+ | BGK, Mermin, kinetic-fluid | hotSpring |
-| Neural architectures | 10+ | ESN, HMM, PINN, DeepONet, LeNet-5, MLP, LSTM, Transformer | neuralSpring |
-| Evolutionary computation | 5 | Counterdiabatic, MODES, lexicase, swarm | neuralSpring |
-| Phylogenetics | 5+ | HMM, SATe, NJ, Felsenstein, DTL, bootstrap | neuralSpring + wetSpring |
-| Game theory / QS | 3+ | Replicator dynamics, Hill regulatory, cooperation | neuralSpring + wetSpring |
-| Population genetics | 2+ | FST, Mantel, pangenome, molecular clock | neuralSpring + wetSpring |
-| Protein structure | 1 | AlphaFold2/3 (Evoformer, Pairformer, diffusion) | neuralSpring (helixVision) |
-| 16S rRNA microbial ecology | 10 | DADA2, chimera, taxonomy, UniFrac, diversity | wetSpring |
-| Deep-sea metagenomics | 6 | ANI, SNP, dN/dS, pangenomics, rare biosphere | wetSpring |
-| Analytical chemistry / PFAS | 4 | mzML, EIC, peak detection, KMD, spectral matching | wetSpring |
-| Drug repurposing | 5 | NMF, TransE, pathway scoring | wetSpring |
-| Quorum sensing | 6+ | Waters ODE, bistable, cooperation, phage defense, Gillespie | wetSpring |
-| Soil Anderson / tillage | 9 | Anderson localization in soil pore geometry | wetSpring |
-| Evapotranspiration | 3 | FAO-56 PM, Hargreaves, water balance | airSpring |
-| Soil science | 2 | Topp equation, SoilWatch calibration | airSpring |
-| Measurement uncertainty | 5 | Monte Carlo propagation, bias-variance, seismic inversion | groundSpring |
+| Dense plasma physics | 5+ | Yukawa OCP MD, Green-Kubo transport, TTM | {{ entity(name="hotspring") }} |
+| Nuclear physics | 2+ | SEMF, HFB, AME2020 EOS | {{ entity(name="hotspring") }} |
+| Lattice gauge theory | 6+ | SU(3) Wilson, HMC, gradient flow, staggered Dirac, CG | {{ entity(name="hotspring") }} |
+| Spectral theory | 9+ | Anderson 1D/2D/3D, Hofstadter, Aubry-Andre, Lanczos | {{ entity(name="hotspring") }} + {{ entity(name="neuralspring") }} |
+| Abelian Higgs | 1 | U(1)+Higgs HMC | {{ entity(name="hotspring") }} |
+| Dielectric response | 3+ | BGK, Mermin, kinetic-fluid | {{ entity(name="hotspring") }} |
+| Neural architectures | 10+ | ESN, HMM, PINN, DeepONet, LeNet-5, MLP, LSTM, Transformer | {{ entity(name="neuralspring") }} |
+| Evolutionary computation | 5 | Counterdiabatic, MODES, lexicase, swarm | {{ entity(name="neuralspring") }} |
+| Phylogenetics | 5+ | HMM, SATe, NJ, Felsenstein, DTL, bootstrap | {{ entity(name="neuralspring") }} + {{ entity(name="wetspring") }} |
+| Game theory / QS | 3+ | Replicator dynamics, Hill regulatory, cooperation | {{ entity(name="neuralspring") }} + {{ entity(name="wetspring") }} |
+| Population genetics | 2+ | FST, Mantel, pangenome, molecular clock | {{ entity(name="neuralspring") }} + {{ entity(name="wetspring") }} |
+| Protein structure | 1 | AlphaFold2/3 (Evoformer, Pairformer, diffusion) | {{ entity(name="neuralspring") }} ({{ entity(name="helixvision") }}) |
+| 16S rRNA microbial ecology | 10 | DADA2, chimera, taxonomy, UniFrac, diversity | {{ entity(name="wetspring") }} |
+| Deep-sea metagenomics | 6 | ANI, SNP, dN/dS, pangenomics, rare biosphere | {{ entity(name="wetspring") }} |
+| Analytical chemistry / PFAS | 4 | mzML, EIC, peak detection, KMD, spectral matching | {{ entity(name="wetspring") }} |
+| Drug repurposing | 5 | NMF, TransE, pathway scoring | {{ entity(name="wetspring") }} |
+| Quorum sensing | 6+ | Waters ODE, bistable, cooperation, phage defense, Gillespie | {{ entity(name="wetspring") }} |
+| Soil Anderson / tillage | 9 | Anderson localization in soil pore geometry | {{ entity(name="wetspring") }} |
+| Evapotranspiration | 3 | FAO-56 PM, Hargreaves, water balance | {{ entity(name="airspring") }} |
+| Soil science | 2 | Topp equation, SoilWatch calibration | {{ entity(name="airspring") }} |
+| Measurement uncertainty | 5 | Monte Carlo propagation, bias-variance, seismic inversion | {{ entity(name="groundspring") }} |
 
 ### Validation Infrastructure (sovereign)
 
@@ -493,7 +493,7 @@ implementations that cannot be captured:
 | Python baselines cross-validated | ~500+ |
 | Papers reproduced | ~100+ |
 | Scientific domains | 10+ |
-| Named tolerance constants | ~240 (hotSpring ~150 + wetSpring ~92) |
+| Named tolerance constants | ~240 ({{ entity(name="hotspring") }} ~150 + {{ entity(name="wetspring") }} ~92) |
 | Three-tier methodology | Python baseline → Rust CPU → Rust GPU |
 
 ---
@@ -518,7 +518,7 @@ A corporation can:
 A human can:
 - ✅ Use, study, modify, share — forever
 - ✅ Build on it, improve it, extend it
-- ✅ Receive attribution (sweetGrass)
+- ✅ Receive attribution ({{ entity(name="sweetgrass") }})
 - ✅ Benefit from the commons as the commons benefits from them
 
 **Sovereign science. Sovereign code. Free for humans. Fiction-proof.**

@@ -36,7 +36,7 @@ K-Nome is a proposed remedy.
 ## What K-Nome Is
 
 **Knowledge-Numeric Observed & Mentored Evolutionary Programming** is the
-operational methodology that produced ecoPrimals — 14 production primals,
+operational methodology that produced {{ entity(name="ecoprimals") }} — 14 production primals,
 7 validated science springs, 27,000+ tests, and 15,000+ quantitative science
 checks — built by ecoPrimal (human + synthetic intelligence) over
 approximately 10 months using Cursor IDE as the sole tool.
@@ -148,7 +148,7 @@ function. The published result is the fitness criterion.
 | Weeks 1–2 | Read the paper. Understand the method. Write the Python baseline. | `python baseline.py` → matches published numbers |
 | Weeks 3–5 | Port to Rust. Rust compiler is the fitness function. | `cargo test` → all pass |
 | Weeks 6–8 | Validate the Rust against the Python. Explicit PASS/FAIL per check. | `cargo run --bin validate_*` → exit 0 |
-| Weeks 9–11 | Extend to GPU (barraCuda WGSL shaders). Measure speedup. | GPU results match CPU to published tolerance |
+| Weeks 9–11 | Extend to GPU ({{ entity(name="barracuda") }} WGSL shaders). Measure speedup. | GPU results match CPU to published tolerance |
 | Weeks 12–14 | Cross-spring validation. Does your result hold in a different domain? | Contribution to ecosystem |
 
 ### What Students Learn That Existing Courses Don't Teach
@@ -176,7 +176,7 @@ function. The published result is the fitness criterion.
 
 ## Evidence That K-Nome Works
 
-The ecoPrimals project is a 10-month receipt:
+The {{ entity(name="ecoprimals") }} project is a 10-month receipt:
 
 | Metric | Value |
 |--------|-------|
@@ -231,14 +231,14 @@ Any person with deep expertise in any domain can, using K-Nome, produce
 production-quality computational implementations of that domain's methods
 faster than teams of domain-naive programmers.
 
-This is a testable claim. The ecoPrimals project is one data point. The
-ecoPrimals spring repos are the public evidence. The claim should be
+This is a testable claim. The {{ entity(name="ecoprimals") }} project is one data point. The
+{{ entity(name="ecoprimals") }} spring repos are the public evidence. The claim should be
 tested with MSDS students building real science pipelines, evaluated not on
 model accuracy (which is easy to fake) but on correctness against published
 ground truth (which is not).
 
 If K-Nome works in a structured course environment the way it worked in the
-ecoPrimals project, it produces something rare: data scientists who can be
+{{ entity(name="ecoprimals") }} project, it produces something rare: data scientists who can be
 trusted to produce correct computational science in any domain their advisor
 works in.
 
@@ -265,5 +265,5 @@ works in.
 ---
 
 *Pre-thesis writeup. Formal pedagogy paper to follow.*  
-*ecoPrimals spring repos: github.com/syntheticChemistry/*  
+*{{ entity(name="ecoprimals") }} spring repos: github.com/syntheticChemistry/*  
 *K-Nome source: `whitePaper/gen3/about/K_NOME_PROGRAMMING.md`*

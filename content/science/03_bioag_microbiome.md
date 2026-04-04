@@ -205,12 +205,12 @@ Gel carrier application emerges as the Anderson-optimal method: it maintains
 
 ## 7. neuralSpring Connections
 
-neuralSpring's ML primitives (S135: 966 lib tests, 232 binaries,
+{{ entity(name="neuralspring") }}'s ML primitives (S135: 966 lib tests, 232 binaries,
 3,034+ checks, 5 WDM surrogates complete) apply directly to inoculant
 response prediction:
 
 - **Cross-climate transfer** (Exp 004, nW-04): Michigan → California parallels
-  neuralSpring's classical→WDM transfer learning. Train on KBS (Kellogg
+  {{ entity(name="neuralspring") }}'s classical→WDM transfer learning. Train on KBS (Kellogg
   Biological Station) Michigan soil data, predict inoculant success in
   California almond orchards
 - **LSTM time series** (Study 004, NSE=0.849; nW-03 LSTM reservoir, R²=0.98):
@@ -227,11 +227,11 @@ response prediction:
 
 ## 8. airSpring Connections
 
-airSpring provides the soil hydrology and irrigation primitives that
+{{ entity(name="airspring") }} provides the soil hydrology and irrigation primitives that
 parameterize Anderson geometry in orchard soil. FAO-56 water balance and
 Richards PDE compute the exact θ(t) field that determines pore connectivity
 (d_eff) for Anderson QS — the same coupling documented in baseCamp/06.
-Precision irrigation for tree crops requires accurate ET₀: airSpring
+Precision irrigation for tree crops requires accurate ET₀: {{ entity(name="airspring") }}
 validates four methods (PM, PT, HG, Thornthwaite) and delivers scheduling
 optimization (53–72% water savings). Saxton-Rawls pedotransfer yields
 continuous soil hydraulic properties from texture without lab measurement.
@@ -239,7 +239,7 @@ Cover crop dual Kc (FAO-56 Ch. 11, 40/40 checks) and biochar P adsorption
 (Kumari et al. 2025 Langmuir/Freundlich) complete the orchard-floor
 characterization toolkit.
 
-| airSpring primitive | Orchard relevance |
+| {{ entity(name="airspring") }} primitive | Orchard relevance |
 |---------------------|-------------------|
 | θ(t) from FAO-56 + Richards | d_eff for Anderson QS in soil |
 | ET₀ (PM, PT, HG, Thornthwaite) | Irrigation scheduling, 53–72% savings |
@@ -249,7 +249,7 @@ characterization toolkit.
 
 ## 9. groundSpring Connections
 
-groundSpring contributes the uncertainty quantification layer that makes
+{{ entity(name="groundspring") }} contributes the uncertainty quantification layer that makes
 Anderson-guided inoculant design quantitatively testable:
 
 - **Exp 001 — Sensor noise decomposition**: EC5 soil moisture sensors are
@@ -260,7 +260,7 @@ Anderson-guided inoculant design quantitatively testable:
 - **Exp 004 — Sequencing noise rarefaction**: Genus saturation at 5,000 reads;
   phyla robust at 100 reads. Sets the sampling floor for monitoring
   inoculant persistence via 16S — below 5,000 reads, rare inoculant
-  strains may be undetectable. wetSpring GPU rarefaction now uses
+  strains may be undetectable. {{ entity(name="wetspring") }} GPU rarefaction now uses
   dedicated `BatchedMultinomialGpu` for batched multinomial sampling.
   15/15 Rust checks
 - **Exp 016 — Rare biosphere signal detection** (R. Anderson 2015): When
@@ -276,10 +276,10 @@ Anderson-guided inoculant design quantitatively testable:
   for soil diversity metrics. When reporting rhizosphere W ≈ 6.7, the
   jackknife gives rigorous confidence intervals. 9/9 Rust checks
 
-**Field deployment pipeline**: airSpring (θ(t) from soil sensors) →
-groundSpring (sensor calibration + sampling noise floor + uncertainty
-propagation) → wetSpring (16S diversity → Anderson QS regime) →
-neuralSpring (ESN classifier for QS-active/marginal/suppressed).
+**Field deployment pipeline**: {{ entity(name="airspring") }} (θ(t) from soil sensors) →
+{{ entity(name="groundspring") }} (sensor calibration + sampling noise floor + uncertainty
+propagation) → {{ entity(name="wetspring") }} (16S diversity → Anderson QS regime) →
+{{ entity(name="neuralspring") }} (ESN classifier for QS-active/marginal/suppressed).
 
 ## 10. Connection to Constrained Evolution
 

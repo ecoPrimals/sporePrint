@@ -8,15 +8,15 @@ primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "toadsto
 springs = ["neuralspring"]
 +++
 
-**Repository**: sporeGarden/helixVision (moving from syntheticChemistry — repo pending)  
-**License**: scyBorg (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)  
+**Repository**: sporeGarden/helixVision (moving from {{ entity(name="syntheticchemistry") }} — repo pending)  
+**License**: {{ entity(name="scyborg") }} (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)  
 **Formerly**: coralForge (syntheticChemistry/coralForge, now archived)
 
 ---
 
 ## What It Is
 
-helixVision is sovereign protein structure prediction: AlphaFold2/3-quality results running locally on consumer hardware in pure Rust, with full f64 precision, data sovereignty, and cryptographic provenance. No cloud APIs. No PyTorch. No CUDA SDK. No data sent to Google.
+{{ entity(name="helixvision") }} is sovereign protein structure prediction: AlphaFold2/3-quality results running locally on consumer hardware in pure Rust, with full f64 precision, data sovereignty, and cryptographic provenance. No cloud APIs. No PyTorch. No CUDA SDK. No data sent to Google.
 
 This is not planned — it is an active codebase with **154 passing checks** (62 Python baseline + 55 Rust + 37 GPU), validated against NumPy to 1e-10 tolerance.
 
@@ -34,7 +34,7 @@ AlphaFold's architecture decomposes into **6 universal primitives** — the same
 | Diffusion denoising (AF3) | Scale + add per step |
 | Confidence heads (pLDDT, PAE) | Linear (GEMM) + softmax + weighted sum |
 
-helixVision does not introduce new computation. Every operation is a composition of primitives that already exist, are tested, and run on consumer GPUs.
+{{ entity(name="helixvision") }} does not introduce new computation. Every operation is a composition of primitives that already exist, are tested, and run on consumer GPUs.
 
 ---
 
@@ -42,12 +42,12 @@ helixVision does not introduce new computation. Every operation is a composition
 
 | Layer | What | Primal |
 |-------|------|--------|
-| Math | WGSL f64 shaders for all 6 primitives | 🐟⚡ barraCuda |
-| Compilation | WGSL → native GPU binary (NVIDIA + AMD) | 🪸🌊 coralReef |
-| Dispatch | Hardware discovery, execution, routing | 🐸🍄 ToadStool |
-| Provenance | Ed25519 signing of every prediction | 🐻🐕 BearDog |
-| History | Append-only prediction log | 🪨📖 loamSpine |
-| Orchestration | Pipeline routing via Neural API | 🌿🖥️ biomeOS |
+| Math | WGSL f64 shaders for all 6 primitives | {{ entity(name="barracuda") }} |
+| Compilation | WGSL → native GPU binary (NVIDIA + AMD) | {{ entity(name="coralreef") }} |
+| Dispatch | Hardware discovery, execution, routing | {{ entity(name="toadstool") }} |
+| Provenance | Ed25519 signing of every prediction | {{ entity(name="beardog") }} |
+| History | Append-only prediction log | {{ entity(name="loamspine") }} |
+| Orchestration | Pipeline routing via {{ entity(name="neuralapi") }} | {{ entity(name="biomeos") }} |
 
 The pipeline: FASTA sequence → MSA search → Feature embedding → Evoformer × 48 → Structure module × 8 → Coordinates → Confidence (pLDDT, PAE, pDE) → Provenance chain.
 
@@ -55,7 +55,7 @@ The pipeline: FASTA sequence → MSA search → Feature embedding → Evoformer 
 
 ## Performance Targets
 
-| Metric | Cloud AlphaFold | helixVision (consumer GPU) |
+| Metric | Cloud AlphaFold | {{ entity(name="helixvision") }} (consumer GPU) |
 |--------|:---------------:|:--------------------------:|
 | Precision | f32 (PyTorch default) | **f64** (native or DF64) |
 | Cost per prediction | ~$0.01 (cloud API) | **~$0.0001** (electricity) |

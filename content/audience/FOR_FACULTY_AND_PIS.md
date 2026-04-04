@@ -9,7 +9,7 @@ springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspri
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  
-**Organization:** ecoPrimals
+**Organization:** {{ entity(name="ecoprimals") }}
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
@@ -18,7 +18,7 @@ springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspri
 ## The Short Version
 
 Your lab probably runs some combination of Python/R bioinformatics, commercial
-pharmacometric software, and ad hoc data management. ecoPrimals is a pure Rust
+pharmacometric software, and ad hoc data management. {{ entity(name="ecoprimals") }} is a pure Rust
 stack that replaces most of that with faster, reproducible, GPU-accelerated
 alternatives — and adds things no commercial tool does (cryptographic provenance,
 physics-based drug scoring, vendor-agnostic GPU compute).
@@ -30,15 +30,15 @@ You can clone the repo and verify on your own hardware.
 
 ## What You Actually Save
 
-| Tool | What You Pay | ecoPrimals Replacement | Status |
+| Tool | What You Pay | {{ entity(name="ecoprimals") }} Replacement | Status |
 |------|:----------:|----------------------|--------|
-| NONMEM | ~$2,000/yr | healthSpring FOCE estimation | Validated on synthetic (Exp075) |
-| Monolix | ~$1,500/yr | healthSpring SAEM estimation | Validated on synthetic (Exp075) |
-| WinNonlin (Phoenix) | ~$3,000/yr | healthSpring NCA (λz, AUC∞, MRT, CL, Vss) | Full parity (Exp075) |
+| NONMEM | ~$2,000/yr | {{ entity(name="healthspring") }} FOCE estimation | Validated on synthetic (Exp075) |
+| Monolix | ~$1,500/yr | {{ entity(name="healthspring") }} SAEM estimation | Validated on synthetic (Exp075) |
+| WinNonlin (Phoenix) | ~$3,000/yr | {{ entity(name="healthspring") }} NCA (λz, AUC∞, MRT, CL, Vss) | Full parity (Exp075) |
 | CRO population PK | $50K–200K/program | GPU Monte Carlo (100K patients, RTX 4070) | Validated (Exp005) |
-| Galaxy server (local) | $50K+ setup | wetSpring 16S pipeline (sovereign Rust) | Full parity, 306 binaries |
-| QIIME2 + conda | Free + sysadmin time | wetSpring (no Python, no conda, no Docker) | Full parity |
-| MassHunter/Chromeleon | ~$10K+/yr | wetSpring Track 2 (mzML/EIC/peaks/PFAS) | Full parity on analysis (no instrument control) |
+| Galaxy server (local) | $50K+ setup | {{ entity(name="wetspring") }} 16S pipeline (sovereign Rust) | Full parity, 306 binaries |
+| QIIME2 + conda | Free + sysadmin time | {{ entity(name="wetspring") }} (no Python, no conda, no Docker) | Full parity |
+| MassHunter/Chromeleon | ~$10K+/yr | {{ entity(name="wetspring") }} Track 2 (mzML/EIC/peaks/PFAS) | Full parity on analysis (no instrument control) |
 
 **Minimum annual savings: $6,500 in licenses alone. CRO avoidance: $50K+ per program.**
 
@@ -48,7 +48,7 @@ You can clone the repo and verify on your own hardware.
 
 ### Speed
 
-| Operation | Python/R | ecoPrimals (CPU) | ecoPrimals (GPU) |
+| Operation | Python/R | {{ entity(name="ecoprimals") }} (CPU) | {{ entity(name="ecoprimals") }} (GPU) |
 |-----------|:--------:|:-----------------:|:----------------:|
 | Hill dose-response (6 cytokines) | ~3.6 ms | ~0.04 ms (84×) | ~0.02 ms (207 M/s) |
 | SCFA kinetics | ~1.2 ms | ~0.007 ms (160×) | GPU-ready |
@@ -89,7 +89,7 @@ Your sequencer → FASTQ files
     → Provenance chain (every step signed, auditable, ISO-mappable)
 ```
 
-wetSpring replaces the Galaxy/QIIME2/mothur/R pipeline with a single `cargo run`.
+{{ entity(name="wetspring") }} replaces the Galaxy/QIIME2/mothur/R pipeline with a single `cargo run`.
 All 306 validation binaries pass. 63 published papers reproduced.
 
 ### If You Have an HTS Core (like ADDRC)
@@ -142,8 +142,8 @@ Every intermediate result is signed. The provenance chain maps to
 |-----|-----|----------|
 | **Real clinical data** | FOCE/SAEM validated on synthetic only | MIMIC-IV access closes this gap |
 | **FDA submission formatting** | Infrastructure exists, no CTD/eCTD layer | Formatting, not algorithms |
-| **GUI workflow builder** | CLI + validation binaries only | petalTongue provides dashboards; Galaxy-style builder not planned |
-| **Multi-user web interface** | Local/LAN only | biomeOS IPC supports multi-client; web tier not planned |
+| **GUI workflow builder** | CLI + validation binaries only | {{ entity(name="petaltongue") }} provides dashboards; Galaxy-style builder not planned |
+| **Multi-user web interface** | Local/LAN only | {{ entity(name="biomeos") }} IPC supports multi-client; web tier not planned |
 | **Instrument control** | Analysis only, no instrument drivers | We analyze what instruments produce, not drive them |
 | **Established community** | One developer, public repos | 3.2M lines of Rust, 107K+ tests, 70+ papers reproduced, all validation executable |
 | **Formal GxP audit** | Architecture maps to GxP; no auditor has reviewed it | Needs institutional partner |
@@ -173,19 +173,19 @@ cargo run --release --bin validate_diversity # Shannon/Simpson/Pielou/Chao1
 
 ## Published Work Reproduced With Full Provenance
 
-The springs reproduce published, peer-reviewed science as acceptance tests for the infrastructure. Each entry below is a researcher whose published work has been independently reimplemented in Rust, cross-validated against the original Python/R/MATLAB results, and promoted to GPU — with every check automated, every tolerance explicit, and every result fully public under the scyBorg license.
+The springs reproduce published, peer-reviewed science as acceptance tests for the infrastructure. Each entry below is a researcher whose published work has been independently reimplemented in Rust, cross-validated against the original Python/R/MATLAB results, and promoted to GPU — with every check automated, every tolerance explicit, and every result fully public under the {{ entity(name="scyborg") }} license.
 
 | Researcher | Department | Published Domain | Spring | Papers Reproduced |
 |------------|-----------|------------------|--------|:-----------------:|
-| Christopher Waters | MMG, MSU | Quorum sensing, biofilm | wetSpring | 7 |
-| Kevin Liu | CMSE, MSU | Phylogenetics, HMM | wetSpring | 6 |
-| Michael Murillo | CMSE, MSU | Plasma physics, MD | hotSpring | 22 |
-| Andrea Gonzales | PhmTox, MSU | JAK inhibitors, AD | wetSpring, neuralSpring, healthSpring | 6 (G1–G6) |
-| Rika Anderson | Biology, Carleton | Metagenomics, pangenomics | wetSpring | 6 |
-| A. Daniel Jones | BMB, MSU | PFAS mass spectrometry | wetSpring | 2 |
-| Ilya Kachkovskiy | Math, MSU | Spectral theory, Anderson | wetSpring, groundSpring | 1+ |
-| Jesse Cahill | Sandia | Algal monitoring | wetSpring | 1 |
-| Chuck Smallwood | Sandia | Bloom surveillance | wetSpring | 1 |
+| Christopher Waters | MMG, MSU | Quorum sensing, biofilm | {{ entity(name="wetspring") }} | 7 |
+| Kevin Liu | CMSE, MSU | Phylogenetics, HMM | {{ entity(name="wetspring") }} | 6 |
+| Michael Murillo | CMSE, MSU | Plasma physics, MD | {{ entity(name="hotspring") }} | 22 |
+| Andrea Gonzales | PhmTox, MSU | JAK inhibitors, AD | {{ entity(name="wetspring") }}, {{ entity(name="neuralspring") }}, {{ entity(name="healthspring") }} | 6 (G1–G6) |
+| Rika Anderson | Biology, Carleton | Metagenomics, pangenomics | {{ entity(name="wetspring") }} | 6 |
+| A. Daniel Jones | BMB, MSU | PFAS mass spectrometry | {{ entity(name="wetspring") }} | 2 |
+| Ilya Kachkovskiy | Math, MSU | Spectral theory, Anderson | {{ entity(name="wetspring") }}, {{ entity(name="groundspring") }} | 1+ |
+| Jesse Cahill | Sandia | Algal monitoring | {{ entity(name="wetspring") }} | 1 |
+| Chuck Smallwood | Sandia | Bloom surveillance | {{ entity(name="wetspring") }} | 1 |
 
 Total across all springs: **70+ papers reproduced, 107,000+ test functions, 614K lines of Rust.** Every reproduction is executable: `cargo run --release --bin validate_*` reproduces the result on your hardware.
 

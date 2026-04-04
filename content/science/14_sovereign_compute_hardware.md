@@ -13,23 +13,23 @@ springs = ["airspring", "groundspring", "hotspring"]
 +++
 
 **Date:** March 30, 2026 (updated — deep debt evolution complete, Exp 130-131)
-**Status:** Hardware profiled on Strandgate (dual EPYC, RX 6950 XT + RTX 3090). 4,065+ tests passing. Market survey complete. **L10 ROOT CAUSE DEFINITIVE (Exp 122).** FECS firmware survives warm handoff via livepatch (Exp 125-127). GPU lifecycle wired into ember/glowplug daemon RPC layer. Puzzle box matrix (Exp 128) — parallel K80+Titan V solution tracks. **Fleet: 2× Titan V + RTX 5070 (GB206, Blackwell) + K80**. **AMD GCN5 DRM: 6/6 PASS**. **RTX 5070 Blackwell DRM** (SM120). **iommufd/cdev VFIO** (kernel 6.2+). **Triangle architecture:** coralReef↔toadStool↔barraCuda trio. 131+ experiments across 2 GPU architectures. **Deep debt evolution complete:** Python→Rust migration (5 scripts→coralctl), nvidia-smi→nvml-wrapper, virsh→virt crate, sh-printf→libc::fork, RegisterMap+LockedAlloc RAII consolidation, uvm_compute split, boot config from glowplug.toml, hardcoded paths→capability-based.
+**Status:** Hardware profiled on Strandgate (dual EPYC, RX 6950 XT + RTX 3090). 4,065+ tests passing. Market survey complete. **L10 ROOT CAUSE DEFINITIVE (Exp 122).** FECS firmware survives warm handoff via livepatch (Exp 125-127). GPU lifecycle wired into ember/glowplug daemon RPC layer. Puzzle box matrix (Exp 128) — parallel K80+Titan V solution tracks. **Fleet: 2× Titan V + RTX 5070 (GB206, Blackwell) + K80**. **AMD GCN5 DRM: 6/6 PASS**. **RTX 5070 Blackwell DRM** (SM120). **iommufd/cdev VFIO** (kernel 6.2+). **Triangle architecture:** {{ entity(name="coralreef") }}↔toadStool↔{{ entity(name="barracuda") }} trio. 131+ experiments across 2 GPU architectures. **Deep debt evolution complete:** Python→Rust migration (5 scripts→coralctl), nvidia-smi→nvml-wrapper, virsh→virt crate, sh-printf→libc::fork, RegisterMap+LockedAlloc RAII consolidation, uvm_compute split, boot config from glowplug.toml, hardcoded paths→capability-based.
 **Domain:** Computational physics × hardware architecture × sovereign computing
 **Novelty:** No prior work maps a three-tier precision model (f32/df64/f64) onto
 heterogeneous consumer hardware arrays with per-tier cost/TFLOP analysis for
 lattice QCD, Anderson transport, and molecular dynamics
-**Cross-Spring:** hotSpring × barraCuda × coralReef × toadStool × groundSpring × airSpring
+**Cross-Spring:** {{ entity(name="hotspring") }} × {{ entity(name="barracuda") }} × {{ entity(name="coralreef") }} × toadStool × {{ entity(name="groundspring") }} × {{ entity(name="airspring") }}
 
 ---
 
 ## Abstract
 
-The ecoPrimals sovereign compute pipeline operates on three precision tiers —
+The {{ entity(name="ecoprimals") }} sovereign compute pipeline operates on three precision tiers —
 fp32, df64, and fp64 — all accessed through hardware builtins with no software
 emulation penalty. fp64 is often overkill for scientific compute. fp32 is rarely
 enough. df64, which delivers ~48-bit mantissa (~14 decimal digits) by pairing
 the abundant fp32 cores that sit idle during native fp64 workloads, fills the
-gap that matters. hotSpring and barraCuda proved this: df64 delivers 9.9× the
+gap that matters. {{ entity(name="hotspring") }} and {{ entity(name="barracuda") }} proved this: df64 delivers 9.9× the
 throughput of native fp64 on consumer GPUs, with sufficient precision for
 lattice QCD force computation, molecular dynamics integration, and Anderson
 transport spectral analysis.
@@ -49,8 +49,8 @@ Every tier uses silicon that is physically present on the GPU die:
 | **df64** | ~48 bits | ~14 | FP32 ALU pairs (Dekker/Knuth) | 3.24 TFLOPS | **Scientific bulk math** — forces, integration, transport |
 | **f64** | 52 bits | ~16 | Native FP64 ALUs | 0.33 TFLOPS (1:64 on consumer) | Gold standard validation, accumulation, Metropolis ΔH |
 
-The critical insight, discovered in hotSpring's lattice QCD campaign and
-formalized in barraCuda v0.3: **df64 is not "software f64."** It is a
+The critical insight, discovered in {{ entity(name="hotspring") }}'s lattice QCD campaign and
+formalized in {{ entity(name="barracuda") }} v0.3: **df64 is not "software f64."** It is a
 distinct precision tier that uses idle f32 silicon. When a consumer GPU runs
 native fp64, it uses 1/32 to 1/64 of its fp32 ALU capacity. The remaining
 ALUs sit dark. df64 lights them up in pairs, each pair computing one
@@ -67,7 +67,7 @@ transformations. The result is a precision tier that:
 **f64 (native) — the referee, not the workhorse:**
 Global energy-difference tests (Metropolis accept/reject), accumulation of
 long sums where cancellation matters, reference validation against published
-results. In hotSpring's HMC pipeline, the Metropolis ΔH test compares two
+results. In {{ entity(name="hotspring") }}'s HMC pipeline, the Metropolis ΔH test compares two
 large Hamiltonians that differ by O(1) — the 48-bit mantissa of df64 is
 insufficient here, and the full 52-bit mantissa of f64 is required.
 
@@ -76,7 +76,7 @@ Force computation, trajectory integration, plaquette evaluation, spectral
 analysis, transport coefficients, correlation functions. These operations
 involve intermediate-precision arithmetic where 14 digits is more than enough
 and the 9.9× throughput advantage over native f64 means the difference between
-a 10-hour and a 1-hour simulation. hotSpring proved this in Exp 024: 1,031+
+a 10-hour and a 1-hour simulation. {{ entity(name="hotspring") }} proved this in Exp 024: 1,031+
 trajectories across 17 β points, with df64 handling bulk HMC force computation
 while native f64 handles only the Metropolis test.
 
@@ -88,8 +88,8 @@ some embedded targets).
 
 ### Ownership
 
-barraCuda decides WHICH tier based on accuracy requirements and hardware
-capability. coralReef decides HOW to implement the tier on the target GPU's
+{{ entity(name="barracuda") }} decides WHICH tier based on accuracy requirements and hardware
+capability. {{ entity(name="coralreef") }} decides HOW to implement the tier on the target GPU's
 ISA. toadStool decides WHERE to dispatch based on hardware inventory and
 routing advice. The precision decision flows:
 
@@ -148,14 +148,14 @@ From `about/HARDWARE.md`, the full fleet mapped to precision tiers:
 
 **Key observation:** The Titan V cards at Eastgate and biomeGate are the only
 GPUs in the fleet with fast native f64 (1:2 rate). On those cards, df64 is
-actually *slower* than native f64 — hotSpring's Exp 012 confirmed this:
+actually *slower* than native f64 — {{ entity(name="hotspring") }}'s Exp 012 confirmed this:
 "DF64 0.5× slower than native f64 on Titan V — use native f64 on compute
 GPUs." toadStool's routing must account for this: on GV100, skip df64 and go
 straight to native f64.
 
 ## 3. What coralReef Can Target Today
 
-coralReef's compiler has ISA backends for:
+{{ entity(name="coralreef") }}'s compiler has ISA backends for:
 
 | Vendor | ISA Targets | Cards | Backend Status |
 |--------|-------------|-------|---------------|
@@ -205,13 +205,13 @@ K80 (Kepler, no firmware signing) is the next validation target for full
 
 ### Tier A: Drop-in Cards (No New Backend)
 
-These cards map directly to existing coralReef ISA targets. Buy, install, test.
+These cards map directly to existing {{ entity(name="coralreef") }} ISA targets. Buy, install, test.
 
 #### Titan V — $150–250 on eBay/FB Marketplace
 
 | | |
 |---|---|
-| ISA | SM70 (coralReef default target) |
+| ISA | SM70 ({{ entity(name="coralreef") }} default target) |
 | f64 | **6.9 TFLOPS native, 1:2 rate** |
 | df64 | Not needed — native f64 is faster |
 | f32 | 14.9 TFLOPS |
@@ -235,7 +235,7 @@ Active cooling means no special chassis needed.
 
 The 3× Titan V + AKD1000 configuration is the **sovereign QCD rig**: native
 f64 forces on Titan V silicon, NPU-steered phase classification on AKD1000,
-no proprietary drivers, no cloud dependencies. This is what hotSpring's
+no proprietary drivers, no cloud dependencies. This is what {{ entity(name="hotspring") }}'s
 deconfinement transition study (Exp 024) needs to scale from 8⁴ to 48³.
 
 #### Tesla V100 PCIe — $80–180 on eBay
@@ -272,8 +272,8 @@ a viable configuration for:
 
 - hotQCD dynamic fermion HMC at df64 precision (force computation + plaquette
   evaluation), with AKD1000 classifying confinement phase in real-time
-- Anderson spectral analysis at df64 (groundSpring Exp 008)
-- MD trajectory integration at df64 (hotSpring WDM transport)
+- Anderson spectral analysis at df64 ({{ entity(name="groundspring") }} Exp 008)
+- MD trajectory integration at df64 ({{ entity(name="hotspring") }} WDM transport)
 
 **The df64 play changes the economics entirely.** A single Titan V at $200
 gives 6.9 TFLOPS native f64. Four RTX 3050s at $400 give 9.2 TFLOPS df64. The
@@ -304,7 +304,7 @@ The AKD1000 classifies and steers at integer precision with sub-milliwatt power.
 | RX 7800 XT | RDNA3 / GFX1101 | 16 GB | 624 GB/s | 1:16 | $350–450 |
 | RX 7900 XTX | RDNA3 / GFX1100 | 24 GB | 960 GB/s | 1:16 | $500–650 |
 
-`AmdArch::Rdna3` is defined in coralReef. ISA gen tables exist. The GFX11
+`AmdArch::Rdna3` is defined in {{ entity(name="coralreef") }}. ISA gen tables exist. The GFX11
 encoding changes from GFX10 are significant (new VOPD dual-issue, restructured
 WMMA, changed flat encoding) but the enum scaffolding is ready. An RX 7600 at
 ~$200 is the cheapest path to light up RDNA3.
@@ -323,7 +323,7 @@ All RDNA cards maintain the AMD sovereign driver path — `amdgpu` is fully open
 | Arc B580 | Xe2HPG | 12 GB GDDR6 | xe (fully open) | $230–260 |
 
 Third sovereign vendor. Intel's GPU drivers are fully open source — firmware,
-compiler, everything. `IntelArch::XeHpg` is defined in coralReef but there is
+compiler, everything. `IntelArch::XeHpg` is defined in {{ entity(name="coralreef") }} but there is
 no backend. Intel's EU architecture differs fundamentally from both NVIDIA SMs
 and AMD CUs; this is a from-scratch ISA backend.
 
@@ -350,7 +350,7 @@ natively — same driver as the RX 6950 XT.
 
 The catch: GCN5/Vega ISA is structurally different from RDNA. The scalar/vector
 ALU split, the LDS architecture, the wavefront model — all different enough to
-require a new `VegaArch` or `CdnaArch` backend in coralReef. But if that
+require a new `VegaArch` or `CdnaArch` backend in {{ entity(name="coralreef") }}. But if that
 backend existed, four MI50s at $600 would deliver **26.8 TFLOPS sovereign f64**
 with HBM2 bandwidth. No proprietary anything.
 
@@ -388,13 +388,13 @@ occasionally appears for $150–200 but requires an SXM baseboard.
 Already in the ecosystem at Eastgate and biomeGate. Proven for ESN phase
 classification (Exp 028), 80 neural processors, event-driven at ~1W. Two units
 planned for Strandgate. At sub-$300 each, the cheapest way to add the NPU tier
-that groundSpring, hotSpring, and airSpring all need.
+that {{ entity(name="groundspring") }}, {{ entity(name="hotspring") }}, and {{ entity(name="airspring") }} all need.
 
 #### Tenstorrent Wormhole — $1,000–1,500 (n150s dev board)
 
 The most interesting novel hardware for sovereignty. RISC-V based tensor cores,
 fully open ISA specification, open source firmware and compiler. Not useful for
-f64 physics (optimized for int8/bf16/fp16 tensor ops), but for neuralSpring
+f64 physics (optimized for int8/bf16/fp16 tensor ops), but for {{ entity(name="neuralspring") }}
 ESN inference and ML workloads, this is the only hardware where the entire
 stack — silicon design through compiler through driver — is open.
 
@@ -411,11 +411,11 @@ requiring HDL generation rather than ISA compilation.
 
 | Spring | Current Limitation | Titan V Array Unlocks | RTX 3050 Array Unlocks |
 |--------|-------------------|----------------------|----------------------|
-| **hotSpring** | QCD at 8⁴ only (limited by f64 throughput on consumer GPU) | 48³ lattice with native f64 forces, deconfinement at production scale | df64 HMC forces at 9.9× throughput for exploratory phase scans |
-| **groundSpring** | Anderson spectral limited by GPU f64 precision on NVK | Native f64 Anderson lattices L=14–20 on sovereign driver | df64 spectral analysis for large-L exploration |
-| **neuralSpring** | ESN inference CPU-bound | GPU-accelerated ESN on SM70 | df64 ESN weight matrices on cheap hardware |
-| **airSpring** | Richards PDE precision limited by f32 on consumer GPU | Native f64 soil hydraulics | df64 seasonal pipeline (ET₀→Kc→WB→yield) at full precision |
-| **wetSpring** | Anderson QS at f64 via wgpu returns 0 (naga/SPIR-V bug) | Sovereign coralReef bypass of naga — direct SM70 binary | df64 diversity indices at ~14 digits |
+| **{{ entity(name="hotspring") }}** | QCD at 8⁴ only (limited by f64 throughput on consumer GPU) | 48³ lattice with native f64 forces, deconfinement at production scale | df64 HMC forces at 9.9× throughput for exploratory phase scans |
+| **{{ entity(name="groundspring") }}** | Anderson spectral limited by GPU f64 precision on NVK | Native f64 Anderson lattices L=14–20 on sovereign driver | df64 spectral analysis for large-L exploration |
+| **{{ entity(name="neuralspring") }}** | ESN inference CPU-bound | GPU-accelerated ESN on SM70 | df64 ESN weight matrices on cheap hardware |
+| **{{ entity(name="airspring") }}** | Richards PDE precision limited by f32 on consumer GPU | Native f64 soil hydraulics | df64 seasonal pipeline (ET₀→Kc→WB→yield) at full precision |
+| **{{ entity(name="wetspring") }}** | Anderson QS at f64 via wgpu returns 0 (naga/SPIR-V bug) | Sovereign {{ entity(name="coralreef") }} bypass of naga — direct SM70 binary | df64 diversity indices at ~14 digits |
 
 The Titan V and the RTX 3050 are not competitors — they are complementary.
 The Titan V handles the operations that need 52-bit mantissa. The RTX 3050
@@ -438,7 +438,7 @@ Driver: nouveau/NVK (sovereign)
 
 Full sovereign pipeline for hotQCD production runs. No proprietary drivers.
 48³ lattice QCD with dynamic fermions, NPU-steered β-scan, real-time phase
-classification. coralReef compiles WGSL → SM70 SASS, coral-driver dispatches
+classification. {{ entity(name="coralreef") }} compiles WGSL → SM70 SASS, coral-driver dispatches
 via nouveau, AKD1000 classifies confinement regime between trajectories.
 
 ### Config B: "Precision-Routed Array" — $750
@@ -486,7 +486,7 @@ Power: 1,000W
 Revenue model: $0.50/GPU-hour, breakeven at ~2,400 GPU-hours
 ```
 
-If the goal is to sell compute, V100-32GB is the optimal card: SM70 (coralReef
+If the goal is to sell compute, V100-32GB is the optimal card: SM70 ({{ entity(name="coralreef") }}
 supported), fast f64, 32 GB HBM2 per card, and an absurdly low cost basis.
 At $0.50/GPU-hour (well below cloud rates), the hardware pays for itself in
 ~600 hours of 4-GPU utilization.
@@ -499,14 +499,14 @@ At $0.50/GPU-hour (well below cloud rates), the hardware pays for itself in
 | MI50 / MI100 bulk listings | Cheapest open-driver f64 if GCN backend exists |
 | Intel Arc A770 below $120 | Third sovereign vendor becomes cost-trivial |
 | Tenstorrent n300s release | Next-gen fully-open tensor accelerator |
-| RDNA3 price drops (RX 7900 XTX < $450) | Validates coralReef RDNA3 backend |
+| RDNA3 price drops (RX 7900 XTX < $450) | Validates {{ entity(name="coralreef") }} RDNA3 backend |
 | nouveau Ampere compute support | Strandgate's RTX 3090 becomes sovereign |
 | RTX 5090 used market ($800–1,000) | SM100 backend opportunity |
 | AMD ROCm on RDNA (official) | Second validation layer for AMD sovereign path |
 | Alveo U280 below $300 | FPGA force pipeline experimentation viable |
 
 The **Titan V at $200** remains the single best dollar-for-science GPU. It is
-the only card where coralReef has full ISA support (SM70), fast native f64
+the only card where {{ entity(name="coralreef") }} has full ISA support (SM70), fast native f64
 (1:2), HBM2 bandwidth (880 GB/s), AND a sovereign open-driver path
 (nouveau/NVK). No other card at any price checks all four boxes simultaneously.
 
@@ -518,7 +518,7 @@ Consumer GPU silicon evolved under the constraint of gaming workloads (f32
 throughput optimization). This constraint produced hardware where f64 ALUs are
 scarce (1:64 ratio on RTX 3090) but f32 ALUs are massively abundant. Rather
 than fighting this constraint (buying expensive HPC cards with full f64 units),
-the ecoPrimals ecosystem adapted to it: df64 uses the abundant f32 silicon for
+the {{ entity(name="ecoprimals") }} ecosystem adapted to it: df64 uses the abundant f32 silicon for
 science at 48-bit precision, achieving 9.9× throughput over native f64.
 
 This parallels the biological thesis: organisms don't escape their environmental
@@ -529,7 +529,7 @@ throughput. The science adapts to the silicon, the way the organism adapts to
 the landscape.
 
 The sovereign hardware program extends this: rather than depending on cloud
-providers who constrain access, pricing, and capability, the ecoPrimals
+providers who constrain access, pricing, and capability, the {{ entity(name="ecoprimals") }}
 ecosystem builds its own fitness landscape from $200 Titan Vs and $100 RTX
 3050s. The constraint is budget. The adaptation is precision routing. The
 result is science that no institution controls.
@@ -672,9 +672,9 @@ The compute trio now operates as a triangle:
      (HW Resources + Dispatch)      (Math + Shaders)
 ```
 
-- **coralReef** provides GlowPlug (PCIe lifecycle) and shader compilation to toadStool
-- **toadStool** provides hardware resources and dispatch routing to barraCuda
-- **barraCuda** does the math, compiling shaders through toadStool → coralReef → hardware
+- **{{ entity(name="coralreef") }}** provides GlowPlug (PCIe lifecycle) and shader compilation to toadStool
+- **toadStool** provides hardware resources and dispatch routing to {{ entity(name="barracuda") }}
+- **{{ entity(name="barracuda") }}** does the math, compiling shaders through toadStool → {{ entity(name="coralreef") }} → hardware
 
 The trio's next evolution priority is **vendor-agnostic abstraction**: moving from
 vendor-specific code paths to a unified `VendorProfile` trait that merges RegisterMap
@@ -826,9 +826,9 @@ Systematic evolution of `coral-driver`:
 ### Compute Trio Evolution (coralReef + toadStool + barraCuda)
 
 The trio converges on **capability-based discovery at every layer**:
-- **Hardware layer** (coralReef): `FalconCapabilityProbe` discovers falcon PIO layouts
+- **Hardware layer** ({{ entity(name="coralreef") }}): `FalconCapabilityProbe` discovers falcon PIO layouts
 - **Shader layer** (toadStool): `GpuDriverProfile` discovers ILP scheduling parameters
-- **Math layer** (barraCuda): adapter enumeration discovers GPU memory/capability
+- **Math layer** ({{ entity(name="barracuda") }}): adapter enumeration discovers GPU memory/capability
 
 Each primal discovers capabilities at runtime rather than hardcoding vendor specifics.
 The `VendorLifecycle` + `RegisterMap` trait pair provides the vendor-agnostic
@@ -867,7 +867,7 @@ The Titan V sovereign stack is now tracked as a **four-path validation matrix**.
 | Path | Role | Status |
 |------|------|--------|
 | **VFIO warm handoff** | Livepatch **4-NOP** slot with **dynamic enable/disable** so the GPU can move between VFIO and a native personality without full reboot choreography; pairs with warm-handoff scripts and permission hardening. | Active validation track — orchestrates lifecycle when DRM paths are unavailable or risky. |
-| **nvidia-drm + UVM** | Kernel-mediated VM/bind/exec path in coralReef/coral-driver (proprietary stack). | **Code-complete in coralReef; pending on-hardware validation** on the Gate fleet. |
+| **nvidia-drm + UVM** | Kernel-mediated VM/bind/exec path in coralReef/coral-driver (proprietary stack). | **Code-complete in {{ entity(name="coralreef") }}; pending on-hardware validation** on the Gate fleet. |
 | **nouveau DRM** | Fully open DRM path for compute. | **Blocked on Titan V: missing PMU firmware** — same class of gating called out elsewhere in this document for FECS/GPCCS bring-up. |
 | **NVK / wgpu** | Mesa NVK + wgpu stack for portable compute. | **Proven** — including **four-tier QCD** workloads on sovereign-friendly paths where NVK is the display/compute API. |
 
@@ -875,8 +875,8 @@ This matrix is the hardware-facing complement to orchestration and math-layer fi
 
 ### Upstream integration (March 2026)
 
-- **toadStool S168** — `shader.dispatch` wiring tightens the **orchestration layer**: compute requests flow through typed dispatch with clearer handoff to coralReef and device brokers.
-- **barraCuda Sprint 23** — **f64 precision pipeline** fixes (transcendentals, Dekker/Knuth paths, and NVVM-adjacent hazards) so physics binaries do not fight the driver on Volta-class hardware.
+- **toadStool S168** — `shader.dispatch` wiring tightens the **orchestration layer**: compute requests flow through typed dispatch with clearer handoff to {{ entity(name="coralreef") }} and device brokers.
+- **{{ entity(name="barracuda") }} Sprint 23** — **f64 precision pipeline** fixes (transcendentals, Dekker/Knuth paths, and NVVM-adjacent hazards) so physics binaries do not fight the driver on Volta-class hardware.
 - **coral-ember / coral-glowplug** — **`reset_method` fix** (avoid blocking PCI reset on VFIO fd teardown where documented), **JSONL journal tracking** for swap observations, and **dynamic livepatch control** so 4-NOP and related patches can be toggled without redeploying the whole daemon graph.
 
 ### Warm FECS Dispatch + Puzzle Box Matrix (Exp 127-128, March 30)
@@ -896,7 +896,7 @@ Code quality: FECS register offsets shared as `coral-driver::nv::bar0::FECS_*` c
 
 ### References (hotSpring)
 
-For experiment-level captures, cross-GPU comparisons, DRM tracing, and warm-handoff procedure notes, see **hotSpring** experiments **122–128** (VM capture / cross-analysis, livepatch breakthrough, DRM tracing matrix, warm FECS dispatch attack, puzzle box matrix).
+For experiment-level captures, cross-GPU comparisons, DRM tracing, and warm-handoff procedure notes, see **{{ entity(name="hotspring") }}** experiments **122–128** (VM capture / cross-analysis, livepatch breakthrough, DRM tracing matrix, warm FECS dispatch attack, puzzle box matrix).
 
 The consolidated **sovereign validation matrix** (dispatch paths × hardware × gate status) lives at:
 

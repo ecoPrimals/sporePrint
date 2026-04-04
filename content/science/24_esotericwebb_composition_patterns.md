@@ -16,8 +16,8 @@ springs = ["primalspring"]
 
 **Date:** March 29, 2026
 **Status:** V6, 342 tests, ~91% coverage, 41 Rust files (~13.5k LOC), no spring dependencies
-**Identity:** sporeGarden composition for deployment — composes primals directly via biomeOS graph deployments
-**Foundation:** ecoPrimals gen4 composition layer; primalSpring IPC patterns; wateringHole standards
+**Identity:** {{ entity(name="sporegarden") }} composition for deployment — composes primals directly via {{ entity(name="biomeos") }} graph deployments
+**Foundation:** {{ entity(name="ecoprimals") }} gen4 composition layer; {{ entity(name="primalspring") }} IPC patterns; {{ entity(name="wateringhole") }} standards
 
 ## Abstract
 
@@ -61,7 +61,7 @@ Flat error enums (`Io(String)`) lose operational meaning at IPC boundaries.
 By classifying errors semantically (`ConnectionRefused`, `Timeout`,
 `MethodNotFound`, `ApplicationError`), circuit breakers and retry policies
 can make intelligent decisions without string parsing. This pattern emerged
-independently in primalSpring and was absorbed by Webb, confirming it as an
+independently in {{ entity(name="primalspring") }} and was absorbed by Webb, confirming it as an
 ecosystem-wide need.
 
 ### 2. Single Source of Truth Eliminates Coordination Debt
@@ -142,16 +142,16 @@ Springs (science)  →  produce  →  primals (genomeBin/ecoBin)
 V6 proved that a consumer can absorb patterns from springs (game science
 algorithms) as local implementations, then compose the rest directly from
 primals. The gap between what primal compositions can do today and what a
-self-composed creative engine needs is itself the evolution signal. sporeGarden
+self-composed creative engine needs is itself the evolution signal. {{ entity(name="sporegarden") }}
 projects are **compositions for deployment**: they deploy primal compositions
-via biomeOS graph deployments and discover gaps through use-case exercise —
+via {{ entity(name="biomeos") }} graph deployments and discover gaps through use-case exercise —
 they do not depend on spring source code at runtime.
 
 This establishes a clear ecosystem layering:
 - **Primals**: independent binaries with IPC capabilities
 - **Springs**: science workspaces that produce and evolve primals
 - **Compositions** (gardens): deploy primals, compose them, discover gaps
-- **biomeOS**: routes capabilities, orchestrates graphs, bridges naming
+- **{{ entity(name="biomeos") }}**: routes capabilities, orchestrates graphs, bridges naming
 
 When a composition's use case doesn't work, it's a spring validation gap.
 When a spring validation gap is found, it discovers primal debt. The
@@ -163,8 +163,8 @@ validation.
 1. **Composition surfaces need semantic errors** — any primal producer should
    classify errors with `is_retriable()` / `is_recoverable()` methods.
 2. **Discovery standards need enforcement** — capability-based discovery
-   works at tiers 1-4 (filesystem) but tier-5 (Songbird) remains untested.
-3. **plasmidBin needs CI** — the gap between "primals exist" and "primals
+   works at tiers 1-4 (filesystem) but tier-5 ({{ entity(name="songbird") }}) remains untested.
+3. **{{ entity(name="plasmidbin") }} needs CI** — the gap between "primals exist" and "primals
    are deployed" is the primary blocker for gen4 adoption.
 4. **Creative surfaces validate infrastructure** — Webb found and logged 15+
    evolution gaps that fed back to 6 primal teams, proving that consumers

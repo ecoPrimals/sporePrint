@@ -11,4 +11,4 @@ JSON-RPC — no source coupling, no vendor lock-in, full data sovereignty.
 
 See also: [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the
 complete repository map, and [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md)
-for how products consume primals via plasmidBin.
+for how products consume primals via {{ entity(name="plasmidbin") }}.

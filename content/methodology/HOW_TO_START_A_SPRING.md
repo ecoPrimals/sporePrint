@@ -118,7 +118,7 @@ implementation validates against.
 - The figure is reproducible from the script
 - You discover and document any bugs in the original code or data
 
-Phase 0 is not trivial. hotSpring Phase 0 discovered 5 silent bugs in
+Phase 0 is not trivial. {{ entity(name="hotspring") }} Phase 0 discovered 5 silent bugs in
 upstream Sarkas molecular dynamics code. The control exists independently
 of everything that follows and validates the science itself.
 
@@ -149,7 +149,7 @@ the Darwinian selector — it rejects what doesn't fit the type system. The
 test suite measures whether the output matches. You evaluate whether the
 science is correct.
 
-airSpring Phase 1 cross-validated 65 values between Python and Rust, all
+{{ entity(name="airspring") }} Phase 1 cross-validated 65 values between Python and Rust, all
 matching within 1e-5. The developer didn't write Rust before starting.
 The developer knew evapotranspiration.
 
@@ -325,7 +325,7 @@ When you publish your spring under AGPL-3.0:
 2. **A new domain** — fermentation science didn't exist in the commons
    before you built it
 3. **Cross-spring connections** — your Anderson disorder measurements
-   connect to wetSpring (microbiome), airSpring (soil), healthSpring
+   connect to {{ entity(name="wetspring") }} (microbiome), {{ entity(name="airspring") }} (soil), {{ entity(name="healthspring") }}
    (gut) through the same mathematical framework
 4. **Shared infrastructure improvements** — any BarraCuda shader you
    needed that didn't exist gets contributed back

@@ -10,7 +10,7 @@ springs = ["airspring", "groundspring", "wetspring"]
 
 **Knowledge-Numeric Observed & Mentored Evolutionary Programming**
 
-A pre-thesis writeup naming and formalizing the operational methodology behind ecoPrimals.
+A pre-thesis writeup naming and formalizing the operational methodology behind {{ entity(name="ecoprimals") }}.
 
 ---
 
@@ -75,11 +75,11 @@ happens.
 
 Observation operates in two directions simultaneously:
 
-**The AI observes the project as a whole.** In ecoPrimals, primals
-and springs reinforce each other. Patterns that work in Squirrel's
+**The AI observes the project as a whole.** In {{ entity(name="ecoprimals") }}, primals
+and springs reinforce each other. Patterns that work in {{ entity(name="squirrel") }}'s
 capability discovery inform how BarraCuda structures its shader
-pipeline. The niche self-knowledge pattern from groundSpring
-propagates to wetSpring, then to airSpring, then back to Squirrel.
+pipeline. The niche self-knowledge pattern from {{ entity(name="groundspring") }}
+propagates to {{ entity(name="wetspring") }}, then to {{ entity(name="airspring") }}, then back to {{ entity(name="squirrel") }}.
 Each new component changes the fitness landscape for every other
 component. The growing codebase IS the evolving environment, and the
 AI — with its full-project context window — observes the project at
@@ -255,7 +255,7 @@ applied reality. K-NOME is applied evolution — conscious, directed,
 mentored — running on a Darwinian substrate (the compiler, the test
 suite) that provides the blind selection the human cannot.
 
-The formal thesis grounds ecoPrimals in Darwinian dynamics because
+The formal thesis grounds {{ entity(name="ecoprimals") }} in Darwinian dynamics because
 the biological evidence is Darwinian. K-NOME grounds the operational
 methodology in Lamarckian dynamics because the human intervention is
 Lamarckian. Both are true. They operate at different layers of the
@@ -312,7 +312,7 @@ is original:
    loop that K-NOME runs inside.
 
 From these two seeds: `/stdlib`'s insight about AI-as-agent + BMad's
-structured iteration -> Squirrel gen1 and gen2. Then the original
+structured iteration -> {{ entity(name="squirrel") }} gen1 and gen2. Then the original
 contributions: the biological grounding (constrained evolution), the
 K-N space concept, the bidirectional observation, the mentoring-as-
 selective-pressure framework, and the domain-agnostic claim — these

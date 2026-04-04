@@ -14,16 +14,16 @@ springs = ["healthspring", "ludospring"]
 
 **Status**: Active | **Date**: March 13, 2026
 **Depends on**: Papers 12 (Immuno-Anderson), 13 (Sovereign Health), 20 (NFT Economics)
-**Validated by**: ludoSpring exp063_consent_gated_medical (35/35 checks), exp064_beardog_signed_chain (39/39 checks), exp065_cross_domain_fraud (74/74 checks)
+**Validated by**: {{ entity(name="ludospring") }} exp063_consent_gated_medical (35/35 checks), exp064_beardog_signed_chain (39/39 checks), exp065_cross_domain_fraud (74/74 checks)
 **License**: AGPL-3.0-or-later
 
 ---
 
 ## Abstract
 
-Patient-owned medical records via DID-based loamSpine certificates. Provider
-access via loamSpine lending with consent certificates. Every access is a DAG
-vertex. BearDog provides zero-knowledge access proofs — proving authorization
+Patient-owned medical records via DID-based {{ entity(name="loamspine") }} certificates. Provider
+access via {{ entity(name="loamspine") }} lending with consent certificates. Every access is a DAG
+vertex. {{ entity(name="beardog") }} provides zero-knowledge access proofs — proving authorization
 without revealing consent document contents. The same fraud detectors that catch
 item duplication in games catch unauthorized medical record access. This paper
 bridges game provenance architecture to clinical data sovereignty.
@@ -69,7 +69,7 @@ Patient ←──loamSpine cert──► Medical record
 ### Consent-Gated Access Architecture
 
 The key insight: medical access is a **lending** problem. The patient owns the
-record (loamSpine certificate). A consent certificate is a scoped loan — the
+record ({{ entity(name="loamspine") }} certificate). A consent certificate is a scoped loan — the
 patient grants a provider time-limited, type-limited access to specific records.
 
 ```
@@ -92,11 +92,11 @@ Patient mints record cert
 
 | Type | Description | Provenance Mapping |
 |------|-------------|-------------------|
-| `RecordType` | Lab, Imaging, Prescription, Vitals, Encounter, Genomic | loamSpine cert attribute |
-| `ConsentScope` | record_types + expiry_tick | loamSpine loan terms |
-| `AccessEvent` | accessor, record, purpose, record_type, tick | rhizoCrypt vertex |
-| `AccessProof` | BearDog-signed proof of valid consent at access time | Zero-knowledge artifact |
-| `AuditTrail` | sweetGrass braid chain for complete access history | PROV-O export |
+| `RecordType` | Lab, Imaging, Prescription, Vitals, Encounter, Genomic | {{ entity(name="loamspine") }} cert attribute |
+| `ConsentScope` | record_types + expiry_tick | {{ entity(name="loamspine") }} loan terms |
+| `AccessEvent` | accessor, record, purpose, record_type, tick | {{ entity(name="rhizocrypt") }} vertex |
+| `AccessProof` | {{ entity(name="beardog") }}-signed proof of valid consent at access time | Zero-knowledge artifact |
+| `AuditTrail` | {{ entity(name="sweetgrass") }} braid chain for complete access history | PROV-O export |
 
 ### Consent Certificate as loamSpine Loan
 
@@ -104,8 +104,8 @@ The consent certificate models HIPAA's minimum necessary standard:
 
 | Consent Field | Provenance Mapping | HIPAA Alignment |
 |-------------|-------------------|-----------------|
-| Patient DID | loamSpine cert owner | Individual right (§164.524) |
-| Provider DID | loamSpine loan borrower | Covered entity (§164.502) |
+| Patient DID | {{ entity(name="loamspine") }} cert owner | Individual right (§164.524) |
+| Provider DID | {{ entity(name="loamspine") }} loan borrower | Covered entity (§164.502) |
 | Record types | Loan scope (e.g., Lab + Imaging) | Minimum necessary (§164.502(b)) |
 | Expiry | Loan duration | Retention schedule |
 | Revocable | Loan return (irreversible) | Right to revoke (§164.508) |
@@ -122,7 +122,7 @@ sensitive scope information (e.g., "Genomic" implies a genetic condition).
 
 ### BearDog's Role
 
-BearDog signs an `AccessProof` that asserts:
+{{ entity(name="beardog") }} signs an `AccessProof` that asserts:
 
 > "Provider X held valid consent for record type Y at time T"
 
@@ -135,7 +135,7 @@ The proof is verifiable without revealing:
 This is not full-strength zero-knowledge proof (that requires a ZK circuit).
 It is **selective disclosure** — the proof reveals only the minimum necessary
 for verification. exp064 validates the signing protocol; the ZK circuit is
-future work for BearDog.
+future work for {{ entity(name="beardog") }}.
 
 ### Access Flow
 
@@ -183,7 +183,7 @@ exp065 proves the fraud detectors are domain-agnostic:
 
 ### What healthSpring Gets
 
-exp063 provides a consent/access model mapping directly to healthSpring's
+exp063 provides a consent/access model mapping directly to {{ entity(name="healthspring") }}'s
 clinical tracks:
 
 ```
@@ -199,12 +199,12 @@ compliance_audit              ←─►   audit()
 
 ### Integration Path
 
-1. healthSpring reads exp063 as a reference implementation
+1. {{ entity(name="healthspring") }} reads exp063 as a reference implementation
 2. Adapts `RecordType` to their specific clinical tracks
-3. Deploys consent certificates as loamSpine services via biomeOS
-4. BearDog signs every access event via IPC
+3. Deploys consent certificates as {{ entity(name="loamspine") }} services via {{ entity(name="biomeos") }}
+4. {{ entity(name="beardog") }} signs every access event via IPC
 5. The fraud detectors become the automated HIPAA audit pipeline
-6. sweetGrass braids export as PROV-O for compliance reporting
+6. {{ entity(name="sweetgrass") }} braids export as PROV-O for compliance reporting
 
 ---
 
@@ -213,7 +213,7 @@ compliance_audit              ←─►   audit()
 ### The Attribution Chain
 
 When medical data generates value — a research publication, a treatment
-protocol, a clinical trial — the sweetGrass attribution chain records:
+protocol, a clinical trial — the {{ entity(name="sweetgrass") }} attribution chain records:
 
 ```
 Patient (Creator — their data)
@@ -229,10 +229,10 @@ not a passive data subject but the primary contributor.
 ### Patient Data Sovereignty
 
 The combination of:
-1. **DID-based ownership** (loamSpine) — patient owns the certificate
-2. **Consent-gated access** (loamSpine lending) — patient controls who sees what
-3. **Cryptographic audit** (rhizoCrypt + BearDog) — patient can verify all access
-4. **Radiating attribution** (sweetGrass + exp066) — patient gets credited
+1. **DID-based ownership** ({{ entity(name="loamspine") }}) — patient owns the certificate
+2. **Consent-gated access** ({{ entity(name="loamspine") }} lending) — patient controls who sees what
+3. **Cryptographic audit** ({{ entity(name="rhizocrypt") }} + {{ entity(name="beardog") }}) — patient can verify all access
+4. **Radiating attribution** ({{ entity(name="sweetgrass") }} + exp066) — patient gets credited
 
 ...constitutes a complete data sovereignty model. The patient is not asking
 permission to see their own records. The institution is asking the patient for
@@ -258,19 +258,19 @@ Total: **189 checks, 0 failures**.
 | Paper | Connection |
 |-------|-----------|
 | 12 — Immuno-Anderson | Immune modeling informs clinical data patterns |
-| 13 — Sovereign Health | healthSpring architecture, clinical tracks |
+| 13 — Sovereign Health | {{ entity(name="healthspring") }} architecture, clinical tracks |
 | 17 — Game Design | Same provenance patterns, different domain vocabulary |
 | 18 — RPGPT | Anti-cheat = access control (proven in exp065) |
-| 20 — NFT Economics | Every medical record is a Novel Ferment Transcript |
+| 20 — NFT Economics | Every medical record is a {{ entity(name="nft") }} |
 | 21 — Sample Provenance | Shared fraud detection infrastructure |
 
 ---
 
 ## 9. Future Work
 
-- **healthSpring adoption**: Direct integration with clinical tracks
-- **Full ZK proofs**: BearDog ZK circuit for true zero-knowledge verification
-- **FHIR/HL7 interop**: Map loamSpine certificates to FHIR resources
+- **{{ entity(name="healthspring") }} adoption**: Direct integration with clinical tracks
+- **Full ZK proofs**: {{ entity(name="beardog") }} ZK circuit for true zero-knowledge verification
+- **FHIR/HL7 interop**: Map {{ entity(name="loamspine") }} certificates to FHIR resources
 - **Cross-institution consent**: songbird discovery for multi-provider consent chains
-- **Patient portal**: petalTongue visualization of consent status and access history
+- **Patient portal**: {{ entity(name="petaltongue") }} visualization of consent status and access history
 - **Clinical trial consent**: Specialized consent certificates for research participation

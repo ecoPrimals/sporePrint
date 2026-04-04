@@ -13,10 +13,10 @@ springs = ["airspring", "neuralspring", "wetspring"]
 +++
 
 **Date:** March 2, 2026
-**Status:** **Validated on Live Hardware** — airSpring Exp 028 (35+21 checks) + Exp 029 (32/32 checks), AKD1000 PCIe on Eastgate. Streaming inference at 20,545 Hz, seasonal weight evolution, multi-crop crosstalk detection, LOCOMOS power budget analysis. **Mar 15 update**: airSpring v0.8.8 — 87 experiments, 880 lib + 280 integration + 61 forge tests (0 failures), 91 binaries, barraCuda 0.3.5 (wgpu 28, DF64 precision tier), 25 Tier A, all 20 ops upstream (`BatchedElementwiseF64`), PrecisionRoutingAdvice wired, 14.3× CPU speedup (24/24 parity, 21/21 GPU parity), 146/146 cross-spring evolution, BYOB niche deployment, zero unsafe everywhere, zero-panic 47/47, typed compute_dispatch client.
+**Status:** **Validated on Live Hardware** — {{ entity(name="airspring") }} Exp 028 (35+21 checks) + Exp 029 (32/32 checks), AKD1000 PCIe on Eastgate. Streaming inference at 20,545 Hz, seasonal weight evolution, multi-crop crosstalk detection, LOCOMOS power budget analysis. **Mar 15 update**: {{ entity(name="airspring") }} v0.8.8 — 87 experiments, 880 lib + 280 integration + 61 forge tests (0 failures), 91 binaries, {{ entity(name="barracuda") }} 0.3.5 (wgpu 28, DF64 precision tier), 25 Tier A, all 20 ops upstream (`BatchedElementwiseF64`), PrecisionRoutingAdvice wired, 14.3× CPU speedup (24/24 parity, 21/21 GPU parity), 146/146 cross-spring evolution, {{ entity(name="byob") }} niche deployment, zero unsafe everywhere, zero-panic 47/47, typed compute_dispatch client.
 **Domain:** Agricultural IoT, neuromorphic computing, precision irrigation, edge inference
 **Novelty:** First demonstration that neuromorphic (AKD1000) inference at agricultural sensor cadence costs <0.001% of active cycle energy, enabling radical cadence increases without power budget impact. First validated multi-crop classifier hot-swap on spiking NPU. First analytical proof that NPU edge inference is 10.7× more energy-efficient than cloud round-trip for LOCOMOS-style systems.
-**Cross-Spring:** airSpring v0.8.8 (sensor pipeline, water balance, ET₀, IoT, 25 Tier A ops 0-19 upstream, GPU uncertainty stack, 880 lib + 280 integration + 61 forge tests, 87 experiments, NUCLEUS primal, PrecisionRoutingAdvice, barraCuda 0.3.5 wgpu 28, BYOB niche, zero unsafe everywhere, zero-panic 47/47, compute_dispatch client) × wetSpring (NPU driver, ESN readout, Anderson QS sentinel inference) × neuralSpring (ESN classifier, LSTM time series)
+**Cross-Spring:** {{ entity(name="airspring") }} v0.8.8 (sensor pipeline, water balance, ET₀, IoT, 25 Tier A ops 0-19 upstream, GPU uncertainty stack, 880 lib + 280 integration + 61 forge tests, 87 experiments, {{ entity(name="nucleus") }} primal, PrecisionRoutingAdvice, {{ entity(name="barracuda") }} 0.3.5 wgpu 28, {{ entity(name="byob") }} niche, zero unsafe everywhere, zero-panic 47/47, compute_dispatch client) × {{ entity(name="wetspring") }} (NPU driver, ESN readout, Anderson QS sentinel inference) × {{ entity(name="neuralspring") }} (ESN classifier, LSTM time series)
 
 ---
 
@@ -48,8 +48,8 @@ not simulated — transforms this architecture into an edge-sovereign system whe
    soybean, and potato classifiers shows zero SRAM bleed across 100 switching
    rounds — one device per farm, not per field.
 
-This work bridges wetSpring's neuromorphic sentinel inference (Sub-thesis 04:
-HAB prediction on AKD1000) with airSpring's validated agricultural pipeline
+This work bridges {{ entity(name="wetspring") }}'s neuromorphic sentinel inference (Sub-thesis 04:
+HAB prediction on AKD1000) with {{ entity(name="airspring") }}'s validated agricultural pipeline
 (44 experiments, 1054 Python + 645 Rust tests, Titan V GPU live) to produce a concrete,
 costed, hardware-validated design for sovereign precision agriculture.
 
@@ -87,7 +87,7 @@ This architecture has three fundamental limitations:
 The BrainChip AKD1000 is a neuromorphic processor with 80 Neural Processors
 (NPs), 10 MB on-chip SRAM, and PCIe connectivity. It performs int8 inference
 at ~30 mW — three orders of magnitude below WiFi transmission power. The pure
-Rust `akida-driver` (from ToadStool) provides direct DMA access without
+Rust `akida-driver` (from {{ entity(name="toadstool") }}) provides direct DMA access without
 vendor SDK dependencies.
 
 The key insight, validated on real hardware: **at agricultural sensor cadence
@@ -103,7 +103,7 @@ by the microcontroller's power budget. A 5W solar panel with a standard
 
 ### 1.3 Connection to Sub-thesis 04 (Sentinel Microbes)
 
-wetSpring's Sub-thesis 04 validated NPU inference for environmental
+{{ entity(name="wetspring") }}'s Sub-thesis 04 validated NPU inference for environmental
 biosensing — HAB (harmful algal bloom) prediction using ESN reservoir
 computing on the AKD1000. That work demonstrated:
 
@@ -116,7 +116,7 @@ This sub-thesis extends the same hardware and driver to agricultural
 soil sensing — a different domain but the same architecture. The
 validated capabilities transfer directly:
 
-| wetSpring (Sentinel) | airSpring (Agriculture) |
+| {{ entity(name="wetspring") }} (Sentinel) | {{ entity(name="airspring") }} (Agriculture) |
 |---------------------|------------------------|
 | HAB class: bloom/no-bloom/toxic | Crop stress: normal/stressed/anomaly |
 | Water quality ESN readout | Soil moisture FC classifier |
@@ -229,15 +229,15 @@ loads the adapted weights. No cloud required.
 
 | Component | Spring | Role |
 |-----------|--------|------|
-| `akida-driver` | ToadStool | Pure Rust NPU driver, DMA, device discovery |
-| `barracuda::npu` | airSpring | High-level NPU API, quantization, eco classifiers |
-| `airspring-forge` | airSpring | metalForge dispatch (GPU > NPU > CPU routing) |
-| `io::csv_ts` | airSpring | Streaming sensor data parser |
-| `eco::evapotranspiration` | airSpring | FAO-56 ET₀ for water balance context |
-| `eco::water_balance` | airSpring | Depletion tracking for stress threshold |
-| `bio::esn` | wetSpring | ESN reservoir for time series classification |
-| `npu::load_readout_weights` | wetSpring | Online weight mutation pattern |
-| ESN + LSTM classifiers | neuralSpring | Architecture for time series → regime |
+| `akida-driver` | {{ entity(name="toadstool") }} | Pure Rust NPU driver, DMA, device discovery |
+| `barracuda::npu` | {{ entity(name="airspring") }} | High-level NPU API, quantization, eco classifiers |
+| `airspring-forge` | {{ entity(name="airspring") }} | {{ entity(name="metalforge") }} dispatch (GPU > NPU > CPU routing) |
+| `io::csv_ts` | {{ entity(name="airspring") }} | Streaming sensor data parser |
+| `eco::evapotranspiration` | {{ entity(name="airspring") }} | FAO-56 ET₀ for water balance context |
+| `eco::water_balance` | {{ entity(name="airspring") }} | Depletion tracking for stress threshold |
+| `bio::esn` | {{ entity(name="wetspring") }} | ESN reservoir for time series classification |
+| `npu::load_readout_weights` | {{ entity(name="wetspring") }} | Online weight mutation pattern |
+| ESN + LSTM classifiers | {{ entity(name="neuralspring") }} | Architecture for time series → regime |
 
 ### 3.2 Contribution to Other Sub-theses
 
@@ -335,7 +335,7 @@ not by inference cost.
 
 ## 5. Impact on Penny Irrigation
 
-The Penny Irrigation vision (airSpring Phase 4) is sovereign irrigation
+The Penny Irrigation vision ({{ entity(name="airspring") }} Phase 4) is sovereign irrigation
 scheduling on consumer hardware. NPU adds the edge intelligence layer:
 
 ```

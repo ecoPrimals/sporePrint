@@ -13,10 +13,10 @@ springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"
 +++
 
 **Date:** March 1, 2026
-**Status:** Architecture defined — all computational components validated independently. NPU live on AKD1000 (wetSpring Exp193-195, airSpring Exp028-029). 16S sovereign pipeline operational (wetSpring Exp184-185). ESN classifiers validated on hardware. **V84**: 256 experiments, 6,569+ checks, 93 ToadStool primitives, 26 CPU domains + 21 GPU domains validated, Python parity proven (15 domains bit-identical to SciPy), unidirectional streaming (0.10ms overhead). NestGate NCBI pipeline operational (ESearch/ESummary/EFetch). biomeOS NUCLEUS local deployment ready (`biomeos nucleus start --mode node`). **V85**: Genomic Vault organ model (Exp259) — consent-gated encrypted storage with Merkle provenance chain for MinION data sovereignty. Vault module treats genomic data as a personal organ (consent tickets, sensitivity hierarchy, tamper-evident audit). Sovereign cipher/hash/signing placeholders ready for BearDog absorption (ChaCha20-Poly1305, Ed25519, BLAKE3). NUCLEUS deployed with all 6 primals READY on Eastgate (Exp258). 260 experiments, 6,656+ checks. Awaiting sequencer hardware (MinION Mk1D or Mk1C) for end-to-end integration.
+**Status:** Architecture defined — all computational components validated independently. NPU live on AKD1000 ({{ entity(name="wetspring") }} Exp193-195, {{ entity(name="airspring") }} Exp028-029). 16S sovereign pipeline operational ({{ entity(name="wetspring") }} Exp184-185). ESN classifiers validated on hardware. **V84**: 256 experiments, 6,569+ checks, 93 {{ entity(name="toadstool") }} primitives, 26 CPU domains + 21 GPU domains validated, Python parity proven (15 domains bit-identical to SciPy), unidirectional streaming (0.10ms overhead). {{ entity(name="nestgate") }} NCBI pipeline operational (ESearch/ESummary/EFetch). {{ entity(name="biomeos") }} {{ entity(name="nucleus") }} local deployment ready (`biomeos nucleus start --mode node`). **V85**: Genomic Vault organ model (Exp259) — consent-gated encrypted storage with Merkle provenance chain for MinION data sovereignty. Vault module treats genomic data as a personal organ (consent tickets, sensitivity hierarchy, tamper-evident audit). Sovereign cipher/hash/signing placeholders ready for {{ entity(name="beardog") }} absorption (ChaCha20-Poly1305, Ed25519, BLAKE3). {{ entity(name="nucleus") }} deployed with all 6 primals READY on Eastgate (Exp258). 260 experiments, 6,656+ checks. Awaiting sequencer hardware (MinION Mk1D or Mk1C) for end-to-end integration.
 **Domain:** Environmental genomics, field sequencing, edge inference, adaptive sampling
 **Novelty:** First architecture combining nanopore sequencing with neuromorphic (AKD1000) edge classification via a sovereign Rust bioinformatics pipeline. NPU-driven adaptive sampling for real-time read selection. No cloud dependency, no vendor SDK, no Python runtime.
-**Cross-Spring:** wetSpring (16S pipeline, NPU driver, ESN classifiers, Anderson QS, PFAS ML) × airSpring (soil sensors, water balance, agricultural IoT) × neuralSpring (ESN/LSTM reservoir computing, spectral analysis) × hotSpring (akida-driver, GPU Lanczos) × groundSpring (uncertainty budgets, rare biosphere, sensor noise)
+**Cross-Spring:** {{ entity(name="wetspring") }} (16S pipeline, NPU driver, ESN classifiers, Anderson QS, PFAS ML) × {{ entity(name="airspring") }} (soil sensors, water balance, agricultural IoT) × {{ entity(name="neuralspring") }} (ESN/LSTM reservoir computing, spectral analysis) × {{ entity(name="hotspring") }} (akida-driver, GPU Lanczos) × {{ entity(name="groundspring") }} (uncertainty budgets, rare biosphere, sensor noise)
 
 ---
 
@@ -34,7 +34,7 @@ equivalents and adds neuromorphic edge classification:
    <10 mW, coin-cell battery life) using ESN reservoir computing
 3. **NPU-driven adaptive sampling** feeds accept/reject decisions back to the
    sequencer, enriching for target organisms without wet-lab preparation
-4. **metalForge** routes workloads across sequencer → GPU → NPU → sequencer
+4. **{{ entity(name="metalforge") }}** routes workloads across sequencer → GPU → NPU → sequencer
    in a closed feedback loop
 
 The result: a field station that sequences environmental DNA, classifies
@@ -114,7 +114,7 @@ That is what the AKD1000 + BarraCuda stack provides.
 
 ### 2.2 metalForge Sequencer Substrate
 
-metalForge extends from three substrate types to four:
+{{ entity(name="metalforge") }} extends from three substrate types to four:
 
 | Substrate | Type | Role | Power |
 |-----------|------|------|:-----:|
@@ -138,7 +138,7 @@ Applications:
 - **Target enrichment**: Keep HAB-associated reads, reject host background
 - **Threat detection**: Keep reads matching AMR genes, reject commensals
 - **Rare biosphere**: Keep underrepresented taxa, reject dominants
-  (guided by wetSpring Exp051 rare biosphere saturation framework)
+  (guided by {{ entity(name="wetspring") }} Exp051 rare biosphere saturation framework)
 
 ---
 
@@ -146,11 +146,11 @@ Applications:
 
 ### 3.1 Bloom Sentinel Live (Great Lakes HAB Monitoring)
 
-**Springs:** wetSpring (16S, ESN, NPU), airSpring (sensor), groundSpring (uncertainty)
+**Springs:** {{ entity(name="wetspring") }} (16S, ESN, NPU), {{ entity(name="airspring") }} (sensor), {{ entity(name="groundspring") }} (uncertainty)
 **Hardware:** MinION Mk1D + AKD1000
 
 MinION sequences water eDNA on-site. BarraCuda 16S pipeline processes reads.
-ESN bloom classifier (wetSpring Exp118, 123, 194) runs on AKD1000.
+ESN bloom classifier ({{ entity(name="wetspring") }} Exp118, 123, 194) runs on AKD1000.
 Real-time classification: pre-bloom / active / post-bloom / toxic.
 
 **Local deployment:** CIGLR at UMich runs bi-weekly Saginaw Bay cyanotoxin
@@ -159,7 +159,7 @@ Lake Erie. A MinION + NPU station fills the gap between sampling events.
 
 ### 3.2 Soil Health Sentinel
 
-**Springs:** wetSpring (16S, Anderson), airSpring (soil sensors, water balance), groundSpring (noise)
+**Springs:** {{ entity(name="wetspring") }} (16S, Anderson), {{ entity(name="airspring") }} (soil sensors, water balance), {{ entity(name="groundspring") }} (noise)
 **Hardware:** MinION Mk1D + AKD1000 + SoilWatch 10 array
 
 Extends Track 4 soil QS framework (Exp170-182, 321 checks) and Sub-thesis 08
@@ -168,7 +168,7 @@ analysis classifies soil health: diverse/healthy vs disturbed vs recovering.
 
 ### 3.3 AMR Wastewater Sentinel
 
-**Springs:** wetSpring (alignment, phylo placement, pangenomics), neuralSpring (anomaly detection)
+**Springs:** {{ entity(name="wetspring") }} (alignment, phylo placement, pangenomics), {{ entity(name="neuralspring") }} (anomaly detection)
 **Hardware:** MinION Mk1D + AKD1000
 
 Long-read metagenomics of hospital/municipal wastewater. Nanopore's long
@@ -178,7 +178,7 @@ profiles.
 
 ### 3.4 PFAS Dual-Mode Monitor
 
-**Springs:** wetSpring (PFAS ML, spectral matching, Anderson community shift)
+**Springs:** {{ entity(name="wetspring") }} (PFAS ML, spectral matching, Anderson community shift)
 **Hardware:** MinION Mk1D + AKD1000
 
 Nanopore 16S profiling of microbial community response to PFAS exposure,
@@ -192,8 +192,8 @@ PFAS molecules (SciEngine 2025) — same pore technology, chemical sensing mode.
 **Hardware:** MinION + AKD1000 + pressure enclosure + acoustic modem
 
 MinION on autonomous underwater lander near hydrothermal vents. Cold seep
-QS analysis (wetSpring Exp144-145, 299K QS genes across 170 metagenomes)
-on NPU. Songbird uplinks results via acoustic modem.
+QS analysis ({{ entity(name="wetspring") }} Exp144-145, 299K QS genes across 170 metagenomes)
+on NPU. {{ entity(name="songbird") }} uplinks results via acoustic modem.
 
 ---
 
@@ -247,7 +247,7 @@ All downstream modules are validated. Two new modules are needed:
 | `io::nanopore` | **to build** | FAST5/POD5 raw signal reader |
 | `bio::basecall` | **to build** | Signal → base conversion (or delegate to Dorado) |
 | `bio::dada2` | validated | 16S ASV denoising |
-| `bio::chimera` | validated | Chimera detection |
+| `bio::chimera` | validated | {{ entity(name="chimera") }} detection |
 | `bio::taxonomy` | validated | RDP-style classification |
 | `bio::diversity` | validated | Shannon, Pielou, rarefaction |
 | `bio::bray_curtis` | validated | Community distance |
@@ -265,13 +265,13 @@ All downstream modules are validated. Two new modules are needed:
 
 | Primal | Role |
 |--------|------|
-| **ToadStool** | GPU basecalling, NPU classification, CPU fallback. `akida-driver` for sovereign NPU. |
-| **metalForge** | Substrate routing: SEQ → GPU → NPU → SEQ feedback loop. |
-| **NestGate** | Content-addressed storage for reads, classifications, provenance. Reference DB hosting. |
-| **Songbird** | Nightly weight sync, telemetry, multi-station coordination. Acoustic modem for underwater. |
-| **BearDog** | PUF-based device attestation (Exp195). Sample chain of custody. |
-| **sweetGrass** | PROV-O tracking: sample → extraction → sequencing → classification → alert. |
-| **biomeOS** | Capability registry, field unit boot sequence, primal lifecycle. |
+| **{{ entity(name="toadstool") }}** | GPU basecalling, NPU classification, CPU fallback. `akida-driver` for sovereign NPU. |
+| **{{ entity(name="metalforge") }}** | Substrate routing: SEQ → GPU → NPU → SEQ feedback loop. |
+| **{{ entity(name="nestgate") }}** | Content-addressed storage for reads, classifications, provenance. Reference DB hosting. |
+| **{{ entity(name="songbird") }}** | Nightly weight sync, telemetry, multi-station coordination. Acoustic modem for underwater. |
+| **{{ entity(name="beardog") }}** | PUF-based device attestation (Exp195). Sample chain of custody. |
+| **{{ entity(name="sweetgrass") }}** | PROV-O tracking: sample → extraction → sequencing → classification → alert. |
+| **{{ entity(name="biomeos") }}** | Capability registry, field unit boot sequence, primal lifecycle. |
 
 ---
 
@@ -293,13 +293,13 @@ All downstream modules are validated. Two new modules are needed:
 
 | Exp | Name | Spring | What It Proves |
 |-----|------|--------|---------------|
-| 196 | Nanopore Signal Bridge | wetSpring | BarraCuda reads FAST5/POD5, bridges to 16S pipeline |
-| 197 | NPU Adaptive Sampling | wetSpring | NPU classifies partial reads, drives MinKNOW accept/reject |
-| 198 | Field Bloom Sentinel E2E | wetSpring | MinION → basecall → 16S → ESN → NPU → alert |
-| 199 | Soil 16S Field Pipeline | wetSpring × airSpring | MinION soil eDNA → 16S → Anderson disorder tracking |
-| 200 | Soil Health NPU Classifier | wetSpring × airSpring | NPU classifies soil community state |
-| 201 | AMR Gene Detection | wetSpring | Long-read → resistance gene identification |
-| 202 | AMR Threat NPU Classifier | wetSpring | NPU classifies resistance profile severity |
+| 196 | Nanopore Signal Bridge | {{ entity(name="wetspring") }} | BarraCuda reads FAST5/POD5, bridges to 16S pipeline |
+| 197 | NPU Adaptive Sampling | {{ entity(name="wetspring") }} | NPU classifies partial reads, drives MinKNOW accept/reject |
+| 198 | Field Bloom Sentinel E2E | {{ entity(name="wetspring") }} | MinION → basecall → 16S → ESN → NPU → alert |
+| 199 | Soil 16S Field Pipeline | {{ entity(name="wetspring") }} × {{ entity(name="airspring") }} | MinION soil eDNA → 16S → Anderson disorder tracking |
+| 200 | Soil Health NPU Classifier | {{ entity(name="wetspring") }} × {{ entity(name="airspring") }} | NPU classifies soil community state |
+| 201 | AMR Gene Detection | {{ entity(name="wetspring") }} | Long-read → resistance gene identification |
+| 202 | AMR Threat NPU Classifier | {{ entity(name="wetspring") }} | NPU classifies resistance profile severity |
 
 ---
 

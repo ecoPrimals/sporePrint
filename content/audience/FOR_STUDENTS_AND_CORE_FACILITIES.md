@@ -9,7 +9,7 @@ springs = ["healthspring", "wetspring"]
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  
-**Organization:** ecoPrimals
+**Organization:** {{ entity(name="ecoprimals") }}
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
@@ -17,7 +17,7 @@ springs = ["healthspring", "wetspring"]
 
 ## What This Is (30-Second Version)
 
-ecoPrimals is a collection of Rust programs that do the same things as
+{{ entity(name="ecoprimals") }} is a collection of Rust programs that do the same things as
 Galaxy, QIIME2, NONMEM, and MassHunter — but faster, reproducible, and free.
 You run them on your own hardware. No cloud accounts, no Python environments,
 no Docker, no license keys.
@@ -45,7 +45,7 @@ rustc --version  # Should show 1.87+
 | 16S metagenomics | `git clone git@github.com:syntheticChemistry/wetSpring.git` | Full FASTQ→diversity pipeline |
 | LC-MS / PFAS | `git clone git@github.com:syntheticChemistry/wetSpring.git` | mzML parsing, peak detection, PFAS screening |
 | PK/PD modeling | `git clone git@github.com:syntheticChemistry/healthSpring.git` | Hill dose-response, population PK, NLME |
-| Drug repurposing | Both wetSpring + healthSpring | NMF, TransE, MATRIX scoring |
+| Drug repurposing | Both {{ entity(name="wetspring") }} + {{ entity(name="healthspring") }} | NMF, TransE, MATRIX scoring |
 | Biosignal (ECG/PPG) | `git clone git@github.com:syntheticChemistry/healthSpring.git` | Pan-Tompkins, HRV, SpO2, arrhythmia |
 
 ### Step 3: Build and Test
@@ -82,7 +82,7 @@ Your current pipeline probably looks like:
 Illumina sequencer → FASTQ → Galaxy/QIIME2 (Python/conda) → OTU/ASV tables → R (phyloseq/vegan) → diversity stats
 ```
 
-ecoPrimals collapses this to:
+{{ entity(name="ecoprimals") }} collapses this to:
 
 ```
 FASTQ → cargo run --release --bin validate_<experiment>
@@ -90,13 +90,13 @@ FASTQ → cargo run --release --bin validate_<experiment>
 
 ### The Full 16S Pipeline (wetSpring)
 
-| Step | Traditional Tool | wetSpring Module | Validated |
+| Step | Traditional Tool | {{ entity(name="wetspring") }} Module | Validated |
 |------|-----------------|-----------------|:---------:|
 | FASTQ quality filtering | Trimmomatic / fastp | `bio::quality` | Yes |
 | Paired-end merging | FLASH / PEAR | `bio::merge_pairs` | Yes |
 | Dereplication | vsearch | `bio::derep` | Yes |
 | Denoising (ASV) | DADA2 (R) | `bio::dada2` | Yes |
-| Chimera detection | UCHIME / vsearch | `bio::chimera` | Yes |
+| {{ entity(name="chimera") }} detection | UCHIME / vsearch | `bio::chimera` | Yes |
 | Taxonomy classification | naïve Bayes / BLAST | `bio::taxonomy` | Yes |
 | Diversity indices | vegan (R) | `bio::diversity` | Yes |
 | Beta diversity (UniFrac) | phyloseq (R) | `bio::unifrac` | Yes |
@@ -110,7 +110,7 @@ FASTQ → cargo run --release --bin validate_<experiment>
    No R package conflicts. No "it worked on my machine."
 2. **Speed**: GPU-accelerated spectral matching is 1,077× faster than CPU. Diversity
    calculations are GPU-native.
-3. **Provenance**: Optional cryptographic signing on every result (BearDog Ed25519).
+3. **Provenance**: Optional cryptographic signing on every result ({{ entity(name="beardog") }} Ed25519).
    Maps to ISO 17025 traceability requirements.
 4. **No sysadmin**: One `cargo build` compiles everything. No Galaxy server to maintain.
    No conda environments to debug.
@@ -141,12 +141,12 @@ and passes tests, or it doesn't.
 
 | Project | Spring | What You'd Do | Data Source |
 |---------|--------|--------------|-------------|
-| Anderson eigensolve at scale | wetSpring + ICER | Run L=200 3D lattice on A100 GPUs | Computed |
-| ADDRC compound triage | healthSpring | GPU Hill sweep on 8K compounds | ADDRC library |
-| Soil microbiome classification | wetSpring | Real 16S through full pipeline | KBS LTER / Genomics Core |
-| Population PK on real data | healthSpring | NLME on MIMIC-IV vancomycin TDM | PhysioNet |
+| Anderson eigensolve at scale | {{ entity(name="wetspring") }} + ICER | Run L=200 3D lattice on A100 GPUs | Computed |
+| ADDRC compound triage | {{ entity(name="healthspring") }} | GPU Hill sweep on 8K compounds | ADDRC library |
+| Soil microbiome classification | {{ entity(name="wetspring") }} | Real 16S through full pipeline | KBS LTER / Genomics Core |
+| Population PK on real data | {{ entity(name="healthspring") }} | NLME on MIMIC-IV vancomycin TDM | PhysioNet |
 | NPU edge deployment | toadStool | ESN classifier on BrainChip AKD1000 | Live hardware |
-| Drug-disease NMF at scale | wetSpring Track 3 | NMF on ChEMBL 2M+ bioactivities | ChEMBL REST API |
+| Drug-disease NMF at scale | {{ entity(name="wetspring") }} Track 3 | NMF on ChEMBL 2M+ bioactivities | ChEMBL REST API |
 
 Each of these is publishable. The spring's existing validation infrastructure
 guarantees your results are correct.
@@ -169,14 +169,14 @@ the expected vs actual values were.
 
 ### Common Lab Data Formats Supported
 
-| Format | What It Is | wetSpring Module |
+| Format | What It Is | {{ entity(name="wetspring") }} Module |
 |--------|-----------|-----------------|
 | FASTQ / FASTQ.gz | Sequencer reads | `io::fastq` (sovereign parser, handles gzip) |
 | mzML | Mass spectrometry (open standard) | `io::mzml` (sovereign XML parser) |
 | mzXML | Mass spectrometry (legacy open) | `io::mzxml` |
 | JCAMP-DX | Spectroscopy (FTIR, NMR, UV-Vis) | `io::jcamp` |
 | Newick | Phylogenetic trees | `bio::felsenstein` |
-| WFDB (Format 212/16) | PhysioNet ECG/PPG waveforms | healthSpring `wfdb.rs` |
+| WFDB (Format 212/16) | PhysioNet ECG/PPG waveforms | {{ entity(name="healthspring") }} `wfdb.rs` |
 | CSV/TSV | Tabular data | Standard Rust `csv` crate |
 
 ---
@@ -188,7 +188,7 @@ the expected vs actual values were.
 | `rustc not found` | Restart terminal after installing Rust |
 | `cargo test` has compilation errors | Run `rustup update` to ensure Rust 1.87+ |
 | GPU tests fail | Add `--features gpu` and ensure Vulkan drivers are installed |
-| barraCuda not found | Clone barraCuda alongside the spring: `git clone git@github.com:ecoPrimals/barraCuda.git` in the same parent directory |
+| {{ entity(name="barracuda") }} not found | Clone {{ entity(name="barracuda") }} alongside the spring: `git clone git@github.com:ecoPrimals/barraCuda.git` in the same parent directory |
 | Tests pass but I don't understand the output | Each `validate_*` binary prints human-readable pass/fail with tolerances |
 
 ---

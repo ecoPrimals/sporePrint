@@ -272,7 +272,7 @@ Connects to Exp146 (luxR phylogeny overlay from Paper P3).
 
 ## 7. neuralSpring Connections
 
-neuralSpring's ML primitives (S135: 966 lib tests, 232 binaries,
+{{ entity(name="neuralspring") }}'s ML primitives (S135: 966 lib tests, 232 binaries,
 3,034+ checks, 5 WDM surrogates complete) apply directly to cross-species
 signaling analysis:
 
@@ -293,12 +293,12 @@ signaling analysis:
 
 ## 8. groundSpring Connections
 
-groundSpring validates the mathematical foundation that this paper's
+{{ entity(name="groundspring") }} validates the mathematical foundation that this paper's
 cross-species Anderson predictions rest on:
 
 - **Exp 008 — Anderson localization** (Bourgain & Kachkovskiy 2018):
   The same 1D/2D/3D Anderson model used here to predict QS failure in
-  lichen (2D) vs success in root nodules (3D). groundSpring validates
+  lichen (2D) vs success in root nodules (3D). {{ entity(name="groundspring") }} validates
   the spectral diagnostic (level spacing ratio r, Thouless conductance)
   at benchmark precision. 8/8 Rust checks
 - **Exp 012 — Spin chain transport** (Kachkovskiy 2016): Signal transport
@@ -322,9 +322,9 @@ cross-species Anderson predictions rest on:
   frequencies where the signal passes through the skeleton vs where it
   is absorbed. 10/10 Rust checks
 
-**Cross-species pipeline**: groundSpring (Anderson spectral validation
-+ transport + error thresholds) → wetSpring (NCBI metagenome QS gene
-search + luxR phylogeny) → neuralSpring (HMM introgression detection for
+**Cross-species pipeline**: {{ entity(name="groundspring") }} (Anderson spectral validation
++ transport + error thresholds) → {{ entity(name="wetspring") }} (NCBI metagenome QS gene
+search + luxR phylogeny) → {{ entity(name="neuralspring") }} (HMM introgression detection for
 horizontal QS gene transfer between symbiotic partners).
 
 ## 9. Connection to Constrained Evolution

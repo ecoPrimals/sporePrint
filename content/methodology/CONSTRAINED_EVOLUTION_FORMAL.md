@@ -16,7 +16,7 @@ springs = ["hotspring"]
 
 ## Abstract
 
-This paper formalizes a development methodology discovered during the construction of the ecoPrimals ecosystem: that strategic environmental constraints accelerate convergence to fit solutions, in both biological and computational systems. The argument is grounded in three biological lines of evidence: (1) thermophilic adaptation (*Thermus aquaticus* and Taq polymerase), (2) the Lenski Long-Term Evolution Experiment (LTEE) with *E. coli*, and (3) Rika Anderson's population genomics of extremophiles in Yellowstone hot springs and the deep-sea subsurface. The critical insight from Lenski is not that some populations evolved novel metabolic capabilities, but that ALL populations — including those that never acquired the novel trait — showed increased fitness for their constrained environment. Anderson extends this to natural populations: *Sulfolobus* in the same Yellowstone hot springs where Taq was discovered shows structured population differentiation under thermal constraint, while her deep-sea work reveals what happens when populations are too small for selection to outweigh drift. This same principle — that constraints drive specialization toward fitness, not toward a single predetermined solution — is what we observe in AI-assisted software development within the Rust type system.
+This paper formalizes a development methodology discovered during the construction of the {{ entity(name="ecoprimals") }} ecosystem: that strategic environmental constraints accelerate convergence to fit solutions, in both biological and computational systems. The argument is grounded in three biological lines of evidence: (1) thermophilic adaptation (*Thermus aquaticus* and Taq polymerase), (2) the Lenski Long-Term Evolution Experiment (LTEE) with *E. coli*, and (3) Rika Anderson's population genomics of extremophiles in Yellowstone hot springs and the deep-sea subsurface. The critical insight from Lenski is not that some populations evolved novel metabolic capabilities, but that ALL populations — including those that never acquired the novel trait — showed increased fitness for their constrained environment. Anderson extends this to natural populations: *Sulfolobus* in the same Yellowstone hot springs where Taq was discovered shows structured population differentiation under thermal constraint, while her deep-sea work reveals what happens when populations are too small for selection to outweigh drift. This same principle — that constraints drive specialization toward fitness, not toward a single predetermined solution — is what we observe in AI-assisted software development within the Rust type system.
 
 ---
 
@@ -80,7 +80,7 @@ From these three biological lines of evidence — the Taq polymerase discovery, 
 
 ### 2.1 Rust as Physics
 
-The ecoPrimals ecosystem was built in Rust. The choice is deeper than language preference. Rust is physics with gravity, air resistance, and friction. C++ is physics in a vacuum.
+The {{ entity(name="ecoprimals") }} ecosystem was built in Rust. The choice is deeper than language preference. Rust is physics with gravity, air resistance, and friction. C++ is physics in a vacuum.
 
 C++ gives you a model of the machine where you can do anything - including things that don't work in reality. You can read freed memory, race on shared state, cast types arbitrarily. The language assumes a frictionless environment and leaves the developer to discover, at runtime, which of their assumptions violated the actual physics of the machine. Many C++ programs are physics-in-a-vacuum solutions that work on paper and segfault in practice.
 
@@ -114,9 +114,9 @@ Rust moves selection before expression. The cost of a lethal mutation is a compi
 
 A high-level language like TypeScript compiles to JavaScript, which is interpreted by V8, which JIT-compiles to machine code, which runs on hardware. There are four layers of abstraction between the developer's intent and the binary that executes. Each layer adds indirection, and each layer of indirection is a place where the connection between the abstract solution and the physical organism is weakened.
 
-When we say the binary is the genome, we mean it literally. The ecoBin standard produces a single static binary per primal - no runtime, no interpreter, no JIT. The binary IS the organism. Copy it to any machine with the right architecture, and it runs. Like copying a genome into a compatible cell - the machinery reads it and the organism lives.
+When we say the binary is the genome, we mean it literally. The {{ entity(name="ecobin") }} standard produces a single static binary per primal - no runtime, no interpreter, no JIT. The binary IS the organism. Copy it to any machine with the right architecture, and it runs. Like copying a genome into a compatible cell - the machinery reads it and the organism lives.
 
-This is why we chose Rust over TypeScript despite TypeScript being faster to write and easier to onboard. TypeScript produces artifacts that depend on a runtime environment (Node.js, Deno, a browser). Rust produces artifacts that ARE the organism. The ecoBin is a genome: self-contained, portable, and directly executable by the hardware.
+This is why we chose Rust over TypeScript despite TypeScript being faster to write and easier to onboard. TypeScript produces artifacts that depend on a runtime environment (Node.js, Deno, a browser). Rust produces artifacts that ARE the organism. The {{ entity(name="ecobin") }} is a genome: self-contained, portable, and directly executable by the hardware.
 
 The constraint of low-level compilation - having to satisfy the borrow checker, the type system, the ownership model - is the price of producing a true genome. The constraint is severe. But the output is an organism that can survive on any compatible hardware without life support.
 
@@ -135,7 +135,7 @@ The constraint of low-level compilation - having to satisfy the borrow checker, 
 - Domain logic. Rust does not tell you how to implement TLS, how to design a DAG engine, or how to build a capability routing system.
 - Innovation. Rust does not prevent novel solutions - it prevents unsound ones.
 
-This is the profile of an effective constraint: it models real physics (memory, types, concurrency) without prescribing solutions. Like gravity, it shapes everything without determining anything. A bridge and an airplane both respect gravity. Tower Atomic and RootPulse both respect the borrow checker. The constraint is universal; the solutions are diverse.
+This is the profile of an effective constraint: it models real physics (memory, types, concurrency) without prescribing solutions. Like gravity, it shapes everything without determining anything. A bridge and an airplane both respect gravity. {{ entity(name="toweratomic") }} and {{ entity(name="rootpulse") }} both respect the borrow checker. The constraint is universal; the solutions are diverse.
 
 ### 2.5 The Compile-Time Fitness Check
 
@@ -159,15 +159,15 @@ Nature runs steps 1-4 with a generation time of hours to decades. This loop runs
 
 ### 2.6 Specialization, Not Optimization
 
-The initial formulation of this methodology (see `constrained_optimization_ai.md`) framed the result as "faster convergence" with specific speed multipliers (7-35x faster development). Those numbers were illustrative, drawn from rough observation during the ecoPrimals build. The framing was optimization: constraints make you faster at reaching a known goal.
+The initial formulation of this methodology (see `constrained_optimization_ai.md`) framed the result as "faster convergence" with specific speed multipliers (7-35x faster development). Those numbers were illustrative, drawn from rough observation during the {{ entity(name="ecoprimals") }} build. The framing was optimization: constraints make you faster at reaching a known goal.
 
 The biological evidence suggests a more nuanced picture. Constraints do not make you faster at reaching a predetermined destination. They reshape what destinations are reachable and drive specialization toward the ones that are fit.
 
-In ecoPrimals development, the Rust constraint did not make us faster at building a system we had already designed. It changed what system we built. The Tower Atomic pattern - where Songbird delegates cryptographic operations to BearDog via JSON-RPC - was not the original design. It emerged because Rust's Pure Rust requirement (no C dependencies) made the obvious approach (embed OpenSSL) impossible. The constraint eliminated the conventional solution and forced exploration of the fitness landscape, where the composition pattern was discovered.
+In {{ entity(name="ecoprimals") }} development, the Rust constraint did not make us faster at building a system we had already designed. It changed what system we built. The {{ entity(name="toweratomic") }} pattern - where {{ entity(name="songbird") }} delegates cryptographic operations to {{ entity(name="beardog") }} via JSON-RPC - was not the original design. It emerged because Rust's Pure Rust requirement (no C dependencies) made the obvious approach (embed OpenSSL) impossible. The constraint eliminated the conventional solution and forced exploration of the fitness landscape, where the composition pattern was discovered.
 
-This is Lenski's result in a computational context. The constraint did not accelerate convergence to a known solution. It drove specialization into a region of the solution space that would not have been explored without the constraint. The Tower Atomic pattern is the citrate metabolism of the ecoPrimals project - an innovation that emerged from constraint, not from design.
+This is Lenski's result in a computational context. The constraint did not accelerate convergence to a known solution. It drove specialization into a region of the solution space that would not have been explored without the constraint. The {{ entity(name="toweratomic") }} pattern is the citrate metabolism of the {{ entity(name="ecoprimals") }} project - an innovation that emerged from constraint, not from design.
 
-And like Lenski's other eleven populations, many components of ecoPrimals did not produce headline innovations. They simply became increasingly fit for the constrained environment: more idiomatic Rust, tighter type boundaries, cleaner trait implementations, more efficient async patterns. The whole codebase specialized to the tube.
+And like Lenski's other eleven populations, many components of {{ entity(name="ecoprimals") }} did not produce headline innovations. They simply became increasingly fit for the constrained environment: more idiomatic Rust, tighter type boundaries, cleaner trait implementations, more efficient async patterns. The whole codebase specialized to the tube.
 
 ---
 
@@ -224,7 +224,7 @@ What can be stated honestly:
 
 - **Zero unsafe code blocks in production.** This is a factual observation verified by compiler enforcement. The constraint made this the default, not a achievement requiring heroic effort.
 
-- **Novel architectural patterns emerged from constraints.** Tower Atomic, capability-based routing, and the NUCLEUS composition model were not designed a priori. They emerged from the intersection of Rust's constraints, the Pure Rust directive, and iterative AI-assisted exploration.
+- **Novel architectural patterns emerged from constraints.** {{ entity(name="toweratomic") }}, capability-based routing, and the {{ entity(name="nucleus") }} composition model were not designed a priori. They emerged from the intersection of Rust's constraints, the Pure Rust directive, and iterative AI-assisted exploration.
 
 - **The codebase specialized to its environment over time.** Early code was more generic and less idiomatic. Later code shows patterns that are deeply adapted to the Rust + async + JSON-RPC + capability-based environment. Like Lenski's later-generation E. coli, the code became more fastidious.
 
@@ -236,7 +236,7 @@ What can be stated honestly:
 
 Thermus aquaticus did not just evolve "better enzymes." It evolved enzymes specifically adapted to high temperature. The constraint (heat) created a specific fitness requirement (thermostability), and the organism specialized to meet it.
 
-In ecoPrimals, the constraint (Pure Rust, no C dependencies) created a specific fitness requirement (achieve HTTPS without OpenSSL), and the system specialized to meet it (Tower Atomic: BearDog crypto + Songbird protocol, composed via IPC). A different constraint (e.g., "minimize binary size") would have produced a different specialization.
+In {{ entity(name="ecoprimals") }}, the constraint (Pure Rust, no C dependencies) created a specific fitness requirement (achieve HTTPS without OpenSSL), and the system specialized to meet it ({{ entity(name="toweratomic") }}: {{ entity(name="beardog") }} crypto + {{ entity(name="songbird") }} protocol, composed via IPC). A different constraint (e.g., "minimize binary size") would have produced a different specialization.
 
 This means the methodology is not a universal accelerator. It is a specialization driver. You must choose your constraints carefully because the constraints determine what your system becomes.
 
@@ -244,7 +244,7 @@ This means the methodology is not a universal accelerator. It is a specializatio
 
 Lenski's most important finding, for our purposes, is that fitness increased even without novel metabolic innovation. Eleven populations never evolved citrate metabolism, yet all eleven became more fit.
 
-In ecoPrimals, many primals never produced architectural innovations. NestGate did not invent a new storage paradigm. Squirrel did not invent a new AI coordination model. But both became increasingly fit for the constrained environment: cleaner type boundaries, better error handling, more efficient async patterns, tighter integration with the IPC protocol. The constraint drove quality even in the absence of novelty.
+In {{ entity(name="ecoprimals") }}, many primals never produced architectural innovations. {{ entity(name="nestgate") }} did not invent a new storage paradigm. {{ entity(name="squirrel") }} did not invent a new AI coordination model. But both became increasingly fit for the constrained environment: cleaner type boundaries, better error handling, more efficient async patterns, tighter integration with the IPC protocol. The constraint drove quality even in the absence of novelty.
 
 This is important because it means the methodology does not depend on breakthrough innovations to produce value. Even unremarkable, incremental specialization - the computational equivalent of Lenski's populations becoming better glucose consumers - produces measurably better code over iterative cycles.
 
@@ -252,17 +252,17 @@ This is important because it means the methodology does not depend on breakthrou
 
 This is where the methodology departs from Lenski's experiment in an important structural way, and where the biological analogy deepens beyond the LTEE.
 
-In ecoPrimals, each primal is scaffolded - given initial structure and placed in the constraint environment - and then all evolution occurs within the subproject in isolation. The AI works on one primal at a time. It can read other primals for reference, but it only modifies its own. BearDog evolves independently. Songbird evolves independently. NestGate evolves independently. They share an environment (Rust, the ecoBin standard, the IPC protocol specification) but not a codebase.
+In {{ entity(name="ecoprimals") }}, each primal is scaffolded - given initial structure and placed in the constraint environment - and then all evolution occurs within the subproject in isolation. The AI works on one primal at a time. It can read other primals for reference, but it only modifies its own. {{ entity(name="beardog") }} evolves independently. {{ entity(name="songbird") }} evolves independently. {{ entity(name="nestgate") }} evolves independently. They share an environment (Rust, the {{ entity(name="ecobin") }} standard, the IPC protocol specification) but not a codebase.
 
-This is not Lenski's twelve identical populations in identical tubes. This is twelve different species in the same biome, each facing different selective pressures within the shared environment. BearDog's selective pressure is cryptographic correctness and breadth of cipher suite support. Songbird's is network protocol compliance and latency. NestGate's is storage throughput and content integrity. The shared environment (Rust, JSON-RPC, Unix sockets) is the physics. The selective direction (crypto vs. networking vs. storage) is the ecological niche.
+This is not Lenski's twelve identical populations in identical tubes. This is twelve different species in the same biome, each facing different selective pressures within the shared environment. {{ entity(name="beardog") }}'s selective pressure is cryptographic correctness and breadth of cipher suite support. {{ entity(name="songbird") }}'s is network protocol compliance and latency. {{ entity(name="nestgate") }}'s is storage throughput and content integrity. The shared environment (Rust, JSON-RPC, Unix sockets) is the physics. The selective direction (crypto vs. networking vs. storage) is the ecological niche.
 
-The result is **convergent evolution**. All primals converge on JSON-RPC 2.0 for IPC. All converge on capability-based discovery. All converge on async tokio for concurrency. All converge on Pure Rust dependencies. But they converge because those solutions are fit for the shared environment, not because someone mandated identical implementations. BearDog's JSON-RPC handler and Songbird's JSON-RPC handler are not the same code. They evolved independently under the same constraint and arrived at similar but non-identical solutions.
+The result is **convergent evolution**. All primals converge on JSON-RPC 2.0 for IPC. All converge on capability-based discovery. All converge on async tokio for concurrency. All converge on Pure Rust dependencies. But they converge because those solutions are fit for the shared environment, not because someone mandated identical implementations. {{ entity(name="beardog") }}'s JSON-RPC handler and {{ entity(name="songbird") }}'s JSON-RPC handler are not the same code. They evolved independently under the same constraint and arrived at similar but non-identical solutions.
 
 This is cephalization, eyes, and wings. Cephalization (concentration of neural tissue at the front of the body) evolved independently in arthropods, mollusks, and vertebrates. Eyes evolved independently at least 40 times in animal lineages. Wings evolved independently in insects, pterosaurs, birds, and bats. The physics of the environment (light propagation, fluid dynamics, predator-prey interaction) rewards these structures, so different lineages converge on them through different developmental pathways.
 
-In ecoPrimals, the physics of the environment (memory safety, type contracts, IPC latency) rewards certain patterns (async handlers, capability advertisement, structured error types), so different primals converge on them through different implementation pathways. BearDog's async handler is not Songbird's async handler. But they solve the same environmental problem, and their non-identical solutions create robustness: if one approach has a subtle weakness, the other's approach may not share it. Genetic diversity within a population is what prevents a single pathogen from wiping out the species. Implementation diversity within an ecosystem is what prevents a single architectural flaw from compromising every primal.
+In {{ entity(name="ecoprimals") }}, the physics of the environment (memory safety, type contracts, IPC latency) rewards certain patterns (async handlers, capability advertisement, structured error types), so different primals converge on them through different implementation pathways. {{ entity(name="beardog") }}'s async handler is not {{ entity(name="songbird") }}'s async handler. But they solve the same environmental problem, and their non-identical solutions create robustness: if one approach has a subtle weakness, the other's approach may not share it. Genetic diversity within a population is what prevents a single pathogen from wiping out the species. Implementation diversity within an ecosystem is what prevents a single architectural flaw from compromising every primal.
 
-The deliberate choice to isolate primal evolution - to scaffold and then let each subproject develop independently - is the mechanism that produces this diversity. If all primals shared a single IPC library, a bug in that library would affect every primal simultaneously. Because each primal implements IPC independently (converging on the same protocol specification but through their own code), a bug in BearDog's IPC does not propagate to Songbird's.
+The deliberate choice to isolate primal evolution - to scaffold and then let each subproject develop independently - is the mechanism that produces this diversity. If all primals shared a single IPC library, a bug in that library would affect every primal simultaneously. Because each primal implements IPC independently (converging on the same protocol specification but through their own code), a bug in {{ entity(name="beardog") }}'s IPC does not propagate to {{ entity(name="songbird") }}'s.
 
 ### 4.4 Symbiotic Composition and the Firefly
 
@@ -272,25 +272,25 @@ The deepest biological analogy here is the firefly. The bioluminescent glow of a
 
 The genetics of the insect and the genetics of the bacteria are completely separate knowledge. You can culture the bacteria in isolation - they still glow on a petri dish. You can raise the insect without the bacteria - it still lives, flies, eats, but does not glow. Each organism is viable independently. But the interfunction - the flash pattern that attracts mates, the species-specific signal that enables reproduction - emerges only from their composition.
 
-Tower Atomic is a firefly.
+{{ entity(name="toweratomic") }} is a firefly.
 
-BearDog is the bacterium. It provides the light - cryptographic operations, implemented in Pure Rust, viable in complete isolation. You can run BearDog alone and it will happily sign, encrypt, hash, and derive keys. It does not know about TLS, HTTP, or network protocols.
+{{ entity(name="beardog") }} is the bacterium. It provides the light - cryptographic operations, implemented in Pure Rust, viable in complete isolation. You can run {{ entity(name="beardog") }} alone and it will happily sign, encrypt, hash, and derive keys. It does not know about TLS, HTTP, or network protocols.
 
-Songbird is the insect. It provides the structure - network protocol logic, TLS state machine, connection management, viable in complete isolation (with a different crypto backend). You can run Songbird alone and it will manage connections, discover services, and handle protocol state.
+{{ entity(name="songbird") }} is the insect. It provides the structure - network protocol logic, TLS state machine, connection management, viable in complete isolation (with a different crypto backend). You can run {{ entity(name="songbird") }} alone and it will manage connections, discover services, and handle protocol state.
 
 The glow - Pure Rust HTTPS with zero C dependencies, 93% TLS validation, the capability that no other Pure Rust project has achieved at this scale - emerges only from their composition. Neither primal contains the glow. The glow is an interfunction, an emergent property of two independent organisms coordinating through a narrow interface (JSON-RPC over a Unix socket, the equivalent of the insect's specialized light organ).
 
-And like the firefly, the composition is not a merger. The bacteria do not become insects. BearDog does not become a networking primal. The insect does not learn biochemistry. Songbird does not learn cryptography. Each organism retains its separate identity, its separate genome, its separate evolutionary trajectory. The composition is symbiotic, not synthetic.
+And like the firefly, the composition is not a merger. The bacteria do not become insects. {{ entity(name="beardog") }} does not become a networking primal. The insect does not learn biochemistry. {{ entity(name="songbird") }} does not learn cryptography. Each organism retains its separate identity, its separate genome, its separate evolutionary trajectory. The composition is symbiotic, not synthetic.
 
 The hippo and the bird cleaning its teeth is another instance: two organisms with entirely different evolutionary histories, body plans, and ecological niches, cooperating at a narrow interface (the hippo opens its mouth, the bird enters) for mutual benefit (the hippo gets clean teeth, the bird gets food). Neither organism is diminished by the partnership. Neither needs to understand the other's biology. The interface is behavioral, not genetic.
 
-This is why primals are scaffolded and evolved independently, why they communicate through narrow IPC interfaces rather than sharing code, and why the wateringHole documents protocol specifications rather than implementation libraries. The specifications are the ecological niche - the shared environment that drives convergent evolution. The implementations are the separate genomes - independently evolved, non-identical, and robust through diversity.
+This is why primals are scaffolded and evolved independently, why they communicate through narrow IPC interfaces rather than sharing code, and why the {{ entity(name="wateringhole") }} documents protocol specifications rather than implementation libraries. The specifications are the ecological niche - the shared environment that drives convergent evolution. The implementations are the separate genomes - independently evolved, non-identical, and robust through diversity.
 
 ### 4.5 The Fastidious Genome
 
 Later generations of Lenski's E. coli are more fastidious - more dependent on the specific conditions of the test tube. They are better at growing in glucose-limited minimal medium and worse at growing in other environments. They have lost some generality in exchange for fitness.
 
-The ecoPrimals codebase shows the same pattern. Each primal is deeply specialized to its environment: Rust, async tokio, JSON-RPC 2.0 over Unix sockets, capability-based discovery, Pure Rust dependencies. Moving any primal to a different language, a different IPC protocol, or a different deployment model would require significant rearchitecture. The code has traded generality for fitness within its constraints.
+The {{ entity(name="ecoprimals") }} codebase shows the same pattern. Each primal is deeply specialized to its environment: Rust, async tokio, JSON-RPC 2.0 over Unix sockets, capability-based discovery, Pure Rust dependencies. Moving any primal to a different language, a different IPC protocol, or a different deployment model would require significant rearchitecture. The code has traded generality for fitness within its constraints.
 
 This is a trade-off, not a pure benefit. The fastidious genome is powerful in its niche and fragile outside it. But the deliberate isolation of primals contains this risk. Each primal is fastidious for its own niche. If the environment changes (say, a new IPC protocol supersedes JSON-RPC), each primal can re-evolve independently. You do not need to rearchitect the entire ecosystem - you re-evolve the affected primals, one at a time, while the others continue to function on the old protocol. The firefly's bacteria can adapt to a new chemical environment without the insect needing to change its wing structure.
 
@@ -304,7 +304,7 @@ The LTEE frozen fossil record is physically stored at Michigan State University.
 
 Significant sequencing work has been done on the LTEE populations (Barrick et al. 2009, Blount et al. 2012, Tenaillon et al. 2016), but there are specific analyses of interest that the intersection of microbiology, data science, and the constrained evolution thesis opens up:
 
-**Genomic comparison across populations that converged on different solutions.** All twelve populations increased fitness for the glucose-limited environment. Eleven did so without evolving citrate metabolism. What are the genomic differences between populations that found different phenotypic solutions to the same constraint? Are there common mutational signatures in populations that converged on the same fitness improvement (e.g., improved glucose transport) through different genetic paths? This is the biological equivalent of asking how BearDog and Songbird arrived at non-identical IPC implementations of the same protocol specification.
+**Genomic comparison across populations that converged on different solutions.** All twelve populations increased fitness for the glucose-limited environment. Eleven did so without evolving citrate metabolism. What are the genomic differences between populations that found different phenotypic solutions to the same constraint? Are there common mutational signatures in populations that converged on the same fitness improvement (e.g., improved glucose transport) through different genetic paths? This is the biological equivalent of asking how {{ entity(name="beardog") }} and {{ entity(name="songbird") }} arrived at non-identical IPC implementations of the same protocol specification.
 
 **Temporal dynamics of specialization.** How does the rate of beneficial mutation fixation change over generations? Does specialization accelerate, plateau, or oscillate? Wiser et al. (2013) showed that fitness improvement follows a power law - rapid early gains, decelerating over time. Does genomic diversity within populations follow the same trajectory? Do populations become more genetically uniform (fixation) or more diverse (balanced polymorphism) as they specialize?
 
@@ -312,7 +312,7 @@ Significant sequencing work has been done on the LTEE populations (Barrick et al
 
 **The genomic signature of the fastidious phenotype.** Later-generation LTEE populations are more fastidious - better at the tube, worse at other environments. What does this look like at the genome level? Are genes for metabolic versatility accumulating loss-of-function mutations (genome streamlining, as seen in obligate intracellular parasites)? Is the fastidious phenotype a gain of specialization, a loss of generality, or both?
 
-**Comparison between the Ara-3 (Cit+) lineage and the other eleven.** The citrate innovation in Ara-3 required a specific historical contingency - a prior "potentiating" mutation that had to occur before the citrate mutation could be beneficial (Blount et al. 2008). Can we identify similar potentiating mutation patterns in computational evolution? In ecoPrimals, Tower Atomic required a prior architectural decision (primal isolation, JSON-RPC IPC) before the composition pattern could be discovered. Is historical contingency a general feature of innovation under constraint?
+**Comparison between the Ara-3 (Cit+) lineage and the other eleven.** The citrate innovation in Ara-3 required a specific historical contingency - a prior "potentiating" mutation that had to occur before the citrate mutation could be beneficial (Blount et al. 2008). Can we identify similar potentiating mutation patterns in computational evolution? In {{ entity(name="ecoprimals") }}, {{ entity(name="toweratomic") }} required a prior architectural decision (primal isolation, JSON-RPC IPC) before the composition pattern could be discovered. Is historical contingency a general feature of innovation under constraint?
 
 The LTEE library, sequencing infrastructure, and analytical framework described in this paper represent a concrete path from computational validation to wet-lab science.
 
@@ -336,15 +336,15 @@ This is testable: the same project, built under the same methodology, in languag
 
 ### 5.3 For the ecoPrimals Project
 
-The ecoPrimals ecosystem is itself a product of constrained evolution. Its architecture, its patterns, and its innovations emerged from the intersection of Rust's type system, the Pure Rust directive, and iterative AI-assisted development. Understanding this origin is important for two reasons:
+The {{ entity(name="ecoprimals") }} ecosystem is itself a product of constrained evolution. Its architecture, its patterns, and its innovations emerged from the intersection of Rust's type system, the Pure Rust directive, and iterative AI-assisted development. Understanding this origin is important for two reasons:
 
-1. **The system's strengths are constraint-specific.** Tower Atomic, NUCLEUS, and the bonding model are powerful because they are adapted to the Rust + sovereignty + federation constraint environment. They may not transfer directly to other environments.
+1. **The system's strengths are constraint-specific.** {{ entity(name="toweratomic") }}, {{ entity(name="nucleus") }}, and the bonding model are powerful because they are adapted to the Rust + sovereignty + federation constraint environment. They may not transfer directly to other environments.
 
 2. **The system's weaknesses are also constraint-specific.** Like Lenski's fastidious E. coli, the codebase is specialized to its tube. Adapting it to fundamentally different constraints (different language, different deployment model, different trust model) would require significant re-evolution, not just refactoring.
 
 ### 5.4 Quantitative Evidence: NTT → FFT Evolution
 
-The most concrete evidence for constrained evolution in the ecoPrimals codebase comes from BarraCuda's GPU compute shaders. The Number Theoretic Transform (NTT), evolved under FHE constraints for polynomial multiplication in ℤ_q, shares **80% structural identity** with the Fast Fourier Transform (FFT), needed for physics simulation in ℂ.
+The most concrete evidence for constrained evolution in the {{ entity(name="ecoprimals") }} codebase comes from BarraCuda's GPU compute shaders. The Number Theoretic Transform (NTT), evolved under FHE constraints for polynomial multiplication in ℤ_q, shares **80% structural identity** with the Fast Fourier Transform (FFT), needed for physics simulation in ℂ.
 
 A side-by-side source code comparison (see `whitePaper/barraCUDA/sections/05_CONSTRAINED_EVOLUTION.md`) reveals:
 
@@ -357,7 +357,7 @@ The FFT is *shorter* than its NTT ancestor because the target domain (complex fl
 
 Critically, no one designed BarraCuda for physics. The FHE constraint required NTT; NTT required the Cooley-Tukey butterfly; the butterfly is the FFT's skeleton. Each step follows by mathematical necessity. This is constrained evolution as described in this paper: the constraint (FHE) reshaped the fitness landscape to select for a structure (butterfly transform) that happened to be fit for an unrelated domain (physics).
 
-The hotSpring control experiments (see `whitePaper/barraCUDA/sections/04_CONTROL_EXPERIMENTS.md`) validate this with 131 quantitative acceptance criteria across three phases. Phase A (Python control) established 86 checks. Phase C (GPU MD) added 45 more: the f64 WGSL shaders — built from the same `math_f64.wgsl` transcendental functions evolved for ML and nuclear EOS — now run full Yukawa OCP molecular dynamics on a consumer GPU. All 9 PP Yukawa cases pass with 0.000% energy drift. The same math that trains neural networks computes plasma physics forces. The evolution from FHE to physics is empirically confirmed — not by analogy, but by data.
+The {{ entity(name="hotspring") }} control experiments (see `whitePaper/barraCUDA/sections/04_CONTROL_EXPERIMENTS.md`) validate this with 131 quantitative acceptance criteria across three phases. Phase A (Python control) established 86 checks. Phase C (GPU MD) added 45 more: the f64 WGSL shaders — built from the same `math_f64.wgsl` transcendental functions evolved for ML and nuclear EOS — now run full Yukawa OCP molecular dynamics on a consumer GPU. All 9 PP Yukawa cases pass with 0.000% energy drift. The same math that trains neural networks computes plasma physics forces. The evolution from FHE to physics is empirically confirmed — not by analogy, but by data.
 
 ---
 
@@ -381,4 +381,4 @@ Wiser, M. J., Ribeck, N., & Lenski, R. E. (2013). Long-term dynamics of adaptati
 
 ---
 
-**Note on intellectual lineage**: This paper evolved from `constrained_optimization_ai.md`, the initial formulation written during the ecoPrimals build. That document served as the inoculum - the initial culture from which this more formal treatment grew. The original is preserved as a record of the idea in its first form. The biological metaphor is not accidental: this paper is itself a product of constrained evolution, refined iteratively through the same methodology it describes.
+**Note on intellectual lineage**: This paper evolved from `constrained_optimization_ai.md`, the initial formulation written during the {{ entity(name="ecoprimals") }} build. That document served as the inoculum - the initial culture from which this more formal treatment grew. The original is preserved as a record of the idea in its first form. The biological metaphor is not accidental: this paper is itself a product of constrained evolution, refined iteratively through the same methodology it describes.

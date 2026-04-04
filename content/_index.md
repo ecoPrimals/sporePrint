@@ -29,7 +29,7 @@ If those commands run, the claims are verified. No institutional access. No prop
 - 📄 **Reproduce published results** — 175+ papers across 8 domains, each as a binary you can run
 - ⚡ **Use any GPU** — NVIDIA, AMD, Intel — no CUDA lock-in, no vendor toolchain
 - 🔒 **Own your data and compute** — nothing leaves your machine
-- ✅ **Validate with guideStone** — self-verifying artifacts that prove their own correctness
+- ✅ **Validate with {{ entity(name="guidestone") }}** — self-verifying artifacts that prove their own correctness
 
 ---
 
@@ -37,4 +37,4 @@ If those commands run, the claims are verified. No institutional access. No prop
 
 A spore print is how mycologists identify species they have never seen before. You press the cap to paper and leave it overnight. In the morning: the permanent record of what the organism is, what it can produce, and how to grow it yourself.
 
-This site is the spore print for ecoPrimals. The permanent, public, verifiable impression of a sovereign scientific computing ecosystem. Clone it. Run it. Verify it. Grow from it.
+This site is the spore print for {{ entity(name="ecoprimals") }}. The permanent, public, verifiable impression of a sovereign scientific computing ecosystem. Clone it. Run it. Verify it. Grow from it.

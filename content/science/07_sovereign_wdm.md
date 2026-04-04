@@ -13,14 +13,14 @@ springs = ["groundspring", "hotspring", "neuralspring"]
 +++
 
 **Date:** March 14, 2026 (updated)
-**Status:** **Validated + Live Kokkos Parity + Precision Stability + Precision Brain + VFIO PBDMA Context Load** — hotSpring v0.6.31, **848 lib tests**, 115 binaries, 85 WGSL shaders. All plasma MD, lattice QCD, and nuclear HFB reproduction complete. GPU promotion: Papers 43 (gradient flow, 38.5× speedup) and 44 (BGK dielectric, 12/12 physics checks). **Full multi-tier precision stability analysis** (Exp 046): 9 cancellation families audited across f32/DF64/f64/CKKS FHE. Stable BCS v² and plasma W(z) algorithms enable DF64 throughput (16× on consumer GPUs) without precision loss. **Precision brain** (Exp 049): self-routing hardware calibration, NVVM device poisoning discovered and gated, dual-GPU cooperative patterns (Split BCS 2.2×, Split HMC, Redundant, PCIe 1.2 GB/s). **Live Kokkos benchmark** (Exp 053): 9/9 Yukawa cases, **12.4× gap** (barraCuda 212 steps/s vs Kokkos-CUDA 2,630 steps/s at N=2000) — gap dominated by native f64 fallback (1:32 on Ampere), DF64 safe-path fix expected to close to ~2×. DF64 transcendental poisoning bug discovered and fixed. **VFIO PBDMA context load** (Exp 058): 3 critical Volta register discoveries (preempt 0x002638, ACK 0x002A00, SIGNATURE validation), PBDMA2 loads RAMFC with zero errors; USERD DMA read remaining. coralReef P10 Iter 52+. Dual Titan V mmiotrace planned. Zero clippy warnings (lib+bins), zero unsafe, all AGPL-3.0-only. 60/60 Sarkas observable checks (N=10k, 80k steps, $0.044). Deconfinement phase transition at β_c=5.69 on RTX 3090 (32⁴, 13.6h, $0.58). DF64 core streaming delivers 9.9× native f64 throughput. Verlet neighbor list achieves 992 steps/s (κ=3). Transport coefficients D*, η*, λ* via GPU Green-Kubo.
+**Status:** **Validated + Live Kokkos Parity + Precision Stability + Precision Brain + VFIO PBDMA Context Load** — {{ entity(name="hotspring") }} v0.6.31, **848 lib tests**, 115 binaries, 85 WGSL shaders. All plasma MD, lattice QCD, and nuclear HFB reproduction complete. GPU promotion: Papers 43 (gradient flow, 38.5× speedup) and 44 (BGK dielectric, 12/12 physics checks). **Full multi-tier precision stability analysis** (Exp 046): 9 cancellation families audited across f32/DF64/f64/CKKS FHE. Stable BCS v² and plasma W(z) algorithms enable DF64 throughput (16× on consumer GPUs) without precision loss. **Precision brain** (Exp 049): self-routing hardware calibration, NVVM device poisoning discovered and gated, dual-GPU cooperative patterns (Split BCS 2.2×, Split HMC, Redundant, PCIe 1.2 GB/s). **Live Kokkos benchmark** (Exp 053): 9/9 Yukawa cases, **12.4× gap** ({{ entity(name="barracuda") }} 212 steps/s vs Kokkos-CUDA 2,630 steps/s at N=2000) — gap dominated by native f64 fallback (1:32 on Ampere), DF64 safe-path fix expected to close to ~2×. DF64 transcendental poisoning bug discovered and fixed. **VFIO PBDMA context load** (Exp 058): 3 critical Volta register discoveries (preempt 0x002638, ACK 0x002A00, SIGNATURE validation), PBDMA2 loads RAMFC with zero errors; USERD DMA read remaining. {{ entity(name="coralreef") }} P10 Iter 52+. Dual Titan V mmiotrace planned. Zero clippy warnings (lib+bins), zero unsafe, all AGPL-3.0-only. 60/60 Sarkas observable checks (N=10k, 80k steps, $0.044). Deconfinement phase transition at β_c=5.69 on RTX 3090 (32⁴, 13.6h, $0.58). DF64 core streaming delivers 9.9× native f64 throughput. Verlet neighbor list achieves 992 steps/s (κ=3). Transport coefficients D*, η*, λ* via GPU Green-Kubo.
 **Domain:** Plasma physics, computational science, distributed computing
 **Novelty:** No prior work demonstrates full WDM transport coefficient
 reproduction on consumer GPU via vendor-agnostic shaders; no prior work
 frames distributed consumer GPU networks as alternatives to institutional
 HPC for plasma physics
-**Cross-Spring:** hotSpring (MD + transport + lattice QCD) × neuralSpring
-(surrogate learning + LSTM) × groundSpring V113 (uncertainty propagation — GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants, 102 barracuda delegations)
+**Cross-Spring:** {{ entity(name="hotspring") }} (MD + transport + lattice QCD) × {{ entity(name="neuralspring") }}
+(surrogate learning + LSTM) × {{ entity(name="groundspring") }} V113 (uncertainty propagation — GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants, 102 barracuda delegations)
 
 ---
 
@@ -35,7 +35,7 @@ computational accessibility as a critical bottleneck: state-of-the-art
 codes require institutional HPC allocations, creating artificial scarcity
 in who can do WDM science.
 
-We propose that hotSpring's validated pipeline — Yukawa MD (9/9 GPU),
+We propose that {{ entity(name="hotspring") }}'s validated pipeline — Yukawa MD (9/9 GPU),
 Green-Kubo transport (13/13), nuclear EOS (195/195), screened Coulomb
 (23/23), and lattice QCD (full GPU pipeline) — already contains the
 primitives needed for WDM simulation at modest system sizes. The gap is
@@ -89,12 +89,12 @@ paywalls.
 
 ### 1.3 The Sovereign Alternative
 
-hotSpring has already reproduced Stanton-Murillo transport on a single
+{{ entity(name="hotspring") }} has already reproduced Stanton-Murillo transport on a single
 RTX 4070 at ~$0.02 compute cost. The Yukawa MD pipeline runs at 34.7×
 CPU speed on GPU. The lattice QCD pipeline achieves 40× CPU speed with
 streaming GPU HMC. The nuclear EOS pipeline covers 195 nuclei.
 
-The question is not whether consumer GPU can do WDM physics — hotSpring
+The question is not whether consumer GPU can do WDM physics — {{ entity(name="hotspring") }}
 has already proven it can for classical plasma. The question is whether
 the extensions to WDM conditions (partial ionization, quantum effects,
 higher temperatures) are tractable on the same hardware.
@@ -105,19 +105,19 @@ higher temperatures) are tractable on the same hardware.
 
 ### 2.1 Validated Primitives
 
-| Primitive | hotSpring Paper | Checks | WDM Extension |
+| Primitive | {{ entity(name="hotspring") }} Paper | Checks | WDM Extension |
 |-----------|----------------|--------|---------------|
 | Yukawa MD (all-pairs + cell-list) | Paper 1 | 9/9 GPU | Extend to screened potentials with partial ionization |
 | Green-Kubo transport (D*, η*, λ*) | Paper 5 | 13/13 | Extend to WDM conditions (higher T, Z*) |
 | Nuclear EOS (SEMF→HFB) | Paper 4 | 195/195 | Use as cold-curve input for WDM EOS |
 | Screened Coulomb eigensolve | Paper 6 | 23/23 | Yukawa screening at WDM parameters |
-| FFT (1D + 3D, f64) | ToadStool | 14/14 GPU | Required for S(q,ω) computation |
+| FFT (1D + 3D, f64) | {{ entity(name="toadstool") }} | 14/14 GPU | Required for S(q,ω) computation |
 | Lattice QCD HMC | Papers 8-12 | Full GPU | Monte Carlo sampling methodology |
 | Streaming GPU dispatch | Paper 10+ | 9/9 | Zero CPU→GPU transfer architecture |
 
 ### 2.2 The FFT Gap Is Closed
 
-ToadStool commit `1ffe8b1a` delivered `Fft1DF64` and `Fft3DF64` with
+{{ entity(name="toadstool") }} commit `1ffe8b1a` delivered `Fft1DF64` and `Fft3DF64` with
 roundtrip validation to 1e-10 on RTX 3090. This was THE major blocker
 for S(q,ω) computation. With FFT available, the dynamic structure factor
 becomes:
@@ -182,7 +182,7 @@ RTX 5090 — only the speed changes, not the math.
 
 ### 3.4 Distributed Architecture
 
-The NUCLEUS mesh (biomeOS + BearDog + Songbird) provides:
+The {{ entity(name="nucleus") }} mesh ({{ entity(name="biomeos") }} + {{ entity(name="beardog") }} + {{ entity(name="songbird") }}) provides:
 - **Task distribution**: BOINC-style work units, but with covalent trust
 - **Verification**: deterministic MD trajectories verify via hash
 - **Aggregation**: independent parameter sweeps combine trivially
@@ -234,9 +234,9 @@ MD results for hydrogen at WDM conditions.
 ### 4.4 Phase 4: Distributed Parameter Sweep
 
 **Target**: Full (ρ, T) sweep of transport coefficients using the
-NUCLEUS mesh (2 GPUs initially, scaling to N).
+{{ entity(name="nucleus") }} mesh (2 GPUs initially, scaling to N).
 
-**Method**: biomeOS distributes MD work units across available GPUs.
+**Method**: {{ entity(name="biomeos") }} distributes MD work units across available GPUs.
 Each GPU runs an independent (κ, Γ) point. Results aggregate into a
 transport table.
 
@@ -260,10 +260,10 @@ understand capsule physics, and optimize implosion conditions.
 Michael Murillo (MSU, Computational Mathematics, Science, & Engineering)
 co-authored the WDM roadmap (arXiv:2505.02494) and has published
 extensively on transport coefficients in dense plasma. His Stanton-Murillo
-(2016) transport paper is hotSpring Paper 5 — the first complete
+(2016) transport paper is {{ entity(name="hotspring") }} Paper 5 — the first complete
 reproduction in our pipeline. His screened Coulomb work is Paper 6.
 
-hotSpring was built to validate BarraCuda against Murillo's published
+{{ entity(name="hotspring") }} was built to validate BarraCuda against Murillo's published
 results. Extending to WDM conditions is the natural next step — using
 the same infrastructure, the same validation methodology, the same
 consumer hardware.
@@ -287,17 +287,17 @@ demonstrates that:
 |-----------|------------|
 | 01 (Anderson QS) | Anderson localization is spectral theory; WDM uses same eigensolve primitives |
 | 02 (Frozen Fossil) | Constrained evolution under extreme thermal constraint (WDM is the ultimate thermal constraint) |
-| 03 (Bioag) | Distributed sensing → distributed computing; same NUCLEUS infrastructure |
+| 03 (Bioag) | Distributed sensing → distributed computing; same {{ entity(name="nucleus") }} infrastructure |
 | 04 (Sentinel) | WDM diagnostics (XRTS) are a form of environmental sensing under extreme conditions |
 | 05 (Cross-species) | Multi-component plasma mixtures are the physics analog of multi-species communities |
 | 06 (No-till) | Both apply physics principles (Anderson, transport) to applied problems using consumer compute |
 
 ### 6.1 neuralSpring Integration
 
-neuralSpring contributes validated ML surrogates, spectral analysis, and
+{{ entity(name="neuralspring") }} contributes validated ML surrogates, spectral analysis, and
 df64-validated protein folding primitives directly to WDM science:
 
-- **df64 core streaming** (Session 88): All 15 helixVision WGSL shaders
+- **df64 core streaming** (Session 88): All 15 {{ entity(name="helixvision") }} WGSL shaders
   evolved to the hotSpring/ToadStool three-zone pattern (f64 buffer I/O →
   df64 compute → f64 output). Validates that df64 generalizes from nuclear
   physics to ML workloads. Two precision tiers: arithmetic 3.6e-8 to 5.6e-7,
@@ -311,7 +311,7 @@ df64-validated protein folding primitives directly to WDM science:
 - **Reservoir computing**: nW-03 (LSTM) and nW-05 (ESN) demonstrate that
   reservoir computing (fixed random weights + ridge regression readout) is
   effective for WDM sequence analysis and regime classification
-- **Spectral analysis**: neuralSpring's `eigh_f64` eigendecomposition and
+- **Spectral analysis**: {{ entity(name="neuralspring") }}'s `eigh_f64` eigendecomposition and
   `spectral_entropy` (rewired to `barracuda::stats::shannon_from_frequencies`
   in Session 81) apply directly to plasma eigenmode analysis
 - **Session 90 status**: 669 lib tests, 179 binaries, 179/179 validators,
@@ -322,18 +322,18 @@ df64-validated protein folding primitives directly to WDM science:
 
 ### 6.2 groundSpring V113 Integration
 
-groundSpring V113 (GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants. V112: OrExit<T>, parse_benchmark(), socket_env_var(), provenance trio. 102 barracuda delegations,
-29/29 validation binaries, 140 metalForge checks)
+{{ entity(name="groundspring") }} V113 (GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants. V112: OrExit<T>, parse_benchmark(), socket_env_var(), provenance trio. 102 barracuda delegations,
+29/29 validation binaries, 140 {{ entity(name="metalforge") }} checks)
 provides the inverse problem and uncertainty machinery for WDM science.
 
-groundSpring's Bazavov experiments (Exp 019-021) are **direct lattice QCD
-contributions** — the same physics that hotSpring simulates on GPU:
+{{ entity(name="groundspring") }}'s Bazavov experiments (Exp 019-021) are **direct lattice QCD
+contributions** — the same physics that {{ entity(name="hotspring") }} simulates on GPU:
 
 - **Exp 020 — Freeze-out inverse problem** (Bazavov et al., Phys Rev D 93,
   014512, 2016): Recovers freeze-out temperature T₀ and curvature κ₂ from
   heavy-ion collision data via Taylor expansion and 2D grid search. This is
-  the inverse problem hotSpring's lattice QCD pipeline generates data for —
-  groundSpring validates the statistical inference that turns lattice output
+  the inverse problem {{ entity(name="hotspring") }}'s lattice QCD pipeline generates data for —
+  {{ entity(name="groundspring") }} validates the statistical inference that turns lattice output
   into physical observables. 8/8 Py, 8/8 Rust checks
 - **Exp 021 — Spectral function reconstruction** (Bazavov et al., arXiv
   2501.12259, 2025): Tikhonov-regularized inversion of Euclidean correlators
@@ -345,26 +345,26 @@ contributions** — the same physics that hotSpring simulates on GPU:
 - **Exp 019 — Jackknife error estimation** (Bazavov et al., Phys Rev D 111,
   094508, 2025): Delete-one and block jackknife for subpercent precision
   error bars. This is the standard error estimation method used in every
-  lattice QCD publication — groundSpring validates the statistical machinery
-  that hotSpring will need for production uncertainty quantification. 9/9
+  lattice QCD publication — {{ entity(name="groundspring") }} validates the statistical machinery
+  that {{ entity(name="hotspring") }} will need for production uncertainty quantification. 9/9
   Py, 9/9 Rust checks
 
-**Why this matters for WDM**: hotSpring generates raw simulation data
+**Why this matters for WDM**: {{ entity(name="hotspring") }} generates raw simulation data
 (trajectories, correlators, transport integrals). Converting that data into
 physical observables with rigorous uncertainty requires exactly the inverse
-problem and error estimation machinery that groundSpring validates.
+problem and error estimation machinery that {{ entity(name="groundspring") }} validates.
 The freeze-out curve is a thermodynamic observable extracted from lattice data;
 the spectral function is a dynamic observable extracted from Euclidean correlators.
-groundSpring proves the extraction math works at benchmark precision before
-hotSpring applies it to production WDM data.
+{{ entity(name="groundspring") }} proves the extraction math works at benchmark precision before
+{{ entity(name="hotspring") }} applies it to production WDM data.
 
-**Combined pipeline**: hotSpring (GPU simulation) → groundSpring (inverse
-problem + error bars) → neuralSpring (surrogate acceleration). This is the
+**Combined pipeline**: {{ entity(name="hotspring") }} (GPU simulation) → {{ entity(name="groundspring") }} (inverse
+problem + error bars) → {{ entity(name="neuralspring") }} (surrogate acceleration). This is the
 full lattice QCD workflow, validated independently in three springs.
 
 ### 6.3 groundSpring WDM Uncertainty Budget (Exp 025–027)
 
-groundSpring Experiments 025–027 provide the **uncertainty budget** that
+{{ entity(name="groundspring") }} Experiments 025–027 provide the **uncertainty budget** that
 validates the numerical claims in this paper's consumer-GPU WDM pipeline:
 
 - **Exp 025 — f32 vs f64 precision drift**: Measures systematic bias from
@@ -380,7 +380,7 @@ validates the numerical claims in this paper's consumer-GPU WDM pipeline:
 - **Exp 027 — GPU vendor parity**: Cross-vendor comparison of WDM trajectory
   output between GPU architectures (RTX 4070 vs Titan V). Differences at
   1e-12 relative level, confirming IEEE 754 compliance and reproducibility
-  across consumer and workstation GPUs. Critical for NUCLEUS multi-gate
+  across consumer and workstation GPUs. Critical for {{ entity(name="nucleus") }} multi-gate
   dispatch where different gates run different GPU hardware. 6/6 Py, 6/6
   Rust checks
 
@@ -422,7 +422,7 @@ nouveau as an mmiotrace oracle, one on VFIO as the target. The oracle
 will capture nouveau's complete PBDMA dispatch sequence for replication
 on the VFIO target.
 
-**coralReef pin**: Phase 10, Iteration 52+ (Experiment Q: VramFullDispatch)
+**{{ entity(name="coralreef") }} pin**: Phase 10, Iteration 52+ (Experiment Q: VramFullDispatch)
 
 See: `hotSpring/experiments/058_VFIO_PBDMA_CONTEXT_LOAD.md`
 
@@ -451,7 +451,7 @@ of WDM reproduction targets (Papers 32-42).
 | Phase 1 (FPEOS reproduction) | 1× RTX 4070 | ~1 week | ~$2 |
 | Phase 2 (WDM transport) | 1× RTX 4070 | ~2 weeks | ~$5 |
 | Phase 3 (S(q,ω)) | 1× RTX 4070 | ~1 week | ~$2 |
-| Phase 4 (distributed sweep) | 2× GPU (NUCLEUS) | ~1 month | ~$10 |
+| Phase 4 (distributed sweep) | 2× GPU ({{ entity(name="nucleus") }}) | ~1 month | ~$10 |
 | **Total** | | ~2 months | **~$19** |
 
 Compare to institutional WDM allocation: ~100,000 GPU-hours at ~$1/GPU-hr

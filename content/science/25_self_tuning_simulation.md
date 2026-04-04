@@ -20,7 +20,7 @@ parameters via runtime spectral discovery and physics-observable feedback. The a
 combines GPU power iteration, acceptance-rate-driven step adaptation, and consistency-
 monitored rational approximation quality into a single calibrator that requires only
 physics inputs (Nf, mass, β, lattice dimensions).
-**Cross-Spring:** hotSpring × barraCuda × toadStool × primalSpring × ALL springs
+**Cross-Spring:** {{ entity(name="hotspring") }} × {{ entity(name="barracuda") }} × toadStool × {{ entity(name="primalspring") }} × ALL springs
 
 ---
 
@@ -40,7 +40,7 @@ algorithms for each. The result: the user specifies only the physics (`Nf`, quar
 coupling `β`, lattice dimensions) and the calibrator produces a fully configured RHMC
 simulation.
 
-This is the ecoPrimals constrained-evolution philosophy applied to simulation methodology:
+This is the {{ entity(name="ecoprimals") }} constrained-evolution philosophy applied to simulation methodology:
 the physics itself constrains the parameter space, and observable feedback (acceptance
 rate, Hamiltonian conservation, heatbath-action consistency) replaces human judgment.
 
@@ -177,15 +177,15 @@ learned) applies to any spring's simulation:
 
 | Spring | Discovered | Adapted | Validated |
 |--------|-----------|---------|-----------|
-| hotSpring | Eigenvalue spectrum | dt, n_md | Acceptance rate, ΔH |
-| wetSpring | Pair correlation length | MD timestep | Energy conservation |
-| healthSpring | Patient-specific PK rate | Dosing interval | Therapeutic window |
-| airSpring | Sensor drift coefficient | Calibration interval | Reference standard |
-| groundSpring | Soil conductivity | Model resolution | Field measurement |
+| {{ entity(name="hotspring") }} | Eigenvalue spectrum | dt, n_md | Acceptance rate, ΔH |
+| {{ entity(name="wetspring") }} | Pair correlation length | MD timestep | Energy conservation |
+| {{ entity(name="healthspring") }} | Patient-specific PK rate | Dosing interval | Therapeutic window |
+| {{ entity(name="airspring") }} | Sensor drift coefficient | Calibration interval | Reference standard |
+| {{ entity(name="groundspring") }} | Soil conductivity | Model resolution | Field measurement |
 
-The `SimulationCalibrator` trait pattern proposed in the wateringHole handoff
+The `SimulationCalibrator` trait pattern proposed in the {{ entity(name="wateringhole") }} handoff
 would allow each spring to implement domain-specific physics validators while
-sharing the adaptation infrastructure from barraCuda.
+sharing the adaptation infrastructure from {{ entity(name="barracuda") }}.
 
 ### Neuromorphic acceleration
 
@@ -199,12 +199,12 @@ pure prediction (which can hallucinate outside training distribution).
 
 ## Cross-References
 
-- **hotSpring experiments:** 099 (RHMC infrastructure), 101 (production Nf=2/2+1), 102 (gradient flow at volume), 103 (self-tuning calibrator)
-- **baseCamp paper 10:** First dynamical QCD production (NPU-steered, hand-tuned parameters)
-- **baseCamp paper 24:** All-silicon science (hardware-aware routing complements self-tuning)
-- **baseCamp paper 15:** Precision brain (self-routing hardware discovery — same pattern)
-- **baseCamp paper 11:** Nautilus shell (evolutionary reservoir → ESN training for NPU bridge)
-- **baseCamp paper 07:** Sovereign WDM (consumer GPU validation foundation)
+- **{{ entity(name="hotspring") }} experiments:** 099 (RHMC infrastructure), 101 (production Nf=2/2+1), 102 (gradient flow at volume), 103 (self-tuning calibrator)
+- **{{ entity(name="basecamp") }} paper 10:** First dynamical QCD production (NPU-steered, hand-tuned parameters)
+- **{{ entity(name="basecamp") }} paper 24:** All-silicon science (hardware-aware routing complements self-tuning)
+- **{{ entity(name="basecamp") }} paper 15:** Precision brain (self-routing hardware discovery — same pattern)
+- **{{ entity(name="basecamp") }} paper 11:** Nautilus shell (evolutionary reservoir → ESN training for NPU bridge)
+- **{{ entity(name="basecamp") }} paper 07:** Sovereign WDM (consumer GPU validation foundation)
 - **Thesis connection:** Constrained evolution (Ch. 3) — physics constraints as fitness landscape
 
 ---

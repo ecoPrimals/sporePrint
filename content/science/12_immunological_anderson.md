@@ -12,7 +12,7 @@ springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
 **Date:** March 2, 2026 (Sessions 105–108)
-**Status:** Computational implementation COMPLETE — all nS-601..605 experiments validated. wetSpring V92D+: Exp273-279 (157/157 immunological Anderson) + Gonzales reproductions (Exp280-286: 202/202) full three-tier. Paper-math chain complete: Exp291 Paper Control v4 (45/45) includes Gonzales P42-P47 (IC50, PK, IL-31, pruritus, three-compartment, selectivity). CPU v22 validates Hill/PK/Anderson in 0.8ms. GPU v9 proves portability. Streaming v9 confirms W↔P(QS) r=-0.924. metalForge v14 validates cross-system.
+**Status:** Computational implementation COMPLETE — all nS-601..605 experiments validated. {{ entity(name="wetspring") }} V92D+: Exp273-279 (157/157 immunological Anderson) + Gonzales reproductions (Exp280-286: 202/202) full three-tier. Paper-math chain complete: Exp291 Paper Control v4 (45/45) includes Gonzales P42-P47 (IC50, PK, IL-31, pruritus, three-compartment, selectivity). CPU v22 validates Hill/PK/Anderson in 0.8ms. GPU v9 proves portability. Streaming v9 confirms W↔P(QS) r=-0.924. {{ entity(name="metalforge") }} v14 validates cross-system.
 Gonzales modeling (Hill dose-response, PK decay, pruritus time-series), 3D tissue lattice
 (multi-layer Hamiltonian, barrier promotion spectrum, three-compartment disorder), and
 Fajgenbaum MATRIX scoring (6 drug candidates, pathway × geometry × disorder) fully
@@ -22,8 +22,8 @@ dispatch 3, mixed hardware 7). S108: module refactored (1023→3 files: mod.rs +
 **Domain:** Immunology × condensed matter physics × pharmacology × drug repurposing
 **Novelty:** No prior work applies Anderson localization to cytokine signal
 propagation in tissue; no prior work adds spatial geometry to drug repurposing scoring
-**Cross-Spring:** wetSpring (Anderson spectral) × neuralSpring (ESN regime classifier,
-LSTM time series) × groundSpring (transport, uncertainty, spectral validation)
+**Cross-Spring:** {{ entity(name="wetspring") }} (Anderson spectral) × {{ entity(name="neuralspring") }} (ESN regime classifier,
+LSTM time series) × {{ entity(name="groundspring") }} (transport, uncertainty, spectral validation)
 
 ---
 
@@ -62,12 +62,12 @@ for the immunological Anderson extension.
 
 | # | Citation | Key Data | Spring Target |
 |---|----------|----------|---------------|
-| G1 | Gonzales AJ et al. (2013) "Interleukin-31: its role in canine pruritus and naturally occurring canine atopic dermatitis." *Vet Dermatol* 24:48-53 | IL-31 elevated in AD dog serum; IV IL-31 induces pruritus in beagles; IL-31 activates peripheral nerves | wetSpring: IL-31 as diffusible signal, W mapping from tissue heterogeneity |
-| G2 | Gonzales AJ et al. (2014) "Oclacitinib (APOQUEL) is a novel JAK inhibitor with activity against cytokines involved in allergy." *J Vet Pharmacol Ther* 37:317-324 | JAK1 IC50 = 10 nM; blocks IL-2, IL-4, IL-6, IL-13, IL-31 (IC50 36-249 nM); minimal off-target | neuralSpring: dose-response modeling, IC50 as Anderson barrier height |
-| G3 | Gonzales AJ et al. (2016) "IL-31-induced pruritus in dogs: a novel experimental model." *Vet Dermatol* 27:34-e10 | Standardized IL-31 pruritus model in beagles; oclacitinib superior to prednisolone/dexamethasone at 1, 6, 11, 16 hr | wetSpring: time-series pruritus data for LSTM; model as controlled Anderson perturbation |
-| G4 | Fleck TJ,...,Gonzales AJ (2021) "Onset and duration of action of lokivetmab in IL-31 induced pruritus." *Vet Dermatol* 32:681-e182 | Cytopoint: 3 hr onset, dose-dependent duration (14/28/42 days at 0.125/0.5/2.0 mg/kg); lab model correlates with clinical field trials | neuralSpring: pharmacokinetic decay as signal extinction; ESN classifier for regime transitions |
-| G5 | Gonzales AJ et al. (2024) "Oclacitinib is a selective JAK1 inhibitor with efficacy in canine flea allergic dermatitis." *J Vet Pharmacol Ther* 47:447-453 | JAK1 selectivity confirmed in different allergic model | wetSpring: cross-disease validation of same Anderson pathway |
-| G6 | McCandless EE, Rugg CA, Fici GJ et al. (2014) "Allergen-induced production of IL-31 by canine Th2 cells and identification of immune, skin, and neuronal target cells." *Vet Immunol Immunopathol* 157:42-48 | IL-31 produced by Th2 cells after allergen presentation by Langerhans cells; target cells = immune, skin, neuronal | wetSpring: cell-type heterogeneity → disorder W; three-compartment Anderson lattice |
+| G1 | Gonzales AJ et al. (2013) "Interleukin-31: its role in canine pruritus and naturally occurring canine atopic dermatitis." *Vet Dermatol* 24:48-53 | IL-31 elevated in AD dog serum; IV IL-31 induces pruritus in beagles; IL-31 activates peripheral nerves | {{ entity(name="wetspring") }}: IL-31 as diffusible signal, W mapping from tissue heterogeneity |
+| G2 | Gonzales AJ et al. (2014) "Oclacitinib (APOQUEL) is a novel JAK inhibitor with activity against cytokines involved in allergy." *J Vet Pharmacol Ther* 37:317-324 | JAK1 IC50 = 10 nM; blocks IL-2, IL-4, IL-6, IL-13, IL-31 (IC50 36-249 nM); minimal off-target | {{ entity(name="neuralspring") }}: dose-response modeling, IC50 as Anderson barrier height |
+| G3 | Gonzales AJ et al. (2016) "IL-31-induced pruritus in dogs: a novel experimental model." *Vet Dermatol* 27:34-e10 | Standardized IL-31 pruritus model in beagles; oclacitinib superior to prednisolone/dexamethasone at 1, 6, 11, 16 hr | {{ entity(name="wetspring") }}: time-series pruritus data for LSTM; model as controlled Anderson perturbation |
+| G4 | Fleck TJ,...,Gonzales AJ (2021) "Onset and duration of action of lokivetmab in IL-31 induced pruritus." *Vet Dermatol* 32:681-e182 | Cytopoint: 3 hr onset, dose-dependent duration (14/28/42 days at 0.125/0.5/2.0 mg/kg); lab model correlates with clinical field trials | {{ entity(name="neuralspring") }}: pharmacokinetic decay as signal extinction; ESN classifier for regime transitions |
+| G5 | Gonzales AJ et al. (2024) "Oclacitinib is a selective JAK1 inhibitor with efficacy in canine flea allergic dermatitis." *J Vet Pharmacol Ther* 47:447-453 | JAK1 selectivity confirmed in different allergic model | {{ entity(name="wetspring") }}: cross-disease validation of same Anderson pathway |
+| G6 | McCandless EE, Rugg CA, Fici GJ et al. (2014) "Allergen-induced production of IL-31 by canine Th2 cells and identification of immune, skin, and neuronal target cells." *Vet Immunol Immunopathol* 157:42-48 | IL-31 produced by Th2 cells after allergen presentation by Langerhans cells; target cells = immune, skin, neuronal | {{ entity(name="wetspring") }}: cell-type heterogeneity → disorder W; three-compartment Anderson lattice |
 
 ### 1.2 Companion Literature (Not Gonzales-Authored)
 
@@ -222,10 +222,10 @@ The geometry factor g() encodes:
 
 | Paper | Spring | What to Reproduce | Why |
 |-------|--------|-------------------|-----|
-| Gonzales (2014) — Oclacitinib JAK1 selectivity | neuralSpring | IC50 dose-response curves for JAK1 vs JAK2 vs JAK3 | Quantify pathway specificity as Anderson parameter |
-| Gonzales (2016) — IL-31 pruritus model | wetSpring + neuralSpring | Time-series pruritus scores (1, 6, 11, 16 hr) for oclacitinib vs steroids | Validate LSTM prediction of treatment response |
-| Fleck/Gonzales (2021) — Lokivetmab pharmacodynamics | neuralSpring | Dose-dependent duration curves (0.125/0.5/2.0 mg/kg) | Pharmacokinetic decay as signal extinction in Anderson model |
-| McCandless (2014) — IL-31 cell targets | wetSpring | Three-compartment lattice (immune + skin + neural target cells) | Empirical basis for multi-compartment Anderson lattice |
+| Gonzales (2014) — Oclacitinib JAK1 selectivity | {{ entity(name="neuralspring") }} | IC50 dose-response curves for JAK1 vs JAK2 vs JAK3 | Quantify pathway specificity as Anderson parameter |
+| Gonzales (2016) — IL-31 pruritus model | {{ entity(name="wetspring") }} + {{ entity(name="neuralspring") }} | Time-series pruritus scores (1, 6, 11, 16 hr) for oclacitinib vs steroids | Validate LSTM prediction of treatment response |
+| Fleck/Gonzales (2021) — Lokivetmab pharmacodynamics | {{ entity(name="neuralspring") }} | Dose-dependent duration curves (0.125/0.5/2.0 mg/kg) | Pharmacokinetic decay as signal extinction in Anderson model |
+| McCandless (2014) — IL-31 cell targets | {{ entity(name="wetspring") }} | Three-compartment lattice (immune + skin + neural target cells) | Empirical basis for multi-compartment Anderson lattice |
 
 ---
 
@@ -348,7 +348,7 @@ recommendation.
 | Rust unit tests | 27/27 | PASS |
 | BarraCuda GPU | 4/4 | PASS |
 | Compute dispatch | 3/3 | PASS |
-| Mixed hardware (NUCLEUS) | 7/7 | PASS |
+| Mixed hardware ({{ entity(name="nucleus") }}) | 7/7 | PASS |
 | **Total** | **329** | **ALL PASS** |
 
 ---

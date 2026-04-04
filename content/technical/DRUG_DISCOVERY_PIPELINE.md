@@ -52,7 +52,7 @@ heterogeneous medium:
 | Level spacing ratio (r) | Signal: propagating (extended) vs trapped (localized) |
 | Critical disorder (W_c) | Threshold above which signals always localize |
 
-**Key result from Paper 01 (wetSpring, 3,100+ checks):**  
+**Key result from Paper 01 ({{ entity(name="wetspring") }}, 3,100+ checks):**  
 In 3D media, signals remain extended (propagating) for W < W_c ≈ 16.26 ± 0.95.  
 In 2D media, signals always localize regardless of W.  
 The transition is sharp, measurable, and governed only by geometry and disorder.
@@ -95,7 +95,7 @@ Treatment mechanisms:
 
 ## 2. Validated Computational Results (Gonzales Catalog)
 
-All results from healthSpring + neuralSpring, validated against published
+All results from {{ entity(name="healthspring") }} + {{ entity(name="neuralspring") }}, validated against published
 Gonzales lab data (G1–G6) with three-tier validation (Python, Rust, GPU).
 
 ### 2.1 Oclacitinib Dose-Response (Gonzales 2014, G2)
@@ -286,12 +286,12 @@ dispatch 3 + mixed hardware 7).
 
 | Question | Required Data | Spring | Timeline |
 |----------|--------------|--------|---------|
-| What is W for inflamed vs healthy dermis? | Single-cell transcriptomics → Pielou evenness | wetSpring | On wet lab data receipt |
-| Does W_c hold for cytokines? | IL-31 diffusion coefficient in ECM | groundSpring | Published values in literature |
-| Can ESN classify AD state from cytokine panel? | Cytokine profiling datasets (NCBI) | neuralSpring | Now (NCBI queries available) |
-| Does rapamycin efficacy predict from mTOR/JAK? | ADDRC mTOR screen + Gonzales iPSC | healthSpring | Next HTS batch |
-| Neubig Rho inhibitors in AD barrier model? | Rho inhibitor IC50 + iPSC barrier assay | neuralSpring | Collaboration dependent |
-| Can Anderson geometry refine ADDRC compound ranking? | ADDRC compound metadata | wetSpring | On data access |
+| What is W for inflamed vs healthy dermis? | Single-cell transcriptomics → Pielou evenness | {{ entity(name="wetspring") }} | On wet lab data receipt |
+| Does W_c hold for cytokines? | IL-31 diffusion coefficient in ECM | {{ entity(name="groundspring") }} | Published values in literature |
+| Can ESN classify AD state from cytokine panel? | Cytokine profiling datasets (NCBI) | {{ entity(name="neuralspring") }} | Now (NCBI queries available) |
+| Does rapamycin efficacy predict from mTOR/JAK? | ADDRC mTOR screen + Gonzales iPSC | {{ entity(name="healthspring") }} | Next HTS batch |
+| Neubig Rho inhibitors in AD barrier model? | Rho inhibitor IC50 + iPSC barrier assay | {{ entity(name="neuralspring") }} | Collaboration dependent |
+| Can Anderson geometry refine ADDRC compound ranking? | ADDRC compound metadata | {{ entity(name="wetspring") }} | On data access |
 
 ---
 
@@ -330,5 +330,5 @@ third-party analytics platforms. The pipeline is the lab's own.
 
 *Source science: Gonzales AJ et al. (2013–2024), Fajgenbaum DC et al. (2019),  
 Anderson PW (1958), Fleck TJ & Gonzales AJ et al. (2021)  
-Computational validation: healthSpring V35, neuralSpring S162, wetSpring V127,  
-groundSpring V114. Total: 329/329 checks PASS.*
+Computational validation: {{ entity(name="healthspring") }} V35, {{ entity(name="neuralspring") }} S162, {{ entity(name="wetspring") }} V127,  
+{{ entity(name="groundspring") }} V114. Total: 329/329 checks PASS.*

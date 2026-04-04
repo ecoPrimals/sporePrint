@@ -14,7 +14,7 @@ springs = ["ludospring"]
 
 **Status**: Active | **Date**: March 16, 2026
 **Depends on**: Papers 17 (Game Design), 18 (RPGPT), 19 (Games@Home)
-**Validated by**: ludoSpring exp061_fermenting (89/89 checks)
+**Validated by**: {{ entity(name="ludospring") }} exp061_fermenting (89/89 checks)
 **License**: AGPL-3.0-or-later
 
 ---
@@ -23,8 +23,8 @@ springs = ["ludospring"]
 
 This paper connects the sunCloud economic model (radiating attribution through
 provenance chains) to its concrete implementation via the provenance trio
-(rhizoCrypt, loamSpine, sweetGrass) and BearDog cryptographic signing. We
-define the **Novel Ferment Transcript** (NFT) — a memory-bound digital object
+({{ entity(name="rhizocrypt") }}, {{ entity(name="loamspine") }}, {{ entity(name="sweetgrass") }}) and {{ entity(name="beardog") }} cryptographic signing. We
+define the **{{ entity(name="nft") }}** (NFT) — a memory-bound digital object
 whose value derives from accumulated history rather than artificial scarcity.
 We show how the same architecture serves gaming, collectibles, scientific
 chain-of-custody, and sensitive data systems, and how the optional public chain
@@ -36,7 +36,7 @@ anchor activates radiating attribution without coupling to cryptocurrency.
 
 ### The Evolution
 
-The economic ideas in ecoPrimals evolved through three phases:
+The economic ideas in {{ entity(name="ecoprimals") }} evolved through three phases:
 
 | Phase | Date | Document | Key Concept |
 |-------|------|----------|-------------|
@@ -54,10 +54,10 @@ The core insight has not changed: **value comes from history, not scarcity**.
 What evolved is the understanding that:
 
 1. **The provenance trio is the mechanism**, not a separate layer. Attribution
-   (sweetGrass), memory (rhizoCrypt), and ownership (loamSpine) are not
+   ({{ entity(name="sweetgrass") }}), memory ({{ entity(name="rhizocrypt") }}), and ownership ({{ entity(name="loamspine") }}) are not
    metadata bolted onto objects — they ARE the object.
 
-2. **BearDog makes it cryptographic**, not just data. Ed25519 signatures on
+2. **{{ entity(name="beardog") }} makes it cryptographic**, not just data. Ed25519 signatures on
    every vertex, certificate, and braid make the chain verifiable without any
    blockchain.
 
@@ -75,7 +75,7 @@ What evolved is the understanding that:
 
 ### Definition
 
-A Novel Ferment Transcript is the complete provenance record of a digital
+A {{ entity(name="nft") }} is the complete provenance record of a digital
 or physical object:
 
 ```
@@ -88,24 +88,24 @@ NFT = Certificate (who owns it)
 
 The biological analogy: fermentation transforms simple sugars into complex,
 valuable products (wine, cheese, kimchi). The culture accumulates character
-over time. The process is irreversible. A Novel Ferment Transcript transforms
+over time. The process is irreversible. A {{ entity(name="nft") }} transforms
 raw data (mint) through use (trade, play, study, display) into something with
 accumulated, verifiable meaning.
 
 ### What Makes It Novel
 
-| Property | Cryptocurrency NFT | Novel Ferment Transcript |
+| Property | Cryptocurrency NFT | {{ entity(name="nft") }} |
 |----------|-------------------|--------------------------|
-| Identity | Blockchain token ID | loamSpine certificate (DID-based) |
+| Identity | Blockchain token ID | {{ entity(name="loamspine") }} certificate (DID-based) |
 | History | Transaction log | Full DAG (every action, not just transfers) |
 | Attribution | None (wallet addresses) | W3C PROV-O chain (who, what, when, why) |
-| Crypto binding | Chain consensus | BearDog Ed25519 (same strength, zero cost) |
+| Crypto binding | Chain consensus | {{ entity(name="beardog") }} Ed25519 (same strength, zero cost) |
 | Mint cost | Gas fee ($1-$100+) | Zero (local operation) |
 | Trade cost | Gas fee | Zero (local operation) |
 | Speed | Block time (seconds to minutes) | Instant (local DAG append) |
 | Currency coupling | Inherent (ETH, SOL, etc.) | None — explicitly decoupled |
 | Physical bridge | Requires oracle service | Same certificate for physical + digital |
-| Lending | Not supported | Native (loamSpine loan lifecycle) |
+| Lending | Not supported | Native ({{ entity(name="loamspine") }} loan lifecycle) |
 | Attribution chain | Not tracked | Full PROV-O derivation chain |
 | Public proof | Always on-chain | Optional anchor hash |
 
@@ -121,7 +121,7 @@ This distinction is not cosmetic — it is architectural:
 - The anchor hash is a proof, not a transaction
 - Value flows through radiating attribution, not token transfer
 
-The Novel Ferment Transcript enables everything useful about NFTs (provenance,
+The {{ entity(name="nft") }} enables everything useful about NFTs (provenance,
 ownership, trading, history) while eliminating everything harmful (speculation,
 gas fees, environmental cost, currency coupling, rug-pull risk).
 
@@ -134,7 +134,7 @@ gas fees, environmental cost, currency coupling, rug-pull risk).
 The sunCloud model (2025) described radiating attribution abstractly:
 
 > "Upon receipt of revenue, an autonomous sunCloud process is triggered. It
-> consults the sweetGrass Braid associated with the licensed discovery. It
+> consults the {{ entity(name="sweetgrass") }} Braid associated with the licensed discovery. It
 > then radiates the value back through the entire attribution chain."
 
 Now this has a concrete implementation path:
@@ -159,13 +159,13 @@ what sunCloud needs to distribute value trustlessly.
 
 An in-game sword is minted. Alice plays 200 hours with it. It kills 47 bosses.
 It wins a tournament. Bob inspects it and marvels at the history. All of this
-is recorded in the rhizoCrypt DAG, attributed via sweetGrass, and certificated
-in loamSpine. The sword has immense value — but it is latent, known only to
+is recorded in the {{ entity(name="rhizocrypt") }} DAG, attributed via {{ entity(name="sweetgrass") }}, and certificated
+in {{ entity(name="loamspine") }}. The sword has immense value — but it is latent, known only to
 Alice and anyone she shows the local data to.
 
 **Phase 2 — Activation (Anchor)**
 
-Alice decides to sell the sword. She (or the marketplace) anchors the loamSpine
+Alice decides to sell the sword. She (or the marketplace) anchors the {{ entity(name="loamspine") }}
 state to a public chain. The 32-byte hash is now globally verifiable. Anyone
 can confirm "this sword's history is real and cryptographically intact."
 
@@ -184,15 +184,15 @@ attribution — value flowing backward through the creation chain.
 
 ### How This Differs from the Original Model
 
-The sunCloud model described value flowing from "discoveries" in a biomeOS.
+The sunCloud model described value flowing from "discoveries" in a {{ entity(name="biomeos") }}.
 The fermenting system generalizes this:
 
 | sunCloud (2025) | NFT Economics (2026) |
 |----------------|---------------------|
 | Scientific discovery | Any valued object (game item, sample, record) |
-| biomeOS IP licensing | Object sale, exhibition, citation |
-| sweetGrass braids | Same — attribution chain |
-| gAIa commons stewardship | scyBorg licensing (AGPL-3.0 + ORC + CC-BY-SA) |
+| {{ entity(name="biomeos") }} IP licensing | Object sale, exhibition, citation |
+| {{ entity(name="sweetgrass") }} braids | Same — attribution chain |
+| gAIa commons stewardship | {{ entity(name="scyborg") }} licensing (AGPL-3.0 + ORC + CC-BY-SA) |
 | Bounties for research | Composable marketplace for objects |
 
 The economics are identical. The scope expanded from science to everything.
@@ -206,7 +206,7 @@ The economics are identical. The scope expanded from science to everything.
 **The problem**: A digital sword is identical to every other copy. The rare
 one differs only by an arbitrary counter ("1 of 500"). No authentic history.
 
-**The ferment**: The sword accumulates a Novel Ferment Transcript. It records
+**The ferment**: The sword accumulates a {{ entity(name="nft") }}. It records
 every kill, every trade, every tournament, every cosmetic change. The sword
 that won the championship is provably THE sword. Not "one of" — "the one."
 
@@ -215,7 +215,7 @@ game studio, the skin artist, the tournament host, and every previous owner
 whose play history made the sword valuable. The artist who designed the skin
 receives credit forever, not just at initial sale.
 
-**Validated**: ludoSpring exp061 proves the full lifecycle — mint, trade,
+**Validated**: {{ entity(name="ludospring") }} exp061 proves the full lifecycle — mint, trade,
 loan, return, consume, achievement tracking, atomic swap — with 89 checks.
 exp053 proves fraud detection (12 types) using the same DAG architecture.
 
@@ -224,9 +224,9 @@ exp053 proves fraud detection (12 types) using the same DAG architecture.
 **The problem**: Physical trading cards have provenance (condition, tournament
 stamps) but it is fragile and forgeable. Digital cards have none.
 
-**The ferment**: A physical card and its digital twin share one loamSpine
+**The ferment**: A physical card and its digital twin share one {{ entity(name="loamspine") }}
 certificate. The card's tournament play is tracked in the digital DAG. The
-physical card's condition changes are recorded as loamSpine metadata updates.
+physical card's condition changes are recorded as {{ entity(name="loamspine") }} metadata updates.
 Scanning the physical card reveals its complete digital history.
 
 **The economics**: When the card sells, the original artist, the card printer,
@@ -244,9 +244,9 @@ with working code (exp061) and a deployment graph (provenance_node_atomic.toml).
 spreadsheets, and trust. Samples can be swapped, mislabeled, or contaminated
 without detection.
 
-**The ferment**: Every sample gets a Novel Ferment Transcript at collection.
+**The ferment**: Every sample gets a {{ entity(name="nft") }} at collection.
 Every custody transfer, storage condition change, and analysis step is a
-DAG vertex signed by BearDog. The same orphan-item detection that catches
+DAG vertex signed by {{ entity(name="beardog") }}. The same orphan-item detection that catches
 duped loot in exp053 catches phantom samples in a lab.
 
 **The economics**: When research using the sample is published, radiating
@@ -271,21 +271,21 @@ and described in Paper 18 (RPGPT). Same code, different vocabulary:
 audit trails, access control, and regulatory compliance. Current systems are
 centralized, brittle, and opaque.
 
-**The ferment**: The record owner (patient, client, citizen) holds the loamSpine
+**The ferment**: The record owner (patient, client, citizen) holds the {{ entity(name="loamspine") }}
 certificate. Providers receive loaned access (the native loan lifecycle).
 Every access is a DAG vertex. The full access history is a Novel Ferment
 Transcript — who looked at what, when, and under what authority.
 
 **The economics**: When aggregated, de-identified research uses the data,
 radiating attribution credits the original data subject. You contributed
-your health data to a study — sweetGrass records your contribution, and
+your health data to a study — {{ entity(name="sweetgrass") }} records your contribution, and
 sunCloud distributes proportional credit when the study generates value.
 
 ---
 
 ## 5. The scyBorg Integration
 
-Novel Ferment Transcripts carry licensing metadata via the scyBorg framework:
+Novel Ferment Transcripts carry licensing metadata via the {{ entity(name="scyborg") }} framework:
 
 ```
 Code layer    →  AGPL-3.0-or-later  →  enforced by source availability
@@ -295,12 +295,12 @@ Creative      →  CC-BY-SA 4.0      →  enforced by share-alike derivation
 
 The provenance trio provides machine-verifiable compliance:
 
-- **sweetGrass** records the BY (attribution)
-- **rhizoCrypt** records the SA (derivation chain for share-alike)
-- **loamSpine** issues the license certificate (immutable proof of terms)
+- **{{ entity(name="sweetgrass") }}** records the BY (attribution)
+- **{{ entity(name="rhizocrypt") }}** records the SA (derivation chain for share-alike)
+- **{{ entity(name="loamspine") }}** issues the license certificate (immutable proof of terms)
 
 A derivative work inherits the share-alike obligation automatically because
-rhizoCrypt's DAG links it to the parent. The derivation is structural, not
+{{ entity(name="rhizocrypt") }}'s DAG links it to the parent. The derivation is structural, not
 contractual — you cannot create a derivative without the DAG recording it.
 
 ---
@@ -324,12 +324,12 @@ contractual — you cannot create a derivative without the DAG recording it.
 
 | Component | Owner | Priority |
 |-----------|-------|----------|
-| BearDog signing on all operations | BearDog team | High |
-| Public chain anchor entry type | loamSpine team | Medium |
-| Owner inventory query (`list_by_owner`) | loamSpine team | Medium |
-| Cross-session derivation links | rhizoCrypt team | Medium |
-| License-aware attribution notices | sweetGrass team | Medium |
-| Radiating attribution calculator | sweetGrass + sunCloud | Low (Phase 4) |
+| {{ entity(name="beardog") }} signing on all operations | {{ entity(name="beardog") }} team | High |
+| Public chain anchor entry type | {{ entity(name="loamspine") }} team | Medium |
+| Owner inventory query (`list_by_owner`) | {{ entity(name="loamspine") }} team | Medium |
+| Cross-session derivation links | {{ entity(name="rhizocrypt") }} team | Medium |
+| License-aware attribution notices | {{ entity(name="sweetgrass") }} team | Medium |
+| Radiating attribution calculator | {{ entity(name="sweetgrass") }} + sunCloud | Low (Phase 4) |
 
 ### Future (Long-term)
 
@@ -338,7 +338,7 @@ contractual — you cannot create a derivative without the DAG recording it.
 | sunCloud integration | Autonomous value distribution from anchored transcripts |
 | Multi-chain anchoring | ETH + BTC + sovereign chain redundancy |
 | Physical-digital bridge | NFC/QR scan linking physical objects to certificates |
-| Marketplace protocol | Composable marketplace as biomeOS graph |
+| Marketplace protocol | Composable marketplace as {{ entity(name="biomeos") }} graph |
 
 ---
 
@@ -349,7 +349,7 @@ contractual — you cannot create a derivative without the DAG recording it.
 | 01 (Anderson-QS) | Microbial ecology math underlies fermenting/culture metaphor |
 | 07 (Sovereign WDM) | Sovereign compute for anchor verification without cloud |
 | 12 (Immuno-Anderson) | Medical record provenance as sensitive data application |
-| 13 (Sovereign Health) | Patient-owned records via loamSpine lending |
+| 13 (Sovereign Health) | Patient-owned records via {{ entity(name="loamspine") }} lending |
 | 17 (Game Design) | exp061 validates the full game item lifecycle |
 | 18 (RPGPT) | DAG isomorphism: game = science = sensitive data |
 | 19 (Games@Home) | Distributed computation for federated marketplace |
@@ -361,14 +361,14 @@ contractual — you cannot create a derivative without the DAG recording it.
 The LATENT_VALUE_ECONOMY.md asked: "How do we unlock the value that already
 exists?" The SUNCLOUD_ECONOMIC_MODEL.md answered: "Through radiating attribution."
 
-The Novel Ferment Transcript is the vessel that carries both the value and the
+The {{ entity(name="nft") }} is the vessel that carries both the value and the
 attribution chain. It is the concrete object that makes the abstract economics
 work. Not a token that represents value — a transcript that IS the value, because
 it carries the irreversible, cryptographically-bound history of everything that
 happened to the object.
 
 The meme, the in-game collectible, the trading card, the DNA sample, the
-medical record — each is a Novel Ferment Transcript. Each ferments through use.
+medical record — each is a {{ entity(name="nft") }}. Each ferments through use.
 Each carries its attribution chain. Each can optionally anchor to global
 persistence. And when value flows, it radiates back through every contributor.
 

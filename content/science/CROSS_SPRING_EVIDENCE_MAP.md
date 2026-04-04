@@ -8,9 +8,9 @@ primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-**How the baseCamp papers draw from multiple springs — and why that matters.**
+**How the {{ entity(name="basecamp") }} papers draw from multiple springs — and why that matters.**
 
-The baseCamp papers are not single-spring results. Each paper draws validated
+The {{ entity(name="basecamp") }} papers are not single-spring results. Each paper draws validated
 computational infrastructure from multiple springs, producing conclusions that
 are more robust because they are validated from multiple directions.
 
@@ -58,31 +58,31 @@ biology or a genuine unifying physical principle.
 
 ### Paper 01 — Anderson Localization as QS Null Hypothesis
 
-**Primary spring:** wetSpring (3,100+ checks, Exp107–356)
+**Primary spring:** {{ entity(name="wetspring") }} (3,100+ checks, Exp107–356)
 
 | Supporting Spring | What It Contributes | Key Experiments |
 |------------------|--------------------|-----------------| 
-| hotSpring | Spectral theory (Lanczos, level statistics), same Anderson math from plasma physics domain | Phase D lattice spectral |
-| groundSpring | Spectral theory validation (Anderson 1D/2D/3D), transport models, uncertainty budgets | Exp 008, 009 |
-| neuralSpring | ESN regime classifier — same Anderson transition classification at 96.5% accuracy | nW-05 |
-| airSpring | Anderson coupling in soil diversity, cross-environment validation | Exp066–069 |
+| {{ entity(name="hotspring") }} | Spectral theory (Lanczos, level statistics), same Anderson math from plasma physics domain | Phase D lattice spectral |
+| {{ entity(name="groundspring") }} | Spectral theory validation (Anderson 1D/2D/3D), transport models, uncertainty budgets | Exp 008, 009 |
+| {{ entity(name="neuralspring") }} | ESN regime classifier — same Anderson transition classification at 96.5% accuracy | nW-05 |
+| {{ entity(name="airspring") }} | Anderson coupling in soil diversity, cross-environment validation | Exp066–069 |
 
 **Why this matters:** The 3D/2D threshold W_c = 16.26 ± 0.95 is validated from
-three independent computational directions (wetSpring measurement, groundSpring
-spectral theory, hotSpring physics). This is not a single-experiment result.
+three independent computational directions ({{ entity(name="wetspring") }} measurement, {{ entity(name="groundspring") }}
+spectral theory, {{ entity(name="hotspring") }} physics). This is not a single-experiment result.
 
 ---
 
 ### Paper 06 — Anderson as the Mechanism Behind No-Till Soil Health
 
-**Primary springs:** wetSpring Track 4 + airSpring
+**Primary springs:** {{ entity(name="wetspring") }} Track 4 + {{ entity(name="airspring") }}
 
 | Supporting Spring | What It Contributes | Key Experiments |
 |------------------|--------------------|-----------------| 
-| wetSpring | Anderson diversity measurements, 3D pore network QS modeling | Exp170–182 (321 checks) |
-| airSpring | FAO-56 ET₀, soil moisture (Richards PDE), cover crop data | Exp066–078 |
-| groundSpring | Uncertainty bridge: sensor noise → ξ (disorder) → r (level ratio) | Exp 015, rare biosphere |
-| neuralSpring | LSTM time series for soil moisture, regime transition prediction | LSTM soil module |
+| {{ entity(name="wetspring") }} | Anderson diversity measurements, 3D pore network QS modeling | Exp170–182 (321 checks) |
+| {{ entity(name="airspring") }} | FAO-56 ET₀, soil moisture (Richards PDE), cover crop data | Exp066–078 |
+| {{ entity(name="groundspring") }} | Uncertainty bridge: sensor noise → ξ (disorder) → r (level ratio) | Exp 015, rare biosphere |
+| {{ entity(name="neuralspring") }} | LSTM time series for soil moisture, regime transition prediction | LSTM soil module |
 
 **The mechanism:** Tillage = dimensional collapse (3D pore network → 2D surface
 matrix). QS autoinducers go from propagating (3D extended) to localizing (2D
@@ -97,32 +97,32 @@ equation governs both.
 
 ### Paper 07 — Sovereign WDM Simulation on Consumer GPU
 
-**Primary spring:** hotSpring (648+ checks)
+**Primary spring:** {{ entity(name="hotspring") }} (648+ checks)
 
 | Supporting Spring | What It Contributes | Key Experiments |
 |------------------|--------------------|-----------------| 
-| neuralSpring | Surrogate models for WDM transport (5 WDM surrogates validated) | nS-WDM-01–05 |
-| groundSpring | WDM precision/convergence/vendor-parity validation, uncertainty budgets | Exp 025–027 |
-| groundSpring | Freeze-out inverse problem, spectral reconstruction, jackknife error bars | Exp 010, 011 |
-| hotSpring | Anderson 4D + Wegner proxy pipeline, DF64 streaming | Exp 049–058 |
+| {{ entity(name="neuralspring") }} | Surrogate models for WDM transport (5 WDM surrogates validated) | nS-WDM-01–05 |
+| {{ entity(name="groundspring") }} | WDM precision/convergence/vendor-parity validation, uncertainty budgets | Exp 025–027 |
+| {{ entity(name="groundspring") }} | Freeze-out inverse problem, spectral reconstruction, jackknife error bars | Exp 010, 011 |
+| {{ entity(name="hotspring") }} | Anderson 4D + Wegner proxy pipeline, DF64 streaming | Exp 049–058 |
 
 **The claim:** First lattice QCD production run (dynamical fermion, HMC) on a
 consumer GPU (RTX 3090). Deconfinement at β_c = 5.69 confirmed. Smooth crossover.
-The $0.044/run number validated by groundSpring uncertainty analysis.
+The $0.044/run number validated by {{ entity(name="groundspring") }} uncertainty analysis.
 
 ---
 
 ### Paper 12 — Anderson in Immunological Signaling
 
-**Primary springs:** wetSpring + neuralSpring + groundSpring
+**Primary springs:** {{ entity(name="wetspring") }} + {{ entity(name="neuralspring") }} + {{ entity(name="groundspring") }}
 
 | Supporting Spring | What It Contributes | Key Experiments |
 |------------------|--------------------|-----------------| 
-| wetSpring | Anderson spectral tissue lattice, barrier disruption model, cytokine multi-compartment | Exp270–286 (157/157) |
-| neuralSpring | Dose-response Hill (G2), PK decay (G4), ESN regime classification | nS-601–605 (329/329) |
-| groundSpring | Spectral theory validation for tissue geometry, cytokine transport models | Exp 008, 012, 015, 018 |
-| airSpring | GPU tissue diversity (GpuDiversity), CytokineBrain streaming | Exp066–069 (94/94) |
-| healthSpring | JAK inhibitor PK/PD, Hill dose-response, three-compartment disorder | Track 1 + Track 7 |
+| {{ entity(name="wetspring") }} | Anderson spectral tissue lattice, barrier disruption model, cytokine multi-compartment | Exp270–286 (157/157) |
+| {{ entity(name="neuralspring") }} | Dose-response Hill (G2), PK decay (G4), ESN regime classification | nS-601–605 (329/329) |
+| {{ entity(name="groundspring") }} | Spectral theory validation for tissue geometry, cytokine transport models | Exp 008, 012, 015, 018 |
+| {{ entity(name="airspring") }} | GPU tissue diversity (GpuDiversity), CytokineBrain streaming | Exp066–069 (94/94) |
+| {{ entity(name="healthspring") }} | JAK inhibitor PK/PD, Hill dose-response, three-compartment disorder | Track 1 + Track 7 |
 
 **The connection to drug discovery:** 329/329 checks across five independent
 implementations, four springs, two levels of validation (computational reproduction
@@ -133,18 +133,18 @@ most thoroughly validated novel method in this whitepaper.
 
 ### Paper 13 — Sovereign Human Health Computing
 
-**Primary spring:** healthSpring (73 experiments, 601+ tests)
+**Primary spring:** {{ entity(name="healthspring") }} (73 experiments, 601+ tests)
 
 | Supporting Spring | What It Contributes | Key Experiments |
 |------------------|--------------------|-----------------| 
-| wetSpring | Microbiome diversity → gut health Anderson W, QS gene profiling | diversity + QS modules |
-| groundSpring | Uncertainty budgets (bootstrap/jackknife), spectral transport | uncertainty module |
-| neuralSpring | ESN/LSTM anomaly detection, digester prediction (Paper 027) | nS-027 validated |
-| airSpring | GpuDiversity, CytokineBrain (immune extension of agricultural modules) | Paper 12 integration |
-| barraCuda | Canonical Hill, PopPK, diversity, MM batch, SCFA batch ops | Direct primal deps |
+| {{ entity(name="wetspring") }} | Microbiome diversity → gut health Anderson W, QS gene profiling | diversity + QS modules |
+| {{ entity(name="groundspring") }} | Uncertainty budgets (bootstrap/jackknife), spectral transport | uncertainty module |
+| {{ entity(name="neuralspring") }} | ESN/LSTM anomaly detection, digester prediction (Paper 027) | nS-027 validated |
+| {{ entity(name="airspring") }} | GpuDiversity, CytokineBrain (immune extension of agricultural modules) | Paper 12 integration |
+| {{ entity(name="barracuda") }} | Canonical Hill, PopPK, diversity, MM batch, SCFA batch ops | Direct primal deps |
 
 **The sovereignty angle:** NONMEM + Monolix + WinNonlin = ~$6,500/year in
-software licenses for a pharmacometrics lab. healthSpring replaces all three,
+software licenses for a pharmacometrics lab. {{ entity(name="healthspring") }} replaces all three,
 runs 84× faster (CPU-only), and adds Anderson gut lattice modeling that no
 commercial pharmacometric tool provides.
 
@@ -152,15 +152,15 @@ commercial pharmacometric tool provides.
 
 ### Paper 17 — Game Design as Rigorous Science
 
-**Primary spring:** ludoSpring (75 experiments, 1,692 checks)
+**Primary spring:** {{ entity(name="ludospring") }} (75 experiments, 1,692 checks)
 
 | Supporting Spring | What It Contributes | Key Experiments |
 |------------------|--------------------|-----------------| 
-| wetSpring | Anderson W model (Perlin noise as disorder landscape), Python tolerance pattern | Anderson QS mapping |
-| barraCuda | sigmoid, dot, lcg_step primitives consumed directly | Tier A GPU |
+| {{ entity(name="wetspring") }} | Anderson W model (Perlin noise as disorder landscape), Python tolerance pattern | Anderson QS mapping |
+| {{ entity(name="barracuda") }} | sigmoid, dot, lcg_step primitives consumed directly | Tier A GPU |
 | toadStool | `compute.dispatch.*` for real-time GPU dispatch | Direct dispatch |
-| healthSpring | Fitts/Hick models for medical UI evaluation (cross-domain) | Engagement metrics |
-| neuralSpring | ESN reservoir for procedural generation, game AI | Transfer learning |
+| {{ entity(name="healthspring") }} | Fitts/Hick models for medical UI evaluation (cross-domain) | Engagement metrics |
+| {{ entity(name="neuralspring") }} | ESN reservoir for procedural generation, game AI | Transfer learning |
 
 **The cross-domain finding:** The same provenance architecture that tracks
 game item lineage (extraction shooters) tracks biological sample lineage
@@ -172,13 +172,13 @@ it is the same code path.
 
 ## The groundSpring Anomaly
 
-groundSpring contributes to **every** baseCamp paper (Papers 01–22). This
+{{ entity(name="groundspring") }} contributes to **every** {{ entity(name="basecamp") }} paper (Papers 01–22). This
 is unusual for a spring whose domain (uncertainty quantification, spectral
 theory, measurement noise) sounds narrow.
 
 Why it contributes everywhere:
 
-| groundSpring Capability | Universal Need |
+| {{ entity(name="groundspring") }} Capability | Universal Need |
 |------------------------|----------------|
 | Jackknife error bars | Any paper with experimental uncertainty |
 | Rare biosphere quantification | Any microbiome paper (what you can't detect matters) |
@@ -200,11 +200,11 @@ the same number:
 
 | Result | Spring 1 | Spring 2 | Spring 3 | Agreement |
 |--------|----------|----------|----------|-----------|
-| W_c ≈ 16.26 (Anderson 3D) | wetSpring (measured) | groundSpring (spectral theory) | hotSpring (physics) | < 5% variation |
-| Anderson in 2D → always localizes | wetSpring (QS) | groundSpring (math) | Paper 12 (tissue) | Exact |
-| DF64 9.9× vs native f64 | hotSpring (benchmark) | groundSpring (parity) | coralReef (compile) | Exact |
-| ESN regime classifier >96% | neuralSpring (training) | wetSpring (application) | hotSpring (QCD proxy) | Cross-domain |
-| Rust 84–160× faster than Python | healthSpring (PK/PD) | airSpring (ET₀, 13K×) | wetSpring (spectral, 1077×) | Operation-dependent |
+| W_c ≈ 16.26 (Anderson 3D) | {{ entity(name="wetspring") }} (measured) | {{ entity(name="groundspring") }} (spectral theory) | {{ entity(name="hotspring") }} (physics) | < 5% variation |
+| Anderson in 2D → always localizes | {{ entity(name="wetspring") }} (QS) | {{ entity(name="groundspring") }} (math) | Paper 12 (tissue) | Exact |
+| DF64 9.9× vs native f64 | {{ entity(name="hotspring") }} (benchmark) | {{ entity(name="groundspring") }} (parity) | {{ entity(name="coralreef") }} (compile) | Exact |
+| ESN regime classifier >96% | {{ entity(name="neuralspring") }} (training) | {{ entity(name="wetspring") }} (application) | {{ entity(name="hotspring") }} (QCD proxy) | Cross-domain |
+| Rust 84–160× faster than Python | {{ entity(name="healthspring") }} (PK/PD) | {{ entity(name="airspring") }} (ET₀, 13K×) | {{ entity(name="wetspring") }} (spectral, 1077×) | Operation-dependent |
 
 When three independent springs produce the same result, the result is robust.
 Convergent predictions across independent implementations are stronger evidence
@@ -218,16 +218,16 @@ These papers are architecturally defined but missing wet-lab validation:
 
 | Paper | Missing Component | Spring | Path |
 |-------|-----------------|--------|------|
-| 02 (LTEE) | Frozen fossil sequencing | wetSpring | MinION + lab collaboration |
-| 04 (Sentinels) | Real-time HAB deployment | wetSpring (NPU live) | AKD1000 live on hardware |
-| 09 (Field Genomics) | MinION nanopore sequencer | wetSpring | Hardware pending |
-| 12 (Immuno-Anderson) | iPSC validation | healthSpring + Gonzales lab | Wet lab collaboration |
-| 03 (BioAg) | Pistachio/almond field trial | wetSpring + airSpring | Field partner |
+| 02 (LTEE) | Frozen fossil sequencing | {{ entity(name="wetspring") }} | MinION + lab collaboration |
+| 04 (Sentinels) | Real-time HAB deployment | {{ entity(name="wetspring") }} (NPU live) | AKD1000 live on hardware |
+| 09 (Field Genomics) | MinION nanopore sequencer | {{ entity(name="wetspring") }} | Hardware pending |
+| 12 (Immuno-Anderson) | iPSC validation | {{ entity(name="healthspring") }} + Gonzales lab | Wet lab collaboration |
+| 03 (BioAg) | Pistachio/almond field trial | {{ entity(name="wetspring") }} + {{ entity(name="airspring") }} | Field partner |
 
 The computational predictions are validated. The wet-lab tests are the open frontier.
 
 ---
 
-*Spring versions at time of writing: wetSpring V127, airSpring v0.8.9,
-neuralSpring S162, hotSpring v0.6.31, groundSpring V114, healthSpring V35,
-ludoSpring V24.*
+*Spring versions at time of writing: {{ entity(name="wetspring") }} V127, {{ entity(name="airspring") }} v0.8.9,
+{{ entity(name="neuralspring") }} S162, {{ entity(name="hotspring") }} v0.6.31, {{ entity(name="groundspring") }} V114, {{ entity(name="healthspring") }} V35,
+{{ entity(name="ludospring") }} V24.*

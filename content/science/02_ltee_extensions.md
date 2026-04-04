@@ -13,7 +13,7 @@ springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
 **Date:** March 1, 2026
-**Status:** Proposal with quantitative predictions (builds on thesis Ch. 14). Anderson anomaly catalog complete (Exp143: 9 anomalies, 3 genuine NP solutions). W_c = 16.26 ± 0.95 now quantified (Exp150). Correlated disorder effects quantified (Exp151). Dilution amplification (W_eff = W/occupancy) validated (Exp137). Track 4 no-till data provides agricultural time-series test bed (Exp170-178). **helixVision** (formerly coralForge, neuralSpring S94): sovereign structure prediction engine for LTEE structural evolution analysis — AlphaFold2/3 primitives validated (Py 62/62, Rs 55/55, GPU 37/37 = 154 checks). See `helixVision/06_LTEE_APPLICATION.md` for full pipeline.
+**Status:** Proposal with quantitative predictions (builds on thesis Ch. 14). Anderson anomaly catalog complete (Exp143: 9 anomalies, 3 genuine NP solutions). W_c = 16.26 ± 0.95 now quantified (Exp150). Correlated disorder effects quantified (Exp151). Dilution amplification (W_eff = W/occupancy) validated (Exp137). Track 4 no-till data provides agricultural time-series test bed (Exp170-178). **{{ entity(name="helixvision") }}** (formerly coralForge, {{ entity(name="neuralspring") }} S94): sovereign structure prediction engine for LTEE structural evolution analysis — AlphaFold2/3 primitives validated (Py 62/62, Rs 55/55, GPU 37/37 = 154 checks). See `helixVision/06_LTEE_APPLICATION.md` for full pipeline.
 **Domain:** Evolutionary biology, microbial genomics, structural biology
 **Novelty:** Specific, falsifiable Anderson-QS predictions for LTEE populations;
 integration of constrained evolution signatures across lab, field, and
@@ -131,7 +131,7 @@ Testable with archived soil DNA: compare QS gene prevalence (luxI/luxR,
 lasI/lasR) between no-till and conventional-till plots from the same LTAR
 site and year.
 
-airSpring contributes complementary agricultural time series: a 60-year
+{{ entity(name="airspring") }} contributes complementary agricultural time series: a 60-year
 water balance (Wooster OH, Triplett-Van Doren dataset) parallel to LTEE
 as a long-term archive; cover crop dual Kc + no-till validation (40/40
 checks) providing agronomic context for QS predictions in tilled vs
@@ -182,17 +182,17 @@ control level, or environmental specifics.
 
 ### 5.1 Computational Pipeline
 
-The wetSpring sovereign pipeline (16S, DADA2, chimera, taxonomy — all
+The {{ entity(name="wetspring") }} sovereign pipeline (16S, DADA2, chimera, taxonomy — all
 validated, Exp001-070) can process all three sample types. Additionally:
 
 - WGS assembly (MAGs from metagenomes) → pangenomics for convergence detection
 - QS gene annotation via the HMM profiles built for Exp140-142
 - Anderson geometry assignment from sample metadata (biofilm/planktonic/mat)
-- Level spacing ratio computation via ToadStool primitives (anderson_3d, lanczos)
+- Level spacing ratio computation via {{ entity(name="toadstool") }} primitives (anderson_3d, lanczos)
 
 ### 5.2 neuralSpring Integration
 
-neuralSpring adds ML primitives for LTEE analysis (S135: 966 lib tests,
+{{ entity(name="neuralspring") }} adds ML primitives for LTEE analysis (S135: 966 lib tests,
 232 binaries, 220/220 validate_all, 3,034+ checks, 5 WDM surrogates complete):
 
 - **HMM / PhyloNet-HMM** (Liu Papers 016-018): Introgression detection applied
@@ -216,7 +216,7 @@ neuralSpring adds ML primitives for LTEE analysis (S135: 966 lib tests,
 
 ### 5.3 groundSpring Integration
 
-groundSpring contributes uncertainty quantification and stochastic modeling
+{{ entity(name="groundspring") }} contributes uncertainty quantification and stochastic modeling
 directly relevant to LTEE analysis:
 
 - **Exp 014 — Drift vs selection** (R. Anderson 2022): Wright-Fisher fixation
@@ -242,9 +242,9 @@ directly relevant to LTEE analysis:
   phyla robust at 100 reads. Establishes the sampling floor for LTEE
   community-level analysis. 15/15 Rust checks
 
-**Cross-spring pipeline for LTEE**: wetSpring (16S/WGS pipeline) →
-groundSpring (sampling noise floor + jackknife error bars + drift vs
-selection classification) → neuralSpring (HMM introgression + ESN regime
+**Cross-spring pipeline for LTEE**: {{ entity(name="wetspring") }} (16S/WGS pipeline) →
+{{ entity(name="groundspring") }} (sampling noise floor + jackknife error bars + drift vs
+selection classification) → {{ entity(name="neuralspring") }} (HMM introgression + ESN regime
 detection). This three-spring pipeline covers the full LTEE analysis
 workflow from raw sequencing to evolutionary inference.
 

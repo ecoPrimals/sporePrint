@@ -71,7 +71,7 @@ hardware limitation.
 A consumer RTX 3090 delivers **9.9× more f64-precision compute than its
 CUDA-reported spec** when accessed through WebGPU + WGSL. The same GPU that
 CUDA tells you is a $500 toy is doing data-center-class f64 science work
-in ecoPrimals.
+in {{ entity(name="ecoprimals") }}.
 
 This is not a workaround. It is the actual hardware capability, accessed via
 the open Vulkan standard rather than NVIDIA's proprietary CUDA layer.
@@ -108,7 +108,7 @@ All springs validate on whatever hardware is present. The test suite enforces:
 2. `cargo test --features gpu` (GPU): GPU results match CPU results
 3. Explicit parity checks between NVIDIA (SM70/SM86/SM89) and AMD (RDNA2/CDNA2)
 
-The coralReef sovereign shader compiler (Phase 10, 46/46 shaders) compiles
+The {{ entity(name="coralreef") }} sovereign shader compiler (Phase 10, 46/46 shaders) compiles
 the same WGSL to native code on all these GPUs without vendor toolchains.
 **The science does not know what GPU it's running on.**
 
@@ -170,7 +170,7 @@ When you run on a shared university HPC cluster, your data lives on that facilit
 your data may be inaccessible. When you leave the university, your allocation ends.
 When the HPC policy changes, your workflow changes.
 
-ecoPrimals runs on hardware you own. The data never leaves. There is no allocation
+{{ entity(name="ecoprimals") }} runs on hardware you own. The data never leaves. There is no allocation
 expiration. There is no policy change that can break your pipeline.
 
 ### The Reproducibility Problem
@@ -180,7 +180,7 @@ you used last year may not install the same way today. Your collaborator at
 another institution cannot reproduce your analysis because they cannot access
 your module configuration.
 
-ecoPrimals produces static binaries with embedded dependencies. A binary built
+{{ entity(name="ecoprimals") }} produces static binaries with embedded dependencies. A binary built
 today will produce the same output on the same input in five years. The binary
 is the reproducibility artifact, not a description of an environment.
 
@@ -188,7 +188,7 @@ is the reproducibility artifact, not a description of an environment.
 
 ## Scaling: What Changes When NUCLEUS Goes Live
 
-The NUCLEUS bonding model (see `architecture/ECOSYSTEM_ARCHITECTURE.md`) composes
+The {{ entity(name="nucleus") }} bonding model (see `architecture/ECOSYSTEM_ARCHITECTURE.md`) composes
 multiple gates into a coordinated mesh. When activated:
 
 | Bond Type | What It Adds |
@@ -197,7 +197,7 @@ multiple gates into a coordinated mesh. When activated:
 | Ionic (research lab) | A lab's GPU joins under a metered contract. They contribute compute, receive BarraCuda validated results. |
 | Metallic (university HPC) | Idle GPUs on participating university clusters become BarraCuda nodes. The same $0.044 science can run at scale when institutions opt in. |
 
-**The NUCLEUS scaling equation:**
+**The {{ entity(name="nucleus") }} scaling equation:**
 
 ```
 NUCLEUS at university HPC scale (illustrative):
@@ -210,8 +210,8 @@ NUCLEUS at university HPC scale (illustrative):
     and zero queue time when you control the machine
 ```
 
-This is not speculative. Every component exists. The NUCLEUS bonding model is
-implemented. The ecoBin binaries are designed to run on standard university HPC stacks where policy allows. The remaining step is institutional enrollment contracts.
+This is not speculative. Every component exists. The {{ entity(name="nucleus") }} bonding model is
+implemented. The {{ entity(name="ecobin") }} binaries are designed to run on standard university HPC stacks where policy allows. The remaining step is institutional enrollment contracts.
 
 ---
 
@@ -221,7 +221,7 @@ See `audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md` for the full guide.
 
 The short version:
 
-| GPU | What CUDA Tells You | What WebGPU+ecoPrimals Does |
+| GPU | What CUDA Tells You | What WebGPU+{{ entity(name="ecoprimals") }} Does |
 |-----|--------------------|-----------------------------|
 | RTX 3090 | 35.6 TFLOPS f32, 0.35 TFLOPS f64 | **3.24 TFLOPS DF64** (14-digit precision) |
 | RTX 4070 | 29.1 TFLOPS f32, 0.2 TFLOPS f64 | **~2.1 TFLOPS DF64** |

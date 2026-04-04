@@ -12,10 +12,10 @@ primals = ["barracuda", "biomeos"]
 springs = ["ludospring"]
 +++
 
-**Status**: Validated — 4 experiments, 127/127 checks, structural isomorphism proven. exp054 validates composable primal architecture for multi-player coordination (40 checks). ludoSpring V23: platform-agnostic paths, pluggable validation output, zero-panic validation, XDG socket resolution, cross-ecosystem deep debt complete.
+**Status**: Validated — 4 experiments, 127/127 checks, structural isomorphism proven. exp054 validates composable primal architecture for multi-player coordination (40 checks). {{ entity(name="ludospring") }} V23: platform-agnostic paths, pluggable validation output, zero-panic validation, XDG socket resolution, cross-ecosystem deep debt complete.
 **Date**: March 16, 2026
 **Literature Anchor**: Churchill, Biderman & Herrick (2019, MTG Turing completeness), Shannon (1950, game trees), Pande (Folding@Home), Csikszentmihalyi (1990, Flow), von Ahn (2006, human computation)
-**Springs**: ludoSpring (game science + combinatoric analysis), rhizoCrypt (session DAG / trajectory capture), sweetGrass (creative attribution), loamSpine (deck/ruleset certification), barracuda (validation math)
+**Springs**: {{ entity(name="ludospring") }} (game science + combinatoric analysis), {{ entity(name="rhizocrypt") }} (session DAG / trajectory capture), {{ entity(name="sweetgrass") }} (creative attribution), {{ entity(name="loamspine") }} (deck/ruleset certification), barracuda (validation math)
 **License**: AGPL-3.0-or-later
 
 ---
@@ -94,15 +94,15 @@ The structural isomorphism with Folding@Home is 1:1 across 12 concepts:
 |---------|-------------|------------|
 | Compute unit | Volunteer CPU/GPU | Human player (brain) |
 | Search space | Protein conformational space | Game decision tree (infinite) |
-| Trajectory | MD simulation run | Game session (rhizoCrypt DAG) |
-| Input parameters | Sequence + force field | Deck list + ruleset (loamSpine) |
+| Trajectory | MD simulation run | Game session ({{ entity(name="rhizocrypt") }} DAG) |
+| Input parameters | Sequence + force field | Deck list + ruleset ({{ entity(name="loamspine") }}) |
 | Output | Trajectory + energy | Decision DAG + outcome + attribution |
 | Aggregation | Markov state models | Strategic landscape models |
 | Work unit | Simulation segment (~CPU hours) | Game session (~1 hour human thought) |
 | Novelty | Stochastic dynamics | Human creativity |
 | Quality signal | Energy minimization | Win rate / creativity / novelty |
 | Discovery | Novel conformations, drug targets | Novel strategies, synergies, meta |
-| Attribution | Team points (limited) | sweetGrass (full creative lineage) |
+| Attribution | Team points (limited) | {{ entity(name="sweetgrass") }} (full creative lineage) |
 | Cross-domain | Folding → drug design | Game patterns → science/logistics |
 
 Games@Home advantages over Folding@Home:
@@ -110,7 +110,7 @@ Games@Home advantages over Folding@Home:
 - **Zero cost** — humans WANT to play (entertainment value is negative cost)
 - **Creativity per trajectory: 0.85 vs 0.00** — F@H is deterministic physics; humans inject genuine novelty
 - **Infinite search space** — MTG is Turing complete
-- **Full attribution** — sweetGrass provides creative lineage (F@H: team points only)
+- **Full attribution** — {{ entity(name="sweetgrass") }} provides creative lineage (F@H: team points only)
 
 The feedback loop: humans play → models learn from trajectories → models suggest new exploration targets → new content drives humans deeper → repeat. Model accuracy improves monotonically, engagement stabilizes above 60%.
 
@@ -136,13 +136,13 @@ A concept for augmented reality card game assistance where the physical game rem
 | Cards (shuffling, drawing, playing) | Life totals, counters, tokens |
 | Deck construction (sleeving, sorting) | Stack visualization (LIFO order, targets) |
 | Social interaction (table talk, politics) | Board state summary (tapped/untapped, zones) |
-| Trading, collecting | Provenance chain (loamSpine card certs) |
+| Trading, collecting | Provenance chain ({{ entity(name="loamspine") }} card certs) |
 | Tactile experience | Timer, phase tracking, trigger reminders |
 
 ### Key Properties
 
 - **Anchored in physical**: Cards remain real objects. AR assists, never replaces.
-- **loamSpine 1:1 mirror**: Every physical card has a loamSpine certificate (set, number, condition, ownership chain). Digital state perfectly mirrors physical.
+- **{{ entity(name="loamspine") }} 1:1 mirror**: Every physical card has a {{ entity(name="loamspine") }} certificate (set, number, condition, ownership chain). Digital state perfectly mirrors physical.
 - **Remote pod play**: A player can join a Commander pod remotely — their physical cards are on their table, AR captures board state, and opponents see the digital mirror. Physical anchoring means you play YOUR cards, not a digital copy.
 - **Token/counter elimination**: +1/+1 counters, loyalty counters, poison counters, experience counters — all tracked digitally. No more dice on cards.
 - **Stack visualization**: The LIFO stack from exp048 rendered as a visible overlay. Players see exactly what resolves next and what it targets. Reduces rules confusion, especially for new players.
@@ -152,10 +152,10 @@ A concept for augmented reality card game assistance where the physical game rem
 
 | AR Feature | Primal | Why |
 |------------|--------|-----|
-| Card identity | loamSpine | Physical card → digital certificate (provenance chain) |
-| Game session state | rhizoCrypt | Board state DAG mirrors physical board |
-| Player decisions | sweetGrass | Creative attribution for novel plays |
-| Remote presence | biomeOS | Orchestrate AR devices across a pod |
+| Card identity | {{ entity(name="loamspine") }} | Physical card → digital certificate (provenance chain) |
+| Game session state | {{ entity(name="rhizocrypt") }} | Board state DAG mirrors physical board |
+| Player decisions | {{ entity(name="sweetgrass") }} | Creative attribution for novel plays |
+| Remote presence | {{ entity(name="biomeos") }} | Orchestrate AR devices across a pod |
 | Stack resolution | barracuda | LIFO ordering math (exp048) |
 
 ---
@@ -164,9 +164,9 @@ A concept for augmented reality card game assistance where the physical game rem
 
 | Primal | Games@Home Role | Cross-Domain Benefit |
 |--------|----------------|---------------------|
-| **rhizoCrypt** | Session trajectory DAG (every decision point) | Multi-day field campaigns, experiment lineage |
-| **sweetGrass** | Player creative attribution (who discovered the synergy) | Multi-lab collaboration, open-source contribution tracking |
-| **loamSpine** | Deck/ruleset/outcome certification | Experimental protocol certs, instrument calibration records |
+| **{{ entity(name="rhizocrypt") }}** | Session trajectory DAG (every decision point) | Multi-day field campaigns, experiment lineage |
+| **{{ entity(name="sweetgrass") }}** | Player creative attribution (who discovered the synergy) | Multi-lab collaboration, open-source contribution tracking |
+| **{{ entity(name="loamspine") }}** | Deck/ruleset/outcome certification | Experimental protocol certs, instrument calibration records |
 | Combined | Model training provenance (which human data trained which model) | Reproducible ML, data lineage for regulatory compliance |
 | Combined | Cross-domain transfer record (game discovery → science application) | Full attribution chain from player to publication |
 
@@ -181,7 +181,7 @@ A concept for augmented reality card game assistance where the physical game rem
 | 13 (Sovereign Health) | Patient engagement = player engagement (same Flow/DDA models) |
 | 17 (Game Design Science) | All 13 HCI models provide session quality metrics for Games@Home trajectories |
 | 18 (RPGPT) | RPGPT sessions are the highest-novelty compute units (0.95 novelty rate) |
-| **Composable Viz (exp054)** | **Validates the multi-player coordination architecture: biomeOS DeploymentGraph with Continuous 20 Hz coordination, songbird discovery of 2 player agents + raid server, petalTongue DataBinding for live session visualization. This is the infrastructure Games@Home needs for distributed human computation.** |
+| **Composable Viz (exp054)** | **Validates the multi-player coordination architecture: {{ entity(name="biomeos") }} DeploymentGraph with Continuous 20 Hz coordination, songbird discovery of 2 player agents + raid server, {{ entity(name="petaltongue") }} DataBinding for live session visualization. This is the infrastructure Games@Home needs for distributed human computation.** |
 
 ---
 
@@ -198,14 +198,14 @@ A concept for augmented reality card game assistance where the physical game rem
 
 | Goal | Primal | Benefits All Domains |
 |------|--------|---------------------|
-| Trajectory capture at decision-point granularity | rhizoCrypt | Experiment step logging |
-| Per-decision creative attribution | sweetGrass | Per-commit code attribution |
-| Deck-as-certificate format | loamSpine | Protocol-as-certificate format |
-| Model training data lineage | sweetGrass + loamSpine | Reproducible ML pipelines |
-| Cross-domain transfer records | sweetGrass | Discovery attribution across fields |
+| Trajectory capture at decision-point granularity | {{ entity(name="rhizocrypt") }} | Experiment step logging |
+| Per-decision creative attribution | {{ entity(name="sweetgrass") }} | Per-commit code attribution |
+| Deck-as-certificate format | {{ entity(name="loamspine") }} | Protocol-as-certificate format |
+| Model training data lineage | {{ entity(name="sweetgrass") }} + {{ entity(name="loamspine") }} | Reproducible ML pipelines |
+| Cross-domain transfer records | {{ entity(name="sweetgrass") }} | Discovery attribution across fields |
 
 ---
 
 ## License Note
 
-Game tree complexity values from Wikipedia "Game complexity" (CC-BY-SA). MTG Turing completeness from Churchill, Biderman & Herrick 2019 (arXiv:1904.09828). Biderman 2020 "MTG is as hard as arithmetic" (arXiv:2003.05119). ecoPrimals code AGPL-3.0-or-later.
+Game tree complexity values from Wikipedia "Game complexity" (CC-BY-SA). MTG Turing completeness from Churchill, Biderman & Herrick 2019 (arXiv:1904.09828). Biderman 2020 "MTG is as hard as arithmetic" (arXiv:2003.05119). {{ entity(name="ecoprimals") }} code AGPL-3.0-or-later.

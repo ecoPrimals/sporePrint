@@ -9,7 +9,7 @@ springs = ["groundspring", "healthspring", "wetspring"]
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  
-**Organization:** ecoPrimals
+**Organization:** {{ entity(name="ecoprimals") }}
 **Date:** March 17, 2026
 **License:** All source code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
 **Repositories:** github.com/ecoPrimals
@@ -20,7 +20,7 @@ springs = ["groundspring", "healthspring", "wetspring"]
 
 This document addresses requirements from regulatory bodies, institutional review
 boards, legal counsel, grant agencies, quality assurance auditors, and compliance
-officers. It maps ecoPrimals capabilities to specific standards, identifies what
+officers. It maps {{ entity(name="ecoprimals") }} capabilities to specific standards, identifies what
 is implemented, what is architecturally ready but unaudited, and what is not yet
 addressed.
 
@@ -74,17 +74,17 @@ have controls for access, audit trails, and electronic signatures.
 
 ### Mapping to ecoPrimals Architecture
 
-| Part 11 Requirement | § Reference | ecoPrimals Implementation | Status |
+| Part 11 Requirement | § Reference | {{ entity(name="ecoprimals") }} Implementation | Status |
 |---------------------|:----------:|--------------------------|:------:|
-| Validation | §11.10(a) | 27,000+ automated tests; 15,334+ validation checks; 306 validation binaries (wetSpring alone) | **Implemented** |
-| Audit trail (who, what, when) | §11.10(e) | rhizoCrypt DAG: every computation is a vertex with timestamp, operator DID, and input hash | **Implemented** (architecture); **Unaudited** |
-| Record retention | §11.10(c) | NestGate content-addressed storage (BLAKE3 hash); ZFS checksummed cold storage | **Implemented** (architecture) |
-| Access controls | §11.10(d) | loamSpine certificates with scoped permissions; BearDog Ed25519 identity | **Implemented** (architecture) |
-| Electronic signatures | §11.50, §11.70 | BearDog Ed25519 signatures on all results; signature linked to individual DID | **Implemented** (architecture); **Unaudited** |
+| Validation | §11.10(a) | 27,000+ automated tests; 15,334+ validation checks; 306 validation binaries ({{ entity(name="wetspring") }} alone) | **Implemented** |
+| Audit trail (who, what, when) | §11.10(e) | {{ entity(name="rhizocrypt") }} DAG: every computation is a vertex with timestamp, operator DID, and input hash | **Implemented** (architecture); **Unaudited** |
+| Record retention | §11.10(c) | {{ entity(name="nestgate") }} content-addressed storage (BLAKE3 hash); ZFS checksummed cold storage | **Implemented** (architecture) |
+| Access controls | §11.10(d) | {{ entity(name="loamspine") }} certificates with scoped permissions; {{ entity(name="beardog") }} Ed25519 identity | **Implemented** (architecture) |
+| Electronic signatures | §11.50, §11.70 | {{ entity(name="beardog") }} Ed25519 signatures on all results; signature linked to individual DID | **Implemented** (architecture); **Unaudited** |
 | Signature/record binding | §11.70 | Signature covers content hash + metadata; cannot be separated | **Implemented** |
-| Authority checks | §11.10(g) | loamSpine certificate scoping; operator DID must match authorized personnel | **Implemented** (architecture) |
-| Device checks | §11.10(h) | SoloKey FIDO2 hardware authentication for NUCLEUS nodes | **Implemented** (4 HSMs) |
-| Open system controls | §11.30 | End-to-end encryption (chacha20poly1305); BearDog X25519 key agreement | **Implemented** |
+| Authority checks | §11.10(g) | {{ entity(name="loamspine") }} certificate scoping; operator DID must match authorized personnel | **Implemented** (architecture) |
+| Device checks | §11.10(h) | SoloKey FIDO2 hardware authentication for {{ entity(name="nucleus") }} nodes | **Implemented** (4 HSMs) |
+| Open system controls | §11.30 | End-to-end encryption (chacha20poly1305); {{ entity(name="beardog") }} X25519 key agreement | **Implemented** |
 
 ### What Is NOT Addressed
 
@@ -103,21 +103,21 @@ Paper 21 (Sovereign Sample Provenance) maps the provenance trio to ISO 17025.
 
 ### Clause-by-Clause Mapping
 
-| ISO 17025 Clause | Requirement | ecoPrimals Mapping | Status |
+| ISO 17025 Clause | Requirement | {{ entity(name="ecoprimals") }} Mapping | Status |
 |:----------------:|------------|-------------------|:------:|
 | 4.1 | Impartiality | AGPL-3.0 source code; all algorithms publicly auditable | **Structural** |
 | 5.3 | Facilities and environmental conditions | Not applicable (software, not physical lab) | N/A |
-| 6.2 | Personnel competence | loamSpine certificates link operator DID to qualifications | **Architectural** |
+| 6.2 | Personnel competence | {{ entity(name="loamspine") }} certificates link operator DID to qualifications | **Architectural** |
 | 6.4 | Equipment | toadStool hardware discovery; probe.rs inventories GPU/CPU/NPU capabilities | **Implemented** |
 | 7.1 | Review of requests | Not applicable (computational pipeline, not service lab) | N/A |
 | 7.2 | Method selection/validation | 27,000+ tests; 70+ published papers reproduced; 15,334+ validation checks | **Implemented** |
-| 7.3 | Sampling / sample receipt | rhizoCrypt DAG: collection vertex with timestamp, GPS, operator, conditions | **Implemented** (Paper 21 exp062) |
-| 7.4 | Sample identification | loamSpine certificate: unique sample ID, type, condition, accession | **Implemented** (Paper 21 exp062) |
+| 7.3 | Sampling / sample receipt | {{ entity(name="rhizocrypt") }} DAG: collection vertex with timestamp, GPS, operator, conditions | **Implemented** (Paper 21 exp062) |
+| 7.4 | Sample identification | {{ entity(name="loamspine") }} certificate: unique sample ID, type, condition, accession | **Implemented** (Paper 21 exp062) |
 | 7.5 | Technical records | Every computation produces a DAG vertex with input hashes, parameters, output hashes | **Implemented** |
-| 7.6 | Measurement uncertainty | groundSpring: error propagation, uncertainty quantification, spectral methods (102 barraCuda delegations) | **Implemented** |
+| 7.6 | Measurement uncertainty | {{ entity(name="groundspring") }}: error propagation, uncertainty quantification, spectral methods (102 {{ entity(name="barracuda") }} delegations) | **Implemented** |
 | 7.7.1 | Quality assurance / contamination | Fraud detector: `ContaminationGap` — flags sequential processing without QC step | **Implemented** (Paper 21 exp062) |
 | 7.8 | Reporting | Validation binaries produce structured PASS/FAIL output with tolerances | **Implemented** |
-| 7.11 | Data control | Immutable DAG vertices; BearDog Ed25519 signatures; content-addressed storage | **Implemented** |
+| 7.11 | Data control | Immutable DAG vertices; {{ entity(name="beardog") }} Ed25519 signatures; content-addressed storage | **Implemented** |
 | 8.5 | Actions to address risks | `RetryPolicy` + `CircuitBreaker` for IPC fault tolerance; `IpcError` classification | **Implemented** |
 | 8.7 | Internal audit | `cargo test`, `cargo clippy`, `cargo deny` run on every change | **Implemented** (automated) |
 
@@ -141,12 +141,12 @@ clinical laboratories with patient consent management.
 
 ### Additional Clauses Addressed
 
-| ISO 15189 Clause | Requirement | ecoPrimals Mapping |
+| ISO 15189 Clause | Requirement | {{ entity(name="ecoprimals") }} Mapping |
 |:----------------:|------------|-------------------|
-| 5.4.2 | Specimen labelling | loamSpine certificate metadata: patient DID, sample type, collection conditions |
-| 5.4.4 | Transport and storage | rhizoCrypt DAG tracks custody transfers with timestamps and conditions |
-| 5.7 | Post-examination | Result signed by BearDog; immutable in DAG; patient access via consent certificate |
-| 6.5.2 | Information system security | BearDog Ed25519 + X25519 encryption; loamSpine access scoping |
+| 5.4.2 | Specimen labelling | {{ entity(name="loamspine") }} certificate metadata: patient DID, sample type, collection conditions |
+| 5.4.4 | Transport and storage | {{ entity(name="rhizocrypt") }} DAG tracks custody transfers with timestamps and conditions |
+| 5.7 | Post-examination | Result signed by {{ entity(name="beardog") }}; immutable in DAG; patient access via consent certificate |
+| 6.5.2 | Information system security | {{ entity(name="beardog") }} Ed25519 + X25519 encryption; {{ entity(name="loamspine") }} access scoping |
 
 ---
 
@@ -156,9 +156,9 @@ Paper 22 defines a consent-gated access model for patient-owned medical records.
 
 ### Privacy Rule (45 CFR §164)
 
-| HIPAA Requirement | § Reference | ecoPrimals Mapping | Status |
+| HIPAA Requirement | § Reference | {{ entity(name="ecoprimals") }} Mapping | Status |
 |-------------------|:----------:|-------------------|:------:|
-| Individual access rights | §164.524 | Patient owns record via loamSpine certificate; self-sovereign DID | **Architectural** |
+| Individual access rights | §164.524 | Patient owns record via {{ entity(name="loamspine") }} certificate; self-sovereign DID | **Architectural** |
 | Minimum necessary | §164.502(b) | Consent certificate scopes access to specific record types | **Architectural** |
 | Covered entity obligations | §164.502 | Provider DID identified in consent loan; access logged | **Architectural** |
 | Right to revoke | §164.508(b)(6) | `revoke_consent()` is irreversible; future access blocked | **Architectural** |
@@ -166,10 +166,10 @@ Paper 22 defines a consent-gated access model for patient-owned medical records.
 
 ### Security Rule (45 CFR §164.312)
 
-| Requirement | § Reference | ecoPrimals Mapping |
+| Requirement | § Reference | {{ entity(name="ecoprimals") }} Mapping |
 |-------------|:----------:|-------------------|
-| Access control | §164.312(a)(1) | loamSpine certificate + consent scoping; BearDog identity |
-| Audit controls | §164.312(b) | Every access is a DAG vertex; BearDog signs `AccessProof` |
+| Access control | §164.312(a)(1) | {{ entity(name="loamspine") }} certificate + consent scoping; {{ entity(name="beardog") }} identity |
+| Audit controls | §164.312(b) | Every access is a DAG vertex; {{ entity(name="beardog") }} signs `AccessProof` |
 | Integrity | §164.312(c)(1) | Content-addressed storage (BLAKE3); Ed25519 signatures |
 | Transmission security | §164.312(e)(1) | chacha20poly1305 encryption; X25519 key agreement |
 
@@ -187,14 +187,14 @@ Paper 22 defines a consent-gated access model for patient-owned medical records.
 
 ## 6. GDPR — General Data Protection Regulation
 
-sweetGrass (SCYBORG provenance trio) implements GDPR-inspired data subject rights.
+{{ entity(name="sweetgrass") }} (SCYBORG provenance trio) implements GDPR-inspired data subject rights.
 
-| GDPR Right | Article | sweetGrass Implementation |
+| GDPR Right | Article | {{ entity(name="sweetgrass") }} Implementation |
 |-----------|:-------:|--------------------------|
 | Right of access | Art. 15 | 5-level privacy; `Access` level allows subject to read all attributed data |
 | Right to erasure | Art. 17 | `Erasure` level; DAG vertex marked as erased (hash retained for integrity) |
 | Right to portability | Art. 20 | `Portability` level; PROV-O export of full provenance chain |
-| Purpose limitation | Art. 5(1)(b) | loamSpine certificate scopes purpose; exceeding scope is fraud |
+| Purpose limitation | Art. 5(1)(b) | {{ entity(name="loamspine") }} certificate scopes purpose; exceeding scope is fraud |
 | Data minimization | Art. 5(1)(c) | Consent certificate specifies record types; minimum necessary |
 
 ---
@@ -203,7 +203,7 @@ sweetGrass (SCYBORG provenance trio) implements GDPR-inspired data subject right
 
 ### Current State
 
-ecoPrimals is a **computational platform**. All current experiments use:
+{{ entity(name="ecoprimals") }} is a **computational platform**. All current experiments use:
 - Published, peer-reviewed data (NCBI, PhysioNet, ChEMBL)
 - Synthetic/simulated data (Monte Carlo, mathematical models)
 - Publicly available datasets (repoDB, ROBOKOP, MIT-BIH)
@@ -217,18 +217,18 @@ IRB review would be required when:
 2. Collecting biological samples (wet lab integration with Gonzales iPSC work)
 3. Clinical validation studies (prospective trials)
 
-healthSpring explicitly states: "Clinical validation requires prospective studies,
-IRB approval, and institutional partnerships. healthSpring provides the
+{{ entity(name="healthspring") }} explicitly states: "Clinical validation requires prospective studies,
+IRB approval, and institutional partnerships. {{ entity(name="healthspring") }} provides the
 computational foundation; clinical validation is a separate, future phase."
 
 ### What ecoPrimals Provides to IRB Processes
 
-| IRB Concern | ecoPrimals Response |
+| IRB Concern | {{ entity(name="ecoprimals") }} Response |
 |------------|-------------------|
-| Data security | BearDog encryption (chacha20poly1305) + Ed25519 signatures |
-| Access control | loamSpine consent certificates; scoped, time-limited, revocable |
-| Audit trail | rhizoCrypt DAG; every access logged as immutable vertex |
-| De-identification | sweetGrass `AnonymizedPublic` privacy level; DID-based pseudonymization |
+| Data security | {{ entity(name="beardog") }} encryption (chacha20poly1305) + Ed25519 signatures |
+| Access control | {{ entity(name="loamspine") }} consent certificates; scoped, time-limited, revocable |
+| Audit trail | {{ entity(name="rhizocrypt") }} DAG; every access logged as immutable vertex |
+| De-identification | {{ entity(name="sweetgrass") }} `AnonymizedPublic` privacy level; DID-based pseudonymization |
 | Data retention/destruction | Content-addressed storage with erasure capability |
 | Reproducibility | Deterministic computation; same input → same output |
 
@@ -242,7 +242,7 @@ computational foundation; clinical validation is a separate, future phase."
 |--------|---------|---------------|
 | Source code | AGPL-3.0-or-later | All Rust code in all springs and primals |
 | Game mechanics / IPC protocols | ORC (Open RPG Creative Foundation) | JSON-RPC methods, deploy graphs, game rules |
-| Documentation / creative works | CC-BY-SA-4.0 | White papers, baseCamp documents, briefs |
+| Documentation / creative works | CC-BY-SA-4.0 | White papers, {{ entity(name="basecamp") }} documents, briefs |
 
 ### What AGPL-3.0 Means for Institutional Users
 
@@ -256,13 +256,13 @@ computational foundation; clinical validation is a separate, future phase."
 | Publish papers using results | No license restriction on publications |
 
 **For a university lab**: You can clone, build, use, modify, and publish papers
-using ecoPrimals results with zero licensing obligation, as long as you don't
+using {{ entity(name="ecoprimals") }} results with zero licensing obligation, as long as you don't
 distribute modified binaries or run a public service. Internal use within a
 university is explicitly permitted.
 
 ### Symbiotic Exception Protocol
 
-The scyBorg exception protocol (AGPL §7 additional permissions) allows named
+The {{ entity(name="scyborg") }} exception protocol (AGPL §7 additional permissions) allows named
 organizations to receive broader permissions in exchange for reciprocal benefit.
 Exceptions are not for sale — they are granted based on symbiotic value.
 
@@ -274,7 +274,7 @@ Exceptions are not for sale — they are granted based on symbiotic value.
 
 | Dependency | License | Purpose | C Code? |
 |-----------|---------|---------|:-------:|
-| `barracuda` (barraCuda) | AGPL-3.0 | GPU math primitives | No |
+| `barracuda` ({{ entity(name="barracuda") }}) | AGPL-3.0 | GPU math primitives | No |
 | `serde` | MIT/Apache-2.0 | Serialization | No |
 | `serde_json` | MIT/Apache-2.0 | JSON parsing | No |
 | `wgpu` (optional) | MIT/Apache-2.0 | WebGPU runtime | No (Rust) |
@@ -306,7 +306,7 @@ cargo tree               # Full dependency tree
 | Total automated tests | 27,000+ across 7 springs | `cargo test --workspace` in each spring |
 | Validation checks (numerical) | 15,334+ with explicit tolerances | `cargo run --release --bin validate_*` |
 | Papers reproduced | 70+ across physics, biology, pharmacology, chemistry | Each paper has dedicated experiment(s) |
-| Validation binaries | 306 (wetSpring) + others per spring | `ls barracuda/src/bin/validate_*.rs` |
+| Validation binaries | 306 ({{ entity(name="wetspring") }}) + others per spring | `ls barracuda/src/bin/validate_*.rs` |
 | Clippy warnings | 0 (pedantic + nursery) | `cargo clippy --all-targets -- -D warnings` |
 | Unsafe code blocks | 0 | `#![forbid(unsafe_code)]` in lib.rs |
 | TODO/FIXME in production | 0 | `grep -r "TODO\|FIXME" src/ --include="*.rs"` |

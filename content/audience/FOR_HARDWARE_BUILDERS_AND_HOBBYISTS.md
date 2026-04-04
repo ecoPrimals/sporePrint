@@ -9,7 +9,7 @@ springs = ["ludospring"]
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  
-**Organization:** ecoPrimals
+**Organization:** {{ entity(name="ecoprimals") }}
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
@@ -23,7 +23,7 @@ physics, drug discovery, and metagenomics that you run, own, and understand.
 
 NVIDIA throttles consumer GeForce f64 to 1:64 of f32 throughput via CUDA.
 Vulkan's `SHADER_F64` exposes native f64 at 1:2 — the silicon is already there.
-ecoPrimals runs on Vulkan (via WebGPU/wgpu), bypassing CUDA entirely.
+{{ entity(name="ecoprimals") }} runs on Vulkan (via WebGPU/wgpu), bypassing CUDA entirely.
 Your RTX 3060 is a science chip. You just didn't know it.
 
 ---
@@ -56,7 +56,7 @@ CUDA on consumer GeForce cards artificially limits double-precision (f64) to
 a silicon limitation. The actual hardware can do f64 at 1:2 of f32.
 
 Vulkan exposes `VK_KHR_shader_float64` on consumer cards. wgpu (the Rust WebGPU
-implementation) uses this. ecoPrimals' WGSL shaders run at native f64 speed.
+implementation) uses this. {{ entity(name="ecoprimals") }}' WGSL shaders run at native f64 speed.
 
 **Your $300 gaming card does the same math as a $10,000 datacenter card** — at
 lower throughput, but with the same precision.
@@ -86,7 +86,7 @@ Node 1 (your gaming PC) ──── 10G switch ──── Node 2 (spare/used 
                                     └──── Node 3 (NAS/storage)
 ```
 
-**How ecoPrimals handles this**: biomeOS discovers nodes via Songbird (mDNS +
+**How {{ entity(name="ecoprimals") }} handles this**: {{ entity(name="biomeos") }} discovers nodes via {{ entity(name="songbird") }} (mDNS +
 BirdSong beacon). Each node announces its capabilities. toadStool routes
 workloads to the best GPU/CPU/NPU. No Slurm. No PBS. No sysadmin.
 
@@ -107,8 +107,8 @@ Your house ─────── VPN ─────── Brother's house
     └── westGate (76 TB ZFS)
 ```
 
-This is what ecoPrimals runs on today. 10 towers, ~$15K total, assembled from
-used parts. The NUCLEUS bonding model calls this "covalent bonding" — nodes
+This is what {{ entity(name="ecoprimals") }} runs on today. 10 towers, ~$15K total, assembled from
+used parts. The {{ entity(name="nucleus") }} bonding model calls this "covalent bonding" — nodes
 trusted via shared cryptographic seed (SoloKey FIDO2).
 
 ### Tier 4: Community Mesh (ionic bonding)
@@ -139,7 +139,7 @@ If you're into edge computing, the AKD1000 is a PCIe neuromorphic chip:
 | Driver | Pure Rust (toadStool `akida-driver`) |
 | Price (eval board) | ~$200 |
 
-**What it does in ecoPrimals**: Real-time classification of soil microbiome
+**What it does in {{ entity(name="ecoprimals") }}**: Real-time classification of soil microbiome
 health, bloom detection, agricultural IoT. The ESN (Echo State Network) runs on
 the NPU; the Rust driver is sovereign (no vendor SDK required beyond initial
 weight programming).
@@ -159,7 +159,7 @@ nodes donating idle GPU cycles to protein folding simulations.
 
 ### What Games@Home Could Be
 
-Paper 19 in the ecoPrimals whitePaper argues that gameplay itself is a
+Paper 19 in the {{ entity(name="ecoprimals") }} {{ entity(name="whitepaper") }} argues that gameplay itself is a
 distributed computation engine:
 
 | Metric | Folding@Home | Games@Home (theoretical) |
@@ -169,9 +169,9 @@ distributed computation engine:
 | Search space | Protein conformational | Game decision tree (infinite) |
 | Novelty per trajectory | 0.00 (stochastic MD) | 0.85 (human creativity) |
 
-The provenance trio (rhizoCrypt + loamSpine + sweetGrass) tracks every game
+The provenance trio ({{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }}) tracks every game
 session as a DAG — the same infrastructure that tracks scientific samples and
-clinical records. ludoSpring validates this with 75 experiments and 1,692 checks.
+clinical records. {{ entity(name="ludospring") }} validates this with 75 experiments and 1,692 checks.
 
 ### The Latent Compute Numbers
 
@@ -181,20 +181,20 @@ clinical records. ludoSpring validates this with 75 experiments and 1,692 checks
 | All consumer GPUs worldwide | ~5,500,000,000 |
 
 At a conservative 2.5% participation rate, citizen hardware provides
-5–6× the entire centralized cloud. ecoPrimals is built to run on this.
+5–6× the entire centralized cloud. {{ entity(name="ecoprimals") }} is built to run on this.
 
 ---
 
 ## What Makes This Different From Mining / BOINC
 
-| Feature | Crypto Mining | BOINC / Folding@Home | ecoPrimals |
+| Feature | Crypto Mining | BOINC / Folding@Home | {{ entity(name="ecoprimals") }} |
 |---------|:------------:|:-------------------:|:----------:|
 | You understand the science | No | Usually no | **Yes** — validation binaries explain themselves |
 | You own the results | No | No | **Yes** — AGPL, your hardware, your data |
 | You choose the workload | No (hash function) | Somewhat (project selection) | **Yes** — pick a spring, pick an experiment |
 | GPU vendor lock-in | Yes (CUDA for mining) | Mostly yes (CUDA) | **No** — WGSL/Vulkan, any vendor |
 | Skill development | Minimal | Minimal | **Real** — Rust, GPU programming, scientific computing |
-| Publishable output | No | Contributor credit | **Yes** — full attribution via sweetGrass provenance |
+| Publishable output | No | Contributor credit | **Yes** — full attribution via {{ entity(name="sweetgrass") }} provenance |
 
 ---
 
@@ -245,7 +245,7 @@ cargo run --release --bin validate_nouveau_diagnostic_v1
 | 10G switch (MikroTik) | Amazon | ~$130 | 4-port + 1 SFP+ uplink |
 | ZFS storage (used drives) | eBay | $10–20/TB | Redundant, checksummed |
 | BrainChip AKD1000 | BrainChip store | ~$200 | PCIe neuromorphic |
-| SoloKey FIDO2 | SoloKeys.com | ~$30 | Hardware security for NUCLEUS |
+| SoloKey FIDO2 | SoloKeys.com | ~$30 | Hardware security for {{ entity(name="nucleus") }} |
 
 **Total for a serious cluster: $2,000–4,000.** That's a rounding error compared
 to a $50K ICER node or $30K/year in cloud bills.

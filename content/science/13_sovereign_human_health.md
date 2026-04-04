@@ -12,8 +12,8 @@ primals = ["barracuda", "biomeos", "coralreef", "petaltongue", "songbird", "swee
 springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
-**Spring**: healthSpring (V35)
-**Domain**: Human Health × Pharmacology × Microbiome × Biosignal × Endocrinology × NLME × Clinical Translation × Comparative Medicine × Drug Discovery × biomeOS Niche Deployment
+**Spring**: {{ entity(name="healthspring") }} (V35)
+**Domain**: Human Health × Pharmacology × Microbiome × Biosignal × Endocrinology × NLME × Clinical Translation × Comparative Medicine × Drug Discovery × {{ entity(name="biomeos") }} {{ entity(name="niche") }} Deployment
 **License**: AGPL-3.0-or-later
 **Date**: March 17, 2026
 **Reproduces work by**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Charles Mok (clinical endocrinology)
@@ -23,15 +23,15 @@ springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspri
 
 ## Thesis
 
-Sovereign scientific computing can replace Python/NONMEM/proprietary tool chains for human health applications — pharmacokinetics, microbiome analytics, real-time biosignal processing, and endocrine outcome modeling — using pure Rust validated against published data, **with live GPU acceleration** via barraCuda WGSL shaders and heterogeneous dispatch via toadStool/metalForge. **V22**: healthSpring now operates as a biomeOS niche — a composed set of primals and workflow graphs orchestrated by the Neural API, with all science capabilities exposed via JSON-RPC 2.0 and discoverable via capability routing.
+Sovereign scientific computing can replace Python/NONMEM/proprietary tool chains for human health applications — pharmacokinetics, microbiome analytics, real-time biosignal processing, and endocrine outcome modeling — using pure Rust validated against published data, **with live GPU acceleration** via {{ entity(name="barracuda") }} WGSL shaders and heterogeneous dispatch via toadStool/metalForge. **V22**: {{ entity(name="healthspring") }} now operates as a {{ entity(name="biomeos") }} niche — a composed set of primals and workflow graphs orchestrated by the {{ entity(name="neuralapi") }}, with all science capabilities exposed via JSON-RPC 2.0 and discoverable via capability routing.
 
-Population-level validation means nothing without per-person translation. The pipeline closes this loop: a `PatientTrtProfile` generates a patient-specific clinical scenario — parameterized by age, weight, testosterone level, comorbidities — rendered in petalTongue's clinical mode via the SAME DAVE motor command channel. The clinician sees the patient, not the infrastructure.
+Population-level validation means nothing without per-person translation. The pipeline closes this loop: a `PatientTrtProfile` generates a patient-specific clinical scenario — parameterized by age, weight, testosterone level, comorbidities — rendered in {{ entity(name="petaltongue") }}'s clinical mode via the SAME DAVE motor command channel. The clinician sees the patient, not the infrastructure.
 
-GPU-native execution is validated: a single consumer GPU handles population-scale health computations (10M elements, 207 M/s throughput) with the same WGSL shaders portable to edge devices, TPU, and NPU. Mixed hardware dispatch via NUCLEUS topology routes workloads to CPU, GPU, or NPU based on scale and substrate availability.
+GPU-native execution is validated: a single consumer GPU handles population-scale health computations (10M elements, 207 M/s throughput) with the same WGSL shaders portable to edge devices, TPU, and NPU. Mixed hardware dispatch via {{ entity(name="nucleus") }} topology routes workloads to CPU, GPU, or NPU based on scale and substrate availability.
 
-V14 adds sovereign replacements for three commercial pharmacometric tools: NONMEM (FOCE estimation), Monolix (SAEM estimation), and WinNonlin (NCA metrics). NLME diagnostics (CWRES, VPC, GOF) complete the population PK pipeline. A WFDB parser enables direct PhysioNet biosignal ingestion. Kokkos-equivalent benchmarks validate GPU-portable patterns. The full petalTongue pipeline now spans 5 tracks with 28 nodes, 121 channels, and 14 scenarios — making the complete healthSpring pipeline human-visible and actionable.
+V14 adds sovereign replacements for three commercial pharmacometric tools: NONMEM (FOCE estimation), Monolix (SAEM estimation), and WinNonlin (NCA metrics). NLME diagnostics (CWRES, VPC, GOF) complete the population PK pipeline. A WFDB parser enables direct PhysioNet biosignal ingestion. Kokkos-equivalent benchmarks validate GPU-portable patterns. The full {{ entity(name="petaltongue") }} pipeline now spans 5 tracks with 28 nodes, 121 channels, and 14 scenarios — making the complete {{ entity(name="healthspring") }} pipeline human-visible and actionable.
 
-The springs validate science. healthSpring makes the drug.
+The springs validate science. {{ entity(name="healthspring") }} makes the drug.
 
 ---
 
@@ -39,7 +39,7 @@ The springs validate science. healthSpring makes the drug.
 
 ### Track 1: Pharmacokinetic / Pharmacodynamic Modeling (Exp001–006, 077)
 
-Pure Rust PK/PD tools extending neuralSpring nS-601–605 (veterinary) to human therapeutics via allometric scaling.
+Pure Rust PK/PD tools extending {{ entity(name="neuralspring") }} nS-601–605 (veterinary) to human therapeutics via allometric scaling.
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
@@ -51,13 +51,13 @@ Pure Rust PK/PD tools extending neuralSpring nS-601–605 (veterinary) to human 
 | 006 | PBPK 5-tissue physiological compartments | Mass conservation, hepatic clearance, tissue Kp |
 | 077 | Michaelis-Menten nonlinear PK (phenytoin) | Capacity-limited elimination, dose-dependent half-life, supralinear AUC |
 
-**Lineage**: Paper 12 veterinary→human bridge (Gonzales iPSC, Neubig drug discovery) → healthSpring human therapeutics.
+**Lineage**: Paper 12 veterinary→human bridge (Gonzales iPSC, Neubig drug discovery) → {{ entity(name="healthspring") }} human therapeutics.
 
 **V16**: Exp077 adds Michaelis-Menten (capacity-limited) PK — the first nonlinear elimination model. Phenytoin reference parameters from Ludden 1977. GPU-ready via `michaelis_menten_batch_f64.wgsl` (per-patient parallel Euler ODE).
 
 ### Track 2: Gut Microbiome and Colonization Resistance (Exp010–013, 078–080)
 
-Extends wetSpring's Anderson localization framework from soil to gut.
+Extends {{ entity(name="wetspring") }}'s Anderson localization framework from soil to gut.
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
@@ -69,7 +69,7 @@ Extends wetSpring's Anderson localization framework from soil to gut.
 | 079 | SCFA production (acetate, propionate, butyrate) | Michaelis-Menten fermentation kinetics, fiber-to-SCFA validation |
 | 080 | Gut-brain serotonin axis | 5-HT production from tryptophan via gut microbiota, Yano 2015 reference |
 
-**Lineage**: Paper 01/06 Anderson QS framework → Paper 12 immunological Anderson → healthSpring gut colonization.
+**Lineage**: Paper 01/06 Anderson QS framework → Paper 12 immunological Anderson → {{ entity(name="healthspring") }} gut colonization.
 
 **V13 fix**: Anderson/IPR computation now uses true eigenvectors from QL diagonalization, not Hamiltonian diagonal.
 
@@ -117,7 +117,7 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 | Exp | Title | Key Result |
 |-----|-------|-----------|
 | 075 | NLME cross-validation (FOCE/SAEM, NCA, diagnostics) | FOCE 30% theta recovery, SAEM 50%, NCA λz/AUC∞ 5%, CWRES <2.0, GOF R²≥0 |
-| 076 | Full pipeline petalTongue validation (5 tracks, 28 nodes) | 197/197 structural checks, 121 channels, all 7 DataChannel types |
+| 076 | Full pipeline {{ entity(name="petaltongue") }} validation (5 tracks, 28 nodes) | 197/197 structural checks, 121 channels, all 7 DataChannel types |
 
 **Novel contribution**: First sovereign pure-Rust NLME stack. FOCE + SAEM estimation with NCA and full diagnostics (CWRES, VPC, GOF) — no NONMEM, no Monolix, no WinNonlin, no Fortran, no Python. Deterministic reproducibility (same seed → identical results). VPC Monte Carlo simulation is a GPU promotion candidate (embarrassingly parallel).
 
@@ -125,13 +125,13 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 
 **Kokkos-equivalent benchmarks**: `ecoPrimal/benches/kokkos_parity.rs` — reduction, scatter, Monte Carlo, ODE batch, NLME iteration. Validates GPU-portable patterns ahead of shader promotion.
 
-**Industry benchmark mapping**: SnapGene, Chromeleon, NONMEM, Monolix, WinNonlin profiled. Sovereign replacements mapped to ecoPrimals stack. See `healthSpring/specs/PAPER_REVIEW_QUEUE.md`.
+**Industry benchmark mapping**: SnapGene, Chromeleon, NONMEM, Monolix, WinNonlin profiled. Sovereign replacements mapped to {{ entity(name="ecoprimals") }} stack. See `healthSpring/specs/PAPER_REVIEW_QUEUE.md`.
 
 ### Validation Track (Exp040)
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
-| 040 | barraCuda CPU parity (15 analytical contracts) | Hill, Bateman, allometric, Shannon, Simpson, population PK |
+| 040 | {{ entity(name="barracuda") }} CPU parity (15 analytical contracts) | Hill, Bateman, allometric, Shannon, Simpson, population PK |
 
 ### Integrated Diagnostics (Exp050–052)
 
@@ -139,14 +139,14 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 |-----|-------|-----------|
 | 050 | Integrated 4-track patient diagnostic | Cross-track composite risk score |
 | 051 | Population diagnostic Monte Carlo (1,000 patients) | Population-level diagnostic distribution |
-| 052 | petalTongue scenario schema validation | DataChannel, ClinicalRange conformance |
+| 052 | {{ entity(name="petaltongue") }} scenario schema validation | DataChannel, ClinicalRange conformance |
 
 ### CPU vs GPU Parity & Mixed Dispatch (Exp060–062)
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
 | 060 | CPU vs GPU parity matrix (3 kernels × 3 scales) | 27/27 parity checks through toadStool Pipeline |
-| 061 | Mixed hardware dispatch (NUCLEUS topology) | 22/22 dispatch route checks (CPU+GPU+NPU) |
+| 061 | Mixed hardware dispatch ({{ entity(name="nucleus") }} topology) | 22/22 dispatch route checks (CPU+GPU+NPU) |
 | 062 | PCIe P2P transfer validation (Gen3/4/5) | 26/26 bandwidth and overhead checks |
 
 ### Clinical Translation (Exp063–065)
@@ -154,20 +154,20 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 | Exp | Title | Key Result |
 |-----|-------|-----------|
 | 063 | Patient-parameterized TRT scenarios (5 archetypes) | Per-person: 8 nodes + 8 edges, clinical mode preset |
-| 064 | IPC push to petalTongue | Unix socket JSON-RPC, live scenario update |
+| 064 | IPC push to {{ entity(name="petaltongue") }} | Unix socket JSON-RPC, live scenario update |
 | 065 | Live streaming dashboard | ECG, HRV, PK via StreamSession with backpressure |
 
 ### Compute & Benchmark (Exp066–072)
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
-| 066 | barraCuda CPU benchmark | Hill, PopPK, Diversity timing vs Python |
+| 066 | {{ entity(name="barracuda") }} CPU benchmark | Hill, PopPK, Diversity timing vs Python |
 | 067 | GPU parity extended | Additional kernel validation |
 | 068 | GPU benchmark | Throughput at scale |
 | 069 | toadStool dispatch matrix | Stage assignment validation |
 | 070 | PCIe P2P bypass | NPU→GPU direct transfer |
 | 071 | Mixed system pipeline | CPU+GPU+NPU coordinated execution |
-| 072 | Compute dashboard | toadStool streaming → petalTongue live gauges |
+| 072 | Compute dashboard | toadStool streaming → {{ entity(name="petaltongue") }} live gauges |
 
 ### Paper Queue Validation (Exp077–082)
 
@@ -184,14 +184,14 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
-| 083 | GPU V16 parity (3 shaders + metalForge + toadStool) | 25/25: CPU determinism, physiological ranges, scalar parity, routing, shaders |
+| 083 | GPU V16 parity (3 shaders + {{ entity(name="metalforge") }} + toadStool) | 25/25: CPU determinism, physiological ranges, scalar parity, routing, shaders |
 
 ### petalTongue Evolution (Exp073–074)
 
 | Exp | Title | Key Result |
 |-----|-------|-----------|
 | 073 | Clinical TRT live dashboard | PK trough streaming, HRV improvement, cardiac risk replace |
-| 074 | Interaction roundtrip | Mock petalTongue: render, append, replace, gauge, capabilities, subscribe — 12/12 |
+| 074 | Interaction roundtrip | Mock {{ entity(name="petaltongue") }}: render, append, replace, gauge, capabilities, subscribe — 12/12 |
 
 ---
 
@@ -200,15 +200,15 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 | Metric | Value |
 |--------|-------|
 | Experiments | 61 |
-| Rust lib tests | 365 (barraCuda) |
-| Rust forge tests | 33 (metalForge) |
+| Rust lib tests | 365 ({{ entity(name="barracuda") }}) |
+| Rust forge tests | 33 ({{ entity(name="metalforge") }}) |
 | Rust toadStool tests | 36 |
 | Doc-tests | 4 |
 | **Total tests** | **458** |
 | Python cross-validation checks | 113/113 |
 | Criterion benchmarks | 14 |
 | CPU parity bench cases | 14 (Exp084: Rust 84× faster than Python) |
-| petalTongue pipeline | 28 nodes, 29 edges, 121 channels, 14 scenarios |
+| {{ entity(name="petaltongue") }} pipeline | 28 nodes, 29 edges, 121 channels, 14 scenarios |
 | NLME validation | FOCE + SAEM + NCA + CWRES + VPC + GOF (Exp075, 19 checks) |
 | GPU parity checks | 27/27 (Exp060) + 25/25 (Exp083) |
 | GPU fused pipeline checks | 11/11 (Exp054) |
@@ -242,7 +242,7 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 | `GpuContext` | Persistent wgpu device/queue, eliminates per-dispatch init |
 | `execute_fused()` | Unidirectional pipeline: upload → N compute passes → readback |
 | `Pipeline::execute_gpu()` | toadStool dispatches stages via `GpuContext` |
-| `Pipeline::execute_auto()` | metalForge routes per stage (GPU if element count > threshold) |
+| `Pipeline::execute_auto()` | {{ entity(name="metalforge") }} routes per stage (GPU if element count > threshold) |
 
 ### Scaling (RTX 4070, release build)
 
@@ -263,7 +263,7 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 | NLME diagnostics (CWRES, VPC, GOF) | `pkpd/diagnostics.rs`. CWRES ~N(0,1), VPC 50 simulations, GOF scatter. |
 | WFDB parser | `wfdb.rs` — PhysioNet Format 212/16 streaming decode + beat annotations. |
 | Kokkos-equivalent benchmarks | `benches/kokkos_parity.rs` — 5 GPU-portable patterns validated on CPU. |
-| Full petalTongue pipeline | 28 nodes (was 22), 29 edges (was 22), 121 channels (was 65), 14 scenarios (was 13). |
+| Full {{ entity(name="petaltongue") }} pipeline | 28 nodes (was 22), 29 edges (was 22), 121 channels (was 65), 14 scenarios (was 13). |
 | Exp075 | NLME cross-validation: 19 binary checks (FOCE/SAEM/NCA/CWRES/GOF). |
 | Exp076 | Full pipeline validation: 197 binary checks across all 5 tracks + full study. |
 | Industry benchmarks | SnapGene, Chromeleon, NONMEM, Monolix, WinNonlin profiled and mapped. |
@@ -274,24 +274,24 @@ Sovereign replacement for NONMEM (FOCE), Monolix (SAEM), and WinNonlin (NCA).
 
 | Change | Impact |
 |--------|--------|
-| Exp085 GPU scaling bench (47/47) | 4 scales (64→4096) × 3 V16 ops: MM PK (linear scaling confirmed, 64→96K µs), SCFA (sub-µs at 100, 13 µs at 10K), Beat classify (1.4→129 µs). Fused 3-op pipeline: 6ms CPU. metalForge routes small→CPU, large→GPU. |
+| Exp085 GPU scaling bench (47/47) | 4 scales (64→4096) × 3 V16 ops: MM PK (linear scaling confirmed, 64→96K µs), SCFA (sub-µs at 100, 13 µs at 10K), Beat classify (1.4→129 µs). Fused 3-op pipeline: 6ms CPU. {{ entity(name="metalforge") }} routes small→CPU, large→GPU. |
 | Exp086 toadStool V16 dispatch (24/24) | All V16 StageOps through `execute_cpu` + `execute_streaming` with per-stage callbacks. Streaming matches CPU result. All V16 stages map to `GpuOp` via `to_gpu_op()`. Mixed V15+V16 pipeline (Generate→Hill→Reduce). |
-| Exp087 mixed NUCLEUS V16 dispatch (35/35) | Eastgate Tower topology (CPU+GPU+NPU, PCIe Gen4). V16 workload routing at 8 scales. PCIe P2P bypass GPU↔NPU (31.5 GB/s, 5.1 µs for 160KB). NPU→GPU dispatch plan for biosignal→classification pipeline. GPU-only pipeline: 0 transitions. Full 5-stage mixed pipeline: GPU→GPU→GPU→NPU→CPU with 2 transitions. |
+| Exp087 mixed {{ entity(name="nucleus") }} V16 dispatch (35/35) | Eastgate Tower topology (CPU+GPU+NPU, PCIe Gen4). V16 workload routing at 8 scales. PCIe P2P bypass GPU↔NPU (31.5 GB/s, 5.1 µs for 160KB). NPU→GPU dispatch plan for biosignal→classification pipeline. GPU-only pipeline: 0 transitions. Full 5-stage mixed pipeline: GPU→GPU→GPU→NPU→CPU with 2 transitions. |
 | Python control (10/10) | Cross-validates MM AUC, SCFA ratios, beat correlation, and scaling linearity from Rust timing results. |
 
 ---
 
 ## V20 petalTongue V16 Visualization Evolution
 
-V20 makes healthSpring's validated science **visible**. Six V16 primitives and the compute pipeline now have `petalTongue` scenario builders producing real-data visualizations.
+V20 makes {{ entity(name="healthspring") }}'s validated science **visible**. Six V16 primitives and the compute pipeline now have `petalTongue` scenario builders producing real-data visualizations.
 
 | Change | Impact |
 |--------|--------|
 | **V16 scenario builder** | 6 nodes with real math: MM PK dose curves, antibiotic recovery, SCFA saturation, serotonin pathway, EDA decomposition, arrhythmia templates |
-| **Compute pipeline scenarios** | GPU scaling curves, NUCLEUS topology, mixed dispatch plan — all as petalTongue DataChannels |
+| **Compute pipeline scenarios** | GPU scaling curves, {{ entity(name="nucleus") }} topology, mixed dispatch plan — all as {{ entity(name="petaltongue") }} DataChannels |
 | **Full study extended** | 28 → 34 nodes, 29 → 38 edges, all 7 DataChannel types in unified graph |
 | **Exp088 unified dashboard** | 326 validation checks across all scenarios, JSON dump + IPC push, quick-start guide |
-| **Exp089 patient explorer** | CLI-parameterized diagnostic + V16 analysis, streams to petalTongue, combined diagnostic+V16 scenario |
+| **Exp089 patient explorer** | CLI-parameterized diagnostic + V16 analysis, streams to {{ entity(name="petaltongue") }}, combined diagnostic+V16 scenario |
 | **dump_scenarios extended** | 14 → 16 scenario JSONs (added healthspring-v16.json, healthspring-compute.json) |
 
 ---
@@ -306,7 +306,7 @@ V20 makes healthSpring's validated science **visible**. Six V16 primitives and t
 | Beat classification 149× | Template matching via normalized cross-correlation: 1000 beats in 204 µs (Rust) vs 30,377 µs (Python). |
 | Serotonin 149×, Tryptophan 155× | Sigmoid diversity-factor computation: Rust inlines and optimizes exp/sigmoid chains. |
 | MM PK simulate 33× | Euler ODE integration: 10,000 steps in 110 µs (Rust) vs 3,626 µs (Python). |
-| EDA SCL/phasic — numpy faster | numpy `convolve` uses compiled C/BLAS internally; naive Rust rolling average is 3× slower. Target for SIMD optimization in barraCuda. |
+| EDA SCL/phasic — numpy faster | numpy `convolve` uses compiled C/BLAS internally; naive Rust rolling average is 3× slower. Target for SIMD optimization in {{ entity(name="barracuda") }}. |
 | `bench_results_v16_rust_cpu.json` | Machine-readable timing results for downstream CI comparison. |
 | `bench_results_v16_python.json` | Python baseline timings with provenance (Python version, numpy version). |
 | `compare_v16_benchmarks.py` | Side-by-side speedup table generator for Rust vs Python timing data. |
@@ -320,9 +320,9 @@ V20 makes healthSpring's validated science **visible**. Six V16 primitives and t
 | `michaelis_menten_batch_f64.wgsl` | Per-patient Michaelis-Menten ODE via Euler integration on GPU. Wang hash + xorshift32 PRNG for lognormal Vmax variation. |
 | `scfa_batch_f64.wgsl` | Batch SCFA production (acetate/propionate/butyrate) via element-wise Michaelis-Menten fermentation kinetics. |
 | `beat_classify_batch_f64.wgsl` | Per-beat template-matching classification via normalized cross-correlation. Normal/PVC/PAC/BBB typing. |
-| metalForge 3 new `Workload` variants | `MichaelisMentenBatch`, `ScfaBatch`, `BeatClassifyBatch` — cross-system routing with GPU/CPU threshold selection. |
+| {{ entity(name="metalforge") }} 3 new `Workload` variants | `MichaelisMentenBatch`, `ScfaBatch`, `BeatClassifyBatch` — cross-system routing with GPU/CPU threshold selection. |
 | toadStool 3 new `StageOp` variants | Streaming pipeline dispatch for all V16 primitives — CPU fallback + GPU promotion. |
-| Exp083 GPU V16 parity | 25/25 validation checks: CPU determinism, physiological ranges, scalar API parity, metalForge routing, shader compilation, memory estimates. |
+| Exp083 GPU V16 parity | 25/25 validation checks: CPU determinism, physiological ranges, scalar API parity, {{ entity(name="metalforge") }} routing, shader compilation, memory estimates. |
 | `GpuContext` fused support | All 6 `GpuOp` variants dispatchable through `execute_fused()` unidirectional pipeline. |
 | `bytemuck` param structs | `MmParams`, `ScfaGpuParams`, `BeatClassifyParams` — zero-copy GPU uniform upload. |
 
@@ -364,7 +364,7 @@ V20 makes healthSpring's validated science **visible**. Six V16 primitives and t
 | Smart clinical.rs refactor | 1177 → 374 + 819 lines, domain-coherent split |
 | LCG PRNG centralization | New `rng.rs` module, 4 files updated |
 | Math deduplication | `evenness_to_disorder` and `lognormal_params` delegate to canonical source |
-| Capability-based discovery | Glob-based Songbird socket search replaces hardcoded path |
+| Capability-based discovery | Glob-based {{ entity(name="songbird") }} socket search replaces hardcoded path |
 | Flaky test fix | AtomicU64 paths + kernel connection queuing replaces Barrier synchronization |
 | Doc-tests | 4 added (shannon_index, hill_dose_response, auc_trapezoidal, state_to_f64) |
 
@@ -388,7 +388,7 @@ Published data → Computational model → Population validation
 
 The SAME DAVE model (Sensory Afferent, Motor Efferent) provides self-aware control of the visualization system:
 
-| Channel | Direction | healthSpring Use |
+| Channel | Direction | {{ entity(name="healthspring") }} Use |
 |---------|-----------|-----------------|
 | Scenario load | Afferent | Patient scenario → graph topology |
 | Mode preset | Efferent | `mode: "clinical"` → bundle of motor commands |
@@ -442,32 +442,32 @@ No proprietary clinical data is used. Mok clinical reference provides hypotheses
 
 ## V22 — biomeOS Niche Deployment
 
-V22 transforms healthSpring from experiment binaries into a biomeOS BYOB niche:
+V22 transforms {{ entity(name="healthspring") }} from experiment binaries into a {{ entity(name="biomeos") }} {{ entity(name="byob") }} niche:
 
 | Component | File | Purpose |
 |-----------|------|---------|
 | Primal binary | `ecoPrimal/src/bin/healthspring_primal/` | 79 capabilities via JSON-RPC 2.0 over Unix socket |
 | IPC dispatch | `ecoPrimal/src/ipc/dispatch/` | Method → science function routing for 6 domains |
-| Niche manifest | `graphs/healthspring_niche.toml` | Declares the niche: primals + workflow graphs |
+| {{ entity(name="niche") }} manifest | `graphs/healthspring_niche.toml` | Declares the niche: primals + workflow graphs |
 | Patient assessment | `graphs/healthspring_patient_assessment.toml` | ConditionalDag: 4 parallel science tracks → composite |
 | TRT scenario | `graphs/healthspring_trt_scenario.toml` | Sequential TRT clinical workflow |
 | Microbiome analysis | `graphs/healthspring_microbiome_analysis.toml` | Sequential diversity → Anderson → SCFA pipeline |
 | Biosignal monitor | `graphs/healthspring_biosignal_monitor.toml` | Continuous 250 Hz real-time monitoring |
 
-healthSpring is now a niche, not a node. The primal provides capabilities; the graphs define composition. biomeOS's Neural API orchestrates and optimizes via the Pathway Learner. See `wateringHole/SPRING_NICHE_SETUP_GUIDE.md` for how other springs can follow this pattern.
+{{ entity(name="healthspring") }} is now a niche, not a node. The primal provides capabilities; the graphs define composition. {{ entity(name="biomeos") }}'s {{ entity(name="neuralapi") }} orchestrates and optimizes via the Pathway Learner. See `wateringHole/SPRING_NICHE_SETUP_GUIDE.md` for how other springs can follow this pattern.
 
 ## V32 — Cross-Spring Ecosystem Convergence
 
-V32 absorbs proven patterns from all ecoPrimals components:
+V32 absorbs proven patterns from all {{ entity(name="ecoprimals") }} components:
 
 | Feature | Source | Impact |
 |---------|--------|--------|
 | Structured `tracing` | All 6 sibling springs | `eprintln!` → `tracing::info!/warn!/error!` with env-filter (`RUST_LOG`) |
-| `health.liveness` + `health.readiness` | coralReef Iter 51 | Lightweight probes for orchestrator health monitoring |
-| Resilient provenance trio IPC | sweetGrass v0.7.18 | Circuit breaker (5s cooldown) + exponential backoff retry |
+| `health.liveness` + `health.readiness` | {{ entity(name="coralreef") }} Iter 51 | Lightweight probes for orchestrator health monitoring |
+| Resilient provenance trio IPC | {{ entity(name="sweetgrass") }} v0.7.18 | Circuit breaker (5s cooldown) + exponential backoff retry |
 | `IpcError` ecosystem type | biomeOS/airSpring/groundSpring | Structured error enum with `RpcError` and `Timeout` variants |
-| `OrExit<T>` trait | wetSpring V123 | Panic-free error handling for validation/utility binaries |
-| Enriched `capability.list` | biomeOS Pathway Learner | `operation_dependencies` + `cost_estimates` for execution graph planning |
+| `OrExit<T>` trait | {{ entity(name="wetspring") }} V123 | Panic-free error handling for validation/utility binaries |
+| Enriched `capability.list` | {{ entity(name="biomeos") }} Pathway Learner | `operation_dependencies` + `cost_estimates` for execution graph planning |
 
 613 tests, 79 JSON-RPC capabilities, 6 WGSL shaders, zero clippy warnings, zero unsafe. Sovereign GPU dispatch via `CoralReefDevice`; IPC resilience: `CircuitBreaker`, `RetryPolicy`, `DispatchOutcome`. See `GROUNDSPRING_V114_PRIMAL_COMPOSITION_GUIDANCE_MAR17_2026.md` for composition guidance.
 

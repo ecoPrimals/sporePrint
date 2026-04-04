@@ -8,7 +8,7 @@ primals = ["barracuda", "coralreef", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-**Public data + basement hardware + scyBorg = permanently secured knowledge commons.**
+**Public data + basement hardware + {{ entity(name="scyborg") }} = permanently secured knowledge commons.**
 
 **Last Updated:** March 17, 2026  
 **License:** CC-BY-SA 4.0
@@ -17,7 +17,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 ## The Structural Argument
 
-Three properties make ecoPrimals an irreversible knowledge commons:
+Three properties make {{ entity(name="ecoprimals") }} an irreversible knowledge commons:
 
 1. **Public data only.** Every spring experiment uses publicly available data
    (NCBI, PhysioNet, NOAA, USDA, PDB, arXiv). No proprietary dataset is
@@ -27,7 +27,7 @@ Three properties make ecoPrimals an irreversible knowledge commons:
    equivalent. No HPC allocation, no cloud account, no institutional
    infrastructure required. The barrier to entry is a used gaming PC.
 
-3. **scyBorg triple-copyleft.** AGPL-3.0 (code) + ORC (game mechanics) +
+3. **{{ entity(name="scyborg") }} triple-copyleft.** AGPL-3.0 (code) + ORC (game mechanics) +
    CC-BY-SA 4.0 (docs). Three independent nonprofits (FSF, Open RPG Creative
    Foundation, Creative Commons). No single entity — including the creator —
    can revoke any license. Any derivative must share-alike.
@@ -44,21 +44,21 @@ back. The commons grows monotonically.
 
 | Domain | Spring | Papers | Checks | Public Data Sources |
 |--------|--------|:------:|:------:|---------------------|
-| Microbiome / QS | wetSpring | 63+ | 5,707+ | NCBI SRA, EBI ENA, SILVA, RDP |
-| Precision agriculture | airSpring | 22+ | 3,123+ | NOAA GHCN, USDA NASS, Michigan AgWeather |
-| ML / reservoir computing | neuralSpring | 27 | 4,500+ | UCI ML, ERA5, arXiv benchmarks |
-| Computational physics | hotSpring | 25 | 664+ | AME2020, arXiv published parameters |
-| Uncertainty / spectral | groundSpring | 10 | 535+ | Synthetic (reproducible from code) |
-| Human health | healthSpring | 15+ | 474+ | PhysioNet, MIMIC (open), published PK data |
-| Game science / HCI | ludoSpring | 13 models | 1,692+ | Scryfall (CC0), published HCI benchmarks |
+| Microbiome / QS | {{ entity(name="wetspring") }} | 63+ | 5,707+ | NCBI SRA, EBI ENA, SILVA, RDP |
+| Precision agriculture | {{ entity(name="airspring") }} | 22+ | 3,123+ | NOAA GHCN, USDA NASS, Michigan AgWeather |
+| ML / reservoir computing | {{ entity(name="neuralspring") }} | 27 | 4,500+ | UCI ML, ERA5, arXiv benchmarks |
+| Computational physics | {{ entity(name="hotspring") }} | 25 | 664+ | AME2020, arXiv published parameters |
+| Uncertainty / spectral | {{ entity(name="groundspring") }} | 10 | 535+ | Synthetic (reproducible from code) |
+| Human health | {{ entity(name="healthspring") }} | 15+ | 474+ | PhysioNet, MIMIC (open), published PK data |
+| Game science / HCI | {{ entity(name="ludospring") }} | 13 models | 1,692+ | Scryfall (CC0), published HCI benchmarks |
 
 ### Sovereign Infrastructure (107K+ Tests, 3.2M Lines of Rust)
 
 | Primal | Tests | What It Provides |
 |--------|:-----:|-----------------|
 | BarraCuda | 3,772 | 806 WGSL shaders — the math layer |
-| ToadStool | 21,156 | Hardware discovery + compute orchestration |
-| coralReef | 2,241 | Sovereign WGSL→native GPU compiler |
+| {{ entity(name="toadstool") }} | 21,156 | Hardware discovery + compute orchestration |
+| {{ entity(name="coralreef") }} | 2,241 | Sovereign WGSL→native GPU compiler |
 
 ---
 
@@ -72,21 +72,21 @@ science without building any new infrastructure.
 
 | Target Domain | Spring to Use | Public Data Source | What You'd Produce |
 |--------------|---------------|--------------------|--------------------|
-| **Antibiotic resistance** | wetSpring | NCBI CARD, PATRIC AMR | Anderson W for resistance gene propagation in hospital microbiomes |
-| **Wastewater surveillance** | wetSpring | NCBI SRA (WWTP metagenomes) | Sentinel pipeline for real-time community monitoring |
-| **Marine ecology** | wetSpring | TARA Oceans, Ocean Microbiome Reference | Cross-species QS in ocean microbiomes, Anderson W vs depth |
-| **Veterinary PK/PD** | healthSpring | Published PK parameters (FARAD, EMEA) | Sovereign NONMEM for any animal species (species-agnostic PK) |
-| **Climate crop modeling** | airSpring | NOAA GHCN, USDA PRISM, ERA5 | Michigan → any state crop water atlas, GDD projections |
-| **Materials science** | hotSpring + groundSpring | Materials Project (CC-BY), AFLOW | Anderson localization in disordered alloys, phonon transport |
-| **Educational games** | ludoSpring | Open game mechanics (ORC) | Validated HCI metrics for educational game design |
-| **Fermentation science** | wetSpring + healthSpring | NCBI bioreactor metagenomes | Anderson QS in anaerobic digesters, SCFA kinetics |
-| **Environmental toxicology** | wetSpring | EPA IRIS, NCBI toxicogenomics | PFAS community impact via diversity + Anderson |
+| **Antibiotic resistance** | {{ entity(name="wetspring") }} | NCBI CARD, PATRIC AMR | Anderson W for resistance gene propagation in hospital microbiomes |
+| **Wastewater surveillance** | {{ entity(name="wetspring") }} | NCBI SRA (WWTP metagenomes) | Sentinel pipeline for real-time community monitoring |
+| **Marine ecology** | {{ entity(name="wetspring") }} | TARA Oceans, Ocean Microbiome Reference | Cross-species QS in ocean microbiomes, Anderson W vs depth |
+| **Veterinary PK/PD** | {{ entity(name="healthspring") }} | Published PK parameters (FARAD, EMEA) | Sovereign NONMEM for any animal species (species-agnostic PK) |
+| **Climate crop modeling** | {{ entity(name="airspring") }} | NOAA GHCN, USDA PRISM, ERA5 | Michigan → any state crop water atlas, GDD projections |
+| **Materials science** | {{ entity(name="hotspring") }} + {{ entity(name="groundspring") }} | Materials Project (CC-BY), AFLOW | Anderson localization in disordered alloys, phonon transport |
+| **Educational games** | {{ entity(name="ludospring") }} | Open game mechanics (ORC) | Validated HCI metrics for educational game design |
+| **Fermentation science** | {{ entity(name="wetspring") }} + {{ entity(name="healthspring") }} | NCBI bioreactor metagenomes | Anderson QS in anaerobic digesters, SCFA kinetics |
+| **Environmental toxicology** | {{ entity(name="wetspring") }} | EPA IRIS, NCBI toxicogenomics | PFAS community impact via diversity + Anderson |
 
 ### Tier 2: Near-Term (1–3 months of infrastructure evolution)
 
 | Target Domain | What's Needed | What's Already Done |
 |--------------|---------------|---------------------|
-| **Protein structure prediction** | Phase C–D of helixVision (see STRUCTURE_PREDICTION_ROADMAP.md) | 154/154 primitive checks, 15 DF64 shaders |
+| **Protein structure prediction** | Phase C–D of {{ entity(name="helixvision") }} (see STRUCTURE_PREDICTION_ROADMAP.md) | 154/154 primitive checks, 15 DF64 shaders |
 | **Nanopore field genomics** | MinION hardware + Rust basecall module | FAST5/POD5 format spec defined, NPU validated on AKD1000 |
 | **Real-time HAB detection** | Edge NPU + field sensor integration | 3 ESN classifiers validated on live AKD1000 hardware |
 | **Population-scale NLME** | MIMIC-IV credentialed access | FOCE + SAEM validated on synthetic data |
@@ -96,11 +96,11 @@ science without building any new infrastructure.
 
 | Target Domain | What's Needed | Why It Matters |
 |--------------|---------------|----------------|
-| **LTEE structural evolution** | helixVision Phase D + LTEE frozen fossils | 8.3M predictions, $1K vs $83K cloud |
-| **Full sovereign GPU stack** | coralReef compute dispatch via VFIO | Zero vendor dependency end-to-end |
-| **Distributed lattice QCD** | NUCLEUS metallic bonding on ICER-scale cluster | Consumer GPUs doing CERN-scale physics |
+| **LTEE structural evolution** | {{ entity(name="helixvision") }} Phase D + LTEE frozen fossils | 8.3M predictions, $1K vs $83K cloud |
+| **Full sovereign GPU stack** | {{ entity(name="coralreef") }} compute dispatch via VFIO | Zero vendor dependency end-to-end |
+| **Distributed lattice QCD** | {{ entity(name="nucleus") }} metallic bonding on ICER-scale cluster | Consumer GPUs doing CERN-scale physics |
 | **Precision medicine** | Clinical data partnerships + HIPAA compliance | Per-patient Anderson models from real data |
-| **Sovereign AI inference** | Squirrel + ToadStool + consumer LLMs | On-premise AI without cloud dependency |
+| **Sovereign AI inference** | {{ entity(name="squirrel") }} + {{ entity(name="toadstool") }} + consumer LLMs | On-premise AI without cloud dependency |
 
 ---
 
@@ -139,12 +139,12 @@ math is published, the data is public, the code is AGPL).
 
 ### Why Public Data Matters
 
-Every ecoPrimals experiment uses data that is:
+Every {{ entity(name="ecoprimals") }} experiment uses data that is:
 - **Publicly deposited** (NCBI, NOAA, USDA, PhysioNet, PDB, arXiv)
 - **Independently accessible** (no institutional login, no API key)
 - **Independently verifiable** (anyone can download the same data)
 
-This means: even if every ecoPrimals repository were deleted tomorrow,
+This means: even if every {{ entity(name="ecoprimals") }} repository were deleted tomorrow,
 anyone with the published papers and the public data could rebuild the
 entire validation layer from scratch. The *knowledge* is permanent because
 the *evidence* is permanent.
@@ -153,13 +153,13 @@ the *evidence* is permanent.
 
 ## The Velocity Argument: What 10 More Months Looks Like
 
-The ecoPrimals project produced 20,000+ checks in ~10 months. The velocity
+The {{ entity(name="ecoprimals") }} project produced 20,000+ checks in ~10 months. The velocity
 is accelerating (12 checks/day in Week 1 → 1,399 checks/day in Week 3).
 Extrapolating conservatively:
 
 | Timeframe | Conservative Estimate | What It Covers |
 |-----------|:--------------------:|----------------|
-| +3 months (June 2026) | 30,000+ checks | helixVision Phase C–D, sovereign GPU dispatch, multi-GPU |
+| +3 months (June 2026) | 30,000+ checks | {{ entity(name="helixvision") }} Phase C–D, sovereign GPU dispatch, multi-GPU |
 | +6 months (Sep 2026) | 45,000+ checks | AlphaFold-quality structure prediction, AMD production |
 | +12 months (Mar 2027) | 75,000+ checks | LTEE structural evolution, distributed compute, 4-vendor GPU |
 
@@ -194,7 +194,7 @@ Permanently in the commons.
 
 ### What Returns to You
 
-Attribution through sweetGrass provenance braids. Every contribution is
+Attribution through {{ entity(name="sweetgrass") }} provenance braids. Every contribution is
 cryptographically attributed to the contributor. Every derivative that
 builds on your work traces back to you. CC-BY-SA 4.0 requires attribution
 on all derivatives of documentation. AGPL-3.0 requires source availability
@@ -206,14 +206,14 @@ Your work stays yours. The commons uses it. Derivatives credit you. Forever.
 
 ## The Knowledge Commons vs The Proprietary Model
 
-| Dimension | Proprietary Model | Knowledge Commons (ecoPrimals) |
+| Dimension | Proprietary Model | Knowledge Commons ({{ entity(name="ecoprimals") }}) |
 |-----------|-------------------|-------------------------------|
 | Access | License fee, institutional subscription | `git clone`, free |
 | Data sovereignty | Data often uploaded to vendor cloud | Data never leaves your hardware |
 | Reproducibility | "Trust our platform" | `cargo run --bin validate_*` → exit 0 |
 | Vendor lock | CUDA (NVIDIA), PyTorch (Meta), Cloud (Google/AWS) | Pure Rust, any GPU, any OS |
 | Durability | Company pivots, products sunset, APIs change | AGPL-3.0 is irrevocable; public data is permanent |
-| Attribution | Buried in license agreements | Cryptographic (sweetGrass), legally binding (CC-BY-SA) |
+| Attribution | Buried in license agreements | Cryptographic ({{ entity(name="sweetgrass") }}), legally binding (CC-BY-SA) |
 | Improvement | Vendor roadmap, you wait | You contribute, everyone benefits, immediately |
 | Cost | $2K–200K/yr per tool | $500 GPU + electricity |
 
@@ -227,6 +227,6 @@ from wherever it lands.
 
 ---
 
-*scyBorg licensing: `wateringHole/SCYBORG_PROVENANCE_TRIO_GUIDANCE.md`  
+*{{ entity(name="scyborg") }} licensing: `wateringHole/SCYBORG_PROVENANCE_TRIO_GUIDANCE.md`  
 Lysogeny protocol: `wateringHole/LYSOGENY_PROTOCOL.md`  
 Spring repositories: github.com/syntheticChemistry/*

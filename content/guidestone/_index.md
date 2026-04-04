@@ -7,20 +7,20 @@ template = "section.html"
 
 ## The Verification Class: How Computation Becomes Proof
 
-guideStone is a **verification class** — a quality grade for any ecoBin
+{{ entity(name="guidestone") }} is a **verification class** — a quality grade for any {{ entity(name="ecobin") }}
 in the ecosystem that certifies the artifact produces reproducible,
 self-proving results.
 
-It is not a binary type. The binary ladder (UniBin → ecoBin → genomeBin)
-describes structure. It is not a deployment class. fieldMouse describes
-where things run. guideStone describes **what the output means** — that
+It is not a binary type. The binary ladder ({{ entity(name="unibin") }} → {{ entity(name="ecobin") }} → {{ entity(name="genomebin") }})
+describes structure. It is not a deployment class. {{ entity(name="fieldmouse") }} describes
+where things run. {{ entity(name="guidestone") }} describes **what the output means** — that
 the computation's results are the proof of their own correctness.
 
 ---
 
 ## The Five Properties
 
-A guideStone-certified artifact satisfies five properties. Each is necessary.
+A {{ entity(name="guidestone") }}-certified artifact satisfies five properties. Each is necessary.
 Together they are sufficient.
 
 **1. Deterministic Output** — Same input, same binary, any hardware → same output
@@ -116,7 +116,7 @@ Traditional onboarding into computational physics workflows takes days to
 weeks: install toolchain, debug build failures, share input configurations,
 compare results via email, debug discrepancies, repeat.
 
-guideStone onboarding takes minutes:
+{{ entity(name="guidestone") }} onboarding takes minutes:
 
 1. Receive USB or tarball
 2. `./hotspring validate` — 59/59 pass
@@ -132,17 +132,17 @@ The artifact is the conversation starter. The physics speaks for itself.
 The ecosystem has three independent classification axes:
 
 **Structure** — what is it built from?
-UniBin → ecoBin → genomeBin
+{{ entity(name="unibin") }} → {{ entity(name="ecobin") }} → {{ entity(name="genomebin") }}
 
 **Deployment** — where does it run?
-NUCLEUS → Niche → fieldMouse
+{{ entity(name="nucleus") }} → {{ entity(name="niche") }} → {{ entity(name="fieldmouse") }}
 
 **Verification** — what does its output mean?
-guideStone
+{{ entity(name="guidestone") }}
 
-These axes are independent. A fieldMouse sensor node can be a guideStone
-(its soil pH readings are calibrated against NIST standards). A full NUCLEUS
-can produce output that is not guideStone (exploratory computation with
+These axes are independent. A {{ entity(name="fieldmouse") }} sensor node can be a {{ entity(name="guidestone") }}
+(its soil pH readings are calibrated against NIST standards). A full {{ entity(name="nucleus") }}
+can produce output that is not {{ entity(name="guidestone") }} (exploratory computation with
 heuristic thresholds).
 
 ---
@@ -158,11 +158,11 @@ mathematical relationship that does not change, does not drift, and does not
 depend on any physical object. Any laboratory can realize the kilogram
 independently. The measurement became self-proving.
 
-guideStone is the ecoPrimals equivalent. The consumer trusts the output because
+{{ entity(name="guidestone") }} is the {{ entity(name="ecoprimals") }} equivalent. The consumer trusts the output because
 it is **reproducible from the mathematics**. The binary is the instrument. The
 output is the measurement. The mathematics is the invariant substrate.
 
 ---
 
-*The wolf was always falling. The plaquette was always 0.59. The guideStone does
+*The wolf was always falling. The plaquette was always 0.59. The {{ entity(name="guidestone") }} does
 not create the truth. It makes the truth portable.*

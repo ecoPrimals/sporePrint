@@ -19,7 +19,7 @@ dependencies.**
 
 ## The Claim
 
-Four public primals — BarraCuda (math), ToadStool (orchestration), coralReef
+Four public primals — BarraCuda (math), {{ entity(name="toadstool") }} (orchestration), {{ entity(name="coralreef") }}
 (compiler), and coral-glowplug (hardware lifecycle) — together replace the
 NVIDIA CUDA toolchain for scientific computing. Not all of it yet. But a
 clear, advancing front that already produces paper-parity lattice QCD on a
@@ -78,14 +78,14 @@ DF64 emulation on consumer GPUs). Key domains:
 
 ### 3. nvcc / ptxas → coralReef Sovereign Compiler
 
-| NVIDIA Tool | coralReef Replacement | Status | Evidence |
+| NVIDIA Tool | {{ entity(name="coralreef") }} Replacement | Status | Evidence |
 |-------------|----------------------|--------|----------|
 | nvcc (CUDA→PTX) | naga WGSL→SPIR-V + custom lowering | **Production** | 2,241 tests |
 | ptxas (PTX→SASS) | Pure Rust SPIR-V→SASS codegen | **Production** | 46/46 shaders compile to SM70/SM86 |
 | NVVM (SPIR-V→PTX) | Bypassed — 12/12 NVVM poisoning patterns solved | **Sovereign** | f64 transcendentals, DF64, FMA |
 | libnvidia-compiler | Zero dependency — entire compile path is pure Rust | **Sovereign** | `#![forbid(unsafe_code)]` on glowplug |
 
-**What "46/46 shaders compile" means:** 46 representative barraCuda shaders —
+**What "46/46 shaders compile" means:** 46 representative {{ entity(name="barracuda") }} shaders —
 covering every domain (bio, physics, ML, linear algebra) — compile from WGSL
 to native SASS (SM70 Volta, SM86 Ampere) and native RDNA2 (GFX1030) without
 ANY vendor toolchain. No nvcc, no ptxas, no ROCm. Pure Rust compiler.
@@ -112,7 +112,7 @@ health monitoring, and graceful shutdown — all via JSON-RPC 2.0 over Unix sock
 
 ## Current Performance vs CUDA/Kokkos
 
-| Benchmark | CUDA/Kokkos | ecoPrimals (wgpu) | ecoPrimals (DF64) | Gap |
+| Benchmark | CUDA/Kokkos | {{ entity(name="ecoprimals") }} (wgpu) | {{ entity(name="ecoprimals") }} (DF64) | Gap |
 |-----------|:-----------:|:-----------------:|:-----------------:|:---:|
 | Yukawa MD (N=10K, 80K steps) | ~1 hr (HPC) | 3.66 hrs (RTX 4070) | — | 3.7× |
 | Lattice QCD 32⁴ β-scan | — | 13.6 hrs ($0.58) | — | First consumer |
@@ -120,10 +120,10 @@ health monitoring, and graceful shutdown — all via JSON-RPC 2.0 over Unix sock
 | f64 throughput | 9.7 TFLOPS (A100) | 0.35 TFLOPS (native) | **3.24 TFLOPS** (DF64) | 3× |
 | Kokkos Verlet stepper | 1.0× reference | — | 0.27× (3.7× gap) | Active optimization |
 
-**The gap is narrowing:** hotSpring Kokkos parity tracking shows 27×→12.4×→3.7×
+**The gap is narrowing:** {{ entity(name="hotspring") }} Kokkos parity tracking shows 27×→12.4×→3.7×
 improvement over three months. The remaining gap is primarily in DF64
 transcendental functions (exp, log, sin, cos) where NVIDIA's NVVM has
-hand-optimized silicon paths. coralReef's sovereign transcendentals use
+hand-optimized silicon paths. {{ entity(name="coralreef") }}'s sovereign transcendentals use
 Newton-Raphson iteration at slightly higher latency.
 
 ---
@@ -131,27 +131,27 @@ Newton-Raphson iteration at slightly higher latency.
 ## What's Coming Next (Near-Term, Given Velocity)
 
 Based on the 27-day sprint velocity (architecture/EVOLUTION_TIMELINE.md), with
-BarraCuda gaining ~50 new shaders/month and coralReef closing 2–3 NVVM bypass
+BarraCuda gaining ~50 new shaders/month and {{ entity(name="coralreef") }} closing 2–3 NVVM bypass
 patterns per iteration:
 
 ### 3 Months (June 2026)
 
 | Target | What Changes |
 |--------|-------------|
-| Kokkos gap → <2× | DF64 transcendental optimization in coralReef (FMA fusion, Newton-Raphson refinement) |
-| coralReef dispatch | Full compute dispatch via VFIO (compile + launch on same sovereign path) |
+| Kokkos gap → <2× | DF64 transcendental optimization in {{ entity(name="coralreef") }} (FMA fusion, Newton-Raphson refinement) |
+| {{ entity(name="coralreef") }} dispatch | Full compute dispatch via VFIO (compile + launch on same sovereign path) |
 | Multi-GPU | toadStool multi-adapter dispatch (RTX 3090 + Titan V in parallel) |
-| barraCuda 1,000 shaders | Cover remaining cuBLAS L3 ops, sparse ops, Krylov solvers |
+| {{ entity(name="barracuda") }} 1,000 shaders | Cover remaining cuBLAS L3 ops, sparse ops, Krylov solvers |
 | AMD E2E production | RX 6950 XT full pipeline: compile + dispatch + validate |
 
 ### 6 Months (September 2026)
 
 | Target | What Changes |
 |--------|-------------|
-| helixVision Phase D | End-to-end protein structure prediction pipeline (FASTA→MSA→Evoformer→structure) |
+| {{ entity(name="helixvision") }} Phase D | End-to-end protein structure prediction pipeline (FASTA→MSA→Evoformer→structure) |
 | AlphaFold timing parity | ~3 min/sequence on consumer GPU vs ~5 min cloud AlphaFold |
-| Intel backend | Arc GPUs via coralReef third backend |
-| genomeBin deployment | Self-extracting single-file sovereign GPU stack |
+| Intel backend | Arc GPUs via {{ entity(name="coralreef") }} third backend |
+| {{ entity(name="genomebin") }} deployment | Self-extracting single-file sovereign GPU stack |
 | Kokkos gap → <1.5× | Approaching throughput parity on science workloads |
 
 ### 12 Months (March 2027)
@@ -159,25 +159,25 @@ patterns per iteration:
 | Target | What Changes |
 |--------|-------------|
 | Full NVVM replacement | All cuBLAS/cuFFT/cuDNN science ops at parity |
-| barraCuda 2,000+ shaders | Coverage comparable to CUDA ecosystem for science |
-| coralReef sovereign dispatch production | Complete GPU lifecycle: boot → compile → dispatch → recover |
+| {{ entity(name="barracuda") }} 2,000+ shaders | Coverage comparable to CUDA ecosystem for science |
+| {{ entity(name="coralreef") }} sovereign dispatch production | Complete GPU lifecycle: boot → compile → dispatch → recover |
 | Four-vendor GPU support | NVIDIA, AMD, Intel, Apple (Metal via wgpu) |
 
 ---
 
 ## The Proprietary Cost of What We Replace
 
-| Tool | Cost | What ecoPrimals Replaces It With |
+| Tool | Cost | What {{ entity(name="ecoprimals") }} Replaces It With |
 |------|:----:|--------------------------------|
 | CUDA Toolkit | Free (vendor lock) | wgpu/Vulkan (open standard, cross-vendor) |
 | cuBLAS/cuFFT | Free (NVIDIA-only) | BarraCuda 806 WGSL shaders (any GPU) |
-| nvcc compiler | Free (NVIDIA-only) | coralReef (pure Rust, SM70–SM89 + RDNA2) |
+| nvcc compiler | Free (NVIDIA-only) | {{ entity(name="coralreef") }} (pure Rust, SM70–SM89 + RDNA2) |
 | NVIDIA driver | Free (proprietary binary) | coral-glowplug + VFIO (upstream Linux kernel) |
 | A100 GPU | ~$10K–15K | RTX 3090 (~$500 used), DF64: 3.24 TFLOPS |
 | HPC allocation | $50–500/run | $0.044/run (electricity, consumer GPU) |
 | MATLAB Parallel | ~$2K/yr + GPU toolbox | toadStool + BarraCuda (AGPL-3.0, free) |
 | Kokkos | Free (C++, complex build) | BarraCuda (Rust, `cargo build`) |
-| LAMMPS | Free (Fortran/C++, HPC) | hotSpring (Rust, consumer GPU) |
+| LAMMPS | Free (Fortran/C++, HPC) | {{ entity(name="hotspring") }} (Rust, consumer GPU) |
 
 **Annual lab savings (conservative):** $0 in software licenses (all were
 technically free) but ~$50K–200K in HPC allocations avoided for a lab

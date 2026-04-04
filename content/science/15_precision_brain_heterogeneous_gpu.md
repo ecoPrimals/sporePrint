@@ -13,14 +13,14 @@ springs = ["hotspring"]
 +++
 
 **Date:** March 11, 2026
-**Status:** **Validated + Live Kokkos Benchmark** — hotSpring v0.6.28, 847 lib tests, bench_precision_eval clean exit, both GPUs profiled. coralReef Iter 30 sovereign validation: 45/46 compile, 12/12 NVVM bypass, FMA lowering (`FmaPolicy::Separate`) unlocks F64Precise via sovereign path. Exp 050-051. toadStool S145 absorbed PrecisionBrain with `PrecisionHint` routing + `NvkZeroGuard`. barraCuda `a012076` absorbed PrecisionBrain/HardwareCalibration/PrecisionTier from hotSpring v0.6.25. **Exp 053**: Live Kokkos parity benchmark validates precision routing in production — DF64 transcendental poisoning bug discovered and fixed (silent zero-force on Ampere proprietary), native f64 fallback engages correctly when `has_nvvm_df64_poisoning_risk()` is true. 12.4× gap vs Kokkos-CUDA dominated by 1:32 f64 rate; safe DF64 exp path is the single biggest unlock.
+**Status:** **Validated + Live Kokkos Benchmark** — {{ entity(name="hotspring") }} v0.6.28, 847 lib tests, bench_precision_eval clean exit, both GPUs profiled. {{ entity(name="coralreef") }} Iter 30 sovereign validation: 45/46 compile, 12/12 NVVM bypass, FMA lowering (`FmaPolicy::Separate`) unlocks F64Precise via sovereign path. Exp 050-051. toadStool S145 absorbed PrecisionBrain with `PrecisionHint` routing + `NvkZeroGuard`. {{ entity(name="barracuda") }} `a012076` absorbed PrecisionBrain/HardwareCalibration/PrecisionTier from {{ entity(name="hotspring") }} v0.6.25. **Exp 053**: Live Kokkos parity benchmark validates precision routing in production — DF64 transcendental poisoning bug discovered and fixed (silent zero-force on Ampere proprietary), native f64 fallback engages correctly when `has_nvvm_df64_poisoning_risk()` is true. 12.4× gap vs Kokkos-CUDA dominated by 1:32 f64 rate; safe DF64 exp path is the single biggest unlock.
 **Domain:** GPU computing, precision engineering, hardware discovery
 **Novelty:** Data-driven self-routing precision brain that discovers hardware
 capabilities at startup, routes physics workloads to optimal precision tier
 per-domain, and survives driver-level device poisoning — without static
 heuristics or vendor-specific codepaths
-**Cross-Spring:** hotSpring (precision profiling, physics domains) ×
-barraCuda (precision tiers, shader compilation) × toadStool (hardware
+**Cross-Spring:** {{ entity(name="hotspring") }} (precision profiling, physics domains) ×
+{{ entity(name="barracuda") }} (precision tiers, shader compilation) × toadStool (hardware
 discovery, GPU dispatch)
 
 ---
@@ -47,7 +47,7 @@ We demonstrate a **self-routing precision brain** that:
    permanently poisons the wgpu device
 
 The brain is portable — it depends only on `GpuF64` and `PrecisionTier`,
-both fundamental barraCuda abstractions. Dropping it into any spring gives
+both fundamental {{ entity(name="barracuda") }} abstractions. Dropping it into any spring gives
 that spring automatic precision routing for the hardware it's running on.
 
 ## Discovery: NVVM Device Poisoning
@@ -59,7 +59,7 @@ compilation permanently invalidates the entire wgpu device — all subsequent
 buffer creation, dispatch, and readback operations fail with
 `"Buffer is invalid"`.
 
-This is not a wgpu bug or a barraCuda bug — it is a fundamental limitation
+This is not a wgpu bug or a {{ entity(name="barracuda") }} bug — it is a fundamental limitation
 of the NVIDIA proprietary driver's NVVM backend. NVK (Mesa's open-source
 NVIDIA driver) handles all tiers correctly, including DF64 transcendentals.
 
@@ -72,7 +72,7 @@ NVIDIA driver) handles all tiers correctly, including DF64 transcendentals.
 2. **NVK is the correct long-term path**: NVK handles all precision tiers
    correctly. The proprietary driver's NVVM limitation is a barrier to
    full DF64 transcendental throughput on consumer NVIDIA GPUs.
-3. **coralReef bypass**: The sovereign WGSL→native compilation path may
+3. **{{ entity(name="coralreef") }} bypass**: The sovereign WGSL→native compilation path may
    bypass the NVVM issue entirely by compiling directly to SASS/GFX,
    never touching NVVM.
 
@@ -149,7 +149,7 @@ through self-knowledge, not external authority.
 
 ## References
 
-1. hotSpring Experiment 049: Precision Brain + Heterogeneous GPU Evaluation
-2. hotSpring `barracuda/src/hardware_calibration.rs` — safe per-tier probe
-3. hotSpring `barracuda/src/precision_brain.rs` — self-routing brain
-4. hotSpring wateringHole handoff: `HOTSPRING_V0625_PRECISION_BRAIN_NVVM_POISONING_HANDOFF_MAR10_2026.md`
+1. {{ entity(name="hotspring") }} Experiment 049: Precision Brain + Heterogeneous GPU Evaluation
+2. {{ entity(name="hotspring") }} `barracuda/src/hardware_calibration.rs` — safe per-tier probe
+3. {{ entity(name="hotspring") }} `barracuda/src/precision_brain.rs` — self-routing brain
+4. {{ entity(name="hotspring") }} {{ entity(name="wateringhole") }} handoff: `HOTSPRING_V0625_PRECISION_BRAIN_NVVM_POISONING_HANDOFF_MAR10_2026.md`

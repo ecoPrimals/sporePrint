@@ -14,7 +14,7 @@ springs = ["hotspring", "ludospring"]
 
 **Date:** March 1, 2026
 **Status:** Implementation complete, validated on QCD trajectory data
-**Spring:** hotSpring (NPU brain architecture), primalTools/bingoCube
+**Spring:** {{ entity(name="hotspring") }} (NPU brain architecture), primalTools/bingoCube
 **Hardware:** CPU (simulator), BrainChip AKD1000 (target)
 **License:** AGPL-3.0-only
 
@@ -153,7 +153,7 @@ needs to watch the readout, not understand the full reservoir.
 
 In the NPU context, the caller is not random — it is **adaptive**. If the
 caller knows which boards are close to activating, it can steer what it calls
-next. This is the adaptive steering from hotSpring's brain architecture: the
+next. This is the adaptive steering from {{ entity(name="hotspring") }}'s brain architecture: the
 host inspects the reservoir state and chooses the next input to maximize
 information gain.
 
@@ -319,14 +319,14 @@ from its mathematical foundation.
 
 ## 6. Relationship to hotSpring ESN (Gen 1 / Gen 2)
 
-hotSpring's current brain architecture uses a traditional Echo State Network
+{{ entity(name="hotspring") }}'s current brain architecture uses a traditional Echo State Network
 with a random reservoir and trained linear readout — what we call the
 "lizard brain" (Gen 1, 15 heads) evolving to the "developed organism"
 (Gen 2, 36 overlapping heads). This runs on the CPU with the NPU simulated.
 
 The BingoCube Nautilus Shell is a complementary architecture:
 
-| Property | ESN (hotSpring Gen 1/2) | Nautilus Shell |
+| Property | ESN ({{ entity(name="hotspring") }} Gen 1/2) | Nautilus Shell |
 |----------|------------------------|----------------|
 | Reservoir | Fixed random matrix W_res | Population of evolved boards |
 | Memory | Fading echo (recurrent) | Evolutionary heritage (generational) |
@@ -468,7 +468,7 @@ nautilus shell growing across machines and regimes.
 ## 9. Live Validation: QCD Trajectory Prediction
 
 The Nautilus Shell was validated on actual dynamical QCD trajectory data from
-hotSpring Exp 024 + 028 — 1,336 measurement records across 21 β values
+{{ entity(name="hotspring") }} Exp 024 + 028 — 1,336 measurement records across 21 β values
 (β ∈ [4.300, 6.500]).
 
 **Task**: Predict CG solver cost and mean plaquette from per-β-point summaries
@@ -535,10 +535,10 @@ data to teach future generations where to be cautious.
 
 | Data Source | Input Features | Target | Connection |
 |-------------|---------------|--------|-----------|
-| NOAA hourly weather (Michigan stations) | Temp, humidity, wind, radiation | ET₀ (evapotranspiration) | airSpring, baseCamp 08 |
-| USGS streamflow (Red Cedar River) | Stage, discharge, turbidity | Next-hour discharge | groundSpring sensor noise |
-| Lenski LTEE fitness trajectories | Generation, fitness, mutation count | Next-generation fitness | baseCamp 02 |
-| Live Exp 029+ trajectory stream | Real-time β, plaq, CG, δH | NPU-steered next-β selection | hotSpring brain architecture |
+| NOAA hourly weather (Michigan stations) | Temp, humidity, wind, radiation | ET₀ (evapotranspiration) | {{ entity(name="airspring") }}, {{ entity(name="basecamp") }} 08 |
+| USGS streamflow (Red Cedar River) | Stage, discharge, turbidity | Next-hour discharge | {{ entity(name="groundspring") }} sensor noise |
+| Lenski LTEE fitness trajectories | Generation, fitness, mutation count | Next-generation fitness | {{ entity(name="basecamp") }} 02 |
+| Live Exp 029+ trajectory stream | Real-time β, plaq, CG, δH | NPU-steered next-β selection | {{ entity(name="hotspring") }} brain architecture |
 
 ### 9.5 Quenched→Dynamical Transfer: 540× Cost Reduction
 
@@ -584,7 +584,7 @@ measurements where the physics changes most rapidly.
 
 ### 9.7 Connection to LTEE: Boards as Populations Under Constraint
 
-The Nautilus Shell is a direct computational analog of the LTEE (baseCamp 02):
+The Nautilus Shell is a direct computational analog of the LTEE ({{ entity(name="basecamp") }} 02):
 
 | LTEE (Lenski) | Nautilus Shell |
 |---------------|---------------|
@@ -709,15 +709,15 @@ A new `full_brain_rehearsal` example validates the complete pipeline:
 
 ## 13. ToadStool S80 Absorption
 
-As of ToadStool Session 80 (March 2, 2026), the Nautilus Shell has been
+As of {{ entity(name="toadstool") }} Session 80 (March 2, 2026), the Nautilus Shell has been
 absorbed into `barracuda::nautilus` as a standalone module:
 
 - **7 files, 22 tests** — board, evolution, population, readout, shell, brain
 - **CPU-only** — no GPU dependency; ridge regression via `solve_f64_cpu`
-- **JSON-RPC API** — 8 `ai.nautilus.*` methods in the ToadStool daemon
+- **JSON-RPC API** — 8 `ai.nautilus.*` methods in the {{ entity(name="toadstool") }} daemon
   (status, observe, train, predict, screen, edges, shell.export, shell.import)
 - **Feature-gated** — `nautilus` feature in toadstool-cli
 
-bingoCube remains the canonical implementation for inter-primal use (beardog,
-songbird handshakes). ToadStool's absorption provides standalone AI capability
+{{ entity(name="bingocube") }} remains the canonical implementation for inter-primal use (beardog,
+songbird handshakes). {{ entity(name="toadstool") }}'s absorption provides standalone AI capability
 without cross-primal dependencies — consistent with the self-knowledge principle.

@@ -8,7 +8,7 @@ primals = ["barracuda"]
 springs = ["neuralspring", "wetspring"]
 +++
 
-> **Note:** helixVision was previously known as coralForge. The codebase originated in
+> **Note:** {{ entity(name="helixvision") }} was previously known as coralForge. The codebase originated in
 > [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) and is
 > moving to sporeGarden/helixVision as a
 > standalone product. Source code references may still use `coral_forge` module names during transition.
@@ -29,7 +29,7 @@ sequence data to external servers. For any lab handling pre-publication
 sequences, patient genomics, or proprietary protein engineering — this
 is a non-starter.
 
-**helixVision** is the ecoPrimals path to sovereign structure prediction:
+**{{ entity(name="helixvision") }}** is the {{ entity(name="ecoprimals") }} path to sovereign structure prediction:
 AlphaFold2/3-quality results running locally on consumer hardware in
 pure Rust, with full data sovereignty and cryptographic provenance.
 
@@ -92,7 +92,7 @@ The blocks are proven. The pipeline is next.
 
 ### Phase C — BarraCuda Integration (Next)
 
-Wire helixVision primitives to BarraCuda canonical operations:
+Wire {{ entity(name="helixvision") }} primitives to BarraCuda canonical operations:
 - `GemmF64::execute_gemm_ex()` for all GEMM ops
 - GPU attention via existing `BatchedScaledDotProduct`
 - GPU LayerNorm via existing `BatchedLayerNorm`
@@ -121,13 +121,13 @@ FASTA sequence → MSA search → Feature embedding
 
 The primary scientific application. Lenski's Long-Term Evolution Experiment:
 75,000+ generations of *E. coli* under glucose-minimal constraint, frozen
-at 500-generation intervals. helixVision predicts structures at each
+at 500-generation intervals. {{ entity(name="helixvision") }} predicts structures at each
 timepoint and population.
 
 **Scale:** ~8.3 million predictions (4,600 genes × 150 timepoints × 12
 populations).
 
-**Questions only helixVision can answer:**
+**Questions only {{ entity(name="helixvision") }} can answer:**
 - Do independently evolved populations converge on the same structural
   solutions? (Structural convergence beyond sequence convergence)
 - Do structural changes follow power-law dynamics?
@@ -147,7 +147,7 @@ the isomorphism proof, validation evidence, and LTEE application.
 
 ## Performance Targets vs AlphaFold
 
-| Metric | Cloud AlphaFold | helixVision (consumer GPU) |
+| Metric | Cloud AlphaFold | {{ entity(name="helixvision") }} (consumer GPU) |
 |--------|:---------------:|:-------------------------:|
 | Time per sequence | ~5 min (A100) | **~3 min** (RTX 4070, target) |
 | Precision | f32 (PyTorch default) | **f64** (native or DF64) |
@@ -171,7 +171,7 @@ For a lab doing structural genomics at scale, this is the difference between
 ### Drug Discovery (Paper 12 + helixVision)
 
 The Anderson-augmented MATRIX scoring pipeline (329/329 checks validated)
-currently uses published IC50 and pathway data. helixVision adds:
+currently uses published IC50 and pathway data. {{ entity(name="helixvision") }} adds:
 
 ```
 Drug candidate → helixVision structure → binding site geometry
@@ -183,8 +183,8 @@ No commercial docking software (Schrödinger ~$50K/yr, MOE ~$20K/yr).
 
 ### Metagenomic Structural Census
 
-wetSpring's sovereign 16S pipeline identifies what organisms are present.
-helixVision predicts what their proteins look like:
+{{ entity(name="wetspring") }}'s sovereign 16S pipeline identifies what organisms are present.
+{{ entity(name="helixvision") }} predicts what their proteins look like:
 
 ```
 Environmental sample → wetSpring 16S → community composition
@@ -210,7 +210,7 @@ Pathogen genome → helixVision structure → epitope identification
 
 The P≠NP enzyme thesis (methodology/P_NP_ENZYME_THESIS.md) argues that
 enzymes are nature's generative solutions to chemical NP problems.
-helixVision enables computational enzyme design:
+{{ entity(name="helixvision") }} enables computational enzyme design:
 
 ```
 Target reaction → retrosynthetic analysis → enzyme class identification
@@ -224,10 +224,10 @@ for function, you have a sovereign enzyme engineering pipeline.
 
 ## What Someone Else Could Pick Up
 
-helixVision is in neuralSpring (public, AGPL-3.0). The primitives are
+{{ entity(name="helixvision") }} is in {{ entity(name="neuralspring") }} (public, AGPL-3.0). The primitives are
 validated. Anyone with Rust and a GPU can:
 
-1. **Complete Phase C** — wire BarraCuda GEMM to helixVision Evoformer
+1. **Complete Phase C** — wire BarraCuda GEMM to {{ entity(name="helixvision") }} Evoformer
    (estimated 2–4 weeks for a competent Rust developer)
 2. **Build the MSA search** — MMseqs2 is open-source; a Rust port is
    tractable (estimated 4–8 weeks)
@@ -236,13 +236,13 @@ validated. Anyone with Rust and a GPU can:
 4. **Apply to their own domain** — any lab with sequences and questions
    about structure can use the validated primitives
 
-The scyBorg license (AGPL-3.0) means: anyone who uses it must share
+The {{ entity(name="scyborg") }} license (AGPL-3.0) means: anyone who uses it must share
 their improvements. Every advance returns to the commons. The pipeline
 gets better for everyone, permanently.
 
 ---
 
-*Source: `whitePaper/helixVision/` (20 documents), neuralSpring `src/coral_forge/`  
+*Source: `whitePaper/helixVision/` (20 documents), {{ entity(name="neuralspring") }} `src/coral_forge/`  
 Validation: 154/154 checks PASS (62 Python + 55 Rust + 37 GPU)  
 Repositories: [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring),
 [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda)*

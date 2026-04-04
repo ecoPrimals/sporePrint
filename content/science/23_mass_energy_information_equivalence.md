@@ -16,7 +16,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 **Date**: March 18, 2026
 **Domain**: Information Theory × Thermodynamics × Computational Architecture × Biology
 **Literature Anchor**: Einstein (1905, mass-energy equivalence), Shannon (1948, information entropy), Landauer (1961, information-energy bound), Bekenstein (1981, information-mass bound), Wheeler (1990, "It from Bit"), Popp (1984, biophoton emission), Anderson (1958, localization)
-**Springs**: All — this paper provides the conceptual underpinning for why barraCuda primitives serve every spring identically
+**Springs**: All — this paper provides the conceptual underpinning for why {{ entity(name="barracuda") }} primitives serve every spring identically
 **Depends on**: Papers 01 (Anderson QS), 07 (sovereign WDM), 11 (Nautilus Shell), 15 (Precision Brain), 17 (game design as science)
 **License**: AGPL-3.0-or-later
 
@@ -24,12 +24,12 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 ## Abstract
 
-The ecoPrimals ecosystem demonstrates an empirical fact that demands explanation:
+The {{ entity(name="ecoprimals") }} ecosystem demonstrates an empirical fact that demands explanation:
 the same mathematical primitives (sigmoid, Perlin noise, dot product, LCG, wave
 function collapse, BSP partitioning) produce valid science when applied to lattice
-QCD (hotSpring), microbial ecology (wetSpring), molecular dynamics (wetSpring),
-game mechanics (ludoSpring), patient pharmacokinetics (healthSpring), soil
-dynamics (airSpring), and infrastructure testing (primalSpring). This is not
+QCD ({{ entity(name="hotspring") }}), microbial ecology ({{ entity(name="wetspring") }}), molecular dynamics ({{ entity(name="wetspring") }}),
+game mechanics ({{ entity(name="ludospring") }}), patient pharmacokinetics ({{ entity(name="healthspring") }}), soil
+dynamics ({{ entity(name="airspring") }}), and infrastructure testing ({{ entity(name="primalspring") }}). This is not
 coincidence. This paper argues that mathematics is an abstraction of
 energy-information transformation — that the reason a Perlin noise field
 simultaneously generates Minecraft terrain and a patient risk distribution is
@@ -46,7 +46,7 @@ joule.
 
 This framework explains (1) why cross-spring math works, (2) why computing
 architectures evolve from von Neumann toward neuromorphic, (3) why biological
-systems compute efficiently, and (4) why the ecoPrimals constraint-based
+systems compute efficiently, and (4) why the {{ entity(name="ecoprimals") }} constraint-based
 methodology produces valid results across domains.
 
 ---
@@ -55,11 +55,11 @@ methodology produces valid results across domains.
 
 Why does the same math work everywhere?
 
-barraCuda provides ~124 tensor operations and procedural primitives. These were
-originally built for game science (ludoSpring). But the same `sigmoid` function
+{{ entity(name="barracuda") }} provides ~124 tensor operations and procedural primitives. These were
+originally built for game science ({{ entity(name="ludospring") }}). But the same `sigmoid` function
 validates against Python baselines for pharmacokinetic dose-response curves
-(healthSpring), neural activation functions (neuralSpring), and lattice QCD
-observable analysis (hotSpring). The same `perlin_2d` generates game terrain,
+({{ entity(name="healthspring") }}), neural activation functions ({{ entity(name="neuralspring") }}), and lattice QCD
+observable analysis ({{ entity(name="hotspring") }}). The same `perlin_2d` generates game terrain,
 synthetic patient populations, and molecular density fields. The same `dot`
 product serves physics, graphics, and genomic distance metrics.
 
@@ -69,7 +69,7 @@ reality ensures that the same operations produce valid results across domains
 that share no obvious physical connection?
 
 **Hypothesis**: Mathematics is an abstraction of energy-information
-transformation. The operations that barraCuda implements are the fundamental
+transformation. The operations that {{ entity(name="barracuda") }} implements are the fundamental
 patterns by which energy converts between information-density states. Every
 domain — games, health, biology, physics — involves energy transforming
 information. They share math because they share physics.
@@ -250,10 +250,10 @@ they are computing substrates in the physical sense:
 
 ### 4.1 The Answer
 
-The mathematical primitives in barraCuda work across all springs because they
+The mathematical primitives in {{ entity(name="barracuda") }} work across all springs because they
 implement the fundamental patterns of energy-information transformation:
 
-| barraCuda Primitive | Physical Pattern | Why It's Universal |
+| {{ entity(name="barracuda") }} Primitive | Physical Pattern | Why It's Universal |
 |--------------------|-----------------|--------------------|
 | `sigmoid` | Threshold transition with continuous gradient | Phase transitions occur in every domain — drug dose-response, neural activation, quorum sensing, magnetization |
 | `perlin_2d` / `fbm_2d` | Spatially correlated continuous field with tunable frequency | Spatial correlation is a property of physics, not a property of games. Temperature fields, density fields, population distributions, terrain — all are spatially correlated |
@@ -270,23 +270,23 @@ games are physical simulations of systems that also exist outside games.
 
 If mathematics is an abstraction of energy-information transformation, then:
 
-**Prediction 1**: Any new barraCuda primitive validated in one spring will be
+**Prediction 1**: Any new {{ entity(name="barracuda") }} primitive validated in one spring will be
 immediately applicable to at least two other springs without modification. The
 domain-specific part is the interpretation, not the math.
 
 This prediction has been confirmed repeatedly:
-- `sigmoid` (ludoSpring engagement) → healthSpring (dose-response) → neuralSpring (activation)
-- `perlin_2d` (ludoSpring terrain) → healthSpring (patient fields) → wetSpring (density fields)
-- Anderson localization (wetSpring QS) → ludoSpring (sanity mechanics, exp044) → healthSpring (cytokine propagation, Paper 12)
-- BSP (ludoSpring dungeons) → healthSpring (triage) → primalSpring (load balancing)
+- `sigmoid` ({{ entity(name="ludospring") }} engagement) → {{ entity(name="healthspring") }} (dose-response) → {{ entity(name="neuralspring") }} (activation)
+- `perlin_2d` ({{ entity(name="ludospring") }} terrain) → {{ entity(name="healthspring") }} (patient fields) → {{ entity(name="wetspring") }} (density fields)
+- Anderson localization ({{ entity(name="wetspring") }} QS) → {{ entity(name="ludospring") }} (sanity mechanics, exp044) → {{ entity(name="healthspring") }} (cytokine propagation, Paper 12)
+- BSP ({{ entity(name="ludospring") }} dungeons) → {{ entity(name="healthspring") }} (triage) → {{ entity(name="primalspring") }} (load balancing)
 
 **Prediction 2**: Mathematical operations that are NOT energy-information
 transformations (arbitrary string manipulation, format conversion, UI layout)
 will NOT generalize across springs. They are domain-specific because they
 describe human conventions, not physical processes.
 
-This is also confirmed: ludoSpring's RPGPT ruleset parsing is not reusable in
-wetSpring. healthSpring's HIPAA consent model is not reusable in ludoSpring.
+This is also confirmed: {{ entity(name="ludospring") }}'s RPGPT ruleset parsing is not reusable in
+{{ entity(name="wetspring") }}. {{ entity(name="healthspring") }}'s HIPAA consent model is not reusable in {{ entity(name="ludospring") }}.
 These are convention-specific, not physics-specific.
 
 **Prediction 3**: The cross-spring transfer rate should correlate with the
@@ -328,13 +328,13 @@ architecture is the story of making c larger:
 The von Neumann→neuromorphic transition is not a binary event. It is the
 gradual dissolution of the mass-energy distinction in the computing substrate:
 
-| Stage | Mass-Energy Relationship | ecoPrimals Example |
+| Stage | Mass-Energy Relationship | {{ entity(name="ecoprimals") }} Example |
 |-------|------------------------|--------------------|
 | **Von Neumann** | Strictly separated. Bus mediates all conversion. | CPU: fetch-decode-execute |
 | **GPU** | Partially merged. Local VRAM reduces conversion cost. | RTX 4060: persistent compute buffers |
-| **Smart-routed heterogeneous** | Multiple converters with routing intelligence. | metalForge forge: `plan_frame()` routes workloads to optimal substrate |
-| **Steering heterogeneous** | NPU makes decisions without CPU involvement. | hotSpring cerebellum: AKD1000 ESN steers HMC parameters |
-| **Neuromorphic-native** | Weights ARE the computation. No fetch cycle. | baseCamp 15: lattice site→neuron, gauge link→synapse |
+| **Smart-routed heterogeneous** | Multiple converters with routing intelligence. | {{ entity(name="metalforge") }} forge: `plan_frame()` routes workloads to optimal substrate |
+| **Steering heterogeneous** | NPU makes decisions without CPU involvement. | {{ entity(name="hotspring") }} cerebellum: AKD1000 ESN steers HMC parameters |
+| **Neuromorphic-native** | Weights ARE the computation. No fetch cycle. | {{ entity(name="basecamp") }} 15: lattice site→neuron, gauge link→synapse |
 | **Biological** | Mass, energy, and information are indistinguishable. | Biophotonic signaling, epigenetic memory, protein catalysis |
 
 Each stage reduces the cost of the mass↔energy conversion. The final stage
@@ -345,7 +345,7 @@ adds latency (speed of light).
 
 ### 5.3 The PCIe Corpus Callosum
 
-The PCIe bus connecting CPU, GPU, and NPU in the ecoPrimals hardware cluster
+The PCIe bus connecting CPU, GPU, and NPU in the {{ entity(name="ecoprimals") }} hardware cluster
 is functionally equivalent to the corpus callosum connecting brain hemispheres:
 
 | Property | PCIe | Corpus Callosum |
@@ -404,16 +404,16 @@ is conserved because the underlying physics (continuous threshold crossing
 with saturation) is conserved. The domain provides the units and
 interpretation. The math provides the invariant structure.
 
-This is why barraCuda works. It implements conserved transformation patterns.
+This is why {{ entity(name="barracuda") }} works. It implements conserved transformation patterns.
 The springs provide domain-specific interpretation. The separation is physical,
 not arbitrary.
 
 ### 6.3 Lossy but Effective as Design Principle
 
-The perception gradient (Section 3.1) explains why ecoPrimals' semantic naming,
+The perception gradient (Section 3.1) explains why {{ entity(name="ecoprimals") }}' semantic naming,
 capability-based routing, and lossy discovery protocols work:
 
-- Songbird discovery doesn't need perfect signal — approximate is sufficient
+- {{ entity(name="songbird") }} discovery doesn't need perfect signal — approximate is sufficient
   because the system integrates over time (like quorum sensing)
 - Capability routing doesn't need exact string matching — semantic similarity
   is good enough because the routing is statistical (like chemotaxis)
@@ -431,7 +431,7 @@ integration across a perception gradient.
 A hypothesis that cannot be disproven is not scientific. This framework makes
 specific predictions:
 
-1. **Cross-spring primitive transfer**: Any new barraCuda primitive will apply
+1. **Cross-spring primitive transfer**: Any new {{ entity(name="barracuda") }} primitive will apply
    to ≥3 springs within 30 days of validation in one spring. Track by counting
    cross-spring experiment references.
 
@@ -449,7 +449,7 @@ specific predictions:
    extending exp030 with warm-start benchmarks.
 
 5. **Shannon entropy of PCIe traffic decreases as architecture matures**: As
-   metalForge routing improves, the entropy of data crossing PCIe should
+   {{ entity(name="metalforge") }} routing improves, the entropy of data crossing PCIe should
    decrease (more structured, less redundant). Measurable by compressing
    PCIe traces and measuring compression ratio.
 

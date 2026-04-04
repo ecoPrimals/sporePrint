@@ -9,7 +9,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspri
 +++
 
 **Audience:** MSU faculty, ICER, Genomics Core, Pharm & Tox, ADDRC  
-**Context:** Mapping existing MSU infrastructure to ecoPrimals validated pipelines  
+**Context:** Mapping existing MSU infrastructure to {{ entity(name="ecoprimals") }} validated pipelines  
 **License:** CC-BY-SA 4.0  
 **Last Updated:** March 17, 2026
 
@@ -17,7 +17,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspri
 
 ## Overview
 
-The ecoPrimals springs are not academic exercises. They are validated scientific
+The {{ entity(name="ecoprimals") }} springs are not academic exercises. They are validated scientific
 pipelines that reproduce published results across seven quantitative domains —
 built to run on consumer hardware without institutional infrastructure. That means
 they run faster and more reliably when institutional infrastructure is available.
@@ -36,7 +36,7 @@ happens in Python/R notebooks on the researcher's laptop using QIIME2, DADA2,
 or custom scripts. Results are rarely reproducible because the analysis environment
 is not standardized and provenance is not tracked.
 
-**What wetSpring provides:**
+**What {{ entity(name="wetspring") }} provides:**
 
 ```
 Genomics Core output → wetSpring sovereign 16S pipeline
@@ -56,11 +56,11 @@ Genomics Core output → wetSpring sovereign 16S pipeline
 
 **MSU integration path:**
 1. Genomics Core delivers FASTQ files (existing workflow, no change)
-2. wetSpring pipeline runs locally (researcher's machine or ICER compute node)
+2. {{ entity(name="wetspring") }} pipeline runs locally (researcher's machine or ICER compute node)
 3. Output: OTU table + diversity indices + Anderson disorder parameter W + full provenance
 4. Results are signed, reproducible, independently verifiable
 
-**Acceleration unlock:** Every Genomics Core sample processed through wetSpring
+**Acceleration unlock:** Every Genomics Core sample processed through {{ entity(name="wetspring") }}
 gets a provenance receipt. The researcher can prove, cryptographically, that the
 analysis ran correctly and the result is what they claim it is. This is ISO 17025
 readiness without additional process overhead.
@@ -75,10 +75,10 @@ code. The software environment is managed by module files, creating reproducibil
 issues (different Python versions, different library versions, different CUDA
 versions).
 
-**What ecoPrimals provides:**
+**What {{ entity(name="ecoprimals") }} provides:**
 
-ecoBin standard: **pure Rust, zero C dependencies, static binary.** A compiled
-ecoPrimals spring binary:
+{{ entity(name="ecobin") }} standard: **pure Rust, zero C dependencies, static binary.** A compiled
+{{ entity(name="ecoprimals") }} spring binary:
 - Has no external dependencies (no Python, no system libraries, no CUDA runtime)
 - Produces the same output on ICER V100 that it produces on a consumer RTX 3090
 - Compiles once, runs anywhere (any Linux, any GPU via WebGPU/Vulkan)
@@ -104,13 +104,13 @@ sweep across 376 experiments could run simultaneously across all ICER nodes —
 
 | Spring | Workload | Consumer Time | A100 Estimate |
 |--------|----------|:------------:|:------------:|
-| wetSpring | 16S diversity sweep (10K samples) | ~2 hr | ~15 min |
-| hotSpring | Lattice QCD 32⁴ production scan | ~8 hr | ~1 hr |
-| airSpring | Michigan Crop Water Atlas (100 stations × 30 yr) | ~1 hr | ~8 min |
-| neuralSpring | LSTM time-series ensemble (1000 runs) | ~4 hr | ~30 min |
-| groundSpring | Anderson spectral sweep L=14–20 | ~6 hr | ~45 min |
+| {{ entity(name="wetspring") }} | 16S diversity sweep (10K samples) | ~2 hr | ~15 min |
+| {{ entity(name="hotspring") }} | Lattice QCD 32⁴ production scan | ~8 hr | ~1 hr |
+| {{ entity(name="airspring") }} | Michigan Crop Water Atlas (100 stations × 30 yr) | ~1 hr | ~8 min |
+| {{ entity(name="neuralspring") }} | LSTM time-series ensemble (1000 runs) | ~4 hr | ~30 min |
+| {{ entity(name="groundspring") }} | Anderson spectral sweep L=14–20 | ~6 hr | ~45 min |
 
-**Reproducibility note:** Because ecoPrimals uses WebGPU/Vulkan (not CUDA),
+**Reproducibility note:** Because {{ entity(name="ecoprimals") }} uses WebGPU/Vulkan (not CUDA),
 results are vendor-agnostic. An analysis started on an NVIDIA consumer GPU
 and completed on an ICER AMD node will produce the same floating-point result.
 This is mathematically verifiable — the test suite enforces it.
@@ -149,7 +149,7 @@ ADDRC compound library (8,000+ compounds)
 
 **Integration path:**
 1. ADDRC provides compound metadata (existing GREENScreen data) as CSV
-2. ecoPrimals scoring pipeline produces ranked list with geometry rationale
+2. {{ entity(name="ecoprimals") }} scoring pipeline produces ranked list with geometry rationale
 3. Top candidates proceed to iPSC validation against published Pharmacology benchmarks
 4. HTS data from the screen feeds back into Anderson model refinement
 5. Rho/MRTF inhibitor literature (Neubig group) evaluated for AD cross-talk using same scoring
@@ -166,7 +166,7 @@ outside the team.
 **What K-Nome provides:**
 
 K-Nome (see `KNOME_TEACHING_BRIEF.md`) is the methodology that produced the
-ecoPrimals springs. Adapted as a pedagogy:
+{{ entity(name="ecoprimals") }} springs. Adapted as a pedagogy:
 
 - Students reproduce a published result from their advisor's domain
 - They build it in Rust with explicit validation checks
@@ -175,15 +175,15 @@ ecoPrimals springs. Adapted as a pedagogy:
 
 **What MSDS students can contribute:**
 
-ecoPrimals springs validate against published methods and datasets in each domain; capstone projects reproduce a peer-reviewed result and port it to sovereign Rust.
+{{ entity(name="ecoprimals") }} springs validate against published methods and datasets in each domain; capstone projects reproduce a peer-reviewed result and port it to sovereign Rust.
 
 | Domain | Published-work anchor (MSU) | Spring | Student Project |
 |--------|----------------------------|--------|----------------|
-| Pharmacology | Gonzales-group PK/PD and screening literature | healthSpring | Reproduce a PK/PD paper from the public Gonzales catalog; port to Rust; validate against Python |
-| Precision Ag | Dong-group irrigation and ET₀ literature (BAE) | airSpring | Reproduce FAO-56 ET₀ for a new sensor dataset; port to Rust; validate against R baseline |
-| Computational Physics | Murillo-group plasma MD literature (CMSE) | hotSpring | Reproduce one MD transport simulation from published code; port to Rust; GPU validation |
-| Microbiome | Waters-group quorum sensing and 16S literature (MMG) | wetSpring | Reproduce 16S diversity analysis from a public BioProject; port to Rust; validate |
-| Spectral Theory | Kachkovskiy-group Anderson localization literature (Math) | groundSpring | Reproduce one Anderson localization calculation; port to Rust; physics validation |
+| Pharmacology | Gonzales-group PK/PD and screening literature | {{ entity(name="healthspring") }} | Reproduce a PK/PD paper from the public Gonzales catalog; port to Rust; validate against Python |
+| Precision Ag | Dong-group irrigation and ET₀ literature (BAE) | {{ entity(name="airspring") }} | Reproduce FAO-56 ET₀ for a new sensor dataset; port to Rust; validate against R baseline |
+| Computational Physics | Murillo-group plasma MD literature (CMSE) | {{ entity(name="hotspring") }} | Reproduce one MD transport simulation from published code; port to Rust; GPU validation |
+| Microbiome | Waters-group quorum sensing and 16S literature (MMG) | {{ entity(name="wetspring") }} | Reproduce 16S diversity analysis from a public BioProject; port to Rust; validate |
+| Spectral Theory | Kachkovskiy-group Anderson localization literature (Math) | {{ entity(name="groundspring") }} | Reproduce one Anderson localization calculation; port to Rust; physics validation |
 
 **Student outcome:** A validated, reproducible, publicly documented implementation
 of a key paper from their advisor's domain. Runs on any hardware. Independent of
@@ -198,27 +198,27 @@ lab servers, department clusters — that are incompatible with each other and
 with institutional HPC. Moving data between these environments requires manual
 coordination, format conversion, and environment setup.
 
-**What the NUCLEUS bonding model provides:**
+**What the {{ entity(name="nucleus") }} bonding model provides:**
 
-NUCLEUS is the ecoPrimals deployment architecture that composes distributed
+{{ entity(name="nucleus") }} is the {{ entity(name="ecoprimals") }} deployment architecture that composes distributed
 hardware into a coordinated mesh. Three bonding types:
 
 | Bond | What It Connects | How |
 |------|-----------------|-----|
 | Covalent | Same-family gates (lab machines) | Automatic via genetic lineage — all lab machines are one compute pool |
 | Ionic | Collaborating institutional machines (ADDRC + department compute) | Metered contract — shared compute, scoped data access |
-| Metallic | ICER nodes | Institutional enrollment — idle ICER GPUs become ecoPrimals nodes |
+| Metallic | ICER nodes | Institutional enrollment — idle ICER GPUs become {{ entity(name="ecoprimals") }} nodes |
 
 **What this enables:**
 
-- A wetSpring analysis started on a department workstation can dispatch heavy
+- A {{ entity(name="wetspring") }} analysis started on a department workstation can dispatch heavy
   GPU computation to ICER overnight — automatically, without manual job submission
 - Results appear on the lab workstation with full provenance
 - ADDRC HTS data stays on ADDRC hardware — only the computation crosses the
   network, not the raw data
 - No cloud upload, no FTP, no institutional data governance concerns
 
-**Timeline:** NUCLEUS deployment requires toadStool + barraCuda (both public)
+**Timeline:** {{ entity(name="nucleus") }} deployment requires toadStool + {{ entity(name="barracuda") }} (both public)
 on each node. Installation: 30 minutes. Configuration: automatic discovery via
 BirdSong protocol (encrypted UDP, zero metadata leakage).
 
@@ -226,13 +226,13 @@ BirdSong protocol (encrypted UDP, zero metadata leakage).
 
 ## Consolidated Acceleration Map
 
-| MSU Asset | Current Pain | ecoPrimals Solution | Acceleration |
+| MSU Asset | Current Pain | {{ entity(name="ecoprimals") }} Solution | Acceleration |
 |-----------|-------------|---------------------|-------------|
-| Genomics Core | Notebooks, no provenance, QIIME2 dependencies | wetSpring sovereign 16S, signed provenance | Reproducibility + 30× faster analysis |
-| ICER HPC | Module hell, CUDA version conflicts, job scripts | ecoBin static binaries, WebGPU vendor-agnostic | 4–8× GPU compute + zero environment setup |
+| Genomics Core | Notebooks, no provenance, QIIME2 dependencies | {{ entity(name="wetspring") }} sovereign 16S, signed provenance | Reproducibility + 30× faster analysis |
+| ICER HPC | Module hell, CUDA version conflicts, job scripts | {{ entity(name="ecobin") }} static binaries, WebGPU vendor-agnostic | 4–8× GPU compute + zero environment setup |
 | ADDRC HTS | Excel + MATRIX (no geometry) | Anderson-augmented scoring, provenance-tracked | Novel geometry dimension in ranking |
 | MSDS Program | Toy notebook capstones | K-Nome real science reproduction projects | Publishable outputs + sovereign compute skills |
-| Lab compute mesh | Manual coordination, data transfer risk | NUCLEUS bonding, sovereign dispatch | Automated composition, data stays local |
+| Lab compute mesh | Manual coordination, data transfer risk | {{ entity(name="nucleus") }} bonding, sovereign dispatch | Automated composition, data stays local |
 
 ---
 
@@ -247,7 +247,7 @@ cd wetSpring/barracuda
 cargo test --workspace    # 1,443+ tests, should exit 0
 ```
 
-The ICER module for ecoBin binaries is:
+The ICER module for {{ entity(name="ecobin") }} binaries is:
 ```
 module load rust/stable   # or install Rust directly — 5 minutes
 ```

@@ -13,13 +13,13 @@ springs = ["hotspring"]
 +++
 
 **Date:** March 30, 2026 (updated — sovereign pipeline operational, AMD scratch memory working)
-**Status:** Silicon saturation profiling **complete**. **Sovereign GPU pipeline operational** — coralReef NVIDIA GPFIFO working on RTX 3090, **AMD scratch/local memory working on RX 6950 XT** (Exp 124: FLAT_SCRATCH prolog fix). TMU PRNG, subgroup reduce, ROP atomics **LIVE** in production RHMC. The sovereign compiler path (coralReef) eliminates wgpu/Vulkan/naga for both vendors, enabling direct access to every silicon unit without driver abstraction overhead. 7/8 HW parity tests pass, 1672 unit tests pass. Capacity: RTX 3090 L=46⁴ dynamical (23.6 GB), RX 6950 XT L=40⁴ (13.5 GB). 870 lib tests, 139 binaries, 99 WGSL shaders.
+**Status:** Silicon saturation profiling **complete**. **Sovereign GPU pipeline operational** — {{ entity(name="coralreef") }} NVIDIA GPFIFO working on RTX 3090, **AMD scratch/local memory working on RX 6950 XT** (Exp 124: FLAT_SCRATCH prolog fix). TMU PRNG, subgroup reduce, ROP atomics **LIVE** in production RHMC. The sovereign compiler path ({{ entity(name="coralreef") }}) eliminates wgpu/Vulkan/naga for both vendors, enabling direct access to every silicon unit without driver abstraction overhead. 7/8 HW parity tests pass, 1672 unit tests pass. Capacity: RTX 3090 L=46⁴ dynamical (23.6 GB), RX 6950 XT L=40⁴ (13.5 GB). 870 lib tests, 139 binaries, 99 WGSL shaders.
 **Domain:** GPU hardware architecture × computational physics × all-silicon pipeline
 **Novelty:** No prior work systematically maps computational physics operations to
 all 9 GPU silicon unit types with empirical throughput measurements and tolerance
 characterization, nor proposes a tolerance-based routing system that automatically
 selects hardware units based on mathematical precision requirements.
-**Cross-Spring:** hotSpring × barraCuda × toadStool × coralReef × ALL springs
+**Cross-Spring:** {{ entity(name="hotspring") }} × {{ entity(name="barracuda") }} × toadStool × {{ entity(name="coralreef") }} × ALL springs
 
 ---
 
@@ -79,7 +79,7 @@ Each GPU unit computes a specific mathematical function at silicon speed:
 
 ### Tolerance-Based Routing
 
-The key insight: barraCuda specifies tolerance (e.g., 1e-14 relative error),
+The key insight: {{ entity(name="barracuda") }} specifies tolerance (e.g., 1e-14 relative error),
 not hardware (e.g., "use fp64"). toadStool maps tolerance to hardware based
 on measured performance surface data from spring experiments.
 
@@ -93,8 +93,8 @@ Application: barraCuda.math.pairwise.yukawa(particles, tolerance=1e-14)
     (DF64 force)    (EOS lookup)      (CG preconditioner)
 ```
 
-A new hardware unit requires only: coralReef learns to emit its instructions,
-toadStool learns to discover and route to it. barraCuda and all springs are
+A new hardware unit requires only: {{ entity(name="coralreef") }} learns to emit its instructions,
+toadStool learns to discover and route to it. {{ entity(name="barracuda") }} and all springs are
 unchanged.
 
 ### The Compound Effect
@@ -163,10 +163,10 @@ landscape.
 
 ## References
 
-- hotSpring Exp 096: `experiments/096_SILICON_SCIENCE_TMU_QCD_MAPPING.md`
-- hotSpring Silicon Saturation: `whitePaper/baseCamp/silicon_science.md`, `silicon_characterization_at_scale.md`
-- wateringHole handoff: `HOTSPRING_V0632_SILICON_SATURATION_PRIMAL_EVOLUTION_HANDOFF_MAR29_2026.md`
-- wateringHole: `GPU_FIXED_FUNCTION_SCIENCE_REPURPOSING.md`
+- {{ entity(name="hotspring") }} Exp 096: `experiments/096_SILICON_SCIENCE_TMU_QCD_MAPPING.md`
+- {{ entity(name="hotspring") }} Silicon Saturation: `whitePaper/baseCamp/silicon_science.md`, `silicon_characterization_at_scale.md`
+- {{ entity(name="wateringhole") }} handoff: `HOTSPRING_V0632_SILICON_SATURATION_PRIMAL_EVOLUTION_HANDOFF_MAR29_2026.md`
+- {{ entity(name="wateringhole") }}: `GPU_FIXED_FUNCTION_SCIENCE_REPURPOSING.md`
 - toadStool: `specs/ALL_SILICON_PIPELINE.md`
 - Sub-thesis 14: `14_sovereign_compute_hardware.md`
 - Sub-thesis 25: `25_self_tuning_simulation.md`

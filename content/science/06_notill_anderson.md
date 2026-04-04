@@ -13,13 +13,13 @@ springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
 **Date:** March 1, 2026
-**Status:** **Validated** — Track 4 complete: 9 papers reproduced (Exp170-178 CPU, Exp179 CPU parity, Exp180 GPU, Exp181 streaming, Exp182 metalForge), 321 validation checks, full three-tier (CPU + GPU + metalForge). Anderson-QS soil pore geometry, no-till meta-analysis, 31-year tillage factorial, biofilm aggregate, structure→function mapping, tillage microbiome — all validated against published data (Martínez-García 2023, Feng 2024, Mukherjee 2024, Islam 2014, Zuber 2016, Liang 2015, Tecon & Or 2017, Rabot 2018, Wang 2025). V59 extension: dynamic W(t) models (Exp186 — tillage perturbation W(t), antibiotic perturbation, seasonal cycling) validated via three-tier controls (Exp190 CPU, Exp191 GPU Anderson spectral, Exp192 metalForge CPU↔GPU parity). **airSpring extension (v0.6.1)**: GPU math portability 46/46 (Exp 047, all 13 modules), Anderson coupling 55+95 (Exp 045), NestGate NCBI provider validated (23/23), GPU van Genuchten θ(h)/K(h) (ops 9-10), GPU pedotransfer (op 13), GPU uncertainty (jackknife/bootstrap/diversity) — 25 Tier A GPU modules, ToadStool S79 sync. **V84:** Paper math controlled for all 9 Track 4 papers (Exp251), bootstrap CI + jackknife cross-validation on diversity stats (Exp252-253), Kriging spatial interpolation GPU-validated (Exp254-255) — ready for real LTER/EMP soil time series via NestGate→NUCLEUS pipeline. **V85:** NUCLEUS data pipeline validated end-to-end (Exp257 — three-tier routing for field data acquisition). EMP Atlas 30K samples confirms Anderson-QS across all soil-relevant biomes (Exp256). Genomic Vault organ model (Exp259) enables consent-gated encrypted storage for field soil DNA samples — ready for LTER time series with provenance chain
+**Status:** **Validated** — Track 4 complete: 9 papers reproduced (Exp170-178 CPU, Exp179 CPU parity, Exp180 GPU, Exp181 streaming, Exp182 {{ entity(name="metalforge") }}), 321 validation checks, full three-tier (CPU + GPU + {{ entity(name="metalforge") }}). Anderson-QS soil pore geometry, no-till meta-analysis, 31-year tillage factorial, biofilm aggregate, structure→function mapping, tillage microbiome — all validated against published data (Martínez-García 2023, Feng 2024, Mukherjee 2024, Islam 2014, Zuber 2016, Liang 2015, Tecon & Or 2017, Rabot 2018, Wang 2025). V59 extension: dynamic W(t) models (Exp186 — tillage perturbation W(t), antibiotic perturbation, seasonal cycling) validated via three-tier controls (Exp190 CPU, Exp191 GPU Anderson spectral, Exp192 {{ entity(name="metalforge") }} CPU↔GPU parity). **{{ entity(name="airspring") }} extension (v0.6.1)**: GPU math portability 46/46 (Exp 047, all 13 modules), Anderson coupling 55+95 (Exp 045), {{ entity(name="nestgate") }} NCBI provider validated (23/23), GPU van Genuchten θ(h)/K(h) (ops 9-10), GPU pedotransfer (op 13), GPU uncertainty (jackknife/bootstrap/diversity) — 25 Tier A GPU modules, {{ entity(name="toadstool") }} S79 sync. **V84:** Paper math controlled for all 9 Track 4 papers (Exp251), bootstrap CI + jackknife cross-validation on diversity stats (Exp252-253), Kriging spatial interpolation GPU-validated (Exp254-255) — ready for real LTER/EMP soil time series via {{ entity(name="nestgate") }}→{{ entity(name="nucleus") }} pipeline. **V85:** {{ entity(name="nucleus") }} data pipeline validated end-to-end (Exp257 — three-tier routing for field data acquisition). EMP Atlas 30K samples confirms Anderson-QS across all soil-relevant biomes (Exp256). Genomic Vault organ model (Exp259) enables consent-gated encrypted storage for field soil DNA samples — ready for LTER time series with provenance chain
 **Domain:** Soil microbial ecology, condensed matter physics, precision agriculture
 **Novelty:** No prior work applies Anderson localization to explain no-till vs
 conventional tillage outcomes; no prior work models tillage as dimensional collapse
 of a QS-active system
-**Cross-Spring:** wetSpring (Anderson QS + 16S) × airSpring v0.8.8 (soil moisture + ET₀ + GPU van Genuchten θ/K + pedotransfer + uncertainty stack, 880 lib + 280 integration + 61 forge tests, 87 experiments, 20 ops upstream, PrecisionRoutingAdvice, barraCuda 0.3.5 wgpu 28, BYOB niche, zero unsafe everywhere, 60 tolerances in 4 submodules, zero-panic 47/47) ×
-groundSpring V113 (uncertainty, spectral theory, rare biosphere, jackknife — GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants, 102 barracuda delegations) × neuralSpring (LSTM time series)
+**Cross-Spring:** {{ entity(name="wetspring") }} (Anderson QS + 16S) × {{ entity(name="airspring") }} v0.8.8 (soil moisture + ET₀ + GPU van Genuchten θ/K + pedotransfer + uncertainty stack, 880 lib + 280 integration + 61 forge tests, 87 experiments, 20 ops upstream, PrecisionRoutingAdvice, {{ entity(name="barracuda") }} 0.3.5 wgpu 28, {{ entity(name="byob") }} niche, zero unsafe everywhere, 60 tolerances in 4 submodules, zero-panic 47/47) ×
+{{ entity(name="groundspring") }} V113 (uncertainty, spectral theory, rare biosphere, jackknife — GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants, 102 barracuda delegations) × {{ entity(name="neuralspring") }} (LSTM time series)
 
 ---
 
@@ -165,7 +165,7 @@ time-varying effective dimension:
 
     d_eff(t) = f(θ(t), aggregate_stability, pore_size_distribution)
 
-where θ(t) is volumetric water content. airSpring (v0.5.1) already computes θ(t)
+where θ(t) is volumetric water content. {{ entity(name="airspring") }} (v0.5.1) already computes θ(t)
 via the FAO-56 water balance (validated, 1109/1109 Python + 651 Rust tests +
 1393 atlas checks, 54 binaries). The `eco::anderson` module (Exp 045) now
 implements the full coupling chain: θ → S_e → pore_connectivity → z → d_eff → QS
@@ -300,7 +300,7 @@ The level spacing ratio r(t) is not a constant. It oscillates with:
 **Moisture cycle** (days to weeks):
 - Rainfall → θ increases → pore reconnection → d_eff rises → r approaches GOE
 - Drought → θ decreases → pore disconnection → d_eff drops → r approaches Poisson
-- airSpring's FAO-56 water balance computes θ(t) for arbitrary climate data
+- {{ entity(name="airspring") }}'s FAO-56 water balance computes θ(t) for arbitrary climate data
 
 **Community cycle** (weeks to months):
 - Growing season: root exudates recruit rhizosphere community → J shifts → W changes
@@ -316,7 +316,7 @@ The level spacing ratio r(t) is not a constant. It oscillates with:
 
 ### 5.2 The LSTM Time Series Model
 
-neuralSpring has validated LSTM on ERA5 weather data (NSE=0.849, RMSE=3.46°C
+{{ entity(name="neuralspring") }} has validated LSTM on ERA5 weather data (NSE=0.849, RMSE=3.46°C
 on 4 years Michigan data, Study 004). The same architecture can predict
 QS regime from soil parameters:
 
@@ -369,7 +369,7 @@ Extend the Anderson lattice experiments to model soil pore geometry:
   (simulates tillage intensity as geometry parameter)
 - **Exp B**: Time-varying disorder W(t) in 3D lattice (simulates seasonal
   diversity oscillation)
-- **Exp C**: Coupled moisture-geometry model: θ(t) from airSpring water
+- **Exp C**: Coupled moisture-geometry model: θ(t) from {{ entity(name="airspring") }} water
   balance → d_eff(t) → Anderson eigenvalue computation → r(t)
 - **Exp D**: Process OSU/Brandt 16S data through sovereign Rust pipeline,
   compute J and W for tilled vs no-till plots
@@ -382,7 +382,7 @@ Extend the Anderson lattice experiments to model soil pore geometry:
 | OSU Triplett-Van Doren | 60-year tilled vs no-till | Open (OARDC) | Published + NCBI SRA (check) |
 | Nature Comms 2023 (Martínez-García) | QS in porous media | Open (journal) | Published models + data |
 | Nature Comms 2024 (分 et al.) | Microbial communities in soil pores | Open (journal) | Published pore-scale data |
-| NCBI SRA | No-till 16S studies (~105K entries) | Open (NCBI) | FASTQ — **NestGate provider validated 23/23** |
+| NCBI SRA | No-till 16S studies (~105K entries) | Open (NCBI) | FASTQ — **{{ entity(name="nestgate") }} provider validated 23/23** |
 | Open-Meteo ERA5 | Ohio weather (1962-present) | Open (CC BY 4.0) | API — **115 CSVs, 80yr MI data ready** |
 | USDA Web Soil Survey | Wooster + Hoytville soil properties | Open (USDA) | API |
 
@@ -390,22 +390,22 @@ Extend the Anderson lattice experiments to model soil pore geometry:
 
 | Paper | Spring | What to Reproduce | Why |
 |-------|--------|-------------------|-----|
-| Martínez-García et al. (2023) Nat Comms | wetSpring | QS + spatial structure in porous media | Direct validation of QS-geometry coupling |
-| 分 et al. (2024) Nat Comms | wetSpring | Microbial diversity in different pore sizes | Pore-scale Anderson geometry data |
-| Islam et al. (2014) ISWCR | airSpring | Brandt farm soil health time series | No-till long-term data |
-| Allen et al. (1998) FAO-56 Ch 7 | airSpring | Dual Kc for cover crop water balance | Already in airSpring queue (#8) |
+| Martínez-García et al. (2023) Nat Comms | {{ entity(name="wetspring") }} | QS + spatial structure in porous media | Direct validation of QS-geometry coupling |
+| 分 et al. (2024) Nat Comms | {{ entity(name="wetspring") }} | Microbial diversity in different pore sizes | Pore-scale Anderson geometry data |
+| Islam et al. (2014) ISWCR | {{ entity(name="airspring") }} | Brandt farm soil health time series | No-till long-term data |
+| Allen et al. (1998) FAO-56 Ch 7 | {{ entity(name="airspring") }} | Dual Kc for cover crop water balance | Already in {{ entity(name="airspring") }} queue (#8) |
 
 ### 6.4 Cross-Spring Integration
 
 | Component | Spring | Connection |
 |-----------|--------|------------|
-| Anderson eigenvalue computation | wetSpring | Extends Exp107-143 |
-| 16S diversity pipeline | wetSpring | Sovereign Rust pipeline |
-| Soil moisture θ(t) | airSpring v0.8.8 | FAO-56 water balance (1284 Python + 880 Rust lib + 280 integration + 61 forge tests, 91 binaries). Saxton-Rawls pedotransfer (Exp 023 + GPU op=13) + Anderson coupling (Exp 045: θ→S_e→d_eff→QS regime, 55+95 checks) + GPU math portability (Exp 047: 46/46 all 13 modules) + GPU uncertainty (jackknife/bootstrap/diversity) + all 20 ops upstream (`BatchedElementwiseF64`), PrecisionRoutingAdvice wired |
-| ET₀ seasonal pattern | airSpring v0.8.8 | Validated (1284/1284 Python, 880 Rust lib + 280 integration + 61 forge tests, 14.3× Rust speedup (24/24 parity), 8 ET₀ methods including Blaney-Criddle upstream op=19) |
-| van Genuchten θ(h)/K(h) GPU | airSpring v0.8.8 | `eco::van_genuchten` module + `gpu::van_genuchten` (ops 9-10), `barracuda::optimize::brent` (R-S66 wired). GPU path via `BatchedVanGenuchten` enables batch soil hydraulics at atlas scale |
-| Sampling uncertainty | groundSpring V113 | Exp004 (genus saturation at 5,000 reads). Exp016 (rare biosphere — detecting rare soil taxa at low abundance). Exp019 (jackknife — subpercent error bars for soil microbiome metrics). Exp015 (uncertainty bridge — sensor noise → Anderson ξ → QS regime uncertainty, the pipeline that makes Anderson predictions testable from real soil sampling data). **Exp022** (ET₀→Anderson propagation: humidity-dominated CV 0.043 → ξ CV 0.040, confirming environment→localization uncertainty budget). **Exp023** (no-till vs tilled 16S sampling: H′=3.88 vs 1.57, saturation at 500 reads, quantifies diversity loss from tillage). **Exp024** (aggregate stability noise: d_eff regimes distinguishable, noise floor 0.12–0.14, proves soil structure uncertainty doesn't mask Anderson regime classification). wetSpring GPU rarefaction uses dedicated `BatchedMultinomialGpu` for diversity curves. **V113**: GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants. V112: OrExit<T>, parse_benchmark(), socket_env_var(), provenance trio. 102 barracuda delegations — 29/29 validation binaries, 140 metalForge checks |
-| LSTM time series prediction | neuralSpring | Study 004 (ERA5 LSTM, NSE=0.849). S135: 966 lib tests, 232 binaries, 220/220 validate_all, 150+ tolerances, 46 upstream rewires. nW-03 LSTM reservoir (R²=0.98) validates pooled-readout sequence processing — same architecture predicts r(t) from soil parameters. nW-05 ESN classifier (96.5% accuracy) validates regime classification — same architecture classifies QS regimes (extended/marginal/localized) from (J, d_eff) inputs |
+| Anderson eigenvalue computation | {{ entity(name="wetspring") }} | Extends Exp107-143 |
+| 16S diversity pipeline | {{ entity(name="wetspring") }} | Sovereign Rust pipeline |
+| Soil moisture θ(t) | {{ entity(name="airspring") }} v0.8.8 | FAO-56 water balance (1284 Python + 880 Rust lib + 280 integration + 61 forge tests, 91 binaries). Saxton-Rawls pedotransfer (Exp 023 + GPU op=13) + Anderson coupling (Exp 045: θ→S_e→d_eff→QS regime, 55+95 checks) + GPU math portability (Exp 047: 46/46 all 13 modules) + GPU uncertainty (jackknife/bootstrap/diversity) + all 20 ops upstream (`BatchedElementwiseF64`), PrecisionRoutingAdvice wired |
+| ET₀ seasonal pattern | {{ entity(name="airspring") }} v0.8.8 | Validated (1284/1284 Python, 880 Rust lib + 280 integration + 61 forge tests, 14.3× Rust speedup (24/24 parity), 8 ET₀ methods including Blaney-Criddle upstream op=19) |
+| van Genuchten θ(h)/K(h) GPU | {{ entity(name="airspring") }} v0.8.8 | `eco::van_genuchten` module + `gpu::van_genuchten` (ops 9-10), `barracuda::optimize::brent` (R-S66 wired). GPU path via `BatchedVanGenuchten` enables batch soil hydraulics at atlas scale |
+| Sampling uncertainty | {{ entity(name="groundspring") }} V113 | Exp004 (genus saturation at 5,000 reads). Exp016 (rare biosphere — detecting rare soil taxa at low abundance). Exp019 (jackknife — subpercent error bars for soil microbiome metrics). Exp015 (uncertainty bridge — sensor noise → Anderson ξ → QS regime uncertainty, the pipeline that makes Anderson predictions testable from real soil sampling data). **Exp022** (ET₀→Anderson propagation: humidity-dominated CV 0.043 → ξ CV 0.040, confirming environment→localization uncertainty budget). **Exp023** (no-till vs tilled 16S sampling: H′=3.88 vs 1.57, saturation at 500 reads, quantifies diversity loss from tillage). **Exp024** (aggregate stability noise: d_eff regimes distinguishable, noise floor 0.12–0.14, proves soil structure uncertainty doesn't mask Anderson regime classification). {{ entity(name="wetspring") }} GPU rarefaction uses dedicated `BatchedMultinomialGpu` for diversity curves. **V113**: GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants. V112: OrExit<T>, parse_benchmark(), socket_env_var(), provenance trio. 102 barracuda delegations — 29/29 validation binaries, 140 {{ entity(name="metalforge") }} checks |
+| LSTM time series prediction | {{ entity(name="neuralspring") }} | Study 004 (ERA5 LSTM, NSE=0.849). S135: 966 lib tests, 232 binaries, 220/220 validate_all, 150+ tolerances, 46 upstream rewires. nW-03 LSTM reservoir (R²=0.98) validates pooled-readout sequence processing — same architecture predicts r(t) from soil parameters. nW-05 ESN classifier (96.5% accuracy) validates regime classification — same architecture classifies QS regimes (extended/marginal/localized) from (J, d_eff) inputs |
 
 ---
 

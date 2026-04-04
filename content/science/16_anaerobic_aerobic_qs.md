@@ -12,10 +12,10 @@ primals = ["barracuda"]
 springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
-**Status**: Stage 1 in progress — computational foundation complete (V108). **neuralSpring Paper 027 benchmark COMPLETE (S142)**: ESN methane yield predictor, 36/36 CPU + 23/23 bC/gT PASS
+**Status**: Stage 1 in progress — computational foundation complete (V108). **{{ entity(name="neuralspring") }} Paper 027 benchmark COMPLETE (S142)**: ESN methane yield predictor, 36/36 CPU + 23/23 bC/gT PASS
 **Date**: March 10, 2026
 **Literature Anchor**: Wei Liao (ADREC, MSU BAE)
-**Springs**: wetSpring (QS framework), healthSpring (anaerobic gut), airSpring (soil O₂ zones), neuralSpring (ML), groundSpring (spectral)
+**Springs**: {{ entity(name="wetspring") }} (QS framework), {{ entity(name="healthspring") }} (anaerobic gut), {{ entity(name="airspring") }} (soil O₂ zones), {{ entity(name="neuralspring") }} (ML), {{ entity(name="groundspring") }} (spectral)
 **Bench Source**: MSUBI bioreactor experience (5 years), ADREC interview (2024)
 
 ---
@@ -113,7 +113,7 @@ data. This model gives a quantitative framework for interpreting it.
 The gut is an anaerobic digester. The same microbial ecology that
 determines biogas yield in an ADREC digester determines nutrient
 extraction, immune modulation, and pathogen resistance in the gut.
-The healthSpring Anderson gut lattice (Exp032) models the colon
+The {{ entity(name="healthspring") }} Anderson gut lattice (Exp032) models the colon
 as a disordered system — Paper 16 explains why W differs between
 the aerobic mucosal surface and the anaerobic lumen.
 
@@ -147,11 +147,11 @@ microbiology. The QS-disorder framework provides the physics.
 - Identify FNR/ArcAB/Rex regulated QS genes from literature
 - Build Anderson lattice models with oxygen-dependent W
 - Predict localization length shift for model communities
-- ~~Reproduce Wang et al. 2020 ML digester prediction (neuralSpring benchmark)~~ **DONE (S142)** — `digestion_prediction.rs`, ESN 512-neuron reservoir, R²=0.84 test, Py 9/9, Rust 11 lib tests, CPU 36/36, bC/gT 23/23 PASS. GPU↔CPU diff ≤7.1e-5.
+- ~~Reproduce Wang et al. 2020 ML digester prediction ({{ entity(name="neuralspring") }} benchmark)~~ **DONE (S142)** — `digestion_prediction.rs`, ESN 512-neuron reservoir, R²=0.84 test, Py 9/9, Rust 11 lib tests, CPU 36/36, bC/gT 23/23 PASS. GPU↔CPU diff ≤7.1e-5.
 
 ### Stage 2: Public Data (no wetlab)
 
-- Apply wetSpring 16S pipeline to public anaerobic digester datasets
+- Apply {{ entity(name="wetspring") }} 16S pipeline to public anaerobic digester datasets
   (NCBI BioProjects from ADREC and similar labs)
 - Measure diversity-disorder mapping in anaerobic communities
 - Compare W distributions: aerobic biofilms vs anaerobic digesters vs
@@ -173,12 +173,12 @@ microbiology. The QS-disorder framework provides the physics.
 
 | Spring | Contribution | Status |
 |--------|-------------|--------|
-| wetSpring | Anderson-QS framework, 16S pipeline, diversity analytics, Bray-Curtis GPU | **Ready** |
-| healthSpring | Anderson gut lattice model (Exp032), anaerobic gut as test case | **Ready** |
-| airSpring | Soil aerobic/anaerobic zonation, Paper 06 pore network model | **Ready** |
-| neuralSpring | ESN/LSTM for digester time series, regime classification. **Paper 027 (Wang/Liao 2020) COMPLETE**: `digestion_prediction.rs`, ESN methane yield predictor, bC/gT validated | **Ready + Benchmark Complete** |
-| groundSpring | Spectral theory for oxygen-dependent W, uncertainty budgets | **Ready** |
-| barraCuda | GPU diversity, GPU Anderson, GPU Bray-Curtis | **Ready** |
+| {{ entity(name="wetspring") }} | Anderson-QS framework, 16S pipeline, diversity analytics, Bray-Curtis GPU | **Ready** |
+| {{ entity(name="healthspring") }} | Anderson gut lattice model (Exp032), anaerobic gut as test case | **Ready** |
+| {{ entity(name="airspring") }} | Soil aerobic/anaerobic zonation, Paper 06 pore network model | **Ready** |
+| {{ entity(name="neuralspring") }} | ESN/LSTM for digester time series, regime classification. **Paper 027 (Wang/Liao 2020) COMPLETE**: `digestion_prediction.rs`, ESN methane yield predictor, bC/gT validated | **Ready + Benchmark Complete** |
+| {{ entity(name="groundspring") }} | Spectral theory for oxygen-dependent W, uncertainty budgets | **Ready** |
+| {{ entity(name="barracuda") }} | GPU diversity, GPU Anderson, GPU Bray-Curtis | **Ready** |
 
 The infrastructure is entirely validated. What's missing is the science:
 anaerobic-specific QS data and the experiments to test the predictions.
@@ -187,7 +187,7 @@ anaerobic-specific QS data and the experiments to test the predictions.
 
 ## V108 Computational Foundation (March 10, 2026)
 
-wetSpring V108 completes the Stage 1 computational foundation for Paper 16.
+{{ entity(name="wetspring") }} V108 completes the Stage 1 computational foundation for Paper 16.
 Five papers from Wei Liao's group at MSU BAE / ADREC are now fully reproduced:
 
 | Paper | Experiment | Checks | Key Model |
@@ -207,7 +207,7 @@ Full 6-tier validation chain (Exp341-346, 136 additional checks):
 | Python parity v5 | Exp343 | 13 | SciPy/NumPy reference values match |
 | CPU vs GPU v10 | Exp344 | 14 | GPU portability for Track 6 math |
 | Pure GPU streaming v12 | Exp345 | 12 | Unidirectional pipeline, zero CPU round-trips |
-| metalForge v18 | Exp346 | 16 | Cross-substrate CPU=GPU=NPU |
+| {{ entity(name="metalforge") }} v18 | Exp346 | 16 | Cross-substrate CPU=GPU=NPU |
 
 **Key validated capabilities for Stage 2:**
 
@@ -218,7 +218,7 @@ Full 6-tier validation chain (Exp341-346, 136 additional checks):
 - Anderson W mapping: `W = W_max * (1 - evenness)`, `W_digester > W_soil` confirmed
 - P(QS) comparison via `norm_cdf` operational for aerobic vs anaerobic
 
-**neuralSpring S142 — Paper 027 (Wang/Liao 2020):**
+**{{ entity(name="neuralspring") }} S142 — Paper 027 (Wang/Liao 2020):**
 
 | Component | Checks | Key Result |
 |-----------|:------:|------------|
@@ -245,7 +245,7 @@ domain (bioprocess engineering) — isomorphic thesis proof (Exp 005 extension).
 | 05 (Cross-species QS) | Anaerobic consortia are inherently cross-species |
 | 06 (No-till Anderson) | Waterlogging = anaerobic pores = different W regime |
 | 12 (Immuno-Anderson) | Gut inflammation changes mucosal oxygen → changes W at tissue interface |
-| 13 (Health computing) | Gut microbiome modeling (healthSpring) is the human anaerobic digester |
+| 13 (Health computing) | Gut microbiome modeling ({{ entity(name="healthspring") }}) is the human anaerobic digester |
 
 ---
 

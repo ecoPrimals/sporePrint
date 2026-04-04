@@ -5,11 +5,11 @@ sort_by = "title"
 template = "science_section.html"
 +++
 
-25 baseCamp papers organized by domain. Each paper is executable — the
+25 {{ entity(name="basecamp") }} papers organized by domain. Each paper is executable — the
 science is not summarized, it is runnable code that reproduces published
 results on commodity hardware. Papers are grouped by domain below.
 
 See also: [Cross-Spring Evidence Map](@/science/CROSS_SPRING_EVIDENCE_MAP.md)
 for convergence across springs, and
 [Structure Prediction Roadmap](@/science/STRUCTURE_PREDICTION_ROADMAP.md)
-for the helixVision (formerly coralForge) sovereign AlphaFold-quality pipeline.
+for the {{ entity(name="helixvision") }} (formerly coralForge) sovereign AlphaFold-quality pipeline.

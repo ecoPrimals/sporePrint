@@ -9,7 +9,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  
-**Organization:** ecoPrimals
+**Organization:** {{ entity(name="ecoprimals") }}
 **Date:** March 17, 2026
 **License:** All code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
 **Repositories:** Springs at github.com/syntheticChemistry · Primals at github.com/ecoPrimals · Products at github.com/sporeGarden
@@ -18,7 +18,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 ## What This Is
 
-ecoPrimals is a sovereign scientific computing ecosystem built in pure Rust with
+{{ entity(name="ecoprimals") }} is a sovereign scientific computing ecosystem built in pure Rust with
 GPU acceleration via WebGPU (WGSL shaders). It replaces Python/R/Fortran/Java
 tool chains across life science, pharmacology, physics, and data provenance
 domains. Every claim below has a validation binary that proves it — clone the
@@ -53,7 +53,7 @@ what proprietary tools still do better, and where to find everything.
 | Read merging (paired-end) | **Full parity** | Overlap detection, quality-aware consensus |
 | Dereplication | **Full parity** | Hash-based, GPU-accelerated |
 | DADA2 denoising | **Full parity** | Error model + denoising validated against R DADA2 |
-| Chimera detection | **Full parity** | de novo + reference-based |
+| {{ entity(name="chimera") }} detection | **Full parity** | de novo + reference-based |
 | Taxonomy classification | **Full parity** | Naïve Bayes, k-mer, spectral matching |
 | UniFrac (weighted/unweighted) | **Full parity** | GPU-accelerated, validated against phyloseq |
 | Diversity indices (Shannon, Simpson, Chao1, Pielou) | **Full parity** | Validated to 1e-12 against textbook definitions |
@@ -72,12 +72,12 @@ what proprietary tools still do better, and where to find everything.
 
 | Capability | Gap | Path to Parity |
 |-----------|-----|---------------|
-| GUI workflow builder | No GUI — CLI + validation binaries only | petalTongue provides visualization; Galaxy-style builder not planned |
+| GUI workflow builder | No GUI — CLI + validation binaries only | {{ entity(name="petaltongue") }} provides visualization; Galaxy-style builder not planned |
 | Plugin ecosystem | No third-party plugin system | IPC capability discovery enables composition |
 | Training documentation | No tutorials, no workshops | K-Nome methodology document exists; formal curriculum pending |
-| Multi-user web interface | Single-user, local execution | biomeOS IPC enables multi-client; web UI not planned |
+| Multi-user web interface | Single-user, local execution | {{ entity(name="biomeos") }} IPC enables multi-client; web UI not planned |
 | Established community | One developer, public repos | 3.2M lines of Rust, 107K+ tests, all validation executable |
-| Cloud deployment | Local/LAN only | NUCLEUS bonding model supports distributed deployment |
+| Cloud deployment | Local/LAN only | {{ entity(name="nucleus") }} bonding model supports distributed deployment |
 
 ### Where to Find / Rebuild
 
@@ -133,7 +133,7 @@ cargo run --release --bin validate_dada2_full # DADA2 pipeline validation
 | FDA submission formatting | No CTD/eCTD output | Infrastructure exists; formatting layer needed |
 | Covariate model building (stepwise) | Manual covariate selection only | Automated stepwise selection planned |
 | Regulatory track record | No FDA submissions yet | Deterministic reproducibility is an advantage for auditors |
-| Interactive model exploration | CLI only | petalTongue dashboard provides visualization |
+| Interactive model exploration | CLI only | {{ entity(name="petaltongue") }} dashboard provides visualization |
 | Existing training / certification | No formal training program | K-Nome methodology available |
 
 ### Where to Find / Rebuild
@@ -241,7 +241,7 @@ cargo run --release --bin validate_tissue_anderson  # Exp033–034
 | Instrument control / data acquisition | Software only — no instrument drivers | Not planned; focus is analysis |
 | Vendor-specific raw formats (.d, .raw) | mzML/mzXML only (open formats) | Vendor conversion is standard practice |
 | Method development wizards | CLI only | Not planned |
-| FDA 21 CFR Part 11 compliance | Provenance chain exists; no formal audit | BearDog signing + loamSpine certs map to Part 11 |
+| FDA 21 CFR Part 11 compliance | Provenance chain exists; no formal audit | {{ entity(name="beardog") }} signing + {{ entity(name="loamspine") }} certs map to Part 11 |
 | Integrated LIMS | No LIMS — provenance trio provides chain-of-custody | Paper 21 architecture covers this |
 
 ### Where to Find / Rebuild
@@ -280,9 +280,9 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 
 | Capability | Parity Level | Notes |
 |-----------|:------------:|-------|
-| Sample chain-of-custody | **Exceeds** | Cryptographic DAG (rhizoCrypt), not database records |
-| Ed25519 digital signatures on results | **No equivalent** | BearDog signs every computation result |
-| ISO 17025/15189 traceability mapping | **Architectural parity** | loamSpine certificates map to ISO requirements |
+| Sample chain-of-custody | **Exceeds** | Cryptographic DAG ({{ entity(name="rhizocrypt") }}), not database records |
+| Ed25519 digital signatures on results | **No equivalent** | {{ entity(name="beardog") }} signs every computation result |
+| ISO 17025/15189 traceability mapping | **Architectural parity** | {{ entity(name="loamspine") }} certificates map to ISO requirements |
 | Fraud detection (6 types) | **Exceeds** | Graph analysis: phantom sample, broken cold chain, etc. |
 | Consent-gated access (medical) | **No equivalent** | Paper 22: DID-based consent certificates |
 | Audit trail | **Exceeds** | Every DAG vertex is immutable, signed, and attributed |
@@ -292,9 +292,9 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 | Capability | Gap | Path to Parity |
 |-----------|-----|---------------|
 | Inventory management | No physical inventory tracking | fm-pipette (FIELDMOUSE) planned for wet lab integration |
-| Barcode / QR scanning | No hardware integration | NestGate mobile scanning planned |
-| Regulatory pre-validation (GxP) | Architecture exists; no formal GxP audit | BearDog + loamSpine architecture maps to GxP; audit needed |
-| SaaS convenience | Local deployment only | NUCLEUS enables LAN/WAN; no cloud planned |
+| Barcode / QR scanning | No hardware integration | {{ entity(name="nestgate") }} mobile scanning planned |
+| Regulatory pre-validation (GxP) | Architecture exists; no formal GxP audit | {{ entity(name="beardog") }} + {{ entity(name="loamspine") }} architecture maps to GxP; audit needed |
+| SaaS convenience | Local deployment only | {{ entity(name="nucleus") }} enables LAN/WAN; no cloud planned |
 
 ---
 
@@ -306,7 +306,7 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 |-----------|:------------:|-------|
 | f64 precision GPU compute | **Full parity** | All WGSL shaders use f64 (via DF64 emulation where needed) |
 | Vendor-agnostic GPU targeting | **Exceeds** | WebGPU: NVIDIA + AMD + Intel + Apple (CUDA is NVIDIA-only) |
-| Sovereign shader compiler | **Exceeds** | coralReef compiles WGSL without vendor toolchain |
+| Sovereign shader compiler | **Exceeds** | {{ entity(name="coralreef") }} compiles WGSL without vendor toolchain |
 | Hardware discovery | **Exceeds** | toadStool discovers GPU + CPU + NPU at runtime |
 | Mixed hardware dispatch | **Exceeds** | CPU + GPU + NPU routing by capability, not hardcoding |
 | Neuromorphic (NPU) support | **No equivalent** | BrainChip AKD1000 via pure Rust driver |
@@ -317,10 +317,10 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 | Capability | Gap | Path to Parity |
 |-----------|-----|---------------|
 | Raw throughput (CUDA optimized kernels) | WGSL overhead for some operations | Improving with wgpu maturity |
-| Ecosystem (cuBLAS, cuFFT, cuDNN) | barraCuda covers science ops; no ML framework | Not competing with ML frameworks |
+| Ecosystem (cuBLAS, cuFFT, cuDNN) | {{ entity(name="barracuda") }} covers science ops; no ML framework | Not competing with ML frameworks |
 | Multi-GPU scaling | Single GPU per dispatch | toadStool multi-device dispatch planned |
 | Tensor cores / mixed precision | f64 focus, not fp16/bf16 | Science needs f64; ML-style mixed precision not a priority |
-| HPC job scheduler integration (Slurm) | No Slurm scripts | NUCLEUS bonding model is an alternative; Slurm adaptor trivial |
+| HPC job scheduler integration (Slurm) | No Slurm scripts | {{ entity(name="nucleus") }} bonding model is an alternative; Slurm adaptor trivial |
 
 ---
 
@@ -329,11 +329,11 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 | Metric | Value |
 |--------|-------|
 | **Springs** (validation domains) | 7 (wet, hot, air, ground, neural, health, ludo) |
-| **Primals** (infrastructure) | 14 (barraCuda, toadStool, coralReef, biomeOS, BearDog, NestGate, Songbird, sweetGrass, rhizoCrypt, loamSpine, petalTongue, Squirrel, bingoCube, FIELDMOUSE) |
+| **Primals** (infrastructure) | 14 ({{ entity(name="barracuda") }}, toadStool, {{ entity(name="coralreef") }}, {{ entity(name="biomeos") }}, {{ entity(name="beardog") }}, {{ entity(name="nestgate") }}, {{ entity(name="songbird") }}, {{ entity(name="sweetgrass") }}, {{ entity(name="rhizocrypt") }}, {{ entity(name="loamspine") }}, {{ entity(name="petaltongue") }}, {{ entity(name="squirrel") }}, {{ entity(name="bingocube") }}, FIELDMOUSE) |
 | **Total tests** | 27,000+ across all springs |
 | **Total validation checks** | 15,334+ |
-| **Papers reproduced** | 70+ (63 wetSpring + healthSpring + neuralSpring + hotSpring + others) |
-| **WGSL shaders (barraCuda)** | 806+ |
+| **Papers reproduced** | 70+ (63 {{ entity(name="wetspring") }} + {{ entity(name="healthspring") }} + {{ entity(name="neuralspring") }} + {{ entity(name="hotspring") }} + others) |
+| **WGSL shaders ({{ entity(name="barracuda") }})** | 806+ |
 | **Languages** | Pure Rust (zero C/C++/Fortran in application code) |
 | **Unsafe code** | Zero (`#![forbid(unsafe_code)]` in all spring lib crates) |
 | **External dependencies** | Minimal; all pure Rust or explicit `rust_backend` |
@@ -350,13 +350,13 @@ These capabilities have no commercial equivalent:
 
 | Capability | What It Does | Spring |
 |-----------|-------------|--------|
-| Anderson localization for community structure | Maps microbial diversity onto condensed matter physics; predicts signal propagation vs confinement | wetSpring, groundSpring, neuralSpring |
-| Geometry-aware drug repurposing | Adds spatial tissue penetration to pathway-based drug scoring (extends MATRIX) | wetSpring Track 3, neuralSpring nS-06, groundSpring |
-| Cross-species Anderson translation | Same physics, different tissue parameters — species-agnostic by construction | healthSpring Track 6 |
-| Cryptographically signed scientific results | Ed25519 signature on every diversity index, ASV table, drug score | BearDog |
-| Provenance DAG for biological samples | Field-to-publication chain-of-custody with fraud detection | rhizoCrypt + loamSpine + sweetGrass |
-| NPU edge classification | BrainChip AKD1000 at 18.8K Hz, coin-cell power, pure Rust driver | toadStool + neuralSpring |
-| Sovereign shader compiler | Compile WGSL without NVIDIA/AMD/Intel toolchain | coralReef |
+| Anderson localization for community structure | Maps microbial diversity onto condensed matter physics; predicts signal propagation vs confinement | {{ entity(name="wetspring") }}, {{ entity(name="groundspring") }}, {{ entity(name="neuralspring") }} |
+| Geometry-aware drug repurposing | Adds spatial tissue penetration to pathway-based drug scoring (extends MATRIX) | {{ entity(name="wetspring") }} Track 3, {{ entity(name="neuralspring") }} nS-06, {{ entity(name="groundspring") }} |
+| Cross-species Anderson translation | Same physics, different tissue parameters — species-agnostic by construction | {{ entity(name="healthspring") }} Track 6 |
+| Cryptographically signed scientific results | Ed25519 signature on every diversity index, ASV table, drug score | {{ entity(name="beardog") }} |
+| Provenance DAG for biological samples | Field-to-publication chain-of-custody with fraud detection | {{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }} |
+| NPU edge classification | BrainChip AKD1000 at 18.8K Hz, coin-cell power, pure Rust driver | toadStool + {{ entity(name="neuralspring") }} |
+| Sovereign shader compiler | Compile WGSL without NVIDIA/AMD/Intel toolchain | {{ entity(name="coralreef") }} |
 | Zero-knowledge medical provenance | Patient-owned records with consent certificates | Paper 22 |
 
 ---
@@ -385,7 +385,7 @@ cargo test --workspace --features gpu
 **Build dependencies:** Rust toolchain only. No Python, no R, no conda, no Docker,
 no pip, no npm. One `cargo build` compiles everything from source.
 
-**barraCuda** (the math primal) is a path dependency. Clone it alongside the spring:
+**{{ entity(name="barracuda") }}** (the math primal) is a path dependency. Clone it alongside the spring:
 
 ```bash
 cd Development/ecoPrimals
@@ -400,4 +400,4 @@ git clone git@github.com:syntheticChemistry/wetSpring.git
 
 | Date | Change |
 |------|--------|
-| 2026-03-17 | Initial capability & parity assessment (V127 wetSpring, V35 healthSpring) |
+| 2026-03-17 | Initial capability & parity assessment (V127 {{ entity(name="wetspring") }}, V35 {{ entity(name="healthspring") }}) |
