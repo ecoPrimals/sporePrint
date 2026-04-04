@@ -68,16 +68,16 @@ All springs are public. Each spring validates one scientific domain through exec
 
 ### Springs (8)
 
-| Spring | Domain | Grade | Checks | Repo |
+| Spring | Domain | Status | Checks | Repo |
 |--------|--------|-------|--------|------|
-| 💧🔬 wetSpring | Microbiology, 16S, metagenomics | V12 | 1,200+ | [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) |
-| ♨️🧪 hotSpring | Physics, thermodynamics, Anderson localization | V20 | 2,500+ | [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring) |
-| 🌬️💨 airSpring | Atmospheric, climate, fluid dynamics | V8 | 800+ | [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring) |
-| 🧠⚡ neuralSpring | ML primitives, isomorphism, structure prediction | Multi-phase | 4,500+ | [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) |
-| 🌍🪨 groundSpring | Geoscience, soil, hydrology | V6 | 600+ | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) |
-| 🏥💊 healthSpring | PK/PD, microbiome, biosignal, drug discovery | V27 | 795+ | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) |
+| 💧🔬 wetSpring | Microbiology, 16S, metagenomics | Active | 1,200+ | [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) |
+| ♨️🧪 hotSpring | Physics, thermodynamics, Anderson localization | Active | 2,500+ | [syntheticChemistry/hotSpring](https://github.com/syntheticChemistry/hotSpring) |
+| 🌬️💨 airSpring | Atmospheric, climate, fluid dynamics | Active | 800+ | [syntheticChemistry/airSpring](https://github.com/syntheticChemistry/airSpring) |
+| 🧠⚡ neuralSpring | ML primitives, isomorphism, structure prediction | Active | 4,500+ | [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) |
+| 🌍🪨 groundSpring | Geoscience, soil, hydrology | Active | 600+ | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) |
+| 🏥💊 healthSpring | PK/PD, microbiome, biosignal, drug discovery | Active | 795+ | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) |
 | 🎮🎲 ludoSpring | Game science, HCI, procedural generation | V30 | 1,692+ | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) |
-| 🧬♨️ primalSpring | Composition validation, deploy graphs, BYOB | Phase 13 | 303+ | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) |
+| 🧬♨️ primalSpring | Composition validation, deploy graphs, BYOB | Active | 303+ | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) |
 
 ### Other (2)
 

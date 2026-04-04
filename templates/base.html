@@ -22,11 +22,8 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="{{ get_url(path='@/audience/_index.md') }}" {% if current_path is starting_with("/audience") %}class="active" aria-current="true"{% endif %}>Audience</a></li>
         <li><a href="{{ get_url(path='@/science/_index.md') }}" {% if current_path is starting_with("/science") %}class="active" aria-current="true"{% endif %}>Science</a></li>
-        <li><a href="{{ get_url(path='@/architecture/_index.md') }}" {% if current_path is starting_with("/architecture") %}class="active" aria-current="true"{% endif %}>Architecture</a></li>
-        <li><a href="{{ get_url(path='@/methodology/_index.md') }}" {% if current_path is starting_with("/methodology") %}class="active" aria-current="true"{% endif %}>Methodology</a></li>
-        <li><a href="{{ get_url(path='@/technical/_index.md') }}" {% if current_path is starting_with("/technical") %}class="active" aria-current="true"{% endif %}>Technical</a></li>
+        <li><a href="{{ get_url(path='@/architecture/_index.md') }}" {% if current_path is starting_with("/architecture") or current_path is starting_with("/methodology") or current_path is starting_with("/technical") %}class="active" aria-current="true"{% endif %}>Architecture</a></li>
         <li><a href="{{ get_url(path='@/guidestone/_index.md') }}" {% if current_path is starting_with("/guidestone") %}class="active" aria-current="true"{% endif %}>guideStone</a></li>
         <li><a href="{{ get_url(path='@/products/_index.md') }}" {% if current_path is starting_with("/products") %}class="active" aria-current="true"{% endif %}>Products</a></li>
         <li class="nav-divider"></li>

@@ -64,7 +64,7 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 ### 1.1 BearDog - Cryptography Primal
 
 **Domain**: All cryptographic operations and genetic lineage  
-**Grade**: A+ LEGENDARY (99/100)  
+**Lines**: ~25K Rust (91 methods, 72 JSON-RPC endpoints, 9 crates)  
 **Tests**: 5,041 passing (100%)  
 **Coverage**: 70.96%  
 **Safety**: Zero unsafe blocks, zero warnings
@@ -96,7 +96,7 @@ BearDog enforces a strict entropy hierarchy — hardware RNG (SoloKey FIDO2) →
 ### 1.2 Songbird - Network Primal
 
 **Domain**: Network orchestration, discovery, and federation  
-**Grade**: S+ Tier (100% BearDog delegation + Pure Rust Tor)  
+**Lines**: ~18K Rust (3,345 Tor v3 protocol, NAT traversal, BirdSong discovery)  
 **Version**: v3.35.0  
 **Tests**: 1,763 passing (100%)  
 **Safety**: Zero unsafe blocks in production, clean build
@@ -124,7 +124,7 @@ Songbird is the nervous system. If data needs to leave the machine, it goes thro
 ### 1.3 NestGate - Data Primal
 
 **Domain**: Storage and content-addressed data management  
-**Grade**: A++ (99%) - TOP 1% CERTIFIED  
+**Lines**: ~20K Rust (13 crates, genomeBin 4.0.0)  
 **Version**: 4.0.0 (genomeBin)  
 **Tests**: 1,474/1,475 passing (99.93%)  
 **Build**: 100% (13/13 crates)
@@ -149,7 +149,7 @@ NestGate is the data layer. Content-addressed storage (BLAKE3), ZFS integration,
 ### 1.4 ToadStool - Compute Primal
 
 **Domain**: Universal compute orchestration  
-**Grade**: A++ GOLD STANDARD  
+**Lines**: ~35K Rust (50+ crates pre-barraCuda split, CPU/GPU/NPU dispatch)  
 **Tests**: 1,000+ passing  
 **Repository**: [github.com/ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) — **Public**
 
@@ -170,7 +170,7 @@ The springs are ToadStool's acceptance tests. hotSpring proves the physics kerne
 ### 1.5 Squirrel - AI Primal
 
 **Domain**: AI model coordination and sovereign inference  
-**Grade**: A++ (98/100)  
+**Lines**: ~15K Rust (7 providers, MCP coordinator, DignityGuard)  
 **Version**: 0.1.0-alpha.33  
 **Tests**: 7,165 passing / 0 failed / 110 ignored  
 **Coverage**: ~85.3% line coverage (cargo-llvm-cov)  
@@ -197,7 +197,7 @@ Squirrel is the AI brain. Vendor-agnostic model routing across OpenAI, Anthropic
 ### 1.6 biomeOS - Ecosystem Orchestrator
 
 **Domain**: Primal orchestration and ecosystem coordination  
-**Grade**: A (Production Ready)  
+**Lines**: ~12K Rust (Neural API, Dark Forest, NUCLEUS orchestration)  
 **Security**: A++ LEGENDARY (Dark Forest)  
 **Tests**: 661+ passing  
 **Coverage**: ~48%
@@ -225,7 +225,7 @@ The **Dark Forest** protocol (A++ LEGENDARY) provides zero-metadata-leakage disc
 ### 1.7 coralReef - Shader Compiler Primal
 
 **Domain**: GPU shader compilation — WGSL/SPIR-V/GLSL to native GPU binaries  
-**Grade**: A+ (Phase 10, Iteration 59)  
+**Lines**: ~22K Rust (9 crates, WGSL→SPIR-V→native pipeline, 93/93 shaders)  
 **Tests**: 3,038 passing (0 failed)  
 **Coverage**: 65.8% line (79.6% non-hardware), 72.9% function  
 **Safety**: `#![forbid(unsafe_code)]` on 8/9 crates, zero clippy warnings (pedantic+nursery)  
@@ -246,7 +246,7 @@ coralReef is a sovereign GPU compiler. No LLVM. No Mesa. No vendor SDK. The enti
 ### 1.8 barraCuda - Math Primal
 
 **Domain**: Pure mathematics — WGSL f64 shaders, precision strategy, naga IR optimization  
-**Grade**: A+ (Production Ready)  
+**Lines**: ~30K Rust + 806 WGSL shaders (DF64 precision, 14 kernel domains)  
 **Version**: v0.3.5  
 **Tests**: 3,348+ passing  
 **Safety**: Zero unsafe, zero clippy warnings  
@@ -283,7 +283,7 @@ These primals represent capabilities that emerge after NUCLEUS is deployed. They
 ### 2.1 petalTongue - Representation Primal
 
 **Domain**: Universal multi-modal user interface  
-**Grade**: A++ (99/100)  
+**Lines**: ~10K Rust (multi-modal UI: terminal, web, headless)  
 **Version**: 1.3.0
 
 petalTongue is the face. ecoPrimals was originally API-first, AI-mediated — "bring your own AI." But humans sometimes need to see things. petalTongue provides visual, terminal, web, and headless interfaces to the ecosystem without coupling any specific UI framework to the primal architecture.
@@ -299,7 +299,7 @@ Accessibility is not an afterthought — it is the design. Sighted users see gra
 ### 2.2 rhizoCrypt - Ephemeral Memory Primal
 
 **Domain**: Content-addressed DAG engine for working memory  
-**Grade**: A+ (96/100)  
+**Lines**: ~8K Rust (BLAKE3 DAG, lock-free concurrency)  
 **Tests**: 509/509 passing (100%)  
 **Coverage**: 83.92%  
 **Safety**: Zero unsafe blocks
@@ -319,7 +319,7 @@ When ephemeral data needs to become permanent, rhizoCrypt **dehydrates** it — 
 ### 2.3 sweetGrass - Attribution Primal
 
 **Domain**: Semantic provenance and fair attribution  
-**Grade**: A+ (98/100)  
+**Lines**: ~9K Rust (9 crates, W3C PROV-O, Braid attribution)  
 **Tests**: 496/496 passing (100%)  
 **Coverage**: 78.39%  
 **Safety**: Zero unsafe blocks (`#![forbid(unsafe_code)]` in all 9 crates)
@@ -330,7 +330,7 @@ The name: sweetgrass is a sacred plant in many Indigenous traditions, used in pu
 
 **Why it exists**: In a sovereign system with AI-assisted development, attribution becomes critical. Who wrote this code — the human or the AI? Who owns the data that trained the model? Who contributed to this research output? sweetGrass provides machine-readable answers. The **Braid model** — where attribution threads weave together to form a composite provenance record — is original to ecoPrimals. The AGPL-3.0 license itself is a form of attribution enforcement; sweetGrass makes it machine-readable.
 
-sweetGrass has the highest grade of any primal (A+ 98/100). 12 role types, derivation chain analysis, time decay, recursive attribution propagation, ~88% compression with session dedup + zstd.
+sweetGrass combines the deepest provenance feature set in the Memory & Attribution stack with strong verification metrics (78.39% line coverage, 496/496 tests). 12 role types, derivation chain analysis, time decay, recursive attribution propagation, ~88% compression with session dedup + zstd.
 
 **Post-NUCLEUS role**: Attribution layer for all ecosystem data. Essential for the RootPulse composition where every commit, merge, and contribution carries cryptographic attribution.
 
@@ -339,7 +339,7 @@ sweetGrass has the highest grade of any primal (A+ 98/100). 12 role types, deriv
 ### 2.4 LoamSpine - Permanence Primal
 
 **Domain**: Immutable linear ledger for selective permanence  
-**Grade**: A+ (98/100)  
+**Lines**: ~10K Rust (Spine ledger, Loam certificates, Infant Discovery)  
 **Tests**: 416 passing (100%)  
 **Coverage**: 77.68%  
 **Safety**: Zero unsafe blocks, zero clippy warnings (pedantic mode)
@@ -359,7 +359,7 @@ rhizoCrypt handles ephemeral working memory — session state that can be discar
 ### 2.5 skunkBat - Defense Primal
 
 **Domain**: Defensive network security  
-**Grade**: Production Ready  
+**Lines**: 7,366 Rust (intentionally small — auditable defensive surface)  
 **Coverage**: 87.37% (core modules: 90-100%)
 
 skunkBat is the immune system. A skunk's defense is warning before escalation. A bat's defense is echolocation — sensing the environment without touching it. skunkBat warns and senses; it does not attack.
