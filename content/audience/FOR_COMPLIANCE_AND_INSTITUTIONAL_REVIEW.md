@@ -8,8 +8,6 @@ primals = ["beardog", "loamspine", "nestgate", "rhizocrypt", "sweetgrass", "toad
 springs = ["groundspring", "healthspring", "wetspring"]
 +++
 
-# ecoPrimals — Compliance, Regulatory, and Institutional Review Reference
-
 **From:** ecoPrimal — human + synthetic intelligence  
 **Organization:** ecoPrimals
 **Date:** March 17, 2026

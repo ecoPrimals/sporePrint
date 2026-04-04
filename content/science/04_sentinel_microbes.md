@@ -12,8 +12,6 @@ primals = ["barracuda", "toadstool"]
 springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-# Sub-Thesis 04: Microbial Sentinels — Community Shifts as Biosensors for Contamination and Disease
-
 **Date:** March 1, 2026
 **Status:** **Validated on Real AKD1000 Hardware** — Full NPU pipeline running on live neuromorphic silicon: ESN reservoir → int8 quantization → DMA → AKD1000 inference → classification. Bloom sentinel (Exp118, 123: 20 checks), QS phase classifier (Exp114: 13 checks), spectral triage (Exp124: 10 checks). All three-tier validated. PFAS screening pipeline (Exp041-042: 23 checks). Communication mode analysis (Exp147, 152: 15 checks) — 4/6 modes subject to Anderson localization. V59: NPU sentinel real stream (Exp188 — 10 checks). **V60 Live AKD1000 (Exp193-195, 60 checks)**: 3 ESN classifiers validated sim↔hardware (QS 49%/34%, Bloom 25%/25%, Disorder 33%/32%); 18.8K Hz inference throughput; reservoir weight loading 37 MB/s; online readout switching 86 µs (weight mutation); batch 20.7K infer/sec; 1.4 µJ/infer (coin-cell 11 years); PUF fingerprint 6.34 bits entropy; online (1+1)-ES evolution 136 gen/sec; 12.9K Hz temporal streaming p99=76 µs; Anderson disorder sweep on NPU mesh; cross-reservoir crosstalk 12.8K switch/sec. **Pure Rust driver** via ToadStool `akida-driver` — Phase C sovereign driver achieved (zero SDK/vendor dependency)
 **Domain:** Environmental microbiology, biosensing, contamination monitoring

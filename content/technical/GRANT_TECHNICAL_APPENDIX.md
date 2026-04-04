@@ -8,8 +8,6 @@ primals = ["barracuda", "beardog", "bingocube", "coralreef", "nestgate", "sweetg
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-# Grant Technical Appendix: Validation Evidence by Agency Program
-
 **Audience:** Grant reviewers — NIH, NSF, USDA, DOE, ARPA-H  
 **Purpose:** Quantitative evidence supporting capability claims, organized by funding agency's priorities  
 **License:** CC-BY-SA 4.0  

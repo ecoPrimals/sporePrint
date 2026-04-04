@@ -2,6 +2,10 @@
 
 {% block title %}{{ page.title }} — {{ config.title }}{% endblock title %}
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+{% block og_title %}{{ page.title }} — {{ config.title }}{% endblock og_title %}
+{% block og_desc %}{{ page.description | default(value=config.description) }}{% endblock og_desc %}
+{% block tw_title %}{{ page.title }} — {{ config.title }}{% endblock tw_title %}
+{% block tw_desc %}{{ page.description | default(value=config.description) }}{% endblock tw_desc %}
 
 {% block content %}
 <div class="page-layout">

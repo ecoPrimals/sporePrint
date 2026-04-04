@@ -8,8 +8,6 @@ primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "toadsto
 springs = ["neuralspring"]
 +++
 
-# helixVision — Sovereign Structure Prediction
-
 **Repository**: sporeGarden/helixVision (moving from syntheticChemistry — repo pending)  
 **License**: scyBorg (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)  
 **Formerly**: coralForge (syntheticChemistry/coralForge, now archived)

@@ -8,8 +8,6 @@ primals = ["barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petalt
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
-# ecoPrimals Spring Catalog: Status, Science, and Evolution
-
 **Status**: Working paper
 **Lineage**: Science validation companion to `PRIMAL_CATALOG.md`
 **Last Updated**: March 31, 2026
@@ -40,6 +38,7 @@ Each spring is grounded in published, peer-reviewed work. The published papers d
 ### 1.1 hotSpring — Computational Plasma Physics, Lattice QCD, Spectral Theory
 
 **Domain**: Dense plasmas, nuclear structure, molecular dynamics, lattice QCD, spectral theory, neuromorphic computing  
+{{ entity_metrics(name="hotspring") }}  
 **Grade**: Most mature spring — Phases A through F complete, 39/39 validation suites  
 **Checks**: 697+ tests, 78 binaries, 62 WGSL shaders  
 **Reproduces work by**: Michael Murillo (CMSE, MSU), Alexei Bazavov (CMSE + Physics, MSU), Ilya Kachkovskiy (Math, MSU), Rika Anderson (Biology, Carleton)  
@@ -68,6 +67,7 @@ hotSpring is the primary GPU science driver — the spring that proves barraCuda
 ### 1.2 airSpring — Precision Agriculture & Irrigation
 
 **Domain**: Evapotranspiration (8 methods), soil moisture, IoT irrigation, Richards PDE, coupled hydrology, yield response  
+{{ entity_metrics(name="airspring") }}  
 **Grade**: Full Python→Rust→GPU→metalForge→NUCLEUS pipeline complete  
 **Checks**: 1,237 Python + 827 lib + 186 forge + 381 validation + 146 evolution  
 **Reproduces work by**: Younsuk Dong (BAE, MSU)  
@@ -94,6 +94,7 @@ airSpring proves barraCuda can replace the Python/Excel toolchain for precision 
 ### 1.3 wetSpring — Life Science & Analytical Chemistry
 
 **Domain**: 16S metagenomics, LC-MS feature extraction, PFAS screening, microbial ecology  
+{{ entity_metrics(name="wetspring") }}  
 **Grade**: V127 — 47 CPU + 47 GPU bio modules, 1 runtime dependency (flate2)  
 **Checks**: 5,707+ across 376 experiments, 63/63 papers reproduced  
 **Reproduces work by**: Christopher Waters (MMG, MSU), Kevin Liu (CMSE, MSU), Jesse Cahill & Chuck Smallwood (Sandia), A. Daniel Jones (BMB/Chemistry, MSU), Rika Anderson (Biology, Carleton), Andrea J. Gonzales (MSU), Erika Lisabeth (ADDRC, MSU), Richard Neubig (Drug Discovery, MSU)  
@@ -119,6 +120,7 @@ wetSpring proves barraCuda can replace the Galaxy/QIIME2/Python bioinformatics s
 ### 1.4 groundSpring — Measurement Noise & Uncertainty
 
 **Domain**: Sensor noise, inverse problems, error propagation, spectral theory, quasispecies, rare biosphere  
+{{ entity_metrics(name="groundspring") }}  
 **Grade**: V104 — 37 Rust modules across 5 pillars, 102 barraCuda delegations  
 **Checks**: 395/395 Rust + 287 Python + 936 Rust tests  
 **Reproduces work by**: Alexei Bazavov (MSU), Christopher Waters (MSU), Kevin Liu (MSU), Emily Dolson (MSU), Ilya Kachkovskiy (MSU), Rika Anderson (Carleton), Andrea J. Gonzales (MSU)  
@@ -143,6 +145,7 @@ groundSpring establishes the uncertainty budget for every other spring. It decom
 ### 1.5 neuralSpring — Machine Learning Primitives & Sovereign Structure Prediction
 
 **Domain**: Neural surrogates, transformers, sequence models, transfer learning, structure prediction (helixVision)  
+{{ entity_metrics(name="neuralspring") }}  
 **Grade**: Most complete validation pipeline of any spring — Python → Rust → GPU → metalForge → Multi-GPU → helixVision  
 **Checks**: 4,500+ total (397 Python + 4,000+ Rust/GPU)  
 **Reproduces work by**: Emily Dolson (CSE, MSU), Kevin Liu (CMSE, MSU), Christopher Waters (MMG, MSU), Alexei Bazavov (MSU), Ilya Kachkovskiy (MSU), Rika Anderson (Carleton), Andrea J. Gonzales (MSU)  
@@ -168,6 +171,7 @@ neuralSpring proves the **Isomorphism Theorem** — all neural architectures dec
 ### 1.6 healthSpring — Human Health: PK/PD, Microbiome, Biosignal, Drug Discovery
 
 **Domain**: Pharmacokinetics, gut microbiome, biosignal processing, endocrinology, comparative medicine, drug discovery, NLME  
+{{ entity_metrics(name="healthspring") }}  
 **Grade**: V27 — 7 tracks, 73 experiments, Tier 0+1+2+3 complete  
 **Checks**: 795 (601 Rust + 194 Python cross-validation)  
 **Reproduces work by**: Andrea J. Gonzales (MSU Pharmacology & Toxicology), Charles Mok (clinical endocrinology)  
@@ -196,6 +200,7 @@ healthSpring proves the ecoPrimals math infrastructure extends to human clinical
 ### 1.7 ludoSpring — Game Science, HCI, Procedural Generation
 
 **Domain**: Game design, human-computer interaction, procedural content generation, real-time interactive systems  
+{{ entity_metrics(name="ludospring") }}  
 **Grade**: V30 — 75 experiments, 1,692 checks, 13 validated HCI models, 11 tracks  
 **Checks**: 1,692 validation checks + unit/integration tests  
 **Reproduces work by**: Csikszentmihalyi (Flow), Fitts (1954), Yannakakis & Togelius (2018), Lazzaro (2004), Hunicke (2005), Perlin (1985), Tufte (1983)  
@@ -216,6 +221,7 @@ ludoSpring proves the ecoPrimals pipeline produces validated science in interact
 ### 1.8 primalSpring — Composition Validation (Meta-Spring)
 
 **Domain**: Primal composition, deploy graph validation, cross-gate bonding, BYOB verification  
+{{ entity_metrics(name="primalspring") }}  
 **Grade**: Phase 13, v0.7.0 — 51 experiments, 303 tests, 22 deploy graphs  
 **Checks**: 303 tests across 51 experiments  
 **Repository**: [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring)

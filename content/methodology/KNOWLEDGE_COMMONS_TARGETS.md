@@ -8,8 +8,6 @@ primals = ["barracuda", "coralreef", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-# Knowledge Commons Targets: What Others Can Build, and Why It Can't Be Taken Back
-
 **Public data + basement hardware + scyBorg = permanently secured knowledge commons.**
 
 **Last Updated:** March 17, 2026  
@@ -54,7 +52,7 @@ back. The commons grows monotonically.
 | Human health | healthSpring | 15+ | 474+ | PhysioNet, MIMIC (open), published PK data |
 | Game science / HCI | ludoSpring | 13 models | 1,692+ | Scryfall (CC0), published HCI benchmarks |
 
-### Sovereign Infrastructure (27,169+ Tests, Three Public Primals)
+### Sovereign Infrastructure (107K+ Tests, 3.2M Lines of Rust)
 
 | Primal | Tests | What It Provides |
 |--------|:-----:|-----------------|

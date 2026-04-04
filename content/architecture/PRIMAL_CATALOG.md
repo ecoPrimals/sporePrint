@@ -4,11 +4,9 @@ description = "All 17 primals and tooling — capabilities, test counts, product
 date = 2026-03-31
 
 [taxonomies]
-primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
-
-# ecoPrimals Primal Catalog: Status, Capabilities, and Achievements
 
 **Status**: Working paper  
 **Lineage**: Implementation companion to `ECOSYSTEM_ARCHITECTURE.md`  
@@ -64,7 +62,7 @@ These primals form the NUCLEUS deployment architecture. Each is production-ready
 ### 1.1 BearDog - Cryptography Primal
 
 **Domain**: All cryptographic operations and genetic lineage  
-**Lines**: ~25K Rust (91 methods, 72 JSON-RPC endpoints, 9 crates)  
+{{ entity_metrics(name="beardog") }}  
 **Tests**: 5,041 passing (100%)  
 **Coverage**: 70.96%  
 **Safety**: Zero unsafe blocks, zero warnings
@@ -96,7 +94,7 @@ BearDog enforces a strict entropy hierarchy — hardware RNG (SoloKey FIDO2) →
 ### 1.2 Songbird - Network Primal
 
 **Domain**: Network orchestration, discovery, and federation  
-**Lines**: ~18K Rust (3,345 Tor v3 protocol, NAT traversal, BirdSong discovery)  
+{{ entity_metrics(name="songbird") }}  
 **Version**: v3.35.0  
 **Tests**: 1,763 passing (100%)  
 **Safety**: Zero unsafe blocks in production, clean build
@@ -124,7 +122,7 @@ Songbird is the nervous system. If data needs to leave the machine, it goes thro
 ### 1.3 NestGate - Data Primal
 
 **Domain**: Storage and content-addressed data management  
-**Lines**: ~20K Rust (13 crates, genomeBin 4.0.0)  
+{{ entity_metrics(name="nestgate") }}  
 **Version**: 4.0.0 (genomeBin)  
 **Tests**: 1,474/1,475 passing (99.93%)  
 **Build**: 100% (13/13 crates)
@@ -149,7 +147,7 @@ NestGate is the data layer. Content-addressed storage (BLAKE3), ZFS integration,
 ### 1.4 ToadStool - Compute Primal
 
 **Domain**: Universal compute orchestration  
-**Lines**: ~35K Rust (50+ crates pre-barraCuda split, CPU/GPU/NPU dispatch)  
+{{ entity_metrics(name="toadstool") }}  
 **Tests**: 1,000+ passing  
 **Repository**: [github.com/ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) — **Public**
 
@@ -170,7 +168,7 @@ The springs are ToadStool's acceptance tests. hotSpring proves the physics kerne
 ### 1.5 Squirrel - AI Primal
 
 **Domain**: AI model coordination and sovereign inference  
-**Lines**: ~15K Rust (7 providers, MCP coordinator, DignityGuard)  
+{{ entity_metrics(name="squirrel") }}  
 **Version**: 0.1.0-alpha.33  
 **Tests**: 7,165 passing / 0 failed / 110 ignored  
 **Coverage**: ~85.3% line coverage (cargo-llvm-cov)  
@@ -197,7 +195,7 @@ Squirrel is the AI brain. Vendor-agnostic model routing across OpenAI, Anthropic
 ### 1.6 biomeOS - Ecosystem Orchestrator
 
 **Domain**: Primal orchestration and ecosystem coordination  
-**Lines**: ~12K Rust (Neural API, Dark Forest, NUCLEUS orchestration)  
+{{ entity_metrics(name="biomeos") }}  
 **Security**: A++ LEGENDARY (Dark Forest)  
 **Tests**: 661+ passing  
 **Coverage**: ~48%
@@ -225,7 +223,7 @@ The **Dark Forest** protocol (A++ LEGENDARY) provides zero-metadata-leakage disc
 ### 1.7 coralReef - Shader Compiler Primal
 
 **Domain**: GPU shader compilation — WGSL/SPIR-V/GLSL to native GPU binaries  
-**Lines**: ~22K Rust (9 crates, WGSL→SPIR-V→native pipeline, 93/93 shaders)  
+{{ entity_metrics(name="coralreef") }}  
 **Tests**: 3,038 passing (0 failed)  
 **Coverage**: 65.8% line (79.6% non-hardware), 72.9% function  
 **Safety**: `#![forbid(unsafe_code)]` on 8/9 crates, zero clippy warnings (pedantic+nursery)  
@@ -246,7 +244,7 @@ coralReef is a sovereign GPU compiler. No LLVM. No Mesa. No vendor SDK. The enti
 ### 1.8 barraCuda - Math Primal
 
 **Domain**: Pure mathematics — WGSL f64 shaders, precision strategy, naga IR optimization  
-**Lines**: ~30K Rust + 806 WGSL shaders (DF64 precision, 14 kernel domains)  
+{{ entity_metrics(name="barracuda") }} + {{ total_stat(stat="wgsl_files") }} WGSL shaders  
 **Version**: v0.3.5  
 **Tests**: 3,348+ passing  
 **Safety**: Zero unsafe, zero clippy warnings  
@@ -283,7 +281,7 @@ These primals represent capabilities that emerge after NUCLEUS is deployed. They
 ### 2.1 petalTongue - Representation Primal
 
 **Domain**: Universal multi-modal user interface  
-**Lines**: ~10K Rust (multi-modal UI: terminal, web, headless)  
+{{ entity_metrics(name="petaltongue") }}  
 **Version**: 1.3.0
 
 petalTongue is the face. ecoPrimals was originally API-first, AI-mediated — "bring your own AI." But humans sometimes need to see things. petalTongue provides visual, terminal, web, and headless interfaces to the ecosystem without coupling any specific UI framework to the primal architecture.
@@ -299,7 +297,7 @@ Accessibility is not an afterthought — it is the design. Sighted users see gra
 ### 2.2 rhizoCrypt - Ephemeral Memory Primal
 
 **Domain**: Content-addressed DAG engine for working memory  
-**Lines**: ~8K Rust (BLAKE3 DAG, lock-free concurrency)  
+{{ entity_metrics(name="rhizocrypt") }}  
 **Tests**: 509/509 passing (100%)  
 **Coverage**: 83.92%  
 **Safety**: Zero unsafe blocks
@@ -319,7 +317,7 @@ When ephemeral data needs to become permanent, rhizoCrypt **dehydrates** it — 
 ### 2.3 sweetGrass - Attribution Primal
 
 **Domain**: Semantic provenance and fair attribution  
-**Lines**: ~9K Rust (9 crates, W3C PROV-O, Braid attribution)  
+{{ entity_metrics(name="sweetgrass") }}  
 **Tests**: 496/496 passing (100%)  
 **Coverage**: 78.39%  
 **Safety**: Zero unsafe blocks (`#![forbid(unsafe_code)]` in all 9 crates)
@@ -339,7 +337,7 @@ sweetGrass combines the deepest provenance feature set in the Memory & Attributi
 ### 2.4 LoamSpine - Permanence Primal
 
 **Domain**: Immutable linear ledger for selective permanence  
-**Lines**: ~10K Rust (Spine ledger, Loam certificates, Infant Discovery)  
+{{ entity_metrics(name="loamspine") }}  
 **Tests**: 416 passing (100%)  
 **Coverage**: 77.68%  
 **Safety**: Zero unsafe blocks, zero clippy warnings (pedantic mode)
@@ -359,12 +357,12 @@ rhizoCrypt handles ephemeral working memory — session state that can be discar
 ### 2.5 skunkBat - Defense Primal
 
 **Domain**: Defensive network security  
-**Lines**: 7,366 Rust (intentionally small — auditable defensive surface)  
+{{ entity_metrics(name="skunkbat") }} — intentionally small, auditable defensive surface  
 **Coverage**: 87.37% (core modules: 90-100%)
 
 skunkBat is the immune system. A skunk's defense is warning before escalation. A bat's defense is echolocation — sensing the environment without touching it. skunkBat warns and senses; it does not attack.
 
-**Why it exists**: A sovereign system that connects to the internet needs defense. But defense in a sovereign system has a constraint: the defender must not become a surveillance tool. skunkBat enforces this **by design, not by policy**: it analyzes connection metadata (source, frequency, timing, patterns) but structurally cannot read message content. The codebase is intentionally small (7,366 lines, 48 tests) — a security system should be simple enough to audit completely.
+**Why it exists**: A sovereign system that connects to the internet needs defense. But defense in a sovereign system has a constraint: the defender must not become a surveillance tool. skunkBat enforces this **by design, not by policy**: it analyzes connection metadata (source, frequency, timing, patterns) but structurally cannot read message content. The codebase is intentionally small ({{ entity_stat(name="skunkbat", stat="loc_display") }} lines, {{ entity_stat(name="skunkbat", stat="tests_display") }} tests) — a security system should be simple enough to audit completely.
 
 **Five threat types**: Genetic (unknown lineage via BearDog), Topology (unusual connection patterns), Behavioral (statistical baseline deviation), Intrusion (port scanning signatures), Resource (memory/CPU/bandwidth abuse).
 
@@ -379,6 +377,7 @@ skunkBat is the immune system. A skunk's defense is warning before escalation. A
 ### 3.1 sourDough — Scaffolding & Packaging
 
 **Domain**: Primal scaffolding, genomeBin packaging, ecosystem CLI tooling  
+{{ entity_metrics(name="sourdough") }}  
 **Classification**: Meta-primal — generates primals but does not run as a NUCLEUS service at runtime
 
 sourDough is the starter culture. `sourdough scaffold` generates a new primal skeleton with correct IPC, capability, and genomeBin structure — the same way a sourdough starter provides the culture that makes bread rise. It also handles genomeBin packaging, producing the deployable binary artifacts that flow into plasmidBin. Generated primals do not depend on sourDough at runtime; it is a build-time tool that enforces ecosystem conventions structurally rather than by documentation.
@@ -403,6 +402,7 @@ These three repositories are active codebases, scyBorg-licensed, and will be pub
 #### bingoCube — Human-Verifiable Cryptographic Commitment
 
 **Domain**: Verifiable commitment, BLAKE3 progressive reveal, visual/audio identity verification  
+{{ entity_metrics(name="bingocube") }}  
 **Repository**: ecoPrimals/bingoCube — publishing soon
 
 bingoCube bridges the gap between mathematical proof and human trust. Cryptographic commitments are hash strings — correct, but meaningless to humans. bingoCube uses BLAKE3 progressive reveal (commit → partial reveal → full reveal) to generate visual and audio identity verification patterns: a "bingo card" that a human can check without understanding cryptography. You don't need to read hex to verify identity. Visual verification patterns are human-recognizable; tonal fingerprints provide audio identity. Integrates with BearDog identity and Dark Forest discovery.
@@ -437,12 +437,18 @@ benchScale measures how primals scale — individually and in composition. It pr
 | sporeGarden products | 3 (esotericWebb, helixVision, blueFish) |
 | Binary distribution | [plasmidBin](https://github.com/ecoPrimals/plasmidBin) — 18 entries (12 primals + 6 springs) |
 | License | **scyBorg** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
-| Total tests | ~25,000+ passing across ecosystem |
+| Primal Rust LOC | {{ total_stat(stat="primal_loc_display") }} (measured via tokei, {{ total_stat(stat="measured_date") }}) |
+| Spring Rust LOC | {{ total_stat(stat="spring_loc_display") }} (8 springs, measured via tokei) |
+| Total Rust LOC | {{ total_stat(stat="total_loc_display") }} |
+| WGSL shaders | {{ total_stat(stat="wgsl_files") }} files, {{ total_stat(stat="wgsl_lines_display") }} lines |
+| Primal test functions | {{ total_stat(stat="primal_tests_display") }} |
+| Spring test functions | {{ total_stat(stat="spring_tests_display") }} |
+| Total test functions | {{ total_stat(stat="total_tests_display") }} |
 | Development time | ~6-8 months |
 | Developer count | 1 (with AI assistance) |
 | C dependencies | Zero (entire ecosystem) |
 | Unsafe code blocks | Near zero across all production code |
-| Languages | Rust (all application code) |
+| Languages | Rust (all application code), WGSL (GPU shaders) |
 | IPC protocol | JSON-RPC 2.0 (universal) |
 | Platforms | Linux, macOS, Android, Windows, FreeBSD, illumos, WASM |
 

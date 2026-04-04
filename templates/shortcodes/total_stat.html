@@ -1,0 +1,4 @@
+{# Render an aggregate stat from extra.totals.
+   Usage: {{ total_stat(stat="total_loc_display") }}
+   Output: 3.2M #}
+{% set val = config.extra.totals[stat] | default(value="?") %}{{ val }}

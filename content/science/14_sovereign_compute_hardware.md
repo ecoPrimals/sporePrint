@@ -12,8 +12,6 @@ primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["airspring", "groundspring", "hotspring"]
 +++
 
-# Sub-Thesis 14: Sovereign Compute Hardware — Precision Tiers, Market Economics, and the Science They Unlock
-
 **Date:** March 30, 2026 (updated — deep debt evolution complete, Exp 130-131)
 **Status:** Hardware profiled on Strandgate (dual EPYC, RX 6950 XT + RTX 3090). 4,065+ tests passing. Market survey complete. **L10 ROOT CAUSE DEFINITIVE (Exp 122).** FECS firmware survives warm handoff via livepatch (Exp 125-127). GPU lifecycle wired into ember/glowplug daemon RPC layer. Puzzle box matrix (Exp 128) — parallel K80+Titan V solution tracks. **Fleet: 2× Titan V + RTX 5070 (GB206, Blackwell) + K80**. **AMD GCN5 DRM: 6/6 PASS**. **RTX 5070 Blackwell DRM** (SM120). **iommufd/cdev VFIO** (kernel 6.2+). **Triangle architecture:** coralReef↔toadStool↔barraCuda trio. 131+ experiments across 2 GPU architectures. **Deep debt evolution complete:** Python→Rust migration (5 scripts→coralctl), nvidia-smi→nvml-wrapper, virsh→virt crate, sh-printf→libc::fork, RegisterMap+LockedAlloc RAII consolidation, uvm_compute split, boot config from glowplug.toml, hardcoded paths→capability-based.
 **Domain:** Computational physics × hardware architecture × sovereign computing

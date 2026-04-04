@@ -12,8 +12,6 @@ primals = ["barracuda", "biomeos", "coralreef", "petaltongue", "songbird", "swee
 springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
-# Paper 13: Sovereign Human Health Computing — Per-Person Translation of PK/PD, Microbiome, Biosignal, and Endocrine Pipelines
-
 **Spring**: healthSpring (V35)
 **Domain**: Human Health × Pharmacology × Microbiome × Biosignal × Endocrinology × NLME × Clinical Translation × Comparative Medicine × Drug Discovery × biomeOS Niche Deployment
 **License**: AGPL-3.0-or-later

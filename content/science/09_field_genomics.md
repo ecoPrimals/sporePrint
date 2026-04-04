@@ -12,8 +12,6 @@ primals = ["barracuda", "beardog", "biomeos", "nestgate", "toadstool"]
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-# Sub-Thesis 09: Sovereign Field Genomics — Nanopore Sequencing + Neuromorphic Edge Classification
-
 **Date:** March 1, 2026
 **Status:** Architecture defined — all computational components validated independently. NPU live on AKD1000 (wetSpring Exp193-195, airSpring Exp028-029). 16S sovereign pipeline operational (wetSpring Exp184-185). ESN classifiers validated on hardware. **V84**: 256 experiments, 6,569+ checks, 93 ToadStool primitives, 26 CPU domains + 21 GPU domains validated, Python parity proven (15 domains bit-identical to SciPy), unidirectional streaming (0.10ms overhead). NestGate NCBI pipeline operational (ESearch/ESummary/EFetch). biomeOS NUCLEUS local deployment ready (`biomeos nucleus start --mode node`). **V85**: Genomic Vault organ model (Exp259) — consent-gated encrypted storage with Merkle provenance chain for MinION data sovereignty. Vault module treats genomic data as a personal organ (consent tickets, sensitivity hierarchy, tamper-evident audit). Sovereign cipher/hash/signing placeholders ready for BearDog absorption (ChaCha20-Poly1305, Ed25519, BLAKE3). NUCLEUS deployed with all 6 primals READY on Eastgate (Exp258). 260 experiments, 6,656+ checks. Awaiting sequencer hardware (MinION Mk1D or Mk1C) for end-to-end integration.
 **Domain:** Environmental genomics, field sequencing, edge inference, adaptive sampling

@@ -12,8 +12,6 @@ primals = ["barracuda", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "primalspring", "wetspring"]
 +++
 
-# Sub-Thesis 25: Self-Tuning Simulation — Physics-Validated Parameter Discovery for Lattice QCD
-
 **Date:** March 27, 2026
 **Status:** Phases 1-4 complete. Production validated: Nf=2 and Nf=2+1 at 4⁴/8⁴ via GPU RHMC (Exp 101). `production_rhmc_flow` binary integrates RHMC + gradient flow (Exp 103). 16⁴ runs in progress. NPU bridge pending.
 **Domain:** Lattice QCD × adaptive algorithms × neuromorphic computing × reproducible science

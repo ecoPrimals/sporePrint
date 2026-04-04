@@ -13,7 +13,6 @@ springs = ["primalspring"]
 +++
 
 <!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
-# Sub-Thesis 24: Esoteric Webb — Primal Composition as Creative Infrastructure
 
 **Date:** March 29, 2026
 **Status:** V6, 342 tests, ~91% coverage, 41 Rust files (~13.5k LOC), no spring dependencies

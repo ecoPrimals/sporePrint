@@ -12,8 +12,6 @@ primals = ["barracuda", "beardog", "biomeos", "loamspine", "nestgate", "petalton
 springs = ["ludospring", "wetspring"]
 +++
 
-# Paper 17: Game Design as Rigorous Science — Validated HCI Models for Interactive Systems
-
 **Status**: Validated — 75 experiments, 1692 checks, 394 tests + 12 proptest + 6 IPC integration, 3 playable prototypes, 3 external control groups, 4 cross-spring, 3 RPGPT + 9 dialogue plane, 4 Games@Home, 1 trio, 1 extraction shooter, 1 composable viz, 6 lysogeny, 1 fermenting, 5 cross-spring provenance, 24 IPC capabilities (10 local, 14 external), cross-ecosystem deep debt V23 (zero `#[allow()]` — `#[expect(reason)]` curated dictionary, zero-panic validation — 14 experiments, `extract_rpc_result()` centralized, `deny.toml wildcards=deny`, XDG socket paths, named unit constants, toadStool direct dispatch, dual-format discovery, Python tolerance mirror, `#![forbid(unsafe_code)]`)
 **Date**: March 16, 2026
 **Literature Anchor**: Csikszentmihalyi (1990, Flow), Fitts (1954), Yannakakis & Togelius (2018, computational game science)

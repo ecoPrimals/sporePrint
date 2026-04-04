@@ -8,8 +8,6 @@ primals = ["barracuda", "beardog", "biomeos", "petaltongue"]
 springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-# ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab
-
 **From:** ecoPrimal — human + synthetic intelligence  
 **Organization:** ecoPrimals
 **Date:** March 17, 2026
@@ -147,7 +145,7 @@ Every intermediate result is signed. The provenance chain maps to
 | **GUI workflow builder** | CLI + validation binaries only | petalTongue provides dashboards; Galaxy-style builder not planned |
 | **Multi-user web interface** | Local/LAN only | biomeOS IPC supports multi-client; web tier not planned |
 | **Instrument control** | Analysis only, no instrument drivers | We analyze what instruments produce, not drive them |
-| **Established community** | One developer, public repos | 27K+ tests, 70+ papers reproduced, all validation executable |
+| **Established community** | One developer, public repos | 3.2M lines of Rust, 107K+ tests, 70+ papers reproduced, all validation executable |
 | **Formal GxP audit** | Architecture maps to GxP; no auditor has reviewed it | Needs institutional partner |
 | **Training/workshops** | No formal curriculum | K-Nome methodology documented; course design planned |
 
@@ -189,7 +187,7 @@ The springs reproduce published, peer-reviewed science as acceptance tests for t
 | Jesse Cahill | Sandia | Algal monitoring | wetSpring | 1 |
 | Chuck Smallwood | Sandia | Bloom surveillance | wetSpring | 1 |
 
-Total across all springs: **70+ papers reproduced, 27,000+ tests, 15,334+ validation checks.** Every reproduction is executable: `cargo run --release --bin validate_*` reproduces the result on your hardware.
+Total across all springs: **70+ papers reproduced, 107,000+ test functions, 614K lines of Rust.** Every reproduction is executable: `cargo run --release --bin validate_*` reproduces the result on your hardware.
 
 ---
 

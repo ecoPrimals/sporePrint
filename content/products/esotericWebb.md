@@ -8,8 +8,6 @@ primals = ["biomeos", "loamspine", "rhizocrypt", "sweetgrass"]
 springs = ["ludospring"]
 +++
 
-# esotericWebb — Cross-Evolution CRPG
-
 **Repository**: [sporeGarden/esotericWebb](https://github.com/sporeGarden/esotericWebb) — **Public**  
 **License**: scyBorg (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)
 

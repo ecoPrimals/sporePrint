@@ -7,8 +7,6 @@ date = 2026-03-17
 primals = ["barracuda", "coralreef"]
 +++
 
-# Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure
-
 **The f64 GPU discovery, the $0.044 run, and what consumer hardware actually does.**
 
 **Last Updated:** March 17, 2026  

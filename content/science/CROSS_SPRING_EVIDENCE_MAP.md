@@ -8,8 +8,6 @@ primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-# Cross-Spring Evidence Map
-
 **How the baseCamp papers draw from multiple springs — and why that matters.**
 
 The baseCamp papers are not single-spring results. Each paper draws validated

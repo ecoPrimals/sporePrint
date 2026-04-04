@@ -8,8 +8,6 @@ primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspi
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
-# Ecosystem Inventory
-
 **Last Updated**: March 31, 2026
 
 Every repository across the three ecoPrimals organizations. All repositories (except whitePaper) are **scyBorg-licensed**: AGPL-3.0-or-later for code, ORC for game mechanics, CC-BY-SA 4.0 for creative/docs. All are intended to be fully public. Repos already on GitHub link directly; the rest are in the process of being source-published, with binaries available now via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
@@ -123,8 +121,10 @@ User-facing products that compose primals into complete applications. Each produ
 | Public repos (today) | 4 primals + 8 springs + 3 infra + 1 product = **16** |
 | Source publishing in progress | ~14 |
 | License | **scyBorg** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
-| Total validated checks | 16,000+ across all springs |
-| Total primal tests | 25,000+ across all primals |
+| Total Rust LOC | 3,209,814 (2.6M primals + 614K springs, measured via tokei April 2026) |
+| WGSL shaders | 952 files, 73,838 lines |
+| Total test functions | 107,143 (98K primals + 9K springs) |
+| C dependencies | Zero (entire ecosystem) |
 
 ---
 

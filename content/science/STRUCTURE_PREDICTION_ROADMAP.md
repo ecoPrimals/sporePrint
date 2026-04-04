@@ -8,8 +8,6 @@ primals = ["barracuda"]
 springs = ["neuralspring", "wetspring"]
 +++
 
-# Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality
-
 > **Note:** helixVision was previously known as coralForge. The codebase originated in
 > [syntheticChemistry/neuralSpring](https://github.com/syntheticChemistry/neuralSpring) and is
 > moving to sporeGarden/helixVision as a

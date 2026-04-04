@@ -8,8 +8,6 @@ primals = ["barracuda", "beardog", "nestgate", "songbird", "squirrel"]
 springs = ["hotspring"]
 +++
 
-# Constrained Evolution: How Environmental Pressure Drives Convergence in Biological and Computational Systems
-
 **Status**: Working paper  
 **Lineage**: Evolved from `constrained_optimization_ai.md` (draft/inoculum)  
 **Last Updated**: February 12, 2026

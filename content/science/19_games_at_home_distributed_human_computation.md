@@ -12,8 +12,6 @@ primals = ["barracuda", "biomeos"]
 springs = ["ludospring"]
 +++
 
-# Paper 19: Games@Home — Distributed Human Computation via Interactive Systems
-
 **Status**: Validated — 4 experiments, 127/127 checks, structural isomorphism proven. exp054 validates composable primal architecture for multi-player coordination (40 checks). ludoSpring V23: platform-agnostic paths, pluggable validation output, zero-panic validation, XDG socket resolution, cross-ecosystem deep debt complete.
 **Date**: March 16, 2026
 **Literature Anchor**: Churchill, Biderman & Herrick (2019, MTG Turing completeness), Shannon (1950, game trees), Pande (Folding@Home), Csikszentmihalyi (1990, Flow), von Ahn (2006, human computation)

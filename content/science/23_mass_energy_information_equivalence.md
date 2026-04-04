@@ -12,8 +12,6 @@ primals = ["barracuda", "songbird"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
-# Paper 23: Mass-Energy-Information Equivalence — Why All Springs Share the Same Math
-
 **Status**: Conceptual framework — unifying hypothesis for cross-spring mathematical identity
 **Date**: March 18, 2026
 **Domain**: Information Theory × Thermodynamics × Computational Architecture × Biology

@@ -12,8 +12,6 @@ primals = ["barracuda"]
 springs = ["airspring", "neuralspring", "wetspring"]
 +++
 
-# Sub-Thesis 08: Neuromorphic Edge Intelligence for Sovereign Agricultural IoT
-
 **Date:** March 2, 2026
 **Status:** **Validated on Live Hardware** — airSpring Exp 028 (35+21 checks) + Exp 029 (32/32 checks), AKD1000 PCIe on Eastgate. Streaming inference at 20,545 Hz, seasonal weight evolution, multi-crop crosstalk detection, LOCOMOS power budget analysis. **Mar 15 update**: airSpring v0.8.8 — 87 experiments, 880 lib + 280 integration + 61 forge tests (0 failures), 91 binaries, barraCuda 0.3.5 (wgpu 28, DF64 precision tier), 25 Tier A, all 20 ops upstream (`BatchedElementwiseF64`), PrecisionRoutingAdvice wired, 14.3× CPU speedup (24/24 parity, 21/21 GPU parity), 146/146 cross-spring evolution, BYOB niche deployment, zero unsafe everywhere, zero-panic 47/47, typed compute_dispatch client.
 **Domain:** Agricultural IoT, neuromorphic computing, precision irrigation, edge inference

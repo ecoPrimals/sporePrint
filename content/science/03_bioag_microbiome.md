@@ -11,8 +11,6 @@ domain = "Microbiology and Ecology"
 springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
-# Sub-Thesis 03: Precision Microbiome Engineering for Perennial Tree Crops
-
 **Date:** March 1, 2026
 **Status:** Proposal with Anderson-derived predictions. Track 4 validates the soil QS framework (9 papers, Exp170-182, 321 checks, full three-tier). Rhizosphere W ≈ 6.7 confirmed deep in extended regime (Exp129). R:P eavesdropper ratio = 2.3:1 in rhizosphere (Exp142). Correlated disorder (biofilm clustering) strengthens QS (Exp151)
 **Domain:** Agricultural microbiology, soil science

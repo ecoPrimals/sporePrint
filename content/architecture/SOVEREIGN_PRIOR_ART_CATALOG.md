@@ -8,8 +8,6 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-# ecoPrimals — Sovereign Prior Art Catalog
-
 ## AGPL-3.0 Commons Inventory
 
 **Date**: March 13, 2026

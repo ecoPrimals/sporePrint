@@ -1,3 +1,8 @@
-{% set key = name | lower | replace(from=" ", to="") %}
+{# Render an entity reference: emoji + display name, linked where possible.
+   Usage: {{ entity(name="beardog") }}  or  {{ entity(name="tower-atomic") }}
+   - primals/springs: auto-links to taxonomy page /primals/{key}/ or /springs/{key}/
+   - other kinds with a `page` field: links to that page
+   - other kinds without `page`: renders as styled tooltip text (no link) #}
+{% set key = name | lower | replace(from=" ", to="") | replace(from="-", to="") %}
 {% set entry = config.extra.entity_registry[key] | default(value=false) %}
-{% if entry %}<a href="/{{ entry.kind }}s/{{ key }}/" class="entity-ref entity-{{ entry.kind }}">{{ entry.emoji }}&nbsp;{{ entry.display }}</a>{% else %}<span class="entity-ref entity-unknown">{{ name }}</span>{% endif %}
+{% if entry %}{% set desc = entry.description | default(value="") %}{% if entry.kind == "primal" or entry.kind == "spring" %}<a href="/{{ entry.kind }}s/{{ key }}/" class="entity-ref entity-{{ entry.kind }}"{% if desc %} title="{{ desc }}"{% endif %}>{{ entry.emoji }}&nbsp;{{ entry.display }}</a>{% elif entry.page is defined %}<a href="{{ entry.page }}" class="entity-ref entity-{{ entry.kind }}"{% if desc %} title="{{ desc }}"{% endif %}>{{ entry.emoji }}&nbsp;{{ entry.display }}</a>{% else %}<span class="entity-ref entity-{{ entry.kind }}"{% if desc %} title="{{ desc }}"{% endif %}>{{ entry.emoji }}&nbsp;{{ entry.display }}</span>{% endif %}{% else %}<span class="entity-ref entity-unknown"><em>{{ name }}</em></span>{% endif %}

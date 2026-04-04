@@ -22,7 +22,7 @@ Last reviewed: April 2026
 
 ### Taxonomy completeness
 - [ ] Audit all 55 pages: grep content for entity names not tagged in front matter
-- [ ] Consider a build-time lint (custom Rust tool or shell script) that warns on untagged references
+- [x] ~~Build-time validation script that checks registry fields and taxonomy cross-references~~ → `scripts/validate_registry.py`
 
 ---
 
@@ -40,12 +40,11 @@ Last reviewed: April 2026
 - [ ] Investigate whether the per-page TOC (right sidebar) and site tree (left sidebar) coexist well on medium screens
 
 ### Semantic validation (the "grammar compiler")
-- [ ] Design a custom Rust pre-build lint that validates:
-  - Entity names in prose match taxonomy tags in front matter
-  - Consistent spelling of entity names (bearDog vs BearDog vs beardog)
-  - Entity registry entries match wateringHole PRIMAL_EMOJI_STANDARD
-  - Metrics in text (test counts, LOC) haven't drifted from source repos
-- [ ] This would run before `zola build` in CI, orthogonal to Zola's link checker
+- [x] ~~Pre-build validation script~~ → `scripts/validate_registry.py` (required fields, totals, taxonomy cross-refs)
+- [x] ~~Entity metrics in one place, referenced everywhere~~ → `config.toml` registry + shortcodes
+- [ ] Entity names in prose match taxonomy tags in front matter (prose scanning)
+- [ ] Entity registry entries match wateringHole PRIMAL_EMOJI_STANDARD (cross-repo check)
+- [ ] Metrics in registry haven't drifted from source repos (automated tokei comparison)
 
 ### petalTongue integration
 - [ ] When petalTongue can consume sporePrint content, add documentation on the modality pipeline
@@ -93,3 +92,10 @@ These were in the original queue and have been completed:
 - [x] ludoSpring stats updated (V30, 75 experiments, 1,692 checks)
 - [x] Narrative rewrite of all primal catalog sections (identity + origin + constraint)
 - [x] Narrative rewrite of all spring catalog sections (identity + headline results + constraint)
+- [x] Entity registry expanded with LOC, tests, files, crates, domain, tier (measured via tokei)
+- [x] Aggregate totals in `[extra.totals]` with sum validation
+- [x] 4 shortcodes: `entity`, `entity_metrics`, `entity_stat`, `total_stat`
+- [x] Landing page stats ribbon reads from `config.extra.totals`
+- [x] All 23 catalog metrics lines replaced with `entity_metrics` shortcode calls
+- [x] Pre-build validation script (`scripts/validate_registry.py`) in CI
+- [x] Real LOC numbers: 3.2M Rust, 107K tests, 952 WGSL (old estimates were 220K)

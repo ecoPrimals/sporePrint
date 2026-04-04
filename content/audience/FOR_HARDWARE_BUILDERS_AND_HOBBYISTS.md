@@ -8,8 +8,6 @@ primals = ["barracuda", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweet
 springs = ["ludospring"]
 +++
 
-# ecoPrimals for Hardware Builders, Hobbyists, and Gamers
-
 **From:** ecoPrimal — human + synthetic intelligence  
 **Organization:** ecoPrimals
 **Date:** March 17, 2026

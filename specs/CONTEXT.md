@@ -12,8 +12,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 - **55 content pages** across 7 sections + landing page
 - **2 taxonomies**: `primals` (14 terms), `springs` (8 terms) — build-validated typed tags
-- **Entity registry** in `config.toml` — canonical display names, emojis, kinds for all entities
-- **1 shortcode**: `entity.html` — renders `{{ entity(name="beardog") }}` as linked emoji+name
+- **Entity registry** in `config.toml` — 59 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
+- **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
+- **Pre-build validation**: `scripts/validate_registry.py` — enforces required fields per kind, checks totals match sums, validates taxonomy tags
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
@@ -89,11 +90,13 @@ sporePrint/
 
 ## What Needs Periodic Refresh
 
-- Check counts in landing page stats ribbon and spring/primal catalogs
-- Squirrel version and test counts (fast-moving)
+Metrics flow from repos → `config.toml` entity registry → shortcodes in content. Update `config.toml` and everything else follows.
+
+- **Entity registry metrics** (LOC, tests, files, crates) — re-run tokei on repos, update `config.toml`
+- **Aggregate totals** in `[extra.totals]` — recompute from individual entries (validator checks these)
+- Squirrel version (fast-moving)
 - plasmidBin inventory (new primals get metadata.toml entries)
 - Science paper descriptions (new experiments get added to springs)
-- Entity registry in config.toml (new primals/springs/products)
 - Taxonomy tags in front matter when new content references new entities
 
 ## Nav Bar Structure

@@ -2,6 +2,10 @@
 
 {% block title %}{{ taxonomy.name | title }} — {{ config.title }}{% endblock title %}
 {% block description %}All {{ taxonomy.name }} referenced across sporePrint.{% endblock description %}
+{% block og_title %}{{ taxonomy.name | title }} — {{ config.title }}{% endblock og_title %}
+{% block og_desc %}All {{ taxonomy.name }} referenced across sporePrint.{% endblock og_desc %}
+{% block tw_title %}{{ taxonomy.name | title }} — {{ config.title }}{% endblock tw_title %}
+{% block tw_desc %}All {{ taxonomy.name }} referenced across sporePrint.{% endblock tw_desc %}
 
 {% block content %}
 <article class="section-page">

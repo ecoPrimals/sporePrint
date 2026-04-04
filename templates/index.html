@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}sporePrint — ecoPrimals: Sovereign Scientific Computing{% endblock title %}
+{% block og_title %}sporePrint — ecoPrimals: Sovereign Scientific Computing{% endblock og_title %}
+{% block og_desc %}Sovereign scientific computing. 3.2M lines of Rust, 107K+ tests, zero C dependencies. The science is executable, the infrastructure is inspectable.{% endblock og_desc %}
+{% block tw_title %}sporePrint — ecoPrimals: Sovereign Scientific Computing{% endblock tw_title %}
+{% block tw_desc %}Sovereign scientific computing. 3.2M lines of Rust, 107K+ tests, zero C dependencies. The science is executable, the infrastructure is inspectable.{% endblock tw_desc %}
 
 {% block content %}
 <article class="landing">
@@ -10,41 +14,37 @@
     <p class="hero-desc">The science is executable. The infrastructure is inspectable.<br>Every claim can be reproduced on commodity hardware.</p>
   </header>
 
-  <div class="content">
-    {{ section.content | safe }}
-  </div>
-
-  {# ── Stats ribbon ── #}
+  {# ── Stats ribbon (immediately after hero — establishes scale) ── #}
   <section class="stats-ribbon" aria-label="Key numbers">
     <div class="stat-card">
-      <span class="stat-num">20,695+</span>
-      <span class="stat-label">validation checks</span>
-      <span class="stat-sub">exit 0 on pass, 8 domains</span>
+      <span class="stat-num">{{ config.extra.totals.total_loc_display }}</span>
+      <span class="stat-label">lines of Rust</span>
+      <span class="stat-sub">zero C dependencies, entire stack</span>
     </div>
     <div class="stat-card">
-      <span class="stat-num">175+</span>
+      <span class="stat-num">{{ config.extra.totals.total_tests_display }}</span>
+      <span class="stat-label">test functions</span>
+      <span class="stat-sub">{{ config.extra.totals.primal_tests_display }} primal + {{ config.extra.totals.spring_tests_display }} spring</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">{{ config.extra.totals.papers_reproduced }}</span>
       <span class="stat-label">papers reproduced</span>
       <span class="stat-sub">from peer-reviewed literature</span>
     </div>
     <div class="stat-card">
-      <span class="stat-num">27,169+</span>
-      <span class="stat-label">tests passing</span>
-      <span class="stat-sub">across all primals</span>
+      <span class="stat-num">{{ config.extra.totals.validation_checks }}</span>
+      <span class="stat-label">validation checks</span>
+      <span class="stat-sub">exit 0 on pass, 8 domains</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">{{ config.extra.totals.wgsl_files }}</span>
+      <span class="stat-label">WGSL shaders</span>
+      <span class="stat-sub">{{ config.extra.totals.wgsl_lines_display }} lines, cross-domain GPU compute</span>
     </div>
     <div class="stat-card">
       <span class="stat-num">$0.044</span>
       <span class="stat-label">per lattice QCD run</span>
       <span class="stat-sub">paper-parity, RTX 4070</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">$15K</span>
-      <span class="stat-label">total hardware</span>
-      <span class="stat-sub">consumer parts, no cloud</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-num">0</span>
-      <span class="stat-label">C dependencies</span>
-      <span class="stat-sub">pure Rust, entire ecosystem</span>
     </div>
   </section>
 
@@ -54,32 +54,32 @@
     <p class="card-section-desc">Not sure where to start? Pick your role.</p>
     <div class="audience-grid">
       <a href="{{ get_url(path='@/audience/FOR_FACULTY_AND_PIS.md') }}" class="audience-card">
-        <span class="audience-icon">🎓</span>
+        <span class="audience-icon" role="img" aria-label="Faculty">🎓</span>
         <strong>Faculty or PI</strong>
         <span>What this replaces in your lab, what it costs, what it produces</span>
       </a>
       <a href="{{ get_url(path='@/audience/FOR_STUDENTS_AND_CORE_FACILITIES.md') }}" class="audience-card">
-        <span class="audience-icon">🔬</span>
+        <span class="audience-icon" role="img" aria-label="Research">🔬</span>
         <strong>Student or Core Facility</strong>
         <span>Setup guide, 16S walkthrough, how to start using the ecosystem</span>
       </a>
       <a href="{{ get_url(path='@/audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md') }}" class="audience-card">
-        <span class="audience-icon">🛠️</span>
+        <span class="audience-icon" role="img" aria-label="Hardware">🛠️</span>
         <strong>Hardware Builder or Hobbyist</strong>
         <span>The f64 Vulkan discovery, what your GPU does, Games@Home</span>
       </a>
       <a href="{{ get_url(path='@/audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md') }}" class="audience-card">
-        <span class="audience-icon">📋</span>
+        <span class="audience-icon" role="img" aria-label="Compliance">📋</span>
         <strong>Compliance or IRB</strong>
         <span>FDA/ISO/HIPAA/GDPR mapping for institutional review</span>
       </a>
       <a href="{{ get_url(path='@/guidestone/_index.md') }}" class="audience-card">
-        <span class="audience-icon">⚛️</span>
+        <span class="audience-icon" role="img" aria-label="Physics">⚛️</span>
         <strong>Physicist or Computational Scientist</strong>
         <span>guideStone — self-leveling benchmark and deployment artifact</span>
       </a>
       <a href="{{ get_url(path='@/audience/CAPABILITY_PARITY_BRIEF.md') }}" class="audience-card">
-        <span class="audience-icon">📊</span>
+        <span class="audience-icon" role="img" aria-label="Overview">📊</span>
         <strong>Not Sure? Start Here</strong>
         <span>Capability parity brief — direct comparison across 8 domains</span>
       </a>
@@ -92,24 +92,24 @@
     <p class="card-section-desc">Three organizations, each with a distinct role. Primals build capabilities. Springs validate the science. Products compose them into tools people use.</p>
     <div class="org-grid">
       <a href="https://github.com/ecoPrimals" class="org-card" rel="noopener">
-        <span class="org-icon">🔧</span>
+        <span class="org-icon" role="img" aria-label="Infrastructure">🔧</span>
         <strong>ecoPrimals</strong>
         <span class="org-role">Infrastructure</span>
         <span>17 primals + tooling — cryptography, networking, compute, storage, AI, composition</span>
         <span class="org-link">→ <em>Full catalog</em></span>
       </a>
       <a href="https://github.com/syntheticChemistry" class="org-card" rel="noopener">
-        <span class="org-icon">🧪</span>
+        <span class="org-icon" role="img" aria-label="Science">🧪</span>
         <strong>syntheticChemistry</strong>
         <span class="org-role">Science Validation</span>
         <span>8 springs — physics, agriculture, biology, health, games, ML, uncertainty, composition</span>
         <span class="org-link">→ <em>Spring catalog</em></span>
       </a>
       <a href="https://github.com/sporeGarden" class="org-card" rel="noopener">
-        <span class="org-icon">🌱</span>
+        <span class="org-icon" role="img" aria-label="Products">🌱</span>
         <strong>sporeGarden</strong>
         <span class="org-role">Products</span>
-        <span>esotericWebb 🔮🕸️ · helixVision 🧬👁️ · blueFish — tools for scientists and creatives</span>
+        <span>esotericWebb · helixVision · blueFish — tools for scientists and creatives</span>
         <span class="org-link">→ <em>Product pages</em></span>
       </a>
     </div>
@@ -146,9 +146,9 @@
     </div>
   </section>
 
-  <footer class="landing-footer">
-    <p>scyBorg — AGPL-3.0-or-later (code) · ORC (game mechanics) · CC-BY-SA 4.0 (creative/docs)</p>
-    <p><strong>ecoPrimal</strong> — human + synthetic intelligence</p>
-  </footer>
+  {# ── Prose content (deep dive for the already-curious) ── #}
+  <div class="content">
+    {{ section.content | safe }}
+  </div>
 </article>
 {% endblock content %}

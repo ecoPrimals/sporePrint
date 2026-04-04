@@ -8,8 +8,6 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 springs = ["groundspring", "healthspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
-# Deployment Model: plasmidBin & BYOB
-
 **Repository**: [github.com/ecoPrimals/plasmidBin](https://github.com/ecoPrimals/plasmidBin) — **Public**
 
 ---

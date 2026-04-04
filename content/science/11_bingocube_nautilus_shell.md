@@ -12,8 +12,6 @@ primals = ["bingocube"]
 springs = ["hotspring", "ludospring"]
 +++
 
-# baseCamp 11: The Nautilus Shell — Evolutionary Reservoir Computing from Bingo Boards
-
 **Date:** March 1, 2026
 **Status:** Implementation complete, validated on QCD trajectory data
 **Spring:** hotSpring (NPU brain architecture), primalTools/bingoCube

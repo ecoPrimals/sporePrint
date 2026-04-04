@@ -12,8 +12,6 @@ primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "sweetgrass"]
 springs = ["ludospring"]
 +++
 
-# Paper 20: Novel Ferment Transcript Economics — Radiating Attribution Through Provenance
-
 **Status**: Active | **Date**: March 16, 2026
 **Depends on**: Papers 17 (Game Design), 18 (RPGPT), 19 (Games@Home)
 **Validated by**: ludoSpring exp061_fermenting (89/89 checks)

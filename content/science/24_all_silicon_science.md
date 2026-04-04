@@ -12,8 +12,6 @@ primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["hotspring"]
 +++
 
-# Sub-Thesis 24: All-Silicon Science — Repurposing Every GPU Hardware Unit for Computational Physics
-
 **Date:** March 30, 2026 (updated — sovereign pipeline operational, AMD scratch memory working)
 **Status:** Silicon saturation profiling **complete**. **Sovereign GPU pipeline operational** — coralReef NVIDIA GPFIFO working on RTX 3090, **AMD scratch/local memory working on RX 6950 XT** (Exp 124: FLAT_SCRATCH prolog fix). TMU PRNG, subgroup reduce, ROP atomics **LIVE** in production RHMC. The sovereign compiler path (coralReef) eliminates wgpu/Vulkan/naga for both vendors, enabling direct access to every silicon unit without driver abstraction overhead. 7/8 HW parity tests pass, 1672 unit tests pass. Capacity: RTX 3090 L=46⁴ dynamical (23.6 GB), RX 6950 XT L=40⁴ (13.5 GB). 870 lib tests, 139 binaries, 99 WGSL shaders.
 **Domain:** GPU hardware architecture × computational physics × all-silicon pipeline

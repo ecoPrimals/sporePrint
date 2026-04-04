@@ -8,8 +8,6 @@ primals = ["barracuda"]
 springs = ["wetspring"]
 +++
 
-# K-Nome: A Pedagogy for Real Science Pipelines
-
 **Audience:** Curriculum committees, MSDS faculty, DS/CS instructors  
 **Context:** Proposing K-Nome as a methodological framework for graduate data science  
 **License:** CC-BY-SA 4.0  

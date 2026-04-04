@@ -12,8 +12,6 @@ primals = ["toadstool"]
 springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
-# Sub-Thesis 02: Extending the Frozen Fossil Record — LTEE, Permafrost, and Agricultural Time Series
-
 **Date:** March 1, 2026
 **Status:** Proposal with quantitative predictions (builds on thesis Ch. 14). Anderson anomaly catalog complete (Exp143: 9 anomalies, 3 genuine NP solutions). W_c = 16.26 ± 0.95 now quantified (Exp150). Correlated disorder effects quantified (Exp151). Dilution amplification (W_eff = W/occupancy) validated (Exp137). Track 4 no-till data provides agricultural time-series test bed (Exp170-178). **helixVision** (formerly coralForge, neuralSpring S94): sovereign structure prediction engine for LTEE structural evolution analysis — AlphaFold2/3 primitives validated (Py 62/62, Rs 55/55, GPU 37/37 = 154 checks). See `helixVision/06_LTEE_APPLICATION.md` for full pipeline.
 **Domain:** Evolutionary biology, microbial genomics, structural biology

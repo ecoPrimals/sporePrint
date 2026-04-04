@@ -8,8 +8,6 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-# Evolution Timeline: 27 Days, Seven Domains, 15,000+ Checks
-
 **The velocity of the ecoPrimals springs is evidence for the K-Nome methodology.**
 
 This document is a timestamped record of how quickly validated,

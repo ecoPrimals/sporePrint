@@ -8,8 +8,6 @@ primals = ["barracuda", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-# MSU Asset Acceleration: How University Infrastructure Plugs into Validated Pipelines
-
 **Audience:** MSU faculty, ICER, Genomics Core, Pharm & Tox, ADDRC  
 **Context:** Mapping existing MSU infrastructure to ecoPrimals validated pipelines  
 **License:** CC-BY-SA 4.0  

@@ -8,8 +8,6 @@ primals = ["barracuda", "squirrel"]
 springs = ["airspring", "groundspring", "wetspring"]
 +++
 
-# K-NOME Programming
-
 **Knowledge-Numeric Observed & Mentored Evolutionary Programming**
 
 A pre-thesis writeup naming and formalizing the operational methodology behind ecoPrimals.

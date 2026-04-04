@@ -8,8 +8,6 @@ primals = ["barracuda", "beardog", "toadstool"]
 springs = ["healthspring", "wetspring"]
 +++
 
-# ecoPrimals for Students, Lab Technicians, and Core Facilities
-
 **From:** ecoPrimal — human + synthetic intelligence  
 **Organization:** ecoPrimals
 **Date:** March 17, 2026

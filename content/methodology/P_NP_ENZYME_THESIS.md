@@ -4,8 +4,6 @@ description = "Theoretical extension — enzymes as evidence that P != NP"
 date = 2026-03-17
 +++
 
-# The Generation-Verification Asymmetry: Biological Evidence for a Physical Law of Computation
-
 **Status**: Working thesis  
 **Lineage**: Extends the constrained evolution framework (`CONSTRAINED_EVOLUTION_FORMAL.md`)  
 **Last Updated**: March 3, 2026

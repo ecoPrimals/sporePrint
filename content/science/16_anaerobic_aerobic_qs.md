@@ -12,8 +12,6 @@ primals = ["barracuda"]
 springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
-# Paper 16: Anaerobic-Aerobic QS Phase Transition — Microbial Signaling Across Oxygen Regimes
-
 **Status**: Stage 1 in progress — computational foundation complete (V108). **neuralSpring Paper 027 benchmark COMPLETE (S142)**: ESN methane yield predictor, 36/36 CPU + 23/23 bC/gT PASS
 **Date**: March 10, 2026
 **Literature Anchor**: Wei Liao (ADREC, MSU BAE)

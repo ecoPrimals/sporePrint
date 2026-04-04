@@ -12,8 +12,6 @@ primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "squirrel", "sweetgr
 springs = ["groundspring", "ludospring", "wetspring"]
 +++
 
-# Paper 18: RPGPT — Sovereign RPG Engine with Ingestible Rulesets and Provenance-Backed World State
-
 **Status**: Architecture validated — exp045 validates ruleset control systems (49 checks: PF2e, FATE, Cairn), exp046 validates text adventure DAG (33 checks), exp047 validates MTG card provenance (23 checks). exp053 proves anti-cheat = chain-of-custody thesis with 12 fraud types across 3 tiers. ludoSpring V23: session decomposition, typed `TransitionIssue` enum, pluggable `ValidationSink`, toadStool direct dispatch, zero-panic validation (groundSpring V109), `#[expect(reason)]` dictionary, `deny.toml`, 9 RPGPT dialogue plane experiments (321 checks).
 **Date**: March 16, 2026
 **Literature Anchor**: Gygax & Arneson (1974, tabletop RPG structure), Cook (Pathfinder 2e, 3-action economy), Csikszentmihalyi (1990, Flow), Yannakakis & Togelius (2018, computational game science)

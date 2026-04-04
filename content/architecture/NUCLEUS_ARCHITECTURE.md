@@ -7,8 +7,6 @@ date = 2026-03-31
 primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
 +++
 
-# NUCLEUS Composition Model
-
 NUCLEUS is not a single binary. It is the **emergent state** when foundation primals are running and coordinated by biomeOS on a gate. This page describes how individual primals compose into a coherent system through named patterns, semantic routing, and cryptographic trust.
 
 ---

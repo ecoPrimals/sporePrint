@@ -12,8 +12,6 @@ primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweetgr
 springs = ["ludospring", "wetspring"]
 +++
 
-# Paper 21: Sovereign Sample Provenance — Field-to-Publication Chain-of-Custody
-
 **Status**: Active | **Date**: March 13, 2026
 **Depends on**: Papers 04 (Sentinels), 09 (Field Genomics), 16 (Anaerobic QS), 20 (NFT Economics)
 **Validated by**: ludoSpring exp062_field_sample_provenance (39/39 checks), exp064_beardog_signed_chain (39/39 checks), exp065_cross_domain_fraud (74/74 checks)

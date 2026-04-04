@@ -36,122 +36,600 @@ org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
 
+# ── Measured 2026-04-04 via tokei (primals + springs pulled and counted) ──
+# Update procedure: pull all repos, run tokei, update numbers here.
+# Shortcodes and templates read from this registry — update once, propagates everywhere.
+
+# ── Primals ──────────────────────────────────────────────────────────────
+
 [extra.entity_registry.beardog]
 display = "BearDog"
 emoji = "🐻🐕"
 kind = "primal"
+domain = "Cryptography"
+loc = 402770
+loc_display = "402,770"
+tests = 16848
+tests_display = "16,848"
+files = 2075
+crates = 60
+repo = "ecoPrimals/bearDog"
+tier = "foundation"
 
 [extra.entity_registry.songbird]
 display = "Songbird"
 emoji = "🎵🐦"
 kind = "primal"
+domain = "Networking"
+loc = 299287
+loc_display = "299,287"
+tests = 12526
+tests_display = "12,526"
+files = 1551
+crates = 31
+repo = "ecoPrimals/songBird"
+tier = "foundation"
 
 [extra.entity_registry.nestgate]
 display = "NestGate"
 emoji = "🪺🔒"
 kind = "primal"
-
-[extra.entity_registry.squirrel]
-display = "Squirrel"
-emoji = "🐿️🧠"
-kind = "primal"
+domain = "Storage"
+loc = 318601
+loc_display = "318,601"
+tests = 14252
+tests_display = "14,252"
+files = 1792
+crates = 25
+repo = "ecoPrimals/nestGate"
+tier = "foundation"
 
 [extra.entity_registry.toadstool]
 display = "ToadStool"
 emoji = "🐸🍄"
 kind = "primal"
+domain = "Compute"
+loc = 439876
+loc_display = "439,876"
+tests = 20188
+tests_display = "20,188"
+files = 2375
+crates = 64
+repo = "ecoPrimals/toadStool"
+tier = "foundation"
+
+[extra.entity_registry.squirrel]
+display = "Squirrel"
+emoji = "🐿️🧠"
+kind = "primal"
+domain = "AI coordination"
+loc = 247349
+loc_display = "247,349"
+tests = 8160
+tests_display = "8,160"
+files = 1004
+crates = 23
+repo = "ecoPrimals/squirrel"
+tier = "foundation"
 
 [extra.entity_registry.biomeos]
 display = "biomeOS"
 emoji = "🌿🖥️"
 kind = "primal"
-
-[extra.entity_registry.barracuda]
-display = "barraCuda"
-emoji = "🐟⚡"
-kind = "primal"
+domain = "Orchestration"
+loc = 200995
+loc_display = "200,995"
+tests = 7479
+tests_display = "7,479"
+files = 752
+crates = 29
+repo = "ecoPrimals/biomeOS"
+tier = "foundation"
 
 [extra.entity_registry.coralreef]
 display = "coralReef"
 emoji = "🪸🌊"
 kind = "primal"
+domain = "Shader compilation"
+loc = 200480
+loc_display = "200,480"
+tests = 4253
+tests_display = "4,253"
+files = 854
+crates = 24
+repo = "ecoPrimals/coralReef"
+tier = "foundation"
+
+[extra.entity_registry.barracuda]
+display = "barraCuda"
+emoji = "🐟⚡"
+kind = "primal"
+domain = "GPU compute"
+loc = 222227
+loc_display = "222,227"
+tests = 4345
+tests_display = "4,345"
+files = 1149
+crates = 11
+repo = "ecoPrimals/barraCuda"
+tier = "foundation"
 
 [extra.entity_registry.petaltongue]
 display = "petalTongue"
 emoji = "🌸👅"
 kind = "primal"
-
-[extra.entity_registry.sweetgrass]
-display = "sweetGrass"
-emoji = "🍯🌾"
-kind = "primal"
+domain = "UI and accessibility"
+loc = 147147
+loc_display = "147,147"
+tests = 6040
+tests_display = "6,040"
+files = 656
+crates = 18
+repo = "ecoPrimals/petalTongue"
+tier = "post-nucleus"
 
 [extra.entity_registry.rhizocrypt]
 display = "rhizoCrypt"
 emoji = "🌱🔐"
 kind = "primal"
+domain = "Content-addressed DAG"
+loc = 33092
+loc_display = "33,092"
+tests = 1029
+tests_display = "1,029"
+files = 133
+crates = 6
+repo = "ecoPrimals/rhizoCrypt"
+tier = "post-nucleus"
+
+[extra.entity_registry.sweetgrass]
+display = "sweetGrass"
+emoji = "🍯🌾"
+kind = "primal"
+domain = "Attribution and provenance"
+loc = 30357
+loc_display = "30,357"
+tests = 1205
+tests_display = "1,205"
+files = 144
+crates = 12
+repo = "ecoPrimals/sweetGrass"
+tier = "post-nucleus"
 
 [extra.entity_registry.loamspine]
 display = "loamSpine"
 emoji = "🪨📖"
 kind = "primal"
+domain = "Permanence ledger"
+loc = 38031
+loc_display = "38,031"
+tests = 1355
+tests_display = "1,355"
+files = 133
+crates = 5
+repo = "ecoPrimals/loamSpine"
+tier = "post-nucleus"
 
 [extra.entity_registry.skunkbat]
 display = "skunkBat"
 emoji = "🦨🦇"
 kind = "primal"
+domain = "Defensive security"
+loc = 4901
+loc_display = "4,901"
+tests = 106
+tests_display = "106"
+files = 29
+crates = 3
+repo = "ecoPrimals/skunkBat"
+tier = "post-nucleus"
+
+[extra.entity_registry.sourdough]
+display = "sourDough"
+emoji = "🍞🧪"
+kind = "primal"
+domain = "Scaffolding and packaging"
+loc = 5904
+loc_display = "5,904"
+tests = 235
+tests_display = "235"
+files = 29
+crates = 4
+repo = "ecoPrimals/sourDough"
+tier = "meta"
 
 [extra.entity_registry.bingocube]
 display = "bingoCube"
 emoji = "🎲🧊"
 kind = "primal"
+domain = "Verifiable commitment"
+loc = 4708
+loc_display = "4,708"
+tests = 53
+tests_display = "53"
+files = 20
+crates = 5
+repo = "ecoPrimals/bingoCube"
+tier = "tooling"
+
+# ── Springs ──────────────────────────────────────────────────────────────
 
 [extra.entity_registry.hotspring]
 display = "hotSpring"
 emoji = "🔥♨️"
 kind = "spring"
+domain = "Physics and materials"
+loc = 116653
+loc_display = "116,653"
+tests = 989
+tests_display = "989"
+files = 395
+crates = 2
+repo = "syntheticChemistry/hotSpring"
 
 [extra.entity_registry.airspring]
 display = "airSpring"
 emoji = "🌬️♨️"
 kind = "spring"
+domain = "Agriculture and field science"
+loc = 60050
+loc_display = "60,050"
+tests = 1362
+tests_display = "1,362"
+files = 274
+crates = 2
+repo = "syntheticChemistry/airSpring"
 
 [extra.entity_registry.wetspring]
 display = "wetSpring"
 emoji = "💧♨️"
 kind = "spring"
+domain = "Microbiology and metagenomics"
+loc = 162948
+loc_display = "162,948"
+tests = 2017
+tests_display = "2,017"
+files = 698
+crates = 4
+repo = "syntheticChemistry/wetSpring"
 
 [extra.entity_registry.groundspring]
 display = "groundSpring"
 emoji = "⛰️♨️"
 kind = "spring"
+domain = "Sensor noise and inverse problems"
+loc = 36874
+loc_display = "36,874"
+tests = 1164
+tests_display = "1,164"
+files = 179
+crates = 4
+repo = "syntheticChemistry/groundSpring"
 
 [extra.entity_registry.neuralspring]
 display = "neuralSpring"
 emoji = "🧠♨️"
 kind = "spring"
+domain = "Neural networks and structure prediction"
+loc = 113515
+loc_display = "113,515"
+tests = 1425
+tests_display = "1,425"
+files = 514
+crates = 3
+repo = "syntheticChemistry/neuralSpring"
 
 [extra.entity_registry.healthspring]
 display = "healthSpring"
 emoji = "❤️♨️"
 kind = "spring"
+domain = "Pharmacokinetics and human health"
+loc = 46835
+loc_display = "46,835"
+tests = 917
+tests_display = "917"
+files = 260
+crates = 87
+repo = "syntheticChemistry/healthSpring"
 
 [extra.entity_registry.ludospring]
 display = "ludoSpring"
 emoji = "🎮♨️"
 kind = "spring"
+domain = "Game science and HCI"
+loc = 57249
+loc_display = "57,249"
+tests = 734
+tests_display = "734"
+files = 235
+crates = 102
+repo = "syntheticChemistry/ludoSpring"
 
 [extra.entity_registry.primalspring]
 display = "primalSpring"
 emoji = "🧬♨️"
 kind = "spring"
+domain = "Primal composition and deploy graphs"
+loc = 19965
+loc_display = "19,965"
+tests = 461
+tests_display = "461"
+files = 113
+crates = 69
+repo = "syntheticChemistry/primalSpring"
+
+# ── Products ─────────────────────────────────────────────────────────────
 
 [extra.entity_registry.esotericwebb]
 display = "esotericWebb"
 emoji = "🔮🕸️"
 kind = "product"
+domain = "Sovereign creative tool"
+repo = "sporeGarden/esotericWebb"
 
 [extra.entity_registry.helixvision]
 display = "helixVision"
 emoji = "🧬👁️"
 kind = "product"
+domain = "Protein structure prediction"
+repo = "sporeGarden/helixVision"
+
+# ── Compositions ──────────────────────────────────────────────────────────
+# Named primal interaction patterns — what emerges when specific primals coordinate.
+
+[extra.entity_registry.toweratomic]
+display = "Tower Atomic"
+emoji = "🏗️🔐"
+kind = "composition"
+description = "BearDog + Songbird → Pure Rust HTTPS (crypto + TLS + network)"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.nodeatomic]
+display = "Node Atomic"
+emoji = "🏗️💻"
+kind = "composition"
+description = "Tower + ToadStool + barraCuda → hardware-aware compute with GPU math"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.nestatomic]
+display = "Nest Atomic"
+emoji = "🏗️🪺"
+kind = "composition"
+description = "Tower + NestGate → secure content-addressed storage"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.nucleus]
+display = "NUCLEUS"
+emoji = "⚛️🧬"
+kind = "composition"
+description = "Full primal composition — all foundation primals + Squirrel, coordinated by biomeOS"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.rootpulse]
+display = "RootPulse"
+emoji = "🌿💓"
+kind = "composition"
+description = "Distributed version control emerging from the Provenance Trio + NestGate + Songbird + BearDog"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.provenancetrio]
+display = "Provenance Trio"
+emoji = "🔗🌱"
+kind = "composition"
+description = "rhizoCrypt (ephemeral) + loamSpine (permanent) + sweetGrass (attribution) — the memory stack"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.plasmodium]
+display = "Plasmodium"
+emoji = "🫠🌐"
+kind = "composition"
+description = "Multi-gate collective — 2+ bonded NUCLEUS instances with workload routing"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.darkforest]
+display = "Dark Forest"
+emoji = "🌑🌲"
+kind = "composition"
+description = "biomeOS zero-metadata discovery protocol — beacons indistinguishable from noise"
+page = "/architecture/nucleus-architecture/"
+
+# ── Concepts ─────────────────────────────────────────────────────────────
+# Named concepts, standards, and patterns referenced across the ecosystem.
+
+[extra.entity_registry.guidestone]
+display = "guideStone"
+emoji = "🪨✅"
+kind = "concept"
+description = "Verification class — self-proving, reproducible, reference-traceable computation"
+page = "/guidestone/"
+
+[extra.entity_registry.guidepost]
+display = "guidePost"
+emoji = "🪨🧭"
+kind = "concept"
+description = "Planned philosophy/ethics repository — guideStone proves computation, guidePost points the way"
+
+[extra.entity_registry.basecamp]
+display = "baseCamp"
+emoji = "⛺📄"
+kind = "concept"
+description = "Cross-spring paper program — from paper reproduction to real exploration (25+ papers)"
+page = "/science/"
+
+[extra.entity_registry.metalforge]
+display = "metalForge"
+emoji = "🔨🔥"
+kind = "concept"
+description = "Evolution context where springs work on hardware concepts — GPU, CPU, NPU dispatch"
+
+[extra.entity_registry.neuralapi]
+display = "Neural API"
+emoji = "🧠🔌"
+kind = "concept"
+description = "biomeOS semantic capability routing — 170+ translations across 16 domains"
+page = "/architecture/nucleus-architecture/"
+
+[extra.entity_registry.byob]
+display = "BYOB"
+emoji = "📦🔧"
+kind = "concept"
+description = "Bring Your Own Binaries — products consume pre-built primal binaries, never source"
+page = "/architecture/deployment-model/"
+
+[extra.entity_registry.genomebin]
+display = "genomeBin"
+emoji = "🧬📦"
+kind = "concept"
+description = "Deployable primal binary with metadata, checksums, and capability declarations"
+page = "/architecture/deployment-model/"
+
+[extra.entity_registry.ecobin]
+display = "ecoBin"
+emoji = "♻️📦"
+kind = "concept"
+description = "A primal binary that is pure Rust, zero C, cross-platform, runs without install"
+page = "/architecture/deployment-model/"
+
+[extra.entity_registry.unibin]
+display = "UniBin"
+emoji = "1️⃣📦"
+kind = "concept"
+description = "One binary, multiple modes via subcommands — the primal binary architecture"
+
+[extra.entity_registry.fieldmouse]
+display = "fieldMouse"
+emoji = "🐭📡"
+kind = "concept"
+description = "Minimal deployable structure — smallest atomic/chimera for embedded, sensor, or edge niches"
+
+[extra.entity_registry.scyborg]
+display = "scyBorg"
+emoji = "⚖️🔓"
+kind = "concept"
+description = "Triple copyleft: AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (docs)"
+page = "/architecture/ecosystem-inventory/"
+
+[extra.entity_registry.lysogeny]
+display = "Lysogeny Protocol"
+emoji = "🦠📖"
+kind = "concept"
+description = "Area denial through open AGPL prior art — published innovations prevent patents"
+
+[extra.entity_registry.paperparity]
+display = "Paper Parity"
+emoji = "📄✓"
+kind = "concept"
+description = "Spring output matches published paper results within named tolerances"
+
+[extra.entity_registry.nft]
+display = "Novel Ferment Transcript"
+emoji = "🧫📜"
+kind = "concept"
+description = "Memory-bound digital object — provenance-tracked artifact with attribution chains"
+
+[extra.entity_registry.niche]
+display = "Niche"
+emoji = "🌿📋"
+kind = "concept"
+description = "A biomeOS BYOB deployment — primals composed via deploy graph for a specific purpose"
+
+[extra.entity_registry.deploygraph]
+display = "Deploy Graph"
+emoji = "📊🔗"
+kind = "concept"
+description = "TOML DAG defining germination order and capability wiring for a niche"
+
+[extra.entity_registry.chimera]
+display = "Chimera"
+emoji = "🦁🐍"
+kind = "concept"
+description = "Fused multi-primal binary with unified API — rare, intentional, single-binary composition"
+
+[extra.entity_registry.germination]
+display = "Germination"
+emoji = "🌱⏳"
+kind = "concept"
+description = "Starting a primal until its IPC socket is ready — biomeOS monitors via deploy graphs"
+
+[extra.entity_registry.constrainedevolution]
+display = "Constrained Evolution"
+emoji = "🧬🔒"
+kind = "concept"
+description = "Core methodology — environmental constraints drive specialization, not predetermined solutions"
+page = "/methodology/constrained-evolution-formal/"
+
+# ── Infrastructure repos ─────────────────────────────────────────────────
+
+[extra.entity_registry.sporeprint]
+display = "sporePrint"
+emoji = "🍄🖨️"
+kind = "infra"
+description = "Public-facing website and verification portal — primals.eco"
+page = "/"
+
+[extra.entity_registry.wateringhole]
+display = "wateringHole"
+emoji = "💧🕳️"
+kind = "infra"
+description = "Shared ecosystem standards, glossary, IPC protocols, leverage guides"
+repo = "ecoPrimals/wateringHole"
+
+[extra.entity_registry.whitepaper]
+display = "whitePaper"
+emoji = "📄✍️"
+kind = "infra"
+description = "Research documentation — baseCamp papers, gen3/gen4 architecture, onboarding"
+repo = "ecoPrimals/whitePaper"
+
+[extra.entity_registry.plasmidbin]
+display = "plasmidBin"
+emoji = "🧬📦"
+kind = "infra"
+description = "Binary distribution surface — pre-built primal binaries, checksummed and versioned"
+page = "/architecture/deployment-model/"
+repo = "ecoPrimals/plasmidBin"
+
+# ── Organizations ────────────────────────────────────────────────────────
+
+[extra.entity_registry.ecoprimals]
+display = "ecoPrimals"
+emoji = "🔧🦎"
+kind = "org"
+description = "Infrastructure organization — 17 primals + tooling"
+page = "https://github.com/ecoPrimals"
+
+[extra.entity_registry.syntheticchemistry]
+display = "syntheticChemistry"
+emoji = "🧪⚗️"
+kind = "org"
+description = "Science validation organization — 8 springs"
+page = "https://github.com/syntheticChemistry"
+
+[extra.entity_registry.sporegarden]
+display = "sporeGarden"
+emoji = "🌱🏡"
+kind = "org"
+description = "Products organization — tools for scientists and creatives"
+page = "https://github.com/sporeGarden"
+
+# ── Aggregate stats (computed from above, for templates) ──
+
+[extra.totals]
+primal_loc = 2595725
+primal_loc_display = "2,595,725"
+spring_loc = 614089
+spring_loc_display = "614,089"
+total_loc = 3209814
+total_loc_display = "3.2M"
+primal_tests = 98074
+primal_tests_display = "98K"
+spring_tests = 9069
+spring_tests_display = "9K"
+total_tests = 107143
+total_tests_display = "107K+"
+wgsl_files = 952
+wgsl_lines = 73838
+wgsl_lines_display = "74K"
+validation_checks = "20,695+"
+papers_reproduced = "175+"
+measured_date = "2026-04-04"

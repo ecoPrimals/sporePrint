@@ -2,6 +2,10 @@
 
 {% block title %}{{ term.name }} — {{ config.title }}{% endblock title %}
 {% block description %}All sporePrint pages referencing {{ term.name }}.{% endblock description %}
+{% block og_title %}{{ term.name }} — {{ config.title }}{% endblock og_title %}
+{% block og_desc %}All sporePrint pages referencing {{ term.name }}.{% endblock og_desc %}
+{% block tw_title %}{{ term.name }} — {{ config.title }}{% endblock tw_title %}
+{% block tw_desc %}All sporePrint pages referencing {{ term.name }}.{% endblock tw_desc %}
 
 {% block content %}
 {% set key = term.name | lower | replace(from=" ", to="") %}

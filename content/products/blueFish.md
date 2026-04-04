@@ -8,8 +8,6 @@ primals = ["beardog", "biomeos", "nestgate"]
 springs = ["wetspring"]
 +++
 
-# blueFish — Sovereign Data Pipeline
-
 **Repository**: sporeGarden/blueFish (moving from syntheticChemistry — repo pending)  
 **License**: scyBorg (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)
 

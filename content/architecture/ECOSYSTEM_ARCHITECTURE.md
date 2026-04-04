@@ -7,8 +7,6 @@ date = 2026-03-17
 primals = ["beardog", "barracuda", "biomeos", "loamspine", "nestgate", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
 +++
 
-# ecoPrimals Ecosystem Architecture: From Binary to Bonding
-
 **Status**: Working paper  
 **Lineage**: Technical companion to `CONSTRAINED_EVOLUTION_FORMAL.md`  
 **Last Updated**: February 7, 2026

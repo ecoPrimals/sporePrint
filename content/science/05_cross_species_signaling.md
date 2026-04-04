@@ -11,8 +11,6 @@ domain = "Microbiology and Ecology"
 springs = ["groundspring", "neuralspring", "wetspring"]
 +++
 
-# Sub-Thesis 05: Cross-Species Signaling in Symbiotic Systems
-
 **Date:** March 1, 2026
 **Status:** **Validated** — Cold seep metagenome analysis (Exp144-145: 13 checks, 299,355 QS genes across 170 metagenomes, 34 QS types). luxR phylogeny × geometry overlay (Exp146: 5 checks, 12 lineages). Eavesdropper enrichment confirmed (Exp142: 8 checks, R:P ratios across 6 habitats). Interkingdom QS review (Exp154: 6 checks). Correlated disorder strengthens cross-species QS (Exp151: 8 checks). V59 extension: cold seep sovereign pipeline (Exp185 — 8 checks: 50 synthetic communities, Bray-Curtis dissimilarity matrix, Anderson spectral classification of cold seep biomes); GPU cold seep spectral classification validated (Exp191 G04: 3 checks)
 **Domain:** Symbiotic ecology, interspecies signaling, mutualism

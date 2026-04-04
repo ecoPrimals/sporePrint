@@ -1,0 +1,7 @@
+{# Render a single metric from the entity registry.
+   Usage: {{ entity_stat(name="beardog", stat="loc_display") }}
+   Output: 402,770
+   Available stats: loc, loc_display, tests, tests_display, files, crates, domain, repo, tier #}
+{% set key = name | lower | replace(from=" ", to="") %}
+{% set entry = config.extra.entity_registry[key] | default(value=false) %}
+{% if entry %}{% set val = entry[stat] | default(value="?") %}{{ val }}{% else %}?{% endif %}

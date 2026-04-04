@@ -8,8 +8,6 @@ primals = ["barracuda"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-# How to Start a Spring
-
 **You don't need to know how to code. You need to know how to talk.
 You already do.**
 

@@ -12,8 +12,6 @@ primals = ["beardog", "loamspine", "rhizocrypt", "songbird", "sweetgrass"]
 springs = ["healthspring", "ludospring"]
 +++
 
-# Paper 22: Zero-Knowledge Medical Provenance — Patient-Owned Records with Consent Certificates
-
 **Status**: Active | **Date**: March 13, 2026
 **Depends on**: Papers 12 (Immuno-Anderson), 13 (Sovereign Health), 20 (NFT Economics)
 **Validated by**: ludoSpring exp063_consent_gated_medical (35/35 checks), exp064_beardog_signed_chain (39/39 checks), exp065_cross_domain_fraud (74/74 checks)

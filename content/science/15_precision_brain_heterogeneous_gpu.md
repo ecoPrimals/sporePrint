@@ -12,8 +12,6 @@ primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["hotspring"]
 +++
 
-# Sub-Thesis 15: Self-Routing Precision Brain for Heterogeneous GPU Compute
-
 **Date:** March 11, 2026
 **Status:** **Validated + Live Kokkos Benchmark** — hotSpring v0.6.28, 847 lib tests, bench_precision_eval clean exit, both GPUs profiled. coralReef Iter 30 sovereign validation: 45/46 compile, 12/12 NVVM bypass, FMA lowering (`FmaPolicy::Separate`) unlocks F64Precise via sovereign path. Exp 050-051. toadStool S145 absorbed PrecisionBrain with `PrecisionHint` routing + `NvkZeroGuard`. barraCuda `a012076` absorbed PrecisionBrain/HardwareCalibration/PrecisionTier from hotSpring v0.6.25. **Exp 053**: Live Kokkos parity benchmark validates precision routing in production — DF64 transcendental poisoning bug discovered and fixed (silent zero-force on Ampere proprietary), native f64 fallback engages correctly when `has_nvvm_df64_poisoning_risk()` is true. 12.4× gap vs Kokkos-CUDA dominated by 1:32 f64 rate; safe DF64 exp path is the single biggest unlock.
 **Domain:** GPU computing, precision engineering, hardware discovery

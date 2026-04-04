@@ -8,8 +8,6 @@ primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["hotspring", "wetspring"]
 +++
 
-# Sovereign GPU Pipeline: The Vendor Replacement Story
-
 **What we have already replaced, what we're replacing next, and what the
 end state looks like — a pure Rust scientific GPU stack with zero proprietary
 dependencies.**
@@ -28,7 +26,7 @@ clear, advancing front that already produces paper-parity lattice QCD on a
 $500 consumer GPU.
 
 This is not a research prototype. These are production-grade primals with
-27,169+ combined tests, zero unsafe code, and zero C dependencies in
+107,000+ combined test functions across 3.2 million lines of Rust, zero unsafe code, and zero C dependencies in
 application code.
 
 ---

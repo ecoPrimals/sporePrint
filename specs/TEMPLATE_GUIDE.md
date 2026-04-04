@@ -14,7 +14,13 @@ base.html
 └── taxonomy_single.html    (all pages for a term — extends base)
 
 shortcodes/
-└── entity.html             (inline entity reference — no layout)
+├── entity.html             (inline entity name + emoji link)
+├── entity_metrics.html     (standard Lines: X Rust (Y files, Z crates, W tests) line)
+├── entity_stat.html        (single metric from registry)
+└── total_stat.html         (aggregate metric from [extra.totals])
+
+scripts/
+└── validate_registry.py    (pre-build validation, runs in CI)
 ```
 
 ## `base.html` — The Layout Shell

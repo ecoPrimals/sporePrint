@@ -7,8 +7,6 @@ date = 2026-03-17
 springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
-# Drug Discovery Pipeline: iPSC → HTS → MATRIX → Anderson → Validation
-
 **Audience:** Gonzales lab, ADDRC, MSU Drug Discovery Program  
 **Status:** Computationally validated (329/329 checks) — awaiting wet lab integration  
 **License:** CC-BY-SA 4.0  
