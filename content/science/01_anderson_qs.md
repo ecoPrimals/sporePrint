@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 1
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+primals = ["barracuda", "toadstool"]
+springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 01: Anderson Localization as a Null Hypothesis for Microbial Quorum Sensing

@@ -2,6 +2,10 @@
 title = "ecoPrimals for Hardware Builders, Hobbyists, and Gamers"
 description = "The f64 Vulkan discovery, what your GPU actually does, Games@Home"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweetgrass", "toadstool"]
+springs = ["ludospring"]
 +++
 
 # ecoPrimals for Hardware Builders, Hobbyists, and Gamers

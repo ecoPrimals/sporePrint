@@ -2,6 +2,10 @@
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 description = "All 17 primals and tooling — capabilities, test counts, production status, repository visibility"
 date = 2026-03-31
+
+[taxonomies]
+primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+springs = ["healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # ecoPrimals Primal Catalog: Status, Capabilities, and Achievements

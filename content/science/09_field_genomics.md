@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 9
 domain = "Agriculture and Field Science"
+
+[taxonomies]
+primals = ["barracuda", "beardog", "biomeos", "nestgate", "toadstool"]
+springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 09: Sovereign Field Genomics — Nanopore Sequencing + Neuromorphic Edge Classification

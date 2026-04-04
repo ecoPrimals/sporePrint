@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 10
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["coralreef"]
+springs = ["hotspring"]
 +++
 
 # baseCamp 10: First Dynamical QCD Production on Consumer GPU

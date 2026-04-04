@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ taxonomy.name | title }} — {{ config.title }}{% endblock title %}
+{% block description %}All {{ taxonomy.name }} referenced across sporePrint.{% endblock description %}
+
+{% block content %}
+<article class="section-page">
+  <header class="section-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ taxonomy.name | title }}</span>
+    </nav>
+    <h1>{{ taxonomy.name | title }}</h1>
+    <p class="section-desc">Every {{ taxonomy.name | replace(from="s", to="") }} referenced in sporePrint — click any to see all pages.</p>
+  </header>
+
+  <nav class="page-listing" aria-label="{{ taxonomy.name | title }} index">
+    <ul>
+      {% for term in terms %}
+      {% set key = term.name | lower | replace(from=" ", to="") %}
+      <li>
+        <a href="{{ term.permalink }}">
+          <strong>{% if config.extra.entity_registry[key] %}{{ config.extra.entity_registry[key].emoji }} {{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</strong>
+          <span>{{ term.pages | length }} page{{ term.pages | length | pluralize }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</article>
+{% endblock content %}

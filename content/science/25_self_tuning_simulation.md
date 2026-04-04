@@ -6,6 +6,10 @@ date = 2026-03-30
 [extra]
 paper_number = 25
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["barracuda", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "primalspring", "wetspring"]
 +++
 
 # Sub-Thesis 25: Self-Tuning Simulation — Physics-Validated Parameter Discovery for Lattice QCD

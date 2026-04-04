@@ -6,6 +6,10 @@ date = 2026-03-30
 [extra]
 paper_number = 24
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["barracuda", "coralreef", "toadstool"]
+springs = ["hotspring"]
 +++
 
 # Sub-Thesis 24: All-Silicon Science — Repurposing Every GPU Hardware Unit for Computational Physics

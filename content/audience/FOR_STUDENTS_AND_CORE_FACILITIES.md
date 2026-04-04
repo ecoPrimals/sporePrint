@@ -2,6 +2,10 @@
 title = "ecoPrimals for Students, Lab Technicians, and Core Facilities"
 description = "Setup guide, 16S walkthrough, and how to start using the ecosystem"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "beardog", "toadstool"]
+springs = ["healthspring", "wetspring"]
 +++
 
 # ecoPrimals for Students, Lab Technicians, and Core Facilities

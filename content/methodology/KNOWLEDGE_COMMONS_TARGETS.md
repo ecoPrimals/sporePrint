@@ -2,6 +2,10 @@
 title = "Knowledge Commons Targets: What Others Can Build, and Why It Can't Be Taken Back"
 description = "9 domains ready now with existing primals and public data"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "coralreef", "squirrel", "sweetgrass", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
 # Knowledge Commons Targets: What Others Can Build, and Why It Can't Be Taken Back

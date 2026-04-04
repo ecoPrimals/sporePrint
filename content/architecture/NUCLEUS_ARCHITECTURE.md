@@ -2,6 +2,9 @@
 title = "NUCLEUS Composition Model"
 description = "How primals compose into a system — the atomics ladder, Neural API, deploy graphs, Dark Forest, and Plasmodium."
 date = 2026-03-31
+
+[taxonomies]
+primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
 +++
 
 # NUCLEUS Composition Model

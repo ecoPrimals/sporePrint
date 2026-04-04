@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 11
 domain = "Game Science and Systems"
+
+[taxonomies]
+primals = ["bingocube"]
+springs = ["hotspring", "ludospring"]
 +++
 
 # baseCamp 11: The Nautilus Shell — Evolutionary Reservoir Computing from Bingo Boards

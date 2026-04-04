@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 21
 domain = "Economics and Provenance"
+
+[taxonomies]
+primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweetgrass"]
+springs = ["ludospring", "wetspring"]
 +++
 
 # Paper 21: Sovereign Sample Provenance — Field-to-Publication Chain-of-Custody

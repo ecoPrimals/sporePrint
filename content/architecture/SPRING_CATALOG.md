@@ -2,6 +2,10 @@
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
 description = "All 8 springs — 7 science domains + 1 meta-spring — checks, papers reproduced, cross-spring data flow"
 date = 2026-03-31
+
+[taxonomies]
+primals = ["barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "squirrel", "sweetgrass", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 # ecoPrimals Spring Catalog: Status, Science, and Evolution

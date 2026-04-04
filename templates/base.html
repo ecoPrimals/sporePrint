@@ -28,6 +28,10 @@
         <li><a href="{{ get_url(path='@/methodology/_index.md') }}" {% if current_path is starting_with("/methodology") %}class="active" aria-current="true"{% endif %}>Methodology</a></li>
         <li><a href="{{ get_url(path='@/technical/_index.md') }}" {% if current_path is starting_with("/technical") %}class="active" aria-current="true"{% endif %}>Technical</a></li>
         <li><a href="{{ get_url(path='@/guidestone/_index.md') }}" {% if current_path is starting_with("/guidestone") %}class="active" aria-current="true"{% endif %}>guideStone</a></li>
+        <li><a href="{{ get_url(path='@/products/_index.md') }}" {% if current_path is starting_with("/products") %}class="active" aria-current="true"{% endif %}>Products</a></li>
+        <li class="nav-divider"></li>
+        <li><a href="/primals/" {% if current_path is starting_with("/primals") %}class="active" aria-current="true"{% endif %}>Primals</a></li>
+        <li><a href="/springs/" {% if current_path is starting_with("/springs") %}class="active" aria-current="true"{% endif %}>Springs</a></li>
         <li><a href="https://github.com/ecoPrimals" rel="noopener">GitHub</a></li>
       </ul>
       {% if config.build_search_index %}
@@ -39,9 +43,105 @@
     </div>
   </nav>
 
-  <main id="main" class="site-main">
-    {% block content %}{% endblock content %}
-  </main>
+  <div class="site-layout">
+    <aside class="site-tree" aria-label="Site navigation tree">
+      <details open>
+        <summary>Site Map</summary>
+        <nav>
+          <ul class="tree-root">
+            {% set sec = get_section(path="audience/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/audience") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/audience") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="science/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/science") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/science") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="architecture/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/architecture") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/architecture") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="methodology/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/methodology") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/methodology") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="technical/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/technical") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/technical") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="guidestone/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/guidestone") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/guidestone") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="products/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/products") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/products") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            <li class="tree-divider"></li>
+            <li class="tree-section{% if current_path is starting_with("/primals") %} tree-active{% endif %}">
+              <a href="/primals/">Primals Index</a>
+            </li>
+            <li class="tree-section{% if current_path is starting_with("/springs") %} tree-active{% endif %}">
+              <a href="/springs/">Springs Index</a>
+            </li>
+          </ul>
+        </nav>
+      </details>
+    </aside>
+
+    <main id="main" class="site-main">
+      {% block content %}{% endblock content %}
+    </main>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-inner">

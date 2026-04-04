@@ -6,6 +6,9 @@ date = 2026-03-17
 [extra]
 paper_number = 12
 domain = "Human Health"
+
+[taxonomies]
+springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
 # baseCamp Paper 12: Anderson Localization in Immunological Signaling — Cytokine Propagation, Drug Geometry, and the Fajgenbaum Repurposing Bridge

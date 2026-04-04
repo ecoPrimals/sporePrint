@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 22
 domain = "Human Health"
+
+[taxonomies]
+primals = ["beardog", "loamspine", "rhizocrypt", "songbird", "sweetgrass"]
+springs = ["healthspring", "ludospring"]
 +++
 
 # Paper 22: Zero-Knowledge Medical Provenance — Patient-Owned Records with Consent Certificates

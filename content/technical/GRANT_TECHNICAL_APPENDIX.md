@@ -2,6 +2,10 @@
 title = "Grant Technical Appendix: Validation Evidence by Agency Program"
 description = "Validation evidence by agency program — NIH, NSF, USDA, DOE, ARPA-H"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "beardog", "bingocube", "coralreef", "nestgate", "sweetgrass", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
 # Grant Technical Appendix: Validation Evidence by Agency Program

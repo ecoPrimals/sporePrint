@@ -6,6 +6,10 @@ date = 2026-03-30
 [extra]
 paper_number = 14
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["barracuda", "coralreef", "toadstool"]
+springs = ["airspring", "groundspring", "hotspring"]
 +++
 
 # Sub-Thesis 14: Sovereign Compute Hardware — Precision Tiers, Market Economics, and the Science They Unlock

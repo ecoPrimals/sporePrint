@@ -2,6 +2,10 @@
 title = "Cross-Spring Evidence Map"
 description = "Convergence analysis across all 7 springs — shared mathematical structures, open questions, and cross-domain validation."
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "coralreef", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
 # Cross-Spring Evidence Map

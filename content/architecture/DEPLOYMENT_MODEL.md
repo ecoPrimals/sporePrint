@@ -2,6 +2,10 @@
 title = "Deployment Model: plasmidBin & BYOB"
 description = "How primal binaries are distributed, versioned, and composed — the plasmidBin binary distribution surface and BYOB composition model."
 date = 2026-03-31
+
+[taxonomies]
+primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
+springs = ["groundspring", "healthspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 # Deployment Model: plasmidBin & BYOB

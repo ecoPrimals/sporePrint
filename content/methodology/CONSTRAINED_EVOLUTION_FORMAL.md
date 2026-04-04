@@ -2,6 +2,10 @@
 title = "Constrained Evolution: How Environmental Pressure Drives Convergence in Biological and Computational Systems"
 description = "The core methodology paper — environmental constraints drive specialization toward fitness"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "beardog", "nestgate", "songbird", "squirrel"]
+springs = ["hotspring"]
 +++
 
 # Constrained Evolution: How Environmental Pressure Drives Convergence in Biological and Computational Systems

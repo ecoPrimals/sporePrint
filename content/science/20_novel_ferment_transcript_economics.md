@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 20
 domain = "Economics and Provenance"
+
+[taxonomies]
+primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "sweetgrass"]
+springs = ["ludospring"]
 +++
 
 # Paper 20: Novel Ferment Transcript Economics — Radiating Attribution Through Provenance

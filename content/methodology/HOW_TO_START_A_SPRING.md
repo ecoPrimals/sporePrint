@@ -2,6 +2,10 @@
 title = "How to Start a Spring"
 description = "The operational playbook — you do not need to know how to code"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # How to Start a Spring

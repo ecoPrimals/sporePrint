@@ -2,6 +2,10 @@
 title = "Sovereign GPU Pipeline: The Vendor Replacement Story"
 description = "Vendor replacement story — what is done, what is next, the sovereign stack"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "coralreef", "toadstool"]
+springs = ["hotspring", "wetspring"]
 +++
 
 # Sovereign GPU Pipeline: The Vendor Replacement Story

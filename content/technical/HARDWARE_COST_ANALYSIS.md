@@ -2,6 +2,9 @@
 title = "Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure"
 description = "The f64 Vulkan discovery, $0.044/run, sovereign consumer hardware vs cloud"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "coralreef"]
 +++
 
 # Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure

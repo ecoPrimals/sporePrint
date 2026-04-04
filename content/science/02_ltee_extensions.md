@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 2
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+primals = ["toadstool"]
+springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 02: Extending the Frozen Fossil Record — LTEE, Permafrost, and Agricultural Time Series

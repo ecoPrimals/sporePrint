@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 8
 domain = "Agriculture and Field Science"
+
+[taxonomies]
+primals = ["barracuda"]
+springs = ["airspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 08: Neuromorphic Edge Intelligence for Sovereign Agricultural IoT

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }} — {{ config.title }}{% endblock title %}
+{% block description %}All sporePrint pages referencing {{ term.name }}.{% endblock description %}
+
+{% block content %}
+{% set key = term.name | lower | replace(from=" ", to="") %}
+<article class="section-page">
+  <header class="section-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ config.base_url }}/{{ taxonomy.name }}/">{{ taxonomy.name | title }}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{% if config.extra.entity_registry[key] %}{{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</span>
+    </nav>
+    <h1>{% if config.extra.entity_registry[key] %}{{ config.extra.entity_registry[key].emoji }} {{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</h1>
+    <p class="section-desc">{{ term.pages | length }} page{{ term.pages | length | pluralize }} referencing this {{ taxonomy.name | replace(from="s", to="") }}.</p>
+  </header>
+
+  <nav class="page-listing" aria-label="Pages referencing {{ term.name }}">
+    <ul>
+      {% for page in term.pages %}
+      <li>
+        <a href="{{ page.permalink }}">
+          <strong>{{ page.title }}</strong>
+          {% if page.description %}<span>{{ page.description }}</span>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</article>
+{% endblock content %}

@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 16
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+primals = ["barracuda"]
+springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
 # Paper 16: Anaerobic-Aerobic QS Phase Transition — Microbial Signaling Across Oxygen Regimes

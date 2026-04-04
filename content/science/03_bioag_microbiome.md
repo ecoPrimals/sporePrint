@@ -6,6 +6,9 @@ date = 2026-03-17
 [extra]
 paper_number = 3
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 03: Precision Microbiome Engineering for Perennial Tree Crops

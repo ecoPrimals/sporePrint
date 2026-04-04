@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 7
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["beardog", "biomeos", "barracuda", "coralreef", "songbird"]
+springs = ["groundspring", "hotspring", "neuralspring"]
 +++
 
 # Sub-Thesis 07: Sovereign Warm Dense Matter Simulation on Consumer GPU

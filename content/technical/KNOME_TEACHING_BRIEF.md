@@ -2,6 +2,10 @@
 title = "K-Nome: A Pedagogy for Real Science Pipelines"
 description = "K-NOME as pedagogy for producing real science instead of toy models"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda"]
+springs = ["wetspring"]
 +++
 
 # K-Nome: A Pedagogy for Real Science Pipelines

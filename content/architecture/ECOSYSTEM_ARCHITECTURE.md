@@ -2,6 +2,9 @@
 title = "ecoPrimals Ecosystem Architecture: From Binary to Bonding"
 description = "UniBin/ecoBin/genomeBin ladder, NUCLEUS deployment, bonding model, Neural API"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["beardog", "barracuda", "biomeos", "loamspine", "nestgate", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
 +++
 
 # ecoPrimals Ecosystem Architecture: From Binary to Bonding

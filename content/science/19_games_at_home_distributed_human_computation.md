@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 19
 domain = "Game Science and Systems"
+
+[taxonomies]
+primals = ["barracuda", "biomeos"]
+springs = ["ludospring"]
 +++
 
 # Paper 19: Games@Home — Distributed Human Computation via Interactive Systems

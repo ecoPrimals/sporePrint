@@ -2,6 +2,10 @@
 title = "K-NOME Programming"
 description = "Knowledge-Numeric Observed and Mentored Evolutionary Programming"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "squirrel"]
+springs = ["airspring", "groundspring", "wetspring"]
 +++
 
 # K-NOME Programming

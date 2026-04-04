@@ -1,0 +1,3 @@
+{% set key = name | lower | replace(from=" ", to="") %}
+{% set entry = config.extra.entity_registry[key] | default(value=false) %}
+{% if entry %}<a href="/{{ entry.kind }}s/{{ key }}/" class="entity-ref entity-{{ entry.kind }}">{{ entry.emoji }}&nbsp;{{ entry.display }}</a>{% else %}<span class="entity-ref entity-unknown">{{ name }}</span>{% endif %}

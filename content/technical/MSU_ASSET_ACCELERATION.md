@@ -2,6 +2,10 @@
 title = "MSU Asset Acceleration: How University Infrastructure Plugs into Validated Pipelines"
 description = "How university infrastructure accelerates validated pipelines"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # MSU Asset Acceleration: How University Infrastructure Plugs into Validated Pipelines

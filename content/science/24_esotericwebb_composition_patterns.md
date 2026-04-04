@@ -6,6 +6,10 @@ date = 2026-03-30
 [extra]
 paper_number = 24
 domain = "Game Science and Systems"
+
+[taxonomies]
+primals = ["biomeos", "songbird"]
+springs = ["primalspring"]
 +++
 
 <!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->

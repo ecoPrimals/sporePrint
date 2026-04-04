@@ -2,6 +2,10 @@
 title = "helixVision — Sovereign Structure Prediction"
 description = "AlphaFold2/3-quality protein structure prediction in pure Rust f64 — no cloud, no PyTorch, no CUDA, no data leaves the lab."
 date = 2026-03-31
+
+[taxonomies]
+primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "toadstool"]
+springs = ["neuralspring"]
 +++
 
 # helixVision — Sovereign Structure Prediction

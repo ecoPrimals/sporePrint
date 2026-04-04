@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 4
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+primals = ["barracuda", "toadstool"]
+springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 04: Microbial Sentinels — Community Shifts as Biosensors for Contamination and Disease

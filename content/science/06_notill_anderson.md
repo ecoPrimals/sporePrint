@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 6
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+primals = ["barracuda", "nestgate", "toadstool"]
+springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 06: Anderson Localization as the Mechanism Behind No-Till Soil Health

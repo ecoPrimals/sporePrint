@@ -2,6 +2,10 @@
 title = "Ecosystem Inventory"
 description = "Complete repository inventory across all three ecoPrimals organizations — every repo, its purpose, and current status."
 date = 2026-03-31
+
+[taxonomies]
+primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 # Ecosystem Inventory

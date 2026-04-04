@@ -7,7 +7,14 @@ generate_feeds = true
 feed_filenames = ["atom.xml"]
 minify_html = true
 
-taxonomies = []
+[[taxonomies]]
+name = "primals"
+feed = false
+
+[[taxonomies]]
+name = "springs"
+feed = false
+
 
 [markdown]
 smart_punctuation = true
@@ -28,3 +35,123 @@ author = "ecoPrimal"
 org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
+
+[extra.entity_registry.beardog]
+display = "BearDog"
+emoji = "🐻🐕"
+kind = "primal"
+
+[extra.entity_registry.songbird]
+display = "Songbird"
+emoji = "🎵🐦"
+kind = "primal"
+
+[extra.entity_registry.nestgate]
+display = "NestGate"
+emoji = "🪺🔒"
+kind = "primal"
+
+[extra.entity_registry.squirrel]
+display = "Squirrel"
+emoji = "🐿️🧠"
+kind = "primal"
+
+[extra.entity_registry.toadstool]
+display = "ToadStool"
+emoji = "🐸🍄"
+kind = "primal"
+
+[extra.entity_registry.biomeos]
+display = "biomeOS"
+emoji = "🌿🖥️"
+kind = "primal"
+
+[extra.entity_registry.barracuda]
+display = "barraCuda"
+emoji = "🐟⚡"
+kind = "primal"
+
+[extra.entity_registry.coralreef]
+display = "coralReef"
+emoji = "🪸🌊"
+kind = "primal"
+
+[extra.entity_registry.petaltongue]
+display = "petalTongue"
+emoji = "🌸👅"
+kind = "primal"
+
+[extra.entity_registry.sweetgrass]
+display = "sweetGrass"
+emoji = "🍯🌾"
+kind = "primal"
+
+[extra.entity_registry.rhizocrypt]
+display = "rhizoCrypt"
+emoji = "🌱🔐"
+kind = "primal"
+
+[extra.entity_registry.loamspine]
+display = "loamSpine"
+emoji = "🪨📖"
+kind = "primal"
+
+[extra.entity_registry.skunkbat]
+display = "skunkBat"
+emoji = "🦨🦇"
+kind = "primal"
+
+[extra.entity_registry.bingocube]
+display = "bingoCube"
+emoji = "🎲🧊"
+kind = "primal"
+
+[extra.entity_registry.hotspring]
+display = "hotSpring"
+emoji = "🔥♨️"
+kind = "spring"
+
+[extra.entity_registry.airspring]
+display = "airSpring"
+emoji = "🌬️♨️"
+kind = "spring"
+
+[extra.entity_registry.wetspring]
+display = "wetSpring"
+emoji = "💧♨️"
+kind = "spring"
+
+[extra.entity_registry.groundspring]
+display = "groundSpring"
+emoji = "⛰️♨️"
+kind = "spring"
+
+[extra.entity_registry.neuralspring]
+display = "neuralSpring"
+emoji = "🧠♨️"
+kind = "spring"
+
+[extra.entity_registry.healthspring]
+display = "healthSpring"
+emoji = "❤️♨️"
+kind = "spring"
+
+[extra.entity_registry.ludospring]
+display = "ludoSpring"
+emoji = "🎮♨️"
+kind = "spring"
+
+[extra.entity_registry.primalspring]
+display = "primalSpring"
+emoji = "🧬♨️"
+kind = "spring"
+
+[extra.entity_registry.esotericwebb]
+display = "esotericWebb"
+emoji = "🔮🕸️"
+kind = "product"
+
+[extra.entity_registry.helixvision]
+display = "helixVision"
+emoji = "🧬👁️"
+kind = "product"

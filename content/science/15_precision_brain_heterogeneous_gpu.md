@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 15
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["barracuda", "coralreef", "toadstool"]
+springs = ["hotspring"]
 +++
 
 # Sub-Thesis 15: Self-Routing Precision Brain for Heterogeneous GPU Compute

@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 13
 domain = "Human Health"
+
+[taxonomies]
+primals = ["barracuda", "biomeos", "coralreef", "petaltongue", "songbird", "sweetgrass"]
+springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
 # Paper 13: Sovereign Human Health Computing — Per-Person Translation of PK/PD, Microbiome, Biosignal, and Endocrine Pipelines

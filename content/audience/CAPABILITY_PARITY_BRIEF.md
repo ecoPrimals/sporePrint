@@ -2,6 +2,10 @@
 title = "ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment"
 description = "Domain-by-domain comparison against proprietary tools across 8 scientific domains"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "beardog", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
 # ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment

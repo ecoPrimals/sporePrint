@@ -2,6 +2,10 @@
 title = "esotericWebb — Cross-Evolution CRPG"
 description = "A CRPG that composes primals via JSON-RPC — the first proof that sovereign infrastructure produces real games."
 date = 2026-03-31
+
+[taxonomies]
+primals = ["biomeos", "loamspine", "rhizocrypt", "sweetgrass"]
+springs = ["ludospring"]
 +++
 
 # esotericWebb — Cross-Evolution CRPG

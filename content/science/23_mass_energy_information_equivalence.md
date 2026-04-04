@@ -6,6 +6,10 @@ date = 2026-03-30
 [extra]
 paper_number = 23
 domain = "Physics and Materials"
+
+[taxonomies]
+primals = ["barracuda", "songbird"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 # Paper 23: Mass-Energy-Information Equivalence — Why All Springs Share the Same Math

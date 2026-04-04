@@ -2,6 +2,10 @@
 title = "ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab"
 description = "What ecoPrimals replaces in a lab, what it costs, and what it produces"
 date = 2026-03-17
+
+[taxonomies]
+primals = ["barracuda", "beardog", "biomeos", "petaltongue"]
+springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 # ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab

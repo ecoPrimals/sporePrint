@@ -2,6 +2,10 @@
 title = "blueFish — Sovereign Data Pipeline"
 description = "Sovereign ETL and data pipeline — NCBI integration, format conversion, no cloud lock-in."
 date = 2026-03-31
+
+[taxonomies]
+primals = ["beardog", "biomeos", "nestgate"]
+springs = ["wetspring"]
 +++
 
 # blueFish — Sovereign Data Pipeline

@@ -2,6 +2,9 @@
 title = "Drug Discovery Pipeline: iPSC → HTS → MATRIX → Anderson → Validation"
 description = "Anderson-augmented MATRIX drug repurposing — 329/329 checks"
 date = 2026-03-17
+
+[taxonomies]
+springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
 +++
 
 # Drug Discovery Pipeline: iPSC → HTS → MATRIX → Anderson → Validation

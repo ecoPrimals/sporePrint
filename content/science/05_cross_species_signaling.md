@@ -6,6 +6,9 @@ date = 2026-03-17
 [extra]
 paper_number = 5
 domain = "Microbiology and Ecology"
+
+[taxonomies]
+springs = ["groundspring", "neuralspring", "wetspring"]
 +++
 
 # Sub-Thesis 05: Cross-Species Signaling in Symbiotic Systems

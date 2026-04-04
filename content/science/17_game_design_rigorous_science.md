@@ -6,6 +6,10 @@ date = 2026-03-17
 [extra]
 paper_number = 17
 domain = "Game Science and Systems"
+
+[taxonomies]
+primals = ["barracuda", "beardog", "biomeos", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
+springs = ["ludospring", "wetspring"]
 +++
 
 # Paper 17: Game Design as Rigorous Science — Validated HCI Models for Interactive Systems
