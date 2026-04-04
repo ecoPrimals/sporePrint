@@ -752,5 +752,96 @@ a.entity-ref { color: var(--c-link); }
 a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; text-underline-offset: 2px; }
 .entity-unknown { color: var(--c-text-muted); font-style: italic; }
 
+/* Entity profile (taxonomy_single) */
+.entity-profile {
+  margin: 1.5rem 0 2rem;
+  padding: 1.5rem;
+  background: var(--c-bg-alt);
+  border-radius: 8px;
+  border-left: 4px solid var(--c-accent);
+}
+.entity-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 1.2rem;
+}
+.entity-metrics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.entity-metric {
+  display: flex;
+  flex-direction: column;
+}
+.entity-metric-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--c-accent);
+  line-height: 1.2;
+}
+.entity-metric-label {
+  font-size: 0.85rem;
+  color: var(--c-text-muted);
+}
+.entity-repo {
+  margin: 0.5rem 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+}
+.entity-tier {
+  font-size: 0.9rem;
+  color: var(--c-text-muted);
+  margin: 0.3rem 0;
+}
+.entity-capabilities { margin-top: 1.5rem; }
+.entity-capabilities h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+.cap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.cap-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--c-accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--c-text-muted);
+}
+.cap-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--c-bg-alt);
+  vertical-align: top;
+}
+.cap-table tbody tr:hover { background: var(--c-bg-alt); }
+.cap-category {
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--c-accent);
+  min-width: 8rem;
+}
+.entity-composes { margin-top: 1.5rem; }
+.entity-composes h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.entity-composes p {
+  color: var(--c-text-muted);
+  font-style: italic;
+}
+.entity-pages { margin-top: 2rem; }
+.entity-pages h2 {
+  font-size: 1.2rem;
+  color: var(--c-text-muted);
+  margin-bottom: 1rem;
+}
+
 /* Search result page styles */
 .search-results:empty { display: none; }

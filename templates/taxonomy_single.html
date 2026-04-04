@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}{{ term.name }} — {{ config.title }}{% endblock title %}
-{% block description %}All sporePrint pages referencing {{ term.name }}.{% endblock description %}
+{% block description %}sporePrint reference page for {{ term.name }}.{% endblock description %}
 {% block og_title %}{{ term.name }} — {{ config.title }}{% endblock og_title %}
-{% block og_desc %}All sporePrint pages referencing {{ term.name }}.{% endblock og_desc %}
+{% block og_desc %}sporePrint reference page for {{ term.name }}.{% endblock og_desc %}
 {% block tw_title %}{{ term.name }} — {{ config.title }}{% endblock tw_title %}
-{% block tw_desc %}All sporePrint pages referencing {{ term.name }}.{% endblock tw_desc %}
+{% block tw_desc %}sporePrint reference page for {{ term.name }}.{% endblock tw_desc %}
 
 {% block content %}
 {% set key = term.name | lower | replace(from=" ", to="") %}
+{% set entry = config.extra.entity_registry[key] | default(value=false) %}
 <article class="section-page">
   <header class="section-header">
     <nav class="breadcrumbs" aria-label="Breadcrumbs">
@@ -16,23 +17,95 @@
       <span aria-hidden="true">/</span>
       <a href="{{ config.base_url }}/{{ taxonomy.name }}/">{{ taxonomy.name | title }}</a>
       <span aria-hidden="true">/</span>
-      <span aria-current="page">{% if config.extra.entity_registry[key] %}{{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</span>
+      <span aria-current="page">{% if entry %}{{ entry.display }}{% else %}{{ term.name }}{% endif %}</span>
     </nav>
-    <h1>{% if config.extra.entity_registry[key] %}{{ config.extra.entity_registry[key].emoji }} {{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</h1>
-    <p class="section-desc">{{ term.pages | length }} page{{ term.pages | length | pluralize }} referencing this {{ taxonomy.name | replace(from="s", to="") }}.</p>
+    <h1>{% if entry %}{{ entry.emoji }} {{ entry.display }}{% else %}{{ term.name }}{% endif %}</h1>
+    {% if entry.domain is defined %}<p class="hero-sub">{{ entry.domain }}</p>{% endif %}
   </header>
 
-  <nav class="page-listing" aria-label="Pages referencing {{ term.name }}">
-    <ul>
-      {% for page in term.pages %}
-      <li>
-        <a href="{{ page.permalink }}">
-          <strong>{{ page.title }}</strong>
-          {% if page.description %}<span>{{ page.description }}</span>{% endif %}
-        </a>
-      </li>
+  {# ── Entity profile card ── #}
+  {% if entry %}
+  <section class="entity-profile" aria-label="Entity profile">
+    {% if entry.description is defined %}
+    <p class="entity-desc">{{ entry.description }}</p>
+    {% endif %}
+
+    {% if entry.loc_display is defined %}
+    <div class="entity-metrics-grid">
+      <div class="entity-metric">
+        <span class="entity-metric-num">{{ entry.loc_display }}</span>
+        <span class="entity-metric-label">lines of Rust</span>
+      </div>
+      {% if entry.tests_display is defined %}
+      <div class="entity-metric">
+        <span class="entity-metric-num">{{ entry.tests_display }}</span>
+        <span class="entity-metric-label">test functions</span>
+      </div>
+      {% endif %}
+      {% if entry.files is defined %}
+      <div class="entity-metric">
+        <span class="entity-metric-num">{{ entry.files }}</span>
+        <span class="entity-metric-label">files</span>
+      </div>
+      {% endif %}
+      {% if entry.crates is defined %}
+      <div class="entity-metric">
+        <span class="entity-metric-num">{{ entry.crates }}</span>
+        <span class="entity-metric-label">crates</span>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if entry.repo is defined %}
+    <p class="entity-repo"><a href="https://github.com/{{ entry.repo }}" rel="external">{{ entry.repo }}</a></p>
+    {% endif %}
+
+    {% if entry.tier is defined %}
+    <p class="entity-tier">Tier: <strong>{{ entry.tier }}</strong></p>
+    {% endif %}
+  </section>
+
+  {# ── Capabilities / Primitives ── #}
+  {% if entry.capabilities is defined %}
+  <section class="entity-capabilities" aria-label="Capabilities">
+    <h2>Capabilities</h2>
+    <table class="cap-table">
+      <thead><tr><th>Category</th><th>Primitives</th></tr></thead>
+      <tbody>
+      {% for cap in entry.capabilities %}
+        <tr><td class="cap-category">{{ cap.category }}</td><td>{{ cap.items }}</td></tr>
       {% endfor %}
-    </ul>
-  </nav>
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {# ── Compositions ── #}
+  {% if entry.composes is defined %}
+  <section class="entity-composes" aria-label="Compositions">
+    <h2>Composes Into</h2>
+    <p>{{ entry.composes }}</p>
+  </section>
+  {% endif %}
+
+  {% endif %}
+
+  {# ── Pages referencing this entity ── #}
+  <section class="entity-pages" aria-label="Pages referencing {{ term.name }}">
+    <h2>Referenced in {{ term.pages | length }} page{{ term.pages | length | pluralize }}</h2>
+    <nav class="page-listing">
+      <ul>
+        {% for page in term.pages %}
+        <li>
+          <a href="{{ page.permalink }}">
+            <strong>{{ page.title }}</strong>
+            {% if page.description %}<span>{{ page.description }}</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </section>
 </article>
 {% endblock content %}

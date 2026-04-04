@@ -46,6 +46,7 @@ license_code = "AGPL-3.0-or-later"
 display = "BearDog"
 emoji = "🐻🐕"
 kind = "primal"
+description = "Pure Rust cryptography — hashing, signing, key exchange, TLS, and X.509 certificates with zero C dependencies. Replaces OpenSSL, libsodium, and ring."
 domain = "Cryptography"
 loc = 402770
 loc_display = "402,770"
@@ -55,11 +56,22 @@ files = 2075
 crates = 60
 repo = "ecoPrimals/bearDog"
 tier = "foundation"
+composes = "Tower Atomic (with Songbird), NUCLEUS, RootPulse, Dark Forest"
+capabilities = [
+  { category = "Signatures", items = "Ed25519, ECDSA (P-256, P-384), RSA (PKCS#1 v1.5, PSS)" },
+  { category = "Encryption", items = "ChaCha20-Poly1305, AES-128-GCM, AES-256-GCM" },
+  { category = "Key Exchange", items = "X25519, ECDHE (P-256, P-384)" },
+  { category = "Hashing", items = "BLAKE3, SHA-256, SHA-384, SHA-512, HMAC" },
+  { category = "Identity", items = "Genetic lineage (family/beacon seeds), Dark Forest beacons" },
+  { category = "Onion Routing", items = "Pure Rust Tor v3 (directory, circuit, stream, onion service)" },
+  { category = "Post-Quantum", items = "ML-KEM key encapsulation" },
+]
 
 [extra.entity_registry.songbird]
 display = "Songbird"
 emoji = "🎵🐦"
 kind = "primal"
+description = "Pure Rust networking — TCP/UDP, HTTP/2, WebSocket, mDNS, and IPC sockets. Composes with BearDog for TLS to form a complete HTTPS stack with no C."
 domain = "Networking"
 loc = 299287
 loc_display = "299,287"
@@ -69,11 +81,20 @@ files = 1551
 crates = 31
 repo = "ecoPrimals/songBird"
 tier = "foundation"
+composes = "Tower Atomic (with BearDog), NUCLEUS, RootPulse, Dark Forest, BirdSong protocol"
+capabilities = [
+  { category = "TLS", items = "TLS 1.3 (RFC 8446), TLS 1.2 fallback, protocol detection" },
+  { category = "Discovery", items = "BirdSong encrypted UDP multicast, mDNS/DNS-SD, 6-layer capability strategy" },
+  { category = "NAT Traversal", items = "Pure Rust STUN (RFC 5389), 4-tier: direct → IGD → STUN → relay" },
+  { category = "Dark Forest", items = "Zero metadata leakage discovery, encrypted beacons" },
+  { category = "P2P", items = "Sovereign onion service, circuit building, directory authority" },
+]
 
 [extra.entity_registry.nestgate]
 display = "NestGate"
 emoji = "🪺🔒"
 kind = "primal"
+description = "Content-addressed storage and filesystem — B-tree indices, journal WAL, deduplication, and encryption at rest. Replaces SQLite, LevelDB, and FUSE layers."
 domain = "Storage"
 loc = 318601
 loc_display = "318,601"
@@ -83,11 +104,19 @@ files = 1792
 crates = 25
 repo = "ecoPrimals/nestGate"
 tier = "foundation"
+composes = "Nest Atomic (with Tower), NUCLEUS, RootPulse, federation"
+capabilities = [
+  { category = "Storage", items = "Content-addressed blobs (BLAKE3), deduplication, tiered storage (HDD → SSD → NVMe → RAM)" },
+  { category = "ZFS", items = "Snapshots (100 in 0.17s), compression, quota, pool management" },
+  { category = "Discovery", items = "Isomorphic IPC (Unix/TCP/abstract auto-detect), MCP provider, multi-family sockets" },
+  { category = "Caching", items = "AI model cache for Squirrel (download, store, retrieve via JSON-RPC)" },
+]
 
 [extra.entity_registry.toadstool]
 display = "ToadStool"
 emoji = "🐸🍄"
 kind = "primal"
+description = "Scientific compute engine — f64 linear algebra, FFT, quadrature, ODE/PDE solvers, and Monte Carlo built entirely in Rust. Replaces LAPACK, FFTW, and GSL."
 domain = "Compute"
 loc = 439876
 loc_display = "439,876"
@@ -97,11 +126,19 @@ files = 2375
 crates = 64
 repo = "ecoPrimals/toadStool"
 tier = "foundation"
+composes = "Node Atomic (with Tower), NUCLEUS, Sovereign Compute Pipeline (with barraCuda + coralReef)"
+capabilities = [
+  { category = "Hardware", items = "GPU discovery (sysfs/PCIe), Vulkan SHADER_F64, NPU (Akida 160-unit driver), CPU dispatch" },
+  { category = "Dispatch", items = "Workload queuing, memory management, multi-GPU scheduling" },
+  { category = "Neuromorphic", items = "Pure Rust Akida driver — 160 NPUs, 48-202x faster than CPU, 100x power efficiency vs GPU" },
+  { category = "Precision", items = "Native f64 on consumer GPUs via Vulkan (1:2 throughput, not CUDA's 1:64)" },
+]
 
 [extra.entity_registry.squirrel]
 display = "Squirrel"
 emoji = "🐿️🧠"
 kind = "primal"
+description = "AI coordination and MCP server — tokenisation, embedding, inference routing, and context management. Gives the ecosystem its own AI layer with no Python or PyTorch."
 domain = "AI coordination"
 loc = 247349
 loc_display = "247,349"
@@ -111,11 +148,19 @@ files = 1004
 crates = 23
 repo = "ecoPrimals/squirrel"
 tier = "foundation"
+composes = "Full NUCLEUS, RootPulse (intelligent merge), biomeOS Neural API (ai domain)"
+capabilities = [
+  { category = "Inference", items = "ai.query, ai.complete, ai.chat — multi-provider routing (OpenAI, Anthropic, Ollama, local)" },
+  { category = "MCP", items = "Multi-server coordination, tool discovery, resource management" },
+  { category = "Context", items = "Session management, token counting, context windowing, automatic fallback" },
+  { category = "Sovereign", items = "Local inference via Ollama, zero telemetry by default, DignityGuard ethics checks" },
+]
 
 [extra.entity_registry.biomeos]
 display = "biomeOS"
 emoji = "🌿🖥️"
 kind = "primal"
+description = "Orchestration kernel — process supervision, deploy graphs, IPC bus, Neural API routing, and Dark Forest discovery. The OS layer that composes all other primals."
 domain = "Orchestration"
 loc = 200995
 loc_display = "200,995"
@@ -125,11 +170,20 @@ files = 752
 crates = 29
 repo = "ecoPrimals/biomeOS"
 tier = "foundation"
+composes = "Coordinates all composed systems: RootPulse, Tower Atomic, NUCLEUS, federation, Plasmodium"
+capabilities = [
+  { category = "Neural API", items = "124 semantic capability translations, pathway learning, bidirectional feedback" },
+  { category = "Atomics", items = "Tower, Node, Nest, Full NUCLEUS composition and health validation" },
+  { category = "Lifecycle", items = "Startup ordering, auto-resurrection, post-NUCLEUS primal management" },
+  { category = "Dark Forest", items = "Zero metadata leakage, encrypted beacons, genetic model coordination" },
+  { category = "Plasmodium", items = "Multi-machine meld/split/mix, cross-device federation" },
+]
 
 [extra.entity_registry.coralreef]
 display = "coralReef"
 emoji = "🪸🌊"
 kind = "primal"
+description = "Sovereign GPU compiler — WGSL/SPIR-V/GLSL to native GPU binaries. No LLVM, no Mesa, no vendor SDK. Full f64 transcendental support for NVIDIA SM70-SM89 and AMD RDNA2."
 domain = "Shader compilation"
 loc = 200480
 loc_display = "200,480"
@@ -139,11 +193,19 @@ files = 854
 crates = 24
 repo = "ecoPrimals/coralReef"
 tier = "foundation"
+composes = "Sovereign Compute Pipeline (barraCuda → coralReef → native binary → ToadStool → hardware), Node Atomic, NUCLEUS"
+capabilities = [
+  { category = "Compiler", items = "WGSL → SPIR-V → SASS (SM70-SM89), AMD RDNA2 (GFX1030), full f64 lowering" },
+  { category = "Transcendentals", items = "exp2, log2, sin, cos, sqrt, rcp — instruction-level emission with FMA policy" },
+  { category = "Driver", items = "coralDriver userspace GPU dispatch via DRM ioctl (amdgpu, nouveau/nvidia-drm)" },
+  { category = "Stubs", items = "Pure Rust CFG, BitSet, dataflow, SmallVec, fxhash — zero external deps in compiler core" },
+]
 
 [extra.entity_registry.barracuda]
 display = "barraCuda"
 emoji = "🐟⚡"
 kind = "primal"
+description = "GPU math engine — 800+ production WGSL shaders across 10 scientific domains. Writes the math; coralReef compiles it; ToadStool dispatches it. No CUDA, no ROCm."
 domain = "GPU compute"
 loc = 222227
 loc_display = "222,227"
@@ -153,11 +215,21 @@ files = 1149
 crates = 11
 repo = "ecoPrimals/barraCuda"
 tier = "foundation"
+composes = "Node Atomic (via ToadStool), NUCLEUS compute layer, Sovereign Compute Pipeline"
+capabilities = [
+  { category = "Linear Algebra", items = "GEMM, eigensolvers, SVD, LU, QR, sparse CG" },
+  { category = "Physics", items = "Yukawa force, Velocity Verlet, PBC, PPPM, HFB nuclear, lattice QCD" },
+  { category = "ML", items = "Attention (7 variants), losses, optimizers, ESN reservoir computing" },
+  { category = "Bioinformatics", items = "31 GPU bio ops: kmer, UniFrac, HMM, phylogenetics" },
+  { category = "Special Functions", items = "Bessel, Laguerre, Hermite, erfc, Gamma, Hill kinetics" },
+  { category = "Precision", items = "DF64 double-precision emulation (f32 pairs, ~48-bit mantissa, 9.9x throughput)" },
+]
 
 [extra.entity_registry.petaltongue]
 display = "petalTongue"
 emoji = "🌸👅"
 kind = "primal"
+description = "UI and accessibility — cross-platform rendering, screen reader support, TTS, and multi-modal interfaces. The human face of the ecosystem, designed so a blind user can operate it."
 domain = "UI and accessibility"
 loc = 147147
 loc_display = "147,147"
@@ -167,11 +239,18 @@ files = 656
 crates = 18
 repo = "ecoPrimals/petalTongue"
 tier = "post-nucleus"
+composes = "Post-NUCLEUS face: visualises NUCLEUS health, primal coordination, bonding state"
+capabilities = [
+  { category = "Interface Modes", items = "ui (egui desktop), tui (ratatui terminal), web (Axum), headless (API), status (health)" },
+  { category = "Accessibility", items = "Screen reader, sonified health (5 instruments, spatial stereo), visual alerts, keyboard-only nav" },
+  { category = "Scenarios", items = "Blind, deaf, nonverbal, illiterate, motor disability, deaf-blind — first-class, not afterthoughts" },
+]
 
 [extra.entity_registry.rhizocrypt]
 display = "rhizoCrypt"
 emoji = "🌱🔐"
 kind = "primal"
+description = "Ephemeral content-addressed DAG — Merkle trees, IPLD-compatible blocks, and garbage collection. Handles short-lived data like build artifacts and session state."
 domain = "Content-addressed DAG"
 loc = 33092
 loc_display = "33,092"
@@ -181,11 +260,18 @@ files = 133
 crates = 6
 repo = "ecoPrimals/rhizoCrypt"
 tier = "post-nucleus"
+composes = "Memory & Attribution Stack (with loamSpine + sweetGrass), RootPulse (ephemeral layer)"
+capabilities = [
+  { category = "DAG", items = "Content-addressed (BLAKE3), lock-free concurrency (DashMap), IPLD-compatible" },
+  { category = "Slice Modes", items = "Copy, Loan (auto-revoke), Escrow (conditional), Mirror (sync), Consignment (delegated), Provenance (read-only)" },
+  { category = "Lifecycle", items = "Dehydration to loamSpine for permanence, ephemeral by intent, session-scoped GC" },
+]
 
 [extra.entity_registry.sweetgrass]
 display = "sweetGrass"
 emoji = "🍯🌾"
 kind = "primal"
+description = "Attribution and provenance — tracks authorship, contribution chains, and citation graphs. W3C PROV-O model, Braid fair attribution, GDPR-inspired data rights."
 domain = "Attribution and provenance"
 loc = 30357
 loc_display = "30,357"
@@ -195,11 +281,19 @@ files = 144
 crates = 12
 repo = "ecoPrimals/sweetGrass"
 tier = "post-nucleus"
+composes = "Memory & Attribution Stack (with rhizoCrypt + loamSpine), RootPulse (attribution layer)"
+capabilities = [
+  { category = "Provenance", items = "W3C PROV-O model, 12 role types, derivation chain analysis, recursive attribution" },
+  { category = "Attribution", items = "Braid model (threaded composite provenance), time decay, ~88% compression" },
+  { category = "Privacy", items = "5 GDPR-inspired privacy levels, session dedup + zstd compression" },
+  { category = "Backends", items = "Memory, Sled, PostgreSQL storage backends" },
+]
 
 [extra.entity_registry.loamspine]
 display = "loamSpine"
 emoji = "🪨📖"
 kind = "primal"
+description = "Permanence ledger — append-only Spines with cryptographic commitments, Loam certificates for digital ownership, and inclusion proofs. The long-term memory of the Provenance Trio."
 domain = "Permanence ledger"
 loc = 38031
 loc_display = "38,031"
@@ -209,11 +303,19 @@ files = 133
 crates = 5
 repo = "ecoPrimals/loamSpine"
 tier = "post-nucleus"
+composes = "Memory & Attribution Stack (with rhizoCrypt + sweetGrass), RootPulse (permanence layer)"
+capabilities = [
+  { category = "Ledger", items = "Sovereign append-only Spines (personal, professional, community, public)" },
+  { category = "Certificates", items = "Loam certificates — digital ownership, lending, recursive stacking, waypoint anchoring" },
+  { category = "Discovery", items = "Infant Discovery pattern (Songbird hub, O(n) not O(n²)), DNS SRV + mDNS" },
+  { category = "RPC", items = "Pure Rust RPC (tarpc + JSON-RPC 2.0, no gRPC, no protobuf), zero-copy optimized" },
+]
 
 [extra.entity_registry.skunkbat]
 display = "skunkBat"
 emoji = "🦨🦇"
 kind = "primal"
+description = "Defensive security — warns and senses, does not attack. Analyzes connection metadata but structurally cannot read message content. Intentionally small and fully auditable."
 domain = "Defensive security"
 loc = 4901
 loc_display = "4,901"
@@ -223,11 +325,18 @@ files = 29
 crates = 3
 repo = "ecoPrimals/skunkBat"
 tier = "post-nucleus"
+composes = "Complements Dark Forest (identity privacy) with active threat detection"
+capabilities = [
+  { category = "Threat Types", items = "Genetic (unknown lineage), Topology (unusual patterns), Behavioral (baseline deviation), Intrusion (port scans), Resource (abuse)" },
+  { category = "Response", items = "Graduated: Monitor → Warn → Throttle → Quarantine → Block (user authority required)" },
+  { category = "Constraint", items = "Cannot read content, cannot escalate autonomously — defense without surveillance" },
+]
 
 [extra.entity_registry.sourdough]
 display = "sourDough"
 emoji = "🍞🧪"
 kind = "primal"
+description = "Scaffolding and packaging — project templates, ecoBin packaging, and CI helpers. The meta-primal that helps build, test, and ship all other primals."
 domain = "Scaffolding and packaging"
 loc = 5904
 loc_display = "5,904"
@@ -237,11 +346,18 @@ files = 29
 crates = 4
 repo = "ecoPrimals/sourDough"
 tier = "meta"
+composes = "plasmidBin (produces genomeBin packages), wateringHole (validates structure standards)"
+capabilities = [
+  { category = "Scaffolding", items = "sourdough scaffold — generates primal skeleton with IPC, capability, and genomeBin structure" },
+  { category = "Packaging", items = "genomeBin production, ecoBin wrapping, checksummed binary artifacts" },
+  { category = "Meta", items = "Build-time tool — generated primals do not depend on sourDough at runtime" },
+]
 
 [extra.entity_registry.bingocube]
 display = "bingoCube"
 emoji = "🎲🧊"
 kind = "primal"
+description = "Verifiable commitment scheme — deterministic random draws, sealed-bid mechanics, and provably fair selection for game science and governance experiments."
 domain = "Verifiable commitment"
 loc = 4708
 loc_display = "4,708"
@@ -251,6 +367,12 @@ files = 20
 crates = 5
 repo = "ecoPrimals/bingoCube"
 tier = "tooling"
+composes = "BearDog identity, Dark Forest discovery, ludoSpring game science"
+capabilities = [
+  { category = "Commitment", items = "BLAKE3 progressive reveal (commit → partial → full), sealed-bid mechanics" },
+  { category = "Verification", items = "Visual bingo-card patterns, tonal audio fingerprints — human-verifiable without hex" },
+  { category = "Integration", items = "BearDog identity, Dark Forest discovery, game-science provably fair selection" },
+]
 
 # ── Springs ──────────────────────────────────────────────────────────────
 
@@ -258,6 +380,7 @@ tier = "tooling"
 display = "hotSpring"
 emoji = "🔥♨️"
 kind = "spring"
+description = "Physics and materials science — warm dense matter, lattice QCD, quantum scattering, and GPU-accelerated simulations. Carries the first guideStone-certified deployment artifact."
 domain = "Physics and materials"
 loc = 116653
 loc_display = "116,653"
@@ -266,11 +389,20 @@ tests_display = "989"
 files = 395
 crates = 2
 repo = "syntheticChemistry/hotSpring"
+composes = "Primary GPU science driver for ToadStool/barraCuda validation"
+capabilities = [
+  { category = "Molecular Dynamics", items = "Sarkas Yukawa OCP at paper parity (N=10,000, 80k steps, 0.000% energy drift, $0.044)" },
+  { category = "Nuclear EOS", items = "Full AME2020 (2,042 nuclei, 39x published), HFB nuclear on consumer GPU" },
+  { category = "Lattice QCD", items = "SU(3) HMC + dynamical fermions, 32⁴ β-scan, deconfinement at β=5.69" },
+  { category = "Spectral", items = "Anderson localization (1D/2D/3D), Hofstadter butterfly, Lanczos eigensolver" },
+  { category = "NPU", items = "Akida ESN streaming at 2.8μs/step, 1,000x faster than GPU for streaming" },
+]
 
 [extra.entity_registry.airspring]
 display = "airSpring"
 emoji = "🌬️♨️"
 kind = "spring"
+description = "Agriculture and field science — 57 papers reproduced, FAO-56 ET₀ to 1e-5 parity, 100 Michigan stations at R²=0.97 using only free open APIs."
 domain = "Agriculture and field science"
 loc = 60050
 loc_display = "60,050"
@@ -279,11 +411,19 @@ tests_display = "1,362"
 files = 274
 crates = 2
 repo = "syntheticChemistry/airSpring"
+composes = "ToadStool validation, Penny Irrigation (real-world target), NUCLEUS (30 ecology capabilities)"
+capabilities = [
+  { category = "Evapotranspiration", items = "8 ET₀ methods (FAO-56, Penman-Monteith, Hargreaves), crop coefficients, water balance" },
+  { category = "Real Data", items = "100 Michigan stations (15,300 station-days), R²=0.97, Open-Meteo + NOAA — zero institutional access" },
+  { category = "GPU Pipeline", items = "ET₀→Kc→WB→Yield in one dispatch chain, zero CPU round-trips, 13,000x at atlas scale" },
+  { category = "Cross-Spring", items = "Precision from hotSpring, biology from wetSpring, ML from neuralSpring, uncertainty from groundSpring" },
+]
 
 [extra.entity_registry.wetspring]
 display = "wetSpring"
 emoji = "💧♨️"
 kind = "spring"
+description = "Microbiology and metagenomics — sovereign 16S pipeline (FASTQ→DADA2→taxonomy→UniFrac), 63/63 papers reproduced, 1 runtime dependency (flate2). Replaces Galaxy/QIIME2."
 domain = "Microbiology and metagenomics"
 loc = 162948
 loc_display = "162,948"
@@ -292,11 +432,19 @@ tests_display = "2,017"
 files = 698
 crates = 4
 repo = "syntheticChemistry/wetSpring"
+composes = "ToadStool validation (79 primitives consumed, found log_f64 bug), biomeOS, NestGate (NCBI)"
+capabilities = [
+  { category = "16S Pipeline", items = "FASTQ→quality→merge→dereplicate→DADA2→chimera→taxonomy→diversity→UniFrac — all Rust" },
+  { category = "Chemistry", items = "LC-MS feature extraction, PFAS screening, mzML parsing" },
+  { category = "GPU", items = "1,077x spectral cosine speedup, 79 barraCuda primitives consumed, zero local WGSL" },
+  { category = "Papers", items = "63/63 reproduced — Waters c-di-GMP, Liu genomics, deep-sea metagenomics, Jones PFAS" },
+]
 
 [extra.entity_registry.groundspring]
 display = "groundSpring"
 emoji = "⛰️♨️"
 kind = "spring"
+description = "Uncertainty budget for every other spring — decomposes measurement error, quantifies dominant sources, demonstrates noise propagation through inverse problems. Contributes to every baseCamp paper."
 domain = "Sensor noise and inverse problems"
 loc = 36874
 loc_display = "36,874"
@@ -305,11 +453,19 @@ tests_display = "1,164"
 files = 179
 crates = 4
 repo = "syntheticChemistry/groundSpring"
+composes = "All springs (uncertainty quantification), all baseCamp papers, hotSpring (spectral + QCD inverse)"
+capabilities = [
+  { category = "Decomposition", items = "Signal vs noise, inverse problems, sensing limits, temporal drift, spatial variability" },
+  { category = "Spectral", items = "Anderson localization, Almost-Mathieu operator, transport exponents, band edge analysis" },
+  { category = "Uncertainty", items = "Jackknife (Bazavov QCD), error propagation, noise floor calibration" },
+  { category = "Cross-Spring", items = "airSpring (humidity 66% of ET₀), wetSpring (5,000-read saturation), neuralSpring (sensor noise floors)" },
+]
 
 [extra.entity_registry.neuralspring]
 display = "neuralSpring"
 emoji = "🧠♨️"
 kind = "spring"
+description = "Proves the Isomorphism Theorem — all neural architectures decompose into 6 primitives (GEMM, Attention, Normalization, Nonlinearity, Reduction, Gating). 83.6x faster than Python/NumPy."
 domain = "Neural networks and structure prediction"
 loc = 113515
 loc_display = "113,515"
@@ -318,11 +474,19 @@ tests_display = "1,425"
 files = 514
 crates = 3
 repo = "syntheticChemistry/neuralSpring"
+composes = "biomeOS PathwayLearner, Squirrel (MCP adapter, 14 tools), helixVision protein pipeline"
+capabilities = [
+  { category = "6 Primitives", items = "GEMM, Attention (7 variants), Normalization, Nonlinearity, Reduction, Gating — all WGSL" },
+  { category = "Structure Prediction", items = "AlphaFold2/3 Evoformer, IPA, diffusion, pairformer, confidence — pure Rust f64" },
+  { category = "Papers", items = "25 papers across 4 research groups and 5 disciplines, all decompose into 6 primitives" },
+  { category = "GPU", items = "47 CPU ops promoted to GPU, 384/384 bit-identical multi-GPU results, architecture-independent" },
+]
 
 [extra.entity_registry.healthspring]
 display = "healthSpring"
 emoji = "❤️♨️"
 kind = "spring"
+description = "Human health computing — PK/PD, gut microbiome, biosignal, endocrinology, comparative medicine, drug discovery. Sovereign NLME replaces proprietary NONMEM/Monolix."
 domain = "Pharmacokinetics and human health"
 loc = 46835
 loc_display = "46,835"
@@ -331,11 +495,20 @@ tests_display = "917"
 files = 260
 crates = 87
 repo = "syntheticChemistry/healthSpring"
+composes = "ToadStool validation, NestGate (NCBI clinical data), biomeOS NUCLEUS (distributed health pipeline)"
+capabilities = [
+  { category = "PK/PD", items = "Hill, PBPK, population Monte Carlo, Michaelis-Menten, species-agnostic dosing" },
+  { category = "Microbiome", items = "Anderson gut lattice, C. diff, FMT, SCFA, serotonin, colonization resistance" },
+  { category = "Biosignal", items = "Pan-Tompkins ECG, HRV, SpO2, EDA, arrhythmia classification, multi-channel fusion" },
+  { category = "Drug Discovery", items = "MATRIX scoring, ADDRC HTS screening, iPSC validation pipeline" },
+  { category = "NLME", items = "Sovereign FOCE/SAEM, NCA, diagnostic plots — replaces NONMEM/Monolix" },
+]
 
 [extra.entity_registry.ludospring]
 display = "ludoSpring"
 emoji = "🎮♨️"
 kind = "spring"
+description = "Game science and HCI — 13 foundational models validated against published research. Game genres are interaction architectures, not aesthetic categories."
 domain = "Game science and HCI"
 loc = 57249
 loc_display = "57,249"
@@ -344,11 +517,19 @@ tests_display = "734"
 files = 235
 crates = 102
 repo = "syntheticChemistry/ludoSpring"
+composes = "barraCuda (game math), petalTongue (3 dashboard binaries), biomeOS NUCLEUS, wetSpring (Anderson QS)"
+capabilities = [
+  { category = "HCI Models", items = "Fitts's law, Hick's law, Steering law, GOMS/KLM, Flow theory, DDA, Four Keys to Fun" },
+  { category = "Procedural", items = "Perlin noise, Wave Function Collapse, L-systems, BSP trees, Tufte data-ink" },
+  { category = "Playable", items = "Doom terminal raycaster (110x 60Hz headroom), roguelike explorer — every mechanic traces to a paper" },
+  { category = "Cross-Domain", items = "Engagement metrics generalize to science sessions; fraud detectors work across gaming, science, medical (>80% structural similarity)" },
+]
 
 [extra.entity_registry.primalspring]
 display = "primalSpring"
 emoji = "🧬♨️"
 kind = "spring"
+description = "Meta-spring — validates primal composition, deploy graphs, and cross-gate bonding. If primalSpring passes, the composition model works. If it fails, the error is in the wiring."
 domain = "Primal composition and deploy graphs"
 loc = 19965
 loc_display = "19,965"
@@ -357,6 +538,12 @@ tests_display = "461"
 files = 113
 crates = 69
 repo = "syntheticChemistry/primalSpring"
+composes = "biomeOS (composition testing), plasmidBin (validates packaged artifacts compose), all springs indirectly"
+capabilities = [
+  { category = "Coordination", items = "5 biomeOS patterns validated: Sequential, Parallel, ConditionalDag, Pipeline, Continuous" },
+  { category = "Deploy Graphs", items = "22 validated graphs (18 single-node + 4 multi-node), capability-addressed, topologically sorted" },
+  { category = "BYOB", items = "Verifies that BYOB composition produces expected emergent behavior from binary artifacts" },
+]
 
 # ── Products ─────────────────────────────────────────────────────────────
 
