@@ -40,9 +40,9 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
 | 🌸👅 [petalTongue](https://github.com/ecoPrimals/petalTongue) | The face — 5-mode {{ entity(name="unibin") }} UI (desktop, TUI, web, headless, status) | **Public** | 6,040 |
-| {{ entity(name="rhizocrypt") }} | Scratch pad — ephemeral DAG, 6 slice modes, dehydration to {{ entity(name="loamspine") }} | Source publishing in progress | 509 |
-| {{ entity(name="sweetgrass") }} | Attribution — W3C PROV-O provenance, Braid model, fair credit | Source publishing in progress | 496 |
-| {{ entity(name="loamspine") }} | Fossil record — immutable ledger, Loam certificates, federation | Source publishing in progress | 416 |
+| 🌱🔐 [rhizoCrypt](https://github.com/ecoPrimals/rhizoCrypt) | Scratch pad — ephemeral DAG, 6 slice modes, dehydration to {{ entity(name="loamspine") }} | **Public** | 509 |
+| 🍯🌾 [sweetGrass](https://github.com/ecoPrimals/sweetGrass) | Attribution — W3C PROV-O provenance, Braid model, fair credit | **Public** | 496 |
+| 🪨📖 [loamSpine](https://github.com/ecoPrimals/loamSpine) | Fossil record — immutable ledger, Loam certificates, federation | **Public** | 416 |
 | {{ entity(name="skunkbat") }} | Immune system — metadata-only threat detection, graduated response | Source publishing in progress | — |
 
 ### Tooling & Infrastructure (8)
@@ -118,8 +118,8 @@ User-facing products that compose primals into complete applications. Each produ
 | Infrastructure repos | 4 ({{ entity(name="wateringhole") }}, {{ entity(name="sporeprint") }}, {{ entity(name="plasmidbin") }}, {{ entity(name="whitepaper") }}) |
 | Science springs | 8 (7 domain + 1 meta-spring) |
 | User-facing products | 3 ({{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish) |
-| Public repos (today) | 10 primals + 8 springs + 3 infra + 1 product = **22** |
-| Source publishing in progress | ~8 (bearDog, rhizoCrypt, sweetGrass, loamSpine, skunkBat, agentReagents, benchScale, whitePaper) |
+| Public repos (today) | 13 primals + 8 springs + 3 infra + 1 product = **25** |
+| Source publishing in progress | ~5 (bearDog, skunkBat, agentReagents, benchScale, whitePaper) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
 | Total Rust LOC | 3,209,814 (2.6M primals + 614K springs, measured via tokei April 2026) |
 | WGSL shaders | 952 files, 73,838 lines |

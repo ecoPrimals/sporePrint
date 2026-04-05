@@ -43,13 +43,13 @@ All primals are **{{ entity(name="scyborg") }}-licensed** (AGPL-3.0-or-later for
 | {{ entity(name="coralreef") }} | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) | **Public** |
 | {{ entity(name="barracuda") }} | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) | **Public** |
 | {{ entity(name="petaltongue") }} | [ecoPrimals/petalTongue](https://github.com/ecoPrimals/petalTongue) | **Public** |
-| {{ entity(name="rhizocrypt") }} | ecoPrimals/rhizoCrypt | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
-| {{ entity(name="sweetgrass") }} | ecoPrimals/sweetGrass | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
-| {{ entity(name="loamspine") }} | ecoPrimals/loamSpine | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| {{ entity(name="rhizocrypt") }} | [ecoPrimals/rhizoCrypt](https://github.com/ecoPrimals/rhizoCrypt) | **Public** |
+| {{ entity(name="sweetgrass") }} | [ecoPrimals/sweetGrass](https://github.com/ecoPrimals/sweetGrass) | **Public** |
+| {{ entity(name="loamspine") }} | [ecoPrimals/loamSpine](https://github.com/ecoPrimals/loamSpine) | **Public** |
 | {{ entity(name="skunkbat") }} | ecoPrimals/skunkBat | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
 | {{ entity(name="sourdough") }} | [ecoPrimals/sourDough](https://github.com/ecoPrimals/sourDough) | **Public** |
 
-Ten primals are fully public on GitHub: **songBird**, **nestGate**, **toadStool**, **squirrel**, **biomeOS**, **coralReef**, **barraCuda**, **petalTongue**, **sourDough**, and **bingoCube**. All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
+Thirteen primals are fully public on GitHub: **songBird**, **nestGate**, **toadStool**, **squirrel**, **biomeOS**, **coralReef**, **barraCuda**, **petalTongue**, **sourDough**, **bingoCube**, **rhizoCrypt**, **sweetGrass**, and **loamSpine**. All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
 
 ---
 
@@ -433,7 +433,7 @@ benchScale measures how primals scale — individually and in composition. It pr
 | Post-{{ entity(name="nucleus") }} primals (started) | 5 ({{ entity(name="petaltongue") }}, {{ entity(name="rhizocrypt") }}, {{ entity(name="sweetgrass") }}, {{ entity(name="loamspine") }}, {{ entity(name="skunkbat") }}) |
 | Meta/tooling | 1 ({{ entity(name="sourdough") }}) + 4 infra repos |
 | Additional tooling (publishing soon) | 3 ({{ entity(name="bingocube") }}, agentReagents, benchScale) |
-| Public primal repos | 4 (toadStool, squirrel, {{ entity(name="coralreef") }}, {{ entity(name="barracuda") }}) |
+| Public primal repos | 13 ({{ entity(name="songbird") }}, {{ entity(name="nestgate") }}, {{ entity(name="toadstool") }}, {{ entity(name="squirrel") }}, {{ entity(name="biomeos") }}, {{ entity(name="coralreef") }}, {{ entity(name="barracuda") }}, {{ entity(name="petaltongue") }}, {{ entity(name="sourdough") }}, {{ entity(name="bingocube") }}, {{ entity(name="rhizocrypt") }}, {{ entity(name="sweetgrass") }}, {{ entity(name="loamspine") }}) |
 | {{ entity(name="sporegarden") }} products | 3 ({{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish) |
 | Binary distribution | [plasmidBin](https://github.com/ecoPrimals/plasmidBin) — 18 entries (12 primals + 6 springs) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
