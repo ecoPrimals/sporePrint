@@ -53,9 +53,9 @@ All binaries distributed through {{ entity(name="plasmidbin") }} are under **AGP
 Per AGPL, corresponding source must be obtainable when binaries are
 distributed:
 
-- **Public primals** (toadStool, squirrel, {{ entity(name="coralreef") }}, {{ entity(name="barracuda") }}): source
+- **Public primals** (songBird, nestGate, toadStool, squirrel, biomeOS, {{ entity(name="coralreef") }}, {{ entity(name="barracuda") }}, petalTongue, sourDough, bingoCube): source
   is on GitHub at [github.com/ecoPrimals](https://github.com/ecoPrimals).
-- **Private primals**: source is available on request. Each
+- **Remaining primals** (bearDog, rhizoCrypt, sweetGrass, loamSpine, skunkBat): source is available on request. Each
   `metadata.toml` includes a `[provenance] built_from` field that
   identifies the source tree. Repositories are progressively published as
   primals mature.

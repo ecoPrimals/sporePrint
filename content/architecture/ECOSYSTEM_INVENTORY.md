@@ -25,11 +25,11 @@ These form the [NUCLEUS](@/architecture/NUCLEUS_ARCHITECTURE.md) deployment arch
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
 | 🐻🐕 bearDog | Cryptographic spine — {{ entity(name="toweratomic") }}, {{ entity(name="darkforest") }}, Pure Rust Tor | Source publishing in progress | 5,041 |
-| 🎵🐦 songBird | Nervous system — TLS 1.3, O(n) discovery hub, 4-tier NAT | Source publishing in progress | 1,763 |
-| 🪺🔒 nestGate | Data layer — content-addressed storage, ZFS, isomorphic IPC | Source publishing in progress | 1,474 |
+| 🎵🐦 [songBird](https://github.com/ecoPrimals/songBird) | Nervous system — TLS 1.3, O(n) discovery hub, 4-tier NAT | **Public** | 1,763 |
+| 🪺🔒 [nestGate](https://github.com/ecoPrimals/nestGate) | Data layer — content-addressed storage, ZFS, isomorphic IPC | **Public** | 1,474 |
 | 🐸🍄 [toadStool](https://github.com/ecoPrimals/toadStool) | Compute layer — GPU/NPU/CPU dispatch, f64 discovery | **Public** | 1,000+ |
 | 🐿️🧠 [squirrel](https://github.com/ecoPrimals/squirrel) | AI brain — vendor-agnostic MCP routing, sovereign inference | **Public** | 7,165 |
-| {{ entity(name="biomeos") }} | Conductor — {{ entity(name="neuralapi") }}, {{ entity(name="nucleus") }} composition, {{ entity(name="darkforest") }} | Source publishing in progress | 661+ |
+| 🌿🖥️ [biomeOS](https://github.com/ecoPrimals/biomeOS) | Conductor — {{ entity(name="neuralapi") }}, {{ entity(name="nucleus") }} composition, {{ entity(name="darkforest") }} | **Public** | 661+ |
 | 🪸🌊 [coralReef](https://github.com/ecoPrimals/coralReef) | Sovereign compiler — WGSL to native GPU, no LLVM/Mesa/vendor SDK | **Public** | 3,038 |
 | 🐟⚡ [barraCuda](https://github.com/ecoPrimals/barraCuda) | Math engine — 800+ WGSL shaders, f64 science on consumer GPUs | **Public** | 3,348+ |
 
@@ -39,7 +39,7 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 
 | Primal | Domain | Status | Tests |
 |--------|--------|--------|-------|
-| {{ entity(name="petaltongue") }} | The face — 5-mode {{ entity(name="unibin") }} UI (desktop, TUI, web, headless, status) | Source publishing in progress | — |
+| 🌸👅 [petalTongue](https://github.com/ecoPrimals/petalTongue) | The face — 5-mode {{ entity(name="unibin") }} UI (desktop, TUI, web, headless, status) | **Public** | 6,040 |
 | {{ entity(name="rhizocrypt") }} | Scratch pad — ephemeral DAG, 6 slice modes, dehydration to {{ entity(name="loamspine") }} | Source publishing in progress | 509 |
 | {{ entity(name="sweetgrass") }} | Attribution — W3C PROV-O provenance, Braid model, fair credit | Source publishing in progress | 496 |
 | {{ entity(name="loamspine") }} | Fossil record — immutable ledger, Loam certificates, federation | Source publishing in progress | 416 |
@@ -49,8 +49,8 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 
 | Repository | Purpose | Status |
 |------------|---------|--------|
-| {{ entity(name="sourdough") }} | Starter culture — scaffolds new primals, produces {{ entity(name="genomebin") }} packages | Source publishing in progress |
-| 🎲🔒 {{ entity(name="bingocube") }} | Human trust bridge — BLAKE3 progressive reveal, visual/audio identity verification | Publishing soon |
+| 🍞🧪 [sourDough](https://github.com/ecoPrimals/sourDough) | Starter culture — scaffolds new primals, produces {{ entity(name="genomebin") }} packages | **Public** |
+| 🎲🧊 [bingoCube](https://github.com/ecoPrimals/bingoCube) | Human trust bridge — BLAKE3 progressive reveal, visual/audio identity verification | **Public** |
 | 🧪🤖 agentReagents | Agent chemistry — composable reagent patterns for sovereign AI agents | Publishing soon |
 | ⚖️📊 benchScale | Scaling studies — cross-primal benchmarks, composition cost characterization | Publishing soon |
 | 💧📡 [wateringHole](https://github.com/ecoPrimals/wateringHole) | Ecosystem communications, standards, glossary — shared dev context | **Public** |
@@ -114,12 +114,12 @@ User-facing products that compose primals into complete applications. Each produ
 | Total repositories | ~34 (21 {{ entity(name="ecoprimals") }} + 10 {{ entity(name="syntheticchemistry") }} + 3 {{ entity(name="sporegarden") }}) |
 | Foundation primals | 8 |
 | Post-{{ entity(name="nucleus") }} primals | 5 |
-| Meta/tooling | 1 ({{ entity(name="sourdough") }}) + 3 publishing soon ({{ entity(name="bingocube") }}, agentReagents, benchScale) |
+| Meta/tooling | 3 ({{ entity(name="sourdough") }}, {{ entity(name="bingocube") }}, agentReagents/benchScale publishing soon) |
 | Infrastructure repos | 4 ({{ entity(name="wateringhole") }}, {{ entity(name="sporeprint") }}, {{ entity(name="plasmidbin") }}, {{ entity(name="whitepaper") }}) |
 | Science springs | 8 (7 domain + 1 meta-spring) |
 | User-facing products | 3 ({{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish) |
-| Public repos (today) | 4 primals + 8 springs + 3 infra + 1 product = **16** |
-| Source publishing in progress | ~14 |
+| Public repos (today) | 10 primals + 8 springs + 3 infra + 1 product = **22** |
+| Source publishing in progress | ~8 (bearDog, rhizoCrypt, sweetGrass, loamSpine, skunkBat, agentReagents, benchScale, whitePaper) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
 | Total Rust LOC | 3,209,814 (2.6M primals + 614K springs, measured via tokei April 2026) |
 | WGSL shaders | 952 files, 73,838 lines |

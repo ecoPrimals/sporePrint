@@ -35,21 +35,21 @@ All primals are **{{ entity(name="scyborg") }}-licensed** (AGPL-3.0-or-later for
 | Primal | Repo | Visibility |
 |--------|------|------------|
 | {{ entity(name="beardog") }} | ecoPrimals/bearDog | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
-| {{ entity(name="songbird") }} | ecoPrimals/songBird | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
-| {{ entity(name="nestgate") }} | ecoPrimals/NestGate | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| {{ entity(name="songbird") }} | [ecoPrimals/songBird](https://github.com/ecoPrimals/songBird) | **Public** |
+| {{ entity(name="nestgate") }} | [ecoPrimals/nestGate](https://github.com/ecoPrimals/nestGate) | **Public** |
 | {{ entity(name="toadstool") }} | [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) | **Public** |
 | {{ entity(name="squirrel") }} | [ecoPrimals/squirrel](https://github.com/ecoPrimals/squirrel) | **Public** |
-| {{ entity(name="biomeos") }} | ecoPrimals/biomeOS | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| {{ entity(name="biomeos") }} | [ecoPrimals/biomeOS](https://github.com/ecoPrimals/biomeOS) | **Public** |
 | {{ entity(name="coralreef") }} | [ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) | **Public** |
 | {{ entity(name="barracuda") }} | [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) | **Public** |
-| {{ entity(name="petaltongue") }} | ecoPrimals/petalTongue | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| {{ entity(name="petaltongue") }} | [ecoPrimals/petalTongue](https://github.com/ecoPrimals/petalTongue) | **Public** |
 | {{ entity(name="rhizocrypt") }} | ecoPrimals/rhizoCrypt | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
 | {{ entity(name="sweetgrass") }} | ecoPrimals/sweetGrass | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
 | {{ entity(name="loamspine") }} | ecoPrimals/loamSpine | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
 | {{ entity(name="skunkbat") }} | ecoPrimals/skunkBat | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
-| {{ entity(name="sourdough") }} | ecoPrimals/sourDough | Source publishing in progress (CLI tooling) |
+| {{ entity(name="sourdough") }} | [ecoPrimals/sourDough](https://github.com/ecoPrimals/sourDough) | **Public** |
 
-Four primals are fully public on GitHub: **toadStool**, **squirrel**, **{{ entity(name="coralreef") }}**, and **{{ entity(name="barracuda") }}**. All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
+Ten primals are fully public on GitHub: **songBird**, **nestGate**, **toadStool**, **squirrel**, **biomeOS**, **coralReef**, **barraCuda**, **petalTongue**, **sourDough**, and **bingoCube**. All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
 
 ---
 
