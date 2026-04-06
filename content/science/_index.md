@@ -37,6 +37,7 @@ results on commodity hardware.
 - [12 — Anderson in Immunological Signaling](@/science/12_immunological_anderson.md)
 - [13 — Sovereign Human Health](@/science/13_sovereign_human_health.md)
 - [22 — Zero-Knowledge Medical Provenance](@/science/22_zero_knowledge_medical_provenance.md)
+- [**Gonzales Interactive Explorer**](@/science/gonzales_explorer.md) — IC50, PK decay, tissue geometry, hormesis, cross-species (live charts)
 
 **Neural Networks & Computation** — {{ entity(name="neuralspring") }}, {{ entity(name="groundspring") }}
 
