@@ -32,11 +32,11 @@ Primal Source → cargo build → harvest.sh → plasmidBin (GitHub) → fetch.s
 
 1. **Build**: A primal is compiled from source (musl-static PIE for
    x86_64, aarch64 planned).
-2. **Harvest**: `harvest.sh` checksums the binary, updates `metadata.toml`,
-   creates a `manifest.lock`, and pushes a GitHub Release.
-3. **Fetch**: Consumers run `fetch.sh` (or a product-specific
-   `fetch_primals.sh`) to download from the latest release and verify
-   SHA-256 checksums.
+2. **Harvest**: `harvest.sh` validates the binary (static ELF, stripped),
+   computes blake3 checksums, copies into `primals/`/`springs/`, and
+   updates `checksums.toml`. Optionally pushes a GitHub Release.
+3. **Fetch**: Consumers run `fetch.sh` to download from the latest
+   GitHub Release and verify blake3 checksums (via `b3sum`).
 4. **Deploy**: {{ entity(name="biomeos") }} reads deploy graphs (TOML DAGs) and germinates
    primals from the local `plasmidBin/` directory.
 
@@ -86,7 +86,7 @@ capabilities = ["compute.dispatch", "compute.discover", "ember.route"]
 [builds.x86_64]
 binary = "toadstool-x86_64"
 target = "x86_64-unknown-linux-musl"
-checksum_sha256 = "..."
+checksum_blake3 = "..."
 pie_verified = true
 static_linked = true
 
@@ -111,7 +111,7 @@ after = ["beardog", "songbird"]
 | `[primal]` | Identity: name, version, domain, description, license |
 | `[provenance]` | Where it came from: source tree, build timestamp, git ref |
 | `[compatibility]` | IPC version, capability strings for discovery |
-| `[builds.<arch>]` | Per-architecture: binary name, target triple, SHA-256, static/PIE flags |
+| `[builds.<arch>]` | Per-architecture: binary name, target triple, blake3 checksum, static/PIE flags |
 | `[genomeBin]` | Deployment hints: tier, modes, ports, env vars, service ordering |
 
 ---
