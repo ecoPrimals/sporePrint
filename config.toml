@@ -802,17 +802,17 @@ page = "https://github.com/sporeGarden"
 # ── Aggregate stats (computed from above, for templates) ──
 
 [extra.totals]
-primal_loc = 2595725
-primal_loc_display = "2,595,725"
+primal_loc = 2595723
+primal_loc_display = "2,595,723"
 spring_loc = 614089
 spring_loc_display = "614,089"
-total_loc = 3209814
+total_loc = 3209812
 total_loc_display = "3.2M"
-primal_tests = 98074
+primal_tests = 98078
 primal_tests_display = "98K"
 spring_tests = 9069
 spring_tests_display = "9K"
-total_tests = 107143
+total_tests = 107147
 total_tests_display = "107K+"
 wgsl_files = 952
 wgsl_lines = 73838
