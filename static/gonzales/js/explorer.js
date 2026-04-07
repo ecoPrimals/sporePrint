@@ -276,11 +276,22 @@ function renderProvenancePanel(parent, provenance) {
     addProvRow(content, 'Timestamp', provenance.computation.timestamp);
   }
 
-  // Tier 2
-  if (provenance.tier2) {
-    addProvRow(content, 'rhizoCrypt', provenance.tier2.rhizocrypt_session);
-    addProvRow(content, 'loamSpine', provenance.tier2.loamspine_commit);
-    addProvRow(content, 'sweetGrass', provenance.tier2.sweetgrass_braid);
+  // Trio (witnesses model — falls back to legacy tier2 shape)
+  const trio = provenance.trio || provenance.tier2;
+  if (trio) {
+    addProvRow(content, 'rhizoCrypt', trio.rhizocrypt_session);
+    addProvRow(content, 'loamSpine', trio.loamspine_commit);
+    addProvRow(content, 'sweetGrass', trio.sweetgrass_braid);
+    if (trio.merkle_root) {
+      addProvRow(content, 'Merkle', trio.merkle_root.slice(0, 16) + '…');
+    }
+  }
+
+  // Witnesses
+  if (provenance.witnesses && provenance.witnesses.length > 0) {
+    const wCount = provenance.witnesses.length;
+    const kinds = [...new Set(provenance.witnesses.map(w => w.kind))];
+    addProvRow(content, 'Witnesses', `${wCount} (${kinds.join(', ')})`);
   }
 
   // Tier 3
@@ -379,9 +390,10 @@ function showLineagePopup(pointInfo) {
     if (currentProvenance.guidestone) {
       html += `<div class="lineage-row"><strong>Validated:</strong> ${currentProvenance.guidestone.validation}</div>`;
     }
-    if (currentProvenance.tier2) {
-      html += `<div class="lineage-row"><strong>Session:</strong> ${currentProvenance.tier2.rhizocrypt_session || 'N/A'}</div>`;
-      html += `<div class="lineage-row"><strong>Ledger:</strong> ${currentProvenance.tier2.loamspine_commit || 'N/A'}</div>`;
+    const trioData = currentProvenance.trio || currentProvenance.tier2;
+    if (trioData) {
+      html += `<div class="lineage-row"><strong>Session:</strong> ${trioData.rhizocrypt_session || 'N/A'}</div>`;
+      html += `<div class="lineage-row"><strong>Ledger:</strong> ${trioData.loamspine_commit || 'N/A'}</div>`;
     }
     if (currentProvenance.tier3?.verify_url) {
       html += `<div class="lineage-row"><a href="${currentProvenance.tier3.verify_url}" target="_blank" class="lineage-verify">Verify full chain ↗</a></div>`;
