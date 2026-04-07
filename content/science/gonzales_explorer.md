@@ -540,6 +540,47 @@ data point to trace its lineage.
 .reproduce-links a {
   font-size: 0.8rem;
 }
+
+.trace-source {
+  padding: 0.25rem 0 0.5rem;
+  border-left: 2px solid #7aa2f7;
+  padding-left: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.doi-link {
+  color: #7aa2f7;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.doi-link:hover {
+  text-decoration: underline;
+}
+.chain-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.4rem;
+}
+.chain-step {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+.chain-done {
+  background: rgba(158,206,106,0.15);
+  color: #9ece6a;
+}
+.chain-done::before {
+  content: '\2713 ';
+}
+.chain-pending {
+  background: rgba(224,175,104,0.12);
+  color: #e0af68;
+}
+.chain-pending::before {
+  content: '\25CB ';
+}
 </style>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
