@@ -5,7 +5,7 @@ sort_by = "title"
 template = "science_section.html"
 +++
 
-25 {{ entity(name="basecamp") }} papers organized by domain. Each paper is executable — the
+27 {{ entity(name="basecamp") }} papers organized by domain. Each paper is executable — the
 science is not summarized, it is runnable code that reproduces published
 results on commodity hardware.
 
@@ -45,6 +45,8 @@ results on commodity hardware.
 - [11 — BingoCube Nautilus Shell](@/science/11_bingocube_nautilus_shell.md)
 - [15 — Precision Brain on Heterogeneous GPU](@/science/15_precision_brain_heterogeneous_gpu.md)
 - [24 — All-Silicon Science](@/science/24_all_silicon_science.md)
+- [26 — Neuromorphic Sovereign Driver](@/science/26_neuromorphic_sovereign_driver.md)
+- [27 — Nature Preserve: Applied NPU Science Across 7 Domains](@/science/27_nature_preserve_applied_npu_science.md)
 
 **Game Science & Creative Computing** — {{ entity(name="ludospring") }}
 

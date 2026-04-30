@@ -8,7 +8,7 @@ paper_number = 8
 domain = "Agriculture and Field Science"
 
 [taxonomies]
-primals = ["barracuda"]
+primals = ["barracuda", "toadstool"]
 springs = ["airspring", "neuralspring", "wetspring"]
 +++
 
@@ -17,6 +17,7 @@ springs = ["airspring", "neuralspring", "wetspring"]
 **Domain:** Agricultural IoT, neuromorphic computing, precision irrigation, edge inference
 **Novelty:** First demonstration that neuromorphic (AKD1000) inference at agricultural sensor cadence costs <0.001% of active cycle energy, enabling radical cadence increases without power budget impact. First validated multi-crop classifier hot-swap on spiking NPU. First analytical proof that NPU edge inference is 10.7× more energy-efficient than cloud round-trip for LOCOMOS-style systems.
 **Cross-Spring:** {{ entity(name="airspring") }} v0.8.8 (sensor pipeline, water balance, ET₀, IoT, 25 Tier A ops 0-19 upstream, GPU uncertainty stack, 880 lib + 280 integration + 61 forge tests, 87 experiments, {{ entity(name="nucleus") }} primal, PrecisionRoutingAdvice, {{ entity(name="barracuda") }} 0.3.5 wgpu 28, {{ entity(name="byob") }} niche, zero unsafe everywhere, zero-panic 47/47, compute_dispatch client) × {{ entity(name="wetspring") }} (NPU driver, ESN readout, Anderson QS sentinel inference) × {{ entity(name="neuralspring") }} (ESN classifier, LSTM time series)
+**NPU Driver:** The Akida hardware access described here uses {{ entity(name="rustchip") }} — a standalone pure Rust driver extracted from {{ entity(name="toadstool") }}'s neuromorphic layer. See [Neuromorphic Sovereign Driver](/science/26-neuromorphic-sovereign-driver/) for the driver internals (VFIO, FBZ parser, ioctl fix).
 
 ---
 

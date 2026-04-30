@@ -19,6 +19,7 @@ springs = ["airspring", "groundspring", "hotspring"]
 heterogeneous consumer hardware arrays with per-tier cost/TFLOP analysis for
 lattice QCD, Anderson transport, and molecular dynamics
 **Cross-Spring:** {{ entity(name="hotspring") }} × {{ entity(name="barracuda") }} × {{ entity(name="coralreef") }} × toadStool × {{ entity(name="groundspring") }} × {{ entity(name="airspring") }}
+**NPU Driver:** The neuromorphic (Akida) portion of the heterogeneous pipeline uses {{ entity(name="rustchip") }} — a standalone pure Rust VFIO driver extracted from {{ entity(name="toadstool") }}'s neuromorphic layer. 80 NPUs, 10 MB SRAM, user-level udev. See [Neuromorphic Sovereign Driver](/science/26-neuromorphic-sovereign-driver/).
 
 ---
 

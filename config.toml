@@ -768,6 +768,29 @@ kind = "infra"
 description = "Research documentation — baseCamp papers, gen3/gen4 architecture, onboarding"
 repo = "ecoPrimals/whitePaper"
 
+[extra.entity_registry.rustchip]
+display = "rustChip"
+emoji = "🦀🧠"
+kind = "infra"
+description = "Pure Rust Akida neuromorphic driver — standalone NPU extraction from toadStool's neuromorphic layer. FBZ parser (Snappy + zero-padding reverse engineering), VFIO backend, 80-NPU mesh discovery, 10 MB SRAM, user-level udev. Zero C, zero Python, zero SDK."
+domain = "Neuromorphic hardware"
+loc = 18500
+loc_display = "18,500"
+tests = 293
+tests_display = "293"
+files = 120
+crates = 5
+repo = "syntheticChemistry/rustChip"
+tier = "infra"
+composes = "Standalone extraction from Sovereign Compute Pipeline (toadStool NPU layer). VFIO patterns mirror coralReef ember/glowplug. Output feeds barraCuda shaders via &[f32]."
+capabilities = [
+  { category = "Driver", items = "Pure Rust VFIO backend — container/group/device, BAR mapping, DMA, user-level udev, no kernel module" },
+  { category = "Parser", items = "FBZ model format: varint length, Snappy decompression, zero-padding probe, FlatBuffer extraction" },
+  { category = "Silicon", items = "AKD1000/AKD1500: 80 NPU mesh, 10 MB SRAM, BAR0/BAR1 register probe, runtime capability discovery" },
+  { category = "Novel Systems", items = "HybridESN (hw matrix multiply + host tanh), multi-tenancy (7 programs), online evolution (136 gen/s), temporal PUF" },
+  { category = "Hardware Validation", items = "10 BEYOND_SDK discoveries, 5,978 live calls in lattice QCD (hotSpring Exp 022), VFIO ioctl fix" },
+]
+
 [extra.entity_registry.plasmidbin]
 display = "plasmidBin"
 emoji = "🧬📦"

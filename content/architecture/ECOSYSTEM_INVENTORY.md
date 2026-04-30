@@ -77,12 +77,23 @@ All springs are public. Each spring validates one scientific domain through exec
 | 🎮🎲 {{ entity(name="ludospring") }} | Game science, HCI, procedural generation | V30 | 1,692+ | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) |
 | {{ entity(name="primalspring") }} | Composition validation, deploy graphs, {{ entity(name="byob") }} | Active | 303+ | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) |
 
-### Other (2)
+### Infrastructure (3)
 
-| Repository | Purpose | Repo |
-|------------|---------|------|
-| 🦀🧠 rustChip | Neuromorphic hardware exploration (BrainChip Akida in Rust) | [syntheticChemistry/rustChip](https://github.com/syntheticChemistry/rustChip) |
-| ⚡🔌 ionChannel | Inter-spring communication layer | syntheticChemistry/ionChannel |
+| Repository | Purpose | Status | Tests | Repo |
+|------------|---------|--------|-------|------|
+| {{ entity(name="rustchip") }} | Pure Rust Akida NPU driver — standalone extraction from {{ entity(name="toadstool") }} neuromorphic layer | Active | 293+ | [syntheticChemistry/rustChip](https://github.com/syntheticChemistry/rustChip) |
+| ⚡🔌 ionChannel | Inter-spring communication layer | — | — | syntheticChemistry/ionChannel |
+
+**{{ entity(name="rustchip") }} capabilities:**
+
+- **VFIO backend**: Pure Rust container/group/device lifecycle, BAR mapping, DMA — no kernel module, user-level via udev
+- **FBZ parser**: Reverse-engineered Akida model format (varint + Snappy + zero-padding probe)
+- **Silicon model**: AKD1000/AKD1500 register map, 80-NPU mesh discovery, 10 MB SRAM
+- **Novel systems**: HybridESN, multi-tenancy (7 programs), online evolution (136 gen/s), temporal PUF, adaptive sentinel
+- **Hardware validation**: 10 BEYOND_SDK discoveries, 5,978 live calls in {{ entity(name="hotspring") }} lattice QCD
+- **Compute trio integration**: Output feeds {{ entity(name="barracuda") }} shaders via `&[f32]`. VFIO patterns mirror {{ entity(name="coralreef") }} ember/glowplug architecture
+- **License**: {{ entity(name="scyborg") }} triple (AGPL + CC-BY-SA + ORC) with symbiotic exception for hardware partners
+- **Science page**: [Neuromorphic Sovereign Driver](/science/26-neuromorphic-sovereign-driver/)
 
 ### Archived
 

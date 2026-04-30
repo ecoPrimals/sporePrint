@@ -37,7 +37,7 @@ Each spring is grounded in published, peer-reviewed work. The published papers d
 
 ### 1.1 hotSpring — Computational Plasma Physics, Lattice QCD, Spectral Theory
 
-**Domain**: Dense plasmas, nuclear structure, molecular dynamics, lattice QCD, spectral theory, neuromorphic computing  
+**Domain**: Dense plasmas, nuclear structure, molecular dynamics, lattice QCD, spectral theory, neuromorphic computing
 {{ entity_metrics(name="hotspring") }}  
 **Checks**: 697+ tests, 78 binaries, 62 WGSL shaders  
 **Reproduces work by**: Michael Murillo (CMSE, MSU), Alexei Bazavov (CMSE + Physics, MSU), Ilya Kachkovskiy (Math, MSU), Rika Anderson (Biology, Carleton)  
@@ -91,7 +91,7 @@ Each spring is grounded in published, peer-reviewed work. The published papers d
 
 ### 1.3 wetSpring — Life Science & Analytical Chemistry
 
-**Domain**: 16S metagenomics, LC-MS feature extraction, PFAS screening, microbial ecology  
+**Domain**: 16S metagenomics, LC-MS feature extraction, PFAS screening, microbial ecology
 {{ entity_metrics(name="wetspring") }}  
 **Checks**: 5,707+ across 376 experiments, 63/63 papers reproduced  
 **Reproduces work by**: Christopher Waters (MMG, MSU), Kevin Liu (CMSE, MSU), Jesse Cahill & Chuck Smallwood (Sandia), A. Daniel Jones (BMB/Chemistry, MSU), Rika Anderson (Biology, Carleton), Andrea J. Gonzales (MSU), Erika Lisabeth (ADDRC, MSU), Richard Neubig (Drug Discovery, MSU)  
