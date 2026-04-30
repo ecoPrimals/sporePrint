@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: April 2026
+Last reviewed: April 30, 2026
 
 ---
 
@@ -23,7 +23,7 @@ Last reviewed: April 2026
 - [ ] atlasHugged integration — `content/philosophy/` section stub exists. When essays are ready for public release, add them as individual pages. This is a separate, intentional act — do not auto-publish from whitePaper
 
 ### Taxonomy completeness
-- [ ] Audit all 55 pages: grep content for entity names not tagged in front matter
+- [ ] Audit all 67 content pages: grep content for entity names not tagged in front matter
 - [x] ~~Build-time validation script~~ → replaced by `spore-validate` Rust crate (`crates/spore-validate/`)
 
 ---
@@ -68,7 +68,7 @@ Last reviewed: April 2026
 - [ ] Consider lychee CI for non-Zola link checking in specs/ and other non-content markdown
 
 ### Search
-- [ ] Evaluate elasticlunr search quality for the current 55 pages
+- [ ] Evaluate elasticlunr search quality for the current 67 pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 

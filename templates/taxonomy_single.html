@@ -19,7 +19,7 @@
       <span aria-hidden="true">/</span>
       <span aria-current="page">{% if entry %}{{ entry.display }}{% else %}{{ term.name }}{% endif %}</span>
     </nav>
-    <h1>{% if entry %}{{ entry.emoji }} {{ entry.display }}{% else %}{{ term.name }}{% endif %}</h1>
+    <h1>{% if entry %}<span aria-hidden="true">{{ entry.emoji }}</span> {{ entry.display }}{% else %}{{ term.name }}{% endif %}</h1>
     {% if entry.domain is defined %}<p class="hero-sub">{{ entry.domain }}</p>{% endif %}
   </header>
 

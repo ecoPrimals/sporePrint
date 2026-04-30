@@ -188,29 +188,6 @@ guideStone section. Missing papers added. Search enabled.**
 
 ---
 
-## [0.4.0] — 2026-03-17 — How to start a spring: the operational playbook
-
-### Added
-
-- `methodology/HOW_TO_START_A_SPRING.md` — The complete operational playbook
-  for anyone starting their own spring. Carries the core K-Nome insight: LLMs
-  work because of the data, the data is human language, every human is already
-  an expert practitioner. You don't need to know how to code — you need to know
-  how to talk. Includes: Phase 0→1→2→3+ protocol, the conversation patterns
-  (analogy, correction, narrative, taste, redirection), a concrete worked
-  example (fermentation spring, week by week), cost model ($150 GPU +
-  electricity), honest constraints, and getting-started commands. Links to
-  KNOWLEDGE_COMMONS_TARGETS.md for what domains are ready now.
-
-### Updated
-
-- `README.md` — Added HOW_TO_START_A_SPRING to methodology reading path,
-  document map, and "What Others Can Build" section.
-
-### Document count at v0.4.0: 51 files
-
----
-
 ## [0.3.0] — 2026-03-17 — Spring profiling, sovereign pipeline, knowledge commons
 
 ### Added
@@ -242,9 +219,32 @@ guideStone section. Missing papers added. Search enabled.**
 
 ---
 
+## [0.4.0] — 2026-03-17 — How to start a spring: the operational playbook
+
+### Added
+
+- `methodology/HOW_TO_START_A_SPRING.md` — The complete operational playbook
+  for anyone starting their own spring. Carries the core K-Nome insight: LLMs
+  work because of the data, the data is human language, every human is already
+  an expert practitioner. You don't need to know how to code — you need to know
+  how to talk. Includes: Phase 0→1→2→3+ protocol, the conversation patterns
+  (analogy, correction, narrative, taste, redirection), a concrete worked
+  example (fermentation spring, week by week), cost model ($150 GPU +
+  electricity), honest constraints, and getting-started commands. Links to
+  KNOWLEDGE_COMMONS_TARGETS.md for what domains are ready now.
+
+### Updated
+
+- `README.md` — Added HOW_TO_START_A_SPRING to methodology reading path,
+  document map, and "What Others Can Build" section.
+
+### Document count at v0.4.0: 51 files
+
+---
+
 ## Roadmap
 
-### [1.1.0] — Living data + CI integration
+### [1.2.0] — Living data + CI integration
 - Wire check counts to live CI badges from spring repositories
 - Auto-update numbers via GitHub Actions on spring release events
 - DOI via Zenodo

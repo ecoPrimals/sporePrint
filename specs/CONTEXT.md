@@ -8,11 +8,11 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (April 2026)
+## Current State (April 30, 2026)
 
-- **57+ content pages** across 8 sections + landing page
+- **67 content pages** across 8 sections + landing page
 - **2 taxonomies**: `primals` (14 terms), `springs` (8 terms) — build-validated typed tags
-- **Entity registry** in `config.toml` — 59 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
+- **Entity registry** in `config.toml` — 60 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
 - **Pre-build validation**: `spore-validate` Rust crate (`crates/spore-validate/`) — typed entity model, required field checks per kind, totals verification, taxonomy tag validation, entity shortcode scanning, cross-repo metric drift detection
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
@@ -30,8 +30,9 @@ sporePrint/
 │   ├── audience/            # 5 pages: role-based entry points
 │   ├── guidestone/          # guideStone verification class
 │   ├── methodology/         # 5 pages: constrained evolution, K-Nome, spring guide
-│   ├── products/            # 3 pages: esotericWebb, helixVision, blueFish
-│   ├── science/             # 30 pages: 27 baseCamp papers + 3 reference docs
+│   ├── philosophy/          # atlasHugged integration stub (the "why")
+│   ├── products/            # 4 pages: esotericWebb, helixVision, blueFish, lattice_qcd
+│   ├── science/             # 31 pages: 27 baseCamp papers + gonzales + 3 reference docs
 │   └── technical/           # 6 pages: hardware, GPU pipeline, grants, teaching
 ├── templates/
 │   ├── base.html            # Layout: nav, site tree sidebar, footer, search
@@ -47,7 +48,6 @@ sporePrint/
 │   ├── css/main.css         # Catppuccin Mocha/Latte, card layouts, site tree
 │   ├── CNAME                # primals.eco
 │   └── search.css
-│   └── philosophy/          # 1 page: atlasHugged integration stub (the "why")
 ├── specs/                   # THIS DIRECTORY — internal, not built
 ├── crates/spore-validate/   # Rust typed validation tool (replaces Python script)
 ├── .github/workflows/       # deploy.yml — spore-validate + zola check + GitHub Pages
