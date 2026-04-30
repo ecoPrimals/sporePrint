@@ -5,6 +5,51 @@ Format: `[version] — date — description`
 
 ---
 
+## [1.1.0] — 2026-04-30 — Fully Rust Toolchain
+
+**The Python validation script is replaced by `spore-validate`, a typed Rust
+binary. The sporePrint pipeline is now 100% Rust — from validation to
+generation to deployment.**
+
+### Added
+
+- **`crates/spore-validate/`** — Rust crate replacing `scripts/validate_registry.py`
+  - Typed entity model: `EntityKind` enum (7 kinds), `Tier` enum (4 tiers),
+    `Entity` struct with per-kind field validation
+  - `validate` subcommand (default): registry field checks, totals verification,
+    content taxonomy cross-references — full parity with Python script
+  - `--check` flag: scans 2,488 entity shortcodes in prose, validates all
+    resolve to registry keys
+  - `--strict` flag: promotes warnings to errors
+  - `refresh` subcommand: cross-repo metric comparison — discovers repos in
+    `primals/`, `springs/`, `infra/` directories, counts Rust LOC, tests,
+    files, and crates, reports drift with percentage change
+  - 11 unit tests covering model deserialization, validation logic, totals
+    verification, front matter extraction, and line counting
+- **`content/philosophy/_index.md`** — atlasHugged integration stub explaining
+  the "why" of ecoPrimals (AGPL-3.0, attribution, sovereignty)
+- **Science pages 26–27**: neuromorphic sovereign driver (rustChip), nature
+  preserve applied NPU science
+
+### Changed
+
+- **CI pipeline** (`deploy.yml`): `python3 scripts/validate_registry.py` →
+  `cargo build --release` + `spore-validate validate --check` with cargo cache
+- **rustChip entity** in `config.toml`: updated to 23,733 LOC, 367 tests,
+  118 files; description includes glowplug, science demos, HW/SW separation
+- **Landing page**: "25 baseCamp Papers" → "27 baseCamp Papers"
+- **Specs updated**: `CONTEXT.md`, `EVOLUTION_QUEUE.md`, `CONTENT_MAP.md`,
+  `RUST_TOOLING_VISION.md` all reflect the implemented tooling
+
+### Metrics
+
+- Release binary: 94ms runtime (vs 146ms Python)
+- 60 entities validated, 2,488 shortcodes scanned
+- 24 repos scannable via `refresh`, 87 metric drifts detected across ecosystem
+- 11 Rust tests, 0 Python dependency
+
+---
+
 ## [1.0.0] — 2026-04-03 — Zola: Rust to the Very Edge
 
 **The site becomes sovereign infrastructure. Zola (Rust static site

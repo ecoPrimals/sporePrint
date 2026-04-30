@@ -14,7 +14,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **2 taxonomies**: `primals` (14 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 59 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **Pre-build validation**: `scripts/validate_registry.py` — enforces required fields per kind, checks totals match sums, validates taxonomy tags
+- **Pre-build validation**: `spore-validate` Rust crate (`crates/spore-validate/`) — typed entity model, required field checks per kind, totals verification, taxonomy tag validation, entity shortcode scanning, cross-repo metric drift detection
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
@@ -49,7 +49,8 @@ sporePrint/
 │   └── search.css
 │   └── philosophy/          # 1 page: atlasHugged integration stub (the "why")
 ├── specs/                   # THIS DIRECTORY — internal, not built
-├── .github/workflows/       # deploy.yml — zola build + zola check + GitHub Pages
+├── crates/spore-validate/   # Rust typed validation tool (replaces Python script)
+├── .github/workflows/       # deploy.yml — spore-validate + zola check + GitHub Pages
 └── CHANGELOG.md
 ```
 
@@ -93,8 +94,8 @@ sporePrint/
 
 Metrics flow from repos → `config.toml` entity registry → shortcodes in content. Update `config.toml` and everything else follows.
 
-- **Entity registry metrics** (LOC, tests, files, crates) — re-run tokei on repos, update `config.toml`
-- **Aggregate totals** in `[extra.totals]` — recompute from individual entries (validator checks these)
+- **Entity registry metrics** (LOC, tests, files, crates) — run `spore-validate refresh <repos_root>` to detect drift, then update `config.toml`
+- **Aggregate totals** in `[extra.totals]` — recompute from individual entries (`spore-validate validate` checks these)
 - Squirrel version (fast-moving)
 - plasmidBin inventory (new primals get metadata.toml entries)
 - Science paper descriptions (new experiments get added to springs)
