@@ -92,6 +92,12 @@ Uses custom `science_section.html` template.
 
 guideStone verification class documentation. Currently just `_index.md`.
 
+### Philosophy (`philosophy/`) — section only
+
+atlasHugged integration stub. Currently just `_index.md` acknowledging the "why" dimension and listing the essay themes that will appear when the atlasHugged essays are ready for public release. Does NOT contain the essays yet — that is a separate, intentional act.
+
+**Staleness risk**: Low. The `_index.md` is a stable placeholder. Content will grow when atlasHugged publishes.
+
 ## Taxonomy-Generated Pages (not in content/)
 
 Zola generates these automatically from front matter `[taxonomies]` tags:

@@ -25,6 +25,7 @@ When an agent or human pulls sporePrint to evolve the site, `specs/` provides th
 | `TEMPLATE_GUIDE.md` | Template architecture — layouts, sections, CSS | Before editing templates |
 | `CONTENT_MAP.md` | What's in content/, staleness risks, dependencies | Before planning changes |
 | `EVOLUTION_QUEUE.md` | Prioritized work queue | Before starting work |
+| `RUST_TOOLING_VISION.md` | Rust validation tooling direction | When considering tooling improvements |
 
 ## Conventions
 

@@ -13,7 +13,7 @@ springs = ["hotspring", "airspring", "wetspring"]
 +++
 
 **Date:** April 29, 2026
-**Status:** VFIO backend live on AKD1000 (vendor `0x1e7c`, device `0xbca1`). 80 NPUs discovered, 10 MB SRAM mapped, user-level udev access confirmed. 293+ tests passing. scyBorg triple licensed.
+**Status:** VFIO backend live on AKD1000 (vendor `0x1e7c`, device `0xbca1`). 80 NPUs discovered, 10 MB SRAM mapped, user-level udev access confirmed. 367 tests passing. Glowplug sovereign boot. HW/SW backends explicit. 5 standalone science demos. scyBorg triple licensed.
 **Domain:** Neuromorphic hardware, sovereign compute, VFIO passthrough, binary format reverse engineering
 **Novelty:** First pure Rust driver for BrainChip Akida. First public documentation of the `.fbz` binary format (varint + Snappy + zero-padding). First VFIO-based NPU access without vendor kernel module. First user-level neuromorphic hardware access via udev rules.
 **Cross-Spring:** {{ entity(name="hotspring") }} (lattice QCD deployment — 5,978 live NPU calls) × {{ entity(name="airspring") }} (agricultural ESN streaming) × {{ entity(name="wetspring") }} (sentinel microbe inference) × {{ entity(name="toadstool") }} (parent neuromorphic layer) × {{ entity(name="coralreef") }} (VFIO architecture reference) × {{ entity(name="barracuda") }} (downstream math consumer)

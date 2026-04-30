@@ -9,16 +9,18 @@ Last reviewed: April 2026
 ## P0 — Next Session
 
 ### Periodic refresh: counts and versions
-- [ ] Sync landing page stat cards (in `templates/index.html`) with current spring check counts
+- [x] ~~Sync landing page stat cards~~ — stats ribbon reads from `config.extra.totals` dynamically (no hardcoded numbers to update)
 - [ ] Update Squirrel version/tests if alpha has advanced
 - [ ] Verify plasmidBin inventory count still accurate
-- [ ] Check if new baseCamp papers exist in whitePaper that need sporePrint pages
+- [x] ~~Check if new baseCamp papers exist~~ — papers 26 (neuromorphic driver) and 27 (nature preserve) added. Paper count updated to 27 in science index and landing page
 - [ ] Verify LOC estimates in PRIMAL_CATALOG.md — run tokei on each primal repo for ground truth
+- [x] ~~rustChip entity registry refresh~~ — updated to 23,733 LOC, 367 tests, 118 files; added glowplug, science demos, HW/SW separation; `measured_date` set to 2026-04-30
 
 ### Content gaps
 - [ ] guideStone section has only `_index.md` — needs dedicated pages for the verification protocol, deployment artifact standard, and cross-substrate validation evidence
 - [ ] guidePost (planned, paired with guideStone in wateringHole glossary) — document when it materializes
-- [ ] Some science pages have ungrouped domains in `science_section.html` — verify domain assignments are complete
+- [x] ~~Some science pages have ungrouped domains~~ — verified: only CROSS_SPRING_EVIDENCE_MAP and STRUCTURE_PREDICTION_ROADMAP lack domains (reference docs, not papers, intentionally ungrouped)
+- [ ] atlasHugged integration — `content/philosophy/` section stub exists. When essays are ready for public release, add them as individual pages. This is a separate, intentional act — do not auto-publish from whitePaper
 
 ### Taxonomy completeness
 - [ ] Audit all 55 pages: grep content for entity names not tagged in front matter

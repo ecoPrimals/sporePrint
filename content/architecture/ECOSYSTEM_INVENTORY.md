@@ -81,7 +81,7 @@ All springs are public. Each spring validates one scientific domain through exec
 
 | Repository | Purpose | Status | Tests | Repo |
 |------------|---------|--------|-------|------|
-| {{ entity(name="rustchip") }} | Pure Rust Akida NPU driver — standalone extraction from {{ entity(name="toadstool") }} neuromorphic layer | Active | 293+ | [syntheticChemistry/rustChip](https://github.com/syntheticChemistry/rustChip) |
+| {{ entity(name="rustchip") }} | Pure Rust Akida NPU driver — standalone extraction from {{ entity(name="toadstool") }} neuromorphic layer | Active | 367 | [syntheticChemistry/rustChip](https://github.com/syntheticChemistry/rustChip) |
 | ⚡🔌 ionChannel | Inter-spring communication layer | — | — | syntheticChemistry/ionChannel |
 
 **{{ entity(name="rustchip") }} capabilities:**

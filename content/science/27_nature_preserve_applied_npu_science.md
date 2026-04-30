@@ -13,7 +13,7 @@ springs = ["hotspring", "wetspring", "airspring", "neuralspring"]
 +++
 
 **Date:** April 30, 2026
-**Status:** 7 domain application patterns documented. 29-model zoo (21 BrainChip + 4 physics + 4 Rust-native). Pure Rust conversion pipeline operational — no Python required at any stage.
+**Status:** 7 domain application patterns documented. 28-model zoo (21 BrainChip + 4 physics + 2 NeuroBench + 1 hand-built). 5 standalone science demo binaries. Pure Rust conversion pipeline operational — no Python required at any stage.
 **Domain:** Applied neuromorphic inference across physics, biology, audio, vision, environmental, genomic, and industrial science
 **Novelty:** First documented application layer connecting a neuromorphic model zoo to multi-domain scientific use. First pure Rust pipeline from trained weights to deployed NPU model (.npy/.safetensors → quantize → FlatBuffer → Snappy → .fbz). First systematic bridge between curated AI models and domain-specific scientific workflows.
 **Cross-Spring:** {{ entity(name="hotspring") }} (lattice QCD steering, ESN readout) × {{ entity(name="wetspring") }} (biological classifiers, bloom sentinel, spectral triage) × {{ entity(name="airspring") }} (environmental monitoring, ET₀) × {{ entity(name="neuralspring") }} (quantization validation, dispatch cost models)

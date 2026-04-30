@@ -10,7 +10,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 ## Current State (April 2026)
 
-- **55 content pages** across 7 sections + landing page
+- **57+ content pages** across 8 sections + landing page
 - **2 taxonomies**: `primals` (14 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 59 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
@@ -31,7 +31,7 @@ sporePrint/
 │   ├── guidestone/          # guideStone verification class
 │   ├── methodology/         # 5 pages: constrained evolution, K-Nome, spring guide
 │   ├── products/            # 3 pages: esotericWebb, helixVision, blueFish
-│   ├── science/             # 28 pages: 25 baseCamp papers + 3 reference docs
+│   ├── science/             # 30 pages: 27 baseCamp papers + 3 reference docs
 │   └── technical/           # 6 pages: hardware, GPU pipeline, grants, teaching
 ├── templates/
 │   ├── base.html            # Layout: nav, site tree sidebar, footer, search
@@ -47,6 +47,7 @@ sporePrint/
 │   ├── css/main.css         # Catppuccin Mocha/Latte, card layouts, site tree
 │   ├── CNAME                # primals.eco
 │   └── search.css
+│   └── philosophy/          # 1 page: atlasHugged integration stub (the "why")
 ├── specs/                   # THIS DIRECTORY — internal, not built
 ├── .github/workflows/       # deploy.yml — zola build + zola check + GitHub Pages
 └── CHANGELOG.md
@@ -101,6 +102,6 @@ Metrics flow from repos → `config.toml` entity registry → shortcodes in cont
 
 ## Nav Bar Structure
 
-7 items: Science · Architecture · guideStone · Products | Primals · Springs · GitHub
+8 items: Science · Architecture · guideStone · Philosophy · Products | Primals · Springs · GitHub
 
 Audience, Methodology, and Technical are accessible via the site tree sidebar. Architecture highlights when browsing Methodology or Technical paths.
