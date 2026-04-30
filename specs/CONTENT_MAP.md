@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: April 2026
+Last reviewed: April 30, 2026
 
 ## Sections
 
@@ -19,9 +19,9 @@ The landing page is a hybrid: `_index.md` contains the Try It and Why sporePrint
 - **Why sporePrint** — the spore print metaphor
 - **Footer** — license, attribution
 
-**Staleness risk**: Stats in the template are hardcoded — check counts and paper counts drift as springs evolve. Update both `_index.md` bullet points AND `index.html` stat cards.
+**Staleness risk**: Stats ribbon reads from `config.extra.totals` dynamically. Use `spore-validate refresh` to detect metric drift.
 
-### Architecture (`architecture/`) — 8 pages
+### Architecture (`architecture/`) — 8 pages + _index
 
 | Page | What | Staleness risk |
 |------|------|----------------|
@@ -34,7 +34,7 @@ The landing page is a hybrid: `_index.md` contains the Try It and Why sporePrint
 | EVOLUTION_TIMELINE.md | Historical timeline (append-only) | Low |
 | SOVEREIGN_PRIOR_ART_CATALOG.md | Prior art comparison | Low |
 
-### Audience (`audience/`) — 5 pages
+### Audience (`audience/`) — 5 pages + _index
 
 | Page | Audience |
 |------|----------|
@@ -46,9 +46,9 @@ The landing page is a hybrid: `_index.md` contains the Try It and Why sporePrint
 
 **Staleness risk**: Capability comparisons against external tools. Researcher table (reproduced work, not endorsement).
 
-### Science (`science/`) — 28 pages
+### Science (`science/`) — 31 pages + _index
 
-25 baseCamp papers + CROSS_SPRING_EVIDENCE_MAP + STRUCTURE_PREDICTION_ROADMAP + 24_all_silicon_science.
+27 baseCamp papers (01–27, two with paper number 24) + gonzales_explorer + CROSS_SPRING_EVIDENCE_MAP + STRUCTURE_PREDICTION_ROADMAP.
 
 Grouped by domain via `[extra] domain` in front matter:
 - Microbiology and Ecology (01-06)
@@ -57,22 +57,24 @@ Grouped by domain via `[extra] domain` in front matter:
 - Human Health (13)
 - Game Science and Systems (17-19)
 - Economics and Provenance (20-22)
-- Reference (CROSS_SPRING_EVIDENCE_MAP, STRUCTURE_PREDICTION_ROADMAP)
+- Neuromorphic Hardware (26-27)
+- Reference (gonzales_explorer, CROSS_SPRING_EVIDENCE_MAP, STRUCTURE_PREDICTION_ROADMAP)
 - Ungrouped (11, 12, 14-16, 23, 25)
 
 Uses custom `science_section.html` template.
 
 **Staleness risk**: New papers added in whitePaper/baseCamp before sporePrint.
 
-### Products (`products/`) — 3 pages
+### Products (`products/`) — 4 pages + _index
 
 | Page | Product |
 |------|---------|
 | esotericWebb.md | Sovereign creative tool (composable primal-powered) |
 | helixVision.md | Sovereign protein structure prediction (AlphaFold-quality, pure Rust) |
 | blueFish.md | Sovereign data pipeline (ETL, NCBI integration) |
+| lattice_qcd.md | Lattice QCD interactive explorer |
 
-### Methodology (`methodology/`) — 5 pages
+### Methodology (`methodology/`) — 5 pages + _index
 
 - CONSTRAINED_EVOLUTION_FORMAL.md — core methodology paper
 - HOW_TO_START_A_SPRING.md — practical guide
@@ -80,7 +82,7 @@ Uses custom `science_section.html` template.
 - KNOWLEDGE_COMMONS_TARGETS.md — 9 domains ready for springs
 - P_NP_ENZYME_THESIS.md — conceptual
 
-### Technical (`technical/`) — 6 pages
+### Technical (`technical/`) — 6 pages + _index
 
 - HARDWARE_COST_ANALYSIS.md, SOVEREIGN_GPU_PIPELINE_PROFILE.md
 - GRANT_TECHNICAL_APPENDIX.md, MSU_ASSET_ACCELERATION.md
@@ -88,15 +90,29 @@ Uses custom `science_section.html` template.
 
 **Staleness risk**: Hardware inventory drifts. GPU pipeline profile needs updates as coralReef evolves.
 
-### guideStone (`guidestone/`) — section only
+### guideStone (`guidestone/`) — section stub
 
-guideStone verification class documentation. Currently just `_index.md`.
+guideStone verification class documentation. Currently just `_index.md` with the five properties, first deployment artifact, cross-substrate evidence, and metrological analogy.
 
-### Philosophy (`philosophy/`) — section only
+### Philosophy (`philosophy/`) — section stub
 
 atlasHugged integration stub. Currently just `_index.md` acknowledging the "why" dimension and listing the essay themes that will appear when the atlasHugged essays are ready for public release. Does NOT contain the essays yet — that is a separate, intentional act.
 
 **Staleness risk**: Low. The `_index.md` is a stable placeholder. Content will grow when atlasHugged publishes.
+
+## Content Summary
+
+| Section | Pages (excl. _index) | Total files |
+|---------|---------------------|-------------|
+| architecture | 8 | 9 |
+| audience | 5 | 6 |
+| guidestone | 0 | 1 |
+| methodology | 5 | 6 |
+| philosophy | 0 | 1 |
+| products | 4 | 5 |
+| science | 31 | 32 |
+| technical | 6 | 7 |
+| **Total** | **59** | **67 + landing** |
 
 ## Taxonomy-Generated Pages (not in content/)
 
@@ -111,12 +127,12 @@ These pages render using `taxonomy_list.html` and `taxonomy_single.html`, pullin
 ## Cross-Section Dependencies
 
 ```
-_index.md (content)  ←→  index.html (template)
+_index.md (content)  <->  index.html (template)
                           Stats, audience cards, org cards, explore links are in the TEMPLATE.
                           Try It and Why sporePrint are in the CONTENT.
 
-science/*            →  science_section.html    (grouped by [extra] domain)
-all content pages    →  [taxonomies] tags        → taxonomy pages
-config.toml          →  entity_registry          → taxonomy templates + shortcodes
-wateringHole         →  PRIMAL_EMOJI_STANDARD    → entity_registry source of truth
+science/*            ->  science_section.html    (grouped by [extra] domain)
+all content pages    ->  [taxonomies] tags        -> taxonomy pages
+config.toml          ->  entity_registry          -> taxonomy templates + shortcodes
+wateringHole         ->  PRIMAL_EMOJI_STANDARD    -> entity_registry source of truth
 ```

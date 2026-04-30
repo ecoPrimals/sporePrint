@@ -156,6 +156,16 @@
               {% endif %}
             </li>
 
+            {% set sec = get_section(path="philosophy/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/philosophy") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+            </li>
+
+            {% set sec = get_section(path="sitemap/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/sitemap") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+            </li>
+
             <li class="tree-divider"></li>
             <li class="tree-section{% if current_path is starting_with("/primals") %} tree-active{% endif %}">
               <a href="/primals/">Primals Index</a>

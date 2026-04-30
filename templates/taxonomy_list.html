@@ -25,7 +25,7 @@
       {% set key = term.name | lower | replace(from=" ", to="") %}
       <li>
         <a href="{{ term.permalink }}">
-          <strong>{% if config.extra.entity_registry[key] %}{{ config.extra.entity_registry[key].emoji }} {{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</strong>
+          <strong>{% if config.extra.entity_registry[key] %}<span aria-hidden="true">{{ config.extra.entity_registry[key].emoji }}</span> {{ config.extra.entity_registry[key].display }}{% else %}{{ term.name }}{% endif %}</strong>
           <span>{{ term.pages | length }} page{{ term.pages | length | pluralize }}</span>
         </a>
       </li>
