@@ -1,0 +1,18 @@
+[package]
+name = "spore-validate"
+version = "0.1.0"
+edition = "2024"
+description = "Typed validation tooling for sporePrint — entity registry, content integrity, and metric sync"
+license = "AGPL-3.0-or-later"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+clap = { version = "4", features = ["derive"] }
+walkdir = "2"
+regex = "1"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"

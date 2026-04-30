@@ -1,135 +1,106 @@
-# Rust Tooling Vision for sporePrint
+# Rust Tooling for sporePrint
 
-The Python validation script (`scripts/validate_registry.py`) is the only
-non-Rust tool in the sporePrint pipeline. It works, but it represents a
-direction we want to evolve: from Python scripts doing ad-hoc validation to
-Rust-powered typed tooling that makes the dense data systems of ecoPrimals
-parseable, verifiable, and human-friendly.
+`spore-validate` is the typed Rust replacement for the Python validation script.
+It lives at `crates/spore-validate/` and provides three modes of operation:
 
-## What the Python Script Does Today
+## `spore-validate validate` (default)
 
-`validate_registry.py` (172 lines) performs 7 checks:
+Replaces `scripts/validate_registry.py` with typed data structures.
+
+**Checks performed:**
 
 1. Every entity has required base fields (`display`, `emoji`, `kind`)
-2. `kind` is one of 7 valid values
-3. Every entity has required fields for its `kind` (e.g., primals need `loc`, `tests`, `tier`)
-4. `tier` values are from the valid set
+2. `kind` is a compile-time enum — invalid values fail deserialization
+3. Required fields per kind enforced by explicit validation (primals need
+   `loc`, `tests`, `tier`, etc.)
+4. `Tier` is a typed enum (`Foundation | PostNucleus | Meta | Tooling`) —
+   typos are caught at parse time
 5. Aggregate totals (`[extra.totals]`) match sums of individual entries
 6. Taxonomy tags in content front matter reference valid registry keys
-7. Taxonomy tag kind matches the taxonomy it's in
+7. Taxonomy tag kind matches the taxonomy it appears in
 
-It runs in CI before `zola build`. Exit 0 = clean.
+All checks the Python script performed, plus compile-time schema guarantees.
 
-## What a Rust Replacement Would Provide
+### `--check` flag
 
-### Phase 1: `spore-validate` — direct replacement
+When passed, also scans all Markdown prose for `{{ entity(name="xxx") }}`
+Tera shortcodes and verifies each `xxx` exists in the entity registry.
 
-A Rust binary (`spore-validate`) that does everything the Python script does,
-but with typed data structures:
+### `--strict` flag
+
+Promotes warnings to errors.
+
+## `spore-validate refresh <repos_root>`
+
+Cross-repo metric sync. Given the path to the ecoPrimals checkout root
+(containing `primals/`, `springs/`, `infra/`), this command:
+
+1. Discovers each entity's local repo from the `repo` field
+2. Counts Rust LOC (non-blank, non-comment lines in `.rs` files)
+3. Counts tests (`#[test]`, `#[tokio::test]` annotations)
+4. Counts `.rs` files and Cargo.toml crates
+5. Compares actual vs registered metrics
+6. Reports drift with percentage change
+
+This replaces the manual "pull repos, run tokei, update config.toml" workflow.
+
+## Typed Data Model
+
+The entity registry schema is encoded as Rust types:
 
 ```rust
-#[derive(Deserialize)]
-struct EntityRegistry {
-    #[serde(flatten)]
-    entities: HashMap<String, Entity>,
-}
+enum EntityKind { Primal, Spring, Product, Composition, Concept, Infra, Org }
+enum Tier { Foundation, PostNucleus, Meta, Tooling }
 
-enum Entity {
-    Primal(PrimalEntity),
-    Spring(SpringEntity),
-    Product(ProductEntity),
-    Composition(CompositionEntity),
-    Concept(ConceptEntity),
-    Infra(InfraEntity),
-    Org(OrgEntity),
-}
-
-struct PrimalEntity {
+struct Entity {
     display: String,
     emoji: String,
-    domain: String,
-    loc: u64,
-    loc_display: String,
-    tests: u64,
-    tests_display: String,
-    files: u32,
-    crates: u32,
-    repo: String,
-    tier: Tier,
+    kind: EntityKind,
+    // Kind-specific fields are Option — validated per-kind at runtime
+    // so all errors can be collected before failing.
+    loc: Option<u64>,
+    tier: Option<Tier>,
     // ...
-}
-
-enum Tier {
-    Foundation,
-    PostNucleus,
-    Meta,
-    Tooling,
 }
 ```
 
 The Rust type system enforces the schema at compile time. If someone adds a
 new `kind` without updating the enum, the code won't compile. If someone adds
-a primal without `loc`, deserialization fails with a clear error message.
-
-**Benefit over Python**: schema errors are caught at build time in the tooling
-crate, not at CI runtime. The validator binary is a single executable with no
-Python dependency.
-
-### Phase 2: `spore-refresh` — cross-repo metric sync
-
-A Rust tool that:
-
-1. Walks all primal/spring repos (from `repo` fields in the registry)
-2. Runs `tokei` (or uses the `tokei` crate directly) to count LOC
-3. Runs `cargo test --workspace` to count tests
-4. Compares actual vs registered metrics
-5. Optionally updates `config.toml` with fresh numbers
-
-This replaces the manual "pull repos, run tokei, update config.toml" workflow
-described in `TAXONOMY_STANDARD.md`.
-
-### Phase 3: `spore-check` — content integrity
-
-A Rust tool that:
-
-1. Parses all Markdown front matter (TOML)
-2. Checks that entity names in prose match taxonomy tags
-3. Validates cross-references between sections
-4. Detects stale metrics (config.toml vs repo reality)
-5. Detects missing content (whitePaper baseCamp papers without sporePrint equivalents)
-
-This is the "grammar compiler" described in `EVOLUTION_QUEUE.md` P1 — but
-implemented in Rust with typed parsing.
+a primal without `loc`, deserialization succeeds but validation fails with a
+clear, collected error message.
 
 ## Why Rust, Not Just Better Python
 
-The entity registry is already a type system — it has kinds, required fields per
-kind, tier enums, and validated totals. The Python script checks these rules
-at runtime with string comparisons. Rust encodes them as types:
+The entity registry is already a type system — it has kinds, required fields
+per kind, tier enums, and validated totals. The Python script checked these
+rules at runtime with string comparisons. Rust encodes them as types:
 
 - `Tier::Foundation` vs `"foundation"` — the compiler catches typos
-- `PrimalEntity { loc: u64 }` vs `entry.get("loc", 0)` — missing fields fail
-  to deserialize, not silently default
-- `Entity` enum vs `VALID_KINDS` set — new kinds require updating the enum,
-  which forces updating all match arms
+- `Entity { loc: Option<u64> }` vs `entry.get("loc", 0)` — missing fields
+  are explicitly validated, not silently defaulted
+- `EntityKind` enum vs `VALID_KINDS` set — new kinds require updating the
+  enum, which forces updating all match arms
 
-This is the same philosophy that drives ecoPrimals: the constraint (Rust's type
-system) reveals the structure. The Python script works. The Rust version would
-make the structure inspectable, composable, and impossible to subtly break.
+## CI Integration
 
-## Implementation Notes
+The GitHub Actions workflow (`deploy.yml`) now builds and runs
+`spore-validate` instead of the Python script. The Rust toolchain is
+pre-installed on `ubuntu-latest`; a cargo cache keeps subsequent CI runs fast.
 
-- The crate would live at `crates/spore-validate/` within sporePrint (or as a
-  standalone tool)
-- It would use `toml` + `serde` for config parsing, `pulldown-cmark` for
-  Markdown parsing, `tokei` crate for LOC counting
-- The binary could be distributed via plasmidBin for ecosystem-wide use
-- The same typed entity structures could feed a Rust-powered content generator
-  (replacing Tera shortcodes with compile-time content injection)
+## Crate Structure
 
-## Timeline
+```
+crates/spore-validate/
+├── Cargo.toml
+├── Cargo.lock
+└── src/
+    ├── main.rs       — CLI (clap), orchestration, reporting
+    ├── model.rs      — Typed entity model, Zola config parser
+    ├── registry.rs   — Per-kind field validation
+    ├── totals.rs     — Aggregate sum verification
+    ├── content.rs    — Front matter taxonomy + entity shortcode checks
+    └── refresh.rs    — Cross-repo metric comparison
+```
 
-This is exploratory. No code yet. The vision is documented so that future
-sessions can pick up where this one left off. When the Python script becomes
-a bottleneck (more entity kinds, more cross-repo checks, more content integrity
-rules), the Rust replacement will be ready to build.
+11 tests covering model deserialization, registry validation, totals
+verification, front matter extraction, and line counting.

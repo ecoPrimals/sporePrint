@@ -22,8 +22,17 @@ jobs:
         run: |
           curl -sL https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz | tar xz
           sudo mv zola /usr/local/bin/
+      - name: Cache Rust build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            crates/spore-validate/target
+          key: spore-validate-${{ hashFiles('crates/spore-validate/Cargo.lock') }}
       - name: Validate entity registry
-        run: python3 scripts/validate_registry.py
+        run: |
+          cargo build --release --manifest-path crates/spore-validate/Cargo.toml
+          ./crates/spore-validate/target/release/spore-validate --root . validate --check
       - name: Check links
         run: zola check
 

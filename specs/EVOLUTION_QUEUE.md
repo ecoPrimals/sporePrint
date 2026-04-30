@@ -24,7 +24,7 @@ Last reviewed: April 2026
 
 ### Taxonomy completeness
 - [ ] Audit all 55 pages: grep content for entity names not tagged in front matter
-- [x] ~~Build-time validation script that checks registry fields and taxonomy cross-references~~ → `scripts/validate_registry.py`
+- [x] ~~Build-time validation script~~ → replaced by `spore-validate` Rust crate (`crates/spore-validate/`)
 
 ---
 
@@ -42,11 +42,11 @@ Last reviewed: April 2026
 - [ ] Investigate whether the per-page TOC (right sidebar) and site tree (left sidebar) coexist well on medium screens
 
 ### Semantic validation (the "grammar compiler")
-- [x] ~~Pre-build validation script~~ → `scripts/validate_registry.py` (required fields, totals, taxonomy cross-refs)
+- [x] ~~Pre-build validation script~~ → `spore-validate validate` (Rust typed replacement)
 - [x] ~~Entity metrics in one place, referenced everywhere~~ → `config.toml` registry + shortcodes
-- [ ] Entity names in prose match taxonomy tags in front matter (prose scanning)
+- [x] ~~Entity names in prose match taxonomy tags~~ → `spore-validate validate --check` (scans 2,488 shortcodes)
 - [ ] Entity registry entries match wateringHole PRIMAL_EMOJI_STANDARD (cross-repo check)
-- [ ] Metrics in registry haven't drifted from source repos (automated tokei comparison)
+- [x] ~~Metrics in registry haven't drifted from source repos~~ → `spore-validate refresh <repos_root>`
 
 ### petalTongue integration
 - [ ] When petalTongue can consume sporePrint content, add documentation on the modality pipeline
@@ -63,7 +63,7 @@ Last reviewed: April 2026
 - [ ] Ensure all emoji pairs have `aria-label` alternatives in templates
 
 ### Automation
-- [ ] Script to pull check counts from spring repos and update stats (landing page + catalogs)
+- [x] ~~Script to pull check counts from spring repos and update stats~~ → `spore-validate refresh` compares LOC, tests, files, crates against registry
 - [ ] Script to diff whitePaper/baseCamp against content/science/ for new papers
 - [ ] Consider lychee CI for non-Zola link checking in specs/ and other non-content markdown
 
