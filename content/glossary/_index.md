@@ -135,7 +135,9 @@ by category and alphabetized within each group.
   Open RPG Creative Foundation, Creative Commons) enforce the licenses.
   No single entity — including the creator — can revoke any of them.
   Any derivative work must share alike.
-  See [Knowledge Commons](@/methodology/KNOWLEDGE_COMMONS_TARGETS.md).
+  See [scyBorg Licensing](@/methodology/SCYBORG_LICENSING.md) for why
+  all three exist, and [Knowledge Commons](@/methodology/KNOWLEDGE_COMMONS_TARGETS.md)
+  for what's in the commons.
 
 ---
 
