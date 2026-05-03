@@ -8,8 +8,14 @@ primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspi
 springs = ["healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
-**Status**: Working paper  
-**Lineage**: Implementation companion to `ECOSYSTEM_ARCHITECTURE.md`  
+**A primal is a standalone, statically-linked Rust binary that provides one
+domain capability** — cryptography, networking, GPU math, storage, etc.
+Primals communicate over JSON-RPC and compose into larger systems. Think
+of them as Unix-philosophy tools that talk to each other.
+See the [Glossary](@/glossary/_index.md) for more terms.
+
+**Status**: Working paper
+**Lineage**: Implementation companion to `ECOSYSTEM_ARCHITECTURE.md`
 **Last Updated**: March 31, 2026
 
 ---

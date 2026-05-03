@@ -13,10 +13,22 @@ springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"
 +++
 
 **Date:** March 1, 2026
-**Status:** Architecture defined — all computational components validated independently. NPU live on AKD1000 ({{ entity(name="wetspring") }} Exp193-195, {{ entity(name="airspring") }} Exp028-029). 16S sovereign pipeline operational ({{ entity(name="wetspring") }} Exp184-185). ESN classifiers validated on hardware. **V84**: 256 experiments, 6,569+ checks, 93 {{ entity(name="toadstool") }} primitives, 26 CPU domains + 21 GPU domains validated, Python parity proven (15 domains bit-identical to SciPy), unidirectional streaming (0.10ms overhead). {{ entity(name="nestgate") }} NCBI pipeline operational (ESearch/ESummary/EFetch). {{ entity(name="biomeos") }} {{ entity(name="nucleus") }} local deployment ready (`biomeos nucleus start --mode node`). **V85**: Genomic Vault organ model (Exp259) — consent-gated encrypted storage with Merkle provenance chain for MinION data sovereignty. Vault module treats genomic data as a personal organ (consent tickets, sensitivity hierarchy, tamper-evident audit). Sovereign cipher/hash/signing placeholders ready for {{ entity(name="beardog") }} absorption (ChaCha20-Poly1305, Ed25519, BLAKE3). {{ entity(name="nucleus") }} deployed with all 6 primals READY on Eastgate (Exp258). 260 experiments, 6,656+ checks. Awaiting sequencer hardware (MinION Mk1D or Mk1C) for end-to-end integration.
+**Status:** Architecture defined — all computational components validated
+independently. NPU live on AKD1000 hardware. 16S pipeline operational.
+ESN classifiers validated. 260 experiments, 6,656+ checks. NUCLEUS
+deployed with all 6 primals. Genomic Vault consent-gated storage model
+defined. Awaiting sequencer hardware (MinION Mk1D/Mk1C) for end-to-end
+integration.
 **Domain:** Environmental genomics, field sequencing, edge inference, adaptive sampling
-**Novelty:** First architecture combining nanopore sequencing with neuromorphic (AKD1000) edge classification via a sovereign Rust bioinformatics pipeline. NPU-driven adaptive sampling for real-time read selection. No cloud dependency, no vendor SDK, no Python runtime.
-**Cross-Spring:** {{ entity(name="wetspring") }} (16S pipeline, NPU driver, ESN classifiers, Anderson QS, PFAS ML) × {{ entity(name="airspring") }} (soil sensors, water balance, agricultural IoT) × {{ entity(name="neuralspring") }} (ESN/LSTM reservoir computing, spectral analysis) × {{ entity(name="hotspring") }} (akida-driver, GPU Lanczos) × {{ entity(name="groundspring") }} (uncertainty budgets, rare biosphere, sensor noise)
+**Novelty:** First architecture combining nanopore sequencing with neuromorphic
+(AKD1000) edge classification via a self-hosted Rust bioinformatics pipeline.
+NPU-driven adaptive sampling for real-time read selection. No cloud
+dependency, no vendor SDK, no Python runtime.
+**Cross-Spring:** {{ entity(name="wetspring") }} (16S, NPU, Anderson QS) ×
+{{ entity(name="airspring") }} (soil sensors, water balance) ×
+{{ entity(name="neuralspring") }} (reservoir computing, spectral analysis) ×
+{{ entity(name="hotspring") }} (akida-driver, GPU Lanczos) ×
+{{ entity(name="groundspring") }} (uncertainty, rare biosphere, sensor noise)
 
 ---
 

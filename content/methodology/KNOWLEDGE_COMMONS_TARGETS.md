@@ -8,9 +8,9 @@ primals = ["barracuda", "coralreef", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 
-**Public data + basement hardware + {{ entity(name="scyborg") }} = permanently secured knowledge commons.**
+**Public data + basement hardware + triple-copyleft licensing = permanently secured knowledge commons.**
 
-**Last Updated:** March 17, 2026  
+**Last Updated:** March 17, 2026
 **License:** CC-BY-SA 4.0
 
 ---
@@ -19,22 +19,33 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 Three properties make {{ entity(name="ecoprimals") }} an irreversible knowledge commons:
 
-1. **Public data only.** Every spring experiment uses publicly available data
-   (NCBI, PhysioNet, NOAA, USDA, PDB, arXiv). No proprietary dataset is
-   required. Anyone can reproduce any result without institutional access.
+1. **Public data only.** Every spring (validation environment) experiment uses
+   publicly available data (NCBI, PhysioNet, NOAA, USDA, PDB, arXiv). No
+   proprietary dataset is required. Anyone can reproduce any result without
+   institutional access.
 
 2. **Consumer hardware.** Every result runs on a $500 used RTX 3090 or
    equivalent. No HPC allocation, no cloud account, no institutional
    infrastructure required. The barrier to entry is a used gaming PC.
 
-3. **{{ entity(name="scyborg") }} triple-copyleft.** AGPL-3.0 (code) + ORC (game mechanics) +
-   CC-BY-SA 4.0 (docs). Three independent nonprofits (FSF, Open RPG Creative
-   Foundation, Creative Commons). No single entity — including the creator —
-   can revoke any license. Any derivative must share-alike.
+3. **Triple-copyleft licensing** ({{ entity(name="scyborg") }}). Three licenses, each
+   enforced by an independent nonprofit:
+   - **AGPL-3.0-or-later** (code) — enforced by the Free Software Foundation
+   - **ORC** (game mechanics) — enforced by the Open RPG Creative Foundation
+   - **CC-BY-SA 4.0** (documentation) — enforced by Creative Commons
+
+   No single entity — including the creator — can revoke any license.
+   Any derivative must share alike.
+
+**What this means in practice:** if you use ecoPrimals code, your derivative
+must also be open-source under AGPL-3.0. If you build game mechanics on ORC
+content, your mechanics are also ORC. If you derive from the docs, you
+attribute and share alike. The commons grows monotonically — it can never
+shrink.
 
 Together: the data is free, the hardware is cheap, the code is copyleft.
 No one can enclose what was built. No one can build on it without contributing
-back. The commons grows monotonically.
+back.
 
 ---
 
