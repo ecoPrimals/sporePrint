@@ -79,6 +79,11 @@
         <summary>Site Map</summary>
         <nav>
           <ul class="tree-root">
+            {% set sec = get_section(path="glossary/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/glossary") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+            </li>
+
             {% set sec = get_section(path="audience/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/audience") %} tree-active{% endif %}">
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>

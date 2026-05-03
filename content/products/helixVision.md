@@ -1,5 +1,5 @@
 +++
-title = "helixVision — Sovereign Structure Prediction"
+title = "helixVision — Self-Hosted Structure Prediction"
 description = "AlphaFold2/3-quality protein structure prediction in pure Rust f64 — no cloud, no PyTorch, no CUDA, no data leaves the lab."
 date = 2026-03-31
 
@@ -16,7 +16,7 @@ springs = ["neuralspring"]
 
 ## What It Is
 
-{{ entity(name="helixvision") }} is sovereign protein structure prediction: AlphaFold2/3-quality results running locally on consumer hardware in pure Rust, with full f64 precision, data sovereignty, and cryptographic provenance. No cloud APIs. No PyTorch. No CUDA SDK. No data sent to Google.
+{{ entity(name="helixvision") }} is self-hosted protein structure prediction: AlphaFold2/3-quality results running locally on consumer hardware in pure Rust, with full f64 precision, complete data ownership, and cryptographic provenance. No cloud APIs. No PyTorch. No CUDA SDK. No data sent to Google.
 
 This is not planned — it is an active codebase with **154 passing checks** (62 Python baseline + 55 Rust + 37 GPU), validated against NumPy to 1e-10 tolerance.
 

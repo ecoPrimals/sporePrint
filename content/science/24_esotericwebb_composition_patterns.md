@@ -4,7 +4,7 @@ description = "Creative Infrastructure x Composition — Disco Elysium-inspired 
 date = 2026-03-30
 
 [extra]
-paper_number = 24
+paper_number = 28
 domain = "Game Science and Systems"
 
 [taxonomies]

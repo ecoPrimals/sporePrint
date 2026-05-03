@@ -1,13 +1,14 @@
 +++
 title = "🔬 Science"
-description = "baseCamp papers across 8 scientific domains. Each stands alone as a potential publication. Together they demonstrate that sovereign scientific computing produces real, publishable science."
+description = "baseCamp papers across 8 scientific domains. Each stands alone as a potential publication. Together they demonstrate that self-hosted scientific computing produces real, publishable science."
 sort_by = "title"
 template = "science_section.html"
 +++
 
 27 {{ entity(name="basecamp") }} papers organized by domain. Each paper is executable — the
 science is not summarized, it is runnable code that reproduces published
-results on commodity hardware.
+results on commodity hardware. "Sovereign" in paper titles means
+**self-hosted and cloud-independent** — everything runs on your own machine.
 
 ---
 
@@ -53,7 +54,7 @@ results on commodity hardware.
 - [17 — Game Design as Rigorous Science](@/science/17_game_design_rigorous_science.md)
 - [18 — RPGPT Sovereign RPG Engine](@/science/18_rpgpt_sovereign_rpg_engine.md)
 - [19 — Games@Home Distributed Human Computation](@/science/19_games_at_home_distributed_human_computation.md)
-- [24 — Esoteric Webb — Primal Composition as Creative Infrastructure](@/science/24_esotericwebb_composition_patterns.md)
+- [28 — Esoteric Webb — Primal Composition as Creative Infrastructure](@/science/24_esotericwebb_composition_patterns.md)
 
 **Provenance & Economics** — {{ entity(name="sweetgrass") }}, {{ entity(name="loamspine") }}, {{ entity(name="bingocube") }}
 
