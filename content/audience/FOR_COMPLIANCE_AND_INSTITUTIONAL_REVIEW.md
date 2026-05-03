@@ -11,7 +11,7 @@ springs = ["groundspring", "healthspring", "wetspring"]
 **From:** ecoPrimal — human + synthetic intelligence  
 **Organization:** {{ entity(name="ecoprimals") }}
 **Date:** March 17, 2026
-**License:** All source code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
+**License:** scyBorg triple — AGPL-3.0-or-later (code), ORC (game mechanics), CC-BY-SA 4.0 (docs). See [scyBorg Licensing](/methodology/scyborg-licensing/).
 **Repositories:** github.com/ecoPrimals
 
 ---
