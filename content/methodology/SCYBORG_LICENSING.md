@@ -4,28 +4,36 @@ description = "AGPL-3.0-or-later for code, ORC for game mechanics, CC-BY-SA 4.0 
 date = 2026-05-03
 
 [taxonomies]
-primals = ["sweetgrass", "rhizocrypt", "loamspine"]
+primals = ["barracuda", "biomeos", "loamspine", "rhizocrypt", "songbird", "squirrel", "sweetgrass"]
 springs = ["ludospring"]
 +++
 
 ## The Problem a Single License Cannot Solve
 
-Software projects produce three kinds of artifacts:
+Software projects produce three orthogonal kinds of artifacts:
 
 1. **Code** — source files, shaders, build scripts, tests, binaries
-2. **Game mechanics** — rules, stat blocks, progression systems, encounter
-   math, system designs
+2. **Mechanics** — system designs, interaction rules, composition patterns,
+   routing logic, graph structures, progression systems, encounter math
 3. **Creative and scientific content** — documentation, papers, diagrams,
    art, narrative, maps, sound
 
-No single open-source license covers all three well. The GPL covers code
-but doesn't address game rules. Creative Commons covers documentation but
-isn't designed for source code. ORC covers game mechanics but not software.
+These are orthogonal dimensions — every piece of work has all three.
+A deploy graph is code (TOML syntax), mechanics (composition rules), and
+documentation (the reasoning behind the design). A WGSL shader is code
+(the source), mechanics (the mathematical model), and documentation
+(the comments and papers describing the physics). No single license
+covers all three well.
+
+The GPL covers code but doesn't address system designs. Creative Commons
+covers documentation but isn't designed for source code. ORC covers
+mechanics but not software.
 
 If you only use one license, there's a gap — and that gap is where
-enclosure happens. A company can take your open code, wrap proprietary game
-rules around it, and sell a closed product. Or take your open science papers,
-reimplement in proprietary code, and lock the implementation behind a paywall.
+enclosure happens. A company can take your open code, wrap proprietary
+system designs around it, and sell a closed product. Or take your open
+science papers, reimplement in proprietary code, and lock the implementation
+behind a paywall.
 
 {{ entity(name="scyborg") }} closes every gap.
 
@@ -61,35 +69,47 @@ in a proprietary API.
 
 ---
 
-### ORC — Game Mechanics
+### ORC — System Mechanics
 
-**Covers**: Rules, stat blocks, progression systems, encounter math, mechanical
-designs, system architecture patterns used in game contexts.
+**Covers**: System designs, interaction rules, composition patterns,
+capability routing logic, deploy graph structures, progression systems,
+stat blocks, encounter math, orchestration patterns.
 
 **Enforced by**: [Open RPG Creative Foundation](https://azoralaw.com/orclicense/)
 (nonprofit, independent).
 
 **What it means**:
-- Game mechanics published under ORC are **irrevocably and perpetually** open
+- Mechanics published under ORC are **irrevocably and perpetually** open
 - Anyone can use, modify, and build upon them
 - Derivatives must also be ORC-licensed
 - The licensor cannot revoke ORC — it is permanent
 
-**Why ORC?** {{ entity(name="ludospring") }} validates game science — encounter
-balance, progression curves, HCI metrics, resource economies. esotericWebb
-composes primals into a Disco Elysium-inspired CRPG. These projects produce
-game mechanics that are as much intellectual work as the code. Without ORC,
-someone could take the validated game math, wrap it in proprietary code, and
-sell a closed game engine. ORC prevents this — the mechanics stay open, the
-same way AGPL keeps the code open.
+**Why ORC?** The obvious case is {{ entity(name="ludospring") }} — game
+science, encounter balance, progression curves, HCI metrics. esotericWebb
+composes primals into a CRPG. These produce game mechanics that are as
+much intellectual work as the code.
+
+The non-obvious case is everything else. {{ entity(name="squirrel") }}'s
+AI orchestration patterns — how models are routed, how providers fall back,
+how context windows are managed — are *system mechanics*. biomeOS's Neural
+API routing rules (124 semantic capability translations) are mechanics.
+Deploy graph TOML structures that define how primals compose are mechanics.
+The NUCLEUS atomics ladder (Tower → Node → Nest) is a mechanical design.
+The Dark Forest protocol's beacon structure is a mechanical design.
+
+Without ORC, someone could study these interaction patterns, extract the
+system design, and build a proprietary orchestration product around
+ecoPrimals' architecture without sharing the design back. AGPL protects
+the *code* that implements the design. ORC protects the *design itself*.
 
 ORC was created in response to Hasbro/Wizards of the Coast's 2023 attempt
 to revoke the Open Gaming License (OGL). The ORC is designed to be
 **irrevocable by design** — no single entity can pull it back. This aligns
 with ecoPrimals' structural guarantee: no single entity controls the commons.
 
-**Applies to**: ludoSpring (game science), esotericWebb (CRPG composition),
-any spring or product that produces game mechanics.
+**Applies to all three organizations**: every system design, interaction
+pattern, composition rule, and mechanical structure across ecoPrimals,
+syntheticChemistry, and sporeGarden.
 
 ---
 
@@ -144,15 +164,31 @@ demanded it. scyBorg makes this structurally impossible.
 
 ## How It Applies Across the Ecosystem
 
+All three licenses apply to all three organizations. They are orthogonal —
+each covers a different dimension of the same work, not a different subset
+of projects.
+
 | Organization | What It Produces | AGPL (code) | ORC (mechanics) | CC-BY-SA (docs) |
 |-------------|-----------------|:-----------:|:---------------:|:---------------:|
-| **ecoPrimals** | Primals (infrastructure) | Yes | When applicable | Yes |
-| **syntheticChemistry** | Springs (validation) | Yes | ludoSpring | Yes |
-| **sporeGarden** | Products (compositions) | Yes | esotericWebb | Yes |
+| **ecoPrimals** | Primals (infrastructure) | Yes | Yes | Yes |
+| **syntheticChemistry** | Springs (validation) | Yes | Yes | Yes |
+| **sporeGarden** | Products (compositions) | Yes | Yes | Yes |
 
-Every artifact from every organization falls under at least one scyBorg
-layer. Most fall under two (code + docs). Game-related work falls under
-all three.
+**The obvious ORC case**: {{ entity(name="ludospring") }} game rules,
+esotericWebb CRPG mechanics.
+
+**The non-obvious ORC cases**:
+- {{ entity(name="squirrel") }} — AI routing patterns, provider fallback
+  chains, context window management rules
+- {{ entity(name="biomeos") }} — Neural API routing (124 translations),
+  deploy graph structures, NUCLEUS atomics composition rules
+- {{ entity(name="barracuda") }} — precision tiering strategy
+  (f32 → DF64 → f64 → QF128), the mechanical design of how math is routed
+  to hardware
+- {{ entity(name="songbird") }} — 4-tier NAT traversal strategy, BirdSong
+  discovery protocol structure
+- Every primal — IPC interaction patterns, capability registration rules,
+  the mechanical design of how primals discover and compose with each other
 
 ---
 
