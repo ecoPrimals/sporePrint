@@ -46,8 +46,7 @@ behind a paywall.
 **Covers**: Rust source, WGSL shaders, build scripts, configuration files,
 tests, experiments, tools, binaries.
 
-**Enforced by**: [Free Software Foundation](https://www.fsf.org/) (nonprofit,
-independent).
+**Enforced by**: Free Software Foundation (nonprofit, independent).
 
 **What it means**:
 - Anyone can use, modify, and distribute the code
