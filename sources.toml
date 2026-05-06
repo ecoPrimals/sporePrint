@@ -143,3 +143,19 @@ private = true
 repo = "syntheticChemistry/primalSpring"
 type = "spring"
 private = true
+
+# =============================================================================
+# PRODUCTS — sporeGarden (compositions that ship as tools)
+# =============================================================================
+
+[sources.esotericwebb]
+repo = "sporeGarden/esotericWebb"
+type = "product"
+
+[sources.foundation]
+repo = "sporeGarden/foundation"
+type = "product"
+
+[sources.projectnucleus]
+repo = "sporeGarden/projectNUCLEUS"
+type = "product"

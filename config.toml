@@ -561,6 +561,22 @@ kind = "product"
 domain = "Protein structure prediction"
 repo = "sporeGarden/helixVision"
 
+[extra.entity_registry.foundation]
+display = "foundation"
+emoji = "🏛️🌱"
+kind = "product"
+description = "Institutional adoption bridge — lineage maps, deploy patterns, and the case for sovereign compute at university scale."
+domain = "Institutional adoption"
+repo = "sporeGarden/foundation"
+
+[extra.entity_registry.projectnucleus]
+display = "projectNUCLEUS"
+emoji = "⚛️🚀"
+kind = "product"
+description = "Packaging and deploy layer for ecoPrimals — TOML deploy graphs, Bash orchestration, validation pipelines, and the 13-primal composition on ironGate."
+domain = "Deployment and composition"
+repo = "sporeGarden/projectNUCLEUS"
+
 # ── Compositions ──────────────────────────────────────────────────────────
 # Named primal interaction patterns — what emerges when specific primals coordinate.
 
