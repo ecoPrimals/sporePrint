@@ -2,6 +2,9 @@
 title = "The Generation-Verification Asymmetry: Biological Evidence for a Physical Law of Computation"
 description = "Theoretical extension — enzymes as evidence that P != NP"
 date = 2026-03-17
+
+[taxonomies]
+springs = ["wetspring", "hotspring", "groundspring"]
 +++
 
 **Status**: Working thesis  

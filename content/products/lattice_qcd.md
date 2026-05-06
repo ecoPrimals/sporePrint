@@ -4,8 +4,8 @@ description = "A deployable lattice QCD stack replacing QUDA/MILC/Chroma C++/CUD
 date = 2026-04-04
 
 [taxonomies]
-primals = ["barracuda", "coralreef", "toadstool"]
-springs = ["hotspring"]
+primals = ["barracuda", "coralreef", "toadstool", "biomeos"]
+springs = ["hotspring", "groundspring"]
 +++
 
 **Organization**: {{ entity(name="sporegarden") }} (product name TBD)  
