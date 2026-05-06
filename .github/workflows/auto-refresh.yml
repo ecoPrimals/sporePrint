@@ -1,0 +1,203 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# auto-refresh.yml — Automated metric sync from upstream primal/spring repos
+#
+# Triggers:
+#   1. repository_dispatch from source repos (on push to main)
+#   2. workflow_dispatch for manual refresh (single source or all)
+#   3. Weekly schedule for full-sweep consistency
+#
+# Private repos (bearDog, skunkBat, all springs) are cloned using
+# SPOREPRINT_REFRESH_PAT via git insteadOf.
+#
+# Flow: determine source -> clone repo -> spore-validate refresh --write
+#       -> commit config.toml if changed -> deploy.yml picks up the push
+#
+# Mirrors the plasmidBin auto-harvest.yml pattern — source repos notify,
+# sporePrint does the work.
+
+name: Auto Refresh
+
+on:
+  repository_dispatch:
+    types: [source-updated]
+
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Entity ID to refresh (from sources.toml, or "all")'
+        required: true
+        default: 'all'
+        type: string
+
+  schedule:
+    - cron: '0 8 * * 1'
+
+concurrency:
+  group: auto-refresh-${{ github.event.client_payload.source || github.event.inputs.source || 'sweep' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine source
+        id: target
+        run: |
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            RAW="${{ github.event.client_payload.source }}"
+            SOURCE="${RAW,,}"
+            SHA="${{ github.event.client_payload.sha }}"
+            TYPE="${{ github.event.client_payload.type }}"
+            echo "source=$SOURCE" >> "$GITHUB_OUTPUT"
+            echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+            echo "type=$TYPE" >> "$GITHUB_OUTPUT"
+            echo "Dispatch: refresh $SOURCE (raw: $RAW, sha: $SHA, type: $TYPE)"
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            RAW="${{ github.event.inputs.source }}"
+            SOURCE="${RAW,,}"
+            echo "source=$SOURCE" >> "$GITHUB_OUTPUT"
+            echo "sha=" >> "$GITHUB_OUTPUT"
+            echo "type=" >> "$GITHUB_OUTPUT"
+            echo "Manual: refresh $SOURCE (raw: $RAW)"
+          else
+            echo "source=all" >> "$GITHUB_OUTPUT"
+            echo "sha=" >> "$GITHUB_OUTPUT"
+            echo "type=" >> "$GITHUB_OUTPUT"
+            echo "Schedule: full sweep"
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
+
+      - name: Configure git for private repos
+        env:
+          REFRESH_PAT: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
+        run: |
+          TOKEN=$(echo -n "$REFRESH_PAT" | tr -d '[:space:]')
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+
+      - name: Cache Rust build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            crates/spore-validate/target
+          key: spore-validate-${{ hashFiles('crates/spore-validate/Cargo.lock') }}
+
+      - name: Build spore-validate
+        run: cargo build --release --manifest-path crates/spore-validate/Cargo.toml
+
+      - name: Clone and refresh
+        env:
+          SOURCE: ${{ steps.target.outputs.source }}
+        run: bash scripts/refresh-metrics.sh "$SOURCE"
+
+      - name: Commit if changed
+        env:
+          SOURCE: ${{ steps.target.outputs.source }}
+          SHA: ${{ steps.target.outputs.sha }}
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          if git diff --quiet config.toml; then
+            echo "No metric changes detected"
+            exit 0
+          fi
+
+          git config user.name "sporePrint-bot"
+          git config user.email "sporeprint-bot@ecoPrimals.dev"
+          git add config.toml
+
+          MSG="refresh: ${SOURCE}"
+          if [[ -n "$SHA" ]]; then
+            MSG="$MSG ($SHA)"
+          fi
+          MSG="$MSG — $(date -u +%Y-%m-%d)"
+
+          git commit -m "$MSG"
+
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $i failed, retrying..."
+            sleep 2
+          done
+
+  content:
+    needs: refresh
+    if: github.event_name == 'repository_dispatch' && github.event.client_payload.content == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
+
+      - name: Configure git for private repos
+        env:
+          REFRESH_PAT: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
+        run: |
+          TOKEN=$(echo -n "$REFRESH_PAT" | tr -d '[:space:]')
+          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+
+      - name: Clone source and extract content
+        env:
+          SOURCE: ${{ github.event.client_payload.source }}
+          TYPE: ${{ github.event.client_payload.type }}
+        run: |
+          SOURCE_LOWER="${SOURCE,,}"
+
+          # Look up repo from sources.toml
+          REPO=$(grep -A2 "^\[sources\.${SOURCE_LOWER}\]" sources.toml | grep "^repo" | cut -d'"' -f2)
+          if [[ -z "$REPO" ]]; then
+            echo "No repo found for $SOURCE_LOWER in sources.toml"
+            exit 0
+          fi
+
+          git clone --depth 1 "https://github.com/${REPO}.git" /tmp/source-repo
+
+          # Check for sporeprint/ content directory in the source repo
+          if [[ ! -d /tmp/source-repo/sporeprint ]]; then
+            echo "No sporeprint/ directory in $REPO — skipping content"
+            exit 0
+          fi
+
+          # Copy markdown fragments with Zola front matter
+          for md in /tmp/source-repo/sporeprint/*.md; do
+            [[ -f "$md" ]] || continue
+            BASENAME=$(basename "$md")
+            SLUG="${SOURCE_LOWER}-${BASENAME}"
+            cp "$md" "content/lab/${SLUG}"
+            echo "  Copied $BASENAME → content/lab/${SLUG}"
+          done
+
+      - name: Create PR if content changed
+        env:
+          GH_TOKEN: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
+          SOURCE: ${{ github.event.client_payload.source }}
+        run: |
+          SOURCE_LOWER="${SOURCE,,}"
+          BRANCH="content/${SOURCE_LOWER}-$(date -u +%Y%m%d)"
+
+          if git diff --quiet content/lab/; then
+            echo "No content changes"
+            exit 0
+          fi
+
+          git config user.name "sporePrint-bot"
+          git config user.email "sporeprint-bot@ecoPrimals.dev"
+          git checkout -b "$BRANCH"
+          git add content/lab/
+          git commit -m "content: add ${SOURCE_LOWER} lab pages — $(date -u +%Y-%m-%d)"
+          git push -u origin "$BRANCH"
+
+          gh pr create \
+            --title "Lab content from ${SOURCE_LOWER}" \
+            --body "Auto-generated from \`${SOURCE_LOWER}/sporeprint/\` directory. Review before merging." \
+            --base main

@@ -1,6 +1,8 @@
 use crate::model::{Entity, EntityKind};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use std::process::Command;
+use toml_edit::DocumentMut;
 use walkdir::WalkDir;
 
 pub struct Drift {
@@ -19,6 +21,7 @@ pub struct RefreshResult {
 pub fn scan(
     registry: &HashMap<String, Entity>,
     repos_root: &Path,
+    source_filter: Option<&str>,
 ) -> RefreshResult {
     let mut drifts = Vec::new();
     let mut missing_repos = Vec::new();
@@ -28,15 +31,19 @@ pub fn scan(
     keys.sort();
 
     for key in keys {
+        if source_filter.is_some_and(|f| key != f) {
+            continue;
+        }
+
         let entity = &registry[key];
         let Some(repo) = &entity.repo else {
             continue;
         };
 
-        if !matches!(entity.kind, EntityKind::Primal | EntityKind::Spring) {
-            if entity.loc.is_none() {
-                continue;
-            }
+        if !matches!(entity.kind, EntityKind::Primal | EntityKind::Spring)
+            && entity.loc.is_none()
+        {
+            continue;
         }
 
         let repo_name = repo.rsplit('/').next().unwrap_or(repo);
@@ -48,48 +55,48 @@ pub fn scan(
         scanned += 1;
         let metrics = count_metrics(&repo_path);
 
-        if let Some(registered_loc) = entity.loc {
-            if registered_loc != metrics.loc {
-                drifts.push(Drift {
-                    key: key.clone(),
-                    field: "loc",
-                    registered: registered_loc,
-                    actual: metrics.loc,
-                });
-            }
+        if let Some(registered_loc) = entity.loc
+            && registered_loc != metrics.loc
+        {
+            drifts.push(Drift {
+                key: key.clone(),
+                field: "loc",
+                registered: registered_loc,
+                actual: metrics.loc,
+            });
         }
 
-        if let Some(registered_tests) = entity.tests {
-            if registered_tests != metrics.tests {
-                drifts.push(Drift {
-                    key: key.clone(),
-                    field: "tests",
-                    registered: registered_tests,
-                    actual: metrics.tests,
-                });
-            }
+        if let Some(registered_tests) = entity.tests
+            && registered_tests != metrics.tests
+        {
+            drifts.push(Drift {
+                key: key.clone(),
+                field: "tests",
+                registered: registered_tests,
+                actual: metrics.tests,
+            });
         }
 
-        if let Some(registered_files) = entity.files {
-            if u64::from(registered_files) != metrics.files {
-                drifts.push(Drift {
-                    key: key.clone(),
-                    field: "files",
-                    registered: u64::from(registered_files),
-                    actual: metrics.files,
-                });
-            }
+        if let Some(registered_files) = entity.files
+            && u64::from(registered_files) != metrics.files
+        {
+            drifts.push(Drift {
+                key: key.clone(),
+                field: "files",
+                registered: u64::from(registered_files),
+                actual: metrics.files,
+            });
         }
 
-        if let Some(registered_crates) = entity.crates {
-            if u64::from(registered_crates) != metrics.crates {
-                drifts.push(Drift {
-                    key: key.clone(),
-                    field: "crates",
-                    registered: u64::from(registered_crates),
-                    actual: metrics.crates,
-                });
-            }
+        if let Some(registered_crates) = entity.crates
+            && u64::from(registered_crates) != metrics.crates
+        {
+            drifts.push(Drift {
+                key: key.clone(),
+                field: "crates",
+                registered: u64::from(registered_crates),
+                actual: metrics.crates,
+            });
         }
     }
 
@@ -97,6 +104,127 @@ pub fn scan(
         drifts,
         missing_repos,
         scanned,
+    }
+}
+
+fn format_display(n: u64) -> String {
+    let s = n.to_string();
+    let mut result = String::with_capacity(s.len() + s.len() / 3);
+    for (i, c) in s.chars().rev().enumerate() {
+        if i > 0 && i % 3 == 0 {
+            result.push(',');
+        }
+        result.push(c);
+    }
+    result.chars().rev().collect()
+}
+
+/// Write drifted metrics back to config.toml, preserving formatting.
+#[allow(clippy::cast_possible_wrap)]
+pub fn write_updates(config_path: &Path, drifts: &[Drift]) -> Result<(), String> {
+    let text = std::fs::read_to_string(config_path)
+        .map_err(|e| format!("failed to read {}: {e}", config_path.display()))?;
+
+    let mut doc: DocumentMut = text
+        .parse()
+        .map_err(|e| format!("failed to parse TOML for editing: {e}"))?;
+
+    let registry = doc
+        .get_mut("extra")
+        .and_then(|e| e.get_mut("entity_registry"))
+        .ok_or_else(|| "missing [extra.entity_registry] in config.toml".to_string())?;
+
+    for drift in drifts {
+        let entity = registry
+            .get_mut(&drift.key)
+            .ok_or_else(|| format!("entity '{}' not found in registry", drift.key))?;
+
+        match drift.field {
+            "loc" => {
+                entity["loc"] = toml_edit::value(drift.actual as i64);
+                entity["loc_display"] = toml_edit::value(format_display(drift.actual));
+            }
+            "tests" => {
+                entity["tests"] = toml_edit::value(drift.actual as i64);
+                entity["tests_display"] = toml_edit::value(format_display(drift.actual));
+            }
+            "files" => {
+                entity["files"] = toml_edit::value(drift.actual as i64);
+            }
+            "crates" => {
+                entity["crates"] = toml_edit::value(drift.actual as i64);
+            }
+            _ => {}
+        }
+    }
+
+    update_totals(&mut doc);
+
+    std::fs::write(config_path, doc.to_string())
+        .map_err(|e| format!("failed to write {}: {e}", config_path.display()))
+}
+
+#[allow(clippy::cast_sign_loss)]
+fn update_totals(doc: &mut DocumentMut) {
+    let Some(registry) = doc.get("extra").and_then(|e| e.get("entity_registry")) else {
+        return;
+    };
+
+    let mut primal_loc = 0i64;
+    let mut spring_loc = 0i64;
+    let mut primal_tests = 0i64;
+    let mut spring_tests = 0i64;
+
+    if let Some(table) = registry.as_table_like() {
+        for (_key, entity) in table.iter() {
+            let kind = entity.get("kind").and_then(toml_edit::Item::as_str).unwrap_or("");
+            let loc = entity.get("loc").and_then(toml_edit::Item::as_integer).unwrap_or(0);
+            let tests = entity.get("tests").and_then(toml_edit::Item::as_integer).unwrap_or(0);
+
+            match kind {
+                "primal" => {
+                    primal_loc += loc;
+                    primal_tests += tests;
+                }
+                "spring" => {
+                    spring_loc += loc;
+                    spring_tests += tests;
+                }
+                _ => {}
+            }
+        }
+    }
+
+    let total_loc = primal_loc + spring_loc;
+    let total_tests = primal_tests + spring_tests;
+
+    if let Some(totals) = doc
+        .get_mut("extra")
+        .and_then(|e| e.get_mut("totals"))
+    {
+        totals["primal_loc"] = toml_edit::value(primal_loc);
+        totals["primal_loc_display"] = toml_edit::value(format_display(primal_loc as u64));
+        totals["spring_loc"] = toml_edit::value(spring_loc);
+        totals["spring_loc_display"] = toml_edit::value(format_display(spring_loc as u64));
+        totals["total_loc"] = toml_edit::value(total_loc);
+        totals["total_loc_display"] = toml_edit::value(format_display(total_loc as u64));
+        totals["primal_tests"] = toml_edit::value(primal_tests);
+        totals["primal_tests_display"] = toml_edit::value(format_display(primal_tests as u64));
+        totals["spring_tests"] = toml_edit::value(spring_tests);
+        totals["spring_tests_display"] = toml_edit::value(format_display(spring_tests as u64));
+        totals["total_tests"] = toml_edit::value(total_tests);
+        totals["total_tests_display"] = toml_edit::value(format_display(total_tests as u64));
+        let date_str = Command::new("date")
+            .args(["-u", "+%Y-%m-%d"])
+            .output()
+            .ok()
+            .and_then(|o| String::from_utf8(o.stdout).ok())
+            .unwrap_or_default()
+            .trim()
+            .to_string();
+        if !date_str.is_empty() {
+            totals["measured_date"] = toml_edit::value(date_str);
+        }
     }
 }
 
