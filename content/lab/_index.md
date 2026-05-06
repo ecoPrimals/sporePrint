@@ -1,19 +1,41 @@
 +++
 title = "🧫 Lab"
-description = "Live validation results from projectNUCLEUS on ironGate. 13 primals, 235+ science checks, full provenance chains. Run it yourself or review the evidence."
+description = "Live validation results, spring science hubs, and sovereign compute access. 13 primals, 13,648+ checks, 8 springs, full provenance. Run it yourself or review the evidence."
 sort_by = "weight"
 template = "section.html"
+
+[taxonomies]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 The lab is where {{ entity(name="ecoprimals") }} science gets validated on real hardware.
-Everything here ran on **ironGate** (i9-14900K, 96 GB DDR5, RTX 5070) through
+Everything here ran on **ironGate** (i9-14900K, 96 GB DDR5, RTX 4070 / RTX 3090 / Akida NPU) through
 a live 13-primal {{ entity(name="nucleus") }} composition. Every result carries a
 cryptographic provenance chain: BLAKE3 content hashes → rhizoCrypt DAG → loamSpine
 ledger → sweetGrass ed25519-witnessed braid.
 
+**Security status**: All 13 primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. Zero open security gaps (primalSpring Phase 59).
+
 ---
 
-## What's Here
+## Spring Science
+
+Each spring validates a scientific domain. These pages tell the full story — what was reproduced, what was discovered, and what it proved about the infrastructure.
+
+| Spring | Domain | Checks | Papers |
+|--------|--------|--------|--------|
+| [wetSpring](@/lab/springs/wetspring.md) | Life science, metagenomics, PFAS | 5,707+ | 63/63 |
+| [hotSpring](@/lab/springs/hotspring.md) | Plasma physics, lattice QCD, spectral | 697+ | 10+ |
+| [airSpring](@/lab/springs/airspring.md) | Precision agriculture, irrigation | 2,777+ | 57 |
+| [healthSpring](@/lab/springs/healthspring.md) | PK/PD, microbiome, biosignal, drugs | 795 | 7 tracks |
+
+**4 more springs** (groundSpring, neuralSpring, ludoSpring, primalSpring) are documented in the [Spring Catalog](/architecture/spring-catalog-status-science-and-evolution/) and are being expanded by upstream contributors.
+
+**Total across all 8 springs**: 13,648+ quantitative checks, 70+ peer-reviewed papers reproduced, 15 researchers across 9 departments.
+
+---
+
+## Validation & Provenance
 
 **Validation results** — 235+ structured science checks across 8 workloads, dispatched
 through {{ entity(name="toadstool") }} on a live composition. Real NCBI data (11.9M
@@ -27,6 +49,9 @@ The braid is PROV-O compliant with DID attribution.
 **Reproduce it yourself** — step-by-step instructions to stand up the same composition
 on your own hardware and run the same workloads. No cloud. No institutional access.
 Commodity hardware.
+
+- [Reproduce Results](@/lab/reproduce.md) — step-by-step guide
+- [Provenance Pipeline](@/lab/provenance-pipeline.md) — how results are tracked and verified
 
 ---
 
@@ -54,6 +79,27 @@ in production.
 
 ---
 
+## Compute Access
+
+**JupyterHub on ironGate** provides multi-user notebook access to the live 13-primal composition. Every notebook runs against real primals, not mocks. Four access tiers (full, limited, reviewer, external) ensure open science with appropriate boundaries.
+
+- [Compute Access](@/lab/compute-access.md) — tiers, architecture, how to connect
+
+---
+
+## For PIs and Reviewers
+
+The lab is the evidence record for the [foundation protocol](/products/foundation/). If you're evaluating ecoPrimals for institutional adoption:
+
+1. **Review the spring science hubs** — each spring page shows what was reproduced and how
+2. **Check the provenance pipeline** — every result is content-addressed with cryptographic chains
+3. **Request reviewer access** — read-only JupyterHub access to see the live workspace
+4. **Run it yourself** — the reproduction guide works on commodity hardware, no institutional access needed
+
+The shared workspace at `/shared/abg/showcase/` contains polished results ready for institutional review.
+
+---
+
 ## For ABG Members
 
 If you're in the Accelerated Bioinformatics Group, the lab is also your
@@ -63,6 +109,5 @@ workloads run on the same composition, with the same provenance. Your
 science validates the infrastructure; the infrastructure validates your
 science.
 
-See [Reproduce It Yourself](@/lab/reproduce.md) for how to run this
-on your own hardware, or contact ecoPrimal for tunnel access to the
-live system.
+See [Compute Access](@/lab/compute-access.md) for how to connect, or
+[Reproduce It Yourself](@/lab/reproduce.md) to run this on your own hardware.
