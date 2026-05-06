@@ -1,5 +1,5 @@
 use clap::{Parser, Subcommand};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process;
 
 mod content;
@@ -39,6 +39,14 @@ enum Command {
     Refresh {
         /// Root directory containing ecoPrimals checkout (with primals/, springs/, infra/)
         repos_root: PathBuf,
+
+        /// Write updated metrics back to config.toml (otherwise print-only)
+        #[arg(long)]
+        write: bool,
+
+        /// Refresh only this entity ID (default: all entities with repos)
+        #[arg(long)]
+        source: Option<String>,
     },
 }
 
@@ -63,8 +71,12 @@ fn main() {
             };
             run_validate(&root, &config, check, strict);
         }
-        Some(Command::Refresh { repos_root }) => {
-            run_refresh(&config, &repos_root);
+        Some(Command::Refresh {
+            repos_root,
+            write,
+            source,
+        }) => {
+            run_refresh(&config_path, &config, &repos_root, write, source.as_deref());
         }
     }
 }
@@ -135,14 +147,30 @@ fn run_validate(root: &PathBuf, config: &model::Config, check: bool, strict: boo
     }
 }
 
-fn run_refresh(config: &model::Config, repos_root: &PathBuf) {
+fn run_refresh(
+    config_path: &Path,
+    config: &model::Config,
+    repos_root: &PathBuf,
+    write: bool,
+    source: Option<&str>,
+) {
     let repos_root = repos_root
         .canonicalize()
         .unwrap_or_else(|_| repos_root.clone());
 
-    println!("spore-validate refresh: scanning repos in {}...", repos_root.display());
+    if let Some(name) = source {
+        println!(
+            "spore-validate refresh: scanning {name} in {}...",
+            repos_root.display()
+        );
+    } else {
+        println!(
+            "spore-validate refresh: scanning repos in {}...",
+            repos_root.display()
+        );
+    }
 
-    let result = refresh::scan(&config.extra.entity_registry, &repos_root);
+    let result = refresh::scan(&config.extra.entity_registry, &repos_root, source);
 
     for repo in &result.missing_repos {
         println!("  SKIP: {repo} — repo not found");
@@ -172,5 +200,15 @@ fn run_refresh(config: &model::Config, repos_root: &PathBuf) {
             result.scanned,
             result.drifts.len()
         );
+
+        if write {
+            match refresh::write_updates(config_path, &result.drifts) {
+                Ok(()) => println!("  WRITE: config.toml updated with {} metric(s)", result.drifts.len()),
+                Err(e) => {
+                    eprintln!("  ERROR: failed to write config.toml: {e}");
+                    process::exit(1);
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,145 @@
+# sporePrint Source Registry
+# =========================
+#
+# Maps each primal and spring to its source GitHub repository.
+# Used by auto-refresh.yml to clone repos and update metrics in config.toml.
+#
+# This mirrors plasmidBin's sources.toml but covers springs as well.
+# plasmidBin distributes binaries; sporePrint displays metrics and content.
+#
+# Org layout:
+#   ecoPrimals/          — Primals + infra (public, except bearDog + skunkBat)
+#   syntheticChemistry/  — Springs (science validation, private)
+#   sporeGarden/         — Products (gen4 consumers, public)
+#
+# Updated: 2026-05-06
+
+# =============================================================================
+# PRIMALS — Tower Atomic (trust boundary)
+# =============================================================================
+
+[sources.beardog]
+repo = "ecoPrimals/bearDog"
+type = "primal"
+private = true
+
+[sources.songbird]
+repo = "ecoPrimals/songBird"
+type = "primal"
+
+# =============================================================================
+# PRIMALS — Node Atomic (compute substrate)
+# =============================================================================
+
+[sources.toadstool]
+repo = "ecoPrimals/toadStool"
+type = "primal"
+
+[sources.barracuda]
+repo = "ecoPrimals/barraCuda"
+type = "primal"
+
+[sources.coralreef]
+repo = "ecoPrimals/coralReef"
+type = "primal"
+
+# =============================================================================
+# PRIMALS — Nest Atomic (storage + provenance)
+# =============================================================================
+
+[sources.nestgate]
+repo = "ecoPrimals/nestGate"
+type = "primal"
+
+[sources.rhizocrypt]
+repo = "ecoPrimals/rhizoCrypt"
+type = "primal"
+
+[sources.loamspine]
+repo = "ecoPrimals/loamSpine"
+type = "primal"
+
+[sources.sweetgrass]
+repo = "ecoPrimals/sweetGrass"
+type = "primal"
+
+# =============================================================================
+# PRIMALS — Meta-Tier (orchestration, AI, UI)
+# =============================================================================
+
+[sources.biomeos]
+repo = "ecoPrimals/biomeOS"
+type = "primal"
+
+[sources.squirrel]
+repo = "ecoPrimals/squirrel"
+type = "primal"
+
+[sources.petaltongue]
+repo = "ecoPrimals/petalTongue"
+type = "primal"
+
+# =============================================================================
+# PRIMALS — Defense
+# =============================================================================
+
+[sources.skunkbat]
+repo = "ecoPrimals/skunkBat"
+type = "primal"
+private = true
+
+# =============================================================================
+# PRIMALS — Tooling
+# =============================================================================
+
+[sources.sourdough]
+repo = "ecoPrimals/sourDough"
+type = "primal"
+
+[sources.bingocube]
+repo = "ecoPrimals/bingoCube"
+type = "primal"
+
+# =============================================================================
+# SPRINGS — Science validation (all under syntheticChemistry/)
+# =============================================================================
+
+[sources.hotspring]
+repo = "syntheticChemistry/hotSpring"
+type = "spring"
+private = true
+
+[sources.airspring]
+repo = "syntheticChemistry/airSpring"
+type = "spring"
+private = true
+
+[sources.wetspring]
+repo = "syntheticChemistry/wetSpring"
+type = "spring"
+private = true
+
+[sources.groundspring]
+repo = "syntheticChemistry/groundSpring"
+type = "spring"
+private = true
+
+[sources.neuralspring]
+repo = "syntheticChemistry/neuralSpring"
+type = "spring"
+private = true
+
+[sources.healthspring]
+repo = "syntheticChemistry/healthSpring"
+type = "spring"
+private = true
+
+[sources.ludospring]
+repo = "syntheticChemistry/ludoSpring"
+type = "spring"
+private = true
+
+[sources.primalspring]
+repo = "syntheticChemistry/primalSpring"
+type = "spring"
+private = true
