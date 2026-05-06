@@ -46,8 +46,7 @@ pub fn scan(
             continue;
         }
 
-        let repo_name = repo.rsplit('/').next().unwrap_or(repo);
-        let Some(repo_path) = find_repo(repos_root, repo_name) else {
+        let Some(repo_path) = find_repo(repos_root, repo) else {
             missing_repos.push(format!("{key} ({repo})"));
             continue;
         };
@@ -228,17 +227,35 @@ fn update_totals(doc: &mut DocumentMut) {
     }
 }
 
-fn find_repo(root: &Path, name: &str) -> Option<PathBuf> {
-    for subdir in &["primals", "springs", "infra", "gardens", ""] {
-        let candidate = if subdir.is_empty() {
-            root.join(name)
-        } else {
-            root.join(subdir).join(name)
-        };
+/// Resolve a repo path from its `org/name` string (e.g. `"ecoPrimals/bearDog"`).
+///
+/// Tries in order:
+///   1. Org-based: `root/org/name` (CI clone layout and canonical structure)
+///   2. Legacy subdirs: `root/{primals,springs,infra,sporeGarden}/name`
+///   3. Flat: `root/name`
+fn find_repo(root: &Path, repo_ref: &str) -> Option<PathBuf> {
+    // 1. Full org/name path (canonical)
+    let candidate = root.join(repo_ref);
+    if candidate.is_dir() {
+        return Some(candidate);
+    }
+
+    let name = repo_ref.rsplit('/').next().unwrap_or(repo_ref);
+
+    // 2. Legacy local checkout subdirs
+    for subdir in &["primals", "springs", "infra", "sporeGarden"] {
+        let candidate = root.join(subdir).join(name);
         if candidate.is_dir() {
             return Some(candidate);
         }
     }
+
+    // 3. Flat (root/name)
+    let candidate = root.join(name);
+    if candidate.is_dir() {
+        return Some(candidate);
+    }
+
     None
 }
 

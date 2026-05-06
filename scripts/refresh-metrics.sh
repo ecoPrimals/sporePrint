@@ -43,17 +43,8 @@ clone_source() {
         return 1
     fi
 
-    local type
-    type=$(grep -A5 "^\[sources\.${key}\]" "$SOURCES" | grep "^type" | head -1 | cut -d'"' -f2)
-    local repo_name
-    repo_name=$(echo "$repo" | cut -d'/' -f2)
-
-    local target_dir
-    case "$type" in
-        primal) target_dir="$CLONE_DIR/primals/$repo_name" ;;
-        spring) target_dir="$CLONE_DIR/springs/$repo_name" ;;
-        *)      target_dir="$CLONE_DIR/$repo_name" ;;
-    esac
+    # Clone into org/repo structure (e.g. ecoPrimals/bearDog)
+    local target_dir="$CLONE_DIR/$repo"
 
     if [[ -d "$target_dir/.git" ]]; then
         echo "  PULL: $key → $target_dir"
