@@ -16,6 +16,11 @@ name = "springs"
 feed = false
 
 
+[link_checker]
+skip_prefixes = [
+    "https://www.gnu.org/",
+]
+
 [markdown]
 smart_punctuation = true
 
