@@ -3,9 +3,6 @@ title = "🧫 Lab"
 description = "Live validation results, spring science hubs, and sovereign compute access. 13 primals, 13,648+ checks, 8 springs, full provenance. Run it yourself or review the evidence."
 sort_by = "weight"
 template = "section.html"
-
-[taxonomies]
-springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 The lab is where {{ entity(name="ecoprimals") }} science gets validated on real hardware.
