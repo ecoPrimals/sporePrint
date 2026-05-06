@@ -4,7 +4,8 @@ description = "The f64 Vulkan discovery, $0.044/run, sovereign consumer hardware
 date = 2026-03-17
 
 [taxonomies]
-primals = ["barracuda", "coralreef"]
+primals = ["barracuda", "coralreef", "toadstool"]
+springs = ["hotspring", "wetspring", "airspring", "healthspring"]
 +++
 
 **The f64 GPU discovery, the $0.044 run, and what consumer hardware actually does.**

@@ -4,8 +4,8 @@ description = "Convergence analysis across all 7 springs — shared mathematical
 date = 2026-03-17
 
 [taxonomies]
-primals = ["barracuda", "coralreef", "toadstool"]
-springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
+primals = ["barracuda", "coralreef", "toadstool", "beardog", "rhizocrypt", "loamspine", "sweetgrass", "nestgate", "biomeos"]
+springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
 **How the {{ entity(name="basecamp") }} papers draw from multiple springs — and why that matters.**
@@ -228,6 +228,70 @@ The computational predictions are validated. The wet-lab tests are the open fron
 
 ---
 
+---
+
+## The primalSpring Layer — Composition Validation
+
+{{ entity(name="primalspring") }} is the eighth spring, but it validates infrastructure
+rather than a scientific domain. Where science springs ask "does the Rust reproduce
+the Python?", {{ entity(name="primalspring") }} asks "does the composition reproduce
+the standalone binary?"
+
+| What It Validates | How | Evidence |
+|------------------|-----|---------|
+| Deploy graph structure | `validate_deployment_readiness()` — checks graph nodes, binary presence, env vars, bonding | 71 TOMLs, 13 primals |
+| BTSP Phase 3 AEAD | ChaCha20-Poly1305 encrypted channels between all primals | sweetGrass/rhizoCrypt reject plaintext |
+| Wire Standard L3 | `capabilities.list` returns `protocol` + `transport` per primal | 13/13 conform |
+| Discovery hierarchy | 5-tier escalation: Songbird IPC → biomeOS Neural → UDS → registry → TCP | Probed on live composition |
+| Startup ordering | Topological sort via `topological_waves()` (Kahn's algorithm) | deploy.sh uses ordering |
+| Provenance pipeline | BLAKE3 → rhizoCrypt DAG → loamSpine ledger → sweetGrass braid | 26 events, Merkle root, ed25519 witness |
+
+### How primalSpring Connects to Science Springs
+
+Every science spring's validated kernels eventually run through the composition
+layer that {{ entity(name="primalspring") }} validates:
+
+```
+wetSpring 16S pipeline (37/37 checks standalone)
+    ↓ dispatched via toadStool
+    ↓ provenance tracked via rhizoCrypt → loamSpine → sweetGrass
+    ↓ = same 37/37 checks in composition (zero regression)
+```
+
+The 235+ checks that pass through {{ entity(name="toadstool") }} dispatch on
+projectNUCLEUS are {{ entity(name="primalspring") }}'s acceptance test. If
+composition introduces regression, {{ entity(name="primalspring") }}'s validation
+matrix catches it.
+
+### What primalSpring Contributes to baseCamp
+
+{{ entity(name="primalspring") }} does not produce baseCamp papers directly. It
+produces the **proof that baseCamp science runs in composition** — the evidence
+that the infrastructure is production-ready. This proof is what
+{{ entity(name="foundation") }} takes to institutions: not just "the science
+works" but "the science works on sovereign infrastructure, with provenance,
+at commodity hardware cost."
+
+---
+
+## The Composition Evidence Chain
+
+When all springs converge through composition, the evidence chain looks like this:
+
+| Layer | What's Proven | Spring(s) |
+|-------|---------------|-----------|
+| Math is correct | Published results reproduced at machine-epsilon | Science springs (7) |
+| Infrastructure works | 13 primals compose, communicate, and don't regress | {{ entity(name="primalspring") }} |
+| Security holds | BTSP encryption, fuzzing resilience, no hidden methods | {{ entity(name="primalspring") }} + {{ entity(name="skunkbat") }} |
+| Provenance is real | Content-addressed, append-only, cryptographically witnessed | Provenance trio |
+| Products emerge | helixVision, esotericWebb, etc. are usable tools | Product teams |
+| Institutions can adopt | Same patterns run on HPC at scale | {{ entity(name="foundation") }} |
+
+See [Composition Pipeline](@/architecture/COMPOSITION_PIPELINE.md) for the full
+flow from springs through products to institutional adoption.
+
+---
+
 *Spring versions at time of writing: {{ entity(name="wetspring") }} V127, {{ entity(name="airspring") }} v0.8.9,
 {{ entity(name="neuralspring") }} S162, {{ entity(name="hotspring") }} v0.6.31, {{ entity(name="groundspring") }} V114, {{ entity(name="healthspring") }} V35,
-{{ entity(name="ludospring") }} V24.*
+{{ entity(name="ludospring") }} V24, {{ entity(name="primalspring") }} v0.9.24.*

@@ -8,7 +8,8 @@ weight = 30
 domain = "Provenance"
 
 [taxonomies]
-primals = ["rhizocrypt", "loamspine", "sweetgrass", "beardog", "nestgate"]
+primals = ["rhizocrypt", "loamspine", "sweetgrass", "beardog", "nestgate", "toadstool"]
+springs = ["primalspring"]
 +++
 
 ## The Provenance Trio

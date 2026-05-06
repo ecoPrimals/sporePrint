@@ -4,8 +4,8 @@ description = "Sovereign ETL and data pipeline — NCBI integration, format conv
 date = 2026-03-31
 
 [taxonomies]
-primals = ["beardog", "biomeos", "nestgate"]
-springs = ["wetspring"]
+primals = ["beardog", "biomeos", "nestgate", "rhizocrypt", "loamspine", "sweetgrass"]
+springs = ["wetspring", "primalspring"]
 +++
 
 **Repository**: sporeGarden/blueFish (moving from {{ entity(name="syntheticchemistry") }} — repo pending)  
