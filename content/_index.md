@@ -32,7 +32,9 @@ If those commands run, the claims are verified. No institutional access. No prop
 - ✅ **Validate with {{ entity(name="guidestone") }}** — self-verifying build artifacts that prove their own correctness
 
 New here? Start with the [Glossary](@/glossary/_index.md) for plain-language
-definitions of every term on this site.
+definitions of every term on this site. See the [Lab](@/lab/_index.md) for
+live validation results from a 13-primal {{ entity(name="nucleus") }} composition —
+235+ science checks with full provenance chains.
 
 ---
 
