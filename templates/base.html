@@ -59,6 +59,7 @@
         <li><a href="{{ get_url(path='@/architecture/_index.md') }}" {% if current_path is starting_with("/architecture") or current_path is starting_with("/methodology") or current_path is starting_with("/technical") %}class="active" aria-current="true"{% endif %}>Architecture</a></li>
         <li><a href="{{ get_url(path='@/guidestone/_index.md') }}" {% if current_path is starting_with("/guidestone") %}class="active" aria-current="true"{% endif %}>guideStone</a></li>
         <li><a href="{{ get_url(path='@/products/_index.md') }}" {% if current_path is starting_with("/products") %}class="active" aria-current="true"{% endif %}>Products</a></li>
+        <li><a href="{{ get_url(path='@/lab/_index.md') }}" {% if current_path is starting_with("/lab") %}class="active" aria-current="true"{% endif %}>Lab</a></li>
         <li class="nav-divider"></li>
         <li><a href="/primals/" {% if current_path is starting_with("/primals") %}class="active" aria-current="true"{% endif %}>Primals</a></li>
         <li><a href="/springs/" {% if current_path is starting_with("/springs") %}class="active" aria-current="true"{% endif %}>Springs</a></li>
@@ -154,6 +155,17 @@
             <li class="tree-section{% if current_path is starting_with("/products") %} tree-active{% endif %}">
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>
               {% if current_path is starting_with("/products") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
+            {% set sec = get_section(path="lab/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/lab") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/lab") %}
               <ul class="tree-pages">
                 {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
                 {% endfor %}
