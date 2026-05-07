@@ -146,6 +146,14 @@ jobs:
           TOKEN=$(echo -n "$REFRESH_PAT" | tr -d '[:space:]')
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
 
+      - name: Set up Python for notebook rendering
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install notebook dependencies
+        run: pip install jupyter nbconvert matplotlib numpy --quiet
+
       - name: Clone source and extract content
         env:
           SOURCE: ${{ github.event.client_payload.source }}
@@ -162,20 +170,27 @@ jobs:
 
           git clone --depth 1 "https://github.com/${REPO}.git" /tmp/source-repo
 
-          # Check for sporeprint/ content directory in the source repo
-          if [[ ! -d /tmp/source-repo/sporeprint ]]; then
-            echo "No sporeprint/ directory in $REPO — skipping content"
-            exit 0
+          # Copy sporeprint/ markdown fragments
+          if [[ -d /tmp/source-repo/sporeprint ]]; then
+            for md in /tmp/source-repo/sporeprint/*.md; do
+              [[ -f "$md" ]] || continue
+              BASENAME=$(basename "$md")
+              [[ "$BASENAME" == "README.md" ]] && continue
+              SLUG="${SOURCE_LOWER}-${BASENAME}"
+              cp "$md" "content/lab/${SLUG}"
+              echo "  Copied $BASENAME → content/lab/${SLUG}"
+            done
           fi
 
-          # Copy markdown fragments with Zola front matter
-          for md in /tmp/source-repo/sporeprint/*.md; do
-            [[ -f "$md" ]] || continue
-            BASENAME=$(basename "$md")
-            SLUG="${SOURCE_LOWER}-${BASENAME}"
-            cp "$md" "content/lab/${SLUG}"
-            echo "  Copied $BASENAME → content/lab/${SLUG}"
-          done
+          # Render notebooks/ if present
+          if [[ -d /tmp/source-repo/notebooks ]]; then
+            mkdir -p content/lab/notebooks
+            for nb in /tmp/source-repo/notebooks/*.ipynb; do
+              [[ -f "$nb" ]] || continue
+              echo "  Rendering notebook: $(basename "$nb")"
+              bash scripts/render_notebooks.sh --notebook "$nb" || true
+            done
+          fi
 
       - name: Create PR if content changed
         env:
@@ -185,7 +200,7 @@ jobs:
           SOURCE_LOWER="${SOURCE,,}"
           BRANCH="content/${SOURCE_LOWER}-$(date -u +%Y%m%d)"
 
-          if git diff --quiet content/lab/; then
+          if git diff --quiet content/lab/ && [[ -z "$(git ls-files --others --exclude-standard content/lab/)" ]]; then
             echo "No content changes"
             exit 0
           fi
@@ -194,7 +209,7 @@ jobs:
           git config user.email "sporeprint-bot@ecoPrimals.dev"
           git checkout -b "$BRANCH"
           git add content/lab/
-          git commit -m "content: add ${SOURCE_LOWER} lab pages — $(date -u +%Y-%m-%d)"
+          git commit -m "content: add ${SOURCE_LOWER} lab pages + notebooks — $(date -u +%Y-%m-%d)"
           git push -u origin "$BRANCH"
 
           gh pr create \

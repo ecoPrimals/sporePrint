@@ -82,11 +82,11 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 
 | Notebook | Spring | Story |
 |----------|--------|-------|
-| [16S Pipeline Validation](@/lab/notebooks/_index.md) | wetSpring | Flagship 16S pipeline, Galaxy/QIIME2 parity, R/vegan cross-validation |
-| [Python vs Rust vs GPU](@/lab/notebooks/_index.md) | wetSpring | Benchmark evidence: timing, energy, speedup across three tiers |
-| [63/63 Paper Reproductions](@/lab/notebooks/_index.md) | wetSpring | 5 researchers, 6 tracks, full evidence map |
-| [Cross-Spring Connections](@/lab/notebooks/_index.md) | wetSpring | 79 barraCuda primitives, constraint-driven discoveries |
-| [Soil Anderson Deep Dive](@/lab/notebooks/_index.md) | wetSpring | Anderson localization in soil biology — physics meets ecology |
+| [16S Pipeline Validation](@/lab/notebooks/01-16s-pipeline-validation.md) | wetSpring | Flagship 16S pipeline, Galaxy/QIIME2 parity, R/vegan cross-validation |
+| [Python vs Rust vs GPU](@/lab/notebooks/02-benchmark-python-vs-rust.md) | wetSpring | Benchmark evidence: timing, energy, speedup across three tiers |
+| [63/63 Paper Reproductions](@/lab/notebooks/03-paper-reproductions.md) | wetSpring | 5 researchers, 6 tracks, full evidence map |
+| [Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md) | wetSpring | 79 barraCuda primitives, constraint-driven discoveries |
+| [Soil Anderson Deep Dive](@/lab/notebooks/05-soil-anderson-deep-dive.md) | wetSpring | Anderson localization in soil biology — physics meets ecology |
 
 **Run them yourself**: Clone the spring, `cd notebooks/`, `jupyter lab`. Or access via [JupyterHub](@/lab/compute-access.md).
 
