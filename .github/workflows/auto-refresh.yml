@@ -182,14 +182,13 @@ jobs:
             done
           fi
 
-          # Render notebooks/ if present
+          # Render notebooks/ if present (recursive to find papers/ subdirectory)
           if [[ -d /tmp/source-repo/notebooks ]]; then
             mkdir -p content/lab/notebooks
-            for nb in /tmp/source-repo/notebooks/*.ipynb; do
-              [[ -f "$nb" ]] || continue
+            while IFS= read -r -d '' nb; do
               echo "  Rendering notebook: $(basename "$nb")"
               bash scripts/render_notebooks.sh --notebook "$nb" || true
-            done
+            done < <(find /tmp/source-repo/notebooks -name '*.ipynb' -print0)
           fi
 
       - name: Create PR if content changed
