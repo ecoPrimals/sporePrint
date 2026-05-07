@@ -17,6 +17,7 @@ CONTENT_LAB="$SPOREPRINT_ROOT/content/lab"
 
 NOTEBOOKS_DIR="${NOTEBOOKS_DIR:-/home/irongate/notebooks}"
 SHOWCASE_DIR="${SHOWCASE_DIR:-/home/irongate/shared/abg/showcase}"
+SPRINGS_ROOT="${SPRINGS_ROOT:-/home/irongate/Development/ecoPrimals/springs}"
 
 mkdir -p "$CONTENT_LAB"
 
@@ -94,6 +95,18 @@ render_all() {
             [[ -f "$nb" ]] || continue
             render_notebook "$nb"
             count=$((count + 1))
+        done
+    fi
+
+    # Scan spring notebooks/ directories
+    if [[ -d "$SPRINGS_ROOT" ]]; then
+        for spring_dir in "$SPRINGS_ROOT"/*/notebooks; do
+            [[ -d "$spring_dir" ]] || continue
+            for nb in "$spring_dir"/*.ipynb; do
+                [[ -f "$nb" ]] || continue
+                render_notebook "$nb"
+                count=$((count + 1))
+            done
         done
     fi
 
