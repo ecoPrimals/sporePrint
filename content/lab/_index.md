@@ -25,8 +25,9 @@ Each spring validates a scientific domain. These pages tell the full story — w
 | [hotSpring](@/lab/springs/hotspring.md) | Plasma physics, lattice QCD, spectral | 697+ | 10+ |
 | [airSpring](@/lab/springs/airspring.md) | Precision agriculture, irrigation | 2,777+ | 57 |
 | [healthSpring](@/lab/springs/healthspring.md) | PK/PD, microbiome, biosignal, drugs | 795 | 7 tracks |
+| [groundSpring](@/lab/groundspring-validation-summary.md) | Measurement noise, uncertainty, Anderson | 965+ | 29 baselines |
 
-**4 more springs** (groundSpring, neuralSpring, ludoSpring, primalSpring) are documented in the [Spring Catalog](/architecture/spring-catalog-status-science-and-evolution/) and are being expanded by upstream contributors.
+**3 more springs** (neuralSpring, ludoSpring, primalSpring) are documented in the [Spring Catalog](/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
 
 **Total across all 8 springs**: 13,648+ quantitative checks, 70+ peer-reviewed papers reproduced, 15 researchers across 9 departments.
 
@@ -87,6 +88,11 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 | [63/63 Paper Reproductions](@/lab/notebooks/03-paper-reproductions.md) | wetSpring | 5 researchers, 6 tracks, full evidence map |
 | [Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md) | wetSpring | 79 barraCuda primitives, constraint-driven discoveries |
 | [Soil Anderson Deep Dive](@/lab/notebooks/05-soil-anderson-deep-dive.md) | wetSpring | Anderson localization in soil biology — physics meets ecology |
+| [Composition Validation](@/lab/notebooks/gs-01-composition-validation.md) | groundSpring | 6 deploy graphs, guideStone Level 3, verb reconciliation |
+| [Benchmark Comparison](@/lab/notebooks/gs-02-benchmark-comparison.md) | groundSpring | Rust vs Python timing, three-mode GPU, 110 barraCuda delegations |
+| [Ecosystem Evidence](@/lab/notebooks/gs-03-ecosystem-evidence.md) | groundSpring | 35 experiments, 10 domains, gap resolution, security posture |
+| [Cross-Spring Connections](@/lab/notebooks/gs-04-cross-spring-connections.md) | groundSpring | 5 primals consumed, 7 ecosystem flows, patterns pioneered |
+| [Measurement Science Deep Dive](@/lab/notebooks/gs-05-measurement-science-deep-dive.md) | groundSpring | Five pillars, 13-tier tolerance architecture, Anderson thread |
 
 **Run them yourself**: Clone the spring, `cd notebooks/`, `jupyter lab`. Or access via [JupyterHub](@/lab/compute-access.md).
 
