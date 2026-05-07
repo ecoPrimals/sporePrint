@@ -129,7 +129,7 @@ Gaps: 7/11 active, 4 resolved
 </tbody>
 </table>
 <p><strong>Provenance</strong>: All data from <code>groundSpring V124</code> (April 27, 2026).
-See <a href="https://primals.eco/architecture/SPRING_CATALOG.md">Spring Catalog</a> on primals.eco.</p>
+See <a href="https://primals.eco/architecture/spring-catalog/">Spring Catalog</a> on primals.eco.</p>
 </div>
 </div>
 </div>

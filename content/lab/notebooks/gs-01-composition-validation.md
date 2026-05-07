@@ -146,7 +146,7 @@ corresponds to an actual method in their dispatch table.</p>
 </tbody>
 </table>
 <p><strong>Provenance</strong>: All data from <code>groundSpring V124</code> (April 27, 2026).
-See <a href="https://primals.eco/architecture/SPRING_CATALOG.md">Spring Catalog</a> on primals.eco.</p>
+See <a href="https://primals.eco/architecture/spring-catalog/">Spring Catalog</a> on primals.eco.</p>
 </div>
 </div>
 </div>

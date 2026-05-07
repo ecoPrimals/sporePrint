@@ -27,7 +27,7 @@ Each spring validates a scientific domain. These pages tell the full story — w
 | [healthSpring](@/lab/springs/healthspring.md) | PK/PD, microbiome, biosignal, drugs | 795 | 7 tracks |
 | [groundSpring](@/lab/groundspring-validation-summary.md) | Measurement noise, uncertainty, Anderson | 965+ | 29 baselines |
 
-**3 more springs** (neuralSpring, ludoSpring, primalSpring) are documented in the [Spring Catalog](/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
+**3 more springs** (neuralSpring, ludoSpring, primalSpring) are documented in the [Spring Catalog](@/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
 
 **Total across all 8 springs**: 13,648+ quantitative checks, 70+ peer-reviewed papers reproduced, 15 researchers across 9 departments.
 
