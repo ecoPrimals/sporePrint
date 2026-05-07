@@ -79,6 +79,6 @@ This connects live compute to the public evidence record.
 
 ## Related
 
-- [Reproduce Results](/lab/reproduce-ecosystem-results/) — step-by-step reproduction guide
+- [Reproduce Results](@/lab/reproduce.md) — step-by-step reproduction guide
 - [Provenance Pipeline](/lab/provenance-pipeline/) — how results are tracked and verified
 - [Sovereign Compute Sharing](https://github.com/ecoPrimals/wateringHole/blob/main/compute-sharing/SOVEREIGN_COMPUTE_SHARING.md) — the full architecture spec
