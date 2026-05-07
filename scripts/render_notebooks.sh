@@ -19,12 +19,15 @@ NOTEBOOKS_DIR="${NOTEBOOKS_DIR:-/home/irongate/notebooks}"
 SHOWCASE_DIR="${SHOWCASE_DIR:-/home/irongate/shared/abg/showcase}"
 SPRINGS_ROOT="${SPRINGS_ROOT:-/home/irongate/Development/ecoPrimals/springs}"
 
-mkdir -p "$CONTENT_LAB"
+CONTENT_NOTEBOOKS="$CONTENT_LAB/notebooks"
+mkdir -p "$CONTENT_LAB" "$CONTENT_NOTEBOOKS"
 
 render_notebook() {
     local nb_path="$1"
     local nb_name
     nb_name="$(basename "$nb_path" .ipynb)"
+    local nb_dir
+    nb_dir="$(dirname "$nb_path")"
 
     local slug
     slug="$(echo "$nb_name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g')"
@@ -44,23 +47,43 @@ for cell in nb.get('cells', []):
 print('$nb_name')
 " 2>/dev/null || echo "$nb_name")"
 
-    echo "Rendering: $nb_name → content/lab/$slug.md"
+    echo "Rendering: $nb_name → content/lab/notebooks/$slug.md"
 
     local tmp_html
     tmp_html="$(mktemp /tmp/nb-render-XXXXXX.html)"
 
+    # Execute from the notebook's directory so relative paths resolve
     jupyter nbconvert \
         --to html \
         --template basic \
+        --execute \
+        --ExecutePreprocessor.timeout=300 \
+        --ExecutePreprocessor.kernel_name=python3 \
         --no-input \
         --output "$tmp_html" \
-        "$nb_path" 2>/dev/null
+        "$nb_path" \
+        --ExecutePreprocessor.cwd="$nb_dir" 2>/dev/null
+
+    if [[ $? -ne 0 ]]; then
+        echo "  WARN: execution failed for $nb_name — rendering without execution"
+        jupyter nbconvert \
+            --to html \
+            --template basic \
+            --no-input \
+            --output "$tmp_html" \
+            "$nb_path" 2>/dev/null
+    fi
 
     local html_body
-    html_body="$(cat "$tmp_html")"
+    html_body="$(cat "$tmp_html" 2>/dev/null || true)"
     rm -f "$tmp_html"
 
-    cat > "$CONTENT_LAB/$slug.md" << ZOLA_EOF
+    if [[ -z "$html_body" ]]; then
+        echo "  SKIP: no output for $nb_name"
+        return
+    fi
+
+    cat > "$CONTENT_NOTEBOOKS/$slug.md" << ZOLA_EOF
 +++
 title = "$title"
 description = "Rendered from $nb_name.ipynb — live notebook from the ABG shared workspace"
@@ -78,7 +101,7 @@ rendered_from = "$nb_name.ipynb"
 $html_body
 ZOLA_EOF
 
-    echo "  → $CONTENT_LAB/$slug.md"
+    echo "  → $CONTENT_NOTEBOOKS/$slug.md"
 }
 
 render_all() {
