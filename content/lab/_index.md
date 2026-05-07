@@ -76,6 +76,22 @@ in production.
 
 ---
 
+## Public Notebooks
+
+Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loads frozen experiment data (JSON artifacts) from the spring repositories — no live primals required.
+
+| Notebook | Spring | Story |
+|----------|--------|-------|
+| [16S Pipeline Validation](@/lab/notebooks/_index.md) | wetSpring | Flagship 16S pipeline, Galaxy/QIIME2 parity, R/vegan cross-validation |
+| [Python vs Rust vs GPU](@/lab/notebooks/_index.md) | wetSpring | Benchmark evidence: timing, energy, speedup across three tiers |
+| [63/63 Paper Reproductions](@/lab/notebooks/_index.md) | wetSpring | 5 researchers, 6 tracks, full evidence map |
+| [Cross-Spring Connections](@/lab/notebooks/_index.md) | wetSpring | 79 barraCuda primitives, constraint-driven discoveries |
+| [Soil Anderson Deep Dive](@/lab/notebooks/_index.md) | wetSpring | Anderson localization in soil biology — physics meets ecology |
+
+**Run them yourself**: Clone the spring, `cd notebooks/`, `jupyter lab`. Or access via [JupyterHub](@/lab/compute-access.md).
+
+---
+
 ## Compute Access
 
 **JupyterHub on ironGate** provides multi-user notebook access to the live 13-primal composition. Every notebook runs against real primals, not mocks. Four access tiers (full, limited, reviewer, external) ensure open science with appropriate boundaries.

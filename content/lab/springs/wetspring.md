@@ -62,6 +62,18 @@ wetSpring found and fixed the `log_f64` bug in ToadStool (coefficients halved, c
 - **→ healthSpring**: diversity indices, Anderson lattice → gut colonization resistance, 16S pipeline
 - **→ groundSpring**: sequencing noise calibrates rarefaction; 86 named tolerances with provenance
 
+## Public Notebooks
+
+Interactive Jupyter notebooks that visualize wetSpring's frozen experiment data:
+
+- **01 — 16S Pipeline Validation**: Galaxy bootstrap, Track 2 LC-MS, R/vegan diversity parity, NCBI real data
+- **02 — Python vs Rust vs GPU**: Benchmark timings, speedup charts, energy consumption
+- **03 — Paper Reproductions**: 63/63 papers across 5 researchers and 6 tracks
+- **04 — Cross-Spring Connections**: 79 barraCuda primitives, constraint-driven discoveries
+- **05 — Soil Anderson Deep Dive**: Track 4 domain exemplar, QS-pore geometry, chemotaxis
+
+Clone the repository, `cd notebooks/`, `jupyter lab`. Or access via [JupyterHub](/lab/compute-access/).
+
 ## baseCamp Papers
 
 Papers 01, 03, 04, 05, 06 — see [baseCamp Science](/science/) for full list.
