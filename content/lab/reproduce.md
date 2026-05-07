@@ -159,7 +159,7 @@ All synthetic workloads run without external data downloads.
 
 | Hardware | 16S Pipeline | Full Suite | Notes |
 |----------|-------------|------------|-------|
-| i9-14900K / 96 GB / RTX 5070 | <1s | ~30s | ironGate reference |
+| i9-14900K / 96 GB / RTX 4070 | <1s | ~30s | ironGate reference |
 | Ryzen 5800X / 64 GB / RTX 3070 | <1s | ~45s | swiftGate |
 | Celeron J3455 / 8 GB / none | ~3s | ~5m | NUC (CPU only) |
 

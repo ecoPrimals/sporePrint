@@ -19,7 +19,7 @@ primals = ["toadstool", "rhizocrypt", "loamspine", "sweetgrass", "nestgate", "ba
 6 bioinformatics domains. Real NCBI data (11.9M paired-end reads, PRJNA488170)
 processed through both Python and Rust pipelines. Every result provenance-verified.
 
-**Hardware**: Intel i9-14900K, 96 GB DDR5, RTX 5070
+**Hardware**: Intel i9-14900K, 96 GB DDR5, RTX 4070 / RTX 3090
 **Composition**: Full NUCLEUS (13 primals)
 **Provenance**: DAG → Merkle root → loamSpine ledger → sweetGrass braid
 

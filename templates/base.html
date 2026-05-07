@@ -169,6 +169,18 @@
               <ul class="tree-pages">
                 {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
                 {% endfor %}
+                {% for sub in sec.subsections %}
+                  {% set subsec = get_section(path=sub) %}
+                  <li class="tree-section tree-nested{% if current_path is starting_with(subsec.path) %} tree-active{% endif %}">
+                    <a href="{{ subsec.permalink }}">{{ subsec.title }}</a>
+                    {% if current_path is starting_with(subsec.path) %}
+                    <ul class="tree-pages">
+                      {% for pg in subsec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
               </ul>
               {% endif %}
             </li>
