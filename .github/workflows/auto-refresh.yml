@@ -183,7 +183,7 @@ jobs:
 
       - name: Create PR if content changed
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
           SOURCE: ${{ github.event.client_payload.source }}
         run: |
           SOURCE_LOWER="${SOURCE,,}"
