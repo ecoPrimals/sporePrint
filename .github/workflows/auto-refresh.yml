@@ -136,15 +136,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
-
-      - name: Configure git for private repos
-        env:
-          REFRESH_PAT: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
-        run: |
-          TOKEN=$(echo -n "$REFRESH_PAT" | tr -d '[:space:]')
-          git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
 
       - name: Set up Python for notebook rendering
         uses: actions/setup-python@v5
@@ -156,21 +147,21 @@ jobs:
 
       - name: Clone source and extract content
         env:
+          REFRESH_PAT: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
           SOURCE: ${{ github.event.client_payload.source }}
           TYPE: ${{ github.event.client_payload.type }}
         run: |
           SOURCE_LOWER="${SOURCE,,}"
 
-          # Look up repo from sources.toml
           REPO=$(grep -A2 "^\[sources\.${SOURCE_LOWER}\]" sources.toml | grep "^repo" | cut -d'"' -f2)
           if [[ -z "$REPO" ]]; then
             echo "No repo found for $SOURCE_LOWER in sources.toml"
             exit 0
           fi
 
-          git clone --depth 1 "https://github.com/${REPO}.git" /tmp/source-repo
+          TOKEN=$(echo -n "$REFRESH_PAT" | tr -d '[:space:]')
+          git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/${REPO}.git" /tmp/source-repo
 
-          # Copy sporeprint/ markdown fragments
           if [[ -d /tmp/source-repo/sporeprint ]]; then
             for md in /tmp/source-repo/sporeprint/*.md; do
               [[ -f "$md" ]] || continue
@@ -182,7 +173,6 @@ jobs:
             done
           fi
 
-          # Render notebooks/ if present (recursive to find papers/ subdirectory)
           if [[ -d /tmp/source-repo/notebooks ]]; then
             mkdir -p content/lab/notebooks
             while IFS= read -r -d '' nb; do
@@ -193,7 +183,7 @@ jobs:
 
       - name: Create PR if content changed
         env:
-          GH_TOKEN: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
+          GH_TOKEN: ${{ github.token }}
           SOURCE: ${{ github.event.client_payload.source }}
         run: |
           SOURCE_LOWER="${SOURCE,,}"

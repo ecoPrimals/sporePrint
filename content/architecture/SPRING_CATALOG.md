@@ -215,12 +215,12 @@ Each spring is grounded in published, peer-reviewed work. The published papers d
 
 **Domain**: Primal composition, deploy graph validation, cross-gate bonding, {{ entity(name="byob") }} verification  
 {{ entity_metrics(name="primalspring") }}  
-**Checks**: 303 tests across 51 experiments  
+**Checks**: 666 tests, 85 experiments, 389 registered capability methods  
 **Repository**: [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring)
 
 {{ entity(name="primalspring") }} is not a science domain spring — it validates that **primals compose correctly**. Where other springs ask "does the math match the paper?", {{ entity(name="primalspring") }} asks "does the deploy graph wire correctly?", "do primals bond across gates?", and "does {{ entity(name="byob") }} composition produce the expected emergent behavior?" It is the integration test suite for the ecosystem's composition model.
 
-Every spring depends on primals composing correctly. {{ entity(name="primalspring") }} closes the loop: if it passes, the composition model works. If it fails, the error is in the wiring, not the science. {{ entity(name="biomeos") }} is the primary test subject — all 5 coordination patterns (Sequential, Parallel, ConditionalDag, Pipeline, Continuous) are validated. 22 deploy graphs (18 single-node + 4 multi-node), all nodes addressed by capability, topologically sorted.
+Every spring depends on primals composing correctly. {{ entity(name="primalspring") }} closes the loop: if it passes, the composition model works. If it fails, the error is in the wiring, not the science. {{ entity(name="biomeos") }} is the primary test subject — all 5 coordination patterns (Sequential, Parallel, ConditionalDag, Pipeline, Continuous) are validated. 13 deploy graphs (74 total nodes, 5 bond types), all nodes addressed by capability, topologically sorted. exp094 validates full NUCLEUS composition parity (Tower + Node + Nest + Cross-Atomic pipeline). JH-0 MethodGate capability check adopted by 13/13 primals.
 
 **Participates in**: {{ entity(name="biomeos") }} (composition testing), {{ entity(name="plasmidbin") }} (validates packaged artifacts compose), all springs indirectly (guarantees the infrastructure they depend on), {{ entity(name="basecamp") }} Paper 23/26.
 

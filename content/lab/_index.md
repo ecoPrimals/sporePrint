@@ -11,7 +11,7 @@ a live 13-primal {{ entity(name="nucleus") }} composition. Every result carries 
 cryptographic provenance chain: BLAKE3 content hashes → rhizoCrypt DAG → loamSpine
 ledger → sweetGrass ed25519-witnessed braid.
 
-**Security status**: All 13 primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. Zero open security gaps (primalSpring Phase 59).
+**Security status**: All 13 primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. JH-0 MethodGate adopted 13/13 primals. 389 registered capability methods. Zero DEBT markers (primalSpring Phase 60+).
 
 ---
 
@@ -26,10 +26,11 @@ Each spring validates a scientific domain. These pages tell the full story — w
 | [airSpring](@/lab/springs/airspring.md) | Precision agriculture, irrigation | 2,777+ | 57 |
 | [healthSpring](@/lab/springs/healthspring.md) | PK/PD, microbiome, biosignal, drugs | 795 | 7 tracks |
 | [groundSpring](@/lab/groundspring-validation-summary.md) | Measurement noise, uncertainty, Anderson | 965+ | 29 baselines |
+| [primalSpring](@/lab/springs/primalspring.md) | Composition parity, deploy graphs, NUCLEUS | 666 | — (meta-spring) |
 
-**3 more springs** (neuralSpring, ludoSpring, primalSpring) are documented in the [Spring Catalog](@/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
+**2 more springs** (neuralSpring, ludoSpring) are documented in the [Spring Catalog](@/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
 
-**Total across all 8 springs**: 13,648+ quantitative checks, 70+ peer-reviewed papers reproduced, 15 researchers across 9 departments.
+**Total across all 8 springs**: 14,314+ quantitative checks, 70+ peer-reviewed papers reproduced, 15 researchers across 9 departments.
 
 ---
 
@@ -93,6 +94,11 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 | [Ecosystem Evidence](@/lab/notebooks/gs-03-ecosystem-evidence.md) | groundSpring | 35 experiments, 10 domains, gap resolution, security posture |
 | [Cross-Spring Connections](@/lab/notebooks/gs-04-cross-spring-connections.md) | groundSpring | 5 primals consumed, 7 ecosystem flows, patterns pioneered |
 | [Measurement Science Deep Dive](@/lab/notebooks/gs-05-measurement-science-deep-dive.md) | groundSpring | Five pillars, 13-tier tolerance architecture, Anderson thread |
+| [Composition Validation](@/lab/notebooks/01-composition-validation.md) | primalSpring | Deploy graphs, bond types, profiles, discovery tiers |
+| [Benchmark Comparison](@/lab/notebooks/02-benchmark-comparison.md) | primalSpring | Rust vs Python timing, energy, guidestone phases |
+| [Ecosystem Evidence](@/lab/notebooks/03-ecosystem-evidence.md) | primalSpring | 85 experiments, gap resolution, security timeline |
+| [Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md) | primalSpring | Primal consumption matrix, ecosystem flows |
+| [BTSP Security Deep Dive](@/lab/notebooks/05-btsp-security-deep-dive.md) | primalSpring | Per-primal posture, convergence arc, discovery hierarchy |
 
 **Run them yourself**: Clone the spring, `cd notebooks/`, `jupyter lab`. Or access via [JupyterHub](@/lab/compute-access.md).
 

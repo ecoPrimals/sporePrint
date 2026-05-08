@@ -536,18 +536,20 @@ emoji = "🧬♨️"
 kind = "spring"
 description = "Meta-spring — validates primal composition, deploy graphs, and cross-gate bonding. If primalSpring passes, the composition model works. If it fails, the error is in the wiring."
 domain = "Primal composition and deploy graphs"
-loc = 31990
-loc_display = "31,990"
-tests = 645
-tests_display = "645"
-files = 152
-crates = 86
+loc = 43901
+loc_display = "43,901"
+tests = 666
+tests_display = "666"
+files = 177
+crates = 88
 repo = "syntheticChemistry/primalSpring"
 composes = "biomeOS (composition testing), plasmidBin (validates packaged artifacts compose), all springs indirectly"
 capabilities = [
   { category = "Coordination", items = "5 biomeOS patterns validated: Sequential, Parallel, ConditionalDag, Pipeline, Continuous" },
-  { category = "Deploy Graphs", items = "22 validated graphs (18 single-node + 4 multi-node), capability-addressed, topologically sorted" },
+  { category = "Deploy Graphs", items = "13 validated graphs (74 total nodes, 5 bond types), capability-addressed, topologically sorted" },
+  { category = "Composition Parity", items = "exp094 validates Tower+Node+Nest+Cross-Atomic pipeline (PRIMAL_GAPS 1-4 IMPLEMENTED)" },
   { category = "BYOB", items = "Verifies that BYOB composition produces expected emergent behavior from binary artifacts" },
+  { category = "Multi-User", items = "JH-0 adopted 13/13, MethodGate capability check, 389 registered JSON-RPC methods" },
 ]
 
 # ── Products ─────────────────────────────────────────────────────────────
@@ -848,20 +850,20 @@ page = "https://github.com/sporeGarden"
 [extra.totals]
 primal_loc = 2675318
 primal_loc_display = "2,675,318"
-spring_loc = 655950
-spring_loc_display = "655,950"
-total_loc = 3331268
+spring_loc = 667861
+spring_loc_display = "667,861"
+total_loc = 3343179
 total_loc_display = "3.3M"
 primal_tests = 103122
 primal_tests_display = "103K"
-spring_tests = 9584
+spring_tests = 9605
 spring_tests_display = "9.6K"
-total_tests = 112706
+total_tests = 112727
 total_tests_display = "112K+"
 wgsl_files = 952
 wgsl_lines = 73838
 wgsl_lines_display = "74K"
 validation_checks = "20,695+"
 papers_reproduced = "175+"
-measured_date = "2026-04-30"
+measured_date = "2026-05-08"
 # All entity metrics refreshed via spore-validate refresh on this date
