@@ -1,5 +1,5 @@
 +++
-title = "Compute Access — JupyterHub on ironGate"
+title = "Compute Access — ABG Compute Lab"
 description = "Live compute environment running the full 13-primal NUCLEUS composition on sovereign hardware — request access at lab.primals.eco"
 date = 2026-05-07
 weight = 10
@@ -11,7 +11,7 @@ springs = ["primalspring"]
 
 ## Live at [lab.primals.eco](https://lab.primals.eco)
 
-A **13-primal NUCLEUS composition** runs on ironGate — a sovereign compute node with consumer-grade hardware (RTX 4070, RTX 3090, Akida NPU). All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305), bind to `127.0.0.1` by default, and are accessible through a named Cloudflare Tunnel with zero exposed ports.
+A **13-primal NUCLEUS composition** runs on a sovereign compute node with consumer-grade hardware (RTX 4070, RTX 3090, Akida NPU). All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305), bind to `127.0.0.1` by default, and are accessible through a named Cloudflare Tunnel with zero exposed ports.
 
 **JupyterHub** provides multi-user notebook access at [lab.primals.eco](https://lab.primals.eco). Every notebook runs against real primals, not mocks — the same infrastructure that produced the baseCamp results. All 13 primals, JupyterHub, and the Cloudflare tunnel run as persistent systemd services that survive reboots.
 

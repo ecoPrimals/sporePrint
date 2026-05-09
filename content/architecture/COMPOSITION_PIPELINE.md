@@ -118,7 +118,7 @@ The {{ entity(name="basecamp") }} papers are the evidence. projectNUCLEUS is the
 proof that the evidence runs on real hardware under real load. foundation is the
 bridge to institutions that have the hardware to run it at scale.
 
-**The ABG pattern**: ABG members run workloads on ironGate via JupyterHub.
+**The ABG pattern**: ABG members run workloads on the active gate via JupyterHub.
 Their science validates the infrastructure under real external load. When they
 point a PI at their results (via primals.eco/lab or the shared workspace),
 that PI sees provenance-verified, reproducible science running on commodity

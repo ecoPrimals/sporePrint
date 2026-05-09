@@ -43,8 +43,8 @@ for institutional adoption:
 ## The Adoption Pipeline
 
 ```
-baseCamp science (27 papers, 16K+ checks)
-    ↓ validated on ironGate (projectNUCLEUS)
+baseCamp science (28 papers, 16K+ checks)
+    ↓ validated on active gate (projectNUCLEUS)
     ↓ 13 primals, full provenance, ABG workloads
 primals.eco/lab (public evidence)
     ↓ rendered notebooks, reproduce-it-yourself guide
@@ -109,7 +109,7 @@ When foundation establishes institutional relationships, the bonding model shift
 
 | Phase | Bond | What Happens |
 |-------|------|-------------|
-| Now (Phase 1-2) | Covalent + Ionic | ironGate covalent cluster + ABG ionic sharing |
+| Now (Phase 1-2) | Covalent + Ionic | Covalent LAN cluster + ABG ionic sharing |
 | Next (Phase 3) | + Weak public | primals.eco self-hosted, public {{ entity(name="guidestone") }} |
 | Then (Phase 4) | + Metallic | University HPC joins as compute pool |
 
@@ -118,7 +118,7 @@ TFLOPS, not per-node assignments. {{ entity(name="biomeos") }} load-balances
 across the metallic pool. Individual node identity matters less; aggregate
 capacity and availability matter.
 
-The same deploy graphs that run on ironGate's basement cluster run on ICER's
+The same deploy graphs that run on the covalent cluster run on ICER's
 rack-mounted servers. The same primals. The same validation. The same provenance.
 The only difference is the hardware under the composition.
 

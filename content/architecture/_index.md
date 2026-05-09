@@ -5,18 +5,10 @@ sort_by = "title"
 template = "section.html"
 +++
 
-The architecture of {{ entity(name="ecoprimals") }} follows the structure of
-chemistry: small, purpose-built programs ({{ entity(name="unibin") }} primals)
-compose into molecules (atomics), which compose into organisms (products),
-which reproduce science (springs). Everything is open, everything is
-verifiable, everything runs on your hardware.
-
----
-
-## The Composition Stack
+Small, purpose-built Rust programs (primals) compose into larger systems (atomics), which compose into sovereign compute substrates (NUCLEUS), which run science. The architecture follows chemistry, not enterprise software.
 
 ```
-Springs (7 science + 1 meta)     → validate the science
+Springs (8 domains)              → validate the science
   ↓ produce kernels, experiments, evidence
 Primals (15 Rust binaries)       → provide the capabilities
   ↓ compose via deploy graphs
@@ -29,19 +21,18 @@ Products (helixVision, etc.)     → emergent tools for real work
 foundation                       → institutional adoption
 ```
 
-Springs produce the science. Primals provide the infrastructure. Products
-emerge from composition. {{ entity(name="primalspring") }} validates that the
-composition layer itself works — the meta-spring that tests the substrate
-every other spring runs on.
+---
 
-## Documents
+## Where to start
 
-- [Ecosystem Architecture](ECOSYSTEM_ARCHITECTURE.md) — the full model: primals, springs, composition, Neural API
-- [NUCLEUS Architecture](NUCLEUS_ARCHITECTURE.md) — atomics, deploy graphs, substrate lifecycle
-- [Primal Catalog](PRIMAL_CATALOG.md) — all 15 primals with metrics, primitives, and tiers
-- [Spring Catalog](SPRING_CATALOG.md) — all 8 springs with checks, papers reproduced, and data flow
-- [Deployment Model](DEPLOYMENT_MODEL.md) — {{ entity(name="plasmidbin") }} harvest/fetch, binary distribution
-- [Evolution Timeline](EVOLUTION_TIMELINE.md) — the 27-day sprint narrative
-- [Ecosystem Inventory](ECOSYSTEM_INVENTORY.md) — complete repository map across all organizations
-- [Sovereign Prior Art](SOVEREIGN_PRIOR_ART_CATALOG.md) — AGPL prior-art analysis per primal
-- [Composition Pipeline](COMPOSITION_PIPELINE.md) — how springs feed into compositions, products, and foundation
+| I want to... | Read this |
+|---|---|
+| Understand the whole system | [Ecosystem Architecture](ECOSYSTEM_ARCHITECTURE.md) — primals, springs, composition, Neural API |
+| See how primals compose on a machine | [NUCLEUS Architecture](NUCLEUS_ARCHITECTURE.md) — atomics ladder, deploy graphs, lifecycle |
+| Browse every primal | [Primal Catalog](PRIMAL_CATALOG.md) — 15 primals with metrics, primitives, and tiers |
+| Browse every spring | [Spring Catalog](SPRING_CATALOG.md) — 8 springs with checks and papers reproduced |
+| Deploy it myself | [Deployment Model](DEPLOYMENT_MODEL.md) — {{ entity(name="plasmidbin") }} binary distribution |
+| See how it was built | [Evolution Timeline](EVOLUTION_TIMELINE.md) — the 27-day sprint narrative |
+| Find every repo | [Ecosystem Inventory](ECOSYSTEM_INVENTORY.md) — complete map across all organizations |
+| Check prior art and licensing | [Sovereign Prior Art](SOVEREIGN_PRIOR_ART_CATALOG.md) — AGPL analysis per primal |
+| See how springs feed products | [Composition Pipeline](COMPOSITION_PIPELINE.md) — springs → compositions → products → foundation |

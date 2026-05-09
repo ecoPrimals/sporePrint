@@ -1,2 +1,3 @@
 public/
 crates/*/target/
+*.rustc_info.json

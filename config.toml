@@ -865,5 +865,8 @@ wgsl_lines = 73838
 wgsl_lines_display = "74K"
 validation_checks = "20,695+"
 papers_reproduced = "175+"
-measured_date = "2026-05-08"
+basecamp_papers = 28
+primal_count = 15
+spring_count = 8
+measured_date = "2026-05-09"
 # All entity metrics refreshed via spore-validate refresh on this date

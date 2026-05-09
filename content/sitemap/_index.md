@@ -7,100 +7,49 @@ template = "section.html"
 
 ## All Content
 
-sporePrint contains 70+ pages across 8 sections. This page lists every
-section with its contents.
+sporePrint contains 100+ pages across 12 sections. This page lists every section with its contents and page count.
 
 ---
 
-### [Science](/science/)
+### [Science](/science/) — 32 pages
 
-27 baseCamp papers reproducing peer-reviewed research in pure Rust, plus
-reference documents. Grouped by domain: microbiology, physics, agriculture,
-health, game science, economics, neuromorphic hardware.
+28 baseCamp papers reproducing peer-reviewed research in pure Rust, grouped by domain (physics, microbiology, immunology, neural/computation, game science, provenance/economics), plus reference documents.
 
-- 27 baseCamp papers (Papers 01–27)
-- Gonzales Explorer — interactive lattice QCD visualization
-- Cross-Spring Evidence Map — convergent predictions across springs
-- Structure Prediction Roadmap — sovereign AlphaFold-quality pipeline
+### [Architecture](/architecture/) — 10 pages
 
----
+System design, the 15-primal catalog, 8-spring catalog, NUCLEUS composition model, ecosystem inventory, deployment model, evolution timeline, prior art analysis.
 
-### [Architecture](/architecture/)
+### [Lab](/lab/) — 25 pages
 
-System design, composition models, and ecosystem inventories.
+Live validation results from a running NUCLEUS composition. Spring science hubs, provenance pipeline, compute access, and 14 exported Jupyter notebooks with embedded charts.
 
-- Primal Catalog — all 15 primals with narrative identity and metrics
-- Spring Catalog — all 8 springs with headline results
-- Ecosystem Inventory — master repo inventory across 3 organizations
-- NUCLEUS Architecture — composition model, atomics ladder, Neural API
-- Deployment Model — {{ entity(name="plasmidbin") }}, BYOB, binary distribution
-- Ecosystem Architecture — high-level system design
-- Evolution Timeline — 27-day sprint record
-- Sovereign Prior Art Catalog — lysogeny prior art record
+### [Methodology](/methodology/) — 6 pages
 
----
+Core theory (constrained evolution), AI-assisted development (K-NOME), the spring creation playbook, licensing (scyBorg), and the P vs NP enzyme thesis.
 
-### [guideStone](/guidestone/)
+### [Technical](/technical/) — 6 pages
 
-The verification class — how computation becomes proof.
+Grant-ready evidence, hardware economics, GPU pipeline architecture, drug discovery review, institutional HPC integration, teaching brief.
 
-- Verification Protocol — the five properties that make computation self-proving
-- Deployment Artifacts — what an artifact contains, how to build and verify one
-- Cross-Substrate Validation — 5 substrates, 40/40 bit-identical evidence
+### [Audience](/audience/) — 5 pages
 
----
+Role-based entry points: faculty/PIs, students/core facilities, hardware builders, compliance reviewers, capability parity assessment.
 
-### [Products](/products/)
+### [guideStone](/guidestone/) — 3 pages
 
-User-facing applications built on the primal ecosystem.
+The verification class — self-proving build artifacts, the five properties, cross-substrate validation (5 substrates, 40/40 bit-identical).
 
-- {{ entity(name="esotericwebb") }} — sovereign creative tool
-- {{ entity(name="helixvision") }} — protein structure prediction
-- blueFish — sovereign data pipeline
-- Lattice QCD Explorer — interactive physics visualization
+### [Products](/products/) — 4 pages
 
----
+{{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish, lattice QCD explorer — tools that emerge from primal composition.
 
-### [Methodology](/methodology/)
+### [Glossary](/glossary/) — 1 page
 
-How the ecosystem was built and how to extend it.
-
-- Constrained Evolution — the core methodology (formal paper)
-- How to Start a Spring — practical guide for new spring creators
-- K-Nome Programming — the K-Nome operational framework
-- Knowledge Commons Targets — 9 domains ready for springs
-- P!=NP Enzyme Thesis — conceptual foundation
-
----
-
-### [Technical](/technical/)
-
-Hardware, GPU pipeline, institutional context, and teaching.
-
-- Hardware Cost Analysis — $0.044/run, 9.9x DF64 uplift
-- Sovereign GPU Pipeline Profile — vendor replacement story
-- Grant Technical Appendix — NIH/NSF/USDA/DOE evidence
-- MSU Asset Acceleration — institutional integration points
-- K-Nome Teaching Brief — pedagogy for real science
-- Drug Discovery Pipeline — Anderson-augmented MATRIX
-
----
-
-### [Audience](/audience/)
-
-Role-based entry points for different readers.
-
-- For Faculty and PIs — what ecoPrimals replaces in a lab
-- For Students and Core Facilities — setup guide, 16S walkthrough
-- For Hardware Builders and Hobbyists — GPU discovery, Games@Home
-- For Compliance and Institutional Review — FDA/ISO/HIPAA/GDPR mapping
-- Capability Parity Brief — domain-by-domain comparison
-
----
+Plain-language definitions of every ecosystem term. Start here if you're new.
 
 ### [Philosophy](/philosophy/)
 
-The "why" behind ecoPrimals — stub for atlasHugged essays.
+The "why" behind ecoPrimals — constrained evolution as a design philosophy.
 
 ---
 
@@ -108,5 +57,5 @@ The "why" behind ecoPrimals — stub for atlasHugged essays.
 
 Generated automatically from front matter tags:
 
-- [Primals](/primals/) — 14 primals, each with cross-references to every page that tags it
+- [Primals](/primals/) — 15 primals, each with cross-references to every page that tags it
 - [Springs](/springs/) — 8 springs, each with cross-references to every page that tags it

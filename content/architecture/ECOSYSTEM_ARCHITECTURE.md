@@ -13,6 +13,12 @@ primals = ["beardog", "barracuda", "biomeos", "loamspine", "nestgate", "rhizocry
 
 ---
 
+## At a Glance
+
+The full architectural model: how 15 Rust binaries (primals) compose into NUCLEUS deployments, communicate via JSON-RPC, discover each other at runtime, and bond across machines using a chemistry-inspired trust model. This is the reference document for understanding the whole system.
+
+---
+
 ## Abstract
 
 This paper describes the architecture of the {{ entity(name="ecoprimals") }} ecosystem — a self-hosted, cloud-independent computing platform composed of autonomous services ("primals") that coordinate through runtime capability discovery. The architecture emerged from constrained evolution within Rust's type system, not from a priori design. It spans four levels of abstraction: the binary structure standard ({{ entity(name="unibin") }}), the portability standard ({{ entity(name="ecobin") }}), the deployment standard ({{ entity(name="genomebin") }}), and the composition architecture ({{ entity(name="nucleus") }}). A chemistry-inspired bonding model describes how {{ entity(name="nucleus") }} deployments interact across physical machines and trust boundaries. The {{ entity(name="neuralapi") }} provides semantic orchestration, and the {{ entity(name="darkforest") }} protocol provides zero-metadata-leakage security.

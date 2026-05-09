@@ -8,6 +8,12 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
+## At a Glance
+
+A systematic catalog of what AGPL-3.0 makes permanently public. For each primal and spring, this document records the prior art it replaces, the innovation it adds, and the specific capabilities locked into the public commons. 15 primals, 8 springs, 52 novel innovations, ~1.5M lines of Rust — all irrevocably open.
+
+---
+
 ## AGPL-3.0 Commons Inventory
 
 **Date**: March 13, 2026

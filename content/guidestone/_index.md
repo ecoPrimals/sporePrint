@@ -188,7 +188,7 @@ automatic when a Vulkan-capable adapter is present.
 - The spring repositories at [syntheticChemistry](https://github.com/syntheticChemistry)
   contain the source — all public, all AGPL-3.0-or-later.
 - {{ entity(name="plasmidbin") }} distributes pre-built primal binaries.
-- The [Science](@/science/_index.md) section has the 25 {{ entity(name="basecamp") }} papers
+- The [Science](@/science/_index.md) section has the 28 {{ entity(name="basecamp") }} papers
   organized by domain.
 
 The artifact is the conversation starter. The physics speaks for itself.

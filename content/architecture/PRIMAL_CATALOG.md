@@ -1,12 +1,18 @@
 +++
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
-description = "All 17 primals and tooling — capabilities, test counts, production status, repository visibility"
+description = "All 15 primals — capabilities, test counts, production status, repository visibility"
 date = 2026-03-31
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["healthspring", "hotspring", "neuralspring", "wetspring"]
 +++
+
+## At a Glance
+
+15 standalone Rust binaries, each providing one domain capability. They compose via JSON-RPC into larger systems — from minimal Tower (crypto + networking) to full NUCLEUS (all 15). Every primal is musl-static linked with zero C dependencies. Scroll down for the full catalog with metrics, test counts, and capability methods per primal.
+
+---
 
 **A primal is a standalone, statically-linked Rust binary that provides one
 domain capability** — cryptography, networking, GPU math, storage, etc.

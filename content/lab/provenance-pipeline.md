@@ -120,4 +120,4 @@ shell-scripted RPC calls to the trio. The evolution path:
 | Now | Shell wrapper (`provenance_pipeline.sh`) brackets execution |
 | Next | `[provenance]` section in workload TOMLs — {{ entity(name="toadstool") }} calls trio natively |
 | Then | Multi-witness: {{ entity(name="beardog") }} co-signs, BTSP certificate chain in braid |
-| Later | Cross-gate provenance: workloads on strandGate produce braids committed on ironGate |
+| Later | Cross-gate provenance: workloads on one gate produce braids committed on another |

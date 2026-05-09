@@ -17,7 +17,7 @@ workloads via ToadStool (see the Tier 2 stubs in each notebook).
 
 1. Clone the spring repository (e.g. [wetSpring](https://github.com/syntheticChemistry/wetSpring))
 2. `cd notebooks/`
-3. `jupyter lab` (or use JupyterHub on ironGate)
+3. `jupyter lab` (or use [JupyterHub](@/lab/compute-access.md))
 4. Run all cells — data loads from `../experiments/results/`
 
 ## Rendering Pipeline

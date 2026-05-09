@@ -15,7 +15,7 @@ by category and alphabetized within each group.
 
 **baseCamp**
 : The cross-spring paper program. Each baseCamp paper is an executable
-  scientific study — code you can run, not a PDF you read. 27 papers across
+  scientific study — code you can run, not a PDF you read. 28 papers across
   8 scientific domains. See [Science](@/science/_index.md).
 
 **ecoPrimals**

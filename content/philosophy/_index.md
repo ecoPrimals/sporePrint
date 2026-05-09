@@ -36,17 +36,18 @@ and to identity (the work speaks, not the resume).
 
 ---
 
-## What Will Appear Here
+## Coming: atlasHugged Essays
 
-When the atlasHugged essays are ready for public release, they will appear in
-this section. Each essay explores one facet of the question "why?":
+Each essay explores one facet of the question "why?":
 
-- Why open source is not enough — and what sovereign means
-- Why the AGPL-3.0 + ORC + CC-BY-SA triple exists
-- Why attribution chains matter more than author names
-- Why a mobility edge (from physics) is a metaphor for network sovereignty
-- Why discovery is local, but publication must be global
-- Why knowledge is numeric, and what that means for science
+| Essay | Question |
+|---|---|
+| Sovereign vs Open Source | Why "open source" is necessary but not sufficient — and what sovereign adds |
+| The Triple License | Why AGPL-3.0 + ORC + CC-BY-SA exists, and why three nonprofits enforce it |
+| Attribution over Identity | Why provenance chains matter more than author names |
+| The Mobility Edge | Why a concept from Anderson localization is a metaphor for network sovereignty |
+| Local Discovery, Global Publication | Why discovery must be private, but results must be public |
+| Knowledge Is Numeric | Why executable science is the only honest science |
 
 For now, the code is the argument. Run it. Verify it. The philosophy
 will follow when the foundation is solid enough to hold the weight.

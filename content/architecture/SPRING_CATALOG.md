@@ -15,6 +15,12 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 ---
 
+## At a Glance
+
+8 springs, each validating a scientific domain on sovereign hardware. Together: 20,000+ quantitative checks, 175+ peer-reviewed papers reproduced, 15 researchers across 9 departments. If the springs pass, the infrastructure works for real science.
+
+---
+
 ## Abstract
 
 The primals prove that Rust can build a sovereign computing ecosystem. The springs prove that sovereign computing can **reproduce published, peer-reviewed science** — and in some cases, do it faster, cheaper, and more transparently than the institutional tools it replaces.

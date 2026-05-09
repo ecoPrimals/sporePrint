@@ -20,7 +20,7 @@ rendered_from = "02-benchmark-python-vs-rust.ipynb"
 <li><strong>Rust (sovereign CPU)</strong> — wetSpring barracuda crate</li>
 <li><strong>GPU (barraCuda WGSL)</strong> — consumer RTX via ToadStool dispatch</li>
 </ol>
-<p>All benchmarks run on <strong>ironGate</strong> (i9-14900K, 96 GB DDR5, RTX 4070 / RTX 3090).</p>
+<p>All benchmarks run on the <strong>ABG compute node</strong> (i9-14900K, 96 GB DDR5, RTX 4070 / RTX 3090).</p>
 <p><strong>Data sources</strong>: <code>benchmarks/results/python_baseline_latest.json</code>,
 <code>experiments/results/015_pipeline_benchmark/</code>,
 <code>experiments/results/016_gpu_pipeline_parity/</code></p>

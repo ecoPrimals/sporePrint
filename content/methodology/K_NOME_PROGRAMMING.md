@@ -8,6 +8,12 @@ primals = ["barracuda", "squirrel"]
 springs = ["airspring", "groundspring", "wetspring"]
 +++
 
+## At a Glance
+
+K-NOME is AI-assisted development done right: the human provides domain expertise and selective pressure, the AI handles implementation, and every generation is tested against published scientific results. Not vibecoding — structured evolutionary cycles where the AI is a knowledgeable collaborator under human constraint.
+
+---
+
 **Knowledge-Numeric Observed & Mentored Evolutionary Programming**
 
 A pre-thesis writeup naming and formalizing the operational methodology behind {{ entity(name="ecoprimals") }}.

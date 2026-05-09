@@ -14,6 +14,12 @@ springs = ["hotspring"]
 
 ---
 
+## At a Glance
+
+The core thesis: removing dependencies (CUDA, cloud, vendor toolchains) forces a system to evolve genuine capabilities, just as environmental constraints drive biological specialization. This paper formalizes the methodology with evidence from thermophilic adaptation, the Lenski LTEE, and Anderson's extremophile genomics — then maps the same principle to AI-assisted software development in Rust.
+
+---
+
 ## Abstract
 
 This paper formalizes a development methodology discovered during the construction of the {{ entity(name="ecoprimals") }} ecosystem: that strategic environmental constraints accelerate convergence to fit solutions, in both biological and computational systems. The argument is grounded in three biological lines of evidence: (1) thermophilic adaptation (*Thermus aquaticus* and Taq polymerase), (2) the Lenski Long-Term Evolution Experiment (LTEE) with *E. coli*, and (3) Rika Anderson's population genomics of extremophiles in Yellowstone hot springs and the deep-sea subsurface. The critical insight from Lenski is not that some populations evolved novel metabolic capabilities, but that ALL populations — including those that never acquired the novel trait — showed increased fitness for their constrained environment. Anderson extends this to natural populations: *Sulfolobus* in the same Yellowstone hot springs where Taq was discovered shows structured population differentiation under thermal constraint, while her deep-sea work reveals what happens when populations are too small for selection to outweigh drift. This same principle — that constraints drive specialization toward fitness, not toward a single predetermined solution — is what we observe in AI-assisted software development within the Rust type system.
