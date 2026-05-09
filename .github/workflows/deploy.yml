@@ -61,3 +61,35 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for CDN propagation
+        run: sleep 30
+
+      - name: Verify site is live
+        run: |
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 https://primals.eco/)
+          echo "primals.eco returned HTTP $STATUS"
+          if [[ "$STATUS" != "200" ]]; then
+            echo "::warning::primals.eco returned $STATUS — CDN may still be propagating"
+          fi
+
+      - name: Verify key pages respond
+        run: |
+          FAILURES=0
+          for path in "/" "/science/" "/architecture/" "/lab/" "/glossary/" "/primals/" "/springs/"; do
+            STATUS=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "https://primals.eco${path}")
+            if [[ "$STATUS" == "200" ]]; then
+              echo "OK   $path ($STATUS)"
+            else
+              echo "FAIL $path ($STATUS)"
+              FAILURES=$((FAILURES + 1))
+            fi
+          done
+          if [[ $FAILURES -gt 0 ]]; then
+            echo "::warning::$FAILURES page(s) returned non-200 — may need CDN propagation time"
+          fi
+          echo "Verified $(( 7 - FAILURES ))/7 pages"

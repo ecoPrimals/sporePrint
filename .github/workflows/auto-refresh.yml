@@ -196,12 +196,21 @@ jobs:
 
           git config user.name "sporePrint-bot"
           git config user.email "sporeprint-bot@ecoPrimals.dev"
+
+          # Delete stale remote branch if it exists, then create fresh
+          git push origin --delete "$BRANCH" 2>/dev/null || true
           git checkout -b "$BRANCH"
           git add content/lab/
           git commit -m "content: add ${SOURCE_LOWER} lab pages + notebooks — $(date -u +%Y-%m-%d)"
           git push -u origin "$BRANCH"
 
-          gh pr create \
-            --title "Lab content from ${SOURCE_LOWER}" \
-            --body "Auto-generated from \`${SOURCE_LOWER}/sporeprint/\` directory. Review before merging." \
-            --base main
+          # Create PR (or update existing)
+          EXISTING_PR=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number' 2>/dev/null || true)
+          if [[ -n "$EXISTING_PR" && "$EXISTING_PR" != "null" ]]; then
+            echo "PR #$EXISTING_PR already exists for $BRANCH"
+          else
+            gh pr create \
+              --title "Lab content from ${SOURCE_LOWER}" \
+              --body "Auto-generated from \`${SOURCE_LOWER}/sporeprint/\` directory. Review before merging." \
+              --base main
+          fi
