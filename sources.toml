@@ -148,6 +148,10 @@ private = true
 # PRODUCTS — sporeGarden (compositions that ship as tools)
 # =============================================================================
 
+[sources.lithospore]
+repo = "sporeGarden/lithoSpore"
+type = "product"
+
 [sources.esotericwebb]
 repo = "sporeGarden/esotericWebb"
 type = "product"

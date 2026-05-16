@@ -6,7 +6,7 @@ weight = 3
 
 [taxonomies]
 primals = ["nestgate", "sweetgrass", "loamspine"]
-springs = ["hotspring"]
+springs = ["hotspring", "groundspring", "wetspring"]
 +++
 
 ## What This Is
@@ -40,8 +40,7 @@ new validation runs.
 The feed follows sporePrint's standard dispatch pipeline with a
 guideStone-specific extension:
 
-1. A guideStone repo (e.g. lithoSpore) pushes `liveSpore.json` after
-   validation runs complete.
+1. A guideStone repo pushes `liveSpore.json` after validation runs complete.
 2. The repo's `notify-sporeprint.yml` dispatches a `source-updated` event
    with `type: "guidestone"` and `content: "true"`.
 3. sporePrint's `auto-refresh.yml` content job clones the source and
@@ -49,6 +48,13 @@ guideStone-specific extension:
 4. If `litho verify` is available in CI, it runs as a defense-in-depth
    check (non-blocking — the producing repo is the verification authority).
 5. A PR is created. On merge, `deploy.yml` publishes to primals.eco.
+
+### Active GuideStone Feeds
+
+| Artifact | Repository | Modules | Checks |
+|----------|-----------|---------|--------|
+| hotSpring-guideStone | syntheticChemistry/hotSpring | 3 physics papers | 59/59 |
+| {{ entity(name="lithospore") }} | sporeGarden/lithoSpore | 7 LTEE modules | 75/75 |
 
 ---
 

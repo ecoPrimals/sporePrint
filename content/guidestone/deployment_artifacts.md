@@ -183,3 +183,34 @@ execution environment, runs physics, and reports:
 The artifact answers "is it correct?" and "how fast?" in a single
 invocation. A PI evaluating a new GPU or a new cloud instance runs one
 command and gets both answers.
+
+---
+
+## The Second Artifact: lithoSpore
+
+{{ entity(name="lithospore") }} is the second {{ entity(name="guidestone") }}
+deployment artifact — and the first **Targeted GuideStone**. While hotSpring
+proves computational physics, lithoSpore proves evolutionary biology: 7
+LTEE modules reproducing published papers from Barrick, Lenski, and collaborators.
+
+```
+lithoSpore/
+├── validate                 # symlink → bin/litho (argv[0] dispatch)
+├── verify                   # symlink → bin/litho
+├── refresh                  # symlink → bin/litho
+├── spore                    # symlink → bin/litho (biomeOS entry)
+├── bin/litho                # Single musl-static binary (5.1 MB)
+├── liveSpore.json           # Provenance journal
+├── artifact/data/           # 7 LTEE data bundles (BLAKE3-anchored)
+├── papers/                  # 16 DOIs + reading guide
+└── GETTING_STARTED.md       # Human-readable entry point
+```
+
+The key evolution: a **single binary** replaces 7 separate module executables.
+`litho` detects its invocation name via `argv[0]` and dispatches to the correct
+subcommand. Cross-platform: 5.1 MB on Linux (musl-static), 7.9 MB on Windows
+(mingw-w64). Validated on Ubuntu, Alpine, Fedora, read-only filesystems, and
+Windows.
+
+See the [lithoSpore artifact page](@/guidestone/lithospore_artifact.md) for
+full documentation.

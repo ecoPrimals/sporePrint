@@ -554,6 +554,28 @@ capabilities = [
 
 # ── Products ─────────────────────────────────────────────────────────────
 
+[extra.entity_registry.lithospore]
+display = "lithoSpore"
+emoji = "🪨🌱"
+kind = "product"
+description = "First Targeted GuideStone — USB-deployable LTEE validation artifact. 7 science modules, 75 checks, musl-static + Windows cross-compiled. Plug in, run ./validate, get reproducible evolutionary biology."
+domain = "LTEE reproduction and portable validation"
+loc = 8200
+loc_display = "8,200"
+tests = 139
+tests_display = "139"
+files = 95
+crates = 9
+repo = "sporeGarden/lithoSpore"
+page = "/lab/lithospore/"
+composes = "groundSpring (B1-B4 stats), wetSpring (B7 breseq), hotSpring (Anderson spectral), neuralSpring (ML surrogates)"
+capabilities = [
+  { category = "Validation", items = "7 LTEE modules, 75 checks, 14 quantitative targets (T01-T14), named tolerances with derivation" },
+  { category = "Deployment", items = "musl-static 5.1 MB, Windows 7.9 MB, argv[0] symlink dispatch, USB/container/VM" },
+  { category = "Provenance", items = "liveSpore.json, BLAKE3 data integrity, capability-based discovery, operating mode detection" },
+  { category = "Self-Testing", items = "litho self-test (23 checks), litho chaos-test (10 fault injections), litho deploy-test" },
+]
+
 [extra.entity_registry.esotericwebb]
 display = "esotericWebb"
 emoji = "🔮🕸️"
