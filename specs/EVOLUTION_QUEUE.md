@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: April 30, 2026
+Last reviewed: May 15, 2026
 
 ---
 
@@ -17,13 +17,13 @@ Last reviewed: April 30, 2026
 - [x] ~~rustChip entity registry refresh~~ — updated to 23,733 LOC, 367 tests, 118 files; added glowplug, science demos, HW/SW separation; `measured_date` set to 2026-04-30
 
 ### Content gaps
-- [ ] guideStone section has only `_index.md` — needs dedicated pages for the verification protocol, deployment artifact standard, and cross-substrate validation evidence
+- [x] ~~guideStone section has only `_index.md`~~ — now has 4 substantive pages: verification_protocol, deployment_artifacts, cross_substrate_validation, live_spore_feed
 - [ ] guidePost (planned, paired with guideStone in wateringHole glossary) — document when it materializes
 - [x] ~~Some science pages have ungrouped domains~~ — verified: only CROSS_SPRING_EVIDENCE_MAP and STRUCTURE_PREDICTION_ROADMAP lack domains (reference docs, not papers, intentionally ungrouped)
 - [ ] atlasHugged integration — `content/philosophy/` section stub exists. When essays are ready for public release, add them as individual pages. This is a separate, intentional act — do not auto-publish from whitePaper
 
 ### Taxonomy completeness
-- [ ] Audit all 67 content pages: grep content for entity names not tagged in front matter
+- [ ] Audit all 105 content pages: grep content for entity names not tagged in front matter
 - [x] ~~Build-time validation script~~ → replaced by `spore-validate` Rust crate (`crates/spore-validate/`)
 
 ---
@@ -36,7 +36,7 @@ Last reviewed: April 30, 2026
 - [ ] Add cross-spring data flow diagram to SPRING_CATALOG.md or a dedicated page
 
 ### Visual evolution
-- [ ] Add a full site map page (`/sitemap/`) that shows the complete tree structure with page counts
+- [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all 12 sections with accurate page counts (105 total)
 - [ ] Consider adding entity taxonomy counts to the site tree sidebar
 - [ ] Mobile experience: test site tree usability on phones, consider defaulting `<details>` to closed
 - [ ] Investigate whether the per-page TOC (right sidebar) and site tree (left sidebar) coexist well on medium screens
@@ -68,7 +68,7 @@ Last reviewed: April 30, 2026
 - [ ] Consider lychee CI for non-Zola link checking in specs/ and other non-content markdown
 
 ### Search
-- [ ] Evaluate elasticlunr search quality for the current 67 pages
+- [ ] Evaluate elasticlunr search quality for the current 105 pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 

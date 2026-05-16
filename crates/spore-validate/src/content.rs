@@ -75,7 +75,19 @@ pub fn validate_taxonomies(
     }
 }
 
-/// Phase 3: scan prose for `{{ entity(name="xxx") }}` shortcodes and validate.
+/// Normalize a shortcode name the same way the Tera templates do:
+/// lowercase, strip spaces and hyphens.
+fn normalize_key(name: &str) -> String {
+    name.to_lowercase()
+        .replace(' ', "")
+        .replace('-', "")
+}
+
+/// Phase 3: scan prose for entity shortcodes and validate registry keys.
+///
+/// Checks `entity(name="…")`, `entity_metrics(name="…")`, and
+/// `entity_stat(name="…")` — matching the normalization the Tera
+/// templates apply (lowercase, strip spaces and hyphens).
 pub fn check_integrity(
     root: &Path,
     content_dir: &Path,
@@ -83,8 +95,10 @@ pub fn check_integrity(
     errors: &mut Vec<String>,
     warnings: &mut Vec<String>,
 ) {
-    let shortcode_re =
-        Regex::new(r#"\{\{\s*entity\(\s*name\s*=\s*"([^"]+)"\s*\)\s*\}\}"#).expect("valid regex");
+    let shortcode_re = Regex::new(
+        r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
+    )
+    .expect("valid regex");
     let registry_keys: HashSet<&str> = registry.keys().map(String::as_str).collect();
     let mut shortcode_count: u32 = 0;
     let mut broken = Vec::new();
@@ -97,11 +111,12 @@ pub fn check_integrity(
         let rel = path.strip_prefix(root).unwrap_or(path);
 
         for cap in shortcode_re.captures_iter(&text) {
-            let name = &cap[1];
+            let raw_name = &cap[1];
+            let key = normalize_key(raw_name);
             shortcode_count += 1;
-            if !registry_keys.contains(name) {
+            if !registry_keys.contains(key.as_str()) {
                 broken.push(format!(
-                    "{}: entity shortcode name=\"{name}\" not in registry",
+                    "{}: entity shortcode name=\"{raw_name}\" (normalized: \"{key}\") not in registry",
                     rel.display()
                 ));
             }

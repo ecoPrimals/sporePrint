@@ -16,7 +16,7 @@
       <span aria-current="page">{{ taxonomy.name | title }}</span>
     </nav>
     <h1>{{ taxonomy.name | title }}</h1>
-    <p class="section-desc">Every {{ taxonomy.name | replace(from="s", to="") }} referenced in sporePrint — click any to see all pages.</p>
+    <p class="section-desc">Every {% if taxonomy.name == "primals" %}primal{% elif taxonomy.name == "springs" %}spring{% else %}{{ taxonomy.name }}{% endif %} referenced in sporePrint — click any to see all pages.</p>
   </header>
 
   <nav class="page-listing" aria-label="{{ taxonomy.name | title }} index">
