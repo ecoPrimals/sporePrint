@@ -66,6 +66,9 @@ source repo push → notify-sporeprint.yml → repository_dispatch
 **Metrics (Tier 1)**: LOC, tests, files, crates — auto-committed directly.
 **Content (Tier 2)**: Lab pages from `sporeprint/` dirs in source repos —
 created as PRs for review.
+**GuideStone (Tier 2+)**: `liveSpore.json` provenance records from guideStone
+repos — copied to `static/lab/guidestone/` and served as raw JSON at
+`primals.eco/lab/guidestone/liveSpore.json`.
 
 ### Setup for new repos
 

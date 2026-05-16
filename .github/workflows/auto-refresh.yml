@@ -181,6 +181,21 @@ jobs:
             done < <(find /tmp/source-repo/notebooks -name '*.ipynb' -print0)
           fi
 
+          # GuideStone liveSpore.json pipeline: copy provenance JSON to static/
+          # for serving as raw data, and optionally verify with litho if available.
+          if [[ -f /tmp/source-repo/liveSpore.json ]]; then
+            mkdir -p static/lab/guidestone
+            cp /tmp/source-repo/liveSpore.json "static/lab/guidestone/liveSpore.json"
+            echo "  Copied liveSpore.json → static/lab/guidestone/liveSpore.json"
+
+            if command -v litho >/dev/null 2>&1; then
+              echo "  Running litho verify..."
+              litho verify --spore /tmp/source-repo/liveSpore.json || echo "  WARN: litho verify failed (non-blocking)"
+            else
+              echo "  SKIP: litho not available for verification"
+            fi
+          fi
+
       - name: Create PR if content changed
         env:
           GH_TOKEN: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
@@ -189,7 +204,15 @@ jobs:
           SOURCE_LOWER="${SOURCE,,}"
           BRANCH="content/${SOURCE_LOWER}-$(date -u +%Y%m%d)"
 
-          if git diff --quiet content/lab/ && [[ -z "$(git ls-files --others --exclude-standard content/lab/)" ]]; then
+          CONTENT_CHANGED=false
+          if ! git diff --quiet content/lab/ || [[ -n "$(git ls-files --others --exclude-standard content/lab/)" ]]; then
+            CONTENT_CHANGED=true
+          fi
+          if ! git diff --quiet static/lab/ || [[ -n "$(git ls-files --others --exclude-standard static/lab/)" ]]; then
+            CONTENT_CHANGED=true
+          fi
+
+          if [[ "$CONTENT_CHANGED" == "false" ]]; then
             echo "No content changes"
             exit 0
           fi
@@ -200,7 +223,7 @@ jobs:
           # Delete stale remote branch if it exists, then create fresh
           git push origin --delete "$BRANCH" 2>/dev/null || true
           git checkout -b "$BRANCH"
-          git add content/lab/
+          git add content/lab/ static/lab/
           git commit -m "content: add ${SOURCE_LOWER} lab pages + notebooks — $(date -u +%Y-%m-%d)"
           git push -u origin "$BRANCH"
 
