@@ -114,7 +114,7 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 
 ## For PIs and Reviewers
 
-The lab is the evidence record for the [foundation protocol](/products/foundation/). If you're evaluating ecoPrimals for institutional adoption:
+The lab is the evidence record for the [projectFOUNDATION protocol](/products/projectfoundation/). If you're evaluating ecoPrimals for institutional adoption:
 
 1. **Review the spring science hubs** — each spring page shows what was reproduced and how
 2. **Check the provenance pipeline** — every result is content-addressed with cryptographic chains

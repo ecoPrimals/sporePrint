@@ -10,14 +10,14 @@ springs = ["primalspring", "wetspring", "hotspring", "healthspring"]
 
 ## The Bridge
 
-{{ entity(name="foundation") }} is the outward-facing project in
+{{ entity(name="projectfoundation") }} is the outward-facing project in
 {{ entity(name="sporegarden") }}. While projectNUCLEUS focuses inward
-(deploy, validate, compose on real hardware), {{ entity(name="foundation") }}
+(deploy, validate, compose on real hardware), {{ entity(name="projectfoundation") }}
 focuses outward: institutional relationships, metallic bonding with
 university HPC, public documentation, and the case for sovereign compute.
 
 The boundary: projectNUCLEUS **proves** that the patterns work.
-{{ entity(name="foundation") }} **makes the case** to institutions that the
+{{ entity(name="projectfoundation") }} **makes the case** to institutions that the
 proof matters.
 
 ---
@@ -136,5 +136,5 @@ pipeline:
 When the springs fully evolve to composition — when every baseCamp paper runs
 through {{ entity(name="toadstool") }} dispatch on a live {{ entity(name="nucleus") }}
 with full provenance — the science becomes visible, verifiable, and adoptable.
-That is the {{ entity(name="foundation") }} endgame: not "trust us" but
+That is the {{ entity(name="projectfoundation") }} endgame: not "trust us" but
 "verify it yourself, on your own hardware."

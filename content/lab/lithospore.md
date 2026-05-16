@@ -89,7 +89,7 @@ litho-core          ← shared library
 - **← {{ entity(name="hotspring") }}**: Anderson localization spectral primitives — GOE/Poisson statistics
 - **← {{ entity(name="neuralspring") }}**: ML surrogate enrichment (additive, not blocking)
 - **→ {{ entity(name="petaltongue") }}**: DataBinding adapters for all 7 modules, Interactive SceneGraph IPC
-- **→ Foundation**: Threads 1, 2, 4, 7 — validated data sources and quantitative targets
+- **→ projectFOUNDATION**: Threads 1, 2, 4, 7 — validated data sources and quantitative targets
 
 ## Deployment Testing
 

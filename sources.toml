@@ -156,8 +156,8 @@ type = "product"
 repo = "sporeGarden/esotericWebb"
 type = "product"
 
-[sources.foundation]
-repo = "sporeGarden/foundation"
+[sources.projectfoundation]
+repo = "sporeGarden/projectFOUNDATION"
 type = "product"
 
 [sources.projectnucleus]

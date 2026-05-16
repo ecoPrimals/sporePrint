@@ -268,7 +268,7 @@ matrix catches it.
 {{ entity(name="primalspring") }} does not produce baseCamp papers directly. It
 produces the **proof that baseCamp science runs in composition** — the evidence
 that the infrastructure is production-ready. This proof is what
-{{ entity(name="foundation") }} takes to institutions: not just "the science
+{{ entity(name="projectfoundation") }} takes to institutions: not just "the science
 works" but "the science works on sovereign infrastructure, with provenance,
 at commodity hardware cost."
 
@@ -285,7 +285,7 @@ When all springs converge through composition, the evidence chain looks like thi
 | Security holds | BTSP encryption, fuzzing resilience, no hidden methods | {{ entity(name="primalspring") }} + {{ entity(name="skunkbat") }} |
 | Provenance is real | Content-addressed, append-only, cryptographically witnessed | Provenance trio |
 | Products emerge | helixVision, esotericWebb, etc. are usable tools | Product teams |
-| Institutions can adopt | Same patterns run on HPC at scale | {{ entity(name="foundation") }} |
+| Institutions can adopt | Same patterns run on HPC at scale | {{ entity(name="projectfoundation") }} |
 
 See [Composition Pipeline](@/architecture/COMPOSITION_PIPELINE.md) for the full
 flow from springs through products to institutional adoption.

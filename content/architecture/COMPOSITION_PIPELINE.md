@@ -12,7 +12,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 The {{ entity(name="ecoprimals") }} ecosystem is a composition pipeline. Science
 enters at the springs, flows through primal infrastructure, emerges as products,
-and proves patterns that {{ entity(name="foundation") }} takes to institutions.
+and proves patterns that {{ entity(name="projectfoundation") }} takes to institutions.
 
 ```
 Published science (papers, databases, NCBI, ILDG)
@@ -100,7 +100,7 @@ replaced by a faster GPU compute primal, products don't change.
 
 ## Layer 4: Foundation — Where Proof Becomes Adoption
 
-{{ entity(name="foundation") }} takes what projectNUCLEUS proves and makes
+{{ entity(name="projectfoundation") }} takes what projectNUCLEUS proves and makes
 the case to institutions:
 
 ```

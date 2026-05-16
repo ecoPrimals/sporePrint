@@ -75,9 +75,9 @@ Publication-grade Python baselines — each experiment as a live, executable not
 | 028 | NPU Anderson | Neuromorphic | metalForge |
 | 029 | Multi-Method ET₀ | Hydrology | airSpring cross |
 
-## Workload TOMLs (foundation)
+## Workload TOMLs (projectFOUNDATION)
 
-4 workloads registered in `gardens/foundation/workloads/groundspring/`:
+4 workloads registered in `gardens/projectFOUNDATION/workloads/groundspring/`:
 
 | Workload | Purpose |
 |----------|---------|
