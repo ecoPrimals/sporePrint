@@ -1,7 +1,7 @@
 +++
 title = "Paper Reproductions — 63/63 Papers in Sovereign Rust"
 description = "Rendered from 03-paper-reproductions.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-06
+date = 2026-05-20
 weight = 50
 
 [extra]
@@ -10,7 +10,7 @@ rendered_from = "03-paper-reproductions.ipynb"
 +++
 
 <!-- Auto-generated from 03-paper-reproductions.ipynb by render_notebooks.sh -->
-<!-- Re-render with: bash scripts/render_notebooks.sh --notebook /home/irongate/Development/ecoPrimals/springs/wetSpring/notebooks/03-paper-reproductions.ipynb -->
+<!-- Re-render with: bash scripts/render_notebooks.sh --notebook /tmp/source-repo/notebooks/03-paper-reproductions.ipynb -->
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">

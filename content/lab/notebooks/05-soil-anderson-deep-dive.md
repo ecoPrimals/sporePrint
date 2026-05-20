@@ -1,7 +1,7 @@
 +++
 title = "Soil Anderson Deep Dive — Track 4 Domain Exemplar"
 description = "Rendered from 05-soil-anderson-deep-dive.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-06
+date = 2026-05-20
 weight = 50
 
 [extra]
@@ -10,7 +10,7 @@ rendered_from = "05-soil-anderson-deep-dive.ipynb"
 +++
 
 <!-- Auto-generated from 05-soil-anderson-deep-dive.ipynb by render_notebooks.sh -->
-<!-- Re-render with: bash scripts/render_notebooks.sh --notebook /home/irongate/Development/ecoPrimals/springs/wetSpring/notebooks/05-soil-anderson-deep-dive.ipynb -->
+<!-- Re-render with: bash scripts/render_notebooks.sh --notebook /tmp/source-repo/notebooks/05-soil-anderson-deep-dive.ipynb -->
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
