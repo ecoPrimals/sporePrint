@@ -196,13 +196,12 @@ jobs:
             fi
           fi
 
-      - name: Create PR if content changed
+      - name: Validate and auto-commit content (SP-1)
         env:
           GH_TOKEN: ${{ secrets.SPOREPRINT_REFRESH_PAT }}
           SOURCE: ${{ github.event.client_payload.source }}
         run: |
           SOURCE_LOWER="${SOURCE,,}"
-          BRANCH="content/${SOURCE_LOWER}-$(date -u +%Y%m%d)"
 
           CONTENT_CHANGED=false
           if ! git diff --quiet content/lab/ || [[ -n "$(git ls-files --others --exclude-standard content/lab/)" ]]; then
@@ -217,23 +216,45 @@ jobs:
             exit 0
           fi
 
+          # SP-1: Run spore-validate before committing. If it passes, auto-commit
+          # directly to main (same pattern as the refresh job). If it fails, fall
+          # back to creating a PR for manual review.
+          VALIDATE_PASS=true
+          if [[ -f crates/spore-validate/target/release/spore-validate ]]; then
+            echo "Running spore-validate on content changes..."
+            if ./crates/spore-validate/target/release/spore-validate --root . validate --check; then
+              echo "spore-validate: PASS — auto-committing to main"
+            else
+              echo "spore-validate: FAIL — falling back to PR for manual review"
+              VALIDATE_PASS=false
+            fi
+          fi
+
           git config user.name "sporePrint-bot"
           git config user.email "sporeprint-bot@ecoPrimals.dev"
 
-          # Delete stale remote branch if it exists, then create fresh
-          git push origin --delete "$BRANCH" 2>/dev/null || true
-          git checkout -b "$BRANCH"
-          git add content/lab/ static/lab/
-          git commit -m "content: add ${SOURCE_LOWER} lab pages + notebooks — $(date -u +%Y-%m-%d)"
-          git push -u origin "$BRANCH"
-
-          # Create PR (or update existing)
-          EXISTING_PR=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number' 2>/dev/null || true)
-          if [[ -n "$EXISTING_PR" && "$EXISTING_PR" != "null" ]]; then
-            echo "PR #$EXISTING_PR already exists for $BRANCH"
+          if [[ "$VALIDATE_PASS" == "true" ]]; then
+            # Auto-commit directly to main (validated content)
+            git add content/lab/ static/lab/
+            git commit -m "content: auto-merge ${SOURCE_LOWER} lab pages — $(date -u +%Y-%m-%d)"
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "Push attempt $i failed, retrying..."
+              sleep 2
+            done
           else
-            gh pr create \
-              --title "Lab content from ${SOURCE_LOWER}" \
-              --body "Auto-generated from \`${SOURCE_LOWER}/sporeprint/\` directory. Review before merging." \
-              --base main
+            # Validation failed — create PR for manual review
+            BRANCH="content/${SOURCE_LOWER}-$(date -u +%Y%m%d)"
+            git push origin --delete "$BRANCH" 2>/dev/null || true
+            git checkout -b "$BRANCH"
+            git add content/lab/ static/lab/
+            git commit -m "content: add ${SOURCE_LOWER} lab pages (needs review) — $(date -u +%Y-%m-%d)"
+            git push -u origin "$BRANCH"
+            EXISTING_PR=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number' 2>/dev/null || true)
+            if [[ -z "$EXISTING_PR" || "$EXISTING_PR" == "null" ]]; then
+              gh pr create \
+                --title "Lab content from ${SOURCE_LOWER} (validation failed)" \
+                --body "Auto-generated from \`${SOURCE_LOWER}/sporeprint/\`. spore-validate failed — manual review required." \
+                --base main
+            fi
           fi
