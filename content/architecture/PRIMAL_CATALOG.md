@@ -495,19 +495,20 @@ benchScale measures how primals scale — individually and in composition. It pr
 
 Every foundation primal has demonstration material. Most post-{{ entity(name="nucleus") }} primals have extensive showcase suites:
 
-| Primal | Showcase Demos | Interactive Scripts | Real-World Scenarios |
-|--------|---------------|--------------------|--------------------|
-| {{ entity(name="beardog") }} | Local showcase | Shell demo | - |
-| {{ entity(name="songbird") }} | Examples dir | Rust/Python/JS clients | Tor, P2P, Federation |
-| {{ entity(name="nestgate") }} | 14+ demos | Multiple levels | Bioinformatics, ML, Media, Git LFS |
-| {{ entity(name="toadstool") }} | GPU, Neuromorphic, Homomorphic | Benchmark suites | Gaming, Research |
-| {{ entity(name="squirrel") }} | IPC demos | Android validation | Multi-model AI |
-| {{ entity(name="biomeos") }} | {{ entity(name="neuralapi") }}, {{ entity(name="darkforest") }} | Federation demos | Cross-device |
-| {{ entity(name="petaltongue") }} | 8+ local, 7 inter-primal | Sandbox scenarios | 6 accessibility scenarios |
-| {{ entity(name="rhizocrypt") }} | 8 local, 6 inter-primal | Level-based progression | {{ entity(name="rootpulse") }} integration |
-| {{ entity(name="sweetgrass") }} | 8 local, 7 coordination | 50+ interactive | HIPAA, Science, Royalties, ML, Supply Chain |
-| {{ entity(name="loamspine") }} | 21 demos, 12 examples | 4-level progression | - |
-| {{ entity(name="skunkbat") }} | 10 examples, 4 levels | Threat detection suite | Federation, Integration |
+| Primal | Showcase Status | Live Demos | Notes |
+|--------|----------------|------------|-------|
+| {{ entity(name="beardog") }} | Active (26 demos) | Local + production + advanced | Mined demos fossilized (federation, workflow) |
+| {{ entity(name="songbird") }} | Examples only | Rust/Python/JS clients | Formal showcase archived; `examples/` is demo surface |
+| {{ entity(name="nestgate") }} | Fossilized | — | Full showcase archived Dec 2025; remnants cleaned May 2026 |
+| {{ entity(name="toadstool") }} | Active (8 demos) | Local + ecosystem | GPU/neuromorphic tiers fossilized (moved to coralReef/biomeOS) |
+| {{ entity(name="squirrel") }} | Archived | `examples/` (7 files) | Showcase archived; adapters + AI examples remain |
+| {{ entity(name="biomeos") }} | Graph-based | Bonding tests, federation | No formal `showcase/`; demos are graph compositions |
+| {{ entity(name="petaltongue") }} | Active (30 demos) | 4-tier progression | Well-maintained March 2026+ |
+| {{ entity(name="rhizocrypt") }} | Active (67 demos) | Local + inter-primal | Complete-workflows fossilized (mined to exp057) |
+| {{ entity(name="sweetgrass") }} | Active (35+ demos) | Local + coordination + real-world | RootPulse + bearDog-GAP fossilized |
+| {{ entity(name="loamspine") }} | Active (16 demos) | Local + RPC | Inter-primal tier fossilized (mined to exp053) |
+| {{ entity(name="skunkbat") }} | Active (6 demos) | Local tier | Narrative tiers 1-3 fossilized (mined to defensive_mesh) |
+| {{ entity(name="barracuda") }} | Active (9 demos) | Local + IPC + cross-primal | Added March 2026; all current |
 
 ---
 
