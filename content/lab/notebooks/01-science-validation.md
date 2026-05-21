@@ -1,7 +1,7 @@
 +++
 title = "Science Validation — wetSpring"
 description = "Rendered from 01-science-validation.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-20
+date = 2026-05-21
 weight = 50
 
 [extra]

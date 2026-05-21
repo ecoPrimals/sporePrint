@@ -1,7 +1,7 @@
 +++
 title = "Soil Anderson Deep Dive — Track 4 Domain Exemplar"
 description = "Rendered from 05-soil-anderson-deep-dive.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-20
+date = 2026-05-21
 weight = 50
 
 [extra]

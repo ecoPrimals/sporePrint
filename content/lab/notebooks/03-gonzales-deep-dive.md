@@ -1,7 +1,7 @@
 +++
 title = "Gonzales Deep Dive — wetSpring"
 description = "Rendered from 03-gonzales-deep-dive.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-20
+date = 2026-05-21
 weight = 50
 
 [extra]
@@ -58,7 +58,7 @@ selectivity for pruritus-associated pathways over broader immune functions.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_2838/1460536815.py:18: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<pre>/tmp/ipykernel_2919/1460536815.py:18: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
   ax.set_xticklabels(labels, rotation=30, ha='right')
 </pre>
 </div>
