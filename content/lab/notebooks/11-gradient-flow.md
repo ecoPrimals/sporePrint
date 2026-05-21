@@ -105,13 +105,13 @@ integrators and compare $t^2\langle E(t)\rangle$.</p>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 16.8s
+<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 16.6s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  LSCFRK3 W7 (Chuna)       : E_final=0.000475, t2E_peak=0.026255, 16.8s
+<pre>  LSCFRK3 W7 (Chuna)       : E_final=0.000475, t2E_peak=0.026255, 16.5s
 </pre>
 </div>
 </div>
