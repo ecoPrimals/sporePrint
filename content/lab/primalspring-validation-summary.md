@@ -1,7 +1,7 @@
 +++
 title = "primalSpring Validation Summary"
 description = "Meta-validation orchestrator — 736 lib tests, 89 experiments, 445 capability methods, 13/13 BTSP, zero DEBT, Wave 35"
-date = 2026-05-20
+date = 2026-05-21
 
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool", "nestgate", "beardog", "songbird", "squirrel", "rhizocrypt", "loamspine", "sweetgrass", "petaltongue", "skunkbat", "coralreef"]
@@ -14,14 +14,15 @@ springs = ["primalspring"]
 - **89 experiments** across 20 tracks (tower atomic → frontier)
 - **94 deploy graphs** (80 deploy + 14 signal), 45 validation scenarios (10 tracks)
 - **13/13 primals** BTSP Phase 3 AEAD, all defaulting to `127.0.0.1`
+- **JH-0 ADOPTED** (13/13 primals), **JH-1 RESOLVED** (ionic tokens), **GAP-11 CLOSED** (18/18 methods)
 - **445 registered capability methods** (post-Wave 32 recount, test fixtures excluded)
 - **Zero DEBT markers**, zero unsafe blocks (`SeedConfig` + `OnceLock`)
 - **5-tier discovery hierarchy** validated across all primals
-- **Waves 1–34 complete** — showcase fossilization, pattern dissemination, glacial shift prep
+- **Waves 1–35 complete** — showcase fossilization, pattern dissemination, glacial shift prep
 
 ## Key Validation Binaries
 
-- `primalspring validate` — UniBin validation (45 scenarios across 10 tracks, 3 tiers)
+- `primalspring validate` — UniBin validation (45 scenarios, 10 tracks, 3 tiers)
 - `primalspring certify` — Certification engine (L0-L8, BTSP, seed provenance, cellular)
 - `primalspring serve` — RPC server (JSON-RPC 2.0 over UDS)
 
@@ -30,7 +31,7 @@ springs = ["primalspring"]
 | # | Notebook | Focus |
 |---|----------|-------|
 | 01 | Composition Validation | Deploy graphs, bond types, profiles, discovery tiers |
-| 02 | Benchmark Comparison | Rust vs Python timing, energy, guidestone phases |
+| 02 | Benchmark Comparison | Rust vs Python timing, energy, certification phases |
 | 03 | Ecosystem Evidence | 89 experiments, gap resolution, security timeline |
 | 04 | Cross-Spring Connections | Primal consumption matrix, ecosystem flows, sporePrint readiness |
 | 05 | BTSP Security Deep Dive | Per-primal posture, convergence arc, discovery hierarchy |

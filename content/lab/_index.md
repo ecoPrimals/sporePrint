@@ -11,7 +11,7 @@ a live 13-primal {{ entity(name="nucleus") }} composition. Every result carries 
 cryptographic provenance chain: BLAKE3 content hashes → rhizoCrypt DAG → loamSpine
 ledger → sweetGrass ed25519-witnessed braid.
 
-**Security status**: All 13 primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. JH-0 MethodGate adopted 13/13 primals. 389 registered capability methods. Zero DEBT markers (primalSpring Phase 60+).
+**Security status**: All 13 primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. JH-0 MethodGate adopted 13/13 primals. 445 registered capability methods. Zero DEBT markers (primalSpring Wave 35).
 
 ---
 
