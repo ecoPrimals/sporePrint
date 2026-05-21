@@ -1,7 +1,7 @@
 +++
 title = "Dynamical Fermion QCD — Staggered HMC, HVP, Freeze-Out"
 description = "Rendered from 08-dynamical-fermions.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-20
+date = 2026-05-21
 weight = 50
 
 [extra]
