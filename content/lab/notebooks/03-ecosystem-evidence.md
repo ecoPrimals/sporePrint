@@ -1,7 +1,7 @@
 +++
 title = "Ecosystem Evidence — primalSpring"
 description = "Rendered from 03-ecosystem-evidence.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-20
+date = 2026-05-21
 weight = 50
 
 [extra]
