@@ -20,7 +20,7 @@ emerged: three-tier fetch routing, structured gap reports, provenance
 session lifecycle, and capability wire names. These patterns are the
 template for all future springs.</p>
 <p><strong>Data sources</strong>: <code>experiments/results/primal_composition.json</code></p>
-<p><strong>Reproduce</strong>: <code>cargo run --bin validate_gonzales_provenance_chain</code> in wetSpring.</p>
+<p><strong>Reproduce</strong>: <code>wetspring validate --scenario gonzales_provenance_chain</code> in wetSpring.</p>
 <hr/>
 <p><em>For other springs: this notebook is the reference for how to integrate
 with the primal ecosystem. Copy the fetch routing, gap report, and

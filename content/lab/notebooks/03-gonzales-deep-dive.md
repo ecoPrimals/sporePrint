@@ -22,7 +22,7 @@ tissue lattice diversity profiles for atopic dermatitis severity.</p>
 <p>Every value traces back to a published DOI and is content-addressed
 with BLAKE3 hashes through the provenance chain.</p>
 <p><strong>Data sources</strong>: <code>experiments/results/gonzales_domain.json</code></p>
-<p><strong>Reproduce</strong>: <code>cargo run --bin validate_gonzales_ic50_s79</code> in the wetSpring repository.</p>
+<p><strong>Reproduce</strong>: <code>wetspring validate --scenario gonzales_ic50_s79</code> in the wetSpring repository.</p>
 <hr/>
 <p><em>For other springs: replace the Gonzales data with your domain's key
 published results. The pattern — paper values → external cross-validation
@@ -58,7 +58,7 @@ selectivity for pruritus-associated pathways over broader immune functions.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_2950/1460536815.py:18: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<pre>/tmp/ipykernel_2969/1460536815.py:18: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
   ax.set_xticklabels(labels, rotation=30, ha='right')
 </pre>
 </div>

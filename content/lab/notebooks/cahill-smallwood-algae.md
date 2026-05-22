@@ -106,7 +106,7 @@ rendered_from = "cahill-smallwood-algae.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Rust-parity-%E2%80%94-frozen-Exp039-/-Exp040-(+-public-16S-control-JSON)">Rust parity — frozen Exp039 / Exp040 (+ public 16S control JSON)<a class="anchor-link" href="#Rust-parity-%E2%80%94-frozen-Exp039-/-Exp040-(+-public-16S-control-JSON)">¶</a></h2><p><code>cargo run --bin validate_algae_timeseries</code> and <code>cargo run --bin validate_bloom_surveillance</code> consume the <strong><code>python_baseline.json</code></strong> fixtures written by <strong><code>scripts/</code></strong> into <strong><code>experiments/results/</code></strong>. <code>validate_public_16s_python.py</code> freezes <strong><code>python_16s_baselines.json</code></strong>.</p>
+<h2 id="Rust-parity-%E2%80%94-frozen-Exp039-/-Exp040-(+-public-16S-control-JSON)">Rust parity — frozen Exp039 / Exp040 (+ public 16S control JSON)<a class="anchor-link" href="#Rust-parity-%E2%80%94-frozen-Exp039-/-Exp040-(+-public-16S-control-JSON)">¶</a></h2><p><code>wetspring validate --scenario algae_timeseries</code> and <code>wetspring validate --scenario bloom_surveillance</code> consume the <strong><code>python_baseline.json</code></strong> fixtures written by <strong><code>scripts/</code></strong> into <strong><code>experiments/results/</code></strong>. <code>validate_public_16s_python.py</code> freezes <strong><code>python_16s_baselines.json</code></strong>.</p>
 </div>
 </div>
 </div>
@@ -162,21 +162,21 @@ rendered_from = "cahill-smallwood-algae.ipynb"
 <td>Shannon + Bray–Curtis crash</td>
 <td>Cahill (#13 / PRJNA382322)</td>
 <td><code>039_algae_timeseries/python_baseline.json</code></td>
-<td><code>validate_algae_timeseries</code></td>
+<td><code>wetspring validate --scenario algae_timeseries</code></td>
 </tr>
 <tr>
 <td>2</td>
 <td>Rolling Z anomalies</td>
 <td>Smallwood bloom surveillance narrative</td>
 <td><code>040_bloom_surveillance/python_baseline.json</code></td>
-<td><code>validate_bloom_surveillance</code></td>
+<td><code>wetspring validate --scenario bloom_surveillance</code></td>
 </tr>
 <tr>
 <td>3</td>
 <td>Real public 16S QC hook</td>
 <td>Supplementary <code>scripts/validate_public_16s_python.py</code></td>
 <td><code>python_16s_controls/python_16s_baselines.json</code></td>
-<td><code>validate_algae_16s</code> (FASTQ regression)</td>
+<td><code>wetspring validate --scenario algae_16s</code></td>
 </tr>
 <tr>
 <td>4</td>

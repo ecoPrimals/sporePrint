@@ -45,7 +45,7 @@ rendered_from = "r-industry-parity.ipynb"
 </tbody>
 </table>
 <p>These three R packages dominate amplicon analysis. <strong>wetSpring</strong> reproduces their key computations in pure Python (and Rust) to maintain parity without an R dependency.</p>
-<p><strong>Rust validation:</strong> <code>validate_diversity</code>, <code>validate_error_model</code>, <code>validate_unifrac</code>. R-script JSON baselines align with <strong><code>cargo run --release --bin validate_r_industry_parity</code></strong> (<code>barracuda</code>).</p>
+<p><strong>Rust validation:</strong> <code>validate_diversity</code>, <code>validate_error_model</code>, <code>validate_unifrac</code>. R-script JSON baselines align with <strong><code>wetspring validate --scenario r_industry_parity</code></strong>.</p>
 <p><em>Frozen baselines:</em> <code>experiments/results/r_baselines/</code> (exported via <code>scripts/r_*_baseline.R</code>).*</p>
 </div>
 </div>

@@ -55,7 +55,7 @@ and drug–pathway alignment (mTOR ↔ sirolimus), then broaden to <strong>Trans
 embeddings over a synthetic biomedical KG (drugs, diseases, genes, pathways).</p>
 <p><strong>Rust binaries (wetSpring checkout):</strong> <code>validate_nmf_drug_repurposing</code>,
 <code>validate_fajgenbaum_pathway</code>, <code>validate_knowledge_graph_embedding</code>
-(e.g. <code>cargo run --release --bin validate_nmf_drug_repurposing</code> from <code>barracuda/</code>).</p>
+(e.g. <code>wetspring validate --scenario nmf_drug_repurposing</code>).</p>
 <hr/>
 <p><em>Publishing note:</em> Figures and metrics here are reproducible Tier-1 numerics;
 link frozen JSON under <code>experiments/results/</code> when exporting baselines from the validators.</p>

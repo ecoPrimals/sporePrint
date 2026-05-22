@@ -235,7 +235,7 @@ rendered_from = "liao-anaerobic-biogas.ipynb"
 </tr>
 </tbody>
 </table>
-<p><strong>Provenance</strong>: Regenerate artifacts with <strong><code>python3 scripts/python_anaerobic_biogas_baseline.py</code></strong> → <strong><code>experiments/results/track6_anaerobic/biogas_kinetics_baseline.json</code></strong>. <strong>Rust binary</strong> <strong><code>validate_anaerobic_biogas</code></strong> alongside <strong><code>cargo run --bin validate_barracuda_cpu_v27</code></strong> (domains D69–D70).</p>
+<p><strong>Provenance</strong>: Regenerate artifacts with <strong><code>python3 scripts/python_anaerobic_biogas_baseline.py</code></strong> → <strong><code>experiments/results/track6_anaerobic/biogas_kinetics_baseline.json</code></strong>. <strong>Rust validation</strong> via <strong><code>wetspring validate --scenario barracuda_cpu_v27</code></strong> (domains D69–D70).</p>
 <p><strong>Evolution</strong><br/>
 <strong>Tier 1 — frozen</strong>: this notebook runs everywhere with pathlib-derived <strong><code>RESULTS</code></strong>. <strong>Tier 2</strong>: guarded <strong><code>ipc_call('science.biogas_kinetics', …)</code></strong>. <strong>Tier 3</strong>: deterministic CI binaries with provenance hashes in <strong><code>barracuda/</code></strong>.</p>
 </div>

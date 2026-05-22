@@ -48,7 +48,7 @@ computations tied to reproducible Tier-1 artifacts and optional Tier-2 IPC.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Rust validation:</strong> <code>validate_gonzales_ic50_s79</code>, <code>validate_gonzales_pk</code>, <code>validate_gonzales_provenance_chain</code> (canonical PK binary in-repo: <code>validate_gonzales_pk_s79</code>). Run from the wetSpring checkout, e.g. <code>cargo run --release --bin validate_gonzales_ic50_s79</code>.</p>
+<p><strong>Rust validation:</strong> <code>gonzales_ic50_s79</code>, <code>gonzales_pk_s79</code>, <code>gonzales_provenance_chain</code>. Run from the wetSpring checkout via UniBin, e.g. <code>wetspring validate --scenario gonzales_ic50_s79</code>.</p>
 <hr/>
 <p><em>For other springs:</em> swap the cytokine/JAK axes and dosing units for your
 domain while keeping the same workflow—explicit paper parameters,
