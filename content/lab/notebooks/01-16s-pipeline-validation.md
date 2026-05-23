@@ -1,7 +1,7 @@
 +++
 title = "16S Pipeline Validation — wetSpring"
 description = "Rendered from 01-16s-pipeline-validation.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-23
 weight = 50
 
 [extra]
