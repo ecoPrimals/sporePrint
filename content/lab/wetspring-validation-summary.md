@@ -68,5 +68,5 @@ springs = ["wetspring"]
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco
 - [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
