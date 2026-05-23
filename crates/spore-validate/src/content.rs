@@ -132,6 +132,54 @@ pub fn check_integrity(
     ));
 }
 
+/// Detect bare relative `.md` links that bypass Zola's internal-link resolver.
+///
+/// Zola renders pages to slug-based HTML paths, so a markdown link like
+/// `[text](SOME_FILE.md)` produces a request for `/section/SOME_FILE.md`
+/// which does not exist on the built site (404). The correct form is
+/// `[text](@/section/SOME_FILE.md)`.
+///
+/// This function flags any `](*.md)` links that do NOT use the `@/` prefix,
+/// excluding external URLs and anchor-only fragments.
+pub fn lint_internal_links(
+    root: &Path,
+    content_dir: &Path,
+    errors: &mut Vec<String>,
+    warnings: &mut Vec<String>,
+) {
+    let bare_md_re = Regex::new(r"\]\(([^@\)][^:\)]*\.md)\)").expect("valid regex");
+
+    let mut count: u32 = 0;
+
+    for entry in markdown_files(content_dir) {
+        let path = entry.path();
+        let Ok(text) = std::fs::read_to_string(path) else {
+            continue;
+        };
+        let rel = path.strip_prefix(root).unwrap_or(path);
+
+        for (line_no, line) in text.lines().enumerate() {
+            for cap in bare_md_re.captures_iter(line) {
+                let target = &cap[1];
+                if target.starts_with("http://") || target.starts_with("https://") {
+                    continue;
+                }
+                count += 1;
+                errors.push(format!(
+                    "{}:{}: bare .md link '{}' — use @/ prefix for Zola internal links",
+                    rel.display(),
+                    line_no + 1,
+                    target,
+                ));
+            }
+        }
+    }
+
+    if count == 0 {
+        warnings.push("link-lint: all internal links use @/ prefix".to_string());
+    }
+}
+
 fn markdown_files(dir: &Path) -> impl Iterator<Item = walkdir::DirEntry> {
     WalkDir::new(dir)
         .sort_by_file_name()

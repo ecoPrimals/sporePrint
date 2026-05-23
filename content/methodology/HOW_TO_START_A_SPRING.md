@@ -413,7 +413,7 @@ mkdir mySpring && cd mySpring && cargo init
 
 ## What Domains Are Ready Now
 
-See **[KNOWLEDGE_COMMONS_TARGETS.md](KNOWLEDGE_COMMONS_TARGETS.md)** for
+See **[Knowledge Commons Targets](@/methodology/KNOWLEDGE_COMMONS_TARGETS.md)** for
 9 domains where existing primals + public data provide everything needed:
 
 - Antibiotic resistance (NCBI CARD)

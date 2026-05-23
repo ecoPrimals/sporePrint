@@ -11,9 +11,9 @@ The methodology is biological: evolve under constraint, validate against publish
 
 | I want to... | Read this |
 |---|---|
-| Understand the core theory | [Constrained Evolution — Formal](CONSTRAINED_EVOLUTION_FORMAL.md) — why removing CUDA produced vendor-independent GPU compute, and other constraint-driven innovations |
-| See how AI-assisted development works | [K-NOME Programming](K_NOME_PROGRAMMING.md) — the operational model: human domain expertise + AI implementation, every generation validated |
-| Start my own spring | [How to Start a Spring](HOW_TO_START_A_SPRING.md) — the phased playbook: Python → Rust → GPU → composition |
-| See what could be built next | [Knowledge Commons Targets](KNOWLEDGE_COMMONS_TARGETS.md) — 9 domains where public data + cheap hardware unlocks sovereign alternatives |
-| Understand the licensing | [scyBorg Licensing](SCYBORG_LICENSING.md) — AGPL + ORC + CC-BY-SA: three independent nonprofits, no single entity can revoke |
-| Explore the theoretical foundation | [P vs NP and the Enzyme Thesis](P_NP_ENZYME_THESIS.md) — why generation/verification asymmetry matters for computation and biology |
+| Understand the core theory | [Constrained Evolution — Formal](@/methodology/CONSTRAINED_EVOLUTION_FORMAL.md) — why removing CUDA produced vendor-independent GPU compute, and other constraint-driven innovations |
+| See how AI-assisted development works | [K-NOME Programming](@/methodology/K_NOME_PROGRAMMING.md) — the operational model: human domain expertise + AI implementation, every generation validated |
+| Start my own spring | [How to Start a Spring](@/methodology/HOW_TO_START_A_SPRING.md) — the phased playbook: Python → Rust → GPU → composition |
+| See what could be built next | [Knowledge Commons Targets](@/methodology/KNOWLEDGE_COMMONS_TARGETS.md) — 9 domains where public data + cheap hardware unlocks sovereign alternatives |
+| Understand the licensing | [scyBorg Licensing](@/methodology/SCYBORG_LICENSING.md) — AGPL + ORC + CC-BY-SA: three independent nonprofits, no single entity can revoke |
+| Explore the theoretical foundation | [P vs NP and the Enzyme Thesis](@/methodology/P_NP_ENZYME_THESIS.md) — why generation/verification asymmetry matters for computation and biology |

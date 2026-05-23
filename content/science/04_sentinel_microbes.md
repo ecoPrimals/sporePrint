@@ -327,7 +327,7 @@ partial read and decides whether to keep or reject it. Target programs:
 Great Lakes HAB monitoring, soil health sentinel, AMR wastewater
 surveillance, PFAS dual-mode detection.
 
-See [Sub-thesis 09: Field Genomics](09_field_genomics.md) for the full
+See [Sub-thesis 09: Field Genomics](@/science/09_field_genomics.md) for the full
 architecture, experiment plan (Exp196-202), and literature review.
 
 ## 9. Connection to Constrained Evolution

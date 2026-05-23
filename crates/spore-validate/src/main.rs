@@ -104,6 +104,8 @@ fn run_validate(root: &PathBuf, config: &model::Config, check: bool, strict: boo
             &mut warnings,
         );
 
+        content::lint_internal_links(root, &content_dir, &mut errors, &mut warnings);
+
         if check {
             content::check_integrity(
                 root,
