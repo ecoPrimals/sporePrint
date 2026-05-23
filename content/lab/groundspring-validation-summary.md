@@ -1,11 +1,7 @@
 +++
 title = "groundSpring Validation Summary"
-description = "Measurement noise and uncertainty — 965 tests, 35 experiments, guideStone Level 3, 5 notebooks"
-date = 2026-05-07
-weight = 25
-
-[extra]
-domain = "Measurement Science"
+description = "Measurement noise and uncertainty — 1,123 tests, 39 experiments (34 core + 5 LTEE B1–B4, B6), guideStone Level 4, Eukaryotic UniBin, 5 notebooks, 10 validation scenarios"
+date = 2026-05-17
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "beardog", "songbird", "nestgate"]
@@ -14,19 +10,29 @@ springs = ["groundspring", "hotspring", "wetspring", "neuralspring", "airspring"
 
 ## Status
 
-- **965 tests** passing, 0 failed (146s full suite)
-- **35 experiments** across 10 scientific domains
-- **395/395 validation checks** (340 core + 55 NUCLEUS)
+- **1,123 tests** passing, 0 failed, 0 clippy warnings on all targets
+- **39 experiments** across 12 scientific domains
+- **10 validation scenarios** in ScenarioRegistry (9 Tier 1, 1 Tier 2)
+- **461/461 validation checks** (340 core + 55 NUCLEUS + 66 LTEE)
 - **29/29 Python baselines** with math parity proven
 - **110 barraCuda delegations** (67 CPU + 43 GPU)
-- **guideStone Level 3** — bare + IPC wired
-- **16 measurement capabilities** synced (niche, YAML, deploy graphs)
-- **Zero** unsafe blocks, production mocks, hardcoded addresses, `#[allow]` attrs
+- **guideStone Level 4** (eukaryotic UniBin)
+- **Tier 4 IPC-first** — `barracuda` removed from default features; IPC via `CompositionContext` default
+- **biomeOS v3.51** — `composition.status` + `method.register` absorbed
+- **skunkBat** — `security.audit_log` wired in all 6 deploy graphs
+- **certification/ organelle** — Properties 1-5 (bare) + Layers 2-4 (NUCLEUS)
+- **groundspring_unibin** — single binary: certify / validate / status / version
+- **src/ipc/ tree** — per-primal modules (barraCuda, ToadStool, NestGate, BearDog, Songbird)
+- **primalSpring v0.9.27 pinned** — CompositionContext, ScenarioMeta, ScenarioRegistry
+- **fossilRecord/** — consolidated to dedicated repo (breadcrumb in-tree)
+- **Zero** unsafe, bare `#[allow]`/`#[expect]` without reason, TODO/FIXME
 
 ## Key Validation Binaries
 
-- `groundspring_guidestone` — 5 bare properties + 6 NUCLEUS additive IPC checks
-- `validate_all` — meta-runner for all 29 Python-parity validators (exit-code protocol)
+- `groundspring_unibin certify` — L0-L4 certification (supersedes groundspring_guidestone)
+- `groundspring_unibin validate --tier rust` — 9 Tier 1 scenarios (CI-safe, no IPC)
+- `groundspring_unibin validate --tier live` — Tier 2 NUCLEUS composition parity
+- `validate_all` — meta-runner for all 39 validation binaries (exit-code protocol)
 - `bench_gpu_vs_kokkos` — three-mode GPU benchmark (default → barraCuda CPU → GPU)
 
 ## sporePrint Notebooks (5)
@@ -35,7 +41,7 @@ springs = ["groundspring", "hotspring", "wetspring", "neuralspring", "airspring"
 |---|----------|-------|
 | 01 | Composition Validation | Deploy graphs, capabilities, guideStone, verb reconciliation |
 | 02 | Benchmark Comparison | Rust vs Python timing, three-mode GPU, delegation inventory |
-| 03 | Ecosystem Evidence | 35 experiments, domain distribution, gap resolution, security |
+| 03 | Ecosystem Evidence | 39 experiments, domain distribution, gap resolution, security |
 | 04 | Cross-Spring Connections | Primal consumption matrix, ecosystem flows, patterns pioneered |
 | 05 | Measurement Science Deep Dive | Five pillars, tolerance architecture, Anderson localization thread |
 
@@ -75,14 +81,14 @@ Publication-grade Python baselines — each experiment as a live, executable not
 | 028 | NPU Anderson | Neuromorphic | metalForge |
 | 029 | Multi-Method ET₀ | Hydrology | airSpring cross |
 
-## Workload TOMLs (projectFOUNDATION)
+## Workload TOMLs (foundation)
 
-4 workloads registered in `gardens/projectFOUNDATION/workloads/groundspring/`:
+4 workloads registered in `gardens/foundation/workloads/groundspring/`:
 
 | Workload | Purpose |
 |----------|---------|
-| `gs-validate-all` | Run all 29 Rust validators |
-| `gs-guidestone` | Run guideStone Level 3 check |
+| `gs-validate-all` | Run all 39 Rust validators |
+| `gs-guidestone` | Run guideStone Level 4 check |
 | `gs-bench-gpu` | Three-mode GPU benchmark |
 | `gs-python-baselines` | Execute 29 Python baselines for provenance |
 
