@@ -1,7 +1,7 @@
 +++
 title = "Stanton-Murillo Transport Coefficients — Yukawa OCP"
 description = "Rendered from 05-stanton-murillo-transport.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-23
 weight = 50
 
 [extra]

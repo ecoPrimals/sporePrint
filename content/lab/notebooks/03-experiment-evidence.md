@@ -1,7 +1,7 @@
 +++
 title = "Experiment Evidence — hotSpring"
 description = "Rendered from 03-experiment-evidence.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-23
 weight = 50
 
 [extra]
