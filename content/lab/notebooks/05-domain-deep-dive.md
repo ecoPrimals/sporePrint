@@ -1,7 +1,7 @@
 +++
 title = "Domain Deep Dive — airSpring"
 description = "Rendered from 05-domain-deep-dive.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-21
+date = 2026-05-24
 weight = 50
 
 [extra]

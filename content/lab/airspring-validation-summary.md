@@ -16,13 +16,13 @@ springs = ["airspring", "hotspring", "wetspring", "neuralspring", "groundspring"
 - **14.3× geometric mean** Rust-vs-Python speedup (25/25 algorithms, 21/21 CPU-GPU parity)
 - **57/57 IPC capabilities** routable (science + ecology + provenance + composition + coordination + inference)
 - **64 centralized method constants** in `methods.rs` (drift-proof, single source of truth)
-- **97 validation binaries** (all zero-panic, OrExit pattern, UniBin consolidation)
+- **98 validation binaries** (all zero-panic, OrExit pattern, UniBin consolidation)
 - **90.56% line coverage** (gated at 90%)
 - **60 named tolerances** in 5 submodules (Rust + Python mirror, zero inline magic numbers)
 - **25 Tier A GPU modules** (20 upstream batched ops, local_dispatch retired)
 - **Zero C dependencies**, zero unsafe, zero `#[allow()]`, Edition 2024
 - **guideStone Level 4** (targeting L6 with live NUCLEUS; IPC-wired, **10 UniBin validation scenarios**)
-- **57-method capability_registry.toml** (CI sync-tested vs niche.rs + 445-method canonical cross-sync, Wave 20, stability tiers annotated)
+- **57-method capability_registry.toml** (CI sync-tested vs niche.rs + 458-method canonical cross-sync, Wave 20, stability tiers annotated)
 - **36 foundation targets** + **6 toadStool workloads** (thread06_ag)
 - **deny.toml** promoted to workspace root (ecoBin v3.0, ring/openssl banned)
 - **3 largest files refactored** (provenance 747→496, rpc 650→341, seasonal_pipeline 738→539)
@@ -92,6 +92,6 @@ Available in both `foundation/workloads/thread06_ag/` and `projectNUCLEUS/worklo
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
 - [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
 - [baseCamp Papers](https://primals.eco/science/) (Dong lab, FAO-56, Richards, Stewart)

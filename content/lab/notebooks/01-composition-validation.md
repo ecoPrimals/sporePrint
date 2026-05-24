@@ -1,5 +1,5 @@
 +++
-title = "Composition Validation — hotSpring"
+title = "Composition Validation — airSpring"
 description = "Rendered from 01-composition-validation.ipynb — live notebook from the ABG shared workspace"
 date = 2026-05-24
 weight = 50
@@ -14,15 +14,14 @@ rendered_from = "01-composition-validation.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composition-Validation-%E2%80%94-hotSpring">Composition Validation — hotSpring<a class="anchor-link" href="#Composition-Validation-%E2%80%94-hotSpring">¶</a></h1><p>hotSpring validates computational physics (lattice QCD, nuclear structure, plasma)
-on consumer GPU hardware via the ecoPrimal NUCLEUS composition. This notebook shows
-the deploy graph topology, guideStone Level 6 validation, and capability-based
-primal routing.</p>
-<p><strong>Data sources:</strong> <code>composition_validation.json</code>, <code>test_suite_report.json</code></p>
-<p><strong>Reproduce:</strong> <code>cargo test --lib</code> in <code>barracuda/</code>, then <code>scripts/validate-primal-proof.sh</code></p>
-<hr/>
-<p><em>For other springs:</em> Replace QCD domain content with your science. Keep the guideStone
-property structure and atomic type hierarchy — they're universal across all springs.</p>
+<h1 id="Composition-Validation-%E2%80%94-airSpring">Composition Validation — airSpring<a class="anchor-link" href="#Composition-Validation-%E2%80%94-airSpring">¶</a></h1><p>airSpring is the ecological sciences validation spring in the ecoPrimals ecosystem.
+It validates precision agriculture, irrigation science, and environmental systems
+through 44 IPC capabilities across 87 experiments.</p>
+<p><strong>Data sources</strong>: <code>composition_validation.json</code>, <code>test_suite_report.json</code></p>
+<p><strong>Reproduce</strong>: <code>cargo run --release --bin validate_biome_graph</code> (35/35 PASS)</p>
+<p><strong>For other springs</strong>: Replace capability categories and deploy graph names with your
+domain. The pattern of niche.rs as canonical source → all deploy surfaces derive from
+it eliminates drift.</p>
 </div>
 </div>
 </div>
@@ -31,11 +30,12 @@ property structure and atomic type hierarchy — they're universal across all sp
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Spring: hotSpring v0.6.32
-guideStone Level: 5
-Deploy graph: 11 nodes, 9 required primals
-Tests: 1036 passed, 6 ignored
-Bare guideStone: 30/30 checks
+<pre>Capabilities: 44 total, 44/44 routable
+Deploy graphs: 4
+Gaps: 9 open / 2 resolved
+guideStone level: 0 → 1
+MCP tools: 10
+Tests: 1364 Rust + 1284 Python
 </pre>
 </div>
 </div>
@@ -44,9 +44,8 @@ Bare guideStone: 30/30 checks
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="guideStone-Level-6-%E2%80%94-Five-Properties">guideStone Level 6 — Five Properties<a class="anchor-link" href="#guideStone-Level-6-%E2%80%94-Five-Properties">¶</a></h2><p>The <code>hotspring_guidestone</code> binary validates 5 guideStone properties in bare mode
-(no primals needed) and adds NUCLEUS IPC parity checks when primals are deployed.
-Property 3 (Self-Verifying) uses BLAKE3 checksums for 15 validation-critical source files.</p>
+<h2 id="Capability-Distribution">Capability Distribution<a class="anchor-link" href="#Capability-Distribution">¶</a></h2><p>airSpring exposes 44 IPC capabilities organized by domain. The <code>niche.rs</code> module
+is the single source of truth — deploy TOMLs and cell graphs derive from it.</p>
 </div>
 </div>
 </div>
@@ -54,9 +53,7 @@ Property 3 (Self-Verifying) uses BLAKE3 checksums for 15 validation-critical sou
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Capability-Based-Routing">Capability-Based Routing<a class="anchor-link" href="#Capability-Based-Routing">¶</a></h2><p>hotSpring routes to primals by <strong>capability domain</strong> (<code>by_domain("compute")</code>), not
-by hardcoded process names. All requirements derive from <code>niche::DEPENDENCIES</code> —
-a single source of truth. Named accessors are deprecated.</p>
+<h2 id="Deploy-Graph-Topology">Deploy Graph Topology<a class="anchor-link" href="#Deploy-Graph-Topology">¶</a></h2><p>airSpring defines 4 biomeOS deploy graphs for different composition patterns.</p>
 </div>
 </div>
 </div>
@@ -64,8 +61,8 @@ a single source of truth. Named accessors are deprecated.</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-Suite-by-Physics-Domain">Test Suite by Physics Domain<a class="anchor-link" href="#Test-Suite-by-Physics-Domain">¶</a></h2><p>596 (default) / 1,045 (barracuda-local) library tests organized by physics domain — from nuclear structure (SEMF, HFB)
-through lattice QCD (HMC, RHMC, gradient flow) to GPU compute validation.</p>
+<h2 id="Primal-Composition-&amp;-Gap-Status">Primal Composition &amp; Gap Status<a class="anchor-link" href="#Primal-Composition-&amp;-Gap-Status">¶</a></h2><p>airSpring's NUCLEUS composition wires 5 primals via IPC directly;
+7 remain graph-level only (handled by biomeOS deployment).</p>
 </div>
 </div>
 </div>
@@ -73,46 +70,45 @@ through lattice QCD (HMC, RHMC, gradient flow) to GPU compute validation.</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Validation-Summary">Validation Summary<a class="anchor-link" href="#Validation-Summary">¶</a></h2><table>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Status</th>
-<th>Detail</th>
+<th>Metric</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>guideStone Level 6</td>
-<td><strong>30/30 PASS</strong></td>
-<td>5 properties certified, BLAKE3 P3, 3 SKIP (liveness)</td>
+<td>IPC Capabilities</td>
+<td>44/44 routable</td>
 </tr>
 <tr>
-<td>Library tests</td>
-<td><strong>596/596 PASS</strong> (default) / <strong>1,045</strong> (barracuda-local)</td>
-<td>6 GPU-heavy ignored (upstream barraCuda CI)</td>
+<td>Deploy Graphs</td>
+<td>4 validated offline</td>
 </tr>
 <tr>
-<td>Validation suites</td>
-<td><strong>65/65 PASS</strong></td>
-<td>167 <code>validate_*</code> binaries + <code>hotspring_guidestone</code></td>
+<td>Primals IPC-wired</td>
+<td>5 (toadStool, barraCuda, biomeOS, NestGate, Squirrel)</td>
 </tr>
 <tr>
-<td>NUCLEUS routing</td>
-<td><strong>by_domain()</strong></td>
-<td>Capability-based from <code>niche::DEPENDENCIES</code></td>
+<td>Primals graph-level</td>
+<td>7 (petalTongue, coralReef, BearDog, Songbird, rhizoCrypt, loamSpine, sweetGrass)</td>
 </tr>
 <tr>
-<td>Deploy graph</td>
-<td><strong>11 nodes</strong></td>
-<td>9 required + 1 optional + hotspring_unibin</td>
+<td>MCP Tools</td>
+<td>10 (Squirrel-discoverable)</td>
+</tr>
+<tr>
+<td>guideStone Level</td>
+<td>0 → 1 (blocked on primalSpring dependency)</td>
+</tr>
+<tr>
+<td>Open Gaps</td>
+<td>9 (AG-001 through AG-011)</td>
 </tr>
 </tbody>
 </table>
-<hr/>
-<p><strong>Provenance:</strong> All data from <code>experiments/results/</code> committed JSON artifacts.<br/>
-<strong>Reproduce:</strong> <code>cargo test --lib</code> in <code>barracuda/</code>, <code>scripts/validate-primal-proof.sh</code> from repo root.<br/>
-<strong>Source:</strong> <a href="https://github.com/syntheticChemistry/hotSpring">hotSpring on GitHub</a> · <a href="https://primals.eco/lab/springs/hotspring/">primals.eco</a></p>
+<p><strong>Provenance</strong>: airSpring v0.10.0 · AGPL-3.0-or-later · <a href="https://primals.eco">primals.eco</a></p>
 </div>
 </div>
 </div>

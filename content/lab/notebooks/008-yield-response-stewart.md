@@ -1,7 +1,7 @@
 +++
 title = "Stewart (1977) Yield Response to Water Stress"
 description = "Rendered from 008-yield-response-stewart.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-21
+date = 2026-05-24
 weight = 50
 
 [extra]

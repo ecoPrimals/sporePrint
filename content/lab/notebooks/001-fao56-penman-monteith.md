@@ -1,7 +1,7 @@
 +++
 title = "FAO-56 Penman-Monteith Reference Evapotranspiration (ET₀)"
 description = "Rendered from 001-fao56-penman-monteith.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-21
+date = 2026-05-24
 weight = 50
 
 [extra]

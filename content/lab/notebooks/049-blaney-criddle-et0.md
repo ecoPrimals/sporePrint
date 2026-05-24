@@ -1,7 +1,7 @@
 +++
 title = "Blaney–Criddle (1950) Temperature-Based PET"
 description = "Rendered from 049-blaney-criddle-et0.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-21
+date = 2026-05-24
 weight = 50
 
 [extra]
