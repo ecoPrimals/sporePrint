@@ -1,7 +1,7 @@
 +++
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 description = "Rendered from r-industry-parity.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-23
+date = 2026-05-24
 weight = 50
 
 [extra]
