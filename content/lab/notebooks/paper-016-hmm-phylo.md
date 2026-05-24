@@ -1,7 +1,7 @@
 +++
 title = "Paper 016 — HMM Forward / Backward / Viterbi for Genomic Inference"
 description = "Rendered from paper-016-hmm-phylo.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-24
 weight = 50
 
 [extra]
@@ -61,7 +61,7 @@ rendered_from = "paper-016-hmm-phylo.ipynb"
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>&lt;&gt;:8: SyntaxWarning: invalid escape sequence '\h'
 &lt;&gt;:8: SyntaxWarning: invalid escape sequence '\h'
-/tmp/ipykernel_2659/1200585135.py:8: SyntaxWarning: invalid escape sequence '\h'
+/tmp/ipykernel_2719/1200585135.py:8: SyntaxWarning: invalid escape sequence '\h'
   axes[0].set_title('Scaled forward $\hat\\alpha_t(i)$ (weather HMM)')
 </pre>
 </div>

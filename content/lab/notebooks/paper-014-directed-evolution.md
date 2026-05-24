@@ -1,7 +1,7 @@
 +++
 title = "Paper 014 — Directed Evolution via Selection Algorithms"
 description = "Rendered from paper-014-directed-evolution.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-24
 weight = 50
 
 [extra]

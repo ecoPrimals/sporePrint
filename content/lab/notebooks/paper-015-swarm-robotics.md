@@ -1,7 +1,7 @@
 +++
 title = "Paper 015 — Heterogeneous Swarm Robotics"
 description = "Rendered from paper-015-swarm-robotics.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-24
 weight = 50
 
 [extra]

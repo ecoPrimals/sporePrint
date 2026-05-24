@@ -1,7 +1,7 @@
 +++
 title = "Paper 017 — SATé: Iterative Co-estimation of MSA and Phylogeny"
 description = "Rendered from paper-017-sate-alignment.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-22
+date = 2026-05-24
 weight = 50
 
 [extra]
