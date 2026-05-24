@@ -58,7 +58,7 @@ selectivity for pruritus-associated pathways over broader immune functions.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_2963/1460536815.py:18: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<pre>/tmp/ipykernel_2938/1460536815.py:18: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
   ax.set_xticklabels(labels, rotation=30, ha='right')
 </pre>
 </div>
