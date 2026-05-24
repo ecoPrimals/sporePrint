@@ -3,7 +3,9 @@ use std::path::{Path, PathBuf};
 use std::process;
 
 mod content;
+mod fetch;
 mod model;
+mod notebook;
 mod refresh;
 mod registry;
 mod totals;
@@ -48,6 +50,28 @@ enum Command {
         #[arg(long)]
         source: Option<String>,
     },
+
+    /// Render Jupyter notebooks to Zola-compatible markdown pages
+    RenderNotebooks {
+        /// Directories containing .ipynb files (can specify multiple)
+        #[arg(required = true)]
+        dirs: Vec<PathBuf>,
+
+        /// Root of springs/ directory to auto-discover spring notebooks
+        #[arg(long)]
+        springs: Option<PathBuf>,
+    },
+
+    /// Fetch upstream repos and refresh metrics (replaces refresh-metrics.sh)
+    FetchRefresh {
+        /// Write updated metrics back to config.toml
+        #[arg(long)]
+        write: bool,
+
+        /// Refresh only this source ID (default: all)
+        #[arg(long)]
+        source: Option<String>,
+    },
 }
 
 fn main() {
@@ -77,6 +101,12 @@ fn main() {
             source,
         }) => {
             run_refresh(&config_path, &config, &repos_root, write, source.as_deref());
+        }
+        Some(Command::RenderNotebooks { dirs, springs }) => {
+            run_render_notebooks(&root, &dirs, springs.as_deref());
+        }
+        Some(Command::FetchRefresh { write, source }) => {
+            run_fetch_refresh(&root, &config_path, &config, write, source.as_deref());
         }
     }
 }
@@ -213,4 +243,35 @@ fn run_refresh(
             }
         }
     }
+}
+
+fn run_render_notebooks(root: &Path, dirs: &[PathBuf], springs: Option<&Path>) {
+    println!("spore-validate: rendering notebooks to Zola markdown...");
+
+    let (count, messages) = notebook::render_notebooks(root, dirs, springs);
+
+    for msg in &messages {
+        println!("  {msg}");
+    }
+
+    println!("\n  Rendered {count} notebook(s)");
+}
+
+fn run_fetch_refresh(
+    root: &Path,
+    config_path: &Path,
+    config: &model::Config,
+    write: bool,
+    source: Option<&str>,
+) {
+    println!("spore-validate: fetching upstream repos...");
+
+    let messages = fetch::fetch_and_refresh(root, source);
+    for msg in &messages {
+        println!("{msg}");
+    }
+
+    let clone_dir = fetch::clone_dir();
+    println!("\nspore-validate: scanning for metric drift...");
+    run_refresh(config_path, config, &clone_dir, write, source);
 }

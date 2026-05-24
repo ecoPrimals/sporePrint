@@ -41,6 +41,10 @@ org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
 
+last_push = "2026-05-23"
+shadow_status = "sovereign"
+deploy_locations = ["github-pages"]
+
 # ── Measured 2026-04-04 via tokei (primals + springs pulled and counted) ──
 # Update procedure: pull all repos, run tokei, update numbers here.
 # Shortcodes and templates read from this registry — update once, propagates everywhere.
