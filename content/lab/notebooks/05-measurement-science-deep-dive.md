@@ -1,7 +1,7 @@
 +++
 title = "Measurement Science Deep Dive — groundSpring"
 description = "Rendered from 05-measurement-science-deep-dive.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-23
+date = 2026-05-24
 weight = 50
 
 [extra]
