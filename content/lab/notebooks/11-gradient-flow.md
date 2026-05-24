@@ -99,13 +99,13 @@ integrators and compare $t^2\langle E(t)\rangle$.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  Euler                    : E_final=0.000488, t2E_peak=0.028659, 7.3s
+<pre>  Euler                    : E_final=0.000488, t2E_peak=0.028659, 7.1s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 20.3s
+<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 20.1s
 </pre>
 </div>
 </div>
