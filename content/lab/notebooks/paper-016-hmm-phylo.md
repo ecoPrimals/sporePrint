@@ -61,7 +61,7 @@ rendered_from = "paper-016-hmm-phylo.ipynb"
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>&lt;&gt;:8: SyntaxWarning: invalid escape sequence '\h'
 &lt;&gt;:8: SyntaxWarning: invalid escape sequence '\h'
-/tmp/ipykernel_2507/1200585135.py:8: SyntaxWarning: invalid escape sequence '\h'
+/tmp/ipykernel_2679/1200585135.py:8: SyntaxWarning: invalid escape sequence '\h'
   axes[0].set_title('Scaled forward $\hat\\alpha_t(i)$ (weather HMM)')
 </pre>
 </div>
@@ -95,7 +95,12 @@ PASS  Viterbi accuracy (0.7700) &gt; chance+0.05
 PASS  Viterbi: finite log-probability
 PASS  Posterior rows sum to 1
 PASS  Posterior argmax comparable to Viterbi
-PASS  Phylo forward: finite log-lik at 5k sites
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>PASS  Phylo forward: finite log-lik at 5k sites
 PASS  Phylo Viterbi (0.3654) &gt; chance+0.02
 PASS  Manual GEMM chain matches library forward (max |Δ|=0.00e+00)
 PASS  Baum–Welch: log-likelihood non-decreasing over EM run
