@@ -1,7 +1,7 @@
 +++
 title = "Cross-Spring Connections — primalSpring"
 description = "Rendered from 04-cross-spring-connections.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-24
+date = 2026-05-25
 weight = 50
 
 [extra]
