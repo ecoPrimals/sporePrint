@@ -1,7 +1,7 @@
 +++
 title = "neuralSpring Validation Summary"
 description = "ML primitives and sovereign structure prediction — 4,900+ checks, Isomorphism Theorem, 38.6x faster than Python"
-date = 2026-05-23
+date = 2026-05-25
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "biomeos", "squirrel"]
@@ -12,8 +12,8 @@ springs = ["neuralspring", "hotspring", "wetspring", "groundspring"]
 
 <!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
 
-> **Session:** S216 | **Date:** May 23, 2026 | **Version:** 0.1.0
-> **Gate:** eastGate | **Live validation:** 9/13 primals via UDS
+> **Session:** S217 | **Date:** May 25, 2026 | **Version:** 0.1.0 | **Handoff:** V173
+> **Gate:** southGate | **Live validation:** 9/13 primals via UDS
 > **Tier:** 2 (sporePrint: frozen data + notebooks + paper baselines)
 
 ---
@@ -32,7 +32,7 @@ springs = ["neuralspring", "hotspring", "wetspring", "groundspring"]
 | **Papers reproduced** | 27 (6 faculties) |
 | **Capabilities** | 45 (12 domains) |
 | **Named tolerances** | 233 |
-| **guideStone** | 30/37 PASS, 6 SKIP (live eastGate deployment) |
+| **guideStone** | 30/37 PASS, 6 SKIP (live southGate deployment) |
 | **BTSP** | 13/13 mandatory |
 | **PRIMAL_GAPS** | 29 main (29 resolved) |
 
@@ -159,4 +159,4 @@ Remaining batches: 19 papers across 4 additional faculties.
 
 ---
 
-**Provenance:** [primals.eco](https://primals.eco) | neuralSpring Session S216
+**Provenance:** [primals.eco](https://primals.eco) | neuralSpring Session S217
