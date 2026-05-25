@@ -31,6 +31,12 @@ data flows. Show which primals you depend on and what you validate.</em></p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Matplotlib is building the font cache; this may take a moment.
+</pre>
+</div>
+</div>
+<div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Role: Meta-validation orchestrator for NUCLEUS compositions
 Springs tracked: 7
