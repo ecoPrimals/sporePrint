@@ -1,7 +1,7 @@
 +++
 title = "Sarkas Yukawa MD — Plasma Transport from Molecular Dynamics"
 description = "Rendered from 03-sarkas-yukawa-md.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-24
+date = 2026-05-25
 weight = 50
 
 [extra]
@@ -67,7 +67,7 @@ Too small for quantitative transport, but shows the algorithm.</p>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>MD: N=32, Gamma=1.0, kappa=1.0
-  200 equil + 500 prod steps in 3269 ms
+  200 equil + 500 prod steps in 3113 ms
   &lt;T&gt; = 1.3306 (target 1.5000)
 </pre>
 </div>
