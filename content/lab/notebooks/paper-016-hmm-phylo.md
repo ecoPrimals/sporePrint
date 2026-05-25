@@ -61,7 +61,7 @@ rendered_from = "paper-016-hmm-phylo.ipynb"
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>&lt;&gt;:8: SyntaxWarning: invalid escape sequence '\h'
 &lt;&gt;:8: SyntaxWarning: invalid escape sequence '\h'
-/tmp/ipykernel_2679/1200585135.py:8: SyntaxWarning: invalid escape sequence '\h'
+/tmp/ipykernel_2751/1200585135.py:8: SyntaxWarning: invalid escape sequence '\h'
   axes[0].set_title('Scaled forward $\hat\\alpha_t(i)$ (weather HMM)')
 </pre>
 </div>
