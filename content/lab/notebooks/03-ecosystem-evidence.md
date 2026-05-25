@@ -14,7 +14,7 @@ rendered_from = "03-ecosystem-evidence.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ecosystem-Evidence-%E2%80%94-primalSpring">Ecosystem Evidence — primalSpring<a class="anchor-link" href="#Ecosystem-Evidence-%E2%80%94-primalSpring">¶</a></h1><p>primalSpring's 85 experiments form the evidence base for NUCLEUS composition
+<h1 id="Ecosystem-Evidence-%E2%80%94-primalSpring">Ecosystem Evidence — primalSpring<a class="anchor-link" href="#Ecosystem-Evidence-%E2%80%94-primalSpring">¶</a></h1><p>primalSpring's 89 experiments form the evidence base for NUCLEUS composition
 validation. This notebook maps the experiment catalog across categories,
 timeline, and gap resolution — showing how primalSpring systematically
 validated every coordination pattern in the ecosystem.</p>
@@ -61,7 +61,7 @@ Categories: 16
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Experiment-Distribution-by-Category">Experiment Distribution by Category<a class="anchor-link" href="#Experiment-Distribution-by-Category">¶</a></h2><p>85 experiments across 15 categories, from atomic tower compositions
+<h2 id="Experiment-Distribution-by-Category">Experiment Distribution by Category<a class="anchor-link" href="#Experiment-Distribution-by-Category">¶</a></h2><p>89 experiments across 20 tracks, from atomic tower compositions
 to frontier work (MCP tools, agentic loops, micro desktop shells).</p>
 </div>
 </div>
