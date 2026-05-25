@@ -1,7 +1,7 @@
 +++
 title = "Makkink (1957) Radiation-Based ET₀"
 description = "Rendered from 033-makkink-et0.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-24
+date = 2026-05-25
 weight = 50
 
 [extra]
