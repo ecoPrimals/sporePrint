@@ -1,7 +1,7 @@
 +++
 title = "Experiment Evidence — hotSpring"
 description = "Rendered from 03-experiment-evidence.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-25
+date = 2026-05-26
 weight = 50
 
 [extra]
@@ -30,7 +30,7 @@ The experiment catalog structure and science ladder pattern are reusable.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total experiments: 220
+<pre>Total experiments: 224
 Categories: 14
 Papers reproduced: 26
 Total science cost: $0.30

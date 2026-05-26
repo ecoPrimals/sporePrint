@@ -1,7 +1,7 @@
 +++
 title = "Plasma Dielectric Functions — BGK/Mermin + Kinetic-Fluid Coupling"
 description = "Rendered from 12-plasma-dielectric.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-25
+date = 2026-05-26
 weight = 50
 
 [extra]
@@ -72,7 +72,7 @@ f-sum rule validation, and multi-species BGK kinetic-fluid relaxation.</p>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>f-sum rule: integral = -6.6430, expected = -19.7392, error = 66.3%
-  computed in 620 ms
+  computed in 609 ms
 
 Debye screening: eps(k,0) = 3.5985, expected = 3.5985
 High-freq limit: eps(k,100wp) = 0.999967 + 0.000000i (expect ~1)
