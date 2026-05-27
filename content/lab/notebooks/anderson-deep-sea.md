@@ -1,7 +1,7 @@
 +++
 title = "Deep-Sea Hydrothermal Vent Ecology — R. Anderson Lab (Carleton)"
 description = "Rendered from anderson-deep-sea.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-25
+date = 2026-05-27
 weight = 50
 
 [extra]
