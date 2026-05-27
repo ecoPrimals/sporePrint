@@ -1,7 +1,7 @@
 +++
 title = "Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$"
 description = "Rendered from 11-gradient-flow.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-26
+date = 2026-05-27
 weight = 50
 
 [extra]
@@ -105,13 +105,13 @@ integrators and compare $t^2\langle E(t)\rangle$.</p>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 20.4s
+<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 20.6s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  LSCFRK3 W7 (Chuna)       : E_final=0.000475, t2E_peak=0.026255, 20.4s
+<pre>  LSCFRK3 W7 (Chuna)       : E_final=0.000475, t2E_peak=0.026255, 20.6s
 </pre>
 </div>
 </div>
