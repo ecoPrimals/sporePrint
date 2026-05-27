@@ -76,9 +76,9 @@ the Higgs mechanism, confinement, and symmetry breaking in the simplest gauge-Hi
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_2852/4200604355.py:22: RuntimeWarning: overflow encountered in scalar multiply
+<pre>/tmp/ipykernel_2757/4200604355.py:22: RuntimeWarning: overflow encountered in scalar multiply
   self.state = self.state * LCG_MUL + LCG_INC
-/tmp/ipykernel_2852/4200604355.py:22: RuntimeWarning: overflow encountered in scalar add
+/tmp/ipykernel_2757/4200604355.py:22: RuntimeWarning: overflow encountered in scalar add
   self.state = self.state * LCG_MUL + LCG_INC
 </pre>
 </div>
