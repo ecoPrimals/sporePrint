@@ -1,7 +1,7 @@
 +++
 title = "Paper 012 — MODES Toolbox: Metrics of Open-Ended Evolution"
 description = "Rendered from paper-012-modes-toolbox.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-25
+date = 2026-05-27
 weight = 50
 
 [extra]
@@ -74,7 +74,7 @@ rendered_from = "paper-012-modes-toolbox.ipynb"
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Generated 3 test systems in 0.61s
+<pre>Generated 3 test systems in 0.90s
 
   open-ended (random walk + drift): 200 steps
   closed (converging to fixed point): 200 steps
