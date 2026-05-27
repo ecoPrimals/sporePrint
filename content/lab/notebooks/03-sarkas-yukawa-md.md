@@ -67,7 +67,7 @@ Too small for quantitative transport, but shows the algorithm.</p>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>MD: N=32, Gamma=1.0, kappa=1.0
-  200 equil + 500 prod steps in 3191 ms
+  200 equil + 500 prod steps in 3405 ms
   &lt;T&gt; = 1.3306 (target 1.5000)
 </pre>
 </div>
