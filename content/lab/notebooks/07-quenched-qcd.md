@@ -1,7 +1,7 @@
 +++
 title = "Quenched SU(3) Lattice QCD — Deconfinement Transition"
 description = "Rendered from 07-quenched-qcd.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-27
+date = 2026-05-28
 weight = 50
 
 [extra]
@@ -122,31 +122,31 @@ The transition at $\beta_c \approx 5.69$ separates:</p>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=5.00: &lt;plaq&gt;=0.397018+/-0.008631, |L|=0.298270, acc=93%, 37.1s
+<pre>  beta=5.00: &lt;plaq&gt;=0.397018+/-0.008631, |L|=0.298270, acc=93%, 29.3s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=5.50: &lt;plaq&gt;=0.464582+/-0.003508, |L|=0.271642, acc=73%, 37.1s
+<pre>  beta=5.50: &lt;plaq&gt;=0.464582+/-0.003508, |L|=0.271642, acc=73%, 29.3s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=5.70: &lt;plaq&gt;=0.511461+/-0.012423, |L|=0.253856, acc=73%, 37.1s
+<pre>  beta=5.70: &lt;plaq&gt;=0.511461+/-0.012423, |L|=0.253856, acc=73%, 29.2s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=6.00: &lt;plaq&gt;=0.556925+/-0.010717, |L|=0.316603, acc=87%, 37.1s
+<pre>  beta=6.00: &lt;plaq&gt;=0.556925+/-0.010717, |L|=0.316603, acc=87%, 29.1s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=6.50: &lt;plaq&gt;=0.616668+/-0.013553, |L|=0.284943, acc=100%, 36.9s
+<pre>  beta=6.50: &lt;plaq&gt;=0.616668+/-0.013553, |L|=0.284943, acc=100%, 29.2s
 </pre>
 </div>
 </div>
