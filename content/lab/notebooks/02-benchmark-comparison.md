@@ -53,7 +53,7 @@ on identical algorithms and datasets.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_3096/1195676791.py:34: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<pre>/tmp/ipykernel_3091/1195676791.py:34: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
   axes[1].set_xticklabels(names, rotation=25, ha='right', fontsize=8)
 </pre>
 </div>
@@ -74,7 +74,7 @@ on FP32 cores), which delivers 3.24 TFLOPS — 5.6x over native FP64.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_3096/2554584232.py:31: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<pre>/tmp/ipykernel_3091/2554584232.py:31: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
   axes[1].set_xticklabels(gb_names, rotation=25, ha='right', fontsize=8)
 </pre>
 </div>

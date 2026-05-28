@@ -30,11 +30,11 @@ The experiment catalog structure and science ladder pattern are reusable.</p>
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total experiments: 225
-Categories: 14
+<pre>Total experiments: 229
+Categories: 15
 Papers reproduced: 26
 Total science cost: $0.30
-Science ladder: 23 milestones
+Science ladder: 25 milestones
 </pre>
 </div>
 </div>
