@@ -134,19 +134,19 @@ The transition at $\beta_c \approx 5.69$ separates:</p>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=5.70: &lt;plaq&gt;=0.511461+/-0.012423, |L|=0.253856, acc=73%, 29.2s
+<pre>  beta=5.70: &lt;plaq&gt;=0.511461+/-0.012423, |L|=0.253856, acc=73%, 29.5s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=6.00: &lt;plaq&gt;=0.556925+/-0.010717, |L|=0.316603, acc=87%, 29.1s
+<pre>  beta=6.00: &lt;plaq&gt;=0.556925+/-0.010717, |L|=0.316603, acc=87%, 29.4s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  beta=6.50: &lt;plaq&gt;=0.616668+/-0.013553, |L|=0.284943, acc=100%, 29.2s
+<pre>  beta=6.50: &lt;plaq&gt;=0.616668+/-0.013553, |L|=0.284943, acc=100%, 29.4s
 </pre>
 </div>
 </div>
