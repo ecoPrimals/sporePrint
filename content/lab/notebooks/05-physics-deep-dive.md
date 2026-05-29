@@ -1,7 +1,7 @@
 +++
 title = "Physics Deep Dive — hotSpring"
 description = "Rendered from 05-physics-deep-dive.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-28
+date = 2026-05-29
 weight = 50
 
 [extra]
