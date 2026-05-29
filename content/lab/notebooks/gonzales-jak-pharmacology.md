@@ -1,7 +1,7 @@
 +++
 title = "JAK/STAT Pharmacology — Gonzales Lab"
 description = "Rendered from gonzales-jak-pharmacology.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-27
+date = 2026-05-29
 weight = 50
 
 [extra]

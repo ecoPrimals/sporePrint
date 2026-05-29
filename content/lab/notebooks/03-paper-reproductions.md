@@ -1,7 +1,7 @@
 +++
 title = "Paper Reproductions — 63/63 Papers in Sovereign Rust"
 description = "Rendered from 03-paper-reproductions.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-27
+date = 2026-05-29
 weight = 50
 
 [extra]

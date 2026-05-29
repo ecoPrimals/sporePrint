@@ -1,7 +1,7 @@
 +++
 title = "Drug Repurposing & Knowledge Graphs — Fajgenbaum Lab (Track 3)"
 description = "Rendered from fajgenbaum-drug-repurposing.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-27
+date = 2026-05-29
 weight = 50
 
 [extra]
@@ -173,12 +173,7 @@ Energy (|\mathbf{h} + \mathbf{r} - \mathbf{t}|); conventionally <strong>score</s
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Triples: 80 train, 19 test
 epoch   1  hinge ~ 0.9662
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>epoch  50  hinge ~ 0.0887
+epoch  50  hinge ~ 0.0887
 Mean rank (filtered, tail prediction): 5.00
 Hits@10: 94.74%
 </pre>
@@ -208,7 +203,12 @@ failing the notebook when snapshots have not yet been exported from CI.</p>
 <pre>[Exp157 pathway / validate_fajgenbaum_pathway] missing file: ../../experiments/results/157_fajgenbaum_pathway/python_baseline.json
 [Exp159 NMF / validate_nmf_drug_repurposing] missing file: ../../experiments/results/159_nmf_drug_repurposing/python_baseline.json
 [Exp161 KG / validate_knowledge_graph_embedding] missing file: ../../experiments/results/161_knowledge_graph_embedding/python_baseline.json
-Catalog track3 summary: Alignment, taxonomy, phylogenetics, HMM, k-mer, pangenomics …
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Catalog track3 summary: Alignment, taxonomy, phylogenetics, HMM, k-mer, pangenomics …
 </pre>
 </div>
 </div>
