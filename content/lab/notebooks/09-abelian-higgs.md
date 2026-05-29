@@ -76,40 +76,40 @@ the Higgs mechanism, confinement, and symmetry breaking in the simplest gauge-Hi
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_2609/4200604355.py:22: RuntimeWarning: overflow encountered in scalar multiply
+<pre>/tmp/ipykernel_2812/4200604355.py:22: RuntimeWarning: overflow encountered in scalar multiply
   self.state = self.state * LCG_MUL + LCG_INC
-/tmp/ipykernel_2609/4200604355.py:22: RuntimeWarning: overflow encountered in scalar add
+/tmp/ipykernel_2812/4200604355.py:22: RuntimeWarning: overflow encountered in scalar add
   self.state = self.state * LCG_MUL + LCG_INC
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  Weak coupling         plaq=0.906987  |phi^2|=0.8742  acc=84%  0.8s
+<pre>  Weak coupling         plaq=0.906987  |phi^2|=0.8742  acc=84%  1.1s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  Strong coupling       plaq=0.245105  |phi^2|=0.8912  acc=90%  0.8s
+<pre>  Strong coupling       plaq=0.245105  |phi^2|=0.8912  acc=90%  1.1s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  Higgs condensed       plaq=0.926801  |phi^2|=4.4227  acc=92%  0.8s
+<pre>  Higgs condensed       plaq=0.926801  |phi^2|=4.4227  acc=92%  1.1s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  Confined              plaq=0.431564  |phi^2|=0.7977  acc=96%  0.8s
+<pre>  Confined              plaq=0.431564  |phi^2|=0.7977  acc=96%  1.1s
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  Large lambda          plaq=0.693292  |phi^2|=0.9972  acc=86%  0.8s
+<pre>  Large lambda          plaq=0.693292  |phi^2|=0.9972  acc=86%  1.1s
 </pre>
 </div>
 </div>
