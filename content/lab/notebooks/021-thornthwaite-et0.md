@@ -1,7 +1,7 @@
 +++
 title = "Thornthwaite (1948) Monthly Evapotranspiration"
 description = "Rendered from 021-thornthwaite-et0.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-25
+date = 2026-05-29
 weight = 50
 
 [extra]

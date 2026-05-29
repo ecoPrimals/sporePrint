@@ -1,7 +1,7 @@
 +++
 title = "FAO-56 Chapter 8 — Daily Soil Water Balance Scheduling"
 description = "Rendered from 004-fao56-water-balance.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-25
+date = 2026-05-29
 weight = 50
 
 [extra]
