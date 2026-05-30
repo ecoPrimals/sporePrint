@@ -1,7 +1,7 @@
 +++
 title = "Composition Validation — hotSpring"
 description = "Rendered from 01-composition-validation.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-29
+date = 2026-05-30
 weight = 50
 
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "Abelian Higgs Model — (1+1)D Lattice Field Theory"
 description = "Rendered from 09-abelian-higgs.ipynb — live notebook from the ABG shared workspace"
-date = 2026-05-29
+date = 2026-05-30
 weight = 50
 
 [extra]
@@ -76,9 +76,9 @@ the Higgs mechanism, confinement, and symmetry breaking in the simplest gauge-Hi
 <div class="output">
 <div class="output_area">
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/tmp/ipykernel_2812/4200604355.py:22: RuntimeWarning: overflow encountered in scalar multiply
+<pre>/tmp/ipykernel_2941/4200604355.py:22: RuntimeWarning: overflow encountered in scalar multiply
   self.state = self.state * LCG_MUL + LCG_INC
-/tmp/ipykernel_2812/4200604355.py:22: RuntimeWarning: overflow encountered in scalar add
+/tmp/ipykernel_2941/4200604355.py:22: RuntimeWarning: overflow encountered in scalar add
   self.state = self.state * LCG_MUL + LCG_INC
 </pre>
 </div>
