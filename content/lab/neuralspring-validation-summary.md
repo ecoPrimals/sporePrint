@@ -154,7 +154,7 @@ Remaining batches: 19 papers across 4 additional faculties.
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco
 - [baseCamp Papers 01, 02, 04, 05, 06, 07](https://primals.eco/science/)
 
 ---

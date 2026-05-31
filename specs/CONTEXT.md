@@ -8,16 +8,17 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (April 30, 2026)
+## Current State (May 31, 2026 — Wave 63)
 
-- **67 content pages** across 8 sections + landing page
-- **2 taxonomies**: `primals` (14 terms), `springs` (8 terms) — build-validated typed tags
-- **Entity registry** in `config.toml` — 60 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
+- **207 content pages** across 8 sections + landing + lab notebooks
+- **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
+- **Entity registry** in `config.toml` — 63 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **Pre-build validation**: `spore-validate` Rust crate (`crates/spore-validate/`) — typed entity model, required field checks per kind, totals verification, taxonomy tag validation, entity shortcode scanning, cross-repo metric drift detection
+- **`spore-validate` v2.0.0** — 12-module Rust crate: typed validation, link checking, notebook rendering, metric sync, trait-based VCS. 80 tests, 90.3% coverage, `#![forbid(unsafe_code)]`
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
+- **Sovereign deployment** — golgiBody-ext VPS serving via Caddy (DNS cutover pending)
 
 ## Repository Structure
 
@@ -45,24 +46,27 @@ sporePrint/
 │   └── shortcodes/
 │       └── entity.html      # {{ entity(name="beardog") }} → linked emoji+name
 ├── static/
-│   ├── css/main.css         # Catppuccin Mocha/Latte, card layouts, site tree
+│   ├── css/base.css         # Design tokens (Catppuccin Mocha/Latte)
+│   ├── css/main.css         # Component styles
+│   ├── gonzales/            # Interactive explorer (JELLY STRING → petalTongue)
 │   ├── CNAME                # primals.eco
 │   └── search.css
 ├── specs/                   # THIS DIRECTORY — internal, not built
-├── crates/spore-validate/   # Rust typed validation tool (replaces Python script)
-├── .github/workflows/       # deploy.yml — spore-validate + zola check + GitHub Pages
+├── crates/spore-validate/   # Rust validation crate (12 modules, 80 tests, 90%+ cov)
+├── .github/workflows/       # deploy.yml, auto-refresh.yml
 └── CHANGELOG.md
 ```
 
 ## Key Technical Facts
 
-- **Zola 0.22.1** — TOML front matter, Tera templates, strict mode
+- **Zola** — TOML front matter, Tera templates, strict mode
 - **Catppuccin** color palette (Mocha dark / Latte light, auto via `prefers-color-scheme`)
-- **zola check** runs as CI gate — all internal and external links validated before deploy
+- **`spore-validate check-links`** validates internal links (149 links across 207 files)
 - **zola build** generates taxonomy pages automatically from front matter tags
-- **No JavaScript** beyond Zola's built-in elasticlunr search and mobile nav toggle
+- **JavaScript**: gonzales science explorer (JELLY STRING, evolution target: petalTongue WASM)
 - **Inline SVG favicon** — no external assets
 - **`minify_html = true`** — output is minified
+- **`#![forbid(unsafe_code)]`** — enforced at spore-validate crate root
 
 ## Three Organizations
 

@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: May 15, 2026
+Last reviewed: May 31, 2026 (Wave 63 deep debt resolution)
 
 ---
 
@@ -23,8 +23,9 @@ Last reviewed: May 15, 2026
 - [ ] atlasHugged integration — `content/philosophy/` section stub exists. When essays are ready for public release, add them as individual pages. This is a separate, intentional act — do not auto-publish from whitePaper
 
 ### Taxonomy completeness
-- [ ] Audit all 105 content pages: grep content for entity names not tagged in front matter
+- [ ] Audit all 207 content pages: grep content for entity names not tagged in front matter
 - [x] ~~Build-time validation script~~ → replaced by `spore-validate` Rust crate (`crates/spore-validate/`)
+- [x] ~~Internal link validation~~ → `spore-validate check-links` (149 links validated)
 
 ---
 
@@ -65,7 +66,18 @@ Last reviewed: May 15, 2026
 ### Automation
 - [x] ~~Script to pull check counts from spring repos and update stats~~ → `spore-validate refresh` compares LOC, tests, files, crates against registry
 - [ ] Script to diff whitePaper/baseCamp against content/science/ for new papers
-- [ ] Consider lychee CI for non-Zola link checking in specs/ and other non-content markdown
+- [x] ~~Consider lychee CI for non-Zola link checking~~ → `spore-validate check-links` covers internal links; external link validation TBD
+
+### pseudoSpore Gallery (Wave 64 target)
+- [ ] Zola template for `/lab/spores/{name}/` gallery pages
+- [ ] `spore-validate` reads lithoSpore `registry.toml` → generates gallery markdown
+- [ ] Gallery index at `/lab/spores/` listing all available pseudoSpores
+- [ ] "Download lithoSpore" link per gallery page
+
+### Sovereign Deployment
+- [ ] DNS cutover: primals.eco A record → golgiBody-ext (137.184.197.151)
+- [ ] peptidoglycan build pipeline: `zola build` → rsync → golgiBody-ext → Caddy
+- [ ] GitHub Pages becomes extracellular shadow (backup only)
 
 ### Search
 - [ ] Evaluate elasticlunr search quality for the current 105 pages

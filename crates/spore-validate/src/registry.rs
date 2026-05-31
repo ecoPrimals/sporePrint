@@ -1,36 +1,49 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+//! Entity registry schema validation.
+//!
+//! Validates that each entity has the required fields for its kind,
+//! and that tier assignments are consistent.
+
+use crate::error::Diagnostic;
 use crate::model::{Entity, EntityKind};
 use std::collections::HashMap;
 
-pub fn validate(registry: &HashMap<String, Entity>, errors: &mut Vec<String>) {
+/// Validate all entities in the registry for schema completeness.
+pub fn validate(registry: &HashMap<String, Entity>, diagnostics: &mut Vec<Diagnostic>) {
     let mut keys: Vec<&String> = registry.keys().collect();
-    keys.sort();
+    keys.sort_unstable();
 
     for key in keys {
-        validate_entity(key, &registry[key], errors);
+        validate_entity(key, &registry[key], diagnostics);
     }
 }
 
-fn validate_entity(key: &str, entity: &Entity, errors: &mut Vec<String>) {
+fn validate_entity(key: &str, entity: &Entity, diagnostics: &mut Vec<Diagnostic>) {
     let required = required_for_kind(entity.kind);
-    let missing: Vec<&str> = required.iter().copied().filter(|f| !has_field(entity, f)).collect();
+    let missing: Vec<&str> = required
+        .iter()
+        .copied()
+        .filter(|f| !has_field(entity, f))
+        .collect();
 
     if !missing.is_empty() {
-        errors.push(format!(
+        diagnostics.push(Diagnostic::Error(format!(
             "[{key}] kind={} missing required fields: {{{}}}",
             entity.kind,
             missing.join(", ")
-        ));
+        )));
     }
 
     if entity.tier.is_some() && entity.kind != EntityKind::Primal {
-        errors.push(format!(
+        diagnostics.push(Diagnostic::Error(format!(
             "[{key}] has tier but kind={} (tier is only valid for primals)",
             entity.kind
-        ));
+        )));
     }
 }
 
-fn required_for_kind(kind: EntityKind) -> &'static [&'static str] {
+const fn required_for_kind(kind: EntityKind) -> &'static [&'static str] {
     match kind {
         EntityKind::Primal => &[
             "domain",
@@ -104,19 +117,19 @@ mod tests {
 
     #[test]
     fn complete_primal_passes() {
-        let mut errors = Vec::new();
-        validate_entity("test", &make_primal(), &mut errors);
-        assert!(errors.is_empty(), "expected no errors, got: {errors:?}");
+        let mut diags = Vec::new();
+        validate_entity("test", &make_primal(), &mut diags);
+        assert!(diags.is_empty(), "expected no errors, got: {diags:?}");
     }
 
     #[test]
     fn missing_tier_fails() {
         let mut e = make_primal();
         e.tier = None;
-        let mut errors = Vec::new();
-        validate_entity("test", &e, &mut errors);
-        assert_eq!(errors.len(), 1);
-        assert!(errors[0].contains("tier"));
+        let mut diags = Vec::new();
+        validate_entity("test", &e, &mut diags);
+        assert_eq!(diags.len(), 1);
+        assert!(diags[0].message().contains("tier"));
     }
 
     #[test]
@@ -126,8 +139,37 @@ mod tests {
             tier: Some(Tier::Foundation),
             ..make_primal()
         };
-        let mut errors = Vec::new();
-        validate_entity("test", &e, &mut errors);
-        assert!(errors.iter().any(|e| e.contains("tier") && e.contains("infra")));
+        let mut diags = Vec::new();
+        validate_entity("test", &e, &mut diags);
+        assert!(diags.iter().any(|d| {
+            let msg = d.message();
+            msg.contains("tier") && msg.contains("infra")
+        }));
+    }
+
+    #[test]
+    fn product_needs_domain() {
+        let e = Entity {
+            kind: EntityKind::Product,
+            domain: None,
+            tier: None,
+            ..make_primal()
+        };
+        let mut diags = Vec::new();
+        validate_entity("test", &e, &mut diags);
+        assert!(diags.iter().any(|d| d.message().contains("domain")));
+    }
+
+    #[test]
+    fn concept_needs_description() {
+        let e = Entity {
+            kind: EntityKind::Concept,
+            description: None,
+            tier: None,
+            ..make_primal()
+        };
+        let mut diags = Vec::new();
+        validate_entity("test", &e, &mut diags);
+        assert!(diags.iter().any(|d| d.message().contains("description")));
     }
 }

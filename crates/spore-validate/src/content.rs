@@ -1,16 +1,23 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+//! Content validation: taxonomy tags, entity shortcodes, and internal links.
+//!
+//! Validates that content pages reference valid registry entities and that
+//! internal links use Zola's `@/` prefix for proper resolution.
+
+use crate::error::Diagnostic;
 use crate::model::{Entity, EntityKind};
 use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::path::Path;
 use walkdir::WalkDir;
 
-/// Phase 1: validate taxonomy tags in front matter reference valid registry keys.
+/// Validate taxonomy tags in front matter reference valid registry keys.
 pub fn validate_taxonomies(
     root: &Path,
     content_dir: &Path,
     registry: &HashMap<String, Entity>,
-    errors: &mut Vec<String>,
-    warnings: &mut Vec<String>,
+    diagnostics: &mut Vec<Diagnostic>,
 ) {
     let registry_keys: HashSet<&str> = registry.keys().map(String::as_str).collect();
     let mut referenced_keys: HashSet<String> = HashSet::new();
@@ -44,18 +51,18 @@ pub fn validate_taxonomies(
                 referenced_keys.insert(tag.to_string());
 
                 if !registry_keys.contains(tag) {
-                    errors.push(format!(
+                    diagnostics.push(Diagnostic::Error(format!(
                         "{}: taxonomy tag '{tag}' not in entity_registry",
                         rel.display()
-                    ));
+                    )));
                 } else if let Some(entity) = registry.get(tag) {
                     if entity.kind != expected_kind {
-                        warnings.push(format!(
+                        diagnostics.push(Diagnostic::Warning(format!(
                             "{}: tag '{tag}' in [{tax_name}] but registry says kind='{}' \
                              (expected '{expected_kind}')",
                             rel.display(),
                             entity.kind
-                        ));
+                        )));
                     }
                 }
             }
@@ -68,32 +75,26 @@ pub fn validate_taxonomies(
         .map(|(k, _)| k.as_str())
         .filter(|k| !referenced_keys.contains(*k))
         .collect();
-    unreferenced.sort();
+    unreferenced.sort_unstable();
 
     for key in unreferenced {
-        warnings.push(format!("[{key}] is in registry but no content page tags it"));
+        diagnostics.push(Diagnostic::Warning(format!(
+            "[{key}] is in registry but no content page tags it"
+        )));
     }
 }
 
-/// Normalize a shortcode name the same way the Tera templates do:
-/// lowercase, strip spaces and hyphens.
+/// Normalize a shortcode name: lowercase, strip spaces and hyphens.
 fn normalize_key(name: &str) -> String {
-    name.to_lowercase()
-        .replace(' ', "")
-        .replace('-', "")
+    name.to_lowercase().replace([' ', '-'], "")
 }
 
-/// Phase 3: scan prose for entity shortcodes and validate registry keys.
-///
-/// Checks `entity(name="…")`, `entity_metrics(name="…")`, and
-/// `entity_stat(name="…")` — matching the normalization the Tera
-/// templates apply (lowercase, strip spaces and hyphens).
+/// Scan prose for entity shortcodes and validate registry keys.
 pub fn check_integrity(
     root: &Path,
     content_dir: &Path,
     registry: &HashMap<String, Entity>,
-    errors: &mut Vec<String>,
-    warnings: &mut Vec<String>,
+    diagnostics: &mut Vec<Diagnostic>,
 ) {
     let shortcode_re = Regex::new(
         r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
@@ -124,31 +125,17 @@ pub fn check_integrity(
     }
 
     for b in broken {
-        errors.push(b);
+        diagnostics.push(Diagnostic::Error(b));
     }
 
-    warnings.push(format!(
+    diagnostics.push(Diagnostic::Warning(format!(
         "check: {shortcode_count} entity shortcodes scanned, all resolved"
-    ));
+    )));
 }
 
-/// Detect bare relative `.md` links that bypass Zola's internal-link resolver.
-///
-/// Zola renders pages to slug-based HTML paths, so a markdown link like
-/// `[text](SOME_FILE.md)` produces a request for `/section/SOME_FILE.md`
-/// which does not exist on the built site (404). The correct form is
-/// `[text](@/section/SOME_FILE.md)`.
-///
-/// This function flags any `](*.md)` links that do NOT use the `@/` prefix,
-/// excluding external URLs and anchor-only fragments.
-pub fn lint_internal_links(
-    root: &Path,
-    content_dir: &Path,
-    errors: &mut Vec<String>,
-    warnings: &mut Vec<String>,
-) {
+/// Detect bare `.md` links that bypass Zola's internal-link resolver.
+pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Vec<Diagnostic>) {
     let bare_md_re = Regex::new(r"\]\(([^@\)][^:\)]*\.md)\)").expect("valid regex");
-
     let mut count: u32 = 0;
 
     for entry in markdown_files(content_dir) {
@@ -165,18 +152,20 @@ pub fn lint_internal_links(
                     continue;
                 }
                 count += 1;
-                errors.push(format!(
+                diagnostics.push(Diagnostic::Error(format!(
                     "{}:{}: bare .md link '{}' — use @/ prefix for Zola internal links",
                     rel.display(),
                     line_no + 1,
                     target,
-                ));
+                )));
             }
         }
     }
 
     if count == 0 {
-        warnings.push("link-lint: all internal links use @/ prefix".to_string());
+        diagnostics.push(Diagnostic::Warning(
+            "link-lint: all internal links use @/ prefix".to_string(),
+        ));
     }
 }
 
@@ -186,14 +175,11 @@ fn markdown_files(dir: &Path) -> impl Iterator<Item = walkdir::DirEntry> {
         .into_iter()
         .filter_map(Result::ok)
         .filter(|e| e.file_type().is_file())
-        .filter(|e| {
-            e.path()
-                .extension()
-                .is_some_and(|ext| ext == "md")
-        })
+        .filter(|e| e.path().extension().is_some_and(|ext| ext == "md"))
 }
 
-fn extract_front_matter(path: &Path) -> Option<toml::Table> {
+/// Extract TOML front matter from a Zola content file.
+pub fn extract_front_matter(path: &Path) -> Option<toml::Table> {
     let text = std::fs::read_to_string(path).ok()?;
     let trimmed = text.trim_start();
     if !trimmed.starts_with("+++") {
@@ -208,13 +194,12 @@ fn extract_front_matter(path: &Path) -> Option<toml::Table> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::io::Write;
 
     #[test]
     fn front_matter_extraction() {
-        use std::io::Write;
-        let dir = std::env::temp_dir().join("spore_test_fm");
-        let _ = std::fs::create_dir_all(&dir);
-        let file = dir.join("test.md");
+        let dir = tempfile::tempdir().unwrap();
+        let file = dir.path().join("test.md");
         let mut f = std::fs::File::create(&file).unwrap();
         writeln!(
             f,
@@ -233,7 +218,71 @@ Body text."#
         let taxonomies = fm["taxonomies"].as_table().unwrap();
         let primals = taxonomies["primals"].as_array().unwrap();
         assert_eq!(primals[0].as_str().unwrap(), "beardog");
+    }
 
-        let _ = std::fs::remove_dir_all(&dir);
+    #[test]
+    fn normalize_key_strips_spaces_and_hyphens() {
+        assert_eq!(normalize_key("Bear-Dog"), "beardog");
+        assert_eq!(normalize_key("hot Spring"), "hotspring");
+        assert_eq!(normalize_key("plainkey"), "plainkey");
+    }
+
+    #[test]
+    fn validate_taxonomies_catches_unknown_tag() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        let file = content.join("test.md");
+        std::fs::write(
+            &file,
+            "+++\ntitle = \"T\"\n[taxonomies]\nprimals = [\"nonexistent\"]\n+++\nBody\n",
+        )
+        .unwrap();
+
+        let registry = HashMap::new();
+        let mut diags = Vec::new();
+        validate_taxonomies(root, &content, &registry, &mut diags);
+        assert!(
+            diags
+                .iter()
+                .any(|d| d.is_error() && d.message().contains("nonexistent"))
+        );
+    }
+
+    #[test]
+    fn lint_internal_links_catches_bare_md() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        let file = content.join("test.md");
+        std::fs::write(&file, "+++\ntitle = \"T\"\n+++\n[link](OTHER.md)\n").unwrap();
+
+        let mut diags = Vec::new();
+        lint_internal_links(root, &content, &mut diags);
+        assert!(
+            diags
+                .iter()
+                .any(|d| d.is_error() && d.message().contains("bare .md link"))
+        );
+    }
+
+    #[test]
+    fn lint_internal_links_allows_at_prefix() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        let file = content.join("test.md");
+        std::fs::write(
+            &file,
+            "+++\ntitle = \"T\"\n+++\n[link](@/section/OTHER.md)\n",
+        )
+        .unwrap();
+
+        let mut diags = Vec::new();
+        lint_internal_links(root, &content, &mut diags);
+        assert!(!diags.iter().any(|d| d.is_error()));
     }
 }

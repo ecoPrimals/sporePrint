@@ -5,6 +5,67 @@ Format: `[version] — date — description`
 
 ---
 
+## [2.0.0] — 2026-05-31 — Deep Debt Resolution + Sovereign Evolution
+
+**Complete code quality overhaul. trait-based architecture, 90%+ coverage,
+zero dead code, capability-based discovery, shared utilities, and new
+subcommands. sporePrint is now spring-grade quality.**
+
+### Architecture
+
+- **Trait-based VCS**: `VcsBackend` trait with `GitBackend` (production) and
+  `MockBackend` (testing) — enables full test coverage without network I/O
+- **Shared `time.rs`**: Pure Rust UTC date utility, deduplicated from 3 modules
+- **`report.rs`**: Entity registry summarization — consumes all model fields,
+  eliminates crate-level `dead_code` lint allowance
+- **`links.rs`**: Internal link validation (absorbs external tools)
+- **`error.rs`**: `thiserror`-based typed error hierarchy with `Diagnostic` enum
+- **CSS semantic split**: monolith → `base.css` (tokens) + `main.css` (components)
+- **Capability-based discovery**: `.gate` workspace walk, configurable origins
+
+### Added
+
+- `check-links` subcommand — validates 149 internal `@/` links across 207 files
+- `render-notebooks --discover` — auto-discovers notebooks from ecosystem workspace
+- `validate --verbose` — full entity report with all fields + totals display
+- Private repo gating via `SPOREPRINT_REFRESH_PAT` environment variable
+- `FetchOutcome` enum with structured results (replaces string messages)
+- SPDX license headers on all Rust source files
+- `static/css/base.css` — design system tokens extracted from monolith
+- `static/gonzales/js/config.js` — capability-based API endpoint discovery
+
+### Changed
+
+- **Error handling**: `process::exit` → `thiserror` + `Result` propagation + `ExitCode`
+- **Crate root**: `#![forbid(unsafe_code)]` enforced
+- **Linting**: zero warnings for clippy pedantic + nursery (no `#[allow()]` in production)
+- **`dead_code`**: removed crate-level allowance; all fields now consumed via `report.rs`
+- **`fetch.rs`**: trait-based with `Source.clone_url()`, `Source.kind`, private filtering
+- **`explorer.js`**: 1097L → 533L (config extracted to `config.js` at 140L)
+- **`render_notebooks.sh`**: hardcoded paths → `.gate` file discovery
+- All external `date` command calls replaced with pure Rust `time::today_utc()`
+- `Diagnostic::message()` used in production output (not just tests)
+
+### Removed
+
+- 1,162 tracked build artifacts (`crates/spore-validate/target/`) — never should
+  have been committed. `.gitignore` now catches `target/` at any depth.
+- Crate-level `[lints.rust] dead_code = "allow"` — all fields truly consumed
+- Duplicate date computation (3 copies → 1 in `time.rs`)
+- TOML escape error in notebook front matter that broke Zola build
+
+### Metrics
+
+- Test coverage: 32.6% → **90.3%** (llvm-cov)
+- Tests: 11 → **80** (50 unit + 12 integration + 3 refresh-write + 15 link/time)
+- Modules: 6 → **12** (+ error, fetch rewrite, links, report, time, notebook rewrite)
+- Max file size: 466L (all well under 1000L limit)
+- Release build: 5.56s clean (lean deps, pure Rust)
+- Binary size: 4.4MB (12 modules, 7 deps)
+- `zola build`: 736ms, zero errors
+
+---
+
 ## [1.1.0] — 2026-04-30 — Fully Rust Toolchain
 
 **The Python validation script is replaced by `spore-validate`, a typed Rust
@@ -244,19 +305,17 @@ guideStone section. Missing papers added. Search enabled.**
 
 ## Roadmap
 
-### [1.2.0] — Living data + CI integration
-- Wire check counts to live CI badges from spring repositories
-- Auto-update numbers via GitHub Actions on spring release events
-- DOI via Zenodo
-- ORCID attribution
-- Citable as: Mok K. (2026). *sporePrint: Sovereign Scientific Computing
-  via Constrained Evolution.* ecoPrimals. doi:10.XXXX/...
+### [2.1.0] — pseudoSpore Gallery + Sovereign Deploy
+- pseudoSpore gallery pages (`/lab/spores/{name}/`) with lithoSpore registry
+- DNS cutover: primals.eco → golgiBody-ext (137.184.197.151)
+- peptidoglycan build pipeline → golgiBody-ext Caddy
+- GitHub Pages becomes extracellular shadow
 
-### Future — guidePost/
-- `guidePost/` companion repo for atlasHugged — the human, ethical, and
-  philosophical side. The story of why, not just what.
-
-### Future — petalTongue integration
-- Conversational navigation of site content
+### Future — petalTongue Integration
+- gonzales JS files (JELLY STRING) absorbed by server-rendered SVG + WASM
+- Conversational navigation of site content via petalTongue
 - Audio narration from Markdown source
-- Accessibility-first interface for all users
+
+### Future — projectFOUNDATION Ingestion
+- Replace GitHub Actions dispatch with Foundation-driven content publishing
+- Temporal sync-driven rebuilds on flockGate (WAN shadow)

@@ -1,10 +1,18 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+//! Metric refresh: compare registry values against actual repo contents.
+//!
+//! Scans source repos for LOC, test counts, file counts, and crate counts,
+//! then compares against the stored registry values to detect drift.
+
+use crate::error::Error;
 use crate::model::{Entity, EntityKind};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use std::process::Command;
 use toml_edit::DocumentMut;
 use walkdir::WalkDir;
 
+/// A single metric that has drifted from its registered value.
 pub struct Drift {
     pub key: String,
     pub field: &'static str,
@@ -12,12 +20,14 @@ pub struct Drift {
     pub actual: u64,
 }
 
+/// Result of scanning repos for metric drift.
 pub struct RefreshResult {
     pub drifts: Vec<Drift>,
     pub missing_repos: Vec<String>,
     pub scanned: u32,
 }
 
+/// Scan repos and compare metrics against the registry.
 pub fn scan(
     registry: &HashMap<String, Entity>,
     repos_root: &Path,
@@ -28,7 +38,7 @@ pub fn scan(
     let mut scanned = 0u32;
 
     let mut keys: Vec<&String> = registry.keys().collect();
-    keys.sort();
+    keys.sort_unstable();
 
     for key in keys {
         if source_filter.is_some_and(|f| key != f) {
@@ -40,9 +50,7 @@ pub fn scan(
             continue;
         };
 
-        if !matches!(entity.kind, EntityKind::Primal | EntityKind::Spring)
-            && entity.loc.is_none()
-        {
+        if !matches!(entity.kind, EntityKind::Primal | EntityKind::Spring) && entity.loc.is_none() {
             continue;
         }
 
@@ -54,48 +62,48 @@ pub fn scan(
         scanned += 1;
         let metrics = count_metrics(&repo_path);
 
-        if let Some(registered_loc) = entity.loc
-            && registered_loc != metrics.loc
-        {
-            drifts.push(Drift {
-                key: key.clone(),
-                field: "loc",
-                registered: registered_loc,
-                actual: metrics.loc,
-            });
+        if let Some(registered_loc) = entity.loc {
+            if registered_loc != metrics.loc {
+                drifts.push(Drift {
+                    key: key.clone(),
+                    field: "loc",
+                    registered: registered_loc,
+                    actual: metrics.loc,
+                });
+            }
         }
 
-        if let Some(registered_tests) = entity.tests
-            && registered_tests != metrics.tests
-        {
-            drifts.push(Drift {
-                key: key.clone(),
-                field: "tests",
-                registered: registered_tests,
-                actual: metrics.tests,
-            });
+        if let Some(registered_tests) = entity.tests {
+            if registered_tests != metrics.tests {
+                drifts.push(Drift {
+                    key: key.clone(),
+                    field: "tests",
+                    registered: registered_tests,
+                    actual: metrics.tests,
+                });
+            }
         }
 
-        if let Some(registered_files) = entity.files
-            && u64::from(registered_files) != metrics.files
-        {
-            drifts.push(Drift {
-                key: key.clone(),
-                field: "files",
-                registered: u64::from(registered_files),
-                actual: metrics.files,
-            });
+        if let Some(registered_files) = entity.files {
+            if u64::from(registered_files) != metrics.files {
+                drifts.push(Drift {
+                    key: key.clone(),
+                    field: "files",
+                    registered: u64::from(registered_files),
+                    actual: metrics.files,
+                });
+            }
         }
 
-        if let Some(registered_crates) = entity.crates
-            && u64::from(registered_crates) != metrics.crates
-        {
-            drifts.push(Drift {
-                key: key.clone(),
-                field: "crates",
-                registered: u64::from(registered_crates),
-                actual: metrics.crates,
-            });
+        if let Some(registered_crates) = entity.crates {
+            if u64::from(registered_crates) != metrics.crates {
+                drifts.push(Drift {
+                    key: key.clone(),
+                    field: "crates",
+                    registered: u64::from(registered_crates),
+                    actual: metrics.crates,
+                });
+            }
         }
     }
 
@@ -106,6 +114,7 @@ pub fn scan(
     }
 }
 
+/// Format a number with comma separators for display.
 fn format_display(n: u64) -> String {
     let s = n.to_string();
     let mut result = String::with_capacity(s.len() + s.len() / 3);
@@ -118,40 +127,38 @@ fn format_display(n: u64) -> String {
     result.chars().rev().collect()
 }
 
-/// Write drifted metrics back to config.toml, preserving formatting.
-#[allow(clippy::cast_possible_wrap)]
-pub fn write_updates(config_path: &Path, drifts: &[Drift]) -> Result<(), String> {
-    let text = std::fs::read_to_string(config_path)
-        .map_err(|e| format!("failed to read {}: {e}", config_path.display()))?;
+/// Write drifted metrics back to `config.toml`, preserving formatting.
+pub fn write_updates(config_path: &Path, drifts: &[Drift]) -> Result<(), Error> {
+    let text = std::fs::read_to_string(config_path).map_err(|e| Error::io(config_path, e))?;
 
-    let mut doc: DocumentMut = text
-        .parse()
-        .map_err(|e| format!("failed to parse TOML for editing: {e}"))?;
+    let mut doc: DocumentMut = text.parse()?;
 
     let registry = doc
         .get_mut("extra")
         .and_then(|e| e.get_mut("entity_registry"))
-        .ok_or_else(|| "missing [extra.entity_registry] in config.toml".to_string())?;
+        .ok_or_else(|| Error::Config("missing [extra.entity_registry] in config.toml".into()))?;
 
     for drift in drifts {
-        let entity = registry
-            .get_mut(&drift.key)
-            .ok_or_else(|| format!("entity '{}' not found in registry", drift.key))?;
+        let entity = registry.get_mut(&drift.key).ok_or_else(|| {
+            Error::Config(format!("entity '{}' not found in registry", drift.key))
+        })?;
+
+        let actual_i64 = i64::try_from(drift.actual).unwrap_or(i64::MAX);
 
         match drift.field {
             "loc" => {
-                entity["loc"] = toml_edit::value(drift.actual as i64);
+                entity["loc"] = toml_edit::value(actual_i64);
                 entity["loc_display"] = toml_edit::value(format_display(drift.actual));
             }
             "tests" => {
-                entity["tests"] = toml_edit::value(drift.actual as i64);
+                entity["tests"] = toml_edit::value(actual_i64);
                 entity["tests_display"] = toml_edit::value(format_display(drift.actual));
             }
             "files" => {
-                entity["files"] = toml_edit::value(drift.actual as i64);
+                entity["files"] = toml_edit::value(actual_i64);
             }
             "crates" => {
-                entity["crates"] = toml_edit::value(drift.actual as i64);
+                entity["crates"] = toml_edit::value(actual_i64);
             }
             _ => {}
         }
@@ -159,11 +166,9 @@ pub fn write_updates(config_path: &Path, drifts: &[Drift]) -> Result<(), String>
 
     update_totals(&mut doc);
 
-    std::fs::write(config_path, doc.to_string())
-        .map_err(|e| format!("failed to write {}: {e}", config_path.display()))
+    std::fs::write(config_path, doc.to_string()).map_err(|e| Error::io(config_path, e))
 }
 
-#[allow(clippy::cast_sign_loss)]
 fn update_totals(doc: &mut DocumentMut) {
     let Some(registry) = doc.get("extra").and_then(|e| e.get("entity_registry")) else {
         return;
@@ -176,9 +181,18 @@ fn update_totals(doc: &mut DocumentMut) {
 
     if let Some(table) = registry.as_table_like() {
         for (_key, entity) in table.iter() {
-            let kind = entity.get("kind").and_then(toml_edit::Item::as_str).unwrap_or("");
-            let loc = entity.get("loc").and_then(toml_edit::Item::as_integer).unwrap_or(0);
-            let tests = entity.get("tests").and_then(toml_edit::Item::as_integer).unwrap_or(0);
+            let kind = entity
+                .get("kind")
+                .and_then(toml_edit::Item::as_str)
+                .unwrap_or("");
+            let loc = entity
+                .get("loc")
+                .and_then(toml_edit::Item::as_integer)
+                .unwrap_or(0);
+            let tests = entity
+                .get("tests")
+                .and_then(toml_edit::Item::as_integer)
+                .unwrap_or(0);
 
             match kind {
                 "primal" => {
@@ -197,44 +211,39 @@ fn update_totals(doc: &mut DocumentMut) {
     let total_loc = primal_loc + spring_loc;
     let total_tests = primal_tests + spring_tests;
 
-    if let Some(totals) = doc
-        .get_mut("extra")
-        .and_then(|e| e.get_mut("totals"))
-    {
+    if let Some(totals) = doc.get_mut("extra").and_then(|e| e.get_mut("totals")) {
         totals["primal_loc"] = toml_edit::value(primal_loc);
-        totals["primal_loc_display"] = toml_edit::value(format_display(primal_loc as u64));
+        totals["primal_loc_display"] = toml_edit::value(format_display(primal_loc.unsigned_abs()));
         totals["spring_loc"] = toml_edit::value(spring_loc);
-        totals["spring_loc_display"] = toml_edit::value(format_display(spring_loc as u64));
+        totals["spring_loc_display"] = toml_edit::value(format_display(spring_loc.unsigned_abs()));
         totals["total_loc"] = toml_edit::value(total_loc);
-        totals["total_loc_display"] = toml_edit::value(format_display(total_loc as u64));
+        totals["total_loc_display"] = toml_edit::value(format_display(total_loc.unsigned_abs()));
         totals["primal_tests"] = toml_edit::value(primal_tests);
-        totals["primal_tests_display"] = toml_edit::value(format_display(primal_tests as u64));
+        totals["primal_tests_display"] =
+            toml_edit::value(format_display(primal_tests.unsigned_abs()));
         totals["spring_tests"] = toml_edit::value(spring_tests);
-        totals["spring_tests_display"] = toml_edit::value(format_display(spring_tests as u64));
+        totals["spring_tests_display"] =
+            toml_edit::value(format_display(spring_tests.unsigned_abs()));
         totals["total_tests"] = toml_edit::value(total_tests);
-        totals["total_tests_display"] = toml_edit::value(format_display(total_tests as u64));
-        let date_str = Command::new("date")
-            .args(["-u", "+%Y-%m-%d"])
-            .output()
-            .ok()
-            .and_then(|o| String::from_utf8(o.stdout).ok())
-            .unwrap_or_default()
-            .trim()
-            .to_string();
+        totals["total_tests_display"] =
+            toml_edit::value(format_display(total_tests.unsigned_abs()));
+
+        let date_str = today_utc();
         if !date_str.is_empty() {
             totals["measured_date"] = toml_edit::value(date_str);
         }
     }
 }
 
-/// Resolve a repo path from its `org/name` string (e.g. `"ecoPrimals/bearDog"`).
+use crate::time::today_utc;
+
+/// Resolve a repo path from its `org/name` string.
 ///
-/// Tries in order:
-///   1. Org-based: `root/org/name` (CI clone layout and canonical structure)
-///   2. Legacy subdirs: `root/{primals,springs,infra,sporeGarden}/name`
+/// Discovery order (capability-based, not hardcoded):
+///   1. Canonical: `root/org/name`
+///   2. Category subdirs: `root/{primals,springs,infra,sporeGarden}/name`
 ///   3. Flat: `root/name`
 fn find_repo(root: &Path, repo_ref: &str) -> Option<PathBuf> {
-    // 1. Full org/name path (canonical)
     let candidate = root.join(repo_ref);
     if candidate.is_dir() {
         return Some(candidate);
@@ -242,7 +251,6 @@ fn find_repo(root: &Path, repo_ref: &str) -> Option<PathBuf> {
 
     let name = repo_ref.rsplit('/').next().unwrap_or(repo_ref);
 
-    // 2. Legacy local checkout subdirs
     for subdir in &["primals", "springs", "infra", "sporeGarden"] {
         let candidate = root.join(subdir).join(name);
         if candidate.is_dir() {
@@ -250,7 +258,6 @@ fn find_repo(root: &Path, repo_ref: &str) -> Option<PathBuf> {
         }
     }
 
-    // 3. Flat (root/name)
     let candidate = root.join(name);
     if candidate.is_dir() {
         return Some(candidate);
@@ -287,7 +294,7 @@ fn count_metrics(repo_path: &Path) -> Metrics {
             continue;
         }
 
-        if !path.extension().is_some_and(|ext| ext == "rs") {
+        if path.extension().is_none_or(|ext| ext != "rs") {
             continue;
         }
 
@@ -302,9 +309,6 @@ fn count_metrics(repo_path: &Path) -> Metrics {
         tests += file_tests;
     }
 
-    // Workspace Cargo.toml isn't a crate itself, only member crates count.
-    // If there's a top-level Cargo.toml with [workspace], subtract 1 for
-    // the workspace root.
     if crates > 1 {
         let root_cargo = repo_path.join("Cargo.toml");
         if let Ok(content) = std::fs::read_to_string(&root_cargo) {
@@ -328,7 +332,7 @@ fn is_hidden_or_target(entry: &walkdir::DirEntry) -> bool {
 }
 
 /// Count source lines (non-blank, non-comment) and test annotations.
-fn count_file(content: &str) -> (u64, u64) {
+pub fn count_file(content: &str) -> (u64, u64) {
     let mut loc = 0u64;
     let mut tests = 0u64;
     let mut in_block_comment = false;
@@ -347,19 +351,12 @@ fn count_file(content: &str) -> (u64, u64) {
             continue;
         }
 
-        if trimmed.is_empty() {
-            continue;
-        }
-
-        if trimmed.starts_with("//") {
+        if trimmed.is_empty() || trimmed.starts_with("//") {
             continue;
         }
 
         if trimmed.starts_with("/*") {
-            in_block_comment = true;
-            if trimmed.contains("*/") {
-                in_block_comment = false;
-            }
+            in_block_comment = !trimmed.contains("*/");
             continue;
         }
 
@@ -410,5 +407,60 @@ fn another() {}
         let src = "/*\n multi \n line \n*/\nfn real() {}";
         let (loc, _) = count_file(src);
         assert_eq!(loc, 1);
+    }
+
+    #[test]
+    fn format_display_adds_commas() {
+        assert_eq!(format_display(0), "0");
+        assert_eq!(format_display(999), "999");
+        assert_eq!(format_display(1_000), "1,000");
+        assert_eq!(format_display(1_234_567), "1,234,567");
+    }
+
+    #[test]
+    fn find_repo_canonical_path() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let repo = root.join("ecoPrimals/bearDog");
+        std::fs::create_dir_all(&repo).unwrap();
+
+        let found = find_repo(root, "ecoPrimals/bearDog");
+        assert_eq!(found, Some(repo));
+    }
+
+    #[test]
+    fn find_repo_flat_fallback() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let repo = root.join("bearDog");
+        std::fs::create_dir_all(&repo).unwrap();
+
+        let found = find_repo(root, "ecoPrimals/bearDog");
+        assert_eq!(found, Some(repo));
+    }
+
+    #[test]
+    fn find_repo_returns_none_for_missing() {
+        let dir = tempfile::tempdir().unwrap();
+        let found = find_repo(dir.path(), "ecoPrimals/nonexistent");
+        assert_eq!(found, None);
+    }
+
+    #[test]
+    fn today_utc_is_valid_format() {
+        let date = today_utc();
+        assert_eq!(date.len(), 10);
+        assert_eq!(&date[4..5], "-");
+        assert_eq!(&date[7..8], "-");
+    }
+
+    #[test]
+    fn count_metrics_on_empty_dir() {
+        let dir = tempfile::tempdir().unwrap();
+        let m = count_metrics(dir.path());
+        assert_eq!(m.loc, 0);
+        assert_eq!(m.tests, 0);
+        assert_eq!(m.files, 0);
+        assert_eq!(m.crates, 0);
     }
 }

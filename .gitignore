@@ -1,3 +1,17 @@
+# Zola build output
 public/
-crates/*/target/
+
+# Rust build artifacts
+target/
 *.rustc_info.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor state
+*.swp
+*.swo
+*~
+.idea/
+.vscode/

@@ -1,3 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+//! Jupyter notebook rendering to Zola-compatible markdown.
+//!
+//! Parses `.ipynb` JSON directly (no nbconvert dependency) and emits
+//! Zola-compatible markdown with TOML front matter.
+
 use serde::Deserialize;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
@@ -8,19 +15,18 @@ struct Notebook {
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(clippy::struct_field_names)]
 struct Cell {
-    cell_type: String,
+    #[serde(rename = "cell_type")]
+    kind: String,
     source: Vec<String>,
     #[serde(default)]
     outputs: Vec<Output>,
 }
 
 #[derive(Debug, Deserialize)]
-#[allow(clippy::struct_field_names)]
 struct Output {
-    #[serde(default)]
-    output_type: String,
+    #[serde(default, rename = "output_type")]
+    kind: String,
     #[serde(default)]
     text: Option<Vec<String>>,
     #[serde(default)]
@@ -35,6 +41,7 @@ struct OutputData {
     text_plain: Option<Vec<String>>,
 }
 
+/// Convert a filename to a URL-safe slug.
 fn slugify(name: &str) -> String {
     name.to_lowercase()
         .chars()
@@ -46,9 +53,10 @@ fn slugify(name: &str) -> String {
         .join("-")
 }
 
+/// Extract the first `# Title` from markdown cells, or use fallback.
 fn extract_title(nb: &Notebook, fallback: &str) -> String {
     for cell in &nb.cells {
-        if cell.cell_type != "markdown" {
+        if cell.kind != "markdown" {
             continue;
         }
         for line in &cell.source {
@@ -61,11 +69,12 @@ fn extract_title(nb: &Notebook, fallback: &str) -> String {
     fallback.to_string()
 }
 
+/// Render notebook cells into markdown body content.
 fn render_cells(nb: &Notebook) -> String {
     let mut out = String::new();
 
     for cell in &nb.cells {
-        match cell.cell_type.as_str() {
+        match cell.kind.as_str() {
             "markdown" => {
                 let content: String = cell.source.concat();
                 out.push_str(&content);
@@ -81,29 +90,7 @@ fn render_cells(nb: &Notebook) -> String {
                     }
                     out.push_str("```\n\n");
                 }
-
-                for output in &cell.outputs {
-                    if let Some(data) = &output.data {
-                        if let Some(html) = &data.text_html {
-                            out.push_str(&html.concat());
-                            out.push_str("\n\n");
-                            continue;
-                        }
-                        if let Some(plain) = &data.text_plain {
-                            out.push_str("```\n");
-                            out.push_str(&plain.concat());
-                            out.push_str("\n```\n\n");
-                            continue;
-                        }
-                    }
-                    if output.output_type == "stream"
-                        && let Some(text) = &output.text
-                    {
-                        out.push_str("```\n");
-                        out.push_str(&text.concat());
-                        out.push_str("\n```\n\n");
-                    }
-                }
+                render_outputs(&cell.outputs, &mut out);
             }
             _ => {}
         }
@@ -112,43 +99,34 @@ fn render_cells(nb: &Notebook) -> String {
     out
 }
 
-fn today() -> String {
-    let epoch = std::time::SystemTime::now()
-        .duration_since(std::time::UNIX_EPOCH)
-        .unwrap_or_default()
-        .as_secs();
-    let days = epoch / 86400;
-    let mut y = 1970i32;
-    let mut rem = days;
-    loop {
-        let year_days: u64 = if y % 4 == 0 && (y % 100 != 0 || y % 400 == 0) {
-            366
-        } else {
-            365
-        };
-        if rem < year_days {
-            break;
+fn render_outputs(outputs: &[Output], out: &mut String) {
+    for output in outputs {
+        if let Some(data) = &output.data {
+            if let Some(html) = &data.text_html {
+                out.push_str(&html.concat());
+                out.push_str("\n\n");
+                continue;
+            }
+            if let Some(plain) = &data.text_plain {
+                out.push_str("```\n");
+                out.push_str(&plain.concat());
+                out.push_str("\n```\n\n");
+                continue;
+            }
         }
-        rem -= year_days;
-        y += 1;
-    }
-    let leap = y % 4 == 0 && (y % 100 != 0 || y % 400 == 0);
-    let month_days: &[u64] = if leap {
-        &[31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    } else {
-        &[31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    };
-    let mut m = 0;
-    for md in month_days {
-        if rem < *md {
-            break;
+        if output.kind == "stream" {
+            if let Some(text) = &output.text {
+                out.push_str("```\n");
+                out.push_str(&text.concat());
+                out.push_str("\n```\n\n");
+            }
         }
-        rem -= md;
-        m += 1;
     }
-    format!("{y}-{:02}-{:02}", m + 1, rem + 1)
 }
 
+use crate::time::today_utc;
+
+/// Render a single notebook file to Zola markdown.
 fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, String> {
     let text = std::fs::read_to_string(nb_path)
         .map_err(|e| format!("failed to read {}: {e}", nb_path.display()))?;
@@ -169,7 +147,7 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, String> {
         return Err(format!("SKIP: no content in {}", nb_path.display()));
     }
 
-    let date = today();
+    let date = today_utc();
     let page = format!(
         "+++\n\
          title = \"{title}\"\n\
@@ -191,9 +169,10 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, String> {
     std::fs::write(&out_path, &page)
         .map_err(|e| format!("failed to write {}: {e}", out_path.display()))?;
 
-    Ok(format!("{} → {}", nb_path.display(), out_path.display()))
+    Ok(format!("{} -> {}", nb_path.display(), out_path.display()))
 }
 
+/// Render all notebooks from given directories into Zola content.
 pub fn render_notebooks(
     root: &Path,
     notebook_dirs: &[PathBuf],
@@ -207,13 +186,13 @@ pub fn render_notebooks(
 
     let mut dirs: Vec<PathBuf> = notebook_dirs.to_vec();
 
-    if let Some(sr) = springs_root
-        && sr.is_dir()
-    {
-        for entry in std::fs::read_dir(sr).into_iter().flatten().flatten() {
-            let nb_dir = entry.path().join("notebooks");
-            if nb_dir.is_dir() {
-                dirs.push(nb_dir);
+    if let Some(sr) = springs_root {
+        if sr.is_dir() {
+            for entry in std::fs::read_dir(sr).into_iter().flatten().flatten() {
+                let nb_dir = entry.path().join("notebooks");
+                if nb_dir.is_dir() {
+                    dirs.push(nb_dir);
+                }
             }
         }
     }
@@ -257,6 +236,12 @@ mod tests {
     }
 
     #[test]
+    fn slugify_handles_special_chars() {
+        assert_eq!(slugify("file (1).ipynb"), "file-1-ipynb");
+        assert_eq!(slugify(""), "");
+    }
+
+    #[test]
     fn title_extraction() {
         let nb: Notebook = serde_json::from_str(
             r##"{
@@ -277,5 +262,47 @@ mod tests {
         )
         .unwrap();
         assert_eq!(extract_title(&nb, "my_notebook"), "my_notebook");
+    }
+
+    #[test]
+    fn render_cells_produces_markdown() {
+        let json = "{\"cells\": [\
+            {\"cell_type\": \"markdown\", \"source\": [\"# Title\\n\"], \"outputs\": []},\
+            {\"cell_type\": \"code\", \"source\": [\"print('hi')\"], \"outputs\": [\
+            {\"output_type\": \"stream\", \"text\": [\"hi\\n\"]}\
+            ]}]}";
+        let nb: Notebook = serde_json::from_str(json).unwrap();
+        let body = render_cells(&nb);
+        assert!(body.contains("# Title"));
+        assert!(body.contains("```python"));
+        assert!(body.contains("print('hi')"));
+    }
+
+    #[test]
+    fn render_one_creates_file() {
+        let dir = tempfile::tempdir().unwrap();
+        let nb_path = dir.path().join("test.ipynb");
+        let json = "{\"cells\": [{\"cell_type\": \"markdown\", \
+            \"source\": [\"# Test\\n\", \"Content\"], \"outputs\": []}]}";
+        std::fs::write(&nb_path, json).unwrap();
+
+        let out_dir = dir.path().join("output");
+        std::fs::create_dir_all(&out_dir).unwrap();
+
+        let result = render_one(&nb_path, &out_dir);
+        assert!(result.is_ok());
+        assert!(out_dir.join("test.md").exists());
+
+        let content = std::fs::read_to_string(out_dir.join("test.md")).unwrap();
+        assert!(content.contains("title = \"Test\""));
+        assert!(content.contains("Content"));
+    }
+
+    #[test]
+    fn today_has_valid_format() {
+        let d = today_utc();
+        assert_eq!(d.len(), 10);
+        assert_eq!(&d[4..5], "-");
+        assert_eq!(&d[7..8], "-");
     }
 }

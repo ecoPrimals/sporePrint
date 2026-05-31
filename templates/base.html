@@ -16,6 +16,7 @@
   <meta name="twitter:title" content="{% block tw_title %}{{ config.title }}{% endblock tw_title %}">
   <meta name="twitter:description" content="{% block tw_desc %}{{ config.description }}{% endblock tw_desc %}">
   <meta name="twitter:image" content="{{ get_url(path='img/og-card.svg') }}">
+  <link rel="stylesheet" href="{{ get_url(path='css/base.css') }}">
   <link rel="stylesheet" href="{{ get_url(path='css/main.css') }}">
   {% if config.build_search_index %}
   <link rel="stylesheet" href="{{ get_url(path='search.css', trailing_slash=false) }}">

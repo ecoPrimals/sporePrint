@@ -1,10 +1,19 @@
-#![allow(dead_code)]
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
+//! Domain model for the sporePrint entity registry.
+//!
+//! All types here map directly to the `[extra.entity_registry]` and
+//! `[extra.totals]` tables in `config.toml`. Deserialization is strict:
+//! unknown fields are ignored gracefully, but required fields produce
+//! typed parse errors.
+
+use crate::error::Error;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::fmt;
 use std::path::Path;
 
+/// Top-level Zola `config.toml` structure (only fields we consume).
 #[derive(Debug, Deserialize)]
 pub struct Config {
     pub extra: Extra,
@@ -16,6 +25,11 @@ pub struct Extra {
     pub totals: Totals,
 }
 
+/// A single entity in the registry (primal, spring, product, etc.).
+///
+/// Fields like `display`, `emoji`, `composes`, `capabilities`, and `page` are
+/// consumed by Zola templates at build time, not by this binary directly. They
+/// must be deserialized to validate the config schema.
 #[derive(Debug, Clone, Deserialize)]
 pub struct Entity {
     pub display: String,
@@ -95,12 +109,17 @@ impl fmt::Display for Tier {
     }
 }
 
+/// Capability declaration consumed by Zola templates for entity profile pages.
 #[derive(Debug, Clone, Deserialize)]
 pub struct Capability {
     pub category: String,
     pub items: String,
 }
 
+/// Aggregate metrics from `[extra.totals]`.
+///
+/// Display fields and optional metrics are consumed by Zola templates,
+/// not directly by validation logic.
 #[derive(Debug, Deserialize)]
 pub struct Totals {
     pub primal_loc: u64,
@@ -136,10 +155,11 @@ pub struct Totals {
     pub measured_date: Option<String>,
 }
 
-pub fn parse_config(path: &Path) -> Result<Config, String> {
-    let text = std::fs::read_to_string(path)
-        .map_err(|e| format!("failed to read {}: {e}", path.display()))?;
-    toml::from_str(&text).map_err(|e| format!("failed to parse TOML: {e}"))
+/// Parse `config.toml` into typed domain model.
+pub fn parse_config(path: &Path) -> Result<Config, Error> {
+    let text = std::fs::read_to_string(path).map_err(|e| Error::io(path, e))?;
+    let config: Config = toml::from_str(&text)?;
+    Ok(config)
 }
 
 #[cfg(test)]
@@ -175,5 +195,11 @@ mod tests {
         let e: Entity = toml::from_str(toml_str).unwrap();
         assert_eq!(e.kind, EntityKind::Concept);
         assert!(e.loc.is_none());
+    }
+
+    #[test]
+    fn parse_config_returns_error_on_missing_file() {
+        let result = parse_config(Path::new("/nonexistent/config.toml"));
+        assert!(result.is_err());
     }
 }

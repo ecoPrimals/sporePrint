@@ -1,59 +1,84 @@
 # sporePrint
 
-The public-facing site for [ecoPrimals](https://github.com/ecoPrimals) —
+The public-facing science site for [ecoPrimals](https://github.com/ecoPrimals) —
 sovereign scientific computing.
 
 **Live site:** [primals.eco](https://primals.eco)
+**Sovereign host:** golgiBody-ext VPS via Caddy (DNS cutover pending)
 
 ## Stack
 
 - **[Zola](https://www.getzola.org/)** — Rust static site generator (single binary, zero deps)
+- **`spore-validate`** — Rust validation crate (registry, content, metrics, links, notebooks)
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
-- **Custom theme** — no third-party dependencies
-- **GitHub Actions** → GitHub Pages deployment
+- **Custom theme** — system fonts, dark/light mode, zero external dependencies
+- **Deployment:** GitHub Pages (extracellular shadow) + golgiBody-ext VPS (sovereign target)
 
 ## Local Development
 
 ```bash
-# Install Zola (https://www.getzola.org/documentation/getting-started/installation/)
-# Or: download binary from https://github.com/getzola/zola/releases
+# Prerequisites: Zola, Rust toolchain
 
-zola serve           # http://127.0.0.1:1111
-zola build           # output to public/
-zola check           # verify links
+zola serve             # http://127.0.0.1:1111
+zola build             # output to public/
+
+# Validation (Rust — typed, pedantic, 90%+ coverage)
+cd crates/spore-validate
+cargo build --release
+cargo run -- validate                    # registry + totals + taxonomies
+cargo run -- validate --check --verbose  # + shortcode scan + entity report
+cargo run -- check-links                 # internal link integrity
+cargo run -- render-notebooks --discover # Jupyter → Zola markdown
+cargo run -- fetch-refresh --write       # clone upstream, update metrics
 ```
 
 ## Structure
 
 ```
-content/             # Markdown content with TOML front matter
-  _index.md          # Landing page
-  audience/          # Audience-specific guides
-  science/           # baseCamp papers (25+)
-  architecture/      # Ecosystem architecture docs
-  methodology/       # Constrained evolution, K-NOME, playbooks
-  technical/         # Hardware, grants, pipelines
-  guidestone/        # guideStone verification class + deployment artifact
-  lab/               # Live validation results from projectNUCLEUS
-templates/           # Tera HTML templates
-static/              # CSS, CNAME, static assets
-  css/main.css       # Custom theme (dark mode, responsive, accessible)
-config.toml          # Zola site configuration + entity registry (metrics)
-sources.toml         # GitHub repo map for auto-refresh
-scripts/
-  refresh-metrics.sh # Clone upstream, run spore-validate refresh --write
-  render_notebooks.sh # Convert Jupyter notebooks to lab pages
-crates/
-  spore-validate/    # Typed validation: registry, content, metric sync
+sporePrint/
+├── config.toml          # Zola config + entity_registry (63 entities) + totals
+├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
+├── content/             # 207 Markdown pages with TOML front matter
+│   ├── science/         # 27 baseCamp companion papers
+│   ├── architecture/    # Ecosystem architecture docs
+│   ├── lab/             # Spring validation summaries + rendered notebooks
+│   ├── products/        # blueFish, esotericWebb, helixVision, lattice QCD
+│   ├── guidestone/      # GuideStone verification class
+│   ├── audience/        # PI, student, builder, compliance guides
+│   ├── methodology/     # Constrained evolution, K-NOME, playbooks
+│   └── technical/       # Hardware, grants, pipelines
+├── templates/           # Tera HTML templates (base, page, section, taxonomy)
+├── static/
+│   ├── css/base.css     # Design tokens (Catppuccin Mocha/Latte)
+│   ├── css/main.css     # Component styles
+│   └── gonzales/        # Interactive science explorer (JELLY STRING → petalTongue)
+├── crates/
+│   └── spore-validate/  # Rust crate: typed validation, 12 modules, 80 tests
+├── scripts/
+│   ├── refresh-metrics.sh    # JELLY STRING — wraps spore-validate fetch-refresh
+│   └── render_notebooks.sh   # JELLY STRING — vestigial, absorbed by Rust
+├── specs/               # Internal standards (not built)
+└── .github/workflows/   # deploy.yml, auto-refresh.yml
 ```
 
-## Auto-Refresh (CI)
+## spore-validate
 
-Primal and spring repos notify sporePrint on push to main via
-`repository_dispatch`. sporePrint's `auto-refresh.yml` workflow clones the
-source repo, runs `spore-validate refresh --write`, and commits updated
-metrics to `config.toml`. The existing `deploy.yml` picks up the push and
-rebuilds the site.
+Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
+zero warnings, 90.3% test coverage (llvm-cov).
+
+| Subcommand | Purpose |
+|---|---|
+| `validate` | Registry field checks, totals sums, taxonomy tags, content lint |
+| `validate --check` | + shortcode scan + internal link validation |
+| `validate --verbose` | + full entity report with all fields |
+| `refresh <repos_root>` | Cross-repo metric drift detection |
+| `refresh --write` | Auto-update config.toml with current metrics |
+| `fetch-refresh` | Clone upstream repos → refresh in one step |
+| `render-notebooks` | Jupyter .ipynb → Zola markdown (pure JSON parse) |
+| `render-notebooks --discover` | Auto-find notebooks via .gate workspace walk |
+| `check-links` | Validate all @/ internal links (207 files, 149 links) |
+
+## Auto-Refresh (CI)
 
 ```
 source repo push → notify-sporeprint.yml → repository_dispatch
@@ -61,30 +86,6 @@ source repo push → notify-sporeprint.yml → repository_dispatch
     → clone source, run spore-validate refresh --write
     → commit config.toml if changed
     → deploy.yml → zola build → GitHub Pages
-```
-
-**Metrics (Tier 1)**: LOC, tests, files, crates — auto-committed directly.
-**Content (Tier 2)**: Lab pages from `sporeprint/` dirs in source repos —
-created as PRs for review.
-**GuideStone (Tier 2+)**: `liveSpore.json` provenance records from guideStone
-repos — copied to `static/lab/guidestone/` and served as raw JSON at
-`primals.eco/lab/guidestone/liveSpore.json`.
-
-### Setup for new repos
-
-1. Copy `templates/notify-sporeprint.yml` (from plasmidBin) to
-   `.github/workflows/notify-sporeprint.yml` in the source repo
-2. Add `SPOREPRINT_DISPATCH_TOKEN` secret to the source repo
-3. Add the source to `sources.toml` in sporePrint
-
-### Manual refresh
-
-```bash
-# Refresh all sources (requires local checkouts)
-bash scripts/refresh-metrics.sh all
-
-# Refresh single source
-bash scripts/refresh-metrics.sh wetspring
 ```
 
 ## Adding Content
@@ -95,15 +96,14 @@ Every page is a Markdown file with TOML front matter:
 +++
 title = "Page Title"
 description = "Short description for listings and search"
-date = 2026-04-03
+date = 2026-05-31
 +++
 
 Your content here...
 ```
 
-Section indexes use `_index.md` with `template = "section.html"`.
-
 ## License
 
+- Code: [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html)
 - Documents: [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- Code references: [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html)
+- Combined: scyBorg triple-copyleft (AGPL-3.0 + CC-BY-SA-4.0 + ORC provenance)

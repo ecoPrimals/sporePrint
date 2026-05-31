@@ -1,13 +1,27 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# JELLY STRING — evolution target: `spore-validate render-notebooks` (pure Rust).
+# This bash script exists for nbconvert execution (running notebook cells).
+# The Rust implementation parses .ipynb JSON directly without execution.
+# Once all notebooks are pre-executed (frozen outputs), this script is vestigial.
+#
 # Render Jupyter notebooks to Zola-compatible markdown pages for sporePrint.
 #
 # Converts .ipynb files to HTML body fragments, wraps them in Zola TOML
-# front matter, and places them in content/lab/ for static site generation.
+# front matter, and places them in content/lab/notebooks/.
+#
+# Path discovery (no hardcoded paths — environment-driven):
+#   NOTEBOOKS_DIR  — primary notebook directory (defaults to discovering via .gate)
+#   SHOWCASE_DIR   — optional secondary source
+#   SPRINGS_ROOT   — springs/ directory for auto-discovery
+#   ECOPRIMALS_ROOT — workspace root (auto-discovered from .gate file)
 #
 # Usage:
 #   bash scripts/render_notebooks.sh [--notebook <path>] [--all]
 #
 # Requires: jupyter nbconvert (pip install nbconvert)
+# Preferred: Use `spore-validate render-notebooks` (pure Rust, no nbconvert)
 
 set -euo pipefail
 
@@ -15,9 +29,24 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SPOREPRINT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 CONTENT_LAB="$SPOREPRINT_ROOT/content/lab"
 
-NOTEBOOKS_DIR="${NOTEBOOKS_DIR:-/home/irongate/notebooks}"
-SHOWCASE_DIR="${SHOWCASE_DIR:-/home/irongate/shared/abg/showcase}"
-SPRINGS_ROOT="${SPRINGS_ROOT:-/home/irongate/Development/ecoPrimals/springs}"
+# Discover workspace root by walking up to find .gate file
+discover_workspace_root() {
+    local dir="$SPOREPRINT_ROOT"
+    while [[ "$dir" != "/" ]]; do
+        if [[ -f "$dir/.gate" ]]; then
+            echo "$dir"
+            return 0
+        fi
+        dir="$(dirname "$dir")"
+    done
+    # Fallback: two levels up from sporePrint (infra/sporePrint -> ecoPrimals)
+    echo "$(cd "$SPOREPRINT_ROOT/../.." && pwd)"
+}
+
+ECOPRIMALS_ROOT="${ECOPRIMALS_ROOT:-$(discover_workspace_root)}"
+NOTEBOOKS_DIR="${NOTEBOOKS_DIR:-$ECOPRIMALS_ROOT/notebooks}"
+SHOWCASE_DIR="${SHOWCASE_DIR:-$ECOPRIMALS_ROOT/shared/showcase}"
+SPRINGS_ROOT="${SPRINGS_ROOT:-$ECOPRIMALS_ROOT/springs}"
 
 CONTENT_NOTEBOOKS="$CONTENT_LAB/notebooks"
 mkdir -p "$CONTENT_LAB" "$CONTENT_NOTEBOOKS"
@@ -47,12 +76,11 @@ for cell in nb.get('cells', []):
 print('$nb_name')
 " 2>/dev/null || echo "$nb_name")"
 
-    echo "Rendering: $nb_name → content/lab/notebooks/$slug.md"
+    echo "Rendering: $nb_name -> content/lab/notebooks/$slug.md"
 
     local tmp_html
     tmp_html="$(mktemp /tmp/nb-render-XXXXXX.html)"
 
-    # Execute from the notebook's directory so relative paths resolve
     jupyter nbconvert \
         --to html \
         --template basic \
@@ -86,7 +114,7 @@ print('$nb_name')
     cat > "$CONTENT_NOTEBOOKS/$slug.md" << ZOLA_EOF
 +++
 title = "$title"
-description = "Rendered from $nb_name.ipynb — live notebook from the ABG shared workspace"
+description = "Rendered from $nb_name.ipynb"
 date = $(date +%Y-%m-%d)
 weight = 50
 
@@ -96,22 +124,24 @@ rendered_from = "$nb_name.ipynb"
 +++
 
 <!-- Auto-generated from $nb_name.ipynb by render_notebooks.sh -->
-<!-- Re-render with: bash scripts/render_notebooks.sh --notebook $nb_path -->
+<!-- Preferred: spore-validate render-notebooks (pure Rust) -->
 
 $html_body
 ZOLA_EOF
 
-    echo "  → $CONTENT_NOTEBOOKS/$slug.md"
+    echo "  -> $CONTENT_NOTEBOOKS/$slug.md"
 }
 
 render_all() {
     local count=0
 
-    for nb in "$NOTEBOOKS_DIR"/*.ipynb; do
-        [[ -f "$nb" ]] || continue
-        render_notebook "$nb"
-        count=$((count + 1))
-    done
+    if [[ -d "$NOTEBOOKS_DIR" ]]; then
+        for nb in "$NOTEBOOKS_DIR"/*.ipynb; do
+            [[ -f "$nb" ]] || continue
+            render_notebook "$nb"
+            count=$((count + 1))
+        done
+    fi
 
     if [[ -d "$SHOWCASE_DIR" ]]; then
         for nb in "$SHOWCASE_DIR"/*.ipynb; do
@@ -121,7 +151,6 @@ render_all() {
         done
     fi
 
-    # Scan spring notebooks/ directories
     if [[ -d "$SPRINGS_ROOT" ]]; then
         for spring_dir in "$SPRINGS_ROOT"/*/notebooks; do
             [[ -d "$spring_dir" ]] || continue

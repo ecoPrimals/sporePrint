@@ -155,7 +155,7 @@ Use for ecosystem-wide statistics.
 
 4. **Tag relevant pages** — add the term to `[taxonomies]` in front matter
 
-5. **Run validation** — `python3 scripts/validate_registry.py`
+5. **Run validation** — `cargo run -p spore-validate -- validate --check`
 
 6. **Build** — `zola build` will generate taxonomy pages automatically
 
@@ -163,16 +163,13 @@ Use for ecosystem-wide statistics.
 
 When codebase metrics change:
 
-1. Pull all repos: `for d in primals/*/; do git -C "$d" pull; done`
-2. Run tokei: `tokei primals/bearDog -t Rust`
-3. Update the entity's `loc`, `loc_display`, `tests`, `tests_display`, `files`, `crates` in `config.toml`
-4. Recompute `[extra.totals]`
-5. Run `python3 scripts/validate_registry.py` — ensures totals match sums
-6. `zola build` — all shortcoded pages pick up new numbers automatically
+1. Run `spore-validate fetch-refresh --write` (clones/pulls all sources, compares metrics, writes drifts)
+2. Or manually: `spore-validate refresh <repos_root> --write`
+3. `zola build` — all shortcoded pages pick up new numbers automatically
 
-## Validation: `scripts/validate_registry.py`
+## Validation: `spore-validate validate`
 
-Runs in CI before `zola build`. Checks:
+Runs in CI before `zola build` (`crates/spore-validate/`). Checks:
 
 | Check | Severity |
 |-------|----------|

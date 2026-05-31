@@ -19,8 +19,8 @@ shortcodes/
 ├── entity_stat.html        (single metric from registry)
 └── total_stat.html         (aggregate metric from [extra.totals])
 
-scripts/
-└── validate_registry.py    (pre-build validation, runs in CI)
+crates/spore-validate/
+└── src/                    (typed validation, runs in CI via `spore-validate validate`)
 ```
 
 ## `base.html` — The Layout Shell

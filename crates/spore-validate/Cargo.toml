@@ -1,18 +1,23 @@
 [package]
 name = "spore-validate"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 description = "Typed validation tooling for sporePrint — entity registry, content integrity, and metric sync"
 license = "AGPL-3.0-or-later"
+rust-version = "1.85"
 
 [dependencies]
+clap = { version = "4", features = ["derive"] }
+regex = "1"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+thiserror = "2"
 toml = "0.8"
 toml_edit = "0.22"
-clap = { version = "4", features = ["derive"] }
 walkdir = "2"
-regex = "1"
+
+[dev-dependencies]
+tempfile = "3"
 
 [workspace]
 
@@ -20,3 +25,4 @@ regex = "1"
 pedantic = { level = "warn", priority = -1 }
 nursery = { level = "warn", priority = -1 }
 module_name_repetitions = "allow"
+struct_field_names = "allow"
