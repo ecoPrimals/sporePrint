@@ -110,3 +110,13 @@ Metrics flow from repos → `config.toml` entity registry → shortcodes in cont
 8 items: Science · Architecture · guideStone · Philosophy · Products | Primals · Springs · GitHub
 
 Audience, Methodology, and Technical are accessible via the site tree sidebar. Architecture highlights when browsing Methodology or Technical paths.
+## Wave 64 Build Metrics (flockGate WAN)
+
+| Metric | Value |
+|--------|-------|
+| Pages rendered | 226 |
+| Build time | 746ms |
+| Build host | flockGate (i9-13900K, NVMe) |
+| Zola version | zola 0.20.0 |
+| Date | 2026-05-31 |
+
