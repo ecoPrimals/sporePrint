@@ -9,288 +9,153 @@ domain = "Lab"
 rendered_from = "11-gradient-flow.ipynb"
 +++
 
-<!-- Auto-generated from 11-gradient-flow.ipynb by spore-validate render-notebooks -->
+<!-- Auto-generated from 11-gradient-flow.ipynb by render_notebooks.sh -->
+<!-- Preferred: spore-validate render-notebooks (pure Rust) -->
 
-# Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$
-
-**Papers:**  
-- Lüscher (2010) *JHEP* **08**, 071 — Wilson flow, $t_0$ scale  
-- BMW, arXiv:1203.4469 — $w_0$ scale  
-- Bazavov & Chuna, arXiv:2101.05320 — LSCFRK Lie group integrators  
-
-**What we reproduce:** Wilson gradient flow on SU(3) gauge fields with three
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Wilson-Gradient-Flow-%E2%80%94-Scale-Setting-with-$t_0$-and-$w_0$">Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$<a class="anchor-link" href="#Wilson-Gradient-Flow-%E2%80%94-Scale-Setting-with-$t_0$-and-$w_0$">¶</a></h1><p><strong>Papers:</strong></p>
+<ul>
+<li>Lüscher (2010) <em>JHEP</em> <strong>08</strong>, 071 — Wilson flow, $t_0$ scale</li>
+<li>BMW, arXiv:1203.4469 — $w_0$ scale</li>
+<li>Bazavov &amp; Chuna, arXiv:2101.05320 — LSCFRK Lie group integrators</li>
+</ul>
+<p><strong>What we reproduce:</strong> Wilson gradient flow on SU(3) gauge fields with three
 integrators: Euler, RK3 Lüscher (W6), and LSCFRK3W7 (Chuna). We measure
 $t^2\langle E(t)\rangle$ to extract the $t_0$ and $w_0$ scales, and verify
-LSCFRK coefficient derivation from 3rd-order Runge-Kutta conditions.
-
----
-
-*This notebook runs live gradient flow on a 4^4 lattice (~10s per integrator).*  
-*Rust parity:* `barracuda/src/lattice/gradient_flow.rs` — GPU-accelerated flow.*  
-*Algorithm-identical: same Cayley exp, same gauge force, same coefficient derivation.*
-
-## Physics
-
-The Wilson gradient flow evolves gauge fields along a fictitious flow time $t$:
-
-$$\dot{V}_\mu(x, t) = -g_0^2 (\partial_{x,\mu} S_W) V_\mu(x, t)$$
-
-This smooths UV fluctuations, defining renormalized observables. The $t_0$ and $w_0$
-scales are set by:
-
-$$t^2 \langle E(t) \rangle \Big|_{t=t_0} = 0.3 \quad (\text{Lüscher 2010})$$
-
-$$t \frac{d}{dt}\left[t^2 E(t)\right] \Big|_{t=w_0^2} = 0.3 \quad (\text{BMW})$$
-
-The **LSCFRK3** integrators use 2N-storage Lie group Runge-Kutta methods
-with coefficients derived from the 3rd-order conditions:
-
-$$b_1 + b_2 + b_3 = 1, \quad b_2 c_2 + b_3 c_3 = \frac{1}{2}, \quad b_2 c_2^2 + b_3 c_3^2 = \frac{1}{3}, \quad b_3 a_{32} c_2 = \frac{1}{6}$$
-
-```python
-import numpy as np
-import time
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-
-C_PASS = '#2ecc71'
-C_FAIL = '#e74c3c'
-C_INFO = '#3498db'
-C_RUST = '#1abc9c'
-C_PYTHON = '#f39c12'
-C_GPU = '#9b59b6'
-
-# LCG PRNG
-LCG_A = 6_364_136_223_846_793_005
-LCG_C = 1_442_695_040_888_963_407
-LCG_MOD = 1 << 64
-LCG_53_DIV = float(1 << 53)
-GUARD = 1e-15
-
-def lcg_step(s): return (s * LCG_A + LCG_C) % LCG_MOD
-def lcg_uniform(s):
-    s = lcg_step(s)
-    return s, float(s >> 11) / LCG_53_DIV
-
-def su3_identity(): return np.eye(3, dtype=np.complex128)
-
-def su3_random_near_identity(seed, eps):
-    m = np.zeros((3, 3), dtype=np.complex128)
-    for i in range(3):
-        for j in range(3):
-            seed, re = lcg_uniform(seed)
-            seed, im = lcg_uniform(seed)
-            m[i, j] = complex((re - 0.5) * eps, (im - 0.5) * eps)
-    m = np.eye(3, dtype=np.complex128) + m
-    u0 = m[0] / np.linalg.norm(m[0])
-    u1 = m[1] - np.dot(np.conj(u0), m[1]) * u0
-    u1 = u1 / np.linalg.norm(u1)
-    u2 = np.cross(np.conj(u0), np.conj(u1))
-    return seed, np.array([u0, u1, u2])
-
-def exp_cayley(p, dt):
-    half = 0.5 * dt * p
-    result = (np.eye(3, dtype=np.complex128) + half) @ np.linalg.inv(np.eye(3, dtype=np.complex128) - half)
-    u0 = result[0] / np.linalg.norm(result[0])
-    u1 = result[1] - np.dot(np.conj(u0), result[1]) * u0
-    u1 = u1 / np.linalg.norm(u1)
-    u2 = np.cross(np.conj(u0), np.conj(u1))
-    return np.array([u0, u1, u2])
-
-print("SU(3) operations loaded")
-```
-
-```python
-def derive_lscfrk3(c2, c3):
-    """Derive LSCFRK3 coefficients from free parameters (c2, c3)."""
-    b3 = (1.0/3.0 - c2/2.0) / (c3 * (c3 - c2))
-    b2 = (0.5 - b3*c3) / c2
-    a32 = 1.0 / (6.0 * b3 * c2)
-    a31 = c3 - a32
-    a21 = c2
-    B1, B2, B3 = a21, a32, b3
-    A1 = 0.0
-    A2 = (a31 - B1) / B2
-    A3 = (b2 - B2) / B3
-    return [A1, A2, A3], [B1, B2, B3]
-
-W6_A, W6_B = derive_lscfrk3(1.0/4.0, 2.0/3.0)
-W7_A, W7_B = derive_lscfrk3(1.0/3.0, 3.0/4.0)
-
-print("LSCFRK3 Coefficient Verification:")
-print(f"  W6 (Luscher): A = [{W6_A[0]:.4f}, {W6_A[1]:.6f}, {W6_A[2]:.6f}]")
-print(f"                B = [{W6_B[0]:.4f}, {W6_B[1]:.6f}, {W6_B[2]:.6f}]")
-print(f"  W7 (Chuna):   A = [{W7_A[0]:.4f}, {W7_A[1]:.6f}, {W7_A[2]:.6f}]")
-print(f"                B = [{W7_B[0]:.4f}, {W7_B[1]:.6f}, {W7_B[2]:.6f}]")
-
-# Verify order conditions
-for name, c2, c3 in [("W6", 0.25, 2/3), ("W7", 1/3, 0.75)]:
-    A, B = derive_lscfrk3(c2, c3)
-    a21, a32 = B[0], B[1]
-    a31 = a21 + a32 * A[1]
-    b1 = B[0] + B[1]*A[1] + B[2]*A[2]*A[1]
-    b2 = B[1] + B[2]*A[2]
-    b3 = B[2]
-    print(f"  {name}: sum(b)={b1+b2+b3:.15f}, sum(bc)={b2*c2+b3*c3:.15f}, "
-          f"sum(bc2)={b2*c2**2+b3*c3**2:.15f}, b3*a32*c2={b3*a32*c2:.15f}")
-```
-
-```python
-class FlowLattice:
-    def __init__(self, dims, beta):
-        self.dims = list(dims)
-        self.beta = beta
-        self.volume = dims[0]*dims[1]*dims[2]*dims[3]
-        self.links = None
-
-    @staticmethod
-    def hot_start(dims, beta, seed):
-        lat = FlowLattice(dims, beta)
-        rng = int(seed)
-        lat.links = []
-        for _ in range(lat.volume * 4):
-            rng, u = su3_random_near_identity(rng, 1.5)
-            lat.links.append(u)
-        return lat
-
-    def si(self, x): return x[0]+self.dims[0]*(x[1]+self.dims[1]*(x[2]+self.dims[2]*x[3]))
-    def sc(self, i):
-        x0=i%self.dims[0]; r=i//self.dims[0]
-        x1=r%self.dims[1]; r2=r//self.dims[1]
-        return [x0,x1,r2%self.dims[2],r2//self.dims[2]]
-    def nb(self, x, mu, fwd):
-        y=list(x); y[mu]=(x[mu]+(1 if fwd else -1))%self.dims[mu]; return y
-    def lk(self, x, mu): return self.links[self.si(x)*4+mu]
-    def sl(self, x, mu, u): self.links[self.si(x)*4+mu]=u
-
-    def plaq(self, x, mu, nu):
-        return self.lk(x,mu) @ self.lk(self.nb(x,mu,True),nu) @ \
-               self.lk(self.nb(x,nu,True),mu).conj().T @ self.lk(x,nu).conj().T
-
-    def avg_plaq(self):
-        total,cnt = 0.0,0
-        for i in range(self.volume):
-            x=self.sc(i)
-            for mu in range(4):
-                for nu in range(mu+1,4):
-                    total+=np.trace(self.plaq(x,mu,nu)).real/3.0; cnt+=1
-        return total/cnt
-
-    def staple(self, x, mu):
-        s=np.zeros((3,3),dtype=np.complex128)
-        xm=self.nb(x,mu,True)
-        for nu in range(4):
-            if nu==mu: continue
-            s+=self.lk(xm,nu)@self.lk(self.nb(x,nu,True),mu).conj().T@self.lk(x,nu).conj().T
-            xbn=self.nb(x,nu,False)
-            s+=self.lk(self.nb(xm,nu,False),nu).conj().T@self.lk(xbn,mu).conj().T@self.lk(xbn,nu)
-        return s
-
-    def gauge_force(self, x, mu):
-        w=self.lk(x,mu)@self.staple(x,mu)
-        d=0.5*(w-w.conj().T); tr=np.trace(d)
-        for i in range(3): d[i,i]-=tr/3.0
-        return -self.beta/3.0*d
-
-def energy_density(lat): return (1.0 - lat.avg_plaq()) * 6.0
-
-def euler_step(lat, eps):
-    forces=[(lat.sc(i),mu,lat.gauge_force(lat.sc(i),mu))
-            for i in range(lat.volume) for mu in range(4)]
-    for x,mu,f in forces: lat.sl(x,mu,exp_cayley(f,eps)@lat.lk(x,mu))
-
-def lscfrk_step(lat, eps, A, B):
-    v=lat.volume
-    k_buf=[np.zeros((3,3),dtype=np.complex128) for _ in range(v*4)]
-    for stage in range(len(A)):
-        for i in range(v):
-            x=lat.sc(i)
-            for mu in range(4):
-                idx=i*4+mu
-                k_buf[idx]=A[stage]*k_buf[idx]+lat.gauge_force(x,mu)
-        for i in range(v):
-            x=lat.sc(i)
-            for mu in range(4):
-                lat.sl(x,mu,exp_cayley(k_buf[i*4+mu],eps*B[stage])@lat.lk(x,mu))
-
-print("Flow lattice and integrators ready")
-```
-
-## Gradient Flow — Three Integrators Compared
-
-We run the flow from the same hot-start configuration with all three
-integrators and compare $t^2\langle E(t)\rangle$.
-
-```python
-dims = [4, 4, 4, 4]
-beta = 6.0
-seed = 42
-epsilon = 0.02
-t_max = 1.0
-n_steps = int(t_max / epsilon)
-
-integrators = [
-    ('Euler', lambda lat, eps: euler_step(lat, eps), C_PYTHON),
-    ('RK3 W6 (Luscher)', lambda lat, eps: lscfrk_step(lat, eps, W6_A, W6_B), C_INFO),
-    ('LSCFRK3 W7 (Chuna)', lambda lat, eps: lscfrk_step(lat, eps, W7_A, W7_B), C_RUST),
-]
-
-fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-all_data = {}
-
-for name, step_fn, color in integrators:
-    lat = FlowLattice.hot_start(dims, beta, seed)
-    ts, t2es, plaqs = [0.0], [0.0], [lat.avg_plaq()]
-    t0_start = time.perf_counter()
-    for s in range(1, n_steps + 1):
-        step_fn(lat, epsilon)
-        t = s * epsilon
-        if s % 2 == 0 or s == n_steps:
-            e = energy_density(lat)
-            ts.append(t); t2es.append(t*t*e); plaqs.append(lat.avg_plaq())
-    wall = time.perf_counter() - t0_start
-    all_data[name] = {'ts': ts, 't2es': t2es, 'plaqs': plaqs, 'wall': wall}
-    print(f"  {name:25s}: E_final={energy_density(lat):.6f}, t2E_peak={max(t2es):.6f}, {wall:.1f}s")
-
-    axes[0].plot(ts, t2es, '-', color=color, linewidth=2, label=name)
-    axes[1].plot(ts, plaqs, '-', color=color, linewidth=2, label=name)
-
-axes[0].axhline(y=0.3, color='gray', ls='--', alpha=0.5, label='$t^2E=0.3$ ($t_0$ target)')
-axes[0].set_xlabel('Flow time $t$')
-axes[0].set_ylabel('$t^2\\langle E(t)\\rangle$')
-axes[0].set_title('Flow Observable $t^2 E(t)$')
-axes[0].legend(fontsize=8)
-
-axes[1].set_xlabel('Flow time $t$')
-axes[1].set_ylabel('$\\langle P \\rangle$')
-axes[1].set_title('Plaquette Smoothing')
-axes[1].legend(fontsize=8)
-
-fig.suptitle(f'Wilson Gradient Flow on $4^4$ ($\\beta={beta}$, $\\epsilon={epsilon}$)', fontsize=14, fontweight='bold')
-plt.tight_layout()
-plt.savefig('/tmp/hotspring_paper_11_flow.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-## Rust Parity
-
-The same gradient flow integrators are in `barracuda/src/lattice/gradient_flow.rs`.
-GPU-accelerated gauge force computation via WGSL shaders.
-
-| Implementation | 4^4 flow (t=1.0) | Speedup |
-|---------------|-----------------|--------|
-| Python (numpy) | ~15 s | 1x |
-| Rust (CPU) | ~0.5 s | **30x** |
-| Rust (GPU) | ~0.05 s | **300x** |
-
-## Provenance
-
-- **Papers:** Luscher JHEP 08 (2010) 071, BMW arXiv:1203.4469, Bazavov & Chuna arXiv:2101.05320
-- **Validation:** `barracuda/src/lattice/gradient_flow.rs`
-- **Control:** `control/gradient_flow/scripts/gradient_flow_control.py`
-- **Next:** Production flow on 16^4+ via GPU primal composition, physical $t_0$/$w_0$ extraction
-
----
-*hotSpring — ecoPrimals · AGPL-3.0 · [primals.eco](https://primals.eco)*
-
+LSCFRK coefficient derivation from 3rd-order Runge-Kutta conditions.</p>
+<hr/>
+<p><em>This notebook runs live gradient flow on a 4^4 lattice (~10s per integrator).</em><br/>
+<em>Rust parity:</em> <code>barracuda/src/lattice/gradient_flow.rs</code> — GPU-accelerated flow.*<br/>
+<em>Algorithm-identical: same Cayley exp, same gauge force, same coefficient derivation.</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Physics">Physics<a class="anchor-link" href="#Physics">¶</a></h2><p>The Wilson gradient flow evolves gauge fields along a fictitious flow time $t$:</p>
+<p>$$\dot{V}_\mu(x, t) = -g_0^2 (\partial_{x,\mu} S_W) V_\mu(x, t)$$</p>
+<p>This smooths UV fluctuations, defining renormalized observables. The $t_0$ and $w_0$
+scales are set by:</p>
+<p>$$t^2 \langle E(t) \rangle \Big|_{t=t_0} = 0.3 \quad (\text{Lüscher 2010})$$</p>
+<p>$$t \frac{d}{dt}\left[t^2 E(t)\right] \Big|_{t=w_0^2} = 0.3 \quad (\text{BMW})$$</p>
+<p>The <strong>LSCFRK3</strong> integrators use 2N-storage Lie group Runge-Kutta methods
+with coefficients derived from the 3rd-order conditions:</p>
+<p>$$b_1 + b_2 + b_3 = 1, \quad b_2 c_2 + b_3 c_3 = \frac{1}{2}, \quad b_2 c_2^2 + b_3 c_3^2 = \frac{1}{3}, \quad b_3 a_{32} c_2 = \frac{1}{6}$$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>SU(3) operations loaded
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>LSCFRK3 Coefficient Verification:
+  W6 (Luscher): A = [0.0000, -0.531250, -1.185185]
+                B = [0.2500, 0.888889, 0.750000]
+  W7 (Chuna):   A = [0.0000, -0.555556, -1.195313]
+                B = [0.3333, 0.937500, 0.533333]
+  W6: sum(b)=1.000000000000000, sum(bc)=0.500000000000000, sum(bc2)=0.333333333333333, b3*a32*c2=0.166666666666667
+  W7: sum(b)=1.000000000000000, sum(bc)=0.500000000000000, sum(bc2)=0.333333333333333, b3*a32*c2=0.166666666666667
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Flow lattice and integrators ready
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Gradient-Flow-%E2%80%94-Three-Integrators-Compared">Gradient Flow — Three Integrators Compared<a class="anchor-link" href="#Gradient-Flow-%E2%80%94-Three-Integrators-Compared">¶</a></h2><p>We run the flow from the same hot-start configuration with all three
+integrators and compare $t^2\langle E(t)\rangle$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Euler                    : E_final=0.000488, t2E_peak=0.028659, 6.0s
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  RK3 W6 (Luscher)         : E_final=0.000475, t2E_peak=0.026253, 17.0s
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  LSCFRK3 W7 (Chuna)       : E_final=0.000475, t2E_peak=0.026255, 16.8s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Rust-Parity">Rust Parity<a class="anchor-link" href="#Rust-Parity">¶</a></h2><p>The same gradient flow integrators are in <code>barracuda/src/lattice/gradient_flow.rs</code>.
+GPU-accelerated gauge force computation via WGSL shaders.</p>
+<table>
+<thead>
+<tr>
+<th>Implementation</th>
+<th>4^4 flow (t=1.0)</th>
+<th>Speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python (numpy)</td>
+<td>~15 s</td>
+<td>1x</td>
+</tr>
+<tr>
+<td>Rust (CPU)</td>
+<td>~0.5 s</td>
+<td><strong>30x</strong></td>
+</tr>
+<tr>
+<td>Rust (GPU)</td>
+<td>~0.05 s</td>
+<td><strong>300x</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Provenance">Provenance<a class="anchor-link" href="#Provenance">¶</a></h2><ul>
+<li><strong>Papers:</strong> Luscher JHEP 08 (2010) 071, BMW arXiv:1203.4469, Bazavov &amp; Chuna arXiv:2101.05320</li>
+<li><strong>Validation:</strong> <code>barracuda/src/lattice/gradient_flow.rs</code></li>
+<li><strong>Control:</strong> <code>control/gradient_flow/scripts/gradient_flow_control.py</code></li>
+<li><strong>Next:</strong> Production flow on 16^4+ via GPU primal composition, physical $t_0$/$w_0$ extraction</li>
+</ul>
+<hr/>
+<p><em>hotSpring — ecoPrimals · AGPL-3.0 · <a href="https://primals.eco">primals.eco</a></em></p>
+</div>
+</div>
+</div>

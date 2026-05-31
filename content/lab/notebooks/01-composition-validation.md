@@ -1,5 +1,5 @@
 +++
-title = "01 — Composition Validation"
+title = "Composition Validation — hotSpring"
 description = "Rendered from 01-composition-validation.ipynb"
 date = 2026-05-31
 weight = 50
@@ -9,177 +9,110 @@ domain = "Lab"
 rendered_from = "01-composition-validation.ipynb"
 +++
 
-<!-- Auto-generated from 01-composition-validation.ipynb by spore-validate render-notebooks -->
+<!-- Auto-generated from 01-composition-validation.ipynb by render_notebooks.sh -->
+<!-- Preferred: spore-validate render-notebooks (pure Rust) -->
 
-# 01 — Composition Validation
-
-**neuralSpring sporePrint** | Session S188 | May 2026
-
-Deploy graph structure, bond types, capability profiles, and discovery tiers.
-
-**Data sources:** `validation-state.json`, `cross-spring-matrix.json`
-
-**For other springs:** Replace capability lists with your spring's niche surface.
-Replace deploy graph node counts and fragment lists with your own
-`graphs/<spring>_deploy.toml` data.
-
-```python
-import json
-from pathlib import Path
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-
-RESULTS = Path('..') / 'experiments' / 'results'
-
-with open(RESULTS / 'validation-state.json') as f:
-    vs = json.load(f)
-
-with open(RESULTS / 'cross-spring-matrix.json') as f:
-    cs = json.load(f)
-
-print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
-```
-
-## Capability Surface
-
-neuralSpring advertises 30 capabilities across 9 domains.
-All are registered in `niche.rs`, `config.rs`, `capability_registry.toml`,
-and MCP tool definitions.
-
-```python
-caps = vs['capabilities']
-domains = {k: v for k, v in caps.items() if k != 'total'}
-
-PASS = '#2ecc71'
-INFO = '#3498db'
-
-fig, ax = plt.subplots(figsize=(10, 5))
-bars = ax.barh(list(domains.keys()), list(domains.values()), color=INFO)
-ax.set_xlabel('Capabilities')
-ax.set_title(f'neuralSpring Capability Surface ({caps["total"]} total)')
-for bar, val in zip(bars, domains.values()):
-    ax.text(bar.get_width() + 0.2, bar.get_y() + bar.get_height()/2,
-            str(val), va='center', fontweight='bold')
-plt.tight_layout()
-plt.show()
-```
-
-## Deploy Graph Structure
-
-The deploy graph (`neuralspring_deploy.toml`) defines 14 nodes across
-3 fragments: `tower_atomic`, `node_atomic`, `meta_tier`.
-
-```python
-dg = vs['deploy_graph']
-proto = cs['proto_nucleate']
-
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-
-# Deploy graph summary
-labels = ['Nodes', 'Capabilities', 'Fragments']
-values = [dg['nodes'], dg['capabilities_provided'], len(dg['fragments'])]
-colors = [INFO, PASS, '#9b59b6']
-axes[0].bar(labels, values, color=colors)
-axes[0].set_title('Deploy Graph')
-for i, v in enumerate(values):
-    axes[0].text(i, v + 0.3, str(v), ha='center', fontweight='bold')
-
-# Proto-nucleate dependencies
-deps = proto['depends_on']
-axes[1].barh(deps, [1]*len(deps), color=PASS)
-axes[1].set_title(f'Proto-Nucleate depends_on ({len(deps)} primals)')
-axes[1].set_xlim(0, 1.5)
-axes[1].set_xlabel('Required')
-
-plt.tight_layout()
-plt.show()
-
-print(f"Bond type: {dg['bond_type']}")
-print(f"Trust model: {dg['trust_model']}")
-print(f"Fragments: {', '.join(dg['fragments'])}")
-```
-
-## Discovery Tiers
-
-The validation chain progresses through 5 tiers, from Python baseline
-through guideStone certification.
-
-```python
-gs = vs['guidestone']
-
-tiers = [
-    ('Tier 1: Python baseline', 397, 'complete'),
-    ('Tier 2: Rust CPU proof', vs['tests']['total_workspace'], 'complete'),
-    ('Tier 3: GPU/WGSL parity', vs['tests']['rust_gpu_checks'], 'complete'),
-    ('Tier 4: Primal IPC', 6, 'wip'),
-    ('Tier 5: guideStone', 29, f"Level {gs['level']}")
-]
-
-fig, ax = plt.subplots(figsize=(10, 4))
-tier_names = [t[0] for t in tiers]
-tier_checks = [t[1] for t in tiers]
-tier_colors = [PASS if t[2] == 'complete' else '#f39c12' for t in tiers]
-
-bars = ax.barh(tier_names, tier_checks, color=tier_colors)
-ax.set_xlabel('Validation Checks')
-ax.set_title('Validation Discovery Tiers')
-ax.set_xscale('log')
-
-legend_elements = [
-    mpatches.Patch(color=PASS, label='Complete'),
-    mpatches.Patch(color='#f39c12', label='WIP / Partial')
-]
-ax.legend(handles=legend_elements, loc='lower right')
-
-plt.tight_layout()
-plt.show()
-```
-
-## guideStone Readiness
-
-neuralSpring's guideStone is at **Level 3** — bare ALL PASS (29/29 checks,
-P1-P5 certified). Levels 4-5 pending live NUCLEUS deployment.
-
-```python
-levels = [
-    ('L1: Validation exists', True),
-    ('L2: Properties documented', True),
-    ('L3: Bare guideStone (29/29)', True),
-    ('L4: NUCLEUS guideStone', False),
-    ('L5: Certified (cross-substrate)', False)
-]
-
-fig, ax = plt.subplots(figsize=(8, 3))
-colors = [PASS if done else '#e74c3c' for _, done in levels]
-ax.barh([l[0] for l in levels], [1]*len(levels), color=colors)
-ax.set_xlim(0, 1.2)
-ax.set_title(f'guideStone Readiness — Level {gs["level"]}')
-
-legend_elements = [
-    mpatches.Patch(color=PASS, label='DONE'),
-    mpatches.Patch(color='#e74c3c', label='PENDING')
-]
-ax.legend(handles=legend_elements)
-
-plt.tight_layout()
-plt.show()
-
-print(f"Properties certified: {', '.join(gs['properties_certified'])}")
-```
-
-## Summary
-
-| Metric | Value |
-|--------|-------|
-| Capabilities | 30 (9 domains) |
-| Deploy graph nodes | 14 |
-| Bond type | Metallic |
-| Trust model | InternalNucleus |
-| Proto-nucleate deps | 6 primals |
-| Validation capabilities | 7 |
-| guideStone level | 3 (29/29 bare) |
-| Properties certified | P1-P5 |
-
-**Provenance:** [primals.eco](https://primals.eco) |
-neuralSpring Session S188 | May 2026
-
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Composition-Validation-%E2%80%94-hotSpring">Composition Validation — hotSpring<a class="anchor-link" href="#Composition-Validation-%E2%80%94-hotSpring">¶</a></h1><p>hotSpring validates computational physics (lattice QCD, nuclear structure, plasma)
+on consumer GPU hardware via the ecoPrimal NUCLEUS composition. This notebook shows
+the deploy graph topology, guideStone Level 6 validation, and capability-based
+primal routing.</p>
+<p><strong>Data sources:</strong> <code>composition_validation.json</code>, <code>test_suite_report.json</code></p>
+<p><strong>Reproduce:</strong> <code>cargo test --lib</code> in <code>barracuda/</code>, then <code>scripts/validate-primal-proof.sh</code></p>
+<hr/>
+<p><em>For other springs:</em> Replace QCD domain content with your science. Keep the guideStone
+property structure and atomic type hierarchy — they're universal across all springs.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Spring: hotSpring v0.6.32
+guideStone Level: 5
+Deploy graph: 11 nodes, 9 required primals
+Tests: 1036 passed, 6 ignored
+Bare guideStone: 30/30 checks
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="guideStone-Level-6-%E2%80%94-Five-Properties">guideStone Level 6 — Five Properties<a class="anchor-link" href="#guideStone-Level-6-%E2%80%94-Five-Properties">¶</a></h2><p>The <code>hotspring_guidestone</code> binary validates 5 guideStone properties in bare mode
+(no primals needed) and adds NUCLEUS IPC parity checks when primals are deployed.
+Property 3 (Self-Verifying) uses BLAKE3 checksums for 15 validation-critical source files.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Capability-Based-Routing">Capability-Based Routing<a class="anchor-link" href="#Capability-Based-Routing">¶</a></h2><p>hotSpring routes to primals by <strong>capability domain</strong> (<code>by_domain("compute")</code>), not
+by hardcoded process names. All requirements derive from <code>niche::DEPENDENCIES</code> —
+a single source of truth. Named accessors are deprecated.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Test-Suite-by-Physics-Domain">Test Suite by Physics Domain<a class="anchor-link" href="#Test-Suite-by-Physics-Domain">¶</a></h2><p>596 (default) / 1,045 (barracuda-local) library tests organized by physics domain — from nuclear structure (SEMF, HFB)
+through lattice QCD (HMC, RHMC, gradient flow) to GPU compute validation.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Validation-Summary">Validation Summary<a class="anchor-link" href="#Validation-Summary">¶</a></h2><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Status</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>guideStone Level 6</td>
+<td><strong>30/30 PASS</strong></td>
+<td>5 properties certified, BLAKE3 P3, 3 SKIP (liveness)</td>
+</tr>
+<tr>
+<td>Library tests</td>
+<td><strong>596/596 PASS</strong> (default) / <strong>1,045</strong> (barracuda-local)</td>
+<td>6 GPU-heavy ignored (upstream barraCuda CI)</td>
+</tr>
+<tr>
+<td>Validation suites</td>
+<td><strong>65/65 PASS</strong></td>
+<td>167 <code>validate_*</code> binaries + <code>hotspring_guidestone</code></td>
+</tr>
+<tr>
+<td>NUCLEUS routing</td>
+<td><strong>by_domain()</strong></td>
+<td>Capability-based from <code>niche::DEPENDENCIES</code></td>
+</tr>
+<tr>
+<td>Deploy graph</td>
+<td><strong>11 nodes</strong></td>
+<td>9 required + 1 optional + hotspring_unibin</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><strong>Provenance:</strong> All data from <code>experiments/results/</code> committed JSON artifacts.<br/>
+<strong>Reproduce:</strong> <code>cargo test --lib</code> in <code>barracuda/</code>, <code>scripts/validate-primal-proof.sh</code> from repo root.<br/>
+<strong>Source:</strong> <a href="https://github.com/syntheticChemistry/hotSpring">hotSpring on GitHub</a> · <a href="https://primals.eco/lab/springs/hotspring/">primals.eco</a></p>
+</div>
+</div>
+</div>
