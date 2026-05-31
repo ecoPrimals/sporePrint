@@ -113,4 +113,13 @@ These were in the original queue and have been completed:
 - [x] All 23 catalog metrics lines replaced with `entity_metrics` shortcode calls
 - [x] Pre-build validation script (`scripts/validate_registry.py`) in CI
 - [x] Real LOC numbers: 3.2M Rust, 107K tests, 952 WGSL (old estimates were 220K)
-# Relay test marker: 2026-05-31T17:13:44Z
+
+## Wave 64 Targets
+
+- [x] pseudoSpore gallery template (`/lab/spores/{name}/`)
+- [x] Zola build pipeline validated on WAN (226 pages, 746ms)
+- [x] Gate bootstrap AAR completed
+- [x] Temporal sync sustained measurement (6 pushes, relay gap identified)
+- [ ] Forgejo relay hook for sporePrint (eastGate action)
+- [ ] peptidoglycan-triggered rebuild pipeline
+- [ ] DNS cutover: primals.eco → golgiBody-ext (Wave 65)
