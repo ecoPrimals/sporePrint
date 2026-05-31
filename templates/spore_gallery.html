@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — pseudoSpore Gallery{% endblock title %}
+{% block description %}{{ page.description }}{% endblock description %}
+
+{% block content %}
+<article class="spore-page">
+  <header class="spore-header">
+    <nav class="spore-breadcrumb">
+      <a href="/lab/">Lab</a> /
+      <a href="/lab/spores/">pseudoSpore Gallery</a> /
+      <span>{{ page.title }}</span>
+    </nav>
+    <h1>🧬 {{ page.title }}</h1>
+    <div class="spore-meta">
+      <span class="spore-status-badge {% if page.extra.spore_status == 'COMPLETE' %}badge-complete{% elif page.extra.spore_status == 'PROFILE_READY' %}badge-pending{% endif %}">
+        {{ page.extra.spore_status | default(value="UNKNOWN") }}
+      </span>
+      <span class="spore-version">v{{ page.extra.spore_version | default(value="?") }}</span>
+      <span class="spore-domain-tag">{{ page.extra.domain | default(value="") }}</span>
+    </div>
+    <p class="spore-desc">{{ page.description }}</p>
+  </header>
+
+  <aside class="spore-sidebar">
+    <div class="spore-info-card">
+      <h3>Quick Facts</h3>
+      <dl>
+        <dt>Spring</dt>
+        <dd>{{ page.extra.spore_spring | default(value="—") }}</dd>
+        <dt>Version</dt>
+        <dd>{{ page.extra.spore_version | default(value="—") }}</dd>
+        <dt>Modules</dt>
+        <dd>{{ page.extra.modules_pass | default(value=0) }} / {{ page.extra.modules_total | default(value=0) }} passing</dd>
+        <dt>Origin</dt>
+        <dd><code>{{ page.extra.spore_origin | default(value="—") }}</code></dd>
+        <dt>Status</dt>
+        <dd>{{ page.extra.spore_status | default(value="UNKNOWN") }}</dd>
+      </dl>
+
+      {% if page.extra.methods %}
+      <h3>Methods</h3>
+      <ul class="spore-method-list">
+        {% for method in page.extra.methods %}
+        <li>{{ method }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if page.extra.tools %}
+      <h3>Tools</h3>
+      <ul class="spore-tool-list">
+        {% for tool in page.extra.tools %}
+        <li>{{ tool }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </aside>
+
+  <div class="spore-content">
+    {{ page.content | safe }}
+  </div>
+</article>
+{% endblock content %}

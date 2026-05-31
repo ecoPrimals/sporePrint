@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} — {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description }}{% endblock description %}
+
+{% block content %}
+<article class="spore-gallery-index">
+  <header>
+    <h1>🧬 {{ section.title }}</h1>
+    <p class="section-desc">{{ section.description }}</p>
+  </header>
+
+  {{ section.content | safe }}
+
+  <div class="spore-grid">
+    {% for page in section.pages %}
+    <a href="{{ page.permalink }}" class="spore-card {% if page.extra.spore_status == 'COMPLETE' %}spore-complete{% elif page.extra.spore_status == 'PROFILE_READY' %}spore-pending{% endif %}">
+      <div class="spore-card-header">
+        <span class="spore-status-badge">{{ page.extra.spore_status | default(value="UNKNOWN") }}</span>
+        <span class="spore-version">v{{ page.extra.spore_version | default(value="?") }}</span>
+      </div>
+      <h2>{{ page.title }}</h2>
+      <p class="spore-domain">{{ page.extra.domain | default(value="") }}</p>
+      <p class="spore-desc">{{ page.description }}</p>
+      <div class="spore-modules">
+        <span class="spore-module-count">{{ page.extra.modules_pass | default(value=0) }}/{{ page.extra.modules_total | default(value=0) }} modules</span>
+        <span class="spore-spring">{{ page.extra.spore_spring | default(value="") }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</article>
+{% endblock content %}

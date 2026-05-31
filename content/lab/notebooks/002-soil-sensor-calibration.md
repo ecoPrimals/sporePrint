@@ -1,5 +1,5 @@
 +++
-title = "Soil Moisture Sensor Calibration (Dong et al.\ 2020)"
+title = "Soil Moisture Sensor Calibration (Dong et al., 2020)"
 description = "Rendered from 002-soil-sensor-calibration.ipynb"
 date = 2026-05-31
 weight = 50
