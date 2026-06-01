@@ -12,6 +12,20 @@ use walkdir::WalkDir;
 #[derive(Debug, Deserialize)]
 struct Notebook {
     cells: Vec<Cell>,
+    #[serde(default)]
+    metadata: Option<NotebookMetadata>,
+}
+
+#[derive(Debug, Deserialize)]
+struct NotebookMetadata {
+    #[serde(default)]
+    kernelspec: Option<KernelSpec>,
+}
+
+#[derive(Debug, Deserialize)]
+struct KernelSpec {
+    #[serde(default)]
+    language: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -54,6 +68,7 @@ fn slugify(name: &str) -> String {
 }
 
 /// Extract the first `# Title` from markdown cells, or use fallback.
+/// Sanitizes the result for TOML string compatibility (no bare backslashes).
 fn extract_title(nb: &Notebook, fallback: &str) -> String {
     for cell in &nb.cells {
         if cell.kind != "markdown" {
@@ -62,15 +77,54 @@ fn extract_title(nb: &Notebook, fallback: &str) -> String {
         for line in &cell.source {
             let trimmed = line.trim();
             if let Some(title) = trimmed.strip_prefix("# ") {
-                return title.to_string();
+                return sanitize_toml_string(title);
             }
         }
     }
-    fallback.to_string()
+    sanitize_toml_string(fallback)
+}
+
+/// Sanitize a string for use in TOML quoted values.
+/// Replaces bare backslashes that aren't valid TOML escape sequences.
+fn sanitize_toml_string(s: &str) -> String {
+    let mut result = String::with_capacity(s.len());
+    let chars: Vec<char> = s.chars().collect();
+    let mut i = 0;
+    while i < chars.len() {
+        if chars[i] == '\\' {
+            if let Some(&next_ch) = chars.get(i + 1) {
+                if matches!(next_ch, 'b' | 'f' | 'n' | 'r' | 't' | 'u' | 'U' | '\\' | '"') {
+                    result.push('\\');
+                    result.push(next_ch);
+                    i += 2;
+                } else {
+                    result.push(',');
+                    i += 1;
+                }
+            } else {
+                result.push(',');
+                i += 1;
+            }
+        } else {
+            result.push(chars[i]);
+            i += 1;
+        }
+    }
+    result
+}
+
+/// Detect the notebook's code language from metadata, defaulting to "python".
+fn detect_language(nb: &Notebook) -> &str {
+    nb.metadata
+        .as_ref()
+        .and_then(|m| m.kernelspec.as_ref())
+        .and_then(|k| k.language.as_deref())
+        .unwrap_or("python")
 }
 
 /// Render notebook cells into markdown body content.
 fn render_cells(nb: &Notebook) -> String {
+    let lang = detect_language(nb);
     let mut out = String::new();
 
     for cell in &nb.cells {
@@ -83,7 +137,9 @@ fn render_cells(nb: &Notebook) -> String {
             "code" => {
                 let source: String = cell.source.concat();
                 if !source.trim().is_empty() {
-                    out.push_str("```python\n");
+                    out.push_str("```");
+                    out.push_str(lang);
+                    out.push('\n');
                     out.push_str(&source);
                     if !source.ends_with('\n') {
                         out.push('\n');

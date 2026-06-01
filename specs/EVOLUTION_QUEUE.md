@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: May 31, 2026 (Wave 63 deep debt resolution)
+Last reviewed: June 1, 2026 (Wave 66 — Knowledge Topology + guideStone Certification)
 
 ---
 
@@ -37,7 +37,7 @@ Last reviewed: May 31, 2026 (Wave 63 deep debt resolution)
 - [ ] Add cross-spring data flow diagram to SPRING_CATALOG.md or a dedicated page
 
 ### Visual evolution
-- [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all 12 sections with accurate page counts (105 total)
+- [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all sections with page counts
 - [ ] Consider adding entity taxonomy counts to the site tree sidebar
 - [ ] Mobile experience: test site tree usability on phones, consider defaulting `<details>` to closed
 - [ ] Investigate whether the per-page TOC (right sidebar) and site tree (left sidebar) coexist well on medium screens
@@ -80,7 +80,7 @@ Last reviewed: May 31, 2026 (Wave 63 deep debt resolution)
 - [ ] GitHub Pages becomes extracellular shadow (backup only)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality for the current 105 pages
+- [ ] Evaluate elasticlunr search quality for the current 205 pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 
@@ -123,3 +123,47 @@ These were in the original queue and have been completed:
 - [ ] Forgejo relay hook for sporePrint (eastGate action)
 - [ ] peptidoglycan-triggered rebuild pipeline
 - [ ] DNS cutover: primals.eco → golgiBody-ext (Wave 65)
+
+## Wave 66 — Knowledge Topology (Completed June 1, 2026)
+
+### Renvois de Choses — Typed Entity Graph
+- [x] `Edge` struct + `EdgeRelation` enum in `model.rs` (14 relation types)
+- [x] `edges` field on Entity (optional, backward compatible)
+- [x] 63 edges populated across all 15 primals in `config.toml`
+- [x] `graph.rs` module — validates targets, computes inverses, emits JSON
+- [x] `graph` CLI subcommand (`spore-validate graph --emit`)
+- [x] `static/graph/entity-graph.json` — 66 nodes, 126 edges
+- [x] Connections template on taxonomy pages (outbound + inbound edges)
+- [x] Architecture page: `/architecture/renvois-knowledge-topology/`
+- [x] `specs/KNOWLEDGE_TOPOLOGY.md` — intellectual lineage and design constraints
+
+### Deep Debt Resolution
+- [x] `Diagnostic` refactored from enum variants to proper struct + severity
+- [x] All hardcoded directory names replaced with runtime discovery
+- [x] Forge URL configurable via `SPOREPRINT_FORGE_URL` env var
+- [x] Notebook language detected from metadata (not hardcoded "python")
+- [x] Taxonomy names derived from `EntityKind::taxonomy_pairs()` type system
+- [x] Zero clippy warnings (pedantic + nursery)
+- [x] 86 tests passing
+- [x] All deps justified (7 runtime + 1 dev-dep, all pure Rust)
+
+### guideStone Self-Certification (Completed June 1, 2026)
+- [x] `certify.rs` module — BLAKE3 Merkle root of sorted entity graph
+- [x] `CertificationManifest` struct with all verifiable claims
+- [x] `certify` CLI subcommand (`--emit` writes, default validates existing)
+- [x] `static/certification/manifest.json` generated
+- [x] Certification badge in base.html footer (Verify link)
+- [x] Architecture page: `/architecture/guidestone-publication/`
+- [x] CI integration: certify --emit before zola build in deploy.yml
+- [x] 89 tests passing (3 new certify tests)
+- [x] `blake3` dependency added (pure Rust, aligns with BearDog)
+- [x] `render_notebooks.sh` removed (vestigial JELLY STRING, fully absorbed by Rust)
+
+### Docs + Housekeeping (June 1, 2026)
+- [x] README.md updated (66 entities, 205 pages, 89 tests, certify docs)
+- [x] RUST_TOOLING_VISION.md updated (14 modules, graph + certify documented)
+- [x] TAXONOMY_STANDARD.md entity count updated (66)
+- [x] CONTENT_MAP.md counts refreshed (205 pages, 18 architecture, 128 lab)
+- [x] CONTEXT.md updated (certify subcommand, 14 modules, 89 tests)
+- [x] cargo clean (925 MiB freed)
+- [x] public/ build dir cleaned

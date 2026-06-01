@@ -103,6 +103,50 @@
     </div>
   </section>
 
+  {# ── Connections (Renvois de Choses) ── #}
+  {% if entry.edges is defined %}
+  <section class="entity-connections" aria-label="Connections">
+    <h2>Connections</h2>
+    <div class="connections-grid">
+      <div class="connections-outbound">
+        <h3>Outbound</h3>
+        <ul class="connection-list">
+          {% for edge in entry.edges %}
+            {% set target_entity = config.extra.entity_registry[edge.target] | default(value=false) %}
+            {% if target_entity %}
+            <li class="connection-item">
+              <span class="connection-relation">{{ edge.relation | replace(from="_", to=" ") }}</span>
+              <a href="/{{ target_entity.kind }}s/{{ edge.target }}/" class="entity-ref entity-{{ target_entity.kind }}">
+                <span aria-hidden="true">{{ target_entity.emoji }}&nbsp;</span>{{ target_entity.display }}
+              </a>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="connections-inbound">
+        <h3>Inbound</h3>
+        <ul class="connection-list">
+          {% for k, v in config.extra.entity_registry %}
+            {% if v.edges is defined %}
+              {% for edge in v.edges %}
+                {% if edge.target == key %}
+                <li class="connection-item">
+                  <span class="connection-relation">{{ edge.relation | replace(from="_", to=" ") }}</span>
+                  <a href="/{{ v.kind }}s/{{ k }}/" class="entity-ref entity-{{ v.kind }}">
+                    <span aria-hidden="true">{{ v.emoji }}&nbsp;</span>{{ v.display }}
+                  </a>
+                </li>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
   {# ── Related entities (same kind, same domain if available) ── #}
   {% if entry.domain is defined %}
   <section class="entity-related" aria-label="Related entities">

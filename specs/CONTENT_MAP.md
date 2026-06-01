@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: May 15, 2026
+Last reviewed: June 1, 2026
 
 ## Sections
 
@@ -49,7 +49,7 @@ Live validation results from a running NUCLEUS composition. Subsections:
 
 **Staleness risk**: Medium — notebooks may diverge from upstream spring outputs.
 
-### Architecture (`architecture/`) — 10 pages + _index
+### Architecture (`architecture/`) — 18 pages + _index
 
 | Page | What | Staleness risk |
 |------|------|----------------|
@@ -61,7 +61,16 @@ Live validation results from a running NUCLEUS composition. Subsections:
 | ECOSYSTEM_ARCHITECTURE.md | High-level system design | Low |
 | EVOLUTION_TIMELINE.md | Historical timeline (append-only) | Low |
 | SOVEREIGN_PRIOR_ART_CATALOG.md | Prior art comparison | Low |
-| + 2 additional pages | | |
+| RENVOIS_KNOWLEDGE_TOPOLOGY.md | Typed entity graph (Diderot → Bush lineage) | Low |
+| GUIDESTONE_PUBLICATION.md | Self-certification architecture | Low |
+| COMPOSITION_PIPELINE.md | Spring composition model | Low |
+| COMPOSITION_PATTERNS.md | Named patterns (Tower Atomic, etc.) | Low |
+| FOUNDATION_CONNECTION.md | projectFOUNDATION link | Low |
+| SOVEREIGN_DEPLOYMENT.md | K-Derm diderm sovereign hosting | Low |
+| KDERM_DIDERM_ARCHITECTURE.md | Inner/outer membrane VPS topology | Low |
+| TRANSPORT_EVOLUTION.md | Quorum-sensing evolution | Low |
+| EXTERNAL_COLLABORATION.md | Cross-org interaction model | Low |
+| GENERATIONAL_ARC.md | gen1→gen5 evolution framework | Low |
 
 ### Audience (`audience/`) — 5 pages + _index
 
@@ -124,9 +133,9 @@ atlasHugged integration stub. Content will grow when atlasHugged publishes. This
 
 | Section | Pages (excl. _index) | Total files |
 |---------|---------------------|-------------|
+| lab | 128 | 132 |
 | science | 31 | 32 |
-| lab | 27 | 28 |
-| architecture | 10 | 11 |
+| architecture | 18 | 19 |
 | methodology | 6 | 7 |
 | technical | 6 | 7 |
 | audience | 5 | 6 |
@@ -136,7 +145,7 @@ atlasHugged integration stub. Content will grow when atlasHugged publishes. This
 | philosophy | 0 | 1 |
 | sitemap | 0 | 1 |
 | landing | 0 | 1 |
-| **Total** | **93** | **105** |
+| **Total** | **205** | **220** |
 
 ## Validation
 

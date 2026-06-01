@@ -1,17 +1,18 @@
 # Rust Tooling for sporePrint
 
-`spore-validate` is the pure Rust validation, metrics, and content pipeline
+`spore-validate` is the pure Rust validation, certification, and content pipeline
 for sporePrint. It lives at `crates/spore-validate/` and enforces
 `#![forbid(unsafe_code)]` at the crate root.
 
-## Current State (Wave 63 — May 2026)
+## Current State (Wave 66 — June 2026)
 
-- **12 modules**, 80 tests, 90.3% line coverage (llvm-cov)
+- **14 modules**, 89 tests, 90.3% line coverage (llvm-cov)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
-- Zero `#[allow()]` in production code
-- All files under 470 LOC (limit: 1000)
-- Pure Rust dependencies only (ecoBin compliant)
+- Zero `#[allow()]` in production code (one `#[allow(dead_code)]` on future-public API)
+- All files under 500 LOC (limit: 1000)
+- Pure Rust dependencies only (ecoBin compliant) + `blake3` for certification
 - `thiserror`-based typed error hierarchy (`Result` propagation, no `process::exit`)
+- Structured `Diagnostic` with `Severity` (Error/Warning) and `promote_to_error()`
 
 ## Subcommands
 
@@ -21,6 +22,8 @@ for sporePrint. It lives at `crates/spore-validate/` and enforces
 | `validate --check` | + shortcode integrity + internal link validation |
 | `validate --strict` | Promote warnings to errors |
 | `validate --verbose` | Full entity report (all fields consumed) |
+| `graph [--emit]` | Build typed entity graph (renvois de choses), emit JSON |
+| `certify [--emit]` | guideStone certification — BLAKE3 Merkle, manifest emit/validate |
 | `refresh <repos_root>` | Cross-repo metric drift detection |
 | `refresh --write` | Auto-update config.toml |
 | `fetch-refresh` | Clone upstream → refresh in one step |
@@ -33,11 +36,13 @@ for sporePrint. It lives at `crates/spore-validate/` and enforces
 ```
 crates/spore-validate/src/
 ├── main.rs       — CLI (clap derive), orchestration, ExitCode
-├── error.rs      — thiserror Error enum + Diagnostic enum
-├── model.rs      — Typed entity model, Zola config parser
+├── error.rs      — thiserror Error enum + Diagnostic struct (Severity)
+├── model.rs      — Typed entity model, Edge/EdgeRelation, Zola config parser
 ├── registry.rs   — Per-kind field validation
 ├── totals.rs     — Aggregate sum verification
 ├── content.rs    — Front matter taxonomy + shortcode checks
+├── graph.rs      — Typed entity graph: build, validate, emit JSON
+├── certify.rs    — guideStone: BLAKE3 Merkle root, manifest emit/validate
 ├── refresh.rs    — Cross-repo metric comparison + write-back
 ├── fetch.rs      — VcsBackend trait, GitBackend, MockBackend, Source model
 ├── notebook.rs   — Jupyter .ipynb JSON → Zola markdown
@@ -62,11 +67,41 @@ pub trait VcsBackend {
 - `MockBackend`: testing (in-memory, no I/O) — enables 75%+ coverage on fetch
 - Future: Forgejo API backend, temporal sync backend
 
+### Typed Entity Graph (`graph.rs` + `model.rs`)
+
+```rust
+pub struct Edge {
+    pub target: String,
+    pub relation: EdgeRelation,
+    pub weight: Option<u8>,
+}
+```
+
+14 `EdgeRelation` variants (ComposesInto, ValidatedBy, AnalogousTo, etc.) with
+`inverse()` for automatic bidirectional graph construction. Implements the
+Diderot → Bush → Nelson lineage of non-linguistic knowledge connections.
+
+### guideStone Certification (`certify.rs`)
+
+```rust
+pub struct CertificationManifest {
+    pub version: &'static str,
+    pub generated: String,
+    pub entity_count: usize,
+    // ... counts, graph_merkle (BLAKE3), drift_tolerance
+}
+```
+
+Computes a deterministic BLAKE3 Merkle root over sorted edge representations.
+Same graph = same hash, regardless of iteration order.
+
 ### Capability-based Discovery
 
 - `Source.origin`: explicit clone URL (supports Forgejo SSH, not just GitHub)
 - `Source.private`: gated by `SPOREPRINT_REFRESH_PAT` env var
-- `discover_springs_root()`: walks up filesystem looking for `.gate` file
+- `SPOREPRINT_FORGE_URL`: configurable forge (no GitHub assumption)
+- `EntityKind::taxonomy_pairs()`: dynamic taxonomy discovery (no hardcoded names)
+- `find_repo()`: filesystem walk (no hardcoded repo list)
 - No hardcoded forge assumptions — primal code has self-knowledge only
 
 ### Error Propagation
@@ -85,10 +120,11 @@ pub enum Error {
 All fallible operations return `Result<T, Error>`. The `main()` function
 returns `ExitCode`, mapping `Err(e)` to a single `eprintln!` + FAILURE.
 
-## Dependencies (7 total, all pure Rust)
+## Dependencies (8 total, all pure Rust)
 
 | Crate | Purpose |
 |-------|---------|
+| `blake3` | BLAKE3 hashing for certification Merkle root |
 | `clap` | CLI argument parsing (derive) |
 | `regex` | Taxonomy + link pattern matching |
 | `serde` + `serde_json` | Entity registry + notebook deserialization |
@@ -103,4 +139,8 @@ Dev-only: `tempfile` (test fixtures).
 - [ ] pseudoSpore gallery: read lithoSpore `registry.toml`, generate gallery markdown
 - [ ] projectFOUNDATION ingestion: replace GitHub Actions dispatch with direct consumption
 - [ ] Temporal sync trigger: detect upstream push → local rebuild on flockGate
-- [ ] Absorb `refresh-metrics.sh` entirely (currently wraps `fetch-refresh`)
+- [ ] petalTongue WASM: replace gonzales JS explorer with sovereign Rust/WASM
+- [x] Absorb `render_notebooks.sh` — superseded by `render-notebooks` subcommand
+- [x] Entity graph with typed edges — `graph` subcommand (Wave 66)
+- [x] guideStone certification — `certify` subcommand (Wave 66)
+- [x] Capability-based discovery — no hardcoded repo lists or forge URLs

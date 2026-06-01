@@ -77,6 +77,15 @@ capabilities = [
   { category = "Onion Routing", items = "Pure Rust Tor v3 (directory, circuit, stream, onion service)" },
   { category = "Post-Quantum", items = "ML-KEM key encapsulation" },
 ]
+edges = [
+  { target = "songbird", relation = "composes_into" },
+  { target = "toweratomic", relation = "composes_into" },
+  { target = "nucleus", relation = "composes_into" },
+  { target = "rhizocrypt", relation = "composes_into" },
+  { target = "loamspine", relation = "composes_into" },
+  { target = "sweetgrass", relation = "composes_into" },
+  { target = "skunkbat", relation = "analogous_to" },
+]
 
 [extra.entity_registry.songbird]
 display = "Songbird"
@@ -100,6 +109,13 @@ capabilities = [
   { category = "Dark Forest", items = "Zero metadata leakage discovery, encrypted beacons" },
   { category = "P2P", items = "Sovereign onion service, circuit building, directory authority" },
 ]
+edges = [
+  { target = "beardog", relation = "composes_into" },
+  { target = "toweratomic", relation = "composes_into" },
+  { target = "nucleus", relation = "composes_into" },
+  { target = "biomeos", relation = "discovers" },
+  { target = "loamspine", relation = "discovers" },
+]
 
 [extra.entity_registry.nestgate]
 display = "NestGate"
@@ -121,6 +137,13 @@ capabilities = [
   { category = "ZFS", items = "Snapshots (100 in 0.17s), compression, quota, pool management" },
   { category = "Discovery", items = "Isomorphic IPC (Unix/TCP/abstract auto-detect), MCP provider, multi-family sockets" },
   { category = "Caching", items = "AI model cache for Squirrel (download, store, retrieve via JSON-RPC)" },
+]
+edges = [
+  { target = "toweratomic", relation = "composes_into" },
+  { target = "nucleus", relation = "composes_into" },
+  { target = "rhizocrypt", relation = "stores_for" },
+  { target = "squirrel", relation = "stores_for" },
+  { target = "sweetgrass", relation = "stores_for" },
 ]
 
 [extra.entity_registry.toadstool]
@@ -144,6 +167,12 @@ capabilities = [
   { category = "Neuromorphic", items = "Pure Rust Akida driver — 160 NPUs, 48-202x faster than CPU, 100x power efficiency vs GPU" },
   { category = "Precision", items = "Native f64 on consumer GPUs via Vulkan (1:2 throughput, not CUDA's 1:64)" },
 ]
+edges = [
+  { target = "barracuda", relation = "dispatches" },
+  { target = "coralreef", relation = "dispatches" },
+  { target = "nucleus", relation = "composes_into" },
+  { target = "biomeos", relation = "validated_by" },
+]
 
 [extra.entity_registry.squirrel]
 display = "Squirrel"
@@ -165,6 +194,11 @@ capabilities = [
   { category = "MCP", items = "Multi-server coordination, tool discovery, resource management" },
   { category = "Context", items = "Session management, token counting, context windowing, automatic fallback" },
   { category = "Sovereign", items = "Local inference via Ollama, zero telemetry by default, DignityGuard ethics checks" },
+]
+edges = [
+  { target = "biomeos", relation = "validated_by" },
+  { target = "nestgate", relation = "stores_for" },
+  { target = "nucleus", relation = "composes_into" },
 ]
 
 [extra.entity_registry.biomeos]
@@ -189,6 +223,15 @@ capabilities = [
   { category = "Dark Forest", items = "Zero metadata leakage, encrypted beacons, genetic model coordination" },
   { category = "Plasmodium", items = "Multi-machine meld/split/mix, cross-device federation" },
 ]
+edges = [
+  { target = "nucleus", relation = "dispatches" },
+  { target = "toweratomic", relation = "dispatches" },
+  { target = "squirrel", relation = "dispatches" },
+  { target = "toadstool", relation = "dispatches" },
+  { target = "songbird", relation = "dispatches" },
+  { target = "beardog", relation = "dispatches" },
+  { target = "nestgate", relation = "dispatches" },
+]
 
 [extra.entity_registry.coralreef]
 display = "coralReef"
@@ -210,6 +253,11 @@ capabilities = [
   { category = "Transcendentals", items = "exp2, log2, sin, cos, sqrt, rcp — instruction-level emission with FMA policy" },
   { category = "Driver", items = "coralDriver userspace GPU dispatch via DRM ioctl (amdgpu, nouveau/nvidia-drm)" },
   { category = "Stubs", items = "Pure Rust CFG, BitSet, dataflow, SmallVec, fxhash — zero external deps in compiler core" },
+]
+edges = [
+  { target = "barracuda", relation = "compiled_by" },
+  { target = "toadstool", relation = "compiled_by" },
+  { target = "nucleus", relation = "composes_into" },
 ]
 
 [extra.entity_registry.barracuda]
@@ -235,6 +283,14 @@ capabilities = [
   { category = "Special Functions", items = "Bessel, Laguerre, Hermite, erfc, Gamma, Hill kinetics" },
   { category = "Precision", items = "DF64 double-precision emulation (f32 pairs, ~48-bit mantissa, 9.9x throughput)" },
 ]
+edges = [
+  { target = "coralreef", relation = "compiled_by" },
+  { target = "toadstool", relation = "validated_by" },
+  { target = "nucleus", relation = "composes_into" },
+  { target = "hotspring", relation = "validated_by" },
+  { target = "wetspring", relation = "validated_by" },
+  { target = "groundspring", relation = "validated_by" },
+]
 
 [extra.entity_registry.petaltongue]
 display = "petalTongue"
@@ -256,6 +312,11 @@ capabilities = [
   { category = "Accessibility", items = "Screen reader, sonified health (5 instruments, spatial stereo), visual alerts, keyboard-only nav" },
   { category = "Scenarios", items = "Blind, deaf, nonverbal, illiterate, motor disability, deaf-blind — first-class, not afterthoughts" },
 ]
+edges = [
+  { target = "biomeos", relation = "validated_by" },
+  { target = "nucleus", relation = "extends" },
+  { target = "songbird", relation = "derived_from" },
+]
 
 [extra.entity_registry.rhizocrypt]
 display = "rhizoCrypt"
@@ -276,6 +337,13 @@ capabilities = [
   { category = "DAG", items = "Content-addressed (BLAKE3), lock-free concurrency (DashMap), IPLD-compatible" },
   { category = "Slice Modes", items = "Copy, Loan (auto-revoke), Escrow (conditional), Mirror (sync), Consignment (delegated), Provenance (read-only)" },
   { category = "Lifecycle", items = "Dehydration to loamSpine for permanence, ephemeral by intent, session-scoped GC" },
+]
+edges = [
+  { target = "loamspine", relation = "composes_into" },
+  { target = "sweetgrass", relation = "composes_into" },
+  { target = "beardog", relation = "derived_from" },
+  { target = "nestgate", relation = "stores_for" },
+  { target = "provenancetrio", relation = "composes_into" },
 ]
 
 [extra.entity_registry.sweetgrass]
@@ -299,6 +367,12 @@ capabilities = [
   { category = "Privacy", items = "5 GDPR-inspired privacy levels, session dedup + zstd compression" },
   { category = "Backends", items = "Memory, Sled, PostgreSQL storage backends" },
 ]
+edges = [
+  { target = "rhizocrypt", relation = "composes_into" },
+  { target = "loamspine", relation = "composes_into" },
+  { target = "beardog", relation = "derived_from" },
+  { target = "provenancetrio", relation = "composes_into" },
+]
 
 [extra.entity_registry.loamspine]
 display = "loamSpine"
@@ -321,6 +395,12 @@ capabilities = [
   { category = "Discovery", items = "Infant Discovery pattern (Songbird hub, O(n) not O(n²)), DNS SRV + mDNS" },
   { category = "RPC", items = "Pure Rust RPC (tarpc + JSON-RPC 2.0, no gRPC, no protobuf), zero-copy optimized" },
 ]
+edges = [
+  { target = "rhizocrypt", relation = "composes_into" },
+  { target = "sweetgrass", relation = "composes_into" },
+  { target = "songbird", relation = "discovers" },
+  { target = "provenancetrio", relation = "composes_into" },
+]
 
 [extra.entity_registry.skunkbat]
 display = "skunkBat"
@@ -341,6 +421,11 @@ capabilities = [
   { category = "Threat Types", items = "Genetic (unknown lineage), Topology (unusual patterns), Behavioral (baseline deviation), Intrusion (port scans), Resource (abuse)" },
   { category = "Response", items = "Graduated: Monitor → Warn → Throttle → Quarantine → Block (user authority required)" },
   { category = "Constraint", items = "Cannot read content, cannot escalate autonomously — defense without surveillance" },
+]
+edges = [
+  { target = "beardog", relation = "analogous_to" },
+  { target = "songbird", relation = "derived_from" },
+  { target = "biomeos", relation = "validated_by" },
 ]
 
 [extra.entity_registry.sourdough]
@@ -363,6 +448,10 @@ capabilities = [
   { category = "Packaging", items = "genomeBin production, ecoBin wrapping, checksummed binary artifacts" },
   { category = "Meta", items = "Build-time tool — generated primals do not depend on sourDough at runtime" },
 ]
+edges = [
+  { target = "plasmidbin", relation = "composes_into" },
+  { target = "primalspring", relation = "validated_by" },
+]
 
 [extra.entity_registry.bingocube]
 display = "bingoCube"
@@ -383,6 +472,10 @@ capabilities = [
   { category = "Commitment", items = "BLAKE3 progressive reveal (commit → partial → full), sealed-bid mechanics" },
   { category = "Verification", items = "Visual bingo-card patterns, tonal audio fingerprints — human-verifiable without hex" },
   { category = "Integration", items = "BearDog identity, Dark Forest discovery, game-science provably fair selection" },
+]
+edges = [
+  { target = "beardog", relation = "derived_from" },
+  { target = "ludospring", relation = "validated_by" },
 ]
 
 # ── Springs ──────────────────────────────────────────────────────────────

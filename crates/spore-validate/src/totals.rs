@@ -85,7 +85,7 @@ fn sum_field(
 
 fn check(stored: u64, computed: u64, field: &str, label: &str, diagnostics: &mut Vec<Diagnostic>) {
     if stored != computed {
-        diagnostics.push(Diagnostic::Error(format!(
+        diagnostics.push(Diagnostic::error(format!(
             "totals.{field}={stored} but {label}={computed}"
         )));
     }
@@ -123,6 +123,7 @@ mod tests {
                         composes: None,
                         capabilities: None,
                         page: None,
+                        edges: None,
                     },
                 )
             })

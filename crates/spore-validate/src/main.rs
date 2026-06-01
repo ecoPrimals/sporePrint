@@ -7,9 +7,11 @@ use clap::{Parser, Subcommand};
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
+mod certify;
 mod content;
 mod error;
 mod fetch;
+mod graph;
 mod links;
 mod model;
 mod notebook;
@@ -111,6 +113,20 @@ enum Command {
         #[arg(long)]
         write: bool,
     },
+
+    /// Build and emit the entity graph (renvois de choses)
+    Graph {
+        /// Emit JSON graph to static/graph/entity-graph.json
+        #[arg(long)]
+        emit: bool,
+    },
+
+    /// Certify the site — emit or validate the guideStone manifest
+    Certify {
+        /// Write certification manifest to static/certification/manifest.json
+        #[arg(long)]
+        emit: bool,
+    },
 }
 
 fn main() -> ExitCode {
@@ -168,6 +184,8 @@ fn run() -> Result<(), Error> {
             diff,
             write,
         }) => run_provenance(&root, verify, diff, write),
+        Some(Command::Graph { emit }) => run_graph(&root, &config, emit),
+        Some(Command::Certify { emit }) => run_certify(&root, &config, emit),
     }
 }
 
@@ -188,6 +206,7 @@ fn run_validate(
     let mut diagnostics = Vec::new();
 
     registry::validate(&config.extra.entity_registry, &mut diagnostics);
+    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
     totals::validate(
         &config.extra.entity_registry,
         &config.extra.totals,
@@ -218,9 +237,7 @@ fn run_validate(
 
     if strict {
         for diag in &mut diagnostics {
-            if let Diagnostic::Warning(msg) = diag {
-                *diag = Diagnostic::Error(format!("(strict) {msg}"));
-            }
+            diag.promote_to_error();
         }
     }
 
@@ -297,15 +314,7 @@ fn run_refresh(
 
     println!();
     for d in &result.drifts {
-        let pct = if d.registered > 0 {
-            #[allow(clippy::cast_precision_loss)]
-            let diff = d.actual as f64 - d.registered as f64;
-            #[allow(clippy::cast_precision_loss)]
-            let base = d.registered as f64;
-            format!("{:+.1}%", diff / base * 100.0)
-        } else {
-            "new".to_string()
-        };
+        let pct = drift_pct(d.registered, d.actual);
         println!(
             "  DRIFT: [{}] {} -- registered: {}, actual: {} ({pct})",
             d.key, d.field, d.registered, d.actual
@@ -326,6 +335,20 @@ fn run_refresh(
     }
 
     Ok(())
+}
+
+/// Format a drift percentage for display.
+///
+/// Precision loss from u64→f64 is intentional — we only need 1 decimal place
+/// for human-readable percentage output.
+#[allow(clippy::cast_precision_loss)]
+fn drift_pct(registered: u64, actual: u64) -> String {
+    if registered == 0 {
+        return "new".to_string();
+    }
+    let diff = actual as f64 - registered as f64;
+    let base = registered as f64;
+    format!("{:+.1}%", diff / base * 100.0)
 }
 
 /// Walk up from `start` looking for a `.gate` file, then derive the springs root.
@@ -458,6 +481,81 @@ fn run_provenance(root: &Path, verify: bool, diff: bool, write: bool) -> Result<
             manifest.page_count,
             &manifest.root_hash[..16]
         );
+    }
+
+    Ok(())
+}
+
+fn run_graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
+    println!("spore-validate: building entity graph (renvois de choses)...");
+
+    let mut diagnostics = Vec::new();
+    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
+
+    for d in &diagnostics {
+        println!("  ERROR: {}", d.message());
+    }
+
+    if !diagnostics.is_empty() {
+        return Err(Error::ValidationFailed {
+            error_count: diagnostics.len(),
+            warning_count: 0,
+        });
+    }
+
+    let entity_graph = graph::build_graph(&config.extra.entity_registry);
+
+    println!(
+        "  {} nodes, {} edges ({} declared + {} inverse)",
+        entity_graph.stats.node_count,
+        entity_graph.stats.edge_count,
+        entity_graph.stats.declared_edges,
+        entity_graph.stats.inverse_edges,
+    );
+
+    if emit {
+        let output_path = root.join("static/graph/entity-graph.json");
+        graph::emit_graph_json(&entity_graph, &output_path)
+            .map_err(|e| Error::io(&output_path, e))?;
+        println!("  EMIT: {}", output_path.display());
+    }
+
+    Ok(())
+}
+
+fn run_certify(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
+    println!("spore-validate: certification (guideStone mode)...");
+
+    let manifest = certify::build_manifest(config, root, 0);
+
+    println!("  entities: {}", manifest.entity_count);
+    println!("  edges: {}", manifest.edge_count);
+    println!("  content pages: {}", manifest.content_pages);
+    println!("  graph merkle: {}", manifest.graph_merkle);
+
+    let manifest_path = root.join("static/certification/manifest.json");
+
+    if emit {
+        certify::emit_manifest(&manifest, &manifest_path)
+            .map_err(|e| Error::io(&manifest_path, e))?;
+        println!("  EMIT: {}", manifest_path.display());
+    } else if manifest_path.exists() {
+        match certify::validate_manifest(&manifest_path, &manifest) {
+            Ok(drifts) if drifts.is_empty() => {
+                println!("  VALID: manifest matches current state");
+            }
+            Ok(drifts) => {
+                println!("  DRIFT detected ({} fields):", drifts.len());
+                for d in &drifts {
+                    println!("    {d}");
+                }
+            }
+            Err(e) => {
+                println!("  WARN: could not read existing manifest: {e}");
+            }
+        }
+    } else {
+        println!("  INFO: no existing manifest; use --emit to create one");
     }
 
     Ok(())

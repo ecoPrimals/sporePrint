@@ -83,7 +83,7 @@ pub fn validate_internal_links(content_root: &Path) -> Vec<Diagnostic> {
                 };
 
                 if !pages.contains(&without_index) {
-                    diagnostics.push(Diagnostic::Warning(format!(
+                    diagnostics.push(Diagnostic::warning(format!(
                         "{file_display}: broken link @/{target}"
                     )));
                 }

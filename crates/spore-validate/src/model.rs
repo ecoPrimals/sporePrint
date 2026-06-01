@@ -61,6 +61,9 @@ pub struct Entity {
     pub capabilities: Option<Vec<Capability>>,
     #[serde(default)]
     pub page: Option<String>,
+    /// Typed edges to other entities — renvois de choses.
+    #[serde(default)]
+    pub edges: Option<Vec<Edge>>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize)]
@@ -73,6 +76,14 @@ pub enum EntityKind {
     Concept,
     Infra,
     Org,
+}
+
+impl EntityKind {
+    /// Kinds that have Zola taxonomy pages (pluralized name → kind mapping).
+    /// Derived from the type system, not hardcoded elsewhere.
+    pub const fn taxonomy_pairs() -> &'static [(&'static str, Self)] {
+        &[("primals", Self::Primal), ("springs", Self::Spring)]
+    }
 }
 
 impl fmt::Display for EntityKind {
@@ -114,6 +125,102 @@ impl fmt::Display for Tier {
 pub struct Capability {
     pub category: String,
     pub items: String,
+}
+
+/// A typed, directed edge from one entity to another — a renvoi de choses.
+///
+/// Edges represent non-linguistic connections between ideas: structural
+/// relationships that exist because of the nature of the things themselves,
+/// not because of shared words. Implements the Diderot (1751) → Bush (1945)
+/// → provenance trio (2026) lineage.
+#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
+pub struct Edge {
+    pub target: String,
+    pub relation: EdgeRelation,
+    #[serde(default)]
+    pub weight: Option<u8>,
+}
+
+/// The taxonomy of intellectual relationships between entities.
+///
+/// Inspired by Diderot's four categories of renvois de choses:
+/// analogy, common principle, contrast, and refutation — extended
+/// for a scientific computing ecosystem.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum EdgeRelation {
+    /// A composes into B (A is a component of B)
+    ComposesInto,
+    /// A is validated by B (B proves A's correctness)
+    ValidatedBy,
+    /// A validates B (A proves B's correctness)
+    Validates,
+    /// A is compiled/built by B
+    CompiledBy,
+    /// A is derived from B (intellectual lineage)
+    DerivedFrom,
+    /// A reproduces B (A is a reproduction of B's results)
+    Reproduces,
+    /// A extends B (A builds upon B)
+    Extends,
+    /// A was preceded by B (temporal/evolutionary order)
+    PrecededBy,
+    /// A references B (general citation)
+    References,
+    /// A dispatches/orchestrates B
+    Dispatches,
+    /// A stores data for B
+    StoresFor,
+    /// A discovers/routes to B
+    Discovers,
+    /// A contradicts B (Diderot's "refutation" renvoi)
+    Contradicts,
+    /// A is analogous to B (Diderot's "analogy" renvoi)
+    AnalogousTo,
+}
+
+impl fmt::Display for EdgeRelation {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str(match self {
+            Self::ComposesInto => "composes into",
+            Self::ValidatedBy => "validated by",
+            Self::Validates => "validates",
+            Self::CompiledBy => "compiled by",
+            Self::DerivedFrom => "derived from",
+            Self::Reproduces => "reproduces",
+            Self::Extends => "extends",
+            Self::PrecededBy => "preceded by",
+            Self::References => "references",
+            Self::Dispatches => "dispatches",
+            Self::StoresFor => "stores for",
+            Self::Discovers => "discovers",
+            Self::Contradicts => "contradicts",
+            Self::AnalogousTo => "analogous to",
+        })
+    }
+}
+
+impl EdgeRelation {
+    /// The inverse relation — if A has relation R to B, B has inverse(R) to A.
+    /// This is what makes all connections bidirectional by construction.
+    pub const fn inverse(self) -> Self {
+        match self {
+            Self::ComposesInto => Self::ComposesInto, // B "composed of" A (same type, reversed)
+            Self::ValidatedBy => Self::Validates,
+            Self::Validates => Self::ValidatedBy,
+            Self::CompiledBy => Self::CompiledBy,
+            Self::DerivedFrom => Self::Extends,
+            Self::Reproduces => Self::Reproduces,
+            Self::Extends => Self::DerivedFrom,
+            Self::PrecededBy => Self::PrecededBy,
+            Self::References => Self::References,
+            Self::Dispatches => Self::Dispatches,
+            Self::StoresFor => Self::StoresFor,
+            Self::Discovers => Self::Discovers,
+            Self::Contradicts => Self::Contradicts,
+            Self::AnalogousTo => Self::AnalogousTo,
+        }
+    }
 }
 
 /// Aggregate metrics from `[extra.totals]`.
@@ -207,5 +314,32 @@ mod tests {
     fn parse_config_returns_error_on_missing_file() {
         let result = parse_config(Path::new("/nonexistent/config.toml"));
         assert!(result.is_err());
+    }
+
+    #[test]
+    fn edge_deserializes() {
+        let toml_str = r#"
+            display = "test"
+            emoji = "🧪"
+            kind = "primal"
+            edges = [
+                { target = "hotspring", relation = "validated_by" },
+                { target = "toweratomic", relation = "composes_into", weight = 3 },
+            ]
+        "#;
+        let e: Entity = toml::from_str(toml_str).unwrap();
+        let edges = e.edges.unwrap();
+        assert_eq!(edges.len(), 2);
+        assert_eq!(edges[0].relation, EdgeRelation::ValidatedBy);
+        assert_eq!(edges[0].target, "hotspring");
+        assert_eq!(edges[1].weight, Some(3));
+    }
+
+    #[test]
+    fn edge_relation_inverse() {
+        assert_eq!(EdgeRelation::ValidatedBy.inverse(), EdgeRelation::Validates);
+        assert_eq!(EdgeRelation::Validates.inverse(), EdgeRelation::ValidatedBy);
+        assert_eq!(EdgeRelation::DerivedFrom.inverse(), EdgeRelation::Extends);
+        assert_eq!(EdgeRelation::Extends.inverse(), EdgeRelation::DerivedFrom);
     }
 }

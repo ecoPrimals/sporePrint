@@ -34,7 +34,7 @@ These map to display names via the entity registry:
 
 ## Entity Registry Schema
 
-`config.toml` contains `[extra.entity_registry.{key}]` entries. Required fields depend on `kind`. As of April 2026: **59 entities** across 7 kinds.
+`config.toml` contains `[extra.entity_registry.{key}]` entries. Required fields depend on `kind`. As of June 2026: **66 entities** across 7 kinds.
 
 ### All entities (required)
 

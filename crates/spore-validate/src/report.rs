@@ -201,6 +201,7 @@ mod tests {
                     items: "sign,verify,encrypt,decrypt".into(),
                 }]),
                 page: Some("/architecture/primal-catalog/#beardog".into()),
+                edges: None,
             },
         );
         Config {

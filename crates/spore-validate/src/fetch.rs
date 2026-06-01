@@ -33,13 +33,20 @@ pub struct Source {
     pub private: bool,
 }
 
+/// Default forge URL prefix used when a source has no explicit `origin`.
+/// Configurable via `SPOREPRINT_FORGE_URL` environment variable.
+/// Falls back to GitHub (extracellular shadow) only as last resort.
+fn default_forge_url() -> String {
+    std::env::var("SPOREPRINT_FORGE_URL").unwrap_or_else(|_| "https://github.com".to_string())
+}
+
 impl Source {
-    /// Resolve the clone URL — prefers explicit `origin`, falls back to
-    /// GitHub HTTPS (extracellular shadow).
+    /// Resolve the clone URL — prefers explicit `origin`, then configured
+    /// forge, then GitHub shadow.
     pub fn clone_url(&self) -> String {
         self.origin
             .clone()
-            .unwrap_or_else(|| format!("https://github.com/{}.git", self.repo))
+            .unwrap_or_else(|| format!("{}/{}.git", default_forge_url(), self.repo))
     }
 }
 

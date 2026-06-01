@@ -28,7 +28,7 @@ fn validate_entity(key: &str, entity: &Entity, diagnostics: &mut Vec<Diagnostic>
         .collect();
 
     if !missing.is_empty() {
-        diagnostics.push(Diagnostic::Error(format!(
+        diagnostics.push(Diagnostic::error(format!(
             "[{key}] kind={} missing required fields: {{{}}}",
             entity.kind,
             missing.join(", ")
@@ -36,7 +36,7 @@ fn validate_entity(key: &str, entity: &Entity, diagnostics: &mut Vec<Diagnostic>
     }
 
     if entity.tier.is_some() && entity.kind != EntityKind::Primal {
-        diagnostics.push(Diagnostic::Error(format!(
+        diagnostics.push(Diagnostic::error(format!(
             "[{key}] has tier but kind={} (tier is only valid for primals)",
             entity.kind
         )));
@@ -112,6 +112,7 @@ mod tests {
             composes: None,
             capabilities: None,
             page: None,
+            edges: None,
         }
     }
 

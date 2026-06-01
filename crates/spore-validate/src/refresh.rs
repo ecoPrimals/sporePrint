@@ -239,10 +239,14 @@ use crate::time::today_utc;
 
 /// Resolve a repo path from its `org/name` string.
 ///
-/// Discovery order (capability-based, not hardcoded):
+/// Discovery order (runtime, capability-based):
 ///   1. Canonical: `root/org/name`
-///   2. Category subdirs: `root/{primals,springs,infra,sporeGarden}/name`
+///   2. Any immediate subdirectory of root that contains `name/`
 ///   3. Flat: `root/name`
+///
+/// No hardcoded directory names — discovers at runtime by walking
+/// the filesystem. A primal has self-knowledge only and discovers
+/// structure by probing, not by assuming.
 fn find_repo(root: &Path, repo_ref: &str) -> Option<PathBuf> {
     let candidate = root.join(repo_ref);
     if candidate.is_dir() {
@@ -251,10 +255,16 @@ fn find_repo(root: &Path, repo_ref: &str) -> Option<PathBuf> {
 
     let name = repo_ref.rsplit('/').next().unwrap_or(repo_ref);
 
-    for subdir in &["primals", "springs", "infra", "sporeGarden"] {
-        let candidate = root.join(subdir).join(name);
-        if candidate.is_dir() {
-            return Some(candidate);
+    // Walk immediate subdirectories — discover, don't assume.
+    if let Ok(entries) = std::fs::read_dir(root) {
+        for entry in entries.flatten() {
+            if !entry.file_type().is_ok_and(|ft| ft.is_dir()) {
+                continue;
+            }
+            let candidate = entry.path().join(name);
+            if candidate.is_dir() {
+                return Some(candidate);
+            }
         }
     }
 

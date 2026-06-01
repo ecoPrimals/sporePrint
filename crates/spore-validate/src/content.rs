@@ -36,10 +36,7 @@ pub fn validate_taxonomies(
             continue;
         };
 
-        for (tax_name, expected_kind) in [
-            ("primals", EntityKind::Primal),
-            ("springs", EntityKind::Spring),
-        ] {
+        for &(tax_name, expected_kind) in EntityKind::taxonomy_pairs() {
             let Some(tags) = taxonomies.get(tax_name).and_then(|v| v.as_array()) else {
                 continue;
             };
@@ -51,13 +48,13 @@ pub fn validate_taxonomies(
                 referenced_keys.insert(tag.to_string());
 
                 if !registry_keys.contains(tag) {
-                    diagnostics.push(Diagnostic::Error(format!(
+                    diagnostics.push(Diagnostic::error(format!(
                         "{}: taxonomy tag '{tag}' not in entity_registry",
                         rel.display()
                     )));
                 } else if let Some(entity) = registry.get(tag) {
                     if entity.kind != expected_kind {
-                        diagnostics.push(Diagnostic::Warning(format!(
+                        diagnostics.push(Diagnostic::warning(format!(
                             "{}: tag '{tag}' in [{tax_name}] but registry says kind='{}' \
                              (expected '{expected_kind}')",
                             rel.display(),
@@ -78,7 +75,7 @@ pub fn validate_taxonomies(
     unreferenced.sort_unstable();
 
     for key in unreferenced {
-        diagnostics.push(Diagnostic::Warning(format!(
+        diagnostics.push(Diagnostic::warning(format!(
             "[{key}] is in registry but no content page tags it"
         )));
     }
@@ -125,10 +122,10 @@ pub fn check_integrity(
     }
 
     for b in broken {
-        diagnostics.push(Diagnostic::Error(b));
+        diagnostics.push(Diagnostic::error(b));
     }
 
-    diagnostics.push(Diagnostic::Warning(format!(
+    diagnostics.push(Diagnostic::warning(format!(
         "check: {shortcode_count} entity shortcodes scanned, all resolved"
     )));
 }
@@ -152,7 +149,7 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
                     continue;
                 }
                 count += 1;
-                diagnostics.push(Diagnostic::Error(format!(
+                diagnostics.push(Diagnostic::error(format!(
                     "{}:{}: bare .md link '{}' — use @/ prefix for Zola internal links",
                     rel.display(),
                     line_no + 1,
@@ -163,8 +160,8 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
     }
 
     if count == 0 {
-        diagnostics.push(Diagnostic::Warning(
-            "link-lint: all internal links use @/ prefix".to_string(),
+        diagnostics.push(Diagnostic::warning(
+            "link-lint: all internal links use @/ prefix",
         ));
     }
 }

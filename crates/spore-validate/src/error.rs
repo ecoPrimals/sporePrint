@@ -48,30 +48,57 @@ impl Error {
     }
 }
 
+/// Severity level for diagnostics.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Severity {
+    Error,
+    Warning,
+}
+
 /// Validation diagnostic — either an error (must fix) or warning (advisory).
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub enum Diagnostic {
-    Error(String),
-    Warning(String),
+pub struct Diagnostic {
+    severity: Severity,
+    message: String,
 }
 
 impl Diagnostic {
+    pub fn error(msg: impl Into<String>) -> Self {
+        Self {
+            severity: Severity::Error,
+            message: msg.into(),
+        }
+    }
+
+    pub fn warning(msg: impl Into<String>) -> Self {
+        Self {
+            severity: Severity::Warning,
+            message: msg.into(),
+        }
+    }
+
     pub const fn is_error(&self) -> bool {
-        matches!(self, Self::Error(_))
+        matches!(self.severity, Severity::Error)
     }
 
     pub fn message(&self) -> &str {
-        match self {
-            Self::Error(msg) | Self::Warning(msg) => msg,
+        &self.message
+    }
+
+    /// Promote warning to error (for --strict mode).
+    pub fn promote_to_error(&mut self) {
+        if self.severity == Severity::Warning {
+            self.severity = Severity::Error;
+            self.message = format!("(strict) {}", self.message);
         }
     }
 }
 
 impl std::fmt::Display for Diagnostic {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Self::Error(msg) => write!(f, "ERROR: {msg}"),
-            Self::Warning(msg) => write!(f, "WARN:  {msg}"),
+        match self.severity {
+            Severity::Error => write!(f, "ERROR: {}", self.message),
+            Severity::Warning => write!(f, "WARN:  {}", self.message),
         }
     }
 }
@@ -115,7 +142,7 @@ mod tests {
 
     #[test]
     fn diagnostic_error_is_error() {
-        let d = Diagnostic::Error("test".into());
+        let d = Diagnostic::error("test");
         assert!(d.is_error());
         assert_eq!(d.message(), "test");
         assert!(d.to_string().contains("ERROR"));
@@ -123,9 +150,18 @@ mod tests {
 
     #[test]
     fn diagnostic_warning_is_not_error() {
-        let d = Diagnostic::Warning("warn".into());
+        let d = Diagnostic::warning("warn");
         assert!(!d.is_error());
         assert_eq!(d.message(), "warn");
         assert!(d.to_string().contains("WARN"));
+    }
+
+    #[test]
+    fn promote_to_error_works() {
+        let mut d = Diagnostic::warning("soft issue");
+        assert!(!d.is_error());
+        d.promote_to_error();
+        assert!(d.is_error());
+        assert!(d.message().contains("(strict)"));
     }
 }

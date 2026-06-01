@@ -115,7 +115,7 @@ pub fn diff_manifests(
 
 pub fn write_manifest(manifest: &ContentManifest, output: &Path) -> std::io::Result<()> {
     let toml_str = toml::to_string_pretty(manifest).map_err(|e| {
-        std::io::Error::new(std::io::ErrorKind::Other, e.to_string())
+        std::io::Error::other(e.to_string())
     })?;
     fs::write(output, toml_str)
 }
@@ -144,8 +144,7 @@ fn chrono_free_now() -> String {
         .ok();
     output
         .and_then(|o| String::from_utf8(o.stdout).ok())
-        .map(|s| s.trim().to_string())
-        .unwrap_or_else(|| "unknown".to_string())
+        .map_or_else(|| "unknown".to_string(), |s| s.trim().to_string())
 }
 
 pub fn manifest_path(root: &Path) -> PathBuf {
