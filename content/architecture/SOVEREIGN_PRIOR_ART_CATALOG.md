@@ -1,5 +1,6 @@
 +++
 title = "ecoPrimals — Sovereign Prior Art Catalog"
+weight = 65
 description = "Lysogeny prior art record for sovereign compute"
 date = 2026-03-17
 

@@ -89,6 +89,34 @@
   </section>
   {% endif %}
 
+  {# ── Sovereignty / Quality badges ── #}
+  <section class="entity-badges" aria-label="Quality indicators">
+    <div class="badge-row">
+      <span class="badge badge-rust">Pure Rust</span>
+      <span class="badge badge-license">AGPL-3.0</span>
+      {% if entry.kind == "primal" or entry.kind == "spring" %}
+      <span class="badge badge-sovereign">Zero C deps</span>
+      {% endif %}
+      {% if entry.tier is defined and entry.tier == "foundation" %}
+      <span class="badge badge-foundation">Foundation tier</span>
+      {% endif %}
+    </div>
+  </section>
+
+  {# ── Related entities (same kind, same domain if available) ── #}
+  {% if entry.domain is defined %}
+  <section class="entity-related" aria-label="Related entities">
+    <h2>Same Domain</h2>
+    <ul class="entity-related-list">
+      {% for k, v in config.extra.entity_registry %}
+        {% if v.domain is defined and v.domain == entry.domain and k != key %}
+        <li><a href="/{{ v.kind }}s/{{ k }}/" class="entity-ref entity-{{ v.kind }}"><span aria-hidden="true">{{ v.emoji }}&nbsp;</span>{{ v.display }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
   {% endif %}
 
   {# ── Pages referencing this entity ── #}

@@ -153,6 +153,9 @@ mod tests {
             wgsl_lines_display: None,
             validation_checks: None,
             papers_reproduced: None,
+            basecamp_papers: None,
+            primal_count: None,
+            spring_count: None,
             measured_date: None,
         }
     }

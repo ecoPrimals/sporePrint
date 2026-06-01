@@ -1,5 +1,6 @@
 +++
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
+weight = 21
 description = "All 8 springs — 7 science domains + 1 meta-spring — checks, papers reproduced, cross-spring data flow"
 date = 2026-03-31
 

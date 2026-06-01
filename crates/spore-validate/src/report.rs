@@ -157,6 +157,15 @@ pub fn format_totals(totals: &crate::model::Totals) -> String {
     if let Some(papers) = &totals.papers_reproduced {
         let _ = writeln!(out, "  Papers reproduced: {papers}");
     }
+    if let Some(bp) = totals.basecamp_papers {
+        let _ = writeln!(out, "  baseCamp papers: {bp}");
+    }
+    if let Some(pc) = totals.primal_count {
+        let _ = writeln!(out, "  Primal count: {pc}");
+    }
+    if let Some(sc) = totals.spring_count {
+        let _ = writeln!(out, "  Spring count: {sc}");
+    }
     if let Some(date) = &totals.measured_date {
         let _ = writeln!(out, "  Measured: {date}");
     }
@@ -215,6 +224,9 @@ mod tests {
                     wgsl_lines_display: None,
                     validation_checks: None,
                     papers_reproduced: None,
+                    basecamp_papers: None,
+                    primal_count: None,
+                    spring_count: None,
                     measured_date: None,
                 },
             },
@@ -282,6 +294,9 @@ mod tests {
             wgsl_lines_display: Some("3,400".into()),
             validation_checks: Some("4,200".into()),
             papers_reproduced: Some("7".into()),
+            basecamp_papers: Some(28),
+            primal_count: Some(15),
+            spring_count: Some(8),
             measured_date: Some("2026-05-30".into()),
         };
         let report = format_totals(&totals);
@@ -319,6 +334,9 @@ mod tests {
             wgsl_lines_display: None,
             validation_checks: None,
             papers_reproduced: None,
+            basecamp_papers: None,
+            primal_count: None,
+            spring_count: None,
             measured_date: None,
         };
         let report = format_totals(&totals);

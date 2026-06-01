@@ -1,5 +1,6 @@
 +++
 title = "NUCLEUS Composition Model"
+weight = 8
 description = "How primals compose into a system — the atomics ladder, Neural API, deploy graphs, Dark Forest, and Plasmodium."
 date = 2026-03-31
 

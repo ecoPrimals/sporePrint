@@ -1,5 +1,6 @@
 +++
 title = "Deployment Model: plasmidBin & BYOB"
+weight = 42
 description = "How primal binaries are distributed, versioned, and composed — the plasmidBin binary distribution surface and BYOB composition model."
 date = 2026-03-31
 

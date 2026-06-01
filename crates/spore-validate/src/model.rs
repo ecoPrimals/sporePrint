@@ -152,6 +152,12 @@ pub struct Totals {
     #[serde(default)]
     pub papers_reproduced: Option<String>,
     #[serde(default)]
+    pub basecamp_papers: Option<u32>,
+    #[serde(default)]
+    pub primal_count: Option<u32>,
+    #[serde(default)]
+    pub spring_count: Option<u32>,
+    #[serde(default)]
     pub measured_date: Option<String>,
 }
 

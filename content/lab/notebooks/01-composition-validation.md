@@ -1,7 +1,7 @@
 +++
-title = "Composition Validation — airSpring"
+title = "01 — Composition Validation"
 description = "Rendered from 01-composition-validation.ipynb"
-date = 2026-05-31
+date = 2026-06-01
 weight = 50
 
 [extra]
@@ -9,106 +9,177 @@ domain = "Lab"
 rendered_from = "01-composition-validation.ipynb"
 +++
 
-<!-- Auto-generated from 01-composition-validation.ipynb by render_notebooks.sh -->
-<!-- Preferred: spore-validate render-notebooks (pure Rust) -->
+<!-- Auto-generated from 01-composition-validation.ipynb by spore-validate render-notebooks -->
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composition-Validation-%E2%80%94-airSpring">Composition Validation — airSpring<a class="anchor-link" href="#Composition-Validation-%E2%80%94-airSpring">¶</a></h1><p>airSpring is the ecological sciences validation spring in the ecoPrimals ecosystem.
-It validates precision agriculture, irrigation science, and environmental systems
-through 44 IPC capabilities across 87 experiments.</p>
-<p><strong>Data sources</strong>: <code>composition_validation.json</code>, <code>test_suite_report.json</code></p>
-<p><strong>Reproduce</strong>: <code>cargo run --release --bin validate_biome_graph</code> (35/35 PASS)</p>
-<p><strong>For other springs</strong>: Replace capability categories and deploy graph names with your
-domain. The pattern of niche.rs as canonical source → all deploy surfaces derive from
-it eliminates drift.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Capabilities: 44 total, 44/44 routable
-Deploy graphs: 4
-Gaps: 9 open / 2 resolved
-guideStone level: 0 → 1
-MCP tools: 10
-Tests: 1364 Rust + 1284 Python
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Capability-Distribution">Capability Distribution<a class="anchor-link" href="#Capability-Distribution">¶</a></h2><p>airSpring exposes 44 IPC capabilities organized by domain. The <code>niche.rs</code> module
-is the single source of truth — deploy TOMLs and cell graphs derive from it.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Deploy-Graph-Topology">Deploy Graph Topology<a class="anchor-link" href="#Deploy-Graph-Topology">¶</a></h2><p>airSpring defines 4 biomeOS deploy graphs for different composition patterns.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Primal-Composition-&amp;-Gap-Status">Primal Composition &amp; Gap Status<a class="anchor-link" href="#Primal-Composition-&amp;-Gap-Status">¶</a></h2><p>airSpring's NUCLEUS composition wires 5 primals via IPC directly;
-7 remain graph-level only (handled by biomeOS deployment).</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h2><table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IPC Capabilities</td>
-<td>44/44 routable</td>
-</tr>
-<tr>
-<td>Deploy Graphs</td>
-<td>4 validated offline</td>
-</tr>
-<tr>
-<td>Primals IPC-wired</td>
-<td>5 (toadStool, barraCuda, biomeOS, NestGate, Squirrel)</td>
-</tr>
-<tr>
-<td>Primals graph-level</td>
-<td>7 (petalTongue, coralReef, BearDog, Songbird, rhizoCrypt, loamSpine, sweetGrass)</td>
-</tr>
-<tr>
-<td>MCP Tools</td>
-<td>10 (Squirrel-discoverable)</td>
-</tr>
-<tr>
-<td>guideStone Level</td>
-<td>0 → 1 (blocked on primalSpring dependency)</td>
-</tr>
-<tr>
-<td>Open Gaps</td>
-<td>9 (AG-001 through AG-011)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Provenance</strong>: airSpring v0.10.0 · AGPL-3.0-or-later · <a href="https://primals.eco">primals.eco</a></p>
-</div>
-</div>
-</div>
+# 01 — Composition Validation
+
+**neuralSpring sporePrint** | Session S188 | May 2026
+
+Deploy graph structure, bond types, capability profiles, and discovery tiers.
+
+**Data sources:** `validation-state.json`, `cross-spring-matrix.json`
+
+**For other springs:** Replace capability lists with your spring's niche surface.
+Replace deploy graph node counts and fragment lists with your own
+`graphs/<spring>_deploy.toml` data.
+
+```python
+import json
+from pathlib import Path
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+RESULTS = Path('..') / 'experiments' / 'results'
+
+with open(RESULTS / 'validation-state.json') as f:
+    vs = json.load(f)
+
+with open(RESULTS / 'cross-spring-matrix.json') as f:
+    cs = json.load(f)
+
+print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
+```
+
+## Capability Surface
+
+neuralSpring advertises 30 capabilities across 9 domains.
+All are registered in `niche.rs`, `config.rs`, `capability_registry.toml`,
+and MCP tool definitions.
+
+```python
+caps = vs['capabilities']
+domains = {k: v for k, v in caps.items() if k != 'total'}
+
+PASS = '#2ecc71'
+INFO = '#3498db'
+
+fig, ax = plt.subplots(figsize=(10, 5))
+bars = ax.barh(list(domains.keys()), list(domains.values()), color=INFO)
+ax.set_xlabel('Capabilities')
+ax.set_title(f'neuralSpring Capability Surface ({caps["total"]} total)')
+for bar, val in zip(bars, domains.values()):
+    ax.text(bar.get_width() + 0.2, bar.get_y() + bar.get_height()/2,
+            str(val), va='center', fontweight='bold')
+plt.tight_layout()
+plt.show()
+```
+
+## Deploy Graph Structure
+
+The deploy graph (`neuralspring_deploy.toml`) defines 14 nodes across
+3 fragments: `tower_atomic`, `node_atomic`, `meta_tier`.
+
+```python
+dg = vs['deploy_graph']
+proto = cs['proto_nucleate']
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+# Deploy graph summary
+labels = ['Nodes', 'Capabilities', 'Fragments']
+values = [dg['nodes'], dg['capabilities_provided'], len(dg['fragments'])]
+colors = [INFO, PASS, '#9b59b6']
+axes[0].bar(labels, values, color=colors)
+axes[0].set_title('Deploy Graph')
+for i, v in enumerate(values):
+    axes[0].text(i, v + 0.3, str(v), ha='center', fontweight='bold')
+
+# Proto-nucleate dependencies
+deps = proto['depends_on']
+axes[1].barh(deps, [1]*len(deps), color=PASS)
+axes[1].set_title(f'Proto-Nucleate depends_on ({len(deps)} primals)')
+axes[1].set_xlim(0, 1.5)
+axes[1].set_xlabel('Required')
+
+plt.tight_layout()
+plt.show()
+
+print(f"Bond type: {dg['bond_type']}")
+print(f"Trust model: {dg['trust_model']}")
+print(f"Fragments: {', '.join(dg['fragments'])}")
+```
+
+## Discovery Tiers
+
+The validation chain progresses through 5 tiers, from Python baseline
+through guideStone certification.
+
+```python
+gs = vs['guidestone']
+
+tiers = [
+    ('Tier 1: Python baseline', 397, 'complete'),
+    ('Tier 2: Rust CPU proof', vs['tests']['total_workspace'], 'complete'),
+    ('Tier 3: GPU/WGSL parity', vs['tests']['rust_gpu_checks'], 'complete'),
+    ('Tier 4: Primal IPC', 6, 'wip'),
+    ('Tier 5: guideStone', 29, f"Level {gs['level']}")
+]
+
+fig, ax = plt.subplots(figsize=(10, 4))
+tier_names = [t[0] for t in tiers]
+tier_checks = [t[1] for t in tiers]
+tier_colors = [PASS if t[2] == 'complete' else '#f39c12' for t in tiers]
+
+bars = ax.barh(tier_names, tier_checks, color=tier_colors)
+ax.set_xlabel('Validation Checks')
+ax.set_title('Validation Discovery Tiers')
+ax.set_xscale('log')
+
+legend_elements = [
+    mpatches.Patch(color=PASS, label='Complete'),
+    mpatches.Patch(color='#f39c12', label='WIP / Partial')
+]
+ax.legend(handles=legend_elements, loc='lower right')
+
+plt.tight_layout()
+plt.show()
+```
+
+## guideStone Readiness
+
+neuralSpring's guideStone is at **Level 3** — bare ALL PASS (29/29 checks,
+P1-P5 certified). Levels 4-5 pending live NUCLEUS deployment.
+
+```python
+levels = [
+    ('L1: Validation exists', True),
+    ('L2: Properties documented', True),
+    ('L3: Bare guideStone (29/29)', True),
+    ('L4: NUCLEUS guideStone', False),
+    ('L5: Certified (cross-substrate)', False)
+]
+
+fig, ax = plt.subplots(figsize=(8, 3))
+colors = [PASS if done else '#e74c3c' for _, done in levels]
+ax.barh([l[0] for l in levels], [1]*len(levels), color=colors)
+ax.set_xlim(0, 1.2)
+ax.set_title(f'guideStone Readiness — Level {gs["level"]}')
+
+legend_elements = [
+    mpatches.Patch(color=PASS, label='DONE'),
+    mpatches.Patch(color='#e74c3c', label='PENDING')
+]
+ax.legend(handles=legend_elements)
+
+plt.tight_layout()
+plt.show()
+
+print(f"Properties certified: {', '.join(gs['properties_certified'])}")
+```
+
+## Summary
+
+| Metric | Value |
+|--------|-------|
+| Capabilities | 30 (9 domains) |
+| Deploy graph nodes | 14 |
+| Bond type | Metallic |
+| Trust model | InternalNucleus |
+| Proto-nucleate deps | 6 primals |
+| Validation capabilities | 7 |
+| guideStone level | 3 (29/29 bare) |
+| Properties certified | P1-P5 |
+
+**Provenance:** [primals.eco](https://primals.eco) |
+neuralSpring Session S188 | May 2026
+

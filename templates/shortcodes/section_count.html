@@ -1,0 +1,4 @@
+{# Count pages in a section.
+   Usage: {{ section_count(path="architecture/_index.md") }}
+   Returns the number of pages in the specified section. #}
+{% set sec = get_section(path=path) %}{{ sec.pages | length }}

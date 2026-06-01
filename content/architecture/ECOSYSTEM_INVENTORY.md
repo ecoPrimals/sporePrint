@@ -1,5 +1,6 @@
 +++
 title = "Ecosystem Inventory"
+weight = 22
 description = "Complete repository inventory across all three ecoPrimals organizations — every repo, its purpose, and current status."
 date = 2026-03-31
 

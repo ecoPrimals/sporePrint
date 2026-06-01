@@ -1,5 +1,6 @@
 +++
 title = "Foundation Connection: From baseCamp to Institutional Adoption"
+weight = 60
 description = "How validated baseCamp science flows through NUCLEUS composition into foundation's institutional adoption pipeline."
 date = 2026-05-06
 

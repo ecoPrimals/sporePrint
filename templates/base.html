@@ -113,7 +113,10 @@
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>
               {% if current_path is starting_with("/architecture") %}
               <ul class="tree-pages">
-                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% for pg in sec.pages %}
+                <li{% if pg.path == current_path %} class="tree-current"{% endif %}>
+                  <a href="{{ pg.permalink }}">{{ pg.title }}</a>
+                </li>
                 {% endfor %}
               </ul>
               {% endif %}

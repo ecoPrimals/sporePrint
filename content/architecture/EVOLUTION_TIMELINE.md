@@ -1,5 +1,6 @@
 +++
 title = "Evolution Timeline: 27 Days, Seven Domains, 15,000+ Checks"
+weight = 80
 description = "27-day sprint day-by-day record and velocity analysis"
 date = 2026-03-17
 

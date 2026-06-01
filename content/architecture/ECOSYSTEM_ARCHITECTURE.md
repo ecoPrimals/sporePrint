@@ -1,5 +1,6 @@
 +++
 title = "ecoPrimals Ecosystem Architecture: From Binary to Bonding"
+weight = 6
 description = "UniBin/ecoBin/genomeBin ladder, NUCLEUS deployment, bonding model, Neural API"
 date = 2026-03-17
 

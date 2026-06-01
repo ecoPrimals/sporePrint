@@ -920,3 +920,46 @@ a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; tex
 @media (max-width: 768px) {
   .spore-sidebar { float: none; width: 100%; margin: 0 0 1.5rem; }
 }
+
+/* Entity badges */
+.entity-badges { margin: 1.5rem 0; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.badge-rust { background: #f74c00; color: #fff; }
+.badge-license { background: var(--c-accent-light); color: var(--c-accent); }
+.badge-sovereign { background: var(--c-bg-alt); color: var(--c-text-muted); border: 1px solid var(--c-border); }
+.badge-foundation { background: #c9a227; color: #1a1a1a; }
+
+/* Entity related list */
+.entity-related { margin: 2rem 0; }
+.entity-related-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.entity-related-list li { margin: 0; }
+.entity-related-list a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--c-text);
+  transition: border-color 0.15s;
+}
+.entity-related-list a:hover { border-color: var(--c-accent); }
+
+/* Tree current page highlight */
+.tree-current > a { font-weight: 700; color: var(--c-accent); }
