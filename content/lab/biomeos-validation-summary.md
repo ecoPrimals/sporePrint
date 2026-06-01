@@ -2,7 +2,6 @@
 title = "biomeOS Validation Summary"
 description = "Orchestration kernel — 7,983 tests, 28 capability domains, 320+ translations, 19 signal graphs, 43 deploy graphs, DH-1 complete, zero blocking debt"
 date = 2026-05-29
-weight = 10
 
 [taxonomies]
 primals = ["biomeos", "beardog", "songbird", "skunkbat", "toadstool", "coralreef", "barracuda", "nestgate", "rhizocrypt", "loamspine", "sweetgrass", "squirrel", "petaltongue"]
@@ -96,5 +95,5 @@ itself; it coordinates the primals that do.
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
 - [Orchestration Architecture](https://primals.eco/architecture/) — NUCLEUS, Neural API, federation
