@@ -2,7 +2,6 @@
 title = "airSpring Validation Summary"
 description = "Precision agriculture & irrigation — 1,446 Rust tests, 90 experiments, 10 UniBin validation scenarios, 14.3× speedup, 57 registered / 46 live capabilities, eastGate operational, zero failures"
 date = 2026-05-25
-weight = 10
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "biomeos", "nestgate", "squirrel", "coralreef", "petaltongue", "beardog", "songbird"]
@@ -93,6 +92,6 @@ Available in both `foundation/workloads/thread06_ag/` and `projectNUCLEUS/worklo
 
 ## See Also
 
-- [Spring Catalog](/architecture/spring-catalog/) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco
 - [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
 - [baseCamp Papers](https://primals.eco/science/) (Dong lab, FAO-56, Richards, Stewart)
