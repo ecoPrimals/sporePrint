@@ -281,7 +281,7 @@ on this evolution.
 
 ---
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 
 ## Validation Summary
 
@@ -304,5 +304,5 @@ Wire names aligned per primalSpring V082. Deploy graph validated.
 
 **Evolution**: Tier 1 → Tier 2 (live IPC parity) → Tier 3 (gAIa artifact).
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 

@@ -2,6 +2,7 @@
 title = "wetSpring Validation Summary"
 description = "Life-science and analytical-chemistry spring — 1,962+ tests, 345 scenarios, UniBin single binary, pure primal composition"
 date = 2026-05-29
+weight = 10
 
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool", "nestgate", "beardog", "songbird", "squirrel", "rhizocrypt", "loamspine", "sweetgrass", "petaltongue", "coralreef"]

@@ -326,5 +326,5 @@ via rhizoCrypt → loamSpine → sweetGrass when primals are deployed.
 `science.gonzales.pk_decay` live, asserting parity with frozen values.
 Tier 3 wraps each call in a provenance session.
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 

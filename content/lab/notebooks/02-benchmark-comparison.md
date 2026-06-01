@@ -231,5 +231,5 @@ and `experiments/results/015_pipeline_benchmark/`. BLAKE3 hashes track drift.
 **Evolution**: Tier 2 adds live IPC timing to compare against frozen baselines.
 Tier 3 adds provenance-wrapped benchmark sessions.
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 

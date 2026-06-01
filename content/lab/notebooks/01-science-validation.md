@@ -237,5 +237,5 @@ composition with provenance) is the gAIa artifact target.
 
 **Reproduce**: See [primals.eco/lab/reproduce](https://primals.eco/lab/reproduce/)
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 

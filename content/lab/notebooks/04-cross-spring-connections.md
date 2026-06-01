@@ -222,5 +222,5 @@ declarations.
 **Evolution**: Tier 2 calls `composition.science_health` to compare live
 primal availability against the documented consumption surface.
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 
