@@ -33,7 +33,8 @@ jobs:
         run: |
           cargo build --release --manifest-path crates/spore-validate/Cargo.toml
           ./crates/spore-validate/target/release/spore-validate --root . validate --check
-      - name: Check links
+      - name: Check links (external — non-blocking)
+        continue-on-error: true
         run: zola check
 
   build:
@@ -42,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build with Zola
-        uses: shalzz/zola-deploy-action@v0.19.2
+        uses: shalzz/zola-deploy-action@v0.22.1
         env:
           BUILD_ONLY: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -80,7 +81,7 @@ jobs:
       - name: Verify key pages respond
         run: |
           FAILURES=0
-          for path in "/" "/science/" "/architecture/" "/lab/" "/glossary/" "/primals/" "/springs/"; do
+          for path in "/" "/science/" "/architecture/" "/architecture/generational-arc/" "/lab/" "/lab/spores/" "/glossary/" "/primals/" "/springs/"; do
             STATUS=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "https://primals.eco${path}")
             if [[ "$STATUS" == "200" ]]; then
               echo "OK   $path ($STATUS)"
@@ -92,4 +93,4 @@ jobs:
           if [[ $FAILURES -gt 0 ]]; then
             echo "::warning::$FAILURES page(s) returned non-200 — may need CDN propagation time"
           fi
-          echo "Verified $(( 7 - FAILURES ))/7 pages"
+          echo "Verified $(( 9 - FAILURES ))/9 pages"
