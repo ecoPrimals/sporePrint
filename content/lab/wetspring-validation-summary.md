@@ -2,7 +2,6 @@
 title = "wetSpring Validation Summary"
 description = "Life-science and analytical-chemistry spring — 1,962+ tests, 345 scenarios, UniBin single binary, pure primal composition"
 date = 2026-05-29
-weight = 10
 
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool", "nestgate", "beardog", "songbird", "squirrel", "rhizocrypt", "loamspine", "sweetgrass", "petaltongue", "coralreef"]
@@ -70,5 +69,5 @@ springs = ["wetspring"]
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
 - [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
