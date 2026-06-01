@@ -584,6 +584,7 @@ capabilities = [
 display = "esotericWebb"
 emoji = "🔮🕸️"
 kind = "product"
+description = "Cross-evolution CRPG — the first gen4 product proving primal composition produces real games. 23 PrimalBridge methods, graceful degradation, zero unsafe."
 domain = "Sovereign creative tool"
 repo = "sporeGarden/esotericWebb"
 
@@ -591,8 +592,33 @@ repo = "sporeGarden/esotericWebb"
 display = "helixVision"
 emoji = "🧬👁️"
 kind = "product"
+description = "Sovereign genomics pipeline — sample to understanding, from sequencer to structure prediction, all on your hardware. First gen5 multi-product composition target."
 domain = "Protein structure prediction"
 repo = "sporeGarden/helixVision"
+
+[extra.entity_registry.cellmembrane]
+display = "cellMembrane"
+emoji = "🧫🔗"
+kind = "infra"
+description = "Sovereign VPS control plane — the diderm envelope relay, temporal sync, impulse cascade, and gate-to-membrane SSH coordination. Pure Rust binary managing the K-Derm topology."
+domain = "Infrastructure"
+repo = "sporeGarden/cellMembrane"
+
+[extra.entity_registry.initiochem]
+display = "initioChem"
+emoji = "⚗️🔬"
+kind = "product"
+description = "Interactive computational chemistry explorer — free energy landscapes, conformational dynamics, and pseudoSpore visualization. Science visible, infrastructure invisible."
+domain = "Computational chemistry"
+repo = "sporeGarden/initioChem"
+
+[extra.entity_registry.bluefish]
+display = "blueFish"
+emoji = "🐟💧"
+kind = "product"
+description = "Sovereign analytical chemistry ETL — PFAS quantification, method validation, and regulatory-grade data pipelines on sovereign hardware."
+domain = "Analytical chemistry"
+repo = "sporeGarden/blueFish"
 
 [extra.entity_registry.projectfoundation]
 display = "projectFOUNDATION"
