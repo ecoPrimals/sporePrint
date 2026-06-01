@@ -1,5 +1,5 @@
 +++
-title = "Benchmark Comparison — wetSpring"
+title = "Benchmark Comparison — hotSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
 date = 2026-06-01
 weight = 50
@@ -9,227 +9,124 @@ domain = "Lab"
 rendered_from = "02-benchmark-comparison.ipynb"
 +++
 
-<!-- Auto-generated from 02-benchmark-comparison.ipynb by spore-validate render-notebooks -->
+<!-- Auto-generated from 02-benchmark-comparison.ipynb by render_notebooks.sh -->
+<!-- Preferred: spore-validate render-notebooks (pure Rust) -->
 
-# Benchmark Comparison — wetSpring
-
-wetSpring validates computational correctness across 23 scientific domains,
-each with Python baseline timing and Rust implementation. This notebook
-visualizes the 23-domain benchmark, the full 16S pipeline comparison
-(Rust vs Galaxy/QIIME2), and energy efficiency estimates.
-
-**Data sources**: `experiments/results/benchmark_timing.json`
-
-**Reproduce**: `wetspring validate --scenario 23_domain_timing` in the wetSpring repository.
-
----
-
-*For other springs: replace the domain list with your own benchmark data.
-Keep the Rust vs Python comparison pattern — it demonstrates the value
-of primal composition over script-based pipelines.*
-
-```python
-import os, json, struct, socket, time
-from pathlib import Path
-
-RESULTS = Path('..') / 'experiments' / 'results'
-
-def load(name):
-    with open(RESULTS / name) as f:
-        return json.load(f)
-
-TIER = 'frozen'
-IPC_SOCKET = os.environ.get('WETSPRING_IPC_SOCKET')
-
-def ipc_call(method, params=None):
-    """JSON-RPC call to barracuda IPC — active in Tier 2."""
-    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    sock.connect(IPC_SOCKET)
-    req = json.dumps({'jsonrpc': '2.0', 'method': method, 'params': params or {}, 'id': 1})
-    payload = req.encode()
-    sock.sendall(struct.pack('<I', len(payload)) + payload)
-    length = struct.unpack('<I', sock.recv(4))[0]
-    data = sock.recv(length)
-    sock.close()
-    return json.loads(data)['result']
-
-if IPC_SOCKET and os.path.exists(IPC_SOCKET):
-    try:
-        ipc_call('health.check')
-        TIER = 'live_ipc'
-        print(f'Tier 2 ACTIVE — live IPC via {IPC_SOCKET}')
-    except Exception:
-        print('Tier 2 socket found but not responding — using frozen data')
-else:
-    print(f'Tier 1 — frozen data (no IPC socket)')
-
-bench = load('benchmark_timing.json')
-print(f'Hardware: {bench["hardware"]["cpu"]}, {bench["hardware"]["gpu"]}')
-print(f'Domains benchmarked: {len(bench["domain_benchmark_23"]["domains"])}')
-print(f'Total Python time: {bench["domain_benchmark_23"]["total_us"]:.0f} µs')
-```
-
-## 23-Domain Python Baseline Timing
-
-Each domain represents a distinct scientific algorithm implemented in both
-Python (baseline) and Rust (barracuda). The Python times establish the
-reference point; Rust times are measured via validation binaries.
-
-```python
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-
-domains = bench['domain_benchmark_23']['domains']
-d_keys = sorted(domains.keys())
-d_labels = [domains[k]['label'] for k in d_keys]
-d_times = [domains[k]['python_us'] for k in d_keys]
-d_cats = [domains[k]['category'] for k in d_keys]
-
-cat_colors = {
-    'ecology': '#2ecc71', 'bioinformatics': '#3498db',
-    'chemistry': '#e74c3c', 'integrated': '#f39c12'
-}
-colors = [cat_colors.get(c, '#95a5a6') for c in d_cats]
-
-fig, ax = plt.subplots(figsize=(14, 8))
-bars = ax.barh(range(len(d_labels)), [np.log10(max(t, 1)) for t in d_times], color=colors)
-ax.set_yticks(range(len(d_labels)))
-ax.set_yticklabels(d_labels, fontsize=8)
-ax.set_xlabel('log10(Python µs)')
-ax.set_title(f'23-Domain Python Baseline — {bench["domain_benchmark_23"]["total_us"]:.0f} µs total')
-
-for bar, val in zip(bars, d_times):
-    if val > 1000:
-        label = f'{val/1000:.0f} ms'
-    else:
-        label = f'{val:.1f} µs'
-    ax.text(bar.get_width() + 0.05, bar.get_y() + bar.get_height()/2,
-            label, va='center', fontsize=7)
-
-from matplotlib.patches import Patch
-legend_elements = [Patch(facecolor=c, label=n.title()) for n, c in cat_colors.items()]
-ax.legend(handles=legend_elements, loc='lower right', fontsize=9)
-
-plt.tight_layout()
-plt.savefig('/tmp/wetspring_02_domains.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-## Rust vs Python Speedup
-
-Key domains where Rust measurements are available show consistent
-speedups from 2.6x (BLAKE3 hash) to 41x (Smith-Waterman alignment).
-
-```python
-rvp = bench['rust_vs_python_estimates']
-compare_keys = [k for k in rvp if k != 'note']
-labels = [k.replace('_', ' ').title() for k in compare_keys]
-speedups = [float(rvp[k]['speedup'].replace('x', '')) for k in compare_keys]
-
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-
-# Speedup bars
-ax = axes[0]
-bars = ax.barh(labels, speedups, color='#3498db')
-ax.set_xlabel('Speedup (x)')
-ax.set_title('Rust vs Python — Key Domains')
-for bar, val in zip(bars, speedups):
-    ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height()/2,
-            f'{val:.0f}x', va='center', fontsize=10, fontweight='bold')
-
-# Energy comparison
-energy = bench['energy_estimate']
-ax = axes[1]
-e_labels = ['Rust', 'Python (est.)']
-e_vals = [energy['rust_full_suite_kwh'], energy['python_equivalent_estimate_kwh']]
-e_colors = ['#2ecc71', '#e74c3c']
-bars = ax.bar(e_labels, e_vals, color=e_colors)
-ax.set_ylabel('Energy (kWh)')
-ax.set_title(f'Energy Efficiency — {energy["ratio"]}')
-for bar, val in zip(bars, e_vals):
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.1,
-            f'{val:.2f} kWh', ha='center', va='bottom', fontsize=11)
-
-plt.suptitle('wetSpring: Rust Primal Composition vs Python Baselines',
-             fontsize=13, fontweight='bold')
-plt.tight_layout()
-plt.savefig('/tmp/wetspring_02_speedup.png', dpi=150, bbox_inches='tight')
-plt.show()
-
-# Tier 2: live benchmark comparison
-if TIER == 'live_ipc':
-    counts = [1, 10, 100, 1000, 10000]
-    t0 = time.perf_counter()
-    result = ipc_call('science.diversity', {'counts': counts})
-    elapsed_us = (time.perf_counter() - t0) * 1e6
-    python_us = bench['rust_vs_python_estimates']['diversity_calc']['python_us']
-    print(f'Tier 2 live: science.diversity took {elapsed_us:.1f} µs '
-          f'(Python baseline: {python_us} µs, speedup: {python_us/elapsed_us:.1f}x)')
-```
-
-## Pipeline Benchmark — Rust vs Galaxy/QIIME2
-
-Full 16S metagenomics pipeline: FASTQ parse → quality filter → DADA2 denoise
-→ chimera detection → taxonomy → diversity. Rust runs the complete pipeline
-locally on CPU; Galaxy uses cloud-optimized DADA2.
-
-```python
-pipe = bench['pipeline_benchmark']
-
-fig, ax = plt.subplots(figsize=(10, 5))
-p_labels = ['Rust CPU\n(local)', 'Galaxy/QIIME2\n(cloud)']
-p_per_sample = [pipe['rust']['per_sample_s'], pipe['galaxy']['per_sample_s']]
-p_energy = [pipe['rust']['energy_kwh'], pipe['galaxy']['energy_kwh']]
-
-x = [0, 1]
-bar1 = ax.bar([i - 0.2 for i in x], p_per_sample, 0.35,
-              label='Per-sample (s)', color='#3498db')
-ax2 = ax.twinx()
-bar2 = ax2.bar([i + 0.2 for i in x], p_energy, 0.35,
-               label='Energy (kWh)', color='#f39c12', alpha=0.7)
-
-ax.set_xticks(x)
-ax.set_xticklabels(p_labels)
-ax.set_ylabel('Per-sample time (s)', color='#3498db')
-ax2.set_ylabel('Energy (kWh)', color='#f39c12')
-ax.set_title(f'16S Pipeline — {pipe["rust"]["samples"]} samples, '
-             f'{pipe["rust"]["total_reads"]:,} reads')
-
-for bar, val in zip(bar1, p_per_sample):
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 10,
-            f'{val:.1f}s', ha='center', fontsize=10)
-for bar, val in zip(bar2, p_energy):
-    ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
-             f'{val:.3f}', ha='center', fontsize=10)
-
-fig.legend(loc='upper right', bbox_to_anchor=(0.95, 0.88))
-plt.tight_layout()
-plt.savefig('/tmp/wetspring_02_pipeline.png', dpi=150, bbox_inches='tight')
-plt.show()
-
-print(f'Note: {pipe["speedup_notes"]}')
-```
-
-## Validation Summary
-
-| Benchmark | Result |
-|-----------|--------|
-| 23-domain Python baselines | All timed, Rust parity confirmed |
-| Rust vs Python speedup | 2.6x – 41x across key domains |
-| Energy efficiency | 7x more efficient (Rust vs Python equivalent) |
-| 16S pipeline (22 samples) | Rust: 1,565s/sample, Galaxy: 9.6s/sample |
-
-Galaxy's cloud-optimized pipeline wins on small batches; Rust wins on
-large-scale local processing with full chimera detection and provenance.
-
----
-
-**Provenance**: Benchmark data frozen from `experiments/results/059_23_domain_benchmark/`
-and `experiments/results/015_pipeline_benchmark/`. BLAKE3 hashes track drift.
-
-**Evolution**: Tier 2 adds live IPC timing to compare against frozen baselines.
-Tier 3 adds provenance-wrapped benchmark sessions.
-
-**Source**: [ecoPrimals/wetSpring](https://github.com/syntheticChemistry/wetSpring)
-
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Benchmark-Comparison-%E2%80%94-hotSpring">Benchmark Comparison — hotSpring<a class="anchor-link" href="#Benchmark-Comparison-%E2%80%94-hotSpring">¶</a></h1><p>hotSpring's three-tier validation architecture (Python → Rust → NUCLEUS) produces
+direct performance comparisons at every tier. This notebook visualizes Rust vs Python
+speedups, GPU vs CPU acceleration, and the DF64 emulated double-precision breakthrough.</p>
+<p><strong>Data sources:</strong> <code>benchmark_timing.json</code></p>
+<p><strong>Reproduce:</strong> Individual benchmarks via <code>cargo bench</code> or <code>cargo run --release --bin &lt;benchmark&gt;</code></p>
+<hr/>
+<p><em>For other springs:</em> Replace physics benchmarks with your domain. The Rust vs Python
+comparison pattern applies to any spring that migrated from scripting to compiled Rust.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hardware: AMD Ryzen 9 7950X, NVIDIA RTX 4070 (12 GB)
+Clean build: 85.2s
+Test suite: 461.2s
+Total science cost: $0.30
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Rust-vs-Python-%E2%80%94-Direct-Paper-Reproduction-Comparisons">Rust vs Python — Direct Paper Reproduction Comparisons<a class="anchor-link" href="#Rust-vs-Python-%E2%80%94-Direct-Paper-Reproduction-Comparisons">¶</a></h2><p>Every published paper reproduction in hotSpring was first implemented in Python
+(Phase A baselines), then in Rust (Phase B-E), producing direct timing comparisons
+on identical algorithms and datasets.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/tmp/ipykernel_3229/1195676791.py:34: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  axes[1].set_xticklabels(names, rotation=25, ha='right', fontsize=8)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="GPU-vs-CPU-%E2%80%94-Physics-Domain-Benchmarks">GPU vs CPU — Physics Domain Benchmarks<a class="anchor-link" href="#GPU-vs-CPU-%E2%80%94-Physics-Domain-Benchmarks">¶</a></h2><p>Consumer GPU hardware (RTX 4070) delivers 40-70x acceleration over CPU for
+physics-heavy workloads. The key enabler is DF64 (emulated double precision
+on FP32 cores), which delivers 3.24 TFLOPS — 5.6x over native FP64.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/tmp/ipykernel_3229/2554584232.py:31: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  axes[1].set_xticklabels(gb_names, rotation=25, ha='right', fontsize=8)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Energy-and-Cost-Efficiency">Energy and Cost Efficiency<a class="anchor-link" href="#Energy-and-Cost-Efficiency">¶</a></h2><p>All 181 experiments ran on consumer hardware for a total science cost of $0.30.
+Rust is 8.8x more energy-efficient than equivalent Python implementations.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Validation-Summary">Validation Summary<a class="anchor-link" href="#Validation-Summary">¶</a></h2><table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rust vs Python</td>
+<td><strong>44.8x</strong> (SEMF), <strong>2274x</strong> (screening), <strong>283x</strong> (eigenvalue)</td>
+</tr>
+<tr>
+<td>GPU vs CPU</td>
+<td><strong>71.8x</strong> (HFB), <strong>54.4x</strong> (HMC), <strong>44.3x</strong> (gradient flow)</td>
+</tr>
+<tr>
+<td>DF64 throughput</td>
+<td><strong>3.24 TFLOPS</strong> (5.6x over native FP64)</td>
+</tr>
+<tr>
+<td>Total science cost</td>
+<td><strong>$0.30</strong> for 181 experiments</td>
+</tr>
+<tr>
+<td>Energy efficiency</td>
+<td><strong>8.8x</strong> more efficient than Python</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><strong>Provenance:</strong> All benchmarks from <code>experiments/results/benchmark_timing.json</code>.<br/>
+<strong>Hardware:</strong> AMD Ryzen 9 7950X, NVIDIA RTX 4070, Pop!_OS 22.04.<br/>
+<strong>Source:</strong> <a href="https://github.com/syntheticChemistry/hotSpring">hotSpring on GitHub</a> · <a href="https://primals.eco/lab/springs/hotspring/">primals.eco</a></p>
+</div>
+</div>
+</div>
