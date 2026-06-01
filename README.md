@@ -4,15 +4,30 @@ The public-facing science site for [ecoPrimals](https://github.com/ecoPrimals) �
 sovereign scientific computing.
 
 **Live site:** [primals.eco](https://primals.eco)
-**Sovereign host:** golgiBody-ext VPS via Caddy (DNS cutover pending)
+**Sovereign primary:** golgiBody-ext VPS (137.184.197.151) via Caddy + Let's Encrypt
+**Trailing shadow:** GitHub Pages (extracellular mirror, will be archived after NS cutover)
+
+## Deployment Architecture
+
+```
+Gate pushes to Forgejo → K-Derm relay chain → golgiBody-ext
+  1. Forgejo post-receive hook fires
+  2. peptidoglycan relays to golgiBody-ext
+  3. ext-github-push.sh pushes to GitHub (trailing shadow)
+  4. sporeprint-rebuild.sh pulls + zola build (sovereign primary)
+  5. Caddy serves from public/ (auto-TLS via Let's Encrypt)
+  
+Backup: systemd timer rebuilds every 15 minutes
+```
 
 ## Stack
 
-- **[Zola](https://www.getzola.org/)** — Rust static site generator (single binary, zero deps)
+- **[Zola](https://www.getzola.org/) 0.22.1** — Rust static site generator (single binary, zero deps)
 - **`spore-validate`** — Rust validation crate (registry, content, metrics, links, notebooks)
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
-- **Custom theme** — system fonts, dark/light mode, zero external dependencies
-- **Deployment:** GitHub Pages (extracellular shadow) + golgiBody-ext VPS (sovereign target)
+- **Custom theme** — Catppuccin Mocha/Latte, system fonts, dark/light, zero external deps
+- **Caddy** — TLS termination + file serving on golgiBody-ext
+- **Knot DNS** — Sovereign DNSSEC (ns1/ns2.primals.eco) with CAA for Let's Encrypt
 
 ## Local Development
 
@@ -78,13 +93,20 @@ zero warnings, 90.3% test coverage (llvm-cov).
 | `render-notebooks --discover` | Auto-find notebooks via .gate workspace walk |
 | `check-links` | Validate all @/ internal links (207 files, 149 links) |
 
-## Auto-Refresh (CI)
+## Auto-Refresh
 
+### Sovereign (primary)
+```
+source repo push → Forgejo → relay chain → golgiBody-ext
+  → sporeprint-rebuild.sh pulls from Forgejo + zola build
+  → Caddy serves updated public/ (zero downtime)
+```
+
+### GitHub (trailing shadow — will be archived)
 ```
 source repo push → notify-sporeprint.yml → repository_dispatch
   → sporePrint auto-refresh.yml
     → clone source, run spore-validate refresh --write
-    → commit config.toml if changed
     → deploy.yml → zola build → GitHub Pages
 ```
 
@@ -101,6 +123,29 @@ date = 2026-05-31
 
 Your content here...
 ```
+
+## Evolution Roadmap
+
+### Wave 66+ — Sovereign Self-Hosting
+- [x] VPS rebuild pipeline (Forgejo → zola build → Caddy)
+- [x] systemd timer (15-min fallback rebuild)
+- [x] Sovereign DNS records (primals.eco → golgiBody-ext)
+- [x] Caddy TLS config with Let's Encrypt
+- [ ] DNS registrar NS cutover to ns1/ns2.primals.eco
+- [ ] Archive GitHub Pages deploy workflow to fossilRecord
+
+### Wave 67+ — Provenance Trio Data System
+- [ ] BLAKE3 content addressing: every published page gets a content hash
+- [ ] rhizoCrypt DAG: site state tracked as content-addressed DAG
+- [ ] loamSpine ledger: page publish events appended to immutable history
+- [ ] sweetGrass attribution: PROV-O braids for every content source
+- [ ] `spore-validate provenance` subcommand: verify content chain
+- [ ] liveSpore.json: real-time content manifest with hashes + provenance
+
+### Wave 68+ — Live Science Surface
+- [ ] petalTongue renders live dashboards from primal APIs
+- [ ] NestGate serves content directly (replace file_server)
+- [ ] Forgejo webhook triggers sovereign CI rebuild (no GitHub Actions)
 
 ## License
 

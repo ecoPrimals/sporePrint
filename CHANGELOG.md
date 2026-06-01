@@ -5,6 +5,33 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.0.0] — 2026-06-01 — Sovereign Self-Hosting + Provenance Data System
+
+**sporePrint is now sovereign-primary. VPS serves the site via Caddy + Let's Encrypt.
+GitHub Pages becomes the trailing extracellular shadow. BLAKE3 content addressing
+enables provenance trio integration.**
+
+### Sovereign Deployment
+- VPS auto-rebuild pipeline: Forgejo push → relay chain → `sporeprint-rebuild.sh`
+- systemd timer (15-min fallback) on golgiBody-ext
+- Caddy TLS config with domain routing + Let's Encrypt CAA
+- Sovereign DNS A records for primals.eco → golgiBody-ext
+- GitHub Pages marked as trailing shadow in deploy.yml
+
+### Provenance
+- `provenance` subcommand: BLAKE3 content addressing for all 218 pages
+- `content-manifest.toml`: deterministic root hash, per-page hashes + titles
+- `--verify`: validate current content against manifest (integrity check)
+- `--diff`: show new/changed/removed pages since last manifest
+- `--write`: persist manifest for version-controlled provenance tracking
+
+### Config
+- `deploy_locations` now lists `golgiBody-ext` as primary
+- `shadow_status` → `sovereign-primary`
+- `sovereign_url` and `sovereign_rebuild` fields added
+
+---
+
 ## [2.0.0] — 2026-05-31 — Deep Debt Resolution + Sovereign Evolution
 
 **Complete code quality overhaul. trait-based architecture, 90%+ coverage,

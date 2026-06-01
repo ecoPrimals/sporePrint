@@ -1,12 +1,13 @@
 [package]
 name = "spore-validate"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 description = "Typed validation tooling for sporePrint — entity registry, content integrity, and metric sync"
 license = "AGPL-3.0-or-later"
 rust-version = "1.85"
 
 [dependencies]
+blake3 = "1"
 clap = { version = "4", features = ["derive"] }
 regex = "1"
 serde = { version = "1", features = ["derive"] }

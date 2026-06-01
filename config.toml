@@ -41,9 +41,11 @@ org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
 
-last_push = "2026-05-23"
-shadow_status = "sovereign"
-deploy_locations = ["github-pages"]
+last_push = "2026-06-01"
+shadow_status = "sovereign-primary"
+deploy_locations = ["golgiBody-ext", "github-pages"]
+sovereign_url = "http://137.184.197.151"
+sovereign_rebuild = "systemd-timer + relay-chain"
 
 # ── Measured 2026-04-04 via tokei (primals + springs pulled and counted) ──
 # Update procedure: pull all repos, run tokei, update numbers here.
