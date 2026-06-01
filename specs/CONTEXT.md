@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 1, 2026 — Wave 66)
+## Current State (June 1, 2026 — Wave 67)
 
 - **207+ content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
@@ -23,6 +23,8 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
 - **Sovereign deployment** — golgiBody-ext VPS serving via Caddy (DNS cutover pending)
+- **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle. Deploy graph in projectNUCLEUS, validation scenario in primalSpring.
+- **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). `validate_parity.sh` confirms 22/22 structural parity with Zola. eastGate deploys to VPS.
 
 ## Repository Structure
 

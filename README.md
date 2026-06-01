@@ -154,7 +154,21 @@ Your content here...
 - [ ] DNS registrar NS cutover to ns1/ns2.primals.eco
 - [ ] Archive GitHub Pages deploy workflow to fossilRecord
 
-### Wave 67+ — Provenance Trio Data System
+### Wave 67 — Nest Atomic / Pure-Primal Evolution (Complete)
+- [x] petalTongue DocumentNode types (document.rs in petal-tongue-scene)
+- [x] Content rendering pipeline (TOML front-matter + markdown → DocumentNode)
+- [x] Entity shortcode resolution against registry
+- [x] Document modality compilers (HTML visual + description accessibility)
+- [x] Web content route with Accept header negotiation
+- [x] sporeprint_composition.toml deploy graph in projectNUCLEUS
+- [x] primalSpring validation scenario (sporeprint-pure-primal-parity)
+- [x] `content-direct` backend — filesystem reader for local validation
+- [x] Entity registry loader (config.toml → HashMap<String, EntityRegistryEntry>)
+- [x] Navigation tree builder (content dir walk → NavSection sidebar)
+- [x] `validate_parity.sh` — 22-check parity validation (PT vs Zola: 22/22 pass)
+- [ ] VPS petalTongue deployment (eastGate: Caddy → petalTongue:8080)
+
+### Wave 68+ — Provenance Trio Data System
 - [ ] BLAKE3 content addressing: every published page gets a content hash
 - [ ] rhizoCrypt DAG: site state tracked as content-addressed DAG
 - [ ] loamSpine ledger: page publish events appended to immutable history
@@ -162,10 +176,11 @@ Your content here...
 - [ ] `spore-validate provenance` subcommand: verify content chain
 - [ ] liveSpore.json: real-time content manifest with hashes + provenance
 
-### Wave 68+ — Live Science Surface
+### Wave 69+ — Live Science Surface
 - [ ] petalTongue renders live dashboards from primal APIs
-- [ ] NestGate serves content directly (replace file_server)
+- [ ] NestGate serves content directly (replace Caddy file_server)
 - [ ] Forgejo webhook triggers sovereign CI rebuild (no GitHub Actions)
+- [ ] Multi-modal output live on VPS (description, braille endpoints)
 
 ## License
 

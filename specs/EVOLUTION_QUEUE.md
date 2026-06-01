@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 1, 2026 (Wave 66 — Knowledge Topology + guideStone Certification)
+Last reviewed: June 1, 2026 (Wave 67 — Nest Atomic / Pure-Primal Evolution)
 
 ---
 
@@ -50,8 +50,8 @@ Last reviewed: June 1, 2026 (Wave 66 — Knowledge Topology + guideStone Certifi
 - [x] ~~Metrics in registry haven't drifted from source repos~~ → `spore-validate refresh <repos_root>`
 
 ### petalTongue integration
-- [ ] When petalTongue can consume sporePrint content, add documentation on the modality pipeline
-- [ ] Reference SPOREPRINT_CONTENT_DELIVERY_SPECIFICATION.md from petalTongue specs/
+- [x] ~~When petalTongue can consume sporePrint content, add documentation on the modality pipeline~~ — Wave 67: DocumentNode types, content_render.rs, document_compiler.rs implemented
+- [x] ~~Reference SPOREPRINT_CONTENT_DELIVERY_SPECIFICATION.md from petalTongue specs/~~ — content pipeline is now native to petalTongue (content_render module)
 
 ---
 
@@ -167,3 +167,59 @@ These were in the original queue and have been completed:
 - [x] CONTEXT.md updated (certify subcommand, 14 modules, 89 tests)
 - [x] cargo clean (925 MiB freed)
 - [x] public/ build dir cleaned
+
+## Wave 67 — Nest Atomic / Pure-Primal Evolution (June 1, 2026)
+
+### petalTongue Content Scene Graph
+- [x] `document.rs` in petal-tongue-scene — DocumentNode, PageMeta, Inline, EntityRef types
+- [x] 4 unit tests (serialization, defaults, round-trip)
+- [x] `toml` workspace dependency added to petal-tongue-scene
+
+### Content Rendering Pipeline
+- [x] `content_render.rs` in petalTongue binary — front-matter parser, markdown compiler, shortcode resolver
+- [x] `split_front_matter()` — TOML `+++` delimiter handling
+- [x] `parse_front_matter()` — TOML to PageMeta with taxonomies and extras
+- [x] `compile_markdown()` — pulldown-cmark to DocumentNode tree (headings, code, lists, tables, blockquotes)
+- [x] `resolve_shortcodes()` — `{{ entity(name="...") }}` expansion against registry
+- [x] `parse_document()` — full pipeline entry point
+- [x] 8 unit tests passing
+
+### Document Modality Compilers
+- [x] `document_compiler.rs` in petal-tongue-scene/modality — DocumentNode to ModalityOutput
+- [x] `compile_to_html()` — full HTML page rendering (semantic markup, entity links, nav tree, tables)
+- [x] `compile_to_description()` — accessible text for screen readers (indented, structured)
+- [x] 5 unit tests passing
+
+### Web Content Route
+- [x] `content_fallback()` enhanced with Accept header negotiation
+- [x] Markdown content detected and rendered through DocumentNode pipeline
+- [x] Modality selection: `text/html` (visual), `text/plain` (description), `application/json` (metadata)
+- [x] Query parameter override: `?modality=description` or `?modality=json`
+
+### projectNUCLEUS Deploy Graph
+- [x] `graphs/sporeprint_composition.toml` — Nest Atomic + petalTongue + spore-validate
+- [x] Includes `nest_atomic` fragment (7 nodes: tower + nestgate + provenance trio)
+- [x] petalTongue node: `web --backend content-provider --port 8080`
+- [x] spore-validate node: `certify --emit` (run_once)
+- [x] Deployment hints: Caddy reverse proxy, primals.eco domain
+
+### primalSpring Validation
+- [x] `s_sporeprint_pure_primal.rs` scenario (5 phases)
+- [x] Phase 1: Content parsing (front-matter validation)
+- [x] Phase 2: Entity resolution (registry coverage, shortcode resolution rate)
+- [x] Phase 3: Modality output structure (heading + body feasibility)
+- [x] Phase 4: Composition graph (nest_atomic, petaltongue, capabilities)
+- [x] Phase 5: Certification manifest (deploy.yml, manifest.json, merkle_root)
+- [x] Registered in build_registry() (58 scenarios total)
+
+### Local Nest Validation (June 1, 2026)
+- [x] `content_direct.rs` — filesystem backend (reads .md from disk, renders via DocumentNode)
+- [x] `load_entity_registry()` — config.toml parser (66 entities loaded)
+- [x] `build_nav_tree()` — content directory walker (11 sections discovered)
+- [x] Wired into web_mode/mod.rs router (`--backend content-direct`)
+- [x] Release binary serves sporePrint content on localhost:8080
+- [x] Static file serving (Zola convention: /css/main.css from static/)
+- [x] Multi-modal output: HTML, description (accessible text), JSON (scene graph)
+- [x] `validate_parity.sh` — 5-phase parity check (22/22 pass vs Zola reference)
+- [x] Entity shortcode resolution confirmed (no unresolved `{{ entity(...) }}`)
+- [x] Accept header negotiation + `?modality=` query param override

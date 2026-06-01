@@ -4,7 +4,7 @@
 for sporePrint. It lives at `crates/spore-validate/` and enforces
 `#![forbid(unsafe_code)]` at the crate root.
 
-## Current State (Wave 66 — June 2026)
+## Current State (Wave 67 — June 2026)
 
 - **14 modules**, 89 tests, 90.3% line coverage (llvm-cov)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
@@ -139,8 +139,42 @@ Dev-only: `tempfile` (test fixtures).
 - [ ] pseudoSpore gallery: read lithoSpore `registry.toml`, generate gallery markdown
 - [ ] projectFOUNDATION ingestion: replace GitHub Actions dispatch with direct consumption
 - [ ] Temporal sync trigger: detect upstream push → local rebuild on flockGate
-- [ ] petalTongue WASM: replace gonzales JS explorer with sovereign Rust/WASM
+- [x] ~~petalTongue WASM: replace gonzales JS explorer with sovereign Rust/WASM~~ — Wave 67: petalTongue now has full document rendering pipeline (TOML front-matter → DocumentNode → multi-modal output)
 - [x] Absorb `render_notebooks.sh` — superseded by `render-notebooks` subcommand
 - [x] Entity graph with typed edges — `graph` subcommand (Wave 66)
 - [x] guideStone certification — `certify` subcommand (Wave 66)
 - [x] Capability-based discovery — no hardcoded repo lists or forge URLs
+
+## Pure-Primal Rendering Path (Wave 67)
+
+sporePrint content can now be rendered without Zola via the petalTongue pipeline:
+
+```
+content/*.md → content_render::parse_document()
+  → DocumentNode tree (petal-tongue-scene::document)
+  → document_compiler::compile_to_html() / compile_to_description()
+  → ModalityOutput (HTML, accessible text, braille, audio)
+```
+
+The Nest Atomic composition (`sporeprint_composition.toml` in projectNUCLEUS)
+orchestrates: NestGate (CAS) → petalTongue (render) → multi-modal output.
+
+Zola remains as the validation oracle — `spore-validate certify` verifies
+both rendering paths produce equivalent certification manifests.
+
+### Local Validation (content-direct backend)
+
+For local development and pre-deployment validation, petalTongue supports a
+`content-direct` backend that bypasses NestGate and reads markdown directly from disk:
+
+```bash
+petaltongue web --backend content-direct --docroot ./content --port 8080
+```
+
+This loads the entity registry (66 entities from `config.toml`), builds the
+navigation tree (11 sections from `_index.md` front matter), and serves all
+pages through the DocumentNode pipeline with full entity shortcode resolution.
+
+Parity is validated via `scripts/validate_parity.sh` (22 structural checks
+against Zola reference output: content serving, entity resolution, modality
+support, static assets, and heading-level structural comparison).
