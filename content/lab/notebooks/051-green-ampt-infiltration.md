@@ -43,7 +43,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
+REPO = Path(os.environ.get('ECOPRIMALS_ROOT', str(Path.home() / 'Development/ecoPrimals'))).resolve() / 'springs/airSpring'
 BENCH = REPO / "control/green_ampt/benchmark_green_ampt.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"

@@ -8,14 +8,14 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 1, 2026 — Wave 67)
+## Current State (June 1, 2026 — Wave 68)
 
 - **207+ content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **`spore-validate` v2.0.0** — 14-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, trait-based VCS. 89 tests, `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery)
+- **`spore-validate` v2.1.0** — 14-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, trait-based VCS, parity integration tests. 89+ tests, `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), LazyLock regex statics
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
@@ -24,7 +24,10 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
 - **Sovereign deployment** — golgiBody-ext VPS serving via Caddy (DNS cutover pending)
 - **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle. Deploy graph in projectNUCLEUS, validation scenario in primalSpring.
-- **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). `validate_parity.sh` confirms 22/22 structural parity with Zola. eastGate deploys to VPS.
+- **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (now also as Rust integration tests: `tests/parity.rs`).
+- **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.
+- **VizRegistry** — Capability-based discovery of available visualizations at petalTongue startup. No hardcoded route dispatch — registry pattern enables future viz additions without modifying route handlers.
+- **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data (4 files < 250L each), deprecated shell scripts superseded by Rust.
 
 ## Repository Structure
 

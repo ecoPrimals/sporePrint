@@ -10,7 +10,7 @@ rendered_from = "03-ecosystem-evidence.ipynb"
 +++
 
 <!-- Auto-generated from 03-ecosystem-evidence.ipynb by render_notebooks.sh -->
-<!-- Re-render with: bash scripts/render_notebooks.sh --notebook /home/eastgate/Development/ecoPrimals/springs/groundSpring/notebooks/03-ecosystem-evidence.ipynb -->
+<!-- Re-render with: bash scripts/render_notebooks.sh --notebook $ECOPRIMALS_ROOT/springs/groundSpring/notebooks/03-ecosystem-evidence.ipynb -->
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">

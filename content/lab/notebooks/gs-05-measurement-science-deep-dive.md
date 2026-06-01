@@ -10,7 +10,7 @@ rendered_from = "05-measurement-science-deep-dive.ipynb"
 +++
 
 <!-- Auto-generated from 05-measurement-science-deep-dive.ipynb by render_notebooks.sh -->
-<!-- Re-render with: bash scripts/render_notebooks.sh --notebook /home/eastgate/Development/ecoPrimals/springs/groundSpring/notebooks/05-measurement-science-deep-dive.ipynb -->
+<!-- Re-render with: bash scripts/render_notebooks.sh --notebook $ECOPRIMALS_ROOT/springs/groundSpring/notebooks/05-measurement-science-deep-dive.ipynb -->
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">

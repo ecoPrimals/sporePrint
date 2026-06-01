@@ -4,15 +4,17 @@
 for sporePrint. It lives at `crates/spore-validate/` and enforces
 `#![forbid(unsafe_code)]` at the crate root.
 
-## Current State (Wave 67 — June 2026)
+## Current State (Wave 68 — June 2026)
 
-- **14 modules**, 89 tests, 90.3% line coverage (llvm-cov)
+- **14 modules**, 89+ tests, 90.3% line coverage (llvm-cov)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
-- Zero `#[allow()]` in production code (one `#[allow(dead_code)]` on future-public API)
-- All files under 500 LOC (limit: 1000)
+- Zero `#[allow()]` in production code
+- All files under 600 LOC (limit: 800, target: 500)
 - Pure Rust dependencies only (ecoBin compliant) + `blake3` for certification
 - `thiserror`-based typed error hierarchy (`Result` propagation, no `process::exit`)
 - Structured `Diagnostic` with `Severity` (Error/Warning) and `promote_to_error()`
+- `LazyLock<Regex>` for all regex compilation (zero runtime panic paths)
+- Parity integration tests: 6 tests validate petalTongue vs Zola output
 
 ## Subcommands
 

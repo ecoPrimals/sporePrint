@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# DEPRECATED: Superseded by Rust integration test: crates/spore-validate/tests/parity.rs
+# Run: cargo test --test parity -- --ignored (requires petalTongue server)
+# This script is retained as a quick manual smoke test during development.
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
 # validate_parity.sh — Compare petalTongue content-direct output vs Zola reference

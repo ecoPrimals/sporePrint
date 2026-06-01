@@ -19,6 +19,14 @@ The model is not metaphorical — it drives real architecture decisions about
 which services run where, which bonds mediate communication, and which
 direction information flows.
 
+## Interactive Topology
+
+<div id="viz-kderm" data-viz-src="/viz/kderm-topology?format=scene-json" class="viz-container">
+{{ viz_embed(src="/viz/kderm-topology") }}
+</div>
+
+<script type="module" src="/js/viz-hydrate.js"></script>
+
 ## The Biological Pattern
 
 Gram-negative bacteria have:

@@ -37,10 +37,12 @@ fn collect_pages(content_root: &Path) -> HashSet<String> {
 /// Recognizes `@/path/to/page.md` Zola-style internal links and
 /// regular `](/path)` markdown links.
 fn extract_internal_links(content: &str) -> Vec<String> {
-    let mut links = Vec::new();
-    let link_re = regex::Regex::new(r"(?:\]\()(@/[^)#\s]+)").unwrap();
+    use std::sync::LazyLock;
+    static LINK_RE: LazyLock<regex::Regex> =
+        LazyLock::new(|| regex::Regex::new(r"(?:\]\()(@/[^)#\s]+)").expect("static regex"));
 
-    for cap in link_re.captures_iter(content) {
+    let mut links = Vec::new();
+    for cap in LINK_RE.captures_iter(content) {
         if let Some(m) = cap.get(1) {
             links.push(m.as_str().to_string());
         }

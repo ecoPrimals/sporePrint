@@ -10,6 +10,7 @@ use crate::model::{Entity, EntityKind};
 use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::path::Path;
+use std::sync::LazyLock;
 use walkdir::WalkDir;
 
 /// Validate taxonomy tags in front matter reference valid registry keys.
@@ -93,10 +94,13 @@ pub fn check_integrity(
     registry: &HashMap<String, Entity>,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
-    let shortcode_re = Regex::new(
-        r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
-    )
-    .expect("valid regex");
+    static SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
+        Regex::new(
+            r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
+        )
+        .expect("static regex")
+    });
+    let shortcode_re = &*SHORTCODE_RE;
     let registry_keys: HashSet<&str> = registry.keys().map(String::as_str).collect();
     let mut shortcode_count: u32 = 0;
     let mut broken = Vec::new();
@@ -132,7 +136,9 @@ pub fn check_integrity(
 
 /// Detect bare `.md` links that bypass Zola's internal-link resolver.
 pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Vec<Diagnostic>) {
-    let bare_md_re = Regex::new(r"\]\(([^@\)][^:\)]*\.md)\)").expect("valid regex");
+    static BARE_MD_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\]\(([^@\)][^:\)]*\.md)\)").expect("static regex"));
+    let bare_md_re = &*BARE_MD_RE;
     let mut count: u32 = 0;
 
     for entry in markdown_files(content_dir) {

@@ -175,10 +175,9 @@ jobs:
 
           if [[ -d /tmp/source-repo/notebooks ]]; then
             mkdir -p content/lab/notebooks
-            while IFS= read -r -d '' nb; do
-              echo "  Rendering notebook: $(basename "$nb")"
-              bash scripts/render_notebooks.sh --notebook "$nb" || true
-            done < <(find /tmp/source-repo/notebooks -name '*.ipynb' -print0)
+            echo "  Rendering notebooks via spore-validate..."
+            cargo run --release --manifest-path crates/spore-validate/Cargo.toml -- \
+              render-notebooks /tmp/source-repo/notebooks || true
           fi
 
           # GuideStone liveSpore.json pipeline: copy provenance JSON to static/

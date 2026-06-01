@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 1, 2026 (Wave 67 — Nest Atomic / Pure-Primal Evolution)
+Last reviewed: June 1, 2026 (Wave 68 — Deep Debt + Viz Modularization)
 
 ---
 
@@ -223,3 +223,27 @@ These were in the original queue and have been completed:
 - [x] `validate_parity.sh` — 5-phase parity check (22/22 pass vs Zola reference)
 - [x] Entity shortcode resolution confirmed (no unresolved `{{ entity(...) }}`)
 - [x] Accept header negotiation + `?modality=` query param override
+
+## Wave 68 — Deep Debt Resolution + Live Visualizations (June 1, 2026)
+
+### Live Ecosystem Visualizations
+- [x] `viz_data/entity_graph.rs` — Force-directed layout (Fruchterman-Reingold) of 66 entities
+- [x] `viz_data/kderm.rs` — 5-layer cross-section with VPS nodes + relay animation
+- [x] `viz_data/nucleus.rs` — Nested composition layers with expand/collapse animation
+- [x] `viz_data/mod.rs` — VizRegistry for capability-based discovery
+- [x] `/viz/*` routes serving SVG, scene-JSON, description, animation-JSON
+- [x] `{{ viz_embed(src="/viz/...") }}` shortcode expansion to inline SVG
+- [x] `petal-tongue-wasm` deployed to `static/wasm/` (593KB)
+- [x] `viz-hydrate.js` — progressive enhancement (pan/zoom/animate/tooltips)
+- [x] Content pages updated: ECOSYSTEM_VISUALIZATION, KDERM, NUCLEUS
+
+### Deep Debt + Overstep Cleanup
+- [x] `LazyLock<Regex>` statics replace 3 production `unwrap()`/`expect()` (links.rs, content.rs)
+- [x] 16 notebook files: `/home/eastgate/` → `ECOPRIMALS_ROOT` env var
+- [x] `VizRegistry` decouples viz route handler from hardcoded slug matching
+- [x] `viz_data.rs` (882L) → 4 modules (114 + 242 + 187 + 143 = 686L, max 242)
+- [x] `tests/parity.rs` — 6 Rust integration tests (replaces shell script)
+- [x] `refresh-metrics.sh` deprecated (evolution: `spore-validate refresh --fetch`)
+- [x] `validate_parity.sh` deprecated (Rust: `cargo test --test parity -- --ignored`)
+- [x] `gonzales/DEPRECATED.md` — migration timeline (data → CAS, charts → petalTongue)
+- [x] `ureq` dev-dependency added for HTTP parity tests

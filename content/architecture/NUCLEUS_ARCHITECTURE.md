@@ -12,6 +12,14 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 
 ---
 
+## Composition Diagram
+
+<div id="viz-nucleus" data-viz-src="/viz/nucleus-composition?format=scene-json" class="viz-container">
+{{ viz_embed(src="/viz/nucleus-composition") }}
+</div>
+
+<script type="module" src="/js/viz-hydrate.js"></script>
+
 ## The Atomics Ladder
 
 Primals compose in layers. Each layer is a **named composition pattern** — not a separate product — defined by which primals coordinate and what behavior emerges.
