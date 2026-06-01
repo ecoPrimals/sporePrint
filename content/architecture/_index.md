@@ -28,7 +28,13 @@ foundation                       → institutional adoption
 | I want to... | Read this |
 |---|---|
 | Understand the whole system | [Ecosystem Architecture](@/architecture/ECOSYSTEM_ARCHITECTURE.md) — primals, springs, composition, Neural API |
+| Understand the five-generation arc | [Generational Arc](@/architecture/GENERATIONAL_ARC.md) — gen1→gen5, from hardware to external science |
 | See how primals compose on a machine | [NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md) — atomics ladder, deploy graphs, lifecycle |
+| See how products compose primals | [Composition Patterns](@/architecture/COMPOSITION_PATTERNS.md) — PrimalBridge, deploy graphs, guideStone |
+| Understand the cell envelope deployment | [K-Derm Diderm Architecture](@/architecture/KDERM_DIDERM_ARCHITECTURE.md) — inner/outer membrane, bond types |
+| See sovereignty in practice | [Sovereign Deployment](@/architecture/SOVEREIGN_DEPLOYMENT.md) — PostPrimordial journey, VPS topology |
+| Understand transport evolution | [Transport Evolution](@/architecture/TRANSPORT_EVOLUTION.md) — nanowire → quorum sensing |
+| See how external collaboration works | [External Collaboration](@/architecture/EXTERNAL_COLLABORATION.md) — collaborator gates, spore cycle |
 | Browse every primal | [Primal Catalog](@/architecture/PRIMAL_CATALOG.md) — 15 primals with metrics, primitives, and tiers |
 | Browse every spring | [Spring Catalog](@/architecture/SPRING_CATALOG.md) — 8 springs with checks and papers reproduced |
 | Deploy it myself | [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) — {{ entity(name="plasmidbin") }} binary distribution |

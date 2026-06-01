@@ -1,0 +1,119 @@
++++
+title = "Composition Patterns"
+description = "How primals compose into products — PrimalBridge, deploy graphs, graceful degradation, and the gen4 architecture that makes primals invisible."
+date = 2026-05-31
+weight = 12
+
+[extra]
+domain = "Architecture"
++++
+
+## The Composition Layer
+
+gen4 introduced the pattern that makes primals invisible to end users. A
+product (esotericWebb, initioChem, helixVision) consumes primals as
+infrastructure through a composition layer — the user interacts with the
+product, never the underlying primals.
+
+## PrimalBridge
+
+The `PrimalBridge` is the runtime composition interface. A product declares
+which primal capabilities it needs, and the bridge handles discovery,
+connection, retry, and graceful degradation.
+
+Key properties:
+- **Discovery-based**: Products don't hardcode primal addresses — they discover available capabilities at runtime
+- **Graceful degradation**: If a primal is unavailable, the bridge provides sensible defaults or reduced functionality
+- **Transport-agnostic**: UDS (local), TCP (network), or future transports — the bridge abstracts all of them
+- **Retry + circuit breaker**: Transient failures don't crash the product
+
+## Deploy Graphs
+
+Products define their primal dependencies in TOML deploy graphs:
+
+```toml
+[[primals]]
+name = "rhizoCrypt"
+capabilities = ["dag.create", "dag.append", "dag.verify"]
+required = true
+
+[[primals]]
+name = "petalTongue"
+capabilities = ["render.markdown", "render.template"]
+required = false
+fallback = "local_renderer"
+
+[composition]
+ordering = "topological"
+```
+
+The PrimalLauncher reads deploy graphs, topologically sorts dependencies,
+spawns binaries from plasmidBin, polls for TCP readiness, and injects
+connections into the PrimalBridge.
+
+## Graceful Degradation
+
+Not all primals are required. Products define three tiers:
+
+| Tier | Behavior | Example |
+|------|----------|---------|
+| Required | Product fails to start without this primal | rhizoCrypt for provenance |
+| Enhanced | Product works but with reduced capability | petalTongue for rich rendering |
+| Optional | Product ignores absence entirely | barraCuda for GPU acceleration |
+
+This means a product can run on a minimal machine (no GPU, limited primals)
+and still function — it just doesn't have GPU acceleration or rich rendering.
+
+## TCP JSON-RPC 2.0
+
+All primal communication uses TCP JSON-RPC 2.0:
+
+- Platform-agnostic (works on GrapheneOS, across network boundaries)
+- Standardized method/params/result format
+- Enables federation (primals on different nodes communicate naturally)
+- No shared memory, no unsafe FFI, no tight coupling
+
+## The Invisible Infrastructure Principle
+
+In a well-composed gen4 product:
+
+1. The user never types a primal name
+2. The user never sees a capability graph
+3. The user never configures a deploy graph (that's developer-facing)
+4. Failures degrade gracefully, not catastrophically
+5. The product "just works" — the primals are the plumbing
+
+This is the measure of composition success: **the primals disappear.**
+
+## guideStone Verification Class
+
+guideStone ensures that composition doesn't sacrifice correctness.
+A guideStone artifact is self-contained, self-verifying, and
+self-benchmarking:
+
+**Five properties:**
+1. **Self-contained**: Carries all binaries, data, and configs
+2. **Self-verifying**: Validates its own physics against published papers
+3. **Self-benchmarking**: Measures the machine it lands on
+4. **Cross-substrate**: Works on Ubuntu, Alpine, aarch64, GPU/CPU
+5. **Provenance-tracked**: Every output has a BLAKE3-anchored derivation chain
+
+The first guideStone (hotSpring v0.7.0) validates 59/59 physics checks
+across 5 substrates with bit-identical cross-platform observables.
+
+## Pattern Summary
+
+```
+Developer writes product code
+  → Defines deploy graph (TOML)
+  → PrimalLauncher spawns dependencies
+  → PrimalBridge connects capabilities
+  → User interacts with product (primals invisible)
+  → guideStone verifies output correctness
+  → pseudoSpore packages results with provenance
+```
+
+The composition layer makes the ecosystem usable by people who neither
+know nor care about sovereign infrastructure. The science is correct
+because the infrastructure was validated in gen3. The user experience is
+clean because the composition layer was built in gen4.
