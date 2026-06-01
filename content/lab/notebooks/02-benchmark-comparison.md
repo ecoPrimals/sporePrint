@@ -1,5 +1,5 @@
 +++
-title = "Benchmark Comparison — hotSpring"
+title = "02 — Benchmark Comparison"
 description = "Rendered from 02-benchmark-comparison.ipynb"
 date = 2026-06-01
 weight = 50
@@ -11,178 +11,198 @@ rendered_from = "02-benchmark-comparison.ipynb"
 
 <!-- Auto-generated from 02-benchmark-comparison.ipynb by spore-validate render-notebooks -->
 
-# Benchmark Comparison — hotSpring
+# 02 — Benchmark Comparison
 
-hotSpring's three-tier validation architecture (Python → Rust → NUCLEUS) produces
-direct performance comparisons at every tier. This notebook visualizes Rust vs Python
-speedups, GPU vs CPU acceleration, and the DF64 emulated double-precision breakthrough.
+**neuralSpring sporePrint** | Session S188 | May 2026
 
-**Data sources:** `benchmark_timing.json`
+Rust vs Python timing across 11 domains, GPU acceleration,
+multi-GPU parity, and guideStone validation phases.
 
-**Reproduce:** Individual benchmarks via `cargo bench` or `cargo run --release --bin <benchmark>`
+**Data sources:** `benchmark-data.json`, `validation-state.json`
 
----
-
-*For other springs:* Replace physics benchmarks with your domain. The Rust vs Python
-comparison pattern applies to any spring that migrated from scripting to compiled Rust.
+**For other springs:** Replace domain speedup data with your own
+benchmark results. Adjust GPU coverage to match your compute profile.
 
 ```python
 import json
 from pathlib import Path
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import numpy as np
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-def load(name):
-    with open(RESULTS / name) as f:
-        return json.load(f)
+with open(RESULTS / 'benchmark-data.json') as f:
+    bm = json.load(f)
 
-bench = load('benchmark_timing.json')
+with open(RESULTS / 'validation-state.json') as f:
+    vs = json.load(f)
 
-print(f"Hardware: {bench['hardware']['cpu']}, {bench['hardware']['gpu_primary']}")
-print(f"Clean build: {bench['compilation']['clean_build_release_s']}s")
-print(f"Test suite: {bench['test_suite_timing']['total_s']}s")
-print(f"Total science cost: {bench['cost_estimate']['total_science_cost']}")
+PASS = '#2ecc71'
+FAIL = '#e74c3c'
+INFO = '#3498db'
+
+print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
 ```
 
-## Rust vs Python — Direct Paper Reproduction Comparisons
+## Rust vs Python — Per-Domain Speedups
 
-Every published paper reproduction in hotSpring was first implemented in Python
-(Phase A baselines), then in Rust (Phase B-E), producing direct timing comparisons
-on identical algorithms and datasets.
+Pure Rust achieves an **83.6x geometric mean** speedup over Python
+across 11 scientific domains, with the fastest (multi-objective
+optimization) reaching **1104x**.
 
 ```python
-C_RUST = '#1abc9c'
-C_PYTHON = '#f39c12'
-C_GPU = '#9b59b6'
-C_PASS = '#2ecc71'
-C_INFO = '#3498db'
+rvp = bm['rust_vs_python']
+speedups = rvp['domain_speedups']
 
-rvp = bench['rust_vs_python']
-comparisons = {k: v for k, v in rvp.items() if k != 'note'}
+domains = [s['domain'] for s in speedups]
+values = [s['speedup'] for s in speedups]
 
-names = [k.replace('_', ' ').title() for k in comparisons]
-rust_ms = [comparisons[k]['rust_ms'] for k in comparisons]
-python_ms = [comparisons[k]['python_ms'] for k in comparisons]
-speedups = [comparisons[k]['speedup'] for k in comparisons]
+fig, ax = plt.subplots(figsize=(12, 6))
+bars = ax.barh(domains[::-1], values[::-1], color=INFO)
+ax.set_xlabel('Speedup (x)')
+ax.set_title(f'Rust vs Python Speedups — {rvp["geomean_speedup"]}x geomean')
+ax.set_xscale('log')
+ax.axvline(x=rvp['geomean_speedup'], color=PASS, linestyle='--',
+           linewidth=2, label=f'Geomean: {rvp["geomean_speedup"]}x')
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+for bar, val in zip(bars, values[::-1]):
+    ax.text(bar.get_width() * 1.1, bar.get_y() + bar.get_height()/2,
+            f'{val:.0f}x', va='center', fontsize=9)
 
-x = np.arange(len(names))
-w = 0.35
-axes[0].bar(x - w/2, python_ms, w, label='Python', color=C_PYTHON)
-axes[0].bar(x + w/2, rust_ms, w, label='Rust', color=C_RUST)
-axes[0].set_yscale('log')
-axes[0].set_ylabel('Time (ms, log scale)')
-axes[0].set_xticks(x)
-axes[0].set_xticklabels(names, rotation=25, ha='right', fontsize=8)
-axes[0].legend()
-axes[0].set_title('Python vs Rust — Absolute Timing')
-
-speedup_vals = [float(s.replace('x', '')) for s in speedups]
-bars = axes[1].bar(names, speedup_vals, color=C_PASS)
-for bar, s in zip(bars, speedups):
-    axes[1].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 20,
-                 s, ha='center', fontsize=9, fontweight='bold')
-axes[1].set_ylabel('Speedup (x)')
-axes[1].set_xticklabels(names, rotation=25, ha='right', fontsize=8)
-axes[1].set_title('Rust Speedup over Python')
-
-fig.suptitle('Three-Tier Validation: Python Baselines → Rust Parity', fontsize=13, fontweight='bold')
+ax.legend(loc='lower right', fontsize=11)
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_02_rust_vs_python.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## GPU vs CPU — Physics Domain Benchmarks
+## CPU-Python Cross-Language Parity
 
-Consumer GPU hardware (RTX 4070) delivers 40-70x acceleration over CPU for
-physics-heavy workloads. The key enabler is DF64 (emulated double precision
-on FP32 cores), which delivers 3.24 TFLOPS — 5.6x over native FP64.
+All 39 parity checks pass at 1e-10 tolerance — Rust CPU produces
+numerically identical results to the Python baselines.
 
 ```python
-domain = bench['domain_benchmarks']
-gpu_benchmarks = {}
-for k, v in domain.items():
-    if 'gpu_ms' in v and 'cpu_ms' in v:
-        gpu_benchmarks[k] = v
+parity = rvp['cpu_python_parity']
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-
-gb_names = [k.replace('_', ' ').title() for k in gpu_benchmarks]
-gb_gpu = [gpu_benchmarks[k]['gpu_ms'] for k in gpu_benchmarks]
-gb_cpu = [gpu_benchmarks[k]['cpu_ms'] for k in gpu_benchmarks]
-gb_speedup = [gpu_benchmarks[k]['speedup'] for k in gpu_benchmarks]
-
-x = np.arange(len(gb_names))
-w = 0.35
-axes[0].bar(x - w/2, gb_cpu, w, label='CPU', color='#95a5a6')
-axes[0].bar(x + w/2, gb_gpu, w, label='GPU (RTX 4070)', color=C_GPU)
-axes[0].set_yscale('log')
-axes[0].set_ylabel('Time (ms, log scale)')
-axes[0].set_xticks(x)
-axes[0].set_xticklabels(gb_names, rotation=25, ha='right', fontsize=8)
-axes[0].legend()
-axes[0].set_title('CPU vs GPU — Physics Workloads')
-
-speedup_vals = [float(s.replace('x', '')) for s in gb_speedup]
-bars = axes[1].bar(gb_names, speedup_vals, color=C_GPU)
-for bar, s in zip(bars, gb_speedup):
-    axes[1].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1,
-                 s, ha='center', fontsize=9, fontweight='bold')
-axes[1].set_ylabel('GPU Speedup (x)')
-axes[1].set_xticklabels(gb_names, rotation=25, ha='right', fontsize=8)
-axes[1].set_title('GPU Acceleration Factor')
-
-fig.suptitle(f'GPU Compute: DF64 delivers {domain["df64_throughput"]["tflops"]} TFLOPS on FP32 cores', fontsize=13, fontweight='bold')
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.bar(['PASS', 'FAIL'],
+       [parity['pass'], parity['total'] - parity['pass']],
+       color=[PASS, FAIL])
+ax.set_title(f'CPU↔Python Parity ({parity["pass"]}/{parity["total"]})')
+ax.set_ylabel('Checks')
+ax.text(0, parity['pass'] + 0.5, str(parity['pass']),
+        ha='center', fontweight='bold', fontsize=14)
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_02_gpu_vs_cpu.png', dpi=150, bbox_inches='tight')
+plt.show()
+
+print(f"Tolerance: {parity['tolerance']}")
+```
+
+## GPU Performance
+
+GPU acceleration via barraCuda + WGSL achieves up to **104x** vs Python,
+with ~97% of production operations promoted to GPU.
+
+```python
+gpu = bm['gpu_performance']
+mgpu = bm['multi_gpu']
+
+fig, axes = plt.subplots(1, 3, figsize=(14, 4))
+
+# GPU coverage pie
+cov = gpu['gpu_coverage_percent']
+axes[0].pie([cov, 100-cov], labels=[f'GPU ({cov}%)', f'CPU ({100-cov}%)'],
+            colors=[PASS, '#95a5a6'], autopct='%1.0f%%', startangle=90)
+axes[0].set_title('GPU Coverage')
+
+# GPU metrics
+metrics = ['Max speedup\nvs Python', 'Crossover\nlatency (ms)', 'Dispatch\noverhead (x)']
+vals = [gpu['max_speedup_vs_python'], gpu['gpu_crossover_latency_ms'], 1.04]
+axes[1].bar(metrics, vals, color=[INFO, '#f39c12', PASS])
+axes[1].set_title('GPU Performance Metrics')
+for i, v in enumerate(vals):
+    axes[1].text(i, v + max(vals)*0.02, f'{v}', ha='center', fontweight='bold')
+
+# Multi-GPU parity
+titan = mgpu['titan_v_checks']
+axes[2].bar(['PASS', 'FAIL'],
+            [titan['pass'], titan['total'] - titan['pass']],
+            color=[PASS, FAIL])
+axes[2].set_title(f'Multi-GPU Parity ({titan["pass"]}/{titan["total"]})')
+axes[2].text(0, titan['pass'] + 5, f'{titan["pass"]}',
+             ha='center', fontweight='bold', fontsize=14)
+
+plt.tight_layout()
+plt.show()
+
+print(f"Devices: {', '.join(mgpu['devices_tested'])}")
+print(f"Parity: {mgpu['parity']}")
+```
+
+## guideStone Validation Phases
+
+The guideStone binary validates in 4 phases: bare properties,
+discovery + liveness, domain science parity, and additive NUCLEUS.
+
+```python
+phases = bm['guidestone_phases']
+
+fig, ax = plt.subplots(figsize=(10, 3))
+phase_names = list(phases.keys())
+phase_labels = [
+    'Phase 1: Bare Properties',
+    'Phase 2: Discovery + Liveness',
+    'Phase 3: Domain Parity',
+    'Phase 4: Additive NUCLEUS'
+]
+phase_status = [True, True, True, False]
+colors = [PASS if s else '#f39c12' for s in phase_status]
+
+ax.barh(phase_labels[::-1], [1]*4, color=colors[::-1])
+ax.set_xlim(0, 1.3)
+ax.set_title('guideStone Validation Phases')
+
+for i, (label, desc) in enumerate(zip(phase_labels[::-1],
+                                       list(phases.values())[::-1])):
+    ax.text(1.05, i, desc[:60] + '...' if len(desc) > 60 else desc,
+            va='center', fontsize=7)
+
+plt.tight_layout()
 plt.show()
 ```
 
-## Energy and Cost Efficiency
+## Isomorphic Primitives
 
-All 181 experiments ran on consumer hardware for a total science cost of $0.30.
-Rust is 8.8x more energy-efficient than equivalent Python implementations.
+Six primitives compose all domain architectures — from transformers
+and protein folding to evolutionary computation and spectral analysis.
 
 ```python
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+prims = bm['isomorphic_primitives']
 
-energy = bench['energy_estimate']
-axes[0].bar(['Rust', 'Python\n(equivalent)'],
-            [energy['rust_full_suite_wh'], energy['python_equivalent_estimate_wh']],
-            color=[C_RUST, C_PYTHON])
-axes[0].set_ylabel('Energy (Wh)')
-axes[0].set_title(f'Energy: {energy["ratio"]}')
-
-cost = bench['cost_estimate']
-axes[1].bar(['Total Science\nCost'], [0.30], color=C_PASS, width=0.4)
-axes[1].set_ylabel('USD')
-axes[1].set_title(f'181 experiments, {cost["total_science_cost"]} total')
-axes[1].set_ylim(0, 0.5)
-
-fig.suptitle('Consumer Hardware Science: $0.30 for 181 Experiments', fontsize=13, fontweight='bold')
+fig, ax = plt.subplots(figsize=(10, 3))
+names = [p['primitive'] for p in prims]
+ax.barh(names[::-1], [1]*len(prims), color=INFO)
+for i, p in enumerate(prims[::-1]):
+    ax.text(1.05, i, p['role'], va='center', fontsize=9)
+ax.set_xlim(0, 2.5)
+ax.set_title('Isomorphic Computational Primitives')
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_02_energy.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Validation Summary
+## Summary
 
-| Benchmark | Result |
-|-----------|--------|
-| Rust vs Python | **44.8x** (SEMF), **2274x** (screening), **283x** (eigenvalue) |
-| GPU vs CPU | **71.8x** (HFB), **54.4x** (HMC), **44.3x** (gradient flow) |
-| DF64 throughput | **3.24 TFLOPS** (5.6x over native FP64) |
-| Total science cost | **$0.30** for 181 experiments |
-| Energy efficiency | **8.8x** more efficient than Python |
+| Metric | Value |
+|--------|-------|
+| Rust vs Python geomean | 83.6x (11 domains) |
+| Fastest speedup | 1104x (multi-objective) |
+| CPU↔Python parity | 39/39 PASS (1e-10) |
+| GPU max speedup | 104x (transformer medium) |
+| GPU coverage | ~97% |
+| Dispatch overhead | ≤1.04x (9/10 ops) |
+| Fused pipeline | 46-78x over per-op |
+| Multi-GPU parity | 384/384 bit-identical |
+| guideStone | Level 3 (29/29 bare) |
 
----
-
-**Provenance:** All benchmarks from `experiments/results/benchmark_timing.json`.  
-**Hardware:** AMD Ryzen 9 7950X, NVIDIA RTX 4070, Pop!_OS 22.04.  
-**Source:** [hotSpring on GitHub](https://github.com/syntheticChemistry/hotSpring) · [primals.eco](https://primals.eco/lab/springs/hotspring/)
+**Provenance:** [primals.eco](https://primals.eco) |
+neuralSpring Session S188 | May 2026
 
