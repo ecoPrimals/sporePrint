@@ -1,5 +1,5 @@
 +++
-title = "Ecosystem Evidence — primalSpring"
+title = "03 — Ecosystem Evidence"
 description = "Rendered from 03-ecosystem-evidence.ipynb"
 date = 2026-06-01
 weight = 50
@@ -11,194 +11,202 @@ rendered_from = "03-ecosystem-evidence.ipynb"
 
 <!-- Auto-generated from 03-ecosystem-evidence.ipynb by spore-validate render-notebooks -->
 
-# Ecosystem Evidence — primalSpring
+# 03 — Ecosystem Evidence
 
-primalSpring's 89 experiments form the evidence base for NUCLEUS composition
-validation. This notebook maps the experiment catalog across categories,
-timeline, and gap resolution — showing how primalSpring systematically
-validated every coordination pattern in the ecosystem.
+**neuralSpring sporePrint** | Session S188 | May 2026
 
-Unlike domain springs (wetSpring validates 16S pipelines, hotSpring validates
-QCD lattices), primalSpring validates the **composition layer itself** —
-the deploy graphs, bond types, IPC routing, and security model that every
-other spring depends on.
+134 experiments across 11 domains, gap resolution timeline,
+and security posture evolution.
 
-**Data sources**: `experiments/results/experiment_catalog.json`, `security_convergence.json`
+**Data sources:** `experiment-catalog.json`, `gap-status.json`, `security-posture.json`
 
-**Reproduce**: Individual experiments run via `cargo run --release -p <experiment_crate>`
-
----
-
-*For other springs: replace experiment categories with your domain research areas.
-Map your experiments to the papers/evidence they validate.*
+**For other springs:** Replace experiment catalog and gap data with your
+own. Security posture structure is shared across all springs.
 
 ```python
 import json
 from pathlib import Path
-
-import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-def load(path):
-    with open(RESULTS / path) as f:
-        return json.load(f)
+with open(RESULTS / 'experiment-catalog.json') as f:
+    ec = json.load(f)
 
-catalog = load('experiment_catalog.json')
-security = load('security_convergence.json')
+with open(RESULTS / 'gap-status.json') as f:
+    gs = json.load(f)
 
-print(f'Total experiments: {catalog["total_experiments"]}')
-print(f'Categories: {len(catalog["categories"])}')
-for name, cat in catalog['categories'].items():
-    print(f'  {name}: {cat["count"]} experiments — {cat["focus"]}')
+with open(RESULTS / 'security-posture.json') as f:
+    sp = json.load(f)
+
+PASS = '#2ecc71'
+FAIL = '#e74c3c'
+INFO = '#3498db'
+
+print(f"neuralSpring — {ec['total_experiments']} experiments, {len(ec['domains'])} domains")
 ```
 
-## Experiment Distribution by Category
+## Experiment Timeline
 
-89 experiments across 20 tracks, from atomic tower compositions
-to frontier work (MCP tools, agentic loops, micro desktop shells).
+134 experiments organized into 8 milestone bands, from foundation
+Python baselines through guideStone Level 3 maturity.
 
 ```python
-cats = catalog['categories']
-cat_names = [n.replace('_', ' ').title() for n in cats.keys()]
-cat_counts = [cats[c]['count'] for c in cats.keys()]
+milestones = ec['milestone_experiments']
 
-fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+fig, ax = plt.subplots(figsize=(12, 5))
+labels = [m['id'] for m in milestones]
+scopes = [m['scope'] for m in milestones]
 
-palette = plt.cm.Set3(range(len(cat_names)))
+# Extract approximate experiment counts from ranges
+counts = [10, 17, 23, 30, 20, 20, 10, 4]
+colors_list = [INFO, PASS, '#f39c12', '#9b59b6', '#e67e22', '#1abc9c', '#34495e', PASS]
 
-ax = axes[0]
-wedges, texts, autotexts = ax.pie(
-    cat_counts, labels=None, autopct='%1.0f%%',
-    colors=palette, startangle=90, pctdistance=0.85)
-for t in autotexts:
-    t.set_fontsize(7)
-ax.legend(cat_names, loc='center left', bbox_to_anchor=(1, 0.5), fontsize=7)
-ax.set_title(f'{catalog["total_experiments"]} Experiments — Category Distribution')
-
-ax = axes[1]
-bars = ax.barh(cat_names[::-1], cat_counts[::-1], color=palette[::-1])
+bars = ax.barh(labels[::-1], counts[::-1], color=colors_list[::-1])
 ax.set_xlabel('Experiments')
-ax.set_title('Experiments per Category')
-for bar, val in zip(bars, cat_counts[::-1]):
-    ax.text(bar.get_width() + 0.2, bar.get_y() + bar.get_height()/2,
-            str(val), va='center', fontsize=9)
+ax.set_title(f'Experiment Timeline ({ec["total_experiments"]} total)')
 
-plt.suptitle('primalSpring Experiment Catalog',
-             fontsize=13, fontweight='bold')
+for i, (bar, scope) in enumerate(zip(bars, scopes[::-1])):
+    ax.text(bar.get_width() + 0.5, bar.get_y() + bar.get_height()/2,
+            scope[:50], va='center', fontsize=8)
+
 plt.tight_layout()
-plt.savefig('/tmp/primalspring_03_catalog.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Experiment Growth Timeline
+## Faculty Contributions
 
-Experiment creation accelerated through Phase 55–59 as BTSP Phase 3
-convergence and security gap resolution drove new validation needs.
+27 peer-reviewed papers across 6 faculties provide the scientific
+foundation for neuralSpring's validation chain.
 
 ```python
-timeline = catalog['timeline']
-periods = ['Phase 40–50\n(Feb–Mar)', 'Phase 50–55\n(Mar–Apr)', 'Phase 55–59\n(Apr–May)']
-added = [timeline['phase_40_50']['experiments_added'],
-         timeline['phase_50_55']['experiments_added'],
-         timeline['phase_55_59']['experiments_added']]
-cumulative = [added[0], added[0]+added[1], added[0]+added[1]+added[2]]
+faculties = ec['faculties']
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-ax = axes[0]
-bars = ax.bar(periods, added, color=['#3498db', '#2ecc71', '#e67e22'])
-ax.set_ylabel('Experiments added')
-ax.set_title('New Experiments per Phase Window')
-for bar, val in zip(bars, added):
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5,
-            str(val), ha='center', fontsize=12, fontweight='bold')
+# Papers per faculty
+fnames = [f['name'] for f in faculties]
+fpapers = [len(f['papers']) for f in faculties]
+axes[0].barh(fnames[::-1], fpapers[::-1], color=INFO)
+axes[0].set_xlabel('Papers')
+axes[0].set_title('Papers per Faculty')
+for i, (bar_val, f) in enumerate(zip(fpapers[::-1], faculties[::-1])):
+    axes[0].text(bar_val + 0.1, i, f['institution'], va='center', fontsize=8)
 
-ax = axes[1]
-ax.plot(periods, cumulative, 'o-', color='#2c3e50', linewidth=2, markersize=8)
-ax.fill_between(range(len(periods)), cumulative, alpha=0.2, color='#3498db')
-ax.set_ylabel('Cumulative experiments')
-ax.set_title('Experiment Growth')
-for i, val in enumerate(cumulative):
-    ax.text(i, val + 1.5, str(val), ha='center', fontsize=11, fontweight='bold')
+# Checks per faculty
+fchecks = [f['checks'] for f in faculties]
+axes[1].barh(fnames[::-1], fchecks[::-1], color=PASS)
+axes[1].set_xlabel('Validation Checks')
+axes[1].set_title('Checks per Faculty')
+for i, v in enumerate(fchecks[::-1]):
+    axes[1].text(v + 0.5, i, str(v), va='center', fontweight='bold')
 
-plt.suptitle('primalSpring: Experiment Evolution',
-             fontsize=13, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/tmp/primalspring_03_timeline.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Security Gap Resolution
+## Gap Resolution
 
-PG-55 through PG-59 were identified during projectNUCLEUS Phase 2a audit.
-Each gap was tracked, validated by specific experiments, and resolved by
-upstream primal teams.
-
-```python
-gaps = security['gaps']
-gap_ids = list(gaps.keys())
-gap_titles = [gaps[g]['title'] for g in gap_ids]
-gap_sevs = [gaps[g]['severity'] for g in gap_ids]
-gap_exps = catalog['gap_resolution_experiments']
-
-sev_colors = {'HIGH': '#e74c3c', 'MEDIUM': '#f39c12', 'LOW': '#3498db'}
-
-print(f'{"Gap":<8s} {"Severity":<8s} {"Status":<10s} {"Title"}')
-print('-' * 70)
-for gid in gap_ids:
-    g = gaps[gid]
-    exps = ', '.join(gap_exps.get(gid, []))
-    print(f'{gid:<8s} {g["severity"]:<8s} {g["status"]:<10s} {g["title"]}')
-    print(f'         Resolution: {g["resolution"]}')
-    print(f'         Experiments: {exps}')
-    print()
-```
+14 main gaps tracked in `PRIMAL_GAPS.md`, with 13 historically resolved
+gaps in the appendix and 5 composition evolution items implemented.
 
 ```python
-# Security convergence timeline
-timeline = security['security_timeline']
-dates = [e['date'] for e in timeline]
-primals = [e['primals'] for e in timeline]
-events = [e['event'].split(' — ')[0] for e in timeline]
+summary = gs['summary']
 
-fig, ax = plt.subplots(figsize=(12, 5))
-ax.plot(range(len(dates)), primals, 'o-', color='#2ecc71', linewidth=2, markersize=10)
-ax.fill_between(range(len(dates)), primals, alpha=0.2, color='#2ecc71')
-ax.set_xticks(range(len(dates)))
-ax.set_xticklabels([f'{d}\n{e}' for d, e in zip(dates, events)], fontsize=7, rotation=15)
-ax.set_ylabel('Primals at Phase 3')
-ax.set_ylim(-1, 15)
-ax.set_title('BTSP Security Convergence Timeline')
-ax.axhline(y=13, color='#e74c3c', linestyle='--', alpha=0.5, label='Target: 13/13')
-ax.legend()
-for i, (d, p) in enumerate(zip(dates, primals)):
-    ax.text(i, p + 0.5, f'{p}/13', ha='center', fontsize=9, fontweight='bold')
+status_counts = {
+    'resolved': summary['resolved_main'],
+    'implemented': summary['implemented'],
+    'wip': summary['wip'],
+    'open': summary['open'],
+    'deferred': summary['deferred'],
+    'tracking': summary['tracking'],
+    'explored': summary['explored'],
+    'partial': summary['partial']
+}
+
+status_colors = {
+    'resolved': PASS, 'implemented': PASS,
+    'wip': '#f39c12', 'open': FAIL,
+    'deferred': '#95a5a6', 'tracking': INFO,
+    'explored': '#9b59b6', 'partial': '#e67e22'
+}
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+# Main gaps by status
+labels = list(status_counts.keys())
+vals = list(status_counts.values())
+cols = [status_colors[s] for s in labels]
+axes[0].bar(labels, vals, color=cols)
+axes[0].set_title(f'Main Gaps by Status ({summary["total_main_gaps"]} total)')
+axes[0].tick_params(axis='x', rotation=45)
+for i, v in enumerate(vals):
+    if v > 0:
+        axes[0].text(i, v + 0.1, str(v), ha='center', fontweight='bold')
+
+# Historical resolution
+hist = ['Resolved (appendix)', 'Composition evolution', 'Main resolved']
+hist_vals = [summary['resolved_appendix'], summary['composition_evolution'], summary['resolved_main']]
+axes[1].bar(hist, hist_vals, color=[PASS, '#1abc9c', PASS])
+axes[1].set_title('Resolved Gap History')
+for i, v in enumerate(hist_vals):
+    axes[1].text(i, v + 0.2, str(v), ha='center', fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('/tmp/primalspring_03_security.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Validation Summary
+## Security Posture Timeline
+
+The security posture has evolved from basic Rust safety through
+BTSP mandatory encryption and BLAKE3 checksum verification.
+
+```python
+security_milestones = [
+    ('forbid(unsafe_code)', True),
+    ('cargo-deny enforcement', True),
+    ('Zero #[allow()]', True),
+    ('BLAKE3 checksums (15 files)', True),
+    ('BTSP 13/13 default', True),
+    ('Stadial deny bans (8 crates)', True),
+    ('SPDX headers (all .rs)', True),
+    ('Pure Rust supply chain', True),
+    ('BTSP session establishment', False),
+    ('Level 4 NUCLEUS certified', False)
+]
+
+fig, ax = plt.subplots(figsize=(10, 4))
+names = [m[0] for m in security_milestones]
+colors = [PASS if m[1] else FAIL for m in security_milestones]
+ax.barh(names[::-1], [1]*len(names), color=colors[::-1])
+ax.set_xlim(0, 1.3)
+ax.set_title('Security Posture Evolution')
+
+legend_elements = [
+    mpatches.Patch(color=PASS, label='Complete'),
+    mpatches.Patch(color=FAIL, label='Pending')
+]
+ax.legend(handles=legend_elements, loc='lower right')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Summary
 
 | Metric | Value |
 |--------|-------|
-| Total experiments | 85 |
-| Categories | 15 |
-| Security gaps tracked | 5 (PG-55 – PG-59) |
-| Security gaps resolved | 5/5 |
-| BTSP Phase 3 coverage | 13/13 primals |
-| Bind default localhost | 13/13 primals |
+| Experiments | 134 across 11 domains |
+| Papers reproduced | 27 (6 faculties) |
+| Main gaps | 14 (2 resolved, 2 wip, 5 open) |
+| Resolved gaps (appendix) | 13 |
+| Composition evolution | 5 implemented |
+| BTSP | 13/13 mandatory |
+| Unsafe code | 0 (forbid workspace-wide) |
+| Supply chain | Pure Rust |
+| BLAKE3 checksums | 15 files |
 
----
-
-**Provenance**: All results are content-addressed via BLAKE3 hashes,
-tracked in rhizoCrypt DAG sessions, committed to the loamSpine ledger,
-and witnessed with ed25519 signatures via sweetGrass braid.
-
-**Reproduce**: See [primals.eco/lab/reproduce](https://primals.eco/lab/reproduce/)
-
-**Source**: [ecoPrimals/primalSpring](https://github.com/ecoPrimals/primalSpring)
+**Provenance:** [primals.eco](https://primals.eco) |
+neuralSpring Session S188 | May 2026
 

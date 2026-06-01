@@ -19,12 +19,16 @@ use walkdir::WalkDir;
 /// The certification manifest — a self-verifying summary of all published claims.
 #[derive(Debug, Serialize)]
 pub struct CertificationManifest {
+    pub schema_version: &'static str,
+    #[serde(alias = "schema_version")]
     pub version: &'static str,
     pub generated: String,
     pub entity_count: usize,
     pub primal_count: usize,
     pub spring_count: usize,
     pub edge_count: usize,
+    pub merkle_root: String,
+    #[serde(alias = "merkle_root")]
     pub graph_merkle: String,
     pub content_pages: usize,
     pub total_loc: u64,
@@ -63,12 +67,14 @@ pub fn build_manifest(config: &Config, root: &Path, validation_errors: usize) ->
         .unwrap_or_else(today_utc);
 
     CertificationManifest {
+        schema_version: "1.0.0",
         version: "1.0.0",
         generated: format!("{}T00:00:00Z", today_utc()),
         entity_count,
         primal_count,
         spring_count,
         edge_count,
+        merkle_root: graph_merkle.clone(),
         graph_merkle,
         content_pages,
         total_loc,
@@ -177,6 +183,7 @@ pub fn validate_manifest(
 /// Subset of manifest fields for comparison (deserialized from existing file).
 #[derive(serde::Deserialize)]
 struct StoredManifest {
+    #[serde(alias = "merkle_root")]
     graph_merkle: String,
     entity_count: usize,
     edge_count: usize,
@@ -212,12 +219,14 @@ mod tests {
     #[test]
     fn manifest_serializes_to_json() {
         let m = CertificationManifest {
+            schema_version: "1.0.0",
             version: "1.0.0",
             generated: "2026-06-01T00:00:00Z".into(),
             entity_count: 5,
             primal_count: 3,
             spring_count: 2,
             edge_count: 10,
+            merkle_root: "blake3:abc123".into(),
             graph_merkle: "blake3:abc123".into(),
             content_pages: 50,
             total_loc: 100_000,
@@ -227,7 +236,8 @@ mod tests {
             drift_tolerance: "5%/30d",
         };
         let json = serde_json::to_string_pretty(&m).unwrap();
-        assert!(json.contains("\"version\": \"1.0.0\""));
+        assert!(json.contains("\"schema_version\": \"1.0.0\""));
+        assert!(json.contains("\"merkle_root\""));
         assert!(json.contains("blake3:abc123"));
     }
 }

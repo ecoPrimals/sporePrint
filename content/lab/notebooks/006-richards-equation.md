@@ -48,7 +48,7 @@ from scipy.integrate import solve_ivp
 
 warnings.filterwarnings("ignore", category=RuntimeWarning, module="scipy")
 
-REPO = Path(os.environ.get('ECOPRIMALS_ROOT', str(Path.home() / 'Development/ecoPrimals'))).resolve() / 'springs/airSpring'
+REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
 BENCH = REPO / "control/richards/benchmark_richards.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"

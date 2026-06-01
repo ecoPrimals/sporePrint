@@ -39,7 +39,7 @@ def _find_repo_root() -> Path:
         if (p / "control" / "makkink").is_dir():
             return p
         p = p.parent
-    return Path(os.environ.get('ECOPRIMALS_ROOT', str(Path.home() / 'Development/ecoPrimals'))) / 'springs/airSpring'
+    return Path('/home/eastgate/Development/ecoPrimals/springs/airSpring')
 
 REPO = _find_repo_root()
 BENCHMARK_PATH = REPO / "control" / "makkink" / "benchmark_makkink.json"

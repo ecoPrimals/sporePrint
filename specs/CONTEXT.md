@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 1, 2026 — Wave 68)
+## Current State (June 1, 2026 — Wave 68+)
 
 - **207+ content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
@@ -28,6 +28,8 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.
 - **VizRegistry** — Capability-based discovery of available visualizations at petalTongue startup. No hardcoded route dispatch — registry pattern enables future viz additions without modifying route handlers.
 - **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data (4 files < 250L each), deprecated shell scripts superseded by Rust.
+- **primalSpring validation: 70/70 PASS** — `sporeprint-pure-primal-parity` scenario passes all checks (content parsing, entity resolution, modality output, composition graph, certification manifest). Certification manifest now emits `schema_version` + `merkle_root` fields per primalSpring expectations.
+- **Metrics freshness** — all 25 entity metrics refreshed (3.46M LOC, 114K tests ecosystem-wide). Drift tolerance maintained.
 
 ## Repository Structure
 
@@ -134,3 +136,15 @@ Audience, Methodology, and Technical are accessible via the site tree sidebar. A
 As of Wave 65, the Forgejo → GitHub relay is operational for sporePrint.
 Push to `forgejo` only — the K-Derm diderm chain handles GitHub propagation
 automatically via `golgi-post-receive-relay.sh` on golgiBody-inner.
+
+## Wave 67: Glacial Cutover Coordination
+
+flockGate status: **CLEAR**. Content cutover to sovereign hosting is Phase 2,
+pending DNS NS registrar cutover (eastGate manual action). After DNS:
+golgiBody-ext gets HTTPS, then Caddy routes to petalTongue:8080. GitHub
+Pages becomes shadow-only, then fossilized.
+
+Gate ownership confirmed in `GATE_TEAM_COORDINATION_MATRIX.md`. primalSpring's
+`signals` vocabulary has evolved to `compositions` across all graphs/scenarios —
+sporePrint content is unaffected (science content references biological signals,
+not infrastructure signal graphs).

@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 
-REPO = Path(os.environ.get('ECOPRIMALS_ROOT', str(Path.home() / 'Development/ecoPrimals'))).resolve() / 'springs/airSpring'
+REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
 BENCH = REPO / "control/biochar/benchmark_biochar.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"
