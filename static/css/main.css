@@ -963,3 +963,20 @@ a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; tex
 
 /* Tree current page highlight */
 .tree-current > a { font-weight: 700; color: var(--c-accent); }
+
+/* Tree org/garden section */
+.tree-org details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.1rem 0;
+}
+.tree-ext a {
+  color: var(--c-text-muted);
+  font-size: 0.82rem;
+}
+.tree-ext a::after {
+  content: " ↗";
+  font-size: 0.65rem;
+  opacity: 0.6;
+}

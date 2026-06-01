@@ -200,6 +200,23 @@
             </li>
 
             <li class="tree-divider"></li>
+            <li class="tree-section tree-org">
+              <details{% if current_path is starting_with("/products") %} open{% endif %}>
+                <summary>🌱 sporeGarden</summary>
+                <ul class="tree-pages">
+                  {% set sec = get_section(path="products/_index.md") %}
+                  {% for pg in sec.pages %}
+                  <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                  {% endfor %}
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/cellMembrane" rel="noopener">🧫 cellMembrane</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/projectFOUNDATION" rel="noopener">🏛️ projectFOUNDATION</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/projectNUCLEUS" rel="noopener">⚛️ projectNUCLEUS</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/lithoSpore" rel="noopener">🪨 lithoSpore</a></li>
+                </ul>
+              </details>
+            </li>
+
+            <li class="tree-divider"></li>
             <li class="tree-section{% if current_path is starting_with("/primals") %} tree-active{% endif %}">
               <a href="/primals/">Primals Index</a>
             </li>

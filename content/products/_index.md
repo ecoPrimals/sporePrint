@@ -12,9 +12,16 @@ what happens when barraCuda (math) + coralReef (compiler) + toadStool
 You get sovereign protein structure prediction — an emergent capability
 that no single primal provides alone.
 
-Three products from [sporeGarden](https://github.com/sporeGarden) demonstrate that
+Products from [sporeGarden](https://github.com/sporeGarden) demonstrate that
 primal composition produces real, usable tools. Each product consumes primals via
 JSON-RPC — no source coupling, no vendor lock-in, everything runs on your hardware.
+
+The sporeGarden organization also hosts infrastructure projects:
+
+- **{{ entity(name="cellmembrane") }}** — sovereign VPS control plane, K-Derm relay management
+- **{{ entity(name="projectnucleus") }}** — deployment and composition layer (TOML deploy graphs)
+- **{{ entity(name="projectfoundation") }}** — institutional adoption bridge
+- **{{ entity(name="lithospore") }}** — guideStone artifact, self-verifying deployment binary
 
 See also: [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the
 complete repository map, and [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md)
