@@ -15,6 +15,7 @@ mod graph;
 mod links;
 mod model;
 mod notebook;
+mod paths;
 mod provenance;
 mod refresh;
 mod registry;
@@ -142,7 +143,7 @@ fn main() -> ExitCode {
 fn run() -> Result<(), Error> {
     let cli = Cli::parse();
     let root = cli.root.canonicalize().unwrap_or_else(|_| cli.root.clone());
-    let config_path = root.join("config.toml");
+    let config_path = root.join(paths::CONFIG_FILE);
     let config = model::parse_config(&config_path)?;
 
     match cli.command {
@@ -213,7 +214,7 @@ fn run_validate(
         &mut diagnostics,
     );
 
-    let content_dir = root.join("content");
+    let content_dir = root.join(paths::CONTENT_DIR);
     if content_dir.is_dir() {
         content::validate_taxonomies(
             root,
@@ -355,8 +356,8 @@ fn drift_pct(registered: u64, actual: u64) -> String {
 fn discover_springs_root(start: &Path) -> Option<PathBuf> {
     let mut dir = start.to_path_buf();
     loop {
-        if dir.join(".gate").is_file() {
-            let springs = dir.join("springs");
+        if dir.join(paths::GATE_MARKER).is_file() {
+            let springs = dir.join(paths::SPRINGS_DIR);
             if springs.is_dir() {
                 return Some(springs);
             }
@@ -381,10 +382,7 @@ fn run_render_notebooks(root: &Path, dirs: &[PathBuf], springs: Option<&Path>) {
 }
 
 fn run_check_links(root: &Path) -> Result<(), Error> {
-    let content_root = root.join("content");
-    if !content_root.is_dir() {
-        return Err(Error::Config("content/ directory not found".into()));
-    }
+    let content_root = paths::require_content_dir(root)?;
 
     println!("spore-validate: checking internal links...");
     let report = links::check_links(&content_root);
@@ -413,10 +411,7 @@ fn run_check_links(root: &Path) -> Result<(), Error> {
 }
 
 fn run_provenance(root: &Path, verify: bool, diff: bool, write: bool) -> Result<(), Error> {
-    let content_dir = root.join("content");
-    if !content_dir.is_dir() {
-        return Err(Error::Config("content/ directory not found".into()));
-    }
+    let content_dir = paths::require_content_dir(root)?;
 
     let manifest_path = provenance::manifest_path(root);
 
@@ -514,7 +509,7 @@ fn run_graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Erro
     );
 
     if emit {
-        let output_path = root.join("static/graph/entity-graph.json");
+        let output_path = root.join(paths::ENTITY_GRAPH_JSON);
         graph::emit_graph_json(&entity_graph, &output_path)
             .map_err(|e| Error::io(&output_path, e))?;
         println!("  EMIT: {}", output_path.display());
@@ -538,7 +533,7 @@ fn run_certify(root: &Path, config: &model::Config, emit: bool) -> Result<(), Er
     println!("  content pages: {}", manifest.content_pages);
     println!("  graph merkle: {}", manifest.graph_merkle);
 
-    let manifest_path = root.join("static/certification/manifest.json");
+    let manifest_path = root.join(paths::CERTIFICATION_MANIFEST);
 
     if emit {
         certify::emit_manifest(&manifest, &manifest_path)
@@ -575,12 +570,12 @@ fn run_fetch_refresh(
 ) -> Result<(), Error> {
     println!("spore-validate: fetching upstream repos...");
 
-    let messages = fetch::fetch_and_refresh(root, source);
-    for msg in &messages {
-        println!("{msg}");
+    let result = fetch::fetch_and_refresh(root, source)?;
+    for outcome in &result.outcomes {
+        println!("{outcome}");
     }
+    println!("---\nRepos staged in {}", result.clone_root.display());
 
-    let clone_root = fetch::clone_dir();
     println!("\nspore-validate: scanning for metric drift...");
-    run_refresh(config_path, config, &clone_root, write, source)
+    run_refresh(config_path, config, &result.clone_root, write, source)
 }

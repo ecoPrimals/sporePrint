@@ -67,6 +67,8 @@ pub fn build_manifest(config: &Config, root: &Path, validation_errors: usize) ->
         .clone()
         .unwrap_or_else(today_utc);
 
+    let merkle_root = graph_merkle.clone();
+
     CertificationManifest {
         schema_version: "1.0.0",
         version: "1.0.0",
@@ -75,7 +77,7 @@ pub fn build_manifest(config: &Config, root: &Path, validation_errors: usize) ->
         primal_count,
         spring_count,
         edge_count,
-        merkle_root: graph_merkle.clone(),
+        merkle_root,
         graph_merkle,
         content_pages,
         total_loc,

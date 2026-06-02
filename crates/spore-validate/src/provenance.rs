@@ -73,7 +73,7 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
     let root_hash = root_hasher.finalize().to_hex().to_string();
 
     ContentManifest {
-        generated: chrono_free_now(),
+        generated: crate::time::now_iso8601(),
         root_hash,
         page_count: pages.len(),
         pages,
@@ -137,12 +137,10 @@ fn extract_title(bytes: &[u8]) -> Option<String> {
     None
 }
 
-fn chrono_free_now() -> String {
-    crate::time::now_iso8601()
-}
+
 
 pub fn manifest_path(root: &Path) -> PathBuf {
-    root.join("content-manifest.toml")
+    root.join(crate::paths::CONTENT_MANIFEST)
 }
 
 #[cfg(test)]

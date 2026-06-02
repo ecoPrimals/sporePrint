@@ -89,12 +89,11 @@ pub fn format_entity(key: &str, entity: &Entity) -> String {
         let _ = write!(out, " repo={repo}");
     }
     if let Some(desc) = &entity.description {
-        let truncated = if desc.len() > 60 {
-            format!("{}...", &desc[..57])
+        if desc.len() > 60 {
+            let _ = write!(out, " desc=\"{}...\"", &desc[..57]);
         } else {
-            desc.clone()
-        };
-        let _ = write!(out, " desc=\"{truncated}\"");
+            let _ = write!(out, " desc=\"{desc}\"");
+        }
     }
     if let Some(composes) = &entity.composes {
         let _ = write!(out, " composes={composes}");

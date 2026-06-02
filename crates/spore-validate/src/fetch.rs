@@ -378,29 +378,35 @@ pub fn fetch_sources(
         }
 
         let target = clone_root.join(&source.repo);
+        let kind_label = source.kind.as_deref().unwrap_or("repo");
+        let key_owned = (*key).to_string();
 
-        let kind_label = source.kind.as_deref().unwrap_or("repo").to_string();
-        let result = if vcs.is_repo(&target) {
-            vcs.pull_repo(&target).map(|()| FetchOutcome::Pulled {
-                key: (*key).to_string(),
-                kind: kind_label.clone(),
-            })
+        let outcome = if vcs.is_repo(&target) {
+            match vcs.pull_repo(&target) {
+                Ok(()) => FetchOutcome::Pulled {
+                    key: key_owned,
+                    kind: kind_label.to_string(),
+                },
+                Err(e) => FetchOutcome::Skipped {
+                    key: key_owned,
+                    reason: e.to_string(),
+                },
+            }
         } else {
             let url = source.clone_url();
-            vcs.clone_repo(&url, &target)
-                .map(|()| FetchOutcome::Cloned {
-                    key: (*key).to_string(),
-                    kind: kind_label,
-                })
+            match vcs.clone_repo(&url, &target) {
+                Ok(()) => FetchOutcome::Cloned {
+                    key: key_owned,
+                    kind: kind_label.to_string(),
+                },
+                Err(e) => FetchOutcome::Skipped {
+                    key: key_owned,
+                    reason: e.to_string(),
+                },
+            }
         };
 
-        match result {
-            Ok(outcome) => outcomes.push(outcome),
-            Err(e) => outcomes.push(FetchOutcome::Skipped {
-                key: (*key).to_string(),
-                reason: e.to_string(),
-            }),
-        }
+        outcomes.push(outcome);
     }
 
     outcomes
@@ -408,29 +414,34 @@ pub fn fetch_sources(
 
 /// Parse `sources.toml` from the sporePrint root.
 pub fn parse_sources(sporeprint_root: &Path) -> Result<SourcesFile, Error> {
-    let sources_path = sporeprint_root.join("sources.toml");
+    let sources_path = sporeprint_root.join(crate::paths::SOURCES_FILE);
     let text = std::fs::read_to_string(&sources_path).map_err(|e| Error::io(&sources_path, e))?;
     let sources: SourcesFile = toml::from_str(&text)?;
     Ok(sources)
+}
+
+/// Structured result of a fetch-and-refresh cycle.
+pub struct FetchResult {
+    pub outcomes: Vec<FetchOutcome>,
+    pub clone_root: PathBuf,
 }
 
 /// High-level fetch-and-refresh using the best available backend.
 ///
 /// Prefers `git` if available on PATH; falls back to HTTP archive download
 /// for sovereign Forgejo (plain HTTP only — no TLS).
-pub fn fetch_and_refresh(sporeprint_root: &Path, source_filter: Option<&str>) -> Vec<String> {
-    let sources = match parse_sources(sporeprint_root) {
-        Ok(s) => s,
-        Err(e) => return vec![format!("ERROR: {e}")],
-    };
-
+pub fn fetch_and_refresh(
+    sporeprint_root: &Path,
+    source_filter: Option<&str>,
+) -> Result<FetchResult, Error> {
+    let sources = parse_sources(sporeprint_root)?;
     let clone_root = clone_dir();
     let backend = detect_backend();
     let outcomes = fetch_sources(&sources, &clone_root, source_filter, backend.as_ref());
-
-    let mut messages: Vec<String> = outcomes.iter().map(ToString::to_string).collect();
-    messages.push(format!("---\nRepos staged in {}", clone_root.display()));
-    messages
+    Ok(FetchResult {
+        outcomes,
+        clone_root,
+    })
 }
 
 /// Staging directory for fetched repos.
@@ -478,18 +489,16 @@ impl MockBackend {
 impl VcsBackend for MockBackend {
     fn clone_repo(&self, url: &str, _target: &Path) -> Result<(), Error> {
         match self.clone_results.get(url) {
-            Some(Ok(())) => Ok(()),
             Some(Err(reason)) => Err(Error::Git(reason.clone())),
-            None => Ok(()),
+            Some(Ok(())) | None => Ok(()),
         }
     }
 
     fn pull_repo(&self, target: &Path) -> Result<(), Error> {
         let key = target.to_string_lossy().to_string();
         match self.pull_results.get(&key) {
-            Some(Ok(())) => Ok(()),
             Some(Err(reason)) => Err(Error::Git(reason.clone())),
-            None => Ok(()),
+            Some(Ok(())) | None => Ok(()),
         }
     }
 
@@ -644,7 +653,7 @@ repo = "org/beta"
     #[test]
     fn fetch_and_refresh_handles_missing_sources() {
         let dir = tempfile::tempdir().unwrap();
-        let messages = fetch_and_refresh(dir.path(), None);
-        assert!(messages[0].contains("ERROR"));
+        let result = fetch_and_refresh(dir.path(), None);
+        assert!(result.is_err(), "missing sources.toml should return Err");
     }
 }

@@ -4,16 +4,18 @@
 for sporePrint. It lives at `crates/spore-validate/` and enforces
 `#![forbid(unsafe_code)]` at the crate root.
 
-## Current State (Wave 68 — June 2026)
+## Current State (Wave 70 — June 2026)
 
-- **14 modules**, 89+ tests, 90.3% line coverage (llvm-cov)
+- **15 modules**, 101 tests (79 unit + 19 integration + 3 refresh_write)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
 - Zero `#[allow()]` in production code
 - All files under 600 LOC (limit: 800, target: 500)
-- Pure Rust dependencies only (ecoBin compliant) + `blake3` for certification
+- Zero C toolchain dependencies (`blake3` pure-Rust, `flate2` rust_backend)
 - `thiserror`-based typed error hierarchy (`Result` propagation, no `process::exit`)
 - Structured `Diagnostic` with `Severity` (Error/Warning) and `promote_to_error()`
 - `LazyLock<Regex>` for all regex compilation (zero runtime panic paths)
+- `paths.rs` — centralized path constants (no string literals in main.rs)
+- `FetchResult` typed return (no stringly error propagation)
 - Parity integration tests: 6 tests validate petalTongue vs Zola output
 
 ## Subcommands
@@ -32,6 +34,7 @@ for sporePrint. It lives at `crates/spore-validate/` and enforces
 | `render-notebooks <dirs>` | Jupyter .ipynb → Zola markdown |
 | `render-notebooks --discover` | Auto-find notebooks via .gate walk |
 | `check-links` | Validate all @/ internal links |
+| `provenance` | BLAKE3 content hashing (--write/--verify/--diff) |
 
 ## Module Architecture
 
@@ -40,15 +43,17 @@ crates/spore-validate/src/
 ├── main.rs       — CLI (clap derive), orchestration, ExitCode
 ├── error.rs      — thiserror Error enum + Diagnostic struct (Severity)
 ├── model.rs      — Typed entity model, Edge/EdgeRelation, Zola config parser
+├── paths.rs      — Canonical path constants (single source of truth)
 ├── registry.rs   — Per-kind field validation
 ├── totals.rs     — Aggregate sum verification
 ├── content.rs    — Front matter taxonomy + shortcode checks
 ├── graph.rs      — Typed entity graph: build, validate, emit JSON
 ├── certify.rs    — guideStone: BLAKE3 Merkle root, manifest emit/validate
 ├── refresh.rs    — Cross-repo metric comparison + write-back
-├── fetch.rs      — VcsBackend trait, GitBackend, MockBackend, Source model
+├── fetch.rs      — VcsBackend trait, GitBackend, ForgeArchiveBackend, MockBackend
+├── provenance.rs — BLAKE3 content hashing, diff, write manifest
 ├── notebook.rs   — Jupyter .ipynb JSON → Zola markdown
-├── links.rs      — Internal @/ link validation
+├── links.rs      — Internal @/ link validation (link_resolves helper)
 ├── report.rs     — Entity/totals report generation (consumes all fields)
 └── time.rs       — Pure Rust UTC date (shared, no external commands)
 ```
@@ -65,9 +70,10 @@ pub trait VcsBackend {
 }
 ```
 
-- `GitBackend`: production (shells out to `git`)
+- `GitBackend`: production (shells out to `git` — preferred when available)
+- `ForgeArchiveBackend`: pure-Rust HTTP fetch + gzip + tar (sovereign Forgejo, no TLS needed)
 - `MockBackend`: testing (in-memory, no I/O) — enables 75%+ coverage on fetch
-- Future: Forgejo API backend, temporal sync backend
+- `detect_backend()`: runtime selection (git if available, else HTTP archive)
 
 ### Typed Entity Graph (`graph.rs` + `model.rs`)
 
@@ -122,19 +128,20 @@ pub enum Error {
 All fallible operations return `Result<T, Error>`. The `main()` function
 returns `ExitCode`, mapping `Err(e)` to a single `eprintln!` + FAILURE.
 
-## Dependencies (8 total, all pure Rust)
+## Dependencies (9 total, all pure Rust — zero C toolchain)
 
 | Crate | Purpose |
 |-------|---------|
-| `blake3` | BLAKE3 hashing for certification Merkle root |
+| `blake3` (pure) | BLAKE3 hashing for certification Merkle root |
 | `clap` | CLI argument parsing (derive) |
+| `flate2` (rust_backend) | Gzip decompression for archive fetch |
 | `regex` | Taxonomy + link pattern matching |
 | `serde` + `serde_json` | Entity registry + notebook deserialization |
 | `toml` + `toml_edit` | Config parsing + in-place write-back |
 | `thiserror` | Typed error derivation |
 | `walkdir` | Directory traversal |
 
-Dev-only: `tempfile` (test fixtures).
+Dev-only: `tempfile` (test fixtures), `ureq` (HTTP parity tests).
 
 ## Evolution Targets
 
@@ -177,6 +184,7 @@ This loads the entity registry (66 entities from `config.toml`), builds the
 navigation tree (11 sections from `_index.md` front matter), and serves all
 pages through the DocumentNode pipeline with full entity shortcode resolution.
 
-Parity is validated via `scripts/validate_parity.sh` (22 structural checks
-against Zola reference output: content serving, entity resolution, modality
-support, static assets, and heading-level structural comparison).
+Parity is validated via Rust integration tests (`cargo test --test parity -- --ignored`).
+22 structural checks against Zola reference output: content serving, entity
+resolution, modality support, static assets, and heading-level structural
+comparison. The old shell script (`validate_parity.sh`) is deprecated.

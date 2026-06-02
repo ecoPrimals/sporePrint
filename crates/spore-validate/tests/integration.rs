@@ -254,3 +254,156 @@ fn render_notebooks_discover_on_workspace() {
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(stdout.contains("Rendered"));
 }
+
+#[test]
+fn check_links_on_real_content() {
+    build_binary();
+    let root = sporeprint_root();
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "check-links"])
+        .output()
+        .expect("failed to run check-links");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "check-links failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("checking internal links"));
+}
+
+#[test]
+fn graph_emit_produces_json() {
+    build_binary();
+    let root = sporeprint_root();
+    let dir = tempfile::tempdir().unwrap();
+    let temp_root = dir.path();
+
+    std::fs::copy(root.join("config.toml"), temp_root.join("config.toml")).unwrap();
+    std::fs::create_dir_all(temp_root.join("static/graph")).unwrap();
+
+    let output = Command::new(binary_path())
+        .args(["--root", &temp_root.to_string_lossy(), "graph", "--emit"])
+        .output()
+        .expect("failed to run graph --emit");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "graph --emit failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("EMIT:"));
+    assert!(temp_root.join("static/graph/entity-graph.json").exists());
+}
+
+#[test]
+fn certify_emit_produces_manifest() {
+    build_binary();
+    let root = sporeprint_root();
+    let dir = tempfile::tempdir().unwrap();
+    let temp_root = dir.path();
+
+    std::fs::copy(root.join("config.toml"), temp_root.join("config.toml")).unwrap();
+    std::fs::create_dir_all(temp_root.join("content")).unwrap();
+    std::fs::create_dir_all(temp_root.join("static/certification")).unwrap();
+
+    let output = Command::new(binary_path())
+        .args(["--root", &temp_root.to_string_lossy(), "certify", "--emit"])
+        .output()
+        .expect("failed to run certify --emit");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "certify --emit failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("entities:"));
+    assert!(
+        temp_root
+            .join("static/certification/manifest.json")
+            .exists()
+    );
+}
+
+#[test]
+fn provenance_write_creates_manifest() {
+    build_binary();
+    let root = sporeprint_root();
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "provenance", "--write"])
+        .output()
+        .expect("failed to run provenance --write");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "provenance --write failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("BLAKE3"));
+    assert!(root.join("content-manifest.toml").exists());
+}
+
+#[test]
+fn provenance_verify_succeeds() {
+    build_binary();
+    let root = sporeprint_root();
+
+    Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "provenance", "--write"])
+        .output()
+        .expect("failed to run provenance --write");
+
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "provenance", "--verify"])
+        .output()
+        .expect("failed to run provenance --verify");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "provenance --verify failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+}
+
+#[test]
+fn graph_without_emit_runs_cleanly() {
+    build_binary();
+    let root = sporeprint_root();
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "graph"])
+        .output()
+        .expect("failed to run graph");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "graph failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("nodes"));
+    assert!(stdout.contains("edges"));
+}
+
+#[test]
+fn certify_without_emit_validates() {
+    build_binary();
+    let root = sporeprint_root();
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "certify"])
+        .output()
+        .expect("failed to run certify");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "certify failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("entities:"));
+    assert!(stdout.contains("content pages:"));
+}

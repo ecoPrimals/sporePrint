@@ -15,6 +15,20 @@ use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 
+/// Check if a link target resolves in the page set (with `_index.md` fallback).
+fn link_resolves(target: &str, pages: &HashSet<String>) -> bool {
+    if pages.contains(target) {
+        return true;
+    }
+    if target.ends_with("_index.md") {
+        return false;
+    }
+    let parent = PathBuf::from(target);
+    let dir = parent.parent().unwrap_or_else(|| Path::new(""));
+    let fallback = dir.join("_index.md").to_string_lossy().to_string();
+    pages.contains(&fallback)
+}
+
 /// Collect all content page paths relative to the content root.
 fn collect_pages(content_root: &Path) -> HashSet<String> {
     let mut pages = HashSet::new();
@@ -75,20 +89,10 @@ pub fn validate_internal_links(content_root: &Path) -> Vec<Diagnostic> {
 
         for link in extract_internal_links(&content) {
             let target = link.strip_prefix("@/").unwrap_or(&link);
-            if !pages.contains(target) {
-                let without_index = if target.ends_with("_index.md") {
-                    target.to_string()
-                } else {
-                    let parent = PathBuf::from(target);
-                    let dir = parent.parent().unwrap_or_else(|| Path::new(""));
-                    dir.join("_index.md").to_string_lossy().to_string()
-                };
-
-                if !pages.contains(&without_index) {
-                    diagnostics.push(Diagnostic::warning(format!(
-                        "{file_display}: broken link @/{target}"
-                    )));
-                }
+            if !link_resolves(target, &pages) {
+                diagnostics.push(Diagnostic::warning(format!(
+                    "{file_display}: broken link @/{target}"
+                )));
             }
         }
     }
@@ -135,17 +139,8 @@ pub fn check_links(content_root: &Path) -> LinkReport {
 
         for link in links {
             let target = link.strip_prefix("@/").unwrap_or(&link);
-            if !pages.contains(target) {
-                let fallback = if target.ends_with("_index.md") {
-                    target.to_string()
-                } else {
-                    let parent = PathBuf::from(target);
-                    let dir = parent.parent().unwrap_or_else(|| Path::new(""));
-                    dir.join("_index.md").to_string_lossy().to_string()
-                };
-                if !pages.contains(&fallback) {
-                    broken.push(format!("{file_display} -> @/{target}"));
-                }
+            if !link_resolves(target, &pages) {
+                broken.push(format!("{file_display} -> @/{target}"));
             }
         }
     }

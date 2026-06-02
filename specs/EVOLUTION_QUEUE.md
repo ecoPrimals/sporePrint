@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 2, 2026 (Wave 69 — CSS Modularization + Script Retirement + Pure-Rust Fetch)
+Last reviewed: June 2, 2026 (Wave 70 — Pure Dependencies + Typed Returns + Test Coverage)
 
 ---
 
@@ -147,8 +147,8 @@ These were in the original queue and have been completed:
 - [x] Notebook language detected from metadata (not hardcoded "python")
 - [x] Taxonomy names derived from `EntityKind::taxonomy_pairs()` type system
 - [x] Zero clippy warnings (pedantic + nursery)
-- [x] 86 tests passing
-- [x] All deps justified (7 runtime + 1 dev-dep, all pure Rust)
+- [x] 86 tests passing (→ 101 as of Wave 70)
+- [x] All deps justified (8 runtime + 1 dev-dep, all pure Rust — zero C toolchain)
 
 ### guideStone Self-Certification (Completed June 1, 2026)
 - [x] `certify.rs` module — BLAKE3 Merkle root of sorted entity graph
@@ -280,3 +280,44 @@ These were in the original queue and have been completed:
 - [x] `CONTEXT.md` updated: Wave 69 state, sovereign deployment details, cutover checklist
 - [x] `EVOLUTION_QUEUE.md`: sovereign deployment items marked complete, post-DNS items added
 - [x] 11 airSpring notebook `/home/eastgate/` fallbacks identified as UPSTREAM fix (source .ipynb in airSpring repo)
+
+## Wave 70 — Pure Dependencies + Typed Returns + Test Coverage (June 2, 2026)
+
+### Zero-C Dependency Graph
+- [x] `blake3 = { features = ["pure"] }` — eliminates `cc` build dependency entirely
+- [x] Dependency tree now zero C toolchain: `blake3` pure-Rust, `flate2` rust_backend, no assembly
+- [x] JSON-LD "zero C dependencies" claim now technically accurate
+
+### Source Registry Parity
+- [x] `sources.toml` synced with `config.toml` — 8 missing repos added (rustChip, plasmidBin, wateringHole, whitePaper, helixVision, blueFish, initioChem, cellMembrane)
+- [x] New `[infra]` type category for infrastructure repos
+- [x] Updated timestamp to June 2026
+
+### Code Architecture — paths.rs Constants Module
+- [x] New `paths.rs` module: `CONFIG_FILE`, `SOURCES_FILE`, `CONTENT_DIR`, `CONTENT_MANIFEST`, `ENTITY_GRAPH_JSON`, `CERTIFICATION_MANIFEST`, `GATE_MARKER`, `SPRINGS_DIR`
+- [x] `require_content_dir()` helper replaces 3 duplicated guard patterns in main.rs
+- [x] All path literals in main.rs, fetch.rs, provenance.rs now reference `paths::` constants
+- [x] Hardcoded strings evolved to single-source-of-truth constants
+
+### Typed Error Returns
+- [x] `fetch_and_refresh()` now returns `Result<FetchResult, Error>` (was `Vec<String>`)
+- [x] New `FetchResult` struct: `outcomes: Vec<FetchOutcome>`, `clone_root: PathBuf`
+- [x] Caller in main.rs uses `?` propagation (no more stringified errors)
+
+### Code Quality
+- [x] `links.rs`: `link_resolves()` helper deduplicates 2 identical resolution blocks
+- [x] `provenance.rs`: `chrono_free_now()` one-liner inlined (unnecessary indirection removed)
+- [x] `report.rs`: `desc.clone()` eliminated (direct write without intermediate allocation)
+- [x] `certify.rs`: `graph_merkle.clone()` moved before struct init (explicit binding)
+- [x] `fetch.rs`: `kind_label.clone()` eliminated via restructured match arms
+- [x] `fetch.rs`: `MockBackend` match arms merged (`Some(Ok(())) | None => Ok(())`)
+
+### Integration Test Coverage
+- [x] `check-links` integration test (real content)
+- [x] `graph --emit` integration test (temp dir + config copy)
+- [x] `graph` without emit integration test
+- [x] `certify --emit` integration test (temp dir + manifest write)
+- [x] `certify` without emit integration test
+- [x] `provenance --write` integration test
+- [x] `provenance --verify` integration test
+- [x] Test count: 101 (79 unit + 19 integration + 3 refresh_write) — up from 94

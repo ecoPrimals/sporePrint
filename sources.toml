@@ -12,7 +12,7 @@
 #   syntheticChemistry/  — Springs (science validation, private)
 #   sporeGarden/         — Products (gen4 consumers, public)
 #
-# Updated: 2026-05-06
+# Updated: 2026-06-02
 
 # =============================================================================
 # PRIMALS — Tower Atomic (trust boundary)
@@ -100,6 +100,27 @@ type = "primal"
 repo = "ecoPrimals/bingoCube"
 type = "primal"
 
+[sources.rustchip]
+repo = "syntheticChemistry/rustChip"
+type = "primal"
+
+# =============================================================================
+# INFRA — Infrastructure repos (metrics tracked)
+# =============================================================================
+
+[sources.plasmidbin]
+repo = "ecoPrimals/plasmidBin"
+type = "infra"
+
+[sources.wateringhole]
+repo = "ecoPrimals/wateringHole"
+type = "infra"
+
+[sources.whitepaper]
+repo = "ecoPrimals/whitePaper"
+type = "infra"
+private = true
+
 # =============================================================================
 # SPRINGS — Science validation (all under syntheticChemistry/)
 # =============================================================================
@@ -162,4 +183,20 @@ type = "product"
 
 [sources.projectnucleus]
 repo = "sporeGarden/projectNUCLEUS"
+type = "product"
+
+[sources.helixvision]
+repo = "sporeGarden/helixVision"
+type = "product"
+
+[sources.bluefish]
+repo = "sporeGarden/blueFish"
+type = "product"
+
+[sources.initiochem]
+repo = "sporeGarden/initioChem"
+type = "product"
+
+[sources.cellmembrane]
+repo = "sporeGarden/cellMembrane"
 type = "product"
