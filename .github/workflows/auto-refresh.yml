@@ -96,10 +96,16 @@ jobs:
       - name: Build spore-validate
         run: cargo build --release --manifest-path crates/spore-validate/Cargo.toml
 
-      - name: Clone and refresh
+      - name: Fetch and refresh
         env:
           SOURCE: ${{ steps.target.outputs.source }}
-        run: bash scripts/refresh-metrics.sh "$SOURCE"
+        run: |
+          BIN="./crates/spore-validate/target/release/spore-validate"
+          if [[ "$SOURCE" == "all" ]]; then
+            "$BIN" --root . fetch-refresh --write
+          else
+            "$BIN" --root . fetch-refresh --write --source "$SOURCE"
+          fi
 
       - name: Commit if changed
         env:

@@ -1,0 +1,81 @@
+/* Tree current page highlight */
+.tree-current > a { font-weight: 700; color: var(--c-accent); }
+
+/* Connections (renvois de choses) */
+.entity-connections { margin: 2rem 0; }
+.connections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .connections-grid { grid-template-columns: 1fr; }
+}
+.connections-outbound h3,
+.connections-inbound h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-text-muted);
+  margin-bottom: 0.5rem;
+}
+.connection-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.connection-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--c-border);
+}
+.connection-item:last-child { border-bottom: none; }
+.connection-relation {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--c-accent);
+  white-space: nowrap;
+  min-width: 7rem;
+}
+.connection-item .entity-ref {
+  font-size: 0.88rem;
+  text-decoration: none;
+  color: var(--c-text);
+}
+.connection-item .entity-ref:hover { color: var(--c-accent); }
+
+/* Tree org/garden section */
+.tree-org details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.1rem 0;
+}
+.tree-ext a {
+  color: var(--c-text-muted);
+  font-size: 0.82rem;
+}
+.tree-ext a::after {
+  content: " ↗";
+  font-size: 0.65rem;
+  opacity: 0.6;
+}
+
+/* Certification badge */
+.cert-line {
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+.cert-line a {
+  color: var(--c-accent);
+  text-decoration: none;
+}
+.cert-line a:hover {
+  text-decoration: underline;
+}

@@ -727,6 +727,7 @@ version = "0.3.0"
 dependencies = [
  "blake3",
  "clap",
+ "flate2",
  "regex",
  "serde",
  "serde_json",

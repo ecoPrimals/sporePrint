@@ -83,7 +83,7 @@ Selected notebooks from the shared workspace are elevated to [primals.eco/lab/](
 
 1. Researcher creates notebook in shared workspace
 2. Notebook is reviewed and tagged for publication
-3. `render_notebooks.sh` converts to static HTML with embedded charts
+3. `spore-validate render-notebooks` converts to Zola markdown with embedded charts
 4. Published under `/lab/notebooks/` with full provenance metadata
 5. Auto-refresh CI propagates updates to primals.eco
 

@@ -22,8 +22,8 @@ workloads via ToadStool (see the Tier 2 stubs in each notebook).
 
 ## Rendering Pipeline
 
-These pages are rendered from `.ipynb` files via `render_notebooks.sh`.
-The script extracts HTML from executed notebooks and wraps them in
+These pages are rendered from `.ipynb` files via `spore-validate render-notebooks`.
+The Rust tool extracts content from executed notebooks and wraps them in
 Zola front matter for static site generation.
 
-To re-render: `bash scripts/render_notebooks.sh --all`
+To re-render: `spore-validate --root . render-notebooks --discover`

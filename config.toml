@@ -1,7 +1,7 @@
 base_url = "https://primals.eco"
 title = "sporePrint — ecoPrimals"
 description = "Sovereign scientific computing. The science is executable, the infrastructure is inspectable, the claims can be reproduced by anyone with commodity hardware."
-compile_sass = false
+compile_sass = true
 build_search_index = true
 generate_feeds = true
 feed_filenames = ["atom.xml"]

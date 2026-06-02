@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# DEPRECATED: This script is a thin shell wrapper over `spore-validate refresh`.
-# The Rust tool now handles all metric collection, graph building, and certification.
-# This script only adds git-clone logic for CI environments without local checkouts.
+# RETIRED: Wave 69 — replaced by `spore-validate fetch-refresh --write [--source …]`.
+# CI (auto-refresh.yml) now calls the Rust tool directly.
+# Kept only for fossil record. Do NOT invoke in new workflows.
 #
-# Evolution target: absorb git clone into `spore-validate refresh --fetch` flag,
-# then retire this script entirely. See EVOLUTION_QUEUE.md.
+# PREVIOUSLY: This script was a thin shell wrapper over `spore-validate refresh`.
+# The Rust tool now handles all metric collection, git clone, graph building,
+# and certification in a single binary with no shell dependencies.
 #
 # refresh-metrics.sh — Clone upstream repos and refresh sporePrint metrics
 #
