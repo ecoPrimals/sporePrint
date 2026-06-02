@@ -4,25 +4,25 @@ Read this first. Everything an agent needs to make good decisions about sporePri
 
 ## What This Is
 
-sporePrint is the public-facing website for the ecoPrimals sovereign scientific computing ecosystem. Hosted at **primals.eco** via GitHub Pages, built with **Zola** (Rust static site generator).
+sporePrint is the public-facing website for the ecoPrimals sovereign scientific computing ecosystem. Hosted at **primals.eco** — sovereign-primary on golgiBody-ext VPS (Caddy), with GitHub Pages as trailing shadow. Built with **Zola** (Rust static site generator).
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 1, 2026 — Wave 68+)
+## Current State (June 2, 2026 — Wave 69)
 
 - **207+ content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **`spore-validate` v2.1.0** — 14-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, trait-based VCS, parity integration tests. 89+ tests, `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), LazyLock regex statics
+- **`spore-validate` v0.3.0** — 14-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, trait-based VCS, parity integration tests. 94+ tests, `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), LazyLock regex statics, zero external runtime dependencies
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
-- **Sovereign deployment** — golgiBody-ext VPS serving via Caddy (DNS cutover pending)
+- **Sovereign deployment** — golgiBody-ext VPS serving via Caddy at 67ms TTFB (vs GitHub Pages 111ms). DNS NS cutover pending (eastGate manual action). Content shadow validated S3. Build pipeline: relay-chain + systemd-timer on peptidoglycan
 - **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle. Deploy graph in projectNUCLEUS, validation scenario in primalSpring.
 - **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (now also as Rust integration tests: `tests/parity.rs`).
 - **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.
@@ -148,3 +148,24 @@ Gate ownership confirmed in `GATE_TEAM_COORDINATION_MATRIX.md`. primalSpring's
 `signals` vocabulary has evolved to `compositions` across all graphs/scenarios —
 sporePrint content is unaffected (science content references biological signals,
 not infrastructure signal graphs).
+
+## Wave 69: S3 Content Cutover Preparation
+
+Mission from eastGate (FRAGO `wave69-flockgate-content-cutover`):
+
+1. **S3 Content Cutover (P2)** — VPS shadow is LIVE (NestGate + Caddy at 67ms
+   TTFB). Build pipeline already targets VPS via relay-chain. DNS NS cutover
+   remains the blocker (eastGate manual action). After DNS: GitHub Pages deploy
+   workflow archived, VPS becomes sole primary.
+2. **WAN Relay Maintenance (P3)** — Temporal cascade sync operating (~1.3s
+   Forgejo propagation, ~3s end-to-end). Report TURN anomalies to eastGate.
+
+**Cutover readiness checklist:**
+- [x] VPS serving validated (22/22 content-direct parity)
+- [x] Build pipeline sovereign (systemd-timer + relay-chain on peptidoglycan)
+- [x] `deploy.yml` labeled as trailing shadow
+- [x] Certification manifest emits primalSpring-expected fields
+- [x] WAN relay validated (flockGate → Forgejo → peptidoglycan → VPS)
+- [ ] DNS NS cutover (eastGate manual action, blocked on S1 TLS graduation)
+- [ ] Post-cutover: archive `deploy.yml`, verify HTTPS via Caddy
+- [ ] Post-cutover: NestGate CAS integration for content-addressed build outputs

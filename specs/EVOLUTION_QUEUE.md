@@ -74,10 +74,13 @@ Last reviewed: June 1, 2026 (Wave 68 — Deep Debt + Viz Modularization)
 - [ ] Gallery index at `/lab/spores/` listing all available pseudoSpores
 - [ ] "Download lithoSpore" link per gallery page
 
-### Sovereign Deployment
-- [ ] DNS cutover: primals.eco A record → golgiBody-ext (137.184.197.151)
-- [ ] peptidoglycan build pipeline: `zola build` → rsync → golgiBody-ext → Caddy
-- [ ] GitHub Pages becomes extracellular shadow (backup only)
+### Sovereign Deployment (S3 Content Cutover — Wave 69 P2)
+- [ ] DNS NS cutover: primals.eco NS → ns1/ns2.primals.eco (eastGate manual action)
+- [x] ~~peptidoglycan build pipeline~~ — relay-chain + systemd-timer rebuilds on VPS. LIVE (67ms TTFB vs GH Pages 111ms)
+- [x] ~~GitHub Pages becomes extracellular shadow~~ — deploy.yml labeled "trailing shadow", VPS is sovereign-primary
+- [ ] Post-DNS: Caddy HTTPS on golgiBody-ext (automatic after NS cutover)
+- [ ] Post-DNS: sporePrint deploy.yml → archive to fossilRecord (disable GitHub Pages deploy)
+- [ ] NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3
 
 ### Search
 - [ ] Evaluate elasticlunr search quality for the current 205 pages
@@ -120,9 +123,9 @@ These were in the original queue and have been completed:
 - [x] Zola build pipeline validated on WAN (226 pages, 746ms)
 - [x] Gate bootstrap AAR completed
 - [x] Temporal sync sustained measurement (6 pushes, relay gap identified)
-- [ ] Forgejo relay hook for sporePrint (eastGate action)
-- [ ] peptidoglycan-triggered rebuild pipeline
-- [ ] DNS cutover: primals.eco → golgiBody-ext (Wave 65)
+- [ ] Forgejo relay hook for sporePrint (eastGate action — Wave 70+, Phase 3)
+- [x] ~~peptidoglycan-triggered rebuild pipeline~~ — systemd-timer + relay-chain LIVE
+- [ ] DNS NS cutover (eastGate manual action, blocked on S1 TLS graduation)
 
 ## Wave 66 — Knowledge Topology (Completed June 1, 2026)
 

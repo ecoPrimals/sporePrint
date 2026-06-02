@@ -17,10 +17,12 @@ use std::path::Path;
 use walkdir::WalkDir;
 
 /// The certification manifest — a self-verifying summary of all published claims.
+///
+/// Emits both `schema_version`/`merkle_root` (primalSpring expectation) and
+/// `version`/`graph_merkle` (legacy) for backward compatibility.
 #[derive(Debug, Serialize)]
 pub struct CertificationManifest {
     pub schema_version: &'static str,
-    #[serde(alias = "schema_version")]
     pub version: &'static str,
     pub generated: String,
     pub entity_count: usize,
@@ -28,7 +30,6 @@ pub struct CertificationManifest {
     pub spring_count: usize,
     pub edge_count: usize,
     pub merkle_root: String,
-    #[serde(alias = "merkle_root")]
     pub graph_merkle: String,
     pub content_pages: usize,
     pub total_loc: u64,
@@ -152,10 +153,10 @@ pub fn validate_manifest(
 
     let mut drifts = Vec::new();
 
-    if stored.graph_merkle != current.graph_merkle {
+    if stored.effective_merkle() != current.graph_merkle {
         drifts.push(format!(
             "graph_merkle: stored={}, current={}",
-            stored.graph_merkle, current.graph_merkle
+            stored.effective_merkle(), current.graph_merkle
         ));
     }
     if stored.entity_count != current.entity_count {
@@ -181,13 +182,25 @@ pub fn validate_manifest(
 }
 
 /// Subset of manifest fields for comparison (deserialized from existing file).
+///
+/// The emitted manifest contains both `merkle_root` (primalSpring expectation)
+/// and `graph_merkle` (legacy). We read both and prefer `merkle_root`.
 #[derive(serde::Deserialize)]
 struct StoredManifest {
-    #[serde(alias = "merkle_root")]
-    graph_merkle: String,
+    merkle_root: Option<String>,
+    graph_merkle: Option<String>,
     entity_count: usize,
     edge_count: usize,
     content_pages: usize,
+}
+
+impl StoredManifest {
+    fn effective_merkle(&self) -> &str {
+        self.merkle_root
+            .as_deref()
+            .or(self.graph_merkle.as_deref())
+            .unwrap_or("")
+    }
 }
 
 #[cfg(test)]
