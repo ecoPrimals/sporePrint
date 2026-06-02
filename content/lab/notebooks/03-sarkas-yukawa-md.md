@@ -1,7 +1,7 @@
 +++
 title = "Sarkas Yukawa MD — Plasma Transport from Molecular Dynamics"
 description = "Rendered from 03-sarkas-yukawa-md.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]
