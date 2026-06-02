@@ -138,13 +138,7 @@ fn extract_title(bytes: &[u8]) -> Option<String> {
 }
 
 fn chrono_free_now() -> String {
-    let output = std::process::Command::new("date")
-        .arg("-Iseconds")
-        .output()
-        .ok();
-    output
-        .and_then(|o| String::from_utf8(o.stdout).ok())
-        .map_or_else(|| "unknown".to_string(), |s| s.trim().to_string())
+    crate::time::now_iso8601()
 }
 
 pub fn manifest_path(root: &Path) -> PathBuf {

@@ -95,11 +95,11 @@ fn compute_graph_merkle(
 ) -> String {
     let mut edge_strings: Vec<String> = Vec::new();
 
-    let mut keys: Vec<&String> = registry.keys().collect();
+    let mut keys: Vec<&str> = registry.keys().map(String::as_str).collect();
     keys.sort_unstable();
 
     for key in &keys {
-        if let Some(ref edges) = registry[key.as_str()].edges {
+        if let Some(ref edges) = registry[*key].edges {
             for edge in edges {
                 edge_strings.push(format!("{}:{}:{}", key, edge.target, edge.relation));
             }

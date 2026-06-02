@@ -526,7 +526,12 @@ fn run_graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Erro
 fn run_certify(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
     println!("spore-validate: certification (guideStone mode)...");
 
-    let manifest = certify::build_manifest(config, root, 0);
+    let mut diagnostics = Vec::new();
+    registry::validate(&config.extra.entity_registry, &mut diagnostics);
+    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
+    let validation_errors = diagnostics.iter().filter(|d| d.is_error()).count();
+
+    let manifest = certify::build_manifest(config, root, validation_errors);
 
     println!("  entities: {}", manifest.entity_count);
     println!("  edges: {}", manifest.edge_count);

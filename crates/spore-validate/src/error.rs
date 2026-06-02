@@ -35,6 +35,9 @@ pub enum Error {
         warning_count: usize,
     },
 
+    #[error("parse error in {context}: {message}")]
+    Parse { context: String, message: String },
+
     #[error("git operation failed: {0}")]
     Git(String),
 }

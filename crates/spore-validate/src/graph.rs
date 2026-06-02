@@ -122,7 +122,7 @@ pub fn emit_graph_json(graph: &EntityGraph, output_path: &Path) -> std::io::Resu
 
 /// Get edges for a specific entity (both outbound and inbound).
 /// Used by Phase 2 template integration and CLI query commands.
-#[allow(dead_code)]
+#[cfg_attr(not(test), allow(dead_code))]
 pub fn edges_for_entity<'a>(
     graph: &'a EntityGraph,
     entity_id: &str,

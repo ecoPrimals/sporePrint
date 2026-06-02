@@ -136,7 +136,16 @@ pub fn check_links(content_root: &Path) -> LinkReport {
         for link in links {
             let target = link.strip_prefix("@/").unwrap_or(&link);
             if !pages.contains(target) {
-                broken.push(format!("{file_display} -> @/{target}"));
+                let fallback = if target.ends_with("_index.md") {
+                    target.to_string()
+                } else {
+                    let parent = PathBuf::from(target);
+                    let dir = parent.parent().unwrap_or_else(|| Path::new(""));
+                    dir.join("_index.md").to_string_lossy().to_string()
+                };
+                if !pages.contains(&fallback) {
+                    broken.push(format!("{file_display} -> @/{target}"));
+                }
             }
         }
     }

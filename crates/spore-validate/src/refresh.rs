@@ -37,7 +37,7 @@ pub fn scan(
     let mut missing_repos = Vec::new();
     let mut scanned = 0u32;
 
-    let mut keys: Vec<&String> = registry.keys().collect();
+    let mut keys: Vec<&str> = registry.keys().map(String::as_str).collect();
     keys.sort_unstable();
 
     for key in keys {
@@ -65,7 +65,7 @@ pub fn scan(
         if let Some(registered_loc) = entity.loc {
             if registered_loc != metrics.loc {
                 drifts.push(Drift {
-                    key: key.clone(),
+                    key: key.to_string(),
                     field: "loc",
                     registered: registered_loc,
                     actual: metrics.loc,
@@ -76,7 +76,7 @@ pub fn scan(
         if let Some(registered_tests) = entity.tests {
             if registered_tests != metrics.tests {
                 drifts.push(Drift {
-                    key: key.clone(),
+                    key: key.to_string(),
                     field: "tests",
                     registered: registered_tests,
                     actual: metrics.tests,
@@ -87,7 +87,7 @@ pub fn scan(
         if let Some(registered_files) = entity.files {
             if u64::from(registered_files) != metrics.files {
                 drifts.push(Drift {
-                    key: key.clone(),
+                    key: key.to_string(),
                     field: "files",
                     registered: u64::from(registered_files),
                     actual: metrics.files,
@@ -98,7 +98,7 @@ pub fn scan(
         if let Some(registered_crates) = entity.crates {
             if u64::from(registered_crates) != metrics.crates {
                 drifts.push(Drift {
-                    key: key.clone(),
+                    key: key.to_string(),
                     field: "crates",
                     registered: u64::from(registered_crates),
                     actual: metrics.crates,

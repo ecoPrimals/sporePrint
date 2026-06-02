@@ -146,21 +146,21 @@ pub fn fetch_sources(
     let _ = std::fs::create_dir_all(clone_root);
     let mut outcomes = Vec::new();
 
-    let mut keys: Vec<&String> = sources.sources.keys().collect();
+    let mut keys: Vec<&str> = sources.sources.keys().map(String::as_str).collect();
     keys.sort_unstable();
 
     let has_pat = std::env::var("SPOREPRINT_REFRESH_PAT").is_ok();
 
     for key in &keys {
-        if source_filter.is_some_and(|f| key.as_str() != f) {
+        if source_filter.is_some_and(|f| *key != f) {
             continue;
         }
 
-        let source = &sources.sources[key.as_str()];
+        let source = &sources.sources[*key];
 
         if source.private && !has_pat {
             outcomes.push(FetchOutcome::Skipped {
-                key: (*key).clone(),
+                key: (*key).to_string(),
                 reason: "private repo, no SPOREPRINT_REFRESH_PAT".into(),
             });
             continue;
@@ -171,14 +171,14 @@ pub fn fetch_sources(
         let kind_label = source.kind.as_deref().unwrap_or("repo").to_string();
         let result = if vcs.is_repo(&target) {
             vcs.pull_repo(&target).map(|()| FetchOutcome::Pulled {
-                key: (*key).clone(),
+                key: (*key).to_string(),
                 kind: kind_label.clone(),
             })
         } else {
             let url = source.clone_url();
             vcs.clone_repo(&url, &target)
                 .map(|()| FetchOutcome::Cloned {
-                    key: (*key).clone(),
+                    key: (*key).to_string(),
                     kind: kind_label,
                 })
         };
@@ -186,7 +186,7 @@ pub fn fetch_sources(
         match result {
             Ok(outcome) => outcomes.push(outcome),
             Err(e) => outcomes.push(FetchOutcome::Skipped {
-                key: (*key).clone(),
+                key: (*key).to_string(),
                 reason: e.to_string(),
             }),
         }

@@ -117,7 +117,7 @@ pub fn format_entity(key: &str, entity: &Entity) -> String {
 
 /// Format the full registry as a report string (for `--verbose` output).
 pub fn format_registry(registry: &HashMap<String, Entity>) -> String {
-    let mut keys: Vec<&String> = registry.keys().collect();
+    let mut keys: Vec<&str> = registry.keys().map(String::as_str).collect();
     keys.sort_unstable();
     let mut out = String::new();
     for key in keys {

@@ -183,12 +183,16 @@ fn render_outputs(outputs: &[Output], out: &mut String) {
 use crate::time::today_utc;
 
 /// Render a single notebook file to Zola markdown.
-fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, String> {
-    let text = std::fs::read_to_string(nb_path)
-        .map_err(|e| format!("failed to read {}: {e}", nb_path.display()))?;
+fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, crate::error::Error> {
+    let text = std::fs::read_to_string(nb_path).map_err(|e| crate::error::Error::Io {
+        path: nb_path.to_path_buf(),
+        source: e,
+    })?;
 
-    let nb: Notebook =
-        serde_json::from_str(&text).map_err(|e| format!("failed to parse notebook JSON: {e}"))?;
+    let nb: Notebook = serde_json::from_str(&text).map_err(|e| crate::error::Error::Parse {
+        context: format!("notebook {}", nb_path.display()),
+        message: e.to_string(),
+    })?;
 
     let stem = nb_path
         .file_stem()
@@ -200,7 +204,10 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, String> {
     let body = render_cells(&nb);
 
     if body.trim().is_empty() {
-        return Err(format!("SKIP: no content in {}", nb_path.display()));
+        return Err(crate::error::Error::Parse {
+            context: format!("notebook {}", nb_path.display()),
+            message: "no content cells".into(),
+        });
     }
 
     let date = today_utc();
@@ -222,19 +229,29 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, String> {
     );
 
     let out_path = output_dir.join(format!("{slug}.md"));
-    std::fs::write(&out_path, &page)
-        .map_err(|e| format!("failed to write {}: {e}", out_path.display()))?;
+    std::fs::write(&out_path, &page).map_err(|e| crate::error::Error::Io {
+        path: out_path.clone(),
+        source: e,
+    })?;
 
     Ok(format!("{} -> {}", nb_path.display(), out_path.display()))
 }
 
+/// Default output subdirectory for rendered notebooks within the site root.
+const DEFAULT_NOTEBOOK_OUTPUT: &str = "content/lab/notebooks";
+
 /// Render all notebooks from given directories into Zola content.
+///
+/// Output lands in `{root}/{DEFAULT_NOTEBOOK_OUTPUT}` (configurable via
+/// `SPOREPRINT_NOTEBOOK_OUTPUT` env var for non-standard layouts).
 pub fn render_notebooks(
     root: &Path,
     notebook_dirs: &[PathBuf],
     springs_root: Option<&Path>,
 ) -> (u32, Vec<String>) {
-    let output_dir = root.join("content/lab/notebooks");
+    let output_subdir =
+        std::env::var("SPOREPRINT_NOTEBOOK_OUTPUT").unwrap_or_else(|_| DEFAULT_NOTEBOOK_OUTPUT.into());
+    let output_dir = root.join(&output_subdir);
     let _ = std::fs::create_dir_all(&output_dir);
 
     let mut rendered = 0u32;
@@ -272,7 +289,7 @@ pub fn render_notebooks(
                     rendered += 1;
                     messages.push(msg);
                 }
-                Err(msg) => messages.push(msg),
+                Err(e) => messages.push(format!("SKIP: {e}")),
             }
         }
     }

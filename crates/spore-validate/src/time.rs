@@ -6,6 +6,20 @@
 //! in a chrono-sized dependency. Suitable for any context where we need
 //! ISO 8601 date strings (TOML front matter, `measured_date` fields, etc.).
 
+/// Current UTC timestamp as ISO 8601 with seconds: `YYYY-MM-DDTHH:MM:SSZ`.
+pub fn now_iso8601() -> String {
+    let epoch = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_secs();
+    let day_secs = epoch % 86400;
+    let date = date_from_epoch(epoch);
+    let h = day_secs / 3600;
+    let m = (day_secs % 3600) / 60;
+    let s = day_secs % 60;
+    format!("{date}T{h:02}:{m:02}:{s:02}Z")
+}
+
 /// Current UTC date as `YYYY-MM-DD`.
 pub fn today_utc() -> String {
     let epoch = std::time::SystemTime::now()
@@ -80,5 +94,15 @@ mod tests {
         assert_eq!(&d[7..8], "-");
         let year: i32 = d[0..4].parse().unwrap();
         assert!(year >= 2026);
+    }
+
+    #[test]
+    fn now_iso8601_has_valid_format() {
+        let ts = now_iso8601();
+        assert_eq!(ts.len(), 20);
+        assert_eq!(&ts[10..11], "T");
+        assert_eq!(&ts[13..14], ":");
+        assert_eq!(&ts[16..17], ":");
+        assert!(ts.ends_with('Z'));
     }
 }

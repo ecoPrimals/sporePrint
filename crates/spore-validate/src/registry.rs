@@ -11,7 +11,7 @@ use std::collections::HashMap;
 
 /// Validate all entities in the registry for schema completeness.
 pub fn validate(registry: &HashMap<String, Entity>, diagnostics: &mut Vec<Diagnostic>) {
-    let mut keys: Vec<&String> = registry.keys().collect();
+    let mut keys: Vec<&str> = registry.keys().map(String::as_str).collect();
     keys.sort_unstable();
 
     for key in keys {
