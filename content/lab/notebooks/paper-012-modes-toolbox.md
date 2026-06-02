@@ -1,7 +1,7 @@
 +++
 title = "Paper 012 — MODES Toolbox: Metrics of Open-Ended Evolution"
 description = "Rendered from paper-012-modes-toolbox.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]

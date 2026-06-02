@@ -1,7 +1,7 @@
 +++
 title = "Experiment 015 — Uncertainty Bridge: Sensor Noise → Localization"
 description = "Rendered from exp-015-uncertainty-bridge.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]

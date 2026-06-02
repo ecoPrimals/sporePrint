@@ -1,7 +1,7 @@
 +++
 title = "Quorum Sensing & Biofilm Dynamics — Waters Lab (MSU MMG)"
 description = "Rendered from waters-quorum-sensing.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]

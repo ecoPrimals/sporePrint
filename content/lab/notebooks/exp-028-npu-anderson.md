@@ -1,7 +1,7 @@
 +++
 title = "Experiment 028 — NPU Anderson Classification"
 description = "Rendered from exp-028-npu-anderson.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]

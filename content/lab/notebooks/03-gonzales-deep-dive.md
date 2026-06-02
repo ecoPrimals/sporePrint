@@ -1,7 +1,7 @@
 +++
 title = "Gonzales Deep Dive — wetSpring"
 description = "Rendered from 03-gonzales-deep-dive.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]

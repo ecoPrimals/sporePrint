@@ -1,7 +1,7 @@
 +++
 title = "Hamon (1961) Temperature-Based PET"
 description = "Rendered from 035-hamon-pet.ipynb"
-date = 2026-06-01
+date = 2026-06-02
 weight = 50
 
 [extra]
