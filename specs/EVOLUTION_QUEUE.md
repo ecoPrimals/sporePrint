@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 1, 2026 (Wave 68 — Deep Debt + Viz Modularization)
+Last reviewed: June 2, 2026 (Wave 69 — CSS Modularization + Script Retirement + Pure-Rust Fetch)
 
 ---
 
@@ -246,7 +246,37 @@ These were in the original queue and have been completed:
 - [x] `VizRegistry` decouples viz route handler from hardcoded slug matching
 - [x] `viz_data.rs` (882L) → 4 modules (114 + 242 + 187 + 143 = 686L, max 242)
 - [x] `tests/parity.rs` — 6 Rust integration tests (replaces shell script)
-- [x] `refresh-metrics.sh` deprecated (evolution: `spore-validate refresh --fetch`)
+- [x] `refresh-metrics.sh` RETIRED — CI now calls `spore-validate fetch-refresh --write` directly (Wave 69)
 - [x] `validate_parity.sh` deprecated (Rust: `cargo test --test parity -- --ignored`)
 - [x] `gonzales/DEPRECATED.md` — migration timeline (data → CAS, charts → petalTongue)
 - [x] `ureq` dev-dependency added for HTTP parity tests
+
+## Wave 69 — Sovereign Evolution (June 2, 2026)
+
+### CSS Modularization
+- [x] `static/css/main.css` (1006L) → 7 SCSS partials in `sass/css/`
+- [x] Enable Zola's built-in `compile_sass` — auto-minified output (19KB vs 24KB)
+- [x] Partials: nav, layout, landing, content, pages, entities, connections
+- [x] `viz_embed` shortcode added for Zola build compatibility
+
+### Script Retirement + CI Evolution
+- [x] `auto-refresh.yml` wired directly to `spore-validate fetch-refresh --write`
+- [x] `refresh-metrics.sh` marked RETIRED (fossil record only)
+- [x] Stale `render_notebooks.sh` references updated in 7 content files
+
+### Pure-Rust Fetch Evolution
+- [x] `ForgeArchiveBackend` — plain HTTP fetch + gzip (flate2) + tar extraction
+- [x] `flate2` dependency added (pure Rust via miniz_oxide, no C)
+- [x] `detect_backend()` — runtime selection (git if available, else HTTP archive)
+- [x] Minimal POSIX tar reader (pure Rust, handles stripped prefix paths)
+- [x] `GitBackend::available()` — runtime git detection
+- [x] Suitable for sovereign Forgejo on LAN (no TLS needed)
+
+### Certification Fix
+- [x] `StoredManifest` dual-field deserialization fix (merkle_root + graph_merkle)
+- [x] Remove stale `serde(alias)` from serialize-only `CertificationManifest`
+
+### Documentation
+- [x] `CONTEXT.md` updated: Wave 69 state, sovereign deployment details, cutover checklist
+- [x] `EVOLUTION_QUEUE.md`: sovereign deployment items marked complete, post-DNS items added
+- [x] 11 airSpring notebook `/home/eastgate/` fallbacks identified as UPSTREAM fix (source .ipynb in airSpring repo)
