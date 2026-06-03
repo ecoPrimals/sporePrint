@@ -1,7 +1,6 @@
 +++
 title = "projectFOUNDATION Validation Summary"
 date = 2026-05-30
-weight = 10
 template = "page.html"
 [extra]
 entity = "projectfoundation"
