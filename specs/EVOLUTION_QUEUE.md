@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 3, 2026 (Wave 73 — CAS Manifest + Pre-Cutover Verification)
+Last reviewed: June 3, 2026 (Wave 74 — CAS Push + Pipeline Design)
 
 ---
 
@@ -321,3 +321,48 @@ These were in the original queue and have been completed:
 - [x] `provenance --write` integration test
 - [x] `provenance --verify` integration test
 - [x] Test count: 101 (79 unit + 19 integration + 3 refresh_write) — up from 94
+
+## Wave 73 — CAS Foundation + Pre-Cutover (June 3, 2026)
+
+### CAS Manifest (Phase 1)
+- [x] `cas.rs` module — BLAKE3 hashing of Zola build output
+- [x] `CasManifest` struct: build_id, build_hash, page_count, total_bytes, files
+- [x] `cas-manifest` CLI subcommand (`--public-dir`, `--emit`)
+- [x] `paths::CAS_MANIFEST` constant (static/cas/build-manifest.json)
+- [x] Deterministic build hash (sorted file hashes → BLAKE3 Merkle)
+- [x] 4 unit tests + 2 integration tests
+
+### Pre-Cutover Verification
+- [x] `specs/PRE_CUTOVER_VERIFICATION.md` — curl --resolve procedure
+- [x] GitHub Pages URL audit: zero hardcoded github.io references
+
+### NestGate CAS Integration Design
+- [x] `specs/NESTGATE_CAS_INTEGRATION.md` — 4-phase architecture
+- [x] Phase 1–4 roadmap: manifest → ingest → serve → mesh aggregation
+
+## Wave 74 — CAS Push + Pipeline Design (June 3, 2026)
+
+### CAS Push (Phase 2 Foundation)
+- [x] `cas_push.rs` module — push build artifacts to NestGate via UDS
+- [x] JSON-RPC 2.0 over UNIX domain socket (newline-delimited)
+- [x] `discover_socket()` — 3-tier env/XDG/fallback discovery
+- [x] `push_manifest()` — content.exists dedup + content.put ingest
+- [x] `cas-push` CLI subcommand (`--socket`, `--generate`, `--public-dir`)
+- [x] Provenance metadata: source=sporePrint, pipeline=zola-build
+- [x] `base64` dependency added (pure Rust, was transitive via ureq)
+- [x] `clap` env feature enabled (NESTGATE_SOCKET from env)
+- [x] 2 unit tests + 2 integration tests
+- [x] Test count: 111 (85 unit + 23 integration + 3 refresh_write)
+
+### Pre-Cutover VPS Live Test
+- [x] VPS serves 245 sitemap entries at 66ms TTFB
+- [x] All key sections return 200: /, architecture/, science/, lab/, etc.
+- [x] CSS, search index, atom feed, certification manifest: all 200
+- [x] `/js/viz-hydrate.js`: 404 (non-critical progressive enhancement)
+- [x] `/wasm/`, `/gonzales/`: 404 (expected — deprecated/external)
+
+### Pipeline Design
+- [x] `specs/BUILD_DEPLOY_PIPELINE.md` — Phase A→B transition strategy
+- [x] Caddy config evolution (file_server → reverse_proxy NestGate)
+- [x] Deploy script design (zola build → certify → cas-manifest → cas-push)
+- [x] Hybrid mode for gradual transition (shadow verification)

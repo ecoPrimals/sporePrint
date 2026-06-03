@@ -8,6 +8,7 @@ use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
 mod cas;
+mod cas_push;
 mod certify;
 mod content;
 mod error;
@@ -140,6 +141,21 @@ enum Command {
         #[arg(long)]
         emit: bool,
     },
+
+    /// Push build artifacts to `NestGate` CAS (content-addressed storage)
+    CasPush {
+        /// Path to Zola build output (default: public/)
+        #[arg(long, default_value = "public")]
+        public_dir: PathBuf,
+
+        /// Override `NestGate` socket path (default: auto-discover)
+        #[arg(long, env = "NESTGATE_SOCKET")]
+        socket: Option<String>,
+
+        /// Generate manifest on-the-fly instead of reading from disk
+        #[arg(long)]
+        generate: bool,
+    },
 }
 
 fn main() -> ExitCode {
@@ -202,6 +218,11 @@ fn run() -> Result<(), Error> {
         Some(Command::CasManifest { public_dir, emit }) => {
             run_cas_manifest(&root, &public_dir, emit)
         }
+        Some(Command::CasPush {
+            public_dir,
+            socket,
+            generate,
+        }) => run_cas_push(&root, &public_dir, socket.as_deref(), generate),
     }
 }
 
@@ -593,6 +614,100 @@ fn run_fetch_refresh(
 
     println!("\nspore-validate: scanning for metric drift...");
     run_refresh(config_path, config, &result.clone_root, write, source)
+}
+
+fn run_cas_push(
+    root: &Path,
+    public_dir: &Path,
+    socket_override: Option<&str>,
+    generate: bool,
+) -> Result<(), Error> {
+    let dir = if public_dir.is_absolute() {
+        public_dir.to_path_buf()
+    } else {
+        root.join(public_dir)
+    };
+
+    if !dir.is_dir() {
+        return Err(Error::Config(format!(
+            "build output directory not found: {}. Run `zola build` first.",
+            dir.display()
+        )));
+    }
+
+    let socket_path = match socket_override {
+        Some(s) => s.to_string(),
+        None => cas_push::discover_socket()?,
+    };
+
+    println!("spore-validate: CAS push to NestGate ({socket_path})");
+
+    let manifest = if generate {
+        println!("  generating manifest on-the-fly...");
+        let m = cas::generate_manifest(&dir);
+        println!("  {} files, {} pages", m.files.len(), m.page_count);
+        cas_push::StoredManifest {
+            build_id: m.build_id,
+            build_hash: m.build_hash,
+            page_count: m.page_count,
+            total_bytes: m.total_bytes,
+            files: m
+                .files
+                .into_iter()
+                .map(|(k, v)| {
+                    (
+                        k,
+                        cas_push::StoredEntry {
+                            hash: v.hash,
+                            size: v.size,
+                            content_type: v.content_type,
+                        },
+                    )
+                })
+                .collect(),
+        }
+    } else {
+        let manifest_path = root.join(paths::CAS_MANIFEST);
+        if !manifest_path.exists() {
+            return Err(Error::Config(format!(
+                "CAS manifest not found at {}. Run `cas-manifest --emit` first, or use --generate.",
+                manifest_path.display()
+            )));
+        }
+        println!("  reading manifest: {}", manifest_path.display());
+        cas_push::read_manifest(&manifest_path)?
+    };
+
+    println!(
+        "  build: {} ({} files, {} bytes)",
+        &manifest.build_hash[..20.min(manifest.build_hash.len())],
+        manifest.files.len(),
+        manifest.total_bytes
+    );
+
+    let result = cas_push::push_manifest(&manifest, &dir, &socket_path)?;
+
+    println!("  ---");
+    println!("  stored:       {} files", result.stored);
+    println!("  deduplicated: {} files (already in CAS)", result.deduplicated);
+    if result.errors > 0 {
+        println!("  errors:       {} files", result.errors);
+    }
+    #[allow(clippy::cast_precision_loss)]
+    let kb = result.total_bytes_transferred as f64 / 1024.0;
+    println!("  transferred:  {kb:.1} KB");
+    println!("  elapsed:      {} ms", result.elapsed_ms);
+
+    if result.errors > 0 {
+        #[allow(clippy::cast_possible_truncation)]
+        let count = result.errors as usize;
+        Err(Error::ValidationFailed {
+            error_count: count,
+            warning_count: 0,
+        })
+    } else {
+        Ok(())
+    }
 }
 
 fn run_cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Error> {

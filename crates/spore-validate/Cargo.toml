@@ -7,8 +7,9 @@ license = "AGPL-3.0-or-later"
 rust-version = "1.85"
 
 [dependencies]
+base64 = "0.22"
 blake3 = { version = "1", default-features = false, features = ["std", "pure"] }
-clap = { version = "4", features = ["derive"] }
+clap = { version = "4", features = ["derive", "env"] }
 flate2 = { version = "1", default-features = false, features = ["rust_backend"] }
 regex = "1"
 serde = { version = "1", features = ["derive"] }

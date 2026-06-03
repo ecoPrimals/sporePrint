@@ -479,3 +479,57 @@ fn cas_manifest_emit_writes_json() {
     assert_eq!(manifest["page_count"], 1);
     assert!(manifest["build_hash"].as_str().unwrap().starts_with("blake3:"));
 }
+
+#[test]
+fn cas_push_fails_without_socket() {
+    let root = tempfile::tempdir().unwrap().into_path();
+    let public_dir = root.join("public");
+    std::fs::create_dir_all(&public_dir).unwrap();
+    std::fs::write(public_dir.join("index.html"), "<html>test</html>").unwrap();
+
+    std::fs::copy(sporeprint_root().join("config.toml"), root.join("config.toml")).unwrap();
+
+    let output = Command::new(binary_path())
+        .args([
+            "--root",
+            &root.to_string_lossy(),
+            "cas-push",
+            "--generate",
+            "--socket",
+            "/tmp/nonexistent-nestgate-integration-test.sock",
+        ])
+        .output()
+        .expect("failed to run cas-push");
+
+    assert!(
+        !output.status.success(),
+        "cas-push should fail when socket doesn't exist"
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("failed to connect"),
+        "expected connection error, got: {stderr}"
+    );
+}
+
+#[test]
+fn cas_push_requires_manifest_or_generate() {
+    let root = tempfile::tempdir().unwrap().into_path();
+    let public_dir = root.join("public");
+    std::fs::create_dir_all(&public_dir).unwrap();
+    std::fs::write(public_dir.join("page.html"), "<html/>").unwrap();
+
+    std::fs::copy(sporeprint_root().join("config.toml"), root.join("config.toml")).unwrap();
+
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy(), "cas-push"])
+        .output()
+        .expect("failed to run cas-push");
+
+    assert!(!output.status.success());
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("CAS manifest not found") || stderr.contains("NestGate socket not found"),
+        "expected manifest or socket error, got: {stderr}"
+    );
+}
