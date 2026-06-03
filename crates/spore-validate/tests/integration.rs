@@ -407,3 +407,75 @@ fn certify_without_emit_validates() {
     assert!(stdout.contains("entities:"));
     assert!(stdout.contains("content pages:"));
 }
+
+#[test]
+fn cas_manifest_on_temp_dir() {
+    build_binary();
+    let dir = tempfile::tempdir().unwrap();
+    let public = dir.path().join("public");
+    std::fs::create_dir(&public).unwrap();
+    std::fs::write(public.join("index.html"), "<html>test</html>").unwrap();
+    std::fs::write(public.join("style.css"), "body{}").unwrap();
+
+    let root = sporeprint_root();
+    let output = Command::new(binary_path())
+        .args([
+            "--root",
+            &root.to_string_lossy(),
+            "cas-manifest",
+            "--public-dir",
+            &public.to_string_lossy(),
+        ])
+        .output()
+        .expect("failed to run cas-manifest");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "cas-manifest failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("files: 2"));
+    assert!(stdout.contains("HTML pages: 1"));
+    assert!(stdout.contains("build hash: blake3:"));
+}
+
+#[test]
+fn cas_manifest_emit_writes_json() {
+    build_binary();
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+
+    let public = root.join("public");
+    std::fs::create_dir(&public).unwrap();
+    std::fs::write(public.join("page.html"), "<h1>hi</h1>").unwrap();
+    std::fs::create_dir_all(root.join("static/cas")).unwrap();
+
+    std::fs::copy(sporeprint_root().join("config.toml"), root.join("config.toml")).unwrap();
+
+    let output = Command::new(binary_path())
+        .args([
+            "--root",
+            &root.to_string_lossy(),
+            "cas-manifest",
+            "--emit",
+        ])
+        .output()
+        .expect("failed to run cas-manifest --emit");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "cas-manifest --emit failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("EMIT:"));
+
+    let manifest_path = root.join("static/cas/build-manifest.json");
+    assert!(manifest_path.exists());
+
+    let manifest: serde_json::Value =
+        serde_json::from_str(&std::fs::read_to_string(&manifest_path).unwrap()).unwrap();
+    assert_eq!(manifest["page_count"], 1);
+    assert!(manifest["build_hash"].as_str().unwrap().starts_with("blake3:"));
+}

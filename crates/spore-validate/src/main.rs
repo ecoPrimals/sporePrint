@@ -7,6 +7,7 @@ use clap::{Parser, Subcommand};
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
+mod cas;
 mod certify;
 mod content;
 mod error;
@@ -128,6 +129,17 @@ enum Command {
         #[arg(long)]
         emit: bool,
     },
+
+    /// Generate CAS manifest for build output (`NestGate` integration)
+    CasManifest {
+        /// Path to Zola build output (default: public/)
+        #[arg(long, default_value = "public")]
+        public_dir: PathBuf,
+
+        /// Write manifest to static/cas/build-manifest.json
+        #[arg(long)]
+        emit: bool,
+    },
 }
 
 fn main() -> ExitCode {
@@ -187,6 +199,9 @@ fn run() -> Result<(), Error> {
         }) => run_provenance(&root, verify, diff, write),
         Some(Command::Graph { emit }) => run_graph(&root, &config, emit),
         Some(Command::Certify { emit }) => run_certify(&root, &config, emit),
+        Some(Command::CasManifest { public_dir, emit }) => {
+            run_cas_manifest(&root, &public_dir, emit)
+        }
     }
 }
 
@@ -578,4 +593,38 @@ fn run_fetch_refresh(
 
     println!("\nspore-validate: scanning for metric drift...");
     run_refresh(config_path, config, &result.clone_root, write, source)
+}
+
+fn run_cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Error> {
+    let dir = if public_dir.is_absolute() {
+        public_dir.to_path_buf()
+    } else {
+        root.join(public_dir)
+    };
+
+    if !dir.is_dir() {
+        return Err(Error::Config(format!(
+            "build output directory not found: {}. Run `zola build` first.",
+            dir.display()
+        )));
+    }
+
+    println!("spore-validate: generating CAS manifest for {}", dir.display());
+
+    let manifest = cas::generate_manifest(&dir);
+
+    println!("  files: {}", manifest.files.len());
+    println!("  HTML pages: {}", manifest.page_count);
+    #[allow(clippy::cast_precision_loss)]
+    let size_kb = manifest.total_bytes as f64 / 1024.0;
+    println!("  total size: {} bytes ({size_kb:.1} KB)", manifest.total_bytes);
+    println!("  build hash: {}", manifest.build_hash);
+
+    if emit {
+        let output_path = root.join(paths::CAS_MANIFEST);
+        cas::emit_manifest(&manifest, &output_path)?;
+        println!("  EMIT: {}", output_path.display());
+    }
+
+    Ok(())
 }

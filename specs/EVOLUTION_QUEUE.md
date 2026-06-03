@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 2, 2026 (Wave 70 — Pure Dependencies + Typed Returns + Test Coverage)
+Last reviewed: June 3, 2026 (Wave 73 — CAS Manifest + Pre-Cutover Verification)
 
 ---
 
@@ -80,7 +80,7 @@ Last reviewed: June 2, 2026 (Wave 70 — Pure Dependencies + Typed Returns + Tes
 - [x] ~~GitHub Pages becomes extracellular shadow~~ — deploy.yml labeled "trailing shadow", VPS is sovereign-primary
 - [ ] Post-DNS: Caddy HTTPS on golgiBody-ext (automatic after NS cutover)
 - [ ] Post-DNS: sporePrint deploy.yml → archive to fossilRecord (disable GitHub Pages deploy)
-- [ ] NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3
+- [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
 - [ ] Evaluate elasticlunr search quality for the current 205 pages
