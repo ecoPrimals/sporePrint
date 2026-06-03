@@ -237,8 +237,7 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, crate::error:
     Ok(format!("{} -> {}", nb_path.display(), out_path.display()))
 }
 
-/// Default output subdirectory for rendered notebooks within the site root.
-const DEFAULT_NOTEBOOK_OUTPUT: &str = "content/lab/notebooks";
+use crate::paths;
 
 /// Render all notebooks from given directories into Zola content.
 ///
@@ -250,7 +249,7 @@ pub fn render_notebooks(
     springs_root: Option<&Path>,
 ) -> (u32, Vec<String>) {
     let output_subdir =
-        std::env::var("SPOREPRINT_NOTEBOOK_OUTPUT").unwrap_or_else(|_| DEFAULT_NOTEBOOK_OUTPUT.into());
+        std::env::var("SPOREPRINT_NOTEBOOK_OUTPUT").unwrap_or_else(|_| paths::NOTEBOOK_OUTPUT.into());
     let output_dir = root.join(&output_subdir);
     let _ = std::fs::create_dir_all(&output_dir);
 

@@ -40,13 +40,34 @@ fn default_forge_url() -> String {
     std::env::var("SPOREPRINT_FORGE_URL").unwrap_or_else(|_| "https://github.com".to_string())
 }
 
+/// Detected forge type — determines archive URL pattern.
+///
+/// Discovered from the configured forge URL rather than hardcoded.
+/// GitHub uses a different archive path than Forgejo/Gitea API.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum ForgeKind {
+    GitHub,
+    Forgejo,
+}
+
+/// Detect forge type from URL. GitHub-like forges use direct archive paths;
+/// Forgejo/Gitea uses the `/api/v1/repos/` pattern.
+fn detect_forge_kind(forge_url: &str) -> ForgeKind {
+    if forge_url.contains("github.com") || forge_url.contains("github.io") {
+        ForgeKind::GitHub
+    } else {
+        ForgeKind::Forgejo
+    }
+}
+
 impl Source {
     /// Resolve the clone URL — prefers explicit `origin`, then configured
     /// forge, then GitHub shadow.
     pub fn clone_url(&self) -> String {
-        self.origin
-            .clone()
-            .unwrap_or_else(|| format!("{}/{}.git", default_forge_url(), self.repo))
+        self.origin.as_deref().map_or_else(
+            || format!("{}/{}.git", default_forge_url(), self.repo),
+            str::to_string,
+        )
     }
 }
 
@@ -145,19 +166,18 @@ pub struct ForgeArchiveBackend;
 impl ForgeArchiveBackend {
     /// Convert a clone URL to an archive download URL.
     ///
-    /// Input: `https://git.primals.eco/ecoPrimals/bearDog.git` or
-    ///        `https://github.com/ecoPrimals/bearDog.git`
-    /// Output: forge-appropriate archive URL.
+    /// Forge type is detected from the configured forge URL — no hardcoded
+    /// forge assumptions. GitHub uses direct paths; Forgejo uses API routes.
     fn archive_url(clone_url: &str) -> String {
         let url = clone_url.trim_end_matches(".git");
         let forge_base = default_forge_url();
 
-        if forge_base.contains("github.com") {
-            format!("{url}/archive/refs/heads/main.tar.gz")
-        } else {
-            // Forgejo API pattern: /api/v1/repos/{owner}/{repo}/archive/main.tar.gz
-            let path = url.strip_prefix(&forge_base).unwrap_or(url);
-            format!("{forge_base}/api/v1/repos{path}/archive/main.tar.gz")
+        match detect_forge_kind(&forge_base) {
+            ForgeKind::GitHub => format!("{url}/archive/refs/heads/main.tar.gz"),
+            ForgeKind::Forgejo => {
+                let path = url.strip_prefix(&forge_base).unwrap_or(url);
+                format!("{forge_base}/api/v1/repos{path}/archive/main.tar.gz")
+            }
         }
     }
 

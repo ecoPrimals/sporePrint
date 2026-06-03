@@ -22,7 +22,6 @@ use std::collections::BTreeMap;
 use std::io::{BufRead, BufReader, Write};
 use std::os::unix::net::UnixStream;
 use std::path::Path;
-use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::Instant;
 
 /// Deserialized CAS manifest (matches `cas::CasManifest` serialization).
@@ -105,10 +104,10 @@ pub fn push_manifest(
     socket_path: &str,
 ) -> Result<PushResult, Error> {
     let t0 = Instant::now();
-    let stored = AtomicU64::new(0);
-    let deduplicated = AtomicU64::new(0);
-    let errors = AtomicU64::new(0);
-    let bytes_transferred = AtomicU64::new(0);
+    let mut stored: u64 = 0;
+    let mut deduplicated: u64 = 0;
+    let mut errors: u64 = 0;
+    let mut bytes_transferred: u64 = 0;
 
     let stream = UnixStream::connect(socket_path).map_err(|e| {
         Error::Config(format!("failed to connect to NestGate at {socket_path}: {e}"))
@@ -142,16 +141,15 @@ pub fn push_manifest(
 
         if let Ok(resp) = send_rpc(&mut writer, &mut reader, &exists_req) {
             if resp["result"]["exists"].as_bool() == Some(true) {
-                deduplicated.fetch_add(1, Ordering::Relaxed);
+                deduplicated += 1;
                 continue;
             }
         }
 
-        // Read file and push
         let file_path = public_dir.join(rel_path);
         let Ok(contents) = std::fs::read(&file_path) else {
             eprintln!("  WARN: cannot read {rel_path}, skipping");
-            errors.fetch_add(1, Ordering::Relaxed);
+            errors += 1;
             continue;
         };
 
@@ -183,17 +181,17 @@ pub fn push_manifest(
                         "  ERROR: content.put failed for {rel_path}: {}",
                         resp["error"]
                     );
-                    errors.fetch_add(1, Ordering::Relaxed);
+                    errors += 1;
                 } else if resp["result"]["deduplicated"].as_bool() == Some(true) {
-                    deduplicated.fetch_add(1, Ordering::Relaxed);
+                    deduplicated += 1;
                 } else {
-                    stored.fetch_add(1, Ordering::Relaxed);
-                    bytes_transferred.fetch_add(entry.size, Ordering::Relaxed);
+                    stored += 1;
+                    bytes_transferred += entry.size;
                 }
             }
             Err(e) => {
                 eprintln!("  ERROR: RPC failed for {rel_path}: {e}");
-                errors.fetch_add(1, Ordering::Relaxed);
+                errors += 1;
             }
         }
     }
@@ -202,10 +200,10 @@ pub fn push_manifest(
     let elapsed = t0.elapsed().as_millis() as u64;
 
     Ok(PushResult {
-        stored: stored.load(Ordering::Relaxed),
-        deduplicated: deduplicated.load(Ordering::Relaxed),
-        errors: errors.load(Ordering::Relaxed),
-        total_bytes_transferred: bytes_transferred.load(Ordering::Relaxed),
+        stored,
+        deduplicated,
+        errors,
+        total_bytes_transferred: bytes_transferred,
         elapsed_ms: elapsed,
     })
 }

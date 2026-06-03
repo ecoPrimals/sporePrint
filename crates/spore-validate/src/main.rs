@@ -4,12 +4,13 @@
 #![doc = "sporePrint validation CLI — entity registry, content integrity, and metric sync."]
 
 use clap::{Parser, Subcommand};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::process::ExitCode;
 
 mod cas;
 mod cas_push;
 mod certify;
+mod commands;
 mod content;
 mod error;
 mod fetch;
@@ -25,7 +26,7 @@ mod report;
 mod time;
 mod totals;
 
-use error::{Diagnostic, Error};
+use error::Error;
 
 #[derive(Parser)]
 #[command(
@@ -184,13 +185,13 @@ fn run() -> Result<(), Error> {
                 }) => (*check, *strict, *verbose),
                 _ => (false, false, false),
             };
-            run_validate(&root, &config, check, strict, verbose)
+            commands::validate(&root, &config, check, strict, verbose)
         }
         Some(Command::Refresh {
             repos_root,
             write,
             source,
-        }) => run_refresh(&config_path, &config, &repos_root, write, source.as_deref()),
+        }) => commands::refresh(&config_path, &config, &repos_root, write, source.as_deref()),
         Some(Command::RenderNotebooks {
             dirs,
             springs,
@@ -201,195 +202,33 @@ fn run() -> Result<(), Error> {
             } else {
                 springs
             };
-            run_render_notebooks(&root, &dirs, effective_springs.as_deref());
+            commands::render_notebooks(&root, &dirs, effective_springs.as_deref());
             Ok(())
         }
         Some(Command::FetchRefresh { write, source }) => {
-            run_fetch_refresh(&root, &config_path, &config, write, source.as_deref())
+            commands::fetch_refresh(&root, &config_path, &config, write, source.as_deref())
         }
-        Some(Command::CheckLinks) => run_check_links(&root),
+        Some(Command::CheckLinks) => commands::check_links(&root),
         Some(Command::Provenance {
             verify,
             diff,
             write,
-        }) => run_provenance(&root, verify, diff, write),
-        Some(Command::Graph { emit }) => run_graph(&root, &config, emit),
-        Some(Command::Certify { emit }) => run_certify(&root, &config, emit),
+        }) => commands::provenance(&root, verify, diff, write),
+        Some(Command::Graph { emit }) => commands::graph(&root, &config, emit),
+        Some(Command::Certify { emit }) => commands::certify(&root, &config, emit),
         Some(Command::CasManifest { public_dir, emit }) => {
-            run_cas_manifest(&root, &public_dir, emit)
+            commands::cas_manifest(&root, &public_dir, emit)
         }
         Some(Command::CasPush {
             public_dir,
             socket,
             generate,
-        }) => run_cas_push(&root, &public_dir, socket.as_deref(), generate),
+        }) => commands::cas_push(&root, &public_dir, socket.as_deref(), generate),
     }
-}
-
-fn run_validate(
-    root: &Path,
-    config: &model::Config,
-    check: bool,
-    strict: bool,
-    verbose: bool,
-) -> Result<(), Error> {
-    println!("spore-validate: checking sporePrint entity registry...");
-
-    if verbose {
-        print!("{}", report::format_registry(&config.extra.entity_registry));
-        print!("{}", report::format_totals(&config.extra.totals));
-    }
-
-    let mut diagnostics = Vec::new();
-
-    registry::validate(&config.extra.entity_registry, &mut diagnostics);
-    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
-    totals::validate(
-        &config.extra.entity_registry,
-        &config.extra.totals,
-        &mut diagnostics,
-    );
-
-    let content_dir = root.join(paths::CONTENT_DIR);
-    if content_dir.is_dir() {
-        content::validate_taxonomies(
-            root,
-            &content_dir,
-            &config.extra.entity_registry,
-            &mut diagnostics,
-        );
-        content::lint_internal_links(root, &content_dir, &mut diagnostics);
-
-        if check {
-            content::check_integrity(
-                root,
-                &content_dir,
-                &config.extra.entity_registry,
-                &mut diagnostics,
-            );
-            let link_warnings = links::validate_internal_links(&content_dir);
-            diagnostics.extend(link_warnings);
-        }
-    }
-
-    if strict {
-        for diag in &mut diagnostics {
-            diag.promote_to_error();
-        }
-    }
-
-    let warnings: Vec<&Diagnostic> = diagnostics.iter().filter(|d| !d.is_error()).collect();
-    let errors: Vec<&Diagnostic> = diagnostics.iter().filter(|d| d.is_error()).collect();
-
-    for w in &warnings {
-        println!("  WARN:  {}", w.message());
-    }
-    for e in &errors {
-        println!("  ERROR: {}", e.message());
-    }
-
-    let summary = report::summarize(config);
-
-    if errors.is_empty() {
-        println!(
-            "  OK: {} entities ({} primals, {} springs), {} warning(s), 0 errors",
-            summary.entity_count,
-            summary.primal_count,
-            summary.spring_count,
-            warnings.len()
-        );
-        Ok(())
-    } else {
-        println!(
-            "\n  {} error(s), {} warning(s)",
-            errors.len(),
-            warnings.len()
-        );
-        Err(Error::ValidationFailed {
-            error_count: errors.len(),
-            warning_count: warnings.len(),
-        })
-    }
-}
-
-fn run_refresh(
-    config_path: &Path,
-    config: &model::Config,
-    repos_root: &Path,
-    write: bool,
-    source: Option<&str>,
-) -> Result<(), Error> {
-    let repos_root = repos_root
-        .canonicalize()
-        .unwrap_or_else(|_| repos_root.to_path_buf());
-
-    if let Some(name) = source {
-        println!(
-            "spore-validate refresh: scanning {name} in {}...",
-            repos_root.display()
-        );
-    } else {
-        println!(
-            "spore-validate refresh: scanning repos in {}...",
-            repos_root.display()
-        );
-    }
-
-    let result = refresh::scan(&config.extra.entity_registry, &repos_root, source);
-
-    for repo in &result.missing_repos {
-        println!("  SKIP: {repo} -- repo not found");
-    }
-
-    if result.drifts.is_empty() {
-        println!(
-            "  OK: {} repos scanned, all metrics match registry",
-            result.scanned
-        );
-        return Ok(());
-    }
-
-    println!();
-    for d in &result.drifts {
-        let pct = drift_pct(d.registered, d.actual);
-        println!(
-            "  DRIFT: [{}] {} -- registered: {}, actual: {} ({pct})",
-            d.key, d.field, d.registered, d.actual
-        );
-    }
-    println!(
-        "\n  {} repos scanned, {} metric(s) drifted",
-        result.scanned,
-        result.drifts.len()
-    );
-
-    if write {
-        refresh::write_updates(config_path, &result.drifts)?;
-        println!(
-            "  WRITE: config.toml updated with {} metric(s)",
-            result.drifts.len()
-        );
-    }
-
-    Ok(())
-}
-
-/// Format a drift percentage for display.
-///
-/// Precision loss from u64→f64 is intentional — we only need 1 decimal place
-/// for human-readable percentage output.
-#[allow(clippy::cast_precision_loss)]
-fn drift_pct(registered: u64, actual: u64) -> String {
-    if registered == 0 {
-        return "new".to_string();
-    }
-    let diff = actual as f64 - registered as f64;
-    let base = registered as f64;
-    format!("{:+.1}%", diff / base * 100.0)
 }
 
 /// Walk up from `start` looking for a `.gate` file, then derive the springs root.
-fn discover_springs_root(start: &Path) -> Option<PathBuf> {
+fn discover_springs_root(start: &std::path::Path) -> Option<PathBuf> {
     let mut dir = start.to_path_buf();
     loop {
         if dir.join(paths::GATE_MARKER).is_file() {
@@ -403,343 +242,4 @@ fn discover_springs_root(start: &Path) -> Option<PathBuf> {
             return None;
         }
     }
-}
-
-fn run_render_notebooks(root: &Path, dirs: &[PathBuf], springs: Option<&Path>) {
-    println!("spore-validate: rendering notebooks to Zola markdown...");
-
-    let (count, messages) = notebook::render_notebooks(root, dirs, springs);
-
-    for msg in &messages {
-        println!("  {msg}");
-    }
-
-    println!("\n  Rendered {count} notebook(s)");
-}
-
-fn run_check_links(root: &Path) -> Result<(), Error> {
-    let content_root = paths::require_content_dir(root)?;
-
-    println!("spore-validate: checking internal links...");
-    let report = links::check_links(&content_root);
-
-    if report.broken_links.is_empty() {
-        println!(
-            "  OK: {} files, {} internal links, 0 broken",
-            report.files_scanned, report.links_found
-        );
-        Ok(())
-    } else {
-        for link in &report.broken_links {
-            println!("  BROKEN: {link}");
-        }
-        println!(
-            "\n  {} files, {} links, {} broken",
-            report.files_scanned,
-            report.links_found,
-            report.broken_links.len()
-        );
-        Err(Error::ValidationFailed {
-            error_count: report.broken_links.len(),
-            warning_count: 0,
-        })
-    }
-}
-
-fn run_provenance(root: &Path, verify: bool, diff: bool, write: bool) -> Result<(), Error> {
-    let content_dir = paths::require_content_dir(root)?;
-
-    let manifest_path = provenance::manifest_path(root);
-
-    println!("spore-validate: computing BLAKE3 content hashes...");
-    let manifest = provenance::generate_manifest(&content_dir);
-    println!(
-        "  {} pages hashed, root: {}",
-        manifest.page_count,
-        &manifest.root_hash[..16]
-    );
-
-    if verify {
-        if !manifest_path.exists() {
-            println!("  WARN: no existing manifest at {}", manifest_path.display());
-            println!("  Run with --write to create one");
-            return Ok(());
-        }
-        let (new_pages, changed, removed) =
-            provenance::diff_manifests(&manifest_path, &manifest);
-
-        if new_pages.is_empty() && changed.is_empty() && removed.is_empty() {
-            println!("  OK: all {} pages match manifest", manifest.page_count);
-        } else {
-            if !new_pages.is_empty() {
-                println!("  NEW:     {} page(s)", new_pages.len());
-            }
-            if !changed.is_empty() {
-                println!("  CHANGED: {} page(s)", changed.len());
-            }
-            if !removed.is_empty() {
-                println!("  REMOVED: {} page(s)", removed.len());
-            }
-            return Err(Error::ValidationFailed {
-                error_count: changed.len() + removed.len(),
-                warning_count: new_pages.len(),
-            });
-        }
-    }
-
-    if diff {
-        let (new_pages, changed, removed) =
-            provenance::diff_manifests(&manifest_path, &manifest);
-        for p in &new_pages {
-            println!("  + {p}");
-        }
-        for p in &changed {
-            println!("  ~ {p}");
-        }
-        for p in &removed {
-            println!("  - {p}");
-        }
-        if new_pages.is_empty() && changed.is_empty() && removed.is_empty() {
-            println!("  (no changes)");
-        }
-    }
-
-    if write {
-        provenance::write_manifest(&manifest, &manifest_path)
-            .map_err(|e| Error::Config(format!("failed to write manifest: {e}")))?;
-        println!(
-            "  WRITE: content-manifest.toml ({} pages, root {})",
-            manifest.page_count,
-            &manifest.root_hash[..16]
-        );
-    }
-
-    Ok(())
-}
-
-fn run_graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
-    println!("spore-validate: building entity graph (renvois de choses)...");
-
-    let mut diagnostics = Vec::new();
-    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
-
-    for d in &diagnostics {
-        println!("  ERROR: {}", d.message());
-    }
-
-    if !diagnostics.is_empty() {
-        return Err(Error::ValidationFailed {
-            error_count: diagnostics.len(),
-            warning_count: 0,
-        });
-    }
-
-    let entity_graph = graph::build_graph(&config.extra.entity_registry);
-
-    println!(
-        "  {} nodes, {} edges ({} declared + {} inverse)",
-        entity_graph.stats.node_count,
-        entity_graph.stats.edge_count,
-        entity_graph.stats.declared_edges,
-        entity_graph.stats.inverse_edges,
-    );
-
-    if emit {
-        let output_path = root.join(paths::ENTITY_GRAPH_JSON);
-        graph::emit_graph_json(&entity_graph, &output_path)
-            .map_err(|e| Error::io(&output_path, e))?;
-        println!("  EMIT: {}", output_path.display());
-    }
-
-    Ok(())
-}
-
-fn run_certify(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
-    println!("spore-validate: certification (guideStone mode)...");
-
-    let mut diagnostics = Vec::new();
-    registry::validate(&config.extra.entity_registry, &mut diagnostics);
-    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
-    let validation_errors = diagnostics.iter().filter(|d| d.is_error()).count();
-
-    let manifest = certify::build_manifest(config, root, validation_errors);
-
-    println!("  entities: {}", manifest.entity_count);
-    println!("  edges: {}", manifest.edge_count);
-    println!("  content pages: {}", manifest.content_pages);
-    println!("  graph merkle: {}", manifest.graph_merkle);
-
-    let manifest_path = root.join(paths::CERTIFICATION_MANIFEST);
-
-    if emit {
-        certify::emit_manifest(&manifest, &manifest_path)
-            .map_err(|e| Error::io(&manifest_path, e))?;
-        println!("  EMIT: {}", manifest_path.display());
-    } else if manifest_path.exists() {
-        match certify::validate_manifest(&manifest_path, &manifest) {
-            Ok(drifts) if drifts.is_empty() => {
-                println!("  VALID: manifest matches current state");
-            }
-            Ok(drifts) => {
-                println!("  DRIFT detected ({} fields):", drifts.len());
-                for d in &drifts {
-                    println!("    {d}");
-                }
-            }
-            Err(e) => {
-                println!("  WARN: could not read existing manifest: {e}");
-            }
-        }
-    } else {
-        println!("  INFO: no existing manifest; use --emit to create one");
-    }
-
-    Ok(())
-}
-
-fn run_fetch_refresh(
-    root: &Path,
-    config_path: &Path,
-    config: &model::Config,
-    write: bool,
-    source: Option<&str>,
-) -> Result<(), Error> {
-    println!("spore-validate: fetching upstream repos...");
-
-    let result = fetch::fetch_and_refresh(root, source)?;
-    for outcome in &result.outcomes {
-        println!("{outcome}");
-    }
-    println!("---\nRepos staged in {}", result.clone_root.display());
-
-    println!("\nspore-validate: scanning for metric drift...");
-    run_refresh(config_path, config, &result.clone_root, write, source)
-}
-
-fn run_cas_push(
-    root: &Path,
-    public_dir: &Path,
-    socket_override: Option<&str>,
-    generate: bool,
-) -> Result<(), Error> {
-    let dir = if public_dir.is_absolute() {
-        public_dir.to_path_buf()
-    } else {
-        root.join(public_dir)
-    };
-
-    if !dir.is_dir() {
-        return Err(Error::Config(format!(
-            "build output directory not found: {}. Run `zola build` first.",
-            dir.display()
-        )));
-    }
-
-    let socket_path = match socket_override {
-        Some(s) => s.to_string(),
-        None => cas_push::discover_socket()?,
-    };
-
-    println!("spore-validate: CAS push to NestGate ({socket_path})");
-
-    let manifest = if generate {
-        println!("  generating manifest on-the-fly...");
-        let m = cas::generate_manifest(&dir);
-        println!("  {} files, {} pages", m.files.len(), m.page_count);
-        cas_push::StoredManifest {
-            build_id: m.build_id,
-            build_hash: m.build_hash,
-            page_count: m.page_count,
-            total_bytes: m.total_bytes,
-            files: m
-                .files
-                .into_iter()
-                .map(|(k, v)| {
-                    (
-                        k,
-                        cas_push::StoredEntry {
-                            hash: v.hash,
-                            size: v.size,
-                            content_type: v.content_type,
-                        },
-                    )
-                })
-                .collect(),
-        }
-    } else {
-        let manifest_path = root.join(paths::CAS_MANIFEST);
-        if !manifest_path.exists() {
-            return Err(Error::Config(format!(
-                "CAS manifest not found at {}. Run `cas-manifest --emit` first, or use --generate.",
-                manifest_path.display()
-            )));
-        }
-        println!("  reading manifest: {}", manifest_path.display());
-        cas_push::read_manifest(&manifest_path)?
-    };
-
-    println!(
-        "  build: {} ({} files, {} bytes)",
-        &manifest.build_hash[..20.min(manifest.build_hash.len())],
-        manifest.files.len(),
-        manifest.total_bytes
-    );
-
-    let result = cas_push::push_manifest(&manifest, &dir, &socket_path)?;
-
-    println!("  ---");
-    println!("  stored:       {} files", result.stored);
-    println!("  deduplicated: {} files (already in CAS)", result.deduplicated);
-    if result.errors > 0 {
-        println!("  errors:       {} files", result.errors);
-    }
-    #[allow(clippy::cast_precision_loss)]
-    let kb = result.total_bytes_transferred as f64 / 1024.0;
-    println!("  transferred:  {kb:.1} KB");
-    println!("  elapsed:      {} ms", result.elapsed_ms);
-
-    if result.errors > 0 {
-        #[allow(clippy::cast_possible_truncation)]
-        let count = result.errors as usize;
-        Err(Error::ValidationFailed {
-            error_count: count,
-            warning_count: 0,
-        })
-    } else {
-        Ok(())
-    }
-}
-
-fn run_cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Error> {
-    let dir = if public_dir.is_absolute() {
-        public_dir.to_path_buf()
-    } else {
-        root.join(public_dir)
-    };
-
-    if !dir.is_dir() {
-        return Err(Error::Config(format!(
-            "build output directory not found: {}. Run `zola build` first.",
-            dir.display()
-        )));
-    }
-
-    println!("spore-validate: generating CAS manifest for {}", dir.display());
-
-    let manifest = cas::generate_manifest(&dir);
-
-    println!("  files: {}", manifest.files.len());
-    println!("  HTML pages: {}", manifest.page_count);
-    #[allow(clippy::cast_precision_loss)]
-    let size_kb = manifest.total_bytes as f64 / 1024.0;
-    println!("  total size: {} bytes ({size_kb:.1} KB)", manifest.total_bytes);
-    println!("  build hash: {}", manifest.build_hash);
-
-    if emit {
-        let output_path = root.join(paths::CAS_MANIFEST);
-        cas::emit_manifest(&manifest, &output_path)?;
-        println!("  EMIT: {}", output_path.display());
-    }
-
-    Ok(())
 }
