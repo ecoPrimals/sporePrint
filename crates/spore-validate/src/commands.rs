@@ -6,8 +6,8 @@
 //! (like `resolve_public_dir`) live here as private helpers.
 
 use crate::{
-    cas, cas_push, certify, content, error::Diagnostic, error::Error, fetch, graph, links, model,
-    notebook, paths, provenance, refresh, registry, report, totals,
+    cas, cas_push, certify, content, discovery, error::Diagnostic, error::Error, fetch, graph,
+    links, model, notebook, paths, provenance, refresh, registry, report, totals,
 };
 use std::path::{Path, PathBuf};
 
@@ -501,6 +501,36 @@ pub fn cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Er
         let output_path = root.join(paths::CAS_MANIFEST);
         cas::emit_manifest(&manifest, &output_path)?;
         println!("  EMIT: {}", output_path.display());
+    }
+
+    Ok(())
+}
+
+#[allow(clippy::unnecessary_wraps)]
+pub fn discover() -> Result<(), Error> {
+    println!("spore-validate: capability discovery");
+    println!();
+
+    let self_caps = &discovery::SELF;
+    println!("  SELF: {} v{}", self_caps.primal_id, self_caps.version);
+    println!("  capabilities:");
+    for cap in self_caps.capabilities {
+        println!("    [{:>9}] {} — {}", cap.category, cap.name, cap.description);
+    }
+
+    println!();
+    println!("  PEERS:");
+
+    let peers = discovery::discover_peers();
+    if peers.is_empty() {
+        println!("    (none discovered — set NESTGATE_SOCKET or PETALTONGUE_SOCKET)");
+    } else {
+        for peer in &peers {
+            println!("    {} ({})", peer.primal_id, peer.socket_path.as_deref().unwrap_or("?"));
+            for cap in &peer.capabilities {
+                println!("      - {cap}");
+            }
+        }
     }
 
     Ok(())

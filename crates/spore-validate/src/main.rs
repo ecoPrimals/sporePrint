@@ -12,6 +12,7 @@ mod cas_push;
 mod certify;
 mod commands;
 mod content;
+mod discovery;
 mod error;
 mod fetch;
 mod graph;
@@ -143,6 +144,9 @@ enum Command {
         emit: bool,
     },
 
+    /// Show self-capabilities and discover peer primals
+    Discover,
+
     /// Push build artifacts to `NestGate` CAS (content-addressed storage)
     CasPush {
         /// Path to Zola build output (default: public/)
@@ -172,6 +176,12 @@ fn main() -> ExitCode {
 fn run() -> Result<(), Error> {
     let cli = Cli::parse();
     let root = cli.root.canonicalize().unwrap_or_else(|_| cli.root.clone());
+
+    // Commands that don't require config.toml
+    if matches!(cli.command, Some(Command::Discover)) {
+        return commands::discover();
+    }
+
     let config_path = root.join(paths::CONFIG_FILE);
     let config = model::parse_config(&config_path)?;
 
@@ -216,6 +226,7 @@ fn run() -> Result<(), Error> {
         }) => commands::provenance(&root, verify, diff, write),
         Some(Command::Graph { emit }) => commands::graph(&root, &config, emit),
         Some(Command::Certify { emit }) => commands::certify(&root, &config, emit),
+        Some(Command::Discover) => commands::discover(),
         Some(Command::CasManifest { public_dir, emit }) => {
             commands::cas_manifest(&root, &public_dir, emit)
         }

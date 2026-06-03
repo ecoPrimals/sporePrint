@@ -77,9 +77,12 @@ impl Source {
 ///
 /// Production uses `GitBackend` (shells out to `git`).
 /// Tests use `MockBackend` (in-memory, no I/O).
+///
+/// The `url` parameter on `pull_repo` enables backends that don't persist
+/// remote state (e.g., `ForgeArchiveBackend` re-downloads on "pull").
 pub trait VcsBackend {
     fn clone_repo(&self, url: &str, target: &Path) -> Result<(), Error>;
-    fn pull_repo(&self, target: &Path) -> Result<(), Error>;
+    fn pull_repo(&self, url: &str, target: &Path) -> Result<(), Error>;
     fn is_repo(&self, target: &Path) -> bool;
 }
 
@@ -127,7 +130,7 @@ impl VcsBackend for GitBackend {
         }
     }
 
-    fn pull_repo(&self, target: &Path) -> Result<(), Error> {
+    fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
         let status = std::process::Command::new("git")
             .args([
                 "-C",
@@ -205,13 +208,9 @@ impl VcsBackend for ForgeArchiveBackend {
         Self::download_and_extract(&archive, target)
     }
 
-    fn pull_repo(&self, target: &Path) -> Result<(), Error> {
-        // For archive backend, "pull" means re-download
+    fn pull_repo(&self, url: &str, target: &Path) -> Result<(), Error> {
         let _ = std::fs::remove_dir_all(target);
-        // We don't have the URL here — caller should re-clone
-        Err(Error::Git(
-            "archive backend does not support incremental pull; use clone".into(),
-        ))
+        self.clone_repo(url, target)
     }
 
     fn is_repo(&self, target: &Path) -> bool {
@@ -400,9 +399,10 @@ pub fn fetch_sources(
         let target = clone_root.join(&source.repo);
         let kind_label = source.kind.as_deref().unwrap_or("repo");
         let key_owned = (*key).to_string();
+        let url = source.clone_url();
 
         let outcome = if vcs.is_repo(&target) {
-            match vcs.pull_repo(&target) {
+            match vcs.pull_repo(&url, &target) {
                 Ok(()) => FetchOutcome::Pulled {
                     key: key_owned,
                     kind: kind_label.to_string(),
@@ -413,7 +413,6 @@ pub fn fetch_sources(
                 },
             }
         } else {
-            let url = source.clone_url();
             match vcs.clone_repo(&url, &target) {
                 Ok(()) => FetchOutcome::Cloned {
                     key: key_owned,
@@ -514,7 +513,7 @@ impl VcsBackend for MockBackend {
         }
     }
 
-    fn pull_repo(&self, target: &Path) -> Result<(), Error> {
+    fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
         let key = target.to_string_lossy().to_string();
         match self.pull_results.get(&key) {
             Some(Err(reason)) => Err(Error::Git(reason.clone())),
