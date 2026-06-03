@@ -1,7 +1,7 @@
 +++
 title = "Ecosystem Evidence — primalSpring"
 description = "Rendered from 03-ecosystem-evidence.ipynb"
-date = 2026-06-02
+date = 2026-06-03
 weight = 50
 
 [extra]
