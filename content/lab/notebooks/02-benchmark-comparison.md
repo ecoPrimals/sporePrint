@@ -1,5 +1,5 @@
 +++
-title = "Benchmark Comparison — primalSpring"
+title = "02 — Benchmark Comparison"
 description = "Rendered from 02-benchmark-comparison.ipynb"
 date = 2026-06-04
 weight = 50
@@ -11,186 +11,198 @@ rendered_from = "02-benchmark-comparison.ipynb"
 
 <!-- Auto-generated from 02-benchmark-comparison.ipynb by spore-validate render-notebooks -->
 
-# Benchmark Comparison — primalSpring
+# 02 — Benchmark Comparison
 
-Performance benchmarks for primalSpring's Rust validation infrastructure
-versus hypothetical Python equivalents. Covers compilation, test suite
-execution, validation binary phases, IPC handshake timing, and energy
-efficiency estimates.
+**neuralSpring sporePrint** | Session S188 | May 2026
 
-primalSpring validates compositions — its performance characteristics
-are dominated by graph parsing, BTSP cryptographic handshakes, checksum
-verification (BLAKE3), and IPC method dispatch.
+Rust vs Python timing across 11 domains, GPU acceleration,
+multi-GPU parity, and guideStone validation phases.
 
-**Data sources**: `experiments/results/benchmark_timing.json`
+**Data sources:** `benchmark-data.json`, `validation-state.json`
 
-**Reproduce**: `cargo test --workspace` and `cargo run --release --bin primalspring_unibin -- validate`
-
----
-
-*For other springs: replace benchmark data with your domain-specific
-timing results. The Rust vs Python comparison pattern is universal.*
+**For other springs:** Replace domain speedup data with your own
+benchmark results. Adjust GPU coverage to match your compute profile.
 
 ```python
 import json
 from pathlib import Path
-
-import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import numpy as np
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-def load(path):
-    with open(RESULTS / path) as f:
-        return json.load(f)
+with open(RESULTS / 'benchmark-data.json') as f:
+    bm = json.load(f)
 
-bench = load('benchmark_timing.json')
+with open(RESULTS / 'validation-state.json') as f:
+    vs = json.load(f)
 
-hw = bench['hardware']
-print(f'Hardware: {hw["cpu"]}, {hw["ram_gb"]}GB RAM, {hw["gpu"]}')
-print(f'OS: {hw["os"]}')
-print(f'Clean build: {bench["compilation"]["clean_build_release_s"]}s')
-print(f'Test suite: {bench["test_suite_timing"]["total_s"]}s')
+PASS = '#2ecc71'
+FAIL = '#e74c3c'
+INFO = '#3498db'
+
+print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
 ```
 
-## Rust vs Python — Operation Timing
+## Rust vs Python — Per-Domain Speedups
 
-Key operations compared: graph parsing, BTSP handshake, BLAKE3 checksum
-verification, and IPC method calls. Python estimates use equivalent
-JSON-RPC client logic with `hashlib` for checksums.
+Pure Rust achieves an **83.6x geometric mean** speedup over Python
+across 11 scientific domains, with the fastest (multi-objective
+optimization) reaching **1104x**.
 
 ```python
-rvp = bench['rust_vs_hypothetical_python']
-ops = ['Graph\nParsing', 'BTSP\nHandshake', 'Checksum\nVerification', 'IPC\nMethod Call']
-rust_times = [rvp['graph_parsing']['rust_ms'],
-              rvp['btsp_handshake']['rust_ms'],
-              rvp['checksum_verification']['rust_blake3_ms'],
-              rvp['ipc_method_call']['rust_ms']]
-python_times = [rvp['graph_parsing']['python_estimate_ms'],
-                rvp['btsp_handshake']['python_estimate_ms'],
-                rvp['checksum_verification']['python_hashlib_sha256_ms'],
-                rvp['ipc_method_call']['python_estimate_ms']]
-speedups = [rvp['graph_parsing']['speedup'],
-            rvp['btsp_handshake']['speedup'],
-            rvp['checksum_verification']['speedup'],
-            rvp['ipc_method_call']['speedup']]
+rvp = bm['rust_vs_python']
+speedups = rvp['domain_speedups']
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+domains = [s['domain'] for s in speedups]
+values = [s['speedup'] for s in speedups]
 
-x = np.arange(len(ops))
-width = 0.35
-ax = axes[0]
-bars_r = ax.bar(x - width/2, rust_times, width, label='Rust', color='#e67e22')
-bars_p = ax.bar(x + width/2, python_times, width, label='Python (est.)', color='#3498db')
-ax.set_xticks(x)
-ax.set_xticklabels(ops, fontsize=9)
-ax.set_ylabel('Time (ms)')
-ax.set_title('Operation Timing — Rust vs Python')
-ax.legend()
-ax.set_yscale('log')
-
-ax = axes[1]
-speedup_vals = [float(s.replace('x', '')) for s in speedups]
-colors = ['#2ecc71' if s >= 10 else '#f39c12' if s >= 5 else '#3498db' for s in speedup_vals]
-bars = ax.barh(ops, speedup_vals, color=colors)
+fig, ax = plt.subplots(figsize=(12, 6))
+bars = ax.barh(domains[::-1], values[::-1], color=INFO)
 ax.set_xlabel('Speedup (x)')
-ax.set_title('Rust Speedup over Python')
-for bar, val, label in zip(bars, speedup_vals, speedups):
-    ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height()/2,
-            label, va='center', fontsize=11, fontweight='bold')
+ax.set_title(f'Rust vs Python Speedups — {rvp["geomean_speedup"]}x geomean')
+ax.set_xscale('log')
+ax.axvline(x=rvp['geomean_speedup'], color=PASS, linestyle='--',
+           linewidth=2, label=f'Geomean: {rvp["geomean_speedup"]}x')
 
-plt.suptitle('primalSpring: Rust vs Python Performance',
-             fontsize=13, fontweight='bold')
+for bar, val in zip(bars, values[::-1]):
+    ax.text(bar.get_width() * 1.1, bar.get_y() + bar.get_height()/2,
+            f'{val:.0f}x', va='center', fontsize=9)
+
+ax.legend(loc='lower right', fontsize=11)
 plt.tight_layout()
-plt.savefig('/tmp/primalspring_02_rust_vs_python.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Validation Binary Phases
+## CPU-Python Cross-Language Parity
 
-`primalspring certify` (UniBin organelle, formerly guidestone) runs 4 validation phases:
-- **P1 Compile**: Workspace compiles with zero warnings
-- **P2 Structural**: Module presence, public API checks
-- **P3 Checksum**: BLAKE3 manifest verification of tracked files
-- **P4 Semantic**: Cross-module consistency, deploy graph coherence
+All 39 parity checks pass at 1e-10 tolerance — Rust CPU produces
+numerically identical results to the Python baselines.
 
 ```python
-gs = bench['validation_benchmarks']['primalspring_certify']
-phases = list(gs['phases'].keys())
-times = [gs['phases'][p]['time_ms'] for p in phases]
-checks = [gs['phases'][p]['checks'] for p in phases]
-labels = [p.replace('_', ' ') for p in phases]
+parity = rvp['cpu_python_parity']
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-colors = ['#3498db', '#2ecc71', '#e67e22', '#9b59b6']
-ax = axes[0]
-bars = ax.bar(labels, times, color=colors)
-ax.set_ylabel('Time (ms)')
-ax.set_title(f'Certify Phase Timing — {gs["total_ms"]}ms total')
-for bar, val in zip(bars, times):
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 5,
-            f'{val}ms', ha='center', fontsize=10)
-
-ax = axes[1]
-bars = ax.bar(labels, checks, color=colors)
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.bar(['PASS', 'FAIL'],
+       [parity['pass'], parity['total'] - parity['pass']],
+       color=[PASS, FAIL])
+ax.set_title(f'CPU↔Python Parity ({parity["pass"]}/{parity["total"]})')
 ax.set_ylabel('Checks')
-ax.set_title(f'Certify Checks per Phase — {gs["total_checks"]} total')
-for bar, val in zip(bars, checks):
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
-            str(val), ha='center', fontsize=10)
-
-plt.suptitle('primalspring certify: 4-Phase Validation (UniBin)',
-             fontsize=13, fontweight='bold')
+ax.text(0, parity['pass'] + 0.5, str(parity['pass']),
+        ha='center', fontweight='bold', fontsize=14)
 plt.tight_layout()
-plt.savefig('/tmp/primalspring_02_certify.png', dpi=150, bbox_inches='tight')
 plt.show()
+
+print(f"Tolerance: {parity['tolerance']}")
 ```
 
-## Energy Efficiency
+## GPU Performance
 
-CPU energy measurements (RAPL) during full test suite execution.
-Rust's zero-overhead validation completes in a fraction of the energy
-that an equivalent Python implementation would require.
+GPU acceleration via barraCuda + WGSL achieves up to **104x** vs Python,
+with ~97% of production operations promoted to GPU.
 
 ```python
-energy = bench['energy_estimate']
+gpu = bm['gpu_performance']
+mgpu = bm['multi_gpu']
 
-fig, ax = plt.subplots(figsize=(8, 4))
-langs = ['Rust', 'Python (est.)']
-wh = [energy['rust_test_suite_wh'], energy['python_equivalent_estimate_wh']]
-bars = ax.bar(langs, wh, color=['#e67e22', '#3498db'], width=0.5)
-ax.set_ylabel('Watt-hours')
-ax.set_title(f'Test Suite Energy — {energy["ratio"]}')
-for bar, val in zip(bars, wh):
-    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.05,
-            f'{val} Wh', ha='center', fontsize=12, fontweight='bold')
+fig, axes = plt.subplots(1, 3, figsize=(14, 4))
+
+# GPU coverage pie
+cov = gpu['gpu_coverage_percent']
+axes[0].pie([cov, 100-cov], labels=[f'GPU ({cov}%)', f'CPU ({100-cov}%)'],
+            colors=[PASS, '#95a5a6'], autopct='%1.0f%%', startangle=90)
+axes[0].set_title('GPU Coverage')
+
+# GPU metrics
+metrics = ['Max speedup\nvs Python', 'Crossover\nlatency (ms)', 'Dispatch\noverhead (x)']
+vals = [gpu['max_speedup_vs_python'], gpu['gpu_crossover_latency_ms'], 1.04]
+axes[1].bar(metrics, vals, color=[INFO, '#f39c12', PASS])
+axes[1].set_title('GPU Performance Metrics')
+for i, v in enumerate(vals):
+    axes[1].text(i, v + max(vals)*0.02, f'{v}', ha='center', fontweight='bold')
+
+# Multi-GPU parity
+titan = mgpu['titan_v_checks']
+axes[2].bar(['PASS', 'FAIL'],
+            [titan['pass'], titan['total'] - titan['pass']],
+            color=[PASS, FAIL])
+axes[2].set_title(f'Multi-GPU Parity ({titan["pass"]}/{titan["total"]})')
+axes[2].text(0, titan['pass'] + 5, f'{titan["pass"]}',
+             ha='center', fontweight='bold', fontsize=14)
 
 plt.tight_layout()
-plt.savefig('/tmp/primalspring_02_energy.png', dpi=150, bbox_inches='tight')
+plt.show()
+
+print(f"Devices: {', '.join(mgpu['devices_tested'])}")
+print(f"Parity: {mgpu['parity']}")
+```
+
+## guideStone Validation Phases
+
+The guideStone binary validates in 4 phases: bare properties,
+discovery + liveness, domain science parity, and additive NUCLEUS.
+
+```python
+phases = bm['guidestone_phases']
+
+fig, ax = plt.subplots(figsize=(10, 3))
+phase_names = list(phases.keys())
+phase_labels = [
+    'Phase 1: Bare Properties',
+    'Phase 2: Discovery + Liveness',
+    'Phase 3: Domain Parity',
+    'Phase 4: Additive NUCLEUS'
+]
+phase_status = [True, True, True, False]
+colors = [PASS if s else '#f39c12' for s in phase_status]
+
+ax.barh(phase_labels[::-1], [1]*4, color=colors[::-1])
+ax.set_xlim(0, 1.3)
+ax.set_title('guideStone Validation Phases')
+
+for i, (label, desc) in enumerate(zip(phase_labels[::-1],
+                                       list(phases.values())[::-1])):
+    ax.text(1.05, i, desc[:60] + '...' if len(desc) > 60 else desc,
+            va='center', fontsize=7)
+
+plt.tight_layout()
 plt.show()
 ```
 
-## Validation Summary
+## Isomorphic Primitives
+
+Six primitives compose all domain architectures — from transformers
+and protein folding to evolutionary computation and spectral analysis.
+
+```python
+prims = bm['isomorphic_primitives']
+
+fig, ax = plt.subplots(figsize=(10, 3))
+names = [p['primitive'] for p in prims]
+ax.barh(names[::-1], [1]*len(prims), color=INFO)
+for i, p in enumerate(prims[::-1]):
+    ax.text(1.05, i, p['role'], va='center', fontsize=9)
+ax.set_xlim(0, 2.5)
+ax.set_title('Isomorphic Computational Primitives')
+plt.tight_layout()
+plt.show()
+```
+
+## Summary
 
 | Metric | Value |
 |--------|-------|
-| Clean release build | 48.3s |
-| Incremental build | 2.1s |
-| Full test suite | 32.1s (613 tests) |
-| Guidestone validation | 755ms (46 checks) |
-| Graph parse (13 graphs) | 2.1ms |
-| Rust/Python speedup | 2.6x – 21x |
-| Energy efficiency | 9x more efficient |
+| Rust vs Python geomean | 83.6x (11 domains) |
+| Fastest speedup | 1104x (multi-objective) |
+| CPU↔Python parity | 39/39 PASS (1e-10) |
+| GPU max speedup | 104x (transformer medium) |
+| GPU coverage | ~97% |
+| Dispatch overhead | ≤1.04x (9/10 ops) |
+| Fused pipeline | 46-78x over per-op |
+| Multi-GPU parity | 384/384 bit-identical |
+| guideStone | Level 3 (29/29 bare) |
 
----
-
-**Provenance**: All results are content-addressed via BLAKE3 hashes,
-tracked in rhizoCrypt DAG sessions, committed to the loamSpine ledger,
-and witnessed with ed25519 signatures via sweetGrass braid.
-
-**Reproduce**: See [primals.eco/lab/reproduce](https://primals.eco/lab/reproduce/)
-
-**Source**: [ecoPrimals/primalSpring](https://github.com/ecoPrimals/primalSpring)
+**Provenance:** [primals.eco](https://primals.eco) |
+neuralSpring Session S188 | May 2026
 
