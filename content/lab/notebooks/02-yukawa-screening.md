@@ -1,7 +1,7 @@
 +++
 title = "Screened Coulomb (Yukawa) Bound-State Eigenvalues"
 description = "Rendered from 02-yukawa-screening.ipynb"
-date = 2026-06-02
+date = 2026-06-04
 weight = 50
 
 [extra]

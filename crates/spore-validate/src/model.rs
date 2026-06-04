@@ -281,11 +281,11 @@ mod tests {
 
     #[test]
     fn kind_round_trips() {
-        let toml_str = r#"kind = "post-nucleus""#;
         #[derive(Deserialize)]
         struct W {
             kind: Tier,
         }
+        let toml_str = r#"kind = "post-nucleus""#;
         let w: W = toml::from_str(toml_str).unwrap();
         assert_eq!(w.kind, Tier::PostNucleus);
         assert_eq!(w.kind.to_string(), "post-nucleus");

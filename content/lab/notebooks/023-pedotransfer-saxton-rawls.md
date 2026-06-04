@@ -1,7 +1,7 @@
 +++
 title = "Saxton-Rawls (2006) Pedotransfer Functions"
 description = "Rendered from 023-pedotransfer-saxton-rawls.ipynb"
-date = 2026-06-02
+date = 2026-06-04
 weight = 50
 
 [extra]

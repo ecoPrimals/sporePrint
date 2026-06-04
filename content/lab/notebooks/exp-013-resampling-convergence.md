@@ -1,7 +1,7 @@
 +++
 title = "Experiment 013 — Resampling Convergence Analysis"
 description = "Rendered from exp-013-resampling-convergence.ipynb"
-date = 2026-06-02
+date = 2026-06-04
 weight = 50
 
 [extra]

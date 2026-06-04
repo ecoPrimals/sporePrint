@@ -23,7 +23,7 @@ Backup: systemd timer rebuilds every 15 minutes
 ## Stack
 
 - **[Zola](https://www.getzola.org/) 0.22.1** — Rust static site generator (single binary, zero deps)
-- **`spore-validate`** — Rust validation + certification crate (20 modules, 115 tests, zero C deps)
+- **`spore-validate`** — Rust validation + certification crate (20 modules, 122 tests, zero C deps)
 - **petalTongue viz pipeline** — Server-rendered SVG with WASM progressive enhancement
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
 - **Custom theme** — Catppuccin Mocha/Latte, system fonts, dark/light, zero external deps

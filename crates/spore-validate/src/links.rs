@@ -64,39 +64,6 @@ fn extract_internal_links(content: &str) -> Vec<String> {
     links
 }
 
-/// Validate all internal `@/` links in content files.
-pub fn validate_internal_links(content_root: &Path) -> Vec<Diagnostic> {
-    let mut diagnostics = Vec::new();
-    let pages = collect_pages(content_root);
-
-    for entry in WalkDir::new(content_root)
-        .into_iter()
-        .filter_map(Result::ok)
-    {
-        let path = entry.path();
-        if path.extension().is_none_or(|e| e != "md") {
-            continue;
-        }
-
-        let Ok(content) = std::fs::read_to_string(path) else {
-            continue;
-        };
-
-        let file_display = crate::paths::rel_to(path, content_root).to_string_lossy();
-
-        for link in extract_internal_links(&content) {
-            let target = link.strip_prefix("@/").unwrap_or(&link);
-            if !link_resolves(target, &pages) {
-                diagnostics.push(Diagnostic::warning(format!(
-                    "{file_display}: broken link @/{target}"
-                )));
-            }
-        }
-    }
-
-    diagnostics
-}
-
 /// Summary of link validation results.
 pub struct LinkReport {
     pub files_scanned: usize,
@@ -104,12 +71,12 @@ pub struct LinkReport {
     pub broken_links: Vec<String>,
 }
 
-/// Full link validation pass with summary.
-pub fn check_links(content_root: &Path) -> LinkReport {
-    let mut files_scanned = 0;
-    let mut links_found = 0;
-    let mut broken = Vec::new();
+/// Core walk: scans all `.md` files for internal `@/` links.
+fn walk_links(content_root: &Path) -> LinkReport {
     let pages = collect_pages(content_root);
+    let mut files_scanned: usize = 0;
+    let mut links_found: usize = 0;
+    let mut broken_links: Vec<String> = Vec::new();
 
     for entry in WalkDir::new(content_root)
         .into_iter()
@@ -135,7 +102,7 @@ pub fn check_links(content_root: &Path) -> LinkReport {
         for link in links {
             let target = link.strip_prefix("@/").unwrap_or(&link);
             if !link_resolves(target, &pages) {
-                broken.push(format!("{file_display} -> @/{target}"));
+                broken_links.push(format!("{file_display} -> @/{target}"));
             }
         }
     }
@@ -143,8 +110,23 @@ pub fn check_links(content_root: &Path) -> LinkReport {
     LinkReport {
         files_scanned,
         links_found,
-        broken_links: broken,
+        broken_links,
     }
+}
+
+/// Validate all internal `@/` links in content files.
+pub fn validate_internal_links(content_root: &Path) -> Vec<Diagnostic> {
+    let report = walk_links(content_root);
+    report
+        .broken_links
+        .into_iter()
+        .map(|b| Diagnostic::warning(format!("broken link: {b}")))
+        .collect()
+}
+
+/// Full link validation pass with summary.
+pub fn check_links(content_root: &Path) -> LinkReport {
+    walk_links(content_root)
 }
 
 #[cfg(test)]
@@ -153,16 +135,16 @@ mod tests {
 
     #[test]
     fn extract_links_finds_at_prefixed() {
-        let content = r#"See [this page](@/science/paper.md) for details."#;
+        let content = r"See [this page](@/science/paper.md) for details.";
         let links = extract_internal_links(content);
         assert_eq!(links, vec!["@/science/paper.md"]);
     }
 
     #[test]
     fn extract_links_finds_multiple() {
-        let content = r#"
+        let content = r"
 Check [A](@/arch/one.md) and [B](@/arch/two.md).
-"#;
+";
         let links = extract_internal_links(content);
         assert_eq!(links.len(), 2);
         assert!(links.contains(&"@/arch/one.md".to_string()));
@@ -171,7 +153,7 @@ Check [A](@/arch/one.md) and [B](@/arch/two.md).
 
     #[test]
     fn extract_links_ignores_external() {
-        let content = r#"[ext](https://example.com) and [int](@/page.md)"#;
+        let content = r"[ext](https://example.com) and [int](@/page.md)";
         let links = extract_internal_links(content);
         assert_eq!(links.len(), 1);
         assert_eq!(links[0], "@/page.md");

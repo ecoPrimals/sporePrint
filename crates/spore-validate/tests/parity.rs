@@ -6,9 +6,9 @@
 //! structurally equivalent output to Zola for sporePrint content.
 //!
 //! Run with: `cargo test --test parity`
-//! Requires: petalTongue server running on $PETALTONGUE_PORT (default 8080)
+//! Requires: petalTongue server running on `$PETALTONGUE_PORT` (default 8080)
 //!
-//! Skip with: `cargo test --test parity -- --ignored` (or set SKIP_PARITY=1)
+//! Skip with: `cargo test --test parity -- --ignored` (or set `SKIP_PARITY=1`)
 
 use std::path::{Path, PathBuf};
 

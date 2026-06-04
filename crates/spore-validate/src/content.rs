@@ -287,6 +287,6 @@ Body text."#
 
         let mut diags = Vec::new();
         lint_internal_links(root, &content, &mut diags);
-        assert!(!diags.iter().any(|d| d.is_error()));
+        assert!(!diags.iter().any(Diagnostic::is_error));
     }
 }

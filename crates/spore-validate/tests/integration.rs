@@ -482,7 +482,8 @@ fn cas_manifest_emit_writes_json() {
 
 #[test]
 fn cas_push_fails_without_socket() {
-    let root = tempfile::tempdir().unwrap().into_path();
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
     let public_dir = root.join("public");
     std::fs::create_dir_all(&public_dir).unwrap();
     std::fs::write(public_dir.join("index.html"), "<html>test</html>").unwrap();
@@ -514,7 +515,8 @@ fn cas_push_fails_without_socket() {
 
 #[test]
 fn cas_push_requires_manifest_or_generate() {
-    let root = tempfile::tempdir().unwrap().into_path();
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
     let public_dir = root.join("public");
     std::fs::create_dir_all(&public_dir).unwrap();
     std::fs::write(public_dir.join("page.html"), "<html/>").unwrap();
@@ -531,5 +533,37 @@ fn cas_push_requires_manifest_or_generate() {
     assert!(
         stderr.contains("CAS manifest not found") || stderr.contains("NestGate socket not found"),
         "expected manifest or socket error, got: {stderr}"
+    );
+}
+
+#[test]
+fn discover_shows_self_capabilities() {
+    let output = Command::new(binary_path())
+        .args(["discover"])
+        .output()
+        .expect("failed to run discover");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "discover failed:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("SELF: sporePrint"));
+    assert!(stdout.contains("cas-push"));
+    assert!(stdout.contains("validate"));
+    assert!(stdout.contains("PEERS:"));
+}
+
+#[test]
+fn discover_does_not_require_config() {
+    let output = Command::new(binary_path())
+        .args(["--root", "/nonexistent/path", "discover"])
+        .output()
+        .expect("failed to run discover");
+
+    assert!(
+        output.status.success(),
+        "discover should work without config.toml"
     );
 }

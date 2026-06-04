@@ -310,7 +310,7 @@ mod tests {
         assert!(report.contains("3,400 lines"));
         assert!(report.contains("raw: 3400"));
         assert!(report.contains("4,200"));
-        assert!(report.contains("7"));
+        assert!(report.contains('7'));
         assert!(report.contains("2026-05-30"));
     }
 
@@ -340,7 +340,7 @@ mod tests {
             measured_date: None,
         };
         let report = format_totals(&totals);
-        assert!(report.contains("?"));
+        assert!(report.contains('?'));
         assert!(!report.contains("WGSL"));
         assert!(!report.contains("Validation"));
     }

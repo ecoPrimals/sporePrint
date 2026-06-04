@@ -37,3 +37,46 @@ pub fn require_content_dir(root: &Path) -> Result<PathBuf, Error> {
 pub fn rel_to<'a>(path: &'a Path, root: &Path) -> &'a Path {
     path.strip_prefix(root).unwrap_or(path)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn rel_to_strips_prefix() {
+        let root = Path::new("/home/user/project");
+        let full = Path::new("/home/user/project/src/main.rs");
+        assert_eq!(rel_to(full, root), Path::new("src/main.rs"));
+    }
+
+    #[test]
+    fn rel_to_returns_original_on_mismatch() {
+        let root = Path::new("/home/user/project");
+        let unrelated = Path::new("/tmp/other.rs");
+        assert_eq!(rel_to(unrelated, root), unrelated);
+    }
+
+    #[test]
+    fn require_content_dir_succeeds_when_present() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::create_dir(dir.path().join(CONTENT_DIR)).unwrap();
+        assert!(require_content_dir(dir.path()).is_ok());
+    }
+
+    #[test]
+    fn require_content_dir_fails_when_missing() {
+        let dir = tempfile::tempdir().unwrap();
+        assert!(require_content_dir(dir.path()).is_err());
+    }
+
+    #[test]
+    fn constants_are_consistent() {
+        assert!(NOTEBOOK_OUTPUT.starts_with(CONTENT_DIR));
+        assert!(Path::new(CAS_MANIFEST)
+            .extension()
+            .is_some_and(|ext| ext == "json"));
+        assert!(Path::new(ENTITY_GRAPH_JSON)
+            .extension()
+            .is_some_and(|ext| ext == "json"));
+    }
+}

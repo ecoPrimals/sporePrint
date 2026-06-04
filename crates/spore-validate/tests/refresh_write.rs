@@ -65,8 +65,7 @@ fn refresh_write_to_temp_config() {
     let root = dir.path();
 
     // Create a minimal config.toml with one entity pointing at this crate.
-    let config_content = format!(
-        r#"
+    let config_content = r#"
 base_url = "https://test.example"
 [extra]
 [extra.totals]
@@ -89,9 +88,8 @@ files = 1
 crates = 1
 repo = "local/testcrate"
 tier = "foundation"
-"#
-    );
-    std::fs::write(root.join("config.toml"), &config_content).unwrap();
+"#;
+    std::fs::write(root.join("config.toml"), config_content).unwrap();
     std::fs::create_dir_all(root.join("content")).unwrap();
 
     // Create a fake repo to count
@@ -158,8 +156,7 @@ fn refresh_counts_rust_files_correctly() {
     // Use spore-validate's count_file logic directly via the binary's refresh on this repo
     build_binary();
     let root = dir.path();
-    let config = format!(
-        r#"
+    let config = r#"
 base_url = "https://test.example"
 [extra]
 [extra.totals]
@@ -182,9 +179,8 @@ files = 999
 crates = 1
 repo = "myrepo"
 tier = "foundation"
-"#
-    );
-    std::fs::write(root.join("config.toml"), &config).unwrap();
+"#;
+    std::fs::write(root.join("config.toml"), config).unwrap();
     std::fs::create_dir_all(root.join("content")).unwrap();
 
     let output = Command::new(binary_path())
