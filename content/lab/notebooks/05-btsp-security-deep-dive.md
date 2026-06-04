@@ -1,7 +1,7 @@
 +++
 title = "BTSP Security Deep Dive — primalSpring"
 description = "Rendered from 05-btsp-security-deep-dive.ipynb"
-date = 2026-06-03
+date = 2026-06-04
 weight = 50
 
 [extra]
