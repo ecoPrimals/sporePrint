@@ -219,18 +219,64 @@ impl VcsBackend for ForgeArchiveBackend {
     }
 }
 
-/// Minimal HTTP/1.1 GET — plain TCP, no TLS.
+/// Minimal HTTP/1.1 GET — plain TCP, no TLS, with redirect following.
 ///
 /// Suitable for sovereign Forgejo on LAN. For HTTPS forges, use `GitBackend`.
+/// Follows up to 5 HTTP redirects (301, 302, 307, 308).
 fn http_get_body(url: &str) -> Result<Vec<u8>, Error> {
+    const MAX_REDIRECTS: u8 = 5;
+    let mut current_url = url.to_string();
+
+    for _ in 0..MAX_REDIRECTS {
+        let (status, headers_str, body) = http_request_raw(&current_url)?;
+
+        if status == 200 {
+            return Ok(body);
+        }
+
+        if matches!(status, 301 | 302 | 307 | 308) {
+            let location = headers_str
+                .lines()
+                .find_map(|line| {
+                    let lower = line.to_ascii_lowercase();
+                    if lower.starts_with("location:") {
+                        Some(line[9..].trim().to_string())
+                    } else {
+                        None
+                    }
+                })
+                .ok_or_else(|| Error::Git(format!("redirect {status} without Location header")))?;
+
+            if location.starts_with("https://") {
+                return Err(Error::Git(format!(
+                    "redirect to HTTPS not supported by archive backend: {location}"
+                )));
+            }
+            current_url = if location.starts_with("http://") {
+                location
+            } else {
+                format!("http://{}", location.strip_prefix('/').unwrap_or(&location))
+            };
+            continue;
+        }
+
+        let status_line = headers_str.lines().next().unwrap_or("unknown");
+        return Err(Error::Git(format!("HTTP error: {status_line}")));
+    }
+
+    Err(Error::Git("too many redirects (max 5)".into()))
+}
+
+/// Perform a single HTTP GET and return (status, headers, body).
+fn http_request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
     use std::io::{Read, Write};
     use std::net::TcpStream;
 
-    let url = url.strip_prefix("http://").ok_or_else(|| {
+    let url_path = url.strip_prefix("http://").ok_or_else(|| {
         Error::Git(format!("ForgeArchiveBackend only supports plain HTTP: {url}"))
     })?;
 
-    let (host_port, path) = url.split_once('/').unwrap_or((url, "/"));
+    let (host_port, path) = url_path.split_once('/').unwrap_or((url_path, "/"));
     let path = format!("/{path}");
     let host_port = if host_port.contains(':') {
         host_port.to_string()
@@ -247,7 +293,9 @@ fn http_get_body(url: &str) -> Result<Vec<u8>, Error> {
         .set_read_timeout(Some(std::time::Duration::from_secs(30)))
         .ok();
 
-    let request = format!("GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n");
+    let request = format!(
+        "GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n"
+    );
     stream
         .write_all(request.as_bytes())
         .map_err(|e| Error::Git(format!("HTTP write failed: {e}")))?;
@@ -257,19 +305,23 @@ fn http_get_body(url: &str) -> Result<Vec<u8>, Error> {
         .read_to_end(&mut response)
         .map_err(|e| Error::Git(format!("HTTP read failed: {e}")))?;
 
-    // Split headers from body (look for \r\n\r\n)
     let header_end = response
         .windows(4)
         .position(|w| w == b"\r\n\r\n")
         .ok_or_else(|| Error::Git("malformed HTTP response".into()))?;
 
     let headers = std::str::from_utf8(&response[..header_end]).unwrap_or("");
-    if !headers.starts_with("HTTP/1.1 200") && !headers.starts_with("HTTP/1.0 200") {
-        let status_line = headers.lines().next().unwrap_or("unknown");
-        return Err(Error::Git(format!("HTTP error: {status_line}")));
-    }
 
-    Ok(response[header_end + 4..].to_vec())
+    let status = headers
+        .lines()
+        .next()
+        .and_then(|line| line.split_whitespace().nth(1))
+        .and_then(|s| s.parse::<u16>().ok())
+        .unwrap_or(0);
+
+    let body = response[header_end + 4..].to_vec();
+
+    Ok((status, headers.to_string(), body))
 }
 
 /// Gzip decompression using `flate2` (pure Rust via `miniz_oxide`).

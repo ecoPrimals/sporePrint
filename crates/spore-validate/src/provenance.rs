@@ -44,9 +44,7 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
         })
     {
         let path = entry.path();
-        let rel = path
-            .strip_prefix(content_dir)
-            .unwrap_or(path)
+        let rel = crate::paths::rel_to(path, content_dir)
             .to_string_lossy()
             .to_string();
 

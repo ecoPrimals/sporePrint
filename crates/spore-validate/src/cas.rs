@@ -48,9 +48,7 @@ pub fn generate_manifest(public_dir: &Path) -> CasManifest {
 
         let hash = blake3::hash(&contents).to_hex().to_string();
         let size = contents.len() as u64;
-        let rel_path = path
-            .strip_prefix(public_dir)
-            .unwrap_or(path)
+        let rel_path = crate::paths::rel_to(path, public_dir)
             .to_string_lossy()
             .replace('\\', "/");
 

@@ -82,10 +82,7 @@ pub fn validate_internal_links(content_root: &Path) -> Vec<Diagnostic> {
             continue;
         };
 
-        let file_display = path
-            .strip_prefix(content_root)
-            .unwrap_or(path)
-            .to_string_lossy();
+        let file_display = crate::paths::rel_to(path, content_root).to_string_lossy();
 
         for link in extract_internal_links(&content) {
             let target = link.strip_prefix("@/").unwrap_or(&link);
@@ -128,9 +125,7 @@ pub fn check_links(content_root: &Path) -> LinkReport {
             continue;
         };
 
-        let file_display = path
-            .strip_prefix(content_root)
-            .unwrap_or(path)
+        let file_display = crate::paths::rel_to(path, content_root)
             .to_string_lossy()
             .to_string();
 

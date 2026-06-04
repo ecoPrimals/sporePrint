@@ -7,6 +7,7 @@
 
 use crate::error::Diagnostic;
 use crate::model::{Entity, EntityKind};
+use crate::paths;
 use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::path::Path;
@@ -31,7 +32,7 @@ pub fn validate_taxonomies(
         let Some(fm) = extract_front_matter(path) else {
             continue;
         };
-        let rel = path.strip_prefix(root).unwrap_or(path);
+        let rel = paths::rel_to(path, root);
 
         let Some(taxonomies) = fm.get("taxonomies").and_then(|v| v.as_table()) else {
             continue;
@@ -110,7 +111,7 @@ pub fn check_integrity(
         let Ok(text) = std::fs::read_to_string(path) else {
             continue;
         };
-        let rel = path.strip_prefix(root).unwrap_or(path);
+        let rel = paths::rel_to(path, root);
 
         for cap in shortcode_re.captures_iter(&text) {
             let raw_name = &cap[1];
@@ -146,7 +147,7 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
         let Ok(text) = std::fs::read_to_string(path) else {
             continue;
         };
-        let rel = path.strip_prefix(root).unwrap_or(path);
+        let rel = paths::rel_to(path, root);
 
         for (line_no, line) in text.lines().enumerate() {
             for cap in bare_md_re.captures_iter(line) {

@@ -30,3 +30,10 @@ pub fn require_content_dir(root: &Path) -> Result<PathBuf, Error> {
         )))
     }
 }
+
+/// Strip a root prefix from a path, returning the original if stripping fails.
+///
+/// Common pattern: display paths relative to root for readable diagnostics.
+pub fn rel_to<'a>(path: &'a Path, root: &Path) -> &'a Path {
+    path.strip_prefix(root).unwrap_or(path)
+}

@@ -98,6 +98,7 @@ pub fn read_manifest(manifest_path: &Path) -> Result<StoredManifest, Error> {
 }
 
 /// Push all files from a CAS manifest to `NestGate`.
+#[allow(clippy::too_many_lines)]
 pub fn push_manifest(
     manifest: &StoredManifest,
     public_dir: &Path,
@@ -122,6 +123,20 @@ pub fn push_manifest(
     let mut reader = BufReader::new(stream);
 
     let mut request_id: u64 = 0;
+
+    // Announce self to NestGate (non-blocking — ignore errors for compat with older versions)
+    request_id += 1;
+    let announce_req = json!({
+        "jsonrpc": "2.0",
+        "method": "primal.announce",
+        "params": {
+            "primal_id": crate::discovery::SELF.primal_id,
+            "version": crate::discovery::SELF.version,
+            "capabilities": ["cas-push", "cas-manifest", "provenance", "certify"],
+        },
+        "id": request_id
+    });
+    let _ = send_rpc(&mut writer, &mut reader, &announce_req);
 
     for (rel_path, entry) in &manifest.files {
         request_id += 1;
