@@ -1,7 +1,7 @@
 +++
 title = "Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$"
 description = "Rendered from 11-gradient-flow.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]
