@@ -1,7 +1,7 @@
 +++
 title = "Paper 013 — Ecological Theory in Evolutionary Computation"
 description = "Rendered from paper-013-eco-dynamics.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]
