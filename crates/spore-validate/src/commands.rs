@@ -410,6 +410,10 @@ pub fn cas_push(
         None => cas_push::discover_socket()?,
     };
 
+    let endpoint = cas_push::TransportEndpoint::Uds {
+        path: socket_path.clone(),
+    };
+
     println!("spore-validate: CAS push to NestGate ({socket_path})");
 
     let manifest = if generate {
@@ -455,7 +459,7 @@ pub fn cas_push(
         manifest.total_bytes
     );
 
-    let result = cas_push::push_manifest(&manifest, &dir, &socket_path)?;
+    let result = cas_push::push_manifest(&manifest, &dir, &endpoint)?;
 
     println!("  ---");
     println!("  stored:       {} files", result.stored);

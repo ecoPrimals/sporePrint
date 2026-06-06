@@ -3,9 +3,16 @@
 //! CAS push — send build artifacts to `NestGate` content-addressed storage.
 //!
 //! Reads a `build-manifest.json` (produced by `cas-manifest --emit`), then
-//! pushes each file's content to `NestGate`'s `content.put` over UNIX socket
-//! (JSON-RPC 2.0, newline-delimited). Files already stored are skipped via
-//! `content.exists` for efficient dedup.
+//! pushes each file's content to `NestGate`'s `content.put` via JSON-RPC 2.0
+//! (newline-delimited). Files already stored are skipped via `content.exists`
+//! for efficient dedup.
+//!
+//! ## Transport
+//!
+//! Transport is injected, not self-bound. The `connect_transport` function
+//! resolves a `TransportEndpoint` to a stream. Today this supports UDS;
+//! when Songbird ships `ipc.resolve` with transport-qualified endpoints,
+//! TCP and mesh relay transports can be added without changing push logic.
 //!
 //! ## Discovery
 //!
@@ -19,10 +26,43 @@ use base64::{Engine as _, engine::general_purpose::STANDARD};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::collections::BTreeMap;
-use std::io::{BufRead, BufReader, Write};
-use std::os::unix::net::UnixStream;
+use std::io::{BufRead, BufReader, Read, Write};
 use std::path::Path;
 use std::time::Instant;
+
+/// A transport-qualified endpoint for primal IPC.
+///
+/// Primals do not choose their transport — the launcher/Songbird decides.
+/// This enum will grow as Songbird's `ipc.resolve` evolves.
+#[derive(Debug, Clone)]
+pub enum TransportEndpoint {
+    /// Unix domain socket (current default for single-machine deployment).
+    Uds { path: String },
+    // Future: Tcp { host: String, port: u16 },
+    // Future: MeshRelay { peer_id: String, capability: String },
+}
+
+/// Connect to a `NestGate` instance via the specified transport.
+///
+/// Returns a boxed stream implementing `Read + Write`. The caller never
+/// needs to know the underlying transport mechanism.
+pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWrite>, Error> {
+    match endpoint {
+        TransportEndpoint::Uds { path } => {
+            let stream = std::os::unix::net::UnixStream::connect(path).map_err(|e| {
+                Error::Config(format!("failed to connect to NestGate at {path}: {e}"))
+            })?;
+            stream
+                .set_read_timeout(Some(std::time::Duration::from_secs(30)))
+                .ok();
+            Ok(Box::new(stream))
+        }
+    }
+}
+
+/// Trait alias for a bidirectional stream (Read + Write).
+pub trait ReadWrite: Read + Write {}
+impl<T: Read + Write> ReadWrite for T {}
 
 /// Deserialized CAS manifest (matches `cas::CasManifest` serialization).
 #[derive(Debug, Deserialize)]
@@ -98,11 +138,15 @@ pub fn read_manifest(manifest_path: &Path) -> Result<StoredManifest, Error> {
 }
 
 /// Push all files from a CAS manifest to `NestGate`.
+///
+/// Accepts a `TransportEndpoint` — the transport is injected by the caller,
+/// not chosen by the push logic. Use `discover_socket()` + `TransportEndpoint::Uds`
+/// for discovery-based connection, or accept a Songbird-resolved endpoint directly.
 #[allow(clippy::too_many_lines)]
 pub fn push_manifest(
     manifest: &StoredManifest,
     public_dir: &Path,
-    socket_path: &str,
+    endpoint: &TransportEndpoint,
 ) -> Result<PushResult, Error> {
     let t0 = Instant::now();
     let mut stored: u64 = 0;
@@ -110,16 +154,7 @@ pub fn push_manifest(
     let mut errors: u64 = 0;
     let mut bytes_transferred: u64 = 0;
 
-    let stream = UnixStream::connect(socket_path).map_err(|e| {
-        Error::Config(format!("failed to connect to NestGate at {socket_path}: {e}"))
-    })?;
-    stream
-        .set_read_timeout(Some(std::time::Duration::from_secs(30)))
-        .ok();
-
-    let mut writer = stream.try_clone().map_err(|e| {
-        Error::Config(format!("failed to clone socket: {e}"))
-    })?;
+    let stream = connect_transport(endpoint)?;
     let mut reader = BufReader::new(stream);
 
     let mut request_id: u64 = 0;
@@ -136,7 +171,7 @@ pub fn push_manifest(
         },
         "id": request_id
     });
-    let _ = send_rpc(&mut writer, &mut reader, &announce_req);
+    let _ = send_rpc(&mut reader, &announce_req);
 
     for (rel_path, entry) in &manifest.files {
         request_id += 1;
@@ -154,7 +189,7 @@ pub fn push_manifest(
             "id": request_id
         });
 
-        if let Ok(resp) = send_rpc(&mut writer, &mut reader, &exists_req) {
+        if let Ok(resp) = send_rpc(&mut reader, &exists_req) {
             if resp["result"]["exists"].as_bool() == Some(true) {
                 deduplicated += 1;
                 continue;
@@ -189,7 +224,7 @@ pub fn push_manifest(
             "id": request_id
         });
 
-        match send_rpc(&mut writer, &mut reader, &put_req) {
+        match send_rpc(&mut reader, &put_req) {
             Ok(resp) => {
                 if resp.get("error").is_some() && !resp["error"].is_null() {
                     eprintln!(
@@ -224,26 +259,29 @@ pub fn push_manifest(
 }
 
 /// Send a JSON-RPC request and read the newline-delimited response.
+///
+/// Transport-agnostic: works with any `Read + Write` stream wrapped in a `BufReader`.
+/// The `BufReader` is used for both writing (via `get_mut()`) and reading.
 fn send_rpc(
-    writer: &mut UnixStream,
-    reader: &mut BufReader<UnixStream>,
+    stream: &mut BufReader<Box<dyn ReadWrite>>,
     request: &Value,
 ) -> Result<Value, Error> {
     let mut payload = serde_json::to_string(request)
         .map_err(|e| Error::Config(format!("JSON encode: {e}")))?;
     payload.push('\n');
 
+    let writer = stream.get_mut();
     writer
         .write_all(payload.as_bytes())
-        .map_err(|e| Error::Config(format!("socket write: {e}")))?;
+        .map_err(|e| Error::Config(format!("transport write: {e}")))?;
     writer
         .flush()
-        .map_err(|e| Error::Config(format!("socket flush: {e}")))?;
+        .map_err(|e| Error::Config(format!("transport flush: {e}")))?;
 
     let mut line = String::new();
-    reader
+    stream
         .read_line(&mut line)
-        .map_err(|e| Error::Config(format!("socket read: {e}")))?;
+        .map_err(|e| Error::Config(format!("transport read: {e}")))?;
 
     let response: Value = serde_json::from_str(line.trim())
         .map_err(|e| Error::Config(format!("JSON decode response: {e}")))?;
@@ -306,9 +344,22 @@ mod tests {
             )]),
         };
 
-        let result = push_manifest(&manifest, dir.path(), "/tmp/nonexistent-nestgate-test.sock");
+        let endpoint = TransportEndpoint::Uds {
+            path: "/tmp/nonexistent-nestgate-test.sock".into(),
+        };
+        let result = push_manifest(&manifest, dir.path(), &endpoint);
         assert!(result.is_err());
         let msg = result.unwrap_err().to_string();
         assert!(msg.contains("failed to connect"));
+    }
+
+    #[test]
+    fn transport_endpoint_debug_format() {
+        let ep = TransportEndpoint::Uds {
+            path: "/run/nestgate.sock".into(),
+        };
+        let debug = format!("{ep:?}");
+        assert!(debug.contains("Uds"));
+        assert!(debug.contains("/run/nestgate.sock"));
     }
 }

@@ -1,5 +1,5 @@
 +++
-title = "02 — Benchmark Comparison"
+title = "Benchmark Comparison — wetSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
 date = 2026-06-06
 weight = 50
@@ -11,198 +11,225 @@ rendered_from = "02-benchmark-comparison.ipynb"
 
 <!-- Auto-generated from 02-benchmark-comparison.ipynb by spore-validate render-notebooks -->
 
-# 02 — Benchmark Comparison
+# Benchmark Comparison — wetSpring
 
-**neuralSpring sporePrint** | Session S188 | May 2026
+wetSpring validates computational correctness across 23 scientific domains,
+each with Python baseline timing and Rust implementation. This notebook
+visualizes the 23-domain benchmark, the full 16S pipeline comparison
+(Rust vs Galaxy/QIIME2), and energy efficiency estimates.
 
-Rust vs Python timing across 11 domains, GPU acceleration,
-multi-GPU parity, and guideStone validation phases.
+**Data sources**: `experiments/results/benchmark_timing.json`
 
-**Data sources:** `benchmark-data.json`, `validation-state.json`
+**Reproduce**: `wetspring validate --scenario 23_domain_timing` in the wetSpring repository.
 
-**For other springs:** Replace domain speedup data with your own
-benchmark results. Adjust GPU coverage to match your compute profile.
+---
+
+*For other springs: replace the domain list with your own benchmark data.
+Keep the Rust vs Python comparison pattern — it demonstrates the value
+of primal composition over script-based pipelines.*
 
 ```python
-import json
+import os, json, struct, socket, time
 from pathlib import Path
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import numpy as np
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-with open(RESULTS / 'benchmark-data.json') as f:
-    bm = json.load(f)
+def load(name):
+    with open(RESULTS / name) as f:
+        return json.load(f)
 
-with open(RESULTS / 'validation-state.json') as f:
-    vs = json.load(f)
+TIER = 'frozen'
+IPC_SOCKET = os.environ.get('WETSPRING_IPC_SOCKET')
 
-PASS = '#2ecc71'
-FAIL = '#e74c3c'
-INFO = '#3498db'
+def ipc_call(method, params=None):
+    """JSON-RPC call to barracuda IPC — active in Tier 2."""
+    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    sock.connect(IPC_SOCKET)
+    req = json.dumps({'jsonrpc': '2.0', 'method': method, 'params': params or {}, 'id': 1})
+    payload = req.encode()
+    sock.sendall(struct.pack('<I', len(payload)) + payload)
+    length = struct.unpack('<I', sock.recv(4))[0]
+    data = sock.recv(length)
+    sock.close()
+    return json.loads(data)['result']
 
-print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
+if IPC_SOCKET and os.path.exists(IPC_SOCKET):
+    try:
+        ipc_call('health.check')
+        TIER = 'live_ipc'
+        print(f'Tier 2 ACTIVE — live IPC via {IPC_SOCKET}')
+    except Exception:
+        print('Tier 2 socket found but not responding — using frozen data')
+else:
+    print(f'Tier 1 — frozen data (no IPC socket)')
+
+bench = load('benchmark_timing.json')
+print(f'Hardware: {bench["hardware"]["cpu"]}, {bench["hardware"]["gpu"]}')
+print(f'Domains benchmarked: {len(bench["domain_benchmark_23"]["domains"])}')
+print(f'Total Python time: {bench["domain_benchmark_23"]["total_us"]:.0f} µs')
 ```
 
-## Rust vs Python — Per-Domain Speedups
+## 23-Domain Python Baseline Timing
 
-Pure Rust achieves an **83.6x geometric mean** speedup over Python
-across 11 scientific domains, with the fastest (multi-objective
-optimization) reaching **1104x**.
+Each domain represents a distinct scientific algorithm implemented in both
+Python (baseline) and Rust (barracuda). The Python times establish the
+reference point; Rust times are measured via validation binaries.
 
 ```python
-rvp = bm['rust_vs_python']
-speedups = rvp['domain_speedups']
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
-domains = [s['domain'] for s in speedups]
-values = [s['speedup'] for s in speedups]
+domains = bench['domain_benchmark_23']['domains']
+d_keys = sorted(domains.keys())
+d_labels = [domains[k]['label'] for k in d_keys]
+d_times = [domains[k]['python_us'] for k in d_keys]
+d_cats = [domains[k]['category'] for k in d_keys]
 
-fig, ax = plt.subplots(figsize=(12, 6))
-bars = ax.barh(domains[::-1], values[::-1], color=INFO)
+cat_colors = {
+    'ecology': '#2ecc71', 'bioinformatics': '#3498db',
+    'chemistry': '#e74c3c', 'integrated': '#f39c12'
+}
+colors = [cat_colors.get(c, '#95a5a6') for c in d_cats]
+
+fig, ax = plt.subplots(figsize=(14, 8))
+bars = ax.barh(range(len(d_labels)), [np.log10(max(t, 1)) for t in d_times], color=colors)
+ax.set_yticks(range(len(d_labels)))
+ax.set_yticklabels(d_labels, fontsize=8)
+ax.set_xlabel('log10(Python µs)')
+ax.set_title(f'23-Domain Python Baseline — {bench["domain_benchmark_23"]["total_us"]:.0f} µs total')
+
+for bar, val in zip(bars, d_times):
+    if val > 1000:
+        label = f'{val/1000:.0f} ms'
+    else:
+        label = f'{val:.1f} µs'
+    ax.text(bar.get_width() + 0.05, bar.get_y() + bar.get_height()/2,
+            label, va='center', fontsize=7)
+
+from matplotlib.patches import Patch
+legend_elements = [Patch(facecolor=c, label=n.title()) for n, c in cat_colors.items()]
+ax.legend(handles=legend_elements, loc='lower right', fontsize=9)
+
+plt.tight_layout()
+plt.savefig('/tmp/wetspring_02_domains.png', dpi=150, bbox_inches='tight')
+plt.show()
+```
+
+## Rust vs Python Speedup
+
+Key domains where Rust measurements are available show consistent
+speedups from 2.6x (BLAKE3 hash) to 41x (Smith-Waterman alignment).
+
+```python
+rvp = bench['rust_vs_python_estimates']
+compare_keys = [k for k in rvp if k != 'note']
+labels = [k.replace('_', ' ').title() for k in compare_keys]
+speedups = [float(rvp[k]['speedup'].replace('x', '')) for k in compare_keys]
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Speedup bars
+ax = axes[0]
+bars = ax.barh(labels, speedups, color='#3498db')
 ax.set_xlabel('Speedup (x)')
-ax.set_title(f'Rust vs Python Speedups — {rvp["geomean_speedup"]}x geomean')
-ax.set_xscale('log')
-ax.axvline(x=rvp['geomean_speedup'], color=PASS, linestyle='--',
-           linewidth=2, label=f'Geomean: {rvp["geomean_speedup"]}x')
+ax.set_title('Rust vs Python — Key Domains')
+for bar, val in zip(bars, speedups):
+    ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height()/2,
+            f'{val:.0f}x', va='center', fontsize=10, fontweight='bold')
 
-for bar, val in zip(bars, values[::-1]):
-    ax.text(bar.get_width() * 1.1, bar.get_y() + bar.get_height()/2,
-            f'{val:.0f}x', va='center', fontsize=9)
+# Energy comparison
+energy = bench['energy_estimate']
+ax = axes[1]
+e_labels = ['Rust', 'Python (est.)']
+e_vals = [energy['rust_full_suite_kwh'], energy['python_equivalent_estimate_kwh']]
+e_colors = ['#2ecc71', '#e74c3c']
+bars = ax.bar(e_labels, e_vals, color=e_colors)
+ax.set_ylabel('Energy (kWh)')
+ax.set_title(f'Energy Efficiency — {energy["ratio"]}')
+for bar, val in zip(bars, e_vals):
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.1,
+            f'{val:.2f} kWh', ha='center', va='bottom', fontsize=11)
 
-ax.legend(loc='lower right', fontsize=11)
+plt.suptitle('wetSpring: Rust Primal Composition vs Python Baselines',
+             fontsize=13, fontweight='bold')
 plt.tight_layout()
+plt.savefig('/tmp/wetspring_02_speedup.png', dpi=150, bbox_inches='tight')
 plt.show()
+
+# Tier 2: live benchmark comparison
+if TIER == 'live_ipc':
+    counts = [1, 10, 100, 1000, 10000]
+    t0 = time.perf_counter()
+    result = ipc_call('science.diversity', {'counts': counts})
+    elapsed_us = (time.perf_counter() - t0) * 1e6
+    python_us = bench['rust_vs_python_estimates']['diversity_calc']['python_us']
+    print(f'Tier 2 live: science.diversity took {elapsed_us:.1f} µs '
+          f'(Python baseline: {python_us} µs, speedup: {python_us/elapsed_us:.1f}x)')
 ```
 
-## CPU-Python Cross-Language Parity
+## Pipeline Benchmark — Rust vs Galaxy/QIIME2
 
-All 39 parity checks pass at 1e-10 tolerance — Rust CPU produces
-numerically identical results to the Python baselines.
+Full 16S metagenomics pipeline: FASTQ parse → quality filter → DADA2 denoise
+→ chimera detection → taxonomy → diversity. Rust runs the complete pipeline
+locally on CPU; Galaxy uses cloud-optimized DADA2.
 
 ```python
-parity = rvp['cpu_python_parity']
+pipe = bench['pipeline_benchmark']
 
-fig, ax = plt.subplots(figsize=(5, 3))
-ax.bar(['PASS', 'FAIL'],
-       [parity['pass'], parity['total'] - parity['pass']],
-       color=[PASS, FAIL])
-ax.set_title(f'CPU↔Python Parity ({parity["pass"]}/{parity["total"]})')
-ax.set_ylabel('Checks')
-ax.text(0, parity['pass'] + 0.5, str(parity['pass']),
-        ha='center', fontweight='bold', fontsize=14)
+fig, ax = plt.subplots(figsize=(10, 5))
+p_labels = ['Rust CPU\n(local)', 'Galaxy/QIIME2\n(cloud)']
+p_per_sample = [pipe['rust']['per_sample_s'], pipe['galaxy']['per_sample_s']]
+p_energy = [pipe['rust']['energy_kwh'], pipe['galaxy']['energy_kwh']]
+
+x = [0, 1]
+bar1 = ax.bar([i - 0.2 for i in x], p_per_sample, 0.35,
+              label='Per-sample (s)', color='#3498db')
+ax2 = ax.twinx()
+bar2 = ax2.bar([i + 0.2 for i in x], p_energy, 0.35,
+               label='Energy (kWh)', color='#f39c12', alpha=0.7)
+
+ax.set_xticks(x)
+ax.set_xticklabels(p_labels)
+ax.set_ylabel('Per-sample time (s)', color='#3498db')
+ax2.set_ylabel('Energy (kWh)', color='#f39c12')
+ax.set_title(f'16S Pipeline — {pipe["rust"]["samples"]} samples, '
+             f'{pipe["rust"]["total_reads"]:,} reads')
+
+for bar, val in zip(bar1, p_per_sample):
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 10,
+            f'{val:.1f}s', ha='center', fontsize=10)
+for bar, val in zip(bar2, p_energy):
+    ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
+             f'{val:.3f}', ha='center', fontsize=10)
+
+fig.legend(loc='upper right', bbox_to_anchor=(0.95, 0.88))
 plt.tight_layout()
+plt.savefig('/tmp/wetspring_02_pipeline.png', dpi=150, bbox_inches='tight')
 plt.show()
 
-print(f"Tolerance: {parity['tolerance']}")
+print(f'Note: {pipe["speedup_notes"]}')
 ```
 
-## GPU Performance
+## Validation Summary
 
-GPU acceleration via barraCuda + WGSL achieves up to **104x** vs Python,
-with ~97% of production operations promoted to GPU.
+| Benchmark | Result |
+|-----------|--------|
+| 23-domain Python baselines | All timed, Rust parity confirmed |
+| Rust vs Python speedup | 2.6x – 41x across key domains |
+| Energy efficiency | 7x more efficient (Rust vs Python equivalent) |
+| 16S pipeline (22 samples) | Rust: 1,565s/sample, Galaxy: 9.6s/sample |
 
-```python
-gpu = bm['gpu_performance']
-mgpu = bm['multi_gpu']
+Galaxy's cloud-optimized pipeline wins on small batches; Rust wins on
+large-scale local processing with full chimera detection and provenance.
 
-fig, axes = plt.subplots(1, 3, figsize=(14, 4))
+---
 
-# GPU coverage pie
-cov = gpu['gpu_coverage_percent']
-axes[0].pie([cov, 100-cov], labels=[f'GPU ({cov}%)', f'CPU ({100-cov}%)'],
-            colors=[PASS, '#95a5a6'], autopct='%1.0f%%', startangle=90)
-axes[0].set_title('GPU Coverage')
+**Provenance**: Benchmark data frozen from `experiments/results/059_23_domain_benchmark/`
+and `experiments/results/015_pipeline_benchmark/`. BLAKE3 hashes track drift.
 
-# GPU metrics
-metrics = ['Max speedup\nvs Python', 'Crossover\nlatency (ms)', 'Dispatch\noverhead (x)']
-vals = [gpu['max_speedup_vs_python'], gpu['gpu_crossover_latency_ms'], 1.04]
-axes[1].bar(metrics, vals, color=[INFO, '#f39c12', PASS])
-axes[1].set_title('GPU Performance Metrics')
-for i, v in enumerate(vals):
-    axes[1].text(i, v + max(vals)*0.02, f'{v}', ha='center', fontweight='bold')
+**Evolution**: Tier 2 adds live IPC timing to compare against frozen baselines.
+Tier 3 adds provenance-wrapped benchmark sessions.
 
-# Multi-GPU parity
-titan = mgpu['titan_v_checks']
-axes[2].bar(['PASS', 'FAIL'],
-            [titan['pass'], titan['total'] - titan['pass']],
-            color=[PASS, FAIL])
-axes[2].set_title(f'Multi-GPU Parity ({titan["pass"]}/{titan["total"]})')
-axes[2].text(0, titan['pass'] + 5, f'{titan["pass"]}',
-             ha='center', fontweight='bold', fontsize=14)
-
-plt.tight_layout()
-plt.show()
-
-print(f"Devices: {', '.join(mgpu['devices_tested'])}")
-print(f"Parity: {mgpu['parity']}")
-```
-
-## guideStone Validation Phases
-
-The guideStone binary validates in 4 phases: bare properties,
-discovery + liveness, domain science parity, and additive NUCLEUS.
-
-```python
-phases = bm['guidestone_phases']
-
-fig, ax = plt.subplots(figsize=(10, 3))
-phase_names = list(phases.keys())
-phase_labels = [
-    'Phase 1: Bare Properties',
-    'Phase 2: Discovery + Liveness',
-    'Phase 3: Domain Parity',
-    'Phase 4: Additive NUCLEUS'
-]
-phase_status = [True, True, True, False]
-colors = [PASS if s else '#f39c12' for s in phase_status]
-
-ax.barh(phase_labels[::-1], [1]*4, color=colors[::-1])
-ax.set_xlim(0, 1.3)
-ax.set_title('guideStone Validation Phases')
-
-for i, (label, desc) in enumerate(zip(phase_labels[::-1],
-                                       list(phases.values())[::-1])):
-    ax.text(1.05, i, desc[:60] + '...' if len(desc) > 60 else desc,
-            va='center', fontsize=7)
-
-plt.tight_layout()
-plt.show()
-```
-
-## Isomorphic Primitives
-
-Six primitives compose all domain architectures — from transformers
-and protein folding to evolutionary computation and spectral analysis.
-
-```python
-prims = bm['isomorphic_primitives']
-
-fig, ax = plt.subplots(figsize=(10, 3))
-names = [p['primitive'] for p in prims]
-ax.barh(names[::-1], [1]*len(prims), color=INFO)
-for i, p in enumerate(prims[::-1]):
-    ax.text(1.05, i, p['role'], va='center', fontsize=9)
-ax.set_xlim(0, 2.5)
-ax.set_title('Isomorphic Computational Primitives')
-plt.tight_layout()
-plt.show()
-```
-
-## Summary
-
-| Metric | Value |
-|--------|-------|
-| Rust vs Python geomean | 83.6x (11 domains) |
-| Fastest speedup | 1104x (multi-objective) |
-| CPU↔Python parity | 39/39 PASS (1e-10) |
-| GPU max speedup | 104x (transformer medium) |
-| GPU coverage | ~97% |
-| Dispatch overhead | ≤1.04x (9/10 ops) |
-| Fused pipeline | 46-78x over per-op |
-| Multi-GPU parity | 384/384 bit-identical |
-| guideStone | Level 3 (29/29 bare) |
-
-**Provenance:** [primals.eco](https://primals.eco) |
-neuralSpring Session S188 | May 2026
+**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
 

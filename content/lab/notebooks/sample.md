@@ -1,7 +1,7 @@
 +++
 title = "Sample"
 description = "Rendered from sample.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]

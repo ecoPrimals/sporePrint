@@ -1,7 +1,7 @@
 +++
 title = "Makkink (1957) Radiation-Based ET₀"
 description = "Rendered from 033-makkink-et0.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]

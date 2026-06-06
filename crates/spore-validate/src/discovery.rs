@@ -59,7 +59,7 @@ pub const SELF: SelfCapabilities = SelfCapabilities {
         Capability {
             name: "cas-push",
             category: "storage",
-            description: "Push build artifacts to NestGate CAS via UDS",
+            description: "Push build artifacts to NestGate CAS via injected transport",
         },
         Capability {
             name: "fetch-refresh",
@@ -186,13 +186,60 @@ mod tests {
     #[test]
     fn discover_peers_returns_empty_without_sockets() {
         let peers = discover_peers();
-        // In test environment, no sockets are running
-        // This verifies graceful degradation
         assert!(peers.is_empty() || peers.iter().all(|p| p.socket_path.is_some()));
     }
 
     #[test]
     fn version_matches_cargo_pkg() {
         assert_eq!(SELF.version, env!("CARGO_PKG_VERSION"));
+    }
+
+    #[test]
+    fn capabilities_have_unique_names() {
+        let names: Vec<&str> = SELF.capabilities.iter().map(|c| c.name).collect();
+        let mut deduped = names.clone();
+        deduped.sort_unstable();
+        deduped.dedup();
+        assert_eq!(names.len(), deduped.len(), "duplicate capability names");
+    }
+
+    #[test]
+    fn capabilities_have_valid_categories() {
+        let valid = ["content", "integrity", "storage", "sync", "knowledge"];
+        for cap in SELF.capabilities {
+            assert!(
+                valid.contains(&cap.category),
+                "unknown category '{}' for '{}'",
+                cap.category,
+                cap.name
+            );
+        }
+    }
+
+    #[test]
+    fn probe_socket_env_returns_none_for_missing_var() {
+        let result = probe_socket_env("NONEXISTENT_VAR_FOR_TEST_XYZ_12345", &[]);
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn probe_socket_env_returns_none_for_absent_fallbacks() {
+        let result = probe_socket_env(
+            "NONEXISTENT_PRIMARY_99999",
+            &["ALSO_NONEXISTENT_FALLBACK_99999"],
+        );
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn discovered_peer_debug_format() {
+        let peer = DiscoveredPeer {
+            primal_id: "testPrimal".into(),
+            socket_path: Some("/tmp/test.sock".into()),
+            capabilities: vec!["foo.bar".into()],
+        };
+        let debug = format!("{peer:?}");
+        assert!(debug.contains("testPrimal"));
+        assert!(debug.contains("/tmp/test.sock"));
     }
 }

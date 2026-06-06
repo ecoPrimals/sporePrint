@@ -1,7 +1,7 @@
 +++
 title = "Stewart (1977) Yield Response to Water Stress"
 description = "Rendered from 008-yield-response-stewart.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]

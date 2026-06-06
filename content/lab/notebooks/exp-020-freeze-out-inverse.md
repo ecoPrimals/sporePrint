@@ -1,7 +1,7 @@
 +++
 title = "Experiment 020 — Freeze-Out Inverse Problem"
 description = "Rendered from exp-020-freeze-out-inverse.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]
