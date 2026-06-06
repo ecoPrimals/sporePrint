@@ -1,7 +1,7 @@
 +++
 title = "Benchmark Comparison — primalSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
-date = 2026-06-05
+date = 2026-06-06
 weight = 50
 
 [extra]
