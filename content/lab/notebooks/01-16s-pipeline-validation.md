@@ -1,7 +1,7 @@
 +++
 title = "16S Pipeline Validation — wetSpring"
 description = "Rendered from 01-16s-pipeline-validation.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]

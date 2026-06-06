@@ -1,7 +1,7 @@
 +++
 title = "LTEE B7 — Tenaillon 2016: Mutation Accumulation in 50,000 Generations"
 description = "Rendered from tenaillon-ltee-mutation.ipynb"
-date = 2026-06-04
+date = 2026-06-06
 weight = 50
 
 [extra]
