@@ -94,7 +94,6 @@ impl<T: Read + Write> ReadWrite for T {}
 
 /// Deserialized CAS manifest (matches `cas::CasManifest` serialization).
 #[derive(Debug, Deserialize)]
-#[allow(dead_code)]
 pub struct StoredManifest {
     pub build_id: String,
     pub build_hash: String,
@@ -165,12 +164,93 @@ pub fn read_manifest(manifest_path: &Path) -> Result<StoredManifest, Error> {
     Ok(manifest)
 }
 
+/// Outcome of pushing a single file to `NestGate`.
+enum PushFileOutcome {
+    Stored { bytes: u64 },
+    Deduplicated,
+    Error,
+}
+
+/// Push a single file entry to `NestGate`, returning the outcome.
+fn push_single_file(
+    reader: &mut BufReader<Box<dyn ReadWrite>>,
+    request_id: &mut u64,
+    rel_path: &str,
+    entry: &StoredEntry,
+    public_dir: &Path,
+    build_hash: &str,
+    build_id: &str,
+) -> PushFileOutcome {
+    *request_id += 1;
+
+    let hash_hex = entry
+        .hash
+        .strip_prefix("blake3:")
+        .unwrap_or(&entry.hash);
+
+    let exists_req = json!({
+        "jsonrpc": "2.0",
+        "method": "content.exists",
+        "params": { "hash": hash_hex },
+        "id": *request_id
+    });
+
+    if let Ok(resp) = send_rpc(reader, &exists_req) {
+        if resp["result"]["exists"].as_bool() == Some(true) {
+            return PushFileOutcome::Deduplicated;
+        }
+    }
+
+    let file_path = public_dir.join(rel_path);
+    let Ok(contents) = std::fs::read(&file_path) else {
+        eprintln!("  WARN: cannot read {rel_path}, skipping");
+        return PushFileOutcome::Error;
+    };
+
+    let data_b64 = STANDARD.encode(&contents);
+    *request_id += 1;
+
+    let put_req = json!({
+        "jsonrpc": "2.0",
+        "method": "content.put",
+        "params": {
+            "data": data_b64,
+            "content_type": entry.content_type,
+            "source": "sporePrint",
+            "pipeline": "zola-build",
+            "stored_by": "spore-validate cas-push",
+            "metadata": {
+                "path": rel_path,
+                "build_hash": build_hash,
+                "build_id": build_id,
+            }
+        },
+        "id": *request_id
+    });
+
+    match send_rpc(reader, &put_req) {
+        Ok(resp) => {
+            if resp.get("error").is_some() && !resp["error"].is_null() {
+                eprintln!("  ERROR: content.put failed for {rel_path}: {}", resp["error"]);
+                PushFileOutcome::Error
+            } else if resp["result"]["deduplicated"].as_bool() == Some(true) {
+                PushFileOutcome::Deduplicated
+            } else {
+                PushFileOutcome::Stored { bytes: entry.size }
+            }
+        }
+        Err(e) => {
+            eprintln!("  ERROR: RPC failed for {rel_path}: {e}");
+            PushFileOutcome::Error
+        }
+    }
+}
+
 /// Push all files from a CAS manifest to `NestGate`.
 ///
 /// Accepts a `TransportEndpoint` — the transport is injected by the caller,
 /// not chosen by the push logic. Use `discover_socket()` + `TransportEndpoint::Uds`
 /// for discovery-based connection, or accept a Songbird-resolved endpoint directly.
-#[allow(clippy::too_many_lines)]
 pub fn push_manifest(
     manifest: &StoredManifest,
     public_dir: &Path,
@@ -184,93 +264,28 @@ pub fn push_manifest(
 
     let stream = connect_transport(endpoint)?;
     let mut reader = BufReader::new(stream);
-
     let mut request_id: u64 = 0;
 
-    // Announce self to NestGate (non-blocking — ignore errors for compat with older versions)
     request_id += 1;
-    let announce_req = json!({
-        "jsonrpc": "2.0",
-        "method": "primal.announce",
-        "params": {
-            "primal_id": crate::discovery::SELF.primal_id,
-            "version": crate::discovery::SELF.version,
-            "capabilities": ["cas-push", "cas-manifest", "provenance", "certify"],
-        },
-        "id": request_id
-    });
+    let announce_req = crate::discovery::announce_request(request_id);
     let _ = send_rpc(&mut reader, &announce_req);
 
     for (rel_path, entry) in &manifest.files {
-        request_id += 1;
-
-        let hash_hex = entry
-            .hash
-            .strip_prefix("blake3:")
-            .unwrap_or(&entry.hash);
-
-        // Check if content already exists (dedup optimization)
-        let exists_req = json!({
-            "jsonrpc": "2.0",
-            "method": "content.exists",
-            "params": { "hash": hash_hex },
-            "id": request_id
-        });
-
-        if let Ok(resp) = send_rpc(&mut reader, &exists_req) {
-            if resp["result"]["exists"].as_bool() == Some(true) {
-                deduplicated += 1;
-                continue;
+        match push_single_file(
+            &mut reader,
+            &mut request_id,
+            rel_path,
+            entry,
+            public_dir,
+            &manifest.build_hash,
+            &manifest.build_id,
+        ) {
+            PushFileOutcome::Stored { bytes } => {
+                stored += 1;
+                bytes_transferred += bytes;
             }
-        }
-
-        let file_path = public_dir.join(rel_path);
-        let Ok(contents) = std::fs::read(&file_path) else {
-            eprintln!("  WARN: cannot read {rel_path}, skipping");
-            errors += 1;
-            continue;
-        };
-
-        let data_b64 = STANDARD.encode(&contents);
-        request_id += 1;
-
-        let put_req = json!({
-            "jsonrpc": "2.0",
-            "method": "content.put",
-            "params": {
-                "data": data_b64,
-                "content_type": entry.content_type,
-                "source": "sporePrint",
-                "pipeline": "zola-build",
-                "stored_by": "spore-validate cas-push",
-                "metadata": {
-                    "path": rel_path,
-                    "build_hash": &manifest.build_hash,
-                    "build_id": &manifest.build_id,
-                }
-            },
-            "id": request_id
-        });
-
-        match send_rpc(&mut reader, &put_req) {
-            Ok(resp) => {
-                if resp.get("error").is_some() && !resp["error"].is_null() {
-                    eprintln!(
-                        "  ERROR: content.put failed for {rel_path}: {}",
-                        resp["error"]
-                    );
-                    errors += 1;
-                } else if resp["result"]["deduplicated"].as_bool() == Some(true) {
-                    deduplicated += 1;
-                } else {
-                    stored += 1;
-                    bytes_transferred += entry.size;
-                }
-            }
-            Err(e) => {
-                eprintln!("  ERROR: RPC failed for {rel_path}: {e}");
-                errors += 1;
-            }
+            PushFileOutcome::Deduplicated => deduplicated += 1,
+            PushFileOutcome::Error => errors += 1,
         }
     }
 

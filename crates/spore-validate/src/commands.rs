@@ -469,9 +469,10 @@ pub fn cas_push(
     };
 
     println!(
-        "  build: {} ({} files, {} bytes)",
+        "  build: {} ({} files, {} pages, {} bytes)",
         &manifest.build_hash[..20.min(manifest.build_hash.len())],
         manifest.files.len(),
+        manifest.page_count,
         manifest.total_bytes
     );
 
@@ -526,7 +527,7 @@ pub fn cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Er
     Ok(())
 }
 
-#[allow(clippy::unnecessary_wraps)]
+#[allow(clippy::unnecessary_wraps)] // uniform handler signature for main.rs dispatch
 pub fn discover() -> Result<(), Error> {
     println!("spore-validate: capability discovery");
     println!();
@@ -536,6 +537,17 @@ pub fn discover() -> Result<(), Error> {
     println!("  capabilities:");
     for cap in self_caps.capabilities {
         println!("    [{:>9}] {} — {}", cap.category, cap.name, cap.description);
+    }
+
+    println!();
+    println!("  TRANSPORT:");
+    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
+        match serde_json::from_str::<cas_push::TransportEndpoint>(&json) {
+            Ok(ep) => println!("    injected: {ep:?}"),
+            Err(e) => println!("    TRANSPORT_ENDPOINT parse error: {e}"),
+        }
+    } else {
+        println!("    (no TRANSPORT_ENDPOINT — will use socket discovery)");
     }
 
     println!();

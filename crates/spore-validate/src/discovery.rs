@@ -155,13 +155,22 @@ fn probe_socket_env(primary_var: &str, fallback_vars: &[&str]) -> Option<String>
     None
 }
 
-/// Format self-capabilities as a JSON announce payload.
+/// Build a `primal.announce` JSON-RPC request for `NestGate` handshake.
 ///
-/// Compatible with `NestGate`'s `primal.announce` method.
-/// Called by `cas-push` during `NestGate` connection handshake.
-#[allow(dead_code)]
-pub fn announce_payload() -> String {
-    serde_json::to_string_pretty(&SELF).unwrap_or_default()
+/// The request ID is provided by the caller (connection-level counter).
+/// Capabilities are derived from `SELF` — no hardcoded lists elsewhere.
+pub fn announce_request(request_id: u64) -> serde_json::Value {
+    let cap_names: Vec<&str> = SELF.capabilities.iter().map(|c| c.name).collect();
+    serde_json::json!({
+        "jsonrpc": "2.0",
+        "method": "primal.announce",
+        "params": {
+            "primal_id": SELF.primal_id,
+            "version": SELF.version,
+            "capabilities": cap_names,
+        },
+        "id": request_id
+    })
 }
 
 #[cfg(test)]
@@ -176,11 +185,13 @@ mod tests {
     }
 
     #[test]
-    fn announce_payload_is_valid_json() {
-        let json = announce_payload();
-        let parsed: serde_json::Value = serde_json::from_str(&json).unwrap();
-        assert_eq!(parsed["primal_id"], "sporePrint");
-        assert!(parsed["capabilities"].is_array());
+    fn announce_request_is_valid_jsonrpc() {
+        let req = announce_request(1);
+        assert_eq!(req["jsonrpc"], "2.0");
+        assert_eq!(req["method"], "primal.announce");
+        assert_eq!(req["params"]["primal_id"], "sporePrint");
+        assert!(req["params"]["capabilities"].is_array());
+        assert_eq!(req["id"], 1);
     }
 
     #[test]

@@ -8,14 +8,14 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 4, 2026 — Wave 77d)
+## Current State (June 9, 2026 — Wave 104)
 
 - **207+ content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **`spore-validate` v0.3.0** — 20-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, trait-based VCS, parity integration tests. 128 tests (100 unit + 25 integration + 3 refresh), `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), LazyLock regex statics, zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide). Path constants centralized in `paths.rs`. DRY link validation via unified `walk_links` core. Transport-agnostic CAS push via `TransportEndpoint` trait (ready for Songbird `ipc.resolve`).
+- **`spore-validate` v0.3.0** — 21-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, HTTP/tar utilities, trait-based VCS, parity integration tests. 141 tests (113 unit + 25 integration + 3 refresh), `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay). Accepts `TRANSPORT_ENDPOINT` env var for launcher injection. Capabilities derived from `discovery::SELF` — no duplicated announce logic. HTTP/tar layer extracted to standalone module.
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
@@ -23,13 +23,14 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
 - **Sovereign deployment** — golgiBody-ext VPS serving via Caddy at 67ms TTFB (vs GitHub Pages 111ms). DNS NS cutover pending (eastGate manual action). Content shadow validated S3. Build pipeline: relay-chain + systemd-timer on peptidoglycan
-- **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle. Deploy graph in projectNUCLEUS, validation scenario in primalSpring.
-- **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (now also as Rust integration tests: `tests/parity.rs`).
+- **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle.
+- **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (also as Rust integration tests: `tests/parity.rs`).
 - **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.
 - **VizRegistry** — Capability-based discovery of available visualizations at petalTongue startup. No hardcoded route dispatch — registry pattern enables future viz additions without modifying route handlers.
-- **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data (4 files < 250L each), deprecated shell scripts superseded by Rust.
+- **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data, deprecated shell scripts superseded by Rust. push_manifest decomposed (PushFileOutcome enum). HTTP/tar extracted from fetch.rs. announce_request canonical. Zero dead_code allows on production paths.
 - **primalSpring validation: 70/70 PASS** — `sporeprint-pure-primal-parity` scenario passes all checks (content parsing, entity resolution, modality output, composition graph, certification manifest). Certification manifest now emits `schema_version` + `merkle_root` fields per primalSpring expectations.
 - **Metrics freshness** — all 25 entity metrics refreshed (3.46M LOC, 114K tests ecosystem-wide). Drift tolerance maintained.
+- **WAN mesh status** — BLOCKED on upstream (cellMembrane binary distribution path for WAN gates). Gap report pushed. VPS reachable (34.8ms). Transport-ready once binaries arrive.
 
 ## Repository Structure
 
@@ -63,7 +64,7 @@ sporePrint/
 │   ├── CNAME                # primals.eco
 │   └── search.css
 ├── specs/                   # THIS DIRECTORY — internal, not built
-├── crates/spore-validate/   # Rust validation crate (20 modules, 122 tests, 90%+ cov)
+├── crates/spore-validate/   # Rust validation crate (21 modules, 141 tests, 90%+ cov)
 ├── .github/workflows/       # deploy.yml, auto-refresh.yml
 └── CHANGELOG.md
 ```

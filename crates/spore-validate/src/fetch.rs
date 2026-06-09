@@ -189,15 +189,10 @@ impl ForgeArchiveBackend {
     /// Uses `std::net::TcpStream` for plain HTTP (sovereign Forgejo on LAN).
     /// Does NOT support HTTPS — for extracellular forges, use `GitBackend`.
     fn download_and_extract(url: &str, target: &Path) -> Result<(), Error> {
-        let body = http_get_body(url)?;
-
-        // Decompress gzip → tar
-        let decompressed = gzip_decompress(&body)?;
-
-        // Create target and extract
+        let body = http::get_body(url)?;
+        let decompressed = http::gzip_decompress(&body)?;
         let _ = std::fs::create_dir_all(target);
-        extract_tar(&decompressed, target);
-
+        http::extract_tar(&decompressed, target);
         Ok(())
     }
 }
@@ -219,175 +214,8 @@ impl VcsBackend for ForgeArchiveBackend {
     }
 }
 
-/// Minimal HTTP/1.1 GET — plain TCP, no TLS, with redirect following.
-///
-/// Suitable for sovereign Forgejo on LAN. For HTTPS forges, use `GitBackend`.
-/// Follows up to 5 HTTP redirects (301, 302, 307, 308).
-fn http_get_body(url: &str) -> Result<Vec<u8>, Error> {
-    const MAX_REDIRECTS: u8 = 5;
-    let mut current_url = url.to_string();
-
-    for _ in 0..MAX_REDIRECTS {
-        let (status, headers_str, body) = http_request_raw(&current_url)?;
-
-        if status == 200 {
-            return Ok(body);
-        }
-
-        if matches!(status, 301 | 302 | 307 | 308) {
-            let location = headers_str
-                .lines()
-                .find_map(|line| {
-                    let lower = line.to_ascii_lowercase();
-                    if lower.starts_with("location:") {
-                        Some(line[9..].trim().to_string())
-                    } else {
-                        None
-                    }
-                })
-                .ok_or_else(|| Error::Git(format!("redirect {status} without Location header")))?;
-
-            if location.starts_with("https://") {
-                return Err(Error::Git(format!(
-                    "redirect to HTTPS not supported by archive backend: {location}"
-                )));
-            }
-            current_url = if location.starts_with("http://") {
-                location
-            } else {
-                format!("http://{}", location.strip_prefix('/').unwrap_or(&location))
-            };
-            continue;
-        }
-
-        let status_line = headers_str.lines().next().unwrap_or("unknown");
-        return Err(Error::Git(format!("HTTP error: {status_line}")));
-    }
-
-    Err(Error::Git("too many redirects (max 5)".into()))
-}
-
-/// Perform a single HTTP GET and return (status, headers, body).
-fn http_request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
-    use std::io::{Read, Write};
-    use std::net::TcpStream;
-
-    let url_path = url.strip_prefix("http://").ok_or_else(|| {
-        Error::Git(format!("ForgeArchiveBackend only supports plain HTTP: {url}"))
-    })?;
-
-    let (host_port, path) = url_path.split_once('/').unwrap_or((url_path, "/"));
-    let path = format!("/{path}");
-    let host_port = if host_port.contains(':') {
-        host_port.to_string()
-    } else {
-        format!("{host_port}:80")
-    };
-
-    let host = host_port.split(':').next().unwrap_or("");
-
-    let mut stream = TcpStream::connect(&host_port)
-        .map_err(|e| Error::Git(format!("TCP connect to {host_port} failed: {e}")))?;
-
-    stream
-        .set_read_timeout(Some(std::time::Duration::from_secs(30)))
-        .ok();
-
-    let request = format!(
-        "GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n"
-    );
-    stream
-        .write_all(request.as_bytes())
-        .map_err(|e| Error::Git(format!("HTTP write failed: {e}")))?;
-
-    let mut response = Vec::new();
-    stream
-        .read_to_end(&mut response)
-        .map_err(|e| Error::Git(format!("HTTP read failed: {e}")))?;
-
-    let header_end = response
-        .windows(4)
-        .position(|w| w == b"\r\n\r\n")
-        .ok_or_else(|| Error::Git("malformed HTTP response".into()))?;
-
-    let headers = std::str::from_utf8(&response[..header_end]).unwrap_or("");
-
-    let status = headers
-        .lines()
-        .next()
-        .and_then(|line| line.split_whitespace().nth(1))
-        .and_then(|s| s.parse::<u16>().ok())
-        .unwrap_or(0);
-
-    let body = response[header_end + 4..].to_vec();
-
-    Ok((status, headers.to_string(), body))
-}
-
-/// Gzip decompression using `flate2` (pure Rust via `miniz_oxide`).
-fn gzip_decompress(data: &[u8]) -> Result<Vec<u8>, Error> {
-    use flate2::read::GzDecoder;
-    use std::io::Read;
-
-    let mut decoder = GzDecoder::new(data);
-    let mut out = Vec::new();
-    decoder
-        .read_to_end(&mut out)
-        .map_err(|e| Error::Git(format!("gzip decompress failed: {e}")))?;
-    Ok(out)
-}
-
-/// Minimal tar extraction — reads POSIX tar headers and writes regular files.
-fn extract_tar(data: &[u8], target: &Path) {
-    let mut pos = 0;
-    let bytes = data;
-
-    while pos + 512 <= bytes.len() {
-        let header = &bytes[pos..pos + 512];
-
-        // Empty block = end of archive
-        if header.iter().all(|&b| b == 0) {
-            break;
-        }
-
-        // File name (0..100), stripping the top-level archive directory
-        let name_end = header[..100].iter().position(|&b| b == 0).unwrap_or(100);
-        let raw_name = std::str::from_utf8(&header[..name_end]).unwrap_or("");
-
-        // Size in octal (124..136)
-        let size_str = std::str::from_utf8(&header[124..136])
-            .unwrap_or("0")
-            .trim_matches(|c: char| c == '\0' || c == ' ');
-        let size = usize::from_str_radix(size_str, 8).unwrap_or(0);
-
-        // Type flag (156)
-        let type_flag = header[156];
-
-        pos += 512; // Move past header
-
-        // Strip first path component (archive name prefix like "repo-main/")
-        let rel_path = raw_name
-            .find('/')
-            .map_or(raw_name, |i| &raw_name[i + 1..]);
-
-        if !rel_path.is_empty() && (type_flag == b'0' || type_flag == 0) {
-            // Regular file
-            let file_path = target.join(rel_path);
-            if let Some(parent) = file_path.parent() {
-                let _ = std::fs::create_dir_all(parent);
-            }
-            if pos + size <= bytes.len() {
-                let _ = std::fs::write(&file_path, &bytes[pos..pos + size]);
-            }
-        } else if !rel_path.is_empty() && type_flag == b'5' {
-            // Directory
-            let _ = std::fs::create_dir_all(target.join(rel_path));
-        }
-
-        // Advance past data (rounded to 512-byte boundary)
-        pos += (size + 511) & !511;
-    }
-}
+// HTTP/tar utilities live in the `http` module — reexport for internal use.
+use crate::http;
 
 /// Select the best available VCS backend at runtime.
 pub fn detect_backend() -> Box<dyn VcsBackend> {

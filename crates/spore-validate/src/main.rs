@@ -16,6 +16,7 @@ mod discovery;
 mod error;
 mod fetch;
 mod graph;
+mod http;
 mod links;
 mod model;
 mod notebook;
