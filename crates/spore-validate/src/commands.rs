@@ -11,6 +11,29 @@ use crate::{
 };
 use std::path::{Path, PathBuf};
 
+/// Resolve the transport endpoint for `NestGate` communication.
+///
+/// Priority order (transport injection pattern):
+/// 1. CLI `--socket` flag (explicit override)
+/// 2. `TRANSPORT_ENDPOINT` env var (launcher/Songbird injection — canonical JSON)
+/// 3. Socket discovery (legacy `NESTGATE_SOCKET` / XDG / fallback probing)
+fn resolve_transport_endpoint(
+    socket_override: Option<&str>,
+) -> Result<cas_push::TransportEndpoint, Error> {
+    if let Some(s) = socket_override {
+        return Ok(cas_push::TransportEndpoint::Uds { path: s.into() });
+    }
+
+    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
+        return serde_json::from_str(&json).map_err(|e| {
+            Error::Config(format!("TRANSPORT_ENDPOINT parse error: {e}"))
+        });
+    }
+
+    let socket_path = cas_push::discover_socket()?;
+    Ok(cas_push::TransportEndpoint::Uds { path: socket_path })
+}
+
 /// Resolve a possibly-relative public directory to an absolute path.
 fn resolve_public_dir(root: &Path, public_dir: &Path) -> Result<PathBuf, Error> {
     let dir = if public_dir.is_absolute() {
@@ -405,16 +428,9 @@ pub fn cas_push(
 ) -> Result<(), Error> {
     let dir = resolve_public_dir(root, public_dir)?;
 
-    let socket_path = match socket_override {
-        Some(s) => s.to_string(),
-        None => cas_push::discover_socket()?,
-    };
+    let endpoint = resolve_transport_endpoint(socket_override)?;
 
-    let endpoint = cas_push::TransportEndpoint::Uds {
-        path: socket_path.clone(),
-    };
-
-    println!("spore-validate: CAS push to NestGate ({socket_path})");
+    println!("spore-validate: CAS push to NestGate ({endpoint:?})");
 
     let manifest = if generate {
         println!("  generating manifest on-the-fly...");

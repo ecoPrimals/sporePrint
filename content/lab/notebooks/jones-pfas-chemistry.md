@@ -1,7 +1,7 @@
 +++
 title = "PFAS Detection & Environmental Chemistry — Jones Lab (MSU BMB)"
 description = "Rendered from jones-pfas-chemistry.ipynb"
-date = 2026-06-06
+date = 2026-06-09
 weight = 50
 
 [extra]

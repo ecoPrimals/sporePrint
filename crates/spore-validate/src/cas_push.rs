@@ -33,13 +33,21 @@ use std::time::Instant;
 /// A transport-qualified endpoint for primal IPC.
 ///
 /// Primals do not choose their transport — the launcher/Songbird decides.
-/// This enum will grow as Songbird's `ipc.resolve` evolves.
-#[derive(Debug, Clone)]
+/// Wire format matches ecosystem canonical: `#[serde(tag = "transport")]`.
+///
+/// Deserialized from `TRANSPORT_ENDPOINT` env var or Songbird `ipc.resolve` response.
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+#[serde(tag = "transport")]
 pub enum TransportEndpoint {
-    /// Unix domain socket (current default for single-machine deployment).
+    /// Unix domain socket (single-machine deployment).
+    #[serde(rename = "uds")]
     Uds { path: String },
-    // Future: Tcp { host: String, port: u16 },
-    // Future: MeshRelay { peer_id: String, capability: String },
+    /// TCP socket (LAN cross-gate or explicit binding).
+    #[serde(rename = "tcp")]
+    Tcp { host: String, port: u16 },
+    /// Mesh relay via Songbird (cross-network, transport-agnostic).
+    #[serde(rename = "mesh_relay")]
+    MeshRelay { peer_id: String, capability: String },
 }
 
 /// Connect to a `NestGate` instance via the specified transport.
@@ -50,12 +58,32 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
     match endpoint {
         TransportEndpoint::Uds { path } => {
             let stream = std::os::unix::net::UnixStream::connect(path).map_err(|e| {
-                Error::Config(format!("failed to connect to NestGate at {path}: {e}"))
+                Error::Config(format!(
+                    "failed to connect to NestGate via UDS at {path}: {e}"
+                ))
             })?;
             stream
                 .set_read_timeout(Some(std::time::Duration::from_secs(30)))
                 .ok();
             Ok(Box::new(stream))
+        }
+        TransportEndpoint::Tcp { host, port } => {
+            let addr = format!("{host}:{port}");
+            let stream = std::net::TcpStream::connect(&addr).map_err(|e| {
+                Error::Config(format!(
+                    "failed to connect to NestGate via TCP at {addr}: {e}"
+                ))
+            })?;
+            stream
+                .set_read_timeout(Some(std::time::Duration::from_secs(30)))
+                .ok();
+            Ok(Box::new(stream))
+        }
+        TransportEndpoint::MeshRelay { peer_id, capability } => {
+            Err(Error::Config(format!(
+                "mesh_relay transport not yet implemented (peer={peer_id}, cap={capability}). \
+                 Requires Songbird ipc.resolve Phase 2 M1."
+            )))
         }
     }
 }
@@ -361,5 +389,60 @@ mod tests {
         let debug = format!("{ep:?}");
         assert!(debug.contains("Uds"));
         assert!(debug.contains("/run/nestgate.sock"));
+    }
+
+    #[test]
+    fn transport_endpoint_serde_uds_roundtrip() {
+        let ep = TransportEndpoint::Uds {
+            path: "/run/biomeos/nestgate.sock".into(),
+        };
+        let json = serde_json::to_string(&ep).unwrap();
+        assert!(json.contains(r#""transport":"uds""#));
+        let decoded: TransportEndpoint = serde_json::from_str(&json).unwrap();
+        assert!(matches!(decoded, TransportEndpoint::Uds { path } if path.contains("nestgate")));
+    }
+
+    #[test]
+    fn transport_endpoint_serde_tcp_roundtrip() {
+        let ep = TransportEndpoint::Tcp {
+            host: "192.168.1.173".into(),
+            port: 9100,
+        };
+        let json = serde_json::to_string(&ep).unwrap();
+        assert!(json.contains(r#""transport":"tcp""#));
+        assert!(json.contains(r#""port":9100"#));
+        let decoded: TransportEndpoint = serde_json::from_str(&json).unwrap();
+        assert!(matches!(decoded, TransportEndpoint::Tcp { port: 9100, .. }));
+    }
+
+    #[test]
+    fn transport_endpoint_serde_mesh_relay() {
+        let json = r#"{"transport":"mesh_relay","peer_id":"strandgate","capability":"cas"}"#;
+        let ep: TransportEndpoint = serde_json::from_str(json).unwrap();
+        assert!(matches!(ep, TransportEndpoint::MeshRelay { ref peer_id, .. } if peer_id == "strandgate"));
+    }
+
+    #[test]
+    fn connect_transport_tcp_fails_on_refused() {
+        let ep = TransportEndpoint::Tcp {
+            host: "127.0.0.1".into(),
+            port: 1,
+        };
+        let Err(e) = connect_transport(&ep) else {
+            panic!("expected error");
+        };
+        assert!(e.to_string().contains("TCP"));
+    }
+
+    #[test]
+    fn connect_transport_mesh_relay_not_implemented() {
+        let ep = TransportEndpoint::MeshRelay {
+            peer_id: "test-peer".into(),
+            capability: "cas".into(),
+        };
+        let Err(e) = connect_transport(&ep) else {
+            panic!("expected error");
+        };
+        assert!(e.to_string().contains("not yet implemented"));
     }
 }
