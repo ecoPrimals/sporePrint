@@ -567,3 +567,86 @@ pub fn discover() -> Result<(), Error> {
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn resolve_transport_cli_override_produces_uds() {
+        let ep = resolve_transport_endpoint(Some("/custom/path.sock")).unwrap();
+        match ep {
+            cas_push::TransportEndpoint::Uds { path } => {
+                assert_eq!(path, "/custom/path.sock");
+            }
+            _ => panic!("expected UDS endpoint from CLI override"),
+        }
+    }
+
+    #[test]
+    fn resolve_public_dir_absolute_path_passthrough() {
+        let dir = std::env::temp_dir();
+        let result = resolve_public_dir(Path::new("/irrelevant"), &dir);
+        assert_eq!(result.unwrap(), dir);
+    }
+
+    #[test]
+    fn resolve_public_dir_relative_joins_root() {
+        let tmp = tempfile::tempdir().unwrap();
+        let sub = tmp.path().join("public");
+        std::fs::create_dir(&sub).unwrap();
+        let result = resolve_public_dir(tmp.path(), Path::new("public"));
+        assert_eq!(result.unwrap(), sub);
+    }
+
+    #[test]
+    fn resolve_public_dir_missing_dir_returns_error() {
+        let tmp = tempfile::tempdir().unwrap();
+        let result = resolve_public_dir(tmp.path(), Path::new("nonexistent"));
+        assert!(result.is_err());
+        let msg = result.unwrap_err().to_string();
+        assert!(msg.contains("not found"), "{msg}");
+    }
+
+    #[test]
+    fn resolve_transport_cli_takes_priority() {
+        let ep = resolve_transport_endpoint(Some("/override.sock")).unwrap();
+        match ep {
+            cas_push::TransportEndpoint::Uds { path } => assert_eq!(path, "/override.sock"),
+            _ => panic!("CLI override should always produce UDS"),
+        }
+    }
+
+    #[test]
+    fn transport_endpoint_tcp_deserializes() {
+        let json = r#"{"transport":"tcp","host":"10.0.0.1","port":8080}"#;
+        let ep: cas_push::TransportEndpoint = serde_json::from_str(json).unwrap();
+        match ep {
+            cas_push::TransportEndpoint::Tcp { host, port } => {
+                assert_eq!(host, "10.0.0.1");
+                assert_eq!(port, 8080);
+            }
+            _ => panic!("expected TCP"),
+        }
+    }
+
+    #[test]
+    fn transport_endpoint_mesh_relay_deserializes() {
+        let json = r#"{"transport":"mesh_relay","peer_id":"eastGate","capability":"content"}"#;
+        let ep: cas_push::TransportEndpoint = serde_json::from_str(json).unwrap();
+        match ep {
+            cas_push::TransportEndpoint::MeshRelay { peer_id, capability } => {
+                assert_eq!(peer_id, "eastGate");
+                assert_eq!(capability, "content");
+            }
+            _ => panic!("expected MeshRelay"),
+        }
+    }
+
+    #[test]
+    fn transport_endpoint_invalid_json_errors() {
+        let result: Result<cas_push::TransportEndpoint, _> =
+            serde_json::from_str("not valid json");
+        assert!(result.is_err());
+    }
+}
