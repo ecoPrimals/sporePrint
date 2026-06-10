@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 3, 2026 (Wave 74 — CAS Push + Pipeline Design)
+Last reviewed: June 10, 2026 (Wave 107 — Zero Development Debt)
 
 ---
 
@@ -345,7 +345,7 @@ These were in the original queue and have been completed:
 ### CAS Push (Phase 2 Foundation)
 - [x] `cas_push.rs` module — push build artifacts to NestGate via UDS
 - [x] JSON-RPC 2.0 over UNIX domain socket (newline-delimited)
-- [x] `discover_socket()` — 3-tier env/XDG/fallback discovery
+- [x] `discover_socket()` — ecosystem-standard discovery (env → BIOMEOS_SOCKET_DIR → XDG)
 - [x] `push_manifest()` — content.exists dedup + content.put ingest
 - [x] `cas-push` CLI subcommand (`--socket`, `--generate`, `--public-dir`)
 - [x] Provenance metadata: source=sporePrint, pipeline=zola-build
@@ -366,3 +366,46 @@ These were in the original queue and have been completed:
 - [x] Caddy config evolution (file_server → reverse_proxy NestGate)
 - [x] Deploy script design (zola build → certify → cas-manifest → cas-push)
 - [x] Hybrid mode for gradual transition (shadow verification)
+
+## Wave 85–107 — Transport Abstraction + Socket Standard + Deep Debt Zero (June 6–10, 2026)
+
+### Transport Abstraction (Wave 85–103)
+- [x] `TransportEndpoint` enum: Uds, Tcp, MeshRelay — canonical serde-tagged type
+- [x] `connect_transport()` — generic stream connection from endpoint descriptor
+- [x] `send_rpc()` — generic over `Box<dyn ReadWrite>` (no UDS coupling)
+- [x] `TRANSPORT_ENDPOINT` env var acceptance (launcher/Songbird injection)
+- [x] `resolve_transport_endpoint()` — CLI override → env → socket discovery
+- [x] TCP transport implementation (connect to host:port)
+- [x] MeshRelay variant defined (ready for songBird ipc.resolve integration)
+
+### HTTP Module Extraction (Wave 104)
+- [x] `http.rs` module — extracted from `fetch.rs` (get_body, request_raw, gzip_decompress, extract_tar)
+- [x] HTTP redirect following with relative path fix
+- [x] Bare-host URL path handling fix
+- [x] 9 unit tests for HTTP/tar utilities
+
+### Socket Discovery Unification (Wave 107)
+- [x] `discovery::probe_socket(slug, primary_var)` — generic slug-based discovery
+- [x] Ecosystem-standard order: explicit env → `BIOMEOS_SOCKET_DIR` → `XDG_RUNTIME_DIR`
+- [x] `/tmp` fallback eliminated from production paths (PRIMAL-SOCKET-CLEANUP aligned)
+- [x] `cas_push::discover_socket` delegates to `discovery::probe_socket` (DRY)
+- [x] `discover` command shows SOCKET_DIRS section
+
+### Deep Debt Sprints (Wave 85–107)
+- [x] `commands.rs` extracted from `main.rs` — all subcommand handlers (745L→257L main)
+- [x] `links.rs` walk logic unified into `walk_links()` core
+- [x] `refresh::scan()` DRYed with closure-based drift push
+- [x] `push_manifest` decomposed into `push_single_file` helper (PushFileOutcome enum)
+- [x] `announce_request` canonical (discovery.rs) — single announce logic
+- [x] `paths::rel_to` helper — replaces 6 duplicated `strip_prefix().unwrap_or()` calls
+- [x] Release profile: `lto = true`, `strip = true`, `codegen-units = 1`
+- [x] `[lints.clippy]` section in Cargo.toml (pedantic + nursery enforced at crate level)
+
+### Metrics
+- [x] 150 tests (122 unit + 25 integration + 3 refresh) — up from 111
+- [x] 21 modules, 6191 lines
+- [x] Zero clippy warnings (pedantic + nursery)
+- [x] Zero `unwrap()` in production code (all 110 in tests only)
+- [x] Zero TODO/FIXME/HACK in source
+- [x] No file over 800 lines (max: commands.rs at 665)
+- [x] All `#[allow]` justified (5 total: precision loss display, uniform handler sig)

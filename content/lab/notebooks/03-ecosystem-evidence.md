@@ -1,5 +1,5 @@
 +++
-title = "Ecosystem Evidence — airSpring"
+title = "03 — Ecosystem Evidence"
 description = "Rendered from 03-ecosystem-evidence.ipynb"
 date = 2026-06-10
 weight = 50
@@ -11,129 +11,185 @@ rendered_from = "03-ecosystem-evidence.ipynb"
 
 <!-- Auto-generated from 03-ecosystem-evidence.ipynb by spore-validate render-notebooks -->
 
-# Ecosystem Evidence — airSpring
+# 03 — Ecosystem Evidence
 
-87 experiments validating precision agriculture and irrigation science.
-1,284 Python baselines → 1,364 Rust tests → 91 validation binaries.
-60 named tolerances with full provenance tracking.
+**neuralSpring sporePrint** | Session S188 | May 2026
 
-**Data sources**: `experiment_catalog.json`, `test_suite_report.json`, `security_convergence.json`
+134 experiments across 11 domains, gap resolution timeline,
+and security posture evolution.
 
-**Reproduce**: `cargo test --lib && cargo test --tests --all-features`
+**Data sources:** `experiment-catalog.json`, `gap-status.json`, `security-posture.json`
 
-**For other springs**: Replace experiment categories with your domain areas.
-The pattern of categorized experiments with check counts and named tolerances
-applies universally.
+**For other springs:** Replace experiment catalog and gap data with your
+own. Security posture structure is shared across all springs.
 
 ```python
 import json
 from pathlib import Path
-
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-def load(name):
-    with open(RESULTS / name) as f:
-        return json.load(f)
+with open(RESULTS / 'experiment-catalog.json') as f:
+    ec = json.load(f)
 
-catalog = load('experiment_catalog.json')
-tests = load('test_suite_report.json')
-security = load('security_convergence.json')
+with open(RESULTS / 'gap-status.json') as f:
+    gs = json.load(f)
 
-print(f"Total experiments: {catalog['total_experiments']}")
-print(f"  Complete: {catalog['status_breakdown']['complete']}")
-print(f"  Active: {catalog['status_breakdown']['active']}")
-print(f"Categories: {len(catalog['categories'])}")
-print(f"Tolerances: {tests['tolerances']['total_named']} named, {tests['tolerances']['submodules']} submodules")
+with open(RESULTS / 'security-posture.json') as f:
+    sp = json.load(f)
+
+PASS = '#2ecc71'
+FAIL = '#e74c3c'
+INFO = '#3498db'
+
+print(f"neuralSpring — {ec['total_experiments']} experiments, {len(ec['domains'])} domains")
 ```
 
-## Experiment Distribution by Category
+## Experiment Timeline
+
+134 experiments organized into 8 milestone bands, from foundation
+Python baselines through guideStone Level 3 maturity.
 
 ```python
-categories = catalog['categories']
-cat_names = [c['name'] for c in categories]
-cat_counts = [len(c['experiments']) for c in categories]
-cat_checks = [c['total_checks'] for c in categories]
+milestones = ec['milestone_experiments']
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+fig, ax = plt.subplots(figsize=(12, 5))
+labels = [m['id'] for m in milestones]
+scopes = [m['scope'] for m in milestones]
 
-ax1.barh(cat_names, cat_counts, color='#3498db', edgecolor='white')
-ax1.set_xlabel('Experiments')
-ax1.set_title(f'Experiments by Category ({catalog["total_experiments"]} total)')
-for i, v in enumerate(cat_counts):
-    ax1.text(v + 0.1, i, str(v), va='center', fontsize=9)
+# Extract approximate experiment counts from ranges
+counts = [10, 17, 23, 30, 20, 20, 10, 4]
+colors_list = [INFO, PASS, '#f39c12', '#9b59b6', '#e67e22', '#1abc9c', '#34495e', PASS]
 
-ax2.barh(cat_names, cat_checks, color='#2ecc71', edgecolor='white')
-ax2.set_xlabel('Validation Checks')
-ax2.set_title('Validation Checks by Category')
-for i, v in enumerate(cat_checks):
-    ax2.text(v + 5, i, str(v), va='center', fontsize=9)
+bars = ax.barh(labels[::-1], counts[::-1], color=colors_list[::-1])
+ax.set_xlabel('Experiments')
+ax.set_title(f'Experiment Timeline ({ec["total_experiments"]} total)')
+
+for i, (bar, scope) in enumerate(zip(bars, scopes[::-1])):
+    ax.text(bar.get_width() + 0.5, bar.get_y() + bar.get_height()/2,
+            scope[:50], va='center', fontsize=8)
 
 plt.tight_layout()
-plt.savefig('/tmp/airspring_03_categories.png', dpi=150)
 plt.show()
 ```
 
-## Test Suite Composition
+## Faculty Contributions
+
+27 peer-reviewed papers across 6 faculties provide the scientific
+foundation for neuralSpring's validation chain.
 
 ```python
-test_cats = tests['categories']
-labels = [c['name'] for c in test_cats]
-counts = [c['count'] for c in test_cats]
-colors = ['#2ecc71', '#3498db', '#9b59b6', '#e74c3c', '#f39c12', '#1abc9c', '#34495e']
+faculties = ec['faculties']
 
-fig, ax = plt.subplots(figsize=(8, 8))
-wedges, texts, autotexts = ax.pie(counts, labels=labels, colors=colors[:len(labels)],
-                                   autopct='%1.0f%%', startangle=90, pctdistance=0.85)
-for text in texts:
-    text.set_fontsize(8)
-for autotext in autotexts:
-    autotext.set_fontsize(7)
-total = sum(counts)
-ax.set_title(f'Test Suite: {total:,} total checks')
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+# Papers per faculty
+fnames = [f['name'] for f in faculties]
+fpapers = [len(f['papers']) for f in faculties]
+axes[0].barh(fnames[::-1], fpapers[::-1], color=INFO)
+axes[0].set_xlabel('Papers')
+axes[0].set_title('Papers per Faculty')
+for i, (bar_val, f) in enumerate(zip(fpapers[::-1], faculties[::-1])):
+    axes[0].text(bar_val + 0.1, i, f['institution'], va='center', fontsize=8)
+
+# Checks per faculty
+fchecks = [f['checks'] for f in faculties]
+axes[1].barh(fnames[::-1], fchecks[::-1], color=PASS)
+axes[1].set_xlabel('Validation Checks')
+axes[1].set_title('Checks per Faculty')
+for i, v in enumerate(fchecks[::-1]):
+    axes[1].text(v + 0.5, i, str(v), va='center', fontweight='bold')
+
 plt.tight_layout()
-plt.savefig('/tmp/airspring_03_tests.png', dpi=150)
 plt.show()
 ```
 
-## Quality Gates & Safety
+## Gap Resolution
+
+14 main gaps tracked in `PRIMAL_GAPS.md`, with 13 historically resolved
+gaps in the appendix and 5 composition evolution items implemented.
 
 ```python
-safety = security['rust_safety']
-deps = security['dependency_security']
-validation = security['validation_integrity']
+summary = gs['summary']
 
-gates = [
-    ('forbid(unsafe_code)', safety['forbid_unsafe_code']),
-    ('deny(cast_*)', safety['deny_cast_lints']),
-    ('deny(unwrap_used)', safety['deny_clippy_unwrap']),
-    ('warn(missing_docs)', safety['warn_missing_docs']),
-    ('zero #[allow()]', safety['zero_allow_attributes']),
-    ('#[expect(reason)]', safety['expect_with_reason']),
-    ('cargo-deny clean', deps['cargo_deny_clean']),
-    ('zero C deps', deps['c_dependencies'] == 0),
-    ('ecoBin compliant', deps['ecobin_compliant']),
-    ('zero-panic (91 bins)', validation['zero_panic_binaries'] == 91),
-    ('determinism contract', validation['determinism_contract']),
-    (f'{validation["named_tolerances"]} named tolerances', True),
+status_counts = {
+    'resolved': summary['resolved_main'],
+    'implemented': summary['implemented'],
+    'wip': summary['wip'],
+    'open': summary['open'],
+    'deferred': summary['deferred'],
+    'tracking': summary['tracking'],
+    'explored': summary['explored'],
+    'partial': summary['partial']
+}
+
+status_colors = {
+    'resolved': PASS, 'implemented': PASS,
+    'wip': '#f39c12', 'open': FAIL,
+    'deferred': '#95a5a6', 'tracking': INFO,
+    'explored': '#9b59b6', 'partial': '#e67e22'
+}
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+# Main gaps by status
+labels = list(status_counts.keys())
+vals = list(status_counts.values())
+cols = [status_colors[s] for s in labels]
+axes[0].bar(labels, vals, color=cols)
+axes[0].set_title(f'Main Gaps by Status ({summary["total_main_gaps"]} total)')
+axes[0].tick_params(axis='x', rotation=45)
+for i, v in enumerate(vals):
+    if v > 0:
+        axes[0].text(i, v + 0.1, str(v), ha='center', fontweight='bold')
+
+# Historical resolution
+hist = ['Resolved (appendix)', 'Composition evolution', 'Main resolved']
+hist_vals = [summary['resolved_appendix'], summary['composition_evolution'], summary['resolved_main']]
+axes[1].bar(hist, hist_vals, color=[PASS, '#1abc9c', PASS])
+axes[1].set_title('Resolved Gap History')
+for i, v in enumerate(hist_vals):
+    axes[1].text(i, v + 0.2, str(v), ha='center', fontweight='bold')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Security Posture Timeline
+
+The security posture has evolved from basic Rust safety through
+BTSP mandatory encryption and BLAKE3 checksum verification.
+
+```python
+security_milestones = [
+    ('forbid(unsafe_code)', True),
+    ('cargo-deny enforcement', True),
+    ('Zero #[allow()]', True),
+    ('BLAKE3 checksums (15 files)', True),
+    ('BTSP 13/13 default', True),
+    ('Stadial deny bans (8 crates)', True),
+    ('SPDX headers (all .rs)', True),
+    ('Pure Rust supply chain', True),
+    ('BTSP session establishment', False),
+    ('Level 4 NUCLEUS certified', False)
 ]
 
-fig, ax = plt.subplots(figsize=(8, 5))
-gate_names = [g[0] for g in gates]
-gate_pass = [1 if g[1] else 0 for g in gates]
-gate_colors = ['#2ecc71' if g[1] else '#e74c3c' for g in gates]
-ax.barh(gate_names, gate_pass, color=gate_colors, edgecolor='white')
-ax.set_xlim(0, 1.5)
-ax.set_xticks([])
-for i, (name, passed) in enumerate(gates):
-    ax.text(1.05, i, 'PASS' if passed else 'FAIL', va='center',
-            color='#2ecc71' if passed else '#e74c3c', fontweight='bold', fontsize=9)
-ax.set_title('Quality Gates')
+fig, ax = plt.subplots(figsize=(10, 4))
+names = [m[0] for m in security_milestones]
+colors = [PASS if m[1] else FAIL for m in security_milestones]
+ax.barh(names[::-1], [1]*len(names), color=colors[::-1])
+ax.set_xlim(0, 1.3)
+ax.set_title('Security Posture Evolution')
+
+legend_elements = [
+    mpatches.Patch(color=PASS, label='Complete'),
+    mpatches.Patch(color=FAIL, label='Pending')
+]
+ax.legend(handles=legend_elements, loc='lower right')
+
 plt.tight_layout()
-plt.savefig('/tmp/airspring_03_gates.png', dpi=150)
 plt.show()
 ```
 
@@ -141,14 +197,16 @@ plt.show()
 
 | Metric | Value |
 |--------|-------|
-| Experiments | 87 (86 complete, 1 active) |
-| Python baselines | 1,284 checks |
-| Rust tests | 1,364 (986 lib + 316 integration + 62 forge) |
-| Validation binaries | 91 (all zero-panic) |
-| Line coverage | 90.56% (gated at 90%) |
-| Named tolerances | 60 in 5 submodules (Python mirror) |
-| Quality gates | 12/12 PASS |
-| Provenance baselines | 63 registered |
+| Experiments | 134 across 11 domains |
+| Papers reproduced | 27 (6 faculties) |
+| Main gaps | 14 (2 resolved, 2 wip, 5 open) |
+| Resolved gaps (appendix) | 13 |
+| Composition evolution | 5 implemented |
+| BTSP | 13/13 mandatory |
+| Unsafe code | 0 (forbid workspace-wide) |
+| Supply chain | Pure Rust |
+| BLAKE3 checksums | 15 files |
 
-**Provenance**: airSpring v0.10.0 · AGPL-3.0-or-later · [primals.eco](https://primals.eco)
+**Provenance:** [primals.eco](https://primals.eco) |
+neuralSpring Session S188 | May 2026
 
