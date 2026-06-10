@@ -1,5 +1,5 @@
 +++
-title = "Cross-Spring Connections — wetSpring"
+title = "Cross-Spring Connections — airSpring"
 description = "Rendered from 04-cross-spring-connections.ipynb"
 date = 2026-06-10
 weight = 50
@@ -11,25 +11,26 @@ rendered_from = "04-cross-spring-connections.ipynb"
 
 <!-- Auto-generated from 04-cross-spring-connections.ipynb by spore-validate render-notebooks -->
 
-# Cross-Spring Connections — wetSpring
+# Cross-Spring Connections — airSpring
 
-wetSpring consumes 10 primals and exchanges data with 4 other springs.
-This notebook visualizes the primal consumption surface, the cross-spring
-data exchange patterns, and sporePrint readiness across the ecosystem.
+barraCuda integration (25 Tier A GPU modules), cross-spring shader evolution
+(767+ WGSL shaders), and primal consumption matrix across the ecosystem.
 
-**Data sources**: `experiments/results/cross_spring_matrix.json`, `primal_composition.json`
+**Data sources**: `cross_spring_matrix.json`, `composition_validation.json`
 
-**Reproduce**: See the deploy graph at `graphs/wetspring_science_nucleus.toml`.
+**Reproduce**: `cargo run --release --bin bench_cross_spring_evolution` (146/146)
 
----
-
-*For other springs: document which primals you consume, which springs
-you exchange data with, and where your deployment gaps are. This makes
-the ecosystem dependency graph explicit.*
+**For other springs**: Replace shader families and primal consumption with your
+domain's ecosystem connections. The cross-spring matrix pattern shows how
+springs give and receive capabilities.
 
 ```python
-import os, json, struct, socket
+import json
 from pathlib import Path
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
@@ -37,190 +38,103 @@ def load(name):
     with open(RESULTS / name) as f:
         return json.load(f)
 
-TIER = 'frozen'
-IPC_SOCKET = os.environ.get('WETSPRING_IPC_SOCKET')
-
-def ipc_call(method, params=None):
-    """JSON-RPC call to barracuda IPC — active in Tier 2."""
-    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    sock.connect(IPC_SOCKET)
-    req = json.dumps({'jsonrpc': '2.0', 'method': method, 'params': params or {}, 'id': 1})
-    payload = req.encode()
-    sock.sendall(struct.pack('<I', len(payload)) + payload)
-    length = struct.unpack('<I', sock.recv(4))[0]
-    data = sock.recv(length)
-    sock.close()
-    return json.loads(data)['result']
-
-if IPC_SOCKET and os.path.exists(IPC_SOCKET):
-    try:
-        ipc_call('health.check')
-        TIER = 'live_ipc'
-        print(f'Tier 2 ACTIVE — live IPC via {IPC_SOCKET}')
-    except Exception:
-        print('Tier 2 socket found but not responding — using frozen data')
-else:
-    print(f'Tier 1 — frozen data (no IPC socket)')
-
 matrix = load('cross_spring_matrix.json')
-comp = load('primal_composition.json')
+comp = load('composition_validation.json')
 
-primals = matrix['primal_consumption']
-print(f'Primals consumed: {len(primals)}')
-print(f'Path dependencies: {len(matrix["path_dependencies"])}')
-print(f'Cross-spring exchanges: {len(matrix["cross_spring_data_exchange"])}')
+bc = matrix['barracuda_integration']
+print(f"barraCuda {bc['version']} (wgpu {bc['wgpu_version']})")
+print(f"Ecosystem shaders: {bc['total_shaders_ecosystem']}+")
+print(f"Tier A GPU modules: {bc['tier_a_gpu_modules']}")
+print(f"Upstream batched ops: {bc['upstream_batched_ops']}")
+print(f"local_dispatch retired: {bc['local_dispatch_retired']}")
+print(f"Cross-spring checks: {matrix['cross_spring_checks']['total']}")
 ```
 
-## Primal Consumption Surface
+## Cross-Spring Shader Families
 
-wetSpring consumes 10 primals across 4 roles: security (Tower),
-storage (Nest), compute (Node), provenance (Trio), AI, and visualization.
+airSpring consumes shaders from 4 sibling springs and contributed 3 upstream fixes.
 
 ```python
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+families = matrix['cross_spring_shader_families']
+springs = [f['spring'] for f in families]
+shader_counts = [f['shaders'] for f in families]
 
-p_names = list(primals.keys())
-p_caps = [len(primals[p]['capabilities_used']) for p in p_names]
-p_status = [primals[p]['status'] for p in p_names]
-
-status_colors = {
-    'deployment_gap': '#e74c3c',
-    'optional': '#3498db'
-}
-colors = [status_colors.get(s, '#95a5a6') for s in p_status]
-
-fig, axes = plt.subplots(1, 2, figsize=(16, 6))
-
-# Capability count per primal
-ax = axes[0]
-bars = ax.barh(p_names, p_caps, color=colors)
-ax.set_xlabel('Capabilities consumed')
-ax.set_title('Primal Consumption — Capabilities Used')
-for bar, val, status in zip(bars, p_caps, p_status):
-    label = f'{val} ({status.replace("_", " ")})'
-    ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2,
-            label, va='center', fontsize=8)
-
-# Status summary
-ax = axes[1]
-status_counts = {}
-for s in p_status:
-    status_counts[s] = status_counts.get(s, 0) + 1
-s_labels = [k.replace('_', ' ').title() for k in status_counts]
-s_vals = list(status_counts.values())
-s_colors = [status_colors.get(k, '#95a5a6') for k in status_counts]
-wedges, texts, autotexts = ax.pie(s_vals, labels=s_labels, autopct='%1.0f%%',
-                                   colors=s_colors, startangle=90)
-ax.set_title(f'Primal Status — {len(p_names)} primals consumed')
-
-plt.suptitle('wetSpring Primal Consumption Surface',
-             fontsize=13, fontweight='bold')
+fig, ax = plt.subplots(figsize=(8, 4))
+colors = ['#e74c3c', '#3498db', '#9b59b6', '#f39c12']
+bars = ax.bar(springs, shader_counts, color=colors, edgecolor='white')
+ax.set_ylabel('Shaders')
+ax.set_title(f'Cross-Spring Shader Families ({bc["total_shaders_ecosystem"]}+ ecosystem total)')
+for bar, count in zip(bars, shader_counts):
+    if count > 0:
+        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5,
+                str(count), ha='center', fontsize=10)
 plt.tight_layout()
-plt.savefig('/tmp/wetspring_04_consumption.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/airspring_04_shaders.png', dpi=150)
+plt.show()
+
+print('\nWhat airSpring uses from each spring:')
+for f in families:
+    if f['shaders'] > 0:
+        print(f"  {f['spring']}: {f['airspring_uses']}")
+
+print('\nWhat airSpring contributed upstream:')
+for f in families:
+    if f['airspring_contributed']:
+        print(f"  {f['spring']}: {f['airspring_contributed']}")
+```
+
+## Primal Consumption Matrix
+
+```python
+consumption = matrix['primal_consumption']
+primals = list(consumption.keys())
+wired = [1 if consumption[p]['wired'] else 0 for p in primals]
+cap_counts = [len(consumption[p]['capabilities_used']) for p in primals]
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+wire_colors = ['#2ecc71' if w else '#e74c3c' for w in wired]
+ax1.barh(primals, wired, color=wire_colors, edgecolor='white')
+ax1.set_xlim(0, 1.5)
+ax1.set_xticks([])
+for i, (p, w) in enumerate(zip(primals, wired)):
+    label = 'IPC wired' if w else consumption[p].get('note', 'not wired')
+    ax1.text(1.05, i, label, va='center', fontsize=8)
+ax1.set_title('Primal IPC Status')
+
+ax2.barh(primals, cap_counts, color='#3498db', edgecolor='white')
+ax2.set_xlabel('Capabilities Used')
+ax2.set_title('Capabilities Consumed per Primal')
+for i, v in enumerate(cap_counts):
+    ax2.text(v + 0.1, i, str(v), va='center', fontsize=9)
+
+plt.tight_layout()
+plt.savefig('/tmp/airspring_04_consumption.png', dpi=150)
 plt.show()
 ```
 
-## Cross-Spring Data Exchange
-
-wetSpring exchanges data with 4 springs: healthSpring (Python baselines),
-hotSpring (physics models), coralSpring (PFAS patterns), and primalSpring
-(gap reports and composition patterns).
+## Hardware Validation Matrix
 
 ```python
-exchanges = matrix['cross_spring_data_exchange']
-
-fig, ax = plt.subplots(figsize=(14, 6))
-
-spring_names = list(exchanges.keys())
-directions = [exchanges[s]['direction'] for s in spring_names]
-purposes = [exchanges[s]['purpose'] for s in spring_names]
-data_desc = [exchanges[s]['data'] for s in spring_names]
-
-dir_colors = {'inbound': '#3498db', 'outbound': '#e74c3c', 'bidirectional': '#2ecc71'}
-colors = [dir_colors[d] for d in directions]
-
-y_pos = range(len(spring_names))
-bars = ax.barh(y_pos, [1]*len(spring_names), color=colors, alpha=0.6)
-ax.set_yticks(list(y_pos))
-ax.set_yticklabels(spring_names, fontsize=11)
-ax.set_xlim(0, 3)
-ax.set_xticks([])
-
-for i, (spring, direction, data, purpose) in enumerate(
-        zip(spring_names, directions, data_desc, purposes)):
-    arrow = {'inbound': '←', 'outbound': '→', 'bidirectional': '↔'}[direction]
-    ax.text(1.1, i, f'{arrow}  {data}', va='center', fontsize=9)
-    ax.text(1.1, i - 0.25, purpose, va='center', fontsize=7, color='#777')
-
-from matplotlib.patches import Patch
-legend_elements = [Patch(facecolor=c, label=n.title(), alpha=0.6)
-                   for n, c in dir_colors.items()]
-ax.legend(handles=legend_elements, loc='upper right', fontsize=9)
-ax.set_title('Cross-Spring Data Exchange — wetSpring')
-
-plt.tight_layout()
-plt.savefig('/tmp/wetspring_04_exchange.png', dpi=150, bbox_inches='tight')
-plt.show()
+hw = matrix['hardware_validated']
+print('Validated Hardware:')
+for h in hw:
+    details = h.get('features', h.get('api', h.get('device', '')))
+    print(f"  {h['component']:6s} | {h['model']:30s} | {details}")
 ```
 
-## sporePrint Readiness
+## Summary
 
-Which springs have shipped their sporePrint notebooks?
+| Metric | Value |
+|--------|-------|
+| barraCuda version | 0.3.7 (wgpu 28) |
+| Ecosystem shaders | 767+ WGSL (f64 canonical) |
+| Tier A GPU modules | 25 (20 upstream batched, 5 dedicated) |
+| Cross-spring checks | 211 (146 evolution + 32 provenance + 33 cross-validation) |
+| Upstream contributions | 8 ops + 3 bug fixes |
+| Primals IPC-wired | 5 / 9 core |
+| Hardware substrates | 4 (CPU, GPU×2, NPU) |
+| local_dispatch | Retired (Write→Absorb→Lean complete) |
 
-```python
-readiness = matrix['sporePrint_readiness']
-springs = list(readiness.keys())
-ready = [readiness[s] for s in springs]
-
-fig, ax = plt.subplots(figsize=(10, 4))
-colors = ['#2ecc71' if r else '#e74c3c' for r in ready]
-bars = ax.barh(springs, [1]*len(springs), color=colors)
-ax.set_xlim(0, 1.5)
-ax.set_xticks([])
-for bar, r in zip(bars, ready):
-    label = 'READY' if r else 'PENDING'
-    ax.text(1.05, bar.get_y() + bar.get_height()/2,
-            label, va='center', fontsize=10, fontweight='bold',
-            color='#2ecc71' if r else '#e74c3c')
-
-total_ready = sum(ready)
-ax.set_title(f'sporePrint Readiness — {total_ready}/{len(springs)} springs ready')
-
-# Tier 2: check live composition health
-if TIER == 'live_ipc':
-    health = ipc_call('composition.science_health', {})
-    live_primals = health.get('available', [])
-    frozen_primals = [p for p, info in primals.items()
-                      if info['status'] != 'optional']
-    print(f'Tier 2: {len(live_primals)} primals live vs '
-          f'{len(frozen_primals)} required (deployment gaps)')
-
-plt.tight_layout()
-plt.savefig('/tmp/wetspring_04_readiness.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-## Validation Summary
-
-| Connection | Direction | Status |
-|-----------|-----------|--------|
-| healthSpring (Python baselines) | Inbound | Active |
-| hotSpring (physics models) | Bidirectional | Active |
-| coralSpring (PFAS patterns) | Outbound | Active |
-| primalSpring (gap reports) | Bidirectional | Active |
-| 10 primals consumed | 6 deployment gaps | Documented |
-| sporePrint readiness | 2/8 springs | In progress |
-
----
-
-**Provenance**: Cross-spring matrix derived from `barracuda/Cargo.toml`
-path dependencies and `graphs/wetspring_science_nucleus.toml` capability
-declarations.
-
-**Evolution**: Tier 2 calls `composition.science_health` to compare live
-primal availability against the documented consumption surface.
-
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Provenance**: airSpring v0.10.0 · barraCuda 0.3.7 · [primals.eco](https://primals.eco)
 
