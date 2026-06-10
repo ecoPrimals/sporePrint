@@ -1,5 +1,5 @@
 +++
-title = "Cross-Spring Connections — hotSpring"
+title = "04 — Cross-Spring Connections"
 description = "Rendered from 04-cross-spring-connections.ipynb"
 date = 2026-06-10
 weight = 50
@@ -11,177 +11,193 @@ rendered_from = "04-cross-spring-connections.ipynb"
 
 <!-- Auto-generated from 04-cross-spring-connections.ipynb by spore-validate render-notebooks -->
 
-# Cross-Spring Connections — hotSpring
+# 04 — Cross-Spring Connections
 
-hotSpring consumes 10 primals (9 required + 1 optional) for computational physics.
-This notebook maps the primal consumption matrix, ecosystem data flows, and patterns
-hotSpring has handed back to the ecosystem — capability-based discovery, convergence
-tick models, DAG memoization, and scientific provenance braids.
+**neuralSpring sporePrint** | Session S188 | May 2026
 
-**Data sources:** `cross_spring_matrix.json`
+Primal consumption matrix, ecosystem flows, proto-nucleate
+dependencies, and integration status.
 
-**Reproduce:** See `docs/PRIMAL_GAPS.md` for gap registry, `tools/hotspring_composition.sh`
-for Phase 46 composition patterns.
+**Data sources:** `cross-spring-matrix.json`, `validation-state.json`
 
----
-
-*For other springs:* Map your own primal consumption against the ecosystem matrix.
-Document patterns you discover that benefit sibling springs.
+**For other springs:** Replace the consumption matrix with your own
+primal dependencies. The proto-nucleate structure is spring-specific.
 
 ```python
 import json
 from pathlib import Path
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.patches as mpatches
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-def load(name):
-    with open(RESULTS / name) as f:
-        return json.load(f)
+with open(RESULTS / 'cross-spring-matrix.json') as f:
+    cs = json.load(f)
 
-matrix = load('cross_spring_matrix.json')
+with open(RESULTS / 'validation-state.json') as f:
+    vs = json.load(f)
 
-primals = matrix['primals_consumed']
-print(f"Primals consumed: {len(primals)}")
-print(f"Patterns handed back: {len(matrix['patterns_handed_back'])}")
-print(f"Ecosystem flows: {len(matrix['ecosystem_flows'])}")
-for name, info in primals.items():
-    critical = '***' if info['critical'] else ''
-    print(f"  {name} ({info['domain']}): {info['usage']}{critical}")
+PASS = '#2ecc71'
+FAIL = '#e74c3c'
+INFO = '#3498db'
+
+print(f"neuralSpring v{vs['version']} — Primal consumption matrix")
 ```
 
-## Primal Consumption by Domain
+## Primal Consumption Matrix
 
-hotSpring's NUCLEUS composition requires 9 primals across distinct capability
-domains. The **compute triangle** (barraCuda + toadStool + coralReef) is unique
-to hotSpring's GPU-heavy physics workloads.
+neuralSpring consumes 8 primals across 4 integration tiers:
+upstream (compile-time), lateral (IPC), tower (security), and storage.
 
 ```python
-C_PASS = '#2ecc71'
-C_INFO = '#3498db'
-C_GPU  = '#9b59b6'
+consumption = cs['consumption']
 
-domain_colors = {
-    'crypto': '#e74c3c', 'discovery': '#f39c12', 'compute': '#9b59b6',
-    'math': '#3498db', 'shader': '#1abc9c', 'storage': '#2ecc71',
-    'dag': '#e67e22', 'ledger': '#34495e', 'provenance': '#16a085',
-    'inference': '#95a5a6'
+status_map = {
+    'barracuda': 'active',
+    'primalspring': 'active',
+    'coralreef': 'open',
+    'toadstool': 'open',
+    'beardog': 'wip',
+    'songbird': 'wip',
+    'squirrel': 'wip',
+    'nestgate': 'open'
 }
 
-p_names = list(primals.keys())
-p_domains = [primals[p]['domain'] for p in p_names]
-colors = [domain_colors.get(d, '#95a5a6') for d in p_domains]
-critical = [1.0 if primals[p]['critical'] else 0.6 for p in p_names]
+color_map = {'active': PASS, 'wip': '#f39c12', 'open': FAIL}
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-
-bars = axes[0].barh(p_names, [1]*len(p_names), color=colors, alpha=critical)
-for i, p in enumerate(p_names):
-    label = f"{primals[p]['domain']}"
-    axes[0].text(0.05, i, label, va='center', fontsize=9, fontweight='bold', color='white')
-axes[0].set_title(f'{len(primals)} Primals Consumed (9 required + 1 optional)')
-axes[0].set_xticks([])
-axes[0].invert_yaxis()
-
-# Contribution patterns
-patterns = matrix['primal_contribution_patterns']
-pat_names = [k.replace('_', ' ').title() for k in patterns]
-pat_counts = [len(patterns[k]['primals']) for k in patterns]
-axes[1].bar(pat_names, pat_counts, color=[C_GPU, C_PASS, '#e74c3c'])
-axes[1].set_ylabel('Primals Involved')
-axes[1].set_title('Unique Contribution Patterns')
-for i, (name, p) in enumerate(patterns.items()):
-    axes[1].text(i, pat_counts[i] + 0.1, ', '.join(p['primals']),
-                 ha='center', fontsize=7, style='italic')
-
-fig.suptitle('hotSpring NUCLEUS Composition — Primal Dependency Map', fontsize=13, fontweight='bold')
-plt.tight_layout()
-plt.savefig('/tmp/hotspring_04_primals.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-## Patterns Handed Back to Ecosystem
-
-hotSpring's physics-driven exploration surfaces patterns that benefit the entire
-ecosystem — from composition library improvements to primal API recommendations.
-
-```python
-handed_back = matrix['patterns_handed_back']
+primals = list(consumption.keys())
+roles = [consumption[p]['role'] for p in primals]
+statuses = [status_map[p] for p in primals]
+colors = [color_map[s] for s in statuses]
 
 fig, ax = plt.subplots(figsize=(12, 5))
+bars = ax.barh(primals[::-1], [1]*len(primals), color=colors[::-1])
+ax.set_xlim(0, 2.5)
+ax.set_title('Primal Consumption Matrix')
 
-pattern_names = [p['pattern'][:50] + '...' if len(p['pattern']) > 50 else p['pattern'] for p in handed_back]
-targets = [p['for'].split(' — ')[0] for p in handed_back]
+for i, (p, role) in enumerate(zip(primals[::-1], roles[::-1])):
+    ax.text(1.05, i, role, va='center', fontsize=9)
 
-target_colors = {
-    'primalSpring': C_PASS,
-    'nucleus_composition_lib.sh': C_INFO,
-    'sweetGrass': '#16a085',
-    'barraCuda': C_GPU
-}
-colors = [target_colors.get(t, '#95a5a6') for t in targets]
-
-ax.barh(pattern_names, range(len(handed_back), 0, -1), color=colors)
-for i, p in enumerate(handed_back):
-    ax.text(0.3, i, f'→ {p["for"][:60]}', va='center', fontsize=7, color='white')
-
-ax.set_title(f'{len(handed_back)} Patterns Handed Back to Ecosystem')
-ax.set_xticks([])
-ax.invert_yaxis()
+legend_elements = [
+    mpatches.Patch(color=PASS, label='Active'),
+    mpatches.Patch(color='#f39c12', label='WIP'),
+    mpatches.Patch(color=FAIL, label='Open')
+]
+ax.legend(handles=legend_elements, loc='lower right')
 
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_04_handback.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Ecosystem Data Flows
+## Ecosystem Flow
 
-hotSpring is a **consumer** of primalSpring composition patterns and a **producer**
-of capability-based discovery patterns, sovereign GPU recipes, and compute stress
-feedback.
+neuralSpring sits in the middle of the ecosystem — consuming
+barraCuda GPU ops upstream and routing through lateral primals
+for composition.
 
 ```python
-flows = matrix['ecosystem_flows']
+flow = cs['production_flow']
 
-fig, ax = plt.subplots(figsize=(10, 4))
+fig, ax = plt.subplots(figsize=(10, 5))
 
-flow_labels = [f"{f['from']} → {f['to']}" for f in flows]
-flow_types = [f['type'].replace('_', ' ').title() for f in flows]
-flow_colors = [C_PASS if f['from'] == 'hotSpring' else C_INFO for f in flows]
+tiers = list(flow.keys())
+tier_labels = ['Upstream\n(compile-time)', 'Lateral\n(IPC)', 'Tower\n(security)', 'Storage\n(deploy)']
+tier_counts = [len(flow[t]) for t in tiers]
+tier_primals = [', '.join([p.split(' (')[0] for p in flow[t]]) for t in tiers]
+tier_colors = [PASS, INFO, '#9b59b6', '#f39c12']
 
-ax.barh(flow_labels, [1]*len(flows), color=flow_colors)
-for i, f in enumerate(flows):
-    ax.text(0.05, i, f['desc'][:70], va='center', fontsize=7, color='white', fontweight='bold')
+bars = ax.bar(tier_labels, tier_counts, color=tier_colors)
+ax.set_ylabel('Primals')
+ax.set_title('Ecosystem Flow Tiers')
 
-ax.set_title('Ecosystem Data Flows')
-ax.set_xticks([])
-ax.invert_yaxis()
-
-from matplotlib.patches import Patch
-legend = [Patch(facecolor=C_PASS, label='hotSpring produces'),
-          Patch(facecolor=C_INFO, label='hotSpring consumes')]
-ax.legend(handles=legend, loc='lower right', fontsize=8)
+for i, (bar, label) in enumerate(zip(bars, tier_primals)):
+    ax.text(i, bar.get_height() + 0.1, label,
+            ha='center', fontsize=8, style='italic')
 
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_04_flows.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Validation Summary
+## Proto-Nucleate Dependencies
 
-| Connection | Detail |
-|------------|--------|
-| Primals consumed | **10** (9 required + Squirrel optional) |
-| Unique patterns | **Compute triangle**, scientific provenance, sovereign GPU |
-| Patterns handed back | **5** (capability discovery, convergence tick, DAG memo, braid schema, API feedback) |
-| Ecosystem flows | **6** (gap tracking, sovereign pipeline, compute stress, composition patterns, sporePrint) |
+The proto-nucleate graph defines 7 validation capabilities
+across 6 primal dependencies and 3 fragments.
 
----
+```python
+proto = cs['proto_nucleate']
 
-**Provenance:** All data from `experiments/results/cross_spring_matrix.json`.  
-**Gaps:** `docs/PRIMAL_GAPS.md` — 8 active gaps for upstream primal teams.  
-**Source:** [hotSpring on GitHub](https://github.com/syntheticChemistry/hotSpring) · [primals.eco](https://primals.eco/lab/springs/hotspring/)
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+# Validation capabilities
+caps = proto['validation_capabilities']
+cap_colors = []
+for c in caps:
+    if c.startswith('tensor') or c.startswith('stats'):
+        cap_colors.append(INFO)
+    elif c.startswith('compute'):
+        cap_colors.append('#f39c12')
+    elif c.startswith('crypto'):
+        cap_colors.append('#9b59b6')
+    else:
+        cap_colors.append(PASS)
+
+axes[0].barh(caps[::-1], [1]*len(caps), color=cap_colors[::-1])
+axes[0].set_xlim(0, 1.5)
+axes[0].set_title(f'Validation Capabilities ({len(caps)})')
+
+# Dependencies
+deps = proto['depends_on']
+axes[1].barh(deps[::-1], [1]*len(deps), color=PASS)
+axes[1].set_xlim(0, 1.5)
+axes[1].set_title(f'Proto-Nucleate Dependencies ({len(deps)})')
+
+plt.tight_layout()
+plt.show()
+
+print(f"Fragments: {', '.join(proto['fragments'])}")
+```
+
+## barraCuda Usage Depth
+
+barraCuda is the deepest dependency — 806+ WGSL shaders,
+128+ files importing, ~97% GPU coverage.
+
+```python
+bc = consumption['barracuda']
+
+usage_domains = list(bc['usage'].keys())
+usage_counts = [len(bc['usage'][d]) for d in usage_domains]
+
+fig, ax = plt.subplots(figsize=(10, 4))
+bars = ax.barh(usage_domains[::-1], usage_counts[::-1], color=INFO)
+ax.set_xlabel('Methods used')
+ax.set_title(f'barraCuda Usage by Domain ({bc["version"]})')
+
+for bar, val in zip(bars, usage_counts[::-1]):
+    ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2,
+            str(val), va='center', fontweight='bold')
+
+plt.tight_layout()
+plt.show()
+
+print(f"IPC surface: {bc['ipc_surface']}")
+print(f"GPU coverage: {bc['gpu_coverage']}")
+```
+
+## Summary
+
+| Metric | Value |
+|--------|-------|
+| Primals consumed | 8 |
+| Active integrations | 2 (barraCuda, primalSpring) |
+| WIP integrations | 3 (BearDog, Songbird, Squirrel) |
+| Open integrations | 3 (coralReef, toadStool, NestGate) |
+| Proto-nucleate capabilities | 7 |
+| Proto-nucleate dependencies | 6 |
+| barraCuda version | v0.3.12 |
+| barraCuda WGSL shaders | 806+ |
+| barraCuda IPC gaps | 18 |
+
+**Provenance:** [primals.eco](https://primals.eco) |
+neuralSpring Session S188 | May 2026
 
