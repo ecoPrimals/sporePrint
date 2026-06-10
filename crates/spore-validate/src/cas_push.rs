@@ -16,10 +16,10 @@
 //!
 //! ## Discovery
 //!
-//! `NestGate` socket path is discovered via (in priority order):
-//! 1. `NESTGATE_SOCKET` env var
-//! 2. `$XDG_RUNTIME_DIR/biomeos/nestgate.sock`
-//! 3. `/tmp/nestgate-standalone-{hostname}.sock`
+//! `NestGate` socket path is discovered via `discovery::probe_socket`:
+//! 1. `NESTGATE_SOCKET` env var (explicit override)
+//! 2. `$BIOMEOS_SOCKET_DIR/nestgate.sock` (ecosystem standard)
+//! 3. `$XDG_RUNTIME_DIR/biomeos/nestgate.sock` (XDG fallback)
 
 use crate::error::Error;
 use base64::{Engine as _, engine::general_purpose::STANDARD};
@@ -120,36 +120,23 @@ pub struct PushResult {
 }
 
 /// Discover the `NestGate` socket path from environment.
+///
+/// Delegates to `discovery::probe_socket` which implements the ecosystem
+/// standard discovery order: explicit env → `BIOMEOS_SOCKET_DIR` → XDG.
+/// Falls back to legacy `/tmp` path as last resort (deprecated).
 pub fn discover_socket() -> Result<String, Error> {
+    if let Some(path) = crate::discovery::probe_socket("nestgate", "NESTGATE_SOCKET") {
+        return Ok(path);
+    }
+
     if let Ok(path) = std::env::var("NESTGATE_SOCKET") {
-        if Path::new(&path).exists() {
-            return Ok(path);
-        }
         return Err(Error::Config(format!(
             "NESTGATE_SOCKET set to {path} but socket does not exist"
         )));
     }
 
-    if let Ok(xdg) = std::env::var("XDG_RUNTIME_DIR") {
-        let candidate = format!("{xdg}/biomeos/nestgate.sock");
-        if Path::new(&candidate).exists() {
-            return Ok(candidate);
-        }
-        let standalone = format!("{xdg}/biomeos/nestgate-standalone.sock");
-        if Path::new(&standalone).exists() {
-            return Ok(standalone);
-        }
-    }
-
-    let hostname = std::fs::read_to_string("/etc/hostname")
-        .map_or_else(|_| "unknown".into(), |s| s.trim().to_string());
-    let fallback = format!("/tmp/nestgate-standalone-{hostname}.sock");
-    if Path::new(&fallback).exists() {
-        return Ok(fallback);
-    }
-
     Err(Error::Config(
-        "NestGate socket not found. Set NESTGATE_SOCKET or ensure NestGate is running.".into(),
+        "NestGate socket not found. Set NESTGATE_SOCKET or BIOMEOS_SOCKET_DIR, or ensure NestGate is running.".into(),
     ))
 }
 

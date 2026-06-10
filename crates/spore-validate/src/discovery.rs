@@ -95,10 +95,7 @@ pub fn discover_peers() -> Vec<DiscoveredPeer> {
     let mut peers = Vec::new();
 
     // NestGate: CAS storage peer
-    if let Some(socket) = probe_socket_env("NESTGATE_SOCKET", &[
-        "BIOMEOS_SOCKET_DIR",
-        "XDG_RUNTIME_DIR",
-    ]) {
+    if let Some(socket) = probe_socket("nestgate", "NESTGATE_SOCKET") {
         peers.push(DiscoveredPeer {
             primal_id: "nestGate".into(),
             socket_path: Some(socket),
@@ -113,7 +110,7 @@ pub fn discover_peers() -> Vec<DiscoveredPeer> {
     }
 
     // petalTongue: content rendering peer
-    if let Some(socket) = probe_socket_env("PETALTONGUE_SOCKET", &[]) {
+    if let Some(socket) = probe_socket("petaltongue", "PETALTONGUE_SOCKET") {
         peers.push(DiscoveredPeer {
             primal_id: "petalTongue".into(),
             socket_path: Some(socket),
@@ -127,27 +124,38 @@ pub fn discover_peers() -> Vec<DiscoveredPeer> {
     peers
 }
 
-/// Probe for a socket path from environment variables.
+/// Probe for a primal's socket path from environment variables.
 ///
-/// Checks the primary env var first, then falls back to discovering through
-/// XDG/biomeOS standard paths.
-fn probe_socket_env(primary_var: &str, fallback_vars: &[&str]) -> Option<String> {
+/// Discovery order (ecosystem standard):
+/// 1. Explicit env var (e.g., `NESTGATE_SOCKET`) — highest priority
+/// 2. `BIOMEOS_SOCKET_DIR/{slug}.sock` — ecosystem standard directory
+/// 3. `XDG_RUNTIME_DIR/biomeos/{slug}.sock` — XDG fallback
+/// 4. `XDG_RUNTIME_DIR/biomeos/{slug}-standalone.sock` — standalone variant
+///
+/// No `/tmp` probing — ecosystem is migrating away from `/tmp` sockets
+/// per `PRIMAL-SOCKET-CLEANUP` directive.
+pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
     if let Ok(path) = std::env::var(primary_var) {
         if std::path::Path::new(&path).exists() {
             return Some(path);
         }
     }
 
-    for var in fallback_vars {
-        if let Ok(base) = std::env::var(var) {
-            let candidates = [
-                format!("{base}/biomeos/nestgate.sock"),
-                format!("{base}/biomeos/nestgate-standalone.sock"),
-            ];
-            for candidate in &candidates {
-                if std::path::Path::new(candidate).exists() {
-                    return Some(candidate.clone());
-                }
+    if let Ok(dir) = std::env::var("BIOMEOS_SOCKET_DIR") {
+        let candidate = format!("{dir}/{slug}.sock");
+        if std::path::Path::new(&candidate).exists() {
+            return Some(candidate);
+        }
+    }
+
+    if let Ok(xdg) = std::env::var("XDG_RUNTIME_DIR") {
+        let candidates = [
+            format!("{xdg}/biomeos/{slug}.sock"),
+            format!("{xdg}/biomeos/{slug}-standalone.sock"),
+        ];
+        for candidate in &candidates {
+            if std::path::Path::new(candidate).exists() {
+                return Some(candidate.clone());
             }
         }
     }
@@ -228,17 +236,14 @@ mod tests {
     }
 
     #[test]
-    fn probe_socket_env_returns_none_for_missing_var() {
-        let result = probe_socket_env("NONEXISTENT_VAR_FOR_TEST_XYZ_12345", &[]);
+    fn probe_socket_returns_none_for_missing_var() {
+        let result = probe_socket("nestgate", "NONEXISTENT_VAR_FOR_TEST_XYZ_12345");
         assert!(result.is_none());
     }
 
     #[test]
-    fn probe_socket_env_returns_none_for_absent_fallbacks() {
-        let result = probe_socket_env(
-            "NONEXISTENT_PRIMARY_99999",
-            &["ALSO_NONEXISTENT_FALLBACK_99999"],
-        );
+    fn probe_socket_returns_none_when_no_dirs_exist() {
+        let result = probe_socket("nestgate", "NONEXISTENT_PRIMARY_99999");
         assert!(result.is_none());
     }
 

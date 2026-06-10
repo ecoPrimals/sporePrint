@@ -551,11 +551,23 @@ pub fn discover() -> Result<(), Error> {
     }
 
     println!();
+    println!("  SOCKET_DIRS:");
+    if let Ok(dir) = std::env::var("BIOMEOS_SOCKET_DIR") {
+        println!("    BIOMEOS_SOCKET_DIR = {dir}");
+    }
+    if let Ok(dir) = std::env::var("XDG_RUNTIME_DIR") {
+        println!("    XDG_RUNTIME_DIR = {dir}");
+    }
+    if std::env::var("BIOMEOS_SOCKET_DIR").is_err() && std::env::var("XDG_RUNTIME_DIR").is_err() {
+        println!("    (neither BIOMEOS_SOCKET_DIR nor XDG_RUNTIME_DIR set)");
+    }
+
+    println!();
     println!("  PEERS:");
 
     let peers = discovery::discover_peers();
     if peers.is_empty() {
-        println!("    (none discovered — set NESTGATE_SOCKET or PETALTONGUE_SOCKET)");
+        println!("    (none discovered — set BIOMEOS_SOCKET_DIR or NESTGATE_SOCKET/PETALTONGUE_SOCKET)");
     } else {
         for peer in &peers {
             println!("    {} ({})", peer.primal_id, peer.socket_path.as_deref().unwrap_or("?"));
