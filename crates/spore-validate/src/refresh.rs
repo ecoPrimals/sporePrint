@@ -62,48 +62,28 @@ pub fn scan(
         scanned += 1;
         let metrics = count_metrics(&repo_path);
 
-        if let Some(registered_loc) = entity.loc {
-            if registered_loc != metrics.loc {
+        let mut push_drift = |field: &'static str, registered: u64, actual: u64| {
+            if registered != actual {
                 drifts.push(Drift {
                     key: key.to_string(),
-                    field: "loc",
-                    registered: registered_loc,
-                    actual: metrics.loc,
+                    field,
+                    registered,
+                    actual,
                 });
             }
-        }
+        };
 
-        if let Some(registered_tests) = entity.tests {
-            if registered_tests != metrics.tests {
-                drifts.push(Drift {
-                    key: key.to_string(),
-                    field: "tests",
-                    registered: registered_tests,
-                    actual: metrics.tests,
-                });
-            }
+        if let Some(v) = entity.loc {
+            push_drift("loc", v, metrics.loc);
         }
-
-        if let Some(registered_files) = entity.files {
-            if u64::from(registered_files) != metrics.files {
-                drifts.push(Drift {
-                    key: key.to_string(),
-                    field: "files",
-                    registered: u64::from(registered_files),
-                    actual: metrics.files,
-                });
-            }
+        if let Some(v) = entity.tests {
+            push_drift("tests", v, metrics.tests);
         }
-
-        if let Some(registered_crates) = entity.crates {
-            if u64::from(registered_crates) != metrics.crates {
-                drifts.push(Drift {
-                    key: key.to_string(),
-                    field: "crates",
-                    registered: u64::from(registered_crates),
-                    actual: metrics.crates,
-                });
-            }
+        if let Some(v) = entity.files {
+            push_drift("files", u64::from(v), metrics.files);
+        }
+        if let Some(v) = entity.crates {
+            push_drift("crates", u64::from(v), metrics.crates);
         }
     }
 

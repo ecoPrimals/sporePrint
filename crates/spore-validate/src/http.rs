@@ -48,7 +48,15 @@ pub fn get_body(url: &str) -> Result<Vec<u8>, Error> {
             current_url = if location.starts_with("http://") {
                 location
             } else {
-                format!("http://{}", location.strip_prefix('/').unwrap_or(&location))
+                let host = current_url
+                    .strip_prefix("http://")
+                    .and_then(|s| s.split('/').next())
+                    .unwrap_or("");
+                if location.starts_with('/') {
+                    format!("http://{host}{location}")
+                } else {
+                    format!("http://{host}/{location}")
+                }
             };
             continue;
         }
@@ -69,8 +77,10 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         Error::Git(format!("ForgeArchiveBackend only supports plain HTTP: {url}"))
     })?;
 
-    let (host_port, path) = url_path.split_once('/').unwrap_or((url_path, "/"));
-    let path = format!("/{path}");
+    let (host_port, path) = match url_path.split_once('/') {
+        Some((h, p)) => (h, format!("/{p}")),
+        None => (url_path, "/".to_string()),
+    };
     let host_port = if host_port.contains(':') {
         host_port.to_string()
     } else {
@@ -279,5 +289,13 @@ mod tests {
         let dir = tempfile::tempdir().unwrap();
         extract_tar(&archive, dir.path());
         assert!(std::fs::read_dir(dir.path()).unwrap().next().is_none());
+    }
+
+    #[test]
+    fn request_raw_bare_host_produces_valid_path() {
+        let result = request_raw("http://127.0.0.1:1");
+        assert!(result.is_err());
+        let msg = result.unwrap_err().to_string();
+        assert!(msg.contains("TCP connect") || msg.contains("failed"), "{msg}");
     }
 }

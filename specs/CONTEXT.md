@@ -8,14 +8,14 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 9, 2026 — Wave 104)
+## Current State (June 10, 2026 — Wave 107)
 
 - **207+ content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **`spore-validate` v0.3.0** — 21-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, HTTP/tar utilities, trait-based VCS, parity integration tests. 141 tests (113 unit + 25 integration + 3 refresh), `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay). Accepts `TRANSPORT_ENDPOINT` env var for launcher injection. Capabilities derived from `discovery::SELF` — no duplicated announce logic. HTTP/tar layer extracted to standalone module.
+- **`spore-validate` v0.3.0** — 21-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, HTTP/tar utilities, trait-based VCS, parity integration tests. 150 tests (122 unit + 25 integration + 3 refresh), `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay). Accepts `TRANSPORT_ENDPOINT` env var for launcher injection. Capabilities derived from `discovery::SELF` — no duplicated announce logic. HTTP/tar layer extracted to standalone module.
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
@@ -27,10 +27,10 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (also as Rust integration tests: `tests/parity.rs`).
 - **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.
 - **VizRegistry** — Capability-based discovery of available visualizations at petalTongue startup. No hardcoded route dispatch — registry pattern enables future viz additions without modifying route handlers.
-- **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data, deprecated shell scripts superseded by Rust. push_manifest decomposed (PushFileOutcome enum). HTTP/tar extracted from fetch.rs. announce_request canonical. Zero dead_code allows on production paths.
+- **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data, deprecated shell scripts superseded by Rust. push_manifest decomposed (PushFileOutcome enum). HTTP/tar extracted from fetch.rs. announce_request canonical. Zero dead_code allows on production paths. refresh::scan DRYed with closure-based drift push. HTTP redirect handling fixed for relative paths.
 - **primalSpring validation: 70/70 PASS** — `sporeprint-pure-primal-parity` scenario passes all checks (content parsing, entity resolution, modality output, composition graph, certification manifest). Certification manifest now emits `schema_version` + `merkle_root` fields per primalSpring expectations.
 - **Metrics freshness** — all 25 entity metrics refreshed (3.46M LOC, 114K tests ecosystem-wide). Drift tolerance maintained.
-- **WAN mesh status** — BLOCKED on upstream (cellMembrane binary distribution path for WAN gates). Gap report pushed. VPS reachable (34.8ms). Transport-ready once binaries arrive.
+- **WAN mesh status** — 4/5 PASS. VPS depot refreshed (songbird Jun 10 02:28 UTC, BLAKE3 VERIFIED: `03775a3f...`). Fetched, restarted with federation port 7700. mesh.init to VPS relay sent. Bidirectional handshake pending — VPS songbird process restart needed to pick up updated binary. guideStone-grade WAN analysis (5 gaps) shapes post-stadial roadmap.
 
 ## Repository Structure
 
@@ -64,7 +64,7 @@ sporePrint/
 │   ├── CNAME                # primals.eco
 │   └── search.css
 ├── specs/                   # THIS DIRECTORY — internal, not built
-├── crates/spore-validate/   # Rust validation crate (21 modules, 141 tests, 90%+ cov)
+├── crates/spore-validate/   # Rust validation crate (21 modules, 150 tests, 90%+ cov)
 ├── .github/workflows/       # deploy.yml, auto-refresh.yml
 └── CHANGELOG.md
 ```
