@@ -1,5 +1,5 @@
 +++
-title = "02 — Benchmark Comparison"
+title = "Benchmark Comparison — groundSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
 date = 2026-06-10
 weight = 50
@@ -11,198 +11,123 @@ rendered_from = "02-benchmark-comparison.ipynb"
 
 <!-- Auto-generated from 02-benchmark-comparison.ipynb by spore-validate render-notebooks -->
 
-# 02 — Benchmark Comparison
+# Benchmark Comparison — groundSpring
 
-**neuralSpring sporePrint** | Session S188 | May 2026
+Rust vs Python performance across 29 benchmarked experiments (001–029 + 035), plus
+three-mode benchmark data (default → barraCuda CPU → barraCuda GPU)
+and the 110-delegation inventory breakdown by barraCuda module.
 
-Rust vs Python timing across 11 domains, GPU acceleration,
-multi-GPU parity, and guideStone validation phases.
+**Data sources**: `experiments/results/benchmark_timing.json`, `experiment_catalog.json`
 
-**Data sources:** `benchmark-data.json`, `validation-state.json`
+---
 
-**For other springs:** Replace domain speedup data with your own
-benchmark results. Adjust GPU coverage to match your compute profile.
+*For other springs*: Replace benchmark data with your own timing JSONs.
+Keep the Rust-vs-Python comparison pattern and delegation breakdown.
 
 ```python
 import json
-from pathlib import Path
+import matplotlib
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import numpy as np
+from pathlib import Path
 
 RESULTS = Path('..') / 'experiments' / 'results'
-
-with open(RESULTS / 'benchmark-data.json') as f:
-    bm = json.load(f)
-
-with open(RESULTS / 'validation-state.json') as f:
-    vs = json.load(f)
-
 PASS = '#2ecc71'
 FAIL = '#e74c3c'
 INFO = '#3498db'
 
-print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
+def load(name):
+    with open(RESULTS / name) as f:
+        return json.load(f)
+
+bench = load('benchmark_timing.json')
+catalog = load('experiment_catalog.json')
+
+print(f"Overall Rust vs Python speedup: {bench['rust_vs_python']['overall_speedup']}")
+print(f"Excluding LAPACK-bound: {bench['rust_vs_python']['excl_lapack_speedup']}")
+print(f"barraCuda delegations: {bench['barracuda_delegations']['total']} ({bench['barracuda_delegations']['cpu']} CPU + {bench['barracuda_delegations']['gpu']} GPU)")
 ```
 
-## Rust vs Python — Per-Domain Speedups
-
-Pure Rust achieves an **83.6x geometric mean** speedup over Python
-across 11 scientific domains, with the fastest (multi-objective
-optimization) reaching **1104x**.
+## Top Speedups: Rust vs Python
 
 ```python
-rvp = bm['rust_vs_python']
-speedups = rvp['domain_speedups']
+highlights = bench['rust_vs_python']['highlights']
+names = [h['experiment'] for h in highlights]
+speedups = [float(h['speedup'].replace('x', '')) for h in highlights]
 
-domains = [s['domain'] for s in speedups]
-values = [s['speedup'] for s in speedups]
+fig, ax = plt.subplots(figsize=(10, 5))
+bars = ax.barh(names[::-1], speedups[::-1], color=PASS)
+ax.set_xlabel('Speedup (×)')
+ax.set_title('Top 6 Rust vs Python Speedups')
+for bar, s in zip(bars, speedups[::-1]):
+    ax.text(bar.get_width() + 0.5, bar.get_y() + bar.get_height()/2,
+            f'{s:.1f}×', va='center', fontsize=10, fontweight='bold')
+ax.axvline(x=1.0, color='gray', linestyle='--', alpha=0.5)
 
-fig, ax = plt.subplots(figsize=(12, 6))
-bars = ax.barh(domains[::-1], values[::-1], color=INFO)
-ax.set_xlabel('Speedup (x)')
-ax.set_title(f'Rust vs Python Speedups — {rvp["geomean_speedup"]}x geomean')
-ax.set_xscale('log')
-ax.axvline(x=rvp['geomean_speedup'], color=PASS, linestyle='--',
-           linewidth=2, label=f'Geomean: {rvp["geomean_speedup"]}x')
-
-for bar, val in zip(bars, values[::-1]):
-    ax.text(bar.get_width() * 1.1, bar.get_y() + bar.get_height()/2,
-            f'{val:.0f}x', va='center', fontsize=9)
-
-ax.legend(loc='lower right', fontsize=11)
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_02_speedups.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## CPU-Python Cross-Language Parity
-
-All 39 parity checks pass at 1e-10 tolerance — Rust CPU produces
-numerically identical results to the Python baselines.
+## Three-Mode Benchmark (Default → CPU → GPU)
 
 ```python
-parity = rvp['cpu_python_parity']
+modes = bench['three_mode_benchmark']
+labels = ['Default Features', 'barraCuda CPU', 'barraCuda GPU']
+times = [modes['default_features']['time_s'], modes['barracuda_cpu']['time_s'], modes['barracuda_gpu']['time_s']]
+test_counts = [modes['default_features']['tests'], modes['barracuda_cpu']['tests'], modes['barracuda_gpu']['tests']]
+colors = ['#95a5a6', INFO, PASS]
 
-fig, ax = plt.subplots(figsize=(5, 3))
-ax.bar(['PASS', 'FAIL'],
-       [parity['pass'], parity['total'] - parity['pass']],
-       color=[PASS, FAIL])
-ax.set_title(f'CPU↔Python Parity ({parity["pass"]}/{parity["total"]})')
-ax.set_ylabel('Checks')
-ax.text(0, parity['pass'] + 0.5, str(parity['pass']),
-        ha='center', fontweight='bold', fontsize=14)
-plt.tight_layout()
-plt.show()
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
 
-print(f"Tolerance: {parity['tolerance']}")
-```
+ax1.bar(labels, times, color=colors)
+ax1.set_ylabel('Time (seconds)')
+ax1.set_title('Suite Runtime by Mode')
+for i, (t, tc) in enumerate(zip(times, test_counts)):
+    ax1.text(i, t + 0.3, f'{t:.1f}s\n({tc} tests)', ha='center', fontsize=9)
 
-## GPU Performance
-
-GPU acceleration via barraCuda + WGSL achieves up to **104x** vs Python,
-with ~97% of production operations promoted to GPU.
-
-```python
-gpu = bm['gpu_performance']
-mgpu = bm['multi_gpu']
-
-fig, axes = plt.subplots(1, 3, figsize=(14, 4))
-
-# GPU coverage pie
-cov = gpu['gpu_coverage_percent']
-axes[0].pie([cov, 100-cov], labels=[f'GPU ({cov}%)', f'CPU ({100-cov}%)'],
-            colors=[PASS, '#95a5a6'], autopct='%1.0f%%', startangle=90)
-axes[0].set_title('GPU Coverage')
-
-# GPU metrics
-metrics = ['Max speedup\nvs Python', 'Crossover\nlatency (ms)', 'Dispatch\noverhead (x)']
-vals = [gpu['max_speedup_vs_python'], gpu['gpu_crossover_latency_ms'], 1.04]
-axes[1].bar(metrics, vals, color=[INFO, '#f39c12', PASS])
-axes[1].set_title('GPU Performance Metrics')
-for i, v in enumerate(vals):
-    axes[1].text(i, v + max(vals)*0.02, f'{v}', ha='center', fontweight='bold')
-
-# Multi-GPU parity
-titan = mgpu['titan_v_checks']
-axes[2].bar(['PASS', 'FAIL'],
-            [titan['pass'], titan['total'] - titan['pass']],
-            color=[PASS, FAIL])
-axes[2].set_title(f'Multi-GPU Parity ({titan["pass"]}/{titan["total"]})')
-axes[2].text(0, titan['pass'] + 5, f'{titan["pass"]}',
-             ha='center', fontweight='bold', fontsize=14)
+ax2.bar(labels, test_counts, color=colors)
+ax2.set_ylabel('Test Count')
+ax2.set_title('Tests Available per Mode')
 
 plt.tight_layout()
-plt.show()
-
-print(f"Devices: {', '.join(mgpu['devices_tested'])}")
-print(f"Parity: {mgpu['parity']}")
-```
-
-## guideStone Validation Phases
-
-The guideStone binary validates in 4 phases: bare properties,
-discovery + liveness, domain science parity, and additive NUCLEUS.
-
-```python
-phases = bm['guidestone_phases']
-
-fig, ax = plt.subplots(figsize=(10, 3))
-phase_names = list(phases.keys())
-phase_labels = [
-    'Phase 1: Bare Properties',
-    'Phase 2: Discovery + Liveness',
-    'Phase 3: Domain Parity',
-    'Phase 4: Additive NUCLEUS'
-]
-phase_status = [True, True, True, False]
-colors = [PASS if s else '#f39c12' for s in phase_status]
-
-ax.barh(phase_labels[::-1], [1]*4, color=colors[::-1])
-ax.set_xlim(0, 1.3)
-ax.set_title('guideStone Validation Phases')
-
-for i, (label, desc) in enumerate(zip(phase_labels[::-1],
-                                       list(phases.values())[::-1])):
-    ax.text(1.05, i, desc[:60] + '...' if len(desc) > 60 else desc,
-            va='center', fontsize=7)
-
-plt.tight_layout()
+plt.savefig('/tmp/groundspring_02_three_mode.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Isomorphic Primitives
-
-Six primitives compose all domain architectures — from transformers
-and protein folding to evolutionary computation and spectral analysis.
+## barraCuda Delegation Breakdown
 
 ```python
-prims = bm['isomorphic_primitives']
+mods = bench['barracuda_delegations']['modules']
+mod_names = list(mods.keys())
+cpu_counts = [mods[m]['cpu'] for m in mod_names]
+gpu_counts = [mods[m]['gpu'] for m in mod_names]
 
-fig, ax = plt.subplots(figsize=(10, 3))
-names = [p['primitive'] for p in prims]
-ax.barh(names[::-1], [1]*len(prims), color=INFO)
-for i, p in enumerate(prims[::-1]):
-    ax.text(1.05, i, p['role'], va='center', fontsize=9)
-ax.set_xlim(0, 2.5)
-ax.set_title('Isomorphic Computational Primitives')
+fig, ax = plt.subplots(figsize=(10, 5))
+y = range(len(mod_names))
+ax.barh(y, cpu_counts, color=INFO, label='CPU')
+ax.barh(y, gpu_counts, left=cpu_counts, color=PASS, label='GPU')
+ax.set_yticks(y)
+ax.set_yticklabels(mod_names)
+ax.set_xlabel('Delegations')
+ax.set_title(f'110 barraCuda Delegations (67 CPU + 43 GPU)')
+ax.legend()
+
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_02_delegations.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Summary
+## Validation Summary
 
 | Metric | Value |
 |--------|-------|
-| Rust vs Python geomean | 83.6x (11 domains) |
-| Fastest speedup | 1104x (multi-objective) |
-| CPU↔Python parity | 39/39 PASS (1e-10) |
-| GPU max speedup | 104x (transformer medium) |
-| GPU coverage | ~97% |
-| Dispatch overhead | ≤1.04x (9/10 ops) |
-| Fused pipeline | 46-78x over per-op |
-| Multi-GPU parity | 384/384 bit-identical |
-| guideStone | Level 3 (29/29 bare) |
+| Rust vs Python (overall) | 5.1× faster |
+| Rust vs Python (excl LAPACK) | 11.6× faster |
+| Peak speedup | 49.5× (Almost-Mathieu Sturm) |
+| Three-mode GPU speedup | 2.2× vs default |
+| barraCuda delegations | 110 (67 CPU + 43 GPU) |
+| metalForge checks | 140 across 5 substrates |
 
-**Provenance:** [primals.eco](https://primals.eco) |
-neuralSpring Session S188 | May 2026
+**Provenance**: All benchmarks from `groundSpring V143 (May 16, 2026)).
+See [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco.
 

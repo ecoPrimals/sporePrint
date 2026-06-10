@@ -1,5 +1,5 @@
 +++
-title = "03 — Ecosystem Evidence"
+title = "Ecosystem Evidence — groundSpring"
 description = "Rendered from 03-ecosystem-evidence.ipynb"
 date = 2026-06-10
 weight = 50
@@ -11,202 +11,136 @@ rendered_from = "03-ecosystem-evidence.ipynb"
 
 <!-- Auto-generated from 03-ecosystem-evidence.ipynb by spore-validate render-notebooks -->
 
-# 03 — Ecosystem Evidence
+# Ecosystem Evidence — groundSpring
 
-**neuralSpring sporePrint** | Session S188 | May 2026
+35 experiments across 10 scientific domains, each proving that Python
+baselines can be faithfully ported to sovereign Rust+GPU compute.
+This notebook visualizes the experiment catalog, domain distribution,
+gap resolution timeline, and security posture.
 
-134 experiments across 11 domains, gap resolution timeline,
-and security posture evolution.
+**Data sources**: `experiments/results/experiment_catalog.json`, `security_gaps.json`
 
-**Data sources:** `experiment-catalog.json`, `gap-status.json`, `security-posture.json`
+---
 
-**For other springs:** Replace experiment catalog and gap data with your
-own. Security posture structure is shared across all springs.
+*For other springs*: Replace with your experiment catalog and gap registry.
+The domain breakdown and gap resolution pattern adapts to any spring.
 
 ```python
 import json
-from pathlib import Path
+import matplotlib
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+from pathlib import Path
 
 RESULTS = Path('..') / 'experiments' / 'results'
-
-with open(RESULTS / 'experiment-catalog.json') as f:
-    ec = json.load(f)
-
-with open(RESULTS / 'gap-status.json') as f:
-    gs = json.load(f)
-
-with open(RESULTS / 'security-posture.json') as f:
-    sp = json.load(f)
-
 PASS = '#2ecc71'
 FAIL = '#e74c3c'
 INFO = '#3498db'
+WARN = '#f39c12'
 
-print(f"neuralSpring — {ec['total_experiments']} experiments, {len(ec['domains'])} domains")
+def load(name):
+    with open(RESULTS / name) as f:
+        return json.load(f)
+
+catalog = load('experiment_catalog.json')
+gaps = load('security_gaps.json')
+
+print(f"Total experiments: {catalog['total_experiments']}")
+print(f"Validation checks: {catalog['total_validation_checks']} ({catalog['core_checks']} core + {catalog['nucleus_checks']} NUCLEUS)")
+print(f"Math parity: {catalog['math_parity_proven']}")
+print(f"Domains: {len(catalog['domains'])}")
+print(f"Gaps: {gaps['gaps']['active']}/{gaps['gaps']['total']} active, {gaps['gaps']['resolved']} resolved")
 ```
 
-## Experiment Timeline
-
-134 experiments organized into 8 milestone bands, from foundation
-Python baselines through guideStone Level 3 maturity.
+## Experiment Distribution by Domain
 
 ```python
-milestones = ec['milestone_experiments']
+domains = catalog['domains']
+domain_names = list(domains.keys())
+domain_counts = [domains[d]['count'] for d in domain_names]
+domain_labels = [d.replace('_', ' ').title() for d in domain_names]
 
-fig, ax = plt.subplots(figsize=(12, 5))
-labels = [m['id'] for m in milestones]
-scopes = [m['scope'] for m in milestones]
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
-# Extract approximate experiment counts from ranges
-counts = [10, 17, 23, 30, 20, 20, 10, 4]
-colors_list = [INFO, PASS, '#f39c12', '#9b59b6', '#e67e22', '#1abc9c', '#34495e', PASS]
+colors = plt.cm.Set3([i / len(domain_names) for i in range(len(domain_names))])
+wedges, texts, autotexts = ax1.pie(domain_counts, labels=domain_labels,
+    autopct='%1.0f%%', colors=colors, startangle=90)
+ax1.set_title(f'{catalog["total_experiments"]} Experiments Across {len(domains)} Domains')
 
-bars = ax.barh(labels[::-1], counts[::-1], color=colors_list[::-1])
-ax.set_xlabel('Experiments')
-ax.set_title(f'Experiment Timeline ({ec["total_experiments"]} total)')
-
-for i, (bar, scope) in enumerate(zip(bars, scopes[::-1])):
-    ax.text(bar.get_width() + 0.5, bar.get_y() + bar.get_height()/2,
-            scope[:50], va='center', fontsize=8)
+ax2.barh(domain_labels[::-1], domain_counts[::-1], color=INFO)
+ax2.set_xlabel('Experiment Count')
+ax2.set_title('Experiments per Domain')
 
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_03_domains.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Faculty Contributions
-
-27 peer-reviewed papers across 6 faculties provide the scientific
-foundation for neuralSpring's validation chain.
+## Rust vs Python Parity Across All Experiments
 
 ```python
-faculties = ec['faculties']
+exps = catalog['experiments']
+has_speedup = [e for e in exps if e.get('speedup') and 'x' in str(e['speedup'])]
+names = [f"{e['id']}: {e['title'][:25]}" for e in has_speedup]
+speeds = [float(str(e['speedup']).replace('x', '')) for e in has_speedup]
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-# Papers per faculty
-fnames = [f['name'] for f in faculties]
-fpapers = [len(f['papers']) for f in faculties]
-axes[0].barh(fnames[::-1], fpapers[::-1], color=INFO)
-axes[0].set_xlabel('Papers')
-axes[0].set_title('Papers per Faculty')
-for i, (bar_val, f) in enumerate(zip(fpapers[::-1], faculties[::-1])):
-    axes[0].text(bar_val + 0.1, i, f['institution'], va='center', fontsize=8)
-
-# Checks per faculty
-fchecks = [f['checks'] for f in faculties]
-axes[1].barh(fnames[::-1], fchecks[::-1], color=PASS)
-axes[1].set_xlabel('Validation Checks')
-axes[1].set_title('Checks per Faculty')
-for i, v in enumerate(fchecks[::-1]):
-    axes[1].text(v + 0.5, i, str(v), va='center', fontweight='bold')
+fig, ax = plt.subplots(figsize=(12, 8))
+colors = [PASS if s >= 10 else INFO if s >= 5 else '#95a5a6' for s in speeds]
+ax.barh(names[::-1], speeds[::-1], color=colors[::-1])
+ax.axvline(x=1.0, color=FAIL, linestyle='--', alpha=0.5, label='Python baseline')
+ax.set_xlabel('Speedup (×)')
+ax.set_title(f'Rust vs Python: {len(has_speedup)} Experiments with Measured Speedups')
+ax.legend()
 
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_03_parity.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Gap Resolution
-
-14 main gaps tracked in `PRIMAL_GAPS.md`, with 13 historically resolved
-gaps in the appendix and 5 composition evolution items implemented.
+## Gap Resolution & Security Posture
 
 ```python
-summary = gs['summary']
-
-status_counts = {
-    'resolved': summary['resolved_main'],
-    'implemented': summary['implemented'],
-    'wip': summary['wip'],
-    'open': summary['open'],
-    'deferred': summary['deferred'],
-    'tracking': summary['tracking'],
-    'explored': summary['explored'],
-    'partial': summary['partial']
-}
-
-status_colors = {
-    'resolved': PASS, 'implemented': PASS,
-    'wip': '#f39c12', 'open': FAIL,
-    'deferred': '#95a5a6', 'tracking': INFO,
-    'explored': '#9b59b6', 'partial': '#e67e22'
-}
-
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-
-# Main gaps by status
-labels = list(status_counts.keys())
-vals = list(status_counts.values())
-cols = [status_colors[s] for s in labels]
-axes[0].bar(labels, vals, color=cols)
-axes[0].set_title(f'Main Gaps by Status ({summary["total_main_gaps"]} total)')
-axes[0].tick_params(axis='x', rotation=45)
-for i, v in enumerate(vals):
-    if v > 0:
-        axes[0].text(i, v + 0.1, str(v), ha='center', fontweight='bold')
-
-# Historical resolution
-hist = ['Resolved (appendix)', 'Composition evolution', 'Main resolved']
-hist_vals = [summary['resolved_appendix'], summary['composition_evolution'], summary['resolved_main']]
-axes[1].bar(hist, hist_vals, color=[PASS, '#1abc9c', PASS])
-axes[1].set_title('Resolved Gap History')
-for i, v in enumerate(hist_vals):
-    axes[1].text(i, v + 0.2, str(v), ha='center', fontweight='bold')
-
-plt.tight_layout()
-plt.show()
-```
-
-## Security Posture Timeline
-
-The security posture has evolved from basic Rust safety through
-BTSP mandatory encryption and BLAKE3 checksum verification.
-
-```python
-security_milestones = [
-    ('forbid(unsafe_code)', True),
-    ('cargo-deny enforcement', True),
-    ('Zero #[allow()]', True),
-    ('BLAKE3 checksums (15 files)', True),
-    ('BTSP 13/13 default', True),
-    ('Stadial deny bans (8 crates)', True),
-    ('SPDX headers (all .rs)', True),
-    ('Pure Rust supply chain', True),
-    ('BTSP session establishment', False),
-    ('Level 4 NUCLEUS certified', False)
+gap_data = gaps['gaps']
+labels = ['Resolved', 'Active (low)', 'Blocked upstream']
+counts = [
+    gap_data['resolved'],
+    gap_data['active'] - gap_data['blocked_upstream'],
+    gap_data['blocked_upstream']
 ]
+colors_g = [PASS, WARN, '#95a5a6']
 
-fig, ax = plt.subplots(figsize=(10, 4))
-names = [m[0] for m in security_milestones]
-colors = [PASS if m[1] else FAIL for m in security_milestones]
-ax.barh(names[::-1], [1]*len(names), color=colors[::-1])
-ax.set_xlim(0, 1.3)
-ax.set_title('Security Posture Evolution')
+sec = gaps['security_posture']
+sec_labels = ['unsafe blocks', 'allow attrs', 'TODO/FIXME', 'prod mocks', 'hardcoded addrs', 'sys crates']
+sec_values = [sec['unsafe_blocks'], sec['allow_attributes'], sec['todo_fixme'],
+              sec['production_mocks'], sec['hardcoded_addresses'], sec['direct_sys_crates']]
 
-legend_elements = [
-    mpatches.Patch(color=PASS, label='Complete'),
-    mpatches.Patch(color=FAIL, label='Pending')
-]
-ax.legend(handles=legend_elements, loc='lower right')
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+ax1.bar(labels, counts, color=colors_g)
+ax1.set_title(f'Gap Registry: {gap_data["total"]} Total')
+ax1.set_ylabel('Count')
+
+bar_colors = [PASS if v == 0 else FAIL for v in sec_values]
+ax2.barh(sec_labels, sec_values, color=bar_colors)
+ax2.set_title('Security Posture — All Zero')
+ax2.set_xlabel('Count')
+ax2.set_xlim(-0.5, 1)
 
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_03_gaps.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Summary
+## Validation Summary
 
 | Metric | Value |
 |--------|-------|
-| Experiments | 134 across 11 domains |
-| Papers reproduced | 27 (6 faculties) |
-| Main gaps | 14 (2 resolved, 2 wip, 5 open) |
-| Resolved gaps (appendix) | 13 |
-| Composition evolution | 5 implemented |
-| BTSP | 13/13 mandatory |
-| Unsafe code | 0 (forbid workspace-wide) |
-| Supply chain | Pure Rust |
-| BLAKE3 checksums | 15 files |
+| Experiments | 35 across 10 domains |
+| Validation checks | 395/395 (340 core + 55 NUCLEUS) |
+| Math parity | 29/29 proven |
+| Gaps | 4 resolved, 5 active (low), 2 blocked upstream |
+| Security | Zero unsafe, zero mocks, zero hardcoded addresses |
+| Tolerance tiers | 13 library + 5 epsilon + 25 validation-specific |
 
-**Provenance:** [primals.eco](https://primals.eco) |
-neuralSpring Session S188 | May 2026
+**Provenance**: All data from `groundSpring V143 (May 16, 2026)).
+See [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco.
 

@@ -1,5 +1,5 @@
 +++
-title = "01 — Composition Validation"
+title = "Composition Validation — groundSpring"
 description = "Rendered from 01-composition-validation.ipynb"
 date = 2026-06-10
 weight = 50
@@ -11,175 +11,133 @@ rendered_from = "01-composition-validation.ipynb"
 
 <!-- Auto-generated from 01-composition-validation.ipynb by spore-validate render-notebooks -->
 
-# 01 — Composition Validation
+# Composition Validation — groundSpring
 
-**neuralSpring sporePrint** | Session S188 | May 2026
+groundSpring validates measurement noise characterization across 12 scientific
+domains. This notebook examines the NUCLEUS composition: 7 deploy graphs,
+20 IPC methods, guideStone Level 4, and the verb reconciliation
+that aligned all graph definitions to actual IPC contracts.
 
-Deploy graph structure, bond types, capability profiles, and discovery tiers.
+**Data sources**: `experiments/results/composition_validation.json`, `test_suite_report.json`
 
-**Data sources:** `validation-state.json`, `cross-spring-matrix.json`
+**Reproduce**: `cargo run --bin groundspring_unibin -- certify`
 
-**For other springs:** Replace capability lists with your spring's niche surface.
-Replace deploy graph node counts and fragment lists with your own
-`graphs/<spring>_deploy.toml` data.
+---
+
+*For other springs*: Replace `composition_validation.json` with your own deploy
+graph analysis. The cell structure (title → load → charts → summary) stays the same.
 
 ```python
 import json
-from pathlib import Path
+import matplotlib
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+import matplotlib.ticker as ticker
+from pathlib import Path
 
 RESULTS = Path('..') / 'experiments' / 'results'
-
-with open(RESULTS / 'validation-state.json') as f:
-    vs = json.load(f)
-
-with open(RESULTS / 'cross-spring-matrix.json') as f:
-    cs = json.load(f)
-
-print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
-```
-
-## Capability Surface
-
-neuralSpring advertises 30 capabilities across 9 domains.
-All are registered in `niche.rs`, `config.rs`, `capability_registry.toml`,
-and MCP tool definitions.
-
-```python
-caps = vs['capabilities']
-domains = {k: v for k, v in caps.items() if k != 'total'}
-
 PASS = '#2ecc71'
+FAIL = '#e74c3c'
 INFO = '#3498db'
+WARN = '#f39c12'
 
-fig, ax = plt.subplots(figsize=(10, 5))
-bars = ax.barh(list(domains.keys()), list(domains.values()), color=INFO)
-ax.set_xlabel('Capabilities')
-ax.set_title(f'neuralSpring Capability Surface ({caps["total"]} total)')
-for bar, val in zip(bars, domains.values()):
-    ax.text(bar.get_width() + 0.2, bar.get_y() + bar.get_height()/2,
-            str(val), va='center', fontweight='bold')
-plt.tight_layout()
-plt.show()
+def load(name):
+    with open(RESULTS / name) as f:
+        return json.load(f)
+
+comp = load('composition_validation.json')
+tests = load('test_suite_report.json')
+
+print(f"groundSpring {comp['version']} — guideStone Level {comp['guidestone_level']}")
+print(f"Deploy graphs: {comp['graphs']['count']} ({comp['graphs']['total_nodes']} nodes)")
+print(f"Capabilities provided: {comp['capabilities_provided']['count']}")
+print(f"Capabilities consumed: {comp['capabilities_consumed']['count']}")
+print(f"Tests: {tests['total_tests']} passed, {tests['total_failed']} failed")
 ```
 
-## Deploy Graph Structure
-
-The deploy graph (`neuralspring_deploy.toml`) defines 14 nodes across
-3 fragments: `tower_atomic`, `node_atomic`, `meta_tier`.
+## Deploy Graphs & Capabilities
 
 ```python
-dg = vs['deploy_graph']
-proto = cs['proto_nucleate']
+fig, axes = plt.subplots(1, 3, figsize=(16, 5))
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+# Panel 1: Deploy graphs
+graph_names = [g.replace('groundspring_', '') for g in comp['graphs']['names']]
+colors = [PASS] * len(graph_names)
+axes[0].barh(graph_names, [1] * len(graph_names), color=colors)
+axes[0].set_title(f"{comp['graphs']['count']} Deploy Graphs — ALL VALID")
+axes[0].set_xlim(0, 1.2)
+axes[0].set_xlabel('Validated')
 
-# Deploy graph summary
-labels = ['Nodes', 'Capabilities', 'Fragments']
-values = [dg['nodes'], dg['capabilities_provided'], len(dg['fragments'])]
-colors = [INFO, PASS, '#9b59b6']
-axes[0].bar(labels, values, color=colors)
-axes[0].set_title('Deploy Graph')
-for i, v in enumerate(values):
-    axes[0].text(i, v + 0.3, str(v), ha='center', fontweight='bold')
+# Panel 2: Capabilities provided (grouped by prefix)
+caps = comp['capabilities_provided']['names']
+cap_short = [c.replace('measurement.', '') for c in caps]
+axes[1].barh(cap_short, range(len(cap_short), 0, -1), color=INFO)
+axes[1].set_title(f"{len(caps)} Measurement Capabilities")
+axes[1].set_xlabel('Index')
 
-# Proto-nucleate dependencies
-deps = proto['depends_on']
-axes[1].barh(deps, [1]*len(deps), color=PASS)
-axes[1].set_title(f'Proto-Nucleate depends_on ({len(deps)} primals)')
-axes[1].set_xlim(0, 1.5)
-axes[1].set_xlabel('Required')
+# Panel 3: guideStone properties
+gs = comp['guidestone']
+bare = gs['bare_properties']
+nucleus = gs['nucleus_additive_checks']
+labels = [p.replace('_', ' ').title() for p in bare] + [c.replace('_', ' ').title() for c in nucleus]
+colors_gs = [PASS] * len(bare) + [WARN] * len(nucleus)
+axes[2].barh(labels, [1] * len(labels), color=colors_gs)
+axes[2].set_title(f"guideStone L{gs['level']}: {len(bare)} Bare + {len(nucleus)} NUCLEUS")
+axes[2].set_xlim(0, 1.2)
 
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_01_composition.png', dpi=150, bbox_inches='tight')
 plt.show()
-
-print(f"Bond type: {dg['bond_type']}")
-print(f"Trust model: {dg['trust_model']}")
-print(f"Fragments: {', '.join(dg['fragments'])}")
 ```
 
-## Discovery Tiers
+## Deploy Graph Verb Reconciliation
 
-The validation chain progresses through 5 tiers, from Python baseline
-through guideStone certification.
+V124 fixed 4 verb mismatches between deploy graphs and actual IPC contracts.
+Springs should validate that every `capability` field in their TOML graphs
+corresponds to an actual method in their dispatch table.
 
 ```python
-gs = vs['guidestone']
-
-tiers = [
-    ('Tier 1: Python baseline', 397, 'complete'),
-    ('Tier 2: Rust CPU proof', vs['tests']['total_workspace'], 'complete'),
-    ('Tier 3: GPU/WGSL parity', vs['tests']['rust_gpu_checks'], 'complete'),
-    ('Tier 4: Primal IPC', 6, 'wip'),
-    ('Tier 5: guideStone', 29, f"Level {gs['level']}")
-]
-
-fig, ax = plt.subplots(figsize=(10, 4))
-tier_names = [t[0] for t in tiers]
-tier_checks = [t[1] for t in tiers]
-tier_colors = [PASS if t[2] == 'complete' else '#f39c12' for t in tiers]
-
-bars = ax.barh(tier_names, tier_checks, color=tier_colors)
-ax.set_xlabel('Validation Checks')
-ax.set_title('Validation Discovery Tiers')
-ax.set_xscale('log')
-
-legend_elements = [
-    mpatches.Patch(color=PASS, label='Complete'),
-    mpatches.Patch(color='#f39c12', label='WIP / Partial')
-]
-ax.legend(handles=legend_elements, loc='lower right')
-
-plt.tight_layout()
-plt.show()
+fixes = comp['deploy_graph_verbs_reconciled']['fixes']
+print(f"Verb fixes applied: {len(fixes)}")
+print()
+for fix in fixes:
+    print(f"  {fix['old']:35s} → {fix['new']}")
 ```
 
-## guideStone Readiness
-
-neuralSpring's guideStone is at **Level 3** — bare ALL PASS (29/29 checks,
-P1-P5 certified). Levels 4-5 pending live NUCLEUS deployment.
+## Test Suite by Module
 
 ```python
-levels = [
-    ('L1: Validation exists', True),
-    ('L2: Properties documented', True),
-    ('L3: Bare guideStone (29/29)', True),
-    ('L4: NUCLEUS guideStone', False),
-    ('L5: Certified (cross-substrate)', False)
-]
+modules = tests['modules']
+sorted_mods = sorted(modules.items(), key=lambda x: x[1], reverse=True)[:15]
+names = [m[0] for m in sorted_mods]
+counts = [m[1] for m in sorted_mods]
 
-fig, ax = plt.subplots(figsize=(8, 3))
-colors = [PASS if done else '#e74c3c' for _, done in levels]
-ax.barh([l[0] for l in levels], [1]*len(levels), color=colors)
-ax.set_xlim(0, 1.2)
-ax.set_title(f'guideStone Readiness — Level {gs["level"]}')
-
-legend_elements = [
-    mpatches.Patch(color=PASS, label='DONE'),
-    mpatches.Patch(color='#e74c3c', label='PENDING')
-]
-ax.legend(handles=legend_elements)
+fig, ax = plt.subplots(figsize=(10, 6))
+bars = ax.barh(names[::-1], counts[::-1], color=INFO)
+ax.set_xlabel('Test Count')
+ax.set_title(f'Top 15 Modules by Test Count (total: {tests["total_tests"]})')
+for bar, count in zip(bars, counts[::-1]):
+    ax.text(bar.get_width() + 1, bar.get_y() + bar.get_height()/2,
+            str(count), va='center', fontsize=9)
 
 plt.tight_layout()
+plt.savefig('/tmp/groundspring_01_tests.png', dpi=150, bbox_inches='tight')
 plt.show()
-
-print(f"Properties certified: {', '.join(gs['properties_certified'])}")
 ```
 
-## Summary
+## Validation Summary
 
 | Metric | Value |
 |--------|-------|
-| Capabilities | 30 (9 domains) |
-| Deploy graph nodes | 14 |
-| Bond type | Metallic |
-| Trust model | InternalNucleus |
-| Proto-nucleate deps | 6 primals |
-| Validation capabilities | 7 |
-| guideStone level | 3 (29/29 bare) |
-| Properties certified | P1-P5 |
+| Deploy graphs | 7 validated (incl. nest_sync) |
+| Capabilities provided | 20 IPC methods + 3 signals |
+| Capabilities consumed | 14 (7 primals) |
+| Validation scenarios | 11 (9 Tier 1, 2 Tier 2) |
+| guideStone Level | 4 (IPC-first, Tier 4) |
+| Verb mismatches fixed | 4 (all reconciled) |
+| Tests | 1,123 passed, 0 failed |
+| Clippy warnings | 0 (pedantic + nursery) |
+| Unsafe blocks | 0 (`#![forbid(unsafe_code)]`) |
 
-**Provenance:** [primals.eco](https://primals.eco) |
-neuralSpring Session S188 | May 2026
+**Provenance**: All data from groundSpring V146 (May 25, 2026).
+See [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco.
 
