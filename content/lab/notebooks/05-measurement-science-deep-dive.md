@@ -1,7 +1,7 @@
 +++
 title = "Measurement Science Deep Dive — groundSpring"
 description = "Rendered from 05-measurement-science-deep-dive.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

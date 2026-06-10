@@ -1,7 +1,7 @@
 +++
 title = "Paper 016 — HMM Forward / Backward / Viterbi for Genomic Inference"
 description = "Rendered from paper-016-hmm-phylo.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

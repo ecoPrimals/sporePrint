@@ -1,7 +1,7 @@
 +++
 title = "Benchmark Comparison — hotSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

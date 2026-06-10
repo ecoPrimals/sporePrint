@@ -1,7 +1,7 @@
 +++
 title = "Composition Validation — hotSpring"
 description = "Rendered from 01-composition-validation.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

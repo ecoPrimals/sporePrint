@@ -1,7 +1,7 @@
 +++
 title = "Paper 015 — Heterogeneous Swarm Robotics"
 description = "Rendered from paper-015-swarm-robotics.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

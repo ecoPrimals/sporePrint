@@ -1,7 +1,7 @@
 +++
 title = "FAO-56 Penman-Monteith Reference Evapotranspiration (ET₀)"
 description = "Rendered from 001-fao56-penman-monteith.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

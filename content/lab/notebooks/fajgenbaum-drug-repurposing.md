@@ -1,7 +1,7 @@
 +++
 title = "Drug Repurposing & Knowledge Graphs — Fajgenbaum Lab (Track 3)"
 description = "Rendered from fajgenbaum-drug-repurposing.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

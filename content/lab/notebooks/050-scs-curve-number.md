@@ -1,7 +1,7 @@
 +++
 title = "SCS Curve Number Runoff Method (USDA 1972)"
 description = "Rendered from 050-scs-curve-number.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

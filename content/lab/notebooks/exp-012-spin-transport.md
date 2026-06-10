@@ -1,7 +1,7 @@
 +++
 title = "Experiment 012 — Spin Chain Transport"
 description = "Rendered from exp-012-spin-transport.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]

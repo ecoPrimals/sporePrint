@@ -1,7 +1,7 @@
 +++
 title = "Paper 011 — Counterdiabatic Driving of Evolution"
 description = "Rendered from paper-011-counterdiabatic-evolution.ipynb"
-date = 2026-06-09
+date = 2026-06-10
 weight = 50
 
 [extra]
