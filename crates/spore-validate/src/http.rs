@@ -137,6 +137,24 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
 
     let body = response[header_end + 4..].to_vec();
 
+    let content_length = headers.lines().find_map(|line| {
+        let lower = line.to_ascii_lowercase();
+        if lower.starts_with("content-length:") {
+            line[15..].trim().parse::<usize>().ok()
+        } else {
+            None
+        }
+    });
+
+    if let Some(expected) = content_length {
+        if body.len() < expected {
+            return Err(Error::Git(format!(
+                "truncated response: got {} bytes, expected {expected}",
+                body.len()
+            )));
+        }
+    }
+
     Ok((status, headers.to_string(), body))
 }
 
@@ -310,5 +328,16 @@ mod tests {
         assert!(result.is_err());
         let msg = result.unwrap_err().to_string();
         assert!(msg.contains("TCP connect") || msg.contains("failed"), "{msg}");
+    }
+
+    #[test]
+    fn get_body_fails_on_unresolvable_host() {
+        let result = get_body("http://this-host-does-not-exist.invalid/file.tar.gz");
+        assert!(result.is_err());
+        let msg = result.unwrap_err().to_string();
+        assert!(
+            msg.contains("DNS resolve") || msg.contains("failed"),
+            "{msg}"
+        );
     }
 }

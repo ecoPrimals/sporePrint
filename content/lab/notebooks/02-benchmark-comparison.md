@@ -1,5 +1,5 @@
 +++
-title = "Benchmark Comparison — hotSpring"
+title = "Benchmark Comparison — wetSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
 date = 2026-06-12
 weight = 50
@@ -11,28 +11,26 @@ rendered_from = "02-benchmark-comparison.ipynb"
 
 <!-- Auto-generated from 02-benchmark-comparison.ipynb by spore-validate render-notebooks -->
 
-# Benchmark Comparison — hotSpring
+# Benchmark Comparison — wetSpring
 
-hotSpring's three-tier validation architecture (Python → Rust → NUCLEUS) produces
-direct performance comparisons at every tier. This notebook visualizes Rust vs Python
-speedups, GPU vs CPU acceleration, and the DF64 emulated double-precision breakthrough.
+wetSpring validates computational correctness across 23 scientific domains,
+each with Python baseline timing and Rust implementation. This notebook
+visualizes the 23-domain benchmark, the full 16S pipeline comparison
+(Rust vs Galaxy/QIIME2), and energy efficiency estimates.
 
-**Data sources:** `benchmark_timing.json`
+**Data sources**: `experiments/results/benchmark_timing.json`
 
-**Reproduce:** Individual benchmarks via `cargo bench` or `cargo run --release --bin <benchmark>`
+**Reproduce**: `wetspring validate --scenario 23_domain_timing` in the wetSpring repository.
 
 ---
 
-*For other springs:* Replace physics benchmarks with your domain. The Rust vs Python
-comparison pattern applies to any spring that migrated from scripting to compiled Rust.
+*For other springs: replace the domain list with your own benchmark data.
+Keep the Rust vs Python comparison pattern — it demonstrates the value
+of primal composition over script-based pipelines.*
 
 ```python
-import json
+import os, json, struct, socket, time
 from pathlib import Path
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import numpy as np
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
@@ -40,149 +38,198 @@ def load(name):
     with open(RESULTS / name) as f:
         return json.load(f)
 
+TIER = 'frozen'
+IPC_SOCKET = os.environ.get('WETSPRING_IPC_SOCKET')
+
+def ipc_call(method, params=None):
+    """JSON-RPC call to barracuda IPC — active in Tier 2."""
+    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    sock.connect(IPC_SOCKET)
+    req = json.dumps({'jsonrpc': '2.0', 'method': method, 'params': params or {}, 'id': 1})
+    payload = req.encode()
+    sock.sendall(struct.pack('<I', len(payload)) + payload)
+    length = struct.unpack('<I', sock.recv(4))[0]
+    data = sock.recv(length)
+    sock.close()
+    return json.loads(data)['result']
+
+if IPC_SOCKET and os.path.exists(IPC_SOCKET):
+    try:
+        ipc_call('health.check')
+        TIER = 'live_ipc'
+        print(f'Tier 2 ACTIVE — live IPC via {IPC_SOCKET}')
+    except Exception:
+        print('Tier 2 socket found but not responding — using frozen data')
+else:
+    print(f'Tier 1 — frozen data (no IPC socket)')
+
 bench = load('benchmark_timing.json')
-
-print(f"Hardware: {bench['hardware']['cpu']}, {bench['hardware']['gpu_primary']}")
-print(f"Clean build: {bench['compilation']['clean_build_release_s']}s")
-print(f"Test suite: {bench['test_suite_timing']['total_s']}s")
-print(f"Total science cost: {bench['cost_estimate']['total_science_cost']}")
+print(f'Hardware: {bench["hardware"]["cpu"]}, {bench["hardware"]["gpu"]}')
+print(f'Domains benchmarked: {len(bench["domain_benchmark_23"]["domains"])}')
+print(f'Total Python time: {bench["domain_benchmark_23"]["total_us"]:.0f} µs')
 ```
 
-## Rust vs Python — Direct Paper Reproduction Comparisons
+## 23-Domain Python Baseline Timing
 
-Every published paper reproduction in hotSpring was first implemented in Python
-(Phase A baselines), then in Rust (Phase B-E), producing direct timing comparisons
-on identical algorithms and datasets.
+Each domain represents a distinct scientific algorithm implemented in both
+Python (baseline) and Rust (barracuda). The Python times establish the
+reference point; Rust times are measured via validation binaries.
 
 ```python
-C_RUST = '#1abc9c'
-C_PYTHON = '#f39c12'
-C_GPU = '#9b59b6'
-C_PASS = '#2ecc71'
-C_INFO = '#3498db'
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
-rvp = bench['rust_vs_python']
-comparisons = {k: v for k, v in rvp.items() if k != 'note'}
+domains = bench['domain_benchmark_23']['domains']
+d_keys = sorted(domains.keys())
+d_labels = [domains[k]['label'] for k in d_keys]
+d_times = [domains[k]['python_us'] for k in d_keys]
+d_cats = [domains[k]['category'] for k in d_keys]
 
-names = [k.replace('_', ' ').title() for k in comparisons]
-rust_ms = [comparisons[k]['rust_ms'] for k in comparisons]
-python_ms = [comparisons[k]['python_ms'] for k in comparisons]
-speedups = [comparisons[k]['speedup'] for k in comparisons]
+cat_colors = {
+    'ecology': '#2ecc71', 'bioinformatics': '#3498db',
+    'chemistry': '#e74c3c', 'integrated': '#f39c12'
+}
+colors = [cat_colors.get(c, '#95a5a6') for c in d_cats]
 
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+fig, ax = plt.subplots(figsize=(14, 8))
+bars = ax.barh(range(len(d_labels)), [np.log10(max(t, 1)) for t in d_times], color=colors)
+ax.set_yticks(range(len(d_labels)))
+ax.set_yticklabels(d_labels, fontsize=8)
+ax.set_xlabel('log10(Python µs)')
+ax.set_title(f'23-Domain Python Baseline — {bench["domain_benchmark_23"]["total_us"]:.0f} µs total')
 
-x = np.arange(len(names))
-w = 0.35
-axes[0].bar(x - w/2, python_ms, w, label='Python', color=C_PYTHON)
-axes[0].bar(x + w/2, rust_ms, w, label='Rust', color=C_RUST)
-axes[0].set_yscale('log')
-axes[0].set_ylabel('Time (ms, log scale)')
-axes[0].set_xticks(x)
-axes[0].set_xticklabels(names, rotation=25, ha='right', fontsize=8)
-axes[0].legend()
-axes[0].set_title('Python vs Rust — Absolute Timing')
+for bar, val in zip(bars, d_times):
+    if val > 1000:
+        label = f'{val/1000:.0f} ms'
+    else:
+        label = f'{val:.1f} µs'
+    ax.text(bar.get_width() + 0.05, bar.get_y() + bar.get_height()/2,
+            label, va='center', fontsize=7)
 
-speedup_vals = [float(s.replace('x', '')) for s in speedups]
-bars = axes[1].bar(names, speedup_vals, color=C_PASS)
-for bar, s in zip(bars, speedups):
-    axes[1].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 20,
-                 s, ha='center', fontsize=9, fontweight='bold')
-axes[1].set_ylabel('Speedup (x)')
-axes[1].set_xticklabels(names, rotation=25, ha='right', fontsize=8)
-axes[1].set_title('Rust Speedup over Python')
+from matplotlib.patches import Patch
+legend_elements = [Patch(facecolor=c, label=n.title()) for n, c in cat_colors.items()]
+ax.legend(handles=legend_elements, loc='lower right', fontsize=9)
 
-fig.suptitle('Three-Tier Validation: Python Baselines → Rust Parity', fontsize=13, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_02_rust_vs_python.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/wetspring_02_domains.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## GPU vs CPU — Physics Domain Benchmarks
+## Rust vs Python Speedup
 
-Consumer GPU hardware (RTX 4070) delivers 40-70x acceleration over CPU for
-physics-heavy workloads. The key enabler is DF64 (emulated double precision
-on FP32 cores), which delivers 3.24 TFLOPS — 5.6x over native FP64.
+Key domains where Rust measurements are available show consistent
+speedups from 2.6x (BLAKE3 hash) to 41x (Smith-Waterman alignment).
 
 ```python
-domain = bench['domain_benchmarks']
-gpu_benchmarks = {}
-for k, v in domain.items():
-    if 'gpu_ms' in v and 'cpu_ms' in v:
-        gpu_benchmarks[k] = v
+rvp = bench['rust_vs_python_estimates']
+compare_keys = [k for k in rvp if k != 'note']
+labels = [k.replace('_', ' ').title() for k in compare_keys]
+speedups = [float(rvp[k]['speedup'].replace('x', '')) for k in compare_keys]
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
-gb_names = [k.replace('_', ' ').title() for k in gpu_benchmarks]
-gb_gpu = [gpu_benchmarks[k]['gpu_ms'] for k in gpu_benchmarks]
-gb_cpu = [gpu_benchmarks[k]['cpu_ms'] for k in gpu_benchmarks]
-gb_speedup = [gpu_benchmarks[k]['speedup'] for k in gpu_benchmarks]
+# Speedup bars
+ax = axes[0]
+bars = ax.barh(labels, speedups, color='#3498db')
+ax.set_xlabel('Speedup (x)')
+ax.set_title('Rust vs Python — Key Domains')
+for bar, val in zip(bars, speedups):
+    ax.text(bar.get_width() + 0.3, bar.get_y() + bar.get_height()/2,
+            f'{val:.0f}x', va='center', fontsize=10, fontweight='bold')
 
-x = np.arange(len(gb_names))
-w = 0.35
-axes[0].bar(x - w/2, gb_cpu, w, label='CPU', color='#95a5a6')
-axes[0].bar(x + w/2, gb_gpu, w, label='GPU (RTX 4070)', color=C_GPU)
-axes[0].set_yscale('log')
-axes[0].set_ylabel('Time (ms, log scale)')
-axes[0].set_xticks(x)
-axes[0].set_xticklabels(gb_names, rotation=25, ha='right', fontsize=8)
-axes[0].legend()
-axes[0].set_title('CPU vs GPU — Physics Workloads')
-
-speedup_vals = [float(s.replace('x', '')) for s in gb_speedup]
-bars = axes[1].bar(gb_names, speedup_vals, color=C_GPU)
-for bar, s in zip(bars, gb_speedup):
-    axes[1].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1,
-                 s, ha='center', fontsize=9, fontweight='bold')
-axes[1].set_ylabel('GPU Speedup (x)')
-axes[1].set_xticklabels(gb_names, rotation=25, ha='right', fontsize=8)
-axes[1].set_title('GPU Acceleration Factor')
-
-fig.suptitle(f'GPU Compute: DF64 delivers {domain["df64_throughput"]["tflops"]} TFLOPS on FP32 cores', fontsize=13, fontweight='bold')
-plt.tight_layout()
-plt.savefig('/tmp/hotspring_02_gpu_vs_cpu.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-## Energy and Cost Efficiency
-
-All 181 experiments ran on consumer hardware for a total science cost of $0.30.
-Rust is 8.8x more energy-efficient than equivalent Python implementations.
-
-```python
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-
+# Energy comparison
 energy = bench['energy_estimate']
-axes[0].bar(['Rust', 'Python\n(equivalent)'],
-            [energy['rust_full_suite_wh'], energy['python_equivalent_estimate_wh']],
-            color=[C_RUST, C_PYTHON])
-axes[0].set_ylabel('Energy (Wh)')
-axes[0].set_title(f'Energy: {energy["ratio"]}')
+ax = axes[1]
+e_labels = ['Rust', 'Python (est.)']
+e_vals = [energy['rust_full_suite_kwh'], energy['python_equivalent_estimate_kwh']]
+e_colors = ['#2ecc71', '#e74c3c']
+bars = ax.bar(e_labels, e_vals, color=e_colors)
+ax.set_ylabel('Energy (kWh)')
+ax.set_title(f'Energy Efficiency — {energy["ratio"]}')
+for bar, val in zip(bars, e_vals):
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.1,
+            f'{val:.2f} kWh', ha='center', va='bottom', fontsize=11)
 
-cost = bench['cost_estimate']
-axes[1].bar(['Total Science\nCost'], [0.30], color=C_PASS, width=0.4)
-axes[1].set_ylabel('USD')
-axes[1].set_title(f'181 experiments, {cost["total_science_cost"]} total')
-axes[1].set_ylim(0, 0.5)
-
-fig.suptitle('Consumer Hardware Science: $0.30 for 181 Experiments', fontsize=13, fontweight='bold')
+plt.suptitle('wetSpring: Rust Primal Composition vs Python Baselines',
+             fontsize=13, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/tmp/hotspring_02_energy.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/wetspring_02_speedup.png', dpi=150, bbox_inches='tight')
 plt.show()
+
+# Tier 2: live benchmark comparison
+if TIER == 'live_ipc':
+    counts = [1, 10, 100, 1000, 10000]
+    t0 = time.perf_counter()
+    result = ipc_call('science.diversity', {'counts': counts})
+    elapsed_us = (time.perf_counter() - t0) * 1e6
+    python_us = bench['rust_vs_python_estimates']['diversity_calc']['python_us']
+    print(f'Tier 2 live: science.diversity took {elapsed_us:.1f} µs '
+          f'(Python baseline: {python_us} µs, speedup: {python_us/elapsed_us:.1f}x)')
+```
+
+## Pipeline Benchmark — Rust vs Galaxy/QIIME2
+
+Full 16S metagenomics pipeline: FASTQ parse → quality filter → DADA2 denoise
+→ chimera detection → taxonomy → diversity. Rust runs the complete pipeline
+locally on CPU; Galaxy uses cloud-optimized DADA2.
+
+```python
+pipe = bench['pipeline_benchmark']
+
+fig, ax = plt.subplots(figsize=(10, 5))
+p_labels = ['Rust CPU\n(local)', 'Galaxy/QIIME2\n(cloud)']
+p_per_sample = [pipe['rust']['per_sample_s'], pipe['galaxy']['per_sample_s']]
+p_energy = [pipe['rust']['energy_kwh'], pipe['galaxy']['energy_kwh']]
+
+x = [0, 1]
+bar1 = ax.bar([i - 0.2 for i in x], p_per_sample, 0.35,
+              label='Per-sample (s)', color='#3498db')
+ax2 = ax.twinx()
+bar2 = ax2.bar([i + 0.2 for i in x], p_energy, 0.35,
+               label='Energy (kWh)', color='#f39c12', alpha=0.7)
+
+ax.set_xticks(x)
+ax.set_xticklabels(p_labels)
+ax.set_ylabel('Per-sample time (s)', color='#3498db')
+ax2.set_ylabel('Energy (kWh)', color='#f39c12')
+ax.set_title(f'16S Pipeline — {pipe["rust"]["samples"]} samples, '
+             f'{pipe["rust"]["total_reads"]:,} reads')
+
+for bar, val in zip(bar1, p_per_sample):
+    ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 10,
+            f'{val:.1f}s', ha='center', fontsize=10)
+for bar, val in zip(bar2, p_energy):
+    ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
+             f'{val:.3f}', ha='center', fontsize=10)
+
+fig.legend(loc='upper right', bbox_to_anchor=(0.95, 0.88))
+plt.tight_layout()
+plt.savefig('/tmp/wetspring_02_pipeline.png', dpi=150, bbox_inches='tight')
+plt.show()
+
+print(f'Note: {pipe["speedup_notes"]}')
 ```
 
 ## Validation Summary
 
 | Benchmark | Result |
 |-----------|--------|
-| Rust vs Python | **44.8x** (SEMF), **2274x** (screening), **283x** (eigenvalue) |
-| GPU vs CPU | **71.8x** (HFB), **54.4x** (HMC), **44.3x** (gradient flow) |
-| DF64 throughput | **3.24 TFLOPS** (5.6x over native FP64) |
-| Total science cost | **$0.30** for 181 experiments |
-| Energy efficiency | **8.8x** more efficient than Python |
+| 23-domain Python baselines | All timed, Rust parity confirmed |
+| Rust vs Python speedup | 2.6x – 41x across key domains |
+| Energy efficiency | 7x more efficient (Rust vs Python equivalent) |
+| 16S pipeline (22 samples) | Rust: 1,565s/sample, Galaxy: 9.6s/sample |
+
+Galaxy's cloud-optimized pipeline wins on small batches; Rust wins on
+large-scale local processing with full chimera detection and provenance.
 
 ---
 
-**Provenance:** All benchmarks from `experiments/results/benchmark_timing.json`.  
-**Hardware:** AMD Ryzen 9 7950X, NVIDIA RTX 4070, Pop!_OS 22.04.  
-**Source:** [hotSpring on GitHub](https://github.com/syntheticChemistry/hotSpring) · [primals.eco](https://primals.eco/lab/springs/hotspring/)
+**Provenance**: Benchmark data frozen from `experiments/results/059_23_domain_benchmark/`
+and `experiments/results/015_pipeline_benchmark/`. BLAKE3 hashes track drift.
+
+**Evolution**: Tier 2 adds live IPC timing to compare against frozen baselines.
+Tier 3 adds provenance-wrapped benchmark sessions.
+
+**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
 
