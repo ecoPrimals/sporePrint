@@ -1,7 +1,7 @@
 +++
 title = "Benchmark Comparison — wetSpring"
 description = "Rendered from 02-benchmark-comparison.ipynb"
-date = 2026-06-11
+date = 2026-06-12
 weight = 50
 
 [extra]
