@@ -50,10 +50,14 @@ pub enum TransportEndpoint {
     MeshRelay { peer_id: String, capability: String },
 }
 
+const TRANSPORT_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(15);
+const TRANSPORT_IO_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(30);
+
 /// Connect to a `NestGate` instance via the specified transport.
 ///
 /// Returns a boxed stream implementing `Read + Write`. The caller never
-/// needs to know the underlying transport mechanism.
+/// needs to know the underlying transport mechanism. All transports use
+/// bounded timeouts to avoid indefinite hangs on WAN links.
 pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWrite>, Error> {
     match endpoint {
         TransportEndpoint::Uds { path } => {
@@ -62,21 +66,23 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
                     "failed to connect to NestGate via UDS at {path}: {e}"
                 ))
             })?;
-            stream
-                .set_read_timeout(Some(std::time::Duration::from_secs(30)))
-                .ok();
+            stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
             Ok(Box::new(stream))
         }
         TransportEndpoint::Tcp { host, port } => {
-            let addr = format!("{host}:{port}");
-            let stream = std::net::TcpStream::connect(&addr).map_err(|e| {
-                Error::Config(format!(
-                    "failed to connect to NestGate via TCP at {addr}: {e}"
-                ))
+            let addr_str = format!("{host}:{port}");
+            let addr: std::net::SocketAddr = addr_str.parse().map_err(|e| {
+                Error::Config(format!("invalid TCP address {addr_str}: {e}"))
             })?;
-            stream
-                .set_read_timeout(Some(std::time::Duration::from_secs(30)))
-                .ok();
+            let stream = std::net::TcpStream::connect_timeout(&addr, TRANSPORT_TIMEOUT)
+                .map_err(|e| {
+                    Error::Config(format!(
+                        "failed to connect to NestGate via TCP at {addr_str}: {e}"
+                    ))
+                })?;
+            stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
             Ok(Box::new(stream))
         }
         TransportEndpoint::MeshRelay { peer_id, capability } => {
