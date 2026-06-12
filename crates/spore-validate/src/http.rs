@@ -10,7 +10,12 @@
 //! hand-rolled POSIX tar reader for extraction. Zero external C dependencies.
 
 use crate::error::Error;
+use std::net::SocketAddr;
 use std::path::Path;
+use std::time::Duration;
+
+const CONNECT_TIMEOUT: Duration = Duration::from_secs(15);
+const IO_TIMEOUT: Duration = Duration::from_secs(30);
 
 /// Perform an HTTP GET with redirect following, returning the response body.
 ///
@@ -69,9 +74,12 @@ pub fn get_body(url: &str) -> Result<Vec<u8>, Error> {
 }
 
 /// Perform a single HTTP GET request, returning (`status_code`, headers, body).
+///
+/// Uses `connect_timeout` to avoid blocking indefinitely on unreachable hosts
+/// (critical for WAN resilience). Both write and read timeouts are set.
 fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
     use std::io::{Read, Write};
-    use std::net::TcpStream;
+    use std::net::{TcpStream, ToSocketAddrs};
 
     let url_path = url.strip_prefix("http://").ok_or_else(|| {
         Error::Git(format!("ForgeArchiveBackend only supports plain HTTP: {url}"))
@@ -81,7 +89,7 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         Some((h, p)) => (h, format!("/{p}")),
         None => (url_path, "/".to_string()),
     };
-    let host_port = if host_port.contains(':') {
+    let host_port_owned = if host_port.contains(':') {
         host_port.to_string()
     } else {
         format!("{host_port}:80")
@@ -89,12 +97,17 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
 
     let host = host_port.split(':').next().unwrap_or("");
 
-    let mut stream = TcpStream::connect(&host_port)
-        .map_err(|e| Error::Git(format!("TCP connect to {host_port} failed: {e}")))?;
+    let addr: SocketAddr = host_port_owned
+        .to_socket_addrs()
+        .map_err(|e| Error::Git(format!("DNS resolve {host_port_owned} failed: {e}")))?
+        .next()
+        .ok_or_else(|| Error::Git(format!("no addresses for {host_port_owned}")))?;
 
-    stream
-        .set_read_timeout(Some(std::time::Duration::from_secs(30)))
-        .ok();
+    let mut stream = TcpStream::connect_timeout(&addr, CONNECT_TIMEOUT)
+        .map_err(|e| Error::Git(format!("TCP connect to {host_port_owned} failed: {e}")))?;
+
+    stream.set_write_timeout(Some(IO_TIMEOUT)).ok();
+    stream.set_read_timeout(Some(IO_TIMEOUT)).ok();
 
     let request = format!(
         "GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n"
