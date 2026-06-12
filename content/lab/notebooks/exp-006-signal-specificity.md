@@ -1,7 +1,7 @@
 +++
 title = "Experiment 006 — Signal Specificity in Quorum Sensing"
 description = "Rendered from exp-006-signal-specificity.ipynb"
-date = 2026-06-10
+date = 2026-06-11
 weight = 50
 
 [extra]

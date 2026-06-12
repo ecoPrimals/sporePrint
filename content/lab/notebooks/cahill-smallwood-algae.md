@@ -1,7 +1,7 @@
 +++
 title = "Algal Pond Ecology & Bloom Surveillance — Cahill/Smallwood (Sandia)"
 description = "Rendered from cahill-smallwood-algae.ipynb"
-date = 2026-06-10
+date = 2026-06-11
 weight = 50
 
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "Semi-Empirical Mass Formula — Nuclear Binding Energies"
 description = "Rendered from 01-semf-binding-energy.ipynb"
-date = 2026-06-10
+date = 2026-06-11
 weight = 50
 
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "Python vs Rust vs GPU — Performance Evidence"
 description = "Rendered from 02-benchmark-python-vs-rust.ipynb"
-date = 2026-06-10
+date = 2026-06-11
 weight = 50
 
 [extra]
