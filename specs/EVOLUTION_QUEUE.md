@@ -420,16 +420,17 @@ These were in the original queue and have been completed:
 - [x] 66 entities validated, 0 errors
 
 ### WAN Mesh Validation (flockGate)
-- [x] songbird v0.2.1 fetched from VPS depot (BLAKE3: `4153be15...` verified)
+- [x] songbird v0.2.1 fetched from REBUILT depot (BLAKE3: `3fc94365...` verified, 2026-06-12T12:37Z)
 - [x] VPS port 7700 confirmed TCP-accepting (nc connection succeeds)
 - [x] mesh.init succeeds locally (peer registered, `bootstrap_peers_added: 1`)
-- [ ] **BLOCKED**: depot binary predates federation auto-reconnect (`f18aeb6b`)
-- [ ] No outbound TCP connection initiated (ss confirms zero connections to VPS)
-- [ ] Awaiting `plasmid.harvest` to rebuild depot with wire fix + auto-reconnect
-- [ ] `federation.status` still reports `enabled: false` (env var read not in this build)
+- [x] **federation.status: `enabled: true`** — wire fix CONFIRMED in new build
+- [x] **latency_ms: 64ms** — WAN peer health probes WORKING (auto-reconnect functional)
+- [x] Peer reachable via `path_type: "direct"`, `last_seen_ms` updating
+- [ ] `active_connections: 0` — persistent relay pending VPS rebuild to fe47c012 (Wave 113)
 
 ### Observations
-- songBird wire fix (`f18aeb6b`) and auto-reconnect are SOURCE-SHIPPED but not in DEPOT
-- VPS depot last built from `c8e0c94` (pre-fix commit)
-- Once depot rebuilt: federation should auto-connect (no manual mesh.init needed)
+- Depot was rebuilt (plasmid.harvest ran) — checksums.toml dated 2026-06-12T12:37Z
+- Wire fix + auto-reconnect both CONFIRMED operational on flockGate side
+- 64ms RTT to VPS = healthy WAN latency (within s_wan_ipc_tolerance bounds)
 - Security provider warning is non-fatal (songbird starts without bearDog)
+- Persistent federation relay requires BOTH sides to run the new build
