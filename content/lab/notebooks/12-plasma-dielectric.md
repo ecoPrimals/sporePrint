@@ -1,7 +1,7 @@
 +++
 title = "Plasma Dielectric Functions — BGK/Mermin + Kinetic-Fluid Coupling"
 description = "Rendered from 12-plasma-dielectric.ipynb"
-date = 2026-06-11
+date = 2026-06-12
 weight = 50
 
 [extra]
