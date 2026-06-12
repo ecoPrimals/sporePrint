@@ -1,7 +1,7 @@
 +++
 title = "Experiment 002 — Observation Gap Analysis"
 description = "Rendered from exp-002-observation-gap.ipynb"
-date = 2026-06-11
+date = 2026-06-12
 weight = 50
 
 [extra]

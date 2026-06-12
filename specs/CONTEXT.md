@@ -8,9 +8,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 10, 2026 — Wave 107)
+## Current State (June 12, 2026 — Wave 111)
 
-- **207+ content pages** across 8 sections + landing + lab notebooks
+- **222 content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
@@ -30,7 +30,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data, deprecated shell scripts superseded by Rust. push_manifest decomposed (PushFileOutcome enum). HTTP/tar extracted from fetch.rs. announce_request canonical. Zero dead_code allows on production paths. refresh::scan DRYed with closure-based drift push. HTTP redirect handling fixed for relative paths.
 - **primalSpring validation: 70/70 PASS** — `sporeprint-pure-primal-parity` scenario passes all checks (content parsing, entity resolution, modality output, composition graph, certification manifest). Certification manifest now emits `schema_version` + `merkle_root` fields per primalSpring expectations.
 - **Metrics freshness** — all 25 entity metrics refreshed (3.46M LOC, 114K tests ecosystem-wide). Drift tolerance maintained.
-- **WAN mesh status** — 4/5 PASS. VPS depot refreshed (songbird Jun 10 02:28 UTC, BLAKE3 VERIFIED: `03775a3f...`). Fetched, restarted with federation port 7700. mesh.init to VPS relay sent. Bidirectional handshake pending — VPS songbird process restart needed to pick up updated binary. guideStone-grade WAN analysis (5 gaps) shapes post-stadial roadmap.
+- **WAN mesh status (Wave 111)** — VPS depot rebuilt from HEAD (c8e0c94, 2026-06-11T19:58:49Z). songbird v0.2.1 fetched (BLAKE3: `4153be15...` ✓). Port 7700 TCP-accepting on VPS (confirmed via nc). mesh.init succeeds (peer registered). **BLOCKED**: depot binary predates federation auto-reconnect fix (`f18aeb6b`) — no outbound TCP connection attempted. Awaiting `plasmid.harvest` to rebuild depot with wire fix. Federation status still reports `enabled: false` (env var read not in this build).
 
 ## Repository Structure
 

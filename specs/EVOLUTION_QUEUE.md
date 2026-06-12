@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 10, 2026 (Wave 107 — Zero Development Debt)
+Last reviewed: June 12, 2026 (Wave 111 — Gate Expansion + Federation Completion)
 
 ---
 
@@ -403,9 +403,33 @@ These were in the original queue and have been completed:
 
 ### Metrics
 - [x] 150 tests (122 unit + 25 integration + 3 refresh) — up from 111
-- [x] 21 modules, 6191 lines
+- [x] 21 modules, 6195 lines
 - [x] Zero clippy warnings (pedantic + nursery)
-- [x] Zero `unwrap()` in production code (all 110 in tests only)
+- [x] Zero `unwrap()` in production code (all 112 in tests only)
 - [x] Zero TODO/FIXME/HACK in source
-- [x] No file over 800 lines (max: commands.rs at 665)
+- [x] No file over 800 lines (max: commands.rs at 664)
 - [x] All `#[allow]` justified (5 total: precision loss display, uniform handler sig)
+
+## Wave 111 — Gate Expansion + Federation + Content Cascade (June 12, 2026)
+
+### Content Health (Post-Cascade)
+- [x] 222 content pages (up from 207 — lab notebook cascade from springs)
+- [x] 155 internal links, 0 broken (`check-links` clean)
+- [x] Certification manifest VALID (graph merkle unchanged)
+- [x] Provenance manifest regenerated (content-manifest.toml synced to 222 pages)
+- [x] 66 entities validated, 0 errors
+
+### WAN Mesh Validation (flockGate)
+- [x] songbird v0.2.1 fetched from VPS depot (BLAKE3: `4153be15...` verified)
+- [x] VPS port 7700 confirmed TCP-accepting (nc connection succeeds)
+- [x] mesh.init succeeds locally (peer registered, `bootstrap_peers_added: 1`)
+- [ ] **BLOCKED**: depot binary predates federation auto-reconnect (`f18aeb6b`)
+- [ ] No outbound TCP connection initiated (ss confirms zero connections to VPS)
+- [ ] Awaiting `plasmid.harvest` to rebuild depot with wire fix + auto-reconnect
+- [ ] `federation.status` still reports `enabled: false` (env var read not in this build)
+
+### Observations
+- songBird wire fix (`f18aeb6b`) and auto-reconnect are SOURCE-SHIPPED but not in DEPOT
+- VPS depot last built from `c8e0c94` (pre-fix commit)
+- Once depot rebuilt: federation should auto-connect (no manual mesh.init needed)
+- Security provider warning is non-fatal (songbird starts without bearDog)

@@ -1,7 +1,7 @@
 +++
 title = "Experiment 005 — Seismic Wave Propagation"
 description = "Rendered from exp-005-seismic.ipynb"
-date = 2026-06-11
+date = 2026-06-12
 weight = 50
 
 [extra]
