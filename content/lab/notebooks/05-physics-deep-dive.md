@@ -1,7 +1,7 @@
 +++
 title = "Physics Deep Dive — hotSpring"
 description = "Rendered from 05-physics-deep-dive.ipynb"
-date = 2026-06-12
+date = 2026-06-13
 weight = 50
 
 [extra]

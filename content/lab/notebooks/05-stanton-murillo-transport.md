@@ -1,7 +1,7 @@
 +++
 title = "Stanton-Murillo Transport Coefficients — Yukawa OCP"
 description = "Rendered from 05-stanton-murillo-transport.ipynb"
-date = 2026-06-12
+date = 2026-06-13
 weight = 50
 
 [extra]
