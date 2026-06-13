@@ -1,7 +1,7 @@
 +++
 title = "Primal Composition Patterns — wetSpring"
 description = "Rendered from 05-primal-composition-patterns.ipynb"
-date = 2026-06-12
+date = 2026-06-13
 weight = 50
 
 [extra]
