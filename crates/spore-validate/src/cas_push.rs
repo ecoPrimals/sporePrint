@@ -10,9 +10,16 @@
 //! ## Transport
 //!
 //! Transport is injected, not self-bound. The `connect_transport` function
-//! resolves a `TransportEndpoint` to a stream. Today this supports UDS;
+//! resolves a `TransportEndpoint` to a stream. Supports UDS and TCP;
 //! when Songbird ships `ipc.resolve` with transport-qualified endpoints,
-//! TCP and mesh relay transports can be added without changing push logic.
+//! mesh relay transport can be added without changing push logic.
+//!
+//! ## riboCipher
+//!
+//! When `SPOREPRINT_RIBOCIPHER=1`, the transport layer sends the Tier 1
+//! clear signal (`0xEC 0x01`) immediately after connection, declaring
+//! NDJSON JSON-RPC intent per the ecosystem riboCipher standard.
+//! Required for Wave 113+ servers that enforce REJECT on unsignalled connections.
 //!
 //! ## Discovery
 //!
@@ -53,45 +60,84 @@ pub enum TransportEndpoint {
 const TRANSPORT_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(15);
 const TRANSPORT_IO_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(30);
 
+/// riboCipher Tier 1 (clear) signal prefix byte.
+const RIBOCIPHER_CLEAR: u8 = 0xEC;
+/// NDJSON JSON-RPC protocol type (ecosystem standard Wire Format Table).
+const RIBOCIPHER_PROTO_NDJSON: u8 = 0x01;
+
+/// Whether riboCipher signalling is enabled for outbound connections.
+///
+/// Controlled by `SPOREPRINT_RIBOCIPHER` env var:
+/// - `"1"` or `"true"`: send Tier 1 clear signal before JSON-RPC (for Wave 113+ servers)
+/// - absent or other: skip signal (backward-compatible with pre-riboCipher servers)
+fn ribocipher_enabled() -> bool {
+    std::env::var("SPOREPRINT_RIBOCIPHER")
+        .is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+}
+
+/// Send the riboCipher Tier 1 clear signal (`0xEC` + protocol type) on a stream.
+///
+/// This 2-byte preamble tells the server which protocol follows without
+/// requiring peek-and-guess detection. See `RIBOCIPHER_TRANSPORT_SIGNAL_STANDARD.md`.
+fn send_ribocipher_signal(stream: &mut dyn Write) -> Result<(), Error> {
+    stream
+        .write_all(&[RIBOCIPHER_CLEAR, RIBOCIPHER_PROTO_NDJSON])
+        .map_err(|e| Error::Config(format!("riboCipher signal write: {e}")))?;
+    stream
+        .flush()
+        .map_err(|e| Error::Config(format!("riboCipher signal flush: {e}")))?;
+    Ok(())
+}
+
 /// Connect to a `NestGate` instance via the specified transport.
 ///
 /// Returns a boxed stream implementing `Read + Write`. The caller never
 /// needs to know the underlying transport mechanism. All transports use
 /// bounded timeouts to avoid indefinite hangs on WAN links.
+///
+/// When `SPOREPRINT_RIBOCIPHER=1`, sends the Tier 1 clear signal (`0xEC 0x01`)
+/// immediately after connection — required by servers enforcing Wave 113+
+/// riboCipher REJECT policy.
 pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWrite>, Error> {
-    match endpoint {
+    let mut stream: Box<dyn ReadWrite> = match endpoint {
         TransportEndpoint::Uds { path } => {
-            let stream = std::os::unix::net::UnixStream::connect(path).map_err(|e| {
+            let s = std::os::unix::net::UnixStream::connect(path).map_err(|e| {
                 Error::Config(format!(
                     "failed to connect to NestGate via UDS at {path}: {e}"
                 ))
             })?;
-            stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-            stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-            Ok(Box::new(stream))
+            s.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            s.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            Box::new(s)
         }
         TransportEndpoint::Tcp { host, port } => {
             let addr_str = format!("{host}:{port}");
             let addr: std::net::SocketAddr = addr_str.parse().map_err(|e| {
                 Error::Config(format!("invalid TCP address {addr_str}: {e}"))
             })?;
-            let stream = std::net::TcpStream::connect_timeout(&addr, TRANSPORT_TIMEOUT)
+            let s = std::net::TcpStream::connect_timeout(&addr, TRANSPORT_TIMEOUT)
                 .map_err(|e| {
                     Error::Config(format!(
                         "failed to connect to NestGate via TCP at {addr_str}: {e}"
                     ))
                 })?;
-            stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-            stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-            Ok(Box::new(stream))
+            s.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            s.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            Box::new(s)
         }
         TransportEndpoint::MeshRelay { peer_id, capability } => {
-            Err(Error::Config(format!(
+            return Err(Error::Config(format!(
                 "mesh_relay transport not yet implemented (peer={peer_id}, cap={capability}). \
                  Requires Songbird ipc.resolve Phase 2 M1."
-            )))
+            )));
         }
+    };
+
+    if ribocipher_enabled() {
+        send_ribocipher_signal(stream.as_mut())?;
     }
+
+    Ok(stream)
 }
 
 /// Trait alias for a bidirectional stream (Read + Write).
@@ -452,5 +498,17 @@ mod tests {
             panic!("expected error");
         };
         assert!(e.to_string().contains("not yet implemented"));
+    }
+
+    #[test]
+    fn ribocipher_signal_writes_correct_bytes() {
+        let mut buf = Vec::new();
+        send_ribocipher_signal(&mut buf).unwrap();
+        assert_eq!(buf, [0xEC, 0x01]);
+    }
+
+    #[test]
+    fn ribocipher_disabled_by_default() {
+        assert!(!ribocipher_enabled());
     }
 }

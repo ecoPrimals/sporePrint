@@ -1,7 +1,7 @@
 +++
 title = "Experiment 025 — f32 vs f64 Precision Drift"
 description = "Rendered from exp-025-precision-drift.ipynb"
-date = 2026-06-12
+date = 2026-06-14
 weight = 50
 
 [extra]

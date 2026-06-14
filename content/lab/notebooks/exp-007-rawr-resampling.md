@@ -1,7 +1,7 @@
 +++
 title = "Experiment 007 — RAWR Bootstrap Resampling"
 description = "Rendered from exp-007-rawr-resampling.ipynb"
-date = 2026-06-12
+date = 2026-06-14
 weight = 50
 
 [extra]

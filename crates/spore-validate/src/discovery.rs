@@ -129,8 +129,9 @@ pub fn discover_peers() -> Vec<DiscoveredPeer> {
 /// Discovery order (ecosystem standard):
 /// 1. Explicit env var (e.g., `NESTGATE_SOCKET`) — highest priority
 /// 2. `BIOMEOS_SOCKET_DIR/{slug}.sock` — ecosystem standard directory
-/// 3. `XDG_RUNTIME_DIR/biomeos/{slug}.sock` — XDG fallback
-/// 4. `XDG_RUNTIME_DIR/biomeos/{slug}-standalone.sock` — standalone variant
+/// 3. `/run/membrane/{slug}.sock` — systemd NUCLEUS deployment (`GATE_NUCLEUS_SYSTEMD_STANDARD`)
+/// 4. `XDG_RUNTIME_DIR/biomeos/{slug}.sock` — XDG fallback
+/// 5. `XDG_RUNTIME_DIR/biomeos/{slug}-standalone.sock` — standalone variant
 ///
 /// No `/tmp` probing — ecosystem is migrating away from `/tmp` sockets
 /// per `PRIMAL-SOCKET-CLEANUP` directive.
@@ -146,6 +147,11 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
         if std::path::Path::new(&candidate).exists() {
             return Some(candidate);
         }
+    }
+
+    let systemd_candidate = format!("/run/membrane/{slug}.sock");
+    if std::path::Path::new(&systemd_candidate).exists() {
+        return Some(systemd_candidate);
     }
 
     if let Ok(xdg) = std::env::var("XDG_RUNTIME_DIR") {

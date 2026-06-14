@@ -1,7 +1,7 @@
 +++
 title = "Two-Temperature Model — Laser-Heated Plasma Equilibration"
 description = "Rendered from 04-ttm-laser-plasma.ipynb"
-date = 2026-06-13
+date = 2026-06-14
 weight = 50
 
 [extra]

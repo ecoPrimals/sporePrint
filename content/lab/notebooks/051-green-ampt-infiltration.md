@@ -1,7 +1,7 @@
 +++
 title = "Green-Ampt (1911) Infiltration Model"
 description = "Rendered from 051-green-ampt-infiltration.ipynb"
-date = 2026-06-12
+date = 2026-06-14
 weight = 50
 
 [extra]

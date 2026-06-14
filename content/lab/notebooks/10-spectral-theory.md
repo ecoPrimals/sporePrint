@@ -1,7 +1,7 @@
 +++
 title = "Spectral Theory — Anderson Localization, Hofstadter Butterfly, Lyapunov Exponents"
 description = "Rendered from 10-spectral-theory.ipynb"
-date = 2026-06-13
+date = 2026-06-14
 weight = 50
 
 [extra]

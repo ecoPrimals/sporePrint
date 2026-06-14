@@ -1,7 +1,7 @@
 +++
 title = "Experiment 022 — ET₀-Anderson Error Propagation"
 description = "Rendered from exp-022-et0-anderson-propagation.ipynb"
-date = 2026-06-12
+date = 2026-06-14
 weight = 50
 
 [extra]

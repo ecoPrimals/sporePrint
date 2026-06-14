@@ -1,7 +1,7 @@
 +++
 title = "Michigan Crop Water Atlas — 100 Stations, 80 Years"
 description = "Rendered from 018-michigan-crop-water-atlas.ipynb"
-date = 2026-06-12
+date = 2026-06-14
 weight = 50
 
 [extra]

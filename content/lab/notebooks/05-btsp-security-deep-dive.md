@@ -1,7 +1,7 @@
 +++
 title = "05 — BTSP Security Deep Dive"
 description = "Rendered from 05-btsp-security-deep-dive.ipynb"
-date = 2026-06-12
+date = 2026-06-14
 weight = 50
 
 [extra]

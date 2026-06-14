@@ -1,7 +1,7 @@
 +++
 title = "Science Validation — wetSpring"
 description = "Rendered from 01-science-validation.ipynb"
-date = 2026-06-13
+date = 2026-06-14
 weight = 50
 
 [extra]
