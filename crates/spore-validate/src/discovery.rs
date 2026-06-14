@@ -15,6 +15,9 @@
 
 use serde::Serialize;
 
+/// Systemd NUCLEUS socket directory (`GATE_NUCLEUS_SYSTEMD_STANDARD`).
+pub const SYSTEMD_SOCKET_DIR: &str = "/run/membrane";
+
 /// sporePrint's self-declared capabilities.
 #[derive(Debug, Serialize)]
 pub struct SelfCapabilities {
@@ -149,7 +152,7 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
         }
     }
 
-    let systemd_candidate = format!("/run/membrane/{slug}.sock");
+    let systemd_candidate = format!("{SYSTEMD_SOCKET_DIR}/{slug}.sock");
     if std::path::Path::new(&systemd_candidate).exists() {
         return Some(systemd_candidate);
     }
@@ -159,9 +162,9 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
             format!("{xdg}/biomeos/{slug}.sock"),
             format!("{xdg}/biomeos/{slug}-standalone.sock"),
         ];
-        for candidate in &candidates {
-            if std::path::Path::new(candidate).exists() {
-                return Some(candidate.clone());
+        for candidate in candidates {
+            if std::path::Path::new(&candidate).exists() {
+                return Some(candidate);
             }
         }
     }

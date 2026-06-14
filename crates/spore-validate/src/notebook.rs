@@ -88,26 +88,18 @@ fn extract_title(nb: &Notebook, fallback: &str) -> String {
 /// Replaces bare backslashes that aren't valid TOML escape sequences.
 fn sanitize_toml_string(s: &str) -> String {
     let mut result = String::with_capacity(s.len());
-    let chars: Vec<char> = s.chars().collect();
-    let mut i = 0;
-    while i < chars.len() {
-        if chars[i] == '\\' {
-            if let Some(&next_ch) = chars.get(i + 1) {
-                if matches!(next_ch, 'b' | 'f' | 'n' | 'r' | 't' | 'u' | 'U' | '\\' | '"') {
+    let mut chars = s.chars().peekable();
+    while let Some(ch) = chars.next() {
+        if ch == '\\' {
+            match chars.peek() {
+                Some('b' | 'f' | 'n' | 'r' | 't' | 'u' | 'U' | '\\' | '"') => {
                     result.push('\\');
-                    result.push(next_ch);
-                    i += 2;
-                } else {
-                    result.push(',');
-                    i += 1;
+                    result.push(chars.next().expect("peeked"));
                 }
-            } else {
-                result.push(',');
-                i += 1;
+                _ => result.push(','),
             }
         } else {
-            result.push(chars[i]);
-            i += 1;
+            result.push(ch);
         }
     }
     result

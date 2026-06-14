@@ -102,7 +102,6 @@ pub struct HealthConfig {
 
 /// Launch ordering configuration.
 #[derive(Debug, Deserialize)]
-#[allow(clippy::struct_field_names)]
 pub struct LaunchConfig {
     /// Ordered list of primal slugs for startup sequencing.
     #[serde(default)]
