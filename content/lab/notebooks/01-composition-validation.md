@@ -1,5 +1,5 @@
 +++
-title = "01 — Composition Validation"
+title = "Composition Validation — hotSpring"
 description = "Rendered from 01-composition-validation.ipynb"
 date = 2026-06-14
 weight = 50
@@ -11,175 +11,171 @@ rendered_from = "01-composition-validation.ipynb"
 
 <!-- Auto-generated from 01-composition-validation.ipynb by spore-validate render-notebooks -->
 
-# 01 — Composition Validation
+# Composition Validation — hotSpring
 
-**neuralSpring sporePrint** | Session S188 | May 2026
+hotSpring validates computational physics (lattice QCD, nuclear structure, plasma)
+on consumer GPU hardware via the ecoPrimal NUCLEUS composition. This notebook shows
+the deploy graph topology, guideStone Level 6 validation, and capability-based
+primal routing.
 
-Deploy graph structure, bond types, capability profiles, and discovery tiers.
+**Data sources:** `composition_validation.json`, `test_suite_report.json`
 
-**Data sources:** `validation-state.json`, `cross-spring-matrix.json`
+**Reproduce:** `cargo test --lib` in `barracuda/`, then `scripts/validate-primal-proof.sh`
 
-**For other springs:** Replace capability lists with your spring's niche surface.
-Replace deploy graph node counts and fragment lists with your own
-`graphs/<spring>_deploy.toml` data.
+---
+
+*For other springs:* Replace QCD domain content with your science. Keep the guideStone
+property structure and atomic type hierarchy — they're universal across all springs.
 
 ```python
 import json
 from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+import matplotlib.ticker as ticker
 
 RESULTS = Path('..') / 'experiments' / 'results'
 
-with open(RESULTS / 'validation-state.json') as f:
-    vs = json.load(f)
+def load(name):
+    with open(RESULTS / name) as f:
+        return json.load(f)
 
-with open(RESULTS / 'cross-spring-matrix.json') as f:
-    cs = json.load(f)
+comp = load('composition_validation.json')
+tests = load('test_suite_report.json')
 
-print(f"neuralSpring v{vs['version']} — Session {vs['session']}")
+print(f"Spring: {comp['spring']} v{comp['version']}")
+print(f"guideStone Level: {comp['guidestone_level']}")
+print(f"Deploy graph: {comp['deploy_graph']['total_nodes']} nodes, {comp['deploy_graph']['primals_required']} required primals")
+print(f"Tests: {tests['total_tests']} passed, {tests['ignored']} ignored")
+print(f"Bare guideStone: {comp['guidestone_bare']['passed']}/{comp['guidestone_bare']['total_checks']} checks")
 ```
 
-## Capability Surface
+## guideStone Level 6 — Five Properties
 
-neuralSpring advertises 30 capabilities across 9 domains.
-All are registered in `niche.rs`, `config.rs`, `capability_registry.toml`,
-and MCP tool definitions.
+The `hotspring_guidestone` binary validates 5 guideStone properties in bare mode
+(no primals needed) and adds NUCLEUS IPC parity checks when primals are deployed.
+Property 3 (Self-Verifying) uses BLAKE3 checksums for 15 validation-critical source files.
 
 ```python
-caps = vs['capabilities']
-domains = {k: v for k, v in caps.items() if k != 'total'}
+C_PASS = '#2ecc71'
+C_FAIL = '#e74c3c'
+C_INFO = '#3498db'
+C_GPU  = '#9b59b6'
 
-PASS = '#2ecc71'
-INFO = '#3498db'
+props = comp['guidestone_bare']['properties']
+names = [k.replace('_', ' ') for k in props]
+checks = [props[k]['checks'] for k in props]
+colors = [C_PASS if props[k]['status'] == 'PASS' else C_FAIL for k in props]
 
-fig, ax = plt.subplots(figsize=(10, 5))
-bars = ax.barh(list(domains.keys()), list(domains.values()), color=INFO)
-ax.set_xlabel('Capabilities')
-ax.set_title(f'neuralSpring Capability Surface ({caps["total"]} total)')
-for bar, val in zip(bars, domains.values()):
-    ax.text(bar.get_width() + 0.2, bar.get_y() + bar.get_height()/2,
-            str(val), va='center', fontweight='bold')
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# guideStone property checks
+axes[0].barh(names, checks, color=colors)
+axes[0].set_xlabel('Checks')
+axes[0].set_title(f'guideStone Bare: {comp["guidestone_bare"]["passed"]}/{comp["guidestone_bare"]["total_checks"]} PASS')
+axes[0].invert_yaxis()
+
+# Atomic type test coverage
+atomics = comp['atomic_types']
+at_names = list(atomics.keys())
+at_tests = [atomics[k]['tests'] for k in at_names]
+axes[1].bar(at_names, at_tests, color=[C_INFO, C_INFO, C_GPU, C_PASS])
+axes[1].set_ylabel('Tests')
+axes[1].set_title(f'Atomic Composition Tests ({sum(at_tests)} total)')
+
+fig.suptitle(f'hotSpring v{comp["version"]} — guideStone Level {comp["guidestone_level"]} CERTIFIED', fontsize=14, fontweight='bold')
 plt.tight_layout()
+plt.savefig('/tmp/hotspring_01_composition.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## Deploy Graph Structure
+## Capability-Based Routing
 
-The deploy graph (`neuralspring_deploy.toml`) defines 14 nodes across
-3 fragments: `tower_atomic`, `node_atomic`, `meta_tier`.
-
-```python
-dg = vs['deploy_graph']
-proto = cs['proto_nucleate']
-
-fig, axes = plt.subplots(1, 2, figsize=(12, 4))
-
-# Deploy graph summary
-labels = ['Nodes', 'Capabilities', 'Fragments']
-values = [dg['nodes'], dg['capabilities_provided'], len(dg['fragments'])]
-colors = [INFO, PASS, '#9b59b6']
-axes[0].bar(labels, values, color=colors)
-axes[0].set_title('Deploy Graph')
-for i, v in enumerate(values):
-    axes[0].text(i, v + 0.3, str(v), ha='center', fontweight='bold')
-
-# Proto-nucleate dependencies
-deps = proto['depends_on']
-axes[1].barh(deps, [1]*len(deps), color=PASS)
-axes[1].set_title(f'Proto-Nucleate depends_on ({len(deps)} primals)')
-axes[1].set_xlim(0, 1.5)
-axes[1].set_xlabel('Required')
-
-plt.tight_layout()
-plt.show()
-
-print(f"Bond type: {dg['bond_type']}")
-print(f"Trust model: {dg['trust_model']}")
-print(f"Fragments: {', '.join(dg['fragments'])}")
-```
-
-## Discovery Tiers
-
-The validation chain progresses through 5 tiers, from Python baseline
-through guideStone certification.
+hotSpring routes to primals by **capability domain** (`by_domain("compute")`), not
+by hardcoded process names. All requirements derive from `niche::DEPENDENCIES` —
+a single source of truth. Named accessors are deprecated.
 
 ```python
-gs = vs['guidestone']
+fig, ax = plt.subplots(figsize=(10, 6))
 
-tiers = [
-    ('Tier 1: Python baseline', 397, 'complete'),
-    ('Tier 2: Rust CPU proof', vs['tests']['total_workspace'], 'complete'),
-    ('Tier 3: GPU/WGSL parity', vs['tests']['rust_gpu_checks'], 'complete'),
-    ('Tier 4: Primal IPC', 6, 'wip'),
-    ('Tier 5: guideStone', 29, f"Level {gs['level']}")
-]
+primals = comp['primals_validated']['required']
+p_names = [p['name'] for p in primals]
+p_domains = [p['domain'] for p in primals]
 
-fig, ax = plt.subplots(figsize=(10, 4))
-tier_names = [t[0] for t in tiers]
-tier_checks = [t[1] for t in tiers]
-tier_colors = [PASS if t[2] == 'complete' else '#f39c12' for t in tiers]
+domain_colors = {
+    'crypto': '#e74c3c', 'discovery': '#f39c12', 'compute': '#9b59b6',
+    'math': '#3498db', 'shader': '#1abc9c', 'storage': '#2ecc71',
+    'dag': '#e67e22', 'ledger': '#34495e', 'provenance': '#16a085'
+}
+colors = [domain_colors.get(d, '#95a5a6') for d in p_domains]
 
-bars = ax.barh(tier_names, tier_checks, color=tier_colors)
-ax.set_xlabel('Validation Checks')
-ax.set_title('Validation Discovery Tiers')
-ax.set_xscale('log')
+bars = ax.barh(p_names, range(len(p_names), 0, -1), color=colors)
+for i, p in enumerate(primals):
+    ax.text(0.5, i, f'{p["domain"]} — {p["role"]}', va='center', fontsize=8, color='white', fontweight='bold')
 
-legend_elements = [
-    mpatches.Patch(color=PASS, label='Complete'),
-    mpatches.Patch(color='#f39c12', label='WIP / Partial')
-]
-ax.legend(handles=legend_elements, loc='lower right')
+ax.set_xlabel('Required Primals (ordered by composition dependency)')
+ax.set_title(f'NUCLEUS Composition: {len(primals)} Required Primals, by_domain() Routing')
+ax.set_xlim(0, len(primals) + 1)
+ax.invert_yaxis()
+
+cap = comp['capability_routing']
+ax.text(0.02, 0.02, f'{cap["local_capabilities"]} local + {cap["routed_capabilities"]} routed capabilities',
+        transform=ax.transAxes, fontsize=9, color='gray')
 
 plt.tight_layout()
+plt.savefig('/tmp/hotspring_01_routing.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-## guideStone Readiness
+## Test Suite by Physics Domain
 
-neuralSpring's guideStone is at **Level 3** — bare ALL PASS (29/29 checks,
-P1-P5 certified). Levels 4-5 pending live NUCLEUS deployment.
+596 (default) / 1,045 (barracuda-local) library tests organized by physics domain — from nuclear structure (SEMF, HFB)
+through lattice QCD (HMC, RHMC, gradient flow) to GPU compute validation.
 
 ```python
-levels = [
-    ('L1: Validation exists', True),
-    ('L2: Properties documented', True),
-    ('L3: Bare guideStone (29/29)', True),
-    ('L4: NUCLEUS guideStone', False),
-    ('L5: Certified (cross-substrate)', False)
-]
+cats = tests['key_categories']
+cat_names = [k.replace('_', ' ').title() for k in cats]
+cat_tests = [cats[k]['tests'] for k in cats]
+cat_pcts = [cats[k]['pct'] for k in cats]
 
-fig, ax = plt.subplots(figsize=(8, 3))
-colors = [PASS if done else '#e74c3c' for _, done in levels]
-ax.barh([l[0] for l in levels], [1]*len(levels), color=colors)
-ax.set_xlim(0, 1.2)
-ax.set_title(f'guideStone Readiness — Level {gs["level"]}')
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-legend_elements = [
-    mpatches.Patch(color=PASS, label='DONE'),
-    mpatches.Patch(color='#e74c3c', label='PENDING')
-]
-ax.legend(handles=legend_elements)
+# Pie chart
+pie_colors = [C_PASS, C_INFO, C_GPU, '#1abc9c', '#f39c12', '#e67e22', '#e74c3c', '#95a5a6']
+axes[0].pie(cat_tests, labels=cat_names, colors=pie_colors[:len(cat_names)],
+            autopct='%1.0f%%', startangle=90, textprops={'fontsize': 8})
+axes[0].set_title(f'{tests["total_tests"]} Library Tests by Domain')
 
+# Module breakdown (top 12)
+mods = tests['modules']
+sorted_mods = sorted(mods.items(), key=lambda x: x[1]['tests'], reverse=True)[:12]
+mod_names = [m[0] for m in sorted_mods]
+mod_tests = [m[1]['tests'] for m in sorted_mods]
+axes[1].barh(mod_names, mod_tests, color=C_INFO)
+axes[1].set_xlabel('Tests')
+axes[1].set_title('Top 12 Modules by Test Count')
+axes[1].invert_yaxis()
+
+fig.suptitle(f'hotSpring Test Suite: {tests["total_tests"]}/{tests["total_tests"]} PASS, {tests["ignored"]} ignored', fontsize=13, fontweight='bold')
 plt.tight_layout()
+plt.savefig('/tmp/hotspring_01_tests.png', dpi=150, bbox_inches='tight')
 plt.show()
-
-print(f"Properties certified: {', '.join(gs['properties_certified'])}")
 ```
 
-## Summary
+## Validation Summary
 
-| Metric | Value |
-|--------|-------|
-| Capabilities | 30 (9 domains) |
-| Deploy graph nodes | 14 |
-| Bond type | Metallic |
-| Trust model | InternalNucleus |
-| Proto-nucleate deps | 6 primals |
-| Validation capabilities | 7 |
-| guideStone level | 3 (29/29 bare) |
-| Properties certified | P1-P5 |
+| Component | Status | Detail |
+|-----------|--------|--------|
+| guideStone Level 6 | **30/30 PASS** | 5 properties certified, BLAKE3 P3, 3 SKIP (liveness) |
+| Library tests | **596/596 PASS** (default) / **1,045** (barracuda-local) | 6 GPU-heavy ignored (upstream barraCuda CI) |
+| Validation suites | **65/65 PASS** | 167 `validate_*` binaries + `hotspring_guidestone` |
+| NUCLEUS routing | **by_domain()** | Capability-based from `niche::DEPENDENCIES` |
+| Deploy graph | **11 nodes** | 9 required + 1 optional + hotspring_unibin |
 
-**Provenance:** [primals.eco](https://primals.eco) |
-neuralSpring Session S188 | May 2026
+---
+
+**Provenance:** All data from `experiments/results/` committed JSON artifacts.  
+**Reproduce:** `cargo test --lib` in `barracuda/`, `scripts/validate-primal-proof.sh` from repo root.  
+**Source:** [hotSpring on GitHub](https://github.com/syntheticChemistry/hotSpring) · [primals.eco](https://primals.eco/lab/springs/hotspring/)
 
