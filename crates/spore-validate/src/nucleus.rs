@@ -22,8 +22,11 @@
 use crate::discovery;
 use crate::error::Error;
 use serde::Deserialize;
+use serde_json::{Value, json};
 use std::collections::BTreeMap;
+use std::io::{BufRead, BufReader, Write};
 use std::path::Path;
+use std::time::{Duration, Instant};
 
 /// A NUCLEUS deployment profile parsed from TOML.
 #[derive(Debug, Deserialize)]
@@ -141,6 +144,17 @@ pub struct PrimalStatus {
     pub role: String,
     pub required: bool,
     pub socket_path: Option<String>,
+    /// IPC probe result (populated when `--probe` is used).
+    pub probe: Option<ProbeResult>,
+}
+
+/// Result of sending a `health.ping` JSON-RPC call to a primal socket.
+#[derive(Debug)]
+pub struct ProbeResult {
+    pub responsive: bool,
+    pub latency: Duration,
+    pub version: Option<String>,
+    pub error: Option<String>,
 }
 
 impl ValidationResult {
@@ -166,7 +180,10 @@ pub fn parse_profile(path: &Path) -> Result<NucleusProfile, Error> {
 /// 2. `BIOMEOS_SOCKET_DIR/{slug}.sock`
 /// 3. `/run/membrane/{slug}.sock`
 /// 4. `XDG_RUNTIME_DIR/biomeos/{slug}.sock`
-pub fn validate_profile(profile: &NucleusProfile) -> ValidationResult {
+///
+/// When `probe` is true, additionally sends a `health.ping` JSON-RPC call to each
+/// discovered socket to verify the primal is responsive (not just that the socket exists).
+pub fn validate_profile(profile: &NucleusProfile, probe: bool) -> ValidationResult {
     let mut healthy = Vec::new();
     let mut missing = Vec::new();
 
@@ -174,14 +191,27 @@ pub fn validate_profile(profile: &NucleusProfile) -> ValidationResult {
         let env_var = format!("{}_SOCKET", name.to_uppercase());
         let socket = discovery::probe_socket(name, &env_var);
 
+        let probe_result = if probe {
+            socket.as_ref().map(|path| probe_socket_health(path))
+        } else {
+            None
+        };
+
+        let is_healthy = match (&socket, &probe_result) {
+            (Some(_), Some(result)) => result.responsive,
+            (Some(_), None) => true,
+            _ => false,
+        };
+
         let status = PrimalStatus {
             name: name.clone(),
             role: entry.role.as_deref().unwrap_or("unknown").to_string(),
             required: entry.required,
-            socket_path: socket.clone(),
+            socket_path: socket,
+            probe: probe_result,
         };
 
-        if socket.is_some() {
+        if is_healthy {
             healthy.push(status);
         } else {
             missing.push(status);
@@ -212,6 +242,91 @@ pub fn validate_profile(profile: &NucleusProfile) -> ValidationResult {
         missing,
         critical_met,
         min_healthy_met,
+    }
+}
+
+/// IPC timeout for health probes (fast — just a ping).
+const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
+
+/// Send `health.ping` JSON-RPC over UDS to verify a primal is responsive.
+fn probe_socket_health(socket_path: &str) -> ProbeResult {
+    let start = Instant::now();
+
+    let stream = match std::os::unix::net::UnixStream::connect(socket_path) {
+        Ok(s) => s,
+        Err(e) => {
+            return ProbeResult {
+                responsive: false,
+                latency: start.elapsed(),
+                version: None,
+                error: Some(format!("connect: {e}")),
+            };
+        }
+    };
+
+    stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
+    stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
+
+    let request = json!({
+        "jsonrpc": "2.0",
+        "method": "health.ping",
+        "params": {},
+        "id": 1
+    });
+
+    let mut payload = match serde_json::to_string(&request) {
+        Ok(s) => s,
+        Err(e) => {
+            return ProbeResult {
+                responsive: false,
+                latency: start.elapsed(),
+                version: None,
+                error: Some(format!("encode: {e}")),
+            };
+        }
+    };
+    payload.push('\n');
+
+    let mut reader = BufReader::new(stream);
+
+    if let Err(e) = reader.get_mut().write_all(payload.as_bytes()) {
+        return ProbeResult {
+            responsive: false,
+            latency: start.elapsed(),
+            version: None,
+            error: Some(format!("write: {e}")),
+        };
+    }
+    if let Err(e) = reader.get_mut().flush() {
+        return ProbeResult {
+            responsive: false,
+            latency: start.elapsed(),
+            version: None,
+            error: Some(format!("flush: {e}")),
+        };
+    }
+
+    let mut line = String::new();
+    if let Err(e) = reader.read_line(&mut line) {
+        return ProbeResult {
+            responsive: false,
+            latency: start.elapsed(),
+            version: None,
+            error: Some(format!("read: {e}")),
+        };
+    }
+
+    let latency = start.elapsed();
+
+    let version = serde_json::from_str::<Value>(line.trim())
+        .ok()
+        .and_then(|v| v.get("result")?.get("version")?.as_str().map(String::from));
+
+    ProbeResult {
+        responsive: true,
+        latency,
+        version,
+        error: None,
     }
 }
 
@@ -285,7 +400,7 @@ name = "tower-relay"
             launch: None,
             mesh: None,
         };
-        let result = validate_profile(&profile);
+        let result = validate_profile(&profile, false);
         assert!(result.passed());
         assert_eq!(result.total_declared, 0);
     }
@@ -317,7 +432,7 @@ name = "tower-relay"
             mesh: None,
         };
 
-        let result = validate_profile(&profile);
+        let result = validate_profile(&profile, false);
         assert!(!result.passed());
         assert!(!result.critical_met);
         assert!(!result.min_healthy_met);

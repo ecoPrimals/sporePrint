@@ -155,6 +155,10 @@ enum Command {
         /// Path to the NUCLEUS profile TOML (e.g., profiles/flockgate-wan.toml)
         #[arg(long)]
         profile: PathBuf,
+
+        /// Send `health.ping` IPC to each discovered socket (verifies responsiveness)
+        #[arg(long)]
+        probe: bool,
     },
 
     /// Push build artifacts to `NestGate` CAS (content-addressed storage)
@@ -191,8 +195,8 @@ fn run() -> Result<(), Error> {
     if matches!(cli.command, Some(Command::Discover)) {
         return commands::discover();
     }
-    if let Some(Command::Nucleus { ref profile }) = cli.command {
-        return run_nucleus(profile);
+    if let Some(Command::Nucleus { ref profile, probe }) = cli.command {
+        return run_nucleus(profile, probe);
     }
 
     let config_path = root.join(paths::CONFIG_FILE);
@@ -253,9 +257,9 @@ fn run() -> Result<(), Error> {
 }
 
 /// Run NUCLEUS profile validation.
-fn run_nucleus(profile_path: &Path) -> Result<(), Error> {
+fn run_nucleus(profile_path: &Path, probe: bool) -> Result<(), Error> {
     let profile = nucleus::parse_profile(profile_path)?;
-    let result = nucleus::validate_profile(&profile);
+    let result = nucleus::validate_profile(&profile, probe);
 
     println!("sporePrint: NUCLEUS profile validation");
     println!("  Profile: {} ({})", result.profile_name, profile_path.display());
@@ -277,11 +281,19 @@ fn run_nucleus(profile_path: &Path) -> Result<(), Error> {
     if !result.healthy.is_empty() {
         println!("  HEALTHY ({}/{}):", result.healthy.len(), result.total_declared);
         for p in &result.healthy {
+            let probe_info = p.probe.as_ref().map_or_else(String::new, |pr| {
+                format!(
+                    " ({}ms{})",
+                    pr.latency.as_millis(),
+                    pr.version.as_deref().map_or(String::new(), |v| format!(", v{v}"))
+                )
+            });
             println!(
-                "    ✅ {} [{}] → {}",
+                "    ✅ {} [{}] → {}{}",
                 p.name,
                 p.role,
-                p.socket_path.as_deref().unwrap_or("?")
+                p.socket_path.as_deref().unwrap_or("?"),
+                probe_info
             );
         }
     }
@@ -291,7 +303,10 @@ fn run_nucleus(profile_path: &Path) -> Result<(), Error> {
         println!("  MISSING ({}/{}):", result.missing.len(), result.total_declared);
         for p in &result.missing {
             let marker = if p.required { "❌" } else { "⚠️" };
-            println!("    {marker} {} [{}] (required={})", p.name, p.role, p.required);
+            let probe_err = p.probe.as_ref()
+                .and_then(|pr| pr.error.as_deref())
+                .map_or(String::new(), |e| format!(" — {e}"));
+            println!("    {marker} {} [{}] (required={}){probe_err}", p.name, p.role, p.required);
         }
     }
 
