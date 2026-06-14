@@ -153,7 +153,22 @@ pub struct ProbeResult {
     pub responsive: bool,
     pub latency: Duration,
     pub version: Option<String>,
+    pub primal_id: Option<String>,
+    pub status: Option<String>,
+    /// guideStone health contract compliance: `{status, primal, version}` all present.
+    pub health_contract: HealthContract,
     pub error: Option<String>,
+}
+
+/// guideStone health contract compliance level.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum HealthContract {
+    /// All three required fields present: status, primal, version.
+    Compliant,
+    /// Responds but missing one or more required fields.
+    Partial,
+    /// Did not respond or returned an error.
+    None,
 }
 
 impl ValidationResult {
@@ -247,20 +262,26 @@ pub fn validate_profile(profile: &NucleusProfile, probe: bool) -> ValidationResu
 /// IPC timeout for health probes (fast — just a ping).
 const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
 
+/// Construct a failed probe result.
+fn probe_failed(start: Instant, error: String) -> ProbeResult {
+    ProbeResult {
+        responsive: false,
+        latency: start.elapsed(),
+        version: None,
+        primal_id: None,
+        status: None,
+        health_contract: HealthContract::None,
+        error: Some(error),
+    }
+}
+
 /// Send `health.ping` JSON-RPC over UDS to verify a primal is responsive.
 fn probe_socket_health(socket_path: &str) -> ProbeResult {
     let start = Instant::now();
 
     let stream = match std::os::unix::net::UnixStream::connect(socket_path) {
         Ok(s) => s,
-        Err(e) => {
-            return ProbeResult {
-                responsive: false,
-                latency: start.elapsed(),
-                version: None,
-                error: Some(format!("connect: {e}")),
-            };
-        }
+        Err(e) => return probe_failed(start, format!("connect: {e}")),
     };
 
     stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
@@ -275,56 +296,75 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
 
     let mut payload = match serde_json::to_string(&request) {
         Ok(s) => s,
-        Err(e) => {
-            return ProbeResult {
-                responsive: false,
-                latency: start.elapsed(),
-                version: None,
-                error: Some(format!("encode: {e}")),
-            };
-        }
+        Err(e) => return probe_failed(start, format!("encode: {e}")),
     };
     payload.push('\n');
 
     let mut reader = BufReader::new(stream);
 
     if let Err(e) = reader.get_mut().write_all(payload.as_bytes()) {
-        return ProbeResult {
-            responsive: false,
-            latency: start.elapsed(),
-            version: None,
-            error: Some(format!("write: {e}")),
-        };
+        return probe_failed(start, format!("write: {e}"));
     }
     if let Err(e) = reader.get_mut().flush() {
-        return ProbeResult {
-            responsive: false,
-            latency: start.elapsed(),
-            version: None,
-            error: Some(format!("flush: {e}")),
-        };
+        return probe_failed(start, format!("flush: {e}"));
     }
 
     let mut line = String::new();
     if let Err(e) = reader.read_line(&mut line) {
-        return ProbeResult {
-            responsive: false,
-            latency: start.elapsed(),
-            version: None,
-            error: Some(format!("read: {e}")),
-        };
+        return probe_failed(start, format!("read: {e}"));
     }
 
     let latency = start.elapsed();
 
-    let version = serde_json::from_str::<Value>(line.trim())
-        .ok()
-        .and_then(|v| v.get("result")?.get("version")?.as_str().map(String::from));
+    let parsed = serde_json::from_str::<Value>(line.trim()).ok();
+
+    // Check for JSON-RPC error (e.g., -32601 method_not_found)
+    if let Some(ref resp) = parsed {
+        if let Some(err) = resp.get("error") {
+            let code = err.get("code").and_then(Value::as_i64).unwrap_or(0);
+            // -32601 = method not found — primal is alive but doesn't implement health
+            return ProbeResult {
+                responsive: true,
+                latency,
+                version: None,
+                primal_id: None,
+                status: None,
+                health_contract: HealthContract::None,
+                error: Some(format!("JSON-RPC error {code}")),
+            };
+        }
+    }
+
+    let result_obj = parsed.as_ref().and_then(|v| v.get("result"));
+
+    let version = result_obj
+        .and_then(|r| r.get("version"))
+        .and_then(Value::as_str)
+        .map(String::from);
+
+    let primal_id = result_obj
+        .and_then(|r| r.get("primal"))
+        .and_then(Value::as_str)
+        .map(String::from);
+
+    let status = result_obj
+        .and_then(|r| r.get("status"))
+        .and_then(Value::as_str)
+        .map(String::from);
+
+    let health_contract = match (&version, &primal_id, &status) {
+        (Some(_), Some(_), Some(_)) => HealthContract::Compliant,
+        (None, None, None) => HealthContract::None,
+        _ => HealthContract::Partial,
+    };
 
     ProbeResult {
         responsive: true,
         latency,
         version,
+        primal_id,
+        status,
+        health_contract,
         error: None,
     }
 }
