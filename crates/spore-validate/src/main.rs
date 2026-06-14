@@ -4,7 +4,7 @@
 #![doc = "sporePrint validation CLI — entity registry, content integrity, and metric sync."]
 
 use clap::{Parser, Subcommand};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
 mod cas;
@@ -20,6 +20,8 @@ mod http;
 mod links;
 mod model;
 mod notebook;
+#[allow(dead_code)]
+mod nucleus;
 mod paths;
 mod provenance;
 mod refresh;
@@ -148,6 +150,13 @@ enum Command {
     /// Show self-capabilities and discover peer primals
     Discover,
 
+    /// Validate running NUCLEUS against a deployment profile
+    Nucleus {
+        /// Path to the NUCLEUS profile TOML (e.g., profiles/flockgate-wan.toml)
+        #[arg(long)]
+        profile: PathBuf,
+    },
+
     /// Push build artifacts to `NestGate` CAS (content-addressed storage)
     CasPush {
         /// Path to Zola build output (default: public/)
@@ -181,6 +190,9 @@ fn run() -> Result<(), Error> {
     // Commands that don't require config.toml
     if matches!(cli.command, Some(Command::Discover)) {
         return commands::discover();
+    }
+    if let Some(Command::Nucleus { ref profile }) = cli.command {
+        return run_nucleus(profile);
     }
 
     let config_path = root.join(paths::CONFIG_FILE);
@@ -228,6 +240,7 @@ fn run() -> Result<(), Error> {
         Some(Command::Graph { emit }) => commands::graph(&root, &config, emit),
         Some(Command::Certify { emit }) => commands::certify(&root, &config, emit),
         Some(Command::Discover) => commands::discover(),
+        Some(Command::Nucleus { .. }) => unreachable!("handled above"),
         Some(Command::CasManifest { public_dir, emit }) => {
             commands::cas_manifest(&root, &public_dir, emit)
         }
@@ -236,6 +249,69 @@ fn run() -> Result<(), Error> {
             socket,
             generate,
         }) => commands::cas_push(&root, &public_dir, socket.as_deref(), generate),
+    }
+}
+
+/// Run NUCLEUS profile validation.
+fn run_nucleus(profile_path: &Path) -> Result<(), Error> {
+    let profile = nucleus::parse_profile(profile_path)?;
+    let result = nucleus::validate_profile(&profile);
+
+    println!("sporePrint: NUCLEUS profile validation");
+    println!("  Profile: {} ({})", result.profile_name, profile_path.display());
+    if let Some(desc) = &profile.profile.description {
+        println!("  Description: {desc}");
+    }
+    if let Some(base) = profile.profile.base() {
+        println!("  Extends: {base}");
+    }
+    println!("  Declared primals: {}", result.total_declared);
+    if !profile.launch_order().is_empty() {
+        println!("  Launch order: {}", profile.launch_order().join(" → "));
+    }
+    if profile.federation_enabled() {
+        println!("  Federation: enabled");
+    }
+    println!();
+
+    if !result.healthy.is_empty() {
+        println!("  HEALTHY ({}/{}):", result.healthy.len(), result.total_declared);
+        for p in &result.healthy {
+            println!(
+                "    ✅ {} [{}] → {}",
+                p.name,
+                p.role,
+                p.socket_path.as_deref().unwrap_or("?")
+            );
+        }
+    }
+
+    if !result.missing.is_empty() {
+        println!();
+        println!("  MISSING ({}/{}):", result.missing.len(), result.total_declared);
+        for p in &result.missing {
+            let marker = if p.required { "❌" } else { "⚠️" };
+            println!("    {marker} {} [{}] (required={})", p.name, p.role, p.required);
+        }
+    }
+
+    println!();
+    println!(
+        "  Critical path: {}",
+        if result.critical_met { "✅ MET" } else { "❌ FAILED" }
+    );
+    println!(
+        "  Min healthy: {}",
+        if result.min_healthy_met { "✅ MET" } else { "❌ FAILED" }
+    );
+    println!();
+
+    if result.passed() {
+        println!("  RESULT: ✅ NUCLEUS COMPLIANT");
+        Ok(())
+    } else {
+        println!("  RESULT: ❌ NUCLEUS NON-COMPLIANT");
+        Err(Error::Config("NUCLEUS validation failed".into()))
     }
 }
 
