@@ -1,7 +1,7 @@
 +++
 title = "Experiment 021 — Spectral Reconstruction"
 description = "Rendered from exp-021-spectral-recon.ipynb"
-date = 2026-06-14
+date = 2026-06-15
 weight = 50
 
 [extra]

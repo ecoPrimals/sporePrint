@@ -1,7 +1,7 @@
 +++
 title = "Quenched SU(3) Lattice QCD — Deconfinement Transition"
 description = "Rendered from 07-quenched-qcd.ipynb"
-date = 2026-06-14
+date = 2026-06-15
 weight = 50
 
 [extra]

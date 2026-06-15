@@ -1,7 +1,7 @@
 +++
 title = "Experiment 017 — Quasispecies Error Threshold"
 description = "Rendered from exp-017-quasispecies-threshold.ipynb"
-date = 2026-06-14
+date = 2026-06-15
 weight = 50
 
 [extra]

@@ -6,8 +6,8 @@
 //! (like `resolve_public_dir`) live here as private helpers.
 
 use crate::{
-    cas, cas_push, certify, content, discovery, error::Diagnostic, error::Error, fetch, graph,
-    links, model, notebook, paths, provenance, refresh, registry, report, totals,
+    cas, cas_push, certify, content, depot, discovery, error::Diagnostic, error::Error, fetch,
+    graph, links, model, notebook, paths, provenance, refresh, registry, report, totals,
 };
 use std::path::{Path, PathBuf};
 
@@ -584,6 +584,94 @@ pub fn discover() -> Result<(), Error> {
     }
 
     Ok(())
+}
+
+pub fn depot_verify(
+    checksums_path: &Path,
+    depot_dir: &Path,
+    arch: &str,
+    partial: bool,
+) -> Result<(), Error> {
+    println!("spore-validate: depot integrity verification");
+    println!("  checksums: {}", checksums_path.display());
+    println!("  depot:     {}", depot_dir.display());
+    println!("  arch:      {arch}");
+    if partial {
+        println!("  mode:      partial (missing binaries are warnings, not errors)");
+    }
+    println!();
+
+    let checksums = depot::parse_checksums(checksums_path)?;
+
+    if !depot_dir.is_dir() {
+        return Err(Error::Config(format!(
+            "depot directory not found: {}",
+            depot_dir.display()
+        )));
+    }
+
+    let result = depot::verify_depot(&checksums, arch, depot_dir)?;
+    println!("  Verifying {} binaries for {}:", result.total(), result.arch);
+
+    let mut hard_failures = 0usize;
+    let mut missing_count = 0usize;
+
+    for (primal, status) in &result.entries {
+        match status {
+            depot::VerifyStatus::Match => {
+                println!("    ✅ {primal}");
+            }
+            depot::VerifyStatus::HashMismatch { expected, actual } => {
+                println!("    ❌ {primal} — BLAKE3 mismatch");
+                println!("         expected: {expected}");
+                println!("         actual:   {actual}");
+                hard_failures += 1;
+            }
+            depot::VerifyStatus::SizeMismatch { expected, actual } => {
+                println!("    ❌ {primal} — size mismatch (expected {expected}, got {actual})");
+                hard_failures += 1;
+            }
+            depot::VerifyStatus::Missing => {
+                let icon = if partial { "⚠️" } else { "❌" };
+                println!("    {icon} {primal} — not found in depot");
+                missing_count += 1;
+            }
+            depot::VerifyStatus::ReadError(e) => {
+                println!("    ❌ {primal} — read error: {e}");
+                hard_failures += 1;
+            }
+        }
+    }
+
+    println!();
+    println!(
+        "  RESULT: {}/{} verified{}",
+        result.match_count(),
+        result.total(),
+        if missing_count > 0 {
+            format!(" ({missing_count} missing)")
+        } else {
+            String::new()
+        }
+    );
+
+    let pass = if partial {
+        result.all_present_valid()
+    } else {
+        hard_failures == 0 && missing_count == 0
+    };
+
+    if pass {
+        println!("  ✅ DEPOT INTEGRITY VERIFIED");
+        Ok(())
+    } else {
+        let effective_failures = hard_failures + if partial { 0 } else { missing_count };
+        println!("  ❌ {effective_failures} INTEGRITY FAILURE(S)");
+        Err(Error::ValidationFailed {
+            error_count: effective_failures,
+            warning_count: if partial { missing_count } else { 0 },
+        })
+    }
 }
 
 #[cfg(test)]

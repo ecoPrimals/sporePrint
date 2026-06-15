@@ -8,15 +8,16 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 14, 2026 — Wave 113)
+## Current State (June 15, 2026 — Wave 114)
 
 - **222 content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
 - **4 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate)
-- **`spore-validate` v0.3.0** — 22-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, NUCLEUS profile validation, HTTP/tar utilities, trait-based VCS, parity integration tests. 159 tests (131 unit + 25 integration + 3 refresh), `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay) with riboCipher Tier 1 signal support (Wave 113 ready). Discovery probes `BIOMEOS_SOCKET_DIR`, `/run/membrane/` (systemd NUCLEUS), and `XDG_RUNTIME_DIR`. Accepts `TRANSPORT_ENDPOINT` env var for launcher injection. Capabilities derived from `discovery::SELF` — no duplicated announce logic. HTTP/tar layer extracted to standalone module.
-- **Proto-nucleate manifest** — `spore-validate nucleus --profile <path>` validates running NUCLEUS against deployment profiles. Topology classes: Full (13/13), Tower (3/3), Nest (7/7), Fieldmouse (canary), Relay (2/2). Socket probing via standard discovery chain.
+- **`spore-validate` v0.3.0** — 23-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, NUCLEUS profile validation, depot integrity verification, HTTP/tar utilities, trait-based VCS, parity integration tests. 171 tests (143 unit + 25 integration + 3 refresh), `#![forbid(unsafe_code)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay) with riboCipher Tier 1 signal support. Discovery probes `BIOMEOS_SOCKET_DIR`, `/run/membrane/` (systemd NUCLEUS), and `XDG_RUNTIME_DIR`. Accepts `TRANSPORT_ENDPOINT` env var for launcher injection. Capabilities derived from `discovery::SELF` — no duplicated announce logic. HTTP/tar layer extracted to standalone module.
+- **Proto-nucleate manifest** — `spore-validate nucleus --profile <path>` validates running NUCLEUS against deployment profiles. Topology classes: Full (13/13), Tower (3/3), Nest (7/7), Fieldmouse (canary), Relay (2/2). Socket probing via standard discovery chain. `--probe` flag validates guideStone health contract (`{status, primal, version}`).
+- **Depot integrity verification** — `spore-validate depot-verify --checksums <path> --depot <dir> --arch <target>` validates binary artifacts against BLAKE3 checksums from `checksums.toml`. Supports `--partial` mode for incremental depot validation (pass when all present binaries verify). Streaming BLAKE3 computation handles large binaries. Directly supports Wave 114 exit criteria (WAN/LAN depot pull validation).
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
@@ -31,7 +32,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Deep debt resolved** — LazyLock regex statics, parameterized notebook paths, modularized viz_data, deprecated shell scripts superseded by Rust. push_manifest decomposed (PushFileOutcome enum). HTTP/tar extracted from fetch.rs. announce_request canonical. Zero dead_code allows on production paths. refresh::scan DRYed with closure-based drift push. HTTP redirect handling fixed for relative paths. Zero production `unwrap()`/`expect()` (all in tests or static regex `LazyLock`). `connect_timeout` + I/O timeouts on all transports. `Content-Length` validation for truncation detection.
 - **primalSpring validation: 70/70 PASS** — `sporeprint-pure-primal-parity` scenario passes all checks (content parsing, entity resolution, modality output, composition graph, certification manifest). Certification manifest now emits `schema_version` + `merkle_root` fields per primalSpring expectations.
 - **Metrics freshness** — all 25 entity metrics refreshed (3.46M LOC, 114K tests ecosystem-wide). Drift tolerance maintained.
-- **WAN mesh status (Wave 113)** — VPS songbird rebuilt to `acf20b6e` (BLAKE3 `c42ef13` verified). WAN cascade validated: 2.2 MB/s sustained, sub-5s per primal, 30-35ms TCP connect, 100-115ms TTFB. 12/13 BLAKE3 verified (songbird skew: depot=c42ef13 vs checksums.toml=334b695b — convergence gate confirms depot correct). Partition tolerance tested via iptables DROP: songbird `reachable` flag is STATIC (set at init, never actively probed) — auto-reconnect only triggers with active federation connection. Persistent federation BLOCKED on VPS peer enrollment (cellMembrane action required).
+- **WAN depot status (Wave 114)** — Depot rebuilt from HEAD (2026-06-15T14:05Z), 13/13 x86_64 + 14 aarch64 binaries. WAN fetch verified: 4/4 critical primals pass BLAKE3 via `depot-verify --partial`. Persistent federation now ✅ (peer enrollment completed by cellMembrane). Full depot path: `membrane.primals.eco/depot/{arch}/{slug}` → b3sum verification → launch.
 
 ## Repository Structure
 
@@ -65,7 +66,7 @@ sporePrint/
 │   ├── CNAME                # primals.eco
 │   └── search.css
 ├── specs/                   # THIS DIRECTORY — internal, not built
-├── crates/spore-validate/   # Rust validation crate (21 modules, 150 tests, 90%+ cov)
+├── crates/spore-validate/   # Rust validation crate (23 modules, 171 tests, 90%+ cov)
 ├── .github/workflows/       # deploy.yml, auto-refresh.yml
 └── CHANGELOG.md
 ```

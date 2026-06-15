@@ -1,7 +1,7 @@
 +++
 title = "Biochar Phosphorus Adsorption Isotherms (Kumari et al. 2025)"
 description = "Rendered from 007-biochar-adsorption.ipynb"
-date = 2026-06-14
+date = 2026-06-15
 weight = 50
 
 [extra]

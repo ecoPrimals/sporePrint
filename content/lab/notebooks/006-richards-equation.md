@@ -1,7 +1,7 @@
 +++
 title = "1D Richards Equation with van Genuchten–Mualem Hydraulics"
 description = "Rendered from 006-richards-equation.ipynb"
-date = 2026-06-14
+date = 2026-06-15
 weight = 50
 
 [extra]

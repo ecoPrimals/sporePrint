@@ -12,6 +12,7 @@ mod cas_push;
 mod certify;
 mod commands;
 mod content;
+mod depot;
 mod discovery;
 mod error;
 mod fetch;
@@ -161,6 +162,25 @@ enum Command {
         probe: bool,
     },
 
+    /// Verify depot binary integrity against BLAKE3 checksums
+    DepotVerify {
+        /// Path to checksums.toml (plasmidBin manifest)
+        #[arg(long)]
+        checksums: PathBuf,
+
+        /// Path to local depot directory containing binaries
+        #[arg(long)]
+        depot: PathBuf,
+
+        /// Target architecture to verify (e.g., x86_64-unknown-linux-musl)
+        #[arg(long)]
+        arch: String,
+
+        /// Pass if all present binaries verify (allow incomplete depot)
+        #[arg(long)]
+        partial: bool,
+    },
+
     /// Push build artifacts to `NestGate` CAS (content-addressed storage)
     CasPush {
         /// Path to Zola build output (default: public/)
@@ -197,6 +217,9 @@ fn run() -> Result<(), Error> {
     }
     if let Some(Command::Nucleus { ref profile, probe }) = cli.command {
         return run_nucleus(profile, probe);
+    }
+    if let Some(Command::DepotVerify { ref checksums, ref depot, ref arch, partial }) = cli.command {
+        return commands::depot_verify(checksums, depot, arch, partial);
     }
 
     let config_path = root.join(paths::CONFIG_FILE);
@@ -244,7 +267,9 @@ fn run() -> Result<(), Error> {
         Some(Command::Graph { emit }) => commands::graph(&root, &config, emit),
         Some(Command::Certify { emit }) => commands::certify(&root, &config, emit),
         Some(Command::Discover) => commands::discover(),
-        Some(Command::Nucleus { .. }) => unreachable!("handled above"),
+        Some(Command::Nucleus { .. } | Command::DepotVerify { .. }) => {
+            unreachable!("handled above")
+        }
         Some(Command::CasManifest { public_dir, emit }) => {
             commands::cas_manifest(&root, &public_dir, emit)
         }
