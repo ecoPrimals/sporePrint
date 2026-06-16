@@ -226,10 +226,10 @@ beardog = { blake3 = "896a363eadf35486ec93b9a92b6436e47d3a19f1cc6da46f567a45f703
 
     #[test]
     fn parse_checksums_missing_blake3_errors() {
-        let toml = r#"
+        let toml = r"
 [x86_64-unknown-linux-musl]
 beardog = { size = 100 }
-"#;
+";
         let result = parse_checksums_str(toml);
         assert!(result.is_err());
         assert!(result.unwrap_err().to_string().contains("missing blake3"));

@@ -1,7 +1,7 @@
 +++
 title = "Hargreaves-Samani (1985) Temperature-Based ET₀"
 description = "Rendered from 031-hargreaves-samani-et0.ipynb"
-date = 2026-06-15
+date = 2026-06-16
 weight = 50
 
 [extra]

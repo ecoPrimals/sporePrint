@@ -1,7 +1,7 @@
 +++
 title = "Paper 018 — PhyloNet-HMM for Introgression Detection"
 description = "Rendered from paper-018-introgression.ipynb"
-date = 2026-06-15
+date = 2026-06-16
 weight = 50
 
 [extra]

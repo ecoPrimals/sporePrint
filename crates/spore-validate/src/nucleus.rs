@@ -369,6 +369,160 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
     }
 }
 
+// ── Display ──────────────────────────────────────────────────────────
+
+/// Print NUCLEUS validation results to stdout.
+///
+/// Displays profile metadata, per-primal health status (with optional probe
+/// details), and aggregate compliance summary.
+pub fn print_result(profile: &NucleusProfile, result: &ValidationResult, profile_path: &Path) {
+    print_header(profile, result, profile_path);
+    print_primals(result);
+    print_summary(result);
+}
+
+fn print_header(profile: &NucleusProfile, result: &ValidationResult, profile_path: &Path) {
+    println!("sporePrint: NUCLEUS profile validation");
+    println!(
+        "  Profile: {} ({})",
+        result.profile_name,
+        profile_path.display()
+    );
+    if let Some(desc) = &profile.profile.description {
+        println!("  Description: {desc}");
+    }
+    if let Some(base) = profile.profile.base() {
+        println!("  Extends: {base}");
+    }
+    println!("  Declared primals: {}", result.total_declared);
+    if !profile.launch_order().is_empty() {
+        println!("  Launch order: {}", profile.launch_order().join(" → "));
+    }
+    if profile.federation_enabled() {
+        println!("  Federation: enabled");
+    }
+    println!();
+}
+
+fn print_primals(result: &ValidationResult) {
+    if !result.healthy.is_empty() {
+        println!(
+            "  HEALTHY ({}/{}):",
+            result.healthy.len(),
+            result.total_declared
+        );
+        for p in &result.healthy {
+            let probe_info = format_probe_info(p.probe.as_ref());
+            println!(
+                "    ✅ {} [{}] → {}{}",
+                p.name,
+                p.role,
+                p.socket_path.as_deref().unwrap_or("?"),
+                probe_info
+            );
+        }
+    }
+
+    if !result.missing.is_empty() {
+        println!();
+        println!(
+            "  MISSING ({}/{}):",
+            result.missing.len(),
+            result.total_declared
+        );
+        for p in &result.missing {
+            let marker = if p.required { "❌" } else { "⚠️" };
+            let probe_err = format_probe_error(p.probe.as_ref());
+            println!(
+                "    {marker} {} [{}] (required={}){probe_err}",
+                p.name, p.role, p.required
+            );
+        }
+    }
+
+    let has_probes = result
+        .healthy
+        .iter()
+        .any(|p| p.probe.is_some());
+
+    if has_probes {
+        let compliant = result
+            .healthy
+            .iter()
+            .filter(|p| {
+                p.probe
+                    .as_ref()
+                    .is_some_and(|pr| pr.health_contract == HealthContract::Compliant)
+            })
+            .count();
+        let partial = result
+            .healthy
+            .iter()
+            .filter(|p| {
+                p.probe
+                    .as_ref()
+                    .is_some_and(|pr| pr.health_contract == HealthContract::Partial)
+            })
+            .count();
+        let total_probed = result.healthy.len();
+        println!();
+        println!(
+            "  Health contract (guideStone): {compliant}/{total_probed} compliant, {partial} partial"
+        );
+    }
+
+    println!();
+}
+
+fn print_summary(result: &ValidationResult) {
+    println!(
+        "  Critical path: {}",
+        if result.critical_met {
+            "✅ MET"
+        } else {
+            "❌ FAILED"
+        }
+    );
+    println!(
+        "  Min healthy: {}",
+        if result.min_healthy_met {
+            "✅ MET"
+        } else {
+            "❌ FAILED"
+        }
+    );
+    println!();
+}
+
+fn format_probe_info(probe: Option<&ProbeResult>) -> String {
+    probe.map_or_else(String::new, |pr| {
+        let contract_icon = match pr.health_contract {
+            HealthContract::Compliant => " [health:✅]",
+            HealthContract::Partial => " [health:⚠️]",
+            HealthContract::None => "",
+        };
+        let version_str = pr
+            .version
+            .as_deref()
+            .map_or(String::new(), |v| format!(", v{v}"));
+        format!(" ({}ms{version_str}{contract_icon})", pr.latency.as_millis())
+    })
+}
+
+fn format_probe_error(probe: Option<&ProbeResult>) -> String {
+    probe.map_or_else(String::new, |pr| {
+        use std::fmt::Write;
+        let mut info = String::new();
+        if let Some(e) = &pr.error {
+            let _ = write!(info, " — {e}");
+        }
+        if pr.responsive && pr.health_contract == HealthContract::None {
+            info.push_str(" [no health method]");
+        }
+        info
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

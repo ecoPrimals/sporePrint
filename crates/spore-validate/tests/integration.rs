@@ -567,3 +567,150 @@ fn discover_does_not_require_config() {
         "discover should work without config.toml"
     );
 }
+
+#[test]
+fn depot_verify_passes_correct_binaries() {
+    build_binary();
+
+    let dir = tempfile::tempdir().unwrap();
+    let depot = dir.path().join("depot");
+    std::fs::create_dir(&depot).unwrap();
+
+    let content = b"test binary content for depot verify";
+    let hash = blake3::hash(content).to_hex().to_string();
+    std::fs::write(depot.join("test_primal"), content).unwrap();
+
+    let checksums_path = dir.path().join("checksums.toml");
+    let checksums_content = format!(
+        "[test-arch]\ntest_primal = {{ blake3 = \"{hash}\", size = {} }}\n",
+        content.len()
+    );
+    std::fs::write(&checksums_path, checksums_content).unwrap();
+
+    let output = Command::new(binary_path())
+        .args([
+            "depot-verify",
+            "--checksums",
+            checksums_path.to_str().unwrap(),
+            "--depot",
+            depot.to_str().unwrap(),
+            "--arch",
+            "test-arch",
+        ])
+        .output()
+        .expect("failed to run depot-verify");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "depot-verify should pass:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("DEPOT INTEGRITY VERIFIED"));
+    assert!(stdout.contains("1/1 verified"));
+}
+
+#[test]
+fn depot_verify_fails_on_hash_mismatch() {
+    build_binary();
+
+    let dir = tempfile::tempdir().unwrap();
+    let depot = dir.path().join("depot");
+    std::fs::create_dir(&depot).unwrap();
+    std::fs::write(depot.join("bad_primal"), b"wrong content").unwrap();
+
+    let checksums_path = dir.path().join("checksums.toml");
+    let checksums_content = format!(
+        "[test-arch]\nbad_primal = {{ blake3 = \"{}\", size = {} }}\n",
+        "0".repeat(64),
+        b"wrong content".len()
+    );
+    std::fs::write(&checksums_path, checksums_content).unwrap();
+
+    let output = Command::new(binary_path())
+        .args([
+            "depot-verify",
+            "--checksums",
+            checksums_path.to_str().unwrap(),
+            "--depot",
+            depot.to_str().unwrap(),
+            "--arch",
+            "test-arch",
+        ])
+        .output()
+        .expect("failed to run depot-verify");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(!output.status.success());
+    assert!(stdout.contains("BLAKE3 mismatch"));
+    assert!(stdout.contains("INTEGRITY FAILURE"));
+}
+
+#[test]
+fn depot_verify_partial_mode_passes_with_missing() {
+    build_binary();
+
+    let dir = tempfile::tempdir().unwrap();
+    let depot = dir.path().join("depot");
+    std::fs::create_dir(&depot).unwrap();
+
+    let content = b"partial depot test";
+    let hash = blake3::hash(content).to_hex().to_string();
+    std::fs::write(depot.join("present"), content).unwrap();
+
+    let checksums_path = dir.path().join("checksums.toml");
+    let checksums_content = format!(
+        "[test-arch]\npresent = {{ blake3 = \"{hash}\", size = {} }}\nmissing = {{ blake3 = \"abc\", size = 99 }}\n",
+        content.len()
+    );
+    std::fs::write(&checksums_path, checksums_content).unwrap();
+
+    let output = Command::new(binary_path())
+        .args([
+            "depot-verify",
+            "--checksums",
+            checksums_path.to_str().unwrap(),
+            "--depot",
+            depot.to_str().unwrap(),
+            "--arch",
+            "test-arch",
+            "--partial",
+        ])
+        .output()
+        .expect("failed to run depot-verify --partial");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        output.status.success(),
+        "partial mode should pass:\nstdout: {stdout}\nstderr: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    assert!(stdout.contains("DEPOT INTEGRITY VERIFIED"));
+    assert!(stdout.contains("1 missing"));
+}
+
+#[test]
+fn depot_verify_does_not_require_config() {
+    build_binary();
+
+    let output = Command::new(binary_path())
+        .args([
+            "--root", "/nonexistent/path",
+            "depot-verify",
+            "--checksums", "/nonexistent/checksums.toml",
+            "--depot", "/nonexistent/depot",
+            "--arch", "x86_64",
+        ])
+        .output()
+        .expect("failed to run depot-verify");
+
+    assert!(
+        !output.status.success(),
+        "should fail on missing checksums file (not config.toml)"
+    );
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(
+        stderr.contains("checksums.toml") || stderr.contains("No such file"),
+        "expected checksums file error, got: {stderr}"
+    );
+}

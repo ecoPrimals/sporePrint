@@ -286,8 +286,7 @@ fn run_nucleus(profile_path: &Path, probe: bool) -> Result<(), Error> {
     let profile = nucleus::parse_profile(profile_path)?;
     let result = nucleus::validate_profile(&profile, probe);
 
-    print_nucleus_header(&profile, &result, profile_path);
-    print_nucleus_primals(&result, probe);
+    nucleus::print_result(&profile, &result, profile_path);
 
     if result.passed() {
         println!("  RESULT: ✅ NUCLEUS COMPLIANT");
@@ -296,100 +295,6 @@ fn run_nucleus(profile_path: &Path, probe: bool) -> Result<(), Error> {
         println!("  RESULT: ❌ NUCLEUS NON-COMPLIANT");
         Err(Error::Config("NUCLEUS validation failed".into()))
     }
-}
-
-fn print_nucleus_header(
-    profile: &nucleus::NucleusProfile,
-    result: &nucleus::ValidationResult,
-    profile_path: &Path,
-) {
-    println!("sporePrint: NUCLEUS profile validation");
-    println!("  Profile: {} ({})", result.profile_name, profile_path.display());
-    if let Some(desc) = &profile.profile.description {
-        println!("  Description: {desc}");
-    }
-    if let Some(base) = profile.profile.base() {
-        println!("  Extends: {base}");
-    }
-    println!("  Declared primals: {}", result.total_declared);
-    if !profile.launch_order().is_empty() {
-        println!("  Launch order: {}", profile.launch_order().join(" → "));
-    }
-    if profile.federation_enabled() {
-        println!("  Federation: enabled");
-    }
-    println!();
-}
-
-fn print_nucleus_primals(result: &nucleus::ValidationResult, probe: bool) {
-    if !result.healthy.is_empty() {
-        println!("  HEALTHY ({}/{}):", result.healthy.len(), result.total_declared);
-        for p in &result.healthy {
-            let probe_info = p.probe.as_ref().map_or_else(String::new, |pr| {
-                let contract_icon = match pr.health_contract {
-                    nucleus::HealthContract::Compliant => " [health:✅]",
-                    nucleus::HealthContract::Partial => " [health:⚠️]",
-                    nucleus::HealthContract::None => "",
-                };
-                format!(
-                    " ({}ms{}{})",
-                    pr.latency.as_millis(),
-                    pr.version.as_deref().map_or(String::new(), |v| format!(", v{v}")),
-                    contract_icon
-                )
-            });
-            println!(
-                "    ✅ {} [{}] → {}{}",
-                p.name,
-                p.role,
-                p.socket_path.as_deref().unwrap_or("?"),
-                probe_info
-            );
-        }
-    }
-
-    if !result.missing.is_empty() {
-        println!();
-        println!("  MISSING ({}/{}):", result.missing.len(), result.total_declared);
-        for p in &result.missing {
-            use std::fmt::Write;
-            let marker = if p.required { "❌" } else { "⚠️" };
-            let probe_err = p.probe.as_ref().map_or_else(String::new, |pr| {
-                let mut info = String::new();
-                if let Some(e) = &pr.error {
-                    let _ = write!(info, " — {e}");
-                }
-                if pr.responsive && pr.health_contract == nucleus::HealthContract::None {
-                    info.push_str(" [no health method]");
-                }
-                info
-            });
-            println!("    {marker} {} [{}] (required={}){probe_err}", p.name, p.role, p.required);
-        }
-    }
-
-    if probe {
-        let compliant = result.healthy.iter()
-            .filter(|p| p.probe.as_ref().is_some_and(|pr| pr.health_contract == nucleus::HealthContract::Compliant))
-            .count();
-        let partial = result.healthy.iter()
-            .filter(|p| p.probe.as_ref().is_some_and(|pr| pr.health_contract == nucleus::HealthContract::Partial))
-            .count();
-        let total_probed = result.healthy.len();
-        println!();
-        println!("  Health contract (guideStone): {compliant}/{total_probed} compliant, {partial} partial");
-    }
-
-    println!();
-    println!(
-        "  Critical path: {}",
-        if result.critical_met { "✅ MET" } else { "❌ FAILED" }
-    );
-    println!(
-        "  Min healthy: {}",
-        if result.min_healthy_met { "✅ MET" } else { "❌ FAILED" }
-    );
-    println!();
 }
 
 /// Walk up from `start` looking for a `.gate` file, then derive the springs root.

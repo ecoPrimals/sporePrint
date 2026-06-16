@@ -135,8 +135,6 @@ fn extract_title(bytes: &[u8]) -> Option<String> {
     None
 }
 
-
-
 pub fn manifest_path(root: &Path) -> PathBuf {
     root.join(crate::paths::CONTENT_MANIFEST)
 }
