@@ -2,10 +2,13 @@
 
 //! Tests for metric refresh write-back and drift detection on real repos.
 
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::Command;
+use std::sync::Once;
 
-fn sporeprint_root() -> std::path::PathBuf {
+static BUILD_ONCE: Once = Once::new();
+
+fn sporeprint_root() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .unwrap()
@@ -14,26 +17,28 @@ fn sporeprint_root() -> std::path::PathBuf {
         .to_path_buf()
 }
 
-fn binary_path() -> std::path::PathBuf {
-    let mut path = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+fn binary_path() -> PathBuf {
+    let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     path.push("target");
     path.push("debug");
     path.push("spore-validate");
     path
 }
 
-fn build_binary() {
-    let status = Command::new("cargo")
-        .args(["build", "--quiet"])
-        .current_dir(env!("CARGO_MANIFEST_DIR"))
-        .status()
-        .expect("failed to build");
-    assert!(status.success());
+fn ensure_built() {
+    BUILD_ONCE.call_once(|| {
+        let status = Command::new("cargo")
+            .args(["build", "--quiet"])
+            .current_dir(env!("CARGO_MANIFEST_DIR"))
+            .status()
+            .expect("failed to build spore-validate");
+        assert!(status.success(), "cargo build failed");
+    });
 }
 
 #[test]
 fn refresh_self_reports_accurate_metrics() {
-    build_binary();
+    ensure_built();
     let root = sporeprint_root();
     let crate_dir = Path::new(env!("CARGO_MANIFEST_DIR"));
 
@@ -50,8 +55,6 @@ fn refresh_self_reports_accurate_metrics() {
         .expect("failed to run refresh");
 
     let stdout = String::from_utf8_lossy(&output.stdout);
-    // spore-validate won't find "sporeprint" in the crate dir (it's the crate itself,
-    // not a repo with that org structure), so it should skip gracefully.
     assert!(
         output.status.success(),
         "refresh should not crash: {stdout}"
@@ -60,11 +63,10 @@ fn refresh_self_reports_accurate_metrics() {
 
 #[test]
 fn refresh_write_to_temp_config() {
-    build_binary();
+    ensure_built();
     let dir = tempfile::tempdir().unwrap();
     let root = dir.path();
 
-    // Create a minimal config.toml with one entity pointing at this crate.
     let config_content = r#"
 base_url = "https://test.example"
 [extra]
@@ -92,7 +94,6 @@ tier = "foundation"
     std::fs::write(root.join("config.toml"), config_content).unwrap();
     std::fs::create_dir_all(root.join("content")).unwrap();
 
-    // Create a fake repo to count
     let repo_dir = dir.path().join("local/testcrate");
     std::fs::create_dir_all(&repo_dir).unwrap();
     std::fs::write(
@@ -125,11 +126,9 @@ tier = "foundation"
         String::from_utf8_lossy(&output.stderr)
     );
 
-    // If drift was detected and written, the config should be updated
     if stdout.contains("DRIFT") {
         assert!(stdout.contains("WRITE: config.toml updated"));
         let updated = std::fs::read_to_string(root.join("config.toml")).unwrap();
-        // The file count should reflect 1 .rs file
         assert!(
             updated.contains("files = 1"),
             "expected files = 1 in updated config"
@@ -139,6 +138,7 @@ tier = "foundation"
 
 #[test]
 fn refresh_counts_rust_files_correctly() {
+    ensure_built();
     let dir = tempfile::tempdir().unwrap();
     let repo = dir.path().join("myrepo");
     std::fs::create_dir_all(repo.join("src")).unwrap();
@@ -153,8 +153,6 @@ fn refresh_counts_rust_files_correctly() {
     )
     .unwrap();
 
-    // Use spore-validate's count_file logic directly via the binary's refresh on this repo
-    build_binary();
     let root = dir.path();
     let config = r#"
 base_url = "https://test.example"
@@ -195,7 +193,6 @@ tier = "foundation"
 
     let stdout = String::from_utf8_lossy(&output.stdout);
     assert!(output.status.success());
-    // Should detect drift from 999 to actual values
     assert!(
         stdout.contains("DRIFT"),
         "expected drift detection, got: {stdout}"

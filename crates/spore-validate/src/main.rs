@@ -11,6 +11,7 @@ mod cas;
 mod cas_push;
 mod certify;
 mod commands;
+mod commands_depot;
 mod content;
 mod depot;
 mod discovery;
@@ -240,7 +241,7 @@ fn run() -> Result<(), Error> {
     }) = cli.command
     {
         if list_arches {
-            return commands::depot_list_arches(checksums);
+            return commands_depot::list_arches(checksums);
         }
         let depot = depot.as_ref().ok_or_else(|| {
             Error::Config("--depot is required when not using --list-arches".into())
@@ -248,7 +249,7 @@ fn run() -> Result<(), Error> {
         let arch = arch.as_ref().ok_or_else(|| {
             Error::Config("--arch is required when not using --list-arches".into())
         })?;
-        return commands::depot_verify(checksums, depot, arch, partial);
+        return commands_depot::verify(checksums, depot, arch, partial);
     }
 
     let config_path = root.join(paths::CONFIG_FILE);
