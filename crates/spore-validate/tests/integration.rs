@@ -714,3 +714,42 @@ fn depot_verify_does_not_require_config() {
         "expected checksums file error, got: {stderr}"
     );
 }
+
+#[test]
+fn nucleus_ribocipher_flag_accepted() {
+    build_binary();
+
+    let tmp = std::env::temp_dir().join("spore_test_ribo_profile.toml");
+    std::fs::write(
+        &tmp,
+        r#"[profile]
+name = "ribo-test"
+
+[primals]
+fake_primal = { required = false, role = "test" }
+
+[health]
+min_healthy = 0
+critical = []
+"#,
+    )
+    .unwrap();
+
+    let output = Command::new(binary_path())
+        .args([
+            "nucleus",
+            "--profile", tmp.to_str().unwrap(),
+            "--probe",
+            "--ribocipher",
+        ])
+        .output()
+        .expect("failed to run nucleus --ribocipher");
+
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        stdout.contains("NUCLEUS"),
+        "should produce NUCLEUS output, got: {stdout}"
+    );
+
+    std::fs::remove_file(&tmp).ok();
+}

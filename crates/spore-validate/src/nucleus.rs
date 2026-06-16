@@ -157,6 +157,9 @@ pub struct ProbeResult {
     pub status: Option<String>,
     /// guideStone health contract compliance: `{status, primal, version}` all present.
     pub health_contract: HealthContract,
+    /// Whether the primal accepted a mito-beacon (`0xEC 0x01`) prefixed request.
+    /// `None` if riboCipher probing was not performed.
+    pub ribocipher_accepted: Option<bool>,
     pub error: Option<String>,
 }
 
@@ -196,8 +199,16 @@ pub fn parse_profile(path: &Path) -> Result<NucleusProfile, Error> {
 /// 4. `XDG_RUNTIME_DIR/biomeos/{slug}.sock`
 ///
 /// When `probe` is true, additionally sends a `health.ping` JSON-RPC call to each
-/// discovered socket to verify the primal is responsive (not just that the socket exists).
-pub fn validate_profile(profile: &NucleusProfile, probe: bool) -> ValidationResult {
+/// discovered socket to verify the primal is responsive.
+///
+/// When `ribocipher` is true (requires `probe`), also tests mito-beacon signal
+/// acceptance by connecting a second time with `0xEC 0x01` prefix before the
+/// JSON-RPC payload. This diagnoses the genetics-layer wiring issue (Wave 114).
+pub fn validate_profile(
+    profile: &NucleusProfile,
+    probe: bool,
+    ribocipher: bool,
+) -> ValidationResult {
     let mut healthy = Vec::new();
     let mut missing = Vec::new();
 
@@ -205,11 +216,20 @@ pub fn validate_profile(profile: &NucleusProfile, probe: bool) -> ValidationResu
         let env_var = format!("{}_SOCKET", name.to_uppercase());
         let socket = discovery::probe_socket(name, &env_var);
 
-        let probe_result = if probe {
+        let mut probe_result = if probe {
             socket.as_ref().map(|path| probe_socket_health(path))
         } else {
             None
         };
+
+        if ribocipher && probe {
+            if let Some(ref path) = socket {
+                let accepted = probe_ribocipher_acceptance(path);
+                if let Some(ref mut pr) = probe_result {
+                    pr.ribocipher_accepted = Some(accepted);
+                }
+            }
+        }
 
         let is_healthy = match (&socket, &probe_result) {
             (Some(_), Some(result)) => result.responsive,
@@ -271,6 +291,7 @@ fn probe_failed(start: Instant, error: String) -> ProbeResult {
         primal_id: None,
         status: None,
         health_contract: HealthContract::None,
+        ribocipher_accepted: None,
         error: Some(error),
     }
 }
@@ -322,7 +343,6 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
     if let Some(ref resp) = parsed {
         if let Some(err) = resp.get("error") {
             let code = err.get("code").and_then(Value::as_i64).unwrap_or(0);
-            // -32601 = method not found — primal is alive but doesn't implement health
             return ProbeResult {
                 responsive: true,
                 latency,
@@ -330,6 +350,7 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
                 primal_id: None,
                 status: None,
                 health_contract: HealthContract::None,
+                ribocipher_accepted: None,
                 error: Some(format!("JSON-RPC error {code}")),
             };
         }
@@ -365,8 +386,59 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
         primal_id,
         status,
         health_contract,
+        ribocipher_accepted: None,
         error: None,
     }
+}
+
+/// `riboCipher` Transport Signal: `MitoBeacon` clear (`0xEC 0x01`).
+const RIBOCIPHER_MITO_CLEAR: [u8; 2] = [0xEC, 0x01];
+
+/// Probe whether a primal accepts the `riboCipher` mito-beacon signal prefix.
+///
+/// Connects to the socket, writes `0xEC 0x01` followed by a `health.ping`
+/// JSON-RPC request, and checks whether the primal responds with valid JSON-RPC
+/// rather than closing the connection or returning garbage.
+fn probe_ribocipher_acceptance(socket_path: &str) -> bool {
+    let Ok(stream) = std::os::unix::net::UnixStream::connect(socket_path) else {
+        return false;
+    };
+
+    stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
+    stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
+
+    let request = json!({
+        "jsonrpc": "2.0",
+        "method": "health.ping",
+        "params": {},
+        "id": 2
+    });
+
+    let Ok(json_payload) = serde_json::to_string(&request) else {
+        return false;
+    };
+
+    let mut payload = Vec::with_capacity(2 + json_payload.len() + 1);
+    payload.extend_from_slice(&RIBOCIPHER_MITO_CLEAR);
+    payload.extend_from_slice(json_payload.as_bytes());
+    payload.push(b'\n');
+
+    let mut reader = BufReader::new(stream);
+
+    if reader.get_mut().write_all(&payload).is_err() {
+        return false;
+    }
+    if reader.get_mut().flush().is_err() {
+        return false;
+    }
+
+    let mut line = String::new();
+    if reader.read_line(&mut line).is_err() {
+        return false;
+    }
+
+    // Valid acceptance: primal stripped the prefix and returned JSON-RPC
+    serde_json::from_str::<Value>(line.trim()).is_ok() && !line.trim().is_empty()
 }
 
 // ── Display ──────────────────────────────────────────────────────────
@@ -469,6 +541,32 @@ fn print_primals(result: &ValidationResult) {
         println!(
             "  Health contract (guideStone): {compliant}/{total_probed} compliant, {partial} partial"
         );
+
+        let ribo_tested: Vec<_> = result
+            .healthy
+            .iter()
+            .chain(result.missing.iter())
+            .filter(|p| {
+                p.probe
+                    .as_ref()
+                    .is_some_and(|pr| pr.ribocipher_accepted.is_some())
+            })
+            .collect();
+
+        if !ribo_tested.is_empty() {
+            let accepted = ribo_tested
+                .iter()
+                .filter(|p| {
+                    p.probe
+                        .as_ref()
+                        .is_some_and(|pr| pr.ribocipher_accepted == Some(true))
+                })
+                .count();
+            let total_ribo = ribo_tested.len();
+            println!(
+                "  riboCipher mito-beacon: {accepted}/{total_ribo} accept signal"
+            );
+        }
     }
 
     println!();
@@ -501,11 +599,19 @@ fn format_probe_info(probe: Option<&ProbeResult>) -> String {
             HealthContract::Partial => " [health:⚠️]",
             HealthContract::None => "",
         };
+        let ribo_icon = match pr.ribocipher_accepted {
+            Some(true) => " [mito:✅]",
+            Some(false) => " [mito:❌]",
+            None => "",
+        };
         let version_str = pr
             .version
             .as_deref()
             .map_or(String::new(), |v| format!(", v{v}"));
-        format!(" ({}ms{version_str}{contract_icon})", pr.latency.as_millis())
+        format!(
+            " ({}ms{version_str}{contract_icon}{ribo_icon})",
+            pr.latency.as_millis()
+        )
     })
 }
 
@@ -593,7 +699,7 @@ name = "tower-relay"
             launch: None,
             mesh: None,
         };
-        let result = validate_profile(&profile, false);
+        let result = validate_profile(&profile, false, false);
         assert!(result.passed());
         assert_eq!(result.total_declared, 0);
     }
@@ -625,7 +731,7 @@ name = "tower-relay"
             mesh: None,
         };
 
-        let result = validate_profile(&profile, false);
+        let result = validate_profile(&profile, false, false);
         assert!(!result.passed());
         assert!(!result.critical_met);
         assert!(!result.min_healthy_met);

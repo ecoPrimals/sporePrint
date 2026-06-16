@@ -160,6 +160,10 @@ enum Command {
         /// Send `health.ping` IPC to each discovered socket (verifies responsiveness)
         #[arg(long)]
         probe: bool,
+
+        /// Test riboCipher mito-beacon signal acceptance (requires --probe)
+        #[arg(long)]
+        ribocipher: bool,
     },
 
     /// Verify depot binary integrity against BLAKE3 checksums
@@ -219,8 +223,13 @@ fn run() -> Result<(), Error> {
     if matches!(cli.command, Some(Command::Discover)) {
         return commands::discover();
     }
-    if let Some(Command::Nucleus { ref profile, probe }) = cli.command {
-        return run_nucleus(profile, probe);
+    if let Some(Command::Nucleus {
+        ref profile,
+        probe,
+        ribocipher,
+    }) = cli.command
+    {
+        return run_nucleus(profile, probe, ribocipher);
     }
     if let Some(Command::DepotVerify {
         ref checksums,
@@ -302,9 +311,9 @@ fn run() -> Result<(), Error> {
 }
 
 /// Run NUCLEUS profile validation.
-fn run_nucleus(profile_path: &Path, probe: bool) -> Result<(), Error> {
+fn run_nucleus(profile_path: &Path, probe: bool, ribocipher: bool) -> Result<(), Error> {
     let profile = nucleus::parse_profile(profile_path)?;
-    let result = nucleus::validate_profile(&profile, probe);
+    let result = nucleus::validate_profile(&profile, probe, ribocipher);
 
     nucleus::print_result(&profile, &result, profile_path);
 
