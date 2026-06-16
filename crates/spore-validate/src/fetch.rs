@@ -108,7 +108,12 @@ impl GitBackend {
 impl VcsBackend for GitBackend {
     fn clone_repo(&self, url: &str, target: &Path) -> Result<(), Error> {
         if let Some(parent) = target.parent() {
-            let _ = std::fs::create_dir_all(parent);
+            std::fs::create_dir_all(parent).map_err(|e| {
+                Error::Git(format!(
+                    "cannot create parent directory {}: {e}",
+                    parent.display()
+                ))
+            })?;
         }
         let status = std::process::Command::new("git")
             .args([
@@ -191,8 +196,13 @@ impl ForgeArchiveBackend {
     fn download_and_extract(url: &str, target: &Path) -> Result<(), Error> {
         let body = http::get_body(url)?;
         let decompressed = http::gzip_decompress(&body)?;
-        let _ = std::fs::create_dir_all(target);
-        http::extract_tar(&decompressed, target);
+        std::fs::create_dir_all(target).map_err(|e| {
+            Error::Git(format!(
+                "cannot create target directory {}: {e}",
+                target.display()
+            ))
+        })?;
+        http::extract_tar(&decompressed, target)?;
         Ok(())
     }
 }
@@ -253,7 +263,13 @@ pub fn fetch_sources(
     source_filter: Option<&str>,
     vcs: &dyn VcsBackend,
 ) -> Vec<FetchOutcome> {
-    let _ = std::fs::create_dir_all(clone_root);
+    if let Err(e) = std::fs::create_dir_all(clone_root) {
+        eprintln!(
+            "  ERROR: cannot create clone root {}: {e}",
+            clone_root.display()
+        );
+        return Vec::new();
+    }
     let mut outcomes = Vec::new();
 
     let mut keys: Vec<&str> = sources.sources.keys().map(String::as_str).collect();

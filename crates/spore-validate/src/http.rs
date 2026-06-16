@@ -175,9 +175,10 @@ pub fn gzip_decompress(data: &[u8]) -> Result<Vec<u8>, Error> {
 ///
 /// Strips the top-level archive directory (e.g., `repo-main/`) so files
 /// extract directly into `target`. Handles type flags `0` (regular) and
-/// `5` (directory).
-pub fn extract_tar(data: &[u8], target: &Path) {
+/// `5` (directory). Returns the number of files written.
+pub fn extract_tar(data: &[u8], target: &Path) -> Result<usize, Error> {
     let mut pos = 0;
+    let mut files_written = 0usize;
 
     while pos + 512 <= data.len() {
         let header = &data[pos..pos + 512];
@@ -205,17 +206,32 @@ pub fn extract_tar(data: &[u8], target: &Path) {
         if !rel_path.is_empty() && (type_flag == b'0' || type_flag == 0) {
             let file_path = target.join(rel_path);
             if let Some(parent) = file_path.parent() {
-                let _ = std::fs::create_dir_all(parent);
+                std::fs::create_dir_all(parent).map_err(|e| {
+                    Error::Git(format!(
+                        "tar extract: cannot create directory {}: {e}",
+                        parent.display()
+                    ))
+                })?;
             }
             if pos + size <= data.len() {
-                let _ = std::fs::write(&file_path, &data[pos..pos + size]);
+                std::fs::write(&file_path, &data[pos..pos + size]).map_err(|e| {
+                    Error::Git(format!(
+                        "tar extract: cannot write {}: {e}",
+                        file_path.display()
+                    ))
+                })?;
+                files_written += 1;
             }
         } else if !rel_path.is_empty() && type_flag == b'5' {
-            let _ = std::fs::create_dir_all(target.join(rel_path));
+            std::fs::create_dir_all(target.join(rel_path)).map_err(|e| {
+                Error::Git(format!("tar extract: cannot create directory {rel_path}: {e}"))
+            })?;
         }
 
         pos += (size + 511) & !511;
     }
+
+    Ok(files_written)
 }
 
 #[cfg(test)]
@@ -287,8 +303,9 @@ mod tests {
         archive.extend_from_slice(&[0u8; 512]);
 
         let dir = tempfile::tempdir().unwrap();
-        extract_tar(&archive, dir.path());
+        let count = extract_tar(&archive, dir.path()).unwrap();
 
+        assert_eq!(count, 1);
         let extracted = std::fs::read_to_string(dir.path().join("hello.txt")).unwrap();
         assert_eq!(extracted, "file content here");
     }
@@ -307,8 +324,9 @@ mod tests {
         archive.extend_from_slice(&[0u8; 512]);
 
         let dir = tempfile::tempdir().unwrap();
-        extract_tar(&archive, dir.path());
+        let count = extract_tar(&archive, dir.path()).unwrap();
 
+        assert_eq!(count, 1);
         assert!(dir.path().join("sub").is_dir());
         let extracted = std::fs::read_to_string(dir.path().join("sub/deep.txt")).unwrap();
         assert_eq!(extracted, "nested");
@@ -318,7 +336,8 @@ mod tests {
     fn extract_tar_handles_empty_archive() {
         let archive = [0u8; 512];
         let dir = tempfile::tempdir().unwrap();
-        extract_tar(&archive, dir.path());
+        let count = extract_tar(&archive, dir.path()).unwrap();
+        assert_eq!(count, 0);
         assert!(std::fs::read_dir(dir.path()).unwrap().next().is_none());
     }
 

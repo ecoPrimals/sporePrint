@@ -243,7 +243,15 @@ pub fn render_notebooks(
     let output_subdir =
         std::env::var("SPOREPRINT_NOTEBOOK_OUTPUT").unwrap_or_else(|_| paths::NOTEBOOK_OUTPUT.into());
     let output_dir = root.join(&output_subdir);
-    let _ = std::fs::create_dir_all(&output_dir);
+    if let Err(e) = std::fs::create_dir_all(&output_dir) {
+        return (
+            0,
+            vec![format!(
+                "cannot create notebook output directory {}: {e}",
+                output_dir.display()
+            )],
+        );
+    }
 
     let mut rendered = 0u32;
     let mut messages = Vec::new();
