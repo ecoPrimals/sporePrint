@@ -583,6 +583,102 @@ pub fn discover() -> Result<(), Error> {
         }
     }
 
+    print_depot_discovery();
+
+    Ok(())
+}
+
+/// Attempt to locate and report on the depot (plasmidBin) state.
+///
+/// Discovers checksums.toml by walking up from CWD looking for the
+/// ecosystem workspace, then checks `infra/plasmidBin/checksums.toml`.
+fn print_depot_discovery() {
+    println!();
+    println!("  DEPOT:");
+
+    let checksums_path = discover_checksums_path();
+    let Some(path) = checksums_path else {
+        println!("    (plasmidBin/checksums.toml not found — set PLASMIDBIN_CHECKSUMS or place in workspace)");
+        return;
+    };
+
+    println!("    manifest: {}", path.display());
+
+    let Ok(checksums) = depot::parse_checksums(&path) else {
+        println!("    (failed to parse checksums.toml)");
+        return;
+    };
+
+    for (arch, entries) in &checksums {
+        println!("    {arch}: {} binaries", entries.len());
+    }
+
+    if let Ok(metadata) = std::fs::metadata(&path) {
+        use std::time::SystemTime;
+        if let Ok(modified) = metadata.modified() {
+            let age = SystemTime::now()
+                .duration_since(modified)
+                .unwrap_or_default();
+            let hours = age.as_secs() / 3600;
+            if hours < 24 {
+                println!("    freshness: {hours}h ago ✅");
+            } else {
+                let days = hours / 24;
+                println!("    freshness: {days}d ago ⚠️");
+            }
+        }
+    }
+}
+
+/// Find checksums.toml by checking env var, then walking up to workspace.
+fn discover_checksums_path() -> Option<PathBuf> {
+    if let Ok(path) = std::env::var("PLASMIDBIN_CHECKSUMS") {
+        let p = PathBuf::from(path);
+        if p.is_file() {
+            return Some(p);
+        }
+    }
+
+    let mut dir = std::env::current_dir().ok()?;
+    loop {
+        let candidate = dir.join("infra/plasmidBin/checksums.toml");
+        if candidate.is_file() {
+            return Some(candidate);
+        }
+        let candidate = dir.join("plasmidBin/checksums.toml");
+        if candidate.is_file() {
+            return Some(candidate);
+        }
+        if !dir.pop() {
+            return None;
+        }
+    }
+}
+
+pub fn depot_list_arches(checksums_path: &Path) -> Result<(), Error> {
+    println!("spore-validate: depot inventory");
+    println!("  checksums: {}", checksums_path.display());
+    println!();
+
+    let checksums = depot::parse_checksums(checksums_path)?;
+
+    if checksums.is_empty() {
+        println!("  (no architectures found)");
+        return Ok(());
+    }
+
+    for (arch, entries) in &checksums {
+        #[allow(clippy::cast_precision_loss)]
+        let total_size: f64 = entries.values().map(|e| e.size).sum::<u64>() as f64 / (1024.0 * 1024.0);
+        println!("  {arch}");
+        println!("    binaries: {}", entries.len());
+        println!("    total size: {total_size:.1} MB");
+        let mut names: Vec<&str> = entries.keys().map(String::as_str).collect();
+        names.sort_unstable();
+        println!("    primals: {}", names.join(", "));
+        println!();
+    }
+
     Ok(())
 }
 

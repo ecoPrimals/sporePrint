@@ -169,16 +169,20 @@ enum Command {
         checksums: PathBuf,
 
         /// Path to local depot directory containing binaries
-        #[arg(long)]
-        depot: PathBuf,
+        #[arg(long, required_unless_present = "list_arches")]
+        depot: Option<PathBuf>,
 
         /// Target architecture to verify (e.g., x86_64-unknown-linux-musl)
-        #[arg(long)]
-        arch: String,
+        #[arg(long, required_unless_present = "list_arches")]
+        arch: Option<String>,
 
         /// Pass if all present binaries verify (allow incomplete depot)
         #[arg(long)]
         partial: bool,
+
+        /// List available architectures and binary counts from checksums
+        #[arg(long)]
+        list_arches: bool,
     },
 
     /// Push build artifacts to `NestGate` CAS (content-addressed storage)
@@ -218,7 +222,23 @@ fn run() -> Result<(), Error> {
     if let Some(Command::Nucleus { ref profile, probe }) = cli.command {
         return run_nucleus(profile, probe);
     }
-    if let Some(Command::DepotVerify { ref checksums, ref depot, ref arch, partial }) = cli.command {
+    if let Some(Command::DepotVerify {
+        ref checksums,
+        ref depot,
+        ref arch,
+        partial,
+        list_arches,
+    }) = cli.command
+    {
+        if list_arches {
+            return commands::depot_list_arches(checksums);
+        }
+        let depot = depot.as_ref().ok_or_else(|| {
+            Error::Config("--depot is required when not using --list-arches".into())
+        })?;
+        let arch = arch.as_ref().ok_or_else(|| {
+            Error::Config("--arch is required when not using --list-arches".into())
+        })?;
         return commands::depot_verify(checksums, depot, arch, partial);
     }
 
