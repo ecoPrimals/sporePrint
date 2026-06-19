@@ -1,7 +1,7 @@
 +++
 title = "Sovereign Deployment"
-description = "From GitHub Pages to sovereign infrastructure — the PostPrimordial journey to self-hosted science."
-date = 2026-05-31
+description = "K-Derm cell envelope topology, WireGuard mesh overlay, multi-gate enrollment, and the PostPrimordial sovereignty model."
+date = 2026-06-19
 weight = 16
 
 [extra]
@@ -11,53 +11,115 @@ domain = "Architecture"
 ## The Sovereignty Journey
 
 The ecoPrimals ecosystem has evolved from a single developer machine to a
-sovereign multi-node deployment. This is the PostPrimordial journey — each
-step moving closer to complete independence from extracellular services.
+sovereign multi-gate deployment connected by an encrypted WireGuard mesh.
+This is the PostPrimordial journey — each step moving closer to complete
+independence from extracellular services.
 
-## Current Architecture (Wave 65)
+## K-Derm Topology (Wave 116)
+
+The deployment architecture follows the **K-Derm** cell envelope model,
+derived from Gram-negative bacterial biology. Layers are named from inside
+out using absolute positions — no ambiguous "inner/outer" terminology.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  CYTOPLASM (LAN Gates)                                  │
-│  eastGate · ironGate · southGate · biomeGate · strandGate │
-│  + flockGate (WAN shadow)                               │
-│  [Full NUCLEUS compositions, development, science]      │
+│  CYTOPLASM — Gate NUCLEUS (UDS IPC only)                │
+│  eastGate · ironGate · sporeGate · flockGate (WAN)     │
+│  [13 primals, JSON-RPC over Unix sockets]              │
 └────────────────────┬────────────────────────────────────┘
-                     │ covalent bond (SSH)
+                     │ gate firewall (UFW / nftables)
 ┌────────────────────▼────────────────────────────────────┐
-│  INNER MEMBRANE — golgiBody (157.230.3.183)             │
-│  Forgejo sovereign store · NUCLEUS primals              │
-│  knot-dns · BTSP auth                                   │
+│  PLASMA MEMBRANE — Gate firewall boundary               │
+│  Mediates all exits from cytoplasm. LAN gates test      │
+│  this layer directly via sporeGate nftables rules.     │
 └────────────────────┬────────────────────────────────────┘
-                     │ metallic bond (SSH fleet key)
+                     │ WireGuard tunnel (encrypted overlay)
 ┌────────────────────▼────────────────────────────────────┐
-│  PEPTIDOGLYCAN — peptidoglycan (157.230.209.218)        │
-│  Full workspace · Rust toolchain · Zola                 │
-│  Build hub · Temporal sync · Impulse cascade            │
+│  PERIPLASM — WireGuard overlay + relay services         │
+│  golgi hub (10.13.37.1) · RustDesk relay · routing     │
+│  WAN gates (flockGate) validate this end-to-end.       │
 └────────────────────┬────────────────────────────────────┘
-                     │ ionic bond (BTSP-scoped)
+                     │ VPS channels (Signal / Relay / Surface)
 ┌────────────────────▼────────────────────────────────────┐
-│  OUTER MEMBRANE — golgiBody-ext (137.184.197.151)       │
-│  Caddy TLS · sporePrint (primals.eco) · TURN relay      │
+│  OUTER MEMBRANE — golgiBody-ext VPS                     │
+│  Caddy TLS · primals.eco · TURN · plasmidBin depot     │
 │  [PUBLIC FACING — minimal attack surface]               │
 └────────────────────┬────────────────────────────────────┘
-                     │ weak bond (public read-only)
+                     │ public internet (read-only mirrors)
 ┌────────────────────▼────────────────────────────────────┐
-│  EXTRACELLULAR — GitHub, CDN, public internet           │
-│  Trailing mirrors · GitHub Actions CI · npm/crates.io   │
-│  [SHADOW — not source of truth]                         │
+│  EXTRACELLULAR — GitHub, CDN, DNS registrars            │
+│  Trailing mirrors — not source of truth                 │
 └─────────────────────────────────────────────────────────┘
 ```
 
-## Sovereignty Phases
+### Topology Variants
 
-| Phase | Achievement | Status |
-|-------|-------------|--------|
-| A | sporePrint served on golgiBody-ext via Caddy | LIVE |
-| B | DNS cutover — primals.eco → golgiBody-ext | Pending (NS records at eastGate) |
-| C | HTTPS via Caddy automatic TLS (Let's Encrypt) | Follows DNS cutover |
-| D | GitHub Pages → extracellular shadow | Follows HTTPS |
-| E | Forgejo CI replaces GitHub Actions | Wave 66+ |
+| Topology | Structure | Example |
+|----------|-----------|---------|
+| Monoderm | Cytoplasm → plasma → environment | Home lab gate on LAN only |
+| Diderm | Cytoplasm → plasma → periplasm → outer → extracellular | Production: gate + VPS relay |
+
+WAN gates like flockGate exercise the full diderm path — their traffic
+traverses real internet to reach the periplasm.
+
+## WireGuard Mesh Overlay
+
+All gates connect through a sovereign encrypted overlay network:
+
+| Node | Overlay IP | Role | Measured RTT |
+|------|-----------|------|--------------|
+| golgi (hub) | 10.13.37.1 | Hub, routing | — |
+| sporeGate | 10.13.37.2 | Build authority, LAN | <1ms to golgi |
+| pepti | 10.13.37.4 | Sync relay, builds | <1ms to golgi |
+| flockGate | 10.13.37.6 | WAN validator | 32ms to golgi, 72ms to sporeGate |
+
+Hub-and-spoke topology with golgi as the central peer. Each gate maintains
+a persistent tunnel. The mesh provides:
+
+- **Identity**: Each gate has a stable cryptographic identity (WireGuard public key)
+- **Encryption**: All inter-gate traffic is encrypted regardless of transport
+- **Connectivity**: Gates behind NAT, cellular, or restrictive firewalls connect through the hub
+- **Addressability**: Stable overlay IPs survive physical network changes
+
+## Gate Enrollment
+
+Any internet-connected machine can become a gate. The enrollment process:
+
+### Step 1: Sovereign Relay
+
+Configure RustDesk relay pointing to sovereign infrastructure. This
+provides remote access for the enrollment team without depending on
+third-party services.
+
+### Step 2: SSH Access
+
+Install and enable SSH server. Authorize the sporeGate overwatch team's
+key for deployment access.
+
+### Step 3: WireGuard Peer Exchange
+
+Generate a WireGuard keypair on the new gate. Configure `wg0` with the
+assigned overlay IP and golgi as the peer endpoint. Submit the public key
+to the hub operator for peer addition. Verify bidirectional handshake.
+
+### Step 4: NUCLEUS Deploy
+
+The sporeGate team fetches pre-built binaries from plasmidBin
+(`membrane.primals.eco/depot/`), verifies BLAKE3 checksums against
+`checksums.toml`, and deploys all 13 primals. Gates never compile from
+source — they consume the sovereign build authority's output.
+
+### Step 5: Cascade Connectivity
+
+Configure git remotes for Forgejo (`git.primals.eco`) and GitHub. Push
+to both remotes. Successful push proves the full cascade pipeline works
+from the new gate's network position.
+
+### Step 6: Federation
+
+Songbird initiates `mesh.init` to join the federation mesh. BearDog
+performs BTSP handshakes with existing peers. The gate is now a full
+participant in the sovereign collective.
 
 ## What Sovereignty Means
 
@@ -68,46 +130,51 @@ impact on development, science, or deployment.
 
 The sovereignty posture:
 
-- **Source of truth**: Forgejo on golgiBody (inner membrane)
-- **Build authority**: peptidoglycan (structural layer)
-- **Public face**: golgiBody-ext (outer membrane, Caddy)
-- **GitHub**: Trailing mirror, not primary. Updated via relay chain.
-- **DNS**: knot-dns on golgiBody. Authoritative once NS records delegate.
+- **Source of truth**: Forgejo on golgi (periplasm)
+- **Build authority**: sporeGate / peptidoglycan (structural layer)
+- **Binary depot**: plasmidBin on golgiBody-ext (outer membrane)
+- **Public face**: primals.eco via Caddy (outer membrane)
+- **GitHub**: Trailing mirror, not primary. Updated via cascade relay.
+- **DNS**: Sovereign, delegated to golgi infrastructure
 
-## The Relay Chain
+## The Cascade Pipeline
 
 Information flows outward through bond-mediated relay:
 
 ```
-Gate → Forgejo (covalent)
+Gate → Forgejo (covalent, SSH over WireGuard)
   → post-receive hook fires
-  → peptidoglycan pulls (metallic)
-  → relays to golgiBody-ext (ionic)
-  → golgiBody-ext pushes to GitHub (weak)
+  → builds propagate (metallic)
+  → golgiBody-ext serves (ionic)
+  → GitHub mirror updated (weak)
 ```
 
-~3-6 seconds end-to-end. No manual intervention. Gates push to `forgejo`
-only; the relay handles extracellular propagation.
+~3-8 seconds end-to-end. No manual intervention. Gates push to both
+`forgejo` and `github` remotes; cascade validates the full path.
 
 ## WAN Validation
 
-flockGate (remote gate, different geographic region) validates that
-sovereignty works across WAN:
+flockGate (WAN gate, different geographic region) validates that
+sovereignty works without LAN proximity:
 
-- SSH to Forgejo over public internet: 1.2-1.4s
-- Full relay propagation: ~5-8s
-- `cascade-pull --source temporal` converges from remote site
-- `zola build` produces full site locally (226 pages, 746ms)
+- Push to Forgejo over WAN: ~1.4s
+- Push to GitHub: ~1.4s
+- Full cascade propagation: ~5-8s
+- WireGuard tunnel: 32ms RTT to golgi
 - All sovereign operations function identically to LAN gates
+
+If it works on flockGate, it works on any internet-connected machine.
+flockGate is the template for every future WAN gate: a friend's NUC,
+a colo server, a VPS.
 
 ## Hardware Independence
 
 The VPS layer (DigitalOcean) is the last vendor dependency. The migration
 path to full hardware sovereignty:
 
-1. Current: DigitalOcean droplets (3 nodes, ~$50/month)
-2. Near-term: Co-located ARM boards (Raspberry Pi 5 cluster, $200 one-time)
-3. Long-term: Self-hosted x86 servers on-prem (strandGate, biomeGate as relay candidates)
+1. Current: DigitalOcean droplets (golgi, pepti) + LAN gates + WAN gates
+2. Near-term: Co-located ARM boards, consumer hardware (NUCs, Pixels)
+3. Long-term: Any internet-connected machine with SSH can enroll
 
-The architecture is vendor-agnostic — any three nodes with SSH connectivity
-can host the diderm envelope.
+The architecture is vendor-agnostic — any machine that can reach the
+WireGuard hub can host a NUCLEUS and participate in the collective.
