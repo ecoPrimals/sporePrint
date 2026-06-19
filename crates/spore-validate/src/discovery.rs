@@ -92,8 +92,9 @@ pub struct DiscoveredPeer {
 
 /// Discover available peer primals from the environment.
 ///
-/// Checks for known socket/env patterns without hardcoding specific primals.
-/// Each primal advertises itself via `{PRIMAL_NAME}_SOCKET` or similar env vars.
+/// Probes for primals that sporePrint consumes: `NestGate` (CAS storage)
+/// and `petalTongue` (content rendering). Each is discovered via the
+/// standard socket probe chain — no paths are assumed.
 pub fn discover_peers() -> Vec<DiscoveredPeer> {
     let mut peers = Vec::new();
 

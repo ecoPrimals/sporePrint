@@ -441,20 +441,7 @@ pub fn cas_push(
             build_hash: m.build_hash,
             page_count: m.page_count,
             total_bytes: m.total_bytes,
-            files: m
-                .files
-                .into_iter()
-                .map(|(k, v)| {
-                    (
-                        k,
-                        cas_push::StoredEntry {
-                            hash: v.hash,
-                            size: v.size,
-                            content_type: v.content_type,
-                        },
-                    )
-                })
-                .collect(),
+            files: m.files.into_iter().map(|(k, v)| (k, v.into())).collect(),
         }
     } else {
         let manifest_path = root.join(paths::CAS_MANIFEST);

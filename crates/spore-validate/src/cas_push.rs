@@ -161,6 +161,16 @@ pub struct StoredEntry {
     pub content_type: String,
 }
 
+impl From<crate::cas::CasEntry> for StoredEntry {
+    fn from(e: crate::cas::CasEntry) -> Self {
+        Self {
+            hash: e.hash,
+            size: e.size,
+            content_type: e.content_type,
+        }
+    }
+}
+
 /// Result of a push operation.
 #[derive(Debug)]
 pub struct PushResult {
@@ -174,8 +184,9 @@ pub struct PushResult {
 /// Discover the `NestGate` socket path from environment.
 ///
 /// Delegates to `discovery::probe_socket` which implements the ecosystem
-/// standard discovery order: explicit env → `BIOMEOS_SOCKET_DIR` → XDG.
-/// Falls back to legacy `/tmp` path as last resort (deprecated).
+/// standard discovery order: explicit env → `BIOMEOS_SOCKET_DIR` →
+/// systemd `/run/membrane/` → `XDG_RUNTIME_DIR`. Returns an error if
+/// no reachable socket is found.
 pub fn discover_socket() -> Result<String, Error> {
     if let Some(path) = crate::discovery::probe_socket("nestgate", "NESTGATE_SOCKET") {
         return Ok(path);

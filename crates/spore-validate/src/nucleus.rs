@@ -512,59 +512,26 @@ fn print_primals(result: &ValidationResult) {
         }
     }
 
-    let has_probes = result
-        .healthy
-        .iter()
-        .any(|p| p.probe.is_some());
-
-    if has_probes {
-        let compliant = result
-            .healthy
-            .iter()
-            .filter(|p| {
-                p.probe
-                    .as_ref()
-                    .is_some_and(|pr| pr.health_contract == HealthContract::Compliant)
-            })
-            .count();
-        let partial = result
-            .healthy
-            .iter()
-            .filter(|p| {
-                p.probe
-                    .as_ref()
-                    .is_some_and(|pr| pr.health_contract == HealthContract::Partial)
-            })
-            .count();
+    if result.healthy.iter().any(|p| p.probe.is_some()) {
         let total_probed = result.healthy.len();
+        let compliant = count_by_contract(&result.healthy, HealthContract::Compliant);
+        let partial = count_by_contract(&result.healthy, HealthContract::Partial);
+
         println!();
         println!(
             "  Health contract (guideStone): {compliant}/{total_probed} compliant, {partial} partial"
         );
 
-        let ribo_tested: Vec<_> = result
-            .healthy
-            .iter()
-            .chain(result.missing.iter())
-            .filter(|p| {
-                p.probe
-                    .as_ref()
-                    .is_some_and(|pr| pr.ribocipher_accepted.is_some())
-            })
-            .collect();
+        let all_primals: Vec<_> = result.healthy.iter().chain(result.missing.iter()).collect();
+        let ribo_total = all_primals.iter().filter(|p| has_ribo_result(p)).count();
 
-        if !ribo_tested.is_empty() {
-            let accepted = ribo_tested
+        if ribo_total > 0 {
+            let accepted = all_primals
                 .iter()
-                .filter(|p| {
-                    p.probe
-                        .as_ref()
-                        .is_some_and(|pr| pr.ribocipher_accepted == Some(true))
-                })
+                .filter(|p| ribo_accepted(p))
                 .count();
-            let total_ribo = ribo_tested.len();
             println!(
-                "  riboCipher mito-beacon: {accepted}/{total_ribo} accept signal"
+                "  riboCipher mito-beacon: {accepted}/{ribo_total} accept signal"
             );
         }
     }
@@ -592,6 +559,29 @@ fn print_summary(result: &ValidationResult) {
     println!();
 }
 
+fn count_by_contract(primals: &[PrimalStatus], target: HealthContract) -> usize {
+    primals
+        .iter()
+        .filter(|p| {
+            p.probe
+                .as_ref()
+                .is_some_and(|pr| pr.health_contract == target)
+        })
+        .count()
+}
+
+fn has_ribo_result(p: &PrimalStatus) -> bool {
+    p.probe
+        .as_ref()
+        .is_some_and(|pr| pr.ribocipher_accepted.is_some())
+}
+
+fn ribo_accepted(p: &PrimalStatus) -> bool {
+    p.probe
+        .as_ref()
+        .is_some_and(|pr| pr.ribocipher_accepted == Some(true))
+}
+
 fn format_probe_info(probe: Option<&ProbeResult>) -> String {
     probe.map_or_else(String::new, |pr| {
         let contract_icon = match pr.health_contract {
@@ -617,10 +607,10 @@ fn format_probe_info(probe: Option<&ProbeResult>) -> String {
 
 fn format_probe_error(probe: Option<&ProbeResult>) -> String {
     probe.map_or_else(String::new, |pr| {
-        use std::fmt::Write;
         let mut info = String::new();
         if let Some(e) = &pr.error {
-            let _ = write!(info, " — {e}");
+            info.push_str(" — ");
+            info.push_str(e);
         }
         if pr.responsive && pr.health_contract == HealthContract::None {
             info.push_str(" [no health method]");
