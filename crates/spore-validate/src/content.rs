@@ -173,6 +173,94 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
     }
 }
 
+/// Audit: pages that reference entities via shortcodes but don't list them
+/// in `[taxonomies]` front matter. Emits warnings for potential tagging gaps.
+pub fn audit_taxonomy_coverage(
+    _root: &Path,
+    content_dir: &Path,
+    registry: &HashMap<String, Entity>,
+    diagnostics: &mut Vec<Diagnostic>,
+) {
+    static SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
+        Regex::new(r#"\{\{\s*entity\(\s*name\s*=\s*"([^"]+)"\s*\)\s*\}\}"#)
+            .expect("static regex")
+    });
+    let shortcode_re = &*SHORTCODE_RE;
+
+    let mut gap_count: u32 = 0;
+
+    for entry in markdown_files(content_dir) {
+        let path = entry.path();
+        if path.file_name().is_some_and(|n| n == "_index.md") {
+            continue;
+        }
+        let Ok(text) = std::fs::read_to_string(path) else {
+            continue;
+        };
+
+        let fm_entities = extract_taxonomy_entities(path);
+
+        let body = strip_front_matter(&text);
+
+        let mut shortcode_entities: HashSet<String> = HashSet::new();
+        for cap in shortcode_re.captures_iter(body) {
+            let key = normalize_key(&cap[1]);
+            if registry.contains_key(&key) {
+                if let Some(entity) = registry.get(&key) {
+                    if entity.kind.has_taxonomy() {
+                        shortcode_entities.insert(key);
+                    }
+                }
+            }
+        }
+
+        for entity_key in &shortcode_entities {
+            if !fm_entities.contains(entity_key.as_str()) {
+                gap_count += 1;
+            }
+        }
+    }
+
+    if gap_count > 0 {
+        diagnostics.push(Diagnostic::warning(format!(
+            "taxonomy-audit: {gap_count} entity shortcode(s) not reflected in page taxonomies"
+        )));
+    }
+}
+
+/// Extract entity keys listed in a page's `[taxonomies]` section.
+fn extract_taxonomy_entities(path: &Path) -> HashSet<String> {
+    let mut keys = HashSet::new();
+    let Some(fm) = extract_front_matter(path) else {
+        return keys;
+    };
+    let Some(taxonomies) = fm.get("taxonomies").and_then(|v| v.as_table()) else {
+        return keys;
+    };
+    for (_tax_name, tax_val) in taxonomies {
+        if let Some(arr) = tax_val.as_array() {
+            for item in arr {
+                if let Some(s) = item.as_str() {
+                    keys.insert(normalize_key(s));
+                }
+            }
+        }
+    }
+    keys
+}
+
+/// Strip TOML front matter delimiters from content, returning just the body.
+fn strip_front_matter(text: &str) -> &str {
+    let trimmed = text.trim_start();
+    if !trimmed.starts_with("+++") {
+        return text;
+    }
+    let after_open = &trimmed[3..];
+    after_open
+        .find("+++")
+        .map_or(text, |pos| &after_open[pos + 3..])
+}
+
 fn markdown_files(dir: &Path) -> impl Iterator<Item = walkdir::DirEntry> {
     WalkDir::new(dir)
         .sort_by_file_name()
@@ -288,5 +376,83 @@ Body text."#
         let mut diags = Vec::new();
         lint_internal_links(root, &content, &mut diags);
         assert!(!diags.iter().any(Diagnostic::is_error));
+    }
+
+    #[test]
+    fn strip_front_matter_returns_body() {
+        let text = "+++\ntitle = \"T\"\n+++\nBody here";
+        let body = strip_front_matter(text);
+        assert!(body.contains("Body here"));
+        assert!(!body.contains("title"));
+    }
+
+    #[test]
+    fn strip_front_matter_no_delimiters() {
+        let text = "Just plain text";
+        assert_eq!(strip_front_matter(text), text);
+    }
+
+    #[test]
+    fn audit_taxonomy_finds_gap() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        let file = content.join("test.md");
+        std::fs::write(
+            &file,
+            "+++\ntitle = \"T\"\n+++\n{{ entity(name=\"beardog\") }} is great\n",
+        )
+        .unwrap();
+
+        let mut registry = HashMap::new();
+        registry.insert("beardog".to_string(), test_entity(EntityKind::Primal));
+
+        let mut diags = Vec::new();
+        audit_taxonomy_coverage(root, &content, &registry, &mut diags);
+        assert!(diags.iter().any(|d| d.message().contains("taxonomy-audit")));
+    }
+
+    #[test]
+    fn audit_taxonomy_no_gap_when_tagged() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        let file = content.join("test.md");
+        std::fs::write(
+            &file,
+            "+++\ntitle = \"T\"\n[taxonomies]\nprimals = [\"beardog\"]\n+++\n{{ entity(name=\"beardog\") }} tagged\n",
+        )
+        .unwrap();
+
+        let mut registry = HashMap::new();
+        registry.insert("beardog".to_string(), test_entity(EntityKind::Primal));
+
+        let mut diags = Vec::new();
+        audit_taxonomy_coverage(root, &content, &registry, &mut diags);
+        assert!(!diags.iter().any(|d| d.message().contains("taxonomy-audit")));
+    }
+
+    fn test_entity(kind: EntityKind) -> Entity {
+        Entity {
+            display: "Test".into(),
+            emoji: "🧪".into(),
+            kind,
+            description: None,
+            domain: None,
+            loc: None,
+            loc_display: None,
+            tests: None,
+            tests_display: None,
+            files: None,
+            crates: None,
+            repo: None,
+            tier: None,
+            composes: None,
+            capabilities: None,
+            page: None,
+            edges: None,
+        }
     }
 }

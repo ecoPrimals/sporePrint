@@ -84,6 +84,11 @@ impl EntityKind {
     pub const fn taxonomy_pairs() -> &'static [(&'static str, Self)] {
         &[("primals", Self::Primal), ("springs", Self::Spring)]
     }
+
+    /// Whether this entity kind participates in Zola taxonomy tagging.
+    pub const fn has_taxonomy(self) -> bool {
+        matches!(self, Self::Primal | Self::Spring)
+    }
 }
 
 impl fmt::Display for EntityKind {

@@ -91,6 +91,12 @@ pub fn validate(
                 &config.extra.entity_registry,
                 &mut diagnostics,
             );
+            content::audit_taxonomy_coverage(
+                root,
+                &content_dir,
+                &config.extra.entity_registry,
+                &mut diagnostics,
+            );
             let link_warnings = links::validate_internal_links(&content_dir);
             diagnostics.extend(link_warnings);
         }
