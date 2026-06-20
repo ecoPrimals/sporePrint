@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 20, 2026 (Wave 119 — Tower Atomic + NUCLEUS Full Activation)
+Last reviewed: June 20, 2026 (Wave 120 — Sovereign CI + Convergence)
 
 ---
 
@@ -11,7 +11,7 @@ Last reviewed: June 20, 2026 (Wave 119 — Tower Atomic + NUCLEUS Full Activatio
 ### Periodic refresh: counts and versions
 - [x] ~~Sync landing page stat cards~~ — stats ribbon reads from `config.extra.totals` dynamically
 - [ ] Update Squirrel version/tests if alpha has advanced
-- [ ] Verify plasmidBin inventory count still accurate
+- [x] ~~Verify plasmidBin inventory count~~ — 14 x86_64 + 14 aarch64 confirmed (6 local size-drift from Sovereign CI rebuilds)
 - [x] ~~Check if new baseCamp papers exist~~ — 27 papers confirmed
 - [ ] Verify LOC estimates in PRIMAL_CATALOG.md — run tokei on each primal repo for ground truth
 - [x] ~~rustChip entity registry refresh~~ — 23,733 LOC, 367 tests, 118 files
@@ -478,10 +478,32 @@ These were in the original queue and have been completed:
 - [x] Discovery tests fixed for live-NUCLEUS environment (environment-sensitive slug)
 
 ### Metrics (June 20, 2026)
-- 175 tests (143 unit + 29 integration + 3 refresh)
+- 183 tests (151 unit + 29 integration + 3 refresh)
 - 24 modules, 7744 lines
 - Zero clippy warnings (pedantic + nursery, enforced in Cargo.toml)
-- Zero `unwrap()` in production code
+- Zero `unwrap()` / `expect()` in production code (only LazyLock statics)
 - Zero unsafe (forbidden crate-level)
-- No file over 800 lines (max: nucleus.rs at 759)
+- No file over 800 lines (max: nucleus.rs at 769)
 - Edition 2024, rust-version 1.85
+
+## Wave 120 — Sovereign CI + Convergence (June 20, 2026)
+
+### Architecture Documentation Evolution
+- [x] README: deployment diagram → Sovereign CI (Forgejo→sporeGate→golgi)
+- [x] SOVEREIGN_DEPLOYMENT: pepti removed, sporeGate sole build authority, single VPS
+- [x] KDERM_DIDERM: physical layer mapping → pepti replaced by sporeGate periplasm
+- [x] TRANSPORT_EVOLUTION: Wave 120 pipeline alongside legacy diagram
+- [x] CONTEXT.md: sovereignty paragraph references sporeGate CI
+- [x] PRE_CUTOVER_VERIFICATION: marked as fossil record (DNS now live)
+
+### Code Evolution
+- [x] `commands_depot.rs`: 8 unit tests added (discovery path walk, verify modes)
+- [x] `discover_checksums_from()` refactored out for testability (env var + workspace walk)
+- [x] `notebook.rs`: last production `expect()` eliminated (peek+copy+advance pattern)
+- [x] Tower primal metrics refreshed: beardog (15380 tests), songbird (14742), skunkbat (482)
+
+### NUCLEUS Verification
+- [x] 13/13 compliant (socket-only mode)
+- [x] 12/13 probe-responsive (BiomeOS uses async HTTP, not sync JSON-RPC)
+- [x] Songbird restored (PID lock + stale process cleanup)
+- [x] Depot freshness: 6 binaries size-drifted from Sovereign CI rebuilds
