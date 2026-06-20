@@ -10,14 +10,13 @@ sovereign scientific computing.
 ## Deployment Architecture
 
 ```
-Gate pushes to Forgejo → K-Derm relay chain → golgiBody-ext
-  1. Forgejo post-receive hook fires
-  2. peptidoglycan relays to golgiBody-ext
-  3. ext-github-push.sh pushes to GitHub (trailing shadow)
-  4. sporeprint-rebuild.sh pulls + zola build (sovereign primary)
+Gate pushes to Forgejo (golgi) → Sovereign CI
+  1. Forgejo post-receive hook fires (golgi)
+  2. sovereign-ci-trigger.sh SSH → sporeGate (over WG)
+  3. sporeGate builds binary + rsync depot to golgi
+  4. golgi: sporeprint-rebuild.sh pulls + zola build
   5. Caddy serves from public/ (auto-TLS via Let's Encrypt)
-  
-Backup: systemd timer rebuilds every 15 minutes
+  6. ext-github-push.sh pushes to GitHub (trailing shadow)
 ```
 
 ## Stack
@@ -125,10 +124,12 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 ## Auto-Refresh
 
-### Sovereign (primary)
+### Sovereign (primary — Sovereign CI, Wave 120+)
 ```
-source repo push → Forgejo → relay chain → golgiBody-ext
-  → sporeprint-rebuild.sh pulls from Forgejo + zola build
+source repo push → Forgejo (golgi) → post-receive hook
+  → SSH to sporeGate (build authority over WG)
+  → cargo build --release → rsync depot to golgi
+  → sporeprint-rebuild.sh pulls + zola build
   → Caddy serves updated public/ (zero downtime)
 ```
 

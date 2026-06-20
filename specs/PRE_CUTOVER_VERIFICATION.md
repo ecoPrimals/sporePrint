@@ -1,5 +1,9 @@
 # Pre-Cutover VPS Verification
 
+> **FOSSIL RECORD** — This procedure was used during the initial VPS deployment
+> (Wave 73–74) before DNS was live. DNS is now active at primals.eco. Kept for
+> historical reference. For current verification: `curl https://primals.eco/`.
+
 Verify sporePrint content serves correctly from sovereign VPS infrastructure
 **without** requiring DNS changes. Uses `--resolve` to bypass DNS and test
 against golgiBody-ext directly.

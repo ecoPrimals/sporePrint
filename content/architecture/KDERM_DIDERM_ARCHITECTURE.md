@@ -45,9 +45,9 @@ roles:
 |-------------|---------------|------|------------|
 | Cytoplasm | LAN gates (eastGate, ironGate, etc.) | Full NUCLEUS, development, UDS IPC | Covalent |
 | Plasma membrane | Gate firewall (UFW/nftables) | Mediates all exits from cytoplasm | Covalent, Metallic |
-| Inner membrane (cis) | golgiBody VPS | Forgejo sovereign store, NUCLEUS, knot-dns | Covalent, Metallic |
-| Peptidoglycan | peptidoglycan VPS | Sync relay, builds, temporal convergence | Metallic |
-| Outer membrane (trans) | golgiBody-ext VPS | Caddy TLS, sporePrint, TURN relay | Ionic, Weak |
+| Inner membrane (cis) | golgi VPS | Forgejo sovereign store, WG hub, relay | Covalent, Metallic |
+| Periplasm | sporeGate (LAN) | Build authority (Sovereign CI), depot origin | Metallic |
+| Outer membrane (trans) | golgi VPS (Caddy) | TLS termination, sporePrint, WAN depot | Ionic, Weak |
 | Extracellular | GitHub, public internet | Trailing mirrors, CDN, CI | Weak |
 
 ## Bond-Mediated Communication
@@ -57,27 +57,26 @@ pattern that information degrades as it moves outward:
 
 ```
 Cytoplasm ←─[covalent: UDS IPC, family seed]──→ Plasma membrane
-Plasma    ←─[covalent/metallic: SSH, Tower]──→ Inner membrane (golgiBody)
-Inner     ←─[metallic: SSH, fleet keys]──→ Peptidoglycan
-Peptido   ←─[ionic: BTSP-scoped]──→ Outer membrane (golgiBody-ext)
+Plasma    ←─[covalent/metallic: SSH, Tower]──→ Inner membrane (golgi)
+Inner     ←─[metallic: SSH over WG]──→ Periplasm (sporeGate)
+Periplasm ←─[ionic: rsync, Caddy]──→ Outer membrane (golgi Caddy)
 Outer     ←─[weak: public read-only]──→ Extracellular
 ```
 
 Key constraint: **the outer membrane cannot reach inward.** GitHub (extracellular)
-cannot push to golgiBody-ext. golgiBody-ext cannot SSH to peptidoglycan. Information
+cannot push to golgi. golgi Caddy cannot SSH to sporeGate. Information
 flows outward through the relay chain; inward communication requires bond-appropriate
 authentication at each boundary.
 
 ## Golgi cis/trans Model
 
 The biological Golgi apparatus processes and ships. The cis face receives; the
-trans face ships outward.
+trans face ships outward. In the ecoPrimals architecture, golgi serves both
+roles on a single VPS — cis (Forgejo, WG hub) and trans (Caddy, depot):
 
-- **golgiBody (cis/inner)**: Receives pushes from gates, stores in Forgejo, fires relay hooks
-- **golgiBody-ext (trans/outer)**: Ships to the public — hosts sporePrint, relays TURN connections, pushes to GitHub
-
-Peptidoglycan sits between them as the structural/sync layer that mediates
-the cis→trans flow.
+- **golgi (cis/inner)**: Receives pushes from gates, stores in Forgejo, fires Sovereign CI hooks
+- **golgi (trans/outer)**: Ships to the public — hosts sporePrint, serves depot, pushes to GitHub
+- **sporeGate (periplasm)**: Build authority — compiles binaries, rsyncs to golgi trans face
 
 ## Channel Proteins
 
@@ -86,24 +85,25 @@ crosses:
 
 | Boundary | Channel | Mechanism |
 |----------|---------|-----------|
-| Cytoplasm → Inner | Aquaporin | SSH covalent (registered keys) |
-| Inner → Peptidoglycan | Aquaporin | SSH metallic (fleet keys) |
-| Peptidoglycan → Outer | Gated ion | BTSP-scoped tokens, method filtering |
-| Outer → Extracellular | Passive diffusion | Public read-only |
+| Cytoplasm → Inner | Aquaporin | SSH covalent over WG (registered keys) |
+| Inner → Periplasm | Aquaporin | SSH metallic over WG (fleet keys) |
+| Periplasm → Outer | Gated ion | rsync, BLAKE3-verified depot push |
+| Outer → Extracellular | Passive diffusion | Public read-only (Caddy HTTPS) |
 
-## The Relay Chain (Live)
+## The Sovereign CI Chain (Live)
 
-As of Wave 65, the K-Derm relay chain is fully operational:
+As of Wave 120, the K-Derm relay chain uses Sovereign CI:
 
 ```
 Gate pushes to Forgejo (covalent bond)
-  → golgiBody post-receive hook fires (golgi-post-receive-relay.sh)
-  → SSH to peptidoglycan (metallic bond)
-  → pepti-sync-relay.sh pulls from Forgejo, relays to golgiBody-ext
-  → golgiBody-ext pushes to GitHub (ext-github-push.sh, weak bond)
+  → golgi post-receive hook fires (sovereign-ci-trigger.sh)
+  → SSH to sporeGate over WG (metallic bond)
+  → sporeGate: cargo build → rsync depot to golgi (ionic)
+  → golgi: site rebuild + GitHub push (weak bond)
 ```
 
-End-to-end propagation: **~3-6 seconds** from gate push to GitHub appearance.
+End-to-end propagation: **~3-8 seconds** from gate push to GitHub appearance.
+Build time: ~2-5 min incremental, ~24 min full (sporeGate NUC hardware).
 
 ## Why This Matters
 

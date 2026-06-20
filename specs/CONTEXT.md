@@ -24,7 +24,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
-- **Sovereign deployment** — golgiBody-ext VPS serving via Caddy at 67ms TTFB (vs GitHub Pages 111ms). DNS NS cutover pending (eastGate manual action). Content shadow validated S3. Build pipeline: relay-chain + systemd-timer on peptidoglycan
+- **Sovereign deployment** — golgi VPS serving via Caddy at 67ms TTFB (vs GitHub Pages 111ms). DNS NS cutover pending (eastGate manual action). Build pipeline: Sovereign CI (Forgejo hook → sporeGate build → rsync to golgi). sporeGate is the sole build authority (pepti decommissioned Wave 120).
 - **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle.
 - **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (also as Rust integration tests: `tests/parity.rs`).
 - **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.

@@ -15,7 +15,8 @@ SSH connections between specific nodes. Each node knows the next node's address,
 holds its SSH key, and issues explicit commands.
 
 ```
-Gate ──SSH──→ golgiBody ──SSH──→ peptidoglycan ──SSH──→ golgiBody-ext ──SSH──→ GitHub
+(Legacy) Gate ──SSH──→ golgiBody ──SSH──→ peptidoglycan ──SSH──→ golgiBody-ext ──SSH──→ GitHub
+(Wave 120+) Gate ──SSH/WG──→ golgi ──SSH/WG──→ sporeGate (build) ──rsync──→ golgi ──push──→ GitHub
 ```
 
 This is the biological equivalent of type IV pili — conductive protein filaments
@@ -29,7 +30,7 @@ Nanowire remains the correct pattern for metallic bond interactions:
 |-------------|-------------|
 | Gate SSH to Forgejo | Authentication requires direct connection |
 | Fleet key operations | Admin commands need explicit targeting |
-| Build triggers | peptidoglycan needs deterministic invocation |
+| Build triggers | sporeGate sovereign-ci needs deterministic invocation |
 
 ### Where Nanowire Is Limiting
 

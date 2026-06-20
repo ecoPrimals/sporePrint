@@ -68,10 +68,10 @@ All gates connect through a sovereign encrypted overlay network:
 
 | Node | Overlay IP | Role | Measured RTT |
 |------|-----------|------|--------------|
-| golgi (hub) | 10.13.37.1 | Hub, routing | — |
-| sporeGate | 10.13.37.2 | Build authority, LAN | <1ms to golgi |
-| pepti | 10.13.37.4 | Sync relay, builds | <1ms to golgi |
-| flockGate | 10.13.37.6 | WAN validator | 32ms to golgi, 72ms to sporeGate |
+| golgi (hub) | 10.13.37.1 | VPS hub, Forgejo, Caddy, WAN depot | — |
+| sporeGate | 10.13.37.2 | Build authority (Sovereign CI), LAN firewall | <1ms to golgi |
+| eastGate | 10.13.37.5 | Meta (orchestration, AI, viz) | <1ms to golgi |
+| flockGate | 10.13.37.6 | WAN validator, Tower Atomic | 27ms to golgi |
 
 Hub-and-spoke topology with golgi as the central peer. Each gate maintains
 a persistent tunnel. The mesh provides:
@@ -131,8 +131,8 @@ impact on development, science, or deployment.
 The sovereignty posture:
 
 - **Source of truth**: Forgejo on golgi (periplasm)
-- **Build authority**: sporeGate / peptidoglycan (structural layer)
-- **Binary depot**: plasmidBin on golgiBody-ext (outer membrane)
+- **Build authority**: sporeGate (Sovereign CI, LAN hardware)
+- **Binary depot**: plasmidBin on golgi via Caddy (outer membrane)
 - **Public face**: primals.eco via Caddy (outer membrane)
 - **GitHub**: Trailing mirror, not primary. Updated via cascade relay.
 - **DNS**: Sovereign, delegated to golgi infrastructure
@@ -143,9 +143,10 @@ Information flows outward through bond-mediated relay:
 
 ```
 Gate → Forgejo (covalent, SSH over WireGuard)
-  → post-receive hook fires
-  → builds propagate (metallic)
-  → golgiBody-ext serves (ionic)
+  → post-receive hook fires (golgi)
+  → sovereign-ci SSH → sporeGate (metallic)
+  → cargo build → rsync depot to golgi
+  → golgi Caddy serves depot + site (ionic)
   → GitHub mirror updated (weak)
 ```
 
@@ -172,7 +173,7 @@ a colo server, a VPS.
 The VPS layer (DigitalOcean) is the last vendor dependency. The migration
 path to full hardware sovereignty:
 
-1. Current: DigitalOcean droplets (golgi, pepti) + LAN gates + WAN gates
+1. Current: Single DigitalOcean droplet (golgi) + LAN gates + WAN gates
 2. Near-term: Co-located ARM boards, consumer hardware (NUCs, Pixels)
 3. Long-term: Any internet-connected machine with SSH can enroll
 
