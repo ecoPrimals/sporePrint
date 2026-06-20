@@ -91,10 +91,11 @@ fn sanitize_toml_string(s: &str) -> String {
     let mut chars = s.chars().peekable();
     while let Some(ch) = chars.next() {
         if ch == '\\' {
-            match chars.peek() {
-                Some('b' | 'f' | 'n' | 'r' | 't' | 'u' | 'U' | '\\' | '"') => {
+            match chars.peek().copied() {
+                Some(esc @ ('b' | 'f' | 'n' | 'r' | 't' | 'u' | 'U' | '\\' | '"')) => {
                     result.push('\\');
-                    result.push(chars.next().expect("peeked"));
+                    result.push(esc);
+                    chars.next();
                 }
                 _ => result.push(','),
             }
