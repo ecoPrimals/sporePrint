@@ -116,14 +116,8 @@ impl VcsBackend for GitBackend {
             })?;
         }
         let status = std::process::Command::new("git")
-            .args([
-                "clone",
-                "--depth",
-                "1",
-                "--quiet",
-                url,
-                &target.to_string_lossy(),
-            ])
+            .args(["clone", "--depth", "1", "--quiet", url])
+            .arg(target)
             .status()
             .map_err(|e| Error::Git(format!("git clone spawn failed: {e}")))?;
         if status.success() {
@@ -137,13 +131,9 @@ impl VcsBackend for GitBackend {
 
     fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
         let status = std::process::Command::new("git")
-            .args([
-                "-C",
-                &target.to_string_lossy(),
-                "pull",
-                "--ff-only",
-                "--quiet",
-            ])
+            .arg("-C")
+            .arg(target)
+            .args(["pull", "--ff-only", "--quiet"])
             .status()
             .map_err(|e| Error::Git(format!("git pull spawn failed: {e}")))?;
         if status.success() {

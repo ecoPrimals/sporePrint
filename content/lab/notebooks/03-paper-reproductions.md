@@ -1,7 +1,7 @@
 +++
 title = "Paper Reproductions — 63/63 Papers in Sovereign Rust"
 description = "Rendered from 03-paper-reproductions.ipynb"
-date = 2026-06-16
+date = 2026-06-20
 weight = 50
 
 [extra]

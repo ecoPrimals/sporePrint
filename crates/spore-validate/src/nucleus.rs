@@ -67,7 +67,9 @@ pub struct ProfileMeta {
     #[serde(default)]
     pub extends: Option<String>,
     /// Deployment role (e.g., "canary", "production").
+    /// Deserialized for schema completeness; consumed by future role-aware routing.
     #[serde(default)]
+    #[allow(dead_code)]
     pub role: Option<String>,
 }
 
@@ -107,7 +109,9 @@ pub struct LaunchConfig {
     #[serde(default)]
     pub order: Vec<String>,
     /// Primal after which remaining launches can proceed in parallel.
+    /// Deserialized for schema completeness; consumed by future parallel-launch validation.
     #[serde(default)]
+    #[allow(dead_code)]
     pub parallel_after: Option<String>,
 }
 
@@ -115,13 +119,17 @@ pub struct LaunchConfig {
 #[derive(Debug, Deserialize)]
 pub struct MeshConfig {
     /// Node identity for this gate in the mesh.
+    /// Deserialized for schema completeness; consumed by future mesh-identity validation.
     #[serde(default)]
+    #[allow(dead_code)]
     pub node_id: Option<String>,
     /// Whether federation is enabled for this profile.
     #[serde(default)]
     pub federation_enabled: Option<bool>,
     /// Bootstrap peer addresses.
+    /// Deserialized for schema completeness; consumed by future peer-reachability probing.
     #[serde(default)]
+    #[allow(dead_code)]
     pub peers: Vec<String>,
 }
 
@@ -598,8 +606,16 @@ fn format_probe_info(probe: Option<&ProbeResult>) -> String {
             .version
             .as_deref()
             .map_or(String::new(), |v| format!(", v{v}"));
+        let identity_str = pr
+            .primal_id
+            .as_deref()
+            .map_or(String::new(), |id| format!(", id={id}"));
+        let status_str = pr
+            .status
+            .as_deref()
+            .map_or(String::new(), |s| format!(", {s}"));
         format!(
-            " ({}ms{version_str}{contract_icon}{ribo_icon})",
+            " ({}ms{version_str}{identity_str}{status_str}{contract_icon}{ribo_icon})",
             pr.latency.as_millis()
         )
     })

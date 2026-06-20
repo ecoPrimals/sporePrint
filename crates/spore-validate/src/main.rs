@@ -22,7 +22,6 @@ mod http;
 mod links;
 mod model;
 mod notebook;
-#[allow(dead_code)]
 mod nucleus;
 mod paths;
 mod provenance;

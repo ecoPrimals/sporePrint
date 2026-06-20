@@ -1,7 +1,7 @@
 +++
 title = "Paper 014 — Directed Evolution via Selection Algorithms"
 description = "Rendered from paper-014-directed-evolution.ipynb"
-date = 2026-06-16
+date = 2026-06-20
 weight = 50
 
 [extra]

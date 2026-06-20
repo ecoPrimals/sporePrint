@@ -8,7 +8,6 @@
 
 use crate::error::Error;
 use std::collections::BTreeMap;
-use std::io::Read;
 use std::path::Path;
 
 /// A single primal's expected checksum and size for a given architecture.
@@ -173,18 +172,9 @@ fn verify_single_binary(path: &Path, expected: &BinaryEntry) -> VerifyStatus {
 
 /// Compute BLAKE3 hash of a file using streaming reads (handles large binaries).
 fn compute_blake3(path: &Path) -> Result<String, String> {
-    let mut file = std::fs::File::open(path).map_err(|e| format!("open: {e}"))?;
+    let file = std::fs::File::open(path).map_err(|e| format!("open: {e}"))?;
     let mut hasher = blake3::Hasher::new();
-    let mut buf = vec![0u8; 64 * 1024];
-
-    loop {
-        let n = file.read(&mut buf).map_err(|e| format!("read: {e}"))?;
-        if n == 0 {
-            break;
-        }
-        hasher.update(&buf[..n]);
-    }
-
+    hasher.update_reader(file).map_err(|e| format!("read: {e}"))?;
     Ok(hasher.finalize().to_hex().to_string())
 }
 

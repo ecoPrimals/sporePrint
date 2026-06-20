@@ -2,30 +2,29 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 12, 2026 (Wave 111 — Gate Expansion + Federation Completion)
+Last reviewed: June 20, 2026 (Wave 119 — Tower Atomic + NUCLEUS Full Activation)
 
 ---
 
 ## P0 — Next Session
 
 ### Periodic refresh: counts and versions
-- [x] ~~Sync landing page stat cards~~ — stats ribbon reads from `config.extra.totals` dynamically (no hardcoded numbers to update)
+- [x] ~~Sync landing page stat cards~~ — stats ribbon reads from `config.extra.totals` dynamically
 - [ ] Update Squirrel version/tests if alpha has advanced
 - [ ] Verify plasmidBin inventory count still accurate
-- [x] ~~Check if new baseCamp papers exist~~ — papers 26 (neuromorphic driver) and 27 (nature preserve) added. Paper count updated to 27 in science index and landing page
+- [x] ~~Check if new baseCamp papers exist~~ — 27 papers confirmed
 - [ ] Verify LOC estimates in PRIMAL_CATALOG.md — run tokei on each primal repo for ground truth
-- [x] ~~rustChip entity registry refresh~~ — updated to 23,733 LOC, 367 tests, 118 files; added glowplug, science demos, HW/SW separation; `measured_date` set to 2026-04-30
+- [x] ~~rustChip entity registry refresh~~ — 23,733 LOC, 367 tests, 118 files
 
 ### Content gaps
-- [x] ~~guideStone section has only `_index.md`~~ — now has 4 substantive pages: verification_protocol, deployment_artifacts, cross_substrate_validation, live_spore_feed
-- [ ] guidePost (planned, paired with guideStone in wateringHole glossary) — document when it materializes
-- [x] ~~Some science pages have ungrouped domains~~ — verified: only CROSS_SPRING_EVIDENCE_MAP and STRUCTURE_PREDICTION_ROADMAP lack domains (reference docs, not papers, intentionally ungrouped)
-- [ ] atlasHugged integration — `content/philosophy/` section stub exists. When essays are ready for public release, add them as individual pages. This is a separate, intentional act — do not auto-publish from whitePaper
+- [x] ~~guideStone section has only `_index.md`~~ — 4 substantive pages
+- [ ] guidePost — document when it materializes
+- [ ] atlasHugged integration — `content/philosophy/` section stub exists. Separate, intentional act.
 
 ### Taxonomy completeness
-- [ ] Audit all 207 content pages: grep content for entity names not tagged in front matter
-- [x] ~~Build-time validation script~~ → replaced by `spore-validate` Rust crate (`crates/spore-validate/`)
-- [x] ~~Internal link validation~~ → `spore-validate check-links` (149 links validated)
+- [ ] Audit all 222 content pages: grep content for entity names not tagged in front matter
+- [x] ~~Build-time validation~~ → `spore-validate` Rust crate
+- [x] ~~Internal link validation~~ → `spore-validate check-links` (155 links validated)
 
 ---
 
@@ -83,7 +82,7 @@ Last reviewed: June 12, 2026 (Wave 111 — Gate Expansion + Federation Completio
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality for the current 205 pages
+- [ ] Evaluate elasticlunr search quality for the current 222 pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 
@@ -434,3 +433,55 @@ These were in the original queue and have been completed:
 - 64ms RTT to VPS = healthy WAN latency (within s_wan_ipc_tolerance bounds)
 - Security provider warning is non-fatal (songbird starts without bearDog)
 - Persistent federation relay requires BOTH sides to run the new build
+
+## Wave 113–119 — riboCipher + NUCLEUS Activation + Deep Debt (June 13–20, 2026)
+
+### riboCipher Transport Signal (Wave 113)
+- [x] `RIBOCIPHER_CLEAR` + `RIBOCIPHER_PROTO_NDJSON` constants (`0xEC 0x01`)
+- [x] `send_ribocipher_signal()` — 2-byte preamble write + flush
+- [x] `ribocipher_enabled()` — opt-in via `SPOREPRINT_RIBOCIPHER=1` env var
+- [x] `connect_transport()` sends signal when enabled (all transport types)
+- [x] Unit test: `ribocipher_signal_writes_correct_bytes`
+
+### NUCLEUS Profile Validation (Wave 114–116)
+- [x] `nucleus.rs` module — profile parsing, validation, IPC probe
+- [x] `NucleusProfile` struct (primals, health, launch, mesh config)
+- [x] `validate_profile()` — socket presence check vs declared primals
+- [x] `probe_health()` — JSON-RPC `health.ping` over UDS with timeout
+- [x] `probe_ribocipher_acceptance()` — mito-beacon signal + response check
+- [x] `HealthContract` enum: Compliant / Partial / None (guideStone grade)
+- [x] `format_probe_info()` — surfaces primal_id, status, version, latency, contract, mito
+- [x] `nucleus` CLI subcommand (`--probe`, `--ribocipher`)
+- [x] TOML profile discovery (XDG_CONFIG_HOME → /etc/membrane → fallback)
+
+### Depot Integrity Verification (Wave 116)
+- [x] `depot.rs` module — BLAKE3 verification of binary artifacts
+- [x] `parse_checksums()` — reads `checksums.toml` manifest
+- [x] `verify_depot()` — per-binary hash + size comparison
+- [x] `compute_blake3()` — streaming file hash via `update_reader()`
+- [x] `commands_depot.rs` — verify, list-arches, discovery display
+- [x] `--partial` mode (missing binaries = warnings, not errors)
+- [x] 11 unit tests
+
+### NUCLEUS Full Activation on flockGate (Wave 119)
+- [x] NestGate JWT secret configured (systemd drop-in override)
+- [x] BiomeOS subcommand corrected (`neural-api`, not `server`)
+- [x] Songbird PID lock conflict resolved
+- [x] 13/13 primals running (all sockets live at `/run/membrane/`)
+- [x] WireGuard mesh verified (4 nodes: golgi, sporeGate, pepti, flockGate)
+
+### Deep Debt Sprint (Wave 119)
+- [x] `format_probe_info()` evolved to consume `primal_id` + `status` (dead data path eliminated)
+- [x] Targeted `#[allow(dead_code)]` on schema-structural fields (was blanket module allow)
+- [x] `compute_blake3()` evolved to `update_reader()` (library-optimized buffering)
+- [x] `GitBackend` evolved to `.arg(Path)` (idiomatic, no lossy conversion)
+- [x] Discovery tests fixed for live-NUCLEUS environment (environment-sensitive slug)
+
+### Metrics (June 20, 2026)
+- 175 tests (143 unit + 29 integration + 3 refresh)
+- 24 modules, 7744 lines
+- Zero clippy warnings (pedantic + nursery, enforced in Cargo.toml)
+- Zero `unwrap()` in production code
+- Zero unsafe (forbidden crate-level)
+- No file over 800 lines (max: nucleus.rs at 759)
+- Edition 2024, rust-version 1.85

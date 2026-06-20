@@ -1,7 +1,7 @@
 +++
 title = "Experiment 018 — Band Edge Structure"
 description = "Rendered from exp-018-band-edge.ipynb"
-date = 2026-06-16
+date = 2026-06-20
 weight = 50
 
 [extra]

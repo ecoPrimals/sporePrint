@@ -247,13 +247,19 @@ mod tests {
 
     #[test]
     fn probe_socket_returns_none_for_missing_var() {
-        let result = probe_socket("nestgate", "NONEXISTENT_VAR_FOR_TEST_XYZ_12345");
+        let result = probe_socket(
+            "nonexistent_primal_slug_for_test",
+            "NONEXISTENT_VAR_FOR_TEST_XYZ_12345",
+        );
         assert!(result.is_none());
     }
 
     #[test]
     fn probe_socket_returns_none_when_no_dirs_exist() {
-        let result = probe_socket("nestgate", "NONEXISTENT_PRIMARY_99999");
+        let result = probe_socket(
+            "nonexistent_primal_slug_for_test",
+            "NONEXISTENT_PRIMARY_99999",
+        );
         assert!(result.is_none());
     }
 

@@ -1,7 +1,7 @@
 +++
 title = "Priestley-Taylor (1972) Radiation-Based ET₀"
 description = "Rendered from 019-priestley-taylor-et0.ipynb"
-date = 2026-06-16
+date = 2026-06-20
 weight = 50
 
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "Standardized Precipitation Index (SPI)"
 description = "Rendered from 081-spi-drought-index.ipynb"
-date = 2026-06-16
+date = 2026-06-20
 weight = 50
 
 [extra]
