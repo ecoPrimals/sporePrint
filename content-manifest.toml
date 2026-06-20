@@ -1,5 +1,5 @@
-generated = "2026-06-20T11:44:37Z"
-root_hash = "c22677ef719507f9ac15f010215320525563fe22694f6f6b125d010946c2080d"
+generated = "2026-06-20T15:32:06Z"
+root_hash = "f91acf20c79e542e05dc20c2837e6d2ded0b82280a699c825c710726458420a8"
 page_count = 222
 
 [pages."_index.md"]
@@ -63,8 +63,8 @@ size_bytes = 4510
 title = "Self-Certifying Publication: sporePrint as guideStone"
 
 [pages."architecture/KDERM_DIDERM_ARCHITECTURE.md"]
-blake3 = "cdc12a6c26a25ff85f1d7d70e4f396d29010faf2a2c9d9a46290fe076b84ddad"
-size_bytes = 5448
+blake3 = "af1496d8b6201169cd5496c46bfeae8e1634b84df50c4ea542e760c44d9df6c5"
+size_bytes = 5601
 title = "K-Derm Diderm Architecture"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
@@ -83,8 +83,8 @@ size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
-blake3 = "46b8b43363b6b9af95dba951614fea3bc84ebdd22fd537e23b581ab1077c852f"
-size_bytes = 8476
+blake3 = "f98a322c8854796221e2f517a6595c7ccbccc0ef7a5d1c6beb776ea49c00ab23"
+size_bytes = 8602
 title = "Sovereign Deployment"
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
@@ -98,8 +98,8 @@ size_bytes = 38684
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
 
 [pages."architecture/TRANSPORT_EVOLUTION.md"]
-blake3 = "4feade0a74864615d85fdb6d0eeba9b892935fa87a3fe78336e8b30c3ba061c5"
-size_bytes = 4603
+blake3 = "019494e0d930d7a80669b3fc4fc6c46aab6dbf4a959e1d2f33b781dae8cff84c"
+size_bytes = 4760
 title = "Transport Evolution"
 
 [pages."architecture/_index.md"]

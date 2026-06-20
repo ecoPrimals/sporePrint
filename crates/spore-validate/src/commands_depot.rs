@@ -51,14 +51,22 @@ pub fn print_discovery() {
 
 /// Find `checksums.toml` by checking env var, then walking up to workspace.
 fn discover_checksums_path() -> Option<PathBuf> {
-    if let Ok(path) = std::env::var("PLASMIDBIN_CHECKSUMS") {
+    discover_checksums_from(
+        std::env::var("PLASMIDBIN_CHECKSUMS").ok().as_deref(),
+        &std::env::current_dir().ok()?,
+    )
+}
+
+/// Inner logic separated from env access for testability.
+fn discover_checksums_from(env_path: Option<&str>, start_dir: &Path) -> Option<PathBuf> {
+    if let Some(path) = env_path {
         let p = PathBuf::from(path);
         if p.is_file() {
             return Some(p);
         }
     }
 
-    let mut dir = std::env::current_dir().ok()?;
+    let mut dir = start_dir.to_path_buf();
     loop {
         let candidate = dir.join("infra/plasmidBin/checksums.toml");
         if candidate.is_file() {
@@ -104,6 +112,9 @@ pub fn list_arches(checksums_path: &Path) -> Result<(), Error> {
 }
 
 /// Verify depot binary integrity against BLAKE3 checksums.
+///
+/// Returns `Ok(())` when all checks pass, `Err` with failure counts otherwise.
+/// In `partial` mode, missing binaries are warnings (pass if all present verify).
 pub fn verify(
     checksums_path: &Path,
     depot_dir: &Path,
@@ -189,5 +200,108 @@ pub fn verify(
             error_count: effective_failures,
             warning_count: if partial { missing_count } else { 0 },
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn discover_from_env_var_when_file_exists() {
+        let dir = tempfile::tempdir().unwrap();
+        let checksums = dir.path().join("checksums.toml");
+        std::fs::write(&checksums, "[test]\n").unwrap();
+
+        let result = discover_checksums_from(Some(checksums.to_str().unwrap()), dir.path());
+        assert_eq!(result, Some(checksums));
+    }
+
+    #[test]
+    fn discover_from_env_var_ignores_nonexistent() {
+        let dir = tempfile::tempdir().unwrap();
+        let result = discover_checksums_from(Some("/nonexistent/path.toml"), dir.path());
+        assert_eq!(result, None);
+    }
+
+    #[test]
+    fn discover_walks_up_to_infra_plasmibin() {
+        let dir = tempfile::tempdir().unwrap();
+        let depot_dir = dir.path().join("infra/plasmidBin");
+        std::fs::create_dir_all(&depot_dir).unwrap();
+        let checksums = depot_dir.join("checksums.toml");
+        std::fs::write(&checksums, "[test]\n").unwrap();
+
+        let nested = dir.path().join("a/b/c");
+        std::fs::create_dir_all(&nested).unwrap();
+
+        let result = discover_checksums_from(None, &nested);
+        assert_eq!(result, Some(checksums));
+    }
+
+    #[test]
+    fn discover_walks_up_to_plasmibin() {
+        let dir = tempfile::tempdir().unwrap();
+        let depot_dir = dir.path().join("plasmidBin");
+        std::fs::create_dir_all(&depot_dir).unwrap();
+        let checksums = depot_dir.join("checksums.toml");
+        std::fs::write(&checksums, "[test]\n").unwrap();
+
+        let nested = dir.path().join("sub");
+        std::fs::create_dir_all(&nested).unwrap();
+
+        let result = discover_checksums_from(None, &nested);
+        assert_eq!(result, Some(checksums));
+    }
+
+    #[test]
+    fn discover_returns_none_when_no_checksums_found() {
+        let dir = tempfile::tempdir().unwrap();
+        let result = discover_checksums_from(None, dir.path());
+        assert_eq!(result, None);
+    }
+
+    #[test]
+    fn verify_full_mode_fails_on_missing() {
+        let dir = tempfile::tempdir().unwrap();
+        let checksums_path = dir.path().join("checksums.toml");
+        std::fs::write(
+            &checksums_path,
+            "[test-arch]\nfoo = { blake3 = \"abc\", size = 5 }\n",
+        )
+        .unwrap();
+
+        let depot = dir.path().join("depot");
+        std::fs::create_dir_all(&depot).unwrap();
+
+        let result = verify(&checksums_path, &depot, "test-arch", false);
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn verify_partial_mode_passes_on_missing() {
+        let dir = tempfile::tempdir().unwrap();
+        let checksums_path = dir.path().join("checksums.toml");
+        std::fs::write(
+            &checksums_path,
+            "[test-arch]\nfoo = { blake3 = \"abc\", size = 5 }\n",
+        )
+        .unwrap();
+
+        let depot = dir.path().join("depot");
+        std::fs::create_dir_all(&depot).unwrap();
+
+        let result = verify(&checksums_path, &depot, "test-arch", true);
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn list_arches_empty_manifest() {
+        let dir = tempfile::tempdir().unwrap();
+        let checksums_path = dir.path().join("checksums.toml");
+        std::fs::write(&checksums_path, "").unwrap();
+
+        let result = list_arches(&checksums_path);
+        assert!(result.is_ok());
     }
 }
