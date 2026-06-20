@@ -2,14 +2,14 @@
 title = "Ecosystem Inventory"
 weight = 22
 description = "Complete repository inventory across all three ecoPrimals organizations — every repo, its purpose, and current status."
-date = 2026-03-31
+date = 2026-06-20
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 
-**Last Updated**: March 31, 2026
+**Last Updated**: June 20, 2026
 
 Every repository across the three {{ entity(name="ecoprimals") }} organizations. All repositories (except {{ entity(name="whitepaper") }}) are **{{ entity(name="scyborg") }}-licensed**: AGPL-3.0-or-later for code, ORC for game mechanics, CC-BY-SA 4.0 for creative/docs. All are intended to be fully public. Repos already on GitHub link directly; the rest are in the process of being source-published, with binaries available now via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
 
@@ -30,7 +30,7 @@ These form the [NUCLEUS](@/architecture/NUCLEUS_ARCHITECTURE.md) deployment arch
 | 🪺🔒 [nestGate](https://github.com/ecoPrimals/nestGate) | Data layer — content-addressed storage, ZFS, isomorphic IPC | **Public** | 1,474 |
 | 🐸🍄 [toadStool](https://github.com/ecoPrimals/toadStool) | Compute layer — GPU/NPU/CPU dispatch, f64 discovery | **Public** | 1,000+ |
 | 🐿️🧠 [squirrel](https://github.com/ecoPrimals/squirrel) | AI brain — vendor-agnostic MCP routing, sovereign inference | **Public** | 7,165 |
-| 🌿🖥️ [biomeOS](https://github.com/ecoPrimals/biomeOS) | Conductor — {{ entity(name="neuralapi") }}, {{ entity(name="nucleus") }} composition, {{ entity(name="darkforest") }} | **Public** | 661+ |
+| 🌿🖥️ [biomeOS](https://github.com/ecoPrimals/biomeOS) | Conductor — {{ entity(name="neuralapi") }}, {{ entity(name="nucleus") }} composition, {{ entity(name="darkforest") }} | **Public** | 8,351 |
 | 🪸🌊 [coralReef](https://github.com/ecoPrimals/coralReef) | Sovereign compiler — WGSL to native GPU, no LLVM/Mesa/vendor SDK | **Public** | 3,038 |
 | 🐟⚡ [barraCuda](https://github.com/ecoPrimals/barraCuda) | Math engine — 800+ WGSL shaders, f64 science on consumer GPUs | **Public** | 3,348+ |
 
@@ -46,12 +46,13 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 | 🪨📖 [loamSpine](https://github.com/ecoPrimals/loamSpine) | Fossil record — immutable ledger, Loam certificates, federation | **Public** | 416 |
 | {{ entity(name="skunkbat") }} | Immune system — metadata-only threat detection, graduated response | Source publishing in progress | — |
 
-### Tooling & Infrastructure (8)
+### Tooling & Infrastructure (9)
 
 | Repository | Purpose | Status |
 |------------|---------|--------|
 | 🍞🧪 [sourDough](https://github.com/ecoPrimals/sourDough) | Starter culture — scaffolds new primals, produces {{ entity(name="genomebin") }} packages | **Public** |
 | 🎲🧊 [bingoCube](https://github.com/ecoPrimals/bingoCube) | Human trust bridge — BLAKE3 progressive reveal, visual/audio identity verification | **Public** |
+| 🧫🔬 [cellMembrane](https://github.com/ecoPrimals/cellMembrane) | Deployment layer — K-Derm topology, gate enrollment, NUCLEUS systemd, cascade pipeline | **Public** (680 tests) |
 | 🧪🤖 agentReagents | Agent chemistry — composable reagent patterns for sovereign AI agents | Publishing soon |
 | ⚖️📊 benchScale | Scaling studies — cross-primal benchmarks, composition cost characterization | Publishing soon |
 | 💧📡 [wateringHole](https://github.com/ecoPrimals/wateringHole) | Ecosystem communications, standards, glossary — shared dev context | **Public** |
@@ -76,7 +77,7 @@ All springs are public. Each spring validates one scientific domain through exec
 | 🌍🪨 {{ entity(name="groundspring") }} | Geoscience, soil, hydrology | Active | 600+ | [syntheticChemistry/groundSpring](https://github.com/syntheticChemistry/groundSpring) |
 | 🏥💊 {{ entity(name="healthspring") }} | PK/PD, microbiome, biosignal, drug discovery | Active | 795+ | [syntheticChemistry/healthSpring](https://github.com/syntheticChemistry/healthSpring) |
 | 🎮🎲 {{ entity(name="ludospring") }} | Game science, HCI, procedural generation | V30 | 1,692+ | [syntheticChemistry/ludoSpring](https://github.com/syntheticChemistry/ludoSpring) |
-| {{ entity(name="primalspring") }} | Composition validation, deploy graphs, {{ entity(name="byob") }} | Active | 303+ | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) |
+| {{ entity(name="primalspring") }} | Composition validation, deploy graphs, {{ entity(name="byob") }} | Active | 959 (85 scenarios) | [syntheticChemistry/primalSpring](https://github.com/syntheticChemistry/primalSpring) |
 
 ### Infrastructure (3)
 
@@ -123,11 +124,11 @@ User-facing products that compose primals into complete applications. Each produ
 
 | Metric | Value |
 |--------|-------|
-| Total repositories | ~34 (21 {{ entity(name="ecoprimals") }} + 10 {{ entity(name="syntheticchemistry") }} + 3 {{ entity(name="sporegarden") }}) |
+| Total repositories | ~37 (22 {{ entity(name="ecoprimals") }} + 12 {{ entity(name="syntheticchemistry") }} + 3 {{ entity(name="sporegarden") }}) |
 | Foundation primals | 8 |
 | Post-{{ entity(name="nucleus") }} primals | 5 |
 | Meta/tooling | 3 ({{ entity(name="sourdough") }}, {{ entity(name="bingocube") }}, agentReagents/benchScale publishing soon) |
-| Infrastructure repos | 4 ({{ entity(name="wateringhole") }}, {{ entity(name="sporeprint") }}, {{ entity(name="plasmidbin") }}, {{ entity(name="whitepaper") }}) |
+| Infrastructure repos | 5 ({{ entity(name="wateringhole") }}, {{ entity(name="sporeprint") }}, {{ entity(name="plasmidbin") }}, cellMembrane, {{ entity(name="whitepaper") }}) |
 | Science springs | 8 (7 domain + 1 meta-spring) |
 | User-facing products | 3 ({{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish) |
 | Public repos (today) | 13 primals + 8 springs + 3 infra + 1 product = **25** |

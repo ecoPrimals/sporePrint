@@ -2,7 +2,7 @@
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 weight = 20
 description = "All 15 primals — capabilities, test counts, production status, repository visibility"
-date = 2026-03-31
+date = 2026-06-20
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
@@ -23,7 +23,7 @@ See the [Glossary](@/glossary/_index.md) for more terms.
 
 **Status**: Working paper
 **Lineage**: Implementation companion to `ECOSYSTEM_ARCHITECTURE.md`
-**Last Updated**: March 31, 2026
+**Last Updated**: June 20, 2026
 
 ---
 
