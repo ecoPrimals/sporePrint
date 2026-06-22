@@ -24,6 +24,7 @@ mod model;
 mod notebook;
 mod nucleus;
 mod paths;
+mod petaltongue;
 mod provenance;
 mod refresh;
 mod registry;
@@ -203,6 +204,40 @@ enum Command {
         #[arg(long)]
         generate: bool,
     },
+
+    /// Render content via petalTongue IPC (backend wiring validation)
+    PtRender {
+        /// Content path to render (e.g., `architecture/PRIMAL_CATALOG`)
+        path: String,
+
+        /// Output modality: omit for full HTML, "description" for summary
+        #[arg(long)]
+        modality: Option<String>,
+
+        /// Override petalTongue socket path (default: auto-discover)
+        #[arg(long, env = "PETALTONGUE_SOCKET")]
+        socket: Option<String>,
+    },
+
+    /// Show petalTongue backend status (socket discovery + method probing)
+    PtStatus,
+
+    /// Probe Tower primals for P1 method availability
+    TowerStatus,
+
+    /// Request a visualization from petalTongue (SVG or scene-JSON)
+    PtViz {
+        /// Visualization name (e.g., "entity-graph", "kderm-topology")
+        name: String,
+
+        /// Output format: "svg" (default) or "scene-json"
+        #[arg(long, default_value = "svg")]
+        format: String,
+
+        /// Override petalTongue socket path (default: auto-discover)
+        #[arg(long, env = "PETALTONGUE_SOCKET")]
+        socket: Option<String>,
+    },
 }
 
 fn main() -> ExitCode {
@@ -219,36 +254,8 @@ fn run() -> Result<(), Error> {
     let cli = Cli::parse();
     let root = cli.root.canonicalize().unwrap_or_else(|_| cli.root.clone());
 
-    // Commands that don't require config.toml
-    if matches!(cli.command, Some(Command::Discover)) {
-        return commands::discover();
-    }
-    if let Some(Command::Nucleus {
-        ref profile,
-        probe,
-        ribocipher,
-    }) = cli.command
-    {
-        return run_nucleus(profile, probe, ribocipher);
-    }
-    if let Some(Command::DepotVerify {
-        ref checksums,
-        ref depot,
-        ref arch,
-        partial,
-        list_arches,
-    }) = cli.command
-    {
-        if list_arches {
-            return commands_depot::list_arches(checksums);
-        }
-        let depot = depot.as_ref().ok_or_else(|| {
-            Error::Config("--depot is required when not using --list-arches".into())
-        })?;
-        let arch = arch.as_ref().ok_or_else(|| {
-            Error::Config("--arch is required when not using --list-arches".into())
-        })?;
-        return commands_depot::verify(checksums, depot, arch, partial);
+    if let Some(result) = dispatch_standalone(&cli) {
+        return result;
     }
 
     let config_path = root.join(paths::CONFIG_FILE);
@@ -296,7 +303,14 @@ fn run() -> Result<(), Error> {
         Some(Command::Graph { emit }) => commands::graph(&root, &config, emit),
         Some(Command::Certify { emit }) => commands::certify(&root, &config, emit),
         Some(Command::Discover) => commands::discover(),
-        Some(Command::Nucleus { .. } | Command::DepotVerify { .. }) => {
+        Some(
+            Command::Nucleus { .. }
+            | Command::DepotVerify { .. }
+            | Command::PtRender { .. }
+            | Command::PtStatus
+            | Command::TowerStatus
+            | Command::PtViz { .. },
+        ) => {
             unreachable!("handled above")
         }
         Some(Command::CasManifest { public_dir, emit }) => {
@@ -308,6 +322,58 @@ fn run() -> Result<(), Error> {
             generate,
         }) => commands::cas_push(&root, &public_dir, socket.as_deref(), generate),
     }
+}
+
+/// Dispatch commands that don't require `config.toml`.
+/// Returns `Some(result)` if handled, `None` if the caller should continue.
+fn dispatch_standalone(cli: &Cli) -> Option<Result<(), Error>> {
+    match &cli.command {
+        Some(Command::Discover) => Some(commands::discover()),
+        Some(Command::Nucleus {
+            profile,
+            probe,
+            ribocipher,
+        }) => Some(run_nucleus(profile, *probe, *ribocipher)),
+        Some(Command::DepotVerify {
+            checksums,
+            depot,
+            arch,
+            partial,
+            list_arches,
+        }) => Some(dispatch_depot(checksums, depot.as_ref(), arch.as_ref(), *partial, *list_arches)),
+        Some(Command::PtRender {
+            path,
+            modality,
+            socket,
+        }) => Some(run_pt_render(path, modality.as_deref(), socket.as_deref())),
+        Some(Command::PtStatus) => Some(run_pt_status()),
+        Some(Command::TowerStatus) => Some(run_tower_status()),
+        Some(Command::PtViz {
+            name,
+            format,
+            socket,
+        }) => Some(run_pt_viz(name, format, socket.as_deref())),
+        _ => None,
+    }
+}
+
+fn dispatch_depot(
+    checksums: &Path,
+    depot: Option<&PathBuf>,
+    arch: Option<&String>,
+    partial: bool,
+    list_arches: bool,
+) -> Result<(), Error> {
+    if list_arches {
+        return commands_depot::list_arches(checksums);
+    }
+    let depot = depot.ok_or_else(|| {
+        Error::Config("--depot is required when not using --list-arches".into())
+    })?;
+    let arch = arch.ok_or_else(|| {
+        Error::Config("--arch is required when not using --list-arches".into())
+    })?;
+    commands_depot::verify(checksums, depot, arch, partial)
 }
 
 /// Run NUCLEUS profile validation.
@@ -324,6 +390,124 @@ fn run_nucleus(profile_path: &Path, probe: bool, ribocipher: bool) -> Result<(),
         println!("  RESULT: ❌ NUCLEUS NON-COMPLIANT");
         Err(Error::Config("NUCLEUS validation failed".into()))
     }
+}
+
+/// Run petalTongue graph render via IPC.
+fn run_pt_render(path: &str, modality: Option<&str>, socket_override: Option<&str>) -> Result<(), Error> {
+    let endpoint = if let Some(sock) = socket_override {
+        cas_push::TransportEndpoint::Uds {
+            path: sock.to_string(),
+        }
+    } else {
+        let socket = petaltongue::discover_socket()?;
+        cas_push::TransportEndpoint::Uds { path: socket }
+    };
+
+    let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
+
+    let graph = load_entity_graph_for_render(&client_root())?;
+    let session_id = format!("sporePrint-render-{path}");
+    let result = client.render_graph(&session_id, &graph, modality)?;
+
+    println!("sporePrint: petalTongue render.graph");
+    println!("  Session: {}", result.content_path);
+    println!("  Format: {}", result.format);
+    println!("  Latency: {}ms", result.latency_ms);
+    println!("  Data length: {} bytes", result.data.len());
+    if let Some(meta) = &result.metadata {
+        println!("  Metadata: {meta}");
+    }
+    println!();
+
+    if result.data.len() <= 4000 {
+        println!("{}", result.data);
+    } else {
+        println!("{}...", &result.data[..4000]);
+        println!("  (truncated, {} total bytes)", result.data.len());
+    }
+
+    Ok(())
+}
+
+/// Load the entity graph JSON for rendering.
+fn load_entity_graph_for_render(root: &Path) -> Result<serde_json::Value, Error> {
+    let graph_path = root.join("static/graph/entity-graph.json");
+    if graph_path.is_file() {
+        let content = std::fs::read_to_string(&graph_path)
+            .map_err(|e| Error::io(&graph_path, e))?;
+        serde_json::from_str(&content)
+            .map_err(|e| Error::Config(format!("parse entity-graph.json: {e}")))
+    } else {
+        Ok(serde_json::json!({"nodes": [], "edges": []}))
+    }
+}
+
+/// Resolve the sporePrint root from cwd.
+fn client_root() -> PathBuf {
+    std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."))
+}
+
+/// Run petalTongue status check (socket discovery + method probing).
+fn run_pt_status() -> Result<(), Error> {
+    println!("sporePrint: petalTongue backend status");
+    println!();
+
+    let status = petaltongue::status()?;
+    println!("  {status}");
+    println!();
+
+    if status.health.is_some() && status.render_graph && status.viz_export {
+        println!("  RESULT: ✅ petalTongue backend OPERATIONAL");
+    } else if status.health.is_some() {
+        println!("  RESULT: ⚠️  petalTongue backend PARTIAL");
+    } else {
+        println!("  RESULT: ❌ petalTongue backend UNREACHABLE");
+    }
+
+    Ok(())
+}
+
+/// Run Tower P1 readiness probe.
+#[allow(clippy::unnecessary_wraps)]
+fn run_tower_status() -> Result<(), Error> {
+    let status = nucleus::probe_tower_status();
+    nucleus::print_tower_status(&status);
+    Ok(())
+}
+
+/// Request a visualization from petalTongue via IPC.
+fn run_pt_viz(name: &str, format: &str, socket_override: Option<&str>) -> Result<(), Error> {
+    let viz_format = match format {
+        "svg" => petaltongue::VizFormat::Svg,
+        "scene-json" => petaltongue::VizFormat::SceneJson,
+        other => {
+            return Err(Error::Config(format!(
+                "unknown viz format '{other}' — use 'svg' or 'scene-json'"
+            )));
+        }
+    };
+
+    let endpoint = if let Some(sock) = socket_override {
+        cas_push::TransportEndpoint::Uds {
+            path: sock.to_string(),
+        }
+    } else {
+        let socket = petaltongue::discover_socket()?;
+        cas_push::TransportEndpoint::Uds { path: socket }
+    };
+
+    let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
+    let result = client.viz(name, viz_format)?;
+
+    println!("sporePrint: petalTongue viz");
+    println!("  Name: {name}");
+    println!("  Format: {format}");
+    println!("  Latency: {}ms", result.latency_ms);
+    println!("  Body length: {} bytes", result.body.len());
+    println!();
+    println!("{}", result.body);
+
+    Ok(())
 }
 
 /// Walk up from `start` looking for a `.gate` file, then derive the springs root.

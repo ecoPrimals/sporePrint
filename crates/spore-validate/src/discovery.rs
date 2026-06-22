@@ -79,6 +79,11 @@ pub const SELF: SelfCapabilities = SelfCapabilities {
             category: "knowledge",
             description: "Entity graph with typed edges (renvois de choses)",
         },
+        Capability {
+            name: "pt-render",
+            category: "content",
+            description: "Request content rendering from petalTongue via IPC",
+        },
     ],
 };
 
@@ -113,14 +118,16 @@ pub fn discover_peers() -> Vec<DiscoveredPeer> {
         });
     }
 
-    // petalTongue: content rendering peer
+    // petalTongue: visualization rendering peer
     if let Some(socket) = probe_socket("petaltongue", "PETALTONGUE_SOCKET") {
         peers.push(DiscoveredPeer {
             primal_id: "petalTongue".into(),
             socket_path: Some(socket),
             capabilities: vec![
-                "content.render".into(),
-                "viz.serve".into(),
+                "visualization.render.graph".into(),
+                "visualization.render.scene".into(),
+                "visualization.export".into(),
+                "health.check".into(),
             ],
         });
     }
@@ -199,7 +206,7 @@ mod tests {
     fn self_capabilities_are_populated() {
         assert_eq!(SELF.primal_id, "sporePrint");
         assert!(!SELF.capabilities.is_empty());
-        assert!(SELF.capabilities.len() >= 7);
+        assert!(SELF.capabilities.len() >= 8);
     }
 
     #[test]
