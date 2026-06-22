@@ -1,7 +1,7 @@
 +++
 title = "Cross-Spring Connections — wetSpring"
 description = "Rendered from 04-cross-spring-connections.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]

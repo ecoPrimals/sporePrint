@@ -71,9 +71,10 @@ repo), and nodes that can respond, do respond. No direct addressing needed.
 
 | Phase | Transport | Coordination | Status |
 |-------|-----------|-------------|--------|
-| 1 (current) | Nanowire (SSH scripts) | Explicit relay chain | LIVE |
-| 2 | Nanowire + impulse sensing | Hybrid: relay + async signals | In progress |
+| 1 | Nanowire (SSH scripts) | Explicit relay chain | LIVE |
+| 2 | Nanowire + impulse sensing | Hybrid: relay + async signals | LIVE (Wave 121) |
 | 3 | Quorum sensing | Impulse diffusion drives all coordination | Target |
+| 4 | Sovereign Envelope | BTSP-wrapped multi-hop via BirdSong relay | Wave 123+ |
 
 ### Phase 2: Hybrid (Current Wave)
 
@@ -95,18 +96,46 @@ Each node acts on environmental signals, not direct commands. The topology
 can change (add/remove nodes) without rewiring — new nodes simply begin
 sensing impulses and responding to those matching their capabilities.
 
+### Phase 4: Sovereign Transport Envelope (Wave 121+)
+
+The physical topology (bandwidth, latency, wire paths) is now separated from
+the digital topology (privacy, sovereignty, identity). Phase 4 wraps all
+inter-gate traffic in BTSP-encrypted envelopes routed through Songbird relay:
+
+```
+Today:   primal → TCP → LAN → peer primal
+         (plaintext on LAN, direct path visible to ISP/attacker)
+
+Phase 4: primal → TransportEndpoint.mesh_relay → Songbird relay
+         → BTSP-encrypted multi-hop → peer primal
+         (opaque on LAN, ISP sees only encrypted blobs)
+```
+
+The primitives are already built:
+- **BearDog**: BTSP ephemeral-key handshake, ChaCha20-Poly1305 framing, `relay.authorize`
+- **Songbird**: Lineage-gated UDP relay, STUN, beacon mesh pathfinding, .onion transport
+- **cellMembrane**: `TransportEndpoint::MeshRelay` enum variant, K-Derm channel abstraction
+- **Dark Forest**: Encrypted multicast beacons, IND-CPA secure discovery
+
+The operational wiring (audit → relay activation → mesh_relay graduation → beacons)
+turns these primitives into a complete sovereign transport envelope.
+
 ## Songbird: The Federation Transport
 
 For inter-gate coordination beyond the VPS membrane, **Songbird** provides
 the mesh federation transport:
 
-- TURN relay on golgiBody-ext for NAT traversal
-- Peer-to-peer connections between gates
-- Capability discovery across the mesh
+- Lineage-gated UDP relay on golgi (outer membrane)
+- BirdSong genetic lineage for contact exchange
+- `mesh.capabilities_announce` push model for capability routing
+- NAT traversal: 7-tier sovereign (direct → STUN → relay → beacon → .onion → Tor → TURN)
 - WAN-resilient with automatic reconnection
 
 Songbird is the organism's long-range communication — not point-to-point
-nanowire but broadcast signaling across the entire gate mesh.
+nanowire but broadcast signaling across the entire gate mesh. Together with
+BearDog's cryptographic identity, it forms the **Tower Atomic** composition:
+sovereign HTTPS, sovereign relay, sovereign discovery — all Pure Rust, all
+composing via JSON-RPC over UDS.
 
 ## Why This Matters
 
@@ -116,3 +145,4 @@ The transport evolution directly enables:
 2. **Resilience**: No single relay failure blocks coordination
 3. **Autonomy**: Each node makes its own decisions based on environmental signals
 4. **Evolution**: The coordination protocol can evolve without infrastructure changes
+5. **Privacy**: ISP cannot inspect or correlate inter-gate traffic (Phase 4)

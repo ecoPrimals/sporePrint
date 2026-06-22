@@ -1,7 +1,7 @@
 +++
 title = "Experiment 011 — Multi-Signal Quorum Sensing Integration"
 description = "Rendered from exp-011-multisignal-qs.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]

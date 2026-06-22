@@ -1,7 +1,7 @@
 +++
 title = "Experiment 003 — Error Propagation FAO-56"
 description = "Rendered from exp-003-error-propagation.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]

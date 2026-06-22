@@ -70,6 +70,7 @@ All gates connect through a sovereign encrypted overlay network:
 |------|-----------|------|--------------|
 | golgi (hub) | 10.13.37.1 | VPS hub, Forgejo, Caddy, WAN depot | — |
 | sporeGate | 10.13.37.2 | Build authority (Sovereign CI), LAN firewall | <1ms to golgi |
+| ironGate | 10.13.37.3 | Node Atomic (GPU compute, fleet dispatch) | 89ms to golgi |
 | eastGate | 10.13.37.5 | Meta (orchestration, AI, viz) | <1ms to golgi |
 | flockGate | 10.13.37.6 | WAN validator, Tower Atomic | 27ms to golgi |
 

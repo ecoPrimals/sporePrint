@@ -1,7 +1,7 @@
 +++
 title = "FAO-56 Chapter 7 — Dual Crop Coefficient ($K_{cb} + K_e$)"
 description = "Rendered from 009-fao56-dual-kc.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]

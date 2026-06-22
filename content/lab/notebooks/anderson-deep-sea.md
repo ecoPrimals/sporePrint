@@ -1,7 +1,7 @@
 +++
 title = "Deep-Sea Hydrothermal Vent Ecology — R. Anderson Lab (Carleton)"
 description = "Rendered from anderson-deep-sea.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]

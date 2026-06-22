@@ -1,7 +1,7 @@
 +++
 title = "Computational Phylogenetics — Liu Lab (MSU CMSE)"
 description = "Rendered from liu-phylogenetics.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]

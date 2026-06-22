@@ -1,5 +1,5 @@
-generated = "2026-06-20T15:44:14Z"
-root_hash = "f91acf20c79e542e05dc20c2837e6d2ded0b82280a699c825c710726458420a8"
+generated = "2026-06-22T12:02:19Z"
+root_hash = "5cfd4bce2bee7021faf0de202c4e7d6fc713e6fd6fca880609e3c230f1db2b02"
 page_count = 222
 
 [pages."_index.md"]
@@ -83,8 +83,8 @@ size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
-blake3 = "f98a322c8854796221e2f517a6595c7ccbccc0ef7a5d1c6beb776ea49c00ab23"
-size_bytes = 8602
+blake3 = "52256362a00ffdd6a10038e306f3dbdb46b1d4ab663cc5df81833f61a1b0c56c"
+size_bytes = 8688
 title = "Sovereign Deployment"
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
@@ -98,8 +98,8 @@ size_bytes = 38684
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
 
 [pages."architecture/TRANSPORT_EVOLUTION.md"]
-blake3 = "019494e0d930d7a80669b3fc4fc6c46aab6dbf4a959e1d2f33b781dae8cff84c"
-size_bytes = 4760
+blake3 = "992cda9f935678a56527cfe251bdd017ab5811fc64084f38fff56d94f99abda3"
+size_bytes = 6377
 title = "Transport Evolution"
 
 [pages."architecture/_index.md"]
@@ -223,247 +223,247 @@ size_bytes = 6628
 title = "neuralSpring Validation Summary"
 
 [pages."lab/notebooks/001-fao56-penman-monteith.md"]
-blake3 = "bab74c0bdf80b2d0da40d6e9d8dda12d293bbe878c57bec86a4f4e6c1bb914a4"
+blake3 = "cf7c6fbd88cca7373746b3d51de5999167e4b5daac879b3229c5bd398c2505d9"
 size_bytes = 16895
 title = "FAO-56 Penman-Monteith Reference Evapotranspiration (ET₀)"
 
 [pages."lab/notebooks/002-soil-sensor-calibration.md"]
-blake3 = "d176c413f449c7cc7648e817b65ee195111f762cd047490068883172f9eb5460"
+blake3 = "60c1f9104d734da79a974b3fbbb017b8e830e5dcf43a1d0ebd23fe91a9964968"
 size_bytes = 5243
 title = "Soil Moisture Sensor Calibration (Dong et al., 2020)"
 
 [pages."lab/notebooks/004-fao56-water-balance.md"]
-blake3 = "bcef91203e3d3c38c820a22efd712feb274e4a715a45ceeb80a2fe415da8e4dc"
+blake3 = "5c2e3f7e20ea1489b54fb23a573f35ba2fba5af773eb35403cb71d49a327775e"
 size_bytes = 6068
 title = "FAO-56 Chapter 8 — Daily Soil Water Balance Scheduling"
 
 [pages."lab/notebooks/006-richards-equation.md"]
-blake3 = "a09e650ae129dc93645f117dbe38a102920df997877dfeaa639b1ec832942498"
+blake3 = "8b2cd433e15ef1a6a8db1da8072a0f8ffc3938cce5896c41a7c9b520ba0fb9ad"
 size_bytes = 8591
 title = "1D Richards Equation with van Genuchten–Mualem Hydraulics"
 
 [pages."lab/notebooks/007-biochar-adsorption.md"]
-blake3 = "e2b0f93b94299ac36b4e02ec4fa3365832d3814273c21faad8d33934027ae3fe"
+blake3 = "c67dd1b489dcc150beee61efb3b8b7549b15dfc2ecf290abaa63b867d6cfd6bd"
 size_bytes = 5760
 title = "Biochar Phosphorus Adsorption Isotherms (Kumari et al. 2025)"
 
 [pages."lab/notebooks/008-yield-response-stewart.md"]
-blake3 = "155ec29c1a369767d83d7eec1364227684fc802a07f80e2b692b622a9d2636a1"
+blake3 = "5f251b3c344a42c8c80106a5f11ef7281b7e4093ce937bd32ed4b2fdd983e748"
 size_bytes = 6117
 title = "Stewart (1977) Yield Response to Water Stress"
 
 [pages."lab/notebooks/009-fao56-dual-kc.md"]
-blake3 = "d26306f7f026a3848f68880a90355c173ca0fed4d1244080acd7370520042ee7"
+blake3 = "1e112a093bc24c8ba0a79bc6d63a4677a4f0100b3aae31944de98aa47cc8711b"
 size_bytes = 5785
 title = "FAO-56 Chapter 7 — Dual Crop Coefficient ($K_{cb} + K_e$)"
 
 [pages."lab/notebooks/01-16s-pipeline-validation.md"]
-blake3 = "899066abb4aa2faa172ebc0b4be3b9bc8d0858ea646817df719239b1569413e5"
+blake3 = "f6b17883cf1a0ffbaaaaa0cef52c35c788633e3e476c2330c9b15cdb4065d0a5"
 size_bytes = 8912
 title = "16S Pipeline Validation — wetSpring"
 
 [pages."lab/notebooks/01-composition-validation.md"]
-blake3 = "7c62ee3fd08eefb11c673be66477f5c9e05410cba76db743c993d5dd036ef6fb"
+blake3 = "d6f59e6b94f5f315923f6c6e693a131f20b339289966be2817d3f9820123612f"
 size_bytes = 5221
 title = "01 — Composition Validation"
 
 [pages."lab/notebooks/01-science-validation.md"]
-blake3 = "23ebf4580917c50ae4752ce863d26a8cf89ac6208e3f2d6255a44aae622ec5b4"
+blake3 = "19741651d4c8c1e6eecf53e4175859d4e7c85a23dc29f04fef9f2a07e1685682"
 size_bytes = 9056
 title = "Science Validation — wetSpring"
 
 [pages."lab/notebooks/01-semf-binding-energy.md"]
-blake3 = "7c6036f692b221e774ed349250d49baa4be0f91a9efc86c999b577c53cdb3b39"
+blake3 = "8ca5761893d4b14c52271e62923ffea5cdc91e764aca3d351e831d870f941cb6"
 size_bytes = 11282
 title = "Semi-Empirical Mass Formula — Nuclear Binding Energies"
 
 [pages."lab/notebooks/017-et0-sensitivity-analysis.md"]
-blake3 = "c5bbd1c11cb749990ac0f645a1d6ee39221186f2401f6e61c667db9d01787ee4"
+blake3 = "15993c15a1e54e4d671c84279d001357747268f745d0b4bb09d95bbf166f0dd2"
 size_bytes = 8629
 title = "ET₀ Sensitivity Analysis (One-at-a-Time)"
 
 [pages."lab/notebooks/018-michigan-crop-water-atlas.md"]
-blake3 = "20720b6b342ccaca140664d33aa4ed0fb0d323b992387ab77d00d9439f5755dc"
+blake3 = "b3f14a1dca4b95fa0fbae5484d9d64227054ba1754306b5f4fd9c9ebb4460480"
 size_bytes = 5544
 title = "Michigan Crop Water Atlas — 100 Stations, 80 Years"
 
 [pages."lab/notebooks/019-priestley-taylor-et0.md"]
-blake3 = "1c1f84da4f10dd1304c07a0196bd6fff0e3d7a3faf7db0b5d10daee9aeab859a"
+blake3 = "0293a6ef7abb362bd6bbabe0f867a0cccd94096faa274da4bc30ec6c6c06b0f9"
 size_bytes = 10767
 title = "Priestley-Taylor (1972) Radiation-Based ET₀"
 
 [pages."lab/notebooks/02-benchmark-comparison.md"]
-blake3 = "3fb4e6f5c74fca57e28eeb21c0300d083ea162944ce6988cdb24a187941d846a"
+blake3 = "6b3f3ee31f776d83c03dc80960137e90aa32e31910245dc24ccc04b9b9e423b1"
 size_bytes = 8526
 title = "Benchmark Comparison — wetSpring"
 
 [pages."lab/notebooks/02-benchmark-python-vs-rust.md"]
-blake3 = "de6cc74a5ed9a8f558948a213d11d96830ca585e48445e98cf2ea7d186e93f9e"
+blake3 = "843b56dce719f1653e4ed34ce26b532c0eaa72e3dfe044aef560a932f07c61a7"
 size_bytes = 8547
 title = "Python vs Rust vs GPU — Performance Evidence"
 
 [pages."lab/notebooks/02-yukawa-screening.md"]
-blake3 = "04ffb505ee659b4971493f2d5e0cd2868915f5d9dae65ac853f799ae2dba67ee"
+blake3 = "4d40ae56055dd80953d0d01b67437b573626192fa60ba81af26aa46864deeea8"
 size_bytes = 9686
 title = "Screened Coulomb (Yukawa) Bound-State Eigenvalues"
 
 [pages."lab/notebooks/021-thornthwaite-et0.md"]
-blake3 = "840c0c95e44ca90dce0077483769b15db134ee9cc1fb26aa948a9f0188dd939d"
+blake3 = "e6002c3380975331b293bb259152372b71d9f97aab49bbd662fa0af3bc392893"
 size_bytes = 10784
 title = "Thornthwaite (1948) Monthly Evapotranspiration"
 
 [pages."lab/notebooks/023-pedotransfer-saxton-rawls.md"]
-blake3 = "1bebff8582c4129cf6b698fe59053d4408ba58374f5f8d0a0bba59cb903c9335"
+blake3 = "ac6f5e7a946c37c953f0d50592d25acfaca2939dc116fcf826a45cd0564b4676"
 size_bytes = 6364
 title = "Saxton-Rawls (2006) Pedotransfer Functions"
 
 [pages."lab/notebooks/03-ecosystem-evidence.md"]
-blake3 = "1f98c39ebe7f515bac80c085949cf5f30a32be60f25e2bfe0a29c439c60b1fbb"
+blake3 = "05007653edc9df0947f2280e4fb8b5d84e28184d1a977291164436dc3ffcbcdf"
 size_bytes = 6202
 title = "03 — Ecosystem Evidence"
 
 [pages."lab/notebooks/03-experiment-evidence.md"]
-blake3 = "e24ef63d79b542116391dad2dc3217d0d08afeb3fbdaab6cfb00d9803fe6ff11"
+blake3 = "bd79ac561b21b5d1d30866b6fa83506e7ba37a1ac31838b685e84cf251dbbde7"
 size_bytes = 6549
 title = "Experiment Evidence — hotSpring"
 
 [pages."lab/notebooks/03-gonzales-deep-dive.md"]
-blake3 = "1c44b3673fa35637bdff847762221acb5ae00df14dbf74b05ebb66f7325142f0"
+blake3 = "ae65b7d57e814d64311916602b0eaad03b15b6e6221fc34b6f5fa614aef72b1b"
 size_bytes = 12430
 title = "Gonzales Deep Dive — wetSpring"
 
 [pages."lab/notebooks/03-paper-reproductions.md"]
-blake3 = "c160940736ddb72a9f0bc2f7ab3ba5cb6c59ffdcdee158496d358fedf2762aea"
+blake3 = "89f2056455b672e4e1d90bb3b9da0841a02e9729581462ac0e0ff60dfa79516c"
 size_bytes = 9558
 title = "Paper Reproductions — 63/63 Papers in Sovereign Rust"
 
 [pages."lab/notebooks/03-sarkas-yukawa-md.md"]
-blake3 = "8e3692f382ae2834441abab652de49576c8bc8ae7ced9850ba1aac5f628907c2"
+blake3 = "6622f95c8f465ad634ed967a0efb620ec6225d1fcae4f16f8c6a6cde257e9a4c"
 size_bytes = 8172
 title = "Sarkas Yukawa MD — Plasma Transport from Molecular Dynamics"
 
 [pages."lab/notebooks/031-hargreaves-samani-et0.md"]
-blake3 = "d3f89517b524cf9f4f349e638f351019a7c7da896dfd3658337fa4b8aab505fb"
+blake3 = "a74cbee042c24ee09261ffecb14b5f91d3026606611eb23e40f7fea23e2c7482"
 size_bytes = 7601
 title = "Hargreaves-Samani (1985) Temperature-Based ET₀"
 
 [pages."lab/notebooks/033-makkink-et0.md"]
-blake3 = "d893ba2404ab96f9969f64485e4095f122bb56b3f5c4041fddbb87df2f3b32c8"
+blake3 = "9478ea7b47ea42af02fad6dfd8b53b0567f9b072e3961c6cb66364d6ad7c7daf"
 size_bytes = 9100
 title = "Makkink (1957) Radiation-Based ET₀"
 
 [pages."lab/notebooks/034-turc-et0.md"]
-blake3 = "b1dea7962623001241a1f731a874c519f243f0c2a43b0a94ceee1570185252a1"
+blake3 = "74ce4cc8311ab1d6ecb3f85b66bfdf76e5d95854a4d84ae1c916e3cd09404d7e"
 size_bytes = 8746
 title = "Turc (1961) Temperature-Radiation ET₀"
 
 [pages."lab/notebooks/035-hamon-pet.md"]
-blake3 = "d847e942be4a76cbea7474f17fe3d30546bc33359d17250bf721c2a9d76d8766"
+blake3 = "16564c39fc473f1dfea798623593188e7bd5a2f9abc488064694bd4ff722b04d"
 size_bytes = 9410
 title = "Hamon (1961) Temperature-Based PET"
 
 [pages."lab/notebooks/04-cross-spring-connections.md"]
-blake3 = "c9b45c61ee655ee2a1c3c108b3414703ea6a6d5f94006330f05baf79a9ec558c"
+blake3 = "d45431e9d62382156dd17bf8719fb08bd27b895308d7724bcac86fa19c433779"
 size_bytes = 7748
 title = "Cross-Spring Connections — wetSpring"
 
 [pages."lab/notebooks/04-ttm-laser-plasma.md"]
-blake3 = "4e9773a26582ba7020973f49af1dbb406ad58fe8d57425a460cc678165270d89"
+blake3 = "64f940c2b8b46557ead070bdcde8b9534cdf2f053cb87e96ef9b1600eadde68b"
 size_bytes = 7388
 title = "Two-Temperature Model — Laser-Heated Plasma Equilibration"
 
 [pages."lab/notebooks/049-blaney-criddle-et0.md"]
-blake3 = "772bb211f7714506e0653fb9677a576abe6507305fa1a70fdf64c45ec72a197f"
+blake3 = "b115b2f8498e8cb6fdd2a3eb8938c222889eec8d5d46dda9e5270f27b8142be6"
 size_bytes = 7579
 title = "Blaney–Criddle (1950) Temperature-Based PET"
 
 [pages."lab/notebooks/05-btsp-security-deep-dive.md"]
-blake3 = "16d866488632d35820edfd9b4f0e63fe8ddcf43a532a6daefc44ccc2adc4ad05"
+blake3 = "486af61721396fc7f4e83368dcc56a371bf27cbac8f91d4f7f4e07e7ca4ade29"
 size_bytes = 7381
 title = "05 — BTSP Security Deep Dive"
 
 [pages."lab/notebooks/05-domain-deep-dive.md"]
-blake3 = "062bd03cee1a2cb9222f20aeb1afd691dd39c2624c15cfbc05512a61d420e49d"
+blake3 = "609795cf2b89a7c2e05beca38e3582ec7436edfe05bd6c932127a4cce14fb83a"
 size_bytes = 5609
 title = "Domain Deep Dive — airSpring"
 
 [pages."lab/notebooks/05-measurement-science-deep-dive.md"]
-blake3 = "bb52470c906634db192de7da7a8c2f38f2f3b8fb68cd268bd48e6a8e2d9d6b88"
+blake3 = "64c046162740735e060513128be6b2bfa35482079ff21b91f8d333587a7db54c"
 size_bytes = 6505
 title = "Measurement Science Deep Dive — groundSpring"
 
 [pages."lab/notebooks/05-physics-deep-dive.md"]
-blake3 = "ebab6d54d038317ab93da76e395807cf0acc0210ee5369193c4c7114fb98835e"
+blake3 = "a1499baaa7938912f89fffad0d2648d89b023d354bdb5f2d5ee9464c69738829"
 size_bytes = 9059
 title = "Physics Deep Dive — hotSpring"
 
 [pages."lab/notebooks/05-primal-composition-patterns.md"]
-blake3 = "07169d6a1602746ba2665453a4a3b4ffbb14f1cff6f831c83fc4fdcf13d5adf0"
+blake3 = "2b130a4d9db5eafcd90032e685900aa6af05f0695beb557325d8c39afd969e06"
 size_bytes = 11234
 title = "Primal Composition Patterns — wetSpring"
 
 [pages."lab/notebooks/05-soil-anderson-deep-dive.md"]
-blake3 = "eef7399a5c140362b646aabe3e893f4766ba7bd01563cfe73e671adde1cec07f"
+blake3 = "15b1f51b43ea42ce4d393092f7d47f4d75ab82c355df15319cf495da1ab4046d"
 size_bytes = 9763
 title = "Soil Anderson Deep Dive — Track 4 Domain Exemplar"
 
 [pages."lab/notebooks/05-stanton-murillo-transport.md"]
-blake3 = "a0db7b9742ab2cd26f0a1a600503e484e9c8a899817d9573162f2773a05dc7ca"
+blake3 = "9e137fd6e59c1d1a21fd4ea047af66bcbec671d9c380ec1dcff824700c16d8bc"
 size_bytes = 5745
 title = "Stanton-Murillo Transport Coefficients — Yukawa OCP"
 
 [pages."lab/notebooks/050-scs-curve-number.md"]
-blake3 = "81c8a5293fa4c0e24e5c2d5b829c0ee181bda54c3889dc892dd7c4718e7b2f56"
+blake3 = "225d6d23d36cdac752a37ef4d8cd8000c17d77c007f7d7a92f63c89613281528"
 size_bytes = 3844
 title = "SCS Curve Number Runoff Method (USDA 1972)"
 
 [pages."lab/notebooks/051-green-ampt-infiltration.md"]
-blake3 = "80a80bf29a6791674def05c3b72764f817954d7bffa7c59931c6237f03e3a6a9"
+blake3 = "ee28f4219e197a2183ea8b71fa33e23237e9153302c0d711d4fa026e809c0fa4"
 size_bytes = 4925
 title = "Green-Ampt (1911) Infiltration Model"
 
 [pages."lab/notebooks/06-surrogate-learning.md"]
-blake3 = "e20a8ccc6cc0b75bbfff7efcdd5a6f74bb1a967ab85627ae487b25e7965bd707"
+blake3 = "99756e6dd82099ff72b0a827138111c4bd57853c081391a64f46234531fa121b"
 size_bytes = 6591
 title = "Surrogate Learning — Directed Sampling for Nuclear EOS"
 
 [pages."lab/notebooks/07-quenched-qcd.md"]
-blake3 = "23a94b6074ee97fa2532e2ecdb9bba5167f956db503b739a9b8185279bc9b904"
+blake3 = "fdf3b1116fdc22dd8194ae59dc80a9cc65be8d435917bec9ea1dd90c233ad2d6"
 size_bytes = 13937
 title = "Quenched SU(3) Lattice QCD — Deconfinement Transition"
 
 [pages."lab/notebooks/08-dynamical-fermions.md"]
-blake3 = "ade73e43f29b171b6a5d5187f3cd580402b221fc29f7272db857f0685e633678"
+blake3 = "f2003f1342e9b8123956179e0fec5121adfac86d024a2becd26aa3d412130258"
 size_bytes = 8530
 title = "Dynamical Fermion QCD — Staggered HMC, HVP, Freeze-Out"
 
 [pages."lab/notebooks/081-spi-drought-index.md"]
-blake3 = "163e588db3e36966281cfdeb75df1f446bb28b74e17e39702af5b193cfede0b0"
+blake3 = "3d640136c0325b71c922358cb55f929c1fad48c353f5568dcbff558d86a9680f"
 size_bytes = 6816
 title = "Standardized Precipitation Index (SPI)"
 
 [pages."lab/notebooks/09-abelian-higgs.md"]
-blake3 = "18365da3a330754583b9433b8d73fc6a06c538970568099a2478cb7bd308439f"
+blake3 = "ba40d35ddcb074c6eea49d686a4dc6c6b8c18e9fd712cf68a798b4cbaedb7394"
 size_bytes = 10899
 title = "Abelian Higgs Model — (1+1)D Lattice Field Theory"
 
 [pages."lab/notebooks/10-spectral-theory.md"]
-blake3 = "58eaef5ea71eaae2ebc4f41f36ccce49fafe3762fae678d7378e700b0ab43a86"
+blake3 = "12ba64e4764c085e5e5c4e2e03da20cc9df0b5107a0497dde68a71aa805011e3"
 size_bytes = 13853
 title = "Spectral Theory — Anderson Localization, Hofstadter Butterfly, Lyapunov Exponents"
 
 [pages."lab/notebooks/11-gradient-flow.md"]
-blake3 = "28b6448555f64b0d2055ca3129588e8891b988955756dbd68730a53a4edacede"
+blake3 = "69293feffa44cd67fbb9cee435aac34d245d16efbb0236eccc198ed45dc3fa23"
 size_bytes = 10216
 title = "Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$"
 
 [pages."lab/notebooks/12-plasma-dielectric.md"]
-blake3 = "68b800616983ac2f9b8aaafed4817edfe56e7171a23335a4687fe5a2e9e731d1"
+blake3 = "69175ea40b42f7698e60fccc240939fbf09b5fa5bdaf9955069f16e7f5b66611"
 size_bytes = 10391
 title = "Plasma Dielectric Functions — BGK/Mermin + Kinetic-Fluid Coupling"
 
 [pages."lab/notebooks/13-ltee-anderson-fitness.md"]
-blake3 = "6a93bac802d2b3d39721f00b5f6d88899a8524ec0a07d06711c5bb0bcbe8786d"
+blake3 = "82586b239141861a8c265cf96524bac0743b4734bf4e603487e7244a60e9f179"
 size_bytes = 16246
 title = "LTEE B2 — Anderson Disorder Analogy for Fitness Dynamics"
 
@@ -473,167 +473,167 @@ size_bytes = 1242
 title = "Public Notebooks"
 
 [pages."lab/notebooks/anderson-deep-sea.md"]
-blake3 = "67a6c4774335d0c42b2bd145959f149636cc3730232b938d5b78185b75af5eab"
+blake3 = "4e8c776c04fd7abea8a68bab6b0c3e11cb6797dc54ac0a9db67a7845755f6e6d"
 size_bytes = 18322
 title = "Deep-Sea Hydrothermal Vent Ecology — R. Anderson Lab (Carleton)"
 
 [pages."lab/notebooks/cahill-smallwood-algae.md"]
-blake3 = "06b07d8845b338fda17f0eb2f50811ec62c9634142ab189322c8c33ec95efa4e"
+blake3 = "85ad1a6168390d3c273e4543e46b5a723c813585c5174219d1054209f82a4fe7"
 size_bytes = 11361
 title = "Algal Pond Ecology & Bloom Surveillance — Cahill/Smallwood (Sandia)"
 
 [pages."lab/notebooks/exp-001-sensor-noise.md"]
-blake3 = "a93d2668f8a3f5aeefc425e97dadf5bbcc9079a599dc7f84b87ebebca84ac9e7"
+blake3 = "4fb8c76fa22146d2c7ef3c64acdc41e6bd8f59cced852eacfdeeaf872a5ab392"
 size_bytes = 10859
 title = "Experiment 001 — Sensor Noise Characterization"
 
 [pages."lab/notebooks/exp-002-observation-gap.md"]
-blake3 = "7ab87a14377163631a41abd088f57a8cd9c440c15872857c0f2d8cfac862dad1"
+blake3 = "9902c7ea70820a81b0f60367a4189d906de06e4af26b7a2d0c21ea169a71d2d1"
 size_bytes = 15799
 title = "Experiment 002 — Observation Gap Analysis"
 
 [pages."lab/notebooks/exp-003-error-propagation.md"]
-blake3 = "ca719db1cbb38e3a8bb2e07d45047471f7704c02015f4382f4f1ff125fac248b"
+blake3 = "15cc640163f762bc6ba6f735eb8167bd21832175346a61620f31c9bd9d0233ad"
 size_bytes = 20376
 title = "Experiment 003 — Error Propagation FAO-56"
 
 [pages."lab/notebooks/exp-004-sequencing-noise.md"]
-blake3 = "077df95c1066260401173ab6c15d749dd50852f5129617a9e74599c355f0ad56"
+blake3 = "c1353640bbb6404b529a01aee751539379a93ef40f28c3cae9eac11550308c35"
 size_bytes = 14149
 title = "Experiment 004 — Sequencing Noise Characterization"
 
 [pages."lab/notebooks/exp-005-seismic.md"]
-blake3 = "256b49db5c84cd29bddbba00d2511e090cb763e76859fa46e7249f9d1e3cf0d3"
+blake3 = "ddb4c7d27075cdd7425c30fc86cc0c13a8c54a1ddce697fe8d580254d00c69f8"
 size_bytes = 17747
 title = "Experiment 005 — Seismic Wave Propagation"
 
 [pages."lab/notebooks/exp-006-signal-specificity.md"]
-blake3 = "7d7ea78871fcc4f00b9d1f5acc2ce4c71e508cdd4f5696b1e238d8d0e241d854"
+blake3 = "a609fa8c00c42141b808a1892cf6625cd97ce27bcd3692d1e0b0918d483e7fe8"
 size_bytes = 11073
 title = "Experiment 006 — Signal Specificity in Quorum Sensing"
 
 [pages."lab/notebooks/exp-007-rawr-resampling.md"]
-blake3 = "7794522b81bf4821cae5b920929d04b38301536dfd5508156d12fc62c3141f34"
+blake3 = "7b59ecb557059bfd99ab96e040b20f805d173cd993b03455c99234a3a3170065"
 size_bytes = 11382
 title = "Experiment 007 — RAWR Bootstrap Resampling"
 
 [pages."lab/notebooks/exp-008-anderson-localization.md"]
-blake3 = "821276248f6b2f3236259037184c20d6cebc3362b7e6e9a0acd61b32bfb1903e"
+blake3 = "2487037a1132929db7df63348e8eaa3e83753113c1ee5abe9c21bfae7221545c"
 size_bytes = 8824
 title = "Experiment 008 — Anderson Localization"
 
 [pages."lab/notebooks/exp-009-quasiperiodic.md"]
-blake3 = "5aaad95294bc4c74d4f224da5c46185839740dd537e929cd8305beaf88e9a4c2"
+blake3 = "264f2ee2dc217b3dc5a8e41672e5e3fe2d96eb6386e15053495072227a422352"
 size_bytes = 10348
 title = "Experiment 009 — Almost-Mathieu Quasiperiodic Localization"
 
 [pages."lab/notebooks/exp-010-bistable-switching.md"]
-blake3 = "e6d693659d76bea4c971b66b05d137999d58619ad3bc5fd0ab65fc96d5f1b877"
+blake3 = "2cee45628f632e4725a9116533f9bb69dbde69ca5597ae2460259e66b5303870"
 size_bytes = 10436
 title = "Experiment 010 — Bistable Phenotypic Switching"
 
 [pages."lab/notebooks/exp-011-multisignal-qs.md"]
-blake3 = "e9ee8ac1574e8c5b9e76736736fbb2d5f94a0946225f3542c9bc9bf35dd090ad"
+blake3 = "ab4dfa892b22fe654a8ec96fbf5187bc266d2ecc80081a1defa11e4fb820ba6d"
 size_bytes = 10827
 title = "Experiment 011 — Multi-Signal Quorum Sensing Integration"
 
 [pages."lab/notebooks/exp-012-spin-transport.md"]
-blake3 = "8631048b1f2c01768af8f399e1245d9e7b1ed7d960423c3de238e7d4b62c48d2"
+blake3 = "bac4bcba699b45d1ebe5e8ee32fa19b1a21eb6f57aff0200f65b070865a72beb"
 size_bytes = 7059
 title = "Experiment 012 — Spin Chain Transport"
 
 [pages."lab/notebooks/exp-013-resampling-convergence.md"]
-blake3 = "296391b650a1a9b98333c3e039ede7d08c960e4eeb4325d55be135d3e55a7bbd"
+blake3 = "1000f1d734b0d5db3ddb08e842a266c03a8690fcc152fd8ffe24bb4d1e14162b"
 size_bytes = 8474
 title = "Experiment 013 — Resampling Convergence Analysis"
 
 [pages."lab/notebooks/exp-014-drift-selection.md"]
-blake3 = "f15eabb86ebad85c1eeb20e3b30803a9ebac7a728a7340e8a6025224ee986669"
+blake3 = "c7e04bd6f32b11d299dff7afc0cffc357c80978e2ffbc0c3149c579ca9bc7865"
 size_bytes = 7572
 title = "Experiment 014 — Drift vs Selection in Microbial Populations"
 
 [pages."lab/notebooks/exp-015-uncertainty-bridge.md"]
-blake3 = "e12fb140eb12ffec3a39a14c24f78f2ccf4bf1e64a8db1de5040c437582e2147"
+blake3 = "b13c302f4dfb2b82a907b3d455c1ac84edd14c9bb50ac538f4f63d82c1bdf846"
 size_bytes = 8200
 title = "Experiment 015 — Uncertainty Bridge: Sensor Noise → Localization"
 
 [pages."lab/notebooks/exp-016-rare-biosphere.md"]
-blake3 = "151fb2ca96ba823d71453bf919fa6e8684bac9f7c8f977971f15c5f596840f9b"
+blake3 = "6ea6d1a15779c4e8dc07931e2195a24dd52092a014062990878f411d6d3b556b"
 size_bytes = 9414
 title = "Experiment 016 — Rare Biosphere Signal Detection"
 
 [pages."lab/notebooks/exp-017-quasispecies-threshold.md"]
-blake3 = "49bea1b519b3fbd8be67d09db5b01506d10222211eb417df7ff29b4bb7f47a0e"
+blake3 = "5062b5379aa9e367abb0e2bcb72c93b3bb9e0c1ab8ba274740f201adecfed6ec"
 size_bytes = 8299
 title = "Experiment 017 — Quasispecies Error Threshold"
 
 [pages."lab/notebooks/exp-018-band-edge.md"]
-blake3 = "fc8cb8d76797afef9389a9e9595242f0e059801417352613e053d8f56a4cfdc6"
+blake3 = "a0dc4dafb42755673fc24d6aa86772f4a315e8ee4f1dbbe0ecdcb6b146bc7785"
 size_bytes = 8188
 title = "Experiment 018 — Band Edge Structure"
 
 [pages."lab/notebooks/exp-019-jackknife-estimation.md"]
-blake3 = "6ca44b88cd33f7d316bda50b122c74d936d345ec55a3dde5fd0c1587aeef5171"
+blake3 = "a8367aa78168c7dae66055c801184211d16efc101cf5d71a2f6dc71375f65d08"
 size_bytes = 6473
 title = "Experiment 019 — Jackknife Error Estimation"
 
 [pages."lab/notebooks/exp-020-freeze-out-inverse.md"]
-blake3 = "99ac6f68e56b7407bd41df84e5b680190736819e763314af9b990c80df3c628f"
+blake3 = "f8a6f1c71ef2520263e2228117443a8bd5c15adf3b02dc7f5a7a3945cfb15604"
 size_bytes = 6318
 title = "Experiment 020 — Freeze-Out Inverse Problem"
 
 [pages."lab/notebooks/exp-021-spectral-recon.md"]
-blake3 = "56260669fe337dd7a0e3be2aa00fd9eaa1cc7b1c4a10461093719585cd18ff5a"
+blake3 = "b1750300f36f4afa4a62a913ba97f23914840667e338b9ac9edeaa8eb08993ff"
 size_bytes = 6010
 title = "Experiment 021 — Spectral Reconstruction"
 
 [pages."lab/notebooks/exp-022-et0-anderson-propagation.md"]
-blake3 = "3174584e74b55b19d40103ac6ef6f535fa3ca4bcd13dfdc583a997e1ca0a5d1b"
+blake3 = "9bb6dce6b985c341d2268aa261abb4e14a22ef3d31e9ba3e89e2bf19d5635c79"
 size_bytes = 15825
 title = "Experiment 022 — ET₀-Anderson Error Propagation"
 
 [pages."lab/notebooks/exp-023-notill-sampling.md"]
-blake3 = "24bbb9113a168402e925d0ca641157435e6b170c0e116a62646d215f1b8ac8ce"
+blake3 = "08fbef0140d833f8d8dbb525bdba01fd456bb0856de1ef45480d0acb9644d975"
 size_bytes = 10999
 title = "Experiment 023 — No-Till vs Tilled 16S Sampling"
 
 [pages."lab/notebooks/exp-024-aggregate-stability.md"]
-blake3 = "342324f95223056f44bcb7f6f39a001e4ef0da7d9e066e7e5683e3caf914557f"
+blake3 = "9fb135604f6df0a42020249897373432d0ab24e7fe4823de80a779815cae0a13"
 size_bytes = 9732
 title = "Experiment 024 — Aggregate Stability Noise Analysis"
 
 [pages."lab/notebooks/exp-025-precision-drift.md"]
-blake3 = "597c090301822db39b2ad058a719ed3b714075ea5727b23862cf10ba8bc86f53"
+blake3 = "dfd28454bd408dea13199ee7cb0e4c08a252127d53c0e64d93a09b070755df9c"
 size_bytes = 8583
 title = "Experiment 025 — f32 vs f64 Precision Drift"
 
 [pages."lab/notebooks/exp-026-size-convergence.md"]
-blake3 = "08b561543da15de9e56f5906e7b70adead1e777d9a52d4172c8d2f357ab1208d"
+blake3 = "3b6043771fcd403c81c38a504560fdd0cbd3bc6ae1893c430227d2b7b781da63"
 size_bytes = 7032
 title = "Experiment 026 — System-Size Convergence"
 
 [pages."lab/notebooks/exp-027-vendor-parity.md"]
-blake3 = "6285a1c9522a52bcaffe46cca2f197021d320d02ba6d249b97c57f8ac142568f"
+blake3 = "b7c379bb91a72f582b0328454ea53c00ad25fddd89c38fb130ad06e83f65405c"
 size_bytes = 6581
 title = "Experiment 027 — GPU Vendor Parity"
 
 [pages."lab/notebooks/exp-028-npu-anderson.md"]
-blake3 = "db29c6353b6254143df967247b3a0841513120f223547e0953d390426d49ec89"
+blake3 = "02ac29fd0ab9ecfc5ddd5d8054c2612f5ac17690534868c7d39201fce4e7ad80"
 size_bytes = 6032
 title = "Experiment 028 — NPU Anderson Classification"
 
 [pages."lab/notebooks/exp-029-et0-methods.md"]
-blake3 = "53601733e9ace01eb85f9d6d24997382eab9da8c94eb1afe1d49ae5f597825cb"
+blake3 = "90fddf85edb3b68d68e28a1b2aea46d1d7c9b90e5c7266219849dd4c44fe54e8"
 size_bytes = 17970
 title = "Experiment 029 — Multi-Method ET₀ Comparison"
 
 [pages."lab/notebooks/fajgenbaum-drug-repurposing.md"]
-blake3 = "99e80821a0c09cafe9733e3c5faadeac962c17d21040e6aa9810a6765eb206ba"
+blake3 = "40c2748466aa297ef6fb3fb4c2af51537bdd0afbd2973cf89fa5881ac6a9e4bb"
 size_bytes = 17838
 title = "Drug Repurposing & Knowledge Graphs — Fajgenbaum Lab (Track 3)"
 
 [pages."lab/notebooks/gonzales-jak-pharmacology.md"]
-blake3 = "e7478ba2062d69ff583ddfe69ab81cbefc8e6a564cc736b2fd8fd11c763e930c"
+blake3 = "b87d465c03bbc43971e75f8c78599624326c1e1e7c14e35a865bfe20295bc9c9"
 size_bytes = 14724
 title = "JAK/STAT Pharmacology — Gonzales Lab"
 
@@ -663,87 +663,87 @@ size_bytes = 113028
 title = "Measurement Science Deep Dive — groundSpring"
 
 [pages."lab/notebooks/jones-pfas-chemistry.md"]
-blake3 = "fc747720f8ea7add8f91cfbe6ce13a5d6a8ec6f54a104fb729a3c4d7d3bb460f"
+blake3 = "2ebd02e1c9c8cca5559067063fafcae8f1f6d4b312d4692f157de6bf6cecf101"
 size_bytes = 16279
 title = "PFAS Detection & Environmental Chemistry — Jones Lab (MSU BMB)"
 
 [pages."lab/notebooks/kachkovskiy-spectral-qs.md"]
-blake3 = "43b8a4f49e7f8ca9d49ec8dc95fa3fc0220b10ea0ab3b01f35efadd9b8ebdf1a"
+blake3 = "b7d530aa475286bae5213926c9c110cc1c2e8c78b4a6c4786aeecf2bbbc466a7"
 size_bytes = 19929
 title = "Spectral Theory & Quorum Sensing — Kachkovskiy (MSU CMSE)"
 
 [pages."lab/notebooks/liao-anaerobic-biogas.md"]
-blake3 = "c06654e661df4b1aca9a7d7802f5b59dcb7325374cc85c3be3bb6010e24a13ec"
+blake3 = "c9864c5b321ba849d1fbdba009e77a2945d9272d8e6026fa5ca25b730e529e91"
 size_bytes = 13075
 title = "Anaerobic Biogas Kinetics & Community Diversity — Track 6"
 
 [pages."lab/notebooks/liu-phylogenetics.md"]
-blake3 = "d9f84aeff776d33c7e3cc3358457454e54943d350040a7c34471790fe86093bf"
+blake3 = "70b9ae5403f7394ac7213b73ee5b586d0310bf3c406638c8aa2c953cc846f589"
 size_bytes = 21378
 title = "Computational Phylogenetics — Liu Lab (MSU CMSE)"
 
 [pages."lab/notebooks/paper-011-counterdiabatic-evolution.md"]
-blake3 = "8d831519925674225e2d5b01d5859809eba53d3af1f2ac728eb4463c51d8cf8a"
+blake3 = "18fbfa8021f707f2568c961d55fda7d2526be8cf73c56cf518b2657667ac4481"
 size_bytes = 17445
 title = "Paper 011 — Counterdiabatic Driving of Evolution"
 
 [pages."lab/notebooks/paper-012-modes-toolbox.md"]
-blake3 = "4bde37a9bc6f7b8c4247533b38b11f8949b76a28faff34c40aa710584724520b"
+blake3 = "c57d3031e635d78f4834e708e6f6e738138c70984f991cae64f584df635a1bc0"
 size_bytes = 16928
 title = "Paper 012 — MODES Toolbox: Metrics of Open-Ended Evolution"
 
 [pages."lab/notebooks/paper-013-eco-dynamics.md"]
-blake3 = "188b643ed42222565610174f6c63ff8a205e02fc68191c9ceac481682032241a"
+blake3 = "4a49b13a80eacb007d469e778a75d2defc5086d8f24c7740e71ad03d4027785a"
 size_bytes = 14275
 title = "Paper 013 — Ecological Theory in Evolutionary Computation"
 
 [pages."lab/notebooks/paper-014-directed-evolution.md"]
-blake3 = "f45de41a4cd79b1bd33310249b80695a653952e892c69de558b46d5eca2663a1"
+blake3 = "5c5221301bb3fddbbde1423c55aeb2af70d72fc373d5af1ef1b5805568db8a6b"
 size_bytes = 16397
 title = "Paper 014 — Directed Evolution via Selection Algorithms"
 
 [pages."lab/notebooks/paper-015-swarm-robotics.md"]
-blake3 = "498503313b4ef8643cae978fb1616c20d9d46ad9f3c2dfa973bc823e3099f1cf"
+blake3 = "ea5c551a4e878926c6711dabcb4cbba77035bb5117582ce0a1da489530d7c099"
 size_bytes = 16743
 title = "Paper 015 — Heterogeneous Swarm Robotics"
 
 [pages."lab/notebooks/paper-016-hmm-phylo.md"]
-blake3 = "104bf1254f87b6e0878460bd4b0376bc31f01aea4e5ff77fa2ccdac3848249b4"
+blake3 = "15c751022753d16cb2e970b9ed062b57de208597efb75d1daf012e9231e099f5"
 size_bytes = 15056
 title = "Paper 016 — HMM Forward / Backward / Viterbi for Genomic Inference"
 
 [pages."lab/notebooks/paper-017-sate-alignment.md"]
-blake3 = "4bb57de715e5b5964cd75f3379da6b07c7894906dd0a1104a1bf84d4df313694"
+blake3 = "d8839712bd38413d46877079116af888555022609893a024a5fb4d93b19ce62d"
 size_bytes = 13270
 title = "Paper 017 — SATé: Iterative Co-estimation of MSA and Phylogeny"
 
 [pages."lab/notebooks/paper-018-introgression.md"]
-blake3 = "a128385143ea6376f13976b4decac8f1e3e702e683e70313a2cab851ee421a86"
+blake3 = "d589ef5992539ad560ebb7bab4c0cc187dc4a476da160b26b222f3123d4ec01a"
 size_bytes = 11707
 title = "Paper 018 — PhyloNet-HMM for Introgression Detection"
 
 [pages."lab/notebooks/r-industry-parity.md"]
-blake3 = "a3ba5b9d4aba15a85662524d907b58f7e152bf2dc1c4e74fa96cf670c9654a32"
+blake3 = "d754616cea1804f5397b6719cbf0a0ea4d330a3c36a7d6a3da17fa07bf1ed6ef"
 size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "5153be4841f800344de2a466345811aa5dd1328d472a1b4c0f3dfd6ec8422494"
+blake3 = "bf9a9796b92a03981962af6363cff0f84bd9a6b1d64996adcc1450a8384c1968"
 size_bytes = 254
 title = "Sample"
 
 [pages."lab/notebooks/soil-anderson-geometry.md"]
-blake3 = "9e619d7508a5e5368f98f9f565bc0b1f967e2fbfd8e31857adfc53b6840d0b0d"
+blake3 = "f272512ec3619a3aee6ef35cfe28f0049f779b4f4f55b7569837af52e778e2dd"
 size_bytes = 13167
 title = "Soil Quorum Sensing & Anderson Geometry — Track 4"
 
 [pages."lab/notebooks/tenaillon-ltee-mutation.md"]
-blake3 = "6d37c3f3b0ac2020f4810d69703aa766e7b5fe5ffbdc5665e9ce13266c788e3e"
+blake3 = "f45f4408e6ecc6787227493799206a062fa653570f86d70d1984634add4c4a1e"
 size_bytes = 11724
 title = "LTEE B7 — Tenaillon 2016: Mutation Accumulation in 50,000 Generations"
 
 [pages."lab/notebooks/waters-quorum-sensing.md"]
-blake3 = "6caab7b812d049cfb04b46fe769559e8abfc85e064dc6af10a287e8bd550f4b4"
+blake3 = "c4a3b164c70fc46b8d691b4db50983763b980082c15da0989224abec6710ef16"
 size_bytes = 24963
 title = "Quorum Sensing & Biofilm Dynamics — Waters Lab (MSU MMG)"
 

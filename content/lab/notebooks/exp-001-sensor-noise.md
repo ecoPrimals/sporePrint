@@ -1,7 +1,7 @@
 +++
 title = "Experiment 001 — Sensor Noise Characterization"
 description = "Rendered from exp-001-sensor-noise.ipynb"
-date = 2026-06-20
+date = 2026-06-22
 weight = 50
 
 [extra]
