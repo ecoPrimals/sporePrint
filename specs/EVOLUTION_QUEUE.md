@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 20, 2026 (Wave 120 — Sovereign CI + Convergence)
+Last reviewed: June 22, 2026 (Wave 123 — petalTongue Backend + Tower P1 Probe)
 
 ---
 
@@ -22,7 +22,7 @@ Last reviewed: June 20, 2026 (Wave 120 — Sovereign CI + Convergence)
 - [ ] atlasHugged integration — `content/philosophy/` section stub exists. Separate, intentional act.
 
 ### Taxonomy completeness
-- [ ] Audit all 222 content pages: grep content for entity names not tagged in front matter
+- [x] ~~Audit all 222 content pages: grep content for entity names not tagged in front matter~~ → `spore-validate validate --check` audit_taxonomy_coverage (Wave 120)
 - [x] ~~Build-time validation~~ → `spore-validate` Rust crate
 - [x] ~~Internal link validation~~ → `spore-validate check-links` (155 links validated)
 
@@ -73,11 +73,11 @@ Last reviewed: June 20, 2026 (Wave 120 — Sovereign CI + Convergence)
 - [ ] Gallery index at `/lab/spores/` listing all available pseudoSpores
 - [ ] "Download lithoSpore" link per gallery page
 
-### Sovereign Deployment (S3 Content Cutover — Wave 69 P2)
-- [ ] DNS NS cutover: primals.eco NS → ns1/ns2.primals.eco (eastGate manual action)
-- [x] ~~peptidoglycan build pipeline~~ — relay-chain + systemd-timer rebuilds on VPS. LIVE (67ms TTFB vs GH Pages 111ms)
+### Sovereign Deployment (LIVE — DNS active since Wave 100+)
+- [x] ~~DNS NS cutover: primals.eco NS → ns1/ns2.primals.eco~~ — DNS live, TLS operational
+- [x] ~~peptidoglycan build pipeline~~ — replaced by Sovereign CI (Forgejo→sporeGate→golgi, Wave 119)
 - [x] ~~GitHub Pages becomes extracellular shadow~~ — deploy.yml labeled "trailing shadow", VPS is sovereign-primary
-- [ ] Post-DNS: Caddy HTTPS on golgiBody-ext (automatic after NS cutover)
+- [x] ~~Post-DNS: Caddy HTTPS on golgiBody-ext~~ — LIVE with automatic cert renewal
 - [ ] Post-DNS: sporePrint deploy.yml → archive to fossilRecord (disable GitHub Pages deploy)
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
@@ -116,15 +116,15 @@ These were in the original queue and have been completed:
 - [x] Pre-build validation script (`scripts/validate_registry.py`) in CI
 - [x] Real LOC numbers: 3.2M Rust, 107K tests, 952 WGSL (old estimates were 220K)
 
-## Wave 64 Targets
+## Wave 64 Targets (Completed)
 
 - [x] pseudoSpore gallery template (`/lab/spores/{name}/`)
 - [x] Zola build pipeline validated on WAN (226 pages, 746ms)
 - [x] Gate bootstrap AAR completed
 - [x] Temporal sync sustained measurement (6 pushes, relay gap identified)
-- [ ] Forgejo relay hook for sporePrint (eastGate action — Wave 70+, Phase 3)
-- [x] ~~peptidoglycan-triggered rebuild pipeline~~ — systemd-timer + relay-chain LIVE
-- [ ] DNS NS cutover (eastGate manual action, blocked on S1 TLS graduation)
+- [x] ~~Forgejo relay hook for sporePrint~~ — superseded by Sovereign CI pipeline (Wave 119)
+- [x] ~~peptidoglycan-triggered rebuild pipeline~~ — superseded by Sovereign CI (Forgejo→sporeGate→golgi)
+- [x] ~~DNS NS cutover~~ — DNS live (Wave 100+)
 
 ## Wave 66 — Knowledge Topology (Completed June 1, 2026)
 
@@ -425,7 +425,7 @@ These were in the original queue and have been completed:
 - [x] **federation.status: `enabled: true`** — wire fix CONFIRMED in new build
 - [x] **latency_ms: 64ms** — WAN peer health probes WORKING (auto-reconnect functional)
 - [x] Peer reachable via `path_type: "direct"`, `last_seen_ms` updating
-- [ ] `active_connections: 0` — persistent relay pending VPS rebuild to fe47c012 (Wave 113)
+- [ ] `active_connections: 0` — Songbird `mesh.init` needs activation with node_id (Wave 123 P1)
 
 ### Observations
 - Depot was rebuilt (plasmid.harvest ran) — checksums.toml dated 2026-06-12T12:37Z
@@ -485,6 +485,50 @@ These were in the original queue and have been completed:
 - Zero unsafe (forbidden crate-level)
 - No file over 800 lines (max: nucleus.rs at 769)
 - Edition 2024, rust-version 1.85
+
+## Wave 123 — petalTongue Backend Wiring + Tower P1 Probe (June 22, 2026)
+
+### petalTongue IPC Module (`petaltongue.rs`)
+- [x] `PetalTongueClient` — connects via `TransportEndpoint` (same as cas_push)
+- [x] `health_check()` — validates health status, version (v1.6.6), uptime
+- [x] `render_graph()` — passes entity graph for SVG rendering via `visualization.render.graph`
+- [x] `viz()` — request visualizations in SVG or scene-JSON format
+- [x] `probe_method()` — generic method availability tester
+- [x] `status()` — combined health + capability check
+- [x] Discovery: `probe_socket("petaltongue", "PETALTONGUE_SOCKET")` → actual 56-method API
+
+### CLI Subcommands
+- [x] `pt-status` — validates petalTongue OPERATIONAL (health.check + methods probed)
+- [x] `pt-render` — render entity graph via petalTongue IPC
+- [x] `pt-viz` — request visualization in SVG/scene-JSON format
+- [x] `tower-status` — P1 readiness probe for BearDog/Songbird/SkunkBat
+
+### Tower P1 Readiness Probe
+- [x] `probe_tower_status()` — probes 9 P1-critical methods across 3 Tower primals
+- [x] `probe_single_method()` — generic JSON-RPC method availability with response summary
+- [x] `summarize_result()` — object key or array length summary for display
+- [x] `print_tower_status()` — formatted output with availability icons
+- [x] Current state: 6/9 methods available (BearDog 2/3, Songbird 3/3, SkunkBat 1/3)
+
+### Code Quality
+- [x] `dispatch_standalone()` extracted from `run()` (fixes `too_many_lines` lint)
+- [x] Discovery updated: petalTongue capabilities reflect actual v1.6.6 API
+- [x] `pt-render` self-capability declared in discovery
+- [x] All clippy nursery+pedantic clean (zero warnings)
+
+### Metrics (June 22, 2026)
+- 193 tests (161 unit + 29 integration + 3 refresh)
+- 25 modules
+- Zero clippy warnings (pedantic + nursery)
+- Zero `unwrap()` / `expect()` in production code
+- Zero unsafe (forbidden crate-level)
+- Edition 2024, rust-version 1.85
+
+### Gaps Identified (upstream P1 work)
+- BearDog: `btsp.capabilities` method not yet implemented (BTSP Phase 2)
+- SkunkBat: `method_gate.status` + `threat.report` not yet implemented
+- Songbird: mesh methods exist but need `mesh.init` activation with `node_id`
+- petalTongue: graph render returns empty for entity-graph format (schema mismatch — needs format alignment)
 
 ## Wave 120 — Sovereign CI + Convergence (June 20, 2026)
 
