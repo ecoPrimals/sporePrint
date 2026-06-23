@@ -1,7 +1,7 @@
 +++
 title = "Experiment 024 — Aggregate Stability Noise Analysis"
 description = "Rendered from exp-024-aggregate-stability.ipynb"
-date = 2026-06-22
+date = 2026-06-23
 weight = 50
 
 [extra]

@@ -26,6 +26,7 @@ mod nucleus;
 mod paths;
 mod petaltongue;
 mod provenance;
+mod tower;
 mod refresh;
 mod registry;
 mod report;
@@ -470,8 +471,8 @@ fn run_pt_status() -> Result<(), Error> {
 /// Run Tower P1 readiness probe.
 #[allow(clippy::unnecessary_wraps)]
 fn run_tower_status() -> Result<(), Error> {
-    let status = nucleus::probe_tower_status();
-    nucleus::print_tower_status(&status);
+    let status = tower::probe_tower_status();
+    tower::print_tower_status(&status);
     Ok(())
 }
 

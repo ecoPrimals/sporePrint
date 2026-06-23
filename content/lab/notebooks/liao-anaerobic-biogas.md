@@ -1,7 +1,7 @@
 +++
 title = "Anaerobic Biogas Kinetics & Community Diversity — Track 6"
 description = "Rendered from liao-anaerobic-biogas.ipynb"
-date = 2026-06-22
+date = 2026-06-23
 weight = 50
 
 [extra]

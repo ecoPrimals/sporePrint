@@ -527,8 +527,35 @@ These were in the original queue and have been completed:
 ### Gaps Identified (upstream P1 work)
 - BearDog: `btsp.capabilities` method not yet implemented (BTSP Phase 2)
 - SkunkBat: `method_gate.status` + `threat.report` not yet implemented
-- Songbird: mesh methods exist but need `mesh.init` activation with `node_id`
 - petalTongue: graph render returns empty for entity-graph format (schema mismatch — needs format alignment)
+
+## Wave 124 — Tower Activation + Refactor (June 23, 2026)
+
+### Songbird Mesh Activation (P1 — DONE)
+- [x] `mesh.init` called with `node_id: "flockgate"`, `bootstrap_peers: ["10.13.37.1:7700"]`
+- [x] Result: `initialized: true`, `bootstrap_peers_added: 1`
+- [x] `mesh.peers` now returns `{online: 1, peers: [{address: "10.13.37.1:7700", reachable: true}]}`
+- [x] golgi peer at WG .1 visible via direct path (`path_type: "direct"`)
+- [ ] `mesh.capabilities_announce` rejected ("unknown peer") — requires BTSP trust
+
+### BearDog Trust Protocol (P1 — PARTIALLY DONE)
+- [x] `auth.trust_issuer` method validated — requires `{public_key, did, gate_id}`
+- [x] Self-trust registered (flockGate → flockGate): `total_trusted_issuers: 1`
+- [ ] Cross-gate trust: need public keys from eastGate, sporeGate, golgi, ironGate BearDog instances
+- [ ] Protocol: call `auth.public_key` on remote gate → register via `auth.trust_issuer` locally
+- [ ] Token verification: issue token on gate A, verify on gate B (BTSP success criterion)
+
+### nucleus.rs Refactor (code quality)
+- [x] Tower probe code extracted to `tower.rs` (275 lines)
+- [x] `nucleus.rs` reduced from 978 → 770 lines (under 800 threshold)
+- [x] 5 new unit tests in `tower.rs` (probe coverage, summarize_result variants)
+- [x] All references updated in `main.rs`
+
+### Metrics (June 23, 2026)
+- 198 tests (166 unit + 29 integration + 3 refresh)
+- 26 modules, no file over 800 lines
+- Zero clippy warnings (pedantic + nursery)
+- Zero `unwrap()` / `expect()` in production code
 
 ## Wave 120 — Sovereign CI + Convergence (June 20, 2026)
 

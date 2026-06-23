@@ -1,7 +1,7 @@
 +++
 title = "Soil Quorum Sensing & Anderson Geometry — Track 4"
 description = "Rendered from soil-anderson-geometry.ipynb"
-date = 2026-06-22
+date = 2026-06-23
 weight = 50
 
 [extra]

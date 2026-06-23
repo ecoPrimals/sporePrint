@@ -1,7 +1,7 @@
 +++
 title = "01 — Composition Validation"
 description = "Rendered from 01-composition-validation.ipynb"
-date = 2026-06-22
+date = 2026-06-23
 weight = 50
 
 [extra]
