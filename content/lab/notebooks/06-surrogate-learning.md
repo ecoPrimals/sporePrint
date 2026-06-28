@@ -1,7 +1,7 @@
 +++
 title = "Surrogate Learning — Directed Sampling for Nuclear EOS"
 description = "Rendered from 06-surrogate-learning.ipynb"
-date = 2026-06-23
+date = 2026-06-28
 weight = 50
 
 [extra]

@@ -33,7 +33,7 @@ const TOWER_PROBES: &[(&str, &[&str])] = &[
     ),
     (
         "skunkbat",
-        &["method_gate.status", "threat.report", "auth.check"],
+        &["defense.status", "security.detect", "btsp.negotiate"],
     ),
 ];
 

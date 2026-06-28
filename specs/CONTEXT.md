@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (June 22, 2026 — Wave 123)
+## Current State (June 28, 2026 — Wave 128)
 
 - **222 content pages** across 8 sections + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags

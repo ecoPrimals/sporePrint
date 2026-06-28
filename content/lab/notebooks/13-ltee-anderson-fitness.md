@@ -1,7 +1,7 @@
 +++
 title = "LTEE B2 — Anderson Disorder Analogy for Fitness Dynamics"
 description = "Rendered from 13-ltee-anderson-fitness.ipynb"
-date = 2026-06-23
+date = 2026-06-28
 weight = 50
 
 [extra]

@@ -89,8 +89,8 @@ In the target state, even the relay chain becomes quorum-driven:
 
 1. Gate pushes to Forgejo (covalent bond — always nanowire)
 2. Forgejo fires an impulse: "new content available for relay"
-3. peptidoglycan senses the impulse, pulls autonomously
-4. golgiBody-ext senses "content staged for shipping," pushes to GitHub
+3. sporeGate senses the impulse, builds autonomously (Sovereign CI)
+4. golgi senses "content staged for shipping," pushes to GitHub
 
 Each node acts on environmental signals, not direct commands. The topology
 can change (add/remove nodes) without rewiring — new nodes simply begin

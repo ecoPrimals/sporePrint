@@ -13,7 +13,7 @@ domain = "Architecture"
 The ecoPrimals deployment architecture follows the Gram-negative bacterial
 cell envelope: a **diderm** (double-membrane) system with a structural
 peptidoglycan layer between inner and outer membranes. This maps directly
-to the three-VPS infrastructure topology that hosts sovereign services.
+to the multi-gate mesh topology that hosts sovereign services.
 
 The model is not metaphorical — it drives real architecture decisions about
 which services run where, which bonds mediate communication, and which
@@ -43,10 +43,10 @@ roles:
 
 | K-Derm Layer | Physical Node | Role | Bond Types |
 |-------------|---------------|------|------------|
-| Cytoplasm | LAN gates (eastGate, ironGate, etc.) | Full NUCLEUS, development, UDS IPC | Covalent |
-| Plasma membrane | Gate firewall (UFW/nftables) | Mediates all exits from cytoplasm | Covalent, Metallic |
+| Cytoplasm | LAN gates (eastGate, ironGate, sporeGate) | Full NUCLEUS, development, UDS IPC | Covalent |
+| Plasma membrane | Flint H1 (edge router) | Mediates all exits from LAN, NAT, firewall | Covalent, Metallic |
 | Inner membrane (cis) | golgi VPS | Forgejo sovereign store, WG hub, relay | Covalent, Metallic |
-| Periplasm | sporeGate (LAN) | Build authority (Sovereign CI), depot origin | Metallic |
+| Periplasm | sporeGate (LAN compute) | Build authority (Sovereign CI), depot origin | Metallic |
 | Outer membrane (trans) | golgi VPS (Caddy) | TLS termination, sporePrint, WAN depot | Ionic, Weak |
 | Extracellular | GitHub, public internet | Trailing mirrors, CDN, CI | Weak |
 

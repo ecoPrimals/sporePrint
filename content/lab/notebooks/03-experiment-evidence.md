@@ -1,7 +1,7 @@
 +++
 title = "Experiment Evidence — hotSpring"
 description = "Rendered from 03-experiment-evidence.ipynb"
-date = 2026-06-23
+date = 2026-06-28
 weight = 50
 
 [extra]

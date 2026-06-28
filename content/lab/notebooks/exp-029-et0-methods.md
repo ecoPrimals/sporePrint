@@ -1,7 +1,7 @@
 +++
 title = "Experiment 029 — Multi-Method ET₀ Comparison"
 description = "Rendered from exp-029-et0-methods.ipynb"
-date = 2026-06-23
+date = 2026-06-28
 weight = 50
 
 [extra]

@@ -69,10 +69,10 @@ All gates connect through a sovereign encrypted overlay network:
 | Node | Overlay IP | Role | Measured RTT |
 |------|-----------|------|--------------|
 | golgi (hub) | 10.13.37.1 | VPS hub, Forgejo, Caddy, WAN depot | — |
-| sporeGate | 10.13.37.2 | Build authority (Sovereign CI), LAN firewall | <1ms to golgi |
-| ironGate | 10.13.37.3 | Node Atomic (GPU compute, fleet dispatch) | 89ms to golgi |
+| sporeGate | 10.13.37.2 | Compute node, Sovereign CI, Nest | <1ms to golgi |
 | eastGate | 10.13.37.5 | Meta (orchestration, AI, viz) | <1ms to golgi |
-| flockGate | 10.13.37.6 | WAN validator, Tower Atomic | 27ms to golgi |
+| flockGate | 10.13.37.6 | WAN, Tower Atomic, sporePrint | 27ms to golgi |
+| ironGate | 10.13.37.7 | Node Atomic (GPU, fleet dispatch) | <1ms to golgi |
 
 Hub-and-spoke topology with golgi as the central peer. Each gate maintains
 a persistent tunnel. The mesh provides:

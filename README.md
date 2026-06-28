@@ -158,7 +158,7 @@ Your content here...
 
 ## Evolution Roadmap
 
-### Current — Wave 123 (June 22, 2026)
+### Current — Wave 128 (June 28, 2026)
 - 222 content pages, 66 entities, 198 tests, 26 modules
 - Edition 2024, Rust 1.85+, zero unsafe, zero C deps
 - NUCLEUS validation + depot integrity + riboCipher transport signal
