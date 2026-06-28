@@ -126,19 +126,9 @@ pub fn write_updates(config_path: &Path, drifts: &[Drift]) -> Result<(), Error> 
         let actual_i64 = i64::try_from(drift.actual).unwrap_or(i64::MAX);
 
         match drift.field {
-            "loc" => {
-                entity["loc"] = toml_edit::value(actual_i64);
-                entity["loc_display"] = toml_edit::value(format_display(drift.actual));
-            }
-            "tests" => {
-                entity["tests"] = toml_edit::value(actual_i64);
-                entity["tests_display"] = toml_edit::value(format_display(drift.actual));
-            }
-            "files" => {
-                entity["files"] = toml_edit::value(actual_i64);
-            }
-            "crates" => {
-                entity["crates"] = toml_edit::value(actual_i64);
+            "loc" | "tests" => set_metric_pair(entity, drift.field, actual_i64),
+            "files" | "crates" => {
+                entity[drift.field] = toml_edit::value(actual_i64);
             }
             _ => {}
         }
@@ -147,6 +137,13 @@ pub fn write_updates(config_path: &Path, drifts: &[Drift]) -> Result<(), Error> 
     update_totals(&mut doc);
 
     std::fs::write(config_path, doc.to_string()).map_err(|e| Error::io(config_path, e))
+}
+
+/// Set a numeric metric and its display companion in a TOML table.
+fn set_metric_pair(table: &mut toml_edit::Item, key: &str, value: i64) {
+    table[key] = toml_edit::value(value);
+    let display_key = format!("{key}_display");
+    table[&display_key] = toml_edit::value(format_display(value.unsigned_abs()));
 }
 
 fn update_totals(doc: &mut DocumentMut) {
@@ -192,21 +189,12 @@ fn update_totals(doc: &mut DocumentMut) {
     let total_tests = primal_tests + spring_tests;
 
     if let Some(totals) = doc.get_mut("extra").and_then(|e| e.get_mut("totals")) {
-        totals["primal_loc"] = toml_edit::value(primal_loc);
-        totals["primal_loc_display"] = toml_edit::value(format_display(primal_loc.unsigned_abs()));
-        totals["spring_loc"] = toml_edit::value(spring_loc);
-        totals["spring_loc_display"] = toml_edit::value(format_display(spring_loc.unsigned_abs()));
-        totals["total_loc"] = toml_edit::value(total_loc);
-        totals["total_loc_display"] = toml_edit::value(format_display(total_loc.unsigned_abs()));
-        totals["primal_tests"] = toml_edit::value(primal_tests);
-        totals["primal_tests_display"] =
-            toml_edit::value(format_display(primal_tests.unsigned_abs()));
-        totals["spring_tests"] = toml_edit::value(spring_tests);
-        totals["spring_tests_display"] =
-            toml_edit::value(format_display(spring_tests.unsigned_abs()));
-        totals["total_tests"] = toml_edit::value(total_tests);
-        totals["total_tests_display"] =
-            toml_edit::value(format_display(total_tests.unsigned_abs()));
+        set_metric_pair(totals, "primal_loc", primal_loc);
+        set_metric_pair(totals, "spring_loc", spring_loc);
+        set_metric_pair(totals, "total_loc", total_loc);
+        set_metric_pair(totals, "primal_tests", primal_tests);
+        set_metric_pair(totals, "spring_tests", spring_tests);
+        set_metric_pair(totals, "total_tests", total_tests);
 
         let date_str = today_utc();
         if !date_str.is_empty() {

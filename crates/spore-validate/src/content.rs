@@ -14,6 +14,14 @@ use std::path::Path;
 use std::sync::LazyLock;
 use walkdir::WalkDir;
 
+/// Regex matching all entity shortcode variants: `entity`, `entity_metrics`, `entity_stat`.
+static ENTITY_SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(
+        r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
+    )
+    .expect("static regex")
+});
+
 /// Validate taxonomy tags in front matter reference valid registry keys.
 pub fn validate_taxonomies(
     root: &Path,
@@ -95,13 +103,7 @@ pub fn check_integrity(
     registry: &HashMap<String, Entity>,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
-    static SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(
-            r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
-        )
-        .expect("static regex")
-    });
-    let shortcode_re = &*SHORTCODE_RE;
+    let shortcode_re = &*ENTITY_SHORTCODE_RE;
     let registry_keys: HashSet<&str> = registry.keys().map(String::as_str).collect();
     let mut shortcode_count: u32 = 0;
     let mut broken = Vec::new();
@@ -181,11 +183,7 @@ pub fn audit_taxonomy_coverage(
     registry: &HashMap<String, Entity>,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
-    static SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(r#"\{\{\s*entity\(\s*name\s*=\s*"([^"]+)"\s*\)\s*\}\}"#)
-            .expect("static regex")
-    });
-    let shortcode_re = &*SHORTCODE_RE;
+    let shortcode_re = &*ENTITY_SHORTCODE_RE;
 
     let mut gap_count: u32 = 0;
 
@@ -205,11 +203,9 @@ pub fn audit_taxonomy_coverage(
         let mut shortcode_entities: HashSet<String> = HashSet::new();
         for cap in shortcode_re.captures_iter(body) {
             let key = normalize_key(&cap[1]);
-            if registry.contains_key(&key) {
-                if let Some(entity) = registry.get(&key) {
-                    if entity.kind.has_taxonomy() {
-                        shortcode_entities.insert(key);
-                    }
+            if let Some(entity) = registry.get(&key) {
+                if entity.kind.has_taxonomy() {
+                    shortcode_entities.insert(key);
                 }
             }
         }
