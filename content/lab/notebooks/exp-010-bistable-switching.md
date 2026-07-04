@@ -1,7 +1,7 @@
 +++
 title = "Experiment 010 — Bistable Phenotypic Switching"
 description = "Rendered from exp-010-bistable-switching.ipynb"
-date = 2026-06-28
+date = 2026-07-04
 weight = 50
 
 [extra]

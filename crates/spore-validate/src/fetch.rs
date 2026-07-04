@@ -36,8 +36,12 @@ pub struct Source {
 /// Default forge URL prefix used when a source has no explicit `origin`.
 /// Configurable via `SPOREPRINT_FORGE_URL` environment variable.
 /// Falls back to GitHub (extracellular shadow) only as last resort.
-fn default_forge_url() -> String {
-    std::env::var("SPOREPRINT_FORGE_URL").unwrap_or_else(|_| "https://github.com".to_string())
+/// Cached via `OnceLock` to avoid repeated env reads.
+fn default_forge_url() -> &'static str {
+    static FORGE_URL: std::sync::OnceLock<String> = std::sync::OnceLock::new();
+    FORGE_URL.get_or_init(|| {
+        std::env::var("SPOREPRINT_FORGE_URL").unwrap_or_else(|_| "https://github.com".to_string())
+    })
 }
 
 /// Detected forge type — determines archive URL pattern.
@@ -170,10 +174,10 @@ impl ForgeArchiveBackend {
         let url = clone_url.trim_end_matches(".git");
         let forge_base = default_forge_url();
 
-        match detect_forge_kind(&forge_base) {
+        match detect_forge_kind(forge_base) {
             ForgeKind::GitHub => format!("{url}/archive/refs/heads/main.tar.gz"),
             ForgeKind::Forgejo => {
-                let path = url.strip_prefix(&forge_base).unwrap_or(url);
+                let path = url.strip_prefix(forge_base).unwrap_or(url);
                 format!("{forge_base}/api/v1/repos{path}/archive/main.tar.gz")
             }
         }

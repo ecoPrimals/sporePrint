@@ -72,11 +72,15 @@ mod tests {
     #[test]
     fn constants_are_consistent() {
         assert!(NOTEBOOK_OUTPUT.starts_with(CONTENT_DIR));
-        assert!(Path::new(CAS_MANIFEST)
-            .extension()
-            .is_some_and(|ext| ext == "json"));
-        assert!(Path::new(ENTITY_GRAPH_JSON)
-            .extension()
-            .is_some_and(|ext| ext == "json"));
+        assert!(
+            Path::new(CAS_MANIFEST)
+                .extension()
+                .is_some_and(|ext| ext == "json")
+        );
+        assert!(
+            Path::new(ENTITY_GRAPH_JSON)
+                .extension()
+                .is_some_and(|ext| ext == "json")
+        );
     }
 }

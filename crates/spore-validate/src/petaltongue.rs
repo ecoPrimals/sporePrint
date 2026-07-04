@@ -20,7 +20,7 @@
 use crate::cas_push::{ReadWrite, TransportEndpoint, connect_transport};
 use crate::error::Error;
 use serde_json::{Value, json};
-use std::io::{BufRead, BufReader, Write};
+use std::io::BufReader;
 use std::time::Instant;
 
 /// Result of a `visualization.render.graph` call.
@@ -70,7 +70,7 @@ impl PetalTongueClient {
         Ok(client)
     }
 
-    /// Discover petalTongue socket and connect (used by integration tests).
+    /// Discover petalTongue socket and connect (used by parity tests).
     #[allow(dead_code)]
     pub fn discover_and_connect() -> Result<Self, Error> {
         let socket = discover_socket()?;
@@ -122,7 +122,9 @@ impl PetalTongueClient {
         if let Some(err) = resp.get("error") {
             return Err(Error::Config(format!(
                 "visualization.render.graph error: {}",
-                err.get("message").and_then(Value::as_str).unwrap_or("unknown")
+                err.get("message")
+                    .and_then(Value::as_str)
+                    .unwrap_or("unknown")
             )));
         }
 
@@ -173,7 +175,9 @@ impl PetalTongueClient {
         if let Some(err) = resp.get("error") {
             return Err(Error::Config(format!(
                 "health.check error: {}",
-                err.get("message").and_then(Value::as_str).unwrap_or("unknown")
+                err.get("message")
+                    .and_then(Value::as_str)
+                    .unwrap_or("unknown")
             )));
         }
 
@@ -195,10 +199,7 @@ impl PetalTongueClient {
                 .and_then(Value::as_str)
                 .unwrap_or("petaltongue")
                 .to_string(),
-            uptime_s: result
-                .get("uptime_s")
-                .and_then(Value::as_u64)
-                .unwrap_or(0),
+            uptime_s: result.get("uptime_s").and_then(Value::as_u64).unwrap_or(0),
             latency_ms,
         })
     }
@@ -234,7 +235,9 @@ impl PetalTongueClient {
         if let Some(err) = resp.get("error") {
             return Err(Error::Config(format!(
                 "viz.serve error for '{name}': {}",
-                err.get("message").and_then(Value::as_str).unwrap_or("unknown")
+                err.get("message")
+                    .and_then(Value::as_str)
+                    .unwrap_or("unknown")
             )));
         }
 
@@ -274,26 +277,11 @@ impl PetalTongueClient {
     }
 
     /// Send a JSON-RPC request and read the response.
+    ///
+    /// Delegates to shared `ipc::send_rpc` for NDJSON framing and response
+    /// ID correlation.
     fn send_rpc(&mut self, request: &Value) -> Result<Value, Error> {
-        let mut payload = serde_json::to_string(request)
-            .map_err(|e| Error::Config(format!("JSON encode: {e}")))?;
-        payload.push('\n');
-
-        let writer = self.reader.get_mut();
-        writer
-            .write_all(payload.as_bytes())
-            .map_err(|e| Error::Config(format!("petalTongue write: {e}")))?;
-        writer
-            .flush()
-            .map_err(|e| Error::Config(format!("petalTongue flush: {e}")))?;
-
-        let mut line = String::new();
-        self.reader
-            .read_line(&mut line)
-            .map_err(|e| Error::Config(format!("petalTongue read: {e}")))?;
-
-        serde_json::from_str(line.trim())
-            .map_err(|e| Error::Config(format!("petalTongue JSON decode: {e}")))
+        crate::ipc::send_rpc(&mut self.reader, request)
     }
 }
 
@@ -318,7 +306,9 @@ pub fn status() -> Result<PetalTongueStatus, Error> {
     let mut client = PetalTongueClient::connect(&endpoint)?;
 
     let health = client.health_check().ok();
-    let has_render_graph = client.probe_method("visualization.render.graph").unwrap_or(false);
+    let has_render_graph = client
+        .probe_method("visualization.render.graph")
+        .unwrap_or(false);
     let has_viz_export = client.probe_method("visualization.export").unwrap_or(false);
 
     Ok(PetalTongueStatus {
@@ -352,13 +342,20 @@ impl std::fmt::Display for PetalTongueStatus {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         writeln!(f, "petalTongue @ {}", self.socket_path)?;
         if let Some(h) = &self.health {
-            writeln!(f, "  {} health: {} (v{}, up {}s, {}ms)", h.primal, h.status, h.version, h.uptime_s, h.latency_ms)?;
+            writeln!(
+                f,
+                "  {} health: {} (v{}, up {}s, {}ms)",
+                h.primal, h.status, h.version, h.uptime_s, h.latency_ms
+            )?;
         } else {
             writeln!(f, "  health: ❌ unreachable")?;
         }
         let render_icon = if self.render_graph { "✅" } else { "❌" };
         let export_icon = if self.viz_export { "✅" } else { "❌" };
-        write!(f, "  visualization.render.graph: {render_icon}\n  visualization.export: {export_icon}")
+        write!(
+            f,
+            "  visualization.render.graph: {render_icon}\n  visualization.export: {export_icon}"
+        )
     }
 }
 

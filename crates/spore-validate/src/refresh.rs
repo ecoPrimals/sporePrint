@@ -441,4 +441,90 @@ fn another() {}
         assert_eq!(m.files, 0);
         assert_eq!(m.crates, 0);
     }
+
+    #[test]
+    fn count_metrics_finds_rs_files() {
+        let dir = tempfile::tempdir().unwrap();
+        let repo = dir.path().join("myrepo");
+        let src = repo.join("src");
+        std::fs::create_dir_all(&src).unwrap();
+        std::fs::write(src.join("lib.rs"), "fn foo() {}\n#[test]\nfn t() {}\n").unwrap();
+        std::fs::write(repo.join("Cargo.toml"), "[package]\nname=\"x\"").unwrap();
+
+        let m = count_metrics(&repo);
+        assert_eq!(m.files, 1);
+        assert_eq!(m.crates, 1);
+        assert_eq!(m.tests, 1);
+        assert!(m.loc >= 1);
+    }
+
+    #[test]
+    fn count_metrics_skips_hidden_and_target() {
+        let dir = tempfile::tempdir().unwrap();
+        let repo = dir.path().join("myrepo");
+        let hidden = repo.join(".git");
+        let target = repo.join("target");
+        std::fs::create_dir_all(&hidden).unwrap();
+        std::fs::create_dir_all(&target).unwrap();
+        std::fs::write(hidden.join("file.rs"), "fn hidden() {}").unwrap();
+        std::fs::write(target.join("file.rs"), "fn built() {}").unwrap();
+
+        let m = count_metrics(&repo);
+        assert_eq!(m.files, 0);
+        assert_eq!(m.loc, 0);
+    }
+
+    #[test]
+    fn write_updates_modifies_config() {
+        let dir = tempfile::tempdir().unwrap();
+        let cfg = dir.path().join("config.toml");
+        let content = r#"
+[extra.entity_registry.testPrimal]
+kind = "primal"
+loc = 100
+loc_display = "100"
+tests = 50
+tests_display = "50"
+files = 5
+crates = 1
+
+[extra.totals]
+primal_loc = 100
+primal_loc_display = "100"
+spring_loc = 0
+spring_loc_display = "0"
+total_loc = 100
+total_loc_display = "100"
+primal_tests = 50
+primal_tests_display = "50"
+spring_tests = 0
+spring_tests_display = "0"
+total_tests = 50
+total_tests_display = "50"
+measured_date = "2026-01-01"
+"#;
+        std::fs::write(&cfg, content).unwrap();
+
+        let drifts = vec![Drift {
+            key: "testPrimal".into(),
+            field: "loc",
+            registered: 100,
+            actual: 200,
+        }];
+        write_updates(&cfg, &drifts).unwrap();
+
+        let updated = std::fs::read_to_string(&cfg).unwrap();
+        assert!(updated.contains("loc = 200"));
+    }
+
+    #[test]
+    fn find_repo_walks_subdirectories() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let nested = root.join("infra").join("bearDog");
+        std::fs::create_dir_all(&nested).unwrap();
+
+        let found = find_repo(root, "ecoPrimals/bearDog");
+        assert_eq!(found, Some(nested));
+    }
 }

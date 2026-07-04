@@ -1,7 +1,7 @@
 +++
 title = "Abelian Higgs Model — (1+1)D Lattice Field Theory"
 description = "Rendered from 09-abelian-higgs.ipynb"
-date = 2026-06-28
+date = 2026-07-04
 weight = 50
 
 [extra]

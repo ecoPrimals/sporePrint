@@ -169,7 +169,14 @@ fn render_notebooks_renders_ipynb() {
 
 #[test]
 fn render_notebooks_discover_on_workspace() {
-    let output = run(&["render-notebooks", "--discover"]);
+    let tmp = tempfile::tempdir().unwrap();
+    let root = sporeprint_root();
+    let output = Command::new(binary_path())
+        .args(["--root", &root.to_string_lossy()])
+        .args(["render-notebooks", "--discover"])
+        .env("SPOREPRINT_NOTEBOOK_OUTPUT", tmp.path())
+        .output()
+        .expect("render-notebooks --discover");
     assert_success(&output, "render-notebooks --discover");
     assert!(stdout_of(&output).contains("Rendered"));
 }
@@ -329,10 +336,12 @@ fn cas_manifest_emit_writes_json() {
     let manifest: serde_json::Value =
         serde_json::from_str(&std::fs::read_to_string(&manifest_path).unwrap()).unwrap();
     assert_eq!(manifest["page_count"], 1);
-    assert!(manifest["build_hash"]
-        .as_str()
-        .unwrap()
-        .starts_with("blake3:"));
+    assert!(
+        manifest["build_hash"]
+            .as_str()
+            .unwrap()
+            .starts_with("blake3:")
+    );
 }
 
 // ── CAS Push ─────────────────────────────────────────────────────────

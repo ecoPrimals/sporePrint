@@ -1,7 +1,7 @@
 +++
 title = "Experiment 008 — Anderson Localization"
 description = "Rendered from exp-008-anderson-localization.ipynb"
-date = 2026-06-28
+date = 2026-07-04
 weight = 50
 
 [extra]

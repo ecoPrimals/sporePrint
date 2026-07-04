@@ -90,10 +90,27 @@ pub const SELF: SelfCapabilities = SelfCapabilities {
 /// A discovered peer primal with its capabilities.
 #[derive(Debug)]
 pub struct DiscoveredPeer {
-    pub primal_id: String,
+    pub primal_id: &'static str,
     pub socket_path: Option<String>,
-    pub capabilities: Vec<String>,
+    pub capabilities: &'static [&'static str],
 }
+
+/// `NestGate` capabilities (CAS storage).
+const NESTGATE_CAPABILITIES: &[&str] = &[
+    "content.put",
+    "content.get",
+    "content.exists",
+    "content.replicate.pull",
+    "route.register",
+];
+
+/// petalTongue capabilities (visualization rendering).
+const PETALTONGUE_CAPABILITIES: &[&str] = &[
+    "visualization.render.graph",
+    "visualization.render.scene",
+    "visualization.export",
+    "health.check",
+];
 
 /// Discover available peer primals from the environment.
 ///
@@ -103,32 +120,19 @@ pub struct DiscoveredPeer {
 pub fn discover_peers() -> Vec<DiscoveredPeer> {
     let mut peers = Vec::new();
 
-    // NestGate: CAS storage peer
     if let Some(socket) = probe_socket("nestgate", "NESTGATE_SOCKET") {
         peers.push(DiscoveredPeer {
-            primal_id: "nestGate".into(),
+            primal_id: "nestGate",
             socket_path: Some(socket),
-            capabilities: vec![
-                "content.put".into(),
-                "content.get".into(),
-                "content.exists".into(),
-                "content.replicate.pull".into(),
-                "route.register".into(),
-            ],
+            capabilities: NESTGATE_CAPABILITIES,
         });
     }
 
-    // petalTongue: visualization rendering peer
     if let Some(socket) = probe_socket("petaltongue", "PETALTONGUE_SOCKET") {
         peers.push(DiscoveredPeer {
-            primal_id: "petalTongue".into(),
+            primal_id: "petalTongue",
             socket_path: Some(socket),
-            capabilities: vec![
-                "visualization.render.graph".into(),
-                "visualization.render.scene".into(),
-                "visualization.export".into(),
-                "health.check".into(),
-            ],
+            capabilities: PETALTONGUE_CAPABILITIES,
         });
     }
 
@@ -273,9 +277,9 @@ mod tests {
     #[test]
     fn discovered_peer_debug_format() {
         let peer = DiscoveredPeer {
-            primal_id: "testPrimal".into(),
+            primal_id: "testPrimal",
             socket_path: Some("/tmp/test.sock".into()),
-            capabilities: vec!["foo.bar".into()],
+            capabilities: &["foo.bar"],
         };
         let debug = format!("{peer:?}");
         assert!(debug.contains("testPrimal"));

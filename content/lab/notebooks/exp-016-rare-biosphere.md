@@ -1,7 +1,7 @@
 +++
 title = "Experiment 016 — Rare Biosphere Signal Detection"
 description = "Rendered from exp-016-rare-biosphere.ipynb"
-date = 2026-06-28
+date = 2026-07-04
 weight = 50
 
 [extra]

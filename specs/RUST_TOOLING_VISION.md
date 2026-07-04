@@ -4,11 +4,12 @@
 for sporePrint. It lives at `crates/spore-validate/` and enforces
 `#![forbid(unsafe_code)]` at the crate root.
 
-## Current State (Wave 70 — June 2026)
+## Current State (Wave 132d — July 2026)
 
-- **15 modules**, 101 tests (79 unit + 19 integration + 3 refresh_write)
+- **27 modules**, 220 tests (188 unit + 29 integration + 3 refresh_write, 6 parity ignored)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
-- Zero `#[allow()]` in production code
+- `#![warn(missing_docs)]` active, `#![forbid(unsafe_code)]`
+- 16 `#[allow()]` justified (cast safety, dead_code for deserialized schema, uniform dispatch)
 - All files under 600 LOC (limit: 800, target: 500)
 - Zero C toolchain dependencies (`blake3` pure-Rust, `flate2` rust_backend)
 - `thiserror`-based typed error hierarchy (`Result` propagation, no `process::exit`)

@@ -112,9 +112,8 @@ pub fn diff_manifests(
 }
 
 pub fn write_manifest(manifest: &ContentManifest, output: &Path) -> std::io::Result<()> {
-    let toml_str = toml::to_string_pretty(manifest).map_err(|e| {
-        std::io::Error::other(e.to_string())
-    })?;
+    let toml_str =
+        toml::to_string_pretty(manifest).map_err(|e| std::io::Error::other(e.to_string()))?;
     fs::write(output, toml_str)
 }
 
@@ -175,10 +174,7 @@ mod tests {
         assert_eq!(m.page_count, 2);
         assert!(m.pages.contains_key("test.md"));
         assert!(m.pages.contains_key("other.md"));
-        assert_eq!(
-            m.pages["test.md"].title.as_deref(),
-            Some("Test")
-        );
+        assert_eq!(m.pages["test.md"].title.as_deref(), Some("Test"));
     }
 
     #[test]

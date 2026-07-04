@@ -131,7 +131,10 @@ fn parity_viz_endpoints() {
         let resp = client.get(&json_url).call().unwrap();
         assert_eq!(resp.status(), 200);
         let body = resp.into_string().unwrap();
-        assert!(body.contains("\"nodes\""), "Viz {viz} scene-json should have nodes");
+        assert!(
+            body.contains("\"nodes\""),
+            "Viz {viz} scene-json should have nodes"
+        );
     }
 }
 

@@ -3,6 +3,15 @@
 When a new primal, spring, or product is created, follow these steps to
 connect it to the auto-refresh pipeline so primals.eco metrics stay current.
 
+## Pipeline Architecture
+
+**Primary (Sovereign CI — Wave 120+):** Gate pushes to Forgejo → golgi quorum
+timer → cascade propagates → sporePrint rebuilds via Sovereign CI on sporeGate.
+
+**Shadow (GitHub Actions — trailing, will be archived):** GitHub repo push →
+`notify-sporeprint.yml` → sporePrint `auto-refresh.yml` → metric refresh →
+deploy to GitHub Pages.
+
 ## Prerequisites
 
 - GitHub repo exists (in `ecoPrimals/`, `syntheticChemistry/`, or `sporeGarden/`)

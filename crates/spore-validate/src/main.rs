@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 #![forbid(unsafe_code)]
+#![warn(missing_docs)]
 #![doc = "sporePrint validation CLI — entity registry, content integrity, and metric sync."]
 
 use clap::{Parser, Subcommand};
@@ -19,6 +20,7 @@ mod error;
 mod fetch;
 mod graph;
 mod http;
+mod ipc;
 mod links;
 mod model;
 mod notebook;
@@ -26,12 +28,12 @@ mod nucleus;
 mod paths;
 mod petaltongue;
 mod provenance;
-mod tower;
 mod refresh;
 mod registry;
 mod report;
 mod time;
 mod totals;
+mod tower;
 
 use error::Error;
 
@@ -341,7 +343,13 @@ fn dispatch_standalone(cli: &Cli) -> Option<Result<(), Error>> {
             arch,
             partial,
             list_arches,
-        }) => Some(dispatch_depot(checksums, depot.as_ref(), arch.as_ref(), *partial, *list_arches)),
+        }) => Some(dispatch_depot(
+            checksums,
+            depot.as_ref(),
+            arch.as_ref(),
+            *partial,
+            *list_arches,
+        )),
         Some(Command::PtRender {
             path,
             modality,
@@ -368,12 +376,10 @@ fn dispatch_depot(
     if list_arches {
         return commands_depot::list_arches(checksums);
     }
-    let depot = depot.ok_or_else(|| {
-        Error::Config("--depot is required when not using --list-arches".into())
-    })?;
-    let arch = arch.ok_or_else(|| {
-        Error::Config("--arch is required when not using --list-arches".into())
-    })?;
+    let depot = depot
+        .ok_or_else(|| Error::Config("--depot is required when not using --list-arches".into()))?;
+    let arch = arch
+        .ok_or_else(|| Error::Config("--arch is required when not using --list-arches".into()))?;
     commands_depot::verify(checksums, depot, arch, partial)
 }
 
@@ -394,7 +400,11 @@ fn run_nucleus(profile_path: &Path, probe: bool, ribocipher: bool) -> Result<(),
 }
 
 /// Run petalTongue graph render via IPC.
-fn run_pt_render(path: &str, modality: Option<&str>, socket_override: Option<&str>) -> Result<(), Error> {
+fn run_pt_render(
+    path: &str,
+    modality: Option<&str>,
+    socket_override: Option<&str>,
+) -> Result<(), Error> {
     let endpoint = if let Some(sock) = socket_override {
         cas_push::TransportEndpoint::Uds {
             path: sock.to_string(),
@@ -434,8 +444,8 @@ fn run_pt_render(path: &str, modality: Option<&str>, socket_override: Option<&st
 fn load_entity_graph_for_render(root: &Path) -> Result<serde_json::Value, Error> {
     let graph_path = root.join("static/graph/entity-graph.json");
     if graph_path.is_file() {
-        let content = std::fs::read_to_string(&graph_path)
-            .map_err(|e| Error::io(&graph_path, e))?;
+        let content =
+            std::fs::read_to_string(&graph_path).map_err(|e| Error::io(&graph_path, e))?;
         serde_json::from_str(&content)
             .map_err(|e| Error::Config(format!("parse entity-graph.json: {e}")))
     } else {

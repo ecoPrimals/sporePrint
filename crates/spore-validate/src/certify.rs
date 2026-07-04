@@ -40,12 +40,22 @@ pub struct CertificationManifest {
 }
 
 /// Build a certification manifest from the current config and content state.
-pub fn build_manifest(config: &Config, root: &Path, validation_errors: usize) -> CertificationManifest {
+pub fn build_manifest(
+    config: &Config,
+    root: &Path,
+    validation_errors: usize,
+) -> CertificationManifest {
     let registry = &config.extra.entity_registry;
 
     let entity_count = registry.len();
-    let primal_count = registry.values().filter(|e| e.kind == EntityKind::Primal).count();
-    let spring_count = registry.values().filter(|e| e.kind == EntityKind::Spring).count();
+    let primal_count = registry
+        .values()
+        .filter(|e| e.kind == EntityKind::Primal)
+        .count();
+    let spring_count = registry
+        .values()
+        .filter(|e| e.kind == EntityKind::Spring)
+        .count();
 
     let entity_graph = graph::build_graph(registry);
     let edge_count = entity_graph.stats.edge_count;
@@ -156,7 +166,8 @@ pub fn validate_manifest(
     if stored.effective_merkle() != current.graph_merkle {
         drifts.push(format!(
             "graph_merkle: stored={}, current={}",
-            stored.effective_merkle(), current.graph_merkle
+            stored.effective_merkle(),
+            current.graph_merkle
         ));
     }
     if stored.entity_count != current.entity_count {
@@ -252,5 +263,87 @@ mod tests {
         assert!(json.contains("\"schema_version\": \"1.0.0\""));
         assert!(json.contains("\"merkle_root\""));
         assert!(json.contains("blake3:abc123"));
+    }
+
+    fn sample_manifest() -> CertificationManifest {
+        CertificationManifest {
+            schema_version: "1.0.0",
+            version: "1.0.0",
+            generated: "2026-06-01T00:00:00Z".into(),
+            entity_count: 5,
+            primal_count: 3,
+            spring_count: 2,
+            edge_count: 10,
+            merkle_root: "blake3:abc".into(),
+            graph_merkle: "blake3:abc".into(),
+            content_pages: 50,
+            total_loc: 100_000,
+            total_tests: 5_000,
+            validation_errors: 0,
+            measured_date: "2026-06-01".into(),
+            drift_tolerance: "5%/30d",
+        }
+    }
+
+    #[test]
+    fn emit_and_validate_no_drift() {
+        let dir = tempfile::tempdir().unwrap();
+        let out = dir.path().join("cert.json");
+        let m = sample_manifest();
+        emit_manifest(&m, &out).unwrap();
+
+        let drifts = validate_manifest(&out, &m).unwrap();
+        assert!(drifts.is_empty(), "expected no drift, got: {drifts:?}");
+    }
+
+    #[test]
+    fn validate_detects_entity_count_drift() {
+        let dir = tempfile::tempdir().unwrap();
+        let out = dir.path().join("cert.json");
+        let m = sample_manifest();
+        emit_manifest(&m, &out).unwrap();
+
+        let mut current = sample_manifest();
+        current.entity_count = 10;
+        let drifts = validate_manifest(&out, &current).unwrap();
+        assert!(!drifts.is_empty());
+        assert!(drifts[0].contains("entity_count"));
+    }
+
+    #[test]
+    fn validate_detects_merkle_drift() {
+        let dir = tempfile::tempdir().unwrap();
+        let out = dir.path().join("cert.json");
+        let m = sample_manifest();
+        emit_manifest(&m, &out).unwrap();
+
+        let mut current = sample_manifest();
+        current.graph_merkle = "blake3:different".into();
+        current.merkle_root = "blake3:different".into();
+        let drifts = validate_manifest(&out, &current).unwrap();
+        assert!(drifts.iter().any(|d| d.contains("graph_merkle")));
+    }
+
+    #[test]
+    fn emit_creates_parent_dirs() {
+        let dir = tempfile::tempdir().unwrap();
+        let out = dir.path().join("sub").join("dir").join("cert.json");
+        let m = sample_manifest();
+        emit_manifest(&m, &out).unwrap();
+        assert!(out.exists());
+    }
+
+    #[test]
+    fn stored_manifest_prefers_merkle_root() {
+        let json = r#"{"merkle_root":"blake3:root","graph_merkle":"blake3:graph","entity_count":1,"edge_count":2,"content_pages":3}"#;
+        let stored: StoredManifest = serde_json::from_str(json).unwrap();
+        assert_eq!(stored.effective_merkle(), "blake3:root");
+    }
+
+    #[test]
+    fn stored_manifest_falls_back_to_graph_merkle() {
+        let json = r#"{"graph_merkle":"blake3:fallback","entity_count":1,"edge_count":2,"content_pages":3}"#;
+        let stored: StoredManifest = serde_json::from_str(json).unwrap();
+        assert_eq!(stored.effective_merkle(), "blake3:fallback");
     }
 }

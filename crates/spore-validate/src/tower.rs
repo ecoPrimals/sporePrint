@@ -15,7 +15,7 @@
 
 use crate::discovery;
 use serde_json::{Value, json};
-use std::io::{BufRead, BufReader, Write};
+use std::io::BufReader;
 use std::time::Duration;
 
 /// IPC timeout for method probes.
@@ -25,7 +25,11 @@ const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
 const TOWER_PROBES: &[(&str, &[&str])] = &[
     (
         "beardog",
-        &["auth.public_key", "auth.trusted_issuers", "btsp.capabilities"],
+        &[
+            "auth.public_key",
+            "auth.trusted_issuers",
+            "btsp.capabilities",
+        ],
     ),
     (
         "songbird",
@@ -109,6 +113,8 @@ fn probe_single_method(socket_path: &str, method: &str) -> MethodProbe {
     stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
     stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
 
+    let mut reader = BufReader::new(Box::new(stream) as Box<dyn crate::cas_push::ReadWrite>);
+
     let request = json!({
         "jsonrpc": "2.0",
         "method": method,
@@ -116,42 +122,33 @@ fn probe_single_method(socket_path: &str, method: &str) -> MethodProbe {
         "id": 1
     });
 
-    let Ok(mut payload) = serde_json::to_string(&request) else {
-        return MethodProbe {
-            method: method.to_string(),
-            available: false,
-            response_summary: Some("encode failed".into()),
-        };
+    let resp = match crate::ipc::send_rpc(&mut reader, &request) {
+        Ok(r) => r,
+        Err(e) => {
+            let msg = e.to_string();
+            let summary = if msg.contains("read") {
+                "read timeout"
+            } else if msg.contains("write") {
+                "write failed"
+            } else {
+                "rpc failed"
+            };
+            return MethodProbe {
+                method: method.to_string(),
+                available: false,
+                response_summary: Some(summary.into()),
+            };
+        }
     };
-    payload.push('\n');
 
-    let mut reader = BufReader::new(stream);
-
-    if reader.get_mut().write_all(payload.as_bytes()).is_err() {
+    if crate::ipc::is_method_not_found(&resp) {
+        let msg = crate::ipc::extract_error_message(&resp).unwrap_or_default();
         return MethodProbe {
             method: method.to_string(),
             available: false,
-            response_summary: Some("write failed".into()),
+            response_summary: Some(msg),
         };
     }
-    let _ = reader.get_mut().flush();
-
-    let mut line = String::new();
-    if reader.read_line(&mut line).is_err() {
-        return MethodProbe {
-            method: method.to_string(),
-            available: false,
-            response_summary: Some("read timeout".into()),
-        };
-    }
-
-    let Ok(resp) = serde_json::from_str::<Value>(line.trim()) else {
-        return MethodProbe {
-            method: method.to_string(),
-            available: false,
-            response_summary: Some("invalid JSON".into()),
-        };
-    };
 
     resp.get("error").map_or_else(
         || {
@@ -200,18 +197,12 @@ pub fn print_tower_status(status: &TowerStatus) {
     println!();
 
     for primal in &status.primals {
-        let socket_display = primal
-            .socket_path
-            .as_deref()
-            .unwrap_or("NOT FOUND");
+        let socket_display = primal.socket_path.as_deref().unwrap_or("NOT FOUND");
         println!("  {} → {socket_display}", primal.name);
 
         for m in &primal.methods {
             let icon = if m.available { "✅" } else { "❌" };
-            let summary = m
-                .response_summary
-                .as_deref()
-                .unwrap_or("");
+            let summary = m.response_summary.as_deref().unwrap_or("");
             println!("    {icon} {} {summary}", m.method);
         }
         println!();

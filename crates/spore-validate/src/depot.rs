@@ -39,9 +39,9 @@ pub struct VerifyResult {
 
 impl VerifyResult {
     pub fn all_present_valid(&self) -> bool {
-        self.entries.iter().all(|(_, s)| {
-            matches!(s, VerifyStatus::Match | VerifyStatus::Missing)
-        })
+        self.entries
+            .iter()
+            .all(|(_, s)| matches!(s, VerifyStatus::Match | VerifyStatus::Missing))
     }
 
     pub fn match_count(&self) -> usize {
@@ -174,7 +174,9 @@ fn verify_single_binary(path: &Path, expected: &BinaryEntry) -> VerifyStatus {
 fn compute_blake3(path: &Path) -> Result<String, String> {
     let file = std::fs::File::open(path).map_err(|e| format!("open: {e}"))?;
     let mut hasher = blake3::Hasher::new();
-    hasher.update_reader(file).map_err(|e| format!("read: {e}"))?;
+    hasher
+        .update_reader(file)
+        .map_err(|e| format!("read: {e}"))?;
     Ok(hasher.finalize().to_hex().to_string())
 }
 
@@ -262,7 +264,10 @@ beardog = { blake3 = "abc123" }
         let result = verify_depot(&checksums, "x86_64-unknown-linux-musl", dir.path()).unwrap();
 
         let beardog_status = result.entries.iter().find(|(k, _)| k == "beardog").unwrap();
-        assert!(matches!(beardog_status.1, VerifyStatus::SizeMismatch { .. }));
+        assert!(matches!(
+            beardog_status.1,
+            VerifyStatus::SizeMismatch { .. }
+        ));
     }
 
     #[test]
@@ -334,10 +339,13 @@ test_primal = { blake3 = "000000000000000000000000000000000000000000000000000000
             arch: "test".into(),
             entries: vec![
                 ("a".into(), VerifyStatus::Match),
-                ("b".into(), VerifyStatus::HashMismatch {
-                    expected: "aaa".into(),
-                    actual: "bbb".into(),
-                }),
+                (
+                    "b".into(),
+                    VerifyStatus::HashMismatch {
+                        expected: "aaa".into(),
+                        actual: "bbb".into(),
+                    },
+                ),
             ],
         };
         assert!(!result.all_present_valid());

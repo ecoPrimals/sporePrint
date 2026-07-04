@@ -25,9 +25,8 @@ fn resolve_transport_endpoint(
     }
 
     if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
-        return serde_json::from_str(&json).map_err(|e| {
-            Error::Config(format!("TRANSPORT_ENDPOINT parse error: {e}"))
-        });
+        return serde_json::from_str(&json)
+            .map_err(|e| Error::Config(format!("TRANSPORT_ENDPOINT parse error: {e}")));
     }
 
     let socket_path = cas_push::discover_socket()?;
@@ -271,12 +270,14 @@ pub fn provenance(root: &Path, verify: bool, diff: bool, write: bool) -> Result<
 
     if verify {
         if !manifest_path.exists() {
-            println!("  WARN: no existing manifest at {}", manifest_path.display());
+            println!(
+                "  WARN: no existing manifest at {}",
+                manifest_path.display()
+            );
             println!("  Run with --write to create one");
             return Ok(());
         }
-        let (new_pages, changed, removed) =
-            provenance::diff_manifests(&manifest_path, &manifest);
+        let (new_pages, changed, removed) = provenance::diff_manifests(&manifest_path, &manifest);
 
         if new_pages.is_empty() && changed.is_empty() && removed.is_empty() {
             println!("  OK: all {} pages match manifest", manifest.page_count);
@@ -298,8 +299,7 @@ pub fn provenance(root: &Path, verify: bool, diff: bool, write: bool) -> Result<
     }
 
     if diff {
-        let (new_pages, changed, removed) =
-            provenance::diff_manifests(&manifest_path, &manifest);
+        let (new_pages, changed, removed) = provenance::diff_manifests(&manifest_path, &manifest);
         for p in &new_pages {
             println!("  + {p}");
         }
@@ -473,7 +473,10 @@ pub fn cas_push(
 
     println!("  ---");
     println!("  stored:       {} files", result.stored);
-    println!("  deduplicated: {} files (already in CAS)", result.deduplicated);
+    println!(
+        "  deduplicated: {} files (already in CAS)",
+        result.deduplicated
+    );
     if result.errors > 0 {
         println!("  errors:       {} files", result.errors);
     }
@@ -508,7 +511,10 @@ pub fn cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Er
     println!("  HTML pages: {}", manifest.page_count);
     #[allow(clippy::cast_precision_loss)]
     let size_kb = manifest.total_bytes as f64 / 1024.0;
-    println!("  total size: {} bytes ({size_kb:.1} KB)", manifest.total_bytes);
+    println!(
+        "  total size: {} bytes ({size_kb:.1} KB)",
+        manifest.total_bytes
+    );
     println!("  build hash: {}", manifest.build_hash);
 
     if emit {
@@ -529,7 +535,10 @@ pub fn discover() -> Result<(), Error> {
     println!("  SELF: {} v{}", self_caps.primal_id, self_caps.version);
     println!("  capabilities:");
     for cap in self_caps.capabilities {
-        println!("    [{:>9}] {} — {}", cap.category, cap.name, cap.description);
+        println!(
+            "    [{:>9}] {} — {}",
+            cap.category, cap.name, cap.description
+        );
     }
 
     println!();
@@ -558,7 +567,9 @@ pub fn discover() -> Result<(), Error> {
         && std::env::var("XDG_RUNTIME_DIR").is_err()
         && !std::path::Path::new(discovery::SYSTEMD_SOCKET_DIR).is_dir()
     {
-        println!("    (no socket directories found — set BIOMEOS_SOCKET_DIR or use systemd NUCLEUS)");
+        println!(
+            "    (no socket directories found — set BIOMEOS_SOCKET_DIR or use systemd NUCLEUS)"
+        );
     }
 
     println!();
@@ -566,11 +577,17 @@ pub fn discover() -> Result<(), Error> {
 
     let peers = discovery::discover_peers();
     if peers.is_empty() {
-        println!("    (none discovered — set BIOMEOS_SOCKET_DIR or NESTGATE_SOCKET/PETALTONGUE_SOCKET)");
+        println!(
+            "    (none discovered — set BIOMEOS_SOCKET_DIR or NESTGATE_SOCKET/PETALTONGUE_SOCKET)"
+        );
     } else {
         for peer in &peers {
-            println!("    {} ({})", peer.primal_id, peer.socket_path.as_deref().unwrap_or("?"));
-            for cap in &peer.capabilities {
+            println!(
+                "    {} ({})",
+                peer.primal_id,
+                peer.socket_path.as_deref().unwrap_or("?")
+            );
+            for cap in peer.capabilities {
                 println!("      - {cap}");
             }
         }
@@ -648,7 +665,10 @@ mod tests {
         let json = r#"{"transport":"mesh_relay","peer_id":"eastGate","capability":"content"}"#;
         let ep: cas_push::TransportEndpoint = serde_json::from_str(json).unwrap();
         match ep {
-            cas_push::TransportEndpoint::MeshRelay { peer_id, capability } => {
+            cas_push::TransportEndpoint::MeshRelay {
+                peer_id,
+                capability,
+            } => {
                 assert_eq!(peer_id, "eastGate");
                 assert_eq!(capability, "content");
             }
@@ -658,8 +678,7 @@ mod tests {
 
     #[test]
     fn transport_endpoint_invalid_json_errors() {
-        let result: Result<cas_push::TransportEndpoint, _> =
-            serde_json::from_str("not valid json");
+        let result: Result<cas_push::TransportEndpoint, _> = serde_json::from_str("not valid json");
         assert!(result.is_err());
     }
 }

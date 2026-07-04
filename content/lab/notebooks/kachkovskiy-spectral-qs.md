@@ -1,7 +1,7 @@
 +++
 title = "Spectral Theory & Quorum Sensing — Kachkovskiy (MSU CMSE)"
 description = "Rendered from kachkovskiy-spectral-qs.ipynb"
-date = 2026-06-28
+date = 2026-07-04
 weight = 50
 
 [extra]

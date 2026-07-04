@@ -33,7 +33,7 @@ use base64::{Engine as _, engine::general_purpose::STANDARD};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::collections::BTreeMap;
-use std::io::{BufRead, BufReader, Read, Write};
+use std::io::{BufReader, Read, Write};
 use std::path::Path;
 use std::time::Instant;
 
@@ -71,8 +71,7 @@ const RIBOCIPHER_PROTO_NDJSON: u8 = 0x01;
 /// - `"1"` or `"true"`: send Tier 1 clear signal before JSON-RPC (for Wave 113+ servers)
 /// - absent or other: skip signal (backward-compatible with pre-riboCipher servers)
 fn ribocipher_enabled() -> bool {
-    std::env::var("SPOREPRINT_RIBOCIPHER")
-        .is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+    std::env::var("SPOREPRINT_RIBOCIPHER").is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
 }
 
 /// Send the riboCipher Tier 1 clear signal (`0xEC` + protocol type) on a stream.
@@ -112,11 +111,11 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
         }
         TransportEndpoint::Tcp { host, port } => {
             let addr_str = format!("{host}:{port}");
-            let addr: std::net::SocketAddr = addr_str.parse().map_err(|e| {
-                Error::Config(format!("invalid TCP address {addr_str}: {e}"))
-            })?;
-            let s = std::net::TcpStream::connect_timeout(&addr, TRANSPORT_TIMEOUT)
-                .map_err(|e| {
+            let addr: std::net::SocketAddr = addr_str
+                .parse()
+                .map_err(|e| Error::Config(format!("invalid TCP address {addr_str}: {e}")))?;
+            let s =
+                std::net::TcpStream::connect_timeout(&addr, TRANSPORT_TIMEOUT).map_err(|e| {
                     Error::Config(format!(
                         "failed to connect to NestGate via TCP at {addr_str}: {e}"
                     ))
@@ -125,7 +124,10 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
             s.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
             Box::new(s)
         }
-        TransportEndpoint::MeshRelay { peer_id, capability } => {
+        TransportEndpoint::MeshRelay {
+            peer_id,
+            capability,
+        } => {
             return Err(Error::Config(format!(
                 "mesh_relay transport not yet implemented (peer={peer_id}, cap={capability}). \
                  Requires Songbird ipc.resolve Phase 2 M1."
@@ -205,12 +207,14 @@ pub fn discover_socket() -> Result<String, Error> {
 
 /// Read a stored CAS manifest from disk.
 pub fn read_manifest(manifest_path: &Path) -> Result<StoredManifest, Error> {
-    let content = std::fs::read_to_string(manifest_path).map_err(|e| Error::io(manifest_path, e))?;
-    let manifest: StoredManifest =
-        serde_json::from_str(&content).map_err(|e| Error::Config(format!(
+    let content =
+        std::fs::read_to_string(manifest_path).map_err(|e| Error::io(manifest_path, e))?;
+    let manifest: StoredManifest = serde_json::from_str(&content).map_err(|e| {
+        Error::Config(format!(
             "failed to parse CAS manifest at {}: {e}",
             manifest_path.display()
-        )))?;
+        ))
+    })?;
     Ok(manifest)
 }
 
@@ -233,10 +237,7 @@ fn push_single_file(
 ) -> PushFileOutcome {
     *request_id += 1;
 
-    let hash_hex = entry
-        .hash
-        .strip_prefix("blake3:")
-        .unwrap_or(&entry.hash);
+    let hash_hex = entry.hash.strip_prefix("blake3:").unwrap_or(&entry.hash);
 
     let exists_req = json!({
         "jsonrpc": "2.0",
@@ -252,12 +253,13 @@ fn push_single_file(
     }
 
     let file_path = public_dir.join(rel_path);
-    let Ok(contents) = std::fs::read(&file_path) else {
-        eprintln!("  WARN: cannot read {rel_path}, skipping");
-        return PushFileOutcome::Error;
+    let data_b64 = {
+        let Ok(contents) = std::fs::read(&file_path) else {
+            eprintln!("  WARN: cannot read {rel_path}, skipping");
+            return PushFileOutcome::Error;
+        };
+        STANDARD.encode(&contents)
     };
-
-    let data_b64 = STANDARD.encode(&contents);
     *request_id += 1;
 
     let put_req = json!({
@@ -281,7 +283,10 @@ fn push_single_file(
     match send_rpc(reader, &put_req) {
         Ok(resp) => {
             if resp.get("error").is_some() && !resp["error"].is_null() {
-                eprintln!("  ERROR: content.put failed for {rel_path}: {}", resp["error"]);
+                eprintln!(
+                    "  ERROR: content.put failed for {rel_path}: {}",
+                    resp["error"]
+                );
                 PushFileOutcome::Error
             } else if resp["result"]["deduplicated"].as_bool() == Some(true) {
                 PushFileOutcome::Deduplicated
@@ -353,33 +358,10 @@ pub fn push_manifest(
 
 /// Send a JSON-RPC request and read the newline-delimited response.
 ///
-/// Transport-agnostic: works with any `Read + Write` stream wrapped in a `BufReader`.
-/// The `BufReader` is used for both writing (via `get_mut()`) and reading.
-fn send_rpc(
-    stream: &mut BufReader<Box<dyn ReadWrite>>,
-    request: &Value,
-) -> Result<Value, Error> {
-    let mut payload = serde_json::to_string(request)
-        .map_err(|e| Error::Config(format!("JSON encode: {e}")))?;
-    payload.push('\n');
-
-    let writer = stream.get_mut();
-    writer
-        .write_all(payload.as_bytes())
-        .map_err(|e| Error::Config(format!("transport write: {e}")))?;
-    writer
-        .flush()
-        .map_err(|e| Error::Config(format!("transport flush: {e}")))?;
-
-    let mut line = String::new();
-    stream
-        .read_line(&mut line)
-        .map_err(|e| Error::Config(format!("transport read: {e}")))?;
-
-    let response: Value = serde_json::from_str(line.trim())
-        .map_err(|e| Error::Config(format!("JSON decode response: {e}")))?;
-
-    Ok(response)
+/// Delegates to the shared `ipc::send_rpc` which also validates response ID
+/// correlation per JSON-RPC 2.0 §5.
+fn send_rpc(stream: &mut BufReader<Box<dyn ReadWrite>>, request: &Value) -> Result<Value, Error> {
+    crate::ipc::send_rpc(stream, request)
 }
 
 #[cfg(test)]
@@ -484,7 +466,9 @@ mod tests {
     fn transport_endpoint_serde_mesh_relay() {
         let json = r#"{"transport":"mesh_relay","peer_id":"strandgate","capability":"cas"}"#;
         let ep: TransportEndpoint = serde_json::from_str(json).unwrap();
-        assert!(matches!(ep, TransportEndpoint::MeshRelay { ref peer_id, .. } if peer_id == "strandgate"));
+        assert!(
+            matches!(ep, TransportEndpoint::MeshRelay { ref peer_id, .. } if peer_id == "strandgate")
+        );
     }
 
     #[test]

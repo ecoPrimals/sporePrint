@@ -82,7 +82,9 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
     use std::net::{TcpStream, ToSocketAddrs};
 
     let url_path = url.strip_prefix("http://").ok_or_else(|| {
-        Error::Git(format!("ForgeArchiveBackend only supports plain HTTP: {url}"))
+        Error::Git(format!(
+            "ForgeArchiveBackend only supports plain HTTP: {url}"
+        ))
     })?;
 
     let (host_port, path) = match url_path.split_once('/') {
@@ -109,9 +111,8 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
     stream.set_write_timeout(Some(IO_TIMEOUT)).ok();
     stream.set_read_timeout(Some(IO_TIMEOUT)).ok();
 
-    let request = format!(
-        "GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n"
-    );
+    let request =
+        format!("GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n");
     stream
         .write_all(request.as_bytes())
         .map_err(|e| Error::Git(format!("HTTP write failed: {e}")))?;
@@ -126,18 +127,16 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         .position(|w| w == b"\r\n\r\n")
         .ok_or_else(|| Error::Git("malformed HTTP response".into()))?;
 
-    let headers = std::str::from_utf8(&response[..header_end]).unwrap_or("");
+    let headers_raw = std::str::from_utf8(&response[..header_end]).unwrap_or("");
 
-    let status = headers
+    let status = headers_raw
         .lines()
         .next()
         .and_then(|line| line.split_whitespace().nth(1))
         .and_then(|s| s.parse::<u16>().ok())
         .unwrap_or(0);
 
-    let body = response[header_end + 4..].to_vec();
-
-    let content_length = headers.lines().find_map(|line| {
+    let content_length = headers_raw.lines().find_map(|line| {
         let lower = line.to_ascii_lowercase();
         if lower.starts_with("content-length:") {
             line[15..].trim().parse::<usize>().ok()
@@ -145,6 +144,10 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
             None
         }
     });
+
+    let headers = headers_raw.to_string();
+    let body_start = header_end + 4;
+    let body = response.split_off(body_start);
 
     if let Some(expected) = content_length {
         if body.len() < expected {
@@ -155,7 +158,7 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         }
     }
 
-    Ok((status, headers.to_string(), body))
+    Ok((status, headers, body))
 }
 
 /// Gzip decompression using `flate2` (pure Rust via `miniz_oxide`).
@@ -199,9 +202,7 @@ pub fn extract_tar(data: &[u8], target: &Path) -> Result<usize, Error> {
 
         pos += 512;
 
-        let rel_path = raw_name
-            .find('/')
-            .map_or(raw_name, |i| &raw_name[i + 1..]);
+        let rel_path = raw_name.find('/').map_or(raw_name, |i| &raw_name[i + 1..]);
 
         if !rel_path.is_empty() && (type_flag == b'0' || type_flag == 0) {
             let file_path = target.join(rel_path);
@@ -224,7 +225,9 @@ pub fn extract_tar(data: &[u8], target: &Path) -> Result<usize, Error> {
             }
         } else if !rel_path.is_empty() && type_flag == b'5' {
             std::fs::create_dir_all(target.join(rel_path)).map_err(|e| {
-                Error::Git(format!("tar extract: cannot create directory {rel_path}: {e}"))
+                Error::Git(format!(
+                    "tar extract: cannot create directory {rel_path}: {e}"
+                ))
             })?;
         }
 
@@ -267,7 +270,10 @@ mod tests {
         let result = get_body("http://127.0.0.1:1/file.tar.gz");
         assert!(result.is_err());
         let msg = result.unwrap_err().to_string();
-        assert!(msg.contains("TCP connect") || msg.contains("failed"), "{msg}");
+        assert!(
+            msg.contains("TCP connect") || msg.contains("failed"),
+            "{msg}"
+        );
     }
 
     #[test]
@@ -278,8 +284,8 @@ mod tests {
 
     #[test]
     fn gzip_decompress_roundtrips() {
-        use flate2::write::GzEncoder;
         use flate2::Compression;
+        use flate2::write::GzEncoder;
         use std::io::Write;
 
         let original = b"hello from sporePrint http module tests";
@@ -346,7 +352,10 @@ mod tests {
         let result = request_raw("http://127.0.0.1:1");
         assert!(result.is_err());
         let msg = result.unwrap_err().to_string();
-        assert!(msg.contains("TCP connect") || msg.contains("failed"), "{msg}");
+        assert!(
+            msg.contains("TCP connect") || msg.contains("failed"),
+            "{msg}"
+        );
     }
 
     #[test]

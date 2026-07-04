@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: June 22, 2026 (Wave 123 — petalTongue Backend + Tower P1 Probe)
+Last reviewed: July 4, 2026 (Wave 132d — Deep Debt Resolution + IPC Consolidation)
 
 ---
 

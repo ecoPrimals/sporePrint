@@ -5,6 +5,60 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.1.0] — 2026-07-04 — Deep Debt Resolution + IPC Consolidation
+
+**Deep debt cleanup and evolution across all 27 modules. Zero-copy idioms,
+shared IPC module, static capability declarations, supply chain security,
+and coverage boost. All quality gates pass. Zero mocks in production.**
+
+### Architecture
+
+- **Shared `ipc.rs` module**: Centralizes NDJSON JSON-RPC 2.0 client logic
+  (previously duplicated across `cas_push`, `nucleus`, `petaltongue`, `tower`).
+  Enforces response ID correlation (JSON-RPC §5) and `health.liveness` fallback
+  for legacy primals.
+- **Static capability declarations**: `discovery.rs` capabilities evolved from
+  `Vec<String>` heap allocations to `&'static [&'static str]` slices compiled
+  into `.rodata`. Zero runtime allocation for self-knowledge.
+- **Zero-copy HTTP**: Body extraction via `Vec::split_off()` instead of `.to_vec()`.
+  Scoped raw buffer drops in CAS push before JSON encoding.
+- **`OnceLock` for env reads**: Forge URL cached for process lifetime.
+
+### Added
+
+- `deny.toml` — `cargo-deny` supply chain security (all deps pure Rust, no
+  advisories, SPDX-compliant licenses, crates.io-only sources)
+- `#![warn(missing_docs)]` — documentation lint active (guards future lib extraction)
+- 14 new tests: mock-stream IPC roundtrip, certify emit/validate, refresh
+  write_updates, count_metrics isolation, stored manifest deserialization
+- SPDX license headers on all 15 templates + 7 SCSS files
+
+### Changed
+
+- `tower.rs`: inline JSON-RPC → `ipc::send_rpc` + `ipc::is_method_not_found`
+- `nucleus.rs`: `probe_socket_health` → `ipc::probe_health` with `health.liveness`
+- `petaltongue.rs`: inline `send_rpc` → `ipc::send_rpc` delegation
+- `cas_push.rs`: scoped `contents` drop before JSON payload construction
+- `fetch.rs`: `default_forge_url() -> String` → `-> &'static str` via `OnceLock`
+- `http.rs`: header parsing before `split_off` to avoid borrow conflicts
+- Integration test isolation: notebook rendering outputs to tempdir
+
+### Removed
+
+- `scripts/refresh-metrics.sh` — retired Wave 69, fossil record in git history
+
+### Metrics
+
+- Tests: 206 → **220** (188 unit + 29 integration + 3 refresh_write)
+- Coverage: 60.77% → **64.87%** (ipc: 97%, certify: 71%, refresh: 78%)
+- `cargo deny check` — clean (zero advisories, zero yanked)
+- Zero TODO/FIXME/HACK in source
+- Zero hardcoded IPs/ports in production code
+- All `#[allow()]` justified (16 total)
+- All files under 800 lines
+
+---
+
 ## [3.0.0] — 2026-06-01 — Sovereign Self-Hosting + Provenance Data System
 
 **sporePrint is now sovereign-primary. VPS serves the site via Caddy + Let's Encrypt.

@@ -22,7 +22,7 @@
 use crate::discovery;
 use crate::error::Error;
 use serde::Deserialize;
-use serde_json::{Value, json};
+use serde_json::Value;
 use std::collections::BTreeMap;
 use std::io::{BufRead, BufReader, Write};
 use std::path::Path;
@@ -260,10 +260,9 @@ pub fn validate_profile(
         }
     }
 
-    let critical_names: Vec<&str> = profile
-        .health
-        .as_ref()
-        .map_or(Vec::new(), |h| h.critical.iter().map(String::as_str).collect());
+    let critical_names: Vec<&str> = profile.health.as_ref().map_or(Vec::new(), |h| {
+        h.critical.iter().map(String::as_str).collect()
+    });
 
     let critical_met = critical_names
         .iter()
@@ -304,7 +303,11 @@ fn probe_failed(start: Instant, error: String) -> ProbeResult {
     }
 }
 
-/// Send `health.ping` JSON-RPC over UDS to verify a primal is responsive.
+/// Probe a primal via `health.liveness` (v2.1+) with `health.ping` fallback.
+///
+/// Uses the shared `ipc::probe_health` for the method negotiation, but
+/// wraps the UDS connection setup and timeout logic locally since NUCLEUS
+/// probing uses shorter timeouts than CAS transport.
 fn probe_socket_health(socket_path: &str) -> ProbeResult {
     let start = Instant::now();
 
@@ -316,55 +319,29 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
     stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
     stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
 
-    let request = json!({
-        "jsonrpc": "2.0",
-        "method": "health.ping",
-        "params": {},
-        "id": 1
-    });
+    let mut reader = BufReader::new(Box::new(stream) as Box<dyn crate::cas_push::ReadWrite>);
 
-    let mut payload = match serde_json::to_string(&request) {
-        Ok(s) => s,
-        Err(e) => return probe_failed(start, format!("encode: {e}")),
+    let resp = match crate::ipc::probe_health(&mut reader, 1) {
+        Ok(r) => r,
+        Err(e) => return probe_failed(start, format!("{e}")),
     };
-    payload.push('\n');
-
-    let mut reader = BufReader::new(stream);
-
-    if let Err(e) = reader.get_mut().write_all(payload.as_bytes()) {
-        return probe_failed(start, format!("write: {e}"));
-    }
-    if let Err(e) = reader.get_mut().flush() {
-        return probe_failed(start, format!("flush: {e}"));
-    }
-
-    let mut line = String::new();
-    if let Err(e) = reader.read_line(&mut line) {
-        return probe_failed(start, format!("read: {e}"));
-    }
 
     let latency = start.elapsed();
 
-    let parsed = serde_json::from_str::<Value>(line.trim()).ok();
-
-    // Check for JSON-RPC error (e.g., -32601 method_not_found)
-    if let Some(ref resp) = parsed {
-        if let Some(err) = resp.get("error") {
-            let code = err.get("code").and_then(Value::as_i64).unwrap_or(0);
-            return ProbeResult {
-                responsive: true,
-                latency,
-                version: None,
-                primal_id: None,
-                status: None,
-                health_contract: HealthContract::None,
-                ribocipher_accepted: None,
-                error: Some(format!("JSON-RPC error {code}")),
-            };
-        }
+    if let Some(err_msg) = crate::ipc::extract_error_message(&resp) {
+        return ProbeResult {
+            responsive: true,
+            latency,
+            version: None,
+            primal_id: None,
+            status: None,
+            health_contract: HealthContract::None,
+            ribocipher_accepted: None,
+            error: Some(err_msg),
+        };
     }
 
-    let result_obj = parsed.as_ref().and_then(|v| v.get("result"));
+    let result_obj = resp.get("result");
 
     let version = result_obj
         .and_then(|r| r.get("version"))
@@ -404,7 +381,7 @@ const RIBOCIPHER_MITO_CLEAR: [u8; 2] = [0xEC, 0x01];
 
 /// Probe whether a primal accepts the `riboCipher` mito-beacon signal prefix.
 ///
-/// Connects to the socket, writes `0xEC 0x01` followed by a `health.ping`
+/// Connects to the socket, writes `0xEC 0x01` followed by a `health.liveness`
 /// JSON-RPC request, and checks whether the primal responds with valid JSON-RPC
 /// rather than closing the connection or returning garbage.
 fn probe_ribocipher_acceptance(socket_path: &str) -> bool {
@@ -415,9 +392,9 @@ fn probe_ribocipher_acceptance(socket_path: &str) -> bool {
     stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
     stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
 
-    let request = json!({
+    let request = serde_json::json!({
         "jsonrpc": "2.0",
-        "method": "health.ping",
+        "method": "health.liveness",
         "params": {},
         "id": 2
     });
@@ -534,13 +511,8 @@ fn print_primals(result: &ValidationResult) {
         let ribo_total = all_primals.iter().filter(|p| has_ribo_result(p)).count();
 
         if ribo_total > 0 {
-            let accepted = all_primals
-                .iter()
-                .filter(|p| ribo_accepted(p))
-                .count();
-            println!(
-                "  riboCipher mito-beacon: {accepted}/{ribo_total} accept signal"
-            );
+            let accepted = all_primals.iter().filter(|p| ribo_accepted(p)).count();
+            println!("  riboCipher mito-beacon: {accepted}/{ribo_total} accept signal");
         }
     }
 
@@ -634,7 +606,6 @@ fn format_probe_error(probe: Option<&ProbeResult>) -> String {
         info
     })
 }
-
 
 #[cfg(test)]
 mod tests {

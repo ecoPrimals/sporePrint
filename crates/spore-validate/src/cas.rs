@@ -175,9 +175,6 @@ mod tests {
         let m2 = generate_manifest(dir.path());
 
         assert_ne!(m1.build_hash, m2.build_hash);
-        assert_ne!(
-            m1.files["page.html"].hash,
-            m2.files["page.html"].hash
-        );
+        assert_ne!(m1.files["page.html"].hash, m2.files["page.html"].hash);
     }
 }

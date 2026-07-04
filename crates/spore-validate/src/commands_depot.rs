@@ -17,7 +17,9 @@ pub fn print_discovery() {
     println!("  DEPOT:");
 
     let Some(path) = discover_checksums_path() else {
-        println!("    (plasmidBin/checksums.toml not found — set PLASMIDBIN_CHECKSUMS or place in workspace)");
+        println!(
+            "    (plasmidBin/checksums.toml not found — set PLASMIDBIN_CHECKSUMS or place in workspace)"
+        );
         return;
     };
 
@@ -140,7 +142,11 @@ pub fn verify(
     }
 
     let result = depot::verify_depot(&checksums, arch, depot_dir)?;
-    println!("  Verifying {} binaries for {}:", result.total(), result.arch);
+    println!(
+        "  Verifying {} binaries for {}:",
+        result.total(),
+        result.arch
+    );
 
     let mut hard_failures = 0usize;
     let mut missing_count = 0usize;
