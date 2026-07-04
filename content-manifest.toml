@@ -1,6 +1,6 @@
-generated = "2026-07-04T17:49:01Z"
-root_hash = "a3466329a3cb00efb12cdeea1f43620c1fa6553e49c577d88ac26bd3b4919f70"
-page_count = 222
+generated = "2026-07-04T19:04:29Z"
+root_hash = "bbf1916c295313f901972572ccf83443782392a8ccc7ea493f74a8f7319796e1"
+page_count = 223
 
 [pages."_index.md"]
 blake3 = "20e1de5cc2b8470147de983bdb5a30b73ebc8cf406d65fe8de11704a960a1976"
@@ -66,6 +66,11 @@ title = "Self-Certifying Publication: sporePrint as guideStone"
 blake3 = "e4dffec1f7fbaec9c27cef9baa414c0a35ca900fa76ba6290659ef3b71e24af3"
 size_bytes = 5608
 title = "K-Derm Diderm Architecture"
+
+[pages."architecture/MESH_TOPOLOGY.md"]
+blake3 = "353a3ab0d611daa5f521673a1c17e6d618674d75b29c4de307b4cc88629d56ab"
+size_bytes = 4103
+title = "Gate Mesh — Live Topology"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
 blake3 = "c99a8f127ab8789c11eb756288617653281c79eb59efc2cb61aef62ea1bfab40"

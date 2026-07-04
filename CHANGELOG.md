@@ -5,6 +5,29 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.2.0] — 2026-07-04 — Living Topology + Dep Evolution
+
+**Mesh topology content page, dependency evolution (toml 1.x / TOML spec 1.1),
+version alignment, and stale doc reconciliation.**
+
+### Added
+
+- **`content/architecture/MESH_TOPOLOGY.md`**: Living topology page with
+  `viz_embed(src="/viz/gate-mesh?live=true")` — documents gate mesh architecture,
+  capability routing, enrollment flow, and live health color mapping. Prepared
+  for petalTongue `LiveMeshState` wire-up (Work Item 4 of living topology handoff).
+
+### Changed
+
+- **`toml` 0.8 → 1.x**: TOML spec 1.1 support. Zero breaking changes for our usage.
+- **Crate version**: 0.3.0 → 0.3.1 (aligns with IPC consolidation release).
+- **`specs/CONTEXT.md`**: Wave 128 → Wave 132d, version reference corrected.
+- **`wateringHole/sporePrint/CONTENT_GUIDE.md`**: Replaced stale
+  `scripts/render_notebooks.sh` reference with `cargo run -- render-notebooks`
+  (script retired Wave 69).
+
+---
+
 ## [3.1.0] — 2026-07-04 — Deep Debt Resolution + IPC Consolidation
 
 **Deep debt cleanup and evolution across all 27 modules. Zero-copy idioms,
