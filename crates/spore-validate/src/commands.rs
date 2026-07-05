@@ -681,4 +681,29 @@ mod tests {
         let result: Result<cas_push::TransportEndpoint, _> = serde_json::from_str("not valid json");
         assert!(result.is_err());
     }
+
+    #[test]
+    fn drift_pct_positive_change() {
+        assert_eq!(drift_pct(100, 110), "+10.0%");
+    }
+
+    #[test]
+    fn drift_pct_negative_change() {
+        assert_eq!(drift_pct(200, 180), "-10.0%");
+    }
+
+    #[test]
+    fn drift_pct_no_change() {
+        assert_eq!(drift_pct(500, 500), "+0.0%");
+    }
+
+    #[test]
+    fn drift_pct_new_entity() {
+        assert_eq!(drift_pct(0, 42), "new");
+    }
+
+    #[test]
+    fn drift_pct_large_growth() {
+        assert_eq!(drift_pct(1000, 2000), "+100.0%");
+    }
 }

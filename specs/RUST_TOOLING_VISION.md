@@ -6,7 +6,7 @@ for sporePrint. It lives at `crates/spore-validate/` and enforces
 
 ## Current State (Wave 132d — July 2026)
 
-- **27 modules**, 220 tests (188 unit + 29 integration + 3 refresh_write, 6 parity ignored)
+- **27 modules**, 254 tests (222 unit + 29 integration + 3 refresh_write, 6 parity ignored)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
 - `#![warn(missing_docs)]` active, `#![forbid(unsafe_code)]`
 - 16 `#[allow()]` justified (cast safety, dead_code for deserialized schema, uniform dispatch)

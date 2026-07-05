@@ -451,4 +451,83 @@ Body text."#
             edges: None,
         }
     }
+
+    #[test]
+    fn check_integrity_valid_shortcodes() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        std::fs::write(
+            content.join("test.md"),
+            "+++\ntitle = \"T\"\n+++\n{{ entity(name=\"beardog\") }} rocks\n",
+        )
+        .unwrap();
+
+        let mut registry = HashMap::new();
+        registry.insert("beardog".to_string(), test_entity(EntityKind::Primal));
+
+        let mut diags = Vec::new();
+        check_integrity(root, &content, &registry, &mut diags);
+        assert!(!diags.iter().any(Diagnostic::is_error));
+        assert!(diags.iter().any(|d| d.message().contains("1 entity shortcodes scanned")));
+    }
+
+    #[test]
+    fn check_integrity_detects_unknown_entity() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        std::fs::write(
+            content.join("test.md"),
+            "+++\ntitle = \"T\"\n+++\n{{ entity(name=\"nonexistent\") }} hmm\n",
+        )
+        .unwrap();
+
+        let registry = HashMap::new();
+        let mut diags = Vec::new();
+        check_integrity(root, &content, &registry, &mut diags);
+        assert!(diags.iter().any(|d| d.is_error() && d.message().contains("nonexistent")));
+    }
+
+    #[test]
+    fn check_integrity_normalizes_names() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        std::fs::write(
+            content.join("test.md"),
+            "+++\ntitle = \"T\"\n+++\n{{ entity(name=\"Bear-Dog\") }} normalized\n",
+        )
+        .unwrap();
+
+        let mut registry = HashMap::new();
+        registry.insert("beardog".to_string(), test_entity(EntityKind::Primal));
+
+        let mut diags = Vec::new();
+        check_integrity(root, &content, &registry, &mut diags);
+        assert!(!diags.iter().any(Diagnostic::is_error));
+    }
+
+    #[test]
+    fn check_integrity_handles_entity_metrics_shortcode() {
+        let dir = tempfile::tempdir().unwrap();
+        let root = dir.path();
+        let content = root.join("content");
+        std::fs::create_dir_all(&content).unwrap();
+        std::fs::write(
+            content.join("test.md"),
+            "+++\ntitle = \"T\"\n+++\n{{ entity_metrics(name=\"songbird\") }}\n",
+        )
+        .unwrap();
+
+        let mut registry = HashMap::new();
+        registry.insert("songbird".to_string(), test_entity(EntityKind::Primal));
+
+        let mut diags = Vec::new();
+        check_integrity(root, &content, &registry, &mut diags);
+        assert!(!diags.iter().any(Diagnostic::is_error));
+    }
 }

@@ -5,6 +5,37 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.2.1] — 2026-07-05 — Coverage Sprint
+
+**34 new tests across 5 modules — main, nucleus, commands, petaltongue, content.
+All modules now have unit tests. Mock-stream IPC testing for petalTongue client.**
+
+### Added
+
+- **`main.rs` unit tests (7)**: `discover_springs_root` (3 paths), `load_entity_graph_for_render`
+  (valid/missing/invalid JSON), `dispatch_standalone` (None paths).
+- **`nucleus.rs` format tests (9)**: `format_probe_info` (full/partial/none),
+  `format_probe_error` (message/no-health-method/none), `count_by_contract`,
+  `has_ribo_result`, `ValidationResult::passed`.
+- **`commands.rs` drift tests (5)**: `drift_pct` (positive/negative/zero/new/large).
+- **`petaltongue.rs` mock-stream IPC tests (7)**: `health_check`, `render_graph`
+  (success + error), `viz` (success + error), `probe_method` (success/method-not-found/other-error).
+  Added `from_stream` test constructor.
+- **`content.rs` check_integrity tests (4)**: valid shortcodes, unknown entity detection,
+  name normalization, `entity_metrics` shortcode parsing.
+
+### Fixed
+
+- **`ipc.rs` / `petaltongue.rs`**: `MockStream` constructors use `Self` (pedantic
+  clippy `use_self` lint).
+
+### Metrics
+
+- **254 total tests** (222 unit + 29 integration + 3 refresh_write)
+- All modules now have `#[cfg(test)]` — 0 untested modules
+
+---
+
 ## [3.2.0] — 2026-07-04 — Living Topology + Dep Evolution
 
 **Mesh topology content page, dependency evolution (toml 1.x / TOML spec 1.1),

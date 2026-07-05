@@ -70,6 +70,15 @@ impl PetalTongueClient {
         Ok(client)
     }
 
+    /// Construct from a raw stream (test infrastructure).
+    #[cfg(test)]
+    fn from_stream(stream: Box<dyn ReadWrite>) -> Self {
+        Self {
+            reader: BufReader::new(stream),
+            request_id: 0,
+        }
+    }
+
     /// Discover petalTongue socket and connect (used by parity tests).
     #[allow(dead_code)]
     pub fn discover_and_connect() -> Result<Self, Error> {
@@ -433,5 +442,186 @@ mod tests {
         };
         let debug = format!("{r:?}");
         assert!(debug.contains("Svg"));
+    }
+
+    use std::io::{Cursor, Read, Write};
+
+    struct MockStream {
+        read_buf: Cursor<Vec<u8>>,
+        write_buf: Vec<u8>,
+    }
+
+    impl MockStream {
+        fn with_responses(responses: &[Value]) -> Self {
+            let mut data = String::new();
+            for r in responses {
+                data.push_str(&serde_json::to_string(r).unwrap());
+                data.push('\n');
+            }
+            Self {
+                read_buf: Cursor::new(data.into_bytes()),
+                write_buf: Vec::new(),
+            }
+        }
+    }
+
+    impl Read for MockStream {
+        fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
+            self.read_buf.read(buf)
+        }
+    }
+
+    impl Write for MockStream {
+        fn write(&mut self, buf: &[u8]) -> std::io::Result<usize> {
+            self.write_buf.extend_from_slice(buf);
+            Ok(buf.len())
+        }
+        fn flush(&mut self) -> std::io::Result<()> {
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn health_check_parses_response() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {
+                "status": "healthy",
+                "version": "1.6.6",
+                "primal": "petaltongue",
+                "uptime_s": 3600
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+        client.request_id = 0;
+
+        let health = client.health_check().unwrap();
+        assert_eq!(health.status, "healthy");
+        assert_eq!(health.version, "1.6.6");
+        assert_eq!(health.primal, "petaltongue");
+        assert_eq!(health.uptime_s, 3600);
+    }
+
+    #[test]
+    fn render_graph_parses_response() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {
+                "data": "<svg>graph</svg>",
+                "format": "svg",
+                "content_path": "architecture/PRIMAL_CATALOG",
+                "metadata": {"nodes": 66}
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        let graph = json!({"nodes": [], "edges": []});
+        let result = client.render_graph("test-session", &graph, None).unwrap();
+        assert_eq!(result.data, "<svg>graph</svg>");
+        assert_eq!(result.format, "svg");
+        assert_eq!(result.content_path, "test-session");
+        assert!(result.metadata.is_some());
+    }
+
+    #[test]
+    fn render_graph_propagates_error() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "error": {
+                "code": -32603,
+                "message": "internal error"
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        let graph = json!({"nodes": [], "edges": []});
+        let result = client.render_graph("session", &graph, None);
+        assert!(result.is_err());
+        let err_msg = format!("{}", result.unwrap_err());
+        assert!(err_msg.contains("internal error"));
+    }
+
+    #[test]
+    fn viz_parses_svg_response() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {
+                "body": "<svg>topology</svg>"
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        let result = client.viz("gate-mesh", VizFormat::Svg).unwrap();
+        assert_eq!(result.body, "<svg>topology</svg>");
+    }
+
+    #[test]
+    fn viz_propagates_error() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "error": {
+                "code": -32601,
+                "message": "method not found"
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        let result = client.viz("nonexistent", VizFormat::Svg);
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn probe_method_returns_true_on_success() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {}
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        assert!(client.probe_method("health.check").unwrap());
+    }
+
+    #[test]
+    fn probe_method_returns_false_on_method_not_found() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "error": {
+                "code": -32601,
+                "message": "method not found"
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        assert!(!client.probe_method("nonexistent.method").unwrap());
+    }
+
+    #[test]
+    fn probe_method_returns_true_on_non_method_error() {
+        let resp = json!({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "error": {
+                "code": -32603,
+                "message": "internal error"
+            }
+        });
+        let stream = MockStream::with_responses(&[resp]);
+        let mut client = PetalTongueClient::from_stream(Box::new(stream));
+
+        assert!(client.probe_method("some.method").unwrap());
     }
 }

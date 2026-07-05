@@ -132,7 +132,7 @@ mod tests {
         fn with_response(json: &Value) -> Self {
             let mut data = serde_json::to_string(json).unwrap();
             data.push('\n');
-            MockStream {
+            Self {
                 read_buf: Cursor::new(data.into_bytes()),
                 write_buf: Vec::new(),
             }
@@ -144,7 +144,7 @@ mod tests {
                 data.push_str(&serde_json::to_string(r).unwrap());
                 data.push('\n');
             }
-            MockStream {
+            Self {
                 read_buf: Cursor::new(data.into_bytes()),
                 write_buf: Vec::new(),
             }

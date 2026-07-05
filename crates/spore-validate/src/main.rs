@@ -537,3 +537,97 @@ fn discover_springs_root(start: &std::path::Path) -> Option<PathBuf> {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn discover_springs_root_finds_gate_marker() {
+        let dir = tempfile::tempdir().unwrap();
+        let gate_root = dir.path();
+        std::fs::write(gate_root.join(paths::GATE_MARKER), "").unwrap();
+        std::fs::create_dir(gate_root.join(paths::SPRINGS_DIR)).unwrap();
+        let nested = gate_root.join("infra/sporePrint");
+        std::fs::create_dir_all(&nested).unwrap();
+
+        let result = discover_springs_root(&nested);
+        assert_eq!(result, Some(gate_root.join(paths::SPRINGS_DIR)));
+    }
+
+    #[test]
+    fn discover_springs_root_none_without_springs_dir() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::write(dir.path().join(paths::GATE_MARKER), "").unwrap();
+
+        let result = discover_springs_root(dir.path());
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn discover_springs_root_none_without_gate_marker() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::create_dir(dir.path().join(paths::SPRINGS_DIR)).unwrap();
+
+        let result = discover_springs_root(dir.path());
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn load_entity_graph_reads_json() {
+        let dir = tempfile::tempdir().unwrap();
+        let graph_dir = dir.path().join("static/graph");
+        std::fs::create_dir_all(&graph_dir).unwrap();
+        std::fs::write(
+            graph_dir.join("entity-graph.json"),
+            r#"{"nodes":[{"id":"beardog"}],"edges":[]}"#,
+        )
+        .unwrap();
+
+        let value = load_entity_graph_for_render(dir.path()).unwrap();
+        let nodes = value["nodes"].as_array().unwrap();
+        assert_eq!(nodes.len(), 1);
+        assert_eq!(nodes[0]["id"].as_str().unwrap(), "beardog");
+    }
+
+    #[test]
+    fn load_entity_graph_returns_empty_when_missing() {
+        let dir = tempfile::tempdir().unwrap();
+        let value = load_entity_graph_for_render(dir.path()).unwrap();
+        assert_eq!(value["nodes"].as_array().unwrap().len(), 0);
+        assert_eq!(value["edges"].as_array().unwrap().len(), 0);
+    }
+
+    #[test]
+    fn load_entity_graph_errors_on_invalid_json() {
+        let dir = tempfile::tempdir().unwrap();
+        let graph_dir = dir.path().join("static/graph");
+        std::fs::create_dir_all(&graph_dir).unwrap();
+        std::fs::write(graph_dir.join("entity-graph.json"), "not json").unwrap();
+
+        let result = load_entity_graph_for_render(dir.path());
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn dispatch_standalone_returns_none_for_validate() {
+        let cli = Cli {
+            root: PathBuf::from("."),
+            command: Some(Command::Validate {
+                check: false,
+                strict: false,
+                verbose: false,
+            }),
+        };
+        assert!(dispatch_standalone(&cli).is_none());
+    }
+
+    #[test]
+    fn dispatch_standalone_returns_none_for_no_command() {
+        let cli = Cli {
+            root: PathBuf::from("."),
+            command: None,
+        };
+        assert!(dispatch_standalone(&cli).is_none());
+    }
+}

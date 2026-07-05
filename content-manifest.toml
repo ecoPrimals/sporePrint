@@ -1,5 +1,5 @@
-generated = "2026-07-04T19:04:29Z"
-root_hash = "bbf1916c295313f901972572ccf83443782392a8ccc7ea493f74a8f7319796e1"
+generated = "2026-07-05T12:52:41Z"
+root_hash = "d5506fd718556a459ad9bffcfcc0b392389dcbc5dbb7eb621aefabf01e633cb4"
 page_count = 223
 
 [pages."_index.md"]
@@ -733,7 +733,7 @@ size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "72dafba790cf0e2e1e8ee28e711658a8cb8726b8a8e6026f3d1a3a3ea2c3bab4"
+blake3 = "d59996d09d8e446cd32df40d1cec6b211a040eeacfd8d63af8cfcae6a5e4ddeb"
 size_bytes = 254
 title = "Sample"
 

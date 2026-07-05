@@ -738,4 +738,193 @@ name = "tower-relay"
             assert!(profile.mesh.as_ref().unwrap().federation_enabled.unwrap());
         }
     }
+
+    #[test]
+    fn format_probe_info_none_returns_empty() {
+        assert_eq!(format_probe_info(None), "");
+    }
+
+    #[test]
+    fn format_probe_info_shows_latency_and_contract() {
+        let probe = ProbeResult {
+            responsive: true,
+            latency: Duration::from_millis(42),
+            version: Some("1.2.3".into()),
+            primal_id: Some("beardog".into()),
+            status: Some("running".into()),
+            health_contract: HealthContract::Compliant,
+            ribocipher_accepted: Some(true),
+            error: None,
+        };
+        let s = format_probe_info(Some(&probe));
+        assert!(s.contains("42ms"));
+        assert!(s.contains("v1.2.3"));
+        assert!(s.contains("id=beardog"));
+        assert!(s.contains("running"));
+        assert!(s.contains("[health:✅]"));
+        assert!(s.contains("[mito:✅]"));
+    }
+
+    #[test]
+    fn format_probe_info_partial_contract() {
+        let probe = ProbeResult {
+            responsive: true,
+            latency: Duration::from_millis(5),
+            version: None,
+            primal_id: None,
+            status: None,
+            health_contract: HealthContract::Partial,
+            ribocipher_accepted: Some(false),
+            error: None,
+        };
+        let s = format_probe_info(Some(&probe));
+        assert!(s.contains("[health:⚠️]"));
+        assert!(s.contains("[mito:❌]"));
+    }
+
+    #[test]
+    fn format_probe_error_none_returns_empty() {
+        assert_eq!(format_probe_error(None), "");
+    }
+
+    #[test]
+    fn format_probe_error_shows_message() {
+        let probe = ProbeResult {
+            responsive: false,
+            latency: Duration::from_millis(0),
+            version: None,
+            primal_id: None,
+            status: None,
+            health_contract: HealthContract::None,
+            ribocipher_accepted: None,
+            error: Some("connection refused".into()),
+        };
+        let s = format_probe_error(Some(&probe));
+        assert!(s.contains("connection refused"));
+    }
+
+    #[test]
+    fn format_probe_error_no_health_method() {
+        let probe = ProbeResult {
+            responsive: true,
+            latency: Duration::from_millis(1),
+            version: None,
+            primal_id: None,
+            status: None,
+            health_contract: HealthContract::None,
+            ribocipher_accepted: None,
+            error: None,
+        };
+        let s = format_probe_error(Some(&probe));
+        assert!(s.contains("[no health method]"));
+    }
+
+    #[test]
+    fn count_by_contract_filters_correctly() {
+        let primals = vec![
+            PrimalStatus {
+                name: "a".into(),
+                role: "core".into(),
+                required: true,
+                socket_path: None,
+                probe: Some(ProbeResult {
+                    responsive: true,
+                    latency: Duration::from_millis(1),
+                    version: None,
+                    primal_id: None,
+                    status: None,
+                    health_contract: HealthContract::Compliant,
+                    ribocipher_accepted: None,
+                    error: None,
+                }),
+            },
+            PrimalStatus {
+                name: "b".into(),
+                role: "aux".into(),
+                required: false,
+                socket_path: None,
+                probe: Some(ProbeResult {
+                    responsive: true,
+                    latency: Duration::from_millis(2),
+                    version: None,
+                    primal_id: None,
+                    status: None,
+                    health_contract: HealthContract::Partial,
+                    ribocipher_accepted: None,
+                    error: None,
+                }),
+            },
+            PrimalStatus {
+                name: "c".into(),
+                role: "aux".into(),
+                required: false,
+                socket_path: None,
+                probe: None,
+            },
+        ];
+        assert_eq!(count_by_contract(&primals, HealthContract::Compliant), 1);
+        assert_eq!(count_by_contract(&primals, HealthContract::Partial), 1);
+        assert_eq!(count_by_contract(&primals, HealthContract::None), 0);
+    }
+
+    #[test]
+    fn has_ribo_result_detects_presence() {
+        let with = PrimalStatus {
+            name: "x".into(),
+            role: "r".into(),
+            required: true,
+            socket_path: None,
+            probe: Some(ProbeResult {
+                responsive: true,
+                latency: Duration::from_millis(0),
+                version: None,
+                primal_id: None,
+                status: None,
+                health_contract: HealthContract::None,
+                ribocipher_accepted: Some(false),
+                error: None,
+            }),
+        };
+        let without = PrimalStatus {
+            name: "y".into(),
+            role: "r".into(),
+            required: true,
+            socket_path: None,
+            probe: Some(ProbeResult {
+                responsive: true,
+                latency: Duration::from_millis(0),
+                version: None,
+                primal_id: None,
+                status: None,
+                health_contract: HealthContract::None,
+                ribocipher_accepted: None,
+                error: None,
+            }),
+        };
+        assert!(has_ribo_result(&with));
+        assert!(!has_ribo_result(&without));
+    }
+
+    #[test]
+    fn validation_result_passed_logic() {
+        let passing = ValidationResult {
+            profile_name: "test".into(),
+            total_declared: 2,
+            healthy: vec![],
+            missing: vec![],
+            critical_met: true,
+            min_healthy_met: true,
+        };
+        assert!(passing.passed());
+
+        let failing = ValidationResult {
+            profile_name: "test".into(),
+            total_declared: 2,
+            healthy: vec![],
+            missing: vec![],
+            critical_met: false,
+            min_healthy_met: true,
+        };
+        assert!(!failing.passed());
+    }
 }
