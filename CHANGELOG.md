@@ -5,6 +5,49 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.3.0] — 2026-07-06 — Deep Debt Sprint + Sovereign AAR
+
+**Smart refactoring, profile-driven probes, env-overridable socket dirs,
+mock isolation, path dedup, content pages, static SVG diagrams, sovereign
+deployment AAR.**
+
+### Added
+
+- **`nucleus_display.rs`**: Display/reporting extracted from `nucleus.rs` —
+  `print_result`, `format_probe_info`, `count_by_contract`, etc. (385L new module)
+- **Profile-driven Tower probes**: `PrimalEntry.probe_methods` in NUCLEUS TOML
+  profiles overrides the default hardcoded probe table. `probe_tower_status()`
+  now accepts `Option<&NucleusProfile>`.
+- **`BIOMEOS_SYSTEMD_SOCKET_DIR` env override**: `discovery::systemd_socket_dir()`
+  checks env before falling back to `/run/membrane`.
+- **Content pages**: contact, living systems, sovereign CI, compute-access rewrite.
+- **Static SVG diagrams**: `gate-mesh.svg`, `ci-pipeline.svg`.
+- **`viz_embed` shortcode**: static SVG fallback rendering (graceful degradation).
+- **4 new unit tests**: `build_probe_targets` (3), `systemd_socket_dir` (1).
+
+### Changed
+
+- **`nucleus.rs`**: 930L → 565L (display concern extracted).
+- **`tower.rs`**: `TOWER_PROBES` → `DEFAULT_TOWER_PROBES` (fallback only).
+- **`fetch.rs`**: `MockBackend` moved into `mod tests` (was module-scope `#[cfg(test)]`).
+- **`main.rs`**: `"static/graph/entity-graph.json"` → `paths::ENTITY_GRAPH_JSON`.
+- **`certify.rs`**: `"content"` → `crate::paths::CONTENT_DIR`.
+
+### Sovereign AAR
+
+- **5 divergences identified** in `SPOREPRINT_SOVEREIGN_DEPLOY_AAR_133a.md`:
+  GitHub Pages primary, dual-push, no NUCLEUS on VPS, cascade doesn't rebuild
+  Zola, deploy.yml still load-bearing.
+- **VPS NUCLEUS deployment handoff** filed for golgi (4 binaries, 70MB, fits 10GB VPS).
+
+### Metrics
+
+- **258 total tests** (226 unit + 29 integration + 3 refresh_write)
+- **28 modules**, 10,109 lines — all under 800L
+- **226 content pages**
+
+---
+
 ## [3.2.1] — 2026-07-05 — Coverage Sprint
 
 **34 new tests across 5 modules — main, nucleus, commands, petaltongue, content.

@@ -560,12 +560,13 @@ pub fn discover() -> Result<(), Error> {
     if let Ok(dir) = std::env::var("XDG_RUNTIME_DIR") {
         println!("    XDG_RUNTIME_DIR = {dir}");
     }
-    if std::path::Path::new(discovery::SYSTEMD_SOCKET_DIR).is_dir() {
-        println!("    {} (systemd NUCLEUS)", discovery::SYSTEMD_SOCKET_DIR);
+    let systemd_dir = discovery::systemd_socket_dir();
+    if std::path::Path::new(&systemd_dir).is_dir() {
+        println!("    {systemd_dir} (systemd NUCLEUS)");
     }
     if std::env::var("BIOMEOS_SOCKET_DIR").is_err()
         && std::env::var("XDG_RUNTIME_DIR").is_err()
-        && !std::path::Path::new(discovery::SYSTEMD_SOCKET_DIR).is_dir()
+        && !std::path::Path::new(&systemd_dir).is_dir()
     {
         println!(
             "    (no socket directories found — set BIOMEOS_SOCKET_DIR or use systemd NUCLEUS)"

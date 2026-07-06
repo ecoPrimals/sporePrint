@@ -21,8 +21,8 @@ use std::time::Duration;
 /// IPC timeout for method probes.
 const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
 
-/// Tower primal P1 readiness methods to probe.
-const TOWER_PROBES: &[(&str, &[&str])] = &[
+/// Default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
+const DEFAULT_TOWER_PROBES: &[(&str, &[&str])] = &[
     (
         "beardog",
         &[
@@ -64,10 +64,15 @@ pub struct TowerPrimalStatus {
 }
 
 /// Probe Tower primals for P1 method availability.
-pub fn probe_tower_status() -> TowerStatus {
+///
+/// When a profile is provided, primals with `probe_methods` declared use those
+/// methods instead of the built-in defaults. This makes the probe table
+/// data-driven (from TOML profiles) rather than hardcoded in Rust.
+pub fn probe_tower_status(profile: Option<&crate::nucleus::NucleusProfile>) -> TowerStatus {
+    let probe_targets = build_probe_targets(profile);
     let mut primals = Vec::new();
 
-    for (slug, methods) in TOWER_PROBES {
+    for (slug, methods) in &probe_targets {
         let env_var = format!("{}_SOCKET", slug.to_uppercase());
         let socket = discovery::probe_socket(slug, &env_var);
 
@@ -76,7 +81,7 @@ pub fn probe_tower_status() -> TowerStatus {
                 methods
                     .iter()
                     .map(|method| MethodProbe {
-                        method: (*method).to_string(),
+                        method: method.clone(),
                         available: false,
                         response_summary: Some("socket not found".into()),
                     })
@@ -91,13 +96,40 @@ pub fn probe_tower_status() -> TowerStatus {
         );
 
         primals.push(TowerPrimalStatus {
-            name: (*slug).to_string(),
+            name: slug.clone(),
             socket_path: socket,
             methods: method_results,
         });
     }
 
     TowerStatus { primals }
+}
+
+/// Build the probe target list: profile-driven methods override defaults.
+fn build_probe_targets(
+    profile: Option<&crate::nucleus::NucleusProfile>,
+) -> Vec<(String, Vec<String>)> {
+    if let Some(p) = profile {
+        let mut targets: Vec<(String, Vec<String>)> = Vec::new();
+        for (name, entry) in &p.primals {
+            if !entry.probe_methods.is_empty() {
+                targets.push((name.clone(), entry.probe_methods.clone()));
+            }
+        }
+        if !targets.is_empty() {
+            return targets;
+        }
+    }
+
+    DEFAULT_TOWER_PROBES
+        .iter()
+        .map(|(slug, methods)| {
+            (
+                (*slug).to_string(),
+                methods.iter().map(|m| (*m).to_string()).collect(),
+            )
+        })
+        .collect()
 }
 
 /// Probe a single JSON-RPC method on a socket, returning availability.
@@ -224,12 +256,90 @@ mod tests {
     use super::*;
 
     #[test]
-    fn tower_probes_cover_all_three_primals() {
-        assert_eq!(TOWER_PROBES.len(), 3);
-        let slugs: Vec<&str> = TOWER_PROBES.iter().map(|(s, _)| *s).collect();
+    fn default_tower_probes_cover_all_three_primals() {
+        assert_eq!(DEFAULT_TOWER_PROBES.len(), 3);
+        let slugs: Vec<&str> = DEFAULT_TOWER_PROBES.iter().map(|(s, _)| *s).collect();
         assert!(slugs.contains(&"beardog"));
         assert!(slugs.contains(&"songbird"));
         assert!(slugs.contains(&"skunkbat"));
+    }
+
+    #[test]
+    fn build_probe_targets_defaults_without_profile() {
+        let targets = build_probe_targets(None);
+        assert_eq!(targets.len(), 3);
+        assert_eq!(targets[0].0, "beardog");
+        assert!(!targets[0].1.is_empty());
+    }
+
+    #[test]
+    fn build_probe_targets_uses_profile_methods() {
+        use crate::nucleus::*;
+        use std::collections::BTreeMap;
+
+        let mut primals = BTreeMap::new();
+        primals.insert(
+            "custom_primal".into(),
+            PrimalEntry {
+                required: true,
+                role: Some("test".into()),
+                probe_methods: vec!["custom.method".into(), "custom.other".into()],
+            },
+        );
+
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals,
+            health: None,
+            launch: None,
+            mesh: None,
+        };
+
+        let targets = build_probe_targets(Some(&profile));
+        assert_eq!(targets.len(), 1);
+        assert_eq!(targets[0].0, "custom_primal");
+        assert_eq!(targets[0].1, vec!["custom.method", "custom.other"]);
+    }
+
+    #[test]
+    fn build_probe_targets_falls_back_when_no_probe_methods() {
+        use crate::nucleus::*;
+        use std::collections::BTreeMap;
+
+        let mut primals = BTreeMap::new();
+        primals.insert(
+            "beardog".into(),
+            PrimalEntry {
+                required: true,
+                role: Some("crypto".into()),
+                probe_methods: vec![],
+            },
+        );
+
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals,
+            health: None,
+            launch: None,
+            mesh: None,
+        };
+
+        let targets = build_probe_targets(Some(&profile));
+        assert_eq!(
+            targets.len(),
+            3,
+            "falls back to defaults when no probe_methods in profile"
+        );
     }
 
     #[test]

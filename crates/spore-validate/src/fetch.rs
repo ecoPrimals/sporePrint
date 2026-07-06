@@ -358,66 +358,61 @@ pub fn clone_dir() -> PathBuf {
     std::env::temp_dir().join("sporeprint-refresh")
 }
 
-// ── Mock backend for testing ─────────────────────────────────────────
-
-#[cfg(test)]
-pub struct MockBackend {
-    pub clone_results: HashMap<String, Result<(), String>>,
-    pub pull_results: HashMap<String, Result<(), String>>,
-    pub existing_repos: Vec<PathBuf>,
-}
-
-#[cfg(test)]
-impl MockBackend {
-    pub fn new() -> Self {
-        Self {
-            clone_results: HashMap::new(),
-            pull_results: HashMap::new(),
-            existing_repos: Vec::new(),
-        }
-    }
-
-    pub fn with_clone_success(mut self, url: &str) -> Self {
-        self.clone_results.insert(url.to_string(), Ok(()));
-        self
-    }
-
-    pub fn with_clone_failure(mut self, url: &str, reason: &str) -> Self {
-        self.clone_results
-            .insert(url.to_string(), Err(reason.to_string()));
-        self
-    }
-
-    pub fn with_existing_repo(mut self, path: PathBuf) -> Self {
-        self.existing_repos.push(path);
-        self
-    }
-}
-
-#[cfg(test)]
-impl VcsBackend for MockBackend {
-    fn clone_repo(&self, url: &str, _target: &Path) -> Result<(), Error> {
-        match self.clone_results.get(url) {
-            Some(Err(reason)) => Err(Error::Git(reason.clone())),
-            Some(Ok(())) | None => Ok(()),
-        }
-    }
-
-    fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
-        let key = target.to_string_lossy().to_string();
-        match self.pull_results.get(&key) {
-            Some(Err(reason)) => Err(Error::Git(reason.clone())),
-            Some(Ok(())) | None => Ok(()),
-        }
-    }
-
-    fn is_repo(&self, target: &Path) -> bool {
-        self.existing_repos.iter().any(|p| p == target)
-    }
-}
-
 #[cfg(test)]
 mod tests {
+    struct MockBackend {
+        clone_results: HashMap<String, Result<(), String>>,
+        pull_results: HashMap<String, Result<(), String>>,
+        existing_repos: Vec<PathBuf>,
+    }
+
+    impl MockBackend {
+        fn new() -> Self {
+            Self {
+                clone_results: HashMap::new(),
+                pull_results: HashMap::new(),
+                existing_repos: Vec::new(),
+            }
+        }
+
+        fn with_clone_success(mut self, url: &str) -> Self {
+            self.clone_results.insert(url.to_string(), Ok(()));
+            self
+        }
+
+        fn with_clone_failure(mut self, url: &str, reason: &str) -> Self {
+            self.clone_results
+                .insert(url.to_string(), Err(reason.to_string()));
+            self
+        }
+
+        fn with_existing_repo(mut self, path: PathBuf) -> Self {
+            self.existing_repos.push(path);
+            self
+        }
+    }
+
+    impl VcsBackend for MockBackend {
+        fn clone_repo(&self, url: &str, _target: &Path) -> Result<(), Error> {
+            match self.clone_results.get(url) {
+                Some(Err(reason)) => Err(Error::Git(reason.clone())),
+                Some(Ok(())) | None => Ok(()),
+            }
+        }
+
+        fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
+            let key = target.to_string_lossy().to_string();
+            match self.pull_results.get(&key) {
+                Some(Err(reason)) => Err(Error::Git(reason.clone())),
+                Some(Ok(())) | None => Ok(()),
+            }
+        }
+
+        fn is_repo(&self, target: &Path) -> bool {
+            self.existing_repos.iter().any(|p| p == target)
+        }
+    }
+
     use super::*;
 
     #[test]

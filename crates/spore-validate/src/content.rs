@@ -470,7 +470,11 @@ Body text."#
         let mut diags = Vec::new();
         check_integrity(root, &content, &registry, &mut diags);
         assert!(!diags.iter().any(Diagnostic::is_error));
-        assert!(diags.iter().any(|d| d.message().contains("1 entity shortcodes scanned")));
+        assert!(
+            diags
+                .iter()
+                .any(|d| d.message().contains("1 entity shortcodes scanned"))
+        );
     }
 
     #[test]
@@ -488,7 +492,11 @@ Body text."#
         let registry = HashMap::new();
         let mut diags = Vec::new();
         check_integrity(root, &content, &registry, &mut diags);
-        assert!(diags.iter().any(|d| d.is_error() && d.message().contains("nonexistent")));
+        assert!(
+            diags
+                .iter()
+                .any(|d| d.is_error() && d.message().contains("nonexistent"))
+        );
     }
 
     #[test]

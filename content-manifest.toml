@@ -1,5 +1,5 @@
-generated = "2026-07-06T16:04:38Z"
-root_hash = "fc4d11005cc8ecc4002674fef4a20b79b2d126afc316500f193a94ac8593a156"
+generated = "2026-07-06T16:34:17Z"
+root_hash = "336ca1fbbb8a35ae81adb1cc8dc25f7604f0887761c5992afd12f23732152b99"
 page_count = 226
 
 [pages."_index.md"]
@@ -88,8 +88,8 @@ size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "a276d0fcc12e871177caf75df9af3787762aa6f9cc985a49380c161ca351fffb"
-size_bytes = 4599
+blake3 = "2fcc317fa750ebe4e795adfe57a4e14699540b3aab8d2e665bcbe784da68473c"
+size_bytes = 4640
 title = "Sovereign CI — Build Infrastructure"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]

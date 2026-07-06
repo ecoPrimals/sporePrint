@@ -25,6 +25,7 @@ mod links;
 mod model;
 mod notebook;
 mod nucleus;
+mod nucleus_display;
 mod paths;
 mod petaltongue;
 mod provenance;
@@ -388,7 +389,7 @@ fn run_nucleus(profile_path: &Path, probe: bool, ribocipher: bool) -> Result<(),
     let profile = nucleus::parse_profile(profile_path)?;
     let result = nucleus::validate_profile(&profile, probe, ribocipher);
 
-    nucleus::print_result(&profile, &result, profile_path);
+    nucleus_display::print_result(&profile, &result, profile_path);
 
     if result.passed() {
         println!("  RESULT: ✅ NUCLEUS COMPLIANT");
@@ -442,7 +443,7 @@ fn run_pt_render(
 
 /// Load the entity graph JSON for rendering.
 fn load_entity_graph_for_render(root: &Path) -> Result<serde_json::Value, Error> {
-    let graph_path = root.join("static/graph/entity-graph.json");
+    let graph_path = root.join(paths::ENTITY_GRAPH_JSON);
     if graph_path.is_file() {
         let content =
             std::fs::read_to_string(&graph_path).map_err(|e| Error::io(&graph_path, e))?;
@@ -481,7 +482,7 @@ fn run_pt_status() -> Result<(), Error> {
 /// Run Tower P1 readiness probe.
 #[allow(clippy::unnecessary_wraps)]
 fn run_tower_status() -> Result<(), Error> {
-    let status = tower::probe_tower_status();
+    let status = tower::probe_tower_status(None);
     tower::print_tower_status(&status);
     Ok(())
 }

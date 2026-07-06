@@ -61,7 +61,7 @@ pub fn build_manifest(
     let edge_count = entity_graph.stats.edge_count;
 
     let graph_merkle = compute_graph_merkle(registry);
-    let content_pages = count_content_pages(&root.join("content"));
+    let content_pages = count_content_pages(&root.join(crate::paths::CONTENT_DIR));
 
     let total_loc = config.extra.totals.total_loc;
     let total_tests = config

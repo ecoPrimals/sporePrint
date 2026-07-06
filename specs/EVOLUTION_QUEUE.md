@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 4, 2026 (Wave 132d — Deep Debt Resolution + IPC Consolidation)
+Last reviewed: July 6, 2026 (Wave 133a — Deep Debt Sprint + Sovereign AAR)
 
 ---
 
@@ -578,3 +578,43 @@ These were in the original queue and have been completed:
 - [x] 12/13 probe-responsive (BiomeOS uses async HTTP, not sync JSON-RPC)
 - [x] Songbird restored (PID lock + stale process cleanup)
 - [x] Depot freshness: 6 binaries size-drifted from Sovereign CI rebuilds
+
+## Wave 132d–133a — Content + Deep Debt Sprint + Sovereign AAR (July 4–6, 2026)
+
+### Content Evolution
+- [x] Contact page (`content/contact.md`)
+- [x] Living Systems page (`content/lab/living-systems.md`)
+- [x] Sovereign CI page (`content/architecture/SOVEREIGN_CI.md`)
+- [x] Compute access rewrite (`content/lab/compute-access.md`)
+- [x] Static SVG diagrams: `gate-mesh.svg`, `ci-pipeline.svg`
+- [x] `viz_embed` shortcode: static SVG fallback (graceful degradation without petalTongue)
+- [x] Landing page: Living Systems explore card
+- [x] Lab index: Living Systems section
+
+### Deep Debt Resolution
+- [x] `nucleus.rs` smart refactor (930L → 565L) — display extracted to `nucleus_display.rs`
+- [x] Tower probe table: `TOWER_PROBES` → `DEFAULT_TOWER_PROBES` + profile-driven override via `PrimalEntry.probe_methods`
+- [x] `SYSTEMD_SOCKET_DIR` → env-overridable via `BIOMEOS_SYSTEMD_SOCKET_DIR`
+- [x] `MockBackend` isolated into `mod tests` in `fetch.rs` (was module-scope `#[cfg(test)]`)
+- [x] Path literal dedup: `main.rs` → `paths::ENTITY_GRAPH_JSON`, `certify.rs` → `paths::CONTENT_DIR`
+- [x] IPC consolidation: shared `ipc::send_rpc` across nucleus + tower + petaltongue
+- [x] `cargo-deny` supply chain security (deny.toml)
+- [x] `toml` 1.x migration (TOML spec 1.1)
+
+### Sovereign Deployment AAR
+- [x] `SPOREPRINT_SOVEREIGN_DEPLOY_AAR_133a.md` — 5 divergences identified:
+  - SP-DIV-01: GitHub Pages still primary (DNS cutover pending)
+  - SP-DIV-02: Dual-push required (origin + forgejo)
+  - SP-DIV-03: No NUCLEUS on VPS (blocks live viz)
+  - SP-DIV-04: `temporal.cascade` doesn't rebuild Zola
+  - SP-DIV-05: `deploy.yml` still load-bearing
+- [x] `EASTGATE_WAVE133_SPOREPRINT_VPS_NUCLEUS.md` — deployment handoff for NUCLEUS on golgi
+
+### Metrics (July 6, 2026)
+- 258 tests (226 unit + 29 integration + 3 refresh)
+- 28 modules, 10,109 lines
+- All files under 800 lines (max: commands.rs at 710)
+- Zero clippy warnings (pedantic + nursery)
+- Zero `unwrap()` / `expect()` in production code
+- Zero unsafe (forbidden crate-level)
+- 226 content pages

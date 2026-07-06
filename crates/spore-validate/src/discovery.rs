@@ -15,8 +15,16 @@
 
 use serde::Serialize;
 
-/// Systemd NUCLEUS socket directory (`GATE_NUCLEUS_SYSTEMD_STANDARD`).
-pub const SYSTEMD_SOCKET_DIR: &str = "/run/membrane";
+/// Default systemd NUCLEUS socket directory (`GATE_NUCLEUS_SYSTEMD_STANDARD`).
+///
+/// Overridable via `BIOMEOS_SYSTEMD_SOCKET_DIR` for non-standard deployments.
+const DEFAULT_SYSTEMD_SOCKET_DIR: &str = "/run/membrane";
+
+/// Resolve the systemd socket directory, preferring the env override.
+pub fn systemd_socket_dir() -> String {
+    std::env::var("BIOMEOS_SYSTEMD_SOCKET_DIR")
+        .unwrap_or_else(|_| DEFAULT_SYSTEMD_SOCKET_DIR.into())
+}
 
 /// sporePrint's self-declared capabilities.
 #[derive(Debug, Serialize)]
@@ -164,7 +172,8 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
         }
     }
 
-    let systemd_candidate = format!("{SYSTEMD_SOCKET_DIR}/{slug}.sock");
+    let dir = systemd_socket_dir();
+    let systemd_candidate = format!("{dir}/{slug}.sock");
     if std::path::Path::new(&systemd_candidate).exists() {
         return Some(systemd_candidate);
     }
@@ -272,6 +281,20 @@ mod tests {
             "NONEXISTENT_PRIMARY_99999",
         );
         assert!(result.is_none());
+    }
+
+    #[test]
+    fn systemd_socket_dir_returns_valid_path() {
+        let dir = systemd_socket_dir();
+        assert!(
+            !dir.is_empty(),
+            "systemd_socket_dir should never return empty"
+        );
+        assert!(
+            dir == DEFAULT_SYSTEMD_SOCKET_DIR
+                || std::env::var("BIOMEOS_SYSTEMD_SOCKET_DIR").is_ok(),
+            "returns default unless env override is set"
+        );
     }
 
     #[test]
