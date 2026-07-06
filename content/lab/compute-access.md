@@ -1,7 +1,7 @@
 +++
 title = "Compute Access — ABG Compute Lab"
-description = "Live compute environment running the full 13-primal NUCLEUS composition on sovereign hardware — request access at lab.primals.eco"
-date = 2026-05-07
+description = "Live compute environment on sovereign mesh hardware — RTX 5070 Ti GPU, 64-core EPYC CPU, JupyterHub via songBird capability routing at lab.primals.eco"
+date = 2026-07-06
 weight = 10
 
 [taxonomies]
@@ -11,75 +11,87 @@ springs = ["primalspring"]
 
 ## Live at [lab.primals.eco](https://lab.primals.eco)
 
-A **13-primal NUCLEUS composition** runs on a sovereign compute node with consumer-grade hardware (RTX 4070, RTX 3090, Akida NPU). All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305), bind to `127.0.0.1` by default, and are accessible through a named Cloudflare Tunnel with zero exposed ports.
+**JupyterHub** runs on {{ entity(name="songbird") }}-routed sovereign hardware. No cloud. No exposed ports. Students, researchers, and collaborators access live compute through the mesh — the same infrastructure that produced the baseCamp results.
 
-**JupyterHub** provides multi-user notebook access at [lab.primals.eco](https://lab.primals.eco). Every notebook runs against real primals, not mocks — the same infrastructure that produced the baseCamp results. All 13 primals, JupyterHub, and the Cloudflare tunnel run as persistent systemd services that survive reboots.
+The compute lab runs on a multi-gate mesh where {{ entity(name="songbird") }} handles all routing via `capability.call`. Services bind to `localhost`. The mesh absorbs new hardware automatically — plug in a node, cascade primals, announce capabilities, and the mesh routes to it.
+
+## Mesh Compute Architecture
+
+```
+Browser → lab.primals.eco
+    → Cloudflare (DDoS, TLS edge)
+    → Flint H1 (edge router, plasma membrane)
+    → sporeGate (.3) — public entry
+        → bearDog ACME gateway :443 (TLS termination)
+        → songBird capability.call
+            ├── ironGate (.237, LAN direct, <1ms)
+            │   └── JupyterHub :8000
+            │   └── RTX 5070 Ti (16GB VRAM)
+            │   └── GROMACS, CUDA workloads
+            ├── strandGate (joining)
+            │   └── 64-core EPYC, 256GB RAM
+            │   └── STAR alignment, heavy CPU
+            └── (future nodes auto-absorb)
+```
+
+**Key principle**: adding compute is zero-config. New hardware runs `songBird mesh.init` → `primal.announce` capabilities → mesh routes to it. No firewall changes, no config files, no DNS updates.
+
+## Compute Hardware
+
+| Gate | Hardware | Role | Status |
+|------|----------|------|--------|
+| **ironGate** | RTX 5070 Ti (16GB VRAM), NVMe | GPU compute, GROMACS, CUDA, JupyterHub | Meshed, LAN direct |
+| **strandGate** | 64-core EPYC, 256GB DDR5 | CPU compute, STAR alignment, heavy bioinformatics | Joining |
+| **sporeGate** | i7, 32GB | Public entry, Sovereign CI, build host | Active |
+| **eastGate** | i9-14900K, 96GB DDR5, 10GbE | Overwatch, primalSpring, petalTongue | Active |
+
+All gates are connected via LAN (sub-millisecond latency) and WireGuard overlay (cross-site). {{ entity(name="songbird") }}'s `try_lan_direct_connect` detects shared subnets and routes directly — no VPN overhead for LAN peers.
 
 ## Who Can Access
 
-| Tier | Linux Group | Access | Can Do |
-|------|-------------|--------|--------|
-| **Admin** | `abg-admin` | Full JupyterHub, 48G / 16 cores | Run notebooks, manage users, full primal API access |
-| **Compute** | `abg-compute` | JupyterHub, 32G / 8 cores | Run notebooks, submit pipelines, write to shared space |
-| **Observer** | `abg-observer` | JupyterHub, 8G / 4 cores | Run notebooks, read shared work, own home directory |
-| **Reviewer** | `abg-reviewer` | JupyterHub, 4G / 2 cores | Read showcase/ only, no execute, designed for PIs |
-| **External** | — | Read-only | View published results on primals.eco — no compute access |
+| Tier | Access | Can Do |
+|------|--------|--------|
+| **Admin** | Full JupyterHub, all resources | Manage users, full primal API, GPU workloads |
+| **Compute** | JupyterHub, GPU + CPU | Run notebooks, submit pipelines, shared workspace |
+| **Observer** | JupyterHub, limited resources | Run notebooks, read shared work |
+| **Reviewer** | JupyterHub, read-only | View showcase/ only — designed for PIs |
+| **External** | primals.eco (public) | View published results — no compute access |
 
-All tiers see all work. No hidden notebooks, no private results. This is open and sovereign science.
+All tiers see all work. No hidden notebooks, no private results. Open and sovereign science.
 
 ## What You Can Run
 
-- **baseCamp pipelines**: reproduce any of the 29+ published papers on the live composition
-- **Spring validation**: run wetSpring 16S, hotSpring MD, airSpring ET₀, healthSpring PK on real GPUs
+- **baseCamp pipelines**: reproduce any of the 70+ published papers on live compute
+- **Spring validation**: wetSpring 16S, hotSpring MD, airSpring ET₀, healthSpring PK — real GPUs
 - **Cross-spring experiments**: combine primals from multiple springs in a single notebook
-- **Your own science**: use barraCuda GPU compute, ToadStool shader dispatch, biomeOS coordination for new work
+- **GPU workloads**: GROMACS metadynamics, CUDA kernels, barraCuda vendor-agnostic WGSL shaders
+- **CPU-heavy bioinformatics**: STAR alignment, DESeq2, WGCNA on EPYC cores (when strandGate joins)
 
 The shared workspace at `/shared/abg/` is visible to all members. Results, notebooks, and datasets are collaborative by default.
 
 ## How to Request Access
 
-1. Contact the ecoPrimals team with your research interest and desired tier
-2. An account is created with appropriate Linux group membership
-3. Navigate to [lab.primals.eco](https://lab.primals.eco) — no VPN, no port forwarding needed
-4. Log in with your credentials — your JupyterHub session starts with the shared workspace linked and all 13 primal ports available as environment variables
+1. Email **ecoPrimal@pm.me** with your research interest and desired tier
+2. An account is created with appropriate access level
+3. Navigate to [lab.primals.eco](https://lab.primals.eco) — no VPN, no port forwarding
+4. Log in — your JupyterHub session starts with the shared workspace linked and all primal capabilities routed via {{ entity(name="songbird") }}
 
-For PIs and administrators: the shared workspace demonstrates what your researchers want to run on institutional HPC. Every notebook has full provenance — point your HPC team at the exact pipeline.
+## Sovereign CI — Binary Pipeline
 
-## Architecture
+All 15 primals (30 binaries — x86_64-musl + aarch64-musl) are built on sporeGate's Sovereign CI, checksummed with SHA-256, and published to the depot at `membrane.primals.eco/depot/{triple}/{binary}`. Every binary is reproducible from source on Forgejo (`git.primals.eco`).
 
-```
-lab.primals.eco → Cloudflare Tunnel (named: nucleus-lab)
-    │
-    └── JupyterHub :8000 (PAM auth, tiered pre_spawn_hook)
-        │
-        ├── /shared/abg/          ← collaborative workspace (all tiers read)
-        │   ├── commons/          ← shared Jupyter notebooks
-        │   ├── projects/         ← collaborative project workspaces
-        │   ├── data/             ← shared input data
-        │   ├── showcase/         ← polished results for external review
-        │   └── templates/        ← starter notebooks
-        │
-        ├── ~/notebooks/          ← per-user home (symlinks to shared)
-        │
-        └── NUCLEUS composition   ← 13 primals on 127.0.0.1 (systemd)
-            ├── biomeOS :9800 (coordinator)
-            ├── barraCuda :9740 (GPU compute)
-            ├── ToadStool :9400 (shader dispatch)
-            ├── NestGate :9500 (auth + BTSP)
-            ├── Songbird :9200 (discovery)
-            ├── BearDog :9100 (scheduling)
-            ├── coralReef :9730 (data pipeline)
-            ├── loamSpine :9700 (storage)
-            ├── rhizoCrypt :9601 (encryption)
-            ├── sweetGrass :9850 (provenance)
-            ├── Squirrel :9300 (AI coordination)
-            ├── skunkBat :9140 (anomaly detection)
-            └── petalTongue :9900 (dashboards)
-```
+| Metric | Value |
+|--------|-------|
+| Primals built | 15/15 |
+| Architectures | x86_64-musl, aarch64-musl |
+| Total binary size | 283 MB (153 MB x86 + 130 MB arm64) |
+| Build host | sporeGate (Sovereign CI) |
+| Source | Forgejo (`git.primals.eco`) |
+| Checksums | `checksums.toml` with SHA-256 per binary |
 
 ## Connection to sporePrint
 
-Selected notebooks from the shared workspace are elevated to [primals.eco/lab/](/lab/) via the notebook rendering pipeline. The elevation process:
+Selected notebooks from the shared workspace are elevated to [primals.eco/lab/](/lab/) via the notebook rendering pipeline:
 
 1. Researcher creates notebook in shared workspace
 2. Notebook is reviewed and tagged for publication
@@ -91,6 +103,7 @@ This connects live compute to the public evidence record.
 
 ## Related
 
+- [Living Systems — What's Running Now](@/lab/living-systems.md) — real-time mesh status and live examples
 - [Reproduce Results](@/lab/reproduce.md) — step-by-step reproduction guide
-- [Provenance Pipeline](/lab/provenance-pipeline/) — how results are tracked and verified
-- [Sovereign Compute Sharing](https://github.com/ecoPrimals/wateringHole/blob/main/compute-sharing/SOVEREIGN_COMPUTE_SHARING.md) — the full architecture spec
+- [Provenance Pipeline](@/lab/provenance-pipeline.md) — how results are tracked and verified
+- [Gate Mesh — Live Topology](@/architecture/MESH_TOPOLOGY.md) — real-time mesh visualization

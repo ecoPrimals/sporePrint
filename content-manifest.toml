@@ -1,6 +1,6 @@
-generated = "2026-07-05T12:52:41Z"
-root_hash = "d5506fd718556a459ad9bffcfcc0b392389dcbc5dbb7eb621aefabf01e633cb4"
-page_count = 223
+generated = "2026-07-06T16:04:38Z"
+root_hash = "fc4d11005cc8ecc4002674fef4a20b79b2d126afc316500f193a94ac8593a156"
+page_count = 226
 
 [pages."_index.md"]
 blake3 = "20e1de5cc2b8470147de983bdb5a30b73ebc8cf406d65fe8de11704a960a1976"
@@ -87,6 +87,11 @@ blake3 = "596c7c3e8fa779d0ed2d9dca07eea0e358c4550cc633248e7691b7a86736fb90"
 size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
+[pages."architecture/SOVEREIGN_CI.md"]
+blake3 = "a276d0fcc12e871177caf75df9af3787762aa6f9cc985a49380c161ca351fffb"
+size_bytes = 4599
+title = "Sovereign CI — Build Infrastructure"
+
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
 blake3 = "764539250a2902f025d8bf34a6ab480a515b6f4959fdb9e7b9de8f70f0059d88"
 size_bytes = 8670
@@ -142,6 +147,11 @@ blake3 = "22082df40c71b280085477bd97a5d028866542db999c563e11dcbab24f7134f1"
 size_bytes = 1464
 title = "🧭 Audience"
 
+[pages."contact.md"]
+blake3 = "aff167419b2da9495ee4907d2e882e488ff41f300fb3a68631924a5cc0bd2276"
+size_bytes = 3294
+title = "Contact"
+
 [pages."glossary/_index.md"]
 blake3 = "bd5ba2abc1bf2d95439ad3f6df6d6274c2e08ca8fae3c995fbeb19832b4a1ec4"
 size_bytes = 11198
@@ -178,8 +188,8 @@ size_bytes = 6573
 title = "Verification Protocol"
 
 [pages."lab/_index.md"]
-blake3 = "646fbb24a4513a60e12ec7a9474298b6e93d1827747a61fbc859fdb882c4d321"
-size_bytes = 7923
+blake3 = "6ba248dd5085c0e4e960fa4d5d86697120bbb0c7ca81f55f7e98c7da8d634722"
+size_bytes = 8226
 title = "🧫 Lab"
 
 [pages."lab/airspring-validation-summary.md"]
@@ -193,8 +203,8 @@ size_bytes = 8105
 title = "biomeOS Validation Summary"
 
 [pages."lab/compute-access.md"]
-blake3 = "53f756bdd63f899fed7a9f5b3bed26b7bc546ac4c2235b745e467590a47bac32"
-size_bytes = 5436
+blake3 = "1f2566ec0a8c59b912f9fbc111d09cdbcb940fb72b36e4aebce51e44989b4dff"
+size_bytes = 5827
 title = "Compute Access — ABG Compute Lab"
 
 [pages."lab/groundspring-validation-summary.md"]
@@ -216,6 +226,11 @@ title = "hotSpring Validation Summary"
 blake3 = "8e379078775953e44f68e3dbb9da825d5c704d9c2f3011f165d5dc7463ee890b"
 size_bytes = 6306
 title = "lithoSpore — LTEE Reproduction and Portable Validation"
+
+[pages."lab/living-systems.md"]
+blake3 = "87d00839b1e8d8485944898b484f42dd596a454cdad4010e3e4937b1a5faca6e"
+size_bytes = 5665
+title = "Living Systems — What's Running Now"
 
 [pages."lab/nestgate-validation-summary.md"]
 blake3 = "672ba6d1db8f176ffcef29dea39b7189521062225995ff47d1b4651019794364"
@@ -733,7 +748,7 @@ size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "d59996d09d8e446cd32df40d1cec6b211a040eeacfd8d63af8cfcae6a5e4ddeb"
+blake3 = "2d3c287ca4fc894ca2950c5003835398f4f62423f2c31aff53d44064262674be"
 size_bytes = 254
 title = "Sample"
 

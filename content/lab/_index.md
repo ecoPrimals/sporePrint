@@ -15,6 +15,15 @@ ledger → sweetGrass ed25519-witnessed braid.
 
 ---
 
+## Living Systems
+
+The mesh is not a plan — it's running. See what's deployed, which gates are
+online, what capabilities are routed, and the state of the Sovereign CI pipeline.
+
+- [Living Systems — What's Running Now](@/lab/living-systems.md) — active gates, capabilities, JupyterHub status
+
+---
+
 ## Spring Science
 
 Each spring validates a scientific domain. These pages tell the full story — what was reproduced, what was discovered, and what it proved about the infrastructure.
