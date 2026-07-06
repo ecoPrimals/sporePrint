@@ -66,6 +66,7 @@
         <li><a href="/primals/" {% if current_path is starting_with("/primals") %}class="active" aria-current="true"{% endif %}>Primals</a></li>
         <li><a href="/springs/" {% if current_path is starting_with("/springs") %}class="active" aria-current="true"{% endif %}>Springs</a></li>
         <li><a href="https://github.com/ecoPrimals" rel="noopener">GitHub</a></li>
+        <li><a href="{{ get_url(path='@/contact.md') }}" {% if current_path is starting_with("/contact") %}class="active" aria-current="true"{% endif %}>Contact</a></li>
       </ul>
       {% if config.build_search_index %}
       <div class="nav-search">
@@ -198,6 +199,10 @@
             {% set sec = get_section(path="sitemap/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/sitemap") %} tree-active{% endif %}">
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+            </li>
+
+            <li class="tree-section{% if current_path is starting_with("/contact") %} tree-active{% endif %}">
+              <a href="{{ get_url(path='@/contact.md') }}">Contact</a>
             </li>
 
             <li class="tree-divider"></li>
