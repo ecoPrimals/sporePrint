@@ -17,6 +17,8 @@ Every ecoPrimals binary is built from source on sovereign infrastructure. No Git
 
 ## Build Pipeline
 
+{{ viz_embed(src="/viz/ci-pipeline") }}
+
 ```
 Forgejo (git.primals.eco)
     │
