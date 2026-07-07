@@ -1,7 +1,7 @@
 +++
 title = "Living Systems — What's Running Now"
 description = "Real-time status of the ecoPrimals sovereign mesh: active gates, deployed primals, capability routing, and live JupyterHub compute."
-date = 2026-07-06
+date = 2026-07-07
 weight = 5
 
 [taxonomies]
@@ -12,9 +12,9 @@ springs = ["primalspring"]
 ## The Mesh Is Alive
 
 The ecoPrimals ecosystem is not a description of future work. It is running.
-Seven gates are enrolled, three are meshed with bilateral direct TCP, and
-{{ entity(name="songbird") }} routes `capability.call` across all of them.
-This page shows what is actually deployed and operational.
+Ten gates are tracked, seven are actively meshed, and {{ entity(name="songbird") }}
+routes `capability.call` across all of them. Two physical sites are linked by
+an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true") }}
 
@@ -24,11 +24,14 @@ This page shows what is actually deployed and operational.
 |------|--------|-----------|----------------|
 | **sporeGate** | 🟢 Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo |
 | **eastGate** | 🟢 Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
-| **ironGate** | 🟢 Meshed | LAN + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
-| **flockGate** | 🟡 WAN | WG via golgi | Tower atomic evolution: songBird, bearDog, skunkBat dev |
+| **ironGate** | 🟢 Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
+| **southGate** | 🟢 Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
+| **flockGate** | 🟡 WAN | WG via golgi (72ms p50) | Tower atomic evolution: songBird, bearDog, skunkBat dev |
 | **golgi** | 🟢 Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
-| **grapheneGate** | 🟢 Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (nestGate + coralReef: Android UDS pending) |
-| **strandGate** | 🟡 Alive | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, SSH enrollment pending |
+| **grapheneGate** | 🟢 Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (13/13 after pepti rebuild) |
+| **strandGate** | 🟡 Pending | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, enrollment pending |
+| **fieldGate** | 🟡 Pending | House 2 | Future enrollment via Omada |
+| **biomeGate** | ⚪ Offline | House 1 | Offline — pending reactivation |
 
 ## Live Capabilities
 
@@ -99,9 +102,9 @@ Developer pushes to Forgejo (git.primals.eco)
     → Gates cascade + pull from depot
 ```
 
-**Wave 133a result**: 30/30 ecobins built (15 x86_64 + 15 aarch64), 283 MB total,
-all checksummed and published. 11/14 primals build with zero manual intervention;
-3 require documented workarounds (being converged).
+**Wave 133e result**: 30/30 ecobins in pepti (15 x86_64 + 15 aarch64),
+all checksummed. 13/13 primals converged — zero CI workarounds, zero code debt.
+4–5 binaries pending rebuild from latest source.
 
 ## Mesh Health
 
@@ -117,14 +120,16 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 
 ## What's Next
 
-| Item | Gate | Status |
+| Item | Wave | Status |
 |------|------|--------|
-| ~~JupyterHub deploy~~ | ironGate | **LIVE** — JupyterHub 5.4.5, `lab.primals.eco → 200` |
-| `jupyter` capability registration | ironGate | Pending `primal.announce` |
-| bearDog ACME gateway activation (Caddy retirement) | sporeGate | After flockGate CryptoProvider fix |
-| strandGate SSH enrollment | strandGate | Hardware alive at .103, SSH key pending |
-| Bidirectional relay (GitHub ↔ Forgejo parity) | golgi | cellMembrane deploy |
-| Live mesh visualization (petalTongue wire-up) | eastGate | sporePrint + petalTongue |
+| ~~JupyterHub deploy~~ | 132 | **LIVE** — JupyterHub 5.4.5, `lab.primals.eco → 200` |
+| Pepti rebuild (5 stale binaries) | 134a | **NEXT** — songBird, skunkBat, nestGate, coralReef, sweetGrass |
+| WAN-DISPATCH-01 FULL PASS | 134a | After pepti rebuild — songBird drawbridge committed |
+| grapheneGate 13/13 from fresh pepti | 134a | After pepti rebuild |
+| bearDog CryptoProvider fix (UNIT-DIV-04) | 134b | **P1 BLOCKER** for DNS cutover |
+| DNS cutover: `primals.eco` → golgi (bearDog ACME) | 134b | After CryptoProvider fix |
+| strandGate SSH enrollment | 134b | Physical access to House 2 needed |
+| Live mesh visualization (petalTongue on golgi) | 134b+ | sporePrint host composition |
 
 ## Related
 

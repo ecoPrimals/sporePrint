@@ -33,7 +33,7 @@ If those commands run, the claims are verified. No institutional access. No prop
 
 New here? Start with the [Glossary](@/glossary/_index.md) for plain-language
 definitions of every term on this site. See the [Lab](@/lab/_index.md) for
-live validation results from a 13-primal {{ entity(name="nucleus") }} composition —
+live validation results from a {{ total_stat(stat="total_primals") }}-primal {{ entity(name="nucleus") }} composition —
 235+ science checks with full provenance chains.
 
 ---

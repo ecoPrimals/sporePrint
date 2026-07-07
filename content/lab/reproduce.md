@@ -1,6 +1,6 @@
 +++
 title = "Reproduce It Yourself"
-description = "Stand up a 13-primal NUCLEUS composition on your own hardware and run the same validated science workloads. No cloud. No institutional access."
+description = "Stand up a full NUCLEUS composition on your own hardware and run the same validated science workloads. No cloud. No institutional access."
 date = 2026-05-06
 weight = 10
 
@@ -51,7 +51,7 @@ cd wetSpring && cargo build --release --workspace
 git clone https://github.com/sporeGarden/projectNUCLEUS.git
 cd projectNUCLEUS/deploy
 
-# Deploy full NUCLEUS (13 primals) to the current machine
+# Deploy full NUCLEUS to the current machine
 bash deploy.sh --composition full --gate mygate
 
 # Verify all primals are healthy

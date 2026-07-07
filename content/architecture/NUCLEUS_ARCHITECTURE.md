@@ -142,6 +142,30 @@ A **niche** is a {{ entity(name="byob") }} deployment — a specific composition
 | CRPG | Tower + {{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }} | {{ entity(name="esotericwebb") }} game runtime |
 | Full Lab | Full {{ entity(name="nucleus") }} + all products | Complete sovereign scientific computing |
 
+### Deployment Compositions
+
+Niches define abstract compositions for purpose. **Deployment compositions** are
+the concrete instances running on gates — each maps to a niche profile with
+specific primals and operational roles:
+
+| Composition | Primals | Gate Example | Purpose |
+|-------------|---------|--------------|---------|
+| **Full {{ entity(name="nucleus") }}** | All {{ total_stat(stat="total_primals") }} | eastGate, ironGate | Complete sovereign stack — all capabilities |
+| **Tower** | {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }} | grapheneGate, new gates | Minimal secure mesh entry point |
+| **JupyterHub host** | {{ entity(name="songbird") }} (drawbridge) + {{ entity(name="beardog") }} + {{ entity(name="biomeos") }} | ironGate | `lab.primals.eco` via mesh relay |
+| **sporePrint host** | {{ entity(name="petaltongue") }} + {{ entity(name="nestgate") }} + {{ entity(name="songbird") }} + {{ entity(name="beardog") }} | golgi VPS | Sovereign website with live mesh visualization |
+| **Cold storage** | {{ entity(name="nestgate") }} + {{ entity(name="sweetgrass") }} + {{ entity(name="rhizocrypt") }} | westGate | ZFS CAS archive with provenance |
+| **Compute dispatch** | {{ entity(name="toadstool") }} + {{ entity(name="barracuda") }} + {{ entity(name="coralreef") }} + {{ entity(name="biomeos") }} | strandGate | GPU/CPU compute mesh node |
+
+The {{ entity(name="songbird") }} **drawbridge** pattern enables capability-based routing
+into a composition: `SONGBIRD_DRAWBRIDGE_ROUTES=/hub=jupyter,/api=inference` makes
+songBird auto-register capabilities at startup and announce them to mesh peers.
+Remote gates can then `capability.call("jupyter")` — songBird routes to the
+local drawbridge endpoint.
+
+Each deployment composition has a matching **projectNUCLEUS** deploy graph that
+codifies the exact primal set, launch ordering, and health checks.
+
 ### Germination
 
 Starting a primal until it is ready for requests:

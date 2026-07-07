@@ -1,10 +1,10 @@
-generated = "2026-07-07T13:44:16Z"
-root_hash = "4652833b0b6e5dc8d14695e4382ad00f1f3ef0feed67324748ab19698bd8bba5"
+generated = "2026-07-07T15:14:24Z"
+root_hash = "d33ae568afd5cebf052a286bf69168a6e909a4c01fe709f5cacf4217caeb76ab"
 page_count = 227
 
 [pages."_index.md"]
-blake3 = "3fc89dfe55809c12d9400c25f4e8bd35a3e363dcd2809f3041fa0b5cc37a5e64"
-size_bytes = 2398
+blake3 = "4961d0d9d479bf4b65f62d64beeb044c2b9bb1d1e1709dad252bfdad9ec470a6"
+size_bytes = 2434
 title = "sporePrint"
 
 [pages."architecture/COMPOSITION_PATTERNS.md"]
@@ -73,13 +73,13 @@ size_bytes = 5608
 title = "K-Derm Diderm Architecture"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
-blake3 = "353a3ab0d611daa5f521673a1c17e6d618674d75b29c4de307b4cc88629d56ab"
-size_bytes = 4103
+blake3 = "aaed57073a3c60de1af0221d7391d9d80f0588a73c16d32259b1902e9dcd3f3b"
+size_bytes = 4675
 title = "Gate Mesh — Live Topology"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "c99a8f127ab8789c11eb756288617653281c79eb59efc2cb61aef62ea1bfab40"
-size_bytes = 13279
+blake3 = "516aa47c2282e7489c595de528d714e9cbf691eb5e67ff27007f3bb977ec324d"
+size_bytes = 15197
 title = "NUCLEUS Composition Model"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
@@ -193,8 +193,8 @@ size_bytes = 6573
 title = "Verification Protocol"
 
 [pages."lab/_index.md"]
-blake3 = "9d7d711c79350cf883d6ead875ebce5bc607fa6f33de2dab40bdfd20bd3404d0"
-size_bytes = 8378
+blake3 = "9673f02ec99674482585a16c73f1990b4cc1f49245b4ae920306a2cc34f8148f"
+size_bytes = 8450
 title = "🧫 Lab"
 
 [pages."lab/airspring-validation-summary.md"]
@@ -233,8 +233,8 @@ size_bytes = 6306
 title = "lithoSpore — LTEE Reproduction and Portable Validation"
 
 [pages."lab/living-systems.md"]
-blake3 = "f4f7646600dfe1812084f262f32b67b1c9d4f71e985e9c4679cecddf73d87798"
-size_bytes = 5868
+blake3 = "80ec9c62b91afed5cfbc1409e27984937049a15bf8444b3020ab202024b885d3"
+size_bytes = 6310
 title = "Living Systems — What's Running Now"
 
 [pages."lab/nestgate-validation-summary.md"]
@@ -788,8 +788,8 @@ size_bytes = 4808
 title = "Provenance Pipeline"
 
 [pages."lab/reproduce.md"]
-blake3 = "0e2f90ec2475782ea8cc6462b6dbb8bd56676eab0cafb736fcf86053beae367e"
-size_bytes = 5044
+blake3 = "d05a50721009c557740cac26f6411a4ef9ed6d9a8ed5c324158222bf4b7d7639"
+size_bytes = 5026
 title = "Reproduce It Yourself"
 
 [pages."lab/spores/_index.md"]

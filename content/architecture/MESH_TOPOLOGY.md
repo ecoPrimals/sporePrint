@@ -1,7 +1,7 @@
 +++
 title = "Gate Mesh — Live Topology"
 description = "Real-time view of the ecoPrimals sovereign compute mesh: gates, links, latencies, and capability routing."
-date = 2026-07-04
+date = 2026-07-07
 weight = 20
 
 [taxonomies]
@@ -59,11 +59,26 @@ When songBird is unavailable, the visualization gracefully degrades to static to
 |------|------|-----------|--------------|
 | golgi | WG hub, Forgejo, depot | VPS (relay) | `cascade.sync`, `depot.pull` |
 | sporeGate | Public entry, Sovereign CI | LAN + WG | `http.proxy`, `build.release` |
-| eastGate | Overwatch, primalSpring | LAN + WG | `mesh.coordinate`, `validate.all` |
-| flockGate | Tower atomic evolution | WG (WAN) | `songbird.dev`, `beardog.dev`, `skunkbat.dev` |
-| ironGate | GPU compute (RTX 5070) | LAN + WG | `compute.gpu`, `jupyter.execute` |
+| eastGate | Overwatch, primalSpring | LAN + WG (10GbE) | `mesh.coordinate`, `validate.all` |
+| ironGate | GPU compute (RTX 5070 Ti) | LAN (Omada 10G) + WG | `compute.gpu`, `jupyter.execute` |
+| southGate | House 2 backbone | LAN (Omada 10G) | Infrastructure, switching |
+| flockGate | Tower atomic evolution | WG (WAN, 72ms p50) | `songbird.dev`, `beardog.dev`, `skunkbat.dev` |
 | grapheneGate | Portable trust anchor | ADB (USB) | `auth.attest`, `tower.compose` |
-| strandGate | CPU compute (EPYC) | LAN (joining) | `compute.cpu`, `star.align` |
+| strandGate | CPU compute (EPYC) | LAN (pending enrollment) | `compute.cpu`, `star.align` |
+| fieldGate | Future House 2 compute | LAN (pending) | TBD |
+| biomeGate | Offline — pending reactivation | House 1 | TBD |
+
+### Physical Topology
+
+```
+House 1 (CRS310 backbone):
+  sporeGate, eastGate, northGate, biomeGate(offline)
+
+House 2 (Omada SX3008F):
+  ironGate, southGate, strandGate(pending), fieldGate
+
+Link: 80m 10G AOC trunk between adjacent lots
+```
 
 ## Key Invariants
 
@@ -85,4 +100,6 @@ New hardware arrives
   → Mesh absorbs — routing tables updated across all peers
 ```
 
-strandGate (64-core EPYC, 256GB) will follow this pattern when hardware arrives. Future NUCs, Raspberry Pis, or cloud VMs join identically.
+strandGate (64-core EPYC, 256GB, House 2) will follow this pattern once SSH
+access is established. fieldGate and future NUCs, Raspberry Pis, or cloud VMs
+join identically — the mesh absorbs any hardware that runs NUCLEUS.

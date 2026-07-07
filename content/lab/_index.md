@@ -7,7 +7,7 @@ template = "section.html"
 
 The lab is where {{ entity(name="ecoprimals") }} science gets validated on real hardware.
 Everything here ran on a sovereign compute node (i9-14900K, 96 GB DDR5, RTX 4070 / RTX 3090 / Akida NPU) through
-a live 13-primal {{ entity(name="nucleus") }} composition. Every result carries a
+a live {{ total_stat(stat="total_primals") }}-primal {{ entity(name="nucleus") }} composition. Every result carries a
 cryptographic provenance chain: BLAKE3 content hashes → rhizoCrypt DAG → loamSpine
 ledger → sweetGrass ed25519-witnessed braid.
 
@@ -115,7 +115,7 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 
 ## Compute Access
 
-**JupyterHub** provides multi-user notebook access to the live 13-primal composition. Every notebook runs against real primals, not mocks. Three access tiers (observer, reviewer, user) ensure open science with appropriate boundaries.
+**JupyterHub** provides multi-user notebook access to the live {{ total_stat(stat="total_primals") }}-primal composition. Every notebook runs against real primals, not mocks. Three access tiers (observer, reviewer, user) ensure open science with appropriate boundaries.
 
 - [Compute Access](@/lab/compute-access.md) — tiers, architecture, how to connect
 
