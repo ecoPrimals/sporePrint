@@ -58,7 +58,8 @@ The braid is PROV-O compliant with DID attribution.
 on your own hardware and run the same workloads. No cloud. No institutional access.
 Commodity hardware.
 
-- [Reproduce Results](@/lab/reproduce.md) — step-by-step guide
+- [Getting Started with plasmidBin](@/lab/getting-started-plasmidbin.md) — pre-built binaries, 5-minute cold start
+- [Reproduce Results](@/lab/reproduce.md) — full NUCLEUS deploy + validated science workloads
 - [Provenance Pipeline](@/lab/provenance-pipeline.md) — how results are tracked and verified
 
 ---

@@ -8,7 +8,7 @@
   "edge_count": 126,
   "merkle_root": "blake3:a45fe20de9637afcc9bfd06ca53ae511883d0e69d674606eec4bb3f080da6883",
   "graph_merkle": "blake3:a45fe20de9637afcc9bfd06ca53ae511883d0e69d674606eec4bb3f080da6883",
-  "content_pages": 212,
+  "content_pages": 213,
   "total_loc": 3466535,
   "total_tests": 113858,
   "validation_errors": 0,

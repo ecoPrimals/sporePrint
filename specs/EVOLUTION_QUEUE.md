@@ -31,7 +31,7 @@ Last reviewed: July 7, 2026 (Wave 133c — Transport Unification + Catalog Metri
 ## P1 — Near-Term
 
 ### Content enrichment
-- [ ] Add a "Getting Started with plasmidBin" walkthrough (clone → fetch → deploy)
+- [x] ~~Add a "Getting Started with plasmidBin" walkthrough (clone → fetch → deploy)~~ — `lab/getting-started-plasmidbin.md` (Wave 133e)
 - [ ] Expand products pages with composition diagrams and BYOB examples
 - [ ] Add cross-spring data flow diagram to SPRING_CATALOG.md or a dedicated page
 

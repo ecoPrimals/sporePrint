@@ -32,7 +32,9 @@ If those commands run, the claims are verified. No institutional access. No prop
 - ✅ **Validate with {{ entity(name="guidestone") }}** — self-verifying build artifacts that prove their own correctness
 
 New here? Start with the [Glossary](@/glossary/_index.md) for plain-language
-definitions of every term on this site. See the [Lab](@/lab/_index.md) for
+definitions of every term on this site. Or skip straight to
+[Getting Started with plasmidBin](@/lab/getting-started-plasmidbin.md) — pre-built
+binaries, BLAKE3 verified, running in 5 minutes. See the [Lab](@/lab/_index.md) for
 live validation results from a {{ total_stat(stat="total_primals") }}-primal {{ entity(name="nucleus") }} composition —
 235+ science checks with full provenance chains.
 
