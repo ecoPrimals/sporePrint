@@ -57,8 +57,7 @@ pub enum TransportEndpoint {
     MeshRelay { peer_id: String, capability: String },
 }
 
-const TRANSPORT_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(15);
-const TRANSPORT_IO_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(30);
+use crate::paths::{TRANSPORT_CONNECT_TIMEOUT, TRANSPORT_IO_TIMEOUT};
 
 /// riboCipher Tier 1 (clear) signal prefix byte.
 const RIBOCIPHER_CLEAR: u8 = 0xEC;
@@ -114,8 +113,8 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
             let addr: std::net::SocketAddr = addr_str
                 .parse()
                 .map_err(|e| Error::Config(format!("invalid TCP address {addr_str}: {e}")))?;
-            let s =
-                std::net::TcpStream::connect_timeout(&addr, TRANSPORT_TIMEOUT).map_err(|e| {
+            let s = std::net::TcpStream::connect_timeout(&addr, TRANSPORT_CONNECT_TIMEOUT)
+                .map_err(|e| {
                     Error::Config(format!(
                         "failed to connect to NestGate via TCP at {addr_str}: {e}"
                     ))
@@ -181,28 +180,6 @@ pub struct PushResult {
     pub errors: u64,
     pub total_bytes_transferred: u64,
     pub elapsed_ms: u64,
-}
-
-/// Discover the `NestGate` socket path from environment.
-///
-/// Delegates to `discovery::probe_socket` which implements the ecosystem
-/// standard discovery order: explicit env → `BIOMEOS_SOCKET_DIR` →
-/// systemd `/run/membrane/` → `XDG_RUNTIME_DIR`. Returns an error if
-/// no reachable socket is found.
-pub fn discover_socket() -> Result<String, Error> {
-    if let Some(path) = crate::discovery::probe_socket("nestgate", "NESTGATE_SOCKET") {
-        return Ok(path);
-    }
-
-    if let Ok(path) = std::env::var("NESTGATE_SOCKET") {
-        return Err(Error::Config(format!(
-            "NESTGATE_SOCKET set to {path} but socket does not exist"
-        )));
-    }
-
-    Err(Error::Config(
-        "NestGate socket not found. Set NESTGATE_SOCKET or BIOMEOS_SOCKET_DIR, or ensure NestGate is running.".into(),
-    ))
 }
 
 /// Read a stored CAS manifest from disk.
@@ -304,7 +281,7 @@ fn push_single_file(
 /// Push all files from a CAS manifest to `NestGate`.
 ///
 /// Accepts a `TransportEndpoint` — the transport is injected by the caller,
-/// not chosen by the push logic. Use `discover_socket()` + `TransportEndpoint::Uds`
+/// not chosen by the push logic. Use `discovery::resolve_primal_endpoint()`
 /// for discovery-based connection, or accept a Songbird-resolved endpoint directly.
 pub fn push_manifest(
     manifest: &StoredManifest,

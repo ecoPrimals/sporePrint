@@ -76,7 +76,6 @@ These primals form the {{ entity(name="nucleus") }} deployment architecture. Eac
 
 **Domain**: All cryptographic operations and genetic lineage  
 {{ entity_metrics(name="beardog") }}  
-**Tests**: 5,041 passing (100%)  
 **Coverage**: 70.96%  
 **Safety**: Zero unsafe blocks, zero warnings
 
@@ -108,8 +107,6 @@ These primals form the {{ entity(name="nucleus") }} deployment architecture. Eac
 
 **Domain**: Network orchestration, discovery, and federation  
 {{ entity_metrics(name="songbird") }}  
-**Version**: v3.35.0  
-**Tests**: 1,763 passing (100%)  
 **Safety**: Zero unsafe blocks in production, clean build
 
 {{ entity(name="songbird") }} is the nervous system. If data needs to leave the machine, it goes through {{ entity(name="songbird") }}. TLS 1.3 (Pure Rust, no OpenSSL), service discovery (BirdSong protocol), NAT traversal (4-tier), and the networking half of {{ entity(name="toweratomic") }}. {{ entity(name="songbird") }} also serves as the **universal adapter** for discovery: instead of every primal discovering every other primal (O(n²) connections), each primal registers with {{ entity(name="songbird") }} (O(n) connections), and {{ entity(name="songbird") }} handles routing.
@@ -137,7 +134,6 @@ These primals form the {{ entity(name="nucleus") }} deployment architecture. Eac
 **Domain**: Storage and content-addressed data management  
 {{ entity_metrics(name="nestgate") }}  
 **Version**: 4.0.0 ({{ entity(name="genomebin") }})  
-**Tests**: 1,474/1,475 passing (99.93%)  
 **Build**: 100% (13/13 crates)
 
 {{ entity(name="nestgate") }} is the data layer. Content-addressed storage (BLAKE3), ZFS integration, model caching, tiered storage. If data needs to persist across sessions, it goes through {{ entity(name="nestgate") }}. {{ entity(name="nestgate") }} is one of the two **original primals** — it existed before the word "primal" did. In gen1, it was the Rust-based ZFS storage manager for the HPC cluster. In gen2, it became a sovereign storage primitive. In gen3, it is the storage component of the {{ entity(name="nestatomic") }}.
@@ -161,7 +157,6 @@ These primals form the {{ entity(name="nucleus") }} deployment architecture. Eac
 
 **Domain**: Universal compute orchestration  
 {{ entity_metrics(name="toadstool") }}  
-**Tests**: 1,000+ passing  
 **Repository**: [github.com/ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) — **Public**
 
 {{ entity(name="toadstool") }} is the compute layer. Hardware discovery (GPU, NPU, CPU via sysfs/PCIe), workload dispatch, and the orchestration surface for the **Sovereign Compute Pipeline**. {{ entity(name="toadstool") }} owns the hardware. {{ entity(name="barracuda") }} (§1.8) owns the math. {{ entity(name="coralreef") }} (§1.7) owns the compiler. Together they provide scientific computing on any GPU — NVIDIA, AMD, Intel — without CUDA dependency.
@@ -182,8 +177,6 @@ The springs are {{ entity(name="toadstool") }}'s acceptance tests. {{ entity(nam
 
 **Domain**: AI model coordination and sovereign inference  
 {{ entity_metrics(name="squirrel") }}  
-**Version**: 0.1.0-alpha.33  
-**Tests**: 7,165 passing / 0 failed / 110 ignored  
 **Coverage**: ~85.3% line coverage (cargo-llvm-cov)  
 **Safety**: `#![forbid(unsafe_code)]` workspace-wide  
 **Repository**: [github.com/ecoPrimals/squirrel](https://github.com/ecoPrimals/squirrel) — **Public**
@@ -210,7 +203,6 @@ The springs are {{ entity(name="toadstool") }}'s acceptance tests. {{ entity(nam
 **Domain**: Primal orchestration and ecosystem coordination  
 {{ entity_metrics(name="biomeos") }}  
 **Security**: A++ LEGENDARY ({{ entity(name="darkforest") }})  
-**Tests**: 661+ passing  
 **Coverage**: ~48%
 
 {{ entity(name="biomeos") }} is the conductor. If {{ entity(name="beardog") }} is the immune system and {{ entity(name="songbird") }} is the nervous system, {{ entity(name="biomeos") }} is the **endocrine system**: it coordinates all the organs without micromanaging any of them. It starts primals in the correct order, maintains a capability registry, routes requests semantically, composes primals into atomics (Tower, Node, Nest, {{ entity(name="nucleus") }}), and manages the lifecycle of the entire ecosystem. Without {{ entity(name="biomeos") }}, primals are isolated services. With {{ entity(name="biomeos") }}, they are an ecosystem.
@@ -237,7 +229,6 @@ The **{{ entity(name="darkforest") }}** protocol (A++ LEGENDARY) provides zero-m
 
 **Domain**: GPU shader compilation — WGSL/SPIR-V/GLSL to native GPU binaries  
 {{ entity_metrics(name="coralreef") }}  
-**Tests**: 3,038 passing (0 failed)  
 **Coverage**: 65.8% line (79.6% non-hardware), 72.9% function  
 **Safety**: `#![forbid(unsafe_code)]` on 8/9 crates, zero clippy warnings (pedantic+nursery)  
 **Repository**: [github.com/ecoPrimals/coralReef](https://github.com/ecoPrimals/coralReef) — **Public**
@@ -258,8 +249,6 @@ The **{{ entity(name="darkforest") }}** protocol (A++ LEGENDARY) provides zero-m
 
 **Domain**: Pure mathematics — WGSL f64 shaders, precision strategy, naga IR optimization  
 {{ entity_metrics(name="barracuda") }} + {{ total_stat(stat="wgsl_files") }} WGSL shaders  
-**Version**: v0.3.5  
-**Tests**: 3,348+ passing  
 **Safety**: Zero unsafe, zero clippy warnings  
 **Repository**: [github.com/ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) — **Public**
 
@@ -311,7 +300,6 @@ Accessibility is not an afterthought — it is the design. Sighted users see gra
 
 **Domain**: Content-addressed DAG engine for working memory  
 {{ entity_metrics(name="rhizocrypt") }}  
-**Tests**: 509/509 passing (100%)  
 **Coverage**: 83.92%  
 **Safety**: Zero unsafe blocks
 
@@ -331,7 +319,6 @@ When ephemeral data needs to become permanent, {{ entity(name="rhizocrypt") }} *
 
 **Domain**: Semantic provenance and fair attribution  
 {{ entity_metrics(name="sweetgrass") }}  
-**Tests**: 496/496 passing (100%)  
 **Coverage**: 78.39%  
 **Safety**: Zero unsafe blocks (`#![forbid(unsafe_code)]` in all 9 crates)
 
@@ -341,7 +328,7 @@ The name: sweetgrass is a sacred plant in many Indigenous traditions, used in pu
 
 **Why it exists**: In a sovereign system with AI-assisted development, attribution becomes critical. Who wrote this code — the human or the AI? Who owns the data that trained the model? Who contributed to this research output? {{ entity(name="sweetgrass") }} provides machine-readable answers. The **Braid model** — where attribution threads weave together to form a composite provenance record — is original to {{ entity(name="ecoprimals") }}. The AGPL-3.0 license itself is a form of attribution enforcement; {{ entity(name="sweetgrass") }} makes it machine-readable.
 
-{{ entity(name="sweetgrass") }} combines the deepest provenance feature set in the Memory & Attribution stack with strong verification metrics (78.39% line coverage, 496/496 tests). 12 role types, derivation chain analysis, time decay, recursive attribution propagation, ~88% compression with session dedup + zstd.
+{{ entity(name="sweetgrass") }} combines the deepest provenance feature set in the Memory & Attribution stack with strong verification metrics (78.39% line coverage, {{ entity_stat(name="sweetgrass", stat="tests_display") }} tests). 12 role types, derivation chain analysis, time decay, recursive attribution propagation, ~88% compression with session dedup + zstd.
 
 **Post-{{ entity(name="nucleus") }} role**: Attribution layer for all ecosystem data. Essential for the {{ entity(name="rootpulse") }} composition where every commit, merge, and contribution carries cryptographic attribution.
 
@@ -351,7 +338,6 @@ The name: sweetgrass is a sacred plant in many Indigenous traditions, used in pu
 
 **Domain**: Immutable linear ledger for selective permanence  
 {{ entity_metrics(name="loamspine") }}  
-**Tests**: 416 passing (100%)  
 **Coverage**: 77.68%  
 **Safety**: Zero unsafe blocks, zero clippy warnings (pedantic mode)
 

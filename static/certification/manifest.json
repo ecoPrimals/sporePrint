@@ -1,17 +1,17 @@
 {
   "schema_version": "1.0.0",
   "version": "1.0.0",
-  "generated": "2026-06-02T00:00:00Z",
+  "generated": "2026-07-07T00:00:00Z",
   "entity_count": 66,
   "primal_count": 15,
   "spring_count": 8,
   "edge_count": 126,
   "merkle_root": "blake3:a45fe20de9637afcc9bfd06ca53ae511883d0e69d674606eec4bb3f080da6883",
   "graph_merkle": "blake3:a45fe20de9637afcc9bfd06ca53ae511883d0e69d674606eec4bb3f080da6883",
-  "content_pages": 207,
-  "total_loc": 3465885,
-  "total_tests": 114099,
+  "content_pages": 212,
+  "total_loc": 3466535,
+  "total_tests": 113858,
   "validation_errors": 0,
-  "measured_date": "2026-06-01",
+  "measured_date": "2026-06-22",
   "drift_tolerance": "5%/30d"
 }

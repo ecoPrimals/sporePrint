@@ -289,8 +289,7 @@ pub fn validate_profile(
     }
 }
 
-/// IPC timeout for health probes (fast — just a ping).
-const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
+use crate::paths::PROBE_TIMEOUT;
 
 /// Construct a failed probe result.
 fn probe_failed(start: Instant, error: String) -> ProbeResult {

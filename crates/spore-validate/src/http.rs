@@ -10,12 +10,9 @@
 //! hand-rolled POSIX tar reader for extraction. Zero external C dependencies.
 
 use crate::error::Error;
+use crate::paths::{TRANSPORT_CONNECT_TIMEOUT, TRANSPORT_IO_TIMEOUT};
 use std::net::SocketAddr;
 use std::path::Path;
-use std::time::Duration;
-
-const CONNECT_TIMEOUT: Duration = Duration::from_secs(15);
-const IO_TIMEOUT: Duration = Duration::from_secs(30);
 
 /// Perform an HTTP GET with redirect following, returning the response body.
 ///
@@ -105,11 +102,11 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         .next()
         .ok_or_else(|| Error::Git(format!("no addresses for {host_port_owned}")))?;
 
-    let mut stream = TcpStream::connect_timeout(&addr, CONNECT_TIMEOUT)
+    let mut stream = TcpStream::connect_timeout(&addr, TRANSPORT_CONNECT_TIMEOUT)
         .map_err(|e| Error::Git(format!("TCP connect to {host_port_owned} failed: {e}")))?;
 
-    stream.set_write_timeout(Some(IO_TIMEOUT)).ok();
-    stream.set_read_timeout(Some(IO_TIMEOUT)).ok();
+    stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+    stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
 
     let request =
         format!("GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n");

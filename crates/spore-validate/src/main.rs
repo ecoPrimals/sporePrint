@@ -406,14 +406,8 @@ fn run_pt_render(
     modality: Option<&str>,
     socket_override: Option<&str>,
 ) -> Result<(), Error> {
-    let endpoint = if let Some(sock) = socket_override {
-        cas_push::TransportEndpoint::Uds {
-            path: sock.to_string(),
-        }
-    } else {
-        let socket = petaltongue::discover_socket()?;
-        cas_push::TransportEndpoint::Uds { path: socket }
-    };
+    let endpoint =
+        discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", socket_override)?;
 
     let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
 
@@ -499,14 +493,8 @@ fn run_pt_viz(name: &str, format: &str, socket_override: Option<&str>) -> Result
         }
     };
 
-    let endpoint = if let Some(sock) = socket_override {
-        cas_push::TransportEndpoint::Uds {
-            path: sock.to_string(),
-        }
-    } else {
-        let socket = petaltongue::discover_socket()?;
-        cas_push::TransportEndpoint::Uds { path: socket }
-    };
+    let endpoint =
+        discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", socket_override)?;
 
     let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
     let result = client.viz(name, viz_format)?;

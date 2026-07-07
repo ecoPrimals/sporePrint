@@ -14,12 +14,9 @@
 //! EXISTS — it just needs activation.
 
 use crate::discovery;
+use crate::paths::PROBE_TIMEOUT;
 use serde_json::{Value, json};
 use std::io::BufReader;
-use std::time::Duration;
-
-/// IPC timeout for method probes.
-const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
 
 /// Default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
 const DEFAULT_TOWER_PROBES: &[(&str, &[&str])] = &[

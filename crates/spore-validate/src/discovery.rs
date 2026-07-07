@@ -193,6 +193,42 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
     None
 }
 
+/// Resolve a transport endpoint for a peer primal.
+///
+/// Unified transport injection pattern (same as `NestGate` CAS push):
+/// 1. CLI `--socket` override (explicit UDS path)
+/// 2. `TRANSPORT_ENDPOINT` env var (canonical JSON — launcher/Songbird injection)
+/// 3. Socket discovery via `probe_socket` (env → `BIOMEOS_SOCKET_DIR` → systemd → XDG)
+///
+/// This ensures all primal connections (`NestGate`, `petalTongue`, etc.) honor the
+/// same transport injection interface.
+pub fn resolve_primal_endpoint(
+    slug: &str,
+    primary_var: &str,
+    socket_override: Option<&str>,
+) -> Result<crate::cas_push::TransportEndpoint, crate::error::Error> {
+    use crate::cas_push::TransportEndpoint;
+    use crate::error::Error;
+
+    if let Some(s) = socket_override {
+        return Ok(TransportEndpoint::Uds { path: s.into() });
+    }
+
+    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
+        return serde_json::from_str(&json)
+            .map_err(|e| Error::Config(format!("TRANSPORT_ENDPOINT parse error: {e}")));
+    }
+
+    if let Some(path) = probe_socket(slug, primary_var) {
+        return Ok(TransportEndpoint::Uds { path });
+    }
+
+    Err(Error::Config(format!(
+        "{slug} socket not found. Set {primary_var}, TRANSPORT_ENDPOINT, or \
+         BIOMEOS_SOCKET_DIR, or ensure {slug} is running."
+    )))
+}
+
 /// Build a `primal.announce` JSON-RPC request for `NestGate` handshake.
 ///
 /// The request ID is provided by the caller (connection-level counter).
@@ -307,5 +343,29 @@ mod tests {
         let debug = format!("{peer:?}");
         assert!(debug.contains("testPrimal"));
         assert!(debug.contains("/tmp/test.sock"));
+    }
+
+    #[test]
+    fn resolve_primal_endpoint_cli_override() {
+        let result = resolve_primal_endpoint("test", "TEST_SOCK", Some("/tmp/override.sock"));
+        assert!(result.is_ok());
+        let ep = result.unwrap();
+        match ep {
+            crate::cas_push::TransportEndpoint::Uds { path } => {
+                assert_eq!(path, "/tmp/override.sock");
+            }
+            _ => panic!("expected UDS endpoint from CLI override"),
+        }
+    }
+
+    #[test]
+    fn resolve_primal_endpoint_fails_without_socket() {
+        let result = resolve_primal_endpoint("nonexistent_primal_99", "NONEXISTENT_VAR_99", None);
+        assert!(result.is_err());
+        let err = result.unwrap_err().to_string();
+        assert!(
+            err.contains("nonexistent_primal_99"),
+            "error should mention the slug"
+        );
     }
 }

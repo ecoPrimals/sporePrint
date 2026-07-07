@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 6, 2026 (Wave 133a — Deep Debt Sprint + Sovereign AAR)
+Last reviewed: July 7, 2026 (Wave 133c — Transport Unification + Catalog Metric Evolution)
 
 ---
 
@@ -618,3 +618,27 @@ These were in the original queue and have been completed:
 - Zero `unwrap()` / `expect()` in production code
 - Zero unsafe (forbidden crate-level)
 - 226 content pages
+
+## Wave 133c — Transport Unification + Catalog Metric Evolution (July 7, 2026)
+
+### Code Evolution
+- [x] `discovery::resolve_primal_endpoint()` — unified transport resolution for all primals
+  - CLI override → `TRANSPORT_ENDPOINT` env → socket discovery (same interface for NestGate + petalTongue)
+  - petalTongue commands (`pt-render`, `pt-viz`) now honor `TRANSPORT_ENDPOINT` (was socket-only)
+- [x] Centralized timeout constants in `paths.rs` — `PROBE_TIMEOUT`, `TRANSPORT_CONNECT_TIMEOUT`, `TRANSPORT_IO_TIMEOUT`
+  - Eliminates 4 duplicated definitions across nucleus.rs, tower.rs, cas_push.rs, http.rs
+- [x] `cas_push::discover_socket()` and `petaltongue::discover_socket()` removed — replaced by shared resolver
+- [x] Mid-file `use crate::` imports moved to top of file (fetch.rs, refresh.rs, notebook.rs)
+
+### Content Evolution
+- [x] PRIMAL_CATALOG.md: 11 hardcoded `**Tests**:` lines removed — `entity_metrics` shortcode renders live registry values
+- [x] Narrative test count in sweetGrass section → `entity_stat` shortcode
+
+### Metrics (July 7, 2026)
+- 260 tests (228 unit + 29 integration + 3 refresh)
+- 28 modules, 10,112 lines
+- All files under 800 lines (max: commands.rs at 699)
+- Zero clippy warnings (pedantic + nursery)
+- Zero `unwrap()` / `expect()` in production code
+- Zero unsafe (forbidden crate-level)
+- 227 content pages

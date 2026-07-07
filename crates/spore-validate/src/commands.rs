@@ -13,24 +13,13 @@ use std::path::{Path, PathBuf};
 
 /// Resolve the transport endpoint for `NestGate` communication.
 ///
-/// Priority order (transport injection pattern):
-/// 1. CLI `--socket` flag (explicit override)
-/// 2. `TRANSPORT_ENDPOINT` env var (launcher/Songbird injection — canonical JSON)
-/// 3. Socket discovery (legacy `NESTGATE_SOCKET` / XDG / fallback probing)
+/// Delegates to `discovery::resolve_primal_endpoint` which implements the
+/// unified transport injection pattern (CLI → `TRANSPORT_ENDPOINT` env → socket
+/// discovery).
 fn resolve_transport_endpoint(
     socket_override: Option<&str>,
 ) -> Result<cas_push::TransportEndpoint, Error> {
-    if let Some(s) = socket_override {
-        return Ok(cas_push::TransportEndpoint::Uds { path: s.into() });
-    }
-
-    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
-        return serde_json::from_str(&json)
-            .map_err(|e| Error::Config(format!("TRANSPORT_ENDPOINT parse error: {e}")));
-    }
-
-    let socket_path = cas_push::discover_socket()?;
-    Ok(cas_push::TransportEndpoint::Uds { path: socket_path })
+    discovery::resolve_primal_endpoint("nestgate", "NESTGATE_SOCKET", socket_override)
 }
 
 /// Resolve a possibly-relative public directory to an absolute path.

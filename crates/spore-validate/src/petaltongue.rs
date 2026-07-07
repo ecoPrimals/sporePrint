@@ -79,11 +79,11 @@ impl PetalTongueClient {
         }
     }
 
-    /// Discover petalTongue socket and connect (used by parity tests).
+    /// Discover petalTongue endpoint and connect (used by parity tests).
     #[allow(dead_code)]
     pub fn discover_and_connect() -> Result<Self, Error> {
-        let socket = discover_socket()?;
-        let endpoint = TransportEndpoint::Uds { path: socket };
+        let endpoint =
+            crate::discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", None)?;
         Self::connect(&endpoint)
     }
 
@@ -294,23 +294,14 @@ impl PetalTongueClient {
     }
 }
 
-/// Discover petalTongue's socket path from environment.
-pub fn discover_socket() -> Result<String, Error> {
-    if let Some(path) = crate::discovery::probe_socket("petaltongue", "PETALTONGUE_SOCKET") {
-        return Ok(path);
-    }
-
-    Err(Error::Config(
-        "petalTongue socket not found. Set PETALTONGUE_SOCKET or ensure petalTongue is running."
-            .into(),
-    ))
-}
-
 /// Quick status check: connect, announce, probe key methods.
 pub fn status() -> Result<PetalTongueStatus, Error> {
-    let socket = discover_socket()?;
-    let endpoint = TransportEndpoint::Uds {
-        path: socket.clone(),
+    let endpoint =
+        crate::discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", None)?;
+    let socket = match &endpoint {
+        TransportEndpoint::Uds { path } => path.clone(),
+        TransportEndpoint::Tcp { host, port } => format!("{host}:{port}"),
+        TransportEndpoint::MeshRelay { peer_id, .. } => format!("mesh:{peer_id}"),
     };
     let mut client = PetalTongueClient::connect(&endpoint)?;
 
@@ -379,10 +370,9 @@ mod tests {
     }
 
     #[test]
-    fn discover_socket_returns_error_without_socket() {
-        // Only passes if petalTongue isn't running (safe in CI)
-        // In live NUCLEUS this will find the socket — that's fine
-        let result = discover_socket();
+    fn resolve_endpoint_returns_result() {
+        let result =
+            crate::discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", None);
         assert!(result.is_ok() || result.is_err());
     }
 

@@ -12,6 +12,7 @@
 //! assuming a specific forge.
 
 use crate::error::Error;
+use crate::http;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
@@ -217,9 +218,6 @@ impl VcsBackend for ForgeArchiveBackend {
         target.is_dir() && std::fs::read_dir(target).is_ok_and(|mut d| d.next().is_some())
     }
 }
-
-// HTTP/tar utilities live in the `http` module — reexport for internal use.
-use crate::http;
 
 /// Select the best available VCS backend at runtime.
 pub fn detect_backend() -> Box<dyn VcsBackend> {

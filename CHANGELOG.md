@@ -5,6 +5,42 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.5.0] — 2026-07-07 — Transport Unification + Catalog Metric Evolution
+
+**Unified transport resolution, centralized timeouts, deduplicated discovery,
+catalog metric evolution.**
+
+### Changed
+
+- **Unified transport resolution**: `petalTongue` commands (`pt-render`, `pt-viz`)
+  now honor `TRANSPORT_ENDPOINT` env var, matching NestGate's injection pattern.
+  New `discovery::resolve_primal_endpoint()` replaces per-primal `discover_socket()`
+  wrappers (CLI → TRANSPORT_ENDPOINT → socket discovery).
+- **Centralized timeout constants**: `PROBE_TIMEOUT` (3s), `TRANSPORT_CONNECT_TIMEOUT`
+  (15s), `TRANSPORT_IO_TIMEOUT` (30s) moved to `paths.rs` — eliminates 4 duplicated
+  constant definitions across `nucleus.rs`, `tower.rs`, `cas_push.rs`, `http.rs`.
+- **Catalog metric evolution**: Removed 11 hardcoded `**Tests**:` lines from
+  PRIMAL_CATALOG.md — `entity_metrics` shortcode renders live registry values.
+  Remaining narrative test counts use `entity_stat` shortcodes.
+- **Import consolidation**: Mid-file `use` statements in `fetch.rs`, `refresh.rs`,
+  `notebook.rs` moved to top of file (idiomatic Rust module layout).
+
+### Removed
+
+- `cas_push::discover_socket()` — replaced by `discovery::resolve_primal_endpoint()`
+- `petaltongue::discover_socket()` — replaced by `discovery::resolve_primal_endpoint()`
+
+### Metrics
+
+- 260 tests (228 unit + 29 integration + 3 refresh) — up from 258
+- 28 modules, 10,112 lines
+- All files under 800 lines (max: commands.rs at 699)
+- Zero clippy warnings (pedantic + nursery)
+- Zero `unwrap()` / `expect()` in production code
+- 227 content pages, 190 internal links verified
+
+---
+
 ## [3.4.0] — 2026-07-07 — Content Enrichment: Forensic Consistency Sprint
 
 **Evidence Snapshot, maturity badges, metric unification, claim calibration,

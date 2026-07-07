@@ -5,6 +5,8 @@
 //! Parses `.ipynb` JSON directly (no nbconvert dependency) and emits
 //! Zola-compatible markdown with TOML front matter.
 
+use crate::paths;
+use crate::time::today_utc;
 use serde::Deserialize;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
@@ -173,8 +175,6 @@ fn render_outputs(outputs: &[Output], out: &mut String) {
     }
 }
 
-use crate::time::today_utc;
-
 /// Render a single notebook file to Zola markdown.
 fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, crate::error::Error> {
     let text = std::fs::read_to_string(nb_path).map_err(|e| crate::error::Error::Io {
@@ -229,8 +229,6 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, crate::error:
 
     Ok(format!("{} -> {}", nb_path.display(), out_path.display()))
 }
-
-use crate::paths;
 
 /// Render all notebooks from given directories into Zola content.
 ///

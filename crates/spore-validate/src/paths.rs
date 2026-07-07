@@ -1,11 +1,22 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-//! Canonical path constants and helpers for sporePrint's directory layout.
+//! Canonical path constants, timeouts, and helpers for sporePrint.
 //!
-//! Centralizes all path literals so the layout can evolve without grep-hunting.
+//! Centralizes all path literals and network constants so the layout and
+//! transport parameters can evolve without grep-hunting.
 
 use crate::error::Error;
 use std::path::{Path, PathBuf};
+use std::time::Duration;
+
+/// IPC timeout for health / method probes (fast operations).
+pub const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
+
+/// Transport connect timeout for CAS push and HTTP fetch.
+pub const TRANSPORT_CONNECT_TIMEOUT: Duration = Duration::from_secs(15);
+
+/// Transport I/O (read/write) timeout for CAS push and HTTP fetch.
+pub const TRANSPORT_IO_TIMEOUT: Duration = Duration::from_secs(30);
 
 pub const CONFIG_FILE: &str = "config.toml";
 pub const SOURCES_FILE: &str = "sources.toml";

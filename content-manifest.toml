@@ -1,5 +1,5 @@
-generated = "2026-07-07T11:56:29Z"
-root_hash = "a471ed2c8f328bf5c6329386aded89077c7048e1c9b8bc7022498289e6d865fd"
+generated = "2026-07-07T13:44:16Z"
+root_hash = "4652833b0b6e5dc8d14695e4382ad00f1f3ef0feed67324748ab19698bd8bba5"
 page_count = 227
 
 [pages."_index.md"]
@@ -83,8 +83,8 @@ size_bytes = 13279
 title = "NUCLEUS Composition Model"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
-blake3 = "fc9d4bdc5ec60e287e23fff19e833ad83dc1275c758192e7f6babbe9d14054c3"
-size_bytes = 55469
+blake3 = "15c06e10b757a20b8e0907854caf4590ff55388ccc68bd01a54dcd2591ed79e2"
+size_bytes = 55059
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 
 [pages."architecture/RENVOIS_KNOWLEDGE_TOPOLOGY.md"]

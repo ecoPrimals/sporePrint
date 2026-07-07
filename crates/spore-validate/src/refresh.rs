@@ -7,6 +7,7 @@
 
 use crate::error::Error;
 use crate::model::{Entity, EntityKind};
+use crate::time::today_utc;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use toml_edit::DocumentMut;
@@ -202,8 +203,6 @@ fn update_totals(doc: &mut DocumentMut) {
         }
     }
 }
-
-use crate::time::today_utc;
 
 /// Resolve a repo path from its `org/name` string.
 ///
