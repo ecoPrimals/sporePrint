@@ -72,12 +72,11 @@ For a primal to be CI-buildable with zero manual intervention:
 3. **Toolchain declared** in `rust-toolchain.toml`
 4. **Binary name = primal name lowercase** with no separators
 
-Currently **11/14 primals** meet this convention. Three require workarounds:
-- {{ entity(name="biomeos") }}: needs `--package biomeos-unibin`
-- {{ entity(name="skunkbat") }}: needs `--package skunk-bat-server`
-- {{ entity(name="nestgate") }}: requires `ld.lld` linker (project config divergence)
+Currently **12/14 primals** meet this convention. Two require workarounds:
+- {{ entity(name="skunkbat") }}: needs `--package skunk-bat-server` (CI-DIV-02, fix pending)
+- {{ entity(name="nestgate") }}: requires `ld.lld` linker (CI-DIV-03, project config divergence)
 
-These are documented divergences being converged by upstream teams.
+{{ entity(name="biomeos") }}'s `--package biomeos-unibin` requirement was resolved in Wave 133a (`f77886d1` — `default-members` fix). These remaining divergences are documented and being converged by upstream teams.
 
 ## Verification
 

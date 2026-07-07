@@ -11,7 +11,7 @@ springs = ["primalspring"]
 
 ## Live at [lab.primals.eco](https://lab.primals.eco)
 
-**JupyterHub** runs on {{ entity(name="songbird") }}-routed sovereign hardware. No cloud. No exposed ports. Students, researchers, and collaborators access live compute through the mesh — the same infrastructure that produced the baseCamp results.
+**JupyterHub 5.4.5** is live on {{ entity(name="songbird") }}-routed sovereign hardware at [lab.primals.eco](https://lab.primals.eco). No cloud. No exposed ports. Students, researchers, and collaborators access live compute through the mesh — the same infrastructure that produced the baseCamp results.
 
 The compute lab runs on a multi-gate mesh where {{ entity(name="songbird") }} handles all routing via `capability.call`. Services bind to `localhost`. The mesh absorbs new hardware automatically — plug in a node, cascade primals, announce capabilities, and the mesh routes to it.
 
@@ -40,8 +40,8 @@ Browser → lab.primals.eco
 
 | Gate | Hardware | Role | Status |
 |------|----------|------|--------|
-| **ironGate** | RTX 5070 Ti (16GB VRAM), NVMe | GPU compute, GROMACS, CUDA, JupyterHub | Meshed, LAN direct |
-| **strandGate** | 64-core EPYC, 256GB DDR5 | CPU compute, STAR alignment, heavy bioinformatics | Joining |
+| **ironGate** | RTX 5070 Ti (16GB VRAM), NVMe | GPU compute, GROMACS, CUDA, **JupyterHub LIVE** | Meshed, LAN direct |
+| **strandGate** | 64-core EPYC, 256GB DDR5 | CPU compute, STAR alignment, heavy bioinformatics | Alive at .103, SSH pending |
 | **sporeGate** | i7, 32GB | Public entry, Sovereign CI, build host | Active |
 | **eastGate** | i9-14900K, 96GB DDR5, 10GbE | Overwatch, primalSpring, petalTongue | Active |
 

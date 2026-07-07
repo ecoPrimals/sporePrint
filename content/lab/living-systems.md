@@ -24,11 +24,11 @@ This page shows what is actually deployed and operational.
 |------|--------|-----------|----------------|
 | **sporeGate** | 🟢 Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo |
 | **eastGate** | 🟢 Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
-| **ironGate** | 🟢 Meshed | LAN + WG | RTX 5070 Ti, JupyterHub (deploying), songBird |
+| **ironGate** | 🟢 Meshed | LAN + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
 | **flockGate** | 🟡 WAN | WG via golgi | Tower atomic evolution: songBird, bearDog, skunkBat dev |
-| **golgi** | 🟢 Online | VPS | WireGuard hub, Forgejo host, depot, cascade timer |
-| **grapheneGate** | 🟢 Online | ADB (USB) | Pixel 8a, Tower running, 14/14 aarch64-musl binaries |
-| **strandGate** | ⬜ Joining | — | 64-core EPYC, 256GB — awaiting hardware enrollment |
+| **golgi** | 🟢 Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
+| **grapheneGate** | 🟢 Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (nestGate + coralReef: Android UDS pending) |
+| **strandGate** | 🟡 Alive | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, SSH enrollment pending |
 
 ## Live Capabilities
 
@@ -50,13 +50,13 @@ best available provider.
 
 | Capability | Provider | Status |
 |------------|----------|--------|
-| `jupyter.execute` | ironGate | JupyterHub deployment in progress |
-| `compute.gpu` | ironGate | RTX 5070 Ti ready, pending capability registration |
+| `jupyter.execute` | ironGate | **JupyterHub 5.4.5 LIVE** — `lab.primals.eco → 200` |
+| `compute.gpu` | ironGate | RTX 5070 Ti ready, capability registration in progress |
 | `compute.cpu` | strandGate | Awaiting hardware enrollment |
 
 ## JupyterHub — Live Compute
 
-JupyterHub on ironGate provides notebook access to the live mesh. Once deployed, the path is:
+JupyterHub 5.4.5 is running on ironGate, serving at `lab.primals.eco`. The path is:
 
 ```
 Browser → lab.primals.eco
@@ -117,11 +117,12 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 
 ## What's Next
 
-| Item | Gate | When |
-|------|------|------|
-| JupyterHub deploy + capability registration | ironGate | This wave |
-| bearDog ACME gateway activation (Caddy retirement) | sporeGate | After flockGate fix |
-| strandGate enrollment (mesh auto-absorb) | strandGate | When hardware arrives |
+| Item | Gate | Status |
+|------|------|--------|
+| ~~JupyterHub deploy~~ | ironGate | **LIVE** — JupyterHub 5.4.5, `lab.primals.eco → 200` |
+| `jupyter` capability registration | ironGate | Pending `primal.announce` |
+| bearDog ACME gateway activation (Caddy retirement) | sporeGate | After flockGate CryptoProvider fix |
+| strandGate SSH enrollment | strandGate | Hardware alive at .103, SSH key pending |
 | Bidirectional relay (GitHub ↔ Forgejo parity) | golgi | cellMembrane deploy |
 | Live mesh visualization (petalTongue wire-up) | eastGate | sporePrint + petalTongue |
 

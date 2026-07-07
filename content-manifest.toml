@@ -1,5 +1,5 @@
-generated = "2026-07-06T16:34:17Z"
-root_hash = "336ca1fbbb8a35ae81adb1cc8dc25f7604f0887761c5992afd12f23732152b99"
+generated = "2026-07-07T11:41:49Z"
+root_hash = "a7e1b0e2f16cc5071c6dc67cb6dc212aa8273411ec0814f3d0c9192f45f92d49"
 page_count = 226
 
 [pages."_index.md"]
@@ -88,8 +88,8 @@ size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "2fcc317fa750ebe4e795adfe57a4e14699540b3aab8d2e665bcbe784da68473c"
-size_bytes = 4640
+blake3 = "863220b2958fccf9012d6baf2a3642aebf9b2b27c57b8e02d6262935c888f228"
+size_bytes = 4759
 title = "Sovereign CI — Build Infrastructure"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
@@ -203,8 +203,8 @@ size_bytes = 8105
 title = "biomeOS Validation Summary"
 
 [pages."lab/compute-access.md"]
-blake3 = "1f2566ec0a8c59b912f9fbc111d09cdbcb940fb72b36e4aebce51e44989b4dff"
-size_bytes = 5827
+blake3 = "a7549f0e74e704c01734b86620c3296e4d3fa418dcac93071802067a5b4c7ce3"
+size_bytes = 5910
 title = "Compute Access — ABG Compute Lab"
 
 [pages."lab/groundspring-validation-summary.md"]
@@ -228,8 +228,8 @@ size_bytes = 6306
 title = "lithoSpore — LTEE Reproduction and Portable Validation"
 
 [pages."lab/living-systems.md"]
-blake3 = "87d00839b1e8d8485944898b484f42dd596a454cdad4010e3e4937b1a5faca6e"
-size_bytes = 5665
+blake3 = "f4f7646600dfe1812084f262f32b67b1c9d4f71e985e9c4679cecddf73d87798"
+size_bytes = 5868
 title = "Living Systems — What's Running Now"
 
 [pages."lab/nestgate-validation-summary.md"]
@@ -748,7 +748,7 @@ size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "2d3c287ca4fc894ca2950c5003835398f4f62423f2c31aff53d44064262674be"
+blake3 = "7a9eb4e3baca47614d7b784cb7abf5eec5b4a1cf45cd1ca38671856f3c74cea2"
 size_bytes = 254
 title = "Sample"
 
