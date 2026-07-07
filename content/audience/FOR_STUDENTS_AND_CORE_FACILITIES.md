@@ -13,6 +13,8 @@ springs = ["healthspring", "wetspring"]
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
+> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md).
+
 ---
 
 ## What This Is (30-Second Version)

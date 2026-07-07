@@ -7,7 +7,7 @@ template = "section.html"
 
 ## All Content
 
-sporePrint contains 222 pages across 10 sections. This page lists every section with its contents and page count.
+sporePrint contains {{ total_stat(stat="content_pages") }} pages across 10 sections. This page lists every section with its contents and page count.
 
 ---
 

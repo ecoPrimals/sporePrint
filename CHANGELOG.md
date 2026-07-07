@@ -5,6 +5,57 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.4.0] — 2026-07-07 — Content Enrichment: Forensic Consistency Sprint
+
+**Evidence Snapshot, maturity badges, metric unification, claim calibration,
+accessibility improvements, contact page evolution.**
+
+### Added
+
+- **Evidence Snapshot page** (`architecture/EVIDENCE_SNAPSHOT.md`): Single canonical
+  source of truth for all ecosystem metrics, definitions, and measurement methodology.
+  Every metric uses `total_stat` shortcodes — always current.
+- **Maturity badge shortcode** (`maturity.html`): 6 levels — Implemented, Reproduced,
+  Certified, Architecture-ready, Planned, Unaudited. Used across products and science.
+- **Config aliases**: `total_primals`, `total_springs`, `content_pages` added to
+  `[extra.totals]` — fixes broken `total_primals` shortcode references.
+- **Historical snapshot banners**: All 12 March 2026 docs (audience/, technical/,
+  methodology/) now carry blockquote banners linking to Evidence Snapshot with
+  current metrics via shortcodes.
+
+### Changed
+
+- **Product pages calibrated**: helixVision, lattice QCD, blueFish, esotericWebb,
+  initioChem — all now carry maturity badges and calibrated claims. helixVision
+  description updated: "AlphaFold-quality" → target, with primitive-level parity
+  demonstrated and full-pipeline benchmarks pending.
+- **Metric unification**: Replaced hardcoded numbers with `total_stat` shortcodes
+  in lab/_index, _index, science/_index, ECOSYSTEM_INVENTORY, SPRING_CATALOG,
+  SOVEREIGN_PRIOR_ART_CATALOG, KNOME_EVOLUTION, glossary, contact, sitemap,
+  architecture/_index.
+- **Clone commands fixed**: reproduce.md now uses HTTPS URLs first
+  (`https://github.com/...`) instead of SSH (`git@github.com:...`).
+- **Contact page softened**: Organization section rewritten — institution-friendly
+  while maintaining professional boundaries. Metrics now via shortcodes.
+- **Sitemap tree collapsed**: `<details open>` → `<details>` — content appears
+  first for screen readers, SEO, and text-mode readers.
+- **OpenGraph metadata**: `og:site_name` updated from "sporePrint — ecoPrimals"
+  to "ecoPrimals — Sovereign Scientific Computing" for better discoverability.
+- **Spring/domain count fixes**: "8 scientific domains" → "6 research domains"
+  in science/_index description (matches actual section count).
+  "7 springs" → "8 springs" in COMPOSITION_PIPELINE, CROSS_SPRING_EVIDENCE_MAP.
+
+### Fixed
+
+- Broken `total_primals` shortcode: config had `primal_count` but content used
+  `total_primals` — added alias.
+- 12+ pages with conflicting LOC counts (3.2M vs 3.46M), test counts (27K vs
+  107K vs 113K), validation checks (12K vs 15K vs 20K), WGSL counts (628 vs 806
+  vs 952), and spring counts (7 vs 8) — all now either unified via shortcodes or
+  marked as historical snapshots.
+
+---
+
 ## [3.3.0] — 2026-07-06 — Deep Debt Sprint + Sovereign AAR
 
 **Smart refactoring, profile-driven probes, env-overridable socket dirs,

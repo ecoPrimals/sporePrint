@@ -161,7 +161,7 @@ The springs continued evolving after Feb 26:
 | Mar 2026 | {{ entity(name="healthspring") }} V35: 613 tests, 79 capabilities, IPC resilience |
 | Mar 2026 | {{ entity(name="ludospring") }} V24: 75 experiments, 1,692 checks, 13 HCI models |
 | Mar 2026 | {{ entity(name="groundspring") }} V114: 39 modules, 715+ tests, 102 GPU delegations |
-| **Mar 17, 2026** | **Total: 20,695+ checks, 175+ papers, 7 springs** |
+| **Mar 17, 2026** | **Total: 20,695+ checks, 175+ papers, 7 springs (8th — ludoSpring — added later)** |
 
 ---
 

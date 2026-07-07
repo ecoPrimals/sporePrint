@@ -10,7 +10,7 @@ domain = "Methodology"
 
 ## The Conversation Constraint
 
-Across 15 primals, 8 springs, 27,000+ tests, and months of development,
+Across {{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_tests_display") }} tests, and months of development,
 the human developer never typed a line of Rust.
 
 The human does not know Rust. He chose Rust *because* he didn't know it.

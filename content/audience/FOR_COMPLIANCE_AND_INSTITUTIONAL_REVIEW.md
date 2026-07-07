@@ -14,6 +14,8 @@ springs = ["groundspring", "healthspring", "wetspring"]
 **License:** scyBorg triple — AGPL-3.0-or-later (code), ORC (game mechanics), CC-BY-SA 4.0 (docs). See [scyBorg Licensing](/methodology/scyborg-licensing/).
 **Repositories:** github.com/ecoPrimals
 
+> **Historical snapshot.** Metrics in this document reflect March 2026 (7 springs, ~27K tests, ~15K validation checks). Current ecosystem metrics are on the [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) page ({{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_tests_display") }} tests, {{ total_stat(stat="validation_checks") }} checks, measured {{ total_stat(stat="measured_date") }}). Compliance analysis and gap statements remain accurate.
+
 ---
 
 ## Purpose

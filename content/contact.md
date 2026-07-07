@@ -24,8 +24,8 @@ Author of all code, all science validation, and all documentation on this site.
 **What I do**:
 - Wet lab — fermentation, microbial assays, high-throughput sequencing, PFAS, BSL2
 - Dry lab — pure Rust bioinformatics, GPU compute (vendor-agnostic WGSL), sovereign pipelines
-- Systems — 13-primal mesh architecture, sovereign deployment, zero C dependencies
-- Science — 70+ published papers reproduced, 14,314+ validated checks across 8 domains
+- Systems — {{ total_stat(stat="total_primals") }}-primal mesh architecture, sovereign deployment, zero C dependencies
+- Science — {{ total_stat(stat="papers_reproduced") }} published papers reproduced, {{ total_stat(stat="validation_checks") }} validated checks across 8 domains
 
 The [Lab](@/lab/_index.md) has the evidence. The [Science](@/science/_index.md) section
 has the papers. Every claim has a `cargo test` that proves it.
@@ -56,25 +56,26 @@ Reach out about anything. No compensation expected or discussed — this is the 
 
 ## If You Represent an Organization
 
-Companies, labs, institutions — anyone sending a representative on behalf of
-an entity that captures value from focused expertise.
+Companies, labs, institutions — PIs, program managers, technical staff, or
+decision makers with a specific goal.
 
-If you want my time and skills applied to your organization's work, that is a
-professional engagement. Come as a decision maker, not a middleman. Know what
-you need. Compensation is variable — we discuss it like adults when the work
-is clear.
+If you're exploring how this system applies to your organization's work,
+please include the goal, decision context, timeline, and what kind of
+evaluation or collaboration you're considering. Specific requests get
+substantive responses.
 
-**What I can bring to your organization**:
+**What I can bring**:
 - Wet + dry lab in one person (bench science AND computational pipelines)
-- Production Rust systems engineering (13 services, 14K+ tests, zero unsafe)
+- Production Rust systems engineering ({{ total_stat(stat="total_primals") }} services, {{ total_stat(stat="total_tests_display") }} tests, zero unsafe)
 - GPU-accelerated scientific computing on commodity hardware
-- AI-assisted development methodology that actually works ([K-NOME](@/methodology/K_NOME_PROGRAMMING.md))
+- AI-assisted development methodology ([K-NOME](@/methodology/K_NOME_PROGRAMMING.md))
 - Sovereign pipeline builds — no vendor lock-in, no cloud dependency, your hardware
 
-**Please don't email if**:
-- You're a recruiter sending bulk messages without a specific mandate
-- You want to sell me something
-- You can't articulate what you need in the first paragraph
+**Best if your email includes**:
+- What you're trying to accomplish (research question, infrastructure need, evaluation)
+- Who will be involved (PI, lab manager, technical team)
+- Timeline and scope
+- Whether this is exploration, evaluation, or a specific engagement
 
 ---
 

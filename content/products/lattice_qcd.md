@@ -1,6 +1,6 @@
 +++
 title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
-description = "A deployable lattice QCD stack replacing QUDA/MILC/Chroma C++/CUDA with pure Rust + WGSL — guideStone-certified, MILC-compatible output, runs on any Vulkan GPU."
+description = "Lattice QCD physics engine in pure Rust + WGSL — 59/59 checks, 3 published papers reproduced, guideStone-certified. Product packaging in development."
 date = 2026-04-04
 
 [taxonomies]
@@ -91,10 +91,12 @@ NVIDIA's CUDA pricing model throttles consumer f64 to 1:64 throughput to protect
 
 ## Current Status
 
-- **Engine**: Validated (59/59 checks, 3 papers, cross-vendor GPU parity)
-- **ILDG output format**: In development
-- **Measurement pipeline**: Plaquette and flow observables working; Polyakov loop and topological charge next
-- **Product packaging**: Pending (product name TBD, sporeGarden repo TBD)
+| Component | Maturity | Detail |
+|-----------|----------|--------|
+| Physics engine | {{ maturity(level="reproduced") }} | 59/59 checks, 3 papers, cross-vendor GPU parity |
+| ILDG output format | {{ maturity(level="planned") }} | In development — MILC-compatible gauge configs |
+| Measurement pipeline | {{ maturity(level="implemented") }} | Plaquette and flow observables working; Polyakov loop and topological charge next |
+| Product packaging | {{ maturity(level="planned") }} | Product name TBD, sporeGarden repo TBD |
 
 ---
 

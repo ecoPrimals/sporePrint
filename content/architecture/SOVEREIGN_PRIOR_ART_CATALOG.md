@@ -11,19 +11,19 @@ springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"
 
 ## At a Glance
 
-A systematic catalog of what AGPL-3.0 makes permanently public. For each primal and spring, this document records the prior art it replaces, the innovation it adds, and the specific capabilities locked into the public commons. 15 primals, 8 springs, 52 novel innovations, ~1.5M lines of Rust — all irrevocably open.
+A systematic catalog of what AGPL-3.0 makes permanently public. For each primal and spring, this document records the prior art it replaces, the innovation it adds, and the specific capabilities locked into the public commons. {{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs, 52 novel innovations, {{ total_stat(stat="total_loc_display") }} lines of Rust — all irrevocably open.
 
 ---
 
 ## AGPL-3.0 Commons Inventory
 
-**Date**: March 13, 2026
+**Date**: March 13, 2026 (metrics updated to {{ total_stat(stat="measured_date") }} via [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md))
 **Purpose**: Catalog all prior art locked into AGPL-3.0 public commons.
 Sovereign code is code that CANNOT be recaptured by fictions (corporations)
 but is free to use, study, modify, and share by all humans.
 
-**Totals**: ~1.5M lines Rust | ~84K lines WGSL | ~63,000+ tests & checks |
-~100 reproduced papers | 13 primals | 5 springs | 20+ scientific domains |
+**Totals**: {{ total_stat(stat="total_loc_display") }} lines Rust | {{ total_stat(stat="wgsl_lines_display") }} lines WGSL | {{ total_stat(stat="total_tests_display") }} tests & checks |
+{{ total_stat(stat="papers_reproduced") }} reproduced papers | {{ total_stat(stat="total_primals") }} primals | {{ total_stat(stat="total_springs") }} springs | 8 scientific domains |
 52 novel innovations | AGPL-3.0 perpetually locked
 
 ---

@@ -1,11 +1,11 @@
 +++
 title = "🔬 Science"
-description = "28 baseCamp papers across 8 scientific domains. Each is executable — run the code, reproduce the results, on your own hardware."
+description = "28 baseCamp papers across 6 research domains. Each is executable — run the code, reproduce the results, on your own hardware."
 sort_by = "title"
 template = "science_section.html"
 +++
 
-28 {{ entity(name="basecamp") }} papers across 6 research domains. Every paper is executable — the science is runnable code that reproduces published results on commodity hardware. "Sovereign" means **self-hosted and cloud-independent**.
+{{ total_stat(stat="basecamp_papers") }} {{ entity(name="basecamp") }} papers across 6 research domains. Every paper is executable — the science is runnable code that reproduces published results on commodity hardware. "Sovereign" means **self-hosted and cloud-independent**.
 
 Each paper stands alone as a potential publication. Together they demonstrate that a pure-Rust, self-hosted computing ecosystem produces real, publishable science across physics, biology, medicine, neuroscience, game design, and economics.
 
@@ -78,4 +78,4 @@ Each paper stands alone as a potential publication. Together they demonstrate th
 
 ---
 
-**See also**: [Cross-Spring Evidence Map](@/science/CROSS_SPRING_EVIDENCE_MAP.md) for convergent predictions across springs, and [Structure Prediction Roadmap](@/science/STRUCTURE_PREDICTION_ROADMAP.md) for the {{ entity(name="helixvision") }} sovereign AlphaFold-quality pipeline.
+**See also**: [Cross-Spring Evidence Map](@/science/CROSS_SPRING_EVIDENCE_MAP.md) for convergent predictions across springs, and [Structure Prediction Roadmap](@/science/STRUCTURE_PREDICTION_ROADMAP.md) for the {{ entity(name="helixvision") }} structure prediction pipeline (primitives {{ maturity(level="reproduced") }}, pipeline {{ maturity(level="architectural") }}).

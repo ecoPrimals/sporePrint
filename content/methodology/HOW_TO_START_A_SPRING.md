@@ -14,6 +14,8 @@ You already do.**
 **Last Updated:** March 17, 2026  
 **License:** CC-BY-SA 4.0
 
+> **Historical snapshot.** Metrics reflect March 2026 (14 primals, 7 springs). Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md).
+
 ---
 
 ## The Premise

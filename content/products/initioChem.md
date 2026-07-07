@@ -56,10 +56,12 @@ hotSpring produces pseudoSpore (validated computation)
 
 ## Current Status
 
-- **Seeded** (v0.1.0) — architecture defined, first ABG pseudoSpore delivered
-- **Composition**: hotSpring + barraCuda + NestGate + petalTongue + sweetGrass
-- **Validation substrate**: hotSpring CompChem GuideStone (190/190 checks)
-- **gen5 connection**: ABG whole-cell modeling thread (Karr 2012 → Thornburg 2026)
+| Component | Maturity | Detail |
+|-----------|----------|--------|
+| Architecture | {{ maturity(level="architectural") }} | v0.1.0 seeded, composition defined |
+| Validation substrate | {{ maturity(level="reproduced") }} | hotSpring CompChem GuideStone (190/190 checks) |
+| Interactive explorer | {{ maturity(level="planned") }} | FEL visualization layer in development |
+| ABG connection | {{ maturity(level="planned") }} | Whole-cell modeling thread (Karr 2012 → Thornburg 2026) |
 
 ---
 

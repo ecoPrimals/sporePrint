@@ -1,10 +1,10 @@
-generated = "2026-07-07T11:41:49Z"
-root_hash = "a7e1b0e2f16cc5071c6dc67cb6dc212aa8273411ec0814f3d0c9192f45f92d49"
-page_count = 226
+generated = "2026-07-07T11:56:29Z"
+root_hash = "a471ed2c8f328bf5c6329386aded89077c7048e1c9b8bc7022498289e6d865fd"
+page_count = 227
 
 [pages."_index.md"]
-blake3 = "20e1de5cc2b8470147de983bdb5a30b73ebc8cf406d65fe8de11704a960a1976"
-size_bytes = 2360
+blake3 = "3fc89dfe55809c12d9400c25f4e8bd35a3e363dcd2809f3041fa0b5cc37a5e64"
+size_bytes = 2398
 title = "sporePrint"
 
 [pages."architecture/COMPOSITION_PATTERNS.md"]
@@ -13,7 +13,7 @@ size_bytes = 4308
 title = "Composition Patterns"
 
 [pages."architecture/COMPOSITION_PIPELINE.md"]
-blake3 = "2653b24959661dcb377cec55a3ef4f3a1ff199e41ff16e4c0354fbb643e2c2c2"
+blake3 = "685f174b83cf78897974c7a6de4267f25193d4673a240c778cc9e61c7c892dbd"
 size_bytes = 8578
 title = "Composition Pipeline: Springs → Primals → Products → Foundation"
 
@@ -28,8 +28,8 @@ size_bytes = 34542
 title = "ecoPrimals Ecosystem Architecture: From Binary to Bonding"
 
 [pages."architecture/ECOSYSTEM_INVENTORY.md"]
-blake3 = "5f8693c55345d5b216520fbb49d25ac8d0e4725c02c267edc4d2794d972ed99c"
-size_bytes = 11400
+blake3 = "9305ad75ba775d144b253a7e3af643de826919db14094f8f1805a7931d53045f"
+size_bytes = 11720
 title = "Ecosystem Inventory"
 
 [pages."architecture/ECOSYSTEM_VISUALIZATION.md"]
@@ -37,9 +37,14 @@ blake3 = "cd30fca2d144ca55d9d2fafb63d573f2e762b9806fd7072d7fcee82e361499cb"
 size_bytes = 1937
 title = "Ecosystem Visualization"
 
+[pages."architecture/EVIDENCE_SNAPSHOT.md"]
+blake3 = "ffee852ea7fbd805e569e5b0a50d79b22842ffbc280d86d6e2d48f22ef5758a1"
+size_bytes = 7323
+title = "Evidence Snapshot"
+
 [pages."architecture/EVOLUTION_TIMELINE.md"]
-blake3 = "6dd82895d6dfd975de4022c536a16223f0170432d30bfb0ed7aed882a65bf26c"
-size_bytes = 10777
+blake3 = "38d9d5a0b570cb8e9fea658d8e1833f44207c58a90cce46152ee1e786173aa84"
+size_bytes = 10814
 title = "Evolution Timeline: 27 Days, Seven Domains, 15,000+ Checks"
 
 [pages."architecture/EXTERNAL_COLLABORATION.md"]
@@ -98,13 +103,13 @@ size_bytes = 8670
 title = "Sovereign Deployment"
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
-blake3 = "53c62c5c7a4ab92699f1704c084ffd4159f3e678b593a19e82f9e9515909d00e"
-size_bytes = 44250
+blake3 = "f39751e86823f5f00d8932e6f7ec2b5a8338a6ac2e3ad8bd696144c6bf0d3021"
+size_bytes = 44702
 title = "ecoPrimals — Sovereign Prior Art Catalog"
 
 [pages."architecture/SPRING_CATALOG.md"]
-blake3 = "dea2891dced36d70aa9000146a8dc1a016474556e22584348cff78ab61884b2a"
-size_bytes = 38684
+blake3 = "fd6a01cb63a098e6174a1456240111412fc41abbdade97e168c74f2ac935b412"
+size_bytes = 38804
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
 
 [pages."architecture/TRANSPORT_EVOLUTION.md"]
@@ -113,33 +118,33 @@ size_bytes = 6381
 title = "Transport Evolution"
 
 [pages."architecture/_index.md"]
-blake3 = "6bf17175e76cef0dd96932c1f5db67ee656e994a9849ae7f20d954c790f64f6d"
-size_bytes = 3158
+blake3 = "d323a8a45fd5692dfd17c417c0186b40eb7e05aa789445218934e8e4be6f7045"
+size_bytes = 3375
 title = "🏗️ Architecture"
 
 [pages."audience/CAPABILITY_PARITY_BRIEF.md"]
-blake3 = "1c963f903d339918b4e807ded9ad011440e26a2b9ed55c9cd0b4b49b9778d43a"
-size_bytes = 22157
+blake3 = "63a131275ce3590560779f79300dbb00ee3f07c2ed8191397cc92bd33ce0bf80"
+size_bytes = 22658
 title = "ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment"
 
 [pages."audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md"]
-blake3 = "67b477b81fb3af3187c5bd92f08c4f0542c3d5a1381071cdc245728bda4aabb8"
-size_bytes = 17875
+blake3 = "7aada94c0cb3cfd23f029e8358e3a844e011043f8d720ffca07dd26d19f1517f"
+size_bytes = 18353
 title = "ecoPrimals — Compliance, Regulatory, and Institutional Review Reference"
 
 [pages."audience/FOR_FACULTY_AND_PIS.md"]
-blake3 = "3027ff8c1da238b7eb242ce91e239b0adcd0f5a28d9ffa6be6e8af40c8d2d8b2"
-size_bytes = 11458
+blake3 = "f534cb6a4f086d086eff70cd4e3c07d28a89484d5d366147b6cfcb3ab52f8314"
+size_bytes = 11843
 title = "ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab"
 
 [pages."audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md"]
-blake3 = "dcff5742ac017bd94c1ae837ba70129a46f6b6991086ac814211f70bd435e7a0"
-size_bytes = 10727
+blake3 = "3f7e0b803c30b4374b65af44471b7dda9af9237f3397b79db49bb4cc94448576"
+size_bytes = 10858
 title = "ecoPrimals for Hardware Builders, Hobbyists, and Gamers"
 
 [pages."audience/FOR_STUDENTS_AND_CORE_FACILITIES.md"]
-blake3 = "eb8734ec31e75e2b7eb3f52e6d0b9b1a557782b9f2666ff42af569770a25a965"
-size_bytes = 8709
+blake3 = "9e23639469a021726a35d4abc05cfb9912d96ed1423b705ef7c7f6a8b8262d40"
+size_bytes = 8840
 title = "ecoPrimals for Students, Lab Technicians, and Core Facilities"
 
 [pages."audience/_index.md"]
@@ -148,13 +153,13 @@ size_bytes = 1464
 title = "🧭 Audience"
 
 [pages."contact.md"]
-blake3 = "aff167419b2da9495ee4907d2e882e488ff41f300fb3a68631924a5cc0bd2276"
-size_bytes = 3294
+blake3 = "62214182a55c86cdee0cfa890af14df269a8cf0674c2c72d9a3a87a61b1d5399"
+size_bytes = 3490
 title = "Contact"
 
 [pages."glossary/_index.md"]
-blake3 = "bd5ba2abc1bf2d95439ad3f6df6d6274c2e08ca8fae3c995fbeb19832b4a1ec4"
-size_bytes = 11198
+blake3 = "2cfe19b2fa9fd50fc2df9807abc07c2ffc55561a748b96b9e5a9a8ea4167e1f3"
+size_bytes = 11234
 title = "📖 Glossary"
 
 [pages."guidestone/_index.md"]
@@ -188,8 +193,8 @@ size_bytes = 6573
 title = "Verification Protocol"
 
 [pages."lab/_index.md"]
-blake3 = "6ba248dd5085c0e4e960fa4d5d86697120bbb0c7ca81f55f7e98c7da8d634722"
-size_bytes = 8226
+blake3 = "9d7d711c79350cf883d6ead875ebce5bc607fa6f33de2dab40bdfd20bd3404d0"
+size_bytes = 8378
 title = "🧫 Lab"
 
 [pages."lab/airspring-validation-summary.md"]
@@ -783,8 +788,8 @@ size_bytes = 4808
 title = "Provenance Pipeline"
 
 [pages."lab/reproduce.md"]
-blake3 = "f5c2da301557a809d2343f9e5aa74378a37a54818d721c96e0c4feecc37cf090"
-size_bytes = 5032
+blake3 = "0e2f90ec2475782ea8cc6462b6dbb8bd56676eab0cafb736fcf86053beae367e"
+size_bytes = 5044
 title = "Reproduce It Yourself"
 
 [pages."lab/spores/_index.md"]
@@ -863,18 +868,18 @@ size_bytes = 48419
 title = "Constrained Evolution: How Environmental Pressure Drives Convergence in Biological and Computational Systems"
 
 [pages."methodology/HOW_TO_START_A_SPRING.md"]
-blake3 = "574faa4827bbb575bf7ea7ded40634df2f96f3165214920fff2443fff8c3c1a2"
-size_bytes = 16328
+blake3 = "82a2bff71e81a6fbff4ca46dd94df466230044b4e69d5b83e89e45b5bb96f795"
+size_bytes = 16483
 title = "How to Start a Spring"
 
 [pages."methodology/KNOME_EVOLUTION.md"]
-blake3 = "00038dc3e8016f687a55a3d33311c4b1a24c72ad22c9f1d467a28645a2c0853f"
-size_bytes = 4837
+blake3 = "ec29d056f8787810212c4dc0b2965425b1e4985ae5a8d0d054f448227fe80d72"
+size_bytes = 4947
 title = "K-NOME at Scale"
 
 [pages."methodology/KNOWLEDGE_COMMONS_TARGETS.md"]
-blake3 = "509ba58216f36027a49df672df64e0fc266f5d222411851eff53ddd278720bad"
-size_bytes = 12947
+blake3 = "375033b65327f890e2301eb99c9f2c394a313699783a0967ec662ab60c46d1d0"
+size_bytes = 13078
 title = "Knowledge Commons Targets: What Others Can Build, and Why It Can't Be Taken Back"
 
 [pages."methodology/K_NOME_PROGRAMMING.md"]
@@ -908,28 +913,28 @@ size_bytes = 1571
 title = "🌱 Products"
 
 [pages."products/blueFish.md"]
-blake3 = "0fa31c3a1887c0d5f9cbf15377f0a7bf97208c29d9de7ce6567d16c663f582aa"
-size_bytes = 3053
+blake3 = "937e9078d369d6ccc95b32fc604704ef6630d8229bf5d409028c0c73adcfc219"
+size_bytes = 3261
 title = "blueFish — Sovereign Data Pipeline"
 
 [pages."products/esotericWebb.md"]
-blake3 = "d6ca80f446fcd06a7adfc476379f614502da902c8efc48eca87cadb69ac7c045"
-size_bytes = 3243
+blake3 = "c138ebde14b582895ee67a17742f24a2b43411764f3fe933104ae0c0e22fac48"
+size_bytes = 3419
 title = "esotericWebb — Cross-Evolution CRPG"
 
 [pages."products/helixVision.md"]
-blake3 = "8e2e2b9353f2bcc272979d1c2cfbd6fc4d262599d9a809049cd2d990f3d3f53e"
-size_bytes = 4582
+blake3 = "d1b7f65bb4b64b0e39aaa88b027a167795078b88e4123a6637cafa9fc40b049e"
+size_bytes = 5189
 title = "helixVision — Self-Hosted Structure Prediction"
 
 [pages."products/initioChem.md"]
-blake3 = "34c6c4b504d20941a3b301927fa499b02ce3c368b3a73705eea7fab5d33f1c37"
-size_bytes = 2731
+blake3 = "36a21d4116d36fba821e2920fba9ebfa0a7a98e33708c53e17112452a98240a3"
+size_bytes = 2898
 title = "initioChem — Interactive Computational Chemistry"
 
 [pages."products/lattice_qcd.md"]
-blake3 = "d37ddcbb51b3c55c9c9235ddd5eaf20608bd0f3654141d1dfed2c5625fb0faae"
-size_bytes = 6262
+blake3 = "45fbadf5651bec914eaa4c042b6e903d38b1c5245fce2b4eedc9c1cd53ece152"
+size_bytes = 6478
 title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
 
 [pages."science/01_anderson_qs.md"]
@@ -1073,7 +1078,7 @@ size_bytes = 10315
 title = "Nature Preserve — Applied NPU Science Across 7 Domains"
 
 [pages."science/CROSS_SPRING_EVIDENCE_MAP.md"]
-blake3 = "ff774048885ea6605bb7f4d9223807de1fb478625a56578c0121294fdb67ed2a"
+blake3 = "d7ce85a33479e3216f9007c9d722e3007087d3b6a44524e79649cd0b8e5e66d3"
 size_bytes = 16405
 title = "Cross-Spring Evidence Map"
 
@@ -1083,8 +1088,8 @@ size_bytes = 9950
 title = "Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality"
 
 [pages."science/_index.md"]
-blake3 = "aceb5a17499dd4e1c6f9cc55308c0cdcc3a36fc4d1a8bc7775d58f2b8db79f18"
-size_bytes = 6225
+blake3 = "739b5069cb63ea66686abfd8546e1a0a97256eb0a9c59338ae091dfb49261819"
+size_bytes = 6350
 title = "🔬 Science"
 
 [pages."science/gonzales_explorer.md"]
@@ -1093,38 +1098,38 @@ size_bytes = 16335
 title = "Gonzales Interactive Explorer"
 
 [pages."sitemap/_index.md"]
-blake3 = "d1874a3bb8e0fd994fcb0032f5e867b5c12172831f37b99c2cf4ac9487a06a70"
-size_bytes = 2525
+blake3 = "24065d7fc88182195d3d08e1546302677a270a5a920a66b30a61279645adb5bf"
+size_bytes = 2560
 title = "Site Map"
 
 [pages."technical/DRUG_DISCOVERY_PIPELINE.md"]
-blake3 = "71475913eff964d6a73bd075f6d3831a952aa2f25e66c8cdaf0d00895efc4de3"
-size_bytes = 15760
+blake3 = "86718b74d8fe9936d82ae65d8b4c56b1956058ba494ca9409790b7b985175323"
+size_bytes = 15891
 title = "Drug Discovery Pipeline: iPSC → HTS → MATRIX → Anderson → Validation"
 
 [pages."technical/GRANT_TECHNICAL_APPENDIX.md"]
-blake3 = "b1284a1f0cb80aa1265f619eb9ba63be188a98cb9b1e12c2c3e363ca58ec2a37"
-size_bytes = 18184
+blake3 = "a6cf219814736a8b96a8af63e7946beff2fc1ef24aadfd9bdf0319a7884b4c2e"
+size_bytes = 18365
 title = "Grant Technical Appendix: Validation Evidence by Agency Program"
 
 [pages."technical/HARDWARE_COST_ANALYSIS.md"]
-blake3 = "89fc3a4eaf222cbd4691084e617dbcc328ba6179e2c0be9e39492587bd8395f1"
-size_bytes = 11192
+blake3 = "70d53053cf66a60cee7e4ea5a37deb6b0aa8ba26616df00fde6fcb8b40818fad"
+size_bytes = 11323
 title = "Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure"
 
 [pages."technical/KNOME_TEACHING_BRIEF.md"]
-blake3 = "47c97f34d610dafb22259b8b1996099a0cdc895ef371bbf0acf6b9839b38a885"
-size_bytes = 11555
+blake3 = "b2f85898321edfea6cd3eb1129a8c148f067f51f81c4d70c14272ab544479339"
+size_bytes = 11736
 title = "K-Nome: A Pedagogy for Real Science Pipelines"
 
 [pages."technical/MSU_ASSET_ACCELERATION.md"]
-blake3 = "d5b779e8edf08e4ad1ac940875b6fcc9a309530d2988c0a0716d8f58a4bc83c5"
-size_bytes = 13158
+blake3 = "0bef56bb67cb12bcfb431f618e732b0d81bf9a865b1843075ed4d56bcf76a1da"
+size_bytes = 13289
 title = "MSU Asset Acceleration: How University Infrastructure Plugs into Validated Pipelines"
 
 [pages."technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md"]
-blake3 = "724f31b907a86a65812cf139023a75c03bd17308a3c798190038e242cb977de5"
-size_bytes = 11443
+blake3 = "86f1fb7104c02945051a3772bb1e9984ff9511ed92b60af182001aeb563e2b94"
+size_bytes = 11624
 title = "Sovereign GPU Pipeline: The Vendor Replacement Story"
 
 [pages."technical/_index.md"]

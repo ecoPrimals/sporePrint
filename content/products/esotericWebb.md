@@ -46,7 +46,7 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 
 ## Current Status
 
-{{ entity(name="esotericwebb") }} is the first {{ entity(name="sporegarden") }} product. It demonstrates end-to-end primal composition in a domain (gaming) where user experience is the primary metric.
+{{ maturity(level="architectural") }} {{ entity(name="esotericwebb") }} is the first {{ entity(name="sporegarden") }} product. It demonstrates end-to-end primal composition in a domain (gaming) where user experience is the primary metric. The constituent primals are validated and the composition architecture is defined. Game content and integration layer are in development.
 
 ---
 

@@ -1,6 +1,6 @@
 +++
 title = "🧫 Lab"
-description = "Live validation results, spring science hubs, and sovereign compute access. 13 primals, 13,648+ checks, 8 springs, full provenance. Run it yourself or review the evidence."
+description = "Live validation results, spring science hubs, and sovereign compute access. Full provenance. Run it yourself or review the evidence."
 sort_by = "weight"
 template = "section.html"
 +++
@@ -39,7 +39,7 @@ Each spring validates a scientific domain. These pages tell the full story — w
 
 **2 more springs** (neuralSpring, ludoSpring) are documented in the [Spring Catalog](@/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
 
-**Total across all 8 springs**: 14,314+ quantitative checks, 70+ peer-reviewed papers reproduced, 15 researchers across 9 departments.
+**Total across all {{ total_stat(stat="total_springs") }} springs**: {{ total_stat(stat="validation_checks") }} quantitative checks, {{ total_stat(stat="papers_reproduced") }} peer-reviewed papers reproduced, 15 researchers across 9 departments. ([Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) defines all metrics.)
 
 ---
 

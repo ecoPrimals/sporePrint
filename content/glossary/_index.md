@@ -15,8 +15,8 @@ by category and alphabetized within each group.
 
 **baseCamp**
 : The cross-spring paper program. Each baseCamp paper is an executable
-  scientific study — code you can run, not a PDF you read. 28 papers across
-  8 scientific domains. See [Science](@/science/_index.md).
+  scientific study — code you can run, not a PDF you read. {{ total_stat(stat="basecamp_papers") }} papers across
+  6 research domains. See [Science](@/science/_index.md).
 
 **ecoPrimals**
 : The umbrella name for the entire ecosystem — primals, springs, products,

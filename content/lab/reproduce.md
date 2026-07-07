@@ -35,11 +35,11 @@ Optional:
 
 ```bash
 # Clone plasmidBin (pre-built binaries)
-git clone git@github.com:ecoPrimals/plasmidBin.git
+git clone https://github.com/ecoPrimals/plasmidBin.git
 export PLASMIDBIN="$(pwd)/plasmidBin"
 
 # Or build from source (springs are all public AGPL)
-git clone https://github.com/syntheticChemistry/wetSpring
+git clone https://github.com/syntheticChemistry/wetSpring.git
 cd wetSpring && cargo build --release --workspace
 ```
 
@@ -48,7 +48,7 @@ cd wetSpring && cargo build --release --workspace
 ## Step 2: Deploy the Composition
 
 ```bash
-git clone git@github.com:sporeGarden/projectNUCLEUS.git
+git clone https://github.com/sporeGarden/projectNUCLEUS.git
 cd projectNUCLEUS/deploy
 
 # Deploy full NUCLEUS (13 primals) to the current machine

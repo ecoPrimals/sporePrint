@@ -15,6 +15,8 @@ dependencies.**
 **Last Updated:** March 17, 2026  
 **License:** CC-BY-SA 4.0
 
+> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) (measured {{ total_stat(stat="measured_date") }}).
+
 ---
 
 ## The Claim

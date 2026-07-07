@@ -13,6 +13,8 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 **Last Updated:** March 17, 2026
 **License:** CC-BY-SA 4.0
 
+> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md).
+
 ---
 
 ## The Structural Argument

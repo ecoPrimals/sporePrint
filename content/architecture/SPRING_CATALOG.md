@@ -18,7 +18,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 
 ## At a Glance
 
-8 springs, each validating a scientific domain on sovereign hardware. Together: 20,000+ quantitative checks, 175+ peer-reviewed papers reproduced, 15 researchers across 9 departments. If the springs pass, the infrastructure works for real science.
+{{ total_stat(stat="total_springs") }} springs, each validating a scientific domain on sovereign hardware. Together: {{ total_stat(stat="validation_checks") }} quantitative checks, {{ total_stat(stat="papers_reproduced") }} peer-reviewed papers reproduced, 15 researchers across 9 departments. If the springs pass, the infrastructure works for real science.
 
 ---
 
@@ -239,10 +239,10 @@ Every spring depends on primals composing correctly. {{ entity(name="primalsprin
 
 | Metric | Value |
 |--------|-------|
-| Total springs | 8 (7 science domain + 1 meta-spring) |
-| Total quantitative checks | **13,648+** passing (11,161 established + 795 {{ entity(name="healthspring") }} + 1,692 {{ entity(name="ludospring") }}) |
+| Total springs | {{ total_stat(stat="total_springs") }} (7 science domain + 1 meta-spring) |
+| Total quantitative checks | **{{ total_stat(stat="validation_checks") }}** passing |
 | Scientific domains covered | Physics, agriculture, biology, chemistry, geophysics, ML, neuromorphic computing, **human health (PK/PD, microbiome, biosignal, endocrinology)**, **game science (HCI, PCG, interactive systems)** |
-| Papers reproduced | 70+ (published, peer-reviewed, across all springs) |
+| Papers reproduced | {{ total_stat(stat="papers_reproduced") }} (published, peer-reviewed, across all springs) |
 | Papers queued for review | 60+ candidates across all springs + 8 Mok-derived experiments |
 | Published work reproduced from | 14 researchers (MSU + Sandia + Carleton + clinical practice) across 9 departments |
 | BarraCuda kernels validated by springs | 79+ distinct GPU/NPU primitives ({{ entity(name="wetspring") }} alone consumes 79 via {{ entity(name="toadstool") }} S68) |

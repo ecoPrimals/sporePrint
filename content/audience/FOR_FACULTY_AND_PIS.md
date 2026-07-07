@@ -13,6 +13,8 @@ springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspri
 **Date:** March 17, 2026
 **Repositories:** github.com/ecoPrimals — all AGPL-3.0-or-later
 
+> **Historical snapshot.** Metrics in this document reflect March 2026 (~3.2M LOC, ~107K tests). Current ecosystem metrics are on the [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) page ({{ total_stat(stat="total_loc_display") }} LOC, {{ total_stat(stat="total_tests_display") }} tests, measured {{ total_stat(stat="measured_date") }}). Technical analysis remains accurate.
+
 ---
 
 ## The Short Version

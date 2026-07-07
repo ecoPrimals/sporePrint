@@ -15,9 +15,11 @@ springs = ["wetspring", "primalspring"]
 
 ## What It Is
 
-blueFish is a sovereign data pipeline and ETL (Extract-Transform-Load) tool for scientific data. It handles NCBI database integration, format conversion between bioinformatics standards, and data ingestion for the primal ecosystem — all without sending data to external services.
+{{ maturity(level="architectural") }} blueFish is a sovereign data pipeline and ETL (Extract-Transform-Load) tool for scientific data. It handles NCBI database integration, format conversion between bioinformatics standards, and data ingestion for the primal ecosystem — all without sending data to external services.
 
 For any lab working with sequence data, taxonomic databases, or clinical datasets, blueFish provides a local pipeline that respects data sovereignty: your data stays on your hardware, processed by auditable code, with full provenance tracking.
+
+The composition architecture is defined and the constituent primals are validated independently. The blueFish product packaging and integration layer is in development.
 
 ---
 

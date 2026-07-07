@@ -26,7 +26,7 @@ tar xf hotspring-guidestone-v0.7.0.tar.gz && cd validation/
 If those commands run, the claims are verified. No institutional access. No proprietary software. No cloud.
 
 - 🧬 **Run real scientific pipelines locally** — genomics, protein structure, lattice QCD, pharmacometrics, precision agriculture
-- 📄 **Reproduce published results** — 175+ papers across 8 domains, each as a binary you can run
+- 📄 **Reproduce published results** — {{ total_stat(stat="papers_reproduced") }} papers across 8 domains, each as a binary you can run
 - ⚡ **Use any GPU** — NVIDIA, AMD, Intel — no CUDA lock-in, no vendor toolchain
 - 🔒 **Own your data and compute** — nothing leaves your machine
 - ✅ **Validate with {{ entity(name="guidestone") }}** — self-verifying build artifacts that prove their own correctness

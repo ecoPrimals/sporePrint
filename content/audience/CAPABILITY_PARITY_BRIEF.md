@@ -14,6 +14,8 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 **License:** All code AGPL-3.0-or-later; all documentation CC-BY-SA-4.0
 **Repositories:** Springs at github.com/syntheticChemistry · Primals at github.com/ecoPrimals · Products at github.com/sporeGarden
 
+> **Historical snapshot.** Metrics in this document reflect March 2026 (14 primals, 7 springs, ~3.2M LOC, ~107K tests). Current ecosystem metrics are on the [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) page ({{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_loc_display") }} LOC, {{ total_stat(stat="total_tests_display") }} tests, measured {{ total_stat(stat="measured_date") }}). Parity analysis remains accurate.
+
 ---
 
 ## What This Is

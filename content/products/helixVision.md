@@ -1,6 +1,6 @@
 +++
 title = "helixVision — Self-Hosted Structure Prediction"
-description = "AlphaFold2/3-quality protein structure prediction in pure Rust f64 — no cloud, no PyTorch, no CUDA, no data leaves the lab."
+description = "Protein structure prediction pipeline in pure Rust f64 — no cloud, no PyTorch, no CUDA, no data leaves the lab. Primitives validated; end-to-end pipeline in progress."
 date = 2026-03-31
 
 [taxonomies]
@@ -16,9 +16,10 @@ springs = ["neuralspring"]
 
 ## What It Is
 
-{{ entity(name="helixvision") }} is self-hosted protein structure prediction: AlphaFold2/3-quality results running locally on consumer hardware in pure Rust, with full f64 precision, complete data ownership, and cryptographic provenance. No cloud APIs. No PyTorch. No CUDA SDK. No data sent to Google.
+{{ entity(name="helixvision") }} is self-hosted protein structure prediction running locally on consumer hardware in pure Rust, with full f64 precision, complete data ownership, and cryptographic provenance. No cloud APIs. No PyTorch. No CUDA SDK. No data sent to Google.
 
-This is not planned — it is an active codebase with **154 passing checks** (62 Python baseline + 55 Rust + 37 GPU), validated against NumPy to 1e-10 tolerance.
+{{ maturity(level="implemented") }} All 6 AlphaFold primitives are implemented and individually validated (154 checks, 1e-10 tolerance vs NumPy).
+{{ maturity(level="architectural") }} End-to-end pipeline (FASTA → structure → confidence) is designed but not yet wired. "AlphaFold-quality" refers to the target — primitive-level parity is demonstrated, full-pipeline parity is not yet benchmarked.
 
 ---
 
@@ -53,9 +54,11 @@ The pipeline: FASTA sequence → MSA search → Feature embedding → Evoformer 
 
 ---
 
-## Performance Targets
+## Performance Targets {{ maturity(level="architectural") }}
 
-| Metric | Cloud AlphaFold | {{ entity(name="helixvision") }} (consumer GPU) |
+These are design targets, not benchmarked results. Primitive-level validation is complete; end-to-end pipeline benchmarks are pending Phase C–D.
+
+| Metric | Cloud AlphaFold | {{ entity(name="helixvision") }} target |
 |--------|:---------------:|:--------------------------:|
 | Precision | f32 (PyTorch default) | **f64** (native or DF64) |
 | Cost per prediction | ~$0.01 (cloud API) | **~$0.0001** (electricity) |
@@ -68,11 +71,13 @@ The pipeline: FASTA sequence → MSA search → Feature embedding → Evoformer 
 
 ## Validation Status
 
-- **Phase A-B (Complete)**: All AlphaFold2/3 primitives decomposed, implemented in Rust, validated to 1e-10 vs NumPy, GPU-accelerated
-- **Phase C (Next)**: Wire BarraCuda GEMM to Evoformer operations
-- **Phase D**: End-to-end pipeline (FASTA → structure → confidence → provenance)
-- **Phase E**: LTEE structural evolution analysis (8.3M predictions)
-- **Phase F**: Standalone `helix-vision` crate on crates.io
+| Phase | Status | Scope |
+|-------|--------|-------|
+| A–B | {{ maturity(level="reproduced") }} | All AlphaFold2/3 primitives decomposed, implemented in Rust, validated to 1e-10 vs NumPy, GPU-accelerated |
+| C | {{ maturity(level="planned") }} | Wire BarraCuda GEMM to Evoformer operations |
+| D | {{ maturity(level="planned") }} | End-to-end pipeline (FASTA → structure → confidence → provenance) |
+| E | {{ maturity(level="planned") }} | LTEE structural evolution analysis (8.3M predictions) |
+| F | {{ maturity(level="planned") }} | Standalone `helix-vision` crate on crates.io |
 
 Full roadmap: [Structure Prediction Roadmap](@/science/STRUCTURE_PREDICTION_ROADMAP.md)
 

@@ -8,9 +8,9 @@ template = "section.html"
 Small, purpose-built Rust programs (primals) compose into larger systems (atomics), which compose into sovereign compute substrates (NUCLEUS), which run science. The architecture follows chemistry, not enterprise software.
 
 ```
-Springs (8 domains)              → validate the science
+Springs (8 domains)               → validate the science
   ↓ produce kernels, experiments, evidence
-Primals (15 Rust binaries)       → provide the capabilities
+Primals (15 Rust binaries)        → provide the capabilities
   ↓ compose via deploy graphs
 Atomics (Tower / Node / Nest)    → minimum viable compositions
   ↓ assemble into
@@ -35,8 +35,9 @@ foundation                       → institutional adoption
 | See sovereignty in practice | [Sovereign Deployment](@/architecture/SOVEREIGN_DEPLOYMENT.md) — PostPrimordial journey, VPS topology |
 | Understand transport evolution | [Transport Evolution](@/architecture/TRANSPORT_EVOLUTION.md) — nanowire → quorum sensing |
 | See how external collaboration works | [External Collaboration](@/architecture/EXTERNAL_COLLABORATION.md) — collaborator gates, spore cycle |
-| Browse every primal | [Primal Catalog](@/architecture/PRIMAL_CATALOG.md) — 15 primals with metrics, primitives, and tiers |
-| Browse every spring | [Spring Catalog](@/architecture/SPRING_CATALOG.md) — 8 springs with checks and papers reproduced |
+| Verify all metrics | [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) — canonical numbers, definitions, measurement methodology |
+| Browse every primal | [Primal Catalog](@/architecture/PRIMAL_CATALOG.md) — {{ total_stat(stat="total_primals") }} primals with metrics, primitives, and tiers |
+| Browse every spring | [Spring Catalog](@/architecture/SPRING_CATALOG.md) — {{ total_stat(stat="total_springs") }} springs with checks and papers reproduced |
 | Deploy it myself | [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) — {{ entity(name="plasmidbin") }} binary distribution |
 | See how it was built | [Evolution Timeline](@/architecture/EVOLUTION_TIMELINE.md) — the 27-day sprint narrative |
 | Find every repo | [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) — complete map across all organizations |

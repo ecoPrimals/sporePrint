@@ -13,6 +13,8 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 **License:** CC-BY-SA 4.0  
 **Last Updated:** March 17, 2026
 
+> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) (measured {{ total_stat(stat="measured_date") }}).
+
 ---
 
 ## How to Use This Document

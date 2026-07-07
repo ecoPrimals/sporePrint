@@ -134,9 +134,9 @@ User-facing products that compose primals into complete applications. Each produ
 | Public repos (today) | 13 primals + 8 springs + 3 infra + 1 product = **25** |
 | Source publishing in progress | ~5 (bearDog, skunkBat, agentReagents, benchScale, whitePaper) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
-| Total Rust LOC | 3,209,814 (2.6M primals + 614K springs, measured via tokei April 2026) |
-| WGSL shaders | 952 files, 73,838 lines |
-| Total test functions | 107,143 (98K primals + 9K springs) |
+| Total Rust LOC | {{ total_stat(stat="total_loc_display") }} ({{ total_stat(stat="primal_loc_display") }} primals + {{ total_stat(stat="spring_loc_display") }} springs, measured {{ total_stat(stat="measured_date") }}) |
+| WGSL shaders | {{ total_stat(stat="wgsl_files") }} files, {{ total_stat(stat="wgsl_lines_display") }} lines |
+| Total test functions | {{ total_stat(stat="total_tests_display") }} ({{ total_stat(stat="primal_tests_display") }} primals + {{ total_stat(stat="spring_tests_display") }} springs) |
 | C dependencies | Zero (entire ecosystem) |
 
 ---

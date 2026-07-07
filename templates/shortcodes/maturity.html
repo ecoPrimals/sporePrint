@@ -1,0 +1,11 @@
+{# SPDX-License-Identifier: AGPL-3.0-or-later #}
+{# Maturity badge: {{ maturity(level="implemented") }} #}
+{# Levels: implemented, reproduced, certified, architectural, planned, unaudited #}
+{% set icons = "implemented:✅,reproduced:🔬,certified:🛡️,architectural:📐,planned:🗺️,unaudited:⚠️" %}
+{% set colors = "implemented:#a6e3a1,reproduced:#89b4fa,certified:#cba6f7,architectural:#fab387,planned:#9399b2,unaudited:#f38ba8" %}
+{% set labels = "implemented:Implemented,reproduced:Reproduced,certified:Certified,architectural:Architecture-ready,planned:Planned,unaudited:Unaudited" %}
+{% set icon = "" %}{% set color = "" %}{% set label = "" %}
+{% for pair in icons | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global icon = kv[1] %}{% endif %}{% endfor %}
+{% for pair in colors | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global color = kv[1] %}{% endif %}{% endfor %}
+{% for pair in labels | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global label = kv[1] %}{% endif %}{% endfor %}
+<span class="maturity-badge" style="display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.85em;font-weight:600;background:{{color}}22;color:{{color}};border:1px solid {{color}}44;">{{icon}} {{label}}</span>
