@@ -13,7 +13,7 @@ domain = "Architecture"
 
 ## Overview
 
-Every ecoPrimals binary is built from source on sovereign infrastructure. No GitHub Actions for production builds. No cloud CI. No third-party artifact registry. The build host (sporeGate) pulls from Forgejo (`git.primals.eco`), cross-compiles for two target triples, computes BLAKE3 checksums, and publishes to the depot.
+Every ecoPrimals binary is built from source on sovereign infrastructure. No GitHub Actions for production builds. No cloud CI. No third-party artifact registry. Any build authority gate (sporeGate, eastGate, or any future gate with `build_authority = true`) pulls from Forgejo (`git.primals.eco`), cross-compiles for two target triples, computes BLAKE3 checksums, publishes to the depot, and broadcasts `mesh.publish depot.updated` so consumer gates auto-fetch.
 
 ## Build Pipeline
 
@@ -24,16 +24,19 @@ Forgejo (git.primals.eco)
     │
     │ golgi cascade timer (15-min quorum)
     ▼
-sporeGate — Sovereign CI
+Builder gate (sporeGate / eastGate / any build_authority)
     │
-    ├── cargo build --release --target x86_64-unknown-linux-musl
-    ├── cargo build --release --target aarch64-unknown-linux-musl
+    ├── membrane plasmid.harvest (manifest-driven)
+    │   ├── cargo build --release --target x86_64-unknown-linux-musl
+    │   ├── cargo build --release --target aarch64-unknown-linux-musl
+    │   └── BLAKE3 checksums → checksums.toml
     │
-    ├── BLAKE3 checksums → checksums.toml
+    ├── rsync → depot (membrane.primals.eco/depot/{triple}/{binary})
     │
-    └── rsync → depot (membrane.primals.eco/depot/{triple}/{binary})
+    └── songBird mesh.publish { topic: "depot.updated" }
         │
-        ├── Gates cascade + pull binaries
+        ├── mesh.subscribe on all reachable peers
+        ├── Consumer gates: membrane plasmid.auto_fetch (rate-limited)
         └── depot-verify validates BLAKE3 integrity
 ```
 
@@ -72,11 +75,12 @@ For a primal to be CI-buildable with zero manual intervention:
 3. **Toolchain declared** in `rust-toolchain.toml`
 4. **Binary name = primal name lowercase** with no separators
 
-Currently **12/14 primals** meet this convention. Two require workarounds:
-- {{ entity(name="skunkbat") }}: needs `--package skunk-bat-server` (CI-DIV-02, fix pending)
-- {{ entity(name="nestgate") }}: requires `ld.lld` linker (CI-DIV-03, project config divergence)
+All 14 primals meet this convention. Three historical divergences are now resolved via `ecosystem_manifest.toml` build metadata:
+- **CI-DIV-01**: {{ entity(name="biomeos") }} needs `--package biomeos-unibin` — encoded in `[build.biomeos]`
+- **CI-DIV-02**: {{ entity(name="skunkbat") }} needs `--package skunk-bat-server` — encoded in `[build.skunkbat]`
+- **CI-DIV-03**: {{ entity(name="nestgate") }} uses project `.cargo/config.toml` for linker config — resolved Wave 133a, `cargo_config = true` in `[build.nestgate]`
 
-{{ entity(name="biomeos") }}'s `--package biomeos-unibin` requirement was resolved in Wave 133a (`f77886d1` — `default-members` fix). These remaining divergences are documented and being converged by upstream teams.
+`plasmid.harvest` reads these entries from the manifest instead of relying on hardcoded bash workarounds.
 
 ## Verification
 
@@ -93,18 +97,26 @@ spore-validate depot-verify \
 
 ## Cascade Flow
 
-The cascade is the heartbeat of the ecosystem. Every 15 minutes:
+The cascade is the heartbeat of the ecosystem. Two timers per gate:
+
+- **cascade-pull.timer** (every 4h): full repo sync + harvest + fetch
+- **cascade-sense.timer** (hourly): convergence monitoring, staleness detection
 
 ```
 golgi (VPS)
     → pulls all 17+ repos from Forgejo
-    → writes heads/golgi.toml (its local HEADs)
+    → writes heads/golgi.toml (its local HEADs, SHA-validated)
     → runs unify_freshness() → regenerates freshness.toml
     → pushes wateringHole to GitHub (trailing mirror)
 
 Each gate after cascade:
     → writes heads/<gate>.toml with its local repo HEADs
+    → SHA validation: rejects truncated commits (00000... tails)
     → pushes wateringHole (FF-only pull first, no conflict)
+
+mesh.status enrichment:
+    → scans heads/*.toml for files older than 24h
+    → reports stale_peers in mesh.status response
 ```
 
 The write model is conflict-free: `wave.toml` is sole-writer (overwatch), each gate writes only its own `heads/<gate>.toml`. No merge conflicts. Ever.

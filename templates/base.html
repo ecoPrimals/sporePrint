@@ -11,7 +11,7 @@
   <meta property="og:description" content="{% block og_desc %}{{ config.description }}{% endblock og_desc %}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ current_url | default(value=config.base_url) }}">
-  <meta property="og:site_name" content="ecoPrimals — Sovereign Scientific Computing">
+  <meta property="og:site_name" content="sporePrint — ecoPrimals">
   <meta property="og:image" content="{{ get_url(path='img/og-card.svg') }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% block tw_title %}{{ config.title }}{% endblock tw_title %}">
@@ -79,7 +79,7 @@
 
   <div class="site-layout">
     <aside class="site-tree" aria-label="Site navigation tree">
-      <details>
+      <details open>
         <summary>Site Map</summary>
         <nav>
           <ul class="tree-root">
