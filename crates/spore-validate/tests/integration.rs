@@ -396,7 +396,9 @@ fn cas_push_requires_manifest_or_generate() {
     assert!(!output.status.success());
     let stderr = stderr_of(&output);
     assert!(
-        stderr.contains("CAS manifest not found") || stderr.contains("NestGate socket not found"),
+        stderr.contains("CAS manifest not found")
+            || stderr.contains("NestGate socket not found")
+            || stderr.contains("nestgate socket not found"),
         "expected manifest or socket error, got: {stderr}"
     );
 }

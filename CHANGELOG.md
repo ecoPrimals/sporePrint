@@ -5,6 +5,39 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.6.0] — 2026-07-08 — Content Transplant (atlasHugged + Story + Methodology)
+
+**Wave 133d content transplant — fills the largest content gaps on primals.eco.**
+
+### Added
+
+- **Philosophy section**: 6 atlasHugged essays transplanted from whitePaper/gen3:
+  The Human Search, The Temptation of Kingdoms, The Mobility Edge, Discovery Is
+  Local, I Own Nothing, The Knowledge-Numeric. Philosophy section now has real
+  content instead of "Coming" promises.
+- **Story section**: New `content/story/` with 3 builder narrative essays:
+  I Don't Know Rust, The Sovereign Lab, 70 Papers One Stack. Nav bar and sidebar
+  updated with Story link.
+- **Methodology depth**: Sharing the Pen (`content/methodology/sharing_the_pen.md`)
+  transplanted from whitePaper/gen4/knome — K-NOME methodology sharing argument.
+
+### Changed
+
+- **Philosophy `_index.md`**: "Coming: atlasHugged Essays" replaced with linked
+  table of 6 real essays.
+- **Nav bar**: Story link added between Lab and divider.
+- **Sidebar tree**: Story and Philosophy sections now expand to show child pages.
+- **Integration test fix**: `cas_push_requires_manifest_or_generate` assertion
+  updated to match lowercase error message from transport unification refactor.
+- Content page count: 228 → 238.
+
+### Removed
+
+- "attsi" references stripped from all public-facing story essays per transplant
+  boundary rules.
+
+---
+
 ## [3.5.0] — 2026-07-07 — Transport Unification + Catalog Metric Evolution
 
 **Unified transport resolution, centralized timeouts, deduplicated discovery,

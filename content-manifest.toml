@@ -1,6 +1,6 @@
-generated = "2026-07-07T18:50:30Z"
-root_hash = "50068c7e978848405939aaf9bf015b190a02cba4fc56310e816a80c832af1003"
-page_count = 228
+generated = "2026-07-08T15:21:26Z"
+root_hash = "2431664e24e777a661eb3d924b58a5b560eabf0fbcdf055a90c5490ad63ebac8"
+page_count = 239
 
 [pages."_index.md"]
 blake3 = "64851b642a8492974351cc2759d99324d2a8f05390c070f1a596d2388fa475d3"
@@ -93,8 +93,8 @@ size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "863220b2958fccf9012d6baf2a3642aebf9b2b27c57b8e02d6262935c888f228"
-size_bytes = 4759
+blake3 = "71a9f9978c46f5993dd7c978de1334c806237675145c772ecc5d89c3ccdd4ef3"
+size_bytes = 5665
 title = "Sovereign CI — Build Infrastructure"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
@@ -758,7 +758,7 @@ size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "7a9eb4e3baca47614d7b784cb7abf5eec5b4a1cf45cd1ca38671856f3c74cea2"
+blake3 = "7870f013ba0db1fe2c84412115df46ce576826c6ec2df1e2151e2f55eee9184b"
 size_bytes = 254
 title = "Sample"
 
@@ -907,10 +907,45 @@ blake3 = "73fd04f353d4d842e093face5c196dd4178b9bdeaa1793ab8a61a7928b8aa532"
 size_bytes = 1712
 title = "🧬 Methodology"
 
+[pages."methodology/sharing_the_pen.md"]
+blake3 = "a1c4f1c50e2b18635e836cde7fd8b75b00c9b463147136c21f13007f945ae35e"
+size_bytes = 10496
+title = "Sharing the Pen"
+
 [pages."philosophy/_index.md"]
-blake3 = "e24a3bf49c88d8d2a4e5604f15224d5339a9674c1bb6bd3c134f74fe4e1e4fe3"
-size_bytes = 2717
+blake3 = "749c9b1ff7dfbbaa131a780fd9c4930a21bf89f26060f7efb92348b02f5bcb02"
+size_bytes = 2847
 title = "Philosophy"
+
+[pages."philosophy/discovery_is_local.md"]
+blake3 = "16a2772bcae094b1f789dac1b0c019f1d42ff05da3650bb0ad76cb34d771b867"
+size_bytes = 15932
+title = "Discovery Is Local"
+
+[pages."philosophy/i_own_nothing.md"]
+blake3 = "5869e9368e73b1dca02e0287a127df268550c632a8d799a30d3b7cd5689648e2"
+size_bytes = 11707
+title = "I Own Nothing"
+
+[pages."philosophy/the_human_search.md"]
+blake3 = "2351d7c22dbdd591d98acf7228c9d1d08e1ffc6bef699d91a2e7520b48ae95f2"
+size_bytes = 19116
+title = "The Human Search"
+
+[pages."philosophy/the_knowledge_numeric.md"]
+blake3 = "a97c2e25225c236053293874eda32f613eaa3f10c81a83fd60ac92680ea7ccdd"
+size_bytes = 19942
+title = "The Knowledge-Numeric"
+
+[pages."philosophy/the_mobility_edge.md"]
+blake3 = "15c0b1f066ec9b4d9518b7204ec647b11c924dd4bcb5cffbb082138723fd124b"
+size_bytes = 24032
+title = "The Mobility Edge"
+
+[pages."philosophy/the_temptation_of_kingdoms.md"]
+blake3 = "04deb82fcd68146b05ba411a3bfebdce6956a888852da19ee7dbf18ea01369d5"
+size_bytes = 13162
+title = "The Temptation of Kingdoms"
 
 [pages."products/_index.md"]
 blake3 = "763cae817441f3fc813069c71f3a136029654c8420d66e0f8f04aa40a6f74929"
@@ -1106,6 +1141,26 @@ title = "Gonzales Interactive Explorer"
 blake3 = "24065d7fc88182195d3d08e1546302677a270a5a920a66b30a61279645adb5bf"
 size_bytes = 2560
 title = "Site Map"
+
+[pages."story/70_papers_one_stack.md"]
+blake3 = "5b093d867932583bd327c9e47c239d057917768e772814bd487f7b0810a633e0"
+size_bytes = 7583
+title = "70 Papers, One Stack"
+
+[pages."story/_index.md"]
+blake3 = "c1ce6da42b42ddaeb22e119ccafdeeb8e59d3674c736c015a763748221d2459d"
+size_bytes = 789
+title = "Story"
+
+[pages."story/i_dont_know_rust.md"]
+blake3 = "71c34bd570bb1808a211eb2d2a657930dad36349cff3a169e7e1d8c51f64000f"
+size_bytes = 7087
+title = "I Don't Know Rust"
+
+[pages."story/the_sovereign_lab.md"]
+blake3 = "f9cd86a48e6d5d9a2a75e3ecddca6ddccbe8fbdd5c025850f7939e1d918a28b6"
+size_bytes = 6357
+title = "The Sovereign Lab"
 
 [pages."technical/DRUG_DISCOVERY_PIPELINE.md"]
 blake3 = "86718b74d8fe9936d82ae65d8b4c56b1956058ba494ca9409790b7b985175323"

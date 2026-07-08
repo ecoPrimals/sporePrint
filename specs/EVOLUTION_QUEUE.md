@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 7, 2026 (Wave 133c — Transport Unification + Catalog Metric Evolution)
+Last reviewed: July 8, 2026 (Wave 133d — Content Transplant: atlasHugged + Story + Methodology)
 
 ---
 
@@ -19,7 +19,7 @@ Last reviewed: July 7, 2026 (Wave 133c — Transport Unification + Catalog Metri
 ### Content gaps
 - [x] ~~guideStone section has only `_index.md`~~ — 4 substantive pages
 - [ ] guidePost — document when it materializes
-- [ ] atlasHugged integration — `content/philosophy/` section stub exists. Separate, intentional act.
+- [x] ~~atlasHugged integration — 6 essays transplanted to `content/philosophy/`~~ (Wave 133d)
 
 ### Taxonomy completeness
 - [x] ~~Audit all 222 content pages: grep content for entity names not tagged in front matter~~ → `spore-validate validate --check` audit_taxonomy_coverage (Wave 120)
@@ -618,6 +618,25 @@ These were in the original queue and have been completed:
 - Zero `unwrap()` / `expect()` in production code
 - Zero unsafe (forbidden crate-level)
 - 226 content pages
+
+## Wave 133d — Content Transplant: atlasHugged + Story + Methodology (July 8, 2026)
+
+### Content Evolution
+
+- **Philosophy section filled**: 6 atlasHugged essays transplanted from whitePaper/gen3
+  (The Human Search, The Temptation of Kingdoms, The Mobility Edge, Discovery Is Local,
+  I Own Nothing, The Knowledge-Numeric). Philosophy `_index.md` no longer says "Coming".
+- **Story section created**: New `content/story/` with 3 builder narrative essays
+  (I Don't Know Rust, The Sovereign Lab, 70 Papers One Stack). These provide the human
+  narrative arc for outsiders.
+- **Methodology depth**: Sharing the Pen transplanted from whitePaper/gen4/knome —
+  why the K-NOME methodology itself is shared under CC-BY-SA.
+- **Nav + sidebar wiring**: Story link in nav bar, both Story and Philosophy expand in
+  sidebar tree to show child pages.
+- **Content page count**: 228 → 238 (10 new pages).
+- **Integration test fix**: `cas_push_requires_manifest_or_generate` assertion updated
+  for lowercase error message from transport unification.
+- All private references ("attsi") stripped per transplant boundary rules.
 
 ## Wave 133c — Transport Unification + Catalog Metric Evolution (July 7, 2026)
 

@@ -36,21 +36,18 @@ and to identity (the work speaks, not the resume).
 
 ---
 
-## Coming: atlasHugged Essays
+## atlasHugged Essays
 
 Each essay explores one facet of the question "why?":
 
 | Essay | Question |
 |---|---|
-| Sovereign vs Open Source | Why "open source" is necessary but not sufficient — and what sovereign adds |
-| The Triple License | Why AGPL-3.0 + ORC + CC-BY-SA exists, and why three nonprofits enforce it |
-| Attribution over Identity | Why provenance chains matter more than author names |
-| The Mobility Edge | Why a concept from Anderson localization is a metaphor for network sovereignty |
-| Local Discovery, Global Publication | Why discovery must be private, but results must be public |
-| Knowledge Is Numeric | Why executable science is the only honest science |
-
-For now, the code is the argument. Run it. Verify it. The philosophy
-will follow when the foundation is solid enough to hold the weight.
+| [The Human Search](@/philosophy/the_human_search.md) | Iteration, recursion, time — the universal framework for how everything learns |
+| [The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md) | Why "open source" is necessary but not sufficient — and what sovereign adds |
+| [The Mobility Edge](@/philosophy/the_mobility_edge.md) | Why a concept from Anderson localization is a metaphor for network sovereignty |
+| [Discovery Is Local](@/philosophy/discovery_is_local.md) | Why discovery must be private, but results must be public |
+| [I Own Nothing](@/philosophy/i_own_nothing.md) | Why provenance chains matter more than author names — and the economics of giving it all away |
+| [The Knowledge-Numeric](@/philosophy/the_knowledge_numeric.md) | Why executable science is the only honest science — K-NOME as the pen |
 
 ---
 
