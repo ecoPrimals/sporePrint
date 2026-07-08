@@ -70,14 +70,13 @@ pub fn get_body(url: &str) -> Result<Vec<u8>, Error> {
     Err(Error::Git("too many redirects (max 5)".into()))
 }
 
-/// Perform a single HTTP GET request, returning (`status_code`, headers, body).
-///
-/// Uses `connect_timeout` to avoid blocking indefinitely on unreachable hosts
-/// (critical for WAN resilience). Both write and read timeouts are set.
-fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
-    use std::io::{Read, Write};
-    use std::net::{TcpStream, ToSocketAddrs};
+struct HttpResponse {
+    status: u16,
+    headers: Vec<(String, String)>,
+    body: Vec<u8>,
+}
 
+fn parse_url(url: &str) -> Result<(String, u16, String), Error> {
     let url_path = url.strip_prefix("http://").ok_or_else(|| {
         Error::Git(format!(
             "ForgeArchiveBackend only supports plain HTTP: {url}"
@@ -88,32 +87,21 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         Some((h, p)) => (h, format!("/{p}")),
         None => (url_path, "/".to_string()),
     };
-    let host_port_owned = if host_port.contains(':') {
-        host_port.to_string()
-    } else {
-        format!("{host_port}:80")
+
+    let (host, port) = match host_port.split_once(':') {
+        Some((h, p)) => {
+            let port = p
+                .parse::<u16>()
+                .map_err(|e| Error::Git(format!("invalid port in URL {url}: {e}")))?;
+            (h.to_string(), port)
+        }
+        None => (host_port.to_string(), 80),
     };
 
-    let host = host_port.split(':').next().unwrap_or("");
+    Ok((host, port, path))
+}
 
-    let addr: SocketAddr = host_port_owned
-        .to_socket_addrs()
-        .map_err(|e| Error::Git(format!("DNS resolve {host_port_owned} failed: {e}")))?
-        .next()
-        .ok_or_else(|| Error::Git(format!("no addresses for {host_port_owned}")))?;
-
-    let mut stream = TcpStream::connect_timeout(&addr, TRANSPORT_CONNECT_TIMEOUT)
-        .map_err(|e| Error::Git(format!("TCP connect to {host_port_owned} failed: {e}")))?;
-
-    stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-    stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-
-    let request =
-        format!("GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n");
-    stream
-        .write_all(request.as_bytes())
-        .map_err(|e| Error::Git(format!("HTTP write failed: {e}")))?;
-
+fn read_response(stream: &mut impl std::io::Read) -> Result<HttpResponse, Error> {
     let mut response = Vec::new();
     stream
         .read_to_end(&mut response)
@@ -133,16 +121,23 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         .and_then(|s| s.parse::<u16>().ok())
         .unwrap_or(0);
 
-    let content_length = headers_raw.lines().find_map(|line| {
-        let lower = line.to_ascii_lowercase();
-        if lower.starts_with("content-length:") {
-            line[15..].trim().parse::<usize>().ok()
+    let headers: Vec<(String, String)> = headers_raw
+        .lines()
+        .skip(1)
+        .filter_map(|line| {
+            let (name, value) = line.split_once(':')?;
+            Some((name.trim().to_string(), value.trim().to_string()))
+        })
+        .collect();
+
+    let content_length = headers.iter().find_map(|(name, value)| {
+        if name.eq_ignore_ascii_case("content-length") {
+            value.parse::<usize>().ok()
         } else {
             None
         }
     });
 
-    let headers = headers_raw.to_string();
     let body_start = header_end + 4;
     let body = response.split_off(body_start);
 
@@ -155,7 +150,59 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         }
     }
 
-    Ok((status, headers, body))
+    Ok(HttpResponse {
+        status,
+        headers,
+        body,
+    })
+}
+
+fn format_headers_raw(status: u16, headers: &[(String, String)]) -> String {
+    use std::fmt::Write as _;
+
+    let mut raw = format!("HTTP/1.1 {status} OK");
+    for (name, value) in headers {
+        let _ = write!(raw, "\r\n{name}: {value}");
+    }
+    raw
+}
+
+/// Perform a single HTTP GET request, returning (`status_code`, headers, body).
+///
+/// Uses `connect_timeout` to avoid blocking indefinitely on unreachable hosts
+/// (critical for WAN resilience). Both write and read timeouts are set.
+fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
+    use std::io::Write;
+    use std::net::{TcpStream, ToSocketAddrs};
+
+    let (host, port, path) = parse_url(url)?;
+    let host_port_owned = format!("{host}:{port}");
+
+    let addr: SocketAddr = host_port_owned
+        .to_socket_addrs()
+        .map_err(|e| Error::Git(format!("DNS resolve {host_port_owned} failed: {e}")))?
+        .next()
+        .ok_or_else(|| Error::Git(format!("no addresses for {host_port_owned}")))?;
+
+    let mut stream = TcpStream::connect_timeout(&addr, TRANSPORT_CONNECT_TIMEOUT)
+        .map_err(|e| Error::Git(format!("TCP connect to {host_port_owned} failed: {e}")))?;
+
+    stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+    stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+
+    let request =
+        format!("GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n");
+    stream
+        .write_all(request.as_bytes())
+        .map_err(|e| Error::Git(format!("HTTP write failed: {e}")))?;
+
+    let HttpResponse {
+        status,
+        headers,
+        body,
+    } = read_response(&mut stream)?;
+
+    Ok((status, format_headers_raw(status, &headers), body))
 }
 
 /// Gzip decompression using `flate2` (pure Rust via `miniz_oxide`).

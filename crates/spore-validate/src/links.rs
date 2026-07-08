@@ -16,6 +16,7 @@ use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 
 /// Check if a link target resolves in the page set (with `_index.md` fallback).
+#[must_use]
 fn link_resolves(target: &str, pages: &HashSet<String>) -> bool {
     if pages.contains(target) {
         return true;
@@ -32,15 +33,10 @@ fn link_resolves(target: &str, pages: &HashSet<String>) -> bool {
 /// Collect all content page paths relative to the content root.
 fn collect_pages(content_root: &Path) -> HashSet<String> {
     let mut pages = HashSet::new();
-    for entry in WalkDir::new(content_root)
-        .into_iter()
-        .filter_map(Result::ok)
-    {
+    for entry in crate::paths::walk_markdown_files(content_root) {
         let path = entry.path();
-        if path.extension().is_some_and(|e| e == "md") {
-            if let Ok(relative) = path.strip_prefix(content_root) {
-                pages.insert(relative.to_string_lossy().to_string());
-            }
+        if let Ok(relative) = path.strip_prefix(content_root) {
+            pages.insert(relative.to_string_lossy().to_string());
         }
     }
     pages

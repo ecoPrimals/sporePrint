@@ -5,6 +5,49 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.7.0] — 2026-07-08 — Phase 1+2 Idiomatic Rust + petalTongue Integration (Wave 134)
+
+**Codebase evolution sprint — shared abstractions, function decomposition, build-time petalTongue wiring.**
+
+### Added
+
+- **Shared content walker** (`paths.rs`): `walk_markdown_files` and `walk_content_files`
+  iterators eliminate 4 duplicate `WalkDir` patterns across content, links, provenance, certify.
+- **IPC connect helper** (`ipc.rs`): `connect_uds` consolidates 3 duplicate UDS connection
+  setups from nucleus and tower modules.
+- **`DiagnosticCollector`** (`error.rs`): typed accumulator with `error()`, `warning()`,
+  `promote_warnings()`, `into_result()` — bridge for gradual `Vec<Diagnostic>` migration.
+- **`MaturityLevel` enum** (`model.rs`): 6 typed levels (Implemented, Reproduced, Certified,
+  Architectural, Planned, Unaudited) with `css_class()`, `label()`, `from_str_loose()`.
+  Build-time validation via `validate_maturity_levels` in `--check` mode.
+- **`build-viz` subcommand**: scans content for `viz_embed` shortcodes, calls petalTongue
+  IPC to generate SVGs at build time, writes to `static/viz/`. Graceful fallback when
+  petalTongue is offline.
+- **`scan_viz_embeds`** (`commands.rs`): regex scanner for viz_embed shortcode names.
+- **12 new tests**: DiagnosticCollector (2), MaturityLevel roundtrip/css/display/unknown/
+  case-insensitive (5), maturity validation (2), viz scanner (3).
+
+### Changed
+
+- **`#[must_use]`** added to ~15 pure functions across error, model, paths, ipc, discovery,
+  content, links modules.
+- **`Cow<str>` evolution**: `normalize_key` returns `Cow<'_, str>` (zero-alloc fast path);
+  `systemd_socket_dir` returns `Cow<'static, str>`.
+- **Function decomposition**: `commands::validate` split into `validate_registry` +
+  `validate_content`; `http::request_raw` into `parse_url` + `read_response` +
+  `HttpResponse`; `cas_push::push_single_file` into `encode_file_payload` + RPC send.
+- **`tower.rs`**: `match` → `let...else` for clippy pedantic compliance.
+- **`petaltongue.rs`**: module docs corrected (removed stale `content.render` reference).
+- **Root docs refreshed**: README, CONTEXT, EVOLUTION_QUEUE, RUST_TOOLING_VISION updated
+  to 272 tests, 239 pages, 6 shortcodes, Wave 134 metrics.
+
+### Removed
+
+- **`section_count.html`** shortcode — unused, deleted.
+- **`gonzales_explorer.md`** dead code: ~550 lines of inline CSS + Plotly JS referencing
+  nonexistent `static/gonzales/` removed. Scientific content preserved with petalTongue
+  evolution note.
+
 ## [3.6.0] — 2026-07-08 — Content Transplant (atlasHugged + Story + Methodology)
 
 **Wave 133d content transplant — fills the largest content gaps on primals.eco.**

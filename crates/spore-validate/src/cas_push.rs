@@ -202,6 +202,29 @@ enum PushFileOutcome {
     Error,
 }
 
+fn encode_file_payload(
+    file_path: &Path,
+    relative_key: &str,
+    content_type: &str,
+    metadata: &Value,
+) -> Result<Value, Error> {
+    let contents = std::fs::read(file_path).map_err(|e| {
+        Error::Config(format!(
+            "cannot read {} ({relative_key}): {e}",
+            file_path.display()
+        ))
+    })?;
+    let data_b64 = STANDARD.encode(&contents);
+    Ok(json!({
+        "data": data_b64,
+        "content_type": content_type,
+        "source": "sporePrint",
+        "pipeline": "zola-build",
+        "stored_by": "spore-validate cas-push",
+        "metadata": metadata,
+    }))
+}
+
 /// Push a single file entry to `NestGate`, returning the outcome.
 fn push_single_file(
     reader: &mut BufReader<Box<dyn ReadWrite>>,
@@ -230,30 +253,23 @@ fn push_single_file(
     }
 
     let file_path = public_dir.join(rel_path);
-    let data_b64 = {
-        let Ok(contents) = std::fs::read(&file_path) else {
-            eprintln!("  WARN: cannot read {rel_path}, skipping");
-            return PushFileOutcome::Error;
-        };
-        STANDARD.encode(&contents)
-    };
+    let metadata = json!({
+        "path": rel_path,
+        "build_hash": build_hash,
+        "build_id": build_id,
+    });
     *request_id += 1;
+
+    let Ok(params) = encode_file_payload(&file_path, rel_path, &entry.content_type, &metadata)
+    else {
+        eprintln!("  WARN: cannot read {rel_path}, skipping");
+        return PushFileOutcome::Error;
+    };
 
     let put_req = json!({
         "jsonrpc": "2.0",
         "method": "content.put",
-        "params": {
-            "data": data_b64,
-            "content_type": entry.content_type,
-            "source": "sporePrint",
-            "pipeline": "zola-build",
-            "stored_by": "spore-validate cas-push",
-            "metadata": {
-                "path": rel_path,
-                "build_hash": build_hash,
-                "build_id": build_id,
-            }
-        },
+        "params": params,
         "id": *request_id
     });
 

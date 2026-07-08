@@ -14,7 +14,6 @@ use crate::model::{Config, EntityKind};
 use crate::time::today_utc;
 use serde::Serialize;
 use std::path::Path;
-use walkdir::WalkDir;
 
 /// The certification manifest — a self-verifying summary of all published claims.
 ///
@@ -134,11 +133,7 @@ fn count_content_pages(content_dir: &Path) -> usize {
         return 0;
     }
 
-    WalkDir::new(content_dir)
-        .into_iter()
-        .filter_map(Result::ok)
-        .filter(|e| e.file_type().is_file())
-        .filter(|e| e.path().extension().is_some_and(|ext| ext == "md"))
+    crate::paths::walk_markdown_files(content_dir)
         .filter(|e| e.path().file_name().is_some_and(|n| n != "_index.md"))
         .count()
 }

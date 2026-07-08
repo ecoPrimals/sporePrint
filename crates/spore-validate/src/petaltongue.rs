@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-//! petalTongue IPC client — content rendering via discovered socket.
+//! petalTongue IPC client — visualization and health via discovered socket.
 //!
 //! Connects to petalTongue via its JSON-RPC UDS interface (same discovery
 //! mechanism as `NestGate`) and provides typed wrappers for:
-//! - `content.render` — render a content page (markdown → HTML)
-//! - `viz.serve` — request a visualization as SVG or scene-JSON
+//! - `visualization.render.graph` — render a graph (nodes/edges) as SVG or text
+//! - `viz.serve` — request a named visualization as SVG or scene-JSON
+//! - `health.check` — probe primal health and uptime
+//!
+//! On connect, sends `primal.announce`. The `status()` helper probes
+//! `visualization.render.graph` and `visualization.export` availability.
 //!
 //! ## Transport
 //!

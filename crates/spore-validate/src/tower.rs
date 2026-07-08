@@ -16,7 +16,6 @@
 use crate::discovery;
 use crate::paths::PROBE_TIMEOUT;
 use serde_json::{Value, json};
-use std::io::BufReader;
 
 /// Default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
 const DEFAULT_TOWER_PROBES: &[(&str, &[&str])] = &[
@@ -131,18 +130,13 @@ fn build_probe_targets(
 
 /// Probe a single JSON-RPC method on a socket, returning availability.
 fn probe_single_method(socket_path: &str, method: &str) -> MethodProbe {
-    let Ok(stream) = std::os::unix::net::UnixStream::connect(socket_path) else {
+    let Ok(mut reader) = crate::ipc::connect_uds(socket_path, PROBE_TIMEOUT) else {
         return MethodProbe {
             method: method.to_string(),
             available: false,
             response_summary: Some("connect failed".into()),
         };
     };
-
-    stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
-    stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
-
-    let mut reader = BufReader::new(Box::new(stream) as Box<dyn crate::cas_push::ReadWrite>);
 
     let request = json!({
         "jsonrpc": "2.0",

@@ -80,10 +80,12 @@ impl Diagnostic {
         }
     }
 
+    #[must_use]
     pub const fn is_error(&self) -> bool {
         matches!(self.severity, Severity::Error)
     }
 
+    #[must_use]
     pub fn message(&self) -> &str {
         &self.message
     }
@@ -94,6 +96,98 @@ impl Diagnostic {
             self.severity = Severity::Error;
             self.message = format!("(strict) {}", self.message);
         }
+    }
+}
+
+/// Accumulates diagnostics during a validation pass.
+///
+/// Replaces the `&mut Vec<Diagnostic>` pattern with typed methods
+/// and a terminal `into_result()` that produces the final validation outcome.
+#[allow(dead_code)]
+pub struct DiagnosticCollector {
+    diagnostics: Vec<Diagnostic>,
+}
+
+impl DiagnosticCollector {
+    #[allow(dead_code)]
+    pub const fn new() -> Self {
+        Self {
+            diagnostics: Vec::new(),
+        }
+    }
+
+    #[allow(dead_code)]
+    pub fn error(&mut self, msg: impl Into<String>) {
+        self.diagnostics.push(Diagnostic::error(msg));
+    }
+
+    #[allow(dead_code)]
+    pub fn warning(&mut self, msg: impl Into<String>) {
+        self.diagnostics.push(Diagnostic::warning(msg));
+    }
+
+    /// Promote all warnings to errors (for `--strict` mode).
+    #[allow(dead_code)]
+    pub fn promote_warnings(&mut self) {
+        for d in &mut self.diagnostics {
+            d.promote_to_error();
+        }
+    }
+
+    #[must_use]
+    #[allow(dead_code)]
+    pub fn error_count(&self) -> usize {
+        self.diagnostics.iter().filter(|d| d.is_error()).count()
+    }
+
+    #[must_use]
+    #[allow(dead_code)]
+    pub fn warning_count(&self) -> usize {
+        self.diagnostics.iter().filter(|d| !d.is_error()).count()
+    }
+
+    #[must_use]
+    #[allow(dead_code)]
+    pub fn is_empty(&self) -> bool {
+        self.diagnostics.is_empty()
+    }
+
+    /// Consume the collector, printing all diagnostics and returning an error
+    /// if any errors were present.
+    #[allow(dead_code)]
+    pub fn into_result(self) -> Result<(), Error> {
+        for d in &self.diagnostics {
+            eprintln!("  {d}");
+        }
+        let errors = self.diagnostics.iter().filter(|d| d.is_error()).count();
+        let warnings = self.diagnostics.iter().filter(|d| !d.is_error()).count();
+        if errors > 0 {
+            Err(Error::ValidationFailed {
+                error_count: errors,
+                warning_count: warnings,
+            })
+        } else {
+            Ok(())
+        }
+    }
+
+    /// Access the underlying diagnostics slice.
+    #[must_use]
+    #[allow(dead_code)]
+    pub fn diagnostics(&self) -> &[Diagnostic] {
+        &self.diagnostics
+    }
+
+    /// Extend with diagnostics from a `Vec<Diagnostic>` (bridge to existing callers).
+    #[allow(dead_code)]
+    pub fn extend(&mut self, diagnostics: Vec<Diagnostic>) {
+        self.diagnostics.extend(diagnostics);
+    }
+}
+
+impl Default for DiagnosticCollector {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -166,5 +260,25 @@ mod tests {
         d.promote_to_error();
         assert!(d.is_error());
         assert!(d.message().contains("(strict)"));
+    }
+
+    #[test]
+    fn diagnostic_collector_counts() {
+        let mut c = DiagnosticCollector::new();
+        c.error("e1");
+        c.warning("w1");
+        c.error("e2");
+        assert_eq!(c.error_count(), 2);
+        assert_eq!(c.warning_count(), 1);
+        assert!(!c.is_empty());
+    }
+
+    #[test]
+    fn diagnostic_collector_promote_warnings() {
+        let mut c = DiagnosticCollector::new();
+        c.warning("soft");
+        c.promote_warnings();
+        assert_eq!(c.error_count(), 1);
+        assert_eq!(c.warning_count(), 0);
     }
 }

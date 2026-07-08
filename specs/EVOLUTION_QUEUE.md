@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 8, 2026 (Wave 133d — Content Transplant: atlasHugged + Story + Methodology)
+Last reviewed: July 8, 2026 (Wave 134 — Phase 1+2 Idiomatic Rust + petalTongue Integration)
 
 ---
 
@@ -637,6 +637,23 @@ These were in the original queue and have been completed:
 - **Integration test fix**: `cas_push_requires_manifest_or_generate` assertion updated
   for lowercase error message from transport unification.
 - All private references ("attsi") stripped per transplant boundary rules.
+
+## Wave 134 — Phase 1+2 Idiomatic Rust + petalTongue Integration
+- [x] Extract `walk_content_files` / `walk_markdown_files` into `paths.rs` (4 duplicate WalkDir patterns eliminated)
+- [x] Extract `connect_uds` helper into `ipc.rs` (3 duplicate UDS setups consolidated)
+- [x] Create `DiagnosticCollector` struct in `error.rs` (bridge for gradual `Vec<Diagnostic>` migration)
+- [x] Add `#[must_use]` to ~15 pure functions across 7 modules
+- [x] Evolve `normalize_key` to `Cow<str>`, `systemd_socket_dir` to `Cow<'static, str>`
+- [x] Decompose `commands::validate` into `validate_registry` + `validate_content`
+- [x] Decompose `http::request_raw` into `parse_url` + `read_response` + `HttpResponse` struct
+- [x] Decompose `cas_push::push_single_file` into `encode_file_payload` + RPC send
+- [x] Clean `petaltongue.rs` module docs (remove stale `content.render` reference)
+- [x] Delete dead `section_count.html` shortcode
+- [x] Clean `gonzales_explorer.md` (~550 lines dead CSS/JS removed)
+- [x] Add `build-viz` subcommand (petalTongue IPC → static SVG generation at build time)
+- [x] Add `MaturityLevel` enum to `model.rs` (6 levels, build-time validation, CSS class mapping)
+- [x] Wire `validate_maturity_levels` into `--check` content validation
+- [x] Tests: 260 → 272 (12 new tests for extracted patterns, MaturityLevel, viz scanner)
 
 ## Wave 133c — Transport Unification + Catalog Metric Evolution (July 7, 2026)
 

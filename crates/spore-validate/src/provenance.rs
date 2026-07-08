@@ -12,7 +12,6 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
-use walkdir::WalkDir;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ContentManifest {
@@ -33,16 +32,7 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
     let mut pages = BTreeMap::new();
     let mut root_hasher = blake3::Hasher::new();
 
-    for entry in WalkDir::new(content_dir)
-        .into_iter()
-        .filter_map(Result::ok)
-        .filter(|e| e.file_type().is_file())
-        .filter(|e| {
-            e.path()
-                .extension()
-                .is_some_and(|ext| ext == "md" || ext == "html")
-        })
-    {
+    for entry in crate::paths::walk_content_files(content_dir) {
         let path = entry.path();
         let rel = crate::paths::rel_to(path, content_dir)
             .to_string_lossy()

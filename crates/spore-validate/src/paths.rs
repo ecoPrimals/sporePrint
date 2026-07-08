@@ -8,6 +8,7 @@
 use crate::error::Error;
 use std::path::{Path, PathBuf};
 use std::time::Duration;
+use walkdir::WalkDir;
 
 /// IPC timeout for health / method probes (fast operations).
 pub const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
@@ -45,8 +46,35 @@ pub fn require_content_dir(root: &Path) -> Result<PathBuf, Error> {
 /// Strip a root prefix from a path, returning the original if stripping fails.
 ///
 /// Common pattern: display paths relative to root for readable diagnostics.
+#[must_use]
 pub fn rel_to<'a>(path: &'a Path, root: &Path) -> &'a Path {
     path.strip_prefix(root).unwrap_or(path)
+}
+
+/// Walk a directory recursively, yielding markdown file entries sorted by name.
+#[must_use = "walk iterators are lazy; consume or collect them"]
+pub fn walk_markdown_files(dir: &Path) -> impl Iterator<Item = walkdir::DirEntry> {
+    WalkDir::new(dir)
+        .sort_by_file_name()
+        .into_iter()
+        .filter_map(Result::ok)
+        .filter(|e| e.file_type().is_file())
+        .filter(|e| e.path().extension().is_some_and(|ext| ext == "md"))
+}
+
+/// Walk a directory recursively, yielding markdown and HTML file entries sorted by name.
+#[must_use = "walk iterators are lazy; consume or collect them"]
+pub fn walk_content_files(dir: &Path) -> impl Iterator<Item = walkdir::DirEntry> {
+    WalkDir::new(dir)
+        .sort_by_file_name()
+        .into_iter()
+        .filter_map(Result::ok)
+        .filter(|e| e.file_type().is_file())
+        .filter(|e| {
+            e.path()
+                .extension()
+                .is_some_and(|ext| ext == "md" || ext == "html")
+        })
 }
 
 #[cfg(test)]

@@ -8,15 +8,15 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 8, 2026 — Wave 133d)
+## Current State (July 8, 2026 — Wave 134)
 
 - **238 content pages** across 10 sections (+ Story, Philosophy expanded) + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
-- **5 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate), `maturity` (6-level maturity badges)
+- **6 shortcodes**: `entity` (linked name), `entity_metrics` (LOC/tests/files line), `entity_stat` (single metric), `total_stat` (aggregate), `maturity` (6-level maturity badges), `viz_embed` (SVG with WASM progressive enhancement)
 - **Evidence Snapshot** — canonical metrics page pulling all numbers from registry via shortcodes. All March 2026 docs carry historical snapshot banners linking to it.
-- **`spore-validate` v0.3.1** — 28-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, NUCLEUS profile validation + display, depot integrity verification, petalTongue IPC client, Tower P1 readiness probe (profile-driven), HTTP/tar utilities, trait-based VCS, shared IPC module, parity integration tests. 260 tests (228 unit + 29 integration + 3 refresh_write, 6 parity ignored), `#![forbid(unsafe_code)]`, `#![warn(missing_docs)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide), `cargo-deny` clean, `toml` 1.x (TOML spec 1.1). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay) with riboCipher Tier 1 signal support. Unified transport resolution via `discovery::resolve_primal_endpoint()` — all primal connections (NestGate, petalTongue) honor CLI override → `TRANSPORT_ENDPOINT` env → socket discovery. Centralized timeout constants in `paths.rs` (`PROBE_TIMEOUT`, `TRANSPORT_CONNECT_TIMEOUT`, `TRANSPORT_IO_TIMEOUT`). Discovery probes `BIOMEOS_SOCKET_DIR`, env-overridable `BIOMEOS_SYSTEMD_SOCKET_DIR` (default `/run/membrane/`), and `XDG_RUNTIME_DIR`. Capabilities derived from `discovery::SELF` with static `&'static [&'static str]` slices — no duplicated announce logic. Shared `ipc` module centralizes JSON-RPC 2.0 NDJSON framing with response ID correlation and `health.liveness` fallback. petalTongue IPC wired via `PetalTongueClient` (health.check, visualization.render.graph, visualization.export). Tower P1 probe validates methods via profile-driven `probe_methods` or default table, using shared `ipc::send_rpc`. Nucleus display extracted to `nucleus_display.rs` — all files under 800L (max 699).
+- **`spore-validate` v0.3.1** — 28-module Rust crate: typed validation, link checking, notebook rendering, metric sync, graph building, certification, CAS manifest + push, discovery, NUCLEUS profile validation + display, depot integrity verification, petalTongue IPC client, Tower P1 readiness probe (profile-driven), HTTP/tar utilities, trait-based VCS, shared IPC module, parity integration tests. 272 tests (240 unit + 29 integration + 3 refresh_write, 6 parity ignored), `#![forbid(unsafe_code)]`, `#![warn(missing_docs)]`, zero clippy warnings (pedantic + nursery), zero C toolchain dependencies (blake3 pure-Rust, flate2 miniz_oxide), `cargo-deny` clean, `toml` 1.x (TOML spec 1.1). Transport-agnostic CAS push via canonical `TransportEndpoint` enum (UDS/TCP/MeshRelay) with riboCipher Tier 1 signal support. Unified transport resolution via `discovery::resolve_primal_endpoint()` — all primal connections (NestGate, petalTongue) honor CLI override → `TRANSPORT_ENDPOINT` env → socket discovery. Centralized timeout constants in `paths.rs` (`PROBE_TIMEOUT`, `TRANSPORT_CONNECT_TIMEOUT`, `TRANSPORT_IO_TIMEOUT`). Discovery probes `BIOMEOS_SOCKET_DIR`, env-overridable `BIOMEOS_SYSTEMD_SOCKET_DIR` (default `/run/membrane/`), and `XDG_RUNTIME_DIR`. Capabilities derived from `discovery::SELF` with static `&'static [&'static str]` slices — no duplicated announce logic. Shared `ipc` module centralizes JSON-RPC 2.0 NDJSON framing with response ID correlation and `health.liveness` fallback. petalTongue IPC wired via `PetalTongueClient` (health.check, visualization.render.graph, visualization.export). Tower P1 probe validates methods via profile-driven `probe_methods` or default table, using shared `ipc::send_rpc`. Nucleus display extracted to `nucleus_display.rs` — all files under 800L (max 699).
 - **Proto-nucleate manifest** — `spore-validate nucleus --profile <path>` validates running NUCLEUS against deployment profiles. Topology classes: Full (13/13), Tower (3/3), Nest (7/7), Fieldmouse (canary), Relay (2/2). Socket probing via standard discovery chain. `--probe` flag validates guideStone health contract (`{status, primal, version}`). `--ribocipher` flag tests mito-beacon signal acceptance per primal (diagnoses genetics-layer wiring — Wave 114 exit criterion #7).
 - **Depot integrity verification** — `spore-validate depot-verify --checksums <path> --depot <dir> --arch <target>` validates binary artifacts against BLAKE3 checksums from `checksums.toml`. Supports `--partial` mode for incremental depot validation (pass when all present binaries verify). Streaming BLAKE3 computation handles large binaries. Directly supports Wave 114 exit criteria (WAN/LAN depot pull validation).
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
@@ -44,13 +44,14 @@ sporePrint/
 ├── config.toml              # Zola config + taxonomies + entity_registry
 ├── content/                 # All site content (Markdown + TOML front matter)
 │   ├── _index.md            # Landing page (minimal — cards are in index.html template)
-│   ├── architecture/        # 8 pages: catalogs, inventory, NUCLEUS, deployment, timeline
+│   ├── architecture/        # 20+ pages: catalogs, inventory, NUCLEUS, deployment, topology, certify
 │   ├── audience/            # 5 pages: role-based entry points
 │   ├── guidestone/          # guideStone verification class
-│   ├── methodology/         # 5 pages: constrained evolution, K-Nome, spring guide
-│   ├── philosophy/          # atlasHugged integration stub (the "why")
+│   ├── methodology/         # 6 pages: constrained evolution, K-Nome, spring guide, sharing the pen
+│   ├── philosophy/          # atlasHugged essays (6 — the "why")
+│   ├── story/               # Builder narrative essays (3 — the journey)
 │   ├── products/            # 4 pages: esotericWebb, helixVision, blueFish, lattice_qcd
-│   ├── science/             # 31 pages: 27 baseCamp papers + gonzales + 3 reference docs
+│   ├── science/             # 32+ pages: baseCamp papers + gonzales + reference docs
 │   └── technical/           # 6 pages: hardware, GPU pipeline, grants, teaching
 ├── templates/
 │   ├── base.html            # Layout: nav, site tree sidebar, footer, search
@@ -65,11 +66,10 @@ sporePrint/
 ├── static/
 │   ├── css/base.css         # Design tokens (Catppuccin Mocha/Latte)
 │   ├── css/main.css         # Component styles
-│   ├── gonzales/            # Interactive explorer (JELLY STRING → petalTongue)
 │   ├── CNAME                # primals.eco
 │   └── search.css
 ├── specs/                   # THIS DIRECTORY — internal, not built
-├── crates/spore-validate/   # Rust validation crate (28 modules, 258 tests, 70%+ cov)
+├── crates/spore-validate/   # Rust validation crate (28 modules, 272 tests)
 ├── .github/workflows/       # deploy.yml, auto-refresh.yml
 └── CHANGELOG.md
 ```
@@ -80,7 +80,7 @@ sporePrint/
 - **Catppuccin** color palette (Mocha dark / Latte light, auto via `prefers-color-scheme`)
 - **`spore-validate check-links`** validates internal links (149 links across 207 files)
 - **zola build** generates taxonomy pages automatically from front matter tags
-- **JavaScript**: gonzales science explorer (JELLY STRING, evolution target: petalTongue WASM)
+- **JavaScript**: viz-hydrate.js (WASM progressive enhancement, SVG fallback)
 - **Inline SVG favicon** — no external assets
 - **`minify_html = true`** — output is minified
 - **`#![forbid(unsafe_code)]`** — enforced at spore-validate crate root
@@ -124,7 +124,7 @@ Metrics flow from repos → `config.toml` entity registry → shortcodes in cont
 
 ## Nav Bar Structure
 
-8 items: Science · Architecture · guideStone · Philosophy · Products | Primals · Springs · GitHub
+Science · Architecture · Lab · Story · guideStone · Philosophy · Products | Primals · Springs · GitHub
 
 Audience, Methodology, and Technical are accessible via the site tree sidebar. Architecture highlights when browsing Methodology or Technical paths.
 ## Wave 64 Build Metrics (flockGate WAN)

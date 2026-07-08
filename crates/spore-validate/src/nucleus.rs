@@ -313,15 +313,10 @@ fn probe_failed(start: Instant, error: String) -> ProbeResult {
 fn probe_socket_health(socket_path: &str) -> ProbeResult {
     let start = Instant::now();
 
-    let stream = match std::os::unix::net::UnixStream::connect(socket_path) {
-        Ok(s) => s,
-        Err(e) => return probe_failed(start, format!("connect: {e}")),
+    let mut reader = match crate::ipc::connect_uds(socket_path, PROBE_TIMEOUT) {
+        Ok(r) => r,
+        Err(e) => return probe_failed(start, format!("{e}")),
     };
-
-    stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
-    stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
-
-    let mut reader = BufReader::new(Box::new(stream) as Box<dyn crate::cas_push::ReadWrite>);
 
     let resp = match crate::ipc::probe_health(&mut reader, 1) {
         Ok(r) => r,

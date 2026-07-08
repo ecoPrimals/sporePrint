@@ -16,8 +16,25 @@
 use crate::error::Error;
 use serde_json::Value;
 use std::io::{BufRead, BufReader, Write};
+use std::time::Duration;
 
 use crate::cas_push::ReadWrite;
+
+/// Connect to a Unix domain socket with bounded timeouts.
+///
+/// Returns a buffered reader wrapping the stream, ready for `send_rpc`.
+pub fn connect_uds(
+    path: &str,
+    timeout: Duration,
+) -> Result<BufReader<Box<dyn crate::cas_push::ReadWrite>>, Error> {
+    let stream = std::os::unix::net::UnixStream::connect(path)
+        .map_err(|e| Error::Config(format!("UDS connect to {path}: {e}")))?;
+    stream.set_write_timeout(Some(timeout)).ok();
+    stream.set_read_timeout(Some(timeout)).ok();
+    Ok(BufReader::new(
+        Box::new(stream) as Box<dyn crate::cas_push::ReadWrite>
+    ))
+}
 
 /// Send a JSON-RPC 2.0 request over an NDJSON stream and read the response.
 ///
@@ -69,6 +86,7 @@ fn validate_response_id(request: &Value, response: &Value) -> Result<(), Error> 
 }
 
 /// Extract the error message from a JSON-RPC error response, if present.
+#[must_use]
 pub fn extract_error_message(response: &Value) -> Option<String> {
     let err = response.get("error")?;
     let code = err.get("code").and_then(Value::as_i64).unwrap_or(0);
@@ -80,6 +98,7 @@ pub fn extract_error_message(response: &Value) -> Option<String> {
 }
 
 /// Check if a JSON-RPC error is "method not found" (-32601).
+#[must_use]
 pub fn is_method_not_found(response: &Value) -> bool {
     response
         .get("error")

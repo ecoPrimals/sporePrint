@@ -242,6 +242,13 @@ enum Command {
         #[arg(long, env = "PETALTONGUE_SOCKET")]
         socket: Option<String>,
     },
+
+    /// Generate static SVG visualizations via petalTongue IPC
+    BuildViz {
+        /// Override petalTongue socket path (default: auto-discover)
+        #[arg(long, env = "PETALTONGUE_SOCKET")]
+        socket: Option<String>,
+    },
 }
 
 fn main() -> ExitCode {
@@ -313,7 +320,8 @@ fn run() -> Result<(), Error> {
             | Command::PtRender { .. }
             | Command::PtStatus
             | Command::TowerStatus
-            | Command::PtViz { .. },
+            | Command::PtViz { .. }
+            | Command::BuildViz { .. },
         ) => {
             unreachable!("handled above")
         }
@@ -363,6 +371,7 @@ fn dispatch_standalone(cli: &Cli) -> Option<Result<(), Error>> {
             format,
             socket,
         }) => Some(run_pt_viz(name, format, socket.as_deref())),
+        Some(Command::BuildViz { socket }) => Some(run_build_viz(socket.as_deref())),
         _ => None,
     }
 }
@@ -507,6 +516,62 @@ fn run_pt_viz(name: &str, format: &str, socket_override: Option<&str>) -> Result
     println!();
     println!("{}", result.body);
 
+    Ok(())
+}
+
+fn run_build_viz(socket_override: Option<&str>) -> Result<(), Error> {
+    let root = client_root();
+    let content_dir = paths::require_content_dir(&root)?;
+
+    let viz_names = commands::scan_viz_embeds(&content_dir);
+
+    if viz_names.is_empty() {
+        println!("spore-validate: no viz_embed shortcodes found in content");
+        return Ok(());
+    }
+
+    println!(
+        "spore-validate: building {} visualization(s) via petalTongue",
+        viz_names.len()
+    );
+
+    let endpoint =
+        discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", socket_override)?;
+
+    let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
+
+    let output_dir = root.join("static/viz");
+    std::fs::create_dir_all(&output_dir)
+        .map_err(|e| Error::Config(format!("create static/viz/: {e}")))?;
+
+    let mut success = 0u32;
+    let mut skipped = 0u32;
+
+    for name in &viz_names {
+        match client.viz(name, petaltongue::VizFormat::Svg) {
+            Ok(result) => {
+                let out_path = output_dir.join(format!("{name}.svg"));
+                std::fs::write(&out_path, &result.body).map_err(|e| Error::io(&out_path, e))?;
+                println!(
+                    "  ✅ {name}.svg ({} bytes, {}ms)",
+                    result.body.len(),
+                    result.latency_ms
+                );
+                success += 1;
+            }
+            Err(e) => {
+                let existing = output_dir.join(format!("{name}.svg"));
+                if existing.exists() {
+                    println!("  ⚠️  {name}: petalTongue error ({e}), keeping existing SVG");
+                } else {
+                    println!("  ❌ {name}: {e} (no existing SVG to fall back on)");
+                }
+                skipped += 1;
+            }
+        }
+    }
+
+    println!("\n  Generated: {success}, Skipped: {skipped}");
     Ok(())
 }
 

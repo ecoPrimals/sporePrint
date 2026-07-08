@@ -4,9 +4,9 @@
 for sporePrint. It lives at `crates/spore-validate/` and enforces
 `#![forbid(unsafe_code)]` at the crate root.
 
-## Current State (Wave 132d — July 2026)
+## Current State (Wave 134 — July 2026)
 
-- **28 modules**, 258 tests (226 unit + 29 integration + 3 refresh_write, 6 parity ignored)
+- **28 modules**, 272 tests (240 unit + 29 integration + 3 refresh_write, 6 parity ignored)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
 - `#![warn(missing_docs)]` active, `#![forbid(unsafe_code)]`
 - 16 `#[allow()]` justified (cast safety, dead_code for deserialized schema, uniform dispatch)
@@ -36,6 +36,11 @@ for sporePrint. It lives at `crates/spore-validate/` and enforces
 | `render-notebooks --discover` | Auto-find notebooks via .gate walk |
 | `check-links` | Validate all @/ internal links |
 | `provenance` | BLAKE3 content hashing (--write/--verify/--diff) |
+| `pt-render <path>` | Render content via petalTongue IPC |
+| `pt-status` | petalTongue backend status (socket + method probing) |
+| `pt-viz <name>` | Request visualization from petalTongue (SVG or scene-JSON) |
+| `tower-status` | Tower P1 readiness probe (profile-driven method validation) |
+| `build-viz` | Generate static SVG visualizations via petalTongue at build time |
 
 ## Module Architecture
 
@@ -56,7 +61,11 @@ crates/spore-validate/src/
 ├── notebook.rs   — Jupyter .ipynb JSON → Zola markdown
 ├── links.rs      — Internal @/ link validation (link_resolves helper)
 ├── report.rs     — Entity/totals report generation (consumes all fields)
-└── time.rs       — Pure Rust UTC date (shared, no external commands)
+├── time.rs       — Pure Rust UTC date (shared, no external commands)
+├── ipc.rs        — Shared NDJSON JSON-RPC 2.0 client with response ID correlation
+├── petaltongue.rs — petalTongue IPC client (health, render, viz, probe)
+├── tower.rs      — Tower P1 method probe with profile-driven targets
+└── nucleus_display.rs — NUCLEUS validation display/formatting
 ```
 
 ## Key Design Decisions

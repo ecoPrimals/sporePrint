@@ -1,5 +1,5 @@
-generated = "2026-07-08T15:39:11Z"
-root_hash = "35326a2878064cc2d718e2b3c8a005e23e3df4e09476636b8c2a01227cbabb99"
+generated = "2026-07-08T16:03:38Z"
+root_hash = "d44059f6f5c8c8744082d311dcb48a98b90a110404da53b602361fe8cae7f949"
 page_count = 239
 
 [pages."_index.md"]
@@ -1133,8 +1133,8 @@ size_bytes = 6350
 title = "🔬 Science"
 
 [pages."science/gonzales_explorer.md"]
-blake3 = "7185db83d8aff0336d3226338f6ae2ad3f881a19ec0dee69800b7fd9ae828d07"
-size_bytes = 16335
+blake3 = "3e82381c0df87431845635e6f0e190ece18f9700e01e80f11a159b664e7d1520"
+size_bytes = 5729
 title = "Gonzales Interactive Explorer"
 
 [pages."sitemap/_index.md"]

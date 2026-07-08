@@ -8,7 +8,7 @@
 //! typed parse errors.
 
 use crate::error::Error;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fmt;
 use std::path::Path;
@@ -81,11 +81,13 @@ pub enum EntityKind {
 impl EntityKind {
     /// Kinds that have Zola taxonomy pages (pluralized name → kind mapping).
     /// Derived from the type system, not hardcoded elsewhere.
+    #[must_use]
     pub const fn taxonomy_pairs() -> &'static [(&'static str, Self)] {
         &[("primals", Self::Primal), ("springs", Self::Spring)]
     }
 
     /// Whether this entity kind participates in Zola taxonomy tagging.
+    #[must_use]
     pub const fn has_taxonomy(self) -> bool {
         matches!(self, Self::Primal | Self::Spring)
     }
@@ -208,6 +210,7 @@ impl fmt::Display for EdgeRelation {
 impl EdgeRelation {
     /// The inverse relation — if A has relation R to B, B has inverse(R) to A.
     /// This is what makes all connections bidirectional by construction.
+    #[must_use]
     pub const fn inverse(self) -> Self {
         match self {
             Self::ComposesInto => Self::ComposesInto, // B "composed of" A (same type, reversed)
@@ -225,6 +228,79 @@ impl EdgeRelation {
             Self::Contradicts => Self::Contradicts,
             Self::AnalogousTo => Self::AnalogousTo,
         }
+    }
+}
+
+/// Maturity level for claims and features — validated at build time.
+///
+/// Replaces the string-based approach in the `maturity.html` Tera shortcode
+/// with a typed enum that spore-validate can enforce.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum MaturityLevel {
+    Implemented,
+    Reproduced,
+    Certified,
+    Architectural,
+    Planned,
+    Unaudited,
+}
+
+impl MaturityLevel {
+    /// CSS class name for badge styling (matches `_badges.scss`).
+    #[must_use]
+    #[allow(dead_code)] // consumed by Tera template integration (petalTongue Phase 2d)
+    pub const fn css_class(self) -> &'static str {
+        match self {
+            Self::Implemented => "maturity-implemented",
+            Self::Reproduced => "maturity-reproduced",
+            Self::Certified => "maturity-certified",
+            Self::Architectural => "maturity-architectural",
+            Self::Planned => "maturity-planned",
+            Self::Unaudited => "maturity-unaudited",
+        }
+    }
+
+    /// Human-readable label.
+    #[must_use]
+    pub const fn label(self) -> &'static str {
+        match self {
+            Self::Implemented => "Implemented",
+            Self::Reproduced => "Reproduced",
+            Self::Certified => "Certified",
+            Self::Architectural => "Architectural",
+            Self::Planned => "Planned",
+            Self::Unaudited => "Unaudited",
+        }
+    }
+
+    /// All valid maturity levels (for validation).
+    #[must_use]
+    pub const fn all() -> &'static [Self] {
+        &[
+            Self::Implemented,
+            Self::Reproduced,
+            Self::Certified,
+            Self::Architectural,
+            Self::Planned,
+            Self::Unaudited,
+        ]
+    }
+
+    /// Parse from string, case-insensitive.
+    #[must_use]
+    pub fn from_str_loose(s: &str) -> Option<Self> {
+        let lower = s.to_lowercase();
+        Self::all()
+            .iter()
+            .copied()
+            .find(|level| level.label().to_lowercase() == lower)
+    }
+}
+
+impl fmt::Display for MaturityLevel {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.write_str(self.label())
     }
 }
 
@@ -346,5 +422,43 @@ mod tests {
         assert_eq!(EdgeRelation::Validates.inverse(), EdgeRelation::ValidatedBy);
         assert_eq!(EdgeRelation::DerivedFrom.inverse(), EdgeRelation::Extends);
         assert_eq!(EdgeRelation::Extends.inverse(), EdgeRelation::DerivedFrom);
+    }
+
+    #[test]
+    fn maturity_level_roundtrip() {
+        for level in MaturityLevel::all() {
+            let parsed = MaturityLevel::from_str_loose(level.label());
+            assert_eq!(parsed, Some(*level));
+        }
+    }
+
+    #[test]
+    fn maturity_level_css_class_format() {
+        for level in MaturityLevel::all() {
+            assert!(level.css_class().starts_with("maturity-"));
+        }
+    }
+
+    #[test]
+    fn maturity_level_display() {
+        assert_eq!(MaturityLevel::Implemented.to_string(), "Implemented");
+        assert_eq!(MaturityLevel::Unaudited.to_string(), "Unaudited");
+    }
+
+    #[test]
+    fn maturity_level_unknown_returns_none() {
+        assert!(MaturityLevel::from_str_loose("bogus").is_none());
+    }
+
+    #[test]
+    fn maturity_level_case_insensitive() {
+        assert_eq!(
+            MaturityLevel::from_str_loose("IMPLEMENTED"),
+            Some(MaturityLevel::Implemented)
+        );
+        assert_eq!(
+            MaturityLevel::from_str_loose("Reproduced"),
+            Some(MaturityLevel::Reproduced)
+        );
     }
 }

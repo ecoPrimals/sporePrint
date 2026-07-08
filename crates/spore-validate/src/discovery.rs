@@ -14,6 +14,7 @@
 //! 4. **Capability-based** — features activate based on discovered capabilities
 
 use serde::Serialize;
+use std::borrow::Cow;
 
 /// Default systemd NUCLEUS socket directory (`GATE_NUCLEUS_SYSTEMD_STANDARD`).
 ///
@@ -21,9 +22,10 @@ use serde::Serialize;
 const DEFAULT_SYSTEMD_SOCKET_DIR: &str = "/run/membrane";
 
 /// Resolve the systemd socket directory, preferring the env override.
-pub fn systemd_socket_dir() -> String {
+#[must_use]
+pub fn systemd_socket_dir() -> Cow<'static, str> {
     std::env::var("BIOMEOS_SYSTEMD_SOCKET_DIR")
-        .unwrap_or_else(|_| DEFAULT_SYSTEMD_SOCKET_DIR.into())
+        .map_or(Cow::Borrowed(DEFAULT_SYSTEMD_SOCKET_DIR), Cow::Owned)
 }
 
 /// sporePrint's self-declared capabilities.

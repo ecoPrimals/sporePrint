@@ -6,13 +6,13 @@
 //! internal links use Zola's `@/` prefix for proper resolution.
 
 use crate::error::Diagnostic;
-use crate::model::{Entity, EntityKind};
+use crate::model::{Entity, EntityKind, MaturityLevel};
 use crate::paths;
 use regex::Regex;
+use std::borrow::Cow;
 use std::collections::{HashMap, HashSet};
 use std::path::Path;
 use std::sync::LazyLock;
-use walkdir::WalkDir;
 
 /// Regex matching all entity shortcode variants: `entity`, `entity_metrics`, `entity_stat`.
 static ENTITY_SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
@@ -32,7 +32,7 @@ pub fn validate_taxonomies(
     let registry_keys: HashSet<&str> = registry.keys().map(String::as_str).collect();
     let mut referenced_keys: HashSet<String> = HashSet::new();
 
-    for entry in markdown_files(content_dir) {
+    for entry in paths::walk_markdown_files(content_dir) {
         let path = entry.path();
         if path.file_name().is_some_and(|n| n == "_index.md") {
             continue;
@@ -92,8 +92,16 @@ pub fn validate_taxonomies(
 }
 
 /// Normalize a shortcode name: lowercase, strip spaces and hyphens.
-fn normalize_key(name: &str) -> String {
-    name.to_lowercase().replace([' ', '-'], "")
+#[must_use]
+fn normalize_key(key: &str) -> Cow<'_, str> {
+    if key
+        .bytes()
+        .all(|b| b.is_ascii_lowercase() && b != b' ' && b != b'-')
+    {
+        Cow::Borrowed(key)
+    } else {
+        Cow::Owned(key.to_lowercase().replace([' ', '-'], ""))
+    }
 }
 
 /// Scan prose for entity shortcodes and validate registry keys.
@@ -108,7 +116,7 @@ pub fn check_integrity(
     let mut shortcode_count: u32 = 0;
     let mut broken = Vec::new();
 
-    for entry in markdown_files(content_dir) {
+    for entry in paths::walk_markdown_files(content_dir) {
         let path = entry.path();
         let Ok(text) = std::fs::read_to_string(path) else {
             continue;
@@ -119,7 +127,7 @@ pub fn check_integrity(
             let raw_name = &cap[1];
             let key = normalize_key(raw_name);
             shortcode_count += 1;
-            if !registry_keys.contains(key.as_str()) {
+            if !registry_keys.contains(key.as_ref()) {
                 broken.push(format!(
                     "{}: entity shortcode name=\"{raw_name}\" (normalized: \"{key}\") not in registry",
                     rel.display()
@@ -144,7 +152,7 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
     let bare_md_re = &*BARE_MD_RE;
     let mut count: u32 = 0;
 
-    for entry in markdown_files(content_dir) {
+    for entry in paths::walk_markdown_files(content_dir) {
         let path = entry.path();
         let Ok(text) = std::fs::read_to_string(path) else {
             continue;
@@ -187,7 +195,7 @@ pub fn audit_taxonomy_coverage(
 
     let mut gap_count: u32 = 0;
 
-    for entry in markdown_files(content_dir) {
+    for entry in paths::walk_markdown_files(content_dir) {
         let path = entry.path();
         if path.file_name().is_some_and(|n| n == "_index.md") {
             continue;
@@ -203,9 +211,9 @@ pub fn audit_taxonomy_coverage(
         let mut shortcode_entities: HashSet<String> = HashSet::new();
         for cap in shortcode_re.captures_iter(body) {
             let key = normalize_key(&cap[1]);
-            if let Some(entity) = registry.get(&key) {
+            if let Some(entity) = registry.get(key.as_ref()) {
                 if entity.kind.has_taxonomy() {
-                    shortcode_entities.insert(key);
+                    shortcode_entities.insert(key.into_owned());
                 }
             }
         }
@@ -237,7 +245,7 @@ fn extract_taxonomy_entities(path: &Path) -> HashSet<String> {
         if let Some(arr) = tax_val.as_array() {
             for item in arr {
                 if let Some(s) = item.as_str() {
-                    keys.insert(normalize_key(s));
+                    keys.insert(normalize_key(s).into_owned());
                 }
             }
         }
@@ -246,6 +254,7 @@ fn extract_taxonomy_entities(path: &Path) -> HashSet<String> {
 }
 
 /// Strip TOML front matter delimiters from content, returning just the body.
+#[must_use]
 fn strip_front_matter(text: &str) -> &str {
     let trimmed = text.trim_start();
     if !trimmed.starts_with("+++") {
@@ -257,16 +266,36 @@ fn strip_front_matter(text: &str) -> &str {
         .map_or(text, |pos| &after_open[pos + 3..])
 }
 
-fn markdown_files(dir: &Path) -> impl Iterator<Item = walkdir::DirEntry> {
-    WalkDir::new(dir)
-        .sort_by_file_name()
-        .into_iter()
-        .filter_map(Result::ok)
-        .filter(|e| e.file_type().is_file())
-        .filter(|e| e.path().extension().is_some_and(|ext| ext == "md"))
+/// Scan content for maturity shortcode usage and validate levels.
+///
+/// Reports warnings for unknown maturity levels that don't match
+/// the `MaturityLevel` enum.
+pub fn validate_maturity_levels(content_dir: &Path, diagnostics: &mut Vec<Diagnostic>) {
+    static MATURITY_RE: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r#"\{\{[\s]*maturity\s*\(\s*level\s*=\s*"([^"]+)""#).unwrap());
+
+    for entry in paths::walk_markdown_files(content_dir) {
+        let path = entry.path().to_path_buf();
+        let Ok(text) = std::fs::read_to_string(&path) else {
+            continue;
+        };
+
+        for cap in MATURITY_RE.captures_iter(&text) {
+            if let Some(m) = cap.get(1) {
+                let level_str = m.as_str();
+                if MaturityLevel::from_str_loose(level_str).is_none() {
+                    diagnostics.push(Diagnostic::warning(format!(
+                        "unknown maturity level '{level_str}' in {}",
+                        paths::rel_to(&path, content_dir).display()
+                    )));
+                }
+            }
+        }
+    }
 }
 
 /// Extract TOML front matter from a Zola content file.
+#[must_use]
 pub fn extract_front_matter(path: &Path) -> Option<toml::Table> {
     let text = std::fs::read_to_string(path).ok()?;
     let trimmed = text.trim_start();
@@ -537,5 +566,50 @@ Body text."#
         let mut diags = Vec::new();
         check_integrity(root, &content, &registry, &mut diags);
         assert!(!diags.iter().any(Diagnostic::is_error));
+    }
+
+    #[test]
+    fn validate_maturity_levels_catches_unknown() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::write(
+            dir.path().join("test.md"),
+            r#"+++
+title = "Test"
++++
+
+{{ maturity(level="implemented") }} works fine.
+{{ maturity(level="bogus") }} should warn.
+"#,
+        )
+        .unwrap();
+
+        let mut diags = Vec::new();
+        validate_maturity_levels(dir.path(), &mut diags);
+        assert_eq!(diags.len(), 1);
+        assert!(diags[0].message().contains("bogus"));
+    }
+
+    #[test]
+    fn validate_maturity_levels_accepts_all_valid() {
+        let dir = tempfile::tempdir().unwrap();
+        std::fs::write(
+            dir.path().join("test.md"),
+            r#"+++
+title = "Test"
++++
+
+{{ maturity(level="implemented") }}
+{{ maturity(level="reproduced") }}
+{{ maturity(level="certified") }}
+{{ maturity(level="architectural") }}
+{{ maturity(level="planned") }}
+{{ maturity(level="unaudited") }}
+"#,
+        )
+        .unwrap();
+
+        let mut diags = Vec::new();
+        validate_maturity_levels(dir.path(), &mut diags);
+        assert!(diags.is_empty());
     }
 }
