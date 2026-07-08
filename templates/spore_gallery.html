@@ -3,14 +3,20 @@
 
 {% block title %}{{ page.title }} — pseudoSpore Gallery{% endblock title %}
 {% block description %}{{ page.description }}{% endblock description %}
+{% block og_title %}{{ page.title }} — pseudoSpore Gallery{% endblock og_title %}
+{% block og_desc %}{{ page.description }}{% endblock og_desc %}
+{% block tw_title %}{{ page.title }}{% endblock tw_title %}
+{% block tw_desc %}{{ page.description }}{% endblock tw_desc %}
 
 {% block content %}
 <article class="spore-page">
   <header class="spore-header">
-    <nav class="spore-breadcrumb">
-      <a href="/lab/">Lab</a> /
-      <a href="/lab/spores/">pseudoSpore Gallery</a> /
-      <span>{{ page.title }}</span>
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="/lab/">Lab</a>
+      <span aria-hidden="true">/</span>
+      <a href="/lab/spores/">pseudoSpore Gallery</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ page.title }}</span>
     </nav>
     <h1>🧬 {{ page.title }}</h1>
     <div class="spore-meta">

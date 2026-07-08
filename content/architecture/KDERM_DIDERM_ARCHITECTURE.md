@@ -21,7 +21,7 @@ direction information flows.
 
 ## Interactive Topology
 
-<div id="viz-kderm" data-viz-src="/viz/kderm-topology?format=scene-json" class="viz-container">
+<div id="viz-kderm" class="viz-container">
 {{ viz_embed(src="/viz/kderm-topology") }}
 </div>
 

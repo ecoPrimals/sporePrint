@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-/* Tree current page highlight */
-.tree-current > a { font-weight: 700; color: var(--c-accent); }
+// Tree current highlight: single definition in _layout.scss
 
 /* Connections (renvois de choses) */
 .entity-connections { margin: 2rem 0; }

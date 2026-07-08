@@ -305,12 +305,18 @@
     (function() {
       var toggle = document.querySelector('.nav-toggle');
       var links = document.querySelector('.nav-links');
-      if (!toggle || !links) return;
-      toggle.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        links.classList.toggle('open');
-      });
+      if (toggle && links) {
+        toggle.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          links.classList.toggle('open');
+        });
+      }
+      // Collapse sidebar on mobile so content appears first
+      if (window.innerWidth <= 960) {
+        var treeDetails = document.querySelector('.site-tree > details');
+        if (treeDetails) treeDetails.removeAttribute('open');
+      }
     })();
   </script>
 </body>

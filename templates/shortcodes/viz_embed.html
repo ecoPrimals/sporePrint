@@ -2,6 +2,6 @@
 {% set viz_name = src | split(pat="?") | first | split(pat="/") | last %}
 {% set static_path = "/viz/" ~ viz_name ~ ".svg" %}
 <div class="viz-embed" data-viz-src="{{ src }}">
-  <img src="{{ static_path }}" alt="Visualization: {{ viz_name }}" loading="lazy" style="width:100%;height:auto;border-radius:8px;" />
+  <img src="{{ static_path }}" alt="Visualization: {{ viz_name }}" loading="lazy" />
   <noscript>Visualization: <a href="{{ src }}">{{ src }}</a></noscript>
 </div>

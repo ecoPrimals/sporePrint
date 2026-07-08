@@ -15,7 +15,7 @@ composition, concept, infrastructure, organization) and sized by connectivity.
 
 ## Entity Graph Explorer
 
-<div id="viz-entity-graph" data-viz-src="/viz/entity-graph?format=scene-json" class="viz-container">
+<div id="viz-entity-graph" class="viz-container">
 {{ viz_embed(src="/viz/entity-graph") }}
 </div>
 

@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
+@use "mixins";
+@use "badges";
 /* Entity references (shortcode-generated) */
 .entity-ref {
   font-weight: 600;
@@ -117,17 +119,7 @@ a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; tex
   margin-top: 1.5rem;
 }
 .spore-card {
-  display: block;
-  padding: 1.25rem;
-  border: 1px solid var(--c-border);
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--c-text);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.spore-card:hover {
-  border-color: var(--c-accent);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  @include mixins.card-base;
 }
 .spore-card-header {
   display: flex;
@@ -160,13 +152,11 @@ a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; tex
   background: var(--c-surface);
   color: var(--c-text-muted);
 }
-.spore-complete .spore-status-badge,
-.badge-complete {
+.spore-complete .spore-status-badge {
   background: var(--c-accent-light);
   color: var(--c-accent);
 }
-.spore-pending .spore-status-badge,
-.badge-pending {
+.spore-pending .spore-status-badge {
   background: var(--c-bg-alt);
   color: var(--c-text-muted);
 }
@@ -175,13 +165,7 @@ a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; tex
 /* Spore page layout */
 .spore-page { position: relative; }
 .spore-header { margin-bottom: 2rem; }
-.spore-breadcrumb {
-  font-size: 0.82rem;
-  color: var(--c-text-muted);
-  margin-bottom: 0.75rem;
-}
-.spore-breadcrumb a { color: var(--c-link); text-decoration: none; }
-.spore-breadcrumb a:hover { text-decoration: underline; }
+/* Spore breadcrumb: uses unified .breadcrumbs from _content.scss */
 .spore-meta {
   display: flex;
   gap: 0.75rem;
@@ -236,22 +220,7 @@ a.entity-ref:hover { color: var(--c-link-hover); text-decoration: underline; tex
   .spore-sidebar { float: none; width: 100%; margin: 0 0 1.5rem; }
 }
 
-/* Entity badges */
-.entity-badges { margin: 1.5rem 0; }
-.badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.badge {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-.badge-rust { background: #f74c00; color: #fff; }
-.badge-license { background: var(--c-accent-light); color: var(--c-accent); }
-.badge-sovereign { background: var(--c-bg-alt); color: var(--c-text-muted); border: 1px solid var(--c-border); }
-.badge-foundation { background: #c9a227; color: #1a1a1a; }
+/* Entity badges — definitions in _badges.scss */
 
 /* Entity related list */
 .entity-related { margin: 2rem 0; }

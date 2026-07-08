@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Shared mixins — single source of truth for repeated UI patterns.
+
+@mixin card-hover {
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: var(--c-accent);
+  }
+  @media (prefers-color-scheme: dark) {
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+@mixin card-base {
+  display: block;
+  padding: 1.25rem;
+  background: var(--c-bg-alt);
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--c-text);
+  @include card-hover;
+}

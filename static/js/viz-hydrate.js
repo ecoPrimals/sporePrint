@@ -188,12 +188,6 @@ class VizController {
   createTooltip() {
     this.tooltip = document.createElement('div');
     this.tooltip.className = 'viz-tooltip';
-    this.tooltip.style.cssText = `
-      position: fixed; display: none; padding: 4px 8px;
-      background: var(--ctp-surface0, #313244); color: var(--ctp-text, #cdd6f4);
-      border-radius: 4px; font-size: 12px; pointer-events: none; z-index: 1000;
-      border: 1px solid var(--ctp-surface2, #585b70);
-    `;
     document.body.appendChild(this.tooltip);
   }
 
@@ -260,14 +254,7 @@ class AnimationButton {
     const btn = document.createElement('button');
     btn.className = 'viz-animate-btn';
     btn.textContent = '\u25B6 Animate relay';
-    btn.style.cssText = `
-      position: absolute; top: 8px; right: 8px; padding: 4px 10px;
-      background: var(--ctp-surface0, #313244); color: var(--ctp-text, #cdd6f4);
-      border: 1px solid var(--ctp-surface2, #585b70); border-radius: 4px;
-      cursor: pointer; font-size: 11px; z-index: 10;
-    `;
     btn.addEventListener('click', () => ctrl.playRelayAnimation());
-    container.style.position = 'relative';
     container.appendChild(btn);
   }
 }

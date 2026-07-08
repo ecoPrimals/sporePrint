@@ -69,7 +69,7 @@
   transition: background 0.1s, color 0.1s;
 }
 .tree-pages a:hover { color: var(--c-link); background: var(--c-accent-light); }
-.tree-current > a { color: var(--c-accent); font-weight: 600; }
+.tree-current > a { color: var(--c-accent); font-weight: 700; }
 .tree-divider {
   border-top: 1px solid var(--c-border);
   margin: 0.5rem 0.5rem;
@@ -87,6 +87,7 @@
     padding: 0.5rem 1.5rem;
   }
   .site-tree details:not([open]) { margin-bottom: 0; }
+  .site-tree summary { font-size: 0.8rem; }
 }
 
 /* Main content */

@@ -2,11 +2,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // Design tokens and reset live in base.css (static/) — load it first.
 //
-// Partials (ordered by page structure, top→bottom):
+// Partials (ordered: foundation → structure → components):
+@use "mixins";       // Shared mixins (card-hover, card-base)
+@use "badges";       // Unified badge system (entity, status, maturity)
 @use "nav";          // Skip link, navigation, search, mobile nav
 @use "layout";       // Site layout, tree sidebar, main content area
 @use "landing";      // Landing page hero, stats ribbon, cards
 @use "content";      // Typography, code, tables, breadcrumbs, sections
 @use "pages";        // Page layout with TOC, header, footer, accessibility
-@use "entities";     // Entity refs, profiles, gallery, badges
+@use "entities";     // Entity refs, profiles, gallery
 @use "connections";  // Tree highlights, renvois connections, cert badge

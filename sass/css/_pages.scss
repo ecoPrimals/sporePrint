@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
+@use "mixins";
 /* Page layout with TOC */
 .page-layout {
   display: flex;
@@ -76,6 +77,42 @@
 .footer-tagline {
   font-style: italic;
   margin-top: 0.5rem;
+}
+
+/* Visualization interactive enhancements */
+.viz-container { position: relative; }
+.viz-embed img { width: 100%; height: auto; border-radius: 8px; }
+.viz-interactive { cursor: grab; }
+.viz-interactive:active { cursor: grabbing; }
+.viz-tooltip {
+  position: fixed;
+  display: none;
+  padding: 4px 8px;
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  pointer-events: none;
+  z-index: 1000;
+  border: 1px solid var(--c-border);
+}
+.viz-animate-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 4px 10px;
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  z-index: 10;
+  @include mixins.card-hover;
+  &:hover {
+    transform: none;
+    background: var(--c-accent-light);
+  }
 }
 
 /* Accessibility: focus */

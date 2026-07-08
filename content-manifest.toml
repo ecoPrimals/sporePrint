@@ -1,5 +1,5 @@
-generated = "2026-07-08T15:21:26Z"
-root_hash = "2431664e24e777a661eb3d924b58a5b560eabf0fbcdf055a90c5490ad63ebac8"
+generated = "2026-07-08T15:39:11Z"
+root_hash = "35326a2878064cc2d718e2b3c8a005e23e3df4e09476636b8c2a01227cbabb99"
 page_count = 239
 
 [pages."_index.md"]
@@ -33,8 +33,8 @@ size_bytes = 11720
 title = "Ecosystem Inventory"
 
 [pages."architecture/ECOSYSTEM_VISUALIZATION.md"]
-blake3 = "cd30fca2d144ca55d9d2fafb63d573f2e762b9806fd7072d7fcee82e361499cb"
-size_bytes = 1937
+blake3 = "1c8bbc7a80d37b74ed85be80e175b36fd49f9aa6bf9508909aa6e3b303eb9046"
+size_bytes = 1886
 title = "Ecosystem Visualization"
 
 [pages."architecture/EVIDENCE_SNAPSHOT.md"]
@@ -68,8 +68,8 @@ size_bytes = 4510
 title = "Self-Certifying Publication: sporePrint as guideStone"
 
 [pages."architecture/KDERM_DIDERM_ARCHITECTURE.md"]
-blake3 = "e4dffec1f7fbaec9c27cef9baa414c0a35ca900fa76ba6290659ef3b71e24af3"
-size_bytes = 5608
+blake3 = "c072583cea19e21c207b85649cf35739256ea54e8ae4b37313474ed0e662b9cd"
+size_bytes = 5555
 title = "K-Derm Diderm Architecture"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
@@ -78,8 +78,8 @@ size_bytes = 4675
 title = "Gate Mesh — Live Topology"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "516aa47c2282e7489c595de528d714e9cbf691eb5e67ff27007f3bb977ec324d"
-size_bytes = 15197
+blake3 = "a59c79d865006ea1f09886a0cf7ed4f5ddff2cdc34908e43e9e8642a702a10bb"
+size_bytes = 15139
 title = "NUCLEUS Composition Model"
 
 [pages."architecture/PRIMAL_CATALOG.md"]

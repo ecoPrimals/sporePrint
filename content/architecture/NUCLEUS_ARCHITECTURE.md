@@ -14,7 +14,7 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 
 ## Composition Diagram
 
-<div id="viz-nucleus" data-viz-src="/viz/nucleus-composition?format=scene-json" class="viz-container">
+<div id="viz-nucleus" class="viz-container">
 {{ viz_embed(src="/viz/nucleus-composition") }}
 </div>
 

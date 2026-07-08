@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
+@use "mixins";
 /* Content typography */
 .content {
   max-width: var(--max-w);
@@ -111,16 +112,7 @@
   border: 1px solid var(--c-border);
   border-radius: 8px;
   background: var(--c-bg-alt);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.page-listing li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-@media (prefers-color-scheme: dark) {
-  .page-listing li:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
+  @include mixins.card-hover;
 }
 .page-listing a {
   display: block;

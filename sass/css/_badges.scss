@@ -1,0 +1,57 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Unified badge system — single source of truth for all status/maturity indicators.
+// Three variant families:
+//   .badge           — entity taxonomy badges (license, sovereign, etc.)
+//   .badge-status-*  — lifecycle status (complete, pending, unknown)
+//   .badge-maturity-* — claim maturity (implemented, reproduced, etc.)
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+.badge-rust { background: #f74c00; color: #fff; }
+.badge-license { background: var(--c-accent-light); color: var(--c-accent); }
+.badge-sovereign { background: var(--c-bg-alt); color: var(--c-text-muted); border: 1px solid var(--c-border); }
+.badge-foundation { background: #c9a227; color: #1a1a1a; }
+
+.badge-complete,
+.badge-status-complete {
+  background: var(--c-accent-light);
+  color: var(--c-accent);
+}
+.badge-pending,
+.badge-status-pending {
+  background: var(--c-bg-alt);
+  color: var(--c-text-muted);
+}
+.badge-status-unknown {
+  background: var(--c-surface);
+  color: var(--c-text-muted);
+}
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.entity-badges { margin: 1.5rem 0; }
+
+// Maturity badges (used by maturity shortcode, replaces inline styles)
+.maturity-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-width: 1px;
+  border-style: solid;
+}
+.maturity-implemented   { background: #a6e3a122; color: #a6e3a1; border-color: #a6e3a144; }
+.maturity-reproduced    { background: #89b4fa22; color: #89b4fa; border-color: #89b4fa44; }
+.maturity-certified     { background: #cba6f722; color: #cba6f7; border-color: #cba6f744; }
+.maturity-architectural { background: #fab38722; color: #fab387; border-color: #fab38744; }
+.maturity-planned       { background: #9399b222; color: #9399b2; border-color: #9399b244; }
+.maturity-unaudited     { background: #f38ba822; color: #f38ba8; border-color: #f38ba844; }
