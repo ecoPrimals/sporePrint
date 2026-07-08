@@ -208,7 +208,12 @@
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>
               {% if current_path is starting_with("/philosophy") %}
               <ul class="tree-pages">
-                {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% for pg in sec.pages %}
+                  {% if loop.index0 == 0 %}<li class="tree-label">The Stories</li>{% endif %}
+                  {% if loop.index0 == 3 %}<li class="tree-label">The Framework</li>{% endif %}
+                  {% if loop.index0 == 8 %}<li class="tree-label">The Synthesis</li>{% endif %}
+                  {% if loop.index0 == 12 %}<li class="tree-label">Reference</li>{% endif %}
+                  <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
                 {% endfor %}
               </ul>
               {% endif %}

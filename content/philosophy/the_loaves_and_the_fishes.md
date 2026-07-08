@@ -65,7 +65,7 @@ The stock market grows. The fictions — the legal entities, the quarterly earni
 
 Modern Omelas is neoliberalism. Not capitalism. Neoliberalism.
 
-The distinction matters, because capitalism — as Smith actually described it, as Rand actually meant it, as the Orthogonal Synthesis argues — is about self-ownership. The right to your labor, your tools, your direction. The right to the fruits of what you produce. The right not to be separated from your work.
+The distinction matters, because capitalism — as Smith actually described it, as Rand actually meant it, as [The Orthogonal Synthesis](@/philosophy/the_orthogonal_synthesis.md) argues — is about self-ownership. The right to your labor, your tools, your direction. The right to the fruits of what you produce. The right not to be separated from your work.
 
 Neoliberalism took the language of capitalism and inverted it. It uses the vocabulary of freedom — free markets, deregulation, individual choice — to describe a system that systematically externalizes costs onto people who did not choose to bear them.
 

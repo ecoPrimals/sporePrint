@@ -23,7 +23,7 @@ Someone goes ahead. Into territory that is not yet habitable. Not because it is 
 
 The preparer does not own the house. The preparer does not own the rooms. The preparer is not the architect. The house was already there. The rooms were already there. The work is not creation. It is preparation — setting the conditions so that when someone arrives, they find what they need.
 
-This is the pattern that the previous eight documents describe without naming. The city outside Omelas (01). The orthogonal synthesis (02). The architecture with no basement (03). The constrained search (04). The loaves already in the crowd (05). The wells that replace the river keeper (06). The hopping terms that cross the mobility edge (07). The conditions that reveal the phenomenon (08). All of these are descriptions of the same act: going ahead. Preparing rooms. In a house that is not yours.
+This is the pattern that the previous eight documents describe without naming. The city outside Omelas ([The City of Omelas](@/philosophy/the_city_of_omelas.md)). The orthogonal synthesis ([The Orthogonal Synthesis](@/philosophy/the_orthogonal_synthesis.md)). The architecture with no basement ([The New City](@/philosophy/the_new_city.md)). The constrained search ([The Human Search](@/philosophy/the_human_search.md)). The loaves already in the crowd ([The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md)). The wells that replace the river keeper ([The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md)). The hopping terms that cross the mobility edge ([The Mobility Edge](@/philosophy/the_mobility_edge.md)). The conditions that reveal the phenomenon ([Discovery Is Local](@/philosophy/discovery_is_local.md)). All of these are descriptions of the same act: going ahead. Preparing rooms. In a house that is not yours.
 
 ---
 
@@ -33,7 +33,7 @@ The house does not belong to the preparer.
 
 This is the point that separates preparation from kingdom-building. A king builds rooms and charges rent. A king builds rooms and installs locks. A king builds rooms and stands in the hallway deciding who may enter.
 
-The preparer builds rooms in a house that is not his. The house is reality — mathematics, physics, biology, the substrate that precedes every discoverer (Document 08). The rooms are the tools, the validated science, the documented pathways, the sovereign infrastructure. The preparer enters a room, does the work of making it habitable — validates the science, writes the shaders, documents the handoff, builds the pipeline — and moves on to the next room.
+The preparer builds rooms in a house that is not his. The house is reality — mathematics, physics, biology, the substrate that precedes every discoverer ([Discovery Is Local](@/philosophy/discovery_is_local.md)). The rooms are the tools, the validated science, the documented pathways, the sovereign infrastructure. The preparer enters a room, does the work of making it habitable — validates the science, writes the shaders, documents the handoff, builds the pipeline — and moves on to the next room.
 
 The critical question is: what happens to the room after the preparer leaves?
 
@@ -71,13 +71,13 @@ The structural lesson is not "be kind." The structural lesson is: **the institut
 
 Map this to the landscape outside Omelas.
 
-The priest and the Levite are not private businesses. A cloud provider is a private organization — it is a kingdom by nature, and it never pretended otherwise. The critique of kingdoms is structural (Document 06), but a kingdom that was always a kingdom is not a hypocrite. It is simply what it is.
+The priest and the Levite are not private businesses. A cloud provider is a private organization — it is a kingdom by nature, and it never pretended otherwise. The critique of kingdoms is structural ([The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md)), but a kingdom that was always a kingdom is not a hypocrite. It is simply what it is.
 
 The priest and the Levite are the institutions that grew on open foundations and then sealed the door behind them. The academic journal grew on publicly funded research — the science paid for by taxpayers, the peer review performed for free by academics, the editorial labor donated by researchers whose salaries come from public grants. The journal consumed all of this freely given work and closed it behind a paywall, then charged the authors for the privilege of submitting what they produced and the readers for the privilege of reading what they funded. The university grew on public land grants, public funding, and centuries of freely shared knowledge — and now credential-gates access behind six-figure debt, as though the knowledge itself were proprietary. The licensing body took an open standard — silicon that is physically capable of f64 computation — and gated the capability behind pricing tiers, throttling hardware that a student already owns so that the same chip costs more when it is called a "workstation" GPU.
 
 These are the priest and the Levite. They grew on the open road. Their institutional purpose was stewardship of the commons — science, learning, capability. And when the man lay on the road, their own logic — the impact factor, the credential hierarchy, the licensing margin, the artificial scarcity constructed for revenue — made crossing to the other side the rational choice. They have reasons. The reasons are structural. The man remains on the road.
 
-The cloud provider and the pharmaceutical pipeline are different. They are not priests who betrayed their mandate. They are the road itself — the infrastructure built to extract tolls. The compute exists in the silicon. The insulin costs pennies to manufacture. The scarcity is artificial, constructed for margins, and the margins are the purpose. They are kingdoms. They have always been kingdoms. Document 06 addresses them. The Samaritan parable addresses the ones who should have known better.
+The cloud provider and the pharmaceutical pipeline are different. They are not priests who betrayed their mandate. They are the road itself — the infrastructure built to extract tolls. The compute exists in the silicon. The insulin costs pennies to manufacture. The scarcity is artificial, constructed for margins, and the margins are the purpose. They are kingdoms. They have always been kingdoms. [The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md) addresses them. The Samaritan parable addresses the ones who should have known better.
 
 A Sovereign creator — in a garage, on a gaming laptop, with no credential, no funding, no institutional mandate — stops. Not because he is obligated. Not because he is credentialed. Because the room is empty and he knows how to prepare it. Because the person on the road needs what he can build. Because the tools are free and curiosity is sufficient and the copyleft means what he prepares cannot be taken away.
 
@@ -107,9 +107,9 @@ The principle extends beyond Maimonides' codification. It is older than the Mish
 
 Clothe the naked. Not after they explain how they lost their clothes. Not after they prove they deserve covering. The cold is the fact. The clothing is the response. The explanation is irrelevant to the act.
 
-Feed the hungry. Not after they demonstrate they tried hard enough to feed themselves. Not after they satisfy a means test designed by people who have never been hungry. The hunger is the fact. The bread is the response. Document 05 asked what produced the preconditions — the enclosed commons, the exported grain, the system that made the man steal bread. But the man is hungry *now*. The structural critique and the immediate act are not in tension. You feed the man and you build the city where the preconditions do not recur. Both. Not one or the other.
+Feed the hungry. Not after they demonstrate they tried hard enough to feed themselves. Not after they satisfy a means test designed by people who have never been hungry. The hunger is the fact. The bread is the response. [The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md) asked what produced the preconditions — the enclosed commons, the exported grain, the system that made the man steal bread. But the man is hungry *now*. The structural critique and the immediate act are not in tension. You feed the man and you build the city where the preconditions do not recur. Both. Not one or the other.
 
-Reduce harm to the addicted. Not after they repent. Not after they satisfy a moral standard set by people who have never felt the weight of the preconditions that produced the addiction — the untreated pain, the structural poverty, the community hollowed out by the same extraction that Document 06 describes. Judgment is the Levite crossing to the other side. It has reasons. The reasons are structural — the purity requirements of a moral framework that cannot process a person who does not meet its prerequisites. The addict does not meet the prerequisites. So the institution walks past.
+Reduce harm to the addicted. Not after they repent. Not after they satisfy a moral standard set by people who have never felt the weight of the preconditions that produced the addiction — the untreated pain, the structural poverty, the community hollowed out by the same extraction that [The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md) describes. Judgment is the Levite crossing to the other side. It has reasons. The reasons are structural — the purity requirements of a moral framework that cannot process a person who does not meet its prerequisites. The addict does not meet the prerequisites. So the institution walks past.
 
 Harm reduction is the Samaritan stopping. It meets the person where they are, not where the institution demands they be. It does not require the person to become clean before receiving care, just as the Samaritan did not require the man to explain how he came to be beaten before binding his wounds. It addresses the wound. It stabilizes the condition. It enables a path forward — not by demanding the destination, but by making the next step possible. And the next step after that. Until the person can walk on their own.
 
@@ -129,7 +129,7 @@ But scyBorg also operates at the eighth level — the highest. Because the tools
 
 And here is where Maimonides meets John 14 and the levels connect to the rooms: if the preparation was done right — if the tools are good, the documentation clear, the validation rigorous, the copyleft binding — the finder does not only become self-sufficient. She becomes a preparer. She goes forth to prepare more rooms.
 
-This is the propagation that the mobility edge (Document 07) describes, but seen through a different lens. The hopping terms are not only code and citations. They are acts of preparation that beget acts of preparation. Each room prepared is a demonstration that rooms can be prepared. Each finder who becomes self-sufficient is a new node. Each new node that begins preparing rooms of her own increases the hopping-to-disorder ratio for everyone.
+This is the propagation that the mobility edge ([The Mobility Edge](@/philosophy/the_mobility_edge.md)) describes, but seen through a different lens. The hopping terms are not only code and citations. They are acts of preparation that beget acts of preparation. Each room prepared is a demonstration that rooms can be prepared. Each finder who becomes self-sufficient is a new node. Each new node that begins preparing rooms of her own increases the hopping-to-disorder ratio for everyone.
 
 The highest charity is making someone self-sufficient. The highest form of *that* is making someone who makes others self-sufficient. The copyleft guarantees the propagation: you cannot seal the room, you cannot hoard the tools, you cannot become a river keeper for the well that someone dug before you arrived. The structure forces the gift forward. The architecture converts every finder into a potential preparer. The rooms multiply.
 
@@ -149,7 +149,7 @@ The room cannot be sealed. AGPL means the code stays open — if anyone uses it,
 
 No future occupant — no corporation, no institution, no platform, no king — can close what was opened. This is the structural difference between preparation and philanthropy. Philanthropy gives and hopes the gift is used well. Preparation builds and ensures — through architecture, through law, through the copyleft covenant — that what was built cannot be captured, hoarded, or sealed.
 
-Eventually someone stumbles in. She was not recruited. She was not targeted. She was searching for something specific — the disorder filtered her in, as Document 07 describes — and the room was there. The tools work. The documentation explains. The validation passes. She takes what she needs.
+Eventually someone stumbles in. She was not recruited. She was not targeted. She was searching for something specific — the disorder filtered her in, as [The Mobility Edge](@/philosophy/the_mobility_edge.md) describes — and the room was there. The tools work. The documentation explains. The validation passes. She takes what she needs.
 
 And if the room was prepared well — if the tools are sovereign, if the documentation teaches rather than obscures, if the architecture makes the finder capable rather than dependent — she does not stay. She does not become a disciple. She does not join an organization. She learns the pattern. She sees that rooms can be prepared, that the copyleft means her preparation too will be permanent, that the house has more rooms than any one person could prepare in a lifetime. She goes forth.
 
@@ -165,13 +165,13 @@ If no, you built a throne.
 
 ## VII. The Bridge
 
-Document 05 asked: what is the miracle? And answered: revelation of what was already there. Give first.
+[The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md) asked: what is the miracle? And answered: revelation of what was already there. Give first.
 
-Document 06 asked: what is the temptation? And answered: becoming the river keeper. Give everyone a well.
+[The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md) asked: what is the temptation? And answered: becoming the river keeper. Give everyone a well.
 
-Document 07 asked: how does the city grow? And answered: hopping terms accumulate until the mobility edge is crossed. The filter is the net.
+[The Mobility Edge](@/philosophy/the_mobility_edge.md) asked: how does the city grow? And answered: hopping terms accumulate until the mobility edge is crossed. The filter is the net.
 
-Document 08 asked: what is the substrate? And answered: you do not cause the phenomenon. You set the conditions.
+[Discovery Is Local](@/philosophy/discovery_is_local.md) asked: what is the substrate? And answered: you do not cause the phenomenon. You set the conditions.
 
 This document asks: what is the work?
 

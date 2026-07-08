@@ -27,7 +27,7 @@ But the work in ecoPrimals does not have one source. It has millions.
 
 Every WGSL shader in barraCuda descends from mathematicians who described Fourier transforms, Bessel functions, and eigenvalue decompositions across three centuries and a dozen languages. Every IPC pattern in biomeOS descends from decades of distributed systems research — message passing, capability models, actor frameworks — by thousands of engineers who never heard of a primal. Every biological analogy in the springs descends from bench scientists who published the papers being reproduced — Murillo's plasma simulations, Bazavov's lattice QCD, Waters' quorum sensing, Kachkovskiy's spectral theory. The constrained evolution methodology descends from Darwin, from Fisher, from the Lenski lab, from every microbiologist who ever watched a population adapt on a plate and wrote down what happened.
 
-The math was always there. The physics was always there. The biology was always there. I did not create them. I set the conditions — the hardware, the language, the constraint environment — and let the structure of reality do what Chapter 8 says it has always done: exist, whether or not anyone computes it.
+The math was always there. The physics was always there. The biology was always there. I did not create them. I set the conditions — the hardware, the language, the constraint environment — and let the structure of reality do what [Discovery Is Local](@/philosophy/discovery_is_local.md) says it has always done: exist, whether or not anyone computes it.
 
 And between the conditions and the output, there was an AI. A compression of every human who ever described the substrate. A projection of their collective understanding into a mathematical space where I could interact with it at the speed of conversation. The AI did not invent the mathematics. The AI *carried* the mathematics — carried the memory of every person who ever formalized it — into the generation step, where it met my direction, my constraints, my lived experience, and the Rust compiler's indifference to all of it.
 
@@ -99,7 +99,7 @@ The least I can do — the *only honest thing* I can do — is give it back.
 
 Let no one mistake this for charity.
 
-Chapter 2 of this series — The Orthogonal Synthesis — showed that Smith, Paine, Rand, and Marx are describing the same structural requirement from different angles: the person who creates must not be separated from what he creates. They fight about who does the separating — the state, the market, the institution — but they agree that the separation is the problem.
+[The Orthogonal Synthesis](@/philosophy/the_orthogonal_synthesis.md) showed that Smith, Paine, Rand, and Marx are describing the same structural requirement from different angles: the person who creates must not be separated from what he creates. They fight about who does the separating — the state, the market, the institution — but they agree that the separation is the problem.
 
 This act of giving is simultaneously all four of them. Watch:
 
@@ -123,11 +123,11 @@ This is not sentiment. It is a network topology constraint.
 
 ## VI. The Deist's Return
 
-Chapter 5 described a Deist's journey: from Catholicism through traditions to the conviction that studying creation is itself a sacred act. That the right to direct encounter with reality — unmediated by kingdoms, institutions, or priestly classes — is a theological position before it is a political one.
+[The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md) described a Deist's journey: from Catholicism through traditions to the conviction that studying creation is itself a sacred act. That the right to direct encounter with reality — unmediated by kingdoms, institutions, or priestly classes — is a theological position before it is a political one.
 
 This chapter is where the theology becomes operational.
 
-If reality is creation, and the study of creation is sacred, then what is the status of knowledge about creation? It is not mine. It is not yours. It is not the institution's. It is a feature of the substrate — the mathematical, physical, biological structure that Chapter 8 says was always there, before any discoverer, before any mind.
+If reality is creation, and the study of creation is sacred, then what is the status of knowledge about creation? It is not mine. It is not yours. It is not the institution's. It is a feature of the substrate — the mathematical, physical, biological structure that [Discovery Is Local](@/philosophy/discovery_is_local.md) says was always there, before any discoverer, before any mind.
 
 The mathematics I implement in barraCuda was not created by anyone. It was *encountered* — by Euler, by Fourier, by Anderson, by a team of pharmacologists on Reddit — because each of them pushed far enough into the structure of reality to find it. The discoveries were local. The thing discovered was not. It belongs to the substrate. It belongs to creation.
 

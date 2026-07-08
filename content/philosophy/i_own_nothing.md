@@ -22,7 +22,7 @@ springs = []
 ## I. The Tollbooth
 
 There is a pattern that recurs across human history, and it was named in
-Chapter 6 of this series: the river keeper, the priestly class, the feudal
+[The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md): the river keeper, the priestly class, the feudal
 lord, the colonial company. The resource changes. The pattern does not.
 
 Someone finds a river. The river feeds a valley. The valley becomes a
@@ -85,7 +85,7 @@ was not inevitable.
 
 ## III. The Well
 
-In Chapter 6, the answer to the river keeper was not to reform the tollbooth
+In [The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md), the answer to the river keeper was not to reform the tollbooth
 or to destroy the river. The answer was to give everyone a well.
 
 A well is not a river. It is smaller, local, personal. It does not serve a
@@ -191,7 +191,7 @@ on a thousand machines, there is no single channel to control.
 
 ## VI. The Fermenter's Economy
 
-In Chapter 8, we described the fermenter: someone who does not cause the
+In [Discovery Is Local](@/philosophy/discovery_is_local.md), we described the fermenter: someone who does not cause the
 phenomenon but sets the conditions. The ancient brewer did not create yeast
 metabolism. She provided the substrate — the grain, the warmth, the time —
 and let the structure of reality do what it has always done.

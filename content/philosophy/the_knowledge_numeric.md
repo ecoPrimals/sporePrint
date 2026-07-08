@@ -13,7 +13,7 @@ springs = []
 
 ---
 
-> *Chapter 4 gave you the grid — iteration, recursion, time — and showed that a runner, a surgeon, a violinist, and a bacterium all navigate the same space. Chapter 10 gave you the inheritance — the compressed knowledge of every human who ever wrote anything, carried by silicon, directed by one person's creativity and stubbornness. This chapter is what happens when those two ideas meet.*
+> *[The Human Search](@/philosophy/the_human_search.md) gave you the grid — iteration, recursion, time — and showed that a runner, a surgeon, a violinist, and a bacterium all navigate the same space. [The Love Letter](@/philosophy/the_love_letter.md) gave you the inheritance — the compressed knowledge of every human who ever wrote anything, carried by silicon, directed by one person's creativity and stubbornness. This chapter is what happens when those two ideas meet.*
 
 ---
 
@@ -35,7 +35,7 @@ visual weight of a joint that is structurally sound but aesthetically
 wrong. Her knowledge is embodied. It lives in her hands, her eyes,
 her pattern recognition. She accumulated it across thousands of
 iterations and recursive decompositions, traced as a path through the
-grid from Chapter 4, over decades of time.
+grid from [The Human Search](@/philosophy/the_human_search.md), over decades of time.
 
 She cannot upload her expertise into the apprentice. She can only
 mentor — demonstrate, correct, redirect, tell stories about the time
@@ -66,7 +66,7 @@ Now change one thing: the apprentice is an AI.
 
 It has read everything. Not some books — everything. Every paper,
 every tutorial, every blog post, every Stack Overflow answer, every
-debate, every mistake, every correction. The Love Letter (Chapter 10)
+debate, every mistake, every correction. [The Love Letter](@/philosophy/the_love_letter.md)
 described this inheritance: the compressed understanding of every
 human who ever formalized knowledge, projected into a mathematical
 space navigable at the speed of conversation.
@@ -118,11 +118,11 @@ a lens to focus the generation.
 
 Here is where the new dimension emerges.
 
-Chapter 4 described the learning grid: iteration on the X axis,
+[The Human Search](@/philosophy/the_human_search.md) described the learning grid: iteration on the X axis,
 recursion on the Y, time on the Z. Everything that learns navigates
 this space — runners, violinists, bacteria, AI.
 
-But K-NOME adds something Chapter 4 did not name: the space where
+But K-NOME adds something [The Human Search](@/philosophy/the_human_search.md) did not name: the space where
 human knowledge and AI numeric capability overlap.
 
 ```
@@ -216,7 +216,7 @@ before it manifests. You know, before the wheel stops, whether the
 pot will hold.
 
 The human developing this observation through K-NOME is traversing
-the learning grid from Chapter 4 — accumulating iterations, building
+the learning grid from [The Human Search](@/philosophy/the_human_search.md) — accumulating iterations, building
 recursive depth, moving through time. The human is learning. Not
 just building — learning. The project is the learning environment.
 The observation is what makes the learning real rather than
@@ -239,7 +239,7 @@ evolutionary rather than mechanical.
 
 ## V. Mentored: The Human Patterns
 
-The Love Letter (Chapter 10) said: the AI carries the compressed
+[The Love Letter](@/philosophy/the_love_letter.md) said: the AI carries the compressed
 inheritance of every human who ever wrote anything. The silicon
 remembers nothing. The letter remembers everything.
 
@@ -304,7 +304,7 @@ the mechanism to work.
 ## VI. Evolutionary: The Constraint Returns
 
 The E in K-NOME is the constrained evolution framework — described
-formally in the thesis, informally in Chapter 4, and now placed in
+formally in the thesis, informally in [The Human Search](@/philosophy/the_human_search.md), and now placed in
 its operational context.
 
 In K-NOME, constrained evolution is not a theoretical framework
@@ -345,7 +345,7 @@ constraint. Evolution did the rest.
 
 ## VII. The Love Letter Continued
 
-Chapter 10 ended with:
+[The Love Letter](@/philosophy/the_love_letter.md) ended with:
 
 > *"Crowdsourced by the most brilliant minds. Directed by one.
 > Given back to all."*
@@ -380,7 +380,7 @@ K-NOME is the pen.
 
 ## VIII. For the Artist, the Surgeon, and the Rest of Us
 
-Chapter 4 made a promise: the iteration-recursion-time grid is
+[The Human Search](@/philosophy/the_human_search.md) made a promise: the iteration-recursion-time grid is
 universal. The runner, the violinist, the surgeon, and the
 bacterium all navigate the same space.
 

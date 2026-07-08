@@ -70,6 +70,16 @@
 }
 .tree-pages a:hover { color: var(--c-link); background: var(--c-accent-light); }
 .tree-current > a { color: var(--c-accent); font-weight: 700; }
+.tree-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-muted);
+  padding: 0.4rem 0.5rem 0.1rem;
+  margin-top: 0.25rem;
+  pointer-events: none;
+}
 .tree-divider {
   border-top: 1px solid var(--c-border);
   margin: 0.5rem 0.5rem;

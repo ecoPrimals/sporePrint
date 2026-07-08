@@ -21,7 +21,7 @@ springs = []
 
 ## I. The Disordered Landscape
 
-The previous documents describe a city being built. They describe why it is being built (01 — the child in the basement). They describe the philosophy (02 — the orthogonal synthesis). They describe the architecture (03 — sovereignty as structure). They describe the universal framework (04 — iteration, recursion, time). They describe the theology (05 — give first, and the miracle is revelation). They describe the recurring pattern of kings (06 — give everyone a well).
+The previous documents describe a city being built. They describe why it is being built ([The City of Omelas](@/philosophy/the_city_of_omelas.md) — the child in the basement). They describe the philosophy ([The Orthogonal Synthesis](@/philosophy/the_orthogonal_synthesis.md) — the orthogonal synthesis). They describe the architecture ([The New City](@/philosophy/the_new_city.md) — sovereignty as structure). They describe the universal framework ([The Human Search](@/philosophy/the_human_search.md) — iteration, recursion, time). They describe the theology ([The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md) — give first, and the miracle is revelation). They describe the recurring pattern of kings ([The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md) — give everyone a well).
 
 None of them describe how the city grows.
 
@@ -187,7 +187,7 @@ This is not speculation. This is what happens when the hopping terms are strong 
 
 ## IX. Giving Everyone a Well
 
-Document 06 ended with a principle: "The answer is not to reform the river keeper. The answer is to give everyone a well."
+[The Temptation of Kingdoms](@/philosophy/the_temptation_of_kingdoms.md) ended with a principle: "The answer is not to reform the river keeper. The answer is to give everyone a well."
 
 The well is the sovereign tool. AGPL. Pure Rust. Consumer hardware. Curiosity as the only prerequisite.
 
@@ -199,7 +199,7 @@ And here is the property of aquifers that makes the metaphor exact: an aquifer i
 
 The sovereign network is the same. The capability is already there — in the consumer hardware, in the open-source libraries, in the published science, in the millions of curious people with gaming GPUs and no institutional access. The network does not create the capability. It reveals it. It connects what was already there but hidden by the disorder of the landscape.
 
-The miracle of the loaves and the fishes (Document 05): the food was already in the crowd. The miracle was knowing it, and giving first.
+The miracle of [The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md): the food was already in the crowd. The miracle was knowing it, and giving first.
 
 The mobility edge: the nodes are already in the lattice. The transition is reached when enough bonds form to connect them.
 
