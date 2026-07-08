@@ -116,7 +116,7 @@ fetched, data is local forever. Not a service dependency — a data
 dependency with caching.
 
 ### Internal Primal Gaps
-5 of 6 resolved by upstream Phase 60. MethodGate enforced on 10/13
+5 of 6 resolved by upstream Phase 60. MethodGate enforced on 10/{{ total_stat(stat="total_primals") }}
 services. Ionic token auth live. Resource envelopes enforced.
 
 ### Irreducible Externals
@@ -164,6 +164,14 @@ when community contributions flow, credit flows back proportionally.
 The parts list and the monthly bill are transparent. The cost makes sense when you see [what it replaces](@/philosophy/the_temptation_of_kingdoms.md).
 
 The repos are open. Build your own.
+
+---
+
+## Read More
+
+- [I Own Nothing](@/philosophy/i_own_nothing.md) — provenance chains, the economics of giving it all away
+- [The Mobility Edge](@/philosophy/the_mobility_edge.md) — why a concept from Anderson localization describes network sovereignty
+- [The New City](@/philosophy/the_new_city.md) — the architecture where the cost is shared, not hidden
 
 ---
 

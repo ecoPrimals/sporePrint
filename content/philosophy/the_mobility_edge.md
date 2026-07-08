@@ -2,7 +2,7 @@
 title = "The Mobility Edge"
 description = "Anderson localization as a metaphor for sovereign network discovery — how isolated nodes cross the percolation threshold."
 date = 2026-03-17
-weight = 30
+weight = 7
 
 [taxonomies]
 primals = []

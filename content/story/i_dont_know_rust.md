@@ -1,6 +1,6 @@
 +++
 title = "I Don't Know Rust"
-description = "14 services. 27,000 tests. 70 papers reproduced. Built through conversation by someone who can't read the language."
+description = "15 services. 27,000 tests. 70 papers reproduced. Built through conversation by someone who can't read the language."
 date = 2026-07-08
 weight = 10
 
@@ -9,7 +9,7 @@ primals = []
 springs = []
 +++
 
-*14 services. 27,000 tests. 70 papers reproduced. Built through conversation by someone who can't read the language.*
+*15 services. 27,000 tests. 70 papers reproduced. Built through conversation by someone who can't read the language.*
 
 ---
 
@@ -40,7 +40,7 @@ the conceptual errors. The constraint prevents shortcutting.
 A development session works like this:
 
 1. I describe a goal in domain terms: "We need a security validator that
-   runs pen tests against all 13 services, fuzzes their protocols, and
+   runs pen tests against all {{ total_stat(stat="total_primals") }} services, fuzzes their protocols, and
    checks cryptographic strength."
 2. The AI proposes an architecture.
 3. I evaluate the architecture against domain knowledge — not Rust
@@ -67,7 +67,7 @@ enforces mechanical correctness.
 
 ## What It Produced
 
-### 14 services ("primals")
+### {{ total_stat(stat="total_primals") }} services ("primals")
 
 Single static Rust binaries. No runtime dependencies. Communicate over
 BTSP (ChaCha20-Poly1305 AEAD) or JSON-RPC over TCP. Each handles one
@@ -105,7 +105,7 @@ Each reproduces published science in a specific domain:
 | ludoSpring | Game science, HCI | 791 | 1,692+ | 15 |
 | primalSpring | Integration, deploy | 404 | — | — |
 
-Total: **27,000+ tests**. **12,510+ quantitative checks**. **70+ published
+Total: **27,000+ tests**. **{{ total_stat(stat="validation_checks") }} quantitative checks**. **70+ published
 papers reproduced**.
 
 ### Security validation (darkforest v2.0)
@@ -113,7 +113,7 @@ papers reproduced**.
 Pure Rust binary. 939 KB. 181 checks:
 
 - Pen tests: 3 threat actors (external, authorized, restricted) against
-  all 13 services
+  all {{ total_stat(stat="total_primals") }} services
 - Protocol fuzzing: malformed inputs for every JSON-RPC and BTSP endpoint
 - Crypto strength: 13 checks (cookie entropy, shadow hashing, token
   tamper resistance, cipher negotiation, file permissions)
@@ -147,10 +147,10 @@ JupyterHub serving an external bioinformatics research group:
 
 | Metric | Value |
 |--------|-------|
-| Services | 14 |
+| Services | {{ total_stat(stat="total_primals") }} |
 | Springs | 8 |
 | Tests | 27,000+ |
-| Quantitative checks | 12,510+ |
+| Quantitative checks | {{ total_stat(stat="validation_checks") }} |
 | Published papers reproduced | 70+ |
 | Security checks | 181 (175 PASS) |
 | Hardware investment | ~$15,000 |
@@ -178,6 +178,14 @@ logically.
 The numbers are silent about their own meaning — but every one has a test, and every test has a source paper, and every paper has a published result.
 
 The repos are public. The tests are runnable. The science is verifiable.
+
+---
+
+## Read More
+
+- [The Knowledge-Numeric](@/philosophy/the_knowledge_numeric.md) — the philosophical framework behind K-NOME and constrained evolution with AI
+- [The Human Search](@/philosophy/the_human_search.md) — iteration, recursion, time — the universal framework for how everything learns
+- [The Love Letter](@/philosophy/the_love_letter.md) — AI authorship, inherited knowledge, and what it means to build with compressed human understanding
 
 ---
 

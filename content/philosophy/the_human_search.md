@@ -2,7 +2,7 @@
 title = "The Human Search"
 description = "Iteration, recursion, time — the universal framework for how everything learns, from bacteria to violinists to AI."
 date = 2026-03-17
-weight = 10
+weight = 4
 
 [taxonomies]
 primals = []

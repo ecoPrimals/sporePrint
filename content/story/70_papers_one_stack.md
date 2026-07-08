@@ -1,6 +1,6 @@
 +++
 title = "70 Papers, One Stack"
-description = "12,510 quantitative checks across 8 domains. Every computation content-addressed, DAG-tracked, ledger-committed, and attributed."
+description = "20,695+ quantitative checks across 8 domains. Every computation content-addressed, DAG-tracked, ledger-committed, and attributed."
 date = 2026-07-08
 weight = 30
 
@@ -9,7 +9,7 @@ primals = []
 springs = []
 +++
 
-*12,510 quantitative checks across 8 domains. Every computation content-addressed, DAG-tracked, ledger-committed, and attributed.*
+*{{ total_stat(stat="validation_checks") }} quantitative checks across 8 domains. Every computation content-addressed, DAG-tracked, ledger-committed, and attributed.*
 
 ---
 
@@ -203,7 +203,7 @@ Structured JSON output for audit.
 |--------|-------|
 | Springs | 8 |
 | Tests | 27,000+ |
-| Quantitative checks | 12,510+ |
+| Quantitative checks | {{ total_stat(stat="validation_checks") }} |
 | Papers reproduced | 70+ |
 | Scientific domains | 8 |
 | Provenance layers | 4 (BLAKE3 → DAG → ledger → braid) |
@@ -212,6 +212,14 @@ Structured JSON output for audit.
 | Development time | ~69 days active |
 
 Every claim above has a test. Every test has a source paper. Every paper has a published result. Every result has a provenance chain.
+
+---
+
+## Read More
+
+- [Discovery Is Local](@/philosophy/discovery_is_local.md) — why discovery must be private, but results must be public
+- [The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md) — the miracle of knowing what is already there
+- [The Many Rooms](@/philosophy/the_many_rooms.md) — preparing rooms in a house that does not belong to you
 
 ---
 

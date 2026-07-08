@@ -5,14 +5,14 @@ description = "Self-hosted scientific computing. The science is executable, the 
 
 ## Try It
 
-**In 5 minutes, you can verify everything on this site:**
+**In 5 minutes, you can verify core claims on this site:**
 
 ```bash
 # Build from source (requires Rust — 2 minute install)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-git clone https://github.com/syntheticChemistry/wetSpring && cd wetSpring/barracuda
-cargo test --workspace          # 1,443+ tests, 0 failures
-cargo run --release --bin validate_anderson_3d   # exit 0 = pass
+git clone https://github.com/syntheticChemistry/groundSpring && cd groundSpring
+cargo test --workspace          # all tests pass, 0 failures
+cargo run --release --bin validate  # exit 0 = pass
 cargo deny check                # zero license violations, zero C dependencies
 ```
 

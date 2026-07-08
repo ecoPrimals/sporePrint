@@ -5,6 +5,34 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.8.0] — 2026-07-08 — Philosophy Complete + Content Enrichment (Wave 134b)
+
+**All 12 atlasHugged essays live, bibliography page, cross-links, number sync.**
+
+### Added
+
+- **6 philosophy essays** transplanted: The City of Omelas (01), The Orthogonal
+  Synthesis (02), The New City (03), The Loaves and the Fishes (05), The Many
+  Rooms (09), The Love Letter (11). Philosophy section now has the complete
+  narrative foundation beneath the existing conceptual essays.
+- **Bibliography page**: `content/philosophy/bibliography.md` — full academic
+  citations from CITATIONS.md (sacred texts, philosophy, science, literature).
+- **Story ↔ Philosophy cross-links**: "Read More" sections in all 3 story essays
+  linking to paired philosophy essays.
+- **Philosophy ↔ Story cross-links**: Story section index maps each builder
+  narrative to its philosophical counterpart.
+
+### Changed
+
+- **Philosophy `_index.md`**: Complete 12-essay table with sequence numbering,
+  reading order guidance, bibliography link.
+- **Philosophy essay weights**: Updated to match atlasHugged numbering (1–12).
+- **Landing page "Try It"**: Replaced `wetSpring` (broken cold-clone due to path
+  deps) with `groundSpring` (works cold from fresh clone).
+- **Number sync**: Story essays now use `{{ total_stat() }}` shortcodes for
+  validation checks and primal counts. Hardcoded "12,510" → "20,695+", "14" → "15".
+- **Content pages**: 238 → 245 (6 essays + 1 bibliography).
+
 ## [3.7.0] — 2026-07-08 — Phase 1+2 Idiomatic Rust + petalTongue Integration (Wave 134)
 
 **Codebase evolution sprint — shared abstractions, function decomposition, build-time petalTongue wiring.**

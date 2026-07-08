@@ -2,7 +2,7 @@
 title = "I Own Nothing"
 description = "The tollbooth economy inverted — why publishing everything into the commons is the architecture of freedom."
 date = 2026-03-17
-weight = 50
+weight = 10
 
 [taxonomies]
 primals = []

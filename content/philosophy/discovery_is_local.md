@@ -2,7 +2,7 @@
 title = "Discovery Is Local"
 description = "Gravity, fermentation, and the things that were already there — why discovery is local but the substrate is universal."
 date = 2026-03-17
-weight = 40
+weight = 8
 
 [taxonomies]
 primals = []

@@ -32,8 +32,18 @@ Last reviewed: July 8, 2026 (Wave 134 — Phase 1+2 Idiomatic Rust + petalTongue
 
 ### Content enrichment
 - [x] ~~Add a "Getting Started with plasmidBin" walkthrough (clone → fetch → deploy)~~ — `lab/getting-started-plasmidbin.md` (Wave 133e)
+- [x] ~~Transplant remaining 6 atlasHugged stories (01, 02, 03, 05, 09, 11)~~ — philosophy section now complete (12 essays)
+- [x] ~~Create Bibliography page from CITATIONS.md~~ — `content/philosophy/bibliography.md`
+- [x] ~~Cross-link Story ↔ Philosophy sections~~ — "Read More" sections with mapped pairs
+- [x] ~~Fix "Try It" cold-start~~ — replaced wetSpring (broken cold-clone) with groundSpring
 - [ ] Expand products pages with composition diagrams and BYOB examples
 - [ ] Add cross-spring data flow diagram to SPRING_CATALOG.md or a dedicated page
+
+### Thesis integration (gen3/ → sporePrint)
+- [ ] gen3/thesis/ (16 chapters) — scientific thesis transplant planning
+- [ ] gen3/about/ — sovereign science, licensing strategy, faculty engagement pages
+- [ ] gen3/primals/ — primal specification pages (14 primals, interactions, discovery log)
+- [ ] Consider dedicated /thesis/ section vs integration into existing architecture/ and science/
 
 ### Visual evolution
 - [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all sections with page counts
