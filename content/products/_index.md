@@ -21,7 +21,7 @@ The sporeGarden organization also hosts infrastructure projects:
 - **{{ entity(name="cellmembrane") }}** — sovereign VPS control plane, K-Derm relay management
 - **{{ entity(name="projectnucleus") }}** — deployment and composition layer (TOML deploy graphs)
 - **{{ entity(name="projectfoundation") }}** — institutional adoption bridge
-- **{{ entity(name="lithospore") }}** — guideStone artifact, self-verifying deployment binary
+- **{{ entity(name="lithospore") }}** — [self-verifying scientific deployment](@/products/lithoSpore.md): USB-deployable validation artifacts that carry the science, the data, the tools, and the provenance chain. First instance: LTEE reproduction (75/75 checks, 7 modules)
 
 See also: [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the
 complete repository map, and [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md)

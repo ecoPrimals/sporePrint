@@ -20,3 +20,6 @@ No trust required — every result is independently derivable from raw data.
 
 Browse the gallery below. Each page shows the domain profile, module validation
 status, provenance chain, and a link to download the lithoSpore archive.
+
+**See also:** [lithoSpore Product Page](@/products/lithoSpore.md) — deployment taxonomy,
+operating modes, three-tier validation, and the pseudoSpore lifecycle.

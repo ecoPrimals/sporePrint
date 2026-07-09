@@ -192,6 +192,25 @@
               {% endif %}
             </li>
 
+            {% set sec = get_section(path="thesis/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/thesis") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/thesis") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}
+                  {% if loop.index0 == 0 %}<li class="tree-label">Foundations</li>{% endif %}
+                  {% if loop.index0 == 3 %}<li class="tree-label">Theory</li>{% endif %}
+                  {% if loop.index0 == 5 %}<li class="tree-label">The System</li>{% endif %}
+                  {% if loop.index0 == 7 %}<li class="tree-label">Validation</li>{% endif %}
+                  {% if loop.index0 == 13 %}<li class="tree-label">Analysis</li>{% endif %}
+                  {% if loop.index0 == 15 %}<li class="tree-label">Synthesis</li>{% endif %}
+                  {% if loop.index0 == 17 %}<li class="tree-label">Back Matter</li>{% endif %}
+                  <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
             {% set sec = get_section(path="story/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/story") %} tree-active{% endif %}">
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>

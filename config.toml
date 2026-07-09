@@ -1017,6 +1017,6 @@ primal_count = 15
 total_primals = 15
 spring_count = 8
 total_springs = 8
-content_pages = 245
+content_pages = 264
 measured_date = "2026-06-22"
 # All entity metrics refreshed via spore-validate refresh on this date

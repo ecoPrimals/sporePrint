@@ -77,3 +77,4 @@ The atlasHugged essays argue **why**. The rest of the ecosystem implements
 - [I Don't Know Rust](/story/i-dont-know-rust/) — the builder's narrative that parallels the philosophical argument
 - [The Sovereign Lab](/story/the-sovereign-lab/) — what sovereign means in practice — hardware, data, electricity
 - [Sharing the Pen](/methodology/sharing-the-pen/) — the K-NOME methodology for human-AI co-authorship
+- [Constrained Evolution — Thesis](@/thesis/_index.md) — the formal academic argument that atlasHugged's "why" supports
