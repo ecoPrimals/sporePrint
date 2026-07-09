@@ -1,11 +1,12 @@
 {# SPDX-License-Identifier: AGPL-3.0-or-later #}
 {% extends "base.html" %}
 
-{% block title %}sporePrint — ecoPrimals: Sovereign Scientific Computing{% endblock title %}
-{% block og_title %}sporePrint — ecoPrimals: Sovereign Scientific Computing{% endblock og_title %}
-{% block og_desc %}Sovereign scientific computing. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero C dependencies. The science is executable, the infrastructure is inspectable.{% endblock og_desc %}
-{% block tw_title %}sporePrint — ecoPrimals: Sovereign Scientific Computing{% endblock tw_title %}
-{% block tw_desc %}Sovereign scientific computing. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero C dependencies. The science is executable, the infrastructure is inspectable.{% endblock tw_desc %}
+{% block title %}ecoPrimals — Self-Hosted Scientific Computing in Rust (WebGPU, Bioinformatics, HPC){% endblock title %}
+{% block description %}Self-hosted scientific computing platform: pure Rust, vendor-agnostic WebGPU/WGSL GPU compute replacing CUDA. Reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics, pharmacometrics. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero C dependencies.{% endblock description %}
+{% block og_title %}ecoPrimals — Self-Hosted Scientific Computing in Rust{% endblock og_title %}
+{% block og_desc %}Pure Rust scientific computing: vendor-agnostic GPU compute (WebGPU/WGSL), reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero CUDA dependency.{% endblock og_desc %}
+{% block tw_title %}ecoPrimals — Self-Hosted Scientific Computing in Rust{% endblock tw_title %}
+{% block tw_desc %}Pure Rust scientific computing: vendor-agnostic GPU compute (WebGPU/WGSL), reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero CUDA dependency.{% endblock tw_desc %}
 
 {% block content %}
 <article class="landing">
