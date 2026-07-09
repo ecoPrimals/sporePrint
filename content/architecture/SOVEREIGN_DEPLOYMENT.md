@@ -132,11 +132,52 @@ impact on development, science, or deployment.
 The sovereignty posture:
 
 - **Source of truth**: Forgejo on golgi (periplasm)
-- **Build authority**: sporeGate (Sovereign CI, LAN hardware)
+- **Build authority**: sporeGate + eastGate (Sovereign CI, any `build_authority = true` gate)
 - **Binary depot**: plasmidBin on golgi via Caddy (outer membrane)
 - **Public face**: primals.eco via Caddy (outer membrane)
 - **GitHub**: Trailing mirror, not primary. Updated via cascade relay.
 - **DNS**: Sovereign, delegated to golgi infrastructure
+
+## Composition Profiles — Fractal Deployment
+
+Not every gate runs all 13 primals. The ecosystem defines **composition profiles**
+in `ecosystem_manifest.toml` — replicable deployment shapes that can be instantiated
+on any hardware:
+
+| Composition | Primals | Purpose | Examples |
+|-------------|---------|---------|----------|
+| **full** | All 13+ | Complete sovereign NUCLEUS | eastGate, ironGate |
+| **thin-relay** | songBird, nestGate, membrane | Depot + relay + sporePrint. No source repos. | golgiBody VPS |
+| **tower** | bearDog, songBird, skunkBat | Minimal secure mesh entry | grapheneGate |
+| **compute** | toadStool, barraCuda, coralReef, biomeOS | HPC/GPU workloads | strandGate |
+| **nest** | nestGate, sweetGrass, rhizoCrypt | Cold storage and CAS | westGate |
+
+### Thin Relay — Sovereign Presence Anywhere
+
+The **thin-relay** composition is the fractal building block for sovereign
+infrastructure. It requires no Rust toolchain and no primal source repos — only
+pre-built ecobins from the depot:
+
+```
+thin-relay gate:
+  ├── songBird (mesh relay + drawbridge)
+  ├── nestGate (sporePrint website hosting)
+  ├── membrane (cascade CLI + auto-fetch)
+  └── wateringHole (only repo tracked)
+```
+
+**Deploy anywhere**: VPS nodes, HPC sites, edge locations, partner infrastructure.
+A thin relay receives ecobins via `mesh.subscribe → plasmid.auto_fetch` and serves
+them through Caddy TLS. It participates in the mesh federation but doesn't build
+anything — it consumes the build authority's output.
+
+**Fractal principle**: deploy a thin relay at an HPC site to serve specialized
+compute ecobins. Deploy one at a university to host a sporePrint mirror. Deploy
+one on a Raspberry Pi as a field data collector. The pattern is identical — only
+the composition profile and the ecobins change.
+
+Query a gate's composition: `membrane plasmid.composition --gate golgiBody`
+List all profiles: `membrane plasmid.composition`
 
 ## The Cascade Pipeline
 
