@@ -113,6 +113,56 @@ Developer writes product code
   → pseudoSpore packages results with provenance
 ```
 
+## Infrastructure Compositions — Fractal Deployment (Wave 134c)
+
+Product composition (above) describes how **products** consume primals. Infrastructure
+composition describes how **gates** deploy primals. Both follow the same principle:
+declare what you need, the system handles the rest.
+
+The ecosystem defines five **infrastructure composition profiles** in
+`ecosystem_manifest.toml [compositions]`. Each is a replicable fractal pattern
+deployable on any hardware:
+
+| Profile | Description | Scale |
+|---------|-------------|-------|
+| **full** | All 13+ primals, build-capable, full mesh | Server (128GB+ RAM) |
+| **thin-relay** | Depot + relay + sporePrint. No source repos. | VPS ($5/mo) |
+| **tower** | Minimal secure mesh entry | Any device |
+| **compute** | GPU/HPC workloads | GPU server |
+| **nest** | Cold storage + CAS | Storage node |
+
+### The Thin Relay Pattern
+
+The **thin-relay** composition is the fractal building block for sovereign
+infrastructure. It requires no Rust toolchain and no primal source repos:
+
+```
+thin-relay gate:
+  ├── songBird (mesh relay + drawbridge)
+  ├── nestGate (sporePrint website hosting)
+  ├── membrane (cascade CLI + auto-fetch)
+  └── wateringHole (only repo tracked)
+```
+
+**Deploy anywhere**: VPS nodes, HPC sites, edge locations, university mirrors.
+A thin relay receives ecobins via `mesh.subscribe` and serves them via Caddy TLS.
+sporePrint runs on nestGate within the thin relay, making the website available
+from any sovereign relay point.
+
+### Product + Infrastructure: Two Layers, One Pattern
+
+```
+Product composition (user-facing):
+  Product → deploy graph → PrimalBridge → primals → invisible infrastructure
+
+Infrastructure composition (operator-facing):
+  Gate → ecosystem_manifest → composition profile → ecobins → sovereign deployment
+```
+
+Both are declarative. Both degrade gracefully. Both compose from the same
+primal building blocks. The difference is audience: developers write deploy
+graphs, operators select composition profiles.
+
 The composition layer makes the ecosystem usable by people who neither
 know nor care about sovereign infrastructure. The science is correct
 because the infrastructure was validated in gen3. The user experience is

@@ -163,6 +163,28 @@ capability.
 | **Full {{ entity(name="nucleus") }}** | All 8 foundation primals | Complete ecosystem |
 | **Storytelling** | {{ entity(name="nucleus") }} + {{ entity(name="petaltongue") }} + {{ entity(name="squirrel") }} | Interactive AI experience |
 
+### Infrastructure Compositions (Wave 134c)
+
+Beyond product-facing presets, the ecosystem defines **infrastructure composition
+profiles** in `ecosystem_manifest.toml [compositions]`. These are fractal deployment
+patterns — replicable shapes that can be instantiated on any hardware, from a $5 VPS
+to a GPU-equipped HPC node:
+
+| Profile | Primals | Purpose |
+|---------|---------|---------|
+| **full** | All 13+ | Complete sovereign {{ entity(name="nucleus") }} — build-capable gate |
+| **thin-relay** | {{ entity(name="songbird") }}, {{ entity(name="nestgate") }}, membrane | Sovereign relay depot. No Rust toolchain. Receives ecobins via mesh auto-fetch. |
+| **tower** | {{ entity(name="beardog") }}, {{ entity(name="songbird") }}, skunkBat | Minimal secure mesh entry |
+| **compute** | {{ entity(name="toadstool") }}, {{ entity(name="barracuda") }}, {{ entity(name="coralreef") }}, {{ entity(name="biomeos") }} | HPC/GPU workloads |
+| **nest** | {{ entity(name="nestgate") }}, sweetGrass, rhizoCrypt | Cold storage and CAS |
+
+The **thin-relay** pattern is especially significant: it enables sovereign presence
+anywhere without a Rust toolchain. A thin relay receives pre-built ecobins from the
+mesh and serves them via Caddy TLS. Use cases include VPS relay nodes, HPC site depots,
+university sporePrint mirrors, and field data collectors.
+
+Query profiles: `membrane plasmid.composition --profile thin-relay`
+
 ---
 
 ## Offline Capability

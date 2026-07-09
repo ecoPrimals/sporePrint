@@ -247,6 +247,27 @@ The temporal data management system: {{ entity(name="rhizocrypt") }} provides ep
 
 The practical consequence: you deploy exactly what you need. A {{ entity(name="toweratomic") }} for networking. A {{ entity(name="nodeatomic") }} for GPU compute. A Full {{ entity(name="nucleus") }} for everything. The same primals, the same code, composed differently for different purposes.
 
+### Thin Relay: NUCLEUS for Hosting (Wave 134c)
+
+sporePrint itself runs on {{ entity(name="nucleus") }} infrastructure — {{ entity(name="nestgate") }}
+serves the static site on any gate that includes it. The **thin-relay**
+composition profile formalizes this: a VPS or edge node running {{ entity(name="songbird") }}
+(mesh relay), {{ entity(name="nestgate") }} (sporePrint hosting), and membrane (cascade
+auto-fetch) provides a sovereign web presence without a full {{ entity(name="nucleus") }}.
+
+As sporePrint evolves toward richer interactive features (guideStone artifacts,
+{{ entity(name="squirrel") }} AI chat, live {{ entity(name="barracuda") }} visualizations), the thin-relay
+naturally grows toward a full {{ entity(name="nucleus") }} — adding primals incrementally,
+driven by what the website needs. The composition model makes this seamless:
+update the composition field in the manifest, and the gate starts running the
+additional primals.
+
+```
+thin-relay                  → full NUCLEUS
+songBird + nestGate + membrane → + squirrel (AI) → + petalTongue (rendering)
+                                → + toadStool (compute) → + barraCuda (GPU viz)
+```
+
 ---
 
 *See also: [Primal Catalog](@/architecture/PRIMAL_CATALOG.md) for individual primal details,
