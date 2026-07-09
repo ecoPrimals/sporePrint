@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ config.title }}{% endblock title %}</title>
   <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
-  <meta name="keywords" content="scientific computing, bioinformatics, Rust, WebGPU, WGSL, GPU computing, vendor-agnostic, self-hosted, sovereign infrastructure, high-performance computing, HPC, metagenomics, protein structure prediction, lattice QCD, molecular dynamics, reproducible science, AGPL, open source">
   <link rel="canonical" href="{{ current_url | default(value=config.base_url) }}">
   <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
   <meta property="og:description" content="{% block og_desc %}{{ config.description }}{% endblock og_desc %}">
@@ -27,49 +26,23 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "sporePrint",
-        "alternateName": ["ecoPrimals", "primals.eco"],
-        "url": "{{ config.base_url }}",
-        "description": "{{ config.description }}",
-        "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-        "publisher": {
-          "@type": "Organization",
-          "name": "ecoPrimals",
-          "url": "https://github.com/ecoPrimals",
-          "description": "Self-hosted scientific computing platform: pure Rust, vendor-agnostic WebGPU/WGSL GPU compute, reproducible bioinformatics, molecular dynamics, and lattice QCD on commodity hardware"
-        }
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "ecoPrimals",
-        "alternateName": "ecoPrimals Sovereign Scientific Computing",
-        "applicationCategory": "Scientific Computing",
-        "applicationSubCategory": "Bioinformatics, Computational Physics, Molecular Dynamics, High-Performance Computing",
-        "operatingSystem": "Linux",
-        "programmingLanguage": ["Rust", "WGSL"],
-        "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-        "url": "{{ config.base_url }}",
-        "description": "Self-hosted scientific computing ecosystem: 15 Rust binaries (primals) coordinated via JSON-RPC 2.0, executing reproducible science across genomics, protein structure prediction, lattice QCD, pharmacometrics, and precision agriculture using vendor-agnostic WebGPU/WGSL compute shaders on consumer GPUs (NVIDIA, AMD, Intel).",
-        "keywords": "Rust, WebGPU, WGSL, bioinformatics, GPU computing, metagenomics, 16S rRNA, protein structure prediction, AlphaFold, lattice QCD, molecular dynamics, pharmacometrics, PKPD, self-hosted, vendor-agnostic, HPC, BLAKE3, deterministic computing, reproducible science",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "SoftwareSourceCode",
-        "name": "barraCuda",
-        "description": "Vendor-agnostic GPU compute library: pure Rust, WGSL/WebGPU compute shaders, f64 precision on consumer GPUs. Replaces CUDA dependency for scientific computing workloads.",
-        "programmingLanguage": ["Rust", "WGSL"],
-        "codeRepository": "https://github.com/ecoPrimals/toadStool",
-        "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-        "runtimePlatform": "WebGPU / Vulkan"
-      }
-    ]
+    "@type": "WebSite",
+    "name": "sporePrint",
+    "alternateName": "ecoPrimals",
+    "url": "{{ config.base_url }}",
+    "description": "{{ config.description }}",
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ecoPrimals",
+      "url": "https://github.com/ecoPrimals",
+      "description": "Sovereign scientific computing — pure Rust, zero C dependencies"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ config.base_url }}?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23a6e3a1' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23a6e3a1' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23a6e3a1' opacity='0.8'/%3E%3Cline x1='16' y1='2' x2='16' y2='7' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='16' y1='25' x2='16' y2='30' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='2' y1='16' x2='7' y2='16' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='25' y1='16' x2='30' y2='16' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='5.9' y1='5.9' x2='9.4' y2='9.4' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3Cline x1='22.6' y1='22.6' x2='26.1' y2='26.1' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3Cline x1='26.1' y1='5.9' x2='22.6' y2='9.4' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3Cline x1='9.4' y1='22.6' x2='5.9' y2='26.1' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3C/svg%3E">
@@ -89,6 +62,8 @@
         <li><a href="{{ get_url(path='@/guidestone/_index.md') }}" {% if current_path is starting_with("/guidestone") %}class="active" aria-current="true"{% endif %}>guideStone</a></li>
         <li><a href="{{ get_url(path='@/products/_index.md') }}" {% if current_path is starting_with("/products") %}class="active" aria-current="true"{% endif %}>Products</a></li>
         <li><a href="{{ get_url(path='@/lab/_index.md') }}" {% if current_path is starting_with("/lab") %}class="active" aria-current="true"{% endif %}>Lab</a></li>
+        <li><a href="{{ get_url(path='@/thesis/_index.md') }}" {% if current_path is starting_with("/thesis") %}class="active" aria-current="true"{% endif %}>Thesis</a></li>
+        <li><a href="{{ get_url(path='@/philosophy/_index.md') }}" {% if current_path is starting_with("/philosophy") %}class="active" aria-current="true"{% endif %}>Philosophy</a></li>
         <li><a href="{{ get_url(path='@/story/_index.md') }}" {% if current_path is starting_with("/story") %}class="active" aria-current="true"{% endif %}>Story</a></li>
         <li class="nav-divider"></li>
         <li><a href="/primals/" {% if current_path is starting_with("/primals") %}class="active" aria-current="true"{% endif %}>Primals</a></li>
@@ -219,6 +194,23 @@
               {% endif %}
             </li>
 
+            {% set sec = get_section(path="philosophy/_index.md") %}
+            <li class="tree-section{% if current_path is starting_with("/philosophy") %} tree-active{% endif %}">
+              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+              {% if current_path is starting_with("/philosophy") %}
+              <ul class="tree-pages">
+                {% for pg in sec.pages %}
+                  {% if loop.index0 == 0 %}<li class="tree-label">The Stories</li>{% endif %}
+                  {% if loop.index0 == 3 %}<li class="tree-label">The Framework</li>{% endif %}
+                  {% if loop.index0 == 8 %}<li class="tree-label">The Synthesis</li>{% endif %}
+                  {% if loop.index0 == 12 %}<li class="tree-label">Discussion</li>{% endif %}
+                  {% if loop.index0 == 13 %}<li class="tree-label">Reference</li>{% endif %}
+                  <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+
             {% set sec = get_section(path="thesis/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/thesis") %} tree-active{% endif %}">
               <a href="{{ sec.permalink }}">{{ sec.title }}</a>
@@ -247,28 +239,6 @@
                 {% endfor %}
               </ul>
               {% endif %}
-            </li>
-
-            {% set sec = get_section(path="philosophy/_index.md") %}
-            <li class="tree-section{% if current_path is starting_with("/philosophy") %} tree-active{% endif %}">
-              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
-              {% if current_path is starting_with("/philosophy") %}
-              <ul class="tree-pages">
-                {% for pg in sec.pages %}
-                  {% if loop.index0 == 0 %}<li class="tree-label">The Stories</li>{% endif %}
-                  {% if loop.index0 == 3 %}<li class="tree-label">The Framework</li>{% endif %}
-                  {% if loop.index0 == 8 %}<li class="tree-label">The Synthesis</li>{% endif %}
-                  {% if loop.index0 == 12 %}<li class="tree-label">Discussion</li>{% endif %}
-                  {% if loop.index0 == 13 %}<li class="tree-label">Reference</li>{% endif %}
-                  <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
-                {% endfor %}
-              </ul>
-              {% endif %}
-            </li>
-
-            {% set sec = get_section(path="sitemap/_index.md") %}
-            <li class="tree-section{% if current_path is starting_with("/sitemap") %} tree-active{% endif %}">
-              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
             </li>
 
             <li class="tree-section{% if current_path is starting_with("/contact") %} tree-active{% endif %}">
@@ -357,18 +327,12 @@
     (function() {
       var toggle = document.querySelector('.nav-toggle');
       var links = document.querySelector('.nav-links');
-      if (toggle && links) {
-        toggle.addEventListener('click', function() {
-          var expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', !expanded);
-          links.classList.toggle('open');
-        });
-      }
-      // Collapse sidebar on mobile so content appears first
-      if (window.innerWidth <= 960) {
-        var treeDetails = document.querySelector('.site-tree > details');
-        if (treeDetails) treeDetails.removeAttribute('open');
-      }
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        links.classList.toggle('open');
+      });
     })();
   </script>
 </body>
