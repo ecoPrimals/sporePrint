@@ -1,15 +1,15 @@
-generated = "2026-07-08T16:03:38Z"
-root_hash = "d44059f6f5c8c8744082d311dcb48a98b90a110404da53b602361fe8cae7f949"
-page_count = 239
+generated = "2026-07-09T15:08:43Z"
+root_hash = "bb95d03cf8605e6e9c61590e3534821ceb61084082a99c1fcd710a8e15eb0198"
+page_count = 266
 
 [pages."_index.md"]
-blake3 = "64851b642a8492974351cc2759d99324d2a8f05390c070f1a596d2388fa475d3"
-size_bytes = 2588
+blake3 = "d029a429a9a5c9b737c374f3bd1f5a674e8ee5abcadcb9702ed26887490c672c"
+size_bytes = 4462
 title = "sporePrint"
 
 [pages."architecture/COMPOSITION_PATTERNS.md"]
-blake3 = "2f47c8daa63589b39ce94fa4ebaad8d025c94947fc169709aa51f09f14e67242"
-size_bytes = 4308
+blake3 = "c9f2255ad1d06f6c5b6816fde328c9d58da97d60af1a545cd18bee8ee7868fb5"
+size_bytes = 6346
 title = "Composition Patterns"
 
 [pages."architecture/COMPOSITION_PIPELINE.md"]
@@ -18,8 +18,8 @@ size_bytes = 8578
 title = "Composition Pipeline: Springs → Primals → Products → Foundation"
 
 [pages."architecture/DEPLOYMENT_MODEL.md"]
-blake3 = "97916f5235b6969de31dfe32f9ea7cff97ed0db6d38dcd20de187752811888a6"
-size_bytes = 7096
+blake3 = "62ef9d1f6baf49e82b6d5bacbcbfdfb8e78959933494759a0ec0d8807e5651ad"
+size_bytes = 8512
 title = "Deployment Model: plasmidBin & BYOB"
 
 [pages."architecture/ECOSYSTEM_ARCHITECTURE.md"]
@@ -78,8 +78,8 @@ size_bytes = 4675
 title = "Gate Mesh — Live Topology"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "a59c79d865006ea1f09886a0cf7ed4f5ddff2cdc34908e43e9e8642a702a10bb"
-size_bytes = 15139
+blake3 = "15ec6b40bc7788a1d856f9e69ab657bb1a22c8f67ae5fa88481249858fbce352"
+size_bytes = 16313
 title = "NUCLEUS Composition Model"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
@@ -98,8 +98,8 @@ size_bytes = 5665
 title = "Sovereign CI — Build Infrastructure"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
-blake3 = "764539250a2902f025d8bf34a6ab480a515b6f4959fdb9e7b9de8f70f0059d88"
-size_bytes = 8670
+blake3 = "b501c5f34935b22e96a26c3bdc721932cd081145f4f0283c0561ff2265b43bb0"
+size_bytes = 10659
 title = "Sovereign Deployment"
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
@@ -758,7 +758,7 @@ size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "7870f013ba0db1fe2c84412115df46ce576826c6ec2df1e2151e2f55eee9184b"
+blake3 = "f3e055631b1c7f2e313595737c2df79abcae3811df6bebe000ce529169b63fb4"
 size_bytes = 254
 title = "Sample"
 
@@ -798,8 +798,8 @@ size_bytes = 5026
 title = "Reproduce It Yourself"
 
 [pages."lab/spores/_index.md"]
-blake3 = "c96e9c31c552a6977dfd84c5990308816e9f66e5d74ac93b4c1ee4833821f17f"
-size_bytes = 858
+blake3 = "397bb9587dd4e189d779e5bc3c3016af39dfde153676fa12d65fbe1a248f2874"
+size_bytes = 1021
 title = "pseudoSpore Gallery"
 
 [pages."lab/spores/healthspring-clinical-pkpd.md"]
@@ -903,8 +903,8 @@ size_bytes = 10504
 title = "scyBorg Triple License — Why Three Licenses for Three Artifact Types"
 
 [pages."methodology/_index.md"]
-blake3 = "73fd04f353d4d842e093face5c196dd4178b9bdeaa1793ab8a61a7928b8aa532"
-size_bytes = 1712
+blake3 = "c798cab05eea514929f9fceb5e57f029980bcf5a47e36c08c4387eccaaba0d40"
+size_bytes = 1880
 title = "🧬 Methodology"
 
 [pages."methodology/sharing_the_pen.md"]
@@ -913,43 +913,78 @@ size_bytes = 10496
 title = "Sharing the Pen"
 
 [pages."philosophy/_index.md"]
-blake3 = "749c9b1ff7dfbbaa131a780fd9c4930a21bf89f26060f7efb92348b02f5bcb02"
-size_bytes = 2847
+blake3 = "c423725c93eeaea84ce4c584e71154174deaa841806ceab5e6f73aebf932c91d"
+size_bytes = 4118
 title = "Philosophy"
 
+[pages."philosophy/bibliography.md"]
+blake3 = "c7e36e92eb0fd0be3941b7d681b6032a32cbf17d1716c071e8a38619c9894731"
+size_bytes = 12090
+title = "Bibliography"
+
 [pages."philosophy/discovery_is_local.md"]
-blake3 = "16a2772bcae094b1f789dac1b0c019f1d42ff05da3650bb0ad76cb34d771b867"
-size_bytes = 15932
+blake3 = "afd81250eb320d350d57e186afcfdd2800cf6ed4208e4c92b875294676cfab57"
+size_bytes = 15931
 title = "Discovery Is Local"
 
 [pages."philosophy/i_own_nothing.md"]
-blake3 = "5869e9368e73b1dca02e0287a127df268550c632a8d799a30d3b7cd5689648e2"
-size_bytes = 11707
+blake3 = "abff0200be50d8a9247bba122a27a5f713486d4228228f18293a38b8b164340f"
+size_bytes = 11865
 title = "I Own Nothing"
 
+[pages."philosophy/the_city_of_omelas.md"]
+blake3 = "f3a718de4d0fbb61d30450d433816657467c7d09aee6ddd29ade511dc07b6e58"
+size_bytes = 11196
+title = "The City of Omelas"
+
 [pages."philosophy/the_human_search.md"]
-blake3 = "2351d7c22dbdd591d98acf7228c9d1d08e1ffc6bef699d91a2e7520b48ae95f2"
-size_bytes = 19116
+blake3 = "a36de940de35e1f3c6c125cc602335caa42d9f85e322a498f841d781dd8c3514"
+size_bytes = 19115
 title = "The Human Search"
 
 [pages."philosophy/the_knowledge_numeric.md"]
-blake3 = "a97c2e25225c236053293874eda32f613eaa3f10c81a83fd60ac92680ea7ccdd"
-size_bytes = 19942
+blake3 = "f77f8440630625f03f9a79ca0748f18f9e0e4f7651e02a1cb10fd89598b1a4c6"
+size_bytes = 20367
 title = "The Knowledge-Numeric"
 
+[pages."philosophy/the_loaves_and_the_fishes.md"]
+blake3 = "b66a9ffa46c42cdcafcdc39fb2d5705cda8d3fc54f9b0975547e3f29a49eb2dd"
+size_bytes = 14912
+title = "The Loaves and the Fishes"
+
+[pages."philosophy/the_love_letter.md"]
+blake3 = "4449c93cea0207c55d4d5c0e8cbef06db2a15b0722f444682326ea5c03b57df3"
+size_bytes = 22082
+title = "The Love Letter"
+
+[pages."philosophy/the_many_rooms.md"]
+blake3 = "4ee884f7ff153c19e9f71ae893b9afd564d1f55421c10a9d9d6d29fcb9a6c632"
+size_bytes = 24020
+title = "The Many Rooms"
+
 [pages."philosophy/the_mobility_edge.md"]
-blake3 = "15c0b1f066ec9b4d9518b7204ec647b11c924dd4bcb5cffbb082138723fd124b"
-size_bytes = 24032
+blake3 = "7794c27822fc1741b97896126940334da2b2a64d920bbea17170a2e73d1c14db"
+size_bytes = 24473
 title = "The Mobility Edge"
 
+[pages."philosophy/the_new_city.md"]
+blake3 = "698798cb727878c6e00c6521f935c481b0b6e70f2dfd5141e9d1703ed1d4af6f"
+size_bytes = 13623
+title = "The New City"
+
+[pages."philosophy/the_orthogonal_synthesis.md"]
+blake3 = "740d372eb23efa90ff0f191582f2c7946cabf6fb35809a9457f3675db8faad6a"
+size_bytes = 14563
+title = "The Orthogonal Synthesis"
+
 [pages."philosophy/the_temptation_of_kingdoms.md"]
-blake3 = "04deb82fcd68146b05ba411a3bfebdce6956a888852da19ee7dbf18ea01369d5"
-size_bytes = 13162
+blake3 = "05a5e93c084b67a891f97a7d23f9414c70964393b748d5b98b1c43ca094553aa"
+size_bytes = 13161
 title = "The Temptation of Kingdoms"
 
 [pages."products/_index.md"]
-blake3 = "763cae817441f3fc813069c71f3a136029654c8420d66e0f8f04aa40a6f74929"
-size_bytes = 1571
+blake3 = "87b8f6cc9350fe436b596dc417c7a07a52bae70ce12c4311d6cd10ee0596f4fe"
+size_bytes = 1750
 title = "🌱 Products"
 
 [pages."products/blueFish.md"]
@@ -976,6 +1011,11 @@ title = "initioChem — Interactive Computational Chemistry"
 blake3 = "45fbadf5651bec914eaa4c042b6e903d38b1c5245fce2b4eedc9c1cd53ece152"
 size_bytes = 6478
 title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
+
+[pages."products/lithoSpore.md"]
+blake3 = "440d443073996e6041fffdc84180c19254030257431fdea263378103afc04bc2"
+size_bytes = 6016
+title = "lithoSpore — Targeted GuideStone Deployment"
 
 [pages."science/01_anderson_qs.md"]
 blake3 = "718b94cc794d3878d4697495d414ec02da60b28aecab469d848052e5b1ee9cb7"
@@ -1143,23 +1183,23 @@ size_bytes = 2560
 title = "Site Map"
 
 [pages."story/70_papers_one_stack.md"]
-blake3 = "5b093d867932583bd327c9e47c239d057917768e772814bd487f7b0810a633e0"
-size_bytes = 7583
+blake3 = "ab4a6df65c19e89725c28a694a3f5b839e5798755348fd95a1036d7f20143407"
+size_bytes = 8028
 title = "70 Papers, One Stack"
 
 [pages."story/_index.md"]
-blake3 = "c1ce6da42b42ddaeb22e119ccafdeeb8e59d3674c736c015a763748221d2459d"
-size_bytes = 789
+blake3 = "a326da1ac9bf91148c80be41c2aa673185c9c044a471f338e9c38988b4a08544"
+size_bytes = 1514
 title = "Story"
 
 [pages."story/i_dont_know_rust.md"]
-blake3 = "71c34bd570bb1808a211eb2d2a657930dad36349cff3a169e7e1d8c51f64000f"
-size_bytes = 7087
+blake3 = "5a0502c88527d29d889d56835c1d43ac3a3ad479a31b34158600b00eeb4f4bf6"
+size_bytes = 7762
 title = "I Don't Know Rust"
 
 [pages."story/the_sovereign_lab.md"]
-blake3 = "f9cd86a48e6d5d9a2a75e3ecddca6ddccbe8fbdd5c025850f7939e1d918a28b6"
-size_bytes = 6357
+blake3 = "f30ef1730e8e4b81ebfcd148183c51769966b757fb8d2bae2a7e37f964052492"
+size_bytes = 6758
 title = "The Sovereign Lab"
 
 [pages."technical/DRUG_DISCOVERY_PIPELINE.md"]
@@ -1196,3 +1236,98 @@ title = "Sovereign GPU Pipeline: The Vendor Replacement Story"
 blake3 = "81c4878a4c1d730e23793c97db0e8d0dfe76b6807507de6688dc9796c8b7e892"
 size_bytes = 1355
 title = "⚙️ Technical"
+
+[pages."thesis/00_front_matter.md"]
+blake3 = "c81dbd4dc240559a9a93fa1fc34f62888a6eebe65171284db038f8b4ffe3f236"
+size_bytes = 1211
+title = "Front Matter"
+
+[pages."thesis/01_introduction.md"]
+blake3 = "d53e33d131e119e3227ca1310c383811c1898c5046f779f0cc5851440ce0aa9a"
+size_bytes = 1484
+title = "Chapter 1: Introduction"
+
+[pages."thesis/02_literature_review.md"]
+blake3 = "497f275fa8b220bfa31954a231e06f51280fdeb2925d5b3eb3d7ec89c5495d25"
+size_bytes = 1045
+title = "Chapter 2: Literature Review"
+
+[pages."thesis/03_theoretical_framework.md"]
+blake3 = "4bd2bac38103459842b41d957c7ed2955b73fca5fbef71b4bb4e8ffb5a8ab7e6"
+size_bytes = 1585
+title = "Chapter 3: Theoretical Framework"
+
+[pages."thesis/04_pnp_enzyme.md"]
+blake3 = "00bc724e252cd16d1a760125691f2dd5f6ebf5c5a7653be31a07729cd26f27f1"
+size_bytes = 1045
+title = "Chapter 4: Accept and Generate"
+
+[pages."thesis/05_system_architecture.md"]
+blake3 = "547fc1493fb83b63937f6c8d86a0e5e385acfa7f1189ac7db5e94b6f3d172e07"
+size_bytes = 1126
+title = "Chapter 5: System Architecture"
+
+[pages."thesis/06_barracuda.md"]
+blake3 = "bfbc0b5bf054228d4d5d9d6c2a691668735890df46c1016ff218ef75fa0baabd"
+size_bytes = 1102
+title = "Chapter 6: BarraCuda"
+
+[pages."thesis/07_experimental_methodology.md"]
+blake3 = "2dc5131da8be2f8fcc7167c9e19d76540dc066e59053aeadb90cf5bb9af7af3d"
+size_bytes = 1324
+title = "Chapter 7: Experimental Methodology"
+
+[pages."thesis/08_results_hotspring.md"]
+blake3 = "4dfcc7b1c26f671d677678ed0d91edbe5d57b7549aa079aa979e5e90ccaa922f"
+size_bytes = 967
+title = "Chapter 8: Results — hotSpring"
+
+[pages."thesis/09_results_airspring.md"]
+blake3 = "d0a9313171af8f1d7ef3f6d995dee0bff40d8a42a548b34d0aec45a133fbb010"
+size_bytes = 845
+title = "Chapter 9: Results — airSpring"
+
+[pages."thesis/10_results_wetspring.md"]
+blake3 = "9c555bf0968a8c22f8f0f329c5ce5c337cfba89dea9ea37ad34c25c9d51f1e57"
+size_bytes = 1000
+title = "Chapter 10: Results — wetSpring"
+
+[pages."thesis/11_results_groundspring.md"]
+blake3 = "5a2b44bb26566f6c80aeb6e2b4d9493743c0917e0cbd4ca5012ebe6393b025a1"
+size_bytes = 930
+title = "Chapter 11: Results — groundSpring"
+
+[pages."thesis/12_results_neuralspring.md"]
+blake3 = "8e24aa371c21340876950858f918fa4956d775ad7f69637b9ca18fb6f859e4bd"
+size_bytes = 987
+title = "Chapter 12: Results — neuralSpring"
+
+[pages."thesis/13_quantitative_evidence.md"]
+blake3 = "c534aa0c8f3a585763fec0e33090d56c4414fe95913bdcb2652822cef9aee58c"
+size_bytes = 1349
+title = "Chapter 13: Quantitative Evidence"
+
+[pages."thesis/14_biological_validation.md"]
+blake3 = "e2418689c5009ef058b1bdecb64bfc589115702bf95225d4440b8f7e7d7c5bf0"
+size_bytes = 1322
+title = "Chapter 14: Biological Validation"
+
+[pages."thesis/15_discussion.md"]
+blake3 = "dce231c2e7fa3a70b6093f374bae27ba80cd2d9a6d165c30ecca57359af96796"
+size_bytes = 1379
+title = "Chapter 15: Discussion"
+
+[pages."thesis/16_conclusion.md"]
+blake3 = "c663bcf72f8ec7e40bb9297e0e9fc198e9e577febcc77874141b18f088e6e7ef"
+size_bytes = 1430
+title = "Chapter 16: Conclusion"
+
+[pages."thesis/_index.md"]
+blake3 = "0388b84b0f01e63ce191ac084483d066bc5525f214fa2a8c9f737a88073f12a3"
+size_bytes = 7057
+title = "📄 Thesis"
+
+[pages."thesis/references.md"]
+blake3 = "d9fa387b11f37a6fb3f6a43dde216c1ef8ad549e9b46b850979fd1beda2d89e1"
+size_bytes = 876
+title = "References"

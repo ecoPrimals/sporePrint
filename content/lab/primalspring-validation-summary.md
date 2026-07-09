@@ -2,6 +2,7 @@
 title = "primalSpring Validation Summary"
 description = "Meta-validation orchestrator — 807 lib tests, 93 experiments, 470+ capability methods, 13/13 BTSP, zero DEBT, Wave 60"
 date = 2026-05-29
+weight = 21
 
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool", "nestgate", "beardog", "songbird", "squirrel", "rhizocrypt", "loamspine", "sweetgrass", "petaltongue", "skunkbat", "coralreef"]

@@ -2,6 +2,7 @@
 title = "neuralSpring Validation Summary"
 description = "ML primitives and sovereign structure prediction — 4,900+ checks, Isomorphism Theorem, 38.6x faster than Python"
 date = 2026-06-03
+weight = 20
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "biomeos", "squirrel"]

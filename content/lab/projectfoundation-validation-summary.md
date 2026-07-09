@@ -1,6 +1,8 @@
 +++
 title = "projectFOUNDATION Validation Summary"
+description = "Institutional adoption bridge — 10 domain validation threads, lineage maps, deploy patterns"
 date = 2026-06-03
+weight = 24
 template = "page.html"
 [extra]
 entity = "projectfoundation"

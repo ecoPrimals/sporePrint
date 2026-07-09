@@ -34,7 +34,7 @@ Each spring validates a scientific domain. These pages tell the full story — w
 | [hotSpring](@/lab/springs/hotspring.md) | Plasma physics, lattice QCD, spectral | 697+ | 10+ |
 | [airSpring](@/lab/springs/airspring.md) | Precision agriculture, irrigation | 2,777+ | 57 |
 | [healthSpring](@/lab/springs/healthspring.md) | PK/PD, microbiome, biosignal, drugs | 795 | 7 tracks |
-| [groundSpring](@/lab/groundspring-validation-summary.md) | Measurement noise, uncertainty, Anderson | 965+ | 29 baselines |
+| [groundSpring](@/lab/springs/groundspring.md) | Measurement noise, uncertainty, Anderson | 965+ | 29 baselines |
 | [primalSpring](@/lab/springs/primalspring.md) | Composition parity, deploy graphs, NUCLEUS | 666 | — (meta-spring) |
 
 **2 more springs** (neuralSpring, ludoSpring) are documented in the [Spring Catalog](@/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
@@ -124,7 +124,7 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 
 ## For PIs and Reviewers
 
-The lab is the evidence record for the [projectFOUNDATION protocol](/products/projectfoundation/). If you're evaluating ecoPrimals for institutional adoption:
+The lab is the evidence record for the [projectFOUNDATION protocol](@/lab/projectfoundation-validation-summary.md). If you're evaluating ecoPrimals for institutional adoption:
 
 1. **Review the spring science hubs** — each spring page shows what was reproduced and how
 2. **Check the provenance pipeline** — every result is content-addressed with cryptographic chains
