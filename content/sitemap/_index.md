@@ -7,7 +7,7 @@ template = "section.html"
 
 ## All Content
 
-sporePrint contains {{ total_stat(stat="content_pages") }} pages across 14 sections. This page lists every section with its contents and page count.
+sporePrint contains {{ total_stat(stat="content_pages") }} pages across 14 sections (thesis: 18, philosophy: 14, methodology: 9, audience: 6). This page lists every section with its contents and page count.
 
 ---
 
@@ -27,13 +27,13 @@ System design, the 15-primal catalog, 8-spring catalog, NUCLEUS composition mode
 
 Constrained Evolution — the formal academic argument connecting biology, computation, and sovereign infrastructure. 16 chapters from front matter through synthesis, plus references.
 
-### [Philosophy](/philosophy/) — 13 pages
+### [Philosophy](/philosophy/) — 14 pages
 
-The "why" behind ecoPrimals — 12 atlasHugged essays organized as The Stories, The Framework, and The Synthesis, plus a bibliography. Constrained evolution as a design philosophy.
+The "why" behind ecoPrimals — 12 atlasHugged essays organized as The Stories, The Framework, and The Synthesis, plus Sovereign Science and a bibliography. Constrained evolution as a design philosophy.
 
-### [Methodology](/methodology/) — 8 pages
+### [Methodology](/methodology/) — 9 pages
 
-Core theory (constrained evolution), AI-assisted development (K-NOME), the spring creation playbook, knowledge commons targets, licensing (scyBorg), the P vs NP enzyme thesis, and Sharing the Pen.
+Core theory (constrained evolution), the inoculum paper (constrained optimization in AI-assisted development), AI-assisted development (K-NOME), the spring creation playbook, knowledge commons targets, licensing (scyBorg), the P vs NP enzyme thesis, and Sharing the Pen.
 
 ### [Technical](/technical/) — 6 pages
 
@@ -43,9 +43,9 @@ Grant-ready evidence, hardware economics, GPU pipeline architecture, drug discov
 
 {{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, {{ entity(name="lithospore") }}, blueFish, lattice QCD explorer, initioChem — tools that emerge from primal composition.
 
-### [Audience](/audience/) — 5 pages
+### [Audience](/audience/) — 6 pages
 
-Role-based entry points: faculty/PIs, students/core facilities, hardware builders, compliance reviewers, capability parity assessment.
+Role-based entry points: faculty/PIs, students/core facilities, hardware builders, compliance reviewers, capability parity assessment, and faculty spring profiles (9 professors, 60+ candidate papers).
 
 ### [guideStone](/guidestone/) — 5 pages
 

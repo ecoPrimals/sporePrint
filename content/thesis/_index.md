@@ -10,7 +10,7 @@ template = "section.html"
 *Environmental Pressure, Sovereign Computing, and the Convergence of Biological and Computational Systems*
 
 **Author**: Kevin Mok — BS Microbiology (Michigan State University, 2018), MS Data Science (Michigan State University, 4.0, 2025)
-**Status**: Working draft — chapters at varying levels of completeness
+**Status**: Working draft — all 16 chapters transplanted, undergoing refinement
 **License**: AGPL-3.0
 
 ---

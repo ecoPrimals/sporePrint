@@ -15,4 +15,6 @@ Different readers need different entry points. Pick the one that matches your ro
 | **A compliance officer or IRB reviewer** evaluating security | [For Compliance and Institutional Review](@/audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md) — FDA, ISO, HIPAA, GDPR mapping |
 | **An evaluator** comparing capabilities to existing platforms | [Capability Parity Brief](@/audience/CAPABILITY_PARITY_BRIEF.md) — domain-by-domain comparison against established tools |
 
+**Deep dive**: [Faculty Spring Profiles](@/audience/faculty_spring_profiles.md) — 9 professors mapped to springs, 60+ candidate papers, reproduction status, and BarraCuda GPU primitive coverage.
+
 Not sure? Start with the [Glossary](@/glossary/_index.md) for terminology, or the [Lab](@/lab/_index.md) for live evidence.

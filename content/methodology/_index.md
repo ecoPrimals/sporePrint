@@ -17,4 +17,6 @@ The methodology is biological: evolve under constraint, validate against publish
 | See what could be built next | [Knowledge Commons Targets](@/methodology/KNOWLEDGE_COMMONS_TARGETS.md) — 9 domains where public data + cheap hardware unlocks sovereign alternatives |
 | Understand the licensing | [scyBorg Licensing](@/methodology/SCYBORG_LICENSING.md) — AGPL + ORC + CC-BY-SA: three independent nonprofits, no single entity can revoke |
 | Explore the theoretical foundation | [P vs NP and the Enzyme Thesis](@/methodology/P_NP_ENZYME_THESIS.md) — why generation/verification asymmetry matters for computation and biology |
+| Read the inoculum paper | [Constrained Optimization in AI-Assisted Development](@/methodology/constrained_optimization_ai.md) — the initial formulation: constraints + direction + iterative AI = rapid convergence |
 | Read the formal thesis | [Constrained Evolution — Thesis](@/thesis/_index.md) — the full academic argument: 16 chapters, five springs, LTEE sequencing proposal |
+| Understand Sharing the Pen | [Sharing the Pen](@/methodology/sharing_the_pen.md) — operational model for AI-assisted constrained evolution |
