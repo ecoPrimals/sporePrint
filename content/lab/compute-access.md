@@ -1,6 +1,6 @@
 +++
 title = "Compute Access — ABG Compute Lab"
-description = "Live compute environment running the full 13-primal NUCLEUS composition on sovereign hardware — request access at lab.primals.eco"
+description = "Live compute environment on sovereign mesh hardware — RTX 5070 Ti GPU, 64-core EPYC CPU, JupyterHub via songBird capability routing at lab.primals.eco"
 date = 2026-05-07
 weight = 10
 
@@ -11,9 +11,9 @@ springs = ["primalspring"]
 
 ## Live at [lab.primals.eco](https://lab.primals.eco)
 
-A **13-primal NUCLEUS composition** runs on a sovereign compute node with consumer-grade hardware (RTX 4070, RTX 3090, Akida NPU). All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305), bind to `127.0.0.1` by default, and are accessible through a named Cloudflare Tunnel with zero exposed ports.
+**JupyterHub 5.4.5** is live on [songBird](/primals/#songbird)-routed sovereign hardware at [lab.primals.eco](https://lab.primals.eco). No cloud. No exposed ports. Students, researchers, and collaborators connect through the WireGuard sovereign mesh — songBird's drawbridge routes HTTP traffic from golgi (VPS) to ironGate (compute node) via capability-based dispatch.
 
-**JupyterHub** provides multi-user notebook access at [lab.primals.eco](https://lab.primals.eco). Every notebook runs against real primals, not mocks — the same infrastructure that produced the baseCamp results. All 13 primals, JupyterHub, and the Cloudflare tunnel run as persistent systemd services that survive reboots.
+The compute substrate runs on a 64-core AMD EPYC 9124 with an RTX 5070 Ti GPU, 128GB ECC RAM, and NVMe storage. All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305) and bind to `127.0.0.1` by default. Every notebook runs against real primals, not mocks — the same infrastructure that produced the baseCamp results.
 
 ## Who Can Access
 
@@ -40,7 +40,7 @@ The shared workspace at `/shared/abg/` is visible to all members. Results, noteb
 
 1. Contact the ecoPrimals team with your research interest and desired tier
 2. An account is created with appropriate Linux group membership
-3. Navigate to [lab.primals.eco](https://lab.primals.eco) — no VPN, no port forwarding needed
+3. Navigate to [lab.primals.eco](https://lab.primals.eco) — no VPN, no port forwarding, no cloud tunnel
 4. Log in with your credentials — your JupyterHub session starts with the shared workspace linked and all 13 primal ports available as environment variables
 
 For PIs and administrators: the shared workspace demonstrates what your researchers want to run on institutional HPC. Every notebook has full provenance — point your HPC team at the exact pipeline.
@@ -48,34 +48,37 @@ For PIs and administrators: the shared workspace demonstrates what your research
 ## Architecture
 
 ```
-lab.primals.eco → Cloudflare Tunnel (named: nucleus-lab)
+Browser → lab.primals.eco
     │
-    └── JupyterHub :8000 (PAM auth, tiered pre_spawn_hook)
-        │
-        ├── /shared/abg/          ← collaborative workspace (all tiers read)
-        │   ├── commons/          ← shared Jupyter notebooks
-        │   ├── projects/         ← collaborative project workspaces
-        │   ├── data/             ← shared input data
-        │   ├── showcase/         ← polished results for external review
-        │   └── templates/        ← starter notebooks
-        │
-        ├── ~/notebooks/          ← per-user home (symlinks to shared)
-        │
-        └── NUCLEUS composition   ← 13 primals on 127.0.0.1 (systemd)
-            ├── biomeOS :9800 (coordinator)
-            ├── barraCuda :9740 (GPU compute)
-            ├── ToadStool :9400 (shader dispatch)
-            ├── NestGate :9500 (auth + BTSP)
-            ├── Songbird :9200 (discovery)
-            ├── BearDog :9100 (scheduling)
-            ├── coralReef :9730 (data pipeline)
-            ├── loamSpine :9700 (storage)
-            ├── rhizoCrypt :9601 (encryption)
-            ├── sweetGrass :9850 (provenance)
-            ├── Squirrel :9300 (AI coordination)
-            ├── skunkBat :9140 (anomaly detection)
-            └── petalTongue :9900 (dashboards)
+    ├─ DNS → golgi VPS (157.230.3.183)
+    │        Caddy :443 (TLS termination, Let's Encrypt)
+    │        └─ reverse_proxy → WireGuard mesh
+    │
+    ├─ WireGuard → sporeGate (10.13.37.2)
+    │              songBird drawbridge :7780
+    │              └─ capability.call("jupyter") → ironGate
+    │
+    └─ ironGate (10.13.37.7)
+       JupyterHub :8000 (PAM auth, tiered pre_spawn_hook)
+       │
+       ├── /shared/abg/          ← collaborative workspace (all tiers read)
+       │   ├── commons/          ← shared Jupyter notebooks
+       │   ├── projects/         ← collaborative project workspaces
+       │   ├── data/             ← shared input data
+       │   ├── showcase/         ← polished results for external review
+       │   └── templates/        ← starter notebooks
+       │
+       ├── ~/notebooks/          ← per-user home (symlinks to shared)
+       │
+       └── NUCLEUS composition   ← primals on 127.0.0.1 (systemd)
+           ├── barraCuda (GPU compute — RTX 5070 Ti)
+           ├── ToadStool (shader dispatch)
+           ├── coralReef (data pipeline)
+           ├── bearDog (crypto + auth)
+           └── songBird (mesh routing + capability discovery)
 ```
+
+The path from browser to notebook is fully sovereign: DNS → golgi TLS → WireGuard tunnel → songBird capability routing → JupyterHub. No Cloudflare. No cloud tunnels. Every hop is inspectable.
 
 ## Connection to sporePrint
 
