@@ -178,6 +178,7 @@ pub struct PushResult {
     pub stored: u64,
     pub deduplicated: u64,
     pub errors: u64,
+    pub error_messages: Vec<String>,
     pub total_bytes_transferred: u64,
     pub elapsed_ms: u64,
 }
@@ -199,7 +200,7 @@ pub fn read_manifest(manifest_path: &Path) -> Result<StoredManifest, Error> {
 enum PushFileOutcome {
     Stored { bytes: u64 },
     Deduplicated,
-    Error,
+    Error(String),
 }
 
 fn encode_file_payload(
@@ -262,8 +263,7 @@ fn push_single_file(
 
     let Ok(params) = encode_file_payload(&file_path, rel_path, &entry.content_type, &metadata)
     else {
-        eprintln!("  WARN: cannot read {rel_path}, skipping");
-        return PushFileOutcome::Error;
+        return PushFileOutcome::Error(format!("WARN: cannot read {rel_path}, skipping"));
     };
 
     let put_req = json!({
@@ -276,21 +276,17 @@ fn push_single_file(
     match send_rpc(reader, &put_req) {
         Ok(resp) => {
             if resp.get("error").is_some() && !resp["error"].is_null() {
-                eprintln!(
-                    "  ERROR: content.put failed for {rel_path}: {}",
+                PushFileOutcome::Error(format!(
+                    "ERROR: content.put failed for {rel_path}: {}",
                     resp["error"]
-                );
-                PushFileOutcome::Error
+                ))
             } else if resp["result"]["deduplicated"].as_bool() == Some(true) {
                 PushFileOutcome::Deduplicated
             } else {
                 PushFileOutcome::Stored { bytes: entry.size }
             }
         }
-        Err(e) => {
-            eprintln!("  ERROR: RPC failed for {rel_path}: {e}");
-            PushFileOutcome::Error
-        }
+        Err(e) => PushFileOutcome::Error(format!("ERROR: RPC failed for {rel_path}: {e}")),
     }
 }
 
@@ -308,6 +304,7 @@ pub fn push_manifest(
     let mut stored: u64 = 0;
     let mut deduplicated: u64 = 0;
     let mut errors: u64 = 0;
+    let mut error_messages = Vec::new();
     let mut bytes_transferred: u64 = 0;
 
     let stream = connect_transport(endpoint)?;
@@ -333,7 +330,10 @@ pub fn push_manifest(
                 bytes_transferred += bytes;
             }
             PushFileOutcome::Deduplicated => deduplicated += 1,
-            PushFileOutcome::Error => errors += 1,
+            PushFileOutcome::Error(msg) => {
+                errors += 1;
+                error_messages.push(msg);
+            }
         }
     }
 
@@ -344,6 +344,7 @@ pub fn push_manifest(
         stored,
         deduplicated,
         errors,
+        error_messages,
         total_bytes_transferred: bytes_transferred,
         elapsed_ms: elapsed,
     })

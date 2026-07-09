@@ -271,8 +271,9 @@ fn strip_front_matter(text: &str) -> &str {
 /// Reports warnings for unknown maturity levels that don't match
 /// the `MaturityLevel` enum.
 pub fn validate_maturity_levels(content_dir: &Path, diagnostics: &mut Vec<Diagnostic>) {
-    static MATURITY_RE: LazyLock<Regex> =
-        LazyLock::new(|| Regex::new(r#"\{\{[\s]*maturity\s*\(\s*level\s*=\s*"([^"]+)""#).unwrap());
+    static MATURITY_RE: LazyLock<Regex> = LazyLock::new(|| {
+        Regex::new(r#"\{\{[\s]*maturity\s*\(\s*level\s*=\s*"([^"]+)""#).expect("static regex")
+    });
 
     for entry in paths::walk_markdown_files(content_dir) {
         let path = entry.path().to_path_buf();

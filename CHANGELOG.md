@@ -5,6 +5,55 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.10.0] — 2026-07-09 — Deep Debt Sprint: Module Splits + Transplants + Metric Evolution (Wave 134e)
+
+**Module architecture overhaul, 7 content transplants, hardcoded metrics evolved, structured error handling.**
+
+### Added
+
+- **7 content transplants** from gen3: barracuda compute gaps (364L), hotSpring Phase B evidence
+  (207L), Murillo reproduction plan (385L), neuromorphic benchmark (327L), primal composition
+  methodology (355L), heterogeneous fabric economics (348L), scyBorg exception protocol (294L).
+- **3 new Rust modules**: `cli.rs` (Clap types), `dispatch.rs` (command routing),
+  `commands_validate.rs`, `commands_provenance.rs`, `commands_discover.rs` (focused command handlers).
+- **`default_tower_probes.toml`**: Tower probe configuration embedded via `include_str!`,
+  parsed with `LazyLock`. `DefaultProbe` struct with `slug` + `methods`.
+- **Thesis snapshot banner**: `_index.md` notes gen3 metrics are historical, links to Evidence Snapshot.
+- **Front matter completed**: department resolved (CMSE), acknowledgments written, dedication written.
+- **3 thesis TODOs resolved**: ch16 LTEE sequencing, NUCLEUS scaling, NK landscape — replaced
+  brackets with substantive prose.
+
+### Changed
+
+- **`commands.rs` split** (785L → 4 modules): validate (189L), provenance (119L), discover (95L),
+  dispatch layer (422L). Smart refactor, not mechanical split.
+- **`main.rs` split** (687L → 3 modules): cli.rs (217L), dispatch.rs (410L), main.rs (66L).
+- **Max file size**: 699L → 616L (content.rs). 33 modules total (was 28).
+- **Tower probes**: `DEFAULT_TOWER_PROBES` constant → data-driven TOML with `LazyLock` parse.
+  Fallback hardcoded minimum if parsing fails (impossible for embedded data).
+- **CAS push errors**: `PushFileOutcome::Error` gains `String` payload; callers print structured messages.
+- **Fetch errors**: `fetch_sources` returns `Result<Vec<FetchOutcome>, Error>` (was silent `Vec::new()`).
+- **VIZ_OUTPUT_DIR**: centralized in `paths.rs` (was hardcoded in dispatch.rs).
+- **Regex init**: all 5 static `LazyLock<Regex>` now use `.expect("static regex")` consistently.
+- **Dead code cleanup**: `DiagnosticCollector` scoped to `#[cfg(test)]`; `discover_and_connect()` removed;
+  `VizResult.format` annotated.
+- **Clippy**: `pub(crate)` in private modules → `pub`; `.or()` → `.or_else()`.
+- **5 broken Spring Catalog URLs** fixed in lab validation summaries.
+- **8 pages**: hardcoded `27,000+ tests`, `14 primals`, `7 springs` → `total_stat` shortcodes.
+- **`sharing_the_pen.md`**: 4 gen3/ path references → Zola `@/` internal links.
+- **`the_knowledge_numeric.md`**: description updated (removed stale "14 primals and 7 springs").
+
+### Metrics
+
+- Content pages: 252 → 259
+- Rust modules: 28 → 33
+- Tests: 272 (unchanged — pure structural refactor)
+- Max file size: 616L (content.rs)
+- Total Rust LOC: 10,718
+- Clippy: zero warnings (pedantic + nursery)
+
+---
+
 ## [3.9.0] — 2026-07-09 — Thesis Scaffold + lithoSpore Product + Philosophy Subtabs (Wave 134c)
 
 **Thesis section scaffolded, lithoSpore product page, philosophy sidebar grouped, cross-references linked.**

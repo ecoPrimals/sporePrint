@@ -254,14 +254,8 @@ pub fn fetch_sources(
     clone_root: &Path,
     source_filter: Option<&str>,
     vcs: &dyn VcsBackend,
-) -> Vec<FetchOutcome> {
-    if let Err(e) = std::fs::create_dir_all(clone_root) {
-        eprintln!(
-            "  ERROR: cannot create clone root {}: {e}",
-            clone_root.display()
-        );
-        return Vec::new();
-    }
+) -> Result<Vec<FetchOutcome>, Error> {
+    std::fs::create_dir_all(clone_root).map_err(|e| Error::io(clone_root, e))?;
     let mut outcomes = Vec::new();
 
     let mut keys: Vec<&str> = sources.sources.keys().map(String::as_str).collect();
@@ -316,7 +310,7 @@ pub fn fetch_sources(
         outcomes.push(outcome);
     }
 
-    outcomes
+    Ok(outcomes)
 }
 
 /// Parse `sources.toml` from the sporePrint root.
@@ -344,7 +338,7 @@ pub fn fetch_and_refresh(
     let sources = parse_sources(sporeprint_root)?;
     let clone_root = clone_dir();
     let backend = detect_backend();
-    let outcomes = fetch_sources(&sources, &clone_root, source_filter, backend.as_ref());
+    let outcomes = fetch_sources(&sources, &clone_root, source_filter, backend.as_ref())?;
     Ok(FetchResult {
         outcomes,
         clone_root,
@@ -481,7 +475,7 @@ repo = "org/repo"
         .unwrap();
 
         let dir = tempfile::tempdir().unwrap();
-        let outcomes = fetch_sources(&sources, dir.path(), None, &mock);
+        let outcomes = fetch_sources(&sources, dir.path(), None, &mock).unwrap();
         assert_eq!(outcomes.len(), 1);
         assert!(matches!(outcomes[0], FetchOutcome::Cloned { .. }));
     }
@@ -500,7 +494,7 @@ repo = "org/repo"
         .unwrap();
 
         let dir = tempfile::tempdir().unwrap();
-        let outcomes = fetch_sources(&sources, dir.path(), None, &mock);
+        let outcomes = fetch_sources(&sources, dir.path(), None, &mock).unwrap();
         assert_eq!(outcomes.len(), 1);
         assert!(matches!(outcomes[0], FetchOutcome::Skipped { .. }));
         if let FetchOutcome::Skipped { reason, .. } = &outcomes[0] {
@@ -522,7 +516,7 @@ repo = "org/repo"
         )
         .unwrap();
 
-        let outcomes = fetch_sources(&sources, dir.path(), None, &mock);
+        let outcomes = fetch_sources(&sources, dir.path(), None, &mock).unwrap();
         assert_eq!(outcomes.len(), 1);
         assert!(matches!(outcomes[0], FetchOutcome::Pulled { .. }));
     }
@@ -541,7 +535,7 @@ repo = "org/beta"
         .unwrap();
 
         let dir = tempfile::tempdir().unwrap();
-        let outcomes = fetch_sources(&sources, dir.path(), Some("alpha"), &mock);
+        let outcomes = fetch_sources(&sources, dir.path(), Some("alpha"), &mock).unwrap();
         assert_eq!(outcomes.len(), 1);
         assert!(matches!(&outcomes[0], FetchOutcome::Cloned { key, .. } if key == "alpha"));
     }

@@ -26,6 +26,7 @@ pub const CONTENT_MANIFEST: &str = "content-manifest.toml";
 pub const ENTITY_GRAPH_JSON: &str = "static/graph/entity-graph.json";
 pub const CERTIFICATION_MANIFEST: &str = "static/certification/manifest.json";
 pub const CAS_MANIFEST: &str = "static/cas/build-manifest.json";
+pub const VIZ_OUTPUT_DIR: &str = "static/viz";
 pub const NOTEBOOK_OUTPUT: &str = "content/lab/notebooks";
 pub const GATE_MARKER: &str = ".gate";
 pub const SPRINGS_DIR: &str = "springs";

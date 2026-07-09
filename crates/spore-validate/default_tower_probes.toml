@@ -1,0 +1,11 @@
+[[probes]]
+slug = "beardog"
+methods = ["auth.public_key", "auth.trusted_issuers", "btsp.capabilities"]
+
+[[probes]]
+slug = "songbird"
+methods = ["mesh.peers", "mesh.capabilities_announce", "mesh.init"]
+
+[[probes]]
+slug = "skunkbat"
+methods = ["defense.status", "security.detect", "btsp.negotiate"]

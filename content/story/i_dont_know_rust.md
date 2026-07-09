@@ -105,7 +105,7 @@ Each reproduces published science in a specific domain:
 | ludoSpring | Game science, HCI | 791 | 1,692+ | 15 |
 | primalSpring | Integration, deploy | 404 | — | — |
 
-Total: **27,000+ tests**. **{{ total_stat(stat="validation_checks") }} quantitative checks**. **70+ published
+Total: **{{ total_stat(stat="total_tests_display") }} tests**. **{{ total_stat(stat="validation_checks") }} quantitative checks**. **{{ total_stat(stat="papers_reproduced") }} published
 papers reproduced**.
 
 ### Security validation (darkforest v2.0)
@@ -149,7 +149,7 @@ JupyterHub serving an external bioinformatics research group:
 |--------|-------|
 | Services | {{ total_stat(stat="total_primals") }} |
 | Springs | 8 |
-| Tests | 27,000+ |
+| Tests | {{ total_stat(stat="total_tests_display") }} |
 | Quantitative checks | {{ total_stat(stat="validation_checks") }} |
 | Published papers reproduced | 70+ |
 | Security checks | 181 (175 PASS) |

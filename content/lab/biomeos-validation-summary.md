@@ -117,5 +117,5 @@ itself; it coordinates the primals that do.
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
+- [Spring Catalog](@/architecture/SPRING_CATALOG.md) on primals.eco
 - [Orchestration Architecture](https://primals.eco/architecture/) — NUCLEUS, Neural API, federation

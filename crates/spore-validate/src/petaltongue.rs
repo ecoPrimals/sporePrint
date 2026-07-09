@@ -41,7 +41,6 @@ pub struct RenderResult {
 #[derive(Debug)]
 pub struct VizResult {
     pub body: String,
-    /// Retained for parity test assertions.
     #[allow(dead_code)]
     pub format: VizFormat,
     pub latency_ms: u64,
@@ -81,14 +80,6 @@ impl PetalTongueClient {
             reader: BufReader::new(stream),
             request_id: 0,
         }
-    }
-
-    /// Discover petalTongue endpoint and connect (used by parity tests).
-    #[allow(dead_code)]
-    pub fn discover_and_connect() -> Result<Self, Error> {
-        let endpoint =
-            crate::discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", None)?;
-        Self::connect(&endpoint)
     }
 
     /// Send `primal.announce` handshake.

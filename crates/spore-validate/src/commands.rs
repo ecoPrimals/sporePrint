@@ -5,9 +5,12 @@
 //! Each public function corresponds to one CLI subcommand. Shared utilities
 //! (like `resolve_public_dir`) live here as private helpers.
 
+pub use crate::commands_discover::{discover, nucleus};
+pub use crate::commands_provenance::{certify, provenance};
+pub use crate::commands_validate::{scan_viz_embeds, validate};
+
 use crate::{
-    cas, cas_push, certify, content, discovery, error::Diagnostic, error::Error, fetch, graph,
-    links, model, notebook, paths, provenance, refresh, registry, report, totals,
+    cas, cas_push, discovery, error::Error, fetch, graph, links, model, notebook, paths, refresh,
 };
 use std::path::{Path, PathBuf};
 
@@ -36,108 +39,6 @@ fn resolve_public_dir(root: &Path, public_dir: &Path) -> Result<PathBuf, Error> 
         )));
     }
     Ok(dir)
-}
-
-fn validate_registry(config: &model::Config) -> Vec<Diagnostic> {
-    let mut diags = Vec::new();
-    registry::validate(&config.extra.entity_registry, &mut diags);
-    graph::validate_edges(&config.extra.entity_registry, &mut diags);
-    totals::validate(
-        &config.extra.entity_registry,
-        &config.extra.totals,
-        &mut diags,
-    );
-    diags
-}
-
-fn validate_content(root: &Path, config: &model::Config, check: bool) -> Vec<Diagnostic> {
-    let mut diags = Vec::new();
-    let content_dir = root.join(paths::CONTENT_DIR);
-    if content_dir.is_dir() {
-        content::validate_taxonomies(
-            root,
-            &content_dir,
-            &config.extra.entity_registry,
-            &mut diags,
-        );
-        content::lint_internal_links(root, &content_dir, &mut diags);
-
-        if check {
-            content::check_integrity(
-                root,
-                &content_dir,
-                &config.extra.entity_registry,
-                &mut diags,
-            );
-            content::validate_maturity_levels(&content_dir, &mut diags);
-            content::audit_taxonomy_coverage(
-                root,
-                &content_dir,
-                &config.extra.entity_registry,
-                &mut diags,
-            );
-            let link_warnings = links::validate_internal_links(&content_dir);
-            diags.extend(link_warnings);
-        }
-    }
-    diags
-}
-
-pub fn validate(
-    root: &Path,
-    config: &model::Config,
-    check: bool,
-    strict: bool,
-    verbose: bool,
-) -> Result<(), Error> {
-    println!("spore-validate: checking sporePrint entity registry...");
-
-    if verbose {
-        print!("{}", report::format_registry(&config.extra.entity_registry));
-        print!("{}", report::format_totals(&config.extra.totals));
-    }
-
-    let mut diagnostics = validate_registry(config);
-    diagnostics.extend(validate_content(root, config, check));
-
-    if strict {
-        for diag in &mut diagnostics {
-            diag.promote_to_error();
-        }
-    }
-
-    let warnings: Vec<&Diagnostic> = diagnostics.iter().filter(|d| !d.is_error()).collect();
-    let errors: Vec<&Diagnostic> = diagnostics.iter().filter(|d| d.is_error()).collect();
-
-    for w in &warnings {
-        println!("  WARN:  {}", w.message());
-    }
-    for e in &errors {
-        println!("  ERROR: {}", e.message());
-    }
-
-    let summary = report::summarize(config);
-
-    if errors.is_empty() {
-        println!(
-            "  OK: {} entities ({} primals, {} springs), {} warning(s), 0 errors",
-            summary.entity_count,
-            summary.primal_count,
-            summary.spring_count,
-            warnings.len()
-        );
-        Ok(())
-    } else {
-        println!(
-            "\n  {} error(s), {} warning(s)",
-            errors.len(),
-            warnings.len()
-        );
-        Err(Error::ValidationFailed {
-            error_count: errors.len(),
-            warning_count: warnings.len(),
-        })
-    }
 }
 
 pub fn refresh(
@@ -254,105 +155,6 @@ pub fn check_links(root: &Path) -> Result<(), Error> {
     }
 }
 
-/// Scan content files for `viz_embed` shortcode invocations.
-///
-/// Returns a sorted, deduplicated list of visualization names found in content.
-pub fn scan_viz_embeds(content_dir: &Path) -> Vec<String> {
-    use std::sync::LazyLock;
-
-    use regex::Regex;
-
-    static VIZ_RE: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(r#"\{\{[\s]*viz_embed\s*\([^)]*name\s*=\s*"([^"]+)""#).unwrap()
-    });
-
-    let mut names = std::collections::BTreeSet::new();
-
-    for entry in crate::paths::walk_markdown_files(content_dir) {
-        if let Ok(content) = std::fs::read_to_string(entry.path()) {
-            for cap in VIZ_RE.captures_iter(&content) {
-                if let Some(m) = cap.get(1) {
-                    names.insert(m.as_str().to_string());
-                }
-            }
-        }
-    }
-
-    names.into_iter().collect()
-}
-
-pub fn provenance(root: &Path, verify: bool, diff: bool, write: bool) -> Result<(), Error> {
-    let content_dir = paths::require_content_dir(root)?;
-
-    let manifest_path = provenance::manifest_path(root);
-
-    println!("spore-validate: computing BLAKE3 content hashes...");
-    let manifest = provenance::generate_manifest(&content_dir);
-    println!(
-        "  {} pages hashed, root: {}",
-        manifest.page_count,
-        &manifest.root_hash[..16]
-    );
-
-    if verify {
-        if !manifest_path.exists() {
-            println!(
-                "  WARN: no existing manifest at {}",
-                manifest_path.display()
-            );
-            println!("  Run with --write to create one");
-            return Ok(());
-        }
-        let (new_pages, changed, removed) = provenance::diff_manifests(&manifest_path, &manifest);
-
-        if new_pages.is_empty() && changed.is_empty() && removed.is_empty() {
-            println!("  OK: all {} pages match manifest", manifest.page_count);
-        } else {
-            if !new_pages.is_empty() {
-                println!("  NEW:     {} page(s)", new_pages.len());
-            }
-            if !changed.is_empty() {
-                println!("  CHANGED: {} page(s)", changed.len());
-            }
-            if !removed.is_empty() {
-                println!("  REMOVED: {} page(s)", removed.len());
-            }
-            return Err(Error::ValidationFailed {
-                error_count: changed.len() + removed.len(),
-                warning_count: new_pages.len(),
-            });
-        }
-    }
-
-    if diff {
-        let (new_pages, changed, removed) = provenance::diff_manifests(&manifest_path, &manifest);
-        for p in &new_pages {
-            println!("  + {p}");
-        }
-        for p in &changed {
-            println!("  ~ {p}");
-        }
-        for p in &removed {
-            println!("  - {p}");
-        }
-        if new_pages.is_empty() && changed.is_empty() && removed.is_empty() {
-            println!("  (no changes)");
-        }
-    }
-
-    if write {
-        provenance::write_manifest(&manifest, &manifest_path)
-            .map_err(|e| Error::Config(format!("failed to write manifest: {e}")))?;
-        println!(
-            "  WRITE: content-manifest.toml ({} pages, root {})",
-            manifest.page_count,
-            &manifest.root_hash[..16]
-        );
-    }
-
-    Ok(())
-}
-
 pub fn graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
     println!("spore-validate: building entity graph (renvois de choses)...");
 
@@ -385,49 +187,6 @@ pub fn graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Erro
         graph::emit_graph_json(&entity_graph, &output_path)
             .map_err(|e| Error::io(&output_path, e))?;
         println!("  EMIT: {}", output_path.display());
-    }
-
-    Ok(())
-}
-
-pub fn certify(root: &Path, config: &model::Config, emit: bool) -> Result<(), Error> {
-    println!("spore-validate: certification (guideStone mode)...");
-
-    let mut diagnostics = Vec::new();
-    registry::validate(&config.extra.entity_registry, &mut diagnostics);
-    graph::validate_edges(&config.extra.entity_registry, &mut diagnostics);
-    let validation_errors = diagnostics.iter().filter(|d| d.is_error()).count();
-
-    let manifest = certify::build_manifest(config, root, validation_errors);
-
-    println!("  entities: {}", manifest.entity_count);
-    println!("  edges: {}", manifest.edge_count);
-    println!("  content pages: {}", manifest.content_pages);
-    println!("  graph merkle: {}", manifest.graph_merkle);
-
-    let manifest_path = root.join(paths::CERTIFICATION_MANIFEST);
-
-    if emit {
-        certify::emit_manifest(&manifest, &manifest_path)
-            .map_err(|e| Error::io(&manifest_path, e))?;
-        println!("  EMIT: {}", manifest_path.display());
-    } else if manifest_path.exists() {
-        match certify::validate_manifest(&manifest_path, &manifest) {
-            Ok(drifts) if drifts.is_empty() => {
-                println!("  VALID: manifest matches current state");
-            }
-            Ok(drifts) => {
-                println!("  DRIFT detected ({} fields):", drifts.len());
-                for d in &drifts {
-                    println!("    {d}");
-                }
-            }
-            Err(e) => {
-                println!("  WARN: could not read existing manifest: {e}");
-            }
-        }
-    } else {
-        println!("  INFO: no existing manifest; use --emit to create one");
     }
 
     Ok(())
@@ -505,6 +264,9 @@ pub fn cas_push(
     );
     if result.errors > 0 {
         println!("  errors:       {} files", result.errors);
+        for msg in &result.error_messages {
+            println!("  {msg}");
+        }
     }
     #[allow(clippy::cast_precision_loss)]
     let kb = result.total_bytes_transferred as f64 / 1024.0;
@@ -548,79 +310,6 @@ pub fn cas_manifest(root: &Path, public_dir: &Path, emit: bool) -> Result<(), Er
         cas::emit_manifest(&manifest, &output_path)?;
         println!("  EMIT: {}", output_path.display());
     }
-
-    Ok(())
-}
-
-#[allow(clippy::unnecessary_wraps)] // uniform handler signature for main.rs dispatch
-pub fn discover() -> Result<(), Error> {
-    println!("spore-validate: capability discovery");
-    println!();
-
-    let self_caps = &discovery::SELF;
-    println!("  SELF: {} v{}", self_caps.primal_id, self_caps.version);
-    println!("  capabilities:");
-    for cap in self_caps.capabilities {
-        println!(
-            "    [{:>9}] {} — {}",
-            cap.category, cap.name, cap.description
-        );
-    }
-
-    println!();
-    println!("  TRANSPORT:");
-    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
-        match serde_json::from_str::<cas_push::TransportEndpoint>(&json) {
-            Ok(ep) => println!("    injected: {ep:?}"),
-            Err(e) => println!("    TRANSPORT_ENDPOINT parse error: {e}"),
-        }
-    } else {
-        println!("    (no TRANSPORT_ENDPOINT — will use socket discovery)");
-    }
-
-    println!();
-    println!("  SOCKET_DIRS:");
-    if let Ok(dir) = std::env::var("BIOMEOS_SOCKET_DIR") {
-        println!("    BIOMEOS_SOCKET_DIR = {dir}");
-    }
-    if let Ok(dir) = std::env::var("XDG_RUNTIME_DIR") {
-        println!("    XDG_RUNTIME_DIR = {dir}");
-    }
-    let systemd_dir = discovery::systemd_socket_dir();
-    if std::path::Path::new(systemd_dir.as_ref()).is_dir() {
-        println!("    {systemd_dir} (systemd NUCLEUS)");
-    }
-    if std::env::var("BIOMEOS_SOCKET_DIR").is_err()
-        && std::env::var("XDG_RUNTIME_DIR").is_err()
-        && !std::path::Path::new(systemd_dir.as_ref()).is_dir()
-    {
-        println!(
-            "    (no socket directories found — set BIOMEOS_SOCKET_DIR or use systemd NUCLEUS)"
-        );
-    }
-
-    println!();
-    println!("  PEERS:");
-
-    let peers = discovery::discover_peers();
-    if peers.is_empty() {
-        println!(
-            "    (none discovered — set BIOMEOS_SOCKET_DIR or NESTGATE_SOCKET/PETALTONGUE_SOCKET)"
-        );
-    } else {
-        for peer in &peers {
-            println!(
-                "    {} ({})",
-                peer.primal_id,
-                peer.socket_path.as_deref().unwrap_or("?")
-            );
-            for cap in peer.capabilities {
-                println!("      - {cap}");
-            }
-        }
-    }
-
-    crate::commands_depot::print_discovery();
 
     Ok(())
 }
@@ -732,54 +421,5 @@ mod tests {
     #[test]
     fn drift_pct_large_growth() {
         assert_eq!(drift_pct(1000, 2000), "+100.0%");
-    }
-
-    #[test]
-    fn scan_viz_embeds_finds_names() {
-        let dir = tempfile::tempdir().unwrap();
-        let sub = dir.path().join("arch");
-        std::fs::create_dir_all(&sub).unwrap();
-        std::fs::write(
-            sub.join("test.md"),
-            r#"+++
-title = "Test"
-+++
-
-{{ viz_embed(name="entity-graph", fallback="static/viz/entity-graph.svg") }}
-
-Some content here.
-
-{{ viz_embed(name="gate-mesh", fallback="static/viz/gate-mesh.svg") }}
-"#,
-        )
-        .unwrap();
-
-        let names = scan_viz_embeds(dir.path());
-        assert_eq!(names, vec!["entity-graph", "gate-mesh"]);
-    }
-
-    #[test]
-    fn scan_viz_embeds_deduplicates() {
-        let dir = tempfile::tempdir().unwrap();
-        std::fs::write(
-            dir.path().join("a.md"),
-            r#"{{ viz_embed(name="entity-graph", fallback="x") }}"#,
-        )
-        .unwrap();
-        std::fs::write(
-            dir.path().join("b.md"),
-            r#"{{ viz_embed(name="entity-graph", fallback="y") }}"#,
-        )
-        .unwrap();
-
-        let names = scan_viz_embeds(dir.path());
-        assert_eq!(names.len(), 1);
-    }
-
-    #[test]
-    fn scan_viz_embeds_empty_dir() {
-        let dir = tempfile::tempdir().unwrap();
-        let names = scan_viz_embeds(dir.path());
-        assert!(names.is_empty());
     }
 }

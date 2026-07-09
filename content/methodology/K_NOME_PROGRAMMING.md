@@ -333,7 +333,7 @@ are K-NOME.
 - **Tokens**: 51 billion processed
 - **Streak**: 185 consecutive days
 - **Period**: ~10 months
-- **Result**: 14 primals, 7 springs, 27,000+ tests
+- **Result**: {{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_tests_display") }} tests
 - **Developer**: One person (microbiologist BS, data scientist MS)
 
 The Cursor receipt is the evidence that K-NOME, as a methodology,

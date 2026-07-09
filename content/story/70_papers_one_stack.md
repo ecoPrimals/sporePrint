@@ -202,7 +202,7 @@ Structured JSON output for audit.
 | Metric | Value |
 |--------|-------|
 | Springs | 8 |
-| Tests | 27,000+ |
+| Tests | {{ total_stat(stat="total_tests_display") }} |
 | Quantitative checks | {{ total_stat(stat="validation_checks") }} |
 | Papers reproduced | 70+ |
 | Scientific domains | 8 |

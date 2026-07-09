@@ -103,31 +103,29 @@ impl Diagnostic {
 ///
 /// Replaces the `&mut Vec<Diagnostic>` pattern with typed methods
 /// and a terminal `into_result()` that produces the final validation outcome.
-#[allow(dead_code)]
+#[cfg(test)]
 pub struct DiagnosticCollector {
     diagnostics: Vec<Diagnostic>,
 }
 
+#[cfg(test)]
+#[allow(dead_code)]
 impl DiagnosticCollector {
-    #[allow(dead_code)]
     pub const fn new() -> Self {
         Self {
             diagnostics: Vec::new(),
         }
     }
 
-    #[allow(dead_code)]
     pub fn error(&mut self, msg: impl Into<String>) {
         self.diagnostics.push(Diagnostic::error(msg));
     }
 
-    #[allow(dead_code)]
     pub fn warning(&mut self, msg: impl Into<String>) {
         self.diagnostics.push(Diagnostic::warning(msg));
     }
 
     /// Promote all warnings to errors (for `--strict` mode).
-    #[allow(dead_code)]
     pub fn promote_warnings(&mut self) {
         for d in &mut self.diagnostics {
             d.promote_to_error();
@@ -135,26 +133,22 @@ impl DiagnosticCollector {
     }
 
     #[must_use]
-    #[allow(dead_code)]
     pub fn error_count(&self) -> usize {
         self.diagnostics.iter().filter(|d| d.is_error()).count()
     }
 
     #[must_use]
-    #[allow(dead_code)]
     pub fn warning_count(&self) -> usize {
         self.diagnostics.iter().filter(|d| !d.is_error()).count()
     }
 
     #[must_use]
-    #[allow(dead_code)]
     pub fn is_empty(&self) -> bool {
         self.diagnostics.is_empty()
     }
 
     /// Consume the collector, printing all diagnostics and returning an error
     /// if any errors were present.
-    #[allow(dead_code)]
     pub fn into_result(self) -> Result<(), Error> {
         for d in &self.diagnostics {
             eprintln!("  {d}");
@@ -173,18 +167,17 @@ impl DiagnosticCollector {
 
     /// Access the underlying diagnostics slice.
     #[must_use]
-    #[allow(dead_code)]
     pub fn diagnostics(&self) -> &[Diagnostic] {
         &self.diagnostics
     }
 
     /// Extend with diagnostics from a `Vec<Diagnostic>` (bridge to existing callers).
-    #[allow(dead_code)]
     pub fn extend(&mut self, diagnostics: Vec<Diagnostic>) {
         self.diagnostics.extend(diagnostics);
     }
 }
 
+#[cfg(test)]
 impl Default for DiagnosticCollector {
     fn default() -> Self {
         Self::new()

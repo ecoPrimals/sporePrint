@@ -24,7 +24,7 @@ Before Feb 1, 2026, {{ entity(name="ecoprimals") }} had:
 - 14 production primals ({{ entity(name="beardog") }}, {{ entity(name="songbird") }}, {{ entity(name="nestgate") }}, {{ entity(name="toadstool") }}, BarraCuda,
   {{ entity(name="coralreef") }}, {{ entity(name="biomeos") }}, {{ entity(name="petaltongue") }}, {{ entity(name="rhizocrypt") }}, {{ entity(name="loamspine") }}, {{ entity(name="sweetgrass") }}, {{ entity(name="squirrel") }},
   {{ entity(name="skunkbat") }}, {{ entity(name="sourdough") }})
-- 27,000+ tests across primals
+- {{ total_stat(stat="total_tests_display") }} tests across primals
 - A validated GPU compute stack (BarraCuda WGSL shaders, toadStool dispatch)
 - A pure Rust architecture with no C dependencies
 - No springs — no scientific validation experiments

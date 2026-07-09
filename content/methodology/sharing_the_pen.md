@@ -38,7 +38,7 @@ well somewhere else, you need someone who knows how to dig. The
 tool is free. The methodology for making tools is not — unless
 you share it explicitly.
 
-gen3/atlasHugged/09 (The Many Rooms) describes this:
+[The Many Rooms](@/philosophy/the_many_rooms.md) describes this:
 
 > "Someone goes ahead and prepares rooms in a house that is not
 > his. The house is sovereign — reality itself."
@@ -59,12 +59,12 @@ sharing the pen, not just the letter.
 
 The gen3 K-NOME documents are already public:
 
-- `gen3/about/K_NOME_PROGRAMMING.md` — the formal methodology
-- `gen3/atlasHugged/12_THE_KNOWLEDGE_NUMERIC.md` — the narrative
-- `gen3/atlasHugged/04_THE_HUMAN_SEARCH.md` — the learning grid
+- [K-NOME Programming](@/methodology/K_NOME_PROGRAMMING.md) — the formal methodology
+- [The Knowledge-Numeric](@/philosophy/the_knowledge_numeric.md) — the narrative
+- [The Human Search](@/philosophy/the_human_search.md) — the learning grid
 - The K-NOME Teaching Brief — the pedagogical framework
 
-gen4/knome/ (this directory) adds:
+This methodology adds:
 
 - `MASSIVELY_PARALLEL_MENTORING.md` — how it runs at scale
 - `THE_CONVERSATION_CONSTRAINT.md` — the code-free constraint
@@ -147,7 +147,7 @@ make yours."
 
 ## The Loaves and the Fishes, Revisited
 
-gen3/atlasHugged/05 (The Loaves and the Fishes) describes the
+[The Loaves and the Fishes](@/philosophy/the_loaves_and_the_fishes.md) describes the
 miracle as revelation of what was already there:
 
 > "The collective resource was already sufficient. It was hidden by
@@ -251,7 +251,7 @@ The pen multiplies by being shared.
 
 ## The Ninth Room
 
-gen3/atlasHugged/09 invokes John 14:2: "In my Father's house are
+[The Many Rooms](@/philosophy/the_many_rooms.md) invokes John 14:2: "In my Father's house are
 many rooms." Someone goes ahead and prepares rooms.
 
 The scyBorg covenant ensures the rooms stay open.

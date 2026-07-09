@@ -75,7 +75,7 @@ For a primal to be CI-buildable with zero manual intervention:
 3. **Toolchain declared** in `rust-toolchain.toml`
 4. **Binary name = primal name lowercase** with no separators
 
-All 14 primals meet this convention. Three historical divergences are now resolved via `ecosystem_manifest.toml` build metadata:
+All {{ total_stat(stat="total_primals") }} primals meet this convention. Three historical divergences are now resolved via `ecosystem_manifest.toml` build metadata:
 - **CI-DIV-01**: {{ entity(name="biomeos") }} needs `--package biomeos-unibin` — encoded in `[build.biomeos]`
 - **CI-DIV-02**: {{ entity(name="skunkbat") }} needs `--package skunk-bat-server` — encoded in `[build.skunkbat]`
 - **CI-DIV-03**: {{ entity(name="nestgate") }} uses project `.cargo/config.toml` for linker config — resolved Wave 133a, `cargo_config = true` in `[build.nestgate]`

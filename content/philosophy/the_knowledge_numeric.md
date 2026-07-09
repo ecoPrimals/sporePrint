@@ -1,6 +1,6 @@
 +++
 title = "The Knowledge-Numeric"
-description = "K-NOME — where human expertise meets AI numeric capability. The methodology that produced 14 primals and 7 springs."
+description = "K-NOME — where human expertise meets AI numeric capability. The methodology that produced the ecoPrimals ecosystem."
 date = 2026-03-17
 weight = 12
 

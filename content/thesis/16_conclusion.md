@@ -51,11 +51,11 @@ This chapter restates the five contributions with supporting evidence, outlines 
 
 ### 16.3.1 LTEE Sequencing
 
-[TODO: Detailed plan for whole-genome sequencing of LTEE Ara-3 (and/or other populations). Frozen fossil record access, RTSF workflow, analysis pipeline using wetSpring/neuralSpring tools. Timeline, cost estimate.]
+The LTEE frozen fossil record at Michigan State University contains 75,000+ generations of *E. coli* frozen at 500-generation intervals across 12 populations. Whole-genome sequencing of Ara-3 (and selected other populations) through the MSU Research Technology Support Facility (RTSF) would provide the biological ground truth for constrained evolution signatures. The analysis pipeline — alignment via wetSpring, variant calling, population genomics — is validated in the springs. This work is contingent on faculty collaboration and LTEE access (see [Chapter 14](@/thesis/14_biological_validation.md)).
 
 ### 16.3.2 Scaling via NUCLEUS
 
-Deploy NUCLEUS across multiple institutions; validate bonding model (covalent, ionic, metallic) at scale; measure capability discovery latency and federation overhead. [TODO: Pilot with collaborator institutions.]
+Deploy NUCLEUS across multiple institutions; validate bonding model (covalent, ionic, metallic) at scale; measure capability discovery latency and federation overhead. Pilot deployments with collaborator institutions — particularly MSU departments with existing GPU compute — would test whether the mesh absorbs new nodes as predicted by the architecture.
 
 ### 16.3.3 Additional Spring Domains
 
@@ -67,7 +67,7 @@ Extend validation to new domains: materials science, climate modeling, quantum c
 
 ### 16.3.5 Formal Proof via NK Landscape Theory
 
-Kauffman's NK model (1993) formalizes fitness landscape ruggedness. [TODO: Derive the constrained evolution dynamics in NK terms. Show that constraint reduces effective K (epistatic interactions), flattening the landscape in ways that accelerate convergence. Compare to Wiser et al. power-law fitness dynamics.]
+Kauffman's NK model (1993) formalizes fitness landscape ruggedness. A formal derivation of constrained evolution dynamics in NK terms would show that environmental constraint reduces effective K (epistatic interactions), flattening the fitness landscape in ways that accelerate convergence. This prediction can be compared to Wiser et al.'s power-law fitness dynamics from the LTEE (2013), providing a quantitative bridge between the biological and computational observations.
 
 ### 16.3.6 baseCamp Companion Papers
 

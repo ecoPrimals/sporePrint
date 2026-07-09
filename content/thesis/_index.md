@@ -13,6 +13,8 @@ template = "section.html"
 **Status**: Working draft — all 16 chapters transplanted, undergoing refinement
 **License**: AGPL-3.0
 
+> **Historical snapshot.** Metrics in the thesis body reflect the gen3 working draft (circa February 2026: ~757K LOC, ~104K tests, 11 primals, 5 springs). Current ecosystem metrics: {{ total_stat(stat="total_loc_display") }} LOC, {{ total_stat(stat="total_tests_display") }} tests, {{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs ([Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md)). The thesis numbers will be reconciled as chapters undergo refinement.
+
 ---
 
 ## Thesis Statement

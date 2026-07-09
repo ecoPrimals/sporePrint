@@ -15,27 +15,68 @@
 
 use crate::discovery;
 use crate::paths::PROBE_TIMEOUT;
+use serde::Deserialize;
 use serde_json::{Value, json};
+use std::sync::LazyLock;
 
-/// Default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
-const DEFAULT_TOWER_PROBES: &[(&str, &[&str])] = &[
-    (
-        "beardog",
-        &[
-            "auth.public_key",
-            "auth.trusted_issuers",
-            "btsp.capabilities",
-        ],
-    ),
-    (
-        "songbird",
-        &["mesh.peers", "mesh.capabilities_announce", "mesh.init"],
-    ),
-    (
-        "skunkbat",
-        &["defense.status", "security.detect", "btsp.negotiate"],
-    ),
-];
+/// A default Tower primal probe definition (from bundled TOML).
+#[derive(Debug, Deserialize)]
+struct DefaultProbe {
+    slug: String,
+    methods: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct DefaultProbeFile {
+    probes: Vec<DefaultProbe>,
+}
+
+static DEFAULT_TOWER_PROBES: LazyLock<Vec<(String, Vec<String>)>> = LazyLock::new(|| {
+    const EMBEDDED: &str = include_str!("../default_tower_probes.toml");
+    match toml::from_str::<DefaultProbeFile>(EMBEDDED) {
+        Ok(file) => file
+            .probes
+            .into_iter()
+            .map(|p| (p.slug, p.methods))
+            .collect(),
+        Err(_) => fallback_tower_probes(),
+    }
+});
+
+/// Hardcoded minimum probe set if embedded TOML parsing fails.
+fn fallback_tower_probes() -> Vec<(String, Vec<String>)> {
+    vec![
+        (
+            "beardog".into(),
+            vec![
+                "auth.public_key".into(),
+                "auth.trusted_issuers".into(),
+                "btsp.capabilities".into(),
+            ],
+        ),
+        (
+            "songbird".into(),
+            vec![
+                "mesh.peers".into(),
+                "mesh.capabilities_announce".into(),
+                "mesh.init".into(),
+            ],
+        ),
+        (
+            "skunkbat".into(),
+            vec![
+                "defense.status".into(),
+                "security.detect".into(),
+                "btsp.negotiate".into(),
+            ],
+        ),
+    ]
+}
+
+/// Return the default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
+fn default_tower_probes() -> &'static [(String, Vec<String>)] {
+    &DEFAULT_TOWER_PROBES
+}
 
 /// Result of probing a single method on a Tower primal.
 #[derive(Debug)]
@@ -117,14 +158,9 @@ fn build_probe_targets(
         }
     }
 
-    DEFAULT_TOWER_PROBES
+    default_tower_probes()
         .iter()
-        .map(|(slug, methods)| {
-            (
-                (*slug).to_string(),
-                methods.iter().map(|m| (*m).to_string()).collect(),
-            )
-        })
+        .map(|(slug, methods)| (slug.clone(), methods.clone()))
         .collect()
 }
 
@@ -248,8 +284,9 @@ mod tests {
 
     #[test]
     fn default_tower_probes_cover_all_three_primals() {
-        assert_eq!(DEFAULT_TOWER_PROBES.len(), 3);
-        let slugs: Vec<&str> = DEFAULT_TOWER_PROBES.iter().map(|(s, _)| *s).collect();
+        let probes = default_tower_probes();
+        assert_eq!(probes.len(), 3);
+        let slugs: Vec<&str> = probes.iter().map(|(s, _)| s.as_str()).collect();
         assert!(slugs.contains(&"beardog"));
         assert!(slugs.contains(&"songbird"));
         assert!(slugs.contains(&"skunkbat"));

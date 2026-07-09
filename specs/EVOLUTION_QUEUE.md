@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 9, 2026 (Wave 134 — Thesis Scaffold + lithoSpore Product + Philosophy Subtabs)
+Last reviewed: July 9, 2026 (Wave 134e — Deep Debt Sprint: module splits, transplants, metric evolution)
 
 ---
 
@@ -41,10 +41,20 @@ Last reviewed: July 9, 2026 (Wave 134 — Thesis Scaffold + lithoSpore Product +
 
 ### Thesis integration (gen3/ → sporePrint)
 - [x] ~~gen3/thesis/ (16 chapters) — scientific thesis transplant planning~~ — `content/thesis/` scaffolded (18 files, stubs with abstracts + cross-links)
-- [ ] gen3/thesis/ bulk content transplant (fill chapter stubs from gen3 source)
-- [ ] gen3/about/ — sovereign science, licensing strategy, faculty engagement pages
-- [ ] gen3/primals/ — primal specification pages (14 primals, interactions, discovery log)
-- [ ] gen3/data/ — faculty profiles, reproduction plans, benchmarks
+- [x] ~~gen3/thesis/ bulk content transplant~~ — all 16 chapters fully transplanted, maturity badges updated to architectural
+- [x] ~~gen3/about/SOVEREIGN_SCIENCE.md~~ — transplanted to `content/philosophy/sovereign_science.md`
+- [x] ~~gen3/about/SCYBORG_EXCEPTION_PROTOCOL.md~~ — transplanted to `content/methodology/scyborg_exception_protocol.md`
+- [x] ~~gen3/data/FACULTY_SPRING_PROFILES.md~~ — transplanted to `content/audience/faculty_spring_profiles.md`
+- [x] ~~gen3/data/BARRACUDA_SCIENTIFIC_COMPUTE_GAPS.md~~ — transplanted to `content/technical/barracuda_compute_gaps.md`
+- [x] ~~gen3/data/HOTSPRING_PHASE_B_EVIDENCE.md~~ — transplanted to `content/lab/hotspring_phase_b_evidence.md`
+- [x] ~~gen3/data/MURILLO_REPRODUCTION_PLAN.md~~ — transplanted to `content/lab/murillo_reproduction_plan.md`
+- [x] ~~gen3/data/neuromorphic_benchmark_datasheet_v1.md~~ — transplanted to `content/technical/neuromorphic_benchmark.md`
+- [x] ~~gen3/baseCamp/26~~ — transplanted as `content/science/28_primal_composition_methodology.md`
+- [x] ~~gen3/baseCamp/27~~ — transplanted as `content/science/29_heterogeneous_fabric_economics.md`
+- [x] ~~gen3/constrained_optimization_ai.md~~ — transplanted to `content/methodology/constrained_optimization_ai.md`
+- [ ] gen3/about/LICENSING_STRATEGY.md — may overlap with scyBorg, evaluate
+- [ ] gen3/primals/ — primal specification pages (15 primals, interactions, discovery log)
+- [ ] gen3/data/ remaining: MISE_EN_PLACE (historical conda fossil, skip)
 
 ### Visual evolution
 - [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all sections with page counts

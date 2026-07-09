@@ -113,7 +113,7 @@ and mentoring instinct can run K-NOME on their ecosystem.
 | Human lines of code typed | 0 (Rust) |
 | Primals built | 15 |
 | Springs built | 8 |
-| Tests | 27,000+ |
+| Tests | {{ total_stat(stat="total_tests_display") }} |
 | Papers reproduced | 70+ |
 | Machines (peak) | 6 |
 | Cursor instances (peak) | 12-15 |
