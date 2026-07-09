@@ -1,57 +1,57 @@
 +++
 title = "Site Map"
-description = "Complete content tree for primals.eco — every section, every page, organized for navigation."
+description = "Content reference for primals.eco — every section and page count."
 sort_by = "weight"
 template = "section.html"
 +++
 
-## All Content
+## Content Reference
 
-sporePrint contains {{ total_stat(stat="content_pages") }} pages across 14 sections (thesis: 18, philosophy: 14, methodology: 9, audience: 6). This page lists every section with its contents and page count.
+sporePrint contains {{ total_stat(stat="content_pages") }} pages across 14 sections. Use the sidebar tree or nav bar for navigation — this page is a reference index.
 
 ---
 
-### [Lab](/lab/) — 131 pages
+### [Lab](/lab/) — 137 pages
 
-Live validation results from a running NUCLEUS composition. 104 exported Jupyter notebooks with embedded charts, spring science hubs, provenance pipeline, compute access, pseudoSpore gallery, and the liveSpore guideStone feed.
+Live validation results from a running NUCLEUS composition. 104 exported Jupyter notebooks with embedded charts, spring science hubs, provenance pipeline, compute access, pseudoSpore gallery, the liveSpore guideStone feed, and evidence documents.
 
-### [Science](/science/) — 31 pages
+### [Science](/science/) — 34 pages
 
 baseCamp papers reproducing peer-reviewed research in pure Rust, grouped by domain (physics, microbiology, immunology, neural/computation, game science, provenance/economics), plus reference documents.
 
-### [Architecture](/architecture/) — 22 pages
+### [Architecture](/architecture/) — 23 pages
 
 System design, the 15-primal catalog, 8-spring catalog, NUCLEUS composition model, ecosystem inventory, K-Derm topology, deployment model, evidence snapshot, evolution timeline, prior art analysis.
 
-### [Thesis](/thesis/) — 18 pages
+### [Thesis](/thesis/) — 19 pages
 
 Constrained Evolution — the formal academic argument connecting biology, computation, and sovereign infrastructure. 16 chapters from front matter through synthesis, plus references.
 
-### [Philosophy](/philosophy/) — 14 pages
+### [Philosophy](/philosophy/) — 15 pages
 
-The "why" behind ecoPrimals — 12 atlasHugged essays organized as The Stories, The Framework, and The Synthesis, plus Sovereign Science and a bibliography. Constrained evolution as a design philosophy.
+The "why" behind ecoPrimals — 12 atlasHugged essays organized as The Stories, The Framework, and The Synthesis, plus Sovereign Science, discussion, and a bibliography.
 
-### [Methodology](/methodology/) — 9 pages
+### [Methodology](/methodology/) — 11 pages
 
-Core theory (constrained evolution), the inoculum paper (constrained optimization in AI-assisted development), AI-assisted development (K-NOME), the spring creation playbook, knowledge commons targets, licensing (scyBorg), the P vs NP enzyme thesis, and Sharing the Pen.
+Core theory (constrained evolution), the inoculum paper, AI-assisted development (K-NOME), the spring creation playbook, knowledge commons targets, licensing (scyBorg + exception protocol), the P vs NP enzyme thesis, and Sharing the Pen.
 
-### [Technical](/technical/) — 6 pages
+### [Technical](/technical/) — 9 pages
 
-Grant-ready evidence, hardware economics, GPU pipeline architecture, drug discovery review, institutional HPC integration, teaching brief.
+Grant-ready evidence, hardware economics, GPU pipeline architecture, drug discovery review, institutional HPC integration, teaching brief, barracuda compute gaps, neuromorphic benchmarks.
 
-### [Products](/products/) — 6 pages
+### [Products](/products/) — 7 pages
 
 {{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, {{ entity(name="lithospore") }}, blueFish, lattice QCD explorer, initioChem — tools that emerge from primal composition.
 
-### [Audience](/audience/) — 6 pages
+### [Audience](/audience/) — 7 pages
 
-Role-based entry points: faculty/PIs, students/core facilities, hardware builders, compliance reviewers, capability parity assessment, and faculty spring profiles (9 professors, 60+ candidate papers).
+Role-based entry points: faculty/PIs, students/core facilities, hardware builders, compliance reviewers, capability parity assessment, and faculty spring profiles.
 
-### [guideStone](/guidestone/) — 5 pages
+### [guideStone](/guidestone/) — 6 pages
 
-The verification class — self-proving build artifacts, the five properties, deployment artifacts, cross-substrate validation (5 substrates, 40/40 bit-identical), and the live spore provenance feed.
+The verification class — self-proving build artifacts, the five properties, deployment artifacts, cross-substrate validation, and the live spore provenance feed.
 
-### [Story](/story/) — 3 pages
+### [Story](/story/) — 4 pages
 
 Builder narratives — the human experience of building sovereign infrastructure from scratch with AI-assisted constrained evolution.
 
@@ -69,5 +69,5 @@ Who built this, how to reach them, and what kinds of engagement are welcome.
 
 Generated automatically from front matter tags:
 
-- [Primals](/primals/) — 15 primals, each with cross-references to every page that tags it
-- [Springs](/springs/) — 8 springs, each with cross-references to every page that tags it
+- [Primals](/primals/) — {{ total_stat(stat="total_primals") }} primals, each with cross-references to every page that tags it
+- [Springs](/springs/) — {{ total_stat(stat="total_springs") }} springs, each with cross-references to every page that tags it
