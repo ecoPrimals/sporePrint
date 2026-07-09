@@ -55,17 +55,18 @@ cargo run -- certify --emit              # guideStone manifest → static/certif
 sporePrint/
 ├── config.toml          # Zola config + entity_registry (66 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
-├── content/             # 239 Markdown pages with TOML front matter
+├── content/             # 249 Markdown pages with TOML front matter
 │   ├── science/         # 32 baseCamp companion papers
 │   ├── architecture/    # 20 pages: catalogs, inventory, topology, deployment, certify
 │   ├── lab/             # 133 pages: spring hubs, notebooks, spore gallery
-│   ├── products/        # blueFish, esotericWebb, helixVision, lattice QCD
+│   ├── products/        # blueFish, esotericWebb, helixVision, lattice QCD, lithoSpore
 │   ├── guidestone/      # guideStone verification class
 │   ├── audience/        # PI, student, builder, compliance guides
 │   ├── methodology/     # Constrained evolution, K-NOME, playbooks
 │   ├── technical/       # Hardware, grants, pipelines
 │   ├── glossary/        # Plain-language ecosystem glossary
-│   ├── philosophy/      # atlasHugged integration (the "why")
+│   ├── thesis/          # PhD dissertation scaffold (16 chapters, constrained evolution)
+│   ├── philosophy/      # atlasHugged (12 essays — the "why")
 │   ├── story/           # Builder narrative essays (I Don't Know Rust, etc.)
 │   └── sitemap/         # Full site navigation
 ├── templates/           # 14 Tera HTML templates + shortcodes
@@ -131,7 +132,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 ## Nav Bar Structure
 
-8 items: Science · Architecture · Lab · Story · guideStone · Philosophy · Products | Primals · Springs · GitHub
+9 items: Science · Architecture · Lab · Thesis · Story · guideStone · Philosophy · Products | Primals · Springs · GitHub
 
 ## Auto-Refresh
 
@@ -169,8 +170,8 @@ Your content here...
 
 ## Evolution Roadmap
 
-### Current — Wave 134 (July 8, 2026)
-- 239 content pages, 66 entities, 272 tests, 28 modules
+### Current — Wave 134 (July 9, 2026)
+- 249 content pages, 66 entities, 272 tests, 28 modules
 - Edition 2024, Rust 1.85+, zero unsafe, zero C deps
 - NUCLEUS validation + depot integrity + riboCipher transport signal
 - Shared IPC module: JSON-RPC 2.0 NDJSON with response ID correlation
@@ -183,6 +184,10 @@ Your content here...
 - Phase 1 idiomatic Rust evolution: shared walker, IPC connect helper, DiagnosticCollector, #[must_use], Cow<str>, function decomposition
 - Phase 2 petalTongue integration: build-viz subcommand, MaturityLevel enum, maturity validation
 - Stale code cleanup: gonzales explorer dead JS removed, petaltongue docs corrected, section_count shortcode deleted
+- Philosophy subtabs: sidebar groups atlasHugged into Stories/Framework/Synthesis/Reference
+- Cross-reference linking: 44 inter-essay references converted to Zola internal links
+- Thesis scaffold: 16-chapter PhD dissertation section with abstracts and cross-links
+- lithoSpore product page: spore taxonomy, operating modes, validation tiers, pseudoSpore lifecycle
 
 ### Completed Waves (66–119)
 - Wave 66: Sovereign self-hosting (Caddy + Let's Encrypt + systemd rebuild)

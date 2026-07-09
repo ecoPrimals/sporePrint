@@ -5,6 +5,38 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.9.0] — 2026-07-09 — Thesis Scaffold + lithoSpore Product + Philosophy Subtabs (Wave 134c)
+
+**Thesis section scaffolded, lithoSpore product page, philosophy sidebar grouped, cross-references linked.**
+
+### Added
+
+- **Thesis section** (`content/thesis/`): 16-chapter PhD dissertation scaffold mirroring
+  gen3/thesis/ structure. Each chapter has frontmatter, abstract, maturity badge, and
+  cross-links to existing sporePrint pages. Section index with thesis statement,
+  six-part TOC, audience reading paths, and lineage tracing.
+- **lithoSpore product page** (`content/products/lithoSpore.md`): spore taxonomy table
+  (coldSpore→liveSpore→pseudoSpore→lithoSpore), three operating modes, three-tier
+  validation, pseudoSpore lifecycle (emit/ingest/promote), deployment vision.
+- **Philosophy sidebar subtabs**: atlasHugged essays grouped under The Stories (01–03),
+  The Framework (04–08), The Synthesis (09–12), and Reference (bibliography).
+- **Section page grouping**: philosophy section card listing also groups by subsection.
+- **44 cross-references linked**: Inter-essay references (Document NN, Chapter N)
+  converted to proper Zola internal links across 6 essays.
+
+### Changed
+
+- **Products `_index.md`**: lithoSpore entry expanded from one-line bullet to description
+  with link to product page.
+- **Sidebar tree**: thesis section added with Foundations/Theory/System/Validation/
+  Analysis/Synthesis/Back Matter grouping.
+- **Methodology `_index.md`**: added thesis section to reading table.
+- **Philosophy `_index.md`**: added thesis cross-link in Discussion section.
+- **pseudoSpore gallery `_index.md`**: added cross-link to lithoSpore product page.
+- **Content pages**: 245 → 249 (18 thesis files + 1 product page).
+
+---
+
 ## [3.8.0] — 2026-07-08 — Philosophy Complete + Content Enrichment (Wave 134b)
 
 **All 12 atlasHugged essays live, bibliography page, cross-links, number sync.**

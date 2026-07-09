@@ -8,9 +8,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 8, 2026 — Wave 134)
+## Current State (July 9, 2026 — Wave 134)
 
-- **238 content pages** across 10 sections (+ Story, Philosophy expanded) + landing + lab notebooks
+- **249 content pages** across 12 sections (+ Thesis, Story, Philosophy expanded) + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
@@ -47,10 +47,11 @@ sporePrint/
 │   ├── architecture/        # 20+ pages: catalogs, inventory, NUCLEUS, deployment, topology, certify
 │   ├── audience/            # 5 pages: role-based entry points
 │   ├── guidestone/          # guideStone verification class
-│   ├── methodology/         # 6 pages: constrained evolution, K-Nome, spring guide, sharing the pen
-│   ├── philosophy/          # atlasHugged essays (6 — the "why")
+│   ├── methodology/         # 8 pages: constrained evolution, K-Nome, spring guide, sharing the pen
+│   ├── thesis/              # 18 pages: PhD dissertation scaffold (16 chapters + index + refs)
+│   ├── philosophy/          # 13 pages: atlasHugged essays (12 + bibliography)
 │   ├── story/               # Builder narrative essays (3 — the journey)
-│   ├── products/            # 4 pages: esotericWebb, helixVision, blueFish, lattice_qcd
+│   ├── products/            # 6 pages: esotericWebb, helixVision, blueFish, lattice QCD, lithoSpore
 │   ├── science/             # 32+ pages: baseCamp papers + gonzales + reference docs
 │   └── technical/           # 6 pages: hardware, GPU pipeline, grants, teaching
 ├── templates/

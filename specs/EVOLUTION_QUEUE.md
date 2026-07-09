@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 8, 2026 (Wave 134 — Phase 1+2 Idiomatic Rust + petalTongue Integration)
+Last reviewed: July 9, 2026 (Wave 134 — Thesis Scaffold + lithoSpore Product + Philosophy Subtabs)
 
 ---
 
@@ -40,10 +40,11 @@ Last reviewed: July 8, 2026 (Wave 134 — Phase 1+2 Idiomatic Rust + petalTongue
 - [ ] Add cross-spring data flow diagram to SPRING_CATALOG.md or a dedicated page
 
 ### Thesis integration (gen3/ → sporePrint)
-- [ ] gen3/thesis/ (16 chapters) — scientific thesis transplant planning
+- [x] ~~gen3/thesis/ (16 chapters) — scientific thesis transplant planning~~ — `content/thesis/` scaffolded (18 files, stubs with abstracts + cross-links)
+- [ ] gen3/thesis/ bulk content transplant (fill chapter stubs from gen3 source)
 - [ ] gen3/about/ — sovereign science, licensing strategy, faculty engagement pages
 - [ ] gen3/primals/ — primal specification pages (14 primals, interactions, discovery log)
-- [ ] Consider dedicated /thesis/ section vs integration into existing architecture/ and science/
+- [ ] gen3/data/ — faculty profiles, reproduction plans, benchmarks
 
 ### Visual evolution
 - [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all sections with page counts
