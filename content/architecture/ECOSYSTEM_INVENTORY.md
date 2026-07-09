@@ -52,7 +52,7 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 |------------|---------|--------|
 | 🍞🧪 [sourDough](https://github.com/ecoPrimals/sourDough) | Starter culture — scaffolds new primals, produces {{ entity(name="genomebin") }} packages | **Public** |
 | 🎲🧊 [bingoCube](https://github.com/ecoPrimals/bingoCube) | Human trust bridge — BLAKE3 progressive reveal, visual/audio identity verification | **Public** |
-| 🧫🔬 [cellMembrane](https://github.com/ecoPrimals/cellMembrane) | Deployment layer — K-Derm topology, gate enrollment, NUCLEUS systemd, cascade pipeline | **Public** (680 tests) |
+| 🧫🔬 [cellMembrane](https://git.primals.eco/ecoPrimals/cellMembrane) | Deployment layer — K-Derm topology, gate enrollment, NUCLEUS systemd, cascade pipeline | **Public** (886 tests) |
 | 🧪🤖 agentReagents | Agent chemistry — composable reagent patterns for sovereign AI agents | Publishing soon |
 | ⚖️📊 benchScale | Scaling studies — cross-primal benchmarks, composition cost characterization | Publishing soon |
 | 💧📡 [wateringHole](https://github.com/ecoPrimals/wateringHole) | Ecosystem communications, standards, glossary — shared dev context | **Public** |

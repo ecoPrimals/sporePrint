@@ -586,5 +586,5 @@ machine-precision tolerance. BLAKE3 content hashes track drift.
 **Evolution**: Tier 1 (this notebook). Tier 2 calls `science.qs_model` live.
 Tier 3 wraps each scenario in a provenance session.
 
-**Source**: [ecoPrimals/wetSpring](https://github.com/ecoPrimals/wetSpring)
+**Source**: [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring)
 
