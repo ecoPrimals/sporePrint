@@ -239,8 +239,8 @@ pub fn render_notebooks(
     notebook_dirs: &[PathBuf],
     springs_root: Option<&Path>,
 ) -> (u32, Vec<String>) {
-    let output_subdir = std::env::var("SPOREPRINT_NOTEBOOK_OUTPUT")
-        .unwrap_or_else(|_| paths::NOTEBOOK_OUTPUT.into());
+    let output_subdir =
+        std::env::var(paths::ENV_NOTEBOOK_OUTPUT).unwrap_or_else(|_| paths::NOTEBOOK_OUTPUT.into());
     let output_dir = root.join(&output_subdir);
     if let Err(e) = std::fs::create_dir_all(&output_dir) {
         return (

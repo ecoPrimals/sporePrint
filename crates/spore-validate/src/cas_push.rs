@@ -33,7 +33,7 @@ use base64::{Engine as _, engine::general_purpose::STANDARD};
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::collections::BTreeMap;
-use std::io::{BufReader, Read, Write};
+use std::io::BufReader;
 use std::path::Path;
 use std::time::Instant;
 
@@ -59,33 +59,7 @@ pub enum TransportEndpoint {
 
 use crate::paths::{TRANSPORT_CONNECT_TIMEOUT, TRANSPORT_IO_TIMEOUT};
 
-/// riboCipher Tier 1 (clear) signal prefix byte.
-const RIBOCIPHER_CLEAR: u8 = 0xEC;
-/// NDJSON JSON-RPC protocol type (ecosystem standard Wire Format Table).
-const RIBOCIPHER_PROTO_NDJSON: u8 = 0x01;
-
-/// Whether riboCipher signalling is enabled for outbound connections.
-///
-/// Controlled by `SPOREPRINT_RIBOCIPHER` env var:
-/// - `"1"` or `"true"`: send Tier 1 clear signal before JSON-RPC (for Wave 113+ servers)
-/// - absent or other: skip signal (backward-compatible with pre-riboCipher servers)
-fn ribocipher_enabled() -> bool {
-    std::env::var("SPOREPRINT_RIBOCIPHER").is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
-}
-
-/// Send the riboCipher Tier 1 clear signal (`0xEC` + protocol type) on a stream.
-///
-/// This 2-byte preamble tells the server which protocol follows without
-/// requiring peek-and-guess detection. See `RIBOCIPHER_TRANSPORT_SIGNAL_STANDARD.md`.
-fn send_ribocipher_signal(stream: &mut dyn Write) -> Result<(), Error> {
-    stream
-        .write_all(&[RIBOCIPHER_CLEAR, RIBOCIPHER_PROTO_NDJSON])
-        .map_err(|e| Error::Config(format!("riboCipher signal write: {e}")))?;
-    stream
-        .flush()
-        .map_err(|e| Error::Config(format!("riboCipher signal flush: {e}")))?;
-    Ok(())
-}
+use crate::ipc::{ribocipher_enabled, send_ribocipher_signal};
 
 /// Connect to a `NestGate` instance via the specified transport.
 ///
@@ -141,9 +115,7 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
     Ok(stream)
 }
 
-/// Trait alias for a bidirectional stream (Read + Write).
-pub trait ReadWrite: Read + Write {}
-impl<T: Read + Write> ReadWrite for T {}
+pub use crate::ipc::ReadWrite;
 
 /// Deserialized CAS manifest (matches `cas::CasManifest` serialization).
 #[derive(Debug, Deserialize)]

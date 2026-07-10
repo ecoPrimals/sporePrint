@@ -5,6 +5,34 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.11.0] — 2026-07-10 — Deep Debt: Constant Centralization + Dependency Inversion (Wave 134f)
+
+**Deduplicated riboCipher, centralized env vars, corrected dependency direction, removed dead code.**
+
+### Changed
+
+- **riboCipher constants consolidated in `ipc.rs`**: `RIBOCIPHER_CLEAR`, `RIBOCIPHER_PROTO_NDJSON`,
+  `RIBOCIPHER_MITO_CLEAR` now defined once. `cas_push.rs` and `nucleus.rs` import from `ipc`.
+  `ribocipher_enabled()` and `send_ribocipher_signal()` moved to `ipc.rs`.
+- **`ReadWrite` trait moved from `cas_push` to `ipc`**: Corrects dependency inversion — `ipc`
+  defines the transport trait, `cas_push` re-exports for backward compatibility.
+- **10 env var names centralized in `paths.rs`**: `ENV_FORGE_URL`, `ENV_RIBOCIPHER`,
+  `ENV_REFRESH_PAT`, `ENV_NOTEBOOK_OUTPUT`, `ENV_TRANSPORT_ENDPOINT`, `ENV_BIOMEOS_SOCKET_DIR`,
+  `ENV_BIOMEOS_SYSTEMD_DIR`, `ENV_XDG_RUNTIME`, `ENV_PLASMIDBIN_CHECKSUMS`.
+  All scattered `std::env::var("STRING")` calls now reference these constants.
+- **Default forge URL** (`https://github.com`) moved to `paths::DEFAULT_FORGE_URL`.
+- **Tower fallback removed**: `fallback_tower_probes()` deleted — `default_tower_probes.toml`
+  is the sole source of truth, parsed with `expect()` since it's compile-time embedded.
+- **`VizResult::format` dead field removed**: Populated but never read. `VizFormat` enum retained
+  (used as parameter to `viz()`).
+- **`MaturityLevel::css_class` annotation clarified**: References EVOLUTION_QUEUE P2 petalTongue target.
+
+### Metrics
+
+- clippy: 0 warnings (pedantic + nursery)
+- tests: 240 pass, 6 ignored (parity — requires live petalTongue)
+- fmt: clean
+
 ## [3.10.0] — 2026-07-09 — Deep Debt Sprint: Module Splits + Transplants + Metric Evolution (Wave 134e)
 
 **Module architecture overhaul, 7 content transplants, hardcoded metrics evolved, structured error handling.**

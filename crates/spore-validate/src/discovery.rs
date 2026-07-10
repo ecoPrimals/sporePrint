@@ -24,7 +24,7 @@ const DEFAULT_SYSTEMD_SOCKET_DIR: &str = "/run/membrane";
 /// Resolve the systemd socket directory, preferring the env override.
 #[must_use]
 pub fn systemd_socket_dir() -> Cow<'static, str> {
-    std::env::var("BIOMEOS_SYSTEMD_SOCKET_DIR")
+    std::env::var(crate::paths::ENV_BIOMEOS_SYSTEMD_DIR)
         .map_or(Cow::Borrowed(DEFAULT_SYSTEMD_SOCKET_DIR), Cow::Owned)
 }
 
@@ -167,7 +167,7 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
         }
     }
 
-    if let Ok(dir) = std::env::var("BIOMEOS_SOCKET_DIR") {
+    if let Ok(dir) = std::env::var(crate::paths::ENV_BIOMEOS_SOCKET_DIR) {
         let candidate = format!("{dir}/{slug}.sock");
         if std::path::Path::new(&candidate).exists() {
             return Some(candidate);
@@ -180,7 +180,7 @@ pub fn probe_socket(slug: &str, primary_var: &str) -> Option<String> {
         return Some(systemd_candidate);
     }
 
-    if let Ok(xdg) = std::env::var("XDG_RUNTIME_DIR") {
+    if let Ok(xdg) = std::env::var(crate::paths::ENV_XDG_RUNTIME) {
         let candidates = [
             format!("{xdg}/biomeos/{slug}.sock"),
             format!("{xdg}/biomeos/{slug}-standalone.sock"),
@@ -216,9 +216,13 @@ pub fn resolve_primal_endpoint(
         return Ok(TransportEndpoint::Uds { path: s.into() });
     }
 
-    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
-        return serde_json::from_str(&json)
-            .map_err(|e| Error::Config(format!("TRANSPORT_ENDPOINT parse error: {e}")));
+    if let Ok(json) = std::env::var(crate::paths::ENV_TRANSPORT_ENDPOINT) {
+        return serde_json::from_str(&json).map_err(|e| {
+            Error::Config(format!(
+                "{} parse error: {e}",
+                crate::paths::ENV_TRANSPORT_ENDPOINT
+            ))
+        });
     }
 
     if let Some(path) = probe_socket(slug, primary_var) {
@@ -330,7 +334,7 @@ mod tests {
         );
         assert!(
             dir == DEFAULT_SYSTEMD_SOCKET_DIR
-                || std::env::var("BIOMEOS_SYSTEMD_SOCKET_DIR").is_ok(),
+                || std::env::var(crate::paths::ENV_BIOMEOS_SYSTEMD_DIR).is_ok(),
             "returns default unless env override is set"
         );
     }

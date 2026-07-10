@@ -15,10 +15,40 @@
 
 use crate::error::Error;
 use serde_json::Value;
-use std::io::{BufRead, BufReader, Write};
+use std::io::{BufRead, BufReader, Read, Write};
 use std::time::Duration;
 
-use crate::cas_push::ReadWrite;
+/// Trait alias for a bidirectional stream (Read + Write).
+pub trait ReadWrite: Read + Write {}
+impl<T: Read + Write> ReadWrite for T {}
+
+/// riboCipher Tier 1 (clear) signal — `0xEC` prefix byte.
+pub const RIBOCIPHER_CLEAR: u8 = 0xEC;
+
+/// riboCipher NDJSON JSON-RPC protocol type — `0x01`.
+pub const RIBOCIPHER_PROTO_NDJSON: u8 = 0x01;
+
+/// Combined riboCipher mito-beacon signal (`0xEC 0x01`).
+pub const RIBOCIPHER_MITO_CLEAR: [u8; 2] = [RIBOCIPHER_CLEAR, RIBOCIPHER_PROTO_NDJSON];
+
+/// Whether riboCipher signalling is enabled for outbound connections.
+///
+/// Controlled by `SPOREPRINT_RIBOCIPHER` env var (see [`crate::paths`]).
+pub fn ribocipher_enabled() -> bool {
+    std::env::var(crate::paths::ENV_RIBOCIPHER)
+        .is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+}
+
+/// Send the riboCipher Tier 1 clear signal on a stream.
+pub fn send_ribocipher_signal(stream: &mut dyn Write) -> Result<(), Error> {
+    stream
+        .write_all(&RIBOCIPHER_MITO_CLEAR)
+        .map_err(|e| Error::Config(format!("riboCipher signal write: {e}")))?;
+    stream
+        .flush()
+        .map_err(|e| Error::Config(format!("riboCipher signal flush: {e}")))?;
+    Ok(())
+}
 
 /// Connect to a Unix domain socket with bounded timeouts.
 ///

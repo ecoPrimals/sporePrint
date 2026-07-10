@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 use crate::{
-    cas_push, discovery, error::Error, nucleus, nucleus_display,
+    cas_push, discovery,
+    error::Error,
+    nucleus, nucleus_display,
+    paths::{ENV_BIOMEOS_SOCKET_DIR, ENV_TRANSPORT_ENDPOINT, ENV_XDG_RUNTIME},
 };
 use std::path::Path;
 
@@ -22,29 +25,29 @@ pub fn discover() -> Result<(), Error> {
 
     println!();
     println!("  TRANSPORT:");
-    if let Ok(json) = std::env::var("TRANSPORT_ENDPOINT") {
+    if let Ok(json) = std::env::var(ENV_TRANSPORT_ENDPOINT) {
         match serde_json::from_str::<cas_push::TransportEndpoint>(&json) {
             Ok(ep) => println!("    injected: {ep:?}"),
-            Err(e) => println!("    TRANSPORT_ENDPOINT parse error: {e}"),
+            Err(e) => println!("    {ENV_TRANSPORT_ENDPOINT} parse error: {e}"),
         }
     } else {
-        println!("    (no TRANSPORT_ENDPOINT — will use socket discovery)");
+        println!("    (no {ENV_TRANSPORT_ENDPOINT} — will use socket discovery)");
     }
 
     println!();
     println!("  SOCKET_DIRS:");
-    if let Ok(dir) = std::env::var("BIOMEOS_SOCKET_DIR") {
-        println!("    BIOMEOS_SOCKET_DIR = {dir}");
+    if let Ok(dir) = std::env::var(ENV_BIOMEOS_SOCKET_DIR) {
+        println!("    {ENV_BIOMEOS_SOCKET_DIR} = {dir}");
     }
-    if let Ok(dir) = std::env::var("XDG_RUNTIME_DIR") {
-        println!("    XDG_RUNTIME_DIR = {dir}");
+    if let Ok(dir) = std::env::var(ENV_XDG_RUNTIME) {
+        println!("    {ENV_XDG_RUNTIME} = {dir}");
     }
     let systemd_dir = discovery::systemd_socket_dir();
     if std::path::Path::new(systemd_dir.as_ref()).is_dir() {
         println!("    {systemd_dir} (systemd NUCLEUS)");
     }
-    if std::env::var("BIOMEOS_SOCKET_DIR").is_err()
-        && std::env::var("XDG_RUNTIME_DIR").is_err()
+    if std::env::var(ENV_BIOMEOS_SOCKET_DIR).is_err()
+        && std::env::var(ENV_XDG_RUNTIME).is_err()
         && !std::path::Path::new(systemd_dir.as_ref()).is_dir()
     {
         println!(

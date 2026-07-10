@@ -2,7 +2,9 @@
 
 use crate::{
     cli::{Cli, Command},
-    commands, commands_depot, discovery, error::Error, model, paths, petaltongue, tower,
+    commands, commands_depot, discovery,
+    error::Error,
+    model, paths, petaltongue, tower,
 };
 use std::path::{Path, PathBuf};
 
@@ -195,9 +197,8 @@ pub fn run_build_viz(socket_override: Option<&str>) -> Result<(), Error> {
     let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
 
     let output_dir = root.join(paths::VIZ_OUTPUT_DIR);
-    std::fs::create_dir_all(&output_dir).map_err(|e| {
-        Error::Config(format!("create {}/: {e}", paths::VIZ_OUTPUT_DIR))
-    })?;
+    std::fs::create_dir_all(&output_dir)
+        .map_err(|e| Error::Config(format!("create {}/: {e}", paths::VIZ_OUTPUT_DIR)))?;
 
     let mut success = 0u32;
     let mut skipped = 0u32;

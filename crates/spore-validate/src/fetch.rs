@@ -41,7 +41,8 @@ pub struct Source {
 fn default_forge_url() -> &'static str {
     static FORGE_URL: std::sync::OnceLock<String> = std::sync::OnceLock::new();
     FORGE_URL.get_or_init(|| {
-        std::env::var("SPOREPRINT_FORGE_URL").unwrap_or_else(|_| "https://github.com".to_string())
+        std::env::var(crate::paths::ENV_FORGE_URL)
+            .unwrap_or_else(|_| crate::paths::DEFAULT_FORGE_URL.to_string())
     })
 }
 
@@ -261,7 +262,7 @@ pub fn fetch_sources(
     let mut keys: Vec<&str> = sources.sources.keys().map(String::as_str).collect();
     keys.sort_unstable();
 
-    let has_pat = std::env::var("SPOREPRINT_REFRESH_PAT").is_ok();
+    let has_pat = std::env::var(crate::paths::ENV_REFRESH_PAT).is_ok();
 
     for key in &keys {
         if source_filter.is_some_and(|f| *key != f) {

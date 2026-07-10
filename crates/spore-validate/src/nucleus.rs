@@ -373,8 +373,7 @@ fn probe_socket_health(socket_path: &str) -> ProbeResult {
     }
 }
 
-/// `riboCipher` Transport Signal: `MitoBeacon` clear (`0xEC 0x01`).
-const RIBOCIPHER_MITO_CLEAR: [u8; 2] = [0xEC, 0x01];
+use crate::ipc::RIBOCIPHER_MITO_CLEAR;
 
 /// Probe whether a primal accepts the `riboCipher` mito-beacon signal prefix.
 ///

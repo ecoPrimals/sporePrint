@@ -31,6 +31,21 @@ pub const NOTEBOOK_OUTPUT: &str = "content/lab/notebooks";
 pub const GATE_MARKER: &str = ".gate";
 pub const SPRINGS_DIR: &str = "springs";
 
+// --- Environment variable names (single source of truth) ---
+
+pub const ENV_FORGE_URL: &str = "SPOREPRINT_FORGE_URL";
+pub const ENV_RIBOCIPHER: &str = "SPOREPRINT_RIBOCIPHER";
+pub const ENV_REFRESH_PAT: &str = "SPOREPRINT_REFRESH_PAT";
+pub const ENV_NOTEBOOK_OUTPUT: &str = "SPOREPRINT_NOTEBOOK_OUTPUT";
+pub const ENV_TRANSPORT_ENDPOINT: &str = "TRANSPORT_ENDPOINT";
+pub const ENV_BIOMEOS_SOCKET_DIR: &str = "BIOMEOS_SOCKET_DIR";
+pub const ENV_BIOMEOS_SYSTEMD_DIR: &str = "BIOMEOS_SYSTEMD_SOCKET_DIR";
+pub const ENV_XDG_RUNTIME: &str = "XDG_RUNTIME_DIR";
+pub const ENV_PLASMIDBIN_CHECKSUMS: &str = "PLASMIDBIN_CHECKSUMS";
+
+/// Default forge URL when `SPOREPRINT_FORGE_URL` is not set.
+pub const DEFAULT_FORGE_URL: &str = "https://github.com";
+
 /// Resolve the content directory, returning an error if missing.
 pub fn require_content_dir(root: &Path) -> Result<PathBuf, Error> {
     let content = root.join(CONTENT_DIR);

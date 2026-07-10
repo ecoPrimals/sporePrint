@@ -54,7 +54,9 @@ pub fn print_discovery() {
 /// Find `checksums.toml` by checking env var, then walking up to workspace.
 fn discover_checksums_path() -> Option<PathBuf> {
     discover_checksums_from(
-        std::env::var("PLASMIDBIN_CHECKSUMS").ok().as_deref(),
+        std::env::var(crate::paths::ENV_PLASMIDBIN_CHECKSUMS)
+            .ok()
+            .as_deref(),
         &std::env::current_dir().ok()?,
     )
 }

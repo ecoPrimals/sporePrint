@@ -33,45 +33,13 @@ struct DefaultProbeFile {
 
 static DEFAULT_TOWER_PROBES: LazyLock<Vec<(String, Vec<String>)>> = LazyLock::new(|| {
     const EMBEDDED: &str = include_str!("../default_tower_probes.toml");
-    match toml::from_str::<DefaultProbeFile>(EMBEDDED) {
-        Ok(file) => file
-            .probes
-            .into_iter()
-            .map(|p| (p.slug, p.methods))
-            .collect(),
-        Err(_) => fallback_tower_probes(),
-    }
+    let file: DefaultProbeFile =
+        toml::from_str(EMBEDDED).expect("embedded default_tower_probes.toml must parse");
+    file.probes
+        .into_iter()
+        .map(|p| (p.slug, p.methods))
+        .collect()
 });
-
-/// Hardcoded minimum probe set if embedded TOML parsing fails.
-fn fallback_tower_probes() -> Vec<(String, Vec<String>)> {
-    vec![
-        (
-            "beardog".into(),
-            vec![
-                "auth.public_key".into(),
-                "auth.trusted_issuers".into(),
-                "btsp.capabilities".into(),
-            ],
-        ),
-        (
-            "songbird".into(),
-            vec![
-                "mesh.peers".into(),
-                "mesh.capabilities_announce".into(),
-                "mesh.init".into(),
-            ],
-        ),
-        (
-            "skunkbat".into(),
-            vec![
-                "defense.status".into(),
-                "security.detect".into(),
-                "btsp.negotiate".into(),
-            ],
-        ),
-    ]
-}
 
 /// Return the default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
 fn default_tower_probes() -> &'static [(String, Vec<String>)] {

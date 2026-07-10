@@ -249,7 +249,7 @@ pub enum MaturityLevel {
 impl MaturityLevel {
     /// CSS class name for badge styling (matches `_badges.scss`).
     #[must_use]
-    #[allow(dead_code)] // consumed by Tera template integration (petalTongue Phase 2d)
+    #[allow(dead_code)] // wired when petalTongue renders maturity badges (EVOLUTION_QUEUE P2)
     pub const fn css_class(self) -> &'static str {
         match self {
             Self::Implemented => "maturity-implemented",

@@ -41,8 +41,6 @@ pub struct RenderResult {
 #[derive(Debug)]
 pub struct VizResult {
     pub body: String,
-    #[allow(dead_code)]
-    pub format: VizFormat,
     pub latency_ms: u64,
 }
 
@@ -255,11 +253,7 @@ impl PetalTongueClient {
             .unwrap_or_default()
             .to_string();
 
-        Ok(VizResult {
-            body,
-            format,
-            latency_ms,
-        })
+        Ok(VizResult { body, latency_ms })
     }
 
     /// Check if petalTongue supports a given method (probe with empty params).
@@ -422,11 +416,11 @@ mod tests {
     fn viz_result_debug() {
         let r = VizResult {
             body: "<svg></svg>".into(),
-            format: VizFormat::Svg,
             latency_ms: 5,
         };
         let debug = format!("{r:?}");
-        assert!(debug.contains("Svg"));
+        assert!(debug.contains("svg"));
+        assert!(debug.contains("latency_ms"));
     }
 
     use std::io::{Cursor, Read, Write};
