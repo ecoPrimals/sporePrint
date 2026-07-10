@@ -6,4 +6,4 @@
 {% set icon = "" %}{% set label = "" %}
 {% for pair in icons | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global icon = kv[1] %}{% endif %}{% endfor %}
 {% for pair in labels | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global label = kv[1] %}{% endif %}{% endfor %}
-<span class="maturity-badge maturity-{{level}}">{{icon}} {{label}}</span>
+<span class="maturity-badge maturity-{{level}}"><span aria-hidden="true">{{icon}}</span> {{label}}</span>

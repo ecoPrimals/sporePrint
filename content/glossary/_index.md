@@ -1,5 +1,5 @@
 +++
-title = "📖 Glossary"
+title = "Glossary"
 description = "Plain-language definitions for every ecoPrimals term. Start here if you're new."
 sort_by = "weight"
 template = "section.html"

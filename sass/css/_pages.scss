@@ -37,8 +37,16 @@
 .toc nav a:hover { color: var(--c-link); }
 
 @media (max-width: 960px) {
-  .toc { display: none; }
   .page-layout { display: block; }
+  .toc {
+    position: static;
+    width: 100%;
+    order: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 0.5rem;
+  }
+  .toc details:not([open]) { margin-bottom: 0; }
 }
 
 /* Page header */

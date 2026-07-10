@@ -1,5 +1,5 @@
 +++
-title = "🌱 Products"
+title = "Products"
 description = "Emergent compositions of primals — what happens when standalone tools combine to do real work. Not commercial software; chemical reaction products."
 sort_by = "title"
 template = "section.html"

@@ -22,16 +22,16 @@ an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
 
 | Gate | Status | Transport | What's Running |
 |------|--------|-----------|----------------|
-| **sporeGate** | 🟢 Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo |
-| **eastGate** | 🟢 Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
-| **ironGate** | 🟢 Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
-| **southGate** | 🟢 Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
-| **flockGate** | 🟡 WAN | WG via golgi (72ms p50) | Tower atomic evolution: songBird, bearDog, skunkBat dev |
-| **golgi** | 🟢 Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
-| **grapheneGate** | 🟢 Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (13/13 after pepti rebuild) |
-| **strandGate** | 🟡 Pending | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, enrollment pending |
-| **fieldGate** | 🟡 Pending | House 2 | Future enrollment via Omada |
-| **biomeGate** | ⚪ Offline | House 1 | Offline — pending reactivation |
+| **sporeGate** | Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo |
+| **eastGate** | Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
+| **ironGate** | Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
+| **southGate** | Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
+| **flockGate** | WAN only | WG via golgi (72ms p50) | Tower atomic evolution: songBird, bearDog, skunkBat dev |
+| **golgi** | Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
+| **grapheneGate** | Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (13/13 after pepti rebuild) |
+| **strandGate** | Pending | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, enrollment pending |
+| **fieldGate** | Pending | House 2 | Future enrollment via Omada |
+| **biomeGate** | Offline | House 1 | Offline — pending reactivation |
 
 ## Live Capabilities
 

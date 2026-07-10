@@ -1,0 +1,22 @@
+{# SPDX-License-Identifier: AGPL-3.0-or-later #}
+{% extends "base.html" %}
+
+{% block title %}Page Not Found — {{ config.title }}{% endblock title %}
+{% block description %}The page you requested could not be found.{% endblock description %}
+
+{% block content %}
+<article class="section-page" style="text-align: center; padding: 4rem 1.5rem;">
+  <h1>404 — Page Not Found</h1>
+  <p>The page you requested does not exist or may have moved.</p>
+  <nav aria-label="Suggested navigation">
+    <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem;">
+      <li><a href="{{ config.base_url }}">Home</a></li>
+      <li><a href="{{ get_url(path='@/science/_index.md') }}">Science</a></li>
+      <li><a href="{{ get_url(path='@/lab/_index.md') }}">Lab</a></li>
+      <li><a href="{{ get_url(path='@/thesis/_index.md') }}">Thesis</a></li>
+      <li><a href="{{ get_url(path='@/philosophy/_index.md') }}">Philosophy</a></li>
+      <li><a href="{{ get_url(path='@/sitemap/_index.md') }}">Site Map</a></li>
+    </ul>
+  </nav>
+</article>
+{% endblock content %}

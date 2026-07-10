@@ -1,5 +1,5 @@
 +++
-title = "🔬 Science"
+title = "Science"
 description = "28 baseCamp papers across 6 research domains. Each is executable — run the code, reproduce the results, on your own hardware."
 sort_by = "title"
 template = "science_section.html"

@@ -1,5 +1,5 @@
 +++
-title = "🧫 Lab"
+title = "Lab"
 description = "Live validation results, spring science hubs, and sovereign compute access. Full provenance. Run it yourself or review the evidence."
 sort_by = "weight"
 template = "section.html"

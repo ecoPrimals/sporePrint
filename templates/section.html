@@ -74,13 +74,13 @@
   {% if section.pages %}
   <nav class="page-listing" aria-label="Pages in this section">
     {% if section.relative_path == "philosophy/_index.md" %}
-      <h3 class="listing-group-label">The Stories</h3>
+      <h2 class="listing-group-label">The Stories</h2>
       <ul>
       {% for page in section.pages %}
-        {% if loop.index0 == 3 %}</ul><h3 class="listing-group-label">The Framework</h3><ul>{% endif %}
-        {% if loop.index0 == 8 %}</ul><h3 class="listing-group-label">The Synthesis</h3><ul>{% endif %}
-        {% if loop.index0 == 12 %}</ul><h3 class="listing-group-label">Discussion</h3><ul>{% endif %}
-        {% if loop.index0 == 13 %}</ul><h3 class="listing-group-label">Reference</h3><ul>{% endif %}
+        {% if loop.index0 == 3 %}</ul><h2 class="listing-group-label">The Framework</h2><ul>{% endif %}
+        {% if loop.index0 == 8 %}</ul><h2 class="listing-group-label">The Synthesis</h2><ul>{% endif %}
+        {% if loop.index0 == 12 %}</ul><h2 class="listing-group-label">Discussion</h2><ul>{% endif %}
+        {% if loop.index0 == 13 %}</ul><h2 class="listing-group-label">Reference</h2><ul>{% endif %}
         <li>
           <a href="{{ page.permalink }}">
             <strong>{{ page.title }}</strong>

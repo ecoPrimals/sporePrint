@@ -73,15 +73,16 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23a6e3a1' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23a6e3a1' stroke-width='1'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23a6e3a1' opacity='0.8'/%3E%3Cline x1='16' y1='2' x2='16' y2='7' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='16' y1='25' x2='16' y2='30' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='2' y1='16' x2='7' y2='16' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='25' y1='16' x2='30' y2='16' stroke='%23a6e3a1' stroke-width='1' opacity='0.5'/%3E%3Cline x1='5.9' y1='5.9' x2='9.4' y2='9.4' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3Cline x1='22.6' y1='22.6' x2='26.1' y2='26.1' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3Cline x1='26.1' y1='5.9' x2='22.6' y2='9.4' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3Cline x1='9.4' y1='22.6' x2='5.9' y2='26.1' stroke='%23a6e3a1' stroke-width='1' opacity='0.4'/%3E%3C/svg%3E">
 </head>
 <body>
+  {% if not current_path %}{% set_global current_path = "" %}{% endif %}
   <a href="#main" class="skip-link">Skip to content</a>
 
   <nav class="site-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="{{ config.base_url }}" class="nav-brand">🍄 sporePrint</a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <a href="{{ config.base_url }}" class="nav-brand"><span aria-hidden="true">🍄</span> sporePrint</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="{{ get_url(path='@/science/_index.md') }}" {% if current_path is starting_with("/science") %}class="active" aria-current="true"{% endif %}>Science</a></li>
         <li><a href="{{ get_url(path='@/architecture/_index.md') }}" {% if current_path is starting_with("/architecture") or current_path is starting_with("/methodology") or current_path is starting_with("/technical") %}class="active" aria-current="true"{% endif %}>Architecture</a></li>
         <li><a href="{{ get_url(path='@/guidestone/_index.md') }}" {% if current_path is starting_with("/guidestone") %}class="active" aria-current="true"{% endif %}>guideStone</a></li>
@@ -97,9 +98,9 @@
         <li><a href="{{ get_url(path='@/contact.md') }}" {% if current_path is starting_with("/contact") %}class="active" aria-current="true"{% endif %}>Contact</a></li>
       </ul>
       {% if config.build_search_index %}
-      <div class="nav-search">
-        <input type="search" id="search-input" placeholder="Search..." aria-label="Search site">
-        <div id="search-results" class="search-results" aria-live="polite"></div>
+      <div class="nav-search" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="search-results">
+        <input type="search" id="search-input" placeholder="Search..." aria-label="Search site" aria-autocomplete="list" aria-controls="search-results">
+        <ul id="search-results" class="search-results" role="listbox" aria-label="Search results"></ul>
       </div>
       {% endif %}
     </div>
@@ -277,16 +278,16 @@
             <li class="tree-divider"></li>
             <li class="tree-section tree-org">
               <details{% if current_path is starting_with("/products") %} open{% endif %}>
-                <summary>🌱 sporeGarden</summary>
+                <summary><span aria-hidden="true">🌱</span> sporeGarden</summary>
                 <ul class="tree-pages">
                   {% set sec = get_section(path="products/_index.md") %}
                   {% for pg in sec.pages %}
                   <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
                   {% endfor %}
-                  <li class="tree-ext"><a href="https://github.com/sporeGarden/cellMembrane" rel="noopener">🧫 cellMembrane</a></li>
-                  <li class="tree-ext"><a href="https://github.com/sporeGarden/projectFOUNDATION" rel="noopener">🏛️ projectFOUNDATION</a></li>
-                  <li class="tree-ext"><a href="https://github.com/sporeGarden/projectNUCLEUS" rel="noopener">⚛️ projectNUCLEUS</a></li>
-                  <li class="tree-ext"><a href="https://github.com/sporeGarden/lithoSpore" rel="noopener">🪨 lithoSpore</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/cellMembrane" rel="noopener">cellMembrane</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/projectFOUNDATION" rel="noopener">projectFOUNDATION</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/projectNUCLEUS" rel="noopener">projectNUCLEUS</a></li>
+                  <li class="tree-ext"><a href="https://github.com/sporeGarden/lithoSpore" rel="noopener">lithoSpore</a></li>
                 </ul>
               </details>
             </li>
@@ -327,23 +328,59 @@
     (function() {
       var input = document.getElementById('search-input');
       var results = document.getElementById('search-results');
-      if (!input || !window.elasticlunr) return;
+      var combo = input && input.closest('[role="combobox"]');
+      if (!input || !results || !window.elasticlunr) return;
       var index = elasticlunr.Index.load(window.searchIndex);
-      input.addEventListener('input', function() {
-        var query = this.value.trim();
-        if (query.length < 2) { results.innerHTML = ''; return; }
+      var active = -1;
+
+      function update() {
+        var query = input.value.trim();
+        if (query.length < 2) { clear(); return; }
         var hits = index.search(query, { expand: true }).slice(0, 8);
-        results.innerHTML = hits.map(function(h) {
-          var doc = h.doc;
-          return '<a class="search-result" href="' + doc.id + '">' +
-            '<strong>' + doc.title + '</strong>' +
-            (doc.description ? '<span>' + doc.description + '</span>' : '') +
-            '</a>';
+        results.innerHTML = hits.map(function(h, i) {
+          var d = h.doc;
+          return '<li role="option" id="sr-' + i + '"><a class="search-result" href="' + d.id + '">' +
+            '<strong>' + d.title + '</strong>' +
+            (d.description ? '<span>' + d.description + '</span>' : '') +
+            '</a></li>';
         }).join('');
+        active = -1;
+        if (combo) combo.setAttribute('aria-expanded', hits.length > 0 ? 'true' : 'false');
+        input.removeAttribute('aria-activedescendant');
+      }
+
+      function clear() {
+        results.innerHTML = '';
+        active = -1;
+        if (combo) combo.setAttribute('aria-expanded', 'false');
+        input.removeAttribute('aria-activedescendant');
+      }
+
+      function setActive(idx) {
+        var items = results.querySelectorAll('[role="option"]');
+        items.forEach(function(el) { el.classList.remove('search-active'); el.setAttribute('aria-selected', 'false'); });
+        if (idx >= 0 && idx < items.length) {
+          active = idx;
+          items[idx].classList.add('search-active');
+          items[idx].setAttribute('aria-selected', 'true');
+          input.setAttribute('aria-activedescendant', items[idx].id);
+          items[idx].scrollIntoView({ block: 'nearest' });
+        } else {
+          active = -1;
+          input.removeAttribute('aria-activedescendant');
+        }
+      }
+
+      input.addEventListener('input', update);
+      input.addEventListener('keydown', function(e) {
+        var items = results.querySelectorAll('[role="option"]');
+        if (!items.length) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); setActive(Math.min(active + 1, items.length - 1)); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(active - 1, -1)); }
+        else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); var a = items[active].querySelector('a'); if (a) a.click(); }
+        else if (e.key === 'Escape') { clear(); }
       });
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.nav-search')) results.innerHTML = '';
-      });
+      document.addEventListener('click', function(e) { if (!e.target.closest('.nav-search')) clear(); });
     })();
   </script>
   {% endif %}
