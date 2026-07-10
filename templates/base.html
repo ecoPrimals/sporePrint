@@ -118,7 +118,7 @@
 
             {% set sec = get_section(path="audience/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/audience") %} tree-active{% endif %}">
-              <details data-tree="audience"{% if current_path is starting_with("/audience") %} open{% endif %}>
+              <details{% if current_path is starting_with("/audience") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -129,7 +129,7 @@
 
             {% set sec = get_section(path="science/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/science") %} tree-active{% endif %}">
-              <details data-tree="science"{% if current_path is starting_with("/science") %} open{% endif %}>
+              <details{% if current_path is starting_with("/science") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -140,7 +140,7 @@
 
             {% set sec = get_section(path="architecture/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/architecture") %} tree-active{% endif %}">
-              <details data-tree="architecture"{% if current_path is starting_with("/architecture") %} open{% endif %}>
+              <details{% if current_path is starting_with("/architecture") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}
@@ -154,7 +154,7 @@
 
             {% set sec = get_section(path="methodology/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/methodology") %} tree-active{% endif %}">
-              <details data-tree="methodology"{% if current_path is starting_with("/methodology") %} open{% endif %}>
+              <details{% if current_path is starting_with("/methodology") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -165,7 +165,7 @@
 
             {% set sec = get_section(path="technical/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/technical") %} tree-active{% endif %}">
-              <details data-tree="technical"{% if current_path is starting_with("/technical") %} open{% endif %}>
+              <details{% if current_path is starting_with("/technical") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -176,7 +176,7 @@
 
             {% set sec = get_section(path="guidestone/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/guidestone") %} tree-active{% endif %}">
-              <details data-tree="guidestone"{% if current_path is starting_with("/guidestone") %} open{% endif %}>
+              <details{% if current_path is starting_with("/guidestone") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -187,7 +187,7 @@
 
             {% set sec = get_section(path="products/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/products") %} tree-active{% endif %}">
-              <details data-tree="products"{% if current_path is starting_with("/products") %} open{% endif %}>
+              <details{% if current_path is starting_with("/products") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -198,7 +198,7 @@
 
             {% set sec = get_section(path="lab/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/lab") %} tree-active{% endif %}">
-              <details data-tree="lab"{% if current_path is starting_with("/lab") %} open{% endif %}>
+              <details{% if current_path is starting_with("/lab") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -206,7 +206,7 @@
                   {% for sub in sec.subsections %}
                     {% set subsec = get_section(path=sub) %}
                     <li class="tree-section tree-nested{% if current_path is starting_with(subsec.path) %} tree-active{% endif %}">
-                      <details data-tree="lab-{{ subsec.title | slugify }}"{% if current_path is starting_with(subsec.path) %} open{% endif %}>
+                      <details{% if current_path is starting_with(subsec.path) %} open{% endif %}>
                         <summary><a href="{{ subsec.permalink }}">{{ subsec.title }}</a></summary>
                         <ul class="tree-pages">
                           {% for pg in subsec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -221,7 +221,7 @@
 
             {% set sec = get_section(path="philosophy/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/philosophy") %} tree-active{% endif %}">
-              <details data-tree="philosophy"{% if current_path is starting_with("/philosophy") %} open{% endif %}>
+              <details{% if current_path is starting_with("/philosophy") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}
@@ -238,7 +238,7 @@
 
             {% set sec = get_section(path="thesis/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/thesis") %} tree-active{% endif %}">
-              <details data-tree="thesis"{% if current_path is starting_with("/thesis") %} open{% endif %}>
+              <details{% if current_path is starting_with("/thesis") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}
@@ -257,7 +257,7 @@
 
             {% set sec = get_section(path="story/_index.md") %}
             <li class="tree-section{% if current_path is starting_with("/story") %} tree-active{% endif %}">
-              <details data-tree="story"{% if current_path is starting_with("/story") %} open{% endif %}>
+              <details{% if current_path is starting_with("/story") %} open{% endif %}>
                 <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                 <ul class="tree-pages">
                   {% for pg in sec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
@@ -357,26 +357,6 @@
         var expanded = this.getAttribute('aria-expanded') === 'true';
         this.setAttribute('aria-expanded', !expanded);
         links.classList.toggle('open');
-      });
-    })();
-  </script>
-
-  <script>
-    (function() {
-      var KEY = 'sporeprint-tree';
-      var details = document.querySelectorAll('.site-tree details[data-tree]');
-      var saved = {};
-      try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) {}
-
-      details.forEach(function(el) {
-        var id = el.getAttribute('data-tree');
-        if (saved[id] === true && !el.open) el.open = true;
-        if (saved[id] === false && el.open && !el.querySelector('.tree-current')) el.open = false;
-
-        el.addEventListener('toggle', function() {
-          saved[id] = el.open;
-          try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e) {}
-        });
       });
     })();
   </script>
