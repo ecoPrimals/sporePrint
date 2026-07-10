@@ -1,7 +1,7 @@
 +++
 title = "Experiment 023 — No-Till vs Tilled 16S Sampling"
 description = "Rendered from exp-023-notill-sampling.ipynb"
-date = 2026-07-04
+date = 2026-07-10
 weight = 50
 
 [extra]

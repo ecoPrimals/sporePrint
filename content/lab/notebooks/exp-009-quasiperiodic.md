@@ -1,7 +1,7 @@
 +++
 title = "Experiment 009 — Almost-Mathieu Quasiperiodic Localization"
 description = "Rendered from exp-009-quasiperiodic.ipynb"
-date = 2026-07-04
+date = 2026-07-10
 weight = 50
 
 [extra]

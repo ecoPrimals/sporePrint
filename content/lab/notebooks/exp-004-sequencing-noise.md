@@ -1,7 +1,7 @@
 +++
 title = "Experiment 004 — Sequencing Noise Characterization"
 description = "Rendered from exp-004-sequencing-noise.ipynb"
-date = 2026-07-04
+date = 2026-07-10
 weight = 50
 
 [extra]
