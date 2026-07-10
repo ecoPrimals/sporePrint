@@ -108,7 +108,8 @@ Last reviewed: July 9, 2026 (Wave 134e — Deep Debt Sprint: module splits, tran
 - [ ] Table `<caption>` and `scope` attributes for complex data tables
 - [ ] Entity tooltip descriptions: move from `title` attr to visible or `aria-describedby`
 - [ ] Test with Orca (Linux), NVDA (Windows), VoiceOver (macOS)
-- [ ] `html5validator` + Pa11y integration in Sovereign CI pipeline
+- [x] `html5validator` integration in CI pipeline (`scripts/validate_a11y.sh`, deploy.yml)
+- [ ] Pa11y integration for automated WCAG rule checking
 - [ ] Keyboard-only full site navigation test (manual, documented)
 - [ ] 200% zoom layout test (no horizontal scroll, no content loss)
 - [ ] petalTongue: evolve sporePrint jelly-string UI into typed, accessible Rust compositions

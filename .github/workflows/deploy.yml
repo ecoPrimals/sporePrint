@@ -42,6 +42,11 @@ jobs:
       - name: Check links (external — non-blocking)
         continue-on-error: true
         run: zola check
+      - name: Accessibility validation (WCAG 2.2)
+        run: |
+          pip install html5-validator
+          zola build
+          ./scripts/validate_a11y.sh
 
   build:
     needs: check

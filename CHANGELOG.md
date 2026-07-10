@@ -5,6 +5,28 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.12.0] — 2026-07-10 — Accessibility Validation Suite + CI Integration (Wave 134f)
+
+**Automated accessibility validation wired into CI pipeline.**
+
+### Added
+
+- **`scripts/validate_a11y.sh`**: 7-phase accessibility validation suite covering HTML5 structural
+  validity, ARIA landmarks, heading hierarchy, image alt text, skip link, meta accessibility
+  (lang, viewport, reduced-motion), and search ARIA combobox. Filters Zola syntax-highlighting
+  CSS false positives. Targets WCAG 2.2 AAA.
+- **CI integration**: `deploy.yml` now runs `validate_a11y.sh` in the `check` job before build.
+
+### Fixed
+
+- **Canonical URL on 404 page**: Zola was entity-escaping `://` in `config.base_url` fallback.
+  Added `| safe` filter to `base.html` canonical link.
+
+### Metrics
+
+- a11y suite: 13 pass, 0 fail, 1 warning (prefers-contrast — AAA stretch goal)
+- HTML5 structural validation: 0 errors across 301 pages
+
 ## [3.11.0] — 2026-07-10 — Deep Debt: Constant Centralization + Dependency Inversion (Wave 134f)
 
 **Deduplicated riboCipher, centralized env vars, corrected dependency direction, removed dead code.**
