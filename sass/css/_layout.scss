@@ -49,6 +49,39 @@
 }
 .tree-section > a:hover { background: var(--c-accent-light); color: var(--c-accent); }
 .tree-section.tree-active > a { color: var(--c-accent); background: var(--c-accent-light); }
+.tree-section > details {
+  margin: 0;
+}
+.tree-section > details > summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.tree-section > details > summary::-webkit-details-marker { display: none; }
+.tree-section > details > summary::before {
+  content: '▸';
+  font-size: 0.7rem;
+  margin-right: 0.35rem;
+  color: var(--c-text-muted);
+  transition: transform 0.15s;
+}
+.tree-section > details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.tree-section > details > summary:hover { background: var(--c-accent-light); }
+.tree-section > details > summary a {
+  color: var(--c-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.84rem;
+}
+.tree-section > details > summary a:hover { color: var(--c-accent); }
+.tree-section.tree-active > details > summary a { color: var(--c-accent); }
+.tree-section.tree-active > details > summary { background: var(--c-accent-light); }
 .tree-pages {
   list-style: none;
   padding: 0 0 0 0.75rem;
