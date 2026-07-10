@@ -1,5 +1,5 @@
 +++
-title = "The City of Omelas"
+title = "The City of Omelas — Five Questions for Sovereign Infrastructure"
 description = "Five questions for John Galt — Le Guin's Omelas, Rand's Atlas, and the choice to return and build."
 date = 2026-03-17
 weight = 1

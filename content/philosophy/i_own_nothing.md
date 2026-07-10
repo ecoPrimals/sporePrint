@@ -1,5 +1,5 @@
 +++
-title = "I Own Nothing"
+title = "I Own Nothing — Provenance, AGPL, and Commons Economics"
 description = "The tollbooth economy inverted — why publishing everything into the commons is the architecture of freedom."
 date = 2026-03-17
 weight = 10

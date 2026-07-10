@@ -1,6 +1,6 @@
 +++
 title = "📄 Thesis"
-description = "Constrained Evolution — the formal academic argument connecting biology, computation, and sovereign infrastructure."
+description = "Constrained Evolution — Kevin Mok's working thesis connecting biological adaptation, AI-assisted software development, pure Rust scientific computing, and sovereign infrastructure through reproducible validation across eight domains."
 sort_by = "weight"
 template = "section.html"
 +++

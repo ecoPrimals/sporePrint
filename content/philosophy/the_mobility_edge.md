@@ -1,5 +1,5 @@
 +++
-title = "The Mobility Edge"
+title = "The Mobility Edge — Anderson Localization and Sovereign Networks"
 description = "Anderson localization as a metaphor for sovereign network discovery — how isolated nodes cross the percolation threshold."
 date = 2026-03-17
 weight = 7

@@ -112,7 +112,7 @@ Paper 21 (Sovereign Sample Provenance) maps the provenance trio to ISO 17025.
 | 6.2 | Personnel competence | {{ entity(name="loamspine") }} certificates link operator DID to qualifications | **Architectural** |
 | 6.4 | Equipment | toadStool hardware discovery; probe.rs inventories GPU/CPU/NPU capabilities | **Implemented** |
 | 7.1 | Review of requests | Not applicable (computational pipeline, not service lab) | N/A |
-| 7.2 | Method selection/validation | 27,000+ tests; 70+ published papers reproduced; 15,334+ validation checks | **Implemented** |
+| 7.2 | Method selection/validation | {{ total_stat(stat="total_tests_display") }} tests; {{ total_stat(stat="papers_reproduced") }} published papers reproduced; {{ total_stat(stat="validation_checks") }} validation checks | **Implemented** |
 | 7.3 | Sampling / sample receipt | {{ entity(name="rhizocrypt") }} DAG: collection vertex with timestamp, GPS, operator, conditions | **Implemented** (Paper 21 exp062) |
 | 7.4 | Sample identification | {{ entity(name="loamspine") }} certificate: unique sample ID, type, condition, accession | **Implemented** (Paper 21 exp062) |
 | 7.5 | Technical records | Every computation produces a DAG vertex with input hashes, parameters, output hashes | **Implemented** |

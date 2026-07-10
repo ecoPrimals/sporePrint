@@ -1,5 +1,5 @@
 +++
-title = "The Temptation of Kingdoms"
+title = "The Temptation of Kingdoms — Tollbooths, Rent-Seeking, and Open Commons"
 description = "A recurring pattern — kingdoms, tollbooths, and the architecture that makes them irrelevant."
 date = 2026-03-17
 weight = 6

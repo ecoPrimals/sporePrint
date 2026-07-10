@@ -9,6 +9,49 @@
 {% block tw_desc %}{{ section.description | default(value=config.description) }}{% endblock tw_desc %}
 
 {% block content %}
+{% if section.relative_path == "thesis/_index.md" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Constrained Evolution — Environmental Pressure, Sovereign Computing, and the Convergence of Biological and Computational Systems",
+  "author": { "@type": "Person", "name": "Kevin Mok" },
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "url": "{{ section.permalink }}",
+  "description": "{{ section.description }}",
+  "about": ["constrained evolution", "sovereign scientific computing", "AI-assisted software development", "Rust scientific computing", "reproducible science", "LTEE", "WebGPU"],
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+}
+</script>
+{% elif section.relative_path == "philosophy/_index.md" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "atlasHugged — Philosophy of Sovereign Science",
+  "author": { "@type": "Person", "name": "Kevin Mok" },
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "url": "{{ section.permalink }}",
+  "description": "{{ section.description }}",
+  "about": ["sovereign science", "executable knowledge", "AGPL commons", "open source philosophy", "constrained evolution", "AI authorship"],
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+}
+</script>
+{% elif section.relative_path == "story/_index.md" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building Sovereign Scientific Computing — A Microbiologist's Story",
+  "author": { "@type": "Person", "name": "Kevin Mok" },
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "url": "{{ section.permalink }}",
+  "description": "{{ section.description }}",
+  "about": ["AI-assisted development", "Rust", "scientific computing", "constrained evolution", "commodity hardware", "self-hosted infrastructure"],
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+}
+</script>
+{% endif %}
 <article class="section-page">
   <header class="section-header">
     <nav class="breadcrumbs" aria-label="Breadcrumbs">

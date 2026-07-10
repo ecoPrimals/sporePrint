@@ -106,6 +106,10 @@
   </nav>
 
   <div class="site-layout">
+    <main id="main" class="site-main">
+      {% block content %}{% endblock content %}
+    </main>
+
     <aside class="site-tree" aria-label="Site navigation tree">
       <details open>
         <summary>Site Map</summary>
@@ -298,10 +302,6 @@
         </nav>
       </details>
     </aside>
-
-    <main id="main" class="site-main">
-      {% block content %}{% endblock content %}
-    </main>
   </div>
 
   <footer class="site-footer">

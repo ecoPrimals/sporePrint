@@ -1,6 +1,6 @@
 +++
 title = "Story"
-description = "How one microbiologist built a sovereign compute ecosystem without knowing Rust."
+description = "The builder's narrative: how a microbiologist used AI-assisted constrained evolution, commodity hardware, and pure Rust to build a self-hosted scientific computing ecosystem with 175+ reproduced papers."
 sort_by = "weight"
 template = "section.html"
 +++

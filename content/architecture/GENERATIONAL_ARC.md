@@ -92,7 +92,7 @@ the parent mycelium.
 
 ## Current Status
 
-- **gen3**: Complete — 12,510+ checks, 70+ papers, 8 springs, 15 primals
+- **gen3**: Complete — {{ total_stat(stat="validation_checks") }} checks, {{ total_stat(stat="papers_reproduced") }} papers, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_primals") }} primals
 - **gen4**: Mature — 5 products shipped, sporeGarden org established
 - **gen5**: Active — first collaborator (Gonzales NF) engaged with foundation funding, ABG producing pseudoSpores, Jones consulting on blueFish
 

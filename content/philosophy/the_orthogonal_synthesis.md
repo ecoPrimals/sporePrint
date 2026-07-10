@@ -1,5 +1,5 @@
 +++
-title = "The Orthogonal Synthesis"
+title = "The Orthogonal Synthesis — Smith, Paine, Rand, Marx and One Structural Requirement"
 description = "Smith, Paine, Rand, Marx — four thinkers describing one structural requirement from different angles."
 date = 2026-03-17
 weight = 2

@@ -53,7 +53,7 @@ automatically.
 
 ## What the Ecosystem Provides
 
-1. **Validated computation** — 12,510+ checks, 70+ papers reproduced across 8 domains
+1. **Validated computation** — {{ total_stat(stat="validation_checks") }} checks, {{ total_stat(stat="papers_reproduced") }} papers reproduced across 8 domains
 2. **Multi-product composition** — orchestrated products for the collaborator's question
 3. **GPU compute** at zero cost to the institution
 4. **Self-verifying artifacts** — pseudoSpore packaging with full provenance

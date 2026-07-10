@@ -1,6 +1,6 @@
 +++
-title = "I Don't Know Rust"
-description = "15 services. 27,000 tests. 70 papers reproduced. Built through conversation by someone who can't read the language."
+title = "I Don't Know Rust — Building a Scientific Computing Ecosystem Through Conversation"
+description = "15 primals. 114,000+ tests. 175+ papers reproduced. Built through conversation by someone who can't read the language."
 date = 2026-07-08
 weight = 10
 
@@ -9,7 +9,7 @@ primals = []
 springs = []
 +++
 
-*15 services. 27,000 tests. 70 papers reproduced. Built through conversation by someone who can't read the language.*
+*{{ total_stat(stat="total_primals") }} primals. {{ total_stat(stat="total_tests_display") }} tests. {{ total_stat(stat="papers_reproduced") }} papers reproduced. Built through conversation by someone who can't read the language.*
 
 ---
 

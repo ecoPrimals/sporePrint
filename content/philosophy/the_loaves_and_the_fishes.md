@@ -1,5 +1,5 @@
 +++
-title = "The Loaves and the Fishes"
+title = "The Loaves and the Fishes — Discovery as Revealing What Already Exists"
 description = "Preconditions, pollution, and the miracle of knowing what is already there."
 date = 2026-03-17
 weight = 5

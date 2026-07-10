@@ -1,5 +1,5 @@
 +++
-title = "The Many Rooms"
+title = "The Many Rooms — Preparing a Place and the Copyleft Covenant"
 description = "Preparing a place — John 14, the Good Samaritan, Maimonides' highest charity, and the copyleft covenant."
 date = 2026-03-17
 weight = 9

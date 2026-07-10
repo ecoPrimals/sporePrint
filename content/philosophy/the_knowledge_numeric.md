@@ -1,5 +1,5 @@
 +++
-title = "The Knowledge-Numeric"
+title = "The Knowledge-Numeric — K-NOME Human-AI Scientific Method"
 description = "K-NOME — where human expertise meets AI numeric capability. The methodology that produced the ecoPrimals ecosystem."
 date = 2026-03-17
 weight = 12

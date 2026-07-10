@@ -1,5 +1,5 @@
 +++
-title = "Sovereign Science"
+title = "Sovereign Science — Reproducible Computation Over Citation-Sitting"
 description = "Proof of work over citation-sitting. Why reproducible computation is the foundation, and credentials are strategic interfaces — not authorities."
 weight = 14
 date = 2026-07-09

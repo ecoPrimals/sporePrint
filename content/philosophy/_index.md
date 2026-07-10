@@ -1,6 +1,6 @@
 +++
 title = "Philosophy"
-description = "Why sovereign scientific computing exists. The questions behind the code."
+description = "atlasHugged — twelve essays on sovereign science, executable knowledge, AGPL commons, AI authorship, and why scientific computing should be reproducible on owned hardware."
 sort_by = "weight"
 +++
 

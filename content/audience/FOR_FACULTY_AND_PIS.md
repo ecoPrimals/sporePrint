@@ -159,7 +159,7 @@ Every intermediate result is signed. The provenance chain maps to
 | **GUI workflow builder** | CLI + validation binaries only | {{ entity(name="petaltongue") }} provides dashboards; Galaxy-style builder not planned |
 | **Multi-user web interface** | Local/LAN only | {{ entity(name="biomeos") }} IPC supports multi-client; web tier not planned |
 | **Instrument control** | Analysis only, no instrument drivers | We analyze what instruments produce, not drive them |
-| **Established community** | One developer, public repos | 3.2M lines of Rust, 107K+ tests, 70+ papers reproduced, all validation executable |
+| **Established community** | One developer, public repos | {{ total_stat(stat="total_loc_display") }} lines of Rust, {{ total_stat(stat="total_tests_display") }} tests, {{ total_stat(stat="papers_reproduced") }} papers reproduced, all validation executable |
 | **Formal GxP audit** | Architecture maps to GxP; no auditor has reviewed it | Needs institutional partner |
 | **Training/workshops** | No formal curriculum | K-Nome methodology documented; course design planned |
 
@@ -201,7 +201,7 @@ The springs reproduce published, peer-reviewed science as acceptance tests for t
 | Jesse Cahill | Sandia | Algal monitoring | {{ entity(name="wetspring") }} | 1 |
 | Chuck Smallwood | Sandia | Bloom surveillance | {{ entity(name="wetspring") }} | 1 |
 
-Total across all springs: **70+ papers reproduced, 107,000+ test functions, 614K lines of Rust.** Every reproduction is executable: `cargo run --release --bin validate_*` reproduces the result on your hardware.
+Total across all springs: **{{ total_stat(stat="papers_reproduced") }} papers reproduced, {{ total_stat(stat="total_tests_display") }} test functions, {{ total_stat(stat="total_loc_display") }} lines of Rust.** Every reproduction is executable: `cargo run --release --bin validate_*` reproduces the result on your hardware.
 
 ---
 

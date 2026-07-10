@@ -1,5 +1,5 @@
 +++
-title = "Discovery Is Local"
+title = "Discovery Is Local — Why the Substrate Is Universal"
 description = "Gravity, fermentation, and the things that were already there — why discovery is local but the substrate is universal."
 date = 2026-03-17
 weight = 8

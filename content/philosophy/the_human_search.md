@@ -1,5 +1,5 @@
 +++
-title = "The Human Search"
+title = "The Human Search — How Everything Learns, from Bacteria to AI"
 description = "Iteration, recursion, time — the universal framework for how everything learns, from bacteria to violinists to AI."
 date = 2026-03-17
 weight = 4

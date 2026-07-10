@@ -1,5 +1,5 @@
 +++
-title = "The New City"
+title = "The New City — Architecture as Ethics for Sovereign Infrastructure"
 description = "Architecture as ethics — building a city where exploitation is structurally impossible."
 date = 2026-03-17
 weight = 3

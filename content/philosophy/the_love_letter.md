@@ -1,5 +1,5 @@
 +++
-title = "The Love Letter"
+title = "The Love Letter — AI Authorship and scyBorg as Acknowledgment"
 description = "Crowdsourced by the most brilliant minds — AI authorship, inherited knowledge, and scyBorg as acknowledgment."
 date = 2026-03-17
 weight = 11
