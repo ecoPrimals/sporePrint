@@ -73,7 +73,6 @@ corresponds to an actual method in their dispatch table.</p>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Verb fixes applied: 4
-
   measurement.validate_suite          → measurement.parity_check
   measurement.parity_report           → measurement.uncertainty_budget
   storage.store                       → storage.put

@@ -68,7 +68,6 @@ Patterns pioneered: 7
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Cross-Spring Flows:
-
   groundSpring    → airSpring        [uncertainty budget]  (Exp 022, 024)
   groundSpring    → wetSpring        [noise floor for bio sensing]  (Exp 004, 006, 016, 023)
   groundSpring    → hotSpring        [spectral validation + inverse problems]  (Exp 008, 009, 019, 020, 021)

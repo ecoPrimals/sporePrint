@@ -322,7 +322,7 @@ df64-validated protein folding primitives directly to WDM science:
 
 ### 6.2 groundSpring V113 Integration
 
-{{ entity(name="groundspring") }} V113 (GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants. V112: OrExit<T>, parse_benchmark(), socket_env_var(), provenance trio. 102 barracuda delegations,
+{{ entity(name="groundspring") }} V113 (GemmF64 transpose (Tikhonov KᵀK/KᵀG), RetryPolicy + CircuitBreaker, 4-format capability parsing, exit_code constants. V112: `OrExit<T>`, `parse_benchmark()`, socket_env_var(), provenance trio. 102 barracuda delegations,
 29/29 validation binaries, 140 {{ entity(name="metalforge") }} checks)
 provides the inverse problem and uncertainty machinery for WDM science.
 

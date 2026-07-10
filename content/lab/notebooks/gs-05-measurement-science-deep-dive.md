@@ -33,7 +33,6 @@ science narrative with your most compelling discovery story.</p>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>groundSpring — The Dirty Differences
 "How do things actually look, and why is it different from what we expected?"
-
 Domains: 11
 Tolerance tiers: 13 library + 5 epsilon + 25 validation
 Upstream contract pins: 6
@@ -102,7 +101,6 @@ and hardware (Exp 028, NPU classification).</p>
 <div class="output_area">
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Anderson Localization Thread: 8 experiments, 4 domains
-
   008: Anderson 1D                8/8       29.9x         Lyapunov exponents
   009: Almost-Mathieu             8/8       49.5x         Aubry-Andre transition
   012: Spin Chain                 18/18     12.3x         Wavepacket MSD, transport

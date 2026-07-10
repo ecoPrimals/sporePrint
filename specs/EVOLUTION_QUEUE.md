@@ -77,11 +77,41 @@ Last reviewed: July 9, 2026 (Wave 134e — Deep Debt Sprint: module splits, tran
 
 ## P2 — Future
 
-### Accessibility
-- [ ] Audit site for WCAG 2.1 AA compliance
-- [ ] Test with screen readers (VoiceOver, NVDA)
-- [ ] Verify Catppuccin color contrast ratios (4.5:1 minimum for text)
-- [ ] Ensure all emoji pairs have `aria-label` alternatives in templates
+### Accessibility — WCAG 2.2 AAA Target
+
+**Standard**: WCAG 2.2 AAA is the floor. petalTongue sets the ceiling — universal access for any human capability profile: blind developers, paraplegic scientists, cognitive differences, motor impairments. sweetGrass already follows W3C standards. sporePrint and petalTongue will converge on the same principle.
+
+**Completed (Wave 134e):**
+- [x] DOM order: `<main>` before `<aside>` (content-first for crawlers and screen readers)
+- [x] WCAG AA color contrast pass: accent green #2e7d20 (4.8:1), maturity badges, skip-link
+- [x] `prefers-reduced-motion`: disables smooth scroll, transitions, animations
+- [x] `aria-hidden="true"` on all decorative emoji (nav, sidebar, badges)
+- [x] Emoji removed from section `<title>` tags (10 sections)
+- [x] Skip-link uses `:focus-visible` (not `:focus`)
+- [x] Search: ARIA combobox/listbox pattern with keyboard navigation
+- [x] 404 page: full site chrome with navigation
+- [x] Heading hierarchy: no skipped levels in section listings
+- [x] Status conveyed by text, not emoji/color alone
+- [x] Mobile TOC: collapsed `<details>` instead of `display: none`
+- [x] Nav toggle: `aria-controls` + `id` association
+- [x] `--c-muted` defined (was referenced but missing)
+- [x] `cert-line` opacity removed (was degrading readable text)
+- [x] HTML5 validation: 0 structural errors in templates
+
+**Remaining — evolve through:**
+- [ ] AAA contrast ratios (7:1 for normal text, 4.5:1 for large) — pass for heading sizes, audit body text
+- [ ] `prefers-contrast: more` / forced-colors (Windows High Contrast) support
+- [ ] viz-hydrate.js: keyboard pan/zoom, focusable nodes, labeled controls
+- [ ] Notebook chart alt text: meaningful descriptions for 12+ matplotlib PNGs
+- [ ] `<figure>` / `<figcaption>` for diagrams and viz_embed outputs
+- [ ] `<summary>` containing `<a>` anti-pattern in sidebar — needs UX redesign
+- [ ] Table `<caption>` and `scope` attributes for complex data tables
+- [ ] Entity tooltip descriptions: move from `title` attr to visible or `aria-describedby`
+- [ ] Test with Orca (Linux), NVDA (Windows), VoiceOver (macOS)
+- [ ] `html5validator` + Pa11y integration in Sovereign CI pipeline
+- [ ] Keyboard-only full site navigation test (manual, documented)
+- [ ] 200% zoom layout test (no horizontal scroll, no content loss)
+- [ ] petalTongue: evolve sporePrint jelly-string UI into typed, accessible Rust compositions
 
 ### Automation
 - [x] ~~Script to pull check counts from spring repos and update stats~~ → `spore-validate refresh` compares LOC, tests, files, crates against registry

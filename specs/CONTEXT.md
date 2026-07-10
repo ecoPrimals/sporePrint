@@ -22,6 +22,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
+- **Accessibility: WCAG 2.2 AAA target** — AA contrast ratios achieved (4.8:1+ accent), `prefers-reduced-motion` support, ARIA landmarks/combobox/listbox, decorative emoji hidden, keyboard navigation, semantic heading hierarchy, text-only status indicators, mobile TOC, 404 with full chrome. AAA contrast and screen reader testing are evolution targets. petalTongue will set the universal access standard — any human capability profile, no intermediary.
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
