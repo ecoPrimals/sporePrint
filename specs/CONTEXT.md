@@ -8,9 +8,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 9, 2026 — Wave 134e)
+## Current State (July 10, 2026 — Wave 136a)
 
-- **259 content pages** across 14 sections (Architecture, Audience, Glossary, guideStone, Lab, Methodology, Philosophy, Products, Science, Sitemap, Story, Technical, Thesis, Contact) + landing + lab notebooks
+- **259 content pages** across 16 sections (Architecture, Audience, Contact, Glossary, guideStone, Lab, Methodology, Philosophy, Primals, Products, Science, Sitemap, Springs, Story, Technical, Thesis) + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
@@ -26,7 +26,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time
-- **Sovereign deployment** — golgi VPS serving via Caddy at 67ms TTFB (vs GitHub Pages 111ms). DNS NS cutover pending (eastGate manual action). Build pipeline: Sovereign CI (Forgejo hook → sporeGate build → rsync to golgi). sporeGate is the sole build authority (pepti decommissioned Wave 120).
+- **Sovereign deployment** — golgi VPS serving via Caddy at 67ms TTFB (sovereign-primary since Wave 136). Security headers (HSTS preload, X-Frame DENY, nosniff, Permissions-Policy), fail2ban on Forgejo SSH, proper 404, ACME auto-renewal, HTTP/3, gzip. GitHub Pages is trailing shadow. Build pipeline: Sovereign CI (Forgejo hook → sporeGate build → rsync to golgi).
 - **Pure-primal evolution path** — petalTongue DocumentNode types + content rendering pipeline implemented. sporePrint can be served by Nest Atomic composition (petalTongue web → NestGate CAS → provenance trio). Zola remains as validation oracle.
 - **Local nest validation** — `content-direct` backend reads raw markdown from disk, renders through DocumentNode pipeline with entity shortcode resolution and multi-modal output (HTML, description, JSON). Parity confirmed 22/22 with Zola (also as Rust integration tests: `tests/parity.rs`).
 - **Live ecosystem visualizations** — Entity graph (force-directed, 66 nodes), K-Derm topology (5-layer cross-section with relay animation), NUCLEUS composition (nested layers with expand/collapse). Server-side SVG with WASM progressive enhancement.
@@ -80,10 +80,10 @@ sporePrint/
 
 - **Zola** — TOML front matter, Tera templates, strict mode
 - **Catppuccin** color palette (Mocha dark / Latte light, auto via `prefers-color-scheme`)
-- **`spore-validate check-links`** validates internal links (149 links across 207 files)
+- **`spore-validate check-links`** validates internal links across content files
 - **zola build** generates taxonomy pages automatically from front matter tags
 - **JavaScript**: viz-hydrate.js (WASM progressive enhancement, SVG fallback)
-- **Inline SVG favicon** — no external assets
+- **Static SVG favicon** — `static/favicon.svg`
 - **`minify_html = true`** — output is minified
 - **`#![forbid(unsafe_code)]`** — enforced at spore-validate crate root
 

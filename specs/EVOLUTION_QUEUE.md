@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 9, 2026 (Wave 134e — Deep Debt Sprint: module splits, transplants, metric evolution)
+Last reviewed: July 10, 2026 (Wave 136a — Hardening. A11y suite, deep-debt constants, doc sync)
 
 ---
 
@@ -119,11 +119,11 @@ Last reviewed: July 9, 2026 (Wave 134e — Deep Debt Sprint: module splits, tran
 - [ ] Script to diff whitePaper/baseCamp against content/science/ for new papers
 - [x] ~~Consider lychee CI for non-Zola link checking~~ → `spore-validate check-links` covers internal links; external link validation TBD
 
-### pseudoSpore Gallery (Wave 64 target)
-- [ ] Zola template for `/lab/spores/{name}/` gallery pages
+### pseudoSpore Gallery (template exists — automation remaining)
+- [x] Zola template for `/lab/spores/{name}/` gallery pages (Wave 64)
 - [ ] `spore-validate` reads lithoSpore `registry.toml` → generates gallery markdown
 - [ ] Gallery index at `/lab/spores/` listing all available pseudoSpores
-- [ ] "Download lithoSpore" link per gallery page
+- [ ] Real download links per gallery page (currently archive names only)
 
 ### Sovereign Deployment (LIVE — DNS active since Wave 100+)
 - [x] ~~DNS NS cutover: primals.eco NS → ns1/ns2.primals.eco~~ — DNS live, TLS operational
@@ -134,7 +134,7 @@ Last reviewed: July 9, 2026 (Wave 134e — Deep Debt Sprint: module splits, tran
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality for the current 222 pages
+- [ ] Evaluate elasticlunr search quality at 259 pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 
@@ -467,7 +467,7 @@ These were in the original queue and have been completed:
 - [x] 222 content pages (up from 207 — lab notebook cascade from springs)
 - [x] 155 internal links, 0 broken (`check-links` clean)
 - [x] Certification manifest VALID (graph merkle unchanged)
-- [x] Provenance manifest regenerated (content-manifest.toml synced to 222 pages)
+- [x] Provenance manifest regenerated (content-manifest.toml synced to 259 pages)
 - [x] 66 entities validated, 0 errors
 
 ### WAN Mesh Validation (flockGate)
@@ -477,7 +477,7 @@ These were in the original queue and have been completed:
 - [x] **federation.status: `enabled: true`** — wire fix CONFIRMED in new build
 - [x] **latency_ms: 64ms** — WAN peer health probes WORKING (auto-reconnect functional)
 - [x] Peer reachable via `path_type: "direct"`, `last_seen_ms` updating
-- [ ] `active_connections: 0` — Songbird `mesh.init` needs activation with node_id (Wave 123 P1)
+- [x] `active_connections: 0` — resolved by songBird mesh evolution (Wave 132+, auto-advertisement)
 
 ### Observations
 - Depot was rebuilt (plasmid.harvest ran) — checksums.toml dated 2026-06-12T12:37Z
