@@ -5,6 +5,33 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.13.0] — 2026-07-10 — NUCLEUS Structural Validation + Schema-Behavior Alignment (Wave 136a)
+
+**Resolved NUCLEUS schema-behavior drift. All parsed fields now validated.**
+
+### Added
+
+- **NUCLEUS structural validation**: `NucleusProfile::structural_warnings()` validates internal
+  consistency without live socket probing — launch order references, parallel_after coherence,
+  mesh federation config, health critical references, min_healthy bounds, known deployment roles.
+- **`ValidationResult::structural_warnings`**: Structural diagnostics now surfaced alongside
+  live probe results in `nucleus` subcommand output.
+- **7 new tests**: `structural_warnings_clean_profile`, `_unknown_role`, `_launch_order_references_undeclared`,
+  `_parallel_after_not_in_order`, `_federation_without_node_id`, `_critical_references_undeclared`,
+  `_min_healthy_exceeds_total`.
+
+### Changed
+
+- **Removed 4 `#[allow(dead_code)]` annotations** from `ProfileMeta::role`, `LaunchConfig::parallel_after`,
+  `MeshConfig::node_id`, `MeshConfig::peers` — all fields now consumed by structural validation.
+- **Known roles**: `canary`, `production`, `development`, `relay`, `compute`.
+
+### Metrics
+
+- tests: 279 (247 unit + 29 integration + 3 refresh_write, 6 parity ignored)
+- clippy: 0 warnings
+- `#[allow(dead_code)]` in production: 1 remaining (`MaturityLevel::css_class` — P2 petalTongue target)
+
 ## [3.12.0] — 2026-07-10 — Accessibility Validation Suite + CI Integration (Wave 134f)
 
 **Automated accessibility validation wired into CI pipeline.**

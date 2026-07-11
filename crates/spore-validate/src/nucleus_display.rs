@@ -14,8 +14,20 @@ use std::path::Path;
 /// details), and aggregate compliance summary.
 pub fn print_result(profile: &NucleusProfile, result: &ValidationResult, profile_path: &Path) {
     print_header(profile, result, profile_path);
+    print_structural_warnings(result);
     print_primals(result);
     print_summary(result);
+}
+
+fn print_structural_warnings(result: &ValidationResult) {
+    if result.structural_warnings.is_empty() {
+        return;
+    }
+    println!();
+    println!("  STRUCTURAL WARNINGS:");
+    for w in &result.structural_warnings {
+        println!("    ⚠ {w}");
+    }
 }
 
 fn print_header(profile: &NucleusProfile, result: &ValidationResult, profile_path: &Path) {
@@ -367,6 +379,7 @@ mod tests {
             missing: vec![],
             critical_met: true,
             min_healthy_met: true,
+            structural_warnings: vec![],
         };
         assert!(passing.passed());
 
@@ -377,6 +390,7 @@ mod tests {
             missing: vec![],
             critical_met: false,
             min_healthy_met: true,
+            structural_warnings: vec![],
         };
         assert!(!failing.passed());
     }

@@ -42,6 +42,9 @@ pub struct NucleusProfile {
     pub mesh: Option<MeshConfig>,
 }
 
+/// Known deployment roles.
+const KNOWN_ROLES: &[&str] = &["canary", "production", "development", "relay", "compute"];
+
 impl NucleusProfile {
     /// Whether federation is configured in this profile.
     pub fn federation_enabled(&self) -> bool {
@@ -54,6 +57,78 @@ impl NucleusProfile {
     /// The declared launch order for primals.
     pub fn launch_order(&self) -> &[String] {
         self.launch.as_ref().map_or(&[], |l| &l.order)
+    }
+
+    /// Validate the profile's internal consistency without probing live sockets.
+    ///
+    /// Checks referential integrity across sections: launch order refers to
+    /// declared primals, mesh config is coherent, roles are known values.
+    #[must_use]
+    pub fn structural_warnings(&self) -> Vec<String> {
+        let mut warnings = Vec::new();
+        let primal_names: Vec<&str> = self.primals.keys().map(String::as_str).collect();
+
+        if let Some(ref role) = self.profile.role {
+            if !KNOWN_ROLES.contains(&role.as_str()) {
+                warnings.push(format!(
+                    "profile.role '{role}' is not a known role ({})",
+                    KNOWN_ROLES.join(", ")
+                ));
+            }
+        }
+
+        if let Some(ref launch) = self.launch {
+            for slug in &launch.order {
+                if !self.primals.contains_key(slug) {
+                    warnings.push(format!(
+                        "launch.order references '{slug}' which is not declared in [primals]"
+                    ));
+                }
+            }
+            if let Some(ref pa) = launch.parallel_after {
+                if !launch.order.contains(pa) {
+                    warnings.push(format!(
+                        "launch.parallel_after '{pa}' is not in launch.order"
+                    ));
+                }
+            }
+            for name in &primal_names {
+                if !launch.order.iter().any(|s| s == *name) {
+                    warnings.push(format!(
+                        "primal '{name}' declared but missing from launch.order"
+                    ));
+                }
+            }
+        }
+
+        if let Some(ref mesh) = self.mesh {
+            if mesh.federation_enabled == Some(true) && mesh.node_id.is_none() {
+                warnings.push("mesh.federation_enabled is true but mesh.node_id is not set".into());
+            }
+            if mesh.federation_enabled == Some(true) && mesh.peers.is_empty() {
+                warnings.push("mesh.federation_enabled is true but mesh.peers is empty".into());
+            }
+        }
+
+        if let Some(ref health) = self.health {
+            for crit in &health.critical {
+                if !self.primals.contains_key(crit) {
+                    warnings.push(format!(
+                        "health.critical references '{crit}' which is not declared in [primals]"
+                    ));
+                }
+            }
+            if let Some(min) = health.min_healthy {
+                if min > self.primals.len() {
+                    warnings.push(format!(
+                        "health.min_healthy ({min}) exceeds total primals ({})",
+                        self.primals.len()
+                    ));
+                }
+            }
+        }
+
+        warnings
     }
 }
 
@@ -145,6 +220,8 @@ pub struct ValidationResult {
     pub missing: Vec<PrimalStatus>,
     pub critical_met: bool,
     pub min_healthy_met: bool,
+    /// Structural warnings from profile validation (independent of live probing).
+    pub structural_warnings: Vec<String>,
 }
 
 /// Status of an individual primal.
@@ -279,6 +356,8 @@ pub fn validate_profile(
 
     let min_healthy_met = healthy.len() >= min_healthy_threshold;
 
+    let structural_warnings = profile.structural_warnings();
+
     ValidationResult {
         profile_name: profile.profile.name.clone(),
         total_declared: profile.primals.len(),
@@ -286,6 +365,7 @@ pub fn validate_profile(
         missing,
         critical_met,
         min_healthy_met,
+        structural_warnings,
     }
 }
 
@@ -530,6 +610,180 @@ name = "tower-relay"
         assert!(!result.critical_met);
         assert!(!result.min_healthy_met);
         assert_eq!(result.missing.len(), 1);
+    }
+
+    #[test]
+    fn structural_warnings_clean_profile() {
+        let toml_str = r#"
+[profile]
+name = "clean"
+role = "production"
+
+[primals]
+beardog = { required = true }
+songbird = { required = true }
+
+[launch]
+order = ["beardog", "songbird"]
+parallel_after = "beardog"
+
+[mesh]
+node_id = "gate-1"
+federation_enabled = true
+peers = ["10.13.37.1:7700"]
+
+[health]
+min_healthy = 1
+critical = ["beardog"]
+"#;
+        let profile: NucleusProfile = toml::from_str(toml_str).unwrap();
+        assert!(profile.structural_warnings().is_empty());
+    }
+
+    #[test]
+    fn structural_warnings_unknown_role() {
+        let toml_str = r#"
+[profile]
+name = "test"
+role = "undefined_role"
+"#;
+        let profile: NucleusProfile = toml::from_str(toml_str).unwrap();
+        let warnings = profile.structural_warnings();
+        assert_eq!(warnings.len(), 1);
+        assert!(warnings[0].contains("undefined_role"));
+    }
+
+    #[test]
+    fn structural_warnings_launch_order_references_undeclared() {
+        let mut primals = BTreeMap::new();
+        primals.insert(
+            "beardog".into(),
+            PrimalEntry {
+                required: true,
+                role: None,
+                probe_methods: vec![],
+            },
+        );
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals,
+            health: None,
+            launch: Some(LaunchConfig {
+                order: vec!["beardog".into(), "ghost".into()],
+                parallel_after: None,
+            }),
+            mesh: None,
+        };
+        let warnings = profile.structural_warnings();
+        assert!(warnings.iter().any(|w| w.contains("ghost")));
+    }
+
+    #[test]
+    fn structural_warnings_parallel_after_not_in_order() {
+        let mut primals = BTreeMap::new();
+        primals.insert(
+            "beardog".into(),
+            PrimalEntry {
+                required: true,
+                role: None,
+                probe_methods: vec![],
+            },
+        );
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals,
+            health: None,
+            launch: Some(LaunchConfig {
+                order: vec!["beardog".into()],
+                parallel_after: Some("songbird".into()),
+            }),
+            mesh: None,
+        };
+        let warnings = profile.structural_warnings();
+        assert!(warnings.iter().any(|w| w.contains("parallel_after")));
+    }
+
+    #[test]
+    fn structural_warnings_federation_without_node_id() {
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals: BTreeMap::new(),
+            health: None,
+            launch: None,
+            mesh: Some(MeshConfig {
+                node_id: None,
+                federation_enabled: Some(true),
+                peers: vec!["10.0.0.1:7700".into()],
+            }),
+        };
+        let warnings = profile.structural_warnings();
+        assert!(warnings.iter().any(|w| w.contains("node_id")));
+    }
+
+    #[test]
+    fn structural_warnings_critical_references_undeclared() {
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals: BTreeMap::new(),
+            health: Some(HealthConfig {
+                min_healthy: None,
+                critical: vec!["phantom".into()],
+            }),
+            launch: None,
+            mesh: None,
+        };
+        let warnings = profile.structural_warnings();
+        assert!(warnings.iter().any(|w| w.contains("phantom")));
+    }
+
+    #[test]
+    fn structural_warnings_min_healthy_exceeds_total() {
+        let mut primals = BTreeMap::new();
+        primals.insert(
+            "beardog".into(),
+            PrimalEntry {
+                required: true,
+                role: None,
+                probe_methods: vec![],
+            },
+        );
+        let profile = NucleusProfile {
+            profile: ProfileMeta {
+                name: "test".into(),
+                description: None,
+                extends: None,
+                role: None,
+            },
+            primals,
+            health: Some(HealthConfig {
+                min_healthy: Some(5),
+                critical: vec![],
+            }),
+            launch: None,
+            mesh: None,
+        };
+        let warnings = profile.structural_warnings();
+        assert!(warnings.iter().any(|w| w.contains("min_healthy")));
     }
 
     #[test]
