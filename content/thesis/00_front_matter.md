@@ -23,10 +23,9 @@ Computational Mathematics, Science and Engineering (CMSE) — with interdiscipli
 
 ---
 
-**Kevin Mok**
+**The ecoPrimals project**
 
-BS Microbiology, Michigan State University, 2018  
-MS Data Science, Michigan State University, 2025
+Background: BS Microbiology, MS Data Science (Michigan State University)
 
 ---
 

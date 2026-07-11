@@ -315,7 +315,7 @@ driver roadmap: direct `/dev/akida0` access, zero vendor code in the path.
 
 ---
 
-**Contact:** Kevin Mok | mokkevin@msu.edu | (586) 453-7233  
+**Contact:** ecoPrimals project — [primals.eco](https://primals.eco)  
 **Framework:** ToadStool Universal Compute (AGPL3)  
 **Hardware:** Personal compute mesh (~$15k investment)
 

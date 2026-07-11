@@ -182,7 +182,7 @@ The {{ entity(name="ecoprimals") }} project is a 10-month receipt:
 
 | Metric | Value |
 |--------|-------|
-| Developer | 1 person (BS Microbiology, MS Data Science) |
+| Developer | 1 person (background in microbiology and data science) |
 | Tool | Cursor IDE only |
 | Agent invocations | 69,000+ |
 | Tokens processed | 51 billion |

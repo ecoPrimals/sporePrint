@@ -1,6 +1,6 @@
 +++
 title = "Thesis"
-description = "Constrained Evolution — Kevin Mok's working thesis connecting biological adaptation, AI-assisted software development, pure Rust scientific computing, and sovereign infrastructure through reproducible validation across eight domains."
+description = "Constrained Evolution — a working thesis connecting biological adaptation, AI-assisted software development, pure Rust scientific computing, and sovereign infrastructure through reproducible validation across eight domains."
 sort_by = "weight"
 template = "section.html"
 +++
@@ -9,7 +9,7 @@ template = "section.html"
 
 *Environmental Pressure, Sovereign Computing, and the Convergence of Biological and Computational Systems*
 
-**Author**: Kevin Mok — BS Microbiology (Michigan State University, 2018), MS Data Science (Michigan State University, 4.0, 2025)
+**Author**: the ecoPrimals project
 **Status**: Working draft — all 16 chapters transplanted, undergoing refinement
 **License**: AGPL-3.0
 

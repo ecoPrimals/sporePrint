@@ -106,7 +106,7 @@ coralForge enables a structural analysis layer for every proposal in §14.3:
 
 ## 14.5 Why MSU
 
-The LTEE is at Michigan State University. The author holds degrees from MSU (BS Microbiology, MS Data Science). The frozen fossil record is accessible. The sequencing infrastructure exists (MSU Genomics Core, RTSF). The computational analysis tools — bioinformatics pipelines, statistical methods, machine learning — are validated by the springs (wetSpring's sovereign 16S/metagenomics pipeline, neuralSpring's ML primitives and coralForge structure prediction, groundSpring's statistical framework).
+The LTEE is at Michigan State University. The author's background spans microbiology and data science, both from MSU. The frozen fossil record is accessible. The sequencing infrastructure exists (MSU Genomics Core, RTSF). The computational analysis tools — bioinformatics pipelines, statistical methods, machine learning — are validated by the springs (wetSpring's sovereign 16S/metagenomics pipeline, neuralSpring's ML primitives and coralForge structure prediction, groundSpring's statistical framework).
 
 This is not a hypothetical proposal. It is a concrete research plan that could be executed as part of a PhD program at MSU, using existing resources, with a faculty network already mapped to the relevant scientific domains.
 

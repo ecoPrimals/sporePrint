@@ -11,7 +11,7 @@ springs = ["primalspring", "hotspring", "wetspring"]
 {{ maturity(level="architectural") }}
 
 **Date:** April 3, 2026
-**Author:** Kevin Mok (BS Microbiology, MSU 2018; MS Data Science, MSU 2025)
+**Author:** ecoPrimals project
 **Status:** Validated — 11 experiments (90 checks), 9 deploy graphs, 9 proto sketches
 **License:** AGPL-3.0-or-later
 
