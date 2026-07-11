@@ -60,11 +60,25 @@ Quantifiable metrics that a reader can verify: lines of code, test count, test p
 
 ### PII rules
 
-- No personal names beyond published researchers (in context of work being reproduced)
+- No legal names on site content, templates, or structured data (JSON-LD, meta tags)
+- No email addresses, phone numbers, or physical addresses
 - No "Dr." honorific — just name and affiliation
 - No locations, home addresses, employment history
 - No personal background beyond what's published
-- The handle "ecoPrimal" is the developer identity, not a personal name
+- Published researchers listed as third-party citations stay (they are sources being reproduced)
+
+### Identity model
+
+Four identities, each for its own domain:
+
+| Identity | Domain | Use on sporePrint |
+|----------|--------|-------------------|
+| **ecoPrimals** / **ecoPrimal** | Developer, code, infrastructure | Technical content, JSON-LD for code sections, thesis author attribution |
+| **attsi** | Philosopher, essayist | atlasHugged essays, story essays, JSON-LD for philosophy/story sections |
+| **Tamison** | Online handle, community | Discord, external community interaction — not used on sporePrint |
+| *(legal name)* | Real life only | Never appears on site. Not in content, not in metadata, not in structured data |
+
+When the thesis or technical content says "the author," that refers to ecoPrimal. When atlasHugged or story essays say "I," that voice is attsi.
 
 ### Tone
 

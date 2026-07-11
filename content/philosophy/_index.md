@@ -23,6 +23,8 @@ The answers live in a body of essays called **atlasHugged**.
 *Named not for the novel, but for what happens when you stop shrugging and
 start holding.*
 
+**Author**: attsi
+
 atlasHugged is the philosophical core of ecoPrimals — twelve essays that build
 on each other as a single argument. The stories (01–03) lay the foundation. The
 framework (04–08) develops the argument. The synthesis (09–12) integrates
