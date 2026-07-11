@@ -138,6 +138,53 @@ The sovereignty posture:
 - **GitHub**: Trailing mirror, not primary. Updated via cascade relay.
 - **DNS**: Sovereign, delegated to golgi infrastructure
 
+## Outer Membrane — License Enforcement
+
+The inner membrane (BearDog/BTSP) uses entropy tiers to distinguish human from machine at the cryptographic handshake. The outer membrane (Caddy/public web) cannot authenticate the consumer — but it can make the license structurally inescapable at every layer of the response.
+
+### Three-Layer License Embedding
+
+| Layer | Mechanism | What it proves |
+|-------|-----------|---------------|
+| **Transport** | HTTP `Link: <agpl-3.0>; rel="license"` header | License was served with the content — visible to any HTTP client, logged by any proxy |
+| **Document** | `<link rel="license">` + `<meta name="rights">` + Dublin Core `dcterms.license` | License is in the DOM — parsed by crawlers, scrapers, and AI agents |
+| **Structured data** | JSON-LD `"license"` field on WebSite + per-section schemas | License is machine-readable structured data — consumed by search engines and knowledge graphs |
+
+### Provenance Chain
+
+Every page on primals.eco has:
+
+1. **BLAKE3 content hash** — `content-manifest.toml` hashes every page at build time
+2. **Merkle root** — guideStone certification manifest computes the root over all content
+3. **Timestamped commits** — git history on Forgejo (sovereign) and GitHub (shadow)
+4. **License in the response** — transport, document, and structured data layers
+
+If an AI model trains on this content and produces similar output, the provenance chain proves:
+- The content existed at a specific time (git + Merkle root)
+- The content was served with AGPL-3.0-or-later at that time (HTTP headers + DOM + JSON-LD)
+- The content is content-addressed (BLAKE3 — any copy can be verified against the manifest)
+
+The enforcement is not technical blocking — it is structural attribution. The license is woven into every byte at every layer. Removing it requires actively stripping it, which is itself a violation.
+
+### Recommended Caddy Headers
+
+```
+header {
+    Link "<https://www.gnu.org/licenses/agpl-3.0.html>; rel=\"license\""
+    X-Content-License "AGPL-3.0-or-later"
+    X-Provenance "blake3:content-manifest.toml; merkle:certification/manifest.json"
+}
+```
+
+### Access Policy
+
+The outer membrane does not block any consumer. The `robots.txt` explicitly welcomes all crawlers, AI agents, and search engines. The distinction between access levels is not enforced by blocking but by license embedding:
+
+- **Human readers**: see content, can verify via `spore-validate certify`
+- **AI agents on behalf of humans**: full access — assistive technology is welcome
+- **Training crawlers**: full access — the license travels with the training data
+- **Search engines**: full access — indexing aids discoverability
+
 ## Composition Profiles — Fractal Deployment
 
 Not every gate runs all 13 primals. The ecosystem defines **composition profiles**
