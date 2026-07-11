@@ -20,7 +20,17 @@
   "url": "{{ section.permalink }}",
   "description": "{{ section.description }}",
   "about": ["constrained evolution", "sovereign scientific computing", "AI-assisted software development", "Rust scientific computing", "reproducible science", "LTEE", "WebGPU"],
-  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" },
+  "hasPart": [
+    {% for page in section.pages %}
+    {
+      "@type": "ScholarlyArticle",
+      "name": "{{ page.title }}",
+      "url": "{{ page.permalink }}",
+      "description": "{{ page.description | default(value='') }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
 }
 </script>
 {% elif section.relative_path == "philosophy/_index.md" %}
@@ -34,7 +44,17 @@
   "url": "{{ section.permalink }}",
   "description": "{{ section.description }}",
   "about": ["sovereign science", "executable knowledge", "AGPL commons", "open source philosophy", "constrained evolution", "AI authorship"],
-  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" },
+  "hasPart": [
+    {% for page in section.pages %}
+    {
+      "@type": "Article",
+      "name": "{{ page.title }}",
+      "url": "{{ page.permalink }}",
+      "description": "{{ page.description | default(value='') }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
 }
 </script>
 {% elif section.relative_path == "story/_index.md" %}
@@ -48,7 +68,17 @@
   "url": "{{ section.permalink }}",
   "description": "{{ section.description }}",
   "about": ["AI-assisted development", "Rust", "scientific computing", "constrained evolution", "commodity hardware", "self-hosted infrastructure"],
-  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" },
+  "hasPart": [
+    {% for page in section.pages %}
+    {
+      "@type": "Article",
+      "name": "{{ page.title }}",
+      "url": "{{ page.permalink }}",
+      "description": "{{ page.description | default(value='') }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
 }
 </script>
 {% endif %}
