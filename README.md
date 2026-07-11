@@ -55,19 +55,20 @@ cargo run -- certify --emit              # guideStone manifest → static/certif
 sporePrint/
 ├── config.toml          # Zola config + entity_registry (66 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
-├── content/             # 259 Markdown pages with TOML front matter
-│   ├── science/         # 34 baseCamp companion papers
-│   ├── architecture/    # 20 pages: catalogs, inventory, topology, deployment, certify
+├── content/             # 289 Markdown pages with TOML front matter
+│   ├── science/         # 33 baseCamp companion papers
+│   ├── architecture/    # 22 pages: catalogs, inventory, topology, deployment, certify
 │   ├── lab/             # 133 pages: spring hubs, notebooks, spore gallery
-│   ├── products/        # blueFish, esotericWebb, helixVision, lattice QCD, lithoSpore
-│   ├── guidestone/      # guideStone verification class
-│   ├── audience/        # PI, student, builder, compliance guides
-│   ├── methodology/     # Constrained evolution, K-NOME, playbooks, scyBorg, inoculum
-│   ├── technical/       # Hardware, grants, pipelines, barracuda gaps, neuromorphic
+│   ├── thesis/          # 18 pages: PhD dissertation (16 chapters, constrained evolution)
+│   ├── philosophy/      # 14 pages: atlasHugged (12 essays + bibliography + sovereign science)
+│   ├── outreach/        # 11 pages: evidence articles, critique articles, partnership briefs
+│   ├── methodology/     # 11 pages: constrained evolution, K-NOME, scyBorg, acknowledgments
+│   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
+│   ├── audience/        # 6 pages: PI, student, builder, compliance guides
+│   ├── products/        # 6 pages: blueFish, esotericWebb, helixVision, lattice QCD, lithoSpore
+│   ├── guidestone/      # 5 pages: verification class
+│   ├── story/           # 3 pages: builder narrative essays
 │   ├── glossary/        # Plain-language ecosystem glossary
-│   ├── thesis/          # PhD dissertation scaffold (16 chapters, constrained evolution)
-│   ├── philosophy/      # atlasHugged (12 essays — the "why")
-│   ├── story/           # Builder narrative essays (I Don't Know Rust, etc.)
 │   └── sitemap/         # Full site navigation
 ├── templates/           # 14 Tera HTML templates + shortcodes
 ├── sass/css/            # SCSS partials → compiled by Zola (nav, layout, landing, etc.)
@@ -88,7 +89,7 @@ sporePrint/
 ## spore-validate
 
 Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
-zero warnings, 284 tests, 34 modules, zero C toolchain dependencies. Edition 2024, Rust 1.85+. Release binary optimized (LTO+strip). All files under 680L (max: nucleus.rs at 670).
+zero warnings, 284 tests, 34 modules, 11,012L, zero C toolchain dependencies. Edition 2024, Rust 1.85+. Release binary optimized (LTO+strip). All files under 680L (max: nucleus.rs at 670). 11 justified `#[allow]` (cast precision for display, uniform dispatch signatures, 1 P2 dead_code).
 
 | Subcommand | Purpose |
 |---|---|
@@ -170,30 +171,20 @@ Your content here...
 
 ## Evolution Roadmap
 
-### Current — Wave 134e (July 9, 2026)
-- 259 content pages, 66 entities, 284 tests, 34 modules
-- Edition 2024, Rust 1.85+, zero unsafe, zero C deps
+### Current — Wave 136b (July 11, 2026)
+- 289 content pages across 17 sections, 66 entities, 284 tests, 34 modules
+- Edition 2024, Rust 1.85+, zero unsafe, zero C deps, 11 justified `#[allow]`
 - NUCLEUS validation + depot integrity + riboCipher transport signal
-- Shared IPC module: JSON-RPC 2.0 NDJSON with response ID correlation
-- `cargo-deny` supply chain security — all deps pure Rust, no advisories
-- Tower probe table profile-driven (TOML `probe_methods` override)
-- `SYSTEMD_SOCKET_DIR` env-overridable (`BIOMEOS_SYSTEMD_SOCKET_DIR`)
-- Nucleus display extracted — all files under 800L
-- Static SVG diagrams with `viz_embed` fallback rendering
-- Sovereign deployment AAR filed (5 divergences tracked)
-- Phase 1 idiomatic Rust evolution: shared walker, IPC connect helper, DiagnosticCollector, #[must_use], Cow<str>, function decomposition
-- Phase 2 petalTongue integration: build-viz subcommand, MaturityLevel enum, maturity validation
-- Stale code cleanup: gonzales explorer dead JS removed, petaltongue docs corrected, section_count shortcode deleted
-- Philosophy subtabs: sidebar groups atlasHugged into Stories/Framework/Synthesis/Reference
-- Cross-reference linking: 44 inter-essay references converted to Zola internal links
-- Thesis scaffold: 16-chapter PhD dissertation section with abstracts and cross-links
-- lithoSpore product page: spore taxonomy, operating modes, validation tiers, pseudoSpore lifecycle
-- **Wave 134e**: Deep debt sprint — module splits (commands.rs 785L→4 modules, main.rs 687L→3 modules)
-- Tower probes data-driven (TOML embedded via `include_str!`), CAS push structured errors, fetch `Result` returns
-- 7 content transplants (4 evidence docs, 2 baseCamp papers, scyBorg protocol) — 259 pages total
-- Thesis fully transplanted (16 chapters), front matter completed, snapshot banner added
-- Hardcoded metrics evolved to `total_stat` shortcodes across 8 files
-- 5 broken Spring Catalog URLs fixed, gen3 path refs converted to Zola `@/` links
+- Cast safety evolution: `u64::try_from` replaces `cast_sign_loss`, `PushResult.errors` evolved to `usize`
+- Identity model: ecoPrimals (org), ecoPrimal (dev), attsi (philosopher) — no PII on site
+- Three-layer license enforcement: HTTP headers, HTML meta, JSON-LD structured data
+- Open-access robots.txt: principled welcome to all AI agents and crawlers
+- Outer membrane architecture documented in SOVEREIGN_DEPLOYMENT.md
+- Acknowledgments page credits open-source dependencies under scyBorg triple license
+- Outreach section scaffolded (12 pages) from whitePaper/outreach structure
+- Accessibility: WCAG 2.2 AAA target — `prefers-contrast: more`, `forced-colors: active`, ARIA landmarks
+- NUCLEUS probing extracted to `nucleus_probe.rs`, test helpers deduplicated to `tests/common/`
+- All files under 680L (max: nucleus.rs at 670)
 
 ### Completed Waves (66–119)
 - Wave 66: Sovereign self-hosting (Caddy + Let's Encrypt + systemd rebuild)

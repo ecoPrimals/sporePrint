@@ -5,6 +5,31 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.15.0] — 2026-07-11 — Cast Safety, Identity Model, License Enforcement, Doc Sync (Wave 136b)
+
+**Evolve unsafe casts to idiomatic Rust. Codify identity model. Three-layer license enforcement. Root doc sync.**
+
+### Changed
+
+- **`depot.rs`**: `#[allow(cast_sign_loss)]` → `u64::try_from()` with typed error for negative TOML sizes.
+- **`cas_push.rs`**: `PushResult.errors` evolved from `u64` to `usize` (natural count type).
+- **`commands.rs`**: `cast_possible_truncation` allow eliminated (errors now `usize`).
+- **Production `#[allow]` count**: 13 → 11.
+- **Root docs synced**: README (289 pages, 17 sections), CONTEXT.md (11,012L), RUST_TOOLING_VISION.md
+  (11 justified allows, 680L max), CONTENT_MAP.md (all section counts updated from 205→289),
+  EVOLUTION_QUEUE.md (`prefers-contrast`/`forced-colors` marked complete).
+- **wateringHole handoff**: `WAVE136B_DEEP_DEBT_BLURB.md` filed with quality gates + upstream gaps.
+
+### Metrics
+
+- tests: 284 (252 unit + 29 integration + 3 refresh_write, 6 parity ignored)
+- modules: 34 (11,012L)
+- content pages: 289
+- clippy: 0 warnings
+- production #[allow]: 11
+
+---
+
 ## [3.14.0] — 2026-07-10 — Deep Debt: Module Split, A11y Contrast, Test Dedup (Wave 136b)
 
 **Structural hardening: module splits, contrast media queries, test harness deduplication.**

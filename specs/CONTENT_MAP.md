@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: June 1, 2026
+Last reviewed: July 11, 2026
 
 ## Sections
 
@@ -21,9 +21,9 @@ The landing page is a hybrid: `_index.md` contains the Try It and Why sporePrint
 
 **Staleness risk**: Stats ribbon and paper count read from `config.extra.totals` dynamically. Use `spore-validate refresh` to detect metric drift.
 
-### Science (`science/`) — 31 pages + _index
+### Science (`science/`) — 33 pages + _index
 
-28 baseCamp papers (01–28, two with paper number 24) + gonzales_explorer + CROSS_SPRING_EVIDENCE_MAP + STRUCTURE_PREDICTION_ROADMAP.
+29 baseCamp papers (01–29) + gonzales_explorer + CROSS_SPRING_EVIDENCE_MAP + STRUCTURE_PREDICTION_ROADMAP + primal composition methodology.
 
 Grouped by domain via `[extra] domain` in front matter:
 - Microbiology and Ecology (01-06)
@@ -40,16 +40,16 @@ Uses custom `science_section.html` template.
 
 **Staleness risk**: New papers added in whitePaper/baseCamp before sporePrint.
 
-### Lab (`lab/`) — 27 pages + _index
+### Lab (`lab/`) — 133 pages + _index
 
-Live validation results from a running NUCLEUS composition. Subsections:
+Live validation results from a running NUCLEUS composition. Includes auto-merged spring notebooks. Subsections:
 
 - `lab/springs/` — per-spring science hubs
 - `lab/notebooks/` — exported Jupyter notebooks with embedded charts
 
 **Staleness risk**: Medium — notebooks may diverge from upstream spring outputs.
 
-### Architecture (`architecture/`) — 18 pages + _index
+### Architecture (`architecture/`) — 22 pages + _index
 
 | Page | What | Staleness risk |
 |------|------|----------------|
@@ -84,7 +84,7 @@ Live validation results from a running NUCLEUS composition. Subsections:
 
 **Staleness risk**: Capability comparisons against external tools. Researcher table (reproduced work, not endorsement).
 
-### Methodology (`methodology/`) — 6 pages + _index
+### Methodology (`methodology/`) — 11 pages + _index
 
 - CONSTRAINED_EVOLUTION_FORMAL.md — core methodology paper
 - HOW_TO_START_A_SPRING.md — practical guide
@@ -92,12 +92,18 @@ Live validation results from a running NUCLEUS composition. Subsections:
 - KNOWLEDGE_COMMONS_TARGETS.md — 9 domains ready for springs
 - P_NP_ENZYME_THESIS.md — conceptual
 - SCYBORG_LICENSE.md — licensing model
+- sharing_the_pen.md — K-NOME collaborative methodology
+- constrained_optimization_ai.md — AI-assisted constrained evolution
+- scyborg_exception_protocol.md — scyBorg exception handling
+- inoculum_standard.md — inoculum propagation rules
+- acknowledgments.md — open-source dependency credits
 
-### Technical (`technical/`) — 6 pages + _index
+### Technical (`technical/`) — 8 pages + _index
 
 - HARDWARE_COST_ANALYSIS.md, SOVEREIGN_GPU_PIPELINE_PROFILE.md
 - GRANT_TECHNICAL_APPENDIX.md, MSU_ASSET_ACCELERATION.md
 - KNOME_TEACHING_BRIEF.md, DRUG_DISCOVERY_PIPELINE.md
+- barracuda_compute_gaps.md, neuromorphic_benchmark.md
 
 **Staleness risk**: Hardware inventory drifts. GPU pipeline profile needs updates as coralReef evolves.
 
@@ -110,7 +116,7 @@ Live validation results from a running NUCLEUS composition. Subsections:
 | cross_substrate_validation.md | 5 substrates, 40/40 bit-identical |
 | live_spore_feed.md | Automated liveSpore.json provenance feed pipeline |
 
-### Products (`products/`) — 4 pages + _index
+### Products (`products/`) — 6 pages + _index
 
 | Page | Product |
 |------|---------|
@@ -118,34 +124,53 @@ Live validation results from a running NUCLEUS composition. Subsections:
 | helixVision.md | Sovereign protein structure prediction (AlphaFold-quality, pure Rust) |
 | blueFish.md | Sovereign data pipeline (ETL, NCBI integration) |
 | lattice_qcd.md | Lattice QCD interactive explorer |
+| lithoSpore.md | Spore taxonomy, operating modes, validation tiers |
+| pseudoSpore.md | pseudoSpore lifecycle documentation |
 
 ### Glossary (`glossary/`) — _index only
 
 Plain-language definitions of every ecosystem term.
 
-### Philosophy (`philosophy/`) — _index only
+### Philosophy (`philosophy/`) — 14 pages + _index
 
-atlasHugged integration stub. Content will grow when atlasHugged publishes. This is a separate, intentional act — do not auto-publish from whitePaper.
+12 atlasHugged essays (complete), bibliography, and sovereign science. Author: attsi.
+Sidebar groups by category: Stories (01–05), Framework (06–08), Synthesis (09–11), Reference (12 + bibliography).
 
-**Staleness risk**: Low. Stable placeholder.
+### Story (`story/`) — 3 pages + _index
+
+Builder narrative essays: I Don't Know Rust, The Sovereign Lab, 70 Papers One Stack.
+
+### Thesis (`thesis/`) — 18 pages + _index
+
+PhD dissertation: 16 chapters fully transplanted, front matter, references. Constrained evolution across 8 scientific domains.
+
+### Outreach (`outreach/`) — 11 pages + _index
+
+Scaffolded from whitePaper/outreach structure. Two voices: ecoPrimal (evidence articles) and attsi (critique articles). 3 partnership briefs. Maturity: scaffold.
+
+**Staleness risk**: Scaffold pages need full content transplant from whitePaper.
 
 ## Content Summary
 
-| Section | Pages (excl. _index) | Total files |
-|---------|---------------------|-------------|
-| lab | 128 | 132 |
-| science | 31 | 32 |
-| architecture | 18 | 19 |
-| methodology | 6 | 7 |
-| technical | 6 | 7 |
-| audience | 5 | 6 |
-| guidestone | 4 | 5 |
-| products | 4 | 5 |
-| glossary | 0 | 1 |
-| philosophy | 0 | 1 |
-| sitemap | 0 | 1 |
-| landing | 0 | 1 |
-| **Total** | **205** | **220** |
+| Section | Pages (excl. _index) |
+|---------|---------------------|
+| lab | 133 |
+| science | 33 |
+| architecture | 22 |
+| thesis | 18 |
+| philosophy | 14 |
+| outreach | 11 |
+| methodology | 11 |
+| technical | 8 |
+| audience | 6 |
+| products | 6 |
+| guidestone | 5 |
+| story | 3 |
+| glossary | 0 |
+| sitemap | 0 |
+| landing | 1 |
+| contact | 1 |
+| **Total** | **~272 + _index files = 289** |
 
 ## Validation
 

@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 10, 2026 (Wave 136a — Hardening. A11y suite, deep-debt constants, doc sync)
+Last reviewed: July 11, 2026 (Wave 136b — Cast safety evolution, identity model, license enforcement, outreach scaffolding)
 
 ---
 
@@ -100,7 +100,7 @@ Last reviewed: July 10, 2026 (Wave 136a — Hardening. A11y suite, deep-debt con
 
 **Remaining — evolve through:**
 - [ ] AAA contrast ratios (7:1 for normal text, 4.5:1 for large) — pass for heading sizes, audit body text
-- [ ] `prefers-contrast: more` / forced-colors (Windows High Contrast) support
+- [x] ~~`prefers-contrast: more` / forced-colors (Windows High Contrast) support~~ — Wave 136b
 - [ ] viz-hydrate.js: keyboard pan/zoom, focusable nodes, labeled controls
 - [ ] Notebook chart alt text: meaningful descriptions for 12+ matplotlib PNGs
 - [ ] `<figure>` / `<figcaption>` for diagrams and viz_embed outputs
