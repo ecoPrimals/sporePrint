@@ -69,14 +69,17 @@ Quantifiable metrics that a reader can verify: lines of code, test count, test p
 
 ### Identity model
 
-Four identities, each for its own domain:
+All three public identities are human/AI synthetic intelligence — the same person working with AI tools. The distinction is domain, not authorship mode.
 
-| Identity | Domain | Use on sporePrint |
-|----------|--------|-------------------|
-| **ecoPrimals** / **ecoPrimal** | Developer, code, infrastructure | Technical content, JSON-LD for code sections, thesis author attribution |
-| **attsi** | Philosopher, essayist | atlasHugged essays, story essays, JSON-LD for philosophy/story sections |
-| **Tamison** | Online handle, community | Discord, external community interaction — not used on sporePrint |
-| *(legal name)* | Real life only | Never appears on site. Not in content, not in metadata, not in structured data |
+| Identity | What | Domain | sporePrint usage |
+|----------|------|--------|------------------|
+| **ecoPrimals** | The organization (17 primals + tooling) | Org-level attribution | JSON-LD Organization, repo-level references |
+| **ecoPrimal** | The developer | Code, infrastructure, technical work | Technical content, thesis author, "the author" in academic voice |
+| **attsi** | "a tool that shapes itself" — always lowercase, à la bell hooks | Philosophy, essays, narrative | atlasHugged, story essays, JSON-LD Person for philosophy/story sections |
+| **Tamison** | Long-standing online handle | Steam, Discord, community | Not used on sporePrint |
+| *(legal name)* | Real life only | Drivers license, not domain names | Never on site — not in content, metadata, or structured data |
+
+**attsi** is always lowercase. The name reflects the recursive nature of the work — a tool that shapes itself. The atlasHugged essays' practice of not naming names came from reflection, not convention — a parallel the bell hooks casing deliberately evokes.
 
 When the thesis or technical content says "the author," that refers to ecoPrimal. When atlasHugged or story essays say "I," that voice is attsi.
 
