@@ -10,7 +10,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 ## Current State (July 10, 2026 — Wave 136b)
 
-- **259 content pages** across 16 sections (Architecture, Audience, Contact, Glossary, guideStone, Lab, Methodology, Philosophy, Primals, Products, Science, Sitemap, Springs, Story, Technical, Thesis) + landing + lab notebooks
+- **271 content pages** across 17 sections (Architecture, Audience, Contact, Glossary, guideStone, Lab, Methodology, Outreach, Philosophy, Primals, Products, Science, Sitemap, Springs, Story, Technical, Thesis) + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
 - **Entity registry** in `config.toml` — 66 typed entities across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **Typed entity graph** — 126 bidirectional edges (63 declared + 63 inverse) across 66 nodes, implementing Diderot's renvois de choses. 14 edge relation types. Validated at build time. Rendered as "Connections" panel on taxonomy pages.
@@ -128,4 +128,4 @@ Metrics flow from repos → `config.toml` entity registry → shortcodes in cont
 
 Science · Architecture · Lab · Thesis · Story · guideStone · Philosophy · Products | Primals · Springs · GitHub
 
-Audience, Methodology, and Technical are accessible via the site tree sidebar.
+Audience, Methodology, Outreach, and Technical are accessible via the site tree sidebar.
