@@ -109,7 +109,6 @@ pub struct DiagnosticCollector {
 }
 
 #[cfg(test)]
-#[allow(dead_code)]
 impl DiagnosticCollector {
     pub const fn new() -> Self {
         Self {
@@ -273,5 +272,43 @@ mod tests {
         c.promote_warnings();
         assert_eq!(c.error_count(), 1);
         assert_eq!(c.warning_count(), 0);
+    }
+
+    #[test]
+    fn diagnostic_collector_into_result_ok() {
+        let c = DiagnosticCollector::new();
+        assert!(c.into_result().is_ok());
+    }
+
+    #[test]
+    fn diagnostic_collector_into_result_err() {
+        let mut c = DiagnosticCollector::new();
+        c.error("fatal");
+        c.warning("advisory");
+        let err = c.into_result().unwrap_err();
+        assert!(err.to_string().contains("1 error(s)"));
+    }
+
+    #[test]
+    fn diagnostic_collector_diagnostics_slice() {
+        let mut c = DiagnosticCollector::new();
+        c.error("e");
+        c.warning("w");
+        assert_eq!(c.diagnostics().len(), 2);
+    }
+
+    #[test]
+    fn diagnostic_collector_extend() {
+        let mut c = DiagnosticCollector::new();
+        let extras = vec![Diagnostic::error("ext1"), Diagnostic::warning("ext2")];
+        c.extend(extras);
+        assert_eq!(c.error_count(), 1);
+        assert_eq!(c.warning_count(), 1);
+    }
+
+    #[test]
+    fn diagnostic_collector_default() {
+        let c = DiagnosticCollector::default();
+        assert!(c.is_empty());
     }
 }

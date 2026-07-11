@@ -2,39 +2,12 @@
 
 //! Tests for metric refresh write-back and drift detection on real repos.
 
-use std::path::{Path, PathBuf};
+mod common;
+
+use common::{binary_path, ensure_built, sporeprint_root};
 use std::process::Command;
-use std::sync::Once;
 
-static BUILD_ONCE: Once = Once::new();
-
-fn sporeprint_root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .unwrap()
-        .parent()
-        .unwrap()
-        .to_path_buf()
-}
-
-fn binary_path() -> PathBuf {
-    let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    path.push("target");
-    path.push("debug");
-    path.push("spore-validate");
-    path
-}
-
-fn ensure_built() {
-    BUILD_ONCE.call_once(|| {
-        let status = Command::new("cargo")
-            .args(["build", "--quiet"])
-            .current_dir(env!("CARGO_MANIFEST_DIR"))
-            .status()
-            .expect("failed to build spore-validate");
-        assert!(status.success(), "cargo build failed");
-    });
-}
+use std::path::Path;
 
 #[test]
 fn refresh_self_reports_accurate_metrics() {

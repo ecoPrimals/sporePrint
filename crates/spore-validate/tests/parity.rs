@@ -10,16 +10,9 @@
 //!
 //! Skip with: `cargo test --test parity -- --ignored` (or set `SKIP_PARITY=1`)
 
-use std::path::{Path, PathBuf};
+mod common;
 
-fn sporeprint_root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .unwrap()
-        .parent()
-        .unwrap()
-        .to_path_buf()
-}
+use common::sporeprint_root;
 
 fn pt_base() -> String {
     let port = std::env::var("PETALTONGUE_PORT").unwrap_or_else(|_| "8080".to_string());

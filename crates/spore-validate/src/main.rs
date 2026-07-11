@@ -30,6 +30,7 @@ mod model;
 mod notebook;
 mod nucleus;
 mod nucleus_display;
+mod nucleus_probe;
 mod paths;
 mod petaltongue;
 mod provenance;

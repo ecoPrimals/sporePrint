@@ -66,6 +66,44 @@ html {
   }
 }
 
+@media (prefers-contrast: more) {
+  :root {
+    --c-text: #000;
+    --c-bg: #fff;
+    --c-bg-alt: #f0f0f0;
+    --c-link: #6200ee;
+    --c-link-hover: #3700b3;
+    --c-border: #333;
+    --c-accent: #1b5e12;
+    --c-muted: #333;
+    --c-code-bg: #f0f0f0;
+    --c-nav-bg: #e0e0e0;
+    --c-surface: #bbb;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --c-text: #fff;
+    --c-bg: #000;
+    --c-bg-alt: #111;
+    --c-link: #f5c2e7;
+    --c-link-hover: #fff;
+    --c-border: #ccc;
+    --c-accent: #90ee90;
+    --c-muted: #ccc;
+    --c-code-bg: #111;
+    --c-nav-bg: #111;
+    --c-surface: #444;
+  }
+}
+
+@media (forced-colors: active) {
+  .maturity-badge,
+  .entity-ref,
+  .cert-line { border: 1px solid CanvasText; }
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);

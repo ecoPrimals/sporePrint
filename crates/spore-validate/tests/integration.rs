@@ -5,39 +5,10 @@
 //! These tests exercise the full validation pipeline end-to-end, verifying
 //! that the real `config.toml` and `content/` directory pass validation.
 
-use std::path::{Path, PathBuf};
+mod common;
+
+use common::{binary_path, ensure_built, sporeprint_root};
 use std::process::{Command, Output};
-use std::sync::Once;
-
-static BUILD_ONCE: Once = Once::new();
-
-fn sporeprint_root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .unwrap()
-        .parent()
-        .unwrap()
-        .to_path_buf()
-}
-
-fn binary_path() -> PathBuf {
-    let mut path = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    path.push("target");
-    path.push("debug");
-    path.push("spore-validate");
-    path
-}
-
-fn ensure_built() {
-    BUILD_ONCE.call_once(|| {
-        let status = Command::new("cargo")
-            .args(["build", "--quiet"])
-            .current_dir(env!("CARGO_MANIFEST_DIR"))
-            .status()
-            .expect("failed to build spore-validate");
-        assert!(status.success(), "cargo build failed");
-    });
-}
 
 /// Run the spore-validate binary with the given arguments against the real root.
 fn run(args: &[&str]) -> Output {

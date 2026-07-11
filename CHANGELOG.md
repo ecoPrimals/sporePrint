@@ -5,6 +5,34 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.14.0] — 2026-07-10 — Deep Debt: Module Split, A11y Contrast, Test Dedup (Wave 136b)
+
+**Structural hardening: module splits, contrast media queries, test harness deduplication.**
+
+### Added
+
+- **`nucleus_probe.rs`** — extracted live socket probing (health + riboCipher acceptance) from
+  `nucleus.rs` (811L → 670L + 142L). Smart split by domain: types/parse/validate stay,
+  probing moves out.
+- **`prefers-contrast: more`** CSS media query — high-contrast tokens for light and dark modes.
+  Addresses last a11y validation warning (was WCAG AAA stretch goal, now passes).
+- **`forced-colors: active`** CSS support — Windows High Contrast mode border fallbacks for
+  badges, entity refs, and certification lines.
+- **5 new `DiagnosticCollector` tests**: `into_result_ok`, `into_result_err`, `diagnostics_slice`,
+  `extend`, `default` — removes `#[allow(dead_code)]` from test-only collector.
+- **`tests/common/mod.rs`** — shared test harness helpers (`sporeprint_root`, `binary_path`,
+  `ensure_built`) deduplicated from integration, parity, and refresh_write test files.
+
+### Changed
+
+- **Removed 4 stale `#[allow(dead_code)]`** from NUCLEUS struct fields (`role`, `parallel_after`,
+  `node_id`, `peers`) — these are consumed by `structural_warnings()` since v3.13.0.
+- **Removed `#[allow(dead_code)]`** from `DiagnosticCollector` impl — all methods now exercised.
+- **Module count**: 33 → 34. **Test count**: 279 → 284 (252 unit + 29 integration + 3 refresh_write).
+- **Max file size**: 620L → 670L (nucleus.rs, down from 811L pre-split).
+
+---
+
 ## [3.13.0] — 2026-07-10 — NUCLEUS Structural Validation + Schema-Behavior Alignment (Wave 136a)
 
 **Resolved NUCLEUS schema-behavior drift. All parsed fields now validated.**
