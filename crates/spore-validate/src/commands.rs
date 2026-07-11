@@ -274,10 +274,8 @@ pub fn cas_push(
     println!("  elapsed:      {} ms", result.elapsed_ms);
 
     if result.errors > 0 {
-        #[allow(clippy::cast_possible_truncation)]
-        let count = result.errors as usize;
         Err(Error::ValidationFailed {
-            error_count: count,
+            error_count: result.errors,
             warning_count: 0,
         })
     } else {

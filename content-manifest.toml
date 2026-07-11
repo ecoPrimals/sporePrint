@@ -1,6 +1,6 @@
-generated = "2026-07-11T02:29:42Z"
-root_hash = "6027a117dbea604656558b2a467d7d9cdd2637a2450f75f2fdfbfeee71eaca84"
-page_count = 276
+generated = "2026-07-11T19:29:23Z"
+root_hash = "3282c62c9267665a9667cf3603e694e8f5b8f1f8e644646298065d81bdc217c6"
+page_count = 289
 
 [pages."_index.md"]
 blake3 = "d029a429a9a5c9b737c374f3bd1f5a674e8ee5abcadcb9702ed26887490c672c"
@@ -98,8 +98,8 @@ size_bytes = 5701
 title = "Sovereign CI — Build Infrastructure"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
-blake3 = "b501c5f34935b22e96a26c3bdc721932cd081145f4f0283c0561ff2265b43bb0"
-size_bytes = 10659
+blake3 = "4b94531236be99cb2e53a58093e32d0e5e98ee6358f7603b965bd84773c80ac5"
+size_bytes = 13359
 title = "Sovereign Deployment"
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
@@ -922,6 +922,11 @@ blake3 = "6afb864bde6ff10baceb5a4f2265e7cc2a5e45570bc3566a0fea5d877fbd64d8"
 size_bytes = 2272
 title = "Methodology"
 
+[pages."methodology/acknowledgments.md"]
+blake3 = "2133ae424701d0928bd53043906d1ddddaecb6275670d344199da57c983e1b6a"
+size_bytes = 7878
+title = "Acknowledgments — The Systems We Stand On"
+
 [pages."methodology/constrained_optimization_ai.md"]
 blake3 = "5477cfed51c8b28a19256c425b7c6d177aefb7e09329138a1ebe3dd4abaeadde"
 size_bytes = 23239
@@ -937,9 +942,69 @@ blake3 = "161baa4864c395f16f57720a3f93dc1377e81c63d31f9b3276ed44331e6b3f3c"
 size_bytes = 10598
 title = "Sharing the Pen"
 
+[pages."outreach/01_i_dont_know_rust.md"]
+blake3 = "3cbef10e269c9bfc8ebcbe6a2512b1982c34bdd74544d00a24978453e390cc40"
+size_bytes = 641
+title = "I Don't Know Rust"
+
+[pages."outreach/02_the_sovereign_lab.md"]
+blake3 = "6e6ec31f2d275d923853f06d1e6588dc68a73d31e4b80a465ce99bd2041f42da"
+size_bytes = 630
+title = "The Sovereign Lab"
+
+[pages."outreach/03_70_papers_one_stack.md"]
+blake3 = "eae94e767eb3468fe12cf971942a08ebec06d77eca6cd61346646d341e3527ab"
+size_bytes = 697
+title = "175+ Papers, One Stack"
+
+[pages."outreach/04_while_they_were_writing_manifestos.md"]
+blake3 = "e135dfdf986d26189c5793032e078047d8cff618fb48ce2e3d48d70c2e791507"
+size_bytes = 546
+title = "While They Were Writing Manifestos"
+
+[pages."outreach/04a_the_bread_thief_and_the_billionaire.md"]
+blake3 = "664171ef6e531d6c975f274441ade304164aa6fed70f87b8800307cd84a33828"
+size_bytes = 471
+title = "The Bread Thief and the Billionaire"
+
+[pages."outreach/04b_the_tollbooth_economy.md"]
+blake3 = "3ca731b5633641bf2fcf27e39e73eba8fa824d46903d5ad38a0fa759279cf345"
+size_bytes = 435
+title = "The Tollbooth Economy"
+
+[pages."outreach/04c_the_kingdom_builders.md"]
+blake3 = "dc893de0b92804276667018c7b7e7c6e9d5e7cf9a9daf58a1a2e828b1c9e792d"
+size_bytes = 453
+title = "The Kingdom Builders"
+
+[pages."outreach/04d_detachment_201.md"]
+blake3 = "dcb88769c294669c385d58eb11aa72fe0beb7d5c15813b22bd58023f68b4aa8d"
+size_bytes = 440
+title = "Detachment 201"
+
+[pages."outreach/_index.md"]
+blake3 = "245d950353e49a20dc43692db8172fea8526777557619d68f08ed7f413f46204"
+size_bytes = 3432
+title = "Outreach"
+
+[pages."outreach/gaming_invitation.md"]
+blake3 = "aaa85fd8a01c0680ee27ce1a83b842eb4ed6f94b4976dde4b1e096321efe179c"
+size_bytes = 771
+title = "An Invitation to Gaming Platforms"
+
+[pages."outreach/gpu_invitation.md"]
+blake3 = "02f77cd03564f5b56272e16a25bda19c28c6b8990d998851d1c32d38793cdce5"
+size_bytes = 884
+title = "An Invitation to GPU Manufacturers"
+
+[pages."outreach/neuromorphic_invitation.md"]
+blake3 = "0f30c9bb9bf50e7aac464dfaadf2371f81eb1d8e463b77391bf7ff4348bbde72"
+size_bytes = 916
+title = "An Invitation to Neuromorphic Hardware Manufacturers"
+
 [pages."philosophy/_index.md"]
-blake3 = "26b52cb1190257549dcd2b405c57fbb774c6dea4ceb549f5d6f9530673c68822"
-size_bytes = 4363
+blake3 = "933bb5ef6f816bea9846efe57f726ba1229147633cf04dab09dbb897051130fa"
+size_bytes = 4382
 title = "Philosophy"
 
 [pages."philosophy/bibliography.md"]
@@ -1188,8 +1253,8 @@ size_bytes = 10315
 title = "Nature Preserve — Applied NPU Science Across 7 Domains"
 
 [pages."science/28_primal_composition_methodology.md"]
-blake3 = "01af88dc43dcac0db0003475ad7951bd896c8ff2ed0c3ec5dcc23e25290d8764"
-size_bytes = 14452
+blake3 = "1c19c4324b19925b1975c78acdb19199c339225b9a2409ddcd46ec591d76ce2c"
+size_bytes = 14406
 title = "baseCamp 28 — Primal Composition as Scientific Methodology"
 
 [pages."science/29_heterogeneous_fabric_economics.md"]
@@ -1258,8 +1323,8 @@ size_bytes = 11323
 title = "Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure"
 
 [pages."technical/KNOME_TEACHING_BRIEF.md"]
-blake3 = "b2f85898321edfea6cd3eb1129a8c148f067f51f81c4d70c14272ab544479339"
-size_bytes = 11736
+blake3 = "681813684ca1e1daad49081dc81acd6e7505ffe21beaf5ebfcd24cdf83c17ba6"
+size_bytes = 11747
 title = "K-Nome: A Pedagogy for Real Science Pipelines"
 
 [pages."technical/MSU_ASSET_ACCELERATION.md"]
@@ -1283,13 +1348,13 @@ size_bytes = 19910
 title = "BarraCuda Scientific Compute Gaps"
 
 [pages."technical/neuromorphic_benchmark.md"]
-blake3 = "f86f9553ef35e0a08738a8cccf2f71feece7f1590c7acce1188211506b71e001"
-size_bytes = 13347
+blake3 = "86057f3edaeb6146aed829a2802eb1576c1a6b120a1681dcf7e6adf84f0f701d"
+size_bytes = 13359
 title = "Neuromorphic Benchmark Datasheet"
 
 [pages."thesis/00_front_matter.md"]
-blake3 = "60a6cd38f78a4f35598d9e7bd3447c112ed43c9ae66d47ed0d094703158acf1c"
-size_bytes = 6556
+blake3 = "e59733949a42e4103e148faa0105e37e850b81ee4852bde81fe6873bdae8e1d4"
+size_bytes = 6542
 title = "Front Matter"
 
 [pages."thesis/01_introduction.md"]
@@ -1358,8 +1423,8 @@ size_bytes = 12541
 title = "Chapter 13: Quantitative Evidence"
 
 [pages."thesis/14_biological_validation.md"]
-blake3 = "01c8d5681664dd567a25c81d4e2b4cd7185db08fc95131d43ac21e99bcb82571"
-size_bytes = 11704
+blake3 = "317d73776b98ec484a9edabde83dcc1e59e31e46c133765f4cce7b11202086d9"
+size_bytes = 11710
 title = "Chapter 14: Biological Validation"
 
 [pages."thesis/15_discussion.md"]
@@ -1373,8 +1438,8 @@ size_bytes = 10271
 title = "Chapter 16: Conclusion"
 
 [pages."thesis/_index.md"]
-blake3 = "ed5f2d93b543945b91faeaf4e5502622151d3dc5ed4e4e374f4face31b50854e"
-size_bytes = 7687
+blake3 = "dc2f90cec9e3bffca9ffa3d44cbbb86859b6915f82961959b71ea8d2b2d853d9"
+size_bytes = 7580
 title = "Thesis"
 
 [pages."thesis/references.md"]

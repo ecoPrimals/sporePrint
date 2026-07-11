@@ -149,7 +149,7 @@ impl From<crate::cas::CasEntry> for StoredEntry {
 pub struct PushResult {
     pub stored: u64,
     pub deduplicated: u64,
-    pub errors: u64,
+    pub errors: usize,
     pub error_messages: Vec<String>,
     pub total_bytes_transferred: u64,
     pub elapsed_ms: u64,
@@ -275,7 +275,7 @@ pub fn push_manifest(
     let t0 = Instant::now();
     let mut stored: u64 = 0;
     let mut deduplicated: u64 = 0;
-    let mut errors: u64 = 0;
+    let mut errors: usize = 0;
     let mut error_messages = Vec::new();
     let mut bytes_transferred: u64 = 0;
 

@@ -96,13 +96,13 @@ fn parse_checksums_str(text: &str) -> Result<DepotChecksums, Error> {
                 .ok_or_else(|| Error::Config(format!("{arch}/{primal} missing blake3 field")))?
                 .to_string();
 
-            let size = entry_table
+            let size_i64 = entry_table
                 .get("size")
                 .and_then(toml::Value::as_integer)
                 .ok_or_else(|| Error::Config(format!("{arch}/{primal} missing size field")))?;
 
-            #[allow(clippy::cast_sign_loss)]
-            let size = size as u64;
+            let size = u64::try_from(size_i64)
+                .map_err(|_| Error::Config(format!("{arch}/{primal} has negative size")))?;
 
             entries.insert(primal.clone(), BinaryEntry { blake3, size });
         }
