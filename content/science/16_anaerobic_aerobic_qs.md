@@ -16,7 +16,7 @@ springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspri
 **Date**: March 10, 2026
 **Literature Anchor**: Wei Liao (ADREC, MSU BAE)
 **Springs**: {{ entity(name="wetspring") }} (QS framework), {{ entity(name="healthspring") }} (anaerobic gut), {{ entity(name="airspring") }} (soil O₂ zones), {{ entity(name="neuralspring") }} (ML), {{ entity(name="groundspring") }} (spectral)
-**Bench Source**: MSUBI bioreactor experience (5 years), ADREC interview (2024)
+**Bench Source**: MSUBI bioreactor experience (5 years)
 
 ---
 
@@ -158,7 +158,7 @@ microbiology. The QS-disorder framework provides the physics.
   gut microbiome vs soil
 - Reproduce Yang et al. 2016 community-performance linkage
 
-### Stage 3: ADREC Collaboration (requires contact)
+### Stage 3: ADREC Collaboration
 
 - Apply the model to ADREC's digester community time-series data
 - Test whether W predicts digester stability/upset

@@ -202,7 +202,7 @@ cargo run --release --bin exp075_nlme      # NONMEM/Monolix/WinNonlin replacemen
 | Scale: 4K drugs × 18K diseases | We validate on 6 drugs × 6 diseases | Data pipeline, not algorithm — ChEMBL + NCATS Translator |
 | Curated disease pathway profiles | Use published pathways only | NCATS Translator API (same source as Every Cure) |
 | Clinical outcome integration | Published parameters only | MIMIC-IV, FAERS via openFDA |
-| Institutional backing / regulatory relationships | One developer | MSU Drug Discovery + ADDRC collaboration |
+| Institutional backing / regulatory relationships | One developer | MSU Drug Discovery published workflows |
 | Pre-built ontology mappings (MONDO, DO) | Manual mappings | MONDO/DO are open; integration work needed |
 
 ### Where to Find / Rebuild

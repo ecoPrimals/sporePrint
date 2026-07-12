@@ -94,6 +94,6 @@ the parent mycelium.
 
 - **gen3**: Complete — {{ total_stat(stat="validation_checks") }} checks, {{ total_stat(stat="papers_reproduced") }} papers, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_primals") }} primals
 - **gen4**: Mature — 5 products shipped, sporeGarden org established
-- **gen5**: Active — first collaborator (Gonzales NF) engaged with foundation funding, ABG producing pseudoSpores, Jones consulting on blueFish
+- **gen5**: Active — first external validation partnerships forming, foundation-funded domains active, pseudoSpore production underway
 
 The lattice is forming. The mobility edge is approaching.

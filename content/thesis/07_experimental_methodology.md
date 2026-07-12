@@ -81,16 +81,16 @@ Every check is implemented as an assertion in either a Python script or a Rust b
 | neuralSpring | PINN, DeepONet, LSTM, evo comp, spectral, population genomics, dose-response, coralForge (AlphaFold) | 3,200+ | 25+ papers + 5 WDM surrogates + coralForge, V82 | Dolson, Liu, Waters, Bazavov, Kachkovskiy, R. Anderson, Gonzales | syntheticChemistry/neuralSpring |
 | **Total** | **8 scientific domains** | **11,161+** | | **13 professors, 8 departments** | |
 
-## 7.5 The Faculty Connection
+## 7.5 Literature-Grounded Validation
 
-Each spring is grounded in published work by faculty the author has a documented connection to — professors, advisors, colleagues, or researchers whose work the springs reproduce. This is not a social nicety; it is methodological:
+Each spring validates against published work from peer-reviewed literature. Validation targets are defined by papers and datasets, not by personal endorsements or institutional relationships. This is not a social nicety; it is methodological:
 
-1. **Reproducibility**: Faculty papers with known authors provide a human contact if questions arise about methods or data.
-2. **Domain expertise**: The faculty connection provides domain context that pure literature search does not.
-3. **Validation path**: Faculty can evaluate the reproduction and confirm or correct the results.
-4. **PhD relevance**: Each spring is a potential chapter in a faculty member's research program, not an isolated computational exercise.
+1. **Reproducibility**: Published papers with documented methods provide fixed acceptance criteria that any independent implementation can verify.
+2. **Domain expertise**: The cited literature provides domain context — parameters, benchmarks, and expected results — that constrains what "correct" means.
+3. **Validation path**: A spring passes when quantitative checks match published results within stated tolerances; no personal confirmation is required.
+4. **PhD relevance**: Each spring demonstrates reproducibility of established science in a specific domain, not affiliation with any particular research group.
 
-As of March 2026, 13 professors across 8 departments and 3 institutions (MSU, Sandia, Carleton College) are mapped to the springs, with 60+ candidate papers identified for future reproduction. The March 2026 addition of the MSU Drug Discovery Program (Lisabeth, Neubig, Ellsworth) via Gonzales's referral extended the faculty network into pharmacology and high-throughput screening.
+As of March 2026, springs map to published work across multiple departments and institutions (MSU, Sandia, Carleton College), with 60+ candidate papers identified for future reproduction. MSU Drug Discovery Program publications extended validation targets into pharmacology and high-throughput screening.
 
 ## 7.6 Cost Model
 

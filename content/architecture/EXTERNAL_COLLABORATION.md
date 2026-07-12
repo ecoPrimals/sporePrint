@@ -93,18 +93,18 @@ Ecosystem validates published science (springs)
   → Ecosystem is stronger than before
 ```
 
-## Current Collaborators
+## Spring–Literature Connections
 
-| Collaborator | Domain | Products | Status |
-|-------------|--------|----------|--------|
-| Gonzales (NF) | Neurofibromatosis data mining | helixVision + healthSpring + initioChem | Engaged |
-| ABG (Alistaire) | CAZyme conformational FEL | initioChem | Producing |
-| Jones (PFAS) | Analytical chemistry ETL | blueFish | Active consulting |
-| Barrick (LTEE) | Microbial evolution | lithoSpore | Contacted |
+| Spring Domain | Published Literature Anchor | Products | Validation Basis |
+|---------------|----------------------------|----------|------------------|
+| healthSpring / NF | Neurofibromatosis & immunology literature | helixVision + healthSpring + initioChem | Reproduced publications + spring checks |
+| initioChem / enzymes | CAZyme conformational FEL literature | initioChem | Published FEL methods |
+| blueFish / analytical | PFAS detection & mass spectrometry literature | blueFish | Published spectral pipelines |
+| lithoSpore / evolution | Long-term evolution experiment literature | lithoSpore | Published LTEE models |
 
 ## Scientific Challenges
 
-Beyond individual collaborators, the ecosystem participates in structured
+Beyond individual spring domains, the ecosystem participates in structured
 benchmarks hosted by scientific foundations (Synapse/DREAM challenges):
 
 - **Docker-based submission** maps to pseudoSpore pattern

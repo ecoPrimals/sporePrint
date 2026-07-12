@@ -390,14 +390,12 @@ complete pipeline from computational prediction to experimental validation.
 - iPSC-derived skin models across species (canine, feline, human)
 - Plate-based screening infrastructure
 - Drug discovery pipeline and regulatory expertise
-- 18 years of Zoetis data and institutional knowledge
 
 **MSU Drug Discovery — ADDRC (Erika Lisabeth, Director):**
 - High-throughput screening facility in the same department (Pharm & Tox)
 - 8,000+ compound library, liquid-handling robots, plate readers
 - HTS assay development and drug repurposing expertise
 - GREENScreen informatics for compound management and data analysis
-- Gonzales referred contact (March 2026 interview)
 
 **MSU Drug Discovery — Additional (Richard Neubig, Edmund Ellsworth):**
 - Neubig: Rho/MRTF/SRF inhibitors for skin fibrosis and melanoma —
@@ -421,14 +419,6 @@ Anderson-augmented MATRIX scores (nS-605, 6 candidates scored)
     → Medicinal chemistry optimization (Ellsworth)
     → Pre-clinical development
 ```
-
-**As RA III in Gonzales Lab:**
-- Dual contribution: bench work (molecular biology, cell culture, assays)
-  + computational (Anderson modeling, data analysis, ML)
-- Bridge between Gonzales lab (biology) and ADDRC (screening)
-- Build internal Spring experiments from real lab data
-- First opportunity to test Anderson predictions in immunological tissue
-- Data science analytics for HTS data coming from ADDRC collaborations
 
 ---
 
@@ -464,5 +454,3 @@ Anderson-augmented MATRIX scores (nS-605, 6 candidates scored)
 **For a Spring developer**: §4 (integration plan) → §2 (the mapping) → §5 (cross-paper connections) → §1 (papers to reproduce)
 
 **For a drug discovery researcher**: §3 (Fajgenbaum bridge) → §2.3 (AD disease cycle) → §6 (collaboration potential) → §1 (Gonzales catalog)
-
-**For the interview**: `focus/gonzales_anderson_fajgenbaum_bridge.md` (talking points) → §2.3 (the cycle) → §3.3 (repurposing table)

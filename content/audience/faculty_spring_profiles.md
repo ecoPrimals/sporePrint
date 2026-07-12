@@ -10,7 +10,6 @@ springs = ["hotspring", "wetspring", "airspring", "healthspring", "groundspring"
 
 {{ maturity(level="architectural") }}
 
-
 **Status**: Working draft  
 **Purpose**: Map known faculty to ecoPrimals springs, identify candidate papers for reproduction  
 **Last Updated**: February 26, 2026
@@ -20,10 +19,9 @@ springs = ["hotspring", "wetspring", "airspring", "healthspring", "groundspring"
 ## How This Document Works
 
 Each professor is profiled with:
-1. **Connection** — how we know them and what spring(s) their work maps to
-2. **Key Papers** — candidate publications for Phase A reproduction in the springs
-3. **BarraCuda Relevance** — which GPU primitives their work exercises
-4. **Status** — what has already been reproduced vs. what is candidate work
+1. **Key Papers** — candidate publications for Phase A reproduction in the springs
+2. **BarraCuda Relevance** — which GPU primitives their work exercises
+3. **Status** — what has already been reproduced vs. what is candidate work
 
 ---
 
@@ -32,11 +30,8 @@ Each professor is profiled with:
 ### Michael Murillo
 **Associate Professor, CMSE, MSU**  
 https://engineering.msu.edu/faculty/michael-murillo  
-**Connection**: MSDS professor (master's program)
 
 **Spring Status**: ALL PHASES COMPLETE — 22 papers, ~700 checks, 39/39 suites. Exp 022 (live NPU, 32⁴ production) finished Feb 27.
-
-**Coffee meeting scheduled: Tuesday March 3, 2026.** Technical summary prepared: [hotSpring validation summary](@/lab/hotspring-validation-summary.md).
 
 **Reproduced Papers (Murillo Group)**:
 | Paper | Status | Checks |
@@ -61,7 +56,6 @@ https://engineering.msu.edu/faculty/michael-murillo
 ### Younsuk Dong
 **Assistant Professor, Biosystems & Agricultural Engineering, MSU**  
 https://www.egr.msu.edu/bae/water/irrigation/  
-**Connection**: New lab job (2026)
 
 **Spring Status**: 3,123+ total checks (594 Python + 491 Rust + 570 validation + 1393 atlas + 75 cross-val), 22 experiments, 27 binaries
 
@@ -87,7 +81,6 @@ https://www.egr.msu.edu/bae/water/irrigation/
 
 ### Jesse Cahill
 **Senior MTS, Sandia National Laboratories (Bioscience)**  
-**Connection**: Time at Sandia
 
 **Spring Area**: Track 1 — Life Science (algae ponds, phage biocontrol)
 
@@ -102,7 +95,6 @@ https://www.egr.msu.edu/bae/water/irrigation/
 
 ### Chuck Smallwood
 **Principal MTS, Sandia National Laboratories (Bioscience)**  
-**Connection**: Time at Sandia
 
 **Spring Area**: Track 1 — Life Science (metagenomics, microbial community monitoring)
 
@@ -117,7 +109,6 @@ https://www.egr.msu.edu/bae/water/irrigation/
 ### A. Daniel Jones
 **Professor, Biochemistry & Molecular Biology / Chemistry, MSU**  
 https://www.canr.msu.edu/news/center-for-pfas-research-faculty-spotlight-a-daniel-jones  
-**Connection**: PFAS job
 
 **Spring Area**: Track 2 — PFAS / blueFish
 
@@ -134,8 +125,6 @@ https://www.canr.msu.edu/news/center-for-pfas-research-faculty-spotlight-a-danie
 **Professor, Microbiology, Genetics & Immunology, MSU**  
 https://directory.natsci.msu.edu/directory/Profiles/Person/101708  
 https://mgi.natsci.msu.edu/labs/waters-lab/  
-watersc3@msu.edu  
-**Connection**: Undergraduate professor
 
 **Spring Area**: wetSpring Track 1 — Microbial signaling, biofilm dynamics, quorum sensing
 
@@ -168,8 +157,6 @@ watersc3@msu.edu
 ### Emily Dolson
 **Assistant Professor, Computer Science & Engineering, MSU**  
 https://engineering.msu.edu/directory/faculty/dolsonem  
-dolsonem@msu.edu  
-**Connection**: Master's program professor  
 **Core faculty**: Ecology, Evolution, and Behavior program
 
 **Key Research Themes**:
@@ -198,8 +185,6 @@ dolsonem@msu.edu
 ### Kevin Liu
 **Associate Professor, CMSE, MSU**  
 https://engineering.msu.edu/directory/faculty/kjl  
-kjl@msu.edu  
-**Connection**: Master's program professor  
 **Faculty in**: Genetics & Genome Sciences, Ecology, Evolution & Behavior
 
 **Key Research Themes**:
@@ -230,8 +215,6 @@ kjl@msu.edu
 ### Alexei Bazavov
 **Associate Professor, CMSE & Physics & Astronomy, MSU**  
 https://directory.natsci.msu.edu/directory/Profiles/Person/101033  
-bazavov@msu.edu  
-**Connection**: Master's program professor  
 **Affiliations**: CERN Theory Division, Fermilab Lattice, HPQCD, MILC Collaborations
 
 **Key Research Themes**:
@@ -267,8 +250,6 @@ bazavov@msu.edu
 ### Ilya Kachkovskiy
 **Assistant Professor, Department of Mathematics, MSU**  
 https://users.math.msu.edu/users/ikachkov/  
-ikachkov@msu.edu  
-**Connection**: Sold the NucBox M6 on Facebook Marketplace; brief GPU conversation  
 **Previously at**: Institute for Advanced Study, UC Irvine  
 **NSF funded**: DMS-1758326 "Spectral theory of periodic and quasiperiodic quantum systems"
 
@@ -306,8 +287,6 @@ ikachkov@msu.edu
 ### Rika Anderson
 **Associate Professor, Department of Biology, Carleton College**  
 https://www.carleton.edu/directory/randerson/  
-randerson@carleton.edu  
-**Connection**: Found via literature search — her work on *Sulfolobus* in Yellowstone hot springs is the living experimental corollary to the Taq polymerase argument in [Constrained Evolution Formal](@/methodology/CONSTRAINED_EVOLUTION_FORMAL.md)  
 **Previously at**: University of Washington (MS, PhD); Virtual Planetary Laboratory (NASA)
 
 **Key Research Themes**:
@@ -343,7 +322,6 @@ randerson@carleton.edu
 ### Erika Lisabeth
 **Director, Assay Development and Drug Repurposing Core (ADDRC), Pharmacology & Toxicology, MSU**
 https://drugdiscovery.msu.edu/about-us/people/erika-lisabeth-ph-d.aspx
-**Connection**: Referred by Gonzales (March 2026 interview)
 
 **Key Research Themes**:
 1. **HTS assay development** — converting bench-top assays to high-throughput screening format
@@ -373,7 +351,6 @@ https://drugdiscovery.msu.edu/about-us/people/erika-lisabeth-ph-d.aspx
 ### Richard Neubig
 **Professor Emeritus, Director Drug Discovery Program, Pharmacology & Toxicology, MSU**
 https://phmtox.msu.edu/people/rneubig
-**Connection**: MSU Drug Discovery leadership; referred via Gonzales (March 2026)
 
 **Key Research Themes**:
 1. **GPCR signaling** — G-protein coupled receptor pharmacology (>25% of current drug targets)
@@ -398,7 +375,6 @@ https://phmtox.msu.edu/people/rneubig
 ### Edmund Ellsworth
 **Interim Director Drug Discovery, Director Medicinal Chemistry, MSU**
 https://drugdiscovery.msu.edu/about-us/people/index.aspx
-**Connection**: MSU Drug Discovery leadership
 
 **Spring Relevance**: Downstream of HTS — medicinal chemistry optimization after ADDRC screening identifies hits. Not a direct spring reproduction target yet, but the endpoint of the computation → screening → chemistry pipeline.
 

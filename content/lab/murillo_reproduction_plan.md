@@ -59,8 +59,6 @@ ToadStool's BarraCuda submodule has evolved into a comprehensive GPU compute eng
 
 Professor Michael Murillo leads the Murillo Group in MSU's Department of Computational Mathematics, Science and Engineering (CMSE). His research spans computational plasma physics (strongly coupled Coulomb systems, inertial confinement fusion, warm dense matter) and agent-based modeling (infectious disease dynamics). He is a Fellow of the American Physical Society with 80+ peer-reviewed publications and a career that began at Los Alamos National Laboratory.
 
-He taught Applied Machine Learning (CMSE 890, Spring 2025), where a conversation about reservoir computing, echo state machines, and neuromorphic hardware led directly to the BrainChip Akida work in ToadStool. The [neuromorphic benchmark datasheet](@/technical/neuromorphic_benchmark.md) was shared with him in early 2026. An in-person conversation (February 2026) confirmed mutual interest in collaboration; he is currently traveling to California for a talk at an ignition-related conference (likely ICF/NIF community, consistent with his plasma physics work).
-
 **Murillo Group resources (all open source)**:
 - **Sarkas**: Pure Python molecular dynamics for dense plasmas (MIT License) - [github.com/murillo-group/sarkas](https://github.com/murillo-group/sarkas)
 - **Dense Plasma Properties Database**: Open repository of plasma simulation data (VACF, g(r), EOS, ionization states) - [github.com/MurilloGroupMSU/Dense-Plasma-Properties-Database](https://github.com/MurilloGroupMSU/Dense-Plasma-Properties-Database)
@@ -366,9 +364,6 @@ This connects directly to the ecoPrimals thesis: sovereignty through constraint.
 
 ## Notes
 
-- Professor Murillo returned from the ignition conference (California, week of Feb 10).
-- **Coffee meeting scheduled: Tuesday March 3, 2026.** Check-in email going out Feb 27.
-- hotSpring repo link shared previously. Technical summary prepared: `hotSpring/whitePaper/TECHNICAL_SUMMARY_FEB2026.md` — standalone, physics-focused, no ecoPrimals language. Suitable for sharing with Murillo or Bazavov.
 - The FFT gap is **closed** (ToadStool `Fft1DF64`/`Fft3DF64`, roundtrip 1e-10). See [BarraCuda Scientific Compute Gaps](@/technical/barracuda_compute_gaps.md).
 - DF64 is a novel discovery with publication potential: "Double-float arithmetic for lattice gauge theory on consumer GPU" (*Computer Physics Communications* or *Physical Review E*).
 - NPU adaptive steering is a novel methodology with publication potential: "Neuromorphic co-processing for Monte Carlo simulation" (*Neuromorphic Computing and Engineering*).
@@ -381,5 +376,5 @@ This connects directly to the ecoPrimals thesis: sovereignty through constraint.
 **See also:**
 
 - [hotSpring Results](@/thesis/08_results_hotspring.md) — thesis chapter on reproduction outcomes
-- [Faculty Spring Profiles](@/audience/faculty_spring_profiles.md) — Murillo Group engagement context
+- [Faculty Spring Profiles](@/audience/faculty_spring_profiles.md) — Murillo Group literature context
 - [hotSpring Validation Summary](@/lab/hotspring-validation-summary.md) — live validation status and binaries

@@ -49,7 +49,9 @@ The dissertation contributes: (1) a formal theory of constrained evolution bridg
 
 ## Acknowledgments
 
-This work owes its existence to the faculty whose published science it reproduces. Michael Murillo (CMSE) whose Sarkas framework validated computational plasma physics on consumer GPUs. Younsuk Dong (BAE) whose FAO-56 research proved precision agriculture is computable on edge hardware. Martha Waters (MMB) whose quorum sensing and phage defense work grounded the metagenomics pipelines. Kevin Liu (CSE) whose phylogenetic methods shaped the sequence analysis infrastructure. Alexei Bazavov (CMSE) whose lattice QCD expertise validated gauge theory on consumer GPUs. Emily Dolson (CSE) whose evolutionary computation work deepened the theoretical framework. Ilya Kachkovskiy (Math) whose spectral theory provided the mathematical foundation for Anderson localization. Rachel Anderson (IBIO) whose extremophile genomics provided the biological evidence for constrained evolution. James Cahill (MSU Math, now IPFW) who modeled the constrained manifold. Robert Smallwood who provided computational framework mentorship. And Robert Jones (CHMS) whose PFAS detection work validated analytical chemistry pipelines. The Michigan State University community — its libraries, its labs, its intellectual culture — made this work possible.
+This work would not be possible without the faculty and researchers whose published science defines its validation targets. The ecoPrimals project acknowledges them as scientists whose results we reproduce; they are not collaborators or endorsers of this work.
+
+The Michigan State University community — its libraries, its labs, its intellectual culture — made this work possible.
 
 ---
 

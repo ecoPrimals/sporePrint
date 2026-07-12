@@ -70,15 +70,13 @@ The ecoPrimals faculty network was not built by citing papers. It was built by r
 | R. Anderson | 6 papers on extremophile evolution | 133+ checks, metagenomics + pangenomics |
 | Jones | PFAS detection, mass spec pipelines | 40+ checks, spectral matching (926× GPU speedup) |
 
-When you've reproduced a professor's life work on consumer hardware and the results pass, the PhD application is a formality. The named faculty want to work with you because you've already demonstrated you can extend their research program — not because you wrote a polite letter.
+When you've reproduced a professor's life work on consumer hardware and the results pass, the PhD application is a formality — you've already demonstrated you can extend their research program, not merely written a polite letter.
 
 ### Instead of Journal Submission, Publish Open
 
 The traditional publication strategy: submit to a journal, wait for anonymous reviewers, revise, wait again, pay APC or accept paywall, receive impact factor.
 
-The alternative: publish the code, the data, and the results under AGPL-3.0. Invite named reviewers to write public assessments, also open. The review is auditable, the reviewer is accountable, and anyone can verify the science by running the code.
-
-Murillo doesn't review for journals anymore. But he might review an open project that reproduces his own published work — because the review has value to him (someone extended his science) rather than value to a publisher (someone's paper gets an impact factor).
+The alternative: publish the code, the data, and the results under AGPL-3.0. Invite domain experts to write public assessments, also open. The review is auditable, the reviewer is accountable, and anyone can verify the science by running the code. Established researchers may decline journal review requests but engage with open projects that reproduce their own published work — because the review has value to the science rather than to a publisher's impact factor.
 
 ### Instead of HPC Allocation, Use What's Already There
 
@@ -106,9 +104,9 @@ The goal is not to reject institutions. The goal is to engage with them from a p
 
 2. **Publish primals when stable** — ToadStool, BarraCuda, and all primals go public. The infrastructure is the proof that the methodology works.
 
-3. **Invite named faculty review** — Murillo reviews hotSpring. Bazavov reviews lattice QCD. Liu reviews phylogenetics. Waters reviews QS models. Their reviews are public, attached to the artifact, auditable.
+3. **Invite domain-expert review** — specialists in each reproduced field assess the corresponding spring. Reviews are public, attached to the artifact, auditable.
 
-4. **Apply for PhD as formality** — the named faculty already know the work because they've reviewed it (or their own papers have been reproduced by it). The application is "here's the repo, here's your paper running on a $600 GPU, here's the thesis draft."
+4. **Apply for PhD as formality** — the evidence already speaks for itself: reproduced papers run on consumer hardware, reviews are public. The application is the repo, the validation results, and the thesis draft.
 
 5. **Use the degree strategically** — reach the quality standards, defend, and then work sovereign. The degree opens institutional doors. The science opens everything else.
 
