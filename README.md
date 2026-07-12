@@ -55,7 +55,7 @@ cargo run -- certify --emit              # guideStone manifest → static/certif
 sporePrint/
 ├── config.toml          # Zola config + entity_registry (66 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
-├── content/             # 289 Markdown pages with TOML front matter
+├── content/             # 270 published pages with TOML front matter
 │   ├── science/         # 33 baseCamp companion papers
 │   ├── architecture/    # 22 pages: catalogs, inventory, topology, deployment, certify
 │   ├── lab/             # 133 pages: spring hubs, notebooks, spore gallery
@@ -171,8 +171,8 @@ Your content here...
 
 ## Evolution Roadmap
 
-### Current — Wave 136b (July 11, 2026)
-- 289 content pages across 17 sections, 66 entities, 284 tests, 34 modules
+### Current — Wave 137b (July 12, 2026)
+- 270 published pages across 18 sections, 66 entities, 290 tests, 34 modules
 - Edition 2024, Rust 1.85+, zero unsafe, zero C deps, 7 justified `#[allow]`
 - NUCLEUS validation + depot integrity + riboCipher transport signal
 - Cast safety evolution: `u64::try_from` replaces `cast_sign_loss`, `PushResult.errors` evolved to `usize`

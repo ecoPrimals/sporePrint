@@ -5,6 +5,34 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.19.0] — 2026-07-12 — Deep Debt: Scaffold Maturity, Path Scrub, Metric Sync (Wave 137b)
+
+**Resolve validator warnings, remove PII-adjacent hardcoded paths from rendered
+notebooks, add the `scaffold` maturity level, and sync all page counts and
+metrics across the codebase.**
+
+### Added
+
+- **`Scaffold` maturity level** — new enum variant in `MaturityLevel`, Tera
+  shortcode, and SCSS badges. Clears 11 validator warnings from outreach pages.
+
+### Fixed
+
+- **Notebook path leak** — 11 rendered notebook `.md` files contained hardcoded
+  `/home/eastgate/Development/ecoPrimals/springs/airSpring` paths. Replaced with
+  `os.environ.get('AIRSPRING_ROOT', '../airSpring')`. Zero hardcoded local paths
+  remain in content.
+- **`sample.md` test fixture** excluded from published site via `draft = true`.
+- **Page count drift** — config.toml (`259` → `270`), README, specs/CONTEXT,
+  specs/CONTENT_MAP, specs/RUST_TOOLING_VISION, llms.txt, site-index all synced
+  to 270 published pages / 18 sections.
+- **`last_push` date** — config.toml updated from `2026-06-19` to `2026-07-12`.
+- **Test count** — corrected from 284 to 290 (includes 6 parity ignored).
+- **Certification manifest** + **entity graph** regenerated from current state.
+- **64 entity metrics** refreshed from upstream repos via `spore-validate refresh`.
+
+---
+
 ## [3.18.0] — 2026-07-12 — AI Progressive Richness: Cross-Domain Topology (Wave 137b)
 
 **Give AI agents typed cross-domain navigation so philosophy, thesis, science,

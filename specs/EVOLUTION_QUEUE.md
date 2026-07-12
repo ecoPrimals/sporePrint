@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 11, 2026 (Wave 137a — AI accessibility: all navigational tables → lists, universal hasPart JSON-LD)
+Last reviewed: July 12, 2026 (Wave 137b — scaffold maturity, notebook path cleanup, page count sync)
 
 ---
 
@@ -136,7 +136,7 @@ Last reviewed: July 11, 2026 (Wave 137a — AI accessibility: all navigational t
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality at 259 pages
+- [ ] Evaluate elasticlunr search quality at 270 pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 

@@ -243,6 +243,7 @@ pub enum MaturityLevel {
     Certified,
     Architectural,
     Planned,
+    Scaffold,
     Unaudited,
 }
 
@@ -257,6 +258,7 @@ impl MaturityLevel {
             Self::Certified => "maturity-certified",
             Self::Architectural => "maturity-architectural",
             Self::Planned => "maturity-planned",
+            Self::Scaffold => "maturity-scaffold",
             Self::Unaudited => "maturity-unaudited",
         }
     }
@@ -270,6 +272,7 @@ impl MaturityLevel {
             Self::Certified => "Certified",
             Self::Architectural => "Architectural",
             Self::Planned => "Planned",
+            Self::Scaffold => "Scaffold",
             Self::Unaudited => "Unaudited",
         }
     }
@@ -283,6 +286,7 @@ impl MaturityLevel {
             Self::Certified,
             Self::Architectural,
             Self::Planned,
+            Self::Scaffold,
             Self::Unaudited,
         ]
     }

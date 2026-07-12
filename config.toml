@@ -41,7 +41,7 @@ org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
 
-last_push = "2026-06-19"
+last_push = "2026-07-12"
 shadow_status = "sovereign-primary"
 deploy_locations = ["golgiBody-ext", "github-pages"]
 sovereign_url = "https://primals.eco"
@@ -1017,6 +1017,6 @@ primal_count = 15
 total_primals = 15
 spring_count = 8
 total_springs = 8
-content_pages = 259
-measured_date = "2026-07-09"
+content_pages = 270
+measured_date = "2026-07-12"
 # All entity metrics refreshed via spore-validate refresh on this date

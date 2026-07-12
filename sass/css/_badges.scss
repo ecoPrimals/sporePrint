@@ -54,6 +54,7 @@
 .maturity-certified     { background: #ede0f7; color: #4a148c; border-color: #c5a3e8; }
 .maturity-architectural { background: #fde8d0; color: #7c3a00; border-color: #f0b87a; }
 .maturity-planned       { background: #e8e9ed; color: #4c4f69; border-color: #b0b3c0; }
+.maturity-scaffold      { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
 .maturity-unaudited     { background: #fce4ec; color: #7a1a2e; border-color: #e8909e; }
 
 @media (prefers-color-scheme: dark) {
@@ -62,5 +63,6 @@
   .maturity-certified     { background: #cba6f722; color: #cba6f7; border-color: #cba6f744; }
   .maturity-architectural { background: #fab38722; color: #fab387; border-color: #fab38744; }
   .maturity-planned       { background: #9399b222; color: #9399b2; border-color: #9399b244; }
+  .maturity-scaffold      { background: #fab38722; color: #fab387; border-color: #fab38744; }
   .maturity-unaudited     { background: #f38ba822; color: #f38ba8; border-color: #f38ba844; }
 }

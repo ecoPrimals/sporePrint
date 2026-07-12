@@ -41,7 +41,7 @@ def _find_repo_root() -> Path:
         if (p / "control" / "hamon").is_dir():
             return p
         p = p.parent
-    return Path('/home/eastgate/Development/ecoPrimals/springs/airSpring')
+    return Path(os.environ.get('AIRSPRING_ROOT', '../airSpring'))
 
 REPO = _find_repo_root()
 BENCHMARK_PATH = REPO / "control" / "hamon" / "benchmark_hamon.json"

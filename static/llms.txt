@@ -7,7 +7,7 @@
 ## What This Site Is
 
 primals.eco is the public-facing science site for the ecoPrimals ecosystem.
-289 pages across 17 sections. Every quantitative claim is backed by executable
+270 pages across 18 sections. Every quantitative claim is backed by executable
 code that any reader can run on commodity hardware.
 
 ## Contact
@@ -19,7 +19,7 @@ code that any reader can run on commodity hardware.
 
 ## Site Structure
 
-The site has 17 sections. Each section index lists all child pages.
+The site has 18 sections. Each section index lists all child pages.
 Fetch the section index to discover every page in that section.
 
 ### Science (33 papers)

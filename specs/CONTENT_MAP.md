@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: July 11, 2026
+Last reviewed: July 12, 2026
 
 ## Sections
 
