@@ -62,7 +62,7 @@ This work sits at the intersection of four fields:
 
 - **Scientific computing**: GPU compute democratization, vendor lock-in and its consequences, f64 precision requirements for real science, and the reproducibility crisis (Ince et al., 2012; Mesnard & Barba, 2017).
 
-The author's background spans microbiology and data science — bench experience in high-throughput sequencing, fermentation, and bacterial genomics alongside coursework in optimization, machine learning, and statistics — and is not incidental. The constrained evolution methodology was not borrowed from biology as a metaphor. It was recognized by someone who had worked with microbial populations under selective pressure and saw the same dynamics in AI-assisted code generation within a strong type system.
+The author's background — BS Microbiology with bench experience in high-throughput sequencing, fermentation, and bacterial genomics; MS Data Science with coursework in optimization, machine learning, and statistics — is not incidental. The constrained evolution methodology was not borrowed from biology as a metaphor. It was recognized by someone who had worked with microbial populations under selective pressure and saw the same dynamics in AI-assisted code generation within a strong type system.
 
 ## 1.6 Organization
 

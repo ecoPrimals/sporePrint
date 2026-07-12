@@ -11,13 +11,13 @@ date = 2026-07-09
 
 **A Dissertation**
 
-Submitted to the ecoPrimals project  
+Submitted to the ecoPrimals project as working dissertation  
 in partial fulfillment of the requirements  
 for the degree of
 
 **Doctor of Philosophy**
 
-Interdisciplinary science and engineering
+Computational Mathematics, Science and Engineering — with interdisciplinary engagement from Microbiology and Molecular Genetics
 
 2026 [projected]
 
@@ -25,7 +25,7 @@ Interdisciplinary science and engineering
 
 **The ecoPrimals project**
 
-Background: microbiology and data science
+Background: BS Microbiology, MS Data Science
 
 ---
 
@@ -51,7 +51,7 @@ The dissertation contributes: (1) a formal theory of constrained evolution bridg
 
 This work would not be possible without the faculty and researchers whose published science defines its validation targets. The ecoPrimals project acknowledges them as scientists whose results we reproduce; they are not collaborators or endorsers of this work.
 
-The broader research community — its libraries, its labs, its intellectual culture — made this work possible.
+The university community — its libraries, its labs, its intellectual culture — made this work possible.
 
 ---
 

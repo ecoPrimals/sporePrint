@@ -51,9 +51,11 @@ and mergeable across instances.
 
 ## 1. Origin: Bingo at a Retirement Home
 
-BingoCube emerged from observing how simple games create genuine connection
-across generations. During a retirement-home game with approximately 30 boards
-in play, the question was whether the caller knew which boards had won.
+The idea came from watching bingo at a retirement home. The author's partner
+volunteers there with their Rottweiler — a dog that insists on receiving pets
+from every resident. On holidays, the author brings the second Rottweiler
+(more skittish, but warming up). During a game with approximately 30 boards
+in play, the author asked the caller whether she knew which boards had won.
 
 She said no.
 

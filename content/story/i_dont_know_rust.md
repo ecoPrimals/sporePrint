@@ -32,7 +32,7 @@ springs = []
 I chose Rust because I don't know it. That's not a paradox — it's the
 design.
 
-My background is bench science and data science. My programming history is Python, R,
+My background is bench microbiology — BSL2 fermentation, 16S pipelines, spore trapping — and data science. My programming history is Python, R,
 SQL, and some Visual Basic for instrument control. Nothing systems-level.
 I cannot read Rust syntax fluently. I cannot debug a borrow checker error
 by hand. I have never opened a Rust file and edited it directly.
