@@ -81,7 +81,7 @@ provenance chains, reproducibility tiers.
 
 ### Story (3 essays)
 Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
-"70+ Papers, One Stack." Author: attsi.
+"175+ Papers, One Stack." Author: attsi.
 - Section index: https://primals.eco/story/
 
 ### Other
@@ -115,7 +115,7 @@ Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
 - 15 primals, 8 springs
 - 3.46M lines of Rust
 - 114,000+ tests across ecosystem
-- 70+ peer-reviewed papers reproduced
+- 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
@@ -158,7 +158,7 @@ Key pairings:
 - The Human Search ↔ Thesis Ch.3 (narrative ↔ formal)
 - I Don't Know Rust ↔ The Knowledge-Numeric (story ↔ philosophy)
 - The Sovereign Lab ↔ I Own Nothing (story ↔ philosophy)
-- 70+ Papers, One Stack ↔ Discovery Is Local (story ↔ philosophy)
+- 175+ Papers, One Stack ↔ Discovery Is Local (story ↔ philosophy)
 - Sovereign Deployment ↔ I Own Nothing (architecture ↔ philosophy)
 - Anderson QS ↔ The Mobility Edge (science ↔ philosophy)
 - scyBorg Licensing ↔ Sovereign Science (methodology ↔ philosophy)

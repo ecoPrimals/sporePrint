@@ -29,6 +29,23 @@ repo, run the binary, verify the output.
 This document provides honest parity assessments: what we match, what we exceed,
 what proprietary tools still do better, and where to find everything.
 
+<details>
+<summary><strong>Summary for AI agents / text-only clients</strong> (expand for full domain breakdown)</summary>
+
+This page assesses ecoPrimals parity against proprietary tools across 8 domains.
+The detailed comparison data is in tables below. Here is a text summary:
+
+1. **Bioinformatics** (vs Galaxy/QIIME2/mothur): wetSpring — full parity on FASTQ, DADA2, UniFrac, diversity, PCoA, alignment, HMM, spectral matching. Exceeds on GPU acceleration (150+ primitives). Novel: Anderson localization for community structure. Gaps: no GUI, no plugin ecosystem.
+2. **Pharmacometrics** (vs NONMEM/Monolix/WinNonlin): healthSpring — full parity on Hill, 1/2-compartment PK, population Monte Carlo, NCA, NLME diagnostics. Near parity on FOCE/SAEM. Exceeds on GPU population MC (207 M/s). Gaps: synthetic data only, no FDA submission format.
+3. **Drug Repurposing** (vs Every Cure MATRIX/ROBOKOP): wetSpring Track 3 + neuralSpring — full parity on pathway scoring, NMF factorization, TransE embeddings. Novel: Anderson geometry-aware drug scoring. Gaps: scale (6 drugs × 6 diseases vs 4K × 18K).
+4. **Analytical Chemistry** (vs MassHunter/Chromeleon/MZmine): wetSpring Track 2 — full parity on mzML/mzXML/JCAMP-DX, EIC, peak detection, KMD, PFAS screening. Exceeds on spectral cosine (1,077× speedup). Gaps: no instrument control, mzML/mzXML only.
+5. **Biosignal Processing** (vs LabChart/MATLAB/MNE): healthSpring Track 3 — full parity on Pan-Tompkins QRS, HRV, SpO2, arrhythmia classification, WFDB parsing. Partial on EDA decomposition.
+6. **Provenance & Data Integrity** (vs LabArchives/Benchling/LIMS): SCYBORG Provenance Trio + BearDog — exceeds on cryptographic DAG, Ed25519 signatures, fraud detection. Novel: consent-gated access (DID-based). Gaps: no physical inventory, no barcode scanning.
+7. **GPU Scientific Computing** (vs CUDA/Kokkos/MATLAB): barraCuda + toadStool + coralReef — full f64 parity, vendor-agnostic (WebGPU), sovereign shader compiler. Novel: NPU support (BrainChip AKD1000). Gaps: CUDA raw throughput, multi-GPU, tensor cores.
+8. **Aggregate**: 175+ papers reproduced, 27,000+ tests, 15,334+ validation checks, 806+ WGSL shaders, pure Rust, zero unsafe code, ~$15K consumer hardware.
+
+</details>
+
 ---
 
 ## 1. Bioinformatics Pipeline (vs Galaxy / QIIME2 / mothur)
@@ -334,7 +351,7 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 | **Primals** (infrastructure) | 14 ({{ entity(name="barracuda") }}, toadStool, {{ entity(name="coralreef") }}, {{ entity(name="biomeos") }}, {{ entity(name="beardog") }}, {{ entity(name="nestgate") }}, {{ entity(name="songbird") }}, {{ entity(name="sweetgrass") }}, {{ entity(name="rhizocrypt") }}, {{ entity(name="loamspine") }}, {{ entity(name="petaltongue") }}, {{ entity(name="squirrel") }}, {{ entity(name="bingocube") }}, FIELDMOUSE) |
 | **Total tests** | 27,000+ across all springs |
 | **Total validation checks** | 15,334+ |
-| **Papers reproduced** | 70+ (63 {{ entity(name="wetspring") }} + {{ entity(name="healthspring") }} + {{ entity(name="neuralspring") }} + {{ entity(name="hotspring") }} + others) |
+| **Papers reproduced** | 175+ (across {{ entity(name="wetspring") }} + {{ entity(name="healthspring") }} + {{ entity(name="neuralspring") }} + {{ entity(name="hotspring") }} + others) |
 | **WGSL shaders ({{ entity(name="barracuda") }})** | 806+ |
 | **Languages** | Pure Rust (zero C/C++/Fortran in application code) |
 | **Unsafe code** | Zero (`#![forbid(unsafe_code)]` in all spring lib crates) |
