@@ -9,7 +9,7 @@ template = "page.html"
 
 **ecoPrimals** is a sovereign scientific computing project. For questions about the research, collaboration opportunities, or compute access:
 
-- **Email**: [ops@primals.eco](mailto:ops@primals.eco)
+- **Email**: [eco.primal@pm.me](mailto:eco.primal@pm.me)
 - **GitHub**: [github.com/ecoPrimals](https://github.com/ecoPrimals)
 - **Forgejo**: [git.primals.eco](https://git.primals.eco)
 
