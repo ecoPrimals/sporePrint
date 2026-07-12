@@ -89,7 +89,7 @@ sporePrint/
 ## spore-validate
 
 Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
-zero warnings, 284 tests, 34 modules, 11,012L, zero C toolchain dependencies. Edition 2024, Rust 1.85+. Release binary optimized (LTO+strip). All files under 680L (max: nucleus.rs at 670). 11 justified `#[allow]` (cast precision for display, uniform dispatch signatures, 1 P2 dead_code).
+zero warnings, 284 tests, 34 modules, 11,012L, zero C toolchain dependencies. Edition 2024, Rust 1.85+. Release binary optimized (LTO+strip). All files under 680L (max: nucleus.rs at 670). 7 justified `#[allow]` (4 cast precision for display, 2 uniform dispatch signatures, 1 P2 dead_code).
 
 | Subcommand | Purpose |
 |---|---|
@@ -173,7 +173,7 @@ Your content here...
 
 ### Current — Wave 136b (July 11, 2026)
 - 289 content pages across 17 sections, 66 entities, 284 tests, 34 modules
-- Edition 2024, Rust 1.85+, zero unsafe, zero C deps, 11 justified `#[allow]`
+- Edition 2024, Rust 1.85+, zero unsafe, zero C deps, 7 justified `#[allow]`
 - NUCLEUS validation + depot integrity + riboCipher transport signal
 - Cast safety evolution: `u64::try_from` replaces `cast_sign_loss`, `PushResult.errors` evolved to `usize`
 - Identity model: ecoPrimals (org), ecoPrimal (dev), attsi (philosopher) — no PII on site

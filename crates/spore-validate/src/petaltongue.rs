@@ -118,8 +118,8 @@ impl PetalTongueClient {
 
         let resp = self.send_rpc(&req)?;
 
-        #[allow(clippy::cast_possible_truncation)]
-        let latency_ms = t0.elapsed().as_millis() as u64;
+        let d = t0.elapsed();
+        let latency_ms = d.as_secs() * 1000 + u64::from(d.subsec_millis());
 
         if let Some(err) = resp.get("error") {
             return Err(Error::Config(format!(
@@ -171,8 +171,8 @@ impl PetalTongueClient {
 
         let resp = self.send_rpc(&req)?;
 
-        #[allow(clippy::cast_possible_truncation)]
-        let latency_ms = t0.elapsed().as_millis() as u64;
+        let d = t0.elapsed();
+        let latency_ms = d.as_secs() * 1000 + u64::from(d.subsec_millis());
 
         if let Some(err) = resp.get("error") {
             return Err(Error::Config(format!(
@@ -231,8 +231,8 @@ impl PetalTongueClient {
 
         let resp = self.send_rpc(&req)?;
 
-        #[allow(clippy::cast_possible_truncation)]
-        let latency_ms = t0.elapsed().as_millis() as u64;
+        let d = t0.elapsed();
+        let latency_ms = d.as_secs() * 1000 + u64::from(d.subsec_millis());
 
         if let Some(err) = resp.get("error") {
             return Err(Error::Config(format!(

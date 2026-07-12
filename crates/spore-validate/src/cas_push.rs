@@ -309,8 +309,8 @@ pub fn push_manifest(
         }
     }
 
-    #[allow(clippy::cast_possible_truncation)]
-    let elapsed = t0.elapsed().as_millis() as u64;
+    let d = t0.elapsed();
+    let elapsed = d.as_secs() * 1000 + u64::from(d.subsec_millis());
 
     Ok(PushResult {
         stored,
