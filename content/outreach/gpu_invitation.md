@@ -1,17 +1,13 @@
 +++
 title = "An Invitation to GPU Manufacturers"
 description = "Vendor-agnostic GPU compute validates hardware capability independent of CUDA. Sovereign dispatch is live. The proof of work exists."
-weight = 30
+weight = 1
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "coralreef"]
 +++
 
 {{ maturity(level="scaffold") }}
-
-**Voice**: ecoPrimal
-**Status**: Draft — adapting from partnership brief
-**Audience**: GPU hardware teams (NVIDIA, AMD, Intel, Qualcomm)
 
 ---
 

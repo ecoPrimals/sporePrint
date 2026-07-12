@@ -1,7 +1,7 @@
 +++
 title = "An Invitation to Gaming Platforms"
 description = "NUCLEUS federation, sovereign game infrastructure, and 791 ludoSpring tests — what sovereign gaming looks like."
-weight = 31
+weight = 2
 
 [taxonomies]
 primals = ["biomeos", "songbird", "beardog"]
@@ -9,10 +9,6 @@ springs = ["ludospring"]
 +++
 
 {{ maturity(level="scaffold") }}
-
-**Voice**: ecoPrimal
-**Status**: Draft — adapting from partnership brief
-**Audience**: Gaming platform teams
 
 ---
 

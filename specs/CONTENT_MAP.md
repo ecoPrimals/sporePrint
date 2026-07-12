@@ -144,9 +144,9 @@ Builder narrative essays: I Don't Know Rust, The Sovereign Lab, 70 Papers One St
 
 PhD dissertation: 16 chapters fully transplanted, front matter, references. Constrained evolution across 8 scientific domains.
 
-### Outreach (`outreach/`) — 11 pages + _index
+### reachOut (`outreach/`) — 11 pages + _index
 
-Scaffolded from whitePaper/outreach structure. Two voices: ecoPrimal (evidence articles) and attsi (critique articles). 3 partnership briefs. Maturity: scaffold.
+Partnership invitations and articles. 3 partnership briefs (GPU, gaming, neuromorphic) front-loaded. 8 articles scaffolded. Maturity: scaffold.
 
 **Staleness risk**: Scaffold pages need full content transplant from whitePaper.
 

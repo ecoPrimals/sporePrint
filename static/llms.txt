@@ -55,9 +55,9 @@ Constrained evolution theory, K-NOME AI-assisted development,
 spring playbook, scyBorg licensing, sharing the pen.
 - Section index: https://primals.eco/methodology/
 
-### Outreach (11 pages)
-Articles and partnership briefs — GPU manufacturers, game platforms,
-neuromorphic hardware. Two voices: ecoPrimal (builder) and attsi (philosopher).
+### reachOut (11 pages)
+Partnership invitations and articles — GPU manufacturers, game platforms,
+neuromorphic hardware, and the broader scientific computing community.
 - Section index: https://primals.eco/outreach/
 
 ### Technical (8 pages)

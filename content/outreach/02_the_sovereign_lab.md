@@ -1,17 +1,13 @@
 +++
 title = "The Sovereign Lab"
 description = "$15K in hardware, $0 in cloud bills. What sovereign infrastructure means when you pay the electricity yourself."
-weight = 2
+weight = 11
 
 [taxonomies]
 primals = ["biomeos", "songbird", "nestgate"]
 +++
 
 {{ maturity(level="scaffold") }}
-
-**Voice**: ecoPrimal
-**Status**: Draft — adapting from [story version](@/story/the_sovereign_lab.md) for external publication
-**Platform target**: Medium, dev.to
 
 ---
 

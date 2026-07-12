@@ -1,7 +1,7 @@
 +++
 title = "An Invitation to Neuromorphic Hardware Manufacturers"
 description = "AKD1000 integration complete, pure Rust driver, three-substrate pipeline — a standing offer to NPU manufacturers."
-weight = 32
+weight = 3
 
 [taxonomies]
 primals = ["toadstool", "barracuda"]
@@ -9,10 +9,6 @@ springs = ["neuralspring"]
 +++
 
 {{ maturity(level="scaffold") }}
-
-**Voice**: ecoPrimal
-**Status**: Draft — adapting from technical brief
-**Audience**: Neuromorphic hardware teams (BrainChip, Intel Loihi, SynSense)
 
 ---
 

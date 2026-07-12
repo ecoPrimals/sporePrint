@@ -61,7 +61,7 @@ sporePrint/
 │   ├── lab/             # 133 pages: spring hubs, notebooks, spore gallery
 │   ├── thesis/          # 18 pages: PhD dissertation (16 chapters, constrained evolution)
 │   ├── philosophy/      # 14 pages: atlasHugged (12 essays + bibliography + sovereign science)
-│   ├── outreach/        # 11 pages: evidence articles, critique articles, partnership briefs
+│   ├── outreach/        # 11 pages: reachOut — partnership briefs + articles
 │   ├── methodology/     # 11 pages: constrained evolution, K-NOME, scyBorg, acknowledgments
 │   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
 │   ├── audience/        # 6 pages: PI, student, builder, compliance guides
