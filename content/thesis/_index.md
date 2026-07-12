@@ -29,59 +29,45 @@ This thesis presents the theory, the computational system built under its princi
 
 ### Part I — Foundations
 
-| # | Chapter | |
-|---|---------|---|
-| 00 | [Front Matter](@/thesis/00_front_matter.md) | Abstract, acknowledgments, and dissertation metadata |
-| 01 | [Introduction](@/thesis/01_introduction.md) | Taq polymerase motivation, thesis statement, five contributions |
-| 02 | [Literature Review](@/thesis/02_literature_review.md) | Extremophile biology, LTEE, type theory, AI-assisted development |
+0. **[Front Matter](@/thesis/00_front_matter.md)** — Abstract, acknowledgments, and dissertation metadata
+1. **[Introduction](@/thesis/01_introduction.md)** — Taq polymerase motivation, thesis statement, five contributions
+2. **[Literature Review](@/thesis/02_literature_review.md)** — Extremophile biology, LTEE, type theory, AI-assisted development
 
 ### Part II — Theory
 
-| # | Chapter | |
-|---|---------|---|
-| 03 | [Theoretical Framework](@/thesis/03_theoretical_framework.md) | Formal constrained evolution: fitness landscapes, biology→computation mapping, predictions |
-| 04 | [Accept and Generate](@/thesis/04_pnp_enzyme.md) | Nature's strategy for hard problems — generators, verifiers, enzymes |
+3. **[Theoretical Framework](@/thesis/03_theoretical_framework.md)** — Formal constrained evolution: fitness landscapes, biology→computation mapping, predictions
+4. **[Accept and Generate](@/thesis/04_pnp_enzyme.md)** — Nature's strategy for hard problems — generators, verifiers, enzymes
 
 ### Part III — The System
 
-| # | Chapter | |
-|---|---------|---|
-| 05 | [System Architecture](@/thesis/05_system_architecture.md) | ecoPrimals sovereign platform: primals, compositions, NUCLEUS |
-| 06 | [BarraCuda](@/thesis/06_barracuda.md) | Vendor-agnostic Pure Rust GPU compute (WGSL/Vulkan, f64) |
+5. **[System Architecture](@/thesis/05_system_architecture.md)** — ecoPrimals sovereign platform: primals, compositions, NUCLEUS
+6. **[BarraCuda](@/thesis/06_barracuda.md)** — Vendor-agnostic Pure Rust GPU compute (WGSL/Vulkan, f64)
 
 ### Part IV — Experimental Validation
 
-| # | Chapter | |
-|---|---------|---|
-| 07 | [Experimental Methodology](@/thesis/07_experimental_methodology.md) | The spring framework: phased validation across domains |
-| 08 | [Results: hotSpring](@/thesis/08_results_hotspring.md) | Computational plasma physics — Sarkas MD, nuclear EOS, lattice QCD |
-| 09 | [Results: airSpring](@/thesis/09_results_airspring.md) | Precision agriculture — FAO-56 ET, sensor calibration |
-| 10 | [Results: wetSpring](@/thesis/10_results_wetspring.md) | Life science & analytical chemistry — 16S, QS, phylogenetics, PFAS |
-| 11 | [Results: groundSpring](@/thesis/11_results_groundspring.md) | Measurement noise & uncertainty — the tolerance foundation |
-| 12 | [Results: neuralSpring](@/thesis/12_results_neuralspring.md) | ML primitives, Isomorphism Theorem, coralForge |
+7. **[Experimental Methodology](@/thesis/07_experimental_methodology.md)** — The spring framework: phased validation across domains
+8. **[Results: hotSpring](@/thesis/08_results_hotspring.md)** — Computational plasma physics — Sarkas MD, nuclear EOS, lattice QCD
+9. **[Results: airSpring](@/thesis/09_results_airspring.md)** — Precision agriculture — FAO-56 ET, sensor calibration
+10. **[Results: wetSpring](@/thesis/10_results_wetspring.md)** — Life science & analytical chemistry — 16S, QS, phylogenetics, PFAS
+11. **[Results: groundSpring](@/thesis/11_results_groundspring.md)** — Measurement noise & uncertainty — the tolerance foundation
+12. **[Results: neuralSpring](@/thesis/12_results_neuralspring.md)** — ML primitives, Isomorphism Theorem, coralForge
 
 ### Part V — Analysis
 
-| # | Chapter | |
-|---|---------|---|
-| 13 | [Quantitative Evidence](@/thesis/13_quantitative_evidence.md) | NTT→FFT evolution, convergent IPC, fastidious specialization |
-| 14 | [Biological Validation](@/thesis/14_biological_validation.md) | LTEE frozen-fossil sequencing proposal at MSU |
+13. **[Quantitative Evidence](@/thesis/13_quantitative_evidence.md)** — NTT→FFT evolution, convergent IPC, fastidious specialization
+14. **[Biological Validation](@/thesis/14_biological_validation.md)** — LTEE frozen-fossil sequencing proposal at MSU
 
 ### Part VI — Synthesis
 
-| # | Chapter | |
-|---|---------|---|
-| 15 | [Discussion](@/thesis/15_discussion.md) | Strengths, limitations, alternative explanations, trade-offs |
-| 16 | [Conclusion](@/thesis/16_conclusion.md) | Five contributions, future work, closing synthesis |
+15. **[Discussion](@/thesis/15_discussion.md)** — Strengths, limitations, alternative explanations, trade-offs
+16. **[Conclusion](@/thesis/16_conclusion.md)** — Five contributions, future work, closing synthesis
 
 ### Back Matter
 
-| | | |
-|---|---|---|
-| A | [References](@/thesis/references.md) | Full bibliography |
-| B | Appendix: Hardware Inventory | See [Contact](@/contact.md) |
-| C | Appendix: AI Methodology | See [Sharing the Pen](@/methodology/sharing_the_pen.md) |
-| D | Appendix: Spring Validation | See [Spring Catalog](@/architecture/SPRING_CATALOG.md) |
+- **A.** **[References](@/thesis/references.md)** — Full bibliography
+- **B.** Appendix: Hardware Inventory — See [Contact](@/contact.md)
+- **C.** Appendix: AI Methodology — See [Sharing the Pen](@/methodology/sharing_the_pen.md)
+- **D.** Appendix: Spring Validation — See [Spring Catalog](@/architecture/SPRING_CATALOG.md)
 
 ---
 

@@ -9,6 +9,30 @@
 {% block tw_desc %}{{ section.description }}{% endblock tw_desc %}
 
 {% block content %}
+{% if section.pages %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ section.title }}",
+  "author": { "@type": "Organization", "name": "ecoPrimals", "url": "https://primals.eco" },
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "url": "{{ section.permalink }}",
+  "description": "{{ section.description }}",
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" },
+  "hasPart": [
+    {% for page in section.pages %}
+    {
+      "@type": "ScholarlyArticle",
+      "name": "{{ page.title }}",
+      "url": "{{ page.permalink }}",
+      "description": "{{ page.description | default(value='') }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
 <article class="section-page">
   <header class="section-header">
     <nav class="breadcrumbs" aria-label="Breadcrumbs">

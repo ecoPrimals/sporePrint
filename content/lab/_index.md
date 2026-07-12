@@ -28,14 +28,12 @@ online, what capabilities are routed, and the state of the Sovereign CI pipeline
 
 Each spring validates a scientific domain. These pages tell the full story — what was reproduced, what was discovered, and what it proved about the infrastructure.
 
-| Spring | Domain | Checks | Papers |
-|--------|--------|--------|--------|
-| [wetSpring](@/lab/springs/wetspring.md) | Life science, metagenomics, PFAS | 5,707+ | 63/63 |
-| [hotSpring](@/lab/springs/hotspring.md) | Plasma physics, lattice QCD, spectral | 697+ | 10+ |
-| [airSpring](@/lab/springs/airspring.md) | Precision agriculture, irrigation | 2,777+ | 57 |
-| [healthSpring](@/lab/springs/healthspring.md) | PK/PD, microbiome, biosignal, drugs | 795 | 7 tracks |
-| [groundSpring](@/lab/springs/groundspring.md) | Measurement noise, uncertainty, Anderson | 965+ | 29 baselines |
-| [primalSpring](@/lab/springs/primalspring.md) | Composition parity, deploy graphs, NUCLEUS | 666 | — (meta-spring) |
+- **[wetSpring](@/lab/springs/wetspring.md)** — Life science, metagenomics, PFAS (5,707+ checks, 63/63 papers)
+- **[hotSpring](@/lab/springs/hotspring.md)** — Plasma physics, lattice QCD, spectral (697+ checks, 10+ papers)
+- **[airSpring](@/lab/springs/airspring.md)** — Precision agriculture, irrigation (2,777+ checks, 57 papers)
+- **[healthSpring](@/lab/springs/healthspring.md)** — PK/PD, microbiome, biosignal, drugs (795 checks, 7 tracks)
+- **[groundSpring](@/lab/springs/groundspring.md)** — Measurement noise, uncertainty, Anderson (965+ checks, 29 baselines)
+- **[primalSpring](@/lab/springs/primalspring.md)** — Composition parity, deploy graphs, NUCLEUS (666 checks, meta-spring)
 
 **2 more springs** (neuralSpring, ludoSpring) are documented in the [Spring Catalog](@/architecture/SPRING_CATALOG.md) and are being expanded by upstream contributors.
 
@@ -92,23 +90,26 @@ in production.
 
 Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loads frozen experiment data (JSON artifacts) from the spring repositories — no live primals required.
 
-| Notebook | Spring | Story |
-|----------|--------|-------|
-| [16S Pipeline Validation](@/lab/notebooks/01-16s-pipeline-validation.md) | wetSpring | Flagship 16S pipeline, Galaxy/QIIME2 parity, R/vegan cross-validation |
-| [Python vs Rust vs GPU](@/lab/notebooks/02-benchmark-python-vs-rust.md) | wetSpring | Benchmark evidence: timing, energy, speedup across three tiers |
-| [63/63 Paper Reproductions](@/lab/notebooks/03-paper-reproductions.md) | wetSpring | 5 researchers, 6 tracks, full evidence map |
-| [Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md) | wetSpring | 79 barraCuda primitives, constraint-driven discoveries |
-| [Soil Anderson Deep Dive](@/lab/notebooks/05-soil-anderson-deep-dive.md) | wetSpring | Anderson localization in soil biology — physics meets ecology |
-| [Composition Validation](@/lab/notebooks/gs-01-composition-validation.md) | groundSpring | 6 deploy graphs, guideStone Level 3, verb reconciliation |
-| [Benchmark Comparison](@/lab/notebooks/gs-02-benchmark-comparison.md) | groundSpring | Rust vs Python timing, three-mode GPU, 110 barraCuda delegations |
-| [Ecosystem Evidence](@/lab/notebooks/gs-03-ecosystem-evidence.md) | groundSpring | 35 experiments, 10 domains, gap resolution, security posture |
-| [Cross-Spring Connections](@/lab/notebooks/gs-04-cross-spring-connections.md) | groundSpring | 5 primals consumed, 7 ecosystem flows, patterns pioneered |
-| [Measurement Science Deep Dive](@/lab/notebooks/gs-05-measurement-science-deep-dive.md) | groundSpring | Five pillars, 13-tier tolerance architecture, Anderson thread |
-| [Composition Validation](@/lab/notebooks/01-composition-validation.md) | primalSpring | Deploy graphs, bond types, profiles, discovery tiers |
-| [Benchmark Comparison](@/lab/notebooks/02-benchmark-comparison.md) | primalSpring | Rust vs Python timing, energy, guidestone phases |
-| [Ecosystem Evidence](@/lab/notebooks/03-ecosystem-evidence.md) | primalSpring | 85 experiments, gap resolution, security timeline |
-| [Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md) | primalSpring | Primal consumption matrix, ecosystem flows |
-| [BTSP Security Deep Dive](@/lab/notebooks/05-btsp-security-deep-dive.md) | primalSpring | Per-primal posture, convergence arc, discovery hierarchy |
+**wetSpring notebooks:**
+- **[16S Pipeline Validation](@/lab/notebooks/01-16s-pipeline-validation.md)** — Flagship 16S pipeline, Galaxy/QIIME2 parity, R/vegan cross-validation
+- **[Python vs Rust vs GPU](@/lab/notebooks/02-benchmark-python-vs-rust.md)** — Benchmark evidence: timing, energy, speedup across three tiers
+- **[63/63 Paper Reproductions](@/lab/notebooks/03-paper-reproductions.md)** — 5 researchers, 6 tracks, full evidence map
+- **[Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md)** — 79 barraCuda primitives, constraint-driven discoveries
+- **[Soil Anderson Deep Dive](@/lab/notebooks/05-soil-anderson-deep-dive.md)** — Anderson localization in soil biology — physics meets ecology
+
+**groundSpring notebooks:**
+- **[Composition Validation](@/lab/notebooks/gs-01-composition-validation.md)** — 6 deploy graphs, guideStone Level 3, verb reconciliation
+- **[Benchmark Comparison](@/lab/notebooks/gs-02-benchmark-comparison.md)** — Rust vs Python timing, three-mode GPU, 110 barraCuda delegations
+- **[Ecosystem Evidence](@/lab/notebooks/gs-03-ecosystem-evidence.md)** — 35 experiments, 10 domains, gap resolution, security posture
+- **[Cross-Spring Connections](@/lab/notebooks/gs-04-cross-spring-connections.md)** — 5 primals consumed, 7 ecosystem flows, patterns pioneered
+- **[Measurement Science Deep Dive](@/lab/notebooks/gs-05-measurement-science-deep-dive.md)** — Five pillars, 13-tier tolerance architecture, Anderson thread
+
+**primalSpring notebooks:**
+- **[Composition Validation](@/lab/notebooks/01-composition-validation.md)** — Deploy graphs, bond types, profiles, discovery tiers
+- **[Benchmark Comparison](@/lab/notebooks/02-benchmark-comparison.md)** — Rust vs Python timing, energy, guidestone phases
+- **[Ecosystem Evidence](@/lab/notebooks/03-ecosystem-evidence.md)** — 85 experiments, gap resolution, security timeline
+- **[Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md)** — Primal consumption matrix, ecosystem flows
+- **[BTSP Security Deep Dive](@/lab/notebooks/05-btsp-security-deep-dive.md)** — Per-primal posture, convergence arc, discovery hierarchy
 
 **Run them yourself**: Clone the spring, `cd notebooks/`, `jupyter lab`. Or access via [JupyterHub](@/lab/compute-access.md).
 

@@ -5,6 +5,47 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.16.0] — 2026-07-11 — AI Accessibility: Table-to-List Evolution (Wave 137a)
+
+**Convert all 23 navigational tables across 9 section indexes to ordered/unordered lists.
+Add `hasPart` JSON-LD to all sections with child pages. Resolves AI fetch-tool accessibility bug.**
+
+### Changed
+
+- **9 section `_index.md` files**: All navigational tables (tables whose primary content was links
+  to child pages) converted to ordered or unordered lists. Markdown tables are stripped of links
+  by many AI fetch-to-text tools; lists survive extraction. Data-only tables (outreach Two Voices,
+  Community) preserved.
+  - `architecture/_index.md` — 16 entries
+  - `audience/_index.md` — 5 entries
+  - `lab/_index.md` — 21 entries (6 springs + 15 notebooks)
+  - `methodology/_index.md` — 9 entries
+  - `outreach/_index.md` — 11 entries (3 phase-1 + 5 phase-2 + 3 partnerships)
+  - `science/_index.md` — 28 entries across 6 domains
+  - `story/_index.md` — 6 entries (3 stories + 3 philosophy pairings)
+  - `technical/_index.md` — 6 entries
+  - `thesis/_index.md` — 20 entries (16 chapters + 4 back matter)
+- **`templates/section.html`**: Generic `CollectionPage` JSON-LD `hasPart` fallback added for all
+  sections not already covered by philosophy/thesis/story-specific blocks.
+- **`templates/science_section.html`**: `CollectionPage` JSON-LD with `ScholarlyArticle` `hasPart`
+  added (33 articles).
+
+### Context
+
+External AI agent (Claude via `web_fetch`) reported essay tables rendering header-only on
+`/philosophy/` and `/story/`. Root cause: fetch-to-text tools strip links from markdown-rendered
+`<table>` elements. Tables converted to `<ol>`/`<ul>` in Wave 136b for philosophy/story; this
+commit extends the fix to all 9 section indexes. JSON-LD `hasPart` ensures machine-readable
+child-page discovery regardless of HTML rendering.
+
+### Metrics
+
+- tables with links remaining: 0 (across all section indexes)
+- sections with `hasPart` JSON-LD: 12 (all sections with child pages)
+- sitemap entries: 314
+
+---
+
 ## [3.15.0] — 2026-07-11 — Cast Safety, Identity Model, License Enforcement, Doc Sync (Wave 136b)
 
 **Evolve unsafe casts to idiomatic Rust. Codify identity model. Three-layer license enforcement. Root doc sync.**

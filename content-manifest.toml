@@ -1,5 +1,5 @@
-generated = "2026-07-11T19:29:23Z"
-root_hash = "3282c62c9267665a9667cf3603e694e8f5b8f1f8e644646298065d81bdc217c6"
+generated = "2026-07-12T00:54:57Z"
+root_hash = "a138cc621a45d0a8aa12e324f2f0d08d9217c94e5813e97ffc0d1e971b606039"
 page_count = 289
 
 [pages."_index.md"]
@@ -118,8 +118,8 @@ size_bytes = 6381
 title = "Transport Evolution"
 
 [pages."architecture/_index.md"]
-blake3 = "e4a1f6bebe422e91123afd50ac932577f0419ed0f04b17918e84dba17ac2fe7a"
-size_bytes = 3367
+blake3 = "2457f8a81be5a0209bd632cdf0217b585bead240842bfaf799f95ba6eb0361e3"
+size_bytes = 2886
 title = "Architecture"
 
 [pages."audience/CAPABILITY_PARITY_BRIEF.md"]
@@ -148,8 +148,8 @@ size_bytes = 8840
 title = "ecoPrimals for Students, Lab Technicians, and Core Facilities"
 
 [pages."audience/_index.md"]
-blake3 = "33d8c453d3b1ccc13f090c0af8f0b6e7019b4505f648f099e0baa94640b14546"
-size_bytes = 1657
+blake3 = "853562a94817b524b6630ee0b67d4cd6278514e8cc877dcc1b2dfdf4342baa37"
+size_bytes = 1621
 title = "Audience"
 
 [pages."audience/faculty_spring_profiles.md"]
@@ -198,8 +198,8 @@ size_bytes = 6573
 title = "Verification Protocol"
 
 [pages."lab/_index.md"]
-blake3 = "838a7308e7d823db497450af0b137e2e38d40ea06c43c21069ed96206db04029"
-size_bytes = 8599
+blake3 = "ff794f25c507d5552f41375a6227fcc02d5f68c4e896688a499c5e827c70129d"
+size_bytes = 8471
 title = "Lab"
 
 [pages."lab/airspring-validation-summary.md"]
@@ -773,7 +773,7 @@ size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
 
 [pages."lab/notebooks/sample.md"]
-blake3 = "cd8c77fd6c7752559eb2804d286fe24be01c7f2d6d90dd1dff849196ff367a4d"
+blake3 = "12922d24bbb70d951dc862553a09662c541a1f9f3d6e5ac7dd08315e53df5873"
 size_bytes = 254
 title = "Sample"
 
@@ -918,8 +918,8 @@ size_bytes = 10504
 title = "scyBorg Triple License — Why Three Licenses for Three Artifact Types"
 
 [pages."methodology/_index.md"]
-blake3 = "6afb864bde6ff10baceb5a4f2265e7cc2a5e45570bc3566a0fea5d877fbd64d8"
-size_bytes = 2272
+blake3 = "fd01c02b65a65aaaf93219ed88ed9c6e6a215940b490cf68e2311ad23c53b26d"
+size_bytes = 1985
 title = "Methodology"
 
 [pages."methodology/acknowledgments.md"]
@@ -983,8 +983,8 @@ size_bytes = 440
 title = "Detachment 201"
 
 [pages."outreach/_index.md"]
-blake3 = "245d950353e49a20dc43692db8172fea8526777557619d68f08ed7f413f46204"
-size_bytes = 3432
+blake3 = "3df3b90e9900912bc60780fe51316583111ab1e36abc4bb3a96ae89a09309d04"
+size_bytes = 3301
 title = "Outreach"
 
 [pages."outreach/gaming_invitation.md"]
@@ -1003,8 +1003,8 @@ size_bytes = 916
 title = "An Invitation to Neuromorphic Hardware Manufacturers"
 
 [pages."philosophy/_index.md"]
-blake3 = "933bb5ef6f816bea9846efe57f726ba1229147633cf04dab09dbb897051130fa"
-size_bytes = 4382
+blake3 = "d85462d8329d4bcaf03ca0b292cd150670c496cd040df52e2e73e380bcc3e52b"
+size_bytes = 4271
 title = "Philosophy"
 
 [pages."philosophy/bibliography.md"]
@@ -1273,8 +1273,8 @@ size_bytes = 9950
 title = "Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality"
 
 [pages."science/_index.md"]
-blake3 = "5dba4dfcfcceb7f14c9e5d18ac7f1b995e6e1e0d907a0a725ad03a47c03834be"
-size_bytes = 6345
+blake3 = "424883e0aa435e79654649440f90fdd0b4615e6f60ba2faa5f2160ad44a5a397"
+size_bytes = 5974
 title = "Science"
 
 [pages."science/gonzales_explorer.md"]
@@ -1293,8 +1293,8 @@ size_bytes = 8113
 title = "175+ Papers, One Stack — Reproducing Science on Sovereign Hardware"
 
 [pages."story/_index.md"]
-blake3 = "5960fe559cc56c9f8069f3a3272e6f14a2aee8dd64bcef0299e5a04a603d498c"
-size_bytes = 1636
+blake3 = "abde2eabe2639ff86427741fae875046e0155718b21eba5fe9d512c2478e4c51"
+size_bytes = 1598
 title = "Story"
 
 [pages."story/i_dont_know_rust.md"]
@@ -1338,8 +1338,8 @@ size_bytes = 11624
 title = "Sovereign GPU Pipeline: The Vendor Replacement Story"
 
 [pages."technical/_index.md"]
-blake3 = "b13b70178699e3072b7b6c0fa5ee1768a103f405bc9fdd4ce3b8aba438e4b7c1"
-size_bytes = 1348
+blake3 = "08cd10102d8e21d76f93a6e995e3b18ad853f573a197fd8497c210adc168e8b6"
+size_bytes = 1126
 title = "Technical"
 
 [pages."technical/barracuda_compute_gaps.md"]
@@ -1438,8 +1438,8 @@ size_bytes = 10271
 title = "Chapter 16: Conclusion"
 
 [pages."thesis/_index.md"]
-blake3 = "dc2f90cec9e3bffca9ffa3d44cbbb86859b6915f82961959b71ea8d2b2d853d9"
-size_bytes = 7580
+blake3 = "43f07e5030da18848be75b564fe099b42b74e0b903a838dad7bf9c1f647612ce"
+size_bytes = 7353
 title = "Thesis"
 
 [pages."thesis/references.md"]
