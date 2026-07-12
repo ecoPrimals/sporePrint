@@ -46,3 +46,9 @@
 User-agent: *
 Allow: /
 Sitemap: https://primals.eco/sitemap.xml
+
+# AI agent overview (structured site summary for LLMs):
+# https://primals.eco/llms.txt
+#
+# Complete page index (every page with description, one document):
+# https://primals.eco/site-index/

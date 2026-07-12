@@ -1,0 +1,48 @@
+{# SPDX-License-Identifier: AGPL-3.0-or-later #}
+{% extends "base.html" %}
+
+{% block title %}Site Index — {{ config.title }}{% endblock title %}
+{% block description %}Complete index of every page on primals.eco.{% endblock description %}
+
+{% block content %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Site Index",
+  "description": "Complete index of every page on primals.eco",
+  "url": "{{ section.permalink }}",
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }
+}
+</script>
+<article class="section-page">
+  <header class="section-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Site Index</span>
+    </nav>
+    <h1>Site Index</h1>
+    <p class="section-desc">Every page on primals.eco, organized by section. For AI agents: this page plus <a href="/llms.txt">/llms.txt</a> gives you the full picture in two fetches.</p>
+  </header>
+
+  <div class="content">
+    {% set all_sections = get_section(path="_index.md") %}
+    {% for subsection_path in all_sections.subsections %}
+      {% set sub = get_section(path=subsection_path) %}
+      {% if sub.pages | length > 0 %}
+      <section>
+        <h2><a href="{{ sub.permalink }}">{{ sub.title }}</a> ({{ sub.pages | length }})</h2>
+        <ul>
+          {% for page in sub.pages %}
+          <li>
+            <a href="{{ page.permalink }}"><strong>{{ page.title }}</strong></a>{% if page.description %} — {{ page.description }}{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+    {% endfor %}
+  </div>
+</article>
+{% endblock content %}

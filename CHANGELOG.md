@@ -5,6 +5,36 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.17.0] — 2026-07-12 — AI Accessibility: Fetch Budget Optimization (Wave 137a)
+
+**Minimize fetches needed for AI agents to comprehend the full site. Solves
+agent-side fetch quota exhaustion (observed: Claude web_fetch hitting per-domain
+session limits after ~50 requests across 289 pages).**
+
+### Added
+
+- **`/llms.txt`** — structured plain-text site overview for AI agents. One fetch
+  gives: site description, section map with page counts, key concept glossary,
+  identity model, live metrics, and machine-readable endpoint URLs.
+- **`/site-index/`** — auto-generated page listing every page on the site with
+  title, description, and URL. Template-driven (`site_index.html`), updates
+  automatically with every build. One fetch = complete catalog.
+- **`<link rel="alternate" type="text/plain">` for `/llms.txt`** in `base.html`
+  `<head>` — HTML metadata discovery for agents that parse link elements.
+- **`robots.txt`** updated with comments pointing to `/llms.txt` and `/site-index/`.
+
+### Context
+
+An external Claude agent reviewing the site exhausted its per-domain fetch quota
+after ~50 pages, leaving 240+ pages unseen. The agent correctly diagnosed this as
+its own tool's limitation, not server-side rate limiting. Our response: treat
+agent-side constraints as accessibility constraints. A screen reader with a limited
+buffer is not the screen reader's fault to fix — it's ours. Two new endpoints let
+any fetch-constrained agent get comprehensive site understanding in 2 requests
+instead of 289.
+
+---
+
 ## [3.16.0] — 2026-07-11 — AI Accessibility: Table-to-List Evolution (Wave 137a)
 
 **Convert all 23 navigational tables across 9 section indexes to ordered/unordered lists.
