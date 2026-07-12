@@ -4,6 +4,12 @@ description = "Smith, Paine, Rand, Marx — four thinkers describing one structu
 date = 2026-03-17
 weight = 2
 
+[[extra.companions]]
+url = "/thesis/03-theoretical-framework/"
+title = "Chapter 3: Theoretical Framework"
+relation = "formal_version"
+label = "The formal constrained evolution principle — orthogonal pressure as mathematical structure"
+
 [taxonomies]
 primals = []
 springs = []

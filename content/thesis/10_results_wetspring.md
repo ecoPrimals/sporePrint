@@ -3,6 +3,21 @@ title = "Chapter 10: Results — wetSpring"
 description = "Life science and analytical chemistry: sovereign 16S pipeline, quorum sensing, phylogenetics, PFAS — 1,368 checks across 56 experiments."
 weight = 10
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/science/02-ltee-extensions/"
+title = "LTEE Extensions"
+relation = "validated_by"
+label = "Falsifiable Anderson-QS predictions for LTEE populations"
+
+[[extra.companions]]
+url = "/science/03-bioag-microbiome/"
+title = "BioAg Microbiome"
+relation = "validated_by"
+label = "Anderson-derived microbiome design for perennial tree crops"
+
 +++
 
 {{ maturity(level="architectural") }}

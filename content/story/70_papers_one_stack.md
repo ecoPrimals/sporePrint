@@ -4,6 +4,20 @@ description = "20,695+ quantitative checks across 8 domains. Every computation c
 date = 2026-07-08
 weight = 30
 
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/discovery-is-local/"
+title = "Discovery Is Local"
+relation = "pairs_with"
+label = "Results must be public — the philosophical argument for open science"
+
+[[extra.companions]]
+url = "/science/"
+title = "Science"
+relation = "evidence_for"
+label = "28 executable baseCamp papers across 6 domains — the evidence"
+
 [taxonomies]
 primals = []
 springs = []

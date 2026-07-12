@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 11, 2026 — Wave 137a)
+## Current State (July 12, 2026 — Wave 137b)
 
 - **289 content pages** across 17 sections (Architecture, Audience, Contact, Glossary, guideStone, Lab, Methodology, Outreach, Philosophy, Primals, Products, Science, Sitemap, Springs, Story, Technical, Thesis) + landing + lab notebooks
 - **2 taxonomies**: `primals` (15 terms), `springs` (8 terms) — build-validated typed tags
@@ -22,7 +22,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Graph subcommand** — `spore-validate graph --emit` builds entity graph and writes `static/graph/entity-graph.json`
 - **Certify subcommand** — `spore-validate certify --emit` computes BLAKE3 Merkle root, emits guideStone certification manifest to `static/certification/manifest.json`
 - **Self-certifying publication** — every page carries a certification badge linking to the verifiable manifest; any reader can reproduce with `spore-validate certify`
-- **Accessibility: WCAG 2.2 AAA target** — AA contrast ratios achieved (4.8:1+ accent), `prefers-reduced-motion` support, `prefers-contrast: more` (light + dark), `forced-colors: active` (Windows High Contrast), ARIA landmarks/combobox/listbox, decorative emoji hidden, keyboard navigation, semantic heading hierarchy, text-only status indicators, mobile TOC, 404 with full chrome. **AI accessibility**: all 23 navigational tables across 9 section indexes converted to ordered/unordered lists (tables strip links in AI fetch-to-text tools). JSON-LD `hasPart` on all 12 sections with child pages (generic `CollectionPage` fallback + `ScholarlyArticle` for science). Screen reader testing is evolution target. petalTongue will set the universal access standard — any human capability profile, no intermediary.
+- **Accessibility: WCAG 2.2 AAA target** — AA contrast ratios achieved (4.8:1+ accent), `prefers-reduced-motion` support, `prefers-contrast: more` (light + dark), `forced-colors: active` (Windows High Contrast), ARIA landmarks/combobox/listbox, decorative emoji hidden, keyboard navigation, semantic heading hierarchy, text-only status indicators, mobile TOC, 404 with full chrome. **AI accessibility**: all 23 navigational tables across 9 section indexes converted to ordered/unordered lists (tables strip links in AI fetch-to-text tools). JSON-LD `hasPart` on all 12 sections with child pages (generic `CollectionPage` fallback + `ScholarlyArticle` for science). **Progressive richness**: 5-level machine-readable topology (Billboard → Overview → Catalog → Topology → Reinforcement). Per-page JSON-LD on all 272 pages (`Article`/`ScholarlyArticle` with typed author). 28 key pages carry typed `relatedLink` companions across domains + visible companion panels. `llms.txt` content topology section. Screen reader testing is evolution target. petalTongue will set the universal access standard — any human capability profile, no intermediary.
 - **Site tree sidebar** — collapsible section-level navigation with current-page highlighting
 - **Card-based landing page** — stats ribbon, audience cards, org cards, explore cards (no tables)
 - **Full-text search** — Zola's built-in elasticlunr, indexed at build time

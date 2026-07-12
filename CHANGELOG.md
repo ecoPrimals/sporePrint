@@ -5,6 +5,54 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.18.0] — 2026-07-12 — AI Progressive Richness: Cross-Domain Topology (Wave 137b)
+
+**Give AI agents typed cross-domain navigation so philosophy, thesis, science,
+and code docs reinforce each other instead of acting as isolated gravity wells.
+28 key pages carry companion metadata linking narrative ↔ formal ↔ experimental
+registers.**
+
+### Added
+
+- **Per-page JSON-LD** on all 272 pages — `Article` or `ScholarlyArticle` with
+  typed author (attsi for philosophy/story, ecoPrimals for thesis/science/technical),
+  license, and `isPartOf` linking back to the site.
+- **`relatedLink` in JSON-LD** on 28 companion-seeded pages — typed cross-domain
+  links discoverable by any agent that parses structured data.
+- **Companion panel** (`<nav class="companions">`) — visible HTML block at the
+  bottom of pages with companions. Shows relation type badge, linked title, and
+  one-line description. Serves both humans and AI agents.
+- **Companion front matter convention** — `[[extra.companions]]` TOML arrays with
+  `url`, `title`, `relation`, and `label` fields. Six relation types: `formal_version`,
+  `narrative_version`, `pairs_with`, `validates`/`validated_by`, `extends`/`extended_by`,
+  `evidence_for`.
+- **Content Topology section in `llms.txt`** — describes the four-register
+  reinforcement model and richness levels 0-4 so AI agents understand the
+  cross-domain structure in one fetch.
+- **Companion panel CSS** in `_pages.scss` — responsive layout with relation badges
+  and companion labels.
+
+### Pages Seeded
+
+- Philosophy: 9 essays (the_human_search, the_city_of_omelas, i_own_nothing,
+  the_knowledge_numeric, discovery_is_local, sovereign_science, the_orthogonal_synthesis,
+  the_mobility_edge, the_temptation_of_kingdoms)
+- Story: 3 essays (i_dont_know_rust, the_sovereign_lab, 70_papers_one_stack)
+- Thesis: 7 chapters (01, 03, 05, 06, 08, 10, 14)
+- Science: 5 papers (01, 02, 03, 07, 10)
+- Architecture: 1 (SOVEREIGN_DEPLOYMENT)
+- Methodology: 3 (K_NOME_PROGRAMMING, CONSTRAINED_EVOLUTION_FORMAL, SCYBORG_LICENSING)
+
+### Richness Level Architecture
+
+- Level 0 (Billboard): robots.txt, sitemap.xml, meta tags — unchanged
+- Level 1 (Overview): llms.txt + /site-index/ — unchanged
+- Level 2 (Catalog): Section indexes with hasPart JSON-LD — unchanged
+- Level 3 (Topology): **NEW** — Per-page JSON-LD with typed relatedLink companions
+- Level 4 (Reinforcement): **NEW** — Visible companion panels + cross-domain summaries
+
+---
+
 ## [3.17.0] — 2026-07-12 — AI Accessibility: Fetch Budget Optimization (Wave 137a)
 
 **Minimize fetches needed for AI agents to comprehend the full site. Solves

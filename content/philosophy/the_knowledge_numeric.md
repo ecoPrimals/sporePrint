@@ -4,6 +4,18 @@ description = "K-NOME — where human expertise meets AI numeric capability. The
 date = 2026-03-17
 weight = 12
 
+[[extra.companions]]
+url = "/methodology/k-nome-programming/"
+title = "K-NOME Programming"
+relation = "methodology"
+label = "The operational model — human domain expertise + AI implementation, every generation validated"
+
+[[extra.companions]]
+url = "/story/i-dont-know-rust/"
+title = "I Don't Know Rust"
+relation = "pairs_with"
+label = "The constraint that made everything else possible — the builder's narrative"
+
 [taxonomies]
 primals = []
 springs = []

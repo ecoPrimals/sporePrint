@@ -7,6 +7,12 @@ date = 2026-03-17
 paper_number = 3
 domain = "Microbiology and Ecology"
 
+[[extra.companions]]
+url = "/thesis/10-results-wetspring/"
+title = "Chapter 10: Results — wetSpring"
+relation = "extends"
+label = "Life science and analytical chemistry — the broader wetSpring validation"
+
 [taxonomies]
 springs = ["airspring", "groundspring", "neuralspring", "wetspring"]
 +++

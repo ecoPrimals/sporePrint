@@ -4,6 +4,20 @@ description = "10 towers. 130 cores. 188 GB VRAM. 125 TB storage. $15K. No cloud
 date = 2026-07-08
 weight = 20
 
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/i-own-nothing/"
+title = "I Own Nothing"
+relation = "pairs_with"
+label = "The economics of giving it all away — why sovereignty requires generosity"
+
+[[extra.companions]]
+url = "/architecture/sovereign-deployment/"
+title = "Sovereign Deployment"
+relation = "evidence_for"
+label = "The deployment architecture — PostPrimordial journey, VPS topology"
+
 [taxonomies]
 primals = []
 springs = []

@@ -3,6 +3,15 @@ title = "Chapter 1: Introduction"
 description = "Motivation from Taq polymerase and hot-spring constraint; thesis statement, five contributions, and six-part organization."
 weight = 1
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-city-of-omelas/"
+title = "The City of Omelas"
+relation = "narrative_version"
+label = "Le Guin's Omelas, Rand's Atlas — and the choice to return and build"
+
 +++
 
 {{ maturity(level="architectural") }}

@@ -3,6 +3,12 @@ title = "Sovereign Science — Reproducible Computation Over Citation-Sitting"
 description = "Proof of work over citation-sitting. Why reproducible computation is the foundation, and credentials are strategic interfaces — not authorities."
 weight = 14
 date = 2026-07-09
+
+[[extra.companions]]
+url = "/methodology/scyborg-licensing/"
+title = "scyBorg Licensing"
+relation = "methodology"
+label = "AGPL + ORC + CC-BY-SA — three independent nonprofits, no single entity can revoke"
 +++
 
 {{ maturity(level="architectural") }}

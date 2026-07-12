@@ -7,6 +7,12 @@ date = 2026-03-17
 paper_number = 7
 domain = "Physics and Materials"
 
+[[extra.companions]]
+url = "/thesis/08-results-hotspring/"
+title = "Chapter 8: Results — hotSpring"
+relation = "extends"
+label = "Computational plasma physics — Sarkas MD, nuclear EOS, lattice QCD"
+
 [taxonomies]
 primals = ["beardog", "biomeos", "barracuda", "coralreef", "songbird"]
 springs = ["groundspring", "hotspring", "neuralspring"]

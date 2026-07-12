@@ -4,6 +4,18 @@ description = "Iteration, recursion, time — the universal framework for how ev
 date = 2026-03-17
 weight = 4
 
+[[extra.companions]]
+url = "/thesis/03-theoretical-framework/"
+title = "Chapter 3: Theoretical Framework"
+relation = "formal_version"
+label = "The same argument with fitness landscapes, selection coefficients, and population genetics"
+
+[[extra.companions]]
+url = "/methodology/constrained-evolution-formal/"
+title = "Constrained Evolution — Formal"
+relation = "methodology"
+label = "The operational methodology that emerged from these philosophical constraints"
+
 [taxonomies]
 primals = []
 springs = []

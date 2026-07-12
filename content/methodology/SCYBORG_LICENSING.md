@@ -3,6 +3,14 @@ title = "scyBorg Triple License — Why Three Licenses for Three Artifact Types"
 description = "AGPL-3.0-or-later for code, ORC for game mechanics, CC-BY-SA 4.0 for documentation. Why each exists, what each protects, and why all three matter."
 date = 2026-05-03
 
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/sovereign-science/"
+title = "Sovereign Science"
+relation = "narrative_version"
+label = "Proof-of-work over citation-sitting — the philosophical foundation"
+
 [taxonomies]
 primals = ["barracuda", "biomeos", "loamspine", "rhizocrypt", "songbird", "squirrel", "sweetgrass"]
 springs = ["ludospring"]

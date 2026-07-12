@@ -7,6 +7,12 @@ date = 2026-03-17
 paper_number = 2
 domain = "Microbiology and Ecology"
 
+[[extra.companions]]
+url = "/thesis/14-biological-validation/"
+title = "Chapter 14: Biological Validation"
+relation = "extends"
+label = "The LTEE sequencing proposal that would validate these predictions"
+
 [taxonomies]
 primals = ["toadstool"]
 springs = ["airspring", "groundspring", "neuralspring", "wetspring"]

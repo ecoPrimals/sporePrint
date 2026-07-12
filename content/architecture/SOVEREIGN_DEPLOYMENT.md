@@ -6,6 +6,18 @@ weight = 16
 
 [extra]
 domain = "Architecture"
+
+[[extra.companions]]
+url = "/philosophy/i-own-nothing/"
+title = "I Own Nothing"
+relation = "narrative_version"
+label = "The economics of giving it all away — why sovereignty requires generosity"
+
+[[extra.companions]]
+url = "/story/the-sovereign-lab/"
+title = "The Sovereign Lab"
+relation = "narrative_version"
+label = "The builder's narrative of sovereignty in practice"
 +++
 
 ## The Sovereignty Journey

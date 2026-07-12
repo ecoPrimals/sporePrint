@@ -3,6 +3,20 @@ title = "K-NOME Programming"
 description = "Knowledge-Numeric Observed and Mentored Evolutionary Programming"
 date = 2026-03-17
 
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-knowledge-numeric/"
+title = "The Knowledge-Numeric"
+relation = "narrative_version"
+label = "K-NOME as the pen — the philosophical argument"
+
+[[extra.companions]]
+url = "/story/i-dont-know-rust/"
+title = "I Don't Know Rust"
+relation = "narrative_version"
+label = "The constraint that made everything else possible"
+
 [taxonomies]
 primals = ["barracuda", "squirrel"]
 springs = ["airspring", "groundspring", "wetspring"]

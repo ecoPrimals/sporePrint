@@ -4,6 +4,12 @@ description = "A recurring pattern — kingdoms, tollbooths, and the architectur
 date = 2026-03-17
 weight = 6
 
+[[extra.companions]]
+url = "/methodology/constrained-evolution-formal/"
+title = "Constrained Evolution — Formal"
+relation = "formal_version"
+label = "Why removing dependencies forces genuine capability — the formal argument"
+
 [taxonomies]
 primals = []
 springs = []

@@ -3,6 +3,20 @@ title = "Constrained Evolution: How Environmental Pressure Drives Convergence in
 description = "The core methodology paper — environmental constraints drive specialization toward fitness"
 date = 2026-03-17
 
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-human-search/"
+title = "The Human Search"
+relation = "narrative_version"
+label = "The same argument without equations — iteration, recursion, time"
+
+[[extra.companions]]
+url = "/thesis/03-theoretical-framework/"
+title = "Chapter 3: Theoretical Framework"
+relation = "extended_by"
+label = "The full academic expansion — fitness landscapes, formal predictions"
+
 [taxonomies]
 primals = ["barracuda", "beardog", "nestgate", "songbird", "squirrel"]
 springs = ["hotspring"]

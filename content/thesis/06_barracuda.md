@@ -3,6 +3,15 @@ title = "Chapter 6: BarraCuda"
 description = "Vendor-agnostic Pure Rust GPU compute (WGSL/Vulkan, f64) — NTT-to-FFT structural evolution as the principal constrained-evolution case study."
 weight = 6
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/technical/sovereign-gpu-pipeline-profile/"
+title = "Sovereign GPU Pipeline Profile"
+relation = "evidence_for"
+label = "How toadStool/wgpu replaces the CUDA stack in practice"
+
 +++
 
 {{ maturity(level="architectural") }}

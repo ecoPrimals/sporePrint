@@ -7,6 +7,18 @@ date = 2026-03-17
 paper_number = 1
 domain = "Microbiology and Ecology"
 
+[[extra.companions]]
+url = "/philosophy/the-mobility-edge/"
+title = "The Mobility Edge"
+relation = "narrative_version"
+label = "The philosophical argument for Anderson localization as a universal pattern"
+
+[[extra.companions]]
+url = "/thesis/10-results-wetspring/"
+title = "Chapter 10: Results — wetSpring"
+relation = "extends"
+label = "How these results fit the constrained evolution framework"
+
 [taxonomies]
 primals = ["barracuda", "toadstool"]
 springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]

@@ -4,6 +4,18 @@ description = "Gravity, fermentation, and the things that were already there —
 date = 2026-03-17
 weight = 8
 
+[[extra.companions]]
+url = "/thesis/14-biological-validation/"
+title = "Chapter 14: Biological Validation"
+relation = "formal_version"
+label = "The LTEE frozen-fossil sequencing proposal — local discovery as experimental methodology"
+
+[[extra.companions]]
+url = "/story/70-papers-one-stack/"
+title = "70+ Papers, One Stack"
+relation = "pairs_with"
+label = "The evidence — reproducing published science at scale"
+
 [taxonomies]
 primals = []
 springs = []

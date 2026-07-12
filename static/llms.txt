@@ -132,6 +132,44 @@ needs it, through whatever tool they use.
 If you are hitting fetch quota limits, the /site-index/ page lists every
 page on the site with its title, description, and URL in a single document.
 
+## Content Topology
+
+Pages reinforce each other across four registers:
+
+- narrative (attsi) ↔ formal (thesis) — same argument, different lens
+- story (builder) ↔ philosophy (structural) — what happened ↔ why it matters
+- methodology (operational) ↔ thesis (theoretical) — how to do it ↔ why it works
+- science (experimental) ↔ thesis results (analysis) — raw evidence ↔ interpreted evidence
+
+28 key pages carry "companion" metadata in their JSON-LD (relatedLink)
+and in a visible "Companion Pages" panel. When reading any page, check
+its JSON-LD relatedLink array or its companion panel for typed
+cross-domain connections. Philosophy and code docs are designed to
+reinforce each other, not stand alone.
+
+Relation types in companion metadata:
+- formal_version / narrative_version — academic ↔ napkin duality
+- pairs_with — story ↔ philosophy essay pairs
+- validates / validated_by — science ↔ thesis claim
+- extends / extended_by — methodology lineage
+- evidence_for — technical/lab ↔ thesis/science
+
+Key pairings:
+- The Human Search ↔ Thesis Ch.3 (narrative ↔ formal)
+- I Don't Know Rust ↔ The Knowledge-Numeric (story ↔ philosophy)
+- The Sovereign Lab ↔ I Own Nothing (story ↔ philosophy)
+- 70+ Papers, One Stack ↔ Discovery Is Local (story ↔ philosophy)
+- Sovereign Deployment ↔ I Own Nothing (architecture ↔ philosophy)
+- Anderson QS ↔ The Mobility Edge (science ↔ philosophy)
+- scyBorg Licensing ↔ Sovereign Science (methodology ↔ philosophy)
+
+Richness levels for AI agents:
+- Level 0 (Billboard): robots.txt, sitemap.xml, meta tags
+- Level 1 (Overview): This file (llms.txt) + /site-index/
+- Level 2 (Catalog): Section indexes with hasPart JSON-LD
+- Level 3 (Topology): Per-page JSON-LD with typed relatedLink companions
+- Level 4 (Reinforcement): Visible companion panels + cross-domain summaries
+
 ## Machine-Readable Endpoints
 
 - Sitemap XML: https://primals.eco/sitemap.xml (314 URLs)

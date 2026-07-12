@@ -3,6 +3,21 @@ title = "Chapter 8: Results — hotSpring"
 description = "Computational plasma physics validation: Sarkas MD, nuclear EOS, lattice QCD, spectral methods — 197+ checks at ~$0.80 compute cost."
 weight = 8
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/science/07-sovereign-wdm/"
+title = "Sovereign WDM Simulation"
+relation = "validated_by"
+label = "Warm dense matter on consumer GPU — guideStone v0.7.0 certified"
+
+[[extra.companions]]
+url = "/science/10-dynamical-qcd-production/"
+title = "First Dynamical QCD on Consumer GPU"
+relation = "validated_by"
+label = "First dynamical fermion production on consumer GPU"
+
 +++
 
 {{ maturity(level="architectural") }}

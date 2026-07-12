@@ -9,6 +9,48 @@
 {% block tw_desc %}{{ page.description | default(value=config.description) }}{% endblock tw_desc %}
 
 {% block content %}
+{% set_global page_type = "Article" %}
+{% set_global author_type = "Organization" %}
+{% set_global author_name = "ecoPrimals" %}
+{% set_global author_url = "https://primals.eco" %}
+{% set_global page_license = "https://www.gnu.org/licenses/agpl-3.0.html" %}
+
+{% if page.relative_path is starting_with("philosophy/") %}
+  {% set_global author_type = "Person" %}
+  {% set_global author_name = "attsi" %}
+  {% set_global author_url = "" %}
+{% elif page.relative_path is starting_with("story/") %}
+  {% set_global author_type = "Person" %}
+  {% set_global author_name = "attsi" %}
+  {% set_global author_url = "" %}
+  {% set_global page_license = "https://creativecommons.org/licenses/by-sa/4.0/" %}
+{% elif page.relative_path is starting_with("science/") %}
+  {% set_global page_type = "ScholarlyArticle" %}
+{% elif page.relative_path is starting_with("thesis/") %}
+  {% set_global page_type = "ScholarlyArticle" %}
+{% endif %}
+
+{% if page.extra.voice is defined and page.extra.voice == "attsi" %}
+  {% set_global author_type = "Person" %}
+  {% set_global author_name = "attsi" %}
+  {% set_global author_url = "" %}
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ page_type }}",
+  "headline": "{{ page.title }}",
+  "description": "{{ page.description | default(value='') }}",
+  "url": "{{ page.permalink }}",
+  {% if author_url %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}", "url": "{{ author_url }}" },{% else %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}" },{% endif %}
+  "license": "{{ page_license }}",
+  "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }{% if page.extra.companions is defined and page.extra.companions | length > 0 %},
+  "relatedLink": [
+    {% for c in page.extra.companions %}"{{ c.url }}"{% if not loop.last %}, {% endif %}{% endfor %}
+  ]{% endif %}
+}
+</script>
 <div class="page-layout">
   {% if page.toc %}
   <aside class="toc" aria-label="Table of contents">
@@ -57,6 +99,22 @@
     <div class="content">
       {{ page.content | safe }}
     </div>
+
+    {% if page.extra.companions is defined and page.extra.companions | length > 0 %}
+    <nav class="companions" aria-label="Companion pages across sections">
+      <h2>Companion Pages</h2>
+      <p class="companions-desc">These pages cover the same ideas from different angles — narrative, formal, experimental.</p>
+      <ul>
+        {% for c in page.extra.companions %}
+        <li>
+          <span class="relation-badge">{{ c.relation | replace(from="_", to=" ") }}</span>
+          <a href="{{ c.url }}"><strong>{{ c.title }}</strong></a>
+          {% if c.label %}<span class="companion-label">{{ c.label }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
   </article>
 </div>
 {% endblock content %}

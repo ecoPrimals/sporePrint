@@ -3,6 +3,21 @@ title = "Chapter 3: Theoretical Framework"
 description = "Formal constrained evolution principle: fitness landscapes, biology-to-computation mapping, testable predictions, and Muller's ratchet boundary."
 weight = 3
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-human-search/"
+title = "The Human Search"
+relation = "narrative_version"
+label = "The same argument without equations — iteration, recursion, time"
+
+[[extra.companions]]
+url = "/philosophy/the-orthogonal-synthesis/"
+title = "The Orthogonal Synthesis"
+relation = "narrative_version"
+label = "Smith, Paine, Rand, Marx — four descriptions of one structural requirement"
+
 +++
 
 {{ maturity(level="architectural") }}

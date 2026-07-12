@@ -4,6 +4,20 @@ description = "15 primals. 114,000+ tests. 175+ papers reproduced. Built through
 date = 2026-07-08
 weight = 10
 
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-knowledge-numeric/"
+title = "The Knowledge-Numeric"
+relation = "pairs_with"
+label = "K-NOME as the pen — the philosophical argument for AI-assisted development"
+
+[[extra.companions]]
+url = "/methodology/k-nome-programming/"
+title = "K-NOME Programming"
+relation = "methodology"
+label = "The operational model behind the constraint"
+
 [taxonomies]
 primals = []
 springs = []

@@ -3,6 +3,21 @@ title = "Chapter 14: Biological Validation"
 description = "LTEE frozen-fossil sequencing proposal at MSU — closing the loop between computational prediction and biological evidence."
 weight = 14
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/discovery-is-local/"
+title = "Discovery Is Local"
+relation = "narrative_version"
+label = "Results must be public — the philosophical argument"
+
+[[extra.companions]]
+url = "/science/02-ltee-extensions/"
+title = "LTEE Extensions"
+relation = "validated_by"
+label = "Falsifiable Anderson-QS predictions for LTEE populations"
+
 +++
 
 {{ maturity(level="architectural") }}

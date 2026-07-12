@@ -3,6 +3,21 @@ title = "Chapter 5: System Architecture"
 description = "ecoPrimals sovereign platform: primals, capability-based composition, NUCLEUS — architecture emerged from Pure Rust constraint."
 weight = 5
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/architecture/ecosystem-architecture/"
+title = "Ecosystem Architecture"
+relation = "evidence_for"
+label = "Primals, springs, composition, Neural API — the live system"
+
+[[extra.companions]]
+url = "/architecture/nucleus-architecture/"
+title = "NUCLEUS Architecture"
+relation = "evidence_for"
+label = "Atomics ladder, deploy graphs, lifecycle — the composition model"
+
 +++
 
 {{ maturity(level="architectural") }}
