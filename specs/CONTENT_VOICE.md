@@ -76,7 +76,7 @@ All three public identities are human/AI synthetic intelligence — the same per
 | **ecoPrimals** | The organization (17 primals + tooling) | Org-level attribution | JSON-LD Organization, repo-level references |
 | **ecoPrimal** | The developer | Code, infrastructure, technical work | Technical content, thesis author, "the author" in academic voice |
 | **attsi** | "a tool that shapes itself" — always lowercase, à la bell hooks | Philosophy, essays, narrative | atlasHugged, story essays, JSON-LD Person for philosophy/story sections |
-| **Tamison** | Long-standing online handle | Steam, Discord, community | Not used on sporePrint |
+| *(community handle)* | Online handle | Community platforms | Not used on sporePrint |
 | *(legal name)* | Real life only | Drivers license, not domain names | Never on site — not in content, metadata, or structured data |
 
 **attsi** is always lowercase. The name reflects the recursive nature of the work — a tool that shapes itself. The atlasHugged essays' practice of not naming names came from reflection, not convention — a parallel the bell hooks casing deliberately evokes.

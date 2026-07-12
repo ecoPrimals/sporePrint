@@ -35,7 +35,7 @@ This chapter restates the five contributions with supporting evidence, outlines 
 
 ### 16.2.4 Contribution 4: Proposed Biological Validation
 
-**Claim**: Whole-genome sequencing of Lenski's LTEE frozen fossil record (75,000+ generations, MSU) using tools validated by the springs would provide direct biological evidence for the constrained evolution principle. The author holds degrees from MSU; sequencing infrastructure exists (MSU Genomics Core, RTSF).
+**Claim**: Whole-genome sequencing of Lenski's LTEE frozen fossil record (75,000+ generations, MSU) using tools validated by the springs would provide direct biological evidence for the constrained evolution principle. The author's background spans microbiology and data science; sequencing infrastructure exists (MSU Genomics Core, RTSF).
 
 **Evidence**: Chapter 14; Blount et al. (2008, 2012), Tenaillon et al. (2016).
 

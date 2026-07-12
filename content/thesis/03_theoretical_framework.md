@@ -256,7 +256,7 @@ AI-assisted generation of candidate solutions at high frequency. The generation 
 
 ### 3.5.4 The Fitness Function (Revised)
 
-The initial formulation (Mok, 2025, working paper) proposed a convergence rate proportional to constraint strength × direction clarity × feedback frequency. The revised formulation treats fitness as a function of specialization:
+The initial formulation (ecoPrimals, 2025, working paper) proposed a convergence rate proportional to constraint strength × direction clarity × feedback frequency. The revised formulation treats fitness as a function of specialization:
 
 \[
 F(t) = f\bigl(C, D, G, t\bigr)

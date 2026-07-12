@@ -16,7 +16,7 @@ springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspri
 **Date**: March 10, 2026
 **Literature Anchor**: Wei Liao (ADREC, MSU BAE)
 **Springs**: {{ entity(name="wetspring") }} (QS framework), {{ entity(name="healthspring") }} (anaerobic gut), {{ entity(name="airspring") }} (soil O₂ zones), {{ entity(name="neuralspring") }} (ML), {{ entity(name="groundspring") }} (spectral)
-**Bench Source**: MSUBI bioreactor experience (5 years)
+**Bench Source**: Bioreactor operational experience
 
 ---
 
