@@ -11,13 +11,13 @@ date = 2026-07-09
 
 **A Dissertation**
 
-Submitted to the ecoPrimals project as working dissertation  
+Submitted to Michigan State University  
 in partial fulfillment of the requirements  
 for the degree of
 
 **Doctor of Philosophy**
 
-Computational Mathematics, Science and Engineering — with interdisciplinary engagement from Microbiology and Molecular Genetics
+Computational Mathematics, Science and Engineering (CMSE) — with interdisciplinary engagement from Microbiology and Molecular Genetics (MMG)
 
 2026 [projected]
 
@@ -25,7 +25,7 @@ Computational Mathematics, Science and Engineering — with interdisciplinary en
 
 **The ecoPrimals project**
 
-Background: BS Microbiology, MS Data Science
+Background: BS Microbiology, MS Data Science (Michigan State University)
 
 ---
 
@@ -51,7 +51,7 @@ The dissertation contributes: (1) a formal theory of constrained evolution bridg
 
 This work would not be possible without the faculty and researchers whose published science defines its validation targets. The ecoPrimals project acknowledges them as scientists whose results we reproduce; they are not collaborators or endorsers of this work.
 
-The university community — its libraries, its labs, its intellectual culture — made this work possible.
+The Michigan State University community — its libraries, its labs, its intellectual culture — made this work possible.
 
 ---
 
