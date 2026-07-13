@@ -1,5 +1,5 @@
-generated = "2026-07-13T12:20:03Z"
-root_hash = "03739086a55cec0ef33ff71e158d890a6ed1489d99783c66c2daf3ede18eb741"
+generated = "2026-07-13T13:19:35Z"
+root_hash = "bf484d94d08d02c13a140318fbbf5bf618455033f5a50a4dfa96336b2c88eed8"
 page_count = 289
 
 [pages."_index.md"]
@@ -73,8 +73,8 @@ size_bytes = 5555
 title = "K-Derm Diderm Architecture"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
-blake3 = "915f2d1d4abc3c4948416dbc34f3ee68f454cba5e74b40d0cc1da162f05d9795"
-size_bytes = 4686
+blake3 = "020f375826ec76e968762c93b15068178613d406e95e4ef1d64c9dc70bb3ef11"
+size_bytes = 4739
 title = "Gate Mesh — Live Topology"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
@@ -683,28 +683,28 @@ size_bytes = 14724
 title = "JAK/STAT Pharmacology — Gonzales Lab"
 
 [pages."lab/notebooks/gs-01-composition-validation.md"]
-blake3 = "66eb87b30c1157cf88151af5c5a903fe63e3b3e8d48b1d1e9b17a7bbd4b02825"
-size_bytes = 173309
+blake3 = "dd259379f2c2cc27853f604b6c52b035399a11e3cc585367a6bb23ab2f0dc57b"
+size_bytes = 173394
 title = "Composition Validation — groundSpring"
 
 [pages."lab/notebooks/gs-02-benchmark-comparison.md"]
-blake3 = "94389388a5dc922339096cc8a26fce9f0a0248d0b2127b83794de2258535cb31"
-size_bytes = 135001
+blake3 = "7c123e028adb0b520e6769aaf013937c706bc7e0af0a9787799c15c448a26527"
+size_bytes = 135085
 title = "Benchmark Comparison — groundSpring"
 
 [pages."lab/notebooks/gs-03-ecosystem-evidence.md"]
-blake3 = "0a4e77def4a03bb8315d85bdc3ff22d50c1df59e78a1d122c6fea9e2d2d1f333"
-size_bytes = 313482
+blake3 = "22b9ced4522db2f3ec3ceb705befbd1b3675865ed578002e4a21552373f0e508"
+size_bytes = 313562
 title = "Ecosystem Evidence — groundSpring"
 
 [pages."lab/notebooks/gs-04-cross-spring-connections.md"]
-blake3 = "403e2334c2e120c5962654845e9a06b2b16d04d7d02cdb4f5ad0ff1e8e839ca1"
-size_bytes = 142748
+blake3 = "5e84e2b2194b1604a195a0b96877bf7e0a86792e400d3c6172fd12fa24821519"
+size_bytes = 142818
 title = "Cross-Spring Connections — groundSpring"
 
 [pages."lab/notebooks/gs-05-measurement-science-deep-dive.md"]
-blake3 = "c4e9fee90b5670dbe2ac42b264f171457c625864fc27b8eb34d4b008544a9c09"
-size_bytes = 113026
+blake3 = "c09f230e144cb4af5dc0edcea78d3f485e4093db06591ede95effc76cdbe9273"
+size_bytes = 113083
 title = "Measurement Science Deep Dive — groundSpring"
 
 [pages."lab/notebooks/jones-pfas-chemistry.md"]
@@ -1098,8 +1098,8 @@ size_bytes = 2898
 title = "initioChem — Interactive Computational Chemistry"
 
 [pages."products/lattice_qcd.md"]
-blake3 = "45fbadf5651bec914eaa4c042b6e903d38b1c5245fce2b4eedc9c1cd53ece152"
-size_bytes = 6478
+blake3 = "d8465fb816e330039ff7bdf81e29ded1b458b7e6783ff72ae0110358a46aa72e"
+size_bytes = 6493
 title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
 
 [pages."products/lithoSpore.md"]
@@ -1173,8 +1173,8 @@ size_bytes = 30495
 title = "Sovereign Human Health"
 
 [pages."science/14_sovereign_compute_hardware.md"]
-blake3 = "92a20a3221ac235a7edefc11b1406038ee69ad015e30d21a61d5371fb558502a"
-size_bytes = 50562
+blake3 = "85e5e2425f5357beadcfe56782e4ff60ceb93fe4f815a28ee99555f7af3d7965"
+size_bytes = 50584
 title = "Sovereign Compute Hardware"
 
 [pages."science/15_precision_brain_heterogeneous_gpu.md"]

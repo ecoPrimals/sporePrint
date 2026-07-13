@@ -146,7 +146,7 @@ From `about/HARDWARE.md`, the full fleet mapped to precision tiers:
 | **Strandgate** | RX 6950 XT + RTX 3090 | 1:16 + 1:64 | High (dual-vendor) | amdgpu (AMD), nvidia (NVIDIA) |
 | **Eastgate** | RTX 4070 + Titan V | 1:64 + **1:2** | RTX 4070 df64 proven (3.24 TFLOPS) | nvidia + nouveau/NVK (Titan V) |
 | **biomeGate** | RTX 3090 + Titan V | 1:64 + **1:2** | Large df64 + native f64 | nvidia + nouveau/NVK |
-| **Northgate** | RTX 5090 | TBD | Highest f32, best df64 candidate | nvidia |
+| **Northgate** | RTX 5090 | 1:64 | Highest f32, best df64 candidate (pending benchmarks) | nvidia |
 | **Southgate** | RTX 3090 | 1:64 | Same as Strandgate NVIDIA | nvidia |
 | **Swiftgate** | RTX 3070 FE | 1:64 | Moderate df64 | nvidia |
 | **FlockGate** | RTX 3070 Ti | 1:64 | Moderate df64 | nvidia |

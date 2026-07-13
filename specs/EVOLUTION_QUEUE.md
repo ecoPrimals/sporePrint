@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 12, 2026 (Wave 137b — scaffold maturity, notebook path cleanup, page count sync)
+Last reviewed: July 13, 2026 (Wave 137b — dead CSS cleanup, deprecated script removal, dead_code allow removal, WCAG alt text for 12 notebook images, TBD content markers resolved)
 
 ---
 
@@ -104,7 +104,7 @@ Last reviewed: July 12, 2026 (Wave 137b — scaffold maturity, notebook path cle
 - [x] ~~AI accessibility: all 23 navigational tables → ordered/unordered lists~~ — Wave 137a (tables strip links in AI fetch-to-text tools)
 - [x] ~~JSON-LD `hasPart` on all 12 sections with child pages~~ — Wave 137a (generic CollectionPage fallback + ScholarlyArticle for science)
 - [ ] viz-hydrate.js: keyboard pan/zoom, focusable nodes, labeled controls
-- [ ] Notebook chart alt text: meaningful descriptions for 12+ matplotlib PNGs
+- [x] Notebook chart alt text: meaningful descriptions for 12 matplotlib PNGs (done Wave 137b)
 - [ ] `<figure>` / `<figcaption>` for diagrams and viz_embed outputs
 - [ ] `<summary>` containing `<a>` anti-pattern in sidebar — needs UX redesign
 - [ ] Table `<caption>` and `scope` attributes for complex data tables

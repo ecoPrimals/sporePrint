@@ -65,8 +65,8 @@ When songBird is unavailable, the visualization gracefully degrades to static to
 | flockGate | Tower atomic evolution | WG (WAN, 72ms p50) | `songbird.dev`, `beardog.dev`, `skunkbat.dev` |
 | grapheneGate | Portable trust anchor | ADB (USB) | `auth.attest`, `tower.compose` |
 | strandGate | CPU compute (EPYC) | LAN (pending enrollment) | `compute.cpu`, `star.align` |
-| fieldGate | Future House 2 compute | LAN (pending) | TBD |
-| biomeGate | Offline — pending reactivation | House 1 | TBD |
+| fieldGate | Future House 2 compute | LAN (pending — CMOS recovery) | Pending enrollment |
+| biomeGate | Offline — pending kernel recovery | House 1 | Pending reactivation |
 
 ### Physical Topology
 

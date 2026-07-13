@@ -172,7 +172,7 @@ Your content here...
 ## Evolution Roadmap
 
 ### Current — Wave 137b (July 12, 2026)
-- 270 published pages across 18 sections, 66 entities, 290 tests, 34 modules
+- 270 published pages across 18 sections, 66 entities, 289 tests, 34 modules
 - Edition 2024, Rust 1.85+, zero unsafe, zero C deps, 7 justified `#[allow]`
 - NUCLEUS validation + depot integrity + riboCipher transport signal
 - Cast safety evolution: `u64::try_from` replaces `cast_sign_loss`, `PushResult.errors` evolved to `usize`

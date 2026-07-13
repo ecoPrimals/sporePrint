@@ -248,21 +248,6 @@ pub enum MaturityLevel {
 }
 
 impl MaturityLevel {
-    /// CSS class name for badge styling (matches `_badges.scss`).
-    #[must_use]
-    #[allow(dead_code)] // wired when petalTongue renders maturity badges (EVOLUTION_QUEUE P2)
-    pub const fn css_class(self) -> &'static str {
-        match self {
-            Self::Implemented => "maturity-implemented",
-            Self::Reproduced => "maturity-reproduced",
-            Self::Certified => "maturity-certified",
-            Self::Architectural => "maturity-architectural",
-            Self::Planned => "maturity-planned",
-            Self::Scaffold => "maturity-scaffold",
-            Self::Unaudited => "maturity-unaudited",
-        }
-    }
-
     /// Human-readable label.
     #[must_use]
     pub const fn label(self) -> &'static str {
@@ -433,13 +418,6 @@ mod tests {
         for level in MaturityLevel::all() {
             let parsed = MaturityLevel::from_str_loose(level.label());
             assert_eq!(parsed, Some(*level));
-        }
-    }
-
-    #[test]
-    fn maturity_level_css_class_format() {
-        for level in MaturityLevel::all() {
-            assert!(level.css_class().starts_with("maturity-"));
         }
     }
 

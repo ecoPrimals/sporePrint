@@ -8,7 +8,7 @@ primals = ["barracuda", "coralreef", "toadstool", "biomeos"]
 springs = ["hotspring", "groundspring"]
 +++
 
-**Organization**: {{ entity(name="sporegarden") }} (product name TBD)  
+**Organization**: {{ entity(name="sporegarden") }} (product naming in progress)  
 **License**: {{ entity(name="scyborg") }} (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)  
 **Status**: Engine validated, product packaging in development
 
@@ -96,7 +96,7 @@ NVIDIA's CUDA pricing model throttles consumer f64 to 1:64 throughput to protect
 | Physics engine | {{ maturity(level="reproduced") }} | 59/59 checks, 3 papers, cross-vendor GPU parity |
 | ILDG output format | {{ maturity(level="planned") }} | In development — MILC-compatible gauge configs |
 | Measurement pipeline | {{ maturity(level="implemented") }} | Plaquette and flow observables working; Polyakov loop and topological charge next |
-| Product packaging | {{ maturity(level="planned") }} | Product name TBD, sporeGarden repo TBD |
+| Product packaging | {{ maturity(level="planned") }} | Product naming and sporeGarden repo pending |
 
 ---
 

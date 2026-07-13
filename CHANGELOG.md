@@ -5,6 +5,37 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.21.0] — 2026-07-13 — Deep Debt Sweep: Dead Code, Alt Text, TBD Cleanup (Wave 137b)
+
+**Systematic deep debt elimination: dead CSS/code removal, WCAG alt text
+for notebook charts, TBD content resolution, deprecated script retirement.**
+
+### Changed
+
+- **Dead CSS removed** — `.badge-status-unknown` (unused), `.landing-footer`
+  (dead; landing uses `base.html` footer) pruned from `_badges.scss` and
+  `_landing.scss`.
+- **`css_class()` dead code removed** — `MaturityLevel::css_class()` method
+  and its test deleted from `model.rs` (zero callers in production; trivially
+  restorable when petalTongue needs it). Sole `#[allow(dead_code)]` eliminated.
+- **Deprecated `validate_parity.sh` deleted** — superseded by Rust parity
+  tests (`cargo test --test parity -- --ignored`).
+- **WCAG: 12 notebook images** — all "No description has been provided"
+  placeholder alt texts replaced with descriptive chart summaries across
+  5 groundSpring notebook files.
+- **TBD markers resolved** — RTX 5090 fp64:fp32 ratio set to 1:64 in
+  sovereign compute hardware page; fieldGate/biomeGate status clarified
+  in mesh topology; lattice QCD product naming markers softened.
+
+### Metrics
+
+- Tests: 289 (251 unit + 29 integration + 3 refresh_write + 6 parity ignored)
+- Pages: 270 across 18 sections
+- Clippy: 0 warnings (pedantic + nursery)
+- `validate --strict`: 0 errors, 0 warnings
+
+---
+
 ## [3.20.0] — 2026-07-13 — Agent Content Parity: Detect and Prevent Silent Substitution (Wave 137b)
 
 **External AI agent reported receiving `llms.txt` for all URLs instead of

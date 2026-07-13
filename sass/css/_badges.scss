@@ -31,10 +31,6 @@
   background: var(--c-bg-alt);
   color: var(--c-text-muted);
 }
-.badge-status-unknown {
-  background: var(--c-surface);
-  color: var(--c-text-muted);
-}
 
 .badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .entity-badges { margin: 1.5rem 0; }
