@@ -8,7 +8,7 @@ paper_number = 19
 domain = "Game Science and Systems"
 
 [taxonomies]
-primals = ["barracuda", "biomeos"]
+primals = ["barracuda", "biomeos", "loamspine", "petaltongue", "rhizocrypt", "sweetgrass"]
 springs = ["ludospring"]
 +++
 

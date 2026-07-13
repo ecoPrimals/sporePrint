@@ -126,14 +126,20 @@ fn render_notebooks_on_empty_dir() {
 #[test]
 fn render_notebooks_renders_ipynb() {
     let dir = tempfile::tempdir().unwrap();
-    let nb_path = dir.path().join("sample.ipynb");
+    let out_dir = tempfile::tempdir().unwrap();
+    let nb_path = dir.path().join("test_fixture.ipynb");
     std::fs::write(
         &nb_path,
         r##"{"cells": [{"cell_type": "markdown", "source": ["# Sample\n", "Hello world"], "outputs": []}]}"##,
     )
     .unwrap();
 
-    let output = run(&["render-notebooks", &dir.path().to_string_lossy()]);
+    let output = Command::new(binary_path())
+        .args(["--root", &sporeprint_root().to_string_lossy()])
+        .args(["render-notebooks", &dir.path().to_string_lossy()])
+        .env("SPOREPRINT_NOTEBOOK_OUTPUT", out_dir.path())
+        .output()
+        .expect("render-notebooks (ipynb)");
     assert_success(&output, "render-notebooks (ipynb)");
     assert!(stdout_of(&output).contains("Rendered 1 notebook(s)"));
 }

@@ -8,7 +8,7 @@ paper_number = 9
 domain = "Agriculture and Field Science"
 
 [taxonomies]
-primals = ["barracuda", "beardog", "biomeos", "nestgate", "toadstool"]
+primals = ["barracuda", "beardog", "biomeos", "nestgate", "songbird", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 

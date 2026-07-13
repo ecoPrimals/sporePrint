@@ -5,7 +5,7 @@ date = 2026-07-07
 weight = 12
 
 [taxonomies]
-primals = ["beardog", "songbird", "biomeos", "nestgate", "toadstool"]
+primals = ["barracuda", "beardog", "biomeos", "coralreef", "nestgate", "skunkbat", "songbird", "toadstool"]
 
 [extra]
 domain = "Infrastructure"

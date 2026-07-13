@@ -5,7 +5,7 @@ description = "Complete repository inventory across all three ecoPrimals organiz
 date = 2026-06-20
 
 [taxonomies]
-primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 

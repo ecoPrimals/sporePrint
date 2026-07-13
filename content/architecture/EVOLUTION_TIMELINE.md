@@ -5,7 +5,7 @@ description = "27-day sprint day-by-day record and velocity analysis"
 date = 2026-03-17
 
 [taxonomies]
-primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 +++
 

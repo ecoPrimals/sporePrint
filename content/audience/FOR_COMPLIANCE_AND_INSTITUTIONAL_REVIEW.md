@@ -4,7 +4,7 @@ description = "FDA/ISO/HIPAA/GDPR mapping for institutional review"
 date = 2026-03-17
 
 [taxonomies]
-primals = ["beardog", "loamspine", "nestgate", "rhizocrypt", "sweetgrass", "toadstool"]
+primals = ["barracuda", "beardog", "loamspine", "nestgate", "rhizocrypt", "sweetgrass", "toadstool"]
 springs = ["groundspring", "healthspring", "wetspring"]
 +++
 

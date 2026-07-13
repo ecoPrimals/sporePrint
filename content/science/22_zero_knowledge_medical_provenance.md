@@ -8,7 +8,7 @@ paper_number = 22
 domain = "Human Health"
 
 [taxonomies]
-primals = ["beardog", "loamspine", "rhizocrypt", "songbird", "sweetgrass"]
+primals = ["beardog", "biomeos", "loamspine", "petaltongue", "rhizocrypt", "songbird", "sweetgrass"]
 springs = ["healthspring", "ludospring"]
 +++
 

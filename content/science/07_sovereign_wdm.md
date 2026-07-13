@@ -14,7 +14,7 @@ relation = "extends"
 label = "Computational plasma physics — Sarkas MD, nuclear EOS, lattice QCD"
 
 [taxonomies]
-primals = ["beardog", "biomeos", "barracuda", "coralreef", "songbird"]
+primals = ["barracuda", "beardog", "biomeos", "coralreef", "songbird", "toadstool"]
 springs = ["groundspring", "hotspring", "neuralspring"]
 +++
 

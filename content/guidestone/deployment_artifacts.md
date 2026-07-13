@@ -5,7 +5,7 @@ date = 2026-04-30
 weight = 2
 
 [taxonomies]
-primals = ["toadstool", "barracuda", "biomeos", "beardog"]
+primals = ["barracuda", "beardog", "biomeos", "loamspine", "sourdough", "sweetgrass", "toadstool"]
 springs = ["hotspring"]
 +++
 

@@ -5,7 +5,7 @@ description = "How primals compose into a system — the atomics ladder, Neural 
 date = 2026-03-31
 
 [taxonomies]
-primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
 +++
 
 {{ entity(name="nucleus") }} is not a single binary. It is the **emergent state** when foundation primals are running and coordinated by {{ entity(name="biomeos") }} on a gate. This page describes how individual primals compose into a coherent system through named patterns, semantic routing, and cryptographic trust.

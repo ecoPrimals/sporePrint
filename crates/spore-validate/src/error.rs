@@ -56,6 +56,7 @@ impl Error {
 pub enum Severity {
     Error,
     Warning,
+    Info,
 }
 
 /// Validation diagnostic — either an error (must fix) or warning (advisory).
@@ -80,9 +81,21 @@ impl Diagnostic {
         }
     }
 
+    pub fn info(msg: impl Into<String>) -> Self {
+        Self {
+            severity: Severity::Info,
+            message: msg.into(),
+        }
+    }
+
     #[must_use]
     pub const fn is_error(&self) -> bool {
         matches!(self.severity, Severity::Error)
+    }
+
+    #[must_use]
+    pub const fn is_info(&self) -> bool {
+        matches!(self.severity, Severity::Info)
     }
 
     #[must_use]
@@ -90,7 +103,7 @@ impl Diagnostic {
         &self.message
     }
 
-    /// Promote warning to error (for --strict mode).
+    /// Promote warning to error (for --strict mode). Info is never promoted.
     pub fn promote_to_error(&mut self) {
         if self.severity == Severity::Warning {
             self.severity = Severity::Error;
@@ -138,7 +151,10 @@ impl DiagnosticCollector {
 
     #[must_use]
     pub fn warning_count(&self) -> usize {
-        self.diagnostics.iter().filter(|d| !d.is_error()).count()
+        self.diagnostics
+            .iter()
+            .filter(|d| !d.is_error() && !d.is_info())
+            .count()
     }
 
     #[must_use]
@@ -188,6 +204,7 @@ impl std::fmt::Display for Diagnostic {
         match self.severity {
             Severity::Error => write!(f, "ERROR: {}", self.message),
             Severity::Warning => write!(f, "WARN:  {}", self.message),
+            Severity::Info => write!(f, "INFO:  {}", self.message),
         }
     }
 }

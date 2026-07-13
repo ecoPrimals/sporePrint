@@ -9,7 +9,7 @@ domain = "Physics and Materials"
 
 [taxonomies]
 primals = ["barracuda", "coralreef", "toadstool"]
-springs = ["airspring", "groundspring", "hotspring"]
+springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
 
 ## At a Glance

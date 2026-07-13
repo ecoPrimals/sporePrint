@@ -4,7 +4,7 @@ description = "Convergence analysis across all 8 springs — shared mathematical
 date = 2026-03-17
 
 [taxonomies]
-primals = ["barracuda", "coralreef", "toadstool", "beardog", "rhizocrypt", "loamspine", "sweetgrass", "nestgate", "biomeos"]
+primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "nestgate", "rhizocrypt", "skunkbat", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 +++
 

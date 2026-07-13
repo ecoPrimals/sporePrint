@@ -8,8 +8,8 @@ paper_number = 11
 domain = "Game Science and Systems"
 
 [taxonomies]
-primals = ["bingocube"]
-springs = ["hotspring", "ludospring"]
+primals = ["bingocube", "toadstool"]
+springs = ["airspring", "groundspring", "hotspring", "ludospring"]
 +++
 
 **Date:** March 1, 2026

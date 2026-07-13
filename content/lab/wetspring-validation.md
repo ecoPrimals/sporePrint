@@ -9,7 +9,7 @@ domain = "Bioinformatics"
 
 [taxonomies]
 springs = ["wetspring"]
-primals = ["toadstool", "rhizocrypt", "loamspine", "sweetgrass", "nestgate", "barracuda"]
+primals = ["barracuda", "beardog", "loamspine", "nestgate", "rhizocrypt", "sweetgrass", "toadstool"]
 +++
 
 ## Overview

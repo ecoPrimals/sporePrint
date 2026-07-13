@@ -140,7 +140,7 @@ pub fn check_integrity(
         diagnostics.push(Diagnostic::error(b));
     }
 
-    diagnostics.push(Diagnostic::warning(format!(
+    diagnostics.push(Diagnostic::info(format!(
         "check: {shortcode_count} entity shortcodes scanned, all resolved"
     )));
 }
@@ -177,7 +177,7 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
     }
 
     if count == 0 {
-        diagnostics.push(Diagnostic::warning(
+        diagnostics.push(Diagnostic::info(
             "link-lint: all internal links use @/ prefix",
         ));
     }
