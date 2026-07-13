@@ -2,7 +2,6 @@
 title = "biomeOS Validation Summary"
 description = "Orchestration kernel — guideStone startup contract + HEALTH-01 compliant + NUCLEUS supervisor, 27 capability domains, 320+ translations, 43 deploy graphs, zero blocking debt"
 date = 2026-06-11
-weight = 22
 
 [taxonomies]
 primals = ["biomeos", "beardog", "songbird", "skunkbat", "toadstool", "coralreef", "barracuda", "nestgate", "rhizocrypt", "loamspine", "sweetgrass", "squirrel", "petaltongue"]
@@ -117,5 +116,5 @@ itself; it coordinates the primals that do.
 
 ## See Also
 
-- [Spring Catalog](@/architecture/SPRING_CATALOG.md) on primals.eco
+- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
 - [Orchestration Architecture](https://primals.eco/architecture/) — NUCLEUS, Neural API, federation
