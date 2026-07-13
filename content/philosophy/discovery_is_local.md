@@ -11,7 +11,7 @@ relation = "formal_version"
 label = "The LTEE frozen-fossil sequencing proposal — local discovery as experimental methodology"
 
 [[extra.companions]]
-url = "/story/70-papers-one-stack/"
+url = "/story/175-papers-one-stack/"
 title = "70+ Papers, One Stack"
 relation = "pairs_with"
 label = "The evidence — reproducing published science at scale"

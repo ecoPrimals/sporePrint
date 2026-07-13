@@ -1,6 +1,7 @@
 +++
 title = "175+ Papers, One Stack — Reproducing Science on Sovereign Hardware"
 description = "20,695+ quantitative checks across 8 domains. Every computation content-addressed, DAG-tracked, ledger-committed, and attributed."
+slug = "175-papers-one-stack"
 date = 2026-07-08
 weight = 30
 

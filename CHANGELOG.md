@@ -5,6 +5,27 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.20.0] — 2026-07-13 — Agent Content Parity: Detect and Prevent Silent Substitution (Wave 137b)
+
+**External AI agent reported receiving `llms.txt` for all URLs instead of
+requested pages. Root cause: agent fetch tool following `<link rel="alternate"
+type="text/plain">`. Infrastructure confirmed clean — no UA-sniffing.**
+
+### Added
+
+- **`validate_agent_parity.sh`** — dogfood test fetching 11 URLs with both
+  browser and bot UAs, asserting title + canonical parity. Catches any
+  future UA-based content substitution.
+- **`llms.txt` self-identification** — canonical URL + explicit warning header
+  so agents can detect when they've received the overview instead of a
+  specific page. Makes wrongness detectable.
+- **Slug provenance fix** — `70_papers_one_stack.md` slug overridden to
+  `175-papers-one-stack` to match its "175+ Papers" title.
+- **AAR** — `AGENT_PARITY_AAR_137b.md` documenting root cause, investigation,
+  and lessons learned.
+
+---
+
 ## [3.19.0] — 2026-07-12 — Deep Debt: Scaffold Maturity, Path Scrub, Metric Sync (Wave 137b)
 
 **Resolve validator warnings, remove PII-adjacent hardcoded paths from rendered

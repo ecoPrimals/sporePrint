@@ -1,6 +1,7 @@
 +++
 title = "175+ Papers, One Stack"
 description = "Reproducing published science across 8 domains in pure Rust on consumer hardware — the evidence base."
+slug = "175-papers-one-stack"
 weight = 12
 
 [taxonomies]
