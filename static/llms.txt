@@ -1,8 +1,14 @@
 # ecoPrimals — primals.eco
 # Canonical URL: https://primals.eco/llms.txt
-# This is the SITE OVERVIEW — a discovery document, not a specific page.
-# Individual pages are served as HTML at their own URLs.
-# Discover this file via robots.txt or /site-index/.
+#
+# CONTEXT DOCUMENT for AI agents acting on behalf of users.
+# This is the site's glossary, index, and topology map — not a page.
+# Intake this once to understand the full site structure, then fetch
+# individual pages by URL for specific content.
+#
+# Every page links here via <link rel="describedby"> — that means
+# "this resource describes the site context," NOT "this is the page
+# content in text format." The page you want is at the URL you requested.
 
 > Self-hosted scientific computing in pure Rust. 15 composable programs (primals),
 > 8 validation domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
