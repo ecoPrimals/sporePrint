@@ -91,6 +91,29 @@ for path in "${PATHS[@]}"; do
 done
 
 ((PASS--))  # undo offset
+
+echo ""
+echo "=== Alternate-trap guard ==="
+echo "Checking that no HTML page declares alternate type=text/plain..."
+
+TRAP=0
+for path in "${PATHS[@]}"; do
+  [[ "$path" == "/llms.txt" ]] && continue
+  url="${BASE}${path}"
+  body=$(curl -s -A "$BROWSER_UA" --max-time 10 "$url" 2>/dev/null || true)
+  if grep -qP 'rel=.?alternate[^>]*type=.?text/plain|rel="alternate"[^>]*type="text/plain"' <<< "$body" 2>/dev/null; then
+    echo "  TRAP  ${path} — still declares alternate text/plain (accessibility trap)"
+    ((TRAP++))
+  fi
+done
+
+if [[ $TRAP -eq 0 ]]; then
+  echo "  OK    No alternate text/plain traps found"
+else
+  echo "  FAIL  ${TRAP} page(s) still declare alternate text/plain"
+  ((FAIL += TRAP))
+fi
+
 echo ""
 echo "=== Results: ${PASS} passed, ${FAIL} failed ==="
 
