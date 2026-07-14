@@ -350,7 +350,7 @@ are K-NOME.
 - **Streak**: 185 consecutive days
 - **Period**: ~10 months
 - **Result**: {{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="total_tests_display") }} tests
-- **Developer**: One person (microbiologist BS, data scientist MS)
+- **Developer**: One person (microbiology + data science background)
 
 The Cursor receipt is the evidence that K-NOME, as a methodology,
 produces results at scale. The commit history is the evolutionary

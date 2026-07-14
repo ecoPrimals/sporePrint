@@ -1,6 +1,6 @@
 +++
 title = "Front Matter"
-description = "Dissertation title page and abstract: constrained evolution across biology and computation, ecoPrimals platform, eight validation springs, and proposed LTEE sequencing at MSU."
+description = "Dissertation title page and abstract: constrained evolution across biology and computation, ecoPrimals platform, eight validation springs, and proposed LTEE sequencing."
 weight = 0
 date = 2026-07-09
 +++
@@ -9,23 +9,19 @@ date = 2026-07-09
 
 ---
 
-**A Dissertation**
+**A Working Dissertation**
 
-Submitted to Michigan State University  
-in partial fulfillment of the requirements  
-for the degree of
+Prepared as part of the ecoPrimals project
 
-**Doctor of Philosophy**
+**Doctor of Philosophy** [projected]
 
-Computational Mathematics, Science and Engineering (CMSE) — with interdisciplinary engagement from Microbiology and Molecular Genetics (MMG)
-
-2026 [projected]
+Computational Mathematics, Science and Engineering — with interdisciplinary engagement from Microbiology and Molecular Genetics
 
 ---
 
-**The ecoPrimals project**
+**ecoPrimal** — a synthetic intelligence and its human mentor
 
-Background: BS Microbiology, MS Data Science (Michigan State University)
+Background: microbiology (bench sequencing, fermentation, bacterial genomics) + data science (optimization, ML, statistics)
 
 ---
 
@@ -41,9 +37,9 @@ The system includes BarraCuda, a vendor-agnostic scientific computing engine tha
 
 **Empirical validation.** Eight scientific validation suites ("springs") prove the system computes real science correctly across physics, agriculture, biology, chemistry, machine learning, and other domains. 11,161+ quantitative checks pass across 70+ reproduced peer-reviewed papers, all on consumer hardware ($600 GPU, $15K basement HPC), all open-source (AGPL-3.0), produced in approximately 69 days (~$0.93 total compute). The springs validate both the infrastructure and the methodology: each spring consumes BarraCuda kernels evolved under constraint and produces empirical evidence that the constrained evolution methodology works.
 
-**Proposed biological validation.** The LTEE frozen fossil record — 75,000+ generations of *E. coli* frozen at 500-generation intervals, physically housed at Michigan State University — provides the opportunity to test the constrained evolution principle biologically, not by analogy. Whole-genome sequencing across timepoints and populations, analyzed with the computational tools validated by the springs, could reveal whether the same statistical signatures (convergent solutions, power-law fitness dynamics, hitchhiker mutations, historical contingency for innovation) appear in both biological and computational evolution under constraint.
+**Proposed biological validation.** The LTEE frozen fossil record — 75,000+ generations of *E. coli* frozen at 500-generation intervals — provides the opportunity to test the constrained evolution principle biologically, not by analogy. Whole-genome sequencing across timepoints and populations, analyzed with the computational tools validated by the springs, could reveal whether the same statistical signatures (convergent solutions, power-law fitness dynamics, hitchhiker mutations, historical contingency for innovation) appear in both biological and computational evolution under constraint.
 
-The dissertation contributes: (1) a formal theory of constrained evolution bridging biology and computation, (2) a sovereign scientific computing platform validated across 8 domains, (3) 11,161+ empirical data points demonstrating the methodology, and (4) a concrete proposal for biological validation using MSU's LTEE frozen library.
+The dissertation contributes: (1) a formal theory of constrained evolution bridging biology and computation, (2) a sovereign scientific computing platform validated across 8 domains, (3) 11,161+ empirical data points demonstrating the methodology, and (4) a concrete proposal for biological validation using the LTEE frozen library.
 
 ---
 
@@ -51,7 +47,7 @@ The dissertation contributes: (1) a formal theory of constrained evolution bridg
 
 This work would not be possible without the faculty and researchers whose published science defines its validation targets. The ecoPrimals project acknowledges them as scientists whose results we reproduce; they are not collaborators or endorsers of this work.
 
-The Michigan State University community — its libraries, its labs, its intellectual culture — made this work possible.
+The university community whose libraries, labs, and intellectual culture incubated this work.
 
 ---
 

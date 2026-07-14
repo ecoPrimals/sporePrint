@@ -10,6 +10,8 @@ template = "page.html"
 **ecoPrimals** is a sovereign scientific computing project. For questions about the research, collaboration opportunities, or compute access:
 
 - **Email**: [eco.primal@pm.me](mailto:eco.primal@pm.me)
+- **ORCID**: [0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321)
+- **Keyoxide**: [ecoPrimal](https://keyoxide.org/aspe:keyoxide.org:LE2B7C7QUIRLE5OP3TUA5ADXL4) — decentralized identity verification
 - **GitHub**: [github.com/ecoPrimals](https://github.com/ecoPrimals)
 - **Forgejo**: [git.primals.eco](https://git.primals.eco)
 

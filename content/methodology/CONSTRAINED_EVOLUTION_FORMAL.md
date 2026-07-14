@@ -321,7 +321,7 @@ This is the advantage of convergent evolution over dictated uniformity. A shared
 
 The computational analogies in this paper are grounded in real microbiology and computational science. The constrained evolution methodology is not an analogy borrowed from biology for rhetorical convenience — it is a model informed by direct experience with microbial populations under selective pressure, high-throughput sequencing, and computational optimization.
 
-The LTEE frozen fossil record is physically stored at Michigan State University. Lenski's lab freezes glycerol stocks of all twelve populations at regular intervals - every 500 generations - creating a frozen library that spans over 75,000 generations. These samples can be revived and cultured. They can be sequenced. The library is one of the most valuable experimental resources in evolutionary biology: a complete, time-resolved record of parallel evolution under identical constraints.
+The LTEE frozen fossil record is maintained by Lenski's lab. Glycerol stocks of all twelve populations are frozen at regular intervals — every 500 generations — creating a frozen library that spans over 75,000 generations. These samples can be revived and cultured. They can be sequenced. The library is one of the most valuable experimental resources in evolutionary biology: a complete, time-resolved record of parallel evolution under identical constraints.
 
 Significant sequencing work has been done on the LTEE populations (Barrick et al. 2009, Blount et al. 2012, Tenaillon et al. 2016), but there are specific analyses of interest that the intersection of microbiology, data science, and the constrained evolution thesis opens up:
 

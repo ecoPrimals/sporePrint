@@ -36,7 +36,7 @@ protein fold evolution across 75,000+ generations
 The constrained evolution framework generates specific, testable predictions
 for how microbial populations evolve under environmental constraint. We
 propose applying these predictions to three complementary sample archives:
-the Lenski Long-Term Evolution Experiment (LTEE, 75,000+ generations at MSU),
+the Lenski Long-Term Evolution Experiment (LTEE, 75,000+ generations),
 permafrost thaw microbial communities (deep-time natural experiment), and
 agricultural soil time series (contemporary managed constraint). Each archive
 tests a different facet of the theory: the LTEE tests convergence and
@@ -50,7 +50,7 @@ engineering through human management.
 
 ### 1.1 What Exists
 
-The Lenski LTEE (Michigan State University, started 1988) maintains 12
+The Lenski LTEE (started 1988) maintains 12
 replicate populations of Escherichia coli in glucose minimal medium with
 daily serial transfer. The frozen fossil record preserves samples from every
 500 generations — a time machine for evolution.
@@ -88,7 +88,7 @@ eavesdropper strategy). In biofilm, sdiA should respond to any added
 AHL signal; in planktonic, the same signal should fail to coordinate due
 to dilution-amplified Anderson disorder (Exp137: W_eff = W_base / occupancy).
 
-This is a testable bench experiment at MSU using existing LTEE populations.
+This is a testable bench experiment using existing LTEE populations.
 
 ## 2. Permafrost Thaw Communities
 
@@ -258,12 +258,12 @@ selection classification) → {{ entity(name="neuralspring") }} (HMM introgressi
 detection). This three-spring pipeline covers the full LTEE analysis
 workflow from raw sequencing to evolutionary inference.
 
-### 5.4 Wet Lab (MSU Resources)
+### 5.4 Wet Lab (University Resources)
 
-- MSU Genomics Core: Illumina sequencing for LTEE frozen samples
-- MSU RTSF: high-throughput sequencing for soil/environmental DNA
-- LTEE access: Lenski Lab, MSU Department of Microbiology and Molecular Genetics
-- Soil archives: MSU LTAR (Kellogg Biological Station)
+- University genomics core: Illumina sequencing for LTEE frozen samples
+- University sequencing facility: high-throughput sequencing for soil/environmental DNA
+- LTEE access: Lenski Lab (collaboration required)
+- Soil archives: LTAR network sites
 
 ## 6. Falsification Criteria
 
@@ -275,4 +275,4 @@ This sub-thesis is falsifiable:
 - If biofilm vs planktonic LTEE shows no difference in sdiA expression → Anderson-QS model falsified
 
 The predictions are specific, quantitative, and testable with existing
-infrastructure at MSU.
+university infrastructure and LTEE access.

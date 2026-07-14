@@ -38,9 +38,14 @@
         "license": "https://www.gnu.org/licenses/agpl-3.0.html",
         "publisher": {
           "@type": "Organization",
-          "name": "ecoPrimals",
-          "url": "https://github.com/ecoPrimals",
-          "description": "Self-hosted scientific computing platform: pure Rust, vendor-agnostic WebGPU/WGSL GPU compute, reproducible bioinformatics, molecular dynamics, and lattice QCD on commodity hardware"
+          "name": "{{ config.extra.org }}",
+          "url": "{{ config.extra.identity.orgs.primals }}",
+          "description": "{{ config.extra.identity.bio }}",
+          "sameAs": [
+            "{{ config.extra.identity.orcid_url }}",
+            "{{ config.extra.identity.orgs.primals }}",
+            "{{ config.extra.identity.forgejo }}"
+          ]
         }
       },
       {

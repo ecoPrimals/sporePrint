@@ -115,7 +115,7 @@ projectNUCLEUS (deploys + validates)
     ↓ Three-layer security pen testing
 foundation (institutional adoption)
     ↓ metallic bonding → university HPC clusters
-    ↓ ICER mapping → MSU compute resources
+    ↓ HPC cluster mapping → university compute resources
     ↓ grant appendix → NIH/NSF/USDA funding
 ```
 

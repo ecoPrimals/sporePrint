@@ -1,6 +1,6 @@
 +++
 title = "Chapter 14: Biological Validation"
-description = "LTEE frozen-fossil sequencing proposal at MSU — closing the loop between computational prediction and biological evidence."
+description = "LTEE frozen-fossil sequencing proposal — closing the loop between computational prediction and biological evidence."
 weight = 14
 date = 2026-07-09
 
@@ -26,7 +26,7 @@ label = "Falsifiable Anderson-QS predictions for LTEE populations"
 
 The constrained evolution thesis predicts that biological and computational systems under constraint exhibit the same statistical signatures: convergent solutions, power-law fitness dynamics, fastidious specialization, hitchhiker patterns, and historical contingency for innovation. The preceding chapters provide computational evidence. This chapter proposes the biological validation that would close the loop.
 
-The Lenski Long-Term Evolution Experiment (LTEE) frozen fossil record — 75,000+ generations of *E. coli* frozen at 500-generation intervals across twelve populations, physically housed at Michigan State University — is the ideal dataset. It is the longest-running controlled evolution experiment in history, conducted under well-characterized constraint (glucose-limited minimal medium), with replicate populations enabling statistical comparison.
+The Lenski Long-Term Evolution Experiment (LTEE) frozen fossil record — 75,000+ generations of *E. coli* frozen at 500-generation intervals across twelve populations — is the ideal dataset. It is the longest-running controlled evolution experiment in history, conducted under well-characterized constraint (glucose-limited minimal medium), with replicate populations enabling statistical comparison.
 
 ---
 
@@ -119,11 +119,11 @@ coralForge enables a structural analysis layer for every proposal in §14.3:
 
 ---
 
-## 14.5 Why MSU
+## 14.5 Why This Experiment
 
-The LTEE is at Michigan State University. The author's background spans microbiology and data science, both from MSU. The frozen fossil record is accessible. The sequencing infrastructure exists (MSU Genomics Core, RTSF). The computational analysis tools — bioinformatics pipelines, statistical methods, machine learning — are validated by the springs (wetSpring's sovereign 16S/metagenomics pipeline, neuralSpring's ML primitives and coralForge structure prediction, groundSpring's statistical framework).
+The LTEE frozen fossil record is the single most valuable dataset for testing constrained evolution biologically. The builder's background spans bench microbiology and data science. The frozen record is accessible through collaboration. University sequencing infrastructure exists. The computational analysis tools — bioinformatics pipelines, statistical methods, machine learning — are validated by the springs (wetSpring's sovereign 16S/metagenomics pipeline, neuralSpring's ML primitives and coralForge structure prediction, groundSpring's statistical framework).
 
-This is not a hypothetical proposal. It is a concrete research plan that could be executed as part of a PhD program at MSU, using existing resources, with a faculty network already mapped to the relevant scientific domains.
+This is not a hypothetical proposal. It is a concrete research plan that could be executed with existing resources, with a faculty network already mapped to the relevant scientific domains.
 
 ---
 

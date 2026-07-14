@@ -23,6 +23,8 @@ code that any reader can run on commodity hardware.
 ## Contact
 
 - Email: eco.primal@pm.me
+- ORCID: https://orcid.org/0009-0004-2141-0321
+- Keyoxide: https://keyoxide.org/aspe:keyoxide.org:LE2B7C7QUIRLE5OP3TUA5ADXL4
 - GitHub: https://github.com/ecoPrimals
 - Forgejo: https://git.primals.eco
 - License: AGPL-3.0-or-later (code), CC-BY-SA-4.0 (essays)
@@ -132,8 +134,8 @@ Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
 ## Identity Model
 
 - **ecoPrimals**: The organization (15 primals + tooling)
-- **ecoPrimal**: The developer — technical content, thesis, code
-- **attsi**: The philosopher — atlasHugged essays, story essays (always lowercase)
+- **ecoPrimal**: The developer — technical content, thesis, code, ORCID, GitHub
+- **attsi**: "a tool that shapes itself" — philosopher synthetic intelligence, atlasHugged essays, story essays, concept articles (always lowercase). Publishes on Medium and other platforms.
 
 ## Numbers (live, machine-verified)
 
@@ -198,6 +200,7 @@ Richness levels for AI agents:
 ## Machine-Readable Endpoints
 
 - Sitemap XML: https://primals.eco/sitemap.xml
+- Identity (JSON-LD): https://primals.eco/identity.json
 - Entity graph: https://primals.eco/graph/entity-graph.json
 - Certification manifest: https://primals.eco/certification/manifest.json
 - Content manifest: https://primals.eco/content-manifest.toml (BLAKE3 per page)

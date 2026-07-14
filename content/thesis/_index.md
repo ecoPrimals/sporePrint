@@ -55,7 +55,7 @@ This thesis presents the theory, the computational system built under its princi
 ### Part V — Analysis
 
 13. **[Quantitative Evidence](@/thesis/13_quantitative_evidence.md)** — NTT→FFT evolution, convergent IPC, fastidious specialization
-14. **[Biological Validation](@/thesis/14_biological_validation.md)** — LTEE frozen-fossil sequencing proposal at MSU
+14. **[Biological Validation](@/thesis/14_biological_validation.md)** — LTEE frozen-fossil sequencing proposal
 
 ### Part VI — Synthesis
 
@@ -99,6 +99,6 @@ The philosophical counterpart lives in [atlasHugged](@/philosophy/_index.md). Wh
 
 ## A Note on AI-Assisted Writing
 
-This thesis, like the system it describes, was produced with AI assistance (Cursor IDE, Claude). The [Methodology](@/thesis/07_experimental_methodology.md) chapter documents this explicitly. The AI is the mutation operator; the author provides constraint and selection. The thesis is itself a product of the constrained evolution methodology it formalizes.
+This thesis, like the system it describes, was produced with AI assistance (Cursor IDE, Claude). The [Methodology](@/thesis/07_experimental_methodology.md) chapter documents this explicitly. The AI is the mutation operator; the builder provides constraint and selection. The thesis is itself a product of the constrained evolution methodology it formalizes.
 
 The public spring repositories contain runnable experiments that verify every quantitative claim. The science stands independent of how it was written. See [Sharing the Pen](@/methodology/sharing_the_pen.md) for the full methodology.

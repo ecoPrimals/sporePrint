@@ -386,7 +386,7 @@ And the output — the {{ total_stat(stat="total_primals") }} primals, the {{ to
 the architecture, the methodology, the love letter itself — returns
 to the commons under scyBorg. Because the inheritance was received
 freely, and the synthesis — the K-N space, the mentoring, the
-observation, the evolutionary framework — is the author's to give.
+observation, the evolutionary framework — is the builder's to give.
 
 The silicon carried the letter. The human wrote the next page.
 K-NOME is the pen.

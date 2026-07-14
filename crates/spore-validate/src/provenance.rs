@@ -131,13 +131,11 @@ fn extract_semantic_metadata(
 ) -> (Option<String>, Option<String>, Vec<String>, Vec<String>) {
     let section = rel_path.split('/').next().map(String::from);
 
-    let text = match std::str::from_utf8(bytes) {
-        Ok(t) => t,
-        Err(_) => return (section, None, Vec::new(), Vec::new()),
+    let Ok(text) = std::str::from_utf8(bytes) else {
+        return (section, None, Vec::new(), Vec::new());
     };
-    let fm = match parse_front_matter(text) {
-        Some(t) => t,
-        None => return (section, None, Vec::new(), Vec::new()),
+    let Some(fm) = parse_front_matter(text) else {
+        return (section, None, Vec::new(), Vec::new());
     };
 
     let maturity = fm

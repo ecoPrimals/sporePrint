@@ -45,7 +45,7 @@ PhD programs gate access to the credential through coursework requirements, qual
 
 ### Compute Allocation
 
-University HPC centers (ICER at MSU, NERSC, XSEDE) gate access to compute through allocation proposals. Faculty apply for time. Students get one-off allocations for projects. The compute is controlled, scarce, and gated by permission.
+University HPC centers (NERSC, XSEDE, institutional clusters) gate access to compute through allocation proposals. Faculty apply for time. Students get one-off allocations for projects. The compute is controlled, scarce, and gated by permission.
 
 Meanwhile, every undergraduate with a gaming laptop has a GPU that can do f64 science through Vulkan. The capability is latent, unrecognized, and unused — because the institutional model assumes compute is scarce and must be centrally allocated.
 
@@ -87,7 +87,7 @@ PhD students don't have their own compute. That's how it works in every program:
 
 But undergraduates have latent gaming power. Every RTX 3060, 4060, 4070 in a dorm room is a science chip — the f64 capability exists in the silicon, Vulkan unlocks it, BarraCuda runs on it. A department that deployed BarraCuda-powered springs across its students' gaming laptops would have a distributed HPC it didn't know it owned.
 
-MSU's Genome Corp could build its own AlphaFold. Not on a $100M cluster — on the GPUs students already bought for gaming. The capability is there. The institution just doesn't see it yet because the CUDA model says consumer GPUs can't do science.
+Any university genomics program could build its own AlphaFold. Not on a $100M cluster — on the GPUs students already bought for gaming. The capability is there. The institution just doesn't see it yet because the CUDA model says consumer GPUs can't do science.
 
 ---
 

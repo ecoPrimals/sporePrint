@@ -221,7 +221,7 @@ Agent-based models are inherently parallelizable and memory-intensive. Strandgat
 
 **Why this study matters beyond benchmarks**:
 - Agent-based modeling of infectious disease has structural similarities to the primal coordination model in ecoPrimals. Agents interact through local rules (like primals coordinating through IPC), and macro behavior emerges from micro interactions (like NUCLEUS emerging from primal composition). This is the same computational paradigm.
-- The author's microbiology training (Medical Microbiology, Virology, Molecular Pathogenesis) provides domain knowledge that most computational physicists don't have. Understanding influenza dynamics at the cellular level can inform model validation and parameterization.
+- The builder's microbiology background provides domain knowledge that most computational physicists don't have. Understanding influenza dynamics at the cellular level can inform model validation and parameterization.
 
 **Available Data**:
 - Murillo Group publications on agent-based influenza modeling

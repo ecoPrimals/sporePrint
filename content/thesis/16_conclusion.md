@@ -35,7 +35,7 @@ This chapter restates the five contributions with supporting evidence, outlines 
 
 ### 16.2.4 Contribution 4: Proposed Biological Validation
 
-**Claim**: Whole-genome sequencing of Lenski's LTEE frozen fossil record (75,000+ generations, MSU) using tools validated by the springs would provide direct biological evidence for the constrained evolution principle. The author holds degrees from MSU in microbiology and data science; sequencing infrastructure exists (MSU Genomics Core, RTSF).
+**Claim**: Whole-genome sequencing of Lenski's LTEE frozen fossil record (75,000+ generations) using tools validated by the springs would provide direct biological evidence for the constrained evolution principle. The builder's background spans microbiology and data science; university sequencing infrastructure exists.
 
 **Evidence**: Chapter 14; Blount et al. (2008, 2012), Tenaillon et al. (2016).
 
@@ -51,11 +51,11 @@ This chapter restates the five contributions with supporting evidence, outlines 
 
 ### 16.3.1 LTEE Sequencing
 
-The LTEE frozen fossil record at Michigan State University contains 75,000+ generations of *E. coli* frozen at 500-generation intervals across 12 populations. Whole-genome sequencing of Ara-3 (and selected other populations) through the MSU Research Technology Support Facility (RTSF) would provide the biological ground truth for constrained evolution signatures. The analysis pipeline — alignment via wetSpring, variant calling, population genomics — is validated in the springs. This work is contingent on faculty collaboration and LTEE access (see [Chapter 14](@/thesis/14_biological_validation.md)).
+The LTEE frozen fossil record contains 75,000+ generations of *E. coli* frozen at 500-generation intervals across 12 populations. Whole-genome sequencing of Ara-3 (and selected other populations) through university sequencing infrastructure would provide the biological ground truth for constrained evolution signatures. The analysis pipeline — alignment via wetSpring, variant calling, population genomics — is validated in the springs. This work is contingent on faculty collaboration and LTEE access (see [Chapter 14](@/thesis/14_biological_validation.md)).
 
 ### 16.3.2 Scaling via NUCLEUS
 
-Deploy NUCLEUS across multiple institutions; validate bonding model (covalent, ionic, metallic) at scale; measure capability discovery latency and federation overhead. Pilot deployments with collaborator institutions — particularly MSU departments with existing GPU compute — would test whether the mesh absorbs new nodes as predicted by the architecture.
+Deploy NUCLEUS across multiple institutions; validate bonding model (covalent, ionic, metallic) at scale; measure capability discovery latency and federation overhead. Pilot deployments with collaborator institutions would test whether the mesh absorbs new nodes as predicted by the architecture.
 
 ### 16.3.3 Additional Spring Domains
 
@@ -72,7 +72,7 @@ Kauffman's NK model (1993) formalizes fitness landscape ruggedness. A formal der
 ### 16.3.6 baseCamp Companion Papers
 
 Independent explorations that arose from applying ecoPrimals technology to
-questions driven by the author's bench microbiology background. These are
+questions driven by bench microbiology experience. These are
 documented in [science](@/science/_index.md) and include:
 
 1. **Anderson Localization as QS Null Hypothesis** ([@/science/01_anderson_qs.md](@/science/01_anderson_qs.md)) — Condensed matter physics (Anderson 1958) applied to microbial QS signal propagation, establishing that 3D geometry is necessary and sufficient for QS in diverse communities. 2,992+ validation checks. Three evolutionary NP solutions identified (V. cholerae logic inversion, Myxococcus self-organized geometry, Dictyostelium relay).
@@ -95,7 +95,7 @@ They connect back to constrained evolution where the biology demands it.
 
 ### 16.4.1 From Basement to Principle
 
-This dissertation began with a microbiologist who had worked with bacterial populations under selective pressure and saw the same dynamics in AI-assisted code generation. The question was not "can AI write code?" but "does the *environment* in which AI writes code determine what gets built?"
+This dissertation began when a microbiologist who had worked with bacterial populations under selective pressure saw the same dynamics in AI-assisted code generation. The question was not "can AI write code?" but "does the *environment* in which AI writes code determine what gets built?"
 
 The answer, across 757,000 lines of Rust, 914 WGSL shaders, 104,000+ tests, and 11,161+ scientific checks, is yes. The Rust type system did not merely accelerate development. It reshaped the fitness landscape. Tower Atomic, the NTT→FFT evolution, the convergent IPC patterns, and the bonding model emerged because the constraint made certain solutions possible and others impossible. The system reflects its environment.
 

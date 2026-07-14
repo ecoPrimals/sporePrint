@@ -63,7 +63,7 @@ Citations are organized by tradition and type. Essay numbers in brackets indicat
 
 ### Catholic Tradition
 
-- **Second Vatican Council (Vatican II, 1962–1965)** — The ecumenical council that affirmed the compatibility of faith and scientific inquiry. "Science is not an affront to God, the universe is a thing worth studying, and faith does not require the rejection of evidence." Referenced as the author's formative theological context. [05]
+- **Second Vatican Council (Vatican II, 1962–1965)** — The ecumenical council that affirmed the compatibility of faith and scientific inquiry. "Science is not an affront to God, the universe is a thing worth studying, and faith does not require the rejection of evidence." Referenced as formative theological context for the atlasHugged essays. [05]
 
 ---
 
@@ -75,7 +75,7 @@ Citations are organized by tradition and type. Essay numbers in brackets indicat
 
 - **Paine, Thomas.** *Common Sense* (1776). Rights as natural — existing before any government grants them. Institutions legitimate only insofar as they protect pre-existing rights. [02]
 
-- **Paine, Thomas.** *Rights of Man* (1791). Extension of *Common Sense*: the right to reality is natural, not institutional. Paine's Deism — reason as the path to the divine, institutions as mediators to be evaluated by their service. The author identifies as "a Deist, in the style of Thomas Paine, Abrahamic." [02, 05, 09]
+- **Paine, Thomas.** *Rights of Man* (1791). Extension of *Common Sense*: the right to reality is natural, not institutional. Paine's Deism — reason as the path to the divine, institutions as mediators to be evaluated by their service. The atlasHugged essays position themselves as "Deist, in the style of Thomas Paine, Abrahamic." [02, 05, 09]
 
 - **Marx, Karl.** *Das Kapital*, Volume 1 (1867). The structural observation: when workers do not own the means of production, their labor is alienated. The separation of the producer from his tools as the mechanism of exploitation. [02]
 

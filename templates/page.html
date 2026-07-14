@@ -43,7 +43,7 @@
   "headline": "{{ page.title }}",
   "description": "{{ page.description | default(value='') }}",
   "url": "{{ page.permalink }}",
-  {% if author_url %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}", "url": "{{ author_url }}" },{% else %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}" },{% endif %}
+  {% if author_type == "Organization" %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}", "url": "{{ author_url }}", "sameAs": ["https://orcid.org/0009-0004-2141-0321", "https://github.com/ecoPrimals"] },{% elif author_url %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}", "url": "{{ author_url }}" },{% else %}"author": { "@type": "{{ author_type }}", "name": "{{ author_name }}" },{% endif %}
   "license": "{{ page_license }}",
   "isPartOf": { "@type": "WebSite", "name": "ecoPrimals", "url": "{{ config.base_url }}" }{% if page.extra.companions is defined and page.extra.companions | length > 0 %},
   "relatedLink": [

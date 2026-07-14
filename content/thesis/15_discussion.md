@@ -50,7 +50,7 @@ The methodology relies on AI (Cursor/Claude) for code generation. Concerns: hall
 
 ### 15.3.2 No Production Users
 
-The ecoPrimals ecosystem has no external production deployments. All validation is internal — the author's basement HPC, springs, and showcase demos. Real-world stress testing (concurrent users, adversarial inputs, long-term stability) has not occurred.
+The ecoPrimals ecosystem has no external production deployments. All validation is internal — the builder's basement HPC, springs, and showcase demos. Real-world stress testing (concurrent users, adversarial inputs, long-term stability) has not occurred.
 
 ### 15.3.3 Solo Developer
 

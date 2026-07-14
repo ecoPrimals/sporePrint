@@ -56,7 +56,7 @@ primals.eco/lab (public evidence)
     ↓ PI reviews at primals.eco or shared workspace
 foundation (institutional bridge)
     ↓ grant appendix (NIH, NSF, USDA mapped)
-    ↓ MSU asset acceleration (ICER mapping)
+    ↓ university asset acceleration (HPC cluster mapping)
     ↓ drug discovery pipeline (pharma/biotech)
 metallic bonding (institutional HPC)
     ↓ university clusters join as compute pools

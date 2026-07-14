@@ -90,7 +90,7 @@ Each spring validates against published work from peer-reviewed literature. Vali
 3. **Validation path**: A spring passes when quantitative checks match published results within stated tolerances; no personal confirmation is required.
 4. **PhD relevance**: Each spring demonstrates reproducibility of established science in a specific domain, not affiliation with any particular research group.
 
-As of March 2026, springs map to published work across multiple departments and institutions (MSU, Sandia, Carleton College), with 60+ candidate papers identified for future reproduction. MSU Drug Discovery Program publications extended validation targets into pharmacology and high-throughput screening.
+As of March 2026, springs map to published work across multiple departments and institutions, with 60+ candidate papers identified for future reproduction. Drug discovery program publications extended validation targets into pharmacology and high-throughput screening.
 
 ## 7.6 Cost Model
 

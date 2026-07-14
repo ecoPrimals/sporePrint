@@ -172,16 +172,16 @@ pub fn probe_health(
 
 /// Shared NDJSON mock stream for IPC testing (used by `ipc` and `petaltongue` tests).
 #[cfg(test)]
-pub(crate) mod mock {
+pub mod mock {
     use std::io::Cursor;
 
-    pub(crate) struct MockStream {
+    pub struct MockStream {
         read_buf: Cursor<Vec<u8>>,
         write_buf: Vec<u8>,
     }
 
     impl MockStream {
-        pub(crate) fn with_response(json: &serde_json::Value) -> Self {
+        pub fn with_response(json: &serde_json::Value) -> Self {
             let mut data = serde_json::to_string(json).unwrap();
             data.push('\n');
             Self {
@@ -190,7 +190,7 @@ pub(crate) mod mock {
             }
         }
 
-        pub(crate) fn with_responses(responses: &[serde_json::Value]) -> Self {
+        pub fn with_responses(responses: &[serde_json::Value]) -> Self {
             let mut data = String::new();
             for r in responses {
                 data.push_str(&serde_json::to_string(r).unwrap());

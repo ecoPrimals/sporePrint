@@ -46,7 +46,7 @@ This dissertation makes five primary contributions:
 
 3. **An empirical validation framework** (the "springs") that validates the computing infrastructure against published, peer-reviewed science across eight domains: computational plasma physics, precision agriculture, life science and analytical chemistry, measurement noise and uncertainty, machine learning primitives, and others (Chapters 7–12). 11,161+ quantitative checks pass across 70+ reproduced papers.
 
-4. **A proposed biological validation** of the constrained evolution principle via whole-genome sequencing of Lenski's LTEE frozen fossil record (75,000+ generations, physically housed at MSU), analyzed with the same computational tools validated by the springs (Chapter 14).
+4. **A proposed biological validation** of the constrained evolution principle via whole-genome sequencing of Lenski's LTEE frozen fossil record (75,000+ generations), analyzed with the same computational tools validated by the springs (Chapter 14).
 
 5. **An empirical observation** that nature universally solves hard problems through accept-and-generate — building generators (enzymes, genomes, immune systems) and letting selection verify the output — applied as a design principle for the constrained evolution methodology (Chapter 4).
 
@@ -62,7 +62,7 @@ This work sits at the intersection of four fields:
 
 - **Scientific computing**: GPU compute democratization, vendor lock-in and its consequences, f64 precision requirements for real science, and the reproducibility crisis (Ince et al., 2012; Mesnard & Barba, 2017).
 
-The author's background — BS Microbiology with bench experience in high-throughput sequencing, fermentation, and bacterial genomics; MS Data Science with coursework in optimization, machine learning, and statistics — is not incidental. The constrained evolution methodology was not borrowed from biology as a metaphor. It was recognized by someone who had worked with microbial populations under selective pressure and saw the same dynamics in AI-assisted code generation within a strong type system.
+The builder's background — bench microbiology (high-throughput sequencing, fermentation, bacterial genomics) and data science (optimization, machine learning, statistics) — is not incidental. The constrained evolution methodology was not borrowed from biology as a metaphor. It was recognized by someone who had worked with microbial populations under selective pressure and saw the same dynamics in AI-assisted code generation within a strong type system.
 
 ## 1.6 Organization
 

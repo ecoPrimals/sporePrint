@@ -1,6 +1,6 @@
-generated = "2026-07-14T17:53:04Z"
-root_hash = "ba3249191a8b8c598907ac29644f59045deb20aa81be75bdb78fd121398e19c4"
-page_count = 321
+generated = "2026-07-14T21:47:29Z"
+root_hash = "c5557b704a93d92d9cf633b61bb018f334b5b843f0afe32a4c8f37d57596b737"
+page_count = 324
 
 [pages."_index.md"]
 blake3 = "d029a429a9a5c9b737c374f3bd1f5a674e8ee5abcadcb9702ed26887490c672c"
@@ -9,142 +9,164 @@ title = "sporePrint"
 section = "_index.md"
 
 [pages."architecture/COMPOSITION_PATTERNS.md"]
-blake3 = "c9f2255ad1d06f6c5b6816fde328c9d58da97d60af1a545cd18bee8ee7868fb5"
-size_bytes = 6346
+blake3 = "dde0ca1429650b9a615167ebe8abc351ce4e0291b373e8ed40ae5f9a64f56359"
+size_bytes = 6373
 title = "Composition Patterns"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/COMPOSITION_PIPELINE.md"]
-blake3 = "685f174b83cf78897974c7a6de4267f25193d4673a240c778cc9e61c7c892dbd"
-size_bytes = 8578
+blake3 = "bca380ea3cdc409cc315ddfad5ada92b7493b1b8fb411f5671c78fe146faa4e4"
+size_bytes = 8635
 title = "Composition Pipeline: Springs → Primals → Products → Foundation"
 section = "architecture"
+maturity = "reproduced"
 
 [pages."architecture/DEPLOYMENT_MODEL.md"]
-blake3 = "62ef9d1f6baf49e82b6d5bacbcbfdfb8e78959933494759a0ec0d8807e5651ad"
-size_bytes = 8512
+blake3 = "a1f2252368925050b74eba2d388ff53a1b5a2899f86cf3ecc35864163795097c"
+size_bytes = 8570
 title = "Deployment Model: plasmidBin & BYOB"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/ECOSYSTEM_ARCHITECTURE.md"]
-blake3 = "cd0d810489ca783840b577c017ff9897944412f3ba115ce6225e72e9ac6be31d"
-size_bytes = 34567
+blake3 = "95b98e0e95fcb8cd13ad91f1012b357a40ed30a4c015b45a9aff0388a7493ab1"
+size_bytes = 34761
 title = "ecoPrimals Ecosystem Architecture: From Binary to Bonding"
 section = "architecture"
+maturity = "architectural"
 trails = ["first-visit"]
 
 [pages."architecture/ECOSYSTEM_INVENTORY.md"]
-blake3 = "f9102c5c82b055e7c469621e3cc3eef2a2672cb16347f3b4685a8bf109a948d8"
-size_bytes = 11738
+blake3 = "e5403f9026db5bdb368615661d532207dfa599351876122993af841768166d92"
+size_bytes = 11796
 title = "Ecosystem Inventory"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/ECOSYSTEM_VISUALIZATION.md"]
-blake3 = "5dcf77dd08105d08ce45eedbd4a9e82d1a623641b566c11f6faf39df56e522b2"
-size_bytes = 1980
+blake3 = "43b497d5e9d390bb426dcfccba8a3191ed74a045252225b7e6bbd84c895e0b03"
+size_bytes = 2007
 title = "Ecosystem Visualization"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/EVIDENCE_SNAPSHOT.md"]
-blake3 = "8f312d405441c0eeb6ca57464fe609df387ce73ae4ad704a04ad2bef05c4ce5e"
-size_bytes = 7396
+blake3 = "30b73f3b54dc0f55213f7101dd9363055b2237d1e8d5bbdc90f12842192477fe"
+size_bytes = 7421
 title = "Evidence Snapshot"
 section = "architecture"
+maturity = "implemented"
 trails = ["grant-ready"]
 
 [pages."architecture/EVOLUTION_TIMELINE.md"]
-blake3 = "d7dc76fbaf485b43145a8bcbc9d295fcb8eb4be5f38b56be354afa18c6b76c9f"
-size_bytes = 10864
-title = "Evolution Timeline: 27 Days, Seven Domains, 15,000+ Checks"
+blake3 = "2899df34a5c916ac798b6d2a4b1166860555051bb8573b94dedb715924a9f87a"
+size_bytes = 10921
+title = "Evolution Timeline: 27 Days, Seven Domains, 20,695+ Checks"
 section = "architecture"
+maturity = "reproduced"
 
 [pages."architecture/EXTERNAL_COLLABORATION.md"]
-blake3 = "67aa7bb17edeb3deb48b078002be63f2de7057949e0c6d161c2f7c3a154e5c3e"
-size_bytes = 4834
+blake3 = "e288082b4ed940ea2f077592c8695b7842983d2074c26d5381bcbf5f431307a8"
+size_bytes = 4861
 title = "External Collaboration Model"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/FOUNDATION_CONNECTION.md"]
-blake3 = "ca3cd7e73ea82ad1c200d336a48e1f143a8d48d24050dc40532d653c22ba1303"
-size_bytes = 5871
+blake3 = "e56b342a661164276dc6e3f0e94f0ddaec5d793797e6ff6c35ab58292bb13fe5"
+size_bytes = 5931
 title = "Foundation Connection: From baseCamp to Institutional Adoption"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/GENERATIONAL_ARC.md"]
-blake3 = "849af6b7b73bac7db7ae1ef45ae303fb013e3f9a2c99b9aee1cf1239ab53d434"
-size_bytes = 4872
+blake3 = "2075486ca96cdadb2429c9ec08dcf7976035a0a3f58247039e370e235e083799"
+size_bytes = 4899
 title = "Generational Arc"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/GUIDESTONE_PUBLICATION.md"]
-blake3 = "931e3f7681f561fb1d3ef6a6b99d5ed13d9a0e31f15a649971b5b7464616e50f"
-size_bytes = 4510
+blake3 = "382b01380449f404e2ed8d84a07a3d7bbc08867c149ea7dbdb7c2370e40d01bb"
+size_bytes = 4568
 title = "Self-Certifying Publication: sporePrint as guideStone"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/KDERM_DIDERM_ARCHITECTURE.md"]
-blake3 = "783d0d8872089959b155e736f2648571dc6cba682c2896cd07c5dc3cc7049b09"
-size_bytes = 5957
+blake3 = "ac7345f1536273936de7faa772bac8bc145824d85bc750317c970e1e7a6a1b9b"
+size_bytes = 5982
 title = "K-Derm Diderm Architecture"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
-blake3 = "411c699ed9116f571ed014781beddb17c227703626a6f98fb71dae4f279b9faf"
-size_bytes = 4832
+blake3 = "0e27f34b0ae23c20b5ffa498a01d6728e94046a18df9aa70ac10447ad541203c"
+size_bytes = 4857
 title = "Gate Mesh — Live Topology"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "f433f32e2dabf1f5002529212dbaecbd5afa8a85807c410e40a4729bb95b73ee"
-size_bytes = 16571
+blake3 = "6d259924c3bd9436120dcaca65fb56a280015487faca8705b24d8072a2e275ac"
+size_bytes = 16631
 title = "NUCLEUS Composition Model"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
-blake3 = "15c06e10b757a20b8e0907854caf4590ff55388ccc68bd01a54dcd2591ed79e2"
-size_bytes = 55059
+blake3 = "e6b212ed77fd679df9e8f147890d3e15781a46d4db2a41bd8786452a04a6238c"
+size_bytes = 55072
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/RENVOIS_KNOWLEDGE_TOPOLOGY.md"]
-blake3 = "596c7c3e8fa779d0ed2d9dca07eea0e358c4550cc633248e7691b7a86736fb90"
-size_bytes = 7503
+blake3 = "75bb69c2ce391c660ef886d5de8ffcad80f48063b507d611789f69d05ae03f96"
+size_bytes = 7563
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "fb940a3ff8e298257014e553cc607d66e16ef5f7508254a79e8ba0dec4d2c69b"
-size_bytes = 6156
+blake3 = "335c8cfba057bba43a0ff89aa4875bb9b560d41ff3d5d7333a7b678c64baea2c"
+size_bytes = 6181
 title = "Sovereign CI — Build Infrastructure"
 section = "architecture"
+maturity = "implemented"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
-blake3 = "f996dc98d26b1262e6d2ca3f968efa2bc2d5702a1aa3928300b13e2b55b22a12"
-size_bytes = 13733
+blake3 = "b284db51feed8f403cb32b7e55fdd1025059d58c50df9779fca453d1239b5099"
+size_bytes = 13758
 title = "Sovereign Deployment"
 section = "architecture"
+maturity = "implemented"
 companions = [
     "/philosophy/i-own-nothing/",
     "/story/the-sovereign-lab/",
 ]
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
-blake3 = "f39751e86823f5f00d8932e6f7ec2b5a8338a6ac2e3ad8bd696144c6bf0d3021"
-size_bytes = 44702
+blake3 = "3e8e368191f504bd22816d6b873c076e7b0a085cc96bebd8c37dff99ce56f4d4"
+size_bytes = 44762
 title = "ecoPrimals — Sovereign Prior Art Catalog"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/SPRING_CATALOG.md"]
-blake3 = "fd6a01cb63a098e6174a1456240111412fc41abbdade97e168c74f2ac935b412"
-size_bytes = 38804
+blake3 = "91c0a2587bcd40d100067c025f3bc94120ee46990e0e39c78cbe5d79e48de409"
+size_bytes = 38861
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
 section = "architecture"
+maturity = "reproduced"
 
 [pages."architecture/TRANSPORT_EVOLUTION.md"]
-blake3 = "4a97c3c594c89cebc25bcf8055ba30b9eaf3970a2249e5501a1bee1fa25c5b47"
-size_bytes = 6381
+blake3 = "5775506b764f53017fef7a48874e0768ef43897fa32215afde134ff7d10ac0bc"
+size_bytes = 6408
 title = "Transport Evolution"
 section = "architecture"
+maturity = "architectural"
 
 [pages."architecture/_index.md"]
 blake3 = "a1ffb6e74ed2ede4211a64b8a349a70abbe16e3c2513b8cfa5677ed5cf46db24"
@@ -153,10 +175,11 @@ title = "Architecture"
 section = "architecture"
 
 [pages."architecture/atlas_memory_palace.md"]
-blake3 = "b910b867a20cc8ef19f79f433c6fdb3cb4851d0bc4acff24da2baecab3e5cd5d"
-size_bytes = 7676
+blake3 = "b4551fd8ce3d25727766e25a5f8ef35ed6329a91c731685a8c08a6a99a6171ed"
+size_bytes = 7703
 title = "Atlas — A Memory Palace for Humans and AI"
 section = "architecture"
+maturity = "architectural"
 trails = ["first-visit"]
 companions = [
     "/architecture/creative-surface/",
@@ -165,10 +188,11 @@ companions = [
 ]
 
 [pages."architecture/coordination.md"]
-blake3 = "fda121ac695d872f9bb5fcbce672e073f45e1a8f520b0a784e5c26e12aedb5d8"
-size_bytes = 5462
+blake3 = "b098e0b082f00e24a9223a2776043fe606cbe939b4f431d83668de222714b4f9"
+size_bytes = 5487
 title = "Ecosystem Coordination"
 section = "architecture"
+maturity = "implemented"
 trails = ["coordination"]
 companions = [
     "/architecture/coordination-triad/",
@@ -176,10 +200,11 @@ companions = [
 ]
 
 [pages."architecture/coordination_triad.md"]
-blake3 = "bb62910616d8eed58dd5d49ded10844f9b5c0672ed07c225b14fa328f475f552"
-size_bytes = 5851
+blake3 = "bed3843e23e84b5021ed8090713b014370de154d4bb9469392c371c3545d57f4"
+size_bytes = 5878
 title = "Coordination Triad"
 section = "architecture"
+maturity = "architectural"
 trails = ["coordination"]
 companions = [
     "/architecture/waterfall/",
@@ -189,10 +214,11 @@ companions = [
 ]
 
 [pages."architecture/creative_surface.md"]
-blake3 = "43f3a316abcede31a9e9fa7d633f25187ed7b1c06f4857796243ddce39f8fdb1"
-size_bytes = 4877
+blake3 = "3d423f80e5a18531ab2f0ba402f227270d93ea39b375a0651172dc779fd34d35"
+size_bytes = 4904
 title = "Creative Surface Architecture"
 section = "architecture"
+maturity = "architectural"
 companions = [
     "/architecture/deploy-graph-composition/",
     "/collaborators/abg-initiochem/",
@@ -200,10 +226,11 @@ companions = [
 ]
 
 [pages."architecture/deploy_graph_composition.md"]
-blake3 = "843fe139bb3e40e51a164661ff1f7532b4c62366573bf51b0e673805aeeef5f4"
-size_bytes = 4832
+blake3 = "d8fc5d51589636af31cb950d7fac1ec6a6c2de2ef976cb3b8f9f7d5cd3de20c2"
+size_bytes = 4859
 title = "Deploy Graph Composition"
 section = "architecture"
+maturity = "architectural"
 trails = ["nf-pipeline"]
 companions = [
     "/products/nf-case-study/",
@@ -211,10 +238,11 @@ companions = [
 ]
 
 [pages."architecture/discovery_log.md"]
-blake3 = "b35b59adcde541ba4c336c96a1ff0b11e843920351ea744000dd67dca27cb972"
-size_bytes = 4669
+blake3 = "5813c0589dfdf871c6e2a7328662c5122d33580b251ba2d0fdfe5f59dfd9b983"
+size_bytes = 4693
 title = "Discovery Log — Capability Hunting Methodology"
 section = "architecture"
+maturity = "reproduced"
 trails = ["first-visit"]
 companions = [
     "/architecture/silicon-deism/",
@@ -223,10 +251,11 @@ companions = [
 ]
 
 [pages."architecture/economics.md"]
-blake3 = "5304f67a3b146158516f61933a5f084ae8a1eeaab4e82521fece481074a7d5b8"
-size_bytes = 4876
+blake3 = "a0d9ce1daa36aeaa1453922b60d81b27db0bfc7e66182ea9ee2cc0481dfbecee"
+size_bytes = 11544
 title = "Ecosystem Economics"
 section = "architecture"
+maturity = "architectural"
 companions = [
     "/architecture/sovereign-transaction-membrane/",
     "/architecture/golden-cage/",
@@ -234,10 +263,11 @@ companions = [
 ]
 
 [pages."architecture/golden_cage.md"]
-blake3 = "f684108abf01de7c6c90b3bfd206c1110bf2fefe3bb7bccc3ddde4df26e3257c"
-size_bytes = 6372
+blake3 = "c6ec8052ec90b2de20e165db6be2d0a4904eaec14b1fe3a6c0b35dee699a2496"
+size_bytes = 6399
 title = "The Golden Cage"
 section = "architecture"
+maturity = "architectural"
 trails = ["sovereignty"]
 companions = [
     "/architecture/silicon-deism/",
@@ -246,10 +276,11 @@ companions = [
 ]
 
 [pages."architecture/k_derm_reconciliation.md"]
-blake3 = "2bed2cf9aa8436417de12bd563344d252fa77446e4fb3cf0c50374655c4f69e7"
-size_bytes = 4831
+blake3 = "9f35d993ee799d61b4419d389baf02e09f5c2297f991d7fe2e31a42a51da5dd3"
+size_bytes = 4858
 title = "K-Derm Reconciliation"
 section = "architecture"
+maturity = "architectural"
 trails = ["sovereignty"]
 companions = [
     "/architecture/sovereign-transaction-membrane/",
@@ -257,10 +288,11 @@ companions = [
 ]
 
 [pages."architecture/neural_api.md"]
-blake3 = "c0d28a0efe04dbfafbb1c814250d380e0b8ef2e31c33faca9576a3d5bd5cc6fd"
-size_bytes = 6189
+blake3 = "fb3f7b18299c12641fc6c3a8055f524b7b550104693884b2299e88da4c931106"
+size_bytes = 6216
 title = "Neural API — Adaptive Multi-Layer Orchestration"
 section = "architecture"
+maturity = "architectural"
 trails = ["coordination"]
 companions = [
     "/architecture/coordination-triad/",
@@ -268,10 +300,11 @@ companions = [
 ]
 
 [pages."architecture/primal_evolution.md"]
-blake3 = "9366593502e27c460e2d498294d86053b3ad987c538b2aa9e213a8241f4a9d57"
-size_bytes = 6379
+blake3 = "0225173be011f92c3f2a1bd90c1ede41907da159c04c9480a1ce348b2d4ba3dd"
+size_bytes = 6406
 title = "Primal Evolution — From AI Swarm to Sovereign Compute"
 section = "architecture"
+maturity = "architectural"
 trails = ["first-visit"]
 companions = [
     "/architecture/stadial-interstadial/",
@@ -279,10 +312,11 @@ companions = [
 ]
 
 [pages."architecture/primal_interactions.md"]
-blake3 = "d97e52a97e0f664f68303664911d6460ca97d1daaa535cedf46ea006ea0c619a"
-size_bytes = 5448
+blake3 = "749f01ecb35759dbc5d4ed68f345a93794962a9c02615d4e443dc83fdd27c61a"
+size_bytes = 5473
 title = "Primal Interactions — IPC Architecture"
 section = "architecture"
+maturity = "implemented"
 trails = ["coordination"]
 companions = [
     "/architecture/primal-evolution/",
@@ -290,10 +324,11 @@ companions = [
 ]
 
 [pages."architecture/rootpulse.md"]
-blake3 = "0f6d970b1229d8584a2262b5c8cca343c2a3aabbc7d2f10dd43096ed94d6a7b4"
-size_bytes = 6392
+blake3 = "765b27cc1aff4a91ba5f21b616db0543e2af89f8ffef4fb2d15feb2b1a3987ed"
+size_bytes = 6419
 title = "rootPulse — Emergent Version Control"
 section = "architecture"
+maturity = "architectural"
 trails = ["coordination"]
 companions = [
     "/architecture/coordination-triad/",
@@ -301,10 +336,11 @@ companions = [
 ]
 
 [pages."architecture/silicon_deism.md"]
-blake3 = "08a9f84470fe196e82ac7f1247d53cab337a1f2602f8c5f7d6a2a258c4e3c6b2"
-size_bytes = 5679
+blake3 = "b9e29da1e59f6d37cc62511843e631bf8a6d8d45c72b35713b7cdc40f7164591"
+size_bytes = 5706
 title = "Silicon Deism — The Abstraction Elimination Thesis"
 section = "architecture"
+maturity = "architectural"
 trails = ["sovereignty"]
 companions = [
     "/architecture/golden-cage/",
@@ -313,10 +349,11 @@ companions = [
 ]
 
 [pages."architecture/sovereign_hpc_evolution.md"]
-blake3 = "fcc512f80321a17ca5fa1be5cde81831a7012df05ea4f0052b4719590bfdf95b"
-size_bytes = 5943
+blake3 = "2138ea12f948b626ea1161dab6645af436e12429c686c8dcf67ce409e11f4b87"
+size_bytes = 5970
 title = "Sovereign HPC Evolution"
 section = "architecture"
+maturity = "architectural"
 trails = ["sovereignty"]
 companions = [
     "/architecture/golden-cage/",
@@ -325,10 +362,11 @@ companions = [
 ]
 
 [pages."architecture/sovereign_transaction_membrane.md"]
-blake3 = "02fbc0ae33711bf680e46df1520350fad7ae867360f1ef5d9eee66c76b955a57"
-size_bytes = 6078
+blake3 = "13d4abe236b09020adbf723b7899ffb7c352ac600fa297b009d7fea8bfe5168c"
+size_bytes = 6105
 title = "Sovereign Transaction Membrane"
 section = "architecture"
+maturity = "architectural"
 trails = ["sovereignty"]
 companions = [
     "/architecture/k-derm-reconciliation/",
@@ -336,20 +374,22 @@ companions = [
 ]
 
 [pages."architecture/stadial_interstadial.md"]
-blake3 = "6b58035337e789d18c31dce6af277e206404f091bf7780c926296e5012e6c72e"
-size_bytes = 5931
+blake3 = "c8d43794ae58c4aea9c12300ddb998c9c7275e0de8a4c81bd175882c7d144c12"
+size_bytes = 5958
 title = "The Stadial/Interstadial Pattern"
 section = "architecture"
+maturity = "architectural"
 companions = [
     "/architecture/primal-evolution/",
     "/philosophy/fossil-lineage/",
 ]
 
 [pages."architecture/waterfall.md"]
-blake3 = "d3b996f1337dac1e4db9bda5a63c985d7ac7fc5cee2fa29ffbff277fa1835a3c"
-size_bytes = 5526
+blake3 = "bf44bff74ea014274c091683becef88dfb9682d8f1fbef4986cd07c10ab92c6f"
+size_bytes = 5553
 title = "waterFall — Temporal Ecosystem Sync"
 section = "architecture"
+maturity = "architectural"
 trails = ["coordination"]
 companions = [
     "/architecture/coordination-triad/",
@@ -357,15 +397,15 @@ companions = [
 ]
 
 [pages."audience/CAPABILITY_PARITY_BRIEF.md"]
-blake3 = "5a2f6c0a19d42b7f07d99cba0257b5448c0b057716175d80c61ea337249782c3"
-size_bytes = 24930
+blake3 = "e1a82a13ed7854295137f0721ec813b6e84a9192c520cb0f90c77715a032c7ff"
+size_bytes = 25071
 title = "ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment"
 section = "audience"
 trails = ["grant-ready"]
 
 [pages."audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md"]
-blake3 = "f68034214e785f879c6c9e741414e882d301d92daeba14d80247c10f5db64cb3"
-size_bytes = 18477
+blake3 = "af8f3df80f446232735213be129755b146c4c81e11284dbb6144ae0065a58552"
+size_bytes = 18662
 title = "ecoPrimals — Compliance, Regulatory, and Institutional Review Reference"
 section = "audience"
 
@@ -1286,8 +1326,8 @@ title = "ludoSpring — Game Science, HCI, Provenance Economics"
 section = "lab"
 
 [pages."lab/springs/neuralspring.md"]
-blake3 = "4abcf8439d79d8c33c38527a89170908cfea21874bfacec97fcfb54025e6858a"
-size_bytes = 4388
+blake3 = "81cf1ad3f357fa882dfb7df4623527fea6fa5ac65f584c19f3bfd2d6ac0a238c"
+size_bytes = 4483
 title = "neuralSpring — Neural Architectures, Structure Prediction, ML Surrogates"
 section = "lab"
 
@@ -1316,38 +1356,43 @@ title = "wetSpring Validation Results"
 section = "lab"
 
 [pages."methodology/CONSTRAINED_EVOLUTION_FORMAL.md"]
-blake3 = "eeb2be1c25faa6a2869dbae4507127bd10b076a6c5e8dd2e8bfa99e6b54a0fb6"
-size_bytes = 48836
+blake3 = "19dd3ac9bce6a211a810c0623a13e50bdfeb25228408af574fd95fb8a45d1d91"
+size_bytes = 48860
 title = "Constrained Evolution: How Environmental Pressure Drives Convergence in Biological and Computational Systems"
 section = "methodology"
+maturity = "reproduced"
 companions = [
     "/philosophy/the-human-search/",
     "/thesis/03-theoretical-framework/",
 ]
 
 [pages."methodology/HOW_TO_START_A_SPRING.md"]
-blake3 = "82a2bff71e81a6fbff4ca46dd94df466230044b4e69d5b83e89e45b5bb96f795"
-size_bytes = 16483
+blake3 = "c602bc107a1485f16e0ef8c95e0957a2c37810b16297c85dbe62abda2a5c4982"
+size_bytes = 16625
 title = "How to Start a Spring"
 section = "methodology"
+maturity = "implemented"
 
 [pages."methodology/KNOME_EVOLUTION.md"]
-blake3 = "a96eb88211bc860058cf9225bbd49d70ac247b883c8011d7418f81806b42c905"
-size_bytes = 4984
+blake3 = "49486bd18674d8912a81df9c64945b727b32fc9df1f213350eaefc89512b76b0"
+size_bytes = 5009
 title = "K-NOME at Scale"
 section = "methodology"
+maturity = "implemented"
 
 [pages."methodology/KNOWLEDGE_COMMONS_TARGETS.md"]
-blake3 = "375033b65327f890e2301eb99c9f2c394a313699783a0967ec662ab60c46d1d0"
-size_bytes = 13078
+blake3 = "a94e60b75520fbaaf79708625024f20bb518af0e3d9da03be412205f146c17f0"
+size_bytes = 13114
 title = "Knowledge Commons Targets: What Others Can Build, and Why It Can't Be Taken Back"
 section = "methodology"
+maturity = "architectural"
 
 [pages."methodology/K_NOME_PROGRAMMING.md"]
-blake3 = "0fcb4a11a51a779986fc2d5af4e1accf87b990dcfd6d61afbfdd500780c71d10"
-size_bytes = 17432
+blake3 = "2dc15e814f857adc1ef1221aaf9f0349fb1c5c9cdb254134a7574dfacae6f83f"
+size_bytes = 17457
 title = "K-NOME Programming"
 section = "methodology"
+maturity = "implemented"
 trails = ["methodology"]
 companions = [
     "/philosophy/the-knowledge-numeric/",
@@ -1355,16 +1400,18 @@ companions = [
 ]
 
 [pages."methodology/P_NP_ENZYME_THESIS.md"]
-blake3 = "6b559e3f666ffe1690eefd0406ceb1cbcff4f5507112efba1cf27af6e14836ea"
-size_bytes = 35616
+blake3 = "6ffde995b5cf563471138026b35d435daafd53dd6c03aceabc9d33f3c1ac1ed3"
+size_bytes = 35652
 title = "The Generation-Verification Asymmetry: Biological Evidence for a Physical Law of Computation"
 section = "methodology"
+maturity = "architectural"
 
 [pages."methodology/SCYBORG_LICENSING.md"]
-blake3 = "c7f79fcb8667a3f6a4a2961d127ab7748e45516731b8a68175a2a884ecc2e023"
-size_bytes = 10712
+blake3 = "606161554850b4046b62f952cb359ee66bb0c3c173a544194aaae83379299f5e"
+size_bytes = 10737
 title = "scyBorg Triple License — Why Three Licenses for Three Artifact Types"
 section = "methodology"
+maturity = "implemented"
 companions = ["/philosophy/sovereign-science/"]
 
 [pages."methodology/_index.md"]
@@ -1386,10 +1433,11 @@ title = "Constrained Optimization in AI-Assisted Development"
 section = "methodology"
 
 [pages."methodology/conversation_constraint.md"]
-blake3 = "fa778dc6d17d29f091faab566ca462ab3f6e3bd0d13d8c9d230282be11615b1b"
-size_bytes = 4484
+blake3 = "f17f8af0fbc1cc457baf464160c949c1fe2f0202fc08ba06ac7bb7de3d3ceee0"
+size_bytes = 4619
 title = "The Conversation Constraint"
 section = "methodology"
+maturity = "implemented"
 trails = ["methodology"]
 companions = [
     "/methodology/massively-parallel-mentoring/",
@@ -1398,10 +1446,11 @@ companions = [
 ]
 
 [pages."methodology/massively_parallel_mentoring.md"]
-blake3 = "ae95342dceab6eb4c48ceabfe72b0c7e05b9ec0a7438a068dcd56901cdcc77ee"
-size_bytes = 4317
+blake3 = "57f34db3079c4644d5c535a2227e25abebc754301de0418af611ff5fafa245ed"
+size_bytes = 4342
 title = "Massively Parallel Mentoring"
 section = "methodology"
+maturity = "implemented"
 trails = ["methodology"]
 companions = [
     "/methodology/conversation-constraint/",
@@ -1410,10 +1459,11 @@ companions = [
 ]
 
 [pages."methodology/prompt_bank.md"]
-blake3 = "45c5230a6df5f85294f6d5ea263a9df2d1cf7d4f0fd88f1949f3c471b7f59b60"
-size_bytes = 3655
+blake3 = "dc43f7df18935b835575afd73bd3ac4d8267e36cdbe38a68a8c914ce721178a6"
+size_bytes = 3680
 title = "The Prompt Bank"
 section = "methodology"
+maturity = "implemented"
 trails = ["methodology"]
 companions = [
     "/methodology/conversation-constraint/",
@@ -1433,10 +1483,11 @@ title = "Sharing the Pen"
 section = "methodology"
 
 [pages."methodology/sovereign_publication.md"]
-blake3 = "a491a99d9dcc895669c8b5d481dc8a52557a11f9660e18886b2889da0268e11f"
-size_bytes = 4773
+blake3 = "fc6eaa96484b37778a48c33931e524fafd4a539ad1b623e459c5e6dda8ed7641"
+size_bytes = 4800
 title = "The Sovereign Publication"
 section = "methodology"
+maturity = "architectural"
 trails = [
     "sovereignty",
     "methodology",
@@ -1461,9 +1512,9 @@ size_bytes = 466
 title = "The Sovereign Lab"
 section = "outreach"
 
-[pages."outreach/03_70_papers_one_stack.md"]
-blake3 = "aaa0639138082c71136227a49bc39379bf779714a2f328375da2fccb74f64eaf"
-size_bytes = 561
+[pages."outreach/03_papers_one_stack.md"]
+blake3 = "2eca2616c42487e0c93631d29b103dbdc8d6af0611bffa127d5e6c13e2e23021"
+size_bytes = 558
 title = "175+ Papers, One Stack"
 section = "outreach"
 
@@ -1497,9 +1548,20 @@ size_bytes = 322
 title = "Detachment 201"
 section = "outreach"
 
+[pages."outreach/99pi_radiolab_invitation.md"]
+blake3 = "142fc0921847e23cd82f49d3948153cac4f3987fdf095623ce958ba8b37ef360"
+size_bytes = 6867
+title = "An Invitation to 99% Invisible and Radiolab"
+section = "outreach"
+maturity = "scaffold"
+companions = [
+    "/philosophy/fossil-lineage/",
+    "/story/i-dont-know-rust/",
+]
+
 [pages."outreach/_index.md"]
-blake3 = "edcd7d4aa6eaed8dfc2c27627df07ae2ccf69a3a1023b6ee222850ed51d953d4"
-size_bytes = 2290
+blake3 = "f2f14d4c5ffe69d89e9592c14e79981aed3d381525a38835a788f565b69f1c8b"
+size_bytes = 2863
 title = "reachOut"
 section = "outreach"
 
@@ -1515,11 +1577,34 @@ size_bytes = 743
 title = "An Invitation to GPU Manufacturers"
 section = "outreach"
 
+[pages."outreach/homelab_llm_landing.md"]
+blake3 = "1a0d1faf7b4cc98dad02af81f05590c437f255022f9e77e350724b3d704591e3"
+size_bytes = 7252
+title = "For Homelabbers and LLM Enthusiasts — Start Using the Stack"
+section = "outreach"
+maturity = "scaffold"
+companions = [
+    "/architecture/economics/",
+    "/architecture/ecosystem-architecture/",
+    "/methodology/conversation-constraint/",
+]
+
 [pages."outreach/neuromorphic_invitation.md"]
 blake3 = "8e9e1b936154be3ad405503b17e71736aeb651a6871d8d5f084e0fe28186d8e3"
 size_bytes = 764
 title = "An Invitation to Neuromorphic Hardware Manufacturers"
 section = "outreach"
+
+[pages."outreach/steam_invitation.md"]
+blake3 = "b7d3962a422dbd1b5fa1655b4c2321d87e87e862dd4a7d93af73d8e35a40ce75"
+size_bytes = 6470
+title = "An Invitation to Valve — Engineering the Immortal Platform"
+section = "outreach"
+maturity = "scaffold"
+companions = [
+    "/architecture/economics/",
+    "/architecture/discovery-log/",
+]
 
 [pages."philosophy/_index.md"]
 blake3 = "d85462d8329d4bcaf03ca0b292cd150670c496cd040df52e2e73e380bcc3e52b"
@@ -1534,8 +1619,8 @@ title = "Bibliography"
 section = "philosophy"
 
 [pages."philosophy/discovery_is_local.md"]
-blake3 = "7bf923f8a66903fcd4e4012805aab371294210372d454da57307549a78e08430"
-size_bytes = 16384
+blake3 = "cb522964b6078f3213a6a618a76d34c77dc518237db9220db2537ba33925d6f4"
+size_bytes = 16409
 title = "Discovery Is Local — Why the Substrate Is Universal"
 section = "philosophy"
 companions = [
@@ -1544,8 +1629,8 @@ companions = [
 ]
 
 [pages."philosophy/fossil_lineage.md"]
-blake3 = "937767c04587a83a3e1172c050e1b4281c93897ff6d1e2ba06d5bd7b8e82f263"
-size_bytes = 6110
+blake3 = "3fdd6c14ef6d282158765149f863edfd6ea123fdfeffd674a80a6c59b9e79493"
+size_bytes = 6235
 title = "Fossil Lineage — gen2 Origin Documents"
 section = "philosophy"
 trails = ["sovereignty"]
@@ -1556,8 +1641,8 @@ companions = [
 ]
 
 [pages."philosophy/i_own_nothing.md"]
-blake3 = "38f400ebe923d3cd8780823347b0907d24984c0fa9a3d5275f80b6928fa4d70d"
-size_bytes = 12316
+blake3 = "6714938f7446ffc65a9b565dc76c59583dd963eb60113fc32c14ed58c08d1dc8"
+size_bytes = 12341
 title = "I Own Nothing — Provenance, AGPL, and Commons Economics"
 section = "philosophy"
 companions = [
@@ -1566,22 +1651,22 @@ companions = [
 ]
 
 [pages."philosophy/sovereign_science.md"]
-blake3 = "27ad72ea998499778bcc6b764afa903cff02795040cd8e5152bb079d0d3a7492"
-size_bytes = 8881
+blake3 = "0e225a49d23dea0c24747d96a52a55a30a6a182c4fdc5939bedba8ccc9ae4236"
+size_bytes = 8906
 title = "Sovereign Science — Reproducible Computation Over Citation-Sitting"
 section = "philosophy"
 companions = ["/methodology/scyborg-licensing/"]
 
 [pages."philosophy/the_city_of_omelas.md"]
-blake3 = "f266950b91b9a5bad7ed4af9782456e379ce432c6f9356f27a2f5b30bc9676d8"
-size_bytes = 11460
+blake3 = "0a2e2191b6db035a7d8b666883b9f0015b10ebb6acbf22f06c87706b1ba54167"
+size_bytes = 11485
 title = "The City of Omelas — Five Questions for Sovereign Infrastructure"
 section = "philosophy"
 companions = ["/thesis/01-introduction/"]
 
 [pages."philosophy/the_human_search.md"]
-blake3 = "2c1f6fa7aa46962239c427a356b3b9bc9da75a0735a9464135f3968d5c5c50c9"
-size_bytes = 19627
+blake3 = "2a7c6e1fcdfb0232716711dbd2b114f33b4c179335ae011bde306626d60fedfa"
+size_bytes = 19652
 title = "The Human Search — How Everything Learns, from Bacteria to AI"
 section = "philosophy"
 companions = [
@@ -1590,8 +1675,8 @@ companions = [
 ]
 
 [pages."philosophy/the_knowledge_numeric.md"]
-blake3 = "58ceadda20725da05dbdb688a5a68f1fd88d44d391b9708a8fc4f2c6531e1e6b"
-size_bytes = 20824
+blake3 = "0d86cef804afa33534f0c94efb2afb1d2af026891295200b8f113b9f50625f03"
+size_bytes = 21032
 title = "The Knowledge-Numeric — K-NOME Human-AI Scientific Method"
 section = "philosophy"
 companions = [
@@ -1600,46 +1685,46 @@ companions = [
 ]
 
 [pages."philosophy/the_loaves_and_the_fishes.md"]
-blake3 = "d572302e3a7812251fbb540a99a69d8417e0efc7ea33f9985458c154d315d6a0"
-size_bytes = 14959
+blake3 = "f9d46cacad8b8512b93deccf03f9b60624a37f4adbf43db083727f16d9032b7e"
+size_bytes = 14984
 title = "The Loaves and the Fishes — Discovery as Revealing What Already Exists"
 section = "philosophy"
 
 [pages."philosophy/the_love_letter.md"]
-blake3 = "c5ed2008e6f78fce78e60c3eb3f02d150351ea2cbd6ec8fc81abf5b56af3f35f"
-size_bytes = 22130
+blake3 = "cfaef6f731e215f56fbb233fda8e92b3d20ff06169b91d1df4ce77ff14ff9901"
+size_bytes = 22155
 title = "The Love Letter — AI Authorship and scyBorg as Acknowledgment"
 section = "philosophy"
 
 [pages."philosophy/the_many_rooms.md"]
-blake3 = "05ab8dd6de7b02e71d454d28ffab137602410206fd2df80d80861149ced2f386"
-size_bytes = 24068
+blake3 = "2c6d36e1637bfe34a8abcc795745eae4c501d3d018114b728f4f4c84f6b03580"
+size_bytes = 24093
 title = "The Many Rooms — Preparing a Place and the Copyleft Covenant"
 section = "philosophy"
 
 [pages."philosophy/the_mobility_edge.md"]
-blake3 = "9bb404f3ec3504ed4fccaef5ada41399b74bbe35a0438931c1f9386c6f751784"
-size_bytes = 24746
+blake3 = "92cdddbfac1475bba65ab45ac10dc6a9b02bfe2b6e5b76e3b18307652024321d"
+size_bytes = 24771
 title = "The Mobility Edge — Anderson Localization and Sovereign Networks"
 section = "philosophy"
 companions = ["/science/01-anderson-qs/"]
 
 [pages."philosophy/the_new_city.md"]
-blake3 = "3460c5dc2f5435ec6fbf0efefaf5f6eb27a5aa706b8987a089d6c113a59ed3d2"
-size_bytes = 13679
+blake3 = "9d3e4ed72426a4774a850e95c6112bbbd352a5c8d302835208c18f52952cdf25"
+size_bytes = 13704
 title = "The New City — Architecture as Ethics for Sovereign Infrastructure"
 section = "philosophy"
 
 [pages."philosophy/the_orthogonal_synthesis.md"]
-blake3 = "d56fefa46b77dadd3d157ff917b798c2239c2368025bc2eb797454ac420cf46c"
-size_bytes = 14861
+blake3 = "88c2d78272aa1b5d6c60eba9bf3243a5f8392bd3f9f845b26205030193cdcfd2"
+size_bytes = 14886
 title = "The Orthogonal Synthesis — Smith, Paine, Rand, Marx and One Structural Requirement"
 section = "philosophy"
 companions = ["/thesis/03-theoretical-framework/"]
 
 [pages."philosophy/the_temptation_of_kingdoms.md"]
-blake3 = "20f94649115b0f202f91abcb508bc515e7bc851180c07c788d6180cb3441c27c"
-size_bytes = 13438
+blake3 = "c6c3f30e81950c1c8820102f21420d3b914983629d2a483b9b6296d1f3043568"
+size_bytes = 13463
 title = "The Temptation of Kingdoms — Tollbooths, Rent-Seeking, and Open Commons"
 section = "philosophy"
 companions = ["/methodology/constrained-evolution-formal/"]
@@ -1657,11 +1742,11 @@ title = "blueFish — Sovereign Data Pipeline"
 section = "products"
 
 [pages."products/coralforge.md"]
-blake3 = "ba2d2ae42a451bc7fef7934889859cb81d5d075783e0931aad9b27f3e791511f"
-size_bytes = 5248
+blake3 = "32fc9ac8047f3f5a7a0fc5fe705c305aa7c9b5eb6600bdadcec8b4f2f701a93b"
+size_bytes = 5358
 title = "coralForge — Sovereign Structure Prediction Engine"
 section = "products"
-maturity = "implemented"
+maturity = "architectural"
 companions = [
     "/architecture/discovery-log/",
     "/products/nautilus/",
@@ -1669,34 +1754,38 @@ companions = [
 ]
 
 [pages."products/esotericWebb.md"]
-blake3 = "c138ebde14b582895ee67a17742f24a2b43411764f3fe933104ae0c0e22fac48"
-size_bytes = 3419
+blake3 = "5de1c0d2290b8726d3a4b3285aa5849bb0848d7aacdc720781ac00a56baf93fc"
+size_bytes = 3508
 title = "esotericWebb — Cross-Evolution CRPG"
 section = "products"
 
 [pages."products/helixVision.md"]
-blake3 = "d1b7f65bb4b64b0e39aaa88b027a167795078b88e4123a6637cafa9fc40b049e"
-size_bytes = 5189
+blake3 = "712e5c3fb4a147211dca40d4bea3d0b17b9c6d5c351db8933431733287d6df09"
+size_bytes = 5225
 title = "helixVision — Self-Hosted Structure Prediction"
 section = "products"
+maturity = "architectural"
 
 [pages."products/initioChem.md"]
-blake3 = "36a21d4116d36fba821e2920fba9ebfa0a7a98e33708c53e17112452a98240a3"
-size_bytes = 2898
+blake3 = "7496e28e4c7c2c815be0156bc31faf40c5363a8843aae4fdc0d11d3577108a04"
+size_bytes = 2934
 title = "initioChem — Interactive Computational Chemistry"
 section = "products"
+maturity = "architectural"
 
 [pages."products/lattice_qcd.md"]
-blake3 = "d8465fb816e330039ff7bdf81e29ded1b458b7e6783ff72ae0110358a46aa72e"
-size_bytes = 6493
+blake3 = "2925aedc0d8f550f57c1db893f378d86b30ad525bce895312018ffaae0acd0a4"
+size_bytes = 6526
 title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
 section = "products"
+maturity = "reproduced"
 
 [pages."products/lithoSpore.md"]
-blake3 = "440d443073996e6041fffdc84180c19254030257431fdea263378103afc04bc2"
-size_bytes = 6016
+blake3 = "e60c1d98b5f37ca70dd79fdcb8021bd899aa4ae115f0e1b1d8c3d3e5fd1eab8e"
+size_bytes = 6050
 title = "lithoSpore — Targeted GuideStone Deployment"
 section = "products"
+maturity = "implemented"
 
 [pages."products/nautilus.md"]
 blake3 = "b76af9c957bbb662599d53b3dd9f3b698be3fcea4d9ab345fd0d6a9b8fde29fc"
@@ -1711,8 +1800,8 @@ companions = [
 ]
 
 [pages."products/nf_case_study.md"]
-blake3 = "6a9b99884d38f508464758b7cb801c4accec1bd8b9ab17cc7ed0b2d56c5d536f"
-size_bytes = 10873
+blake3 = "5a5a9a3c944cae4dd86ec7ec23dd912b40174ddbf3d727ec2fcd976f8e8d46cc"
+size_bytes = 11019
 title = "NF Case Study — First Multi-Product Composition for External Science"
 section = "products"
 maturity = "scaffold"
@@ -1949,30 +2038,20 @@ title = "Gonzales Interactive Explorer"
 section = "science"
 
 [pages."site-index/_index.md"]
-blake3 = "91e71ae07f8167e60405c3a111c441b874b7d63b0b602e428a8e67d769566834"
+blake3 = "42a2b834aed583db65402ce4c26371d13cb5161415d96983217c8d442c1e18a2"
 size_bytes = 223
 title = "Site Index"
 section = "site-index"
 
 [pages."sitemap/_index.md"]
-blake3 = "85fe1775e9af746be098cc9d847e0b81499769fb17292386eb4a341efc59654b"
-size_bytes = 4224
+blake3 = "1ddf3755b7138b90ebba5a9a66cb77951f1f0fea35be8cf7def470d83857a17e"
+size_bytes = 4299
 title = "Site Map"
 section = "sitemap"
 
-[pages."story/70_papers_one_stack.md"]
-blake3 = "68dd89be890c6de459502674a2f9042726e3333398bb30a47a34e70326f39326"
-size_bytes = 8506
-title = "175+ Papers, One Stack — Reproducing Science on Sovereign Hardware"
-section = "story"
-companions = [
-    "/philosophy/discovery-is-local/",
-    "/science/",
-]
-
 [pages."story/_index.md"]
-blake3 = "abde2eabe2639ff86427741fae875046e0155718b21eba5fe9d512c2478e4c51"
-size_bytes = 1598
+blake3 = "03852bcffa48ddcc64e365489d64fb67fa74528780ff8bdfa77a68d5937c1f28"
+size_bytes = 1592
 title = "Story"
 section = "story"
 
@@ -1988,6 +2067,16 @@ trails = [
 companions = [
     "/philosophy/the-knowledge-numeric/",
     "/methodology/k-nome-programming/",
+]
+
+[pages."story/papers_one_stack.md"]
+blake3 = "68dd89be890c6de459502674a2f9042726e3333398bb30a47a34e70326f39326"
+size_bytes = 8506
+title = "175+ Papers, One Stack — Reproducing Science on Sovereign Hardware"
+section = "story"
+companions = [
+    "/philosophy/discovery-is-local/",
+    "/science/",
 ]
 
 [pages."story/the_sovereign_lab.md"]
@@ -2020,8 +2109,8 @@ title = "Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrast
 section = "technical"
 
 [pages."technical/KNOME_TEACHING_BRIEF.md"]
-blake3 = "681813684ca1e1daad49081dc81acd6e7505ffe21beaf5ebfcd24cdf83c17ba6"
-size_bytes = 11747
+blake3 = "4bd0d6142c05e51135d69ca969a8c9e1cc674b2974ff432ee017bbb5a5446853"
+size_bytes = 11863
 title = "K-Nome: A Pedagogy for Real Science Pipelines"
 section = "technical"
 

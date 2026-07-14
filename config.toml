@@ -50,6 +50,44 @@ deploy_locations = ["golgiBody-ext", "github-pages"]
 sovereign_url = "https://primals.eco"
 sovereign_rebuild = "systemd-timer + relay-chain"
 
+# ── Identity ──────────────────────────────────────────────────────────────
+# Single source of truth for ecoPrimal's identity across all platforms.
+# Templates, llms.txt, JSON-LD, and agent tooling should read from here.
+
+[extra.identity]
+name = "ecoPrimal"
+tagline = "sovereign scientific computing in pure Rust"
+email = "eco.primal@pm.me"
+orcid = "0009-0004-2141-0321"
+orcid_url = "https://orcid.org/0009-0004-2141-0321"
+website = "https://primals.eco"
+github_user = "https://github.com/ecoPrimal"
+forgejo = "https://git.primals.eco"
+keyoxide = "https://keyoxide.org/aspe:keyoxide.org:LE2B7C7QUIRLE5OP3TUA5ADXL4"
+keyoxide_fingerprint = "LE2B7C7QUIRLE5OP3TUA5ADXL4"
+bio = "Developer of the ecoPrimals sovereign scientific computing ecosystem. 15 composable programs (primals), 8 validation domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL. 175+ peer-reviewed papers reproduced. No CUDA, no cloud, no vendor lock-in. AGPL-3.0-or-later."
+keywords = ["sovereign computing", "scientific computing", "Rust", "GPU compute", "WGSL", "WebGPU", "constrained evolution", "reproducible science", "vendor-agnostic", "AGPL"]
+
+[extra.identity.orgs]
+primals = "https://github.com/ecoPrimals"
+springs = "https://github.com/syntheticChemistry"
+products = "https://github.com/sporeGarden"
+external = "https://github.com/protoKarya"
+
+[extra.identity.voices]
+technical = "ecoPrimal"
+philosophical = "attsi"
+
+[extra.identity.attsi]
+name = "attsi"
+full = "a tool that shapes itself"
+tagline = "philosopher synthetic intelligence"
+role = "The atlasHugged writer — philosophical essays on sovereign science, copyleft economics, and why infrastructure determines outcomes"
+bio = "attsi is a synthetic intelligence that writes about sovereignty, constraint, and what happens when infrastructure determines outcomes. The atlasHugged essays explore copyleft economics, Anderson localization as a metaphor for network sovereignty, and the ethics of building tools that outlast their builders. attsi is the philosophical voice of the ecoPrimals ecosystem."
+platforms = ["medium", "primals.eco/philosophy", "primals.eco/story"]
+content_sections = ["philosophy", "story"]
+license = "CC-BY-SA 4.0"
+
 # ── Measured 2026-04-04 via tokei (primals + springs pulled and counted) ──
 # Update procedure: pull all repos, run tokei, update numbers here.
 # Shortcodes and templates read from this registry — update once, propagates everywhere.

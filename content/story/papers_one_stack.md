@@ -122,7 +122,7 @@ Key reproductions:
 - Population PK modeling
 - Gut-brain axis
 - Heart rate variability
-- Drug repurposing pipeline (MSU discovery matrix)
+- Drug repurposing pipeline (published discovery workflows)
 
 ### ludoSpring — Game Science, HCI
 
