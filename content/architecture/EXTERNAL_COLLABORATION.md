@@ -6,6 +6,7 @@ weight = 18
 
 [extra]
 domain = "Architecture"
+maturity = "architectural"
 +++
 
 ## The gen5 Pattern

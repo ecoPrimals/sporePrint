@@ -1,1448 +1,2192 @@
-generated = "2026-07-14T13:32:09Z"
-root_hash = "29c8d3bd9e9817b2f1d15942574e4067596199b3f4cebe08c03f3d90e0b6773a"
-page_count = 289
+generated = "2026-07-14T17:53:04Z"
+root_hash = "ba3249191a8b8c598907ac29644f59045deb20aa81be75bdb78fd121398e19c4"
+page_count = 321
 
 [pages."_index.md"]
 blake3 = "d029a429a9a5c9b737c374f3bd1f5a674e8ee5abcadcb9702ed26887490c672c"
 size_bytes = 4462
 title = "sporePrint"
+section = "_index.md"
 
 [pages."architecture/COMPOSITION_PATTERNS.md"]
 blake3 = "c9f2255ad1d06f6c5b6816fde328c9d58da97d60af1a545cd18bee8ee7868fb5"
 size_bytes = 6346
 title = "Composition Patterns"
+section = "architecture"
 
 [pages."architecture/COMPOSITION_PIPELINE.md"]
 blake3 = "685f174b83cf78897974c7a6de4267f25193d4673a240c778cc9e61c7c892dbd"
 size_bytes = 8578
 title = "Composition Pipeline: Springs → Primals → Products → Foundation"
+section = "architecture"
 
 [pages."architecture/DEPLOYMENT_MODEL.md"]
 blake3 = "62ef9d1f6baf49e82b6d5bacbcbfdfb8e78959933494759a0ec0d8807e5651ad"
 size_bytes = 8512
 title = "Deployment Model: plasmidBin & BYOB"
+section = "architecture"
 
 [pages."architecture/ECOSYSTEM_ARCHITECTURE.md"]
-blake3 = "2b75c81e51a65e95654b1ac3862f43258dc93bccd8b81c50a23ec164c8b67b8a"
-size_bytes = 34542
+blake3 = "cd0d810489ca783840b577c017ff9897944412f3ba115ce6225e72e9ac6be31d"
+size_bytes = 34567
 title = "ecoPrimals Ecosystem Architecture: From Binary to Bonding"
+section = "architecture"
+trails = ["first-visit"]
 
 [pages."architecture/ECOSYSTEM_INVENTORY.md"]
 blake3 = "f9102c5c82b055e7c469621e3cc3eef2a2672cb16347f3b4685a8bf109a948d8"
 size_bytes = 11738
 title = "Ecosystem Inventory"
+section = "architecture"
 
 [pages."architecture/ECOSYSTEM_VISUALIZATION.md"]
 blake3 = "5dcf77dd08105d08ce45eedbd4a9e82d1a623641b566c11f6faf39df56e522b2"
 size_bytes = 1980
 title = "Ecosystem Visualization"
+section = "architecture"
 
 [pages."architecture/EVIDENCE_SNAPSHOT.md"]
-blake3 = "793090a7b44f7951958b432a4d32a228f47114982f6c38bdc47d323ac17e7693"
-size_bytes = 7371
+blake3 = "8f312d405441c0eeb6ca57464fe609df387ce73ae4ad704a04ad2bef05c4ce5e"
+size_bytes = 7396
 title = "Evidence Snapshot"
+section = "architecture"
+trails = ["grant-ready"]
 
 [pages."architecture/EVOLUTION_TIMELINE.md"]
 blake3 = "d7dc76fbaf485b43145a8bcbc9d295fcb8eb4be5f38b56be354afa18c6b76c9f"
 size_bytes = 10864
 title = "Evolution Timeline: 27 Days, Seven Domains, 15,000+ Checks"
+section = "architecture"
 
 [pages."architecture/EXTERNAL_COLLABORATION.md"]
 blake3 = "67aa7bb17edeb3deb48b078002be63f2de7057949e0c6d161c2f7c3a154e5c3e"
 size_bytes = 4834
 title = "External Collaboration Model"
+section = "architecture"
 
 [pages."architecture/FOUNDATION_CONNECTION.md"]
 blake3 = "ca3cd7e73ea82ad1c200d336a48e1f143a8d48d24050dc40532d653c22ba1303"
 size_bytes = 5871
 title = "Foundation Connection: From baseCamp to Institutional Adoption"
+section = "architecture"
 
 [pages."architecture/GENERATIONAL_ARC.md"]
 blake3 = "849af6b7b73bac7db7ae1ef45ae303fb013e3f9a2c99b9aee1cf1239ab53d434"
 size_bytes = 4872
 title = "Generational Arc"
+section = "architecture"
 
 [pages."architecture/GUIDESTONE_PUBLICATION.md"]
 blake3 = "931e3f7681f561fb1d3ef6a6b99d5ed13d9a0e31f15a649971b5b7464616e50f"
 size_bytes = 4510
 title = "Self-Certifying Publication: sporePrint as guideStone"
+section = "architecture"
 
 [pages."architecture/KDERM_DIDERM_ARCHITECTURE.md"]
-blake3 = "ece13ee9f2e1a306743ea924133f8be3fc99dd16805f21c298fd5a74c6e41f61"
-size_bytes = 5653
+blake3 = "783d0d8872089959b155e736f2648571dc6cba682c2896cd07c5dc3cc7049b09"
+size_bytes = 5957
 title = "K-Derm Diderm Architecture"
+section = "architecture"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
 blake3 = "411c699ed9116f571ed014781beddb17c227703626a6f98fb71dae4f279b9faf"
 size_bytes = 4832
 title = "Gate Mesh — Live Topology"
+section = "architecture"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "a3bdcfbea5590cbd0a900bc1c2a8aceb5eb8a6e6fe269632d35ddc09ca95c64b"
-size_bytes = 16416
+blake3 = "f433f32e2dabf1f5002529212dbaecbd5afa8a85807c410e40a4729bb95b73ee"
+size_bytes = 16571
 title = "NUCLEUS Composition Model"
+section = "architecture"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
 blake3 = "15c06e10b757a20b8e0907854caf4590ff55388ccc68bd01a54dcd2591ed79e2"
 size_bytes = 55059
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
+section = "architecture"
 
 [pages."architecture/RENVOIS_KNOWLEDGE_TOPOLOGY.md"]
 blake3 = "596c7c3e8fa779d0ed2d9dca07eea0e358c4550cc633248e7691b7a86736fb90"
 size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
+section = "architecture"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "ddbdebb60b4abe4bca1c1ca084133d5e2e1d28daf0f5c5f95548829338bcd3a5"
-size_bytes = 5890
+blake3 = "fb940a3ff8e298257014e553cc607d66e16ef5f7508254a79e8ba0dec4d2c69b"
+size_bytes = 6156
 title = "Sovereign CI — Build Infrastructure"
+section = "architecture"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
 blake3 = "f996dc98d26b1262e6d2ca3f968efa2bc2d5702a1aa3928300b13e2b55b22a12"
 size_bytes = 13733
 title = "Sovereign Deployment"
+section = "architecture"
+companions = [
+    "/philosophy/i-own-nothing/",
+    "/story/the-sovereign-lab/",
+]
 
 [pages."architecture/SOVEREIGN_PRIOR_ART_CATALOG.md"]
 blake3 = "f39751e86823f5f00d8932e6f7ec2b5a8338a6ac2e3ad8bd696144c6bf0d3021"
 size_bytes = 44702
 title = "ecoPrimals — Sovereign Prior Art Catalog"
+section = "architecture"
 
 [pages."architecture/SPRING_CATALOG.md"]
 blake3 = "fd6a01cb63a098e6174a1456240111412fc41abbdade97e168c74f2ac935b412"
 size_bytes = 38804
 title = "ecoPrimals Spring Catalog: Status, Science, and Evolution"
+section = "architecture"
 
 [pages."architecture/TRANSPORT_EVOLUTION.md"]
 blake3 = "4a97c3c594c89cebc25bcf8055ba30b9eaf3970a2249e5501a1bee1fa25c5b47"
 size_bytes = 6381
 title = "Transport Evolution"
+section = "architecture"
 
 [pages."architecture/_index.md"]
-blake3 = "2457f8a81be5a0209bd632cdf0217b585bead240842bfaf799f95ba6eb0361e3"
-size_bytes = 2886
+blake3 = "a1ffb6e74ed2ede4211a64b8a349a70abbe16e3c2513b8cfa5677ed5cf46db24"
+size_bytes = 4950
 title = "Architecture"
+section = "architecture"
+
+[pages."architecture/atlas_memory_palace.md"]
+blake3 = "b910b867a20cc8ef19f79f433c6fdb3cb4851d0bc4acff24da2baecab3e5cd5d"
+size_bytes = 7676
+title = "Atlas — A Memory Palace for Humans and AI"
+section = "architecture"
+trails = ["first-visit"]
+companions = [
+    "/architecture/creative-surface/",
+    "/architecture/coordination-triad/",
+    "/architecture/primal-evolution/",
+]
+
+[pages."architecture/coordination.md"]
+blake3 = "fda121ac695d872f9bb5fcbce672e073f45e1a8f520b0a784e5c26e12aedb5d8"
+size_bytes = 5462
+title = "Ecosystem Coordination"
+section = "architecture"
+trails = ["coordination"]
+companions = [
+    "/architecture/coordination-triad/",
+    "/guidestone/deployable-artifact-standard/",
+]
+
+[pages."architecture/coordination_triad.md"]
+blake3 = "bb62910616d8eed58dd5d49ded10844f9b5c0672ed07c225b14fa328f475f552"
+size_bytes = 5851
+title = "Coordination Triad"
+section = "architecture"
+trails = ["coordination"]
+companions = [
+    "/architecture/waterfall/",
+    "/architecture/rootpulse/",
+    "/architecture/neural-api/",
+    "/architecture/coordination/",
+]
+
+[pages."architecture/creative_surface.md"]
+blake3 = "43f3a316abcede31a9e9fa7d633f25187ed7b1c06f4857796243ddce39f8fdb1"
+size_bytes = 4877
+title = "Creative Surface Architecture"
+section = "architecture"
+companions = [
+    "/architecture/deploy-graph-composition/",
+    "/collaborators/abg-initiochem/",
+    "/architecture/atlas-memory-palace/",
+]
+
+[pages."architecture/deploy_graph_composition.md"]
+blake3 = "843fe139bb3e40e51a164661ff1f7532b4c62366573bf51b0e673805aeeef5f4"
+size_bytes = 4832
+title = "Deploy Graph Composition"
+section = "architecture"
+trails = ["nf-pipeline"]
+companions = [
+    "/products/nf-case-study/",
+    "/architecture/creative-surface/",
+]
+
+[pages."architecture/discovery_log.md"]
+blake3 = "b35b59adcde541ba4c336c96a1ff0b11e843920351ea744000dd67dca27cb972"
+size_bytes = 4669
+title = "Discovery Log — Capability Hunting Methodology"
+section = "architecture"
+trails = ["first-visit"]
+companions = [
+    "/architecture/silicon-deism/",
+    "/products/coralforge/",
+    "/products/nautilus/",
+]
+
+[pages."architecture/economics.md"]
+blake3 = "5304f67a3b146158516f61933a5f084ae8a1eeaab4e82521fece481074a7d5b8"
+size_bytes = 4876
+title = "Ecosystem Economics"
+section = "architecture"
+companions = [
+    "/architecture/sovereign-transaction-membrane/",
+    "/architecture/golden-cage/",
+    "/philosophy/fossil-lineage/",
+]
+
+[pages."architecture/golden_cage.md"]
+blake3 = "f684108abf01de7c6c90b3bfd206c1110bf2fefe3bb7bccc3ddde4df26e3257c"
+size_bytes = 6372
+title = "The Golden Cage"
+section = "architecture"
+trails = ["sovereignty"]
+companions = [
+    "/architecture/silicon-deism/",
+    "/philosophy/fossil-lineage/",
+    "/architecture/sovereign-hpc-evolution/",
+]
+
+[pages."architecture/k_derm_reconciliation.md"]
+blake3 = "2bed2cf9aa8436417de12bd563344d252fa77446e4fb3cf0c50374655c4f69e7"
+size_bytes = 4831
+title = "K-Derm Reconciliation"
+section = "architecture"
+trails = ["sovereignty"]
+companions = [
+    "/architecture/sovereign-transaction-membrane/",
+    "/architecture/KDERM-DIDERM-ARCHITECTURE/",
+]
+
+[pages."architecture/neural_api.md"]
+blake3 = "c0d28a0efe04dbfafbb1c814250d380e0b8ef2e31c33faca9576a3d5bd5cc6fd"
+size_bytes = 6189
+title = "Neural API — Adaptive Multi-Layer Orchestration"
+section = "architecture"
+trails = ["coordination"]
+companions = [
+    "/architecture/coordination-triad/",
+    "/architecture/primal-interactions/",
+]
+
+[pages."architecture/primal_evolution.md"]
+blake3 = "9366593502e27c460e2d498294d86053b3ad987c538b2aa9e213a8241f4a9d57"
+size_bytes = 6379
+title = "Primal Evolution — From AI Swarm to Sovereign Compute"
+section = "architecture"
+trails = ["first-visit"]
+companions = [
+    "/architecture/stadial-interstadial/",
+    "/architecture/primal-interactions/",
+]
+
+[pages."architecture/primal_interactions.md"]
+blake3 = "d97e52a97e0f664f68303664911d6460ca97d1daaa535cedf46ea006ea0c619a"
+size_bytes = 5448
+title = "Primal Interactions — IPC Architecture"
+section = "architecture"
+trails = ["coordination"]
+companions = [
+    "/architecture/primal-evolution/",
+    "/architecture/neural-api/",
+]
+
+[pages."architecture/rootpulse.md"]
+blake3 = "0f6d970b1229d8584a2262b5c8cca343c2a3aabbc7d2f10dd43096ed94d6a7b4"
+size_bytes = 6392
+title = "rootPulse — Emergent Version Control"
+section = "architecture"
+trails = ["coordination"]
+companions = [
+    "/architecture/coordination-triad/",
+    "/architecture/waterfall/",
+]
+
+[pages."architecture/silicon_deism.md"]
+blake3 = "08a9f84470fe196e82ac7f1247d53cab337a1f2602f8c5f7d6a2a258c4e3c6b2"
+size_bytes = 5679
+title = "Silicon Deism — The Abstraction Elimination Thesis"
+section = "architecture"
+trails = ["sovereignty"]
+companions = [
+    "/architecture/golden-cage/",
+    "/architecture/sovereign-hpc-evolution/",
+    "/architecture/discovery-log/",
+]
+
+[pages."architecture/sovereign_hpc_evolution.md"]
+blake3 = "fcc512f80321a17ca5fa1be5cde81831a7012df05ea4f0052b4719590bfdf95b"
+size_bytes = 5943
+title = "Sovereign HPC Evolution"
+section = "architecture"
+trails = ["sovereignty"]
+companions = [
+    "/architecture/golden-cage/",
+    "/architecture/silicon-deism/",
+    "/products/tideglass/",
+]
+
+[pages."architecture/sovereign_transaction_membrane.md"]
+blake3 = "02fbc0ae33711bf680e46df1520350fad7ae867360f1ef5d9eee66c76b955a57"
+size_bytes = 6078
+title = "Sovereign Transaction Membrane"
+section = "architecture"
+trails = ["sovereignty"]
+companions = [
+    "/architecture/k-derm-reconciliation/",
+    "/architecture/economics/",
+]
+
+[pages."architecture/stadial_interstadial.md"]
+blake3 = "6b58035337e789d18c31dce6af277e206404f091bf7780c926296e5012e6c72e"
+size_bytes = 5931
+title = "The Stadial/Interstadial Pattern"
+section = "architecture"
+companions = [
+    "/architecture/primal-evolution/",
+    "/philosophy/fossil-lineage/",
+]
+
+[pages."architecture/waterfall.md"]
+blake3 = "d3b996f1337dac1e4db9bda5a63c985d7ac7fc5cee2fa29ffbff277fa1835a3c"
+size_bytes = 5526
+title = "waterFall — Temporal Ecosystem Sync"
+section = "architecture"
+trails = ["coordination"]
+companions = [
+    "/architecture/coordination-triad/",
+    "/architecture/rootpulse/",
+]
 
 [pages."audience/CAPABILITY_PARITY_BRIEF.md"]
-blake3 = "2f2cd8a3194c25e068f08dd7bbd08925921af2524748382eccca6ebcd6cf4795"
-size_bytes = 24905
+blake3 = "5a2f6c0a19d42b7f07d99cba0257b5448c0b057716175d80c61ea337249782c3"
+size_bytes = 24930
 title = "ecoPrimals — Sovereign Scientific Computing Platform: Capability & Parity Assessment"
+section = "audience"
+trails = ["grant-ready"]
 
 [pages."audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md"]
 blake3 = "f68034214e785f879c6c9e741414e882d301d92daeba14d80247c10f5db64cb3"
 size_bytes = 18477
 title = "ecoPrimals — Compliance, Regulatory, and Institutional Review Reference"
+section = "audience"
 
 [pages."audience/FOR_FACULTY_AND_PIS.md"]
-blake3 = "2eeff0b35ed8476fb13463592bdfa219e28561d602e80325daa8027a0a0cc35d"
-size_bytes = 12072
+blake3 = "f3812247b92c0f70602e116f652081b7e7c5ff66f5d6eabe0cebd0bd2069e681"
+size_bytes = 12112
 title = "ecoPrimals for Principal Investigators — What This Actually Replaces in Your Lab"
+section = "audience"
+trails = [
+    "first-visit",
+    "grant-ready",
+]
 
 [pages."audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md"]
 blake3 = "3f7e0b803c30b4374b65af44471b7dda9af9237f3397b79db49bb4cc94448576"
 size_bytes = 10858
 title = "ecoPrimals for Hardware Builders, Hobbyists, and Gamers"
+section = "audience"
 
 [pages."audience/FOR_STUDENTS_AND_CORE_FACILITIES.md"]
 blake3 = "9e23639469a021726a35d4abc05cfb9912d96ed1423b705ef7c7f6a8b8262d40"
 size_bytes = 8840
 title = "ecoPrimals for Students, Lab Technicians, and Core Facilities"
+section = "audience"
 
 [pages."audience/_index.md"]
 blake3 = "853562a94817b524b6630ee0b67d4cd6278514e8cc877dcc1b2dfdf4342baa37"
 size_bytes = 1621
 title = "Audience"
+section = "audience"
 
 [pages."audience/faculty_spring_profiles.md"]
 blake3 = "6209da62d85b1d5d1c3f905112b8df5f31146f65ab059e20a7fa63f74cabb40b"
 size_bytes = 36586
 title = "Faculty Spring Profiles"
+section = "audience"
+
+[pages."collaborators/_index.md"]
+blake3 = "b7b62c3b1431f4abe1b0f404d3a39336346a6983d265355d90f4373941baf156"
+size_bytes = 1466
+title = "Collaborators"
+section = "collaborators"
+
+[pages."collaborators/abg_initiochem.md"]
+blake3 = "af175ea96f05b8409c20ad648d2d696ac700f2054a887a1082072c5f79eead28"
+size_bytes = 2154
+title = "ABG — Whole-Cell Modeling & CAZyme FEL"
+section = "collaborators"
+companions = [
+    "/architecture/creative-surface/",
+    "/methodology/massively-parallel-mentoring/",
+]
+
+[pages."collaborators/gonzales_nf.md"]
+blake3 = "42b1f4490b5bfa42ced42ecb276c9669b52c8ed875c82a1ac2743fdd8c0fe462"
+size_bytes = 5436
+title = "Gonzales — NF Data Mining & Drug Discovery"
+section = "collaborators"
+trails = ["nf-pipeline"]
+companions = [
+    "/products/nf-case-study/",
+    "/products/tideglass/",
+    "/methodology/sovereign-publication/",
+]
+
+[pages."collaborators/jones_bluefish.md"]
+blake3 = "3c41a5759f52a439c49270b8c1d40c178accd6997ed60c56f1d4d6da6ef2f2e2"
+size_bytes = 5150
+title = "Jones — PFAS Analytical Chemistry & blueFish"
+section = "collaborators"
+companions = [
+    "/architecture/discovery-log/",
+    "/methodology/conversation-constraint/",
+]
 
 [pages."contact.md"]
 blake3 = "0a119fe082d86e9ef99251223d60ee547ed6634cd6849238c75e956773b45c0b"
 size_bytes = 811
 title = "Contact"
+section = "contact.md"
 
 [pages."glossary/_index.md"]
 blake3 = "ef55a356e04ed4f4f99b9bd1fbdcc701d1bec236999164c99b8f991641b4ee43"
 size_bytes = 11229
 title = "Glossary"
+section = "glossary"
 
 [pages."guidestone/_index.md"]
 blake3 = "fe9277b95e3b12fd82fa432bd3fa779aba0cf599cbb1fe5531cf572a067231cf"
 size_bytes = 8088
 title = "guideStone"
+section = "guidestone"
 
 [pages."guidestone/cross_substrate_validation.md"]
 blake3 = "2c9a96adaf5de75e190a0de361ad455790aaa8aac7afdfa19cc55d1b7837c082"
 size_bytes = 5530
 title = "Cross-Substrate Validation"
+section = "guidestone"
+
+[pages."guidestone/deployable_artifact_standard.md"]
+blake3 = "c95dc982a72b1aa1a6d5bb66fd4819730f4afb9c669e926f5755654dced31b97"
+size_bytes = 4664
+title = "Deployable Artifact Standard"
+section = "guidestone"
+companions = [
+    "/methodology/sovereign-publication/",
+    "/architecture/coordination/",
+]
 
 [pages."guidestone/deployment_artifacts.md"]
 blake3 = "5b060d379e97af1a09a88d99b8ff05488d3bc3552ef5afb41edf26af75048152"
 size_bytes = 7232
 title = "Deployment Artifacts"
+section = "guidestone"
 
 [pages."guidestone/lithospore_artifact.md"]
 blake3 = "a42d33bf007642613e47489bb2f4e5bbcf326a54397d53c0b2088e1f83527004"
 size_bytes = 6971
 title = "lithoSpore — LTEE Targeted GuideStone"
+section = "guidestone"
 
 [pages."guidestone/live_spore_feed.md"]
 blake3 = "d25a0fc2bcae76039f77773639d19ac242145be334309645db5781f6eba3cec8"
 size_bytes = 3035
 title = "Live Spore Feed"
+section = "guidestone"
 
 [pages."guidestone/verification_protocol.md"]
 blake3 = "cd37f5fea2b9b6d44d4c6af79989a7473f9d3f443e8132e1d18b6c2926a6f930"
 size_bytes = 6584
 title = "Verification Protocol"
+section = "guidestone"
 
 [pages."lab/_index.md"]
 blake3 = "ff794f25c507d5552f41375a6227fcc02d5f68c4e896688a499c5e827c70129d"
 size_bytes = 8471
 title = "Lab"
+section = "lab"
 
 [pages."lab/airspring-validation-summary.md"]
 blake3 = "85c8886a805cb59e347e6fdd34af70730dab0c3692232869fb2f108322757ab0"
 size_bytes = 5150
 title = "airSpring Validation Summary"
+section = "lab"
 
 [pages."lab/biomeos-validation-summary.md"]
-blake3 = "68c533e398148f1e4f29dc00b1d32447f27ab9d4bff530c493054c07bb7c8672"
-size_bytes = 8117
+blake3 = "8ebf88ada8baf0054e910a2b9f01dc2ad28064aa6a56b55dbbfd1e31214f0a5b"
+size_bytes = 8105
 title = "biomeOS Validation Summary"
+section = "lab"
 
 [pages."lab/compute-access.md"]
 blake3 = "7bc533f7f1b4d6921a7cf44dd3a2c31872b8149da594a81ed454bf04dbb2a07a"
 size_bytes = 5647
 title = "Compute Access — ABG Compute Lab"
+section = "lab"
 
 [pages."lab/getting-started-plasmidbin.md"]
 blake3 = "d694352ebeb8d749fddf3d99aecd8b1678146801823dbd92f7a5a780b3277b3b"
 size_bytes = 5507
 title = "Getting Started with plasmidBin"
+section = "lab"
 
 [pages."lab/groundspring-validation-summary.md"]
 blake3 = "f14fbafd0ab8251a0b9fc83a03bbb203dc9a284c44c17bbe09af6d17f1934583"
 size_bytes = 5245
 title = "groundSpring Validation Summary"
+section = "lab"
 
 [pages."lab/healthspring-validation-summary.md"]
 blake3 = "09efab2e4b10627a1208817cfd1f39ec4abecbb35cc6b6c7b98d97515a3f3c03"
 size_bytes = 2469
 title = "healthSpring Validation Summary — V65a"
+section = "lab"
 
 [pages."lab/hotspring-validation-summary.md"]
 blake3 = "a7af655c34d8c6ae7691f1d9bed1361c33529c716cf38e18cb7c95e9ea491034"
 size_bytes = 3597
 title = "hotSpring Validation Summary"
+section = "lab"
 
 [pages."lab/hotspring_phase_b_evidence.md"]
 blake3 = "eda1937995ccee38515b2a41757f7ae8841877d47c19dde59fe1a731072c0f00"
 size_bytes = 12488
 title = "hotSpring Phase B Evidence"
+section = "lab"
 
 [pages."lab/lithospore.md"]
 blake3 = "8e379078775953e44f68e3dbb9da825d5c704d9c2f3011f165d5dc7463ee890b"
 size_bytes = 6306
 title = "lithoSpore — LTEE Reproduction and Portable Validation"
+section = "lab"
 
 [pages."lab/living-systems.md"]
 blake3 = "72eea7ac817609b02e65b6e495150452badaf162c8fd0d2487a3e4982abed858"
 size_bytes = 6347
 title = "Living Systems — What's Running Now"
+section = "lab"
 
 [pages."lab/murillo_reproduction_plan.md"]
 blake3 = "aeabdf2743b2568cbd1bb50839d4c697dc804ad2da97ce62d29afc570936bb85"
 size_bytes = 25447
 title = "Murillo Reproduction Plan"
+section = "lab"
 
 [pages."lab/nestgate-validation-summary.md"]
 blake3 = "9ddc82c3213a564b41867e9546c0a996c2834e6a238252c7446b84f25ad3d4b6"
 size_bytes = 4707
 title = "NestGate Validation Summary"
+section = "lab"
 
 [pages."lab/neuralspring-validation-summary.md"]
 blake3 = "2be17be7e1512085f878262b2c58a83fc03260b45b50777b81d111e555c7c5a8"
 size_bytes = 6595
 title = "neuralSpring Validation Summary"
+section = "lab"
 
 [pages."lab/notebooks/001-fao56-penman-monteith.md"]
 blake3 = "47f73254f7db55bca389af00c5fb55e4ad818d187d5e4fc633c1aeb13b76566c"
 size_bytes = 16895
 title = "FAO-56 Penman-Monteith Reference Evapotranspiration (ET₀)"
+section = "lab"
 
 [pages."lab/notebooks/002-soil-sensor-calibration.md"]
 blake3 = "7fb5147f81caa0a66bb2d6fcb752546464c2d21b1b77349bece7852d240c6f4e"
 size_bytes = 5243
 title = "Soil Moisture Sensor Calibration (Dong et al., 2020)"
+section = "lab"
 
 [pages."lab/notebooks/004-fao56-water-balance.md"]
 blake3 = "b15003922dfc6cf33806a2bbb1705ee72f20ffba18caac354b80885bbc482689"
 size_bytes = 6068
 title = "FAO-56 Chapter 8 — Daily Soil Water Balance Scheduling"
+section = "lab"
 
 [pages."lab/notebooks/006-richards-equation.md"]
 blake3 = "a7f9711cdeb19ee56b28a40c89cbbfbb642ef213a3a2dac030daccd55d2b52e7"
 size_bytes = 8582
 title = "1D Richards Equation with van Genuchten–Mualem Hydraulics"
+section = "lab"
 
 [pages."lab/notebooks/007-biochar-adsorption.md"]
 blake3 = "a01f871928a8092ec9f79b4859b87d39b67e61872e045213ebf0c76c5c9b806b"
 size_bytes = 5751
 title = "Biochar Phosphorus Adsorption Isotherms (Kumari et al. 2025)"
+section = "lab"
 
 [pages."lab/notebooks/008-yield-response-stewart.md"]
 blake3 = "fd057f833ba896cda794b59d30213edfaec4e3a643af61ea6fa8fb5b5459a569"
 size_bytes = 6117
 title = "Stewart (1977) Yield Response to Water Stress"
+section = "lab"
 
 [pages."lab/notebooks/009-fao56-dual-kc.md"]
 blake3 = "b9d76c093fa86ce0bf36b95d1ba147f00af6dd07d04d28459b4e32f151f17858"
 size_bytes = 5785
 title = "FAO-56 Chapter 7 — Dual Crop Coefficient ($K_{cb} + K_e$)"
+section = "lab"
 
 [pages."lab/notebooks/01-16s-pipeline-validation.md"]
 blake3 = "0e18c685e4bc6857d2822367edcdcb64f345bc08a512d3e3ac2a1fee047de3e2"
 size_bytes = 8912
 title = "16S Pipeline Validation — wetSpring"
+section = "lab"
 
 [pages."lab/notebooks/01-composition-validation.md"]
 blake3 = "edb858c23cf438633e120946666c98a3771eec887acc5f31e1f1957ad2091df4"
 size_bytes = 4877
 title = "Composition Validation — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/01-science-validation.md"]
 blake3 = "6dae5ef039409bc512e2a932295c2086e79c91adbaedcae494e98d56100d167a"
 size_bytes = 9072
 title = "Science Validation — wetSpring"
+section = "lab"
 
 [pages."lab/notebooks/01-semf-binding-energy.md"]
 blake3 = "35d1885d6d10da9bf3cef55595d718b50b39278c0c13bdaa6ee12925695698fa"
 size_bytes = 11282
 title = "Semi-Empirical Mass Formula — Nuclear Binding Energies"
+section = "lab"
 
 [pages."lab/notebooks/017-et0-sensitivity-analysis.md"]
 blake3 = "622a26f6e0683c64029bbbc18eb642902f794c28d8e1451df26d6955d821f69c"
 size_bytes = 8620
 title = "ET₀ Sensitivity Analysis (One-at-a-Time)"
+section = "lab"
 
 [pages."lab/notebooks/018-michigan-crop-water-atlas.md"]
 blake3 = "39bec0a8835d2d10393b883bb03ce929bfcdd2fc08d4e5082e8fb8410bc9bdfc"
 size_bytes = 5544
 title = "Michigan Crop Water Atlas — 100 Stations, 80 Years"
+section = "lab"
 
 [pages."lab/notebooks/019-priestley-taylor-et0.md"]
 blake3 = "e16a7a478b0b244e28972c13e8f17657e99fdf1142847b80e53cef97be2805ed"
 size_bytes = 10767
 title = "Priestley-Taylor (1972) Radiation-Based ET₀"
+section = "lab"
 
 [pages."lab/notebooks/02-benchmark-comparison.md"]
 blake3 = "26fe92545adede5a221af9e828704c685cc767618c20fdd15f8ce4651dd40fba"
 size_bytes = 4387
 title = "Benchmark Comparison — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/02-benchmark-python-vs-rust.md"]
 blake3 = "60bbbeb1b1c67d93dd954e95d493dee4ad410951fa73abab1069837c2639bb6a"
 size_bytes = 8547
 title = "Python vs Rust vs GPU — Performance Evidence"
+section = "lab"
 
 [pages."lab/notebooks/02-yukawa-screening.md"]
 blake3 = "1ce4bb0755ef26405f414b4a0a9486636b5a4baa87d4c424390583f51f73c6e6"
 size_bytes = 9686
 title = "Screened Coulomb (Yukawa) Bound-State Eigenvalues"
+section = "lab"
 
 [pages."lab/notebooks/021-thornthwaite-et0.md"]
 blake3 = "c3563cb239fe00ba6e5e660d95d2e1ac166dbf5108e603b2ae44ed67661b3a36"
 size_bytes = 10784
 title = "Thornthwaite (1948) Monthly Evapotranspiration"
+section = "lab"
 
 [pages."lab/notebooks/023-pedotransfer-saxton-rawls.md"]
 blake3 = "fd931605ee109ef29014ea41f4ba18f887c4b36f3fca1477d484b5fd4d6766fc"
 size_bytes = 6355
 title = "Saxton-Rawls (2006) Pedotransfer Functions"
+section = "lab"
 
 [pages."lab/notebooks/03-ecosystem-evidence.md"]
 blake3 = "e6e3d38667dc336efb284712dc59f0770c4ad091309f409d6c8f2b5697850698"
 size_bytes = 4906
 title = "Ecosystem Evidence — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/03-experiment-evidence.md"]
 blake3 = "5dbb10b361be6594515007e7ff8a6ff4198456e06c55f6447f68bd619566f88d"
 size_bytes = 6549
 title = "Experiment Evidence — hotSpring"
+section = "lab"
 
 [pages."lab/notebooks/03-gonzales-deep-dive.md"]
 blake3 = "a06614512af2ad4dcd8cd71cc83ffbc268b3200e5b1442a0a6fb8f7cccd4b681"
 size_bytes = 12446
 title = "Gonzales Deep Dive — wetSpring"
+section = "lab"
 
 [pages."lab/notebooks/03-paper-reproductions.md"]
 blake3 = "eef7651a41d0b8705a006d828769d8e2ed122e03a2c6197eed224ab907341f58"
 size_bytes = 9558
 title = "Paper Reproductions — 63/63 Papers in Sovereign Rust"
+section = "lab"
 
 [pages."lab/notebooks/03-sarkas-yukawa-md.md"]
 blake3 = "b9ac2f12b3e6be2bd87e0f791b556a681bcb4ad1749b66dc79c86aee0c289882"
 size_bytes = 8172
 title = "Sarkas Yukawa MD — Plasma Transport from Molecular Dynamics"
+section = "lab"
 
 [pages."lab/notebooks/031-hargreaves-samani-et0.md"]
 blake3 = "da778b6137b3d306ea8fe1d0583a5655667338110d95426b2267d4f1fe16792b"
 size_bytes = 7601
 title = "Hargreaves-Samani (1985) Temperature-Based ET₀"
+section = "lab"
 
 [pages."lab/notebooks/033-makkink-et0.md"]
 blake3 = "6a331ec858d5c52d3e6ee4c6ab925eecf7dc37c42f175127d4d9943a512715f2"
 size_bytes = 9091
 title = "Makkink (1957) Radiation-Based ET₀"
+section = "lab"
 
 [pages."lab/notebooks/034-turc-et0.md"]
 blake3 = "4d936e73350f391ca7aa6b7ad2c80f27a3df31060091f4a6e86e5e00b440a407"
 size_bytes = 8737
 title = "Turc (1961) Temperature-Radiation ET₀"
+section = "lab"
 
 [pages."lab/notebooks/035-hamon-pet.md"]
 blake3 = "fffb9dc5d20bbf1b59000d3eeaa2956bb606c115e38ed39bf380b5edd547eec3"
 size_bytes = 9401
 title = "Hamon (1961) Temperature-Based PET"
+section = "lab"
 
 [pages."lab/notebooks/04-cross-spring-connections.md"]
 blake3 = "b30cc583592ffd120f00ab47eb039b3407e406fe8284559132b1b18227d32b38"
 size_bytes = 3955
 title = "Cross-Spring Connections — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/04-ttm-laser-plasma.md"]
 blake3 = "636b053ff2944e356bb4ca02b046c8d1b624b8435eb5c07493408ecf8818e428"
 size_bytes = 7388
 title = "Two-Temperature Model — Laser-Heated Plasma Equilibration"
+section = "lab"
 
 [pages."lab/notebooks/049-blaney-criddle-et0.md"]
 blake3 = "47bd50fd5a48a746a55cca8881eda85725087b63cdf47287c2c651172081c194"
 size_bytes = 7570
 title = "Blaney–Criddle (1950) Temperature-Based PET"
+section = "lab"
 
 [pages."lab/notebooks/05-btsp-security-deep-dive.md"]
 blake3 = "7b6a1ccf37ac4f5108e7317c19c96c7f381d5a2a04a9dbca1d1f3d4434219350"
 size_bytes = 7381
 title = "05 — BTSP Security Deep Dive"
+section = "lab"
 
 [pages."lab/notebooks/05-domain-deep-dive.md"]
 blake3 = "9844a4e70d5bfce1cbe3c6565b2dcadef8f0bb443e4c621bfc05577dd618c4ef"
 size_bytes = 5609
 title = "Domain Deep Dive — airSpring"
+section = "lab"
 
 [pages."lab/notebooks/05-measurement-science-deep-dive.md"]
 blake3 = "a3ea7f486e076fa997ff40ac894e2ee28c39b646740d2cb5632500833e98a687"
 size_bytes = 6505
 title = "Measurement Science Deep Dive — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/05-physics-deep-dive.md"]
 blake3 = "16571384d745cfe473e9f067861dcd3080ab114f4b02cd4c2527cde1fc91ad17"
 size_bytes = 9059
 title = "Physics Deep Dive — hotSpring"
+section = "lab"
 
 [pages."lab/notebooks/05-primal-composition-patterns.md"]
 blake3 = "9b7b985b68bb4cc265be15bbd5189d5f47c608e1e463a6217a2ccd60aa620022"
 size_bytes = 11266
 title = "Primal Composition Patterns — wetSpring"
+section = "lab"
 
 [pages."lab/notebooks/05-soil-anderson-deep-dive.md"]
 blake3 = "534800a7ad70b74023968422c002c88b58c07def518afb1f4794746e4f9e56a8"
 size_bytes = 9763
 title = "Soil Anderson Deep Dive — Track 4 Domain Exemplar"
+section = "lab"
 
 [pages."lab/notebooks/05-stanton-murillo-transport.md"]
 blake3 = "e83da0f54ffc41f6f1de8a1641601efe31a6a4b14e00e7cc715b45d547106f75"
 size_bytes = 5745
 title = "Stanton-Murillo Transport Coefficients — Yukawa OCP"
+section = "lab"
 
 [pages."lab/notebooks/050-scs-curve-number.md"]
 blake3 = "504839781460d3c80e4ba4c8e4f5b8ca21271b2162e5b32dc27914a482bed890"
 size_bytes = 3835
 title = "SCS Curve Number Runoff Method (USDA 1972)"
+section = "lab"
 
 [pages."lab/notebooks/051-green-ampt-infiltration.md"]
 blake3 = "933535c2aa24b8fa5b39912e8de3931544cac0a4ba27aa2f306b03c4d506f16e"
 size_bytes = 4916
 title = "Green-Ampt (1911) Infiltration Model"
+section = "lab"
 
 [pages."lab/notebooks/06-surrogate-learning.md"]
 blake3 = "f0098398c30b5e5928f71ae17682fcdd2f367c7beeb2e5077d9282e7a56a29b0"
 size_bytes = 6591
 title = "Surrogate Learning — Directed Sampling for Nuclear EOS"
+section = "lab"
 
 [pages."lab/notebooks/07-quenched-qcd.md"]
 blake3 = "df374572a48a98906185e6d6e64d9284e435477e1967c556b2d731937a5cc600"
 size_bytes = 13937
 title = "Quenched SU(3) Lattice QCD — Deconfinement Transition"
+section = "lab"
 
 [pages."lab/notebooks/08-dynamical-fermions.md"]
 blake3 = "1c1e10462315584df705156945eeac0489f485ff322fa18d3caa6f5e2019c6bf"
 size_bytes = 8530
 title = "Dynamical Fermion QCD — Staggered HMC, HVP, Freeze-Out"
+section = "lab"
 
 [pages."lab/notebooks/081-spi-drought-index.md"]
 blake3 = "7060b6c0f145505475b1d54e9320b5fdccb85a8c4e9ea3e4643590e8926401ad"
 size_bytes = 6807
 title = "Standardized Precipitation Index (SPI)"
+section = "lab"
 
 [pages."lab/notebooks/09-abelian-higgs.md"]
 blake3 = "2dd25e02bfb9df4a7efe113dc3a0d965cf4a05885e3ffa1284d0b0a9ea2c8116"
 size_bytes = 10899
 title = "Abelian Higgs Model — (1+1)D Lattice Field Theory"
+section = "lab"
 
 [pages."lab/notebooks/10-spectral-theory.md"]
 blake3 = "935ce24cf19222b19cff2de3dd2c2b2babd5d18d2a179d36e13dfdbcd1934bbf"
 size_bytes = 13853
 title = "Spectral Theory — Anderson Localization, Hofstadter Butterfly, Lyapunov Exponents"
+section = "lab"
 
 [pages."lab/notebooks/11-gradient-flow.md"]
 blake3 = "5769201810ec5896a80967ff0df8e14532b7ce3b0b71d908174683a91926f0b7"
 size_bytes = 10216
 title = "Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$"
+section = "lab"
 
 [pages."lab/notebooks/12-plasma-dielectric.md"]
 blake3 = "ad4d1e2907cc2a552477f1cd69615517cca44a69494e3a90ca2290e159249411"
 size_bytes = 10391
 title = "Plasma Dielectric Functions — BGK/Mermin + Kinetic-Fluid Coupling"
+section = "lab"
 
 [pages."lab/notebooks/13-ltee-anderson-fitness.md"]
 blake3 = "6fb5e87b34e1eb9db8288efcffa0f6e9de206a7576119ade318c0c1dbc293ae0"
 size_bytes = 16246
 title = "LTEE B2 — Anderson Disorder Analogy for Fitness Dynamics"
+section = "lab"
 
 [pages."lab/notebooks/_index.md"]
 blake3 = "42e71e3c12d26d812c2d686f3f7a1fccd62f89530eabfe0b19b4c333f35a43d6"
 size_bytes = 1242
 title = "Public Notebooks"
+section = "lab"
 
 [pages."lab/notebooks/anderson-deep-sea.md"]
 blake3 = "1bdbbcecde69b44e43bd26af8d1be771e24ca3824ebce2447999c6ab46694db2"
 size_bytes = 18322
 title = "Deep-Sea Hydrothermal Vent Ecology — R. Anderson Lab (Carleton)"
+section = "lab"
 
 [pages."lab/notebooks/cahill-smallwood-algae.md"]
 blake3 = "29cfdc7f6a0665f533b06479578842ba1378c44a7270dcf644e44a2ce35af3b6"
 size_bytes = 11361
 title = "Algal Pond Ecology & Bloom Surveillance — Cahill/Smallwood (Sandia)"
+section = "lab"
 
 [pages."lab/notebooks/exp-001-sensor-noise.md"]
 blake3 = "3bbc7276c9f1bc3700013c5b22e2c8ffecc33d127669277b4c3353b10f421c13"
 size_bytes = 10859
 title = "Experiment 001 — Sensor Noise Characterization"
+section = "lab"
 
 [pages."lab/notebooks/exp-002-observation-gap.md"]
 blake3 = "6d142297b7640a33dc947447ba48c29237cfc4a2d47eee002616898943b63814"
 size_bytes = 15799
 title = "Experiment 002 — Observation Gap Analysis"
+section = "lab"
 
 [pages."lab/notebooks/exp-003-error-propagation.md"]
 blake3 = "342731f49300c64bfaf983ef7874933e60002293751370d7a961b6abc8b5e56a"
 size_bytes = 20376
 title = "Experiment 003 — Error Propagation FAO-56"
+section = "lab"
 
 [pages."lab/notebooks/exp-004-sequencing-noise.md"]
 blake3 = "8c0115c3cd2432202e92d9f3eedbc062c913613124a2187a6dd44d87b26a9c95"
 size_bytes = 14149
 title = "Experiment 004 — Sequencing Noise Characterization"
+section = "lab"
 
 [pages."lab/notebooks/exp-005-seismic.md"]
 blake3 = "fb37d84eda67f3a63073f3dac234a7b7c2e5deab421e6201635ba7ea68592a22"
 size_bytes = 17747
 title = "Experiment 005 — Seismic Wave Propagation"
+section = "lab"
 
 [pages."lab/notebooks/exp-006-signal-specificity.md"]
 blake3 = "e83ef175a83a2d6e6ed8120cc092b63a0be89a565d98d6707847d378d3c71306"
 size_bytes = 11073
 title = "Experiment 006 — Signal Specificity in Quorum Sensing"
+section = "lab"
 
 [pages."lab/notebooks/exp-007-rawr-resampling.md"]
 blake3 = "89ecc71cf459936f5f5f002d22eaeee7451011ab0f95c6b0e3c7927185c92bcb"
 size_bytes = 11382
 title = "Experiment 007 — RAWR Bootstrap Resampling"
+section = "lab"
 
 [pages."lab/notebooks/exp-008-anderson-localization.md"]
 blake3 = "e1aa9fc158e987d8bcfd55ff2fa09dfaab0935403f7b969dcba9c02f5b7c4ba3"
 size_bytes = 8824
 title = "Experiment 008 — Anderson Localization"
+section = "lab"
 
 [pages."lab/notebooks/exp-009-quasiperiodic.md"]
 blake3 = "d5b5f21d2b08ca93beaa82689204a73792bc5d2c08c0ead57bca72100468f682"
 size_bytes = 10348
 title = "Experiment 009 — Almost-Mathieu Quasiperiodic Localization"
+section = "lab"
 
 [pages."lab/notebooks/exp-010-bistable-switching.md"]
 blake3 = "08a5bcda1cc432d11b3cb8e561f151fca7562ad934b4becd375e6a0c8eb978fb"
 size_bytes = 10436
 title = "Experiment 010 — Bistable Phenotypic Switching"
+section = "lab"
 
 [pages."lab/notebooks/exp-011-multisignal-qs.md"]
 blake3 = "50a9a8f734016a0217424abfbd83f19846bcdcf992f69529e39c365f7e8d208c"
 size_bytes = 10827
 title = "Experiment 011 — Multi-Signal Quorum Sensing Integration"
+section = "lab"
 
 [pages."lab/notebooks/exp-012-spin-transport.md"]
 blake3 = "80a32d19f73ba51db01b017fe133c6ccc07f60bf1709109cd5ae42b4dbf96364"
 size_bytes = 7059
 title = "Experiment 012 — Spin Chain Transport"
+section = "lab"
 
 [pages."lab/notebooks/exp-013-resampling-convergence.md"]
 blake3 = "3b9100effb01f657a1a0ec6f3f08fbfad9e713f40d6f66689a09a3dfb69e075a"
 size_bytes = 8474
 title = "Experiment 013 — Resampling Convergence Analysis"
+section = "lab"
 
 [pages."lab/notebooks/exp-014-drift-selection.md"]
 blake3 = "d353b88b970ae2308e265a0ea2212396ea99e1b02fbe737b0c9280549221f049"
 size_bytes = 7572
 title = "Experiment 014 — Drift vs Selection in Microbial Populations"
+section = "lab"
 
 [pages."lab/notebooks/exp-015-uncertainty-bridge.md"]
 blake3 = "72c2c27c35fefd2b8a467d41a5c3c4d451d32e468e4017ae92e01fb91a79ec2b"
 size_bytes = 8200
 title = "Experiment 015 — Uncertainty Bridge: Sensor Noise → Localization"
+section = "lab"
 
 [pages."lab/notebooks/exp-016-rare-biosphere.md"]
 blake3 = "bfb761c7534e24fb3462584074cc14a2cfdd96869f9532ae1c7d919f2862c041"
 size_bytes = 9414
 title = "Experiment 016 — Rare Biosphere Signal Detection"
+section = "lab"
 
 [pages."lab/notebooks/exp-017-quasispecies-threshold.md"]
 blake3 = "8e22da230a01bf5dd0f769968e83b41355baa4dc62eef730cdf03a6206165077"
 size_bytes = 8299
 title = "Experiment 017 — Quasispecies Error Threshold"
+section = "lab"
 
 [pages."lab/notebooks/exp-018-band-edge.md"]
 blake3 = "b5809d515dbc3cf92036e12842e331d6009aa2776be2eb67a958694df5125b82"
 size_bytes = 8188
 title = "Experiment 018 — Band Edge Structure"
+section = "lab"
 
 [pages."lab/notebooks/exp-019-jackknife-estimation.md"]
 blake3 = "c164f2540dab8c3e8cac285c9cce6353386377755d24f70785b91b97fd61fccb"
 size_bytes = 6473
 title = "Experiment 019 — Jackknife Error Estimation"
+section = "lab"
 
 [pages."lab/notebooks/exp-020-freeze-out-inverse.md"]
 blake3 = "156cc69e161065742989f53fdcfce2b3c0f5c0367db384cbaae0e5e582420a97"
 size_bytes = 6318
 title = "Experiment 020 — Freeze-Out Inverse Problem"
+section = "lab"
 
 [pages."lab/notebooks/exp-021-spectral-recon.md"]
 blake3 = "340a1a0e1f4fcea2712fd69293ee7906293fd7b3ef746cc9d72b07d865835274"
 size_bytes = 6010
 title = "Experiment 021 — Spectral Reconstruction"
+section = "lab"
 
 [pages."lab/notebooks/exp-022-et0-anderson-propagation.md"]
 blake3 = "7e0a45cc6633d028addd632669f44513b1ee7d1c87c08d7cf5090ac1ff28aef1"
 size_bytes = 15825
 title = "Experiment 022 — ET₀-Anderson Error Propagation"
+section = "lab"
 
 [pages."lab/notebooks/exp-023-notill-sampling.md"]
 blake3 = "a90036a7ae41c6c52bea2f4ee6bc49979af2e225282d5265a3378004ff30a25f"
 size_bytes = 10999
 title = "Experiment 023 — No-Till vs Tilled 16S Sampling"
+section = "lab"
 
 [pages."lab/notebooks/exp-024-aggregate-stability.md"]
 blake3 = "cf9e4a8314700d0147cac2e6aff9051806e7e23134bd3ced668ce7f41cbddfbd"
 size_bytes = 9732
 title = "Experiment 024 — Aggregate Stability Noise Analysis"
+section = "lab"
 
 [pages."lab/notebooks/exp-025-precision-drift.md"]
 blake3 = "cfb9bc261f07a6517ededf34585dc6637a054926754bd28eeebc37940f717494"
 size_bytes = 8583
 title = "Experiment 025 — f32 vs f64 Precision Drift"
+section = "lab"
 
 [pages."lab/notebooks/exp-026-size-convergence.md"]
 blake3 = "d946916745a7a47b88549d0e3d9a30e5d308ba250055569a4bbe6ed83a969ad6"
 size_bytes = 7032
 title = "Experiment 026 — System-Size Convergence"
+section = "lab"
 
 [pages."lab/notebooks/exp-027-vendor-parity.md"]
 blake3 = "afb3cb43dafda740dcd346cb617712d8088c62fdc5d8a895d8c60e773ddb3e64"
 size_bytes = 6581
 title = "Experiment 027 — GPU Vendor Parity"
+section = "lab"
 
 [pages."lab/notebooks/exp-028-npu-anderson.md"]
 blake3 = "5eba4f77aaf329e9b590caaf6390c7b9d06c4e58fd5b51b8f43797c49cceaa0a"
 size_bytes = 6032
 title = "Experiment 028 — NPU Anderson Classification"
+section = "lab"
 
 [pages."lab/notebooks/exp-029-et0-methods.md"]
 blake3 = "b3f7b9b37e8b556218cf2636a4ad50ed9d8a7d8610a5df4c8f5151b57a9d37d2"
 size_bytes = 17970
 title = "Experiment 029 — Multi-Method ET₀ Comparison"
+section = "lab"
 
 [pages."lab/notebooks/fajgenbaum-drug-repurposing.md"]
 blake3 = "ed584388a6ddfd74e7ef36934b4c013d6f8d2f1fc3f28a4e96c727ab6702459c"
 size_bytes = 17838
 title = "Drug Repurposing & Knowledge Graphs — Fajgenbaum Lab (Track 3)"
+section = "lab"
 
 [pages."lab/notebooks/gonzales-jak-pharmacology.md"]
 blake3 = "03d93a03a388fc31437e2cdedd3f51e813416856c433c5e0434d5672ad226d1a"
 size_bytes = 14724
 title = "JAK/STAT Pharmacology — Gonzales Lab"
+section = "lab"
 
 [pages."lab/notebooks/gs-01-composition-validation.md"]
 blake3 = "dd259379f2c2cc27853f604b6c52b035399a11e3cc585367a6bb23ab2f0dc57b"
 size_bytes = 173394
 title = "Composition Validation — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/gs-02-benchmark-comparison.md"]
 blake3 = "7c123e028adb0b520e6769aaf013937c706bc7e0af0a9787799c15c448a26527"
 size_bytes = 135085
 title = "Benchmark Comparison — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/gs-03-ecosystem-evidence.md"]
 blake3 = "22b9ced4522db2f3ec3ceb705befbd1b3675865ed578002e4a21552373f0e508"
 size_bytes = 313562
 title = "Ecosystem Evidence — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/gs-04-cross-spring-connections.md"]
 blake3 = "5e84e2b2194b1604a195a0b96877bf7e0a86792e400d3c6172fd12fa24821519"
 size_bytes = 142818
 title = "Cross-Spring Connections — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/gs-05-measurement-science-deep-dive.md"]
 blake3 = "c09f230e144cb4af5dc0edcea78d3f485e4093db06591ede95effc76cdbe9273"
 size_bytes = 113083
 title = "Measurement Science Deep Dive — groundSpring"
+section = "lab"
 
 [pages."lab/notebooks/jones-pfas-chemistry.md"]
 blake3 = "2f1095f535ee89c54c0ecde8fc5b18ac59f994f916059df84dbe04012c82d475"
 size_bytes = 16279
 title = "PFAS Detection & Environmental Chemistry — Jones Lab (MSU BMB)"
+section = "lab"
 
 [pages."lab/notebooks/kachkovskiy-spectral-qs.md"]
 blake3 = "83550817841d38bdee62144281554ebdb8bd00922a7b6240b1658437d0fdc26d"
 size_bytes = 19929
 title = "Spectral Theory & Quorum Sensing — Kachkovskiy (MSU CMSE)"
+section = "lab"
 
 [pages."lab/notebooks/liao-anaerobic-biogas.md"]
 blake3 = "51df33d9aeecfb6e3b6e2397ec829333029a11b402989ba551658a861a09699a"
 size_bytes = 13075
 title = "Anaerobic Biogas Kinetics & Community Diversity — Track 6"
+section = "lab"
 
 [pages."lab/notebooks/liu-phylogenetics.md"]
 blake3 = "305db505cfba36402a92d01669d17d9c0e5848a853131c94dff6411e53833624"
 size_bytes = 21378
 title = "Computational Phylogenetics — Liu Lab (MSU CMSE)"
+section = "lab"
 
 [pages."lab/notebooks/paper-011-counterdiabatic-evolution.md"]
 blake3 = "f40d1f75a60907336a912c0cf4e745ab6c97a3915de2da5443b7350df715bb21"
 size_bytes = 17445
 title = "Paper 011 — Counterdiabatic Driving of Evolution"
+section = "lab"
 
 [pages."lab/notebooks/paper-012-modes-toolbox.md"]
 blake3 = "834ffca4f62ae0f187e7f6a2be3802d66187074acf630c69a0860f5d7835e912"
 size_bytes = 16928
 title = "Paper 012 — MODES Toolbox: Metrics of Open-Ended Evolution"
+section = "lab"
 
 [pages."lab/notebooks/paper-013-eco-dynamics.md"]
 blake3 = "47bdc1bdef632092c8ca83aea9999a214c67cfa8c0e7631b6d58cff9dd7515bc"
 size_bytes = 14275
 title = "Paper 013 — Ecological Theory in Evolutionary Computation"
+section = "lab"
 
 [pages."lab/notebooks/paper-014-directed-evolution.md"]
 blake3 = "4ced68255669c3209c0baed74d33b73902b1830722cc6b6008c1ceb2314647ce"
 size_bytes = 16397
 title = "Paper 014 — Directed Evolution via Selection Algorithms"
+section = "lab"
 
 [pages."lab/notebooks/paper-015-swarm-robotics.md"]
 blake3 = "b0d003c4a8563f39758d7d4415a9280f676f7cc5b47d25d3a81d4341f96af69a"
 size_bytes = 16743
 title = "Paper 015 — Heterogeneous Swarm Robotics"
+section = "lab"
 
 [pages."lab/notebooks/paper-016-hmm-phylo.md"]
 blake3 = "a21415c709359fce3a801989117bfce044247fd4b0c73d6f654aa64a1396638e"
 size_bytes = 15056
 title = "Paper 016 — HMM Forward / Backward / Viterbi for Genomic Inference"
+section = "lab"
 
 [pages."lab/notebooks/paper-017-sate-alignment.md"]
 blake3 = "39314e1ed5b9d1ba2532db09fba8c15ecc542ef136bbd29732f33e8f2b5843c8"
 size_bytes = 13270
 title = "Paper 017 — SATé: Iterative Co-estimation of MSA and Phylogeny"
+section = "lab"
 
 [pages."lab/notebooks/paper-018-introgression.md"]
 blake3 = "2991700bd03489862bb873a9d01f3726b4ca166c5c8418cda949abcb8c1d2b38"
 size_bytes = 11707
 title = "Paper 018 — PhyloNet-HMM for Introgression Detection"
+section = "lab"
 
 [pages."lab/notebooks/r-industry-parity.md"]
 blake3 = "421dc3217eb20a7c7ef2e9baca7110dd3d38e37a0a85dbfc42165e304af10281"
 size_bytes = 13543
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
+section = "lab"
 
 [pages."lab/notebooks/soil-anderson-geometry.md"]
 blake3 = "a825544e8ce2ccac49a37ad154390af411d76f4c36d6ca3acbc645a4039dc899"
 size_bytes = 13167
 title = "Soil Quorum Sensing & Anderson Geometry — Track 4"
+section = "lab"
 
 [pages."lab/notebooks/tenaillon-ltee-mutation.md"]
 blake3 = "9adf3b8817884f12117ae3c91769ae61d46aaef2019f7bf236dee3b342ef5cf1"
 size_bytes = 11724
 title = "LTEE B7 — Tenaillon 2016: Mutation Accumulation in 50,000 Generations"
+section = "lab"
 
 [pages."lab/notebooks/waters-quorum-sensing.md"]
 blake3 = "705c7c6705d0e774c157b704eaeb0e40b3aa01b7fa889a282ac87d487374d219"
 size_bytes = 24979
 title = "Quorum Sensing & Biofilm Dynamics — Waters Lab (MSU MMG)"
+section = "lab"
 
 [pages."lab/primalspring-validation-summary.md"]
 blake3 = "b61226d955cc2bfd50621681e3271823997f426132996c91ab5173c3ca48ba5a"
 size_bytes = 2468
 title = "primalSpring Validation Summary"
+section = "lab"
 
 [pages."lab/projectfoundation-validation-summary.md"]
 blake3 = "3fda1b48f25ef002039d8b94535375117dc22618a0c981445602029f46c323c7"
 size_bytes = 3842
 title = "projectFOUNDATION Validation Summary"
+section = "lab"
 
 [pages."lab/provenance-pipeline.md"]
 blake3 = "462233194882235b4d8ef204b95b8e9f23479a7db3e353f06b5a0a6d4fa7ae01"
 size_bytes = 4808
 title = "Provenance Pipeline"
+section = "lab"
 
 [pages."lab/reproduce.md"]
 blake3 = "d05a50721009c557740cac26f6411a4ef9ed6d9a8ed5c324158222bf4b7d7639"
 size_bytes = 5026
 title = "Reproduce It Yourself"
+section = "lab"
 
 [pages."lab/spores/_index.md"]
 blake3 = "397bb9587dd4e189d779e5bc3c3016af39dfde153676fa12d65fbe1a248f2874"
 size_bytes = 1021
 title = "pseudoSpore Gallery"
+section = "lab"
 
 [pages."lab/spores/healthspring-clinical-pkpd.md"]
 blake3 = "2a973198b311e2e72047252f10f12a46c5091a2bd736f6c43f77e2b226a4ee68"
 size_bytes = 2981
 title = "healthSpring Clinical PK-PD"
+section = "lab"
 
 [pages."lab/spores/hotspring-compchem-guidestone.md"]
 blake3 = "34282e85d7e82869952ed33a87a291af335e20d2a73164f431e99043eed55b22"
 size_bytes = 3261
 title = "hotSpring CompChem GuideStone"
+section = "lab"
 
 [pages."lab/springs/_index.md"]
 blake3 = "04bf128048c8fe0eccb98fbae061000d4ed035db3049eda1c521a3f1fa405cd4"
 size_bytes = 732
 title = "Spring Science Hubs"
+section = "lab"
 
 [pages."lab/springs/airspring.md"]
 blake3 = "d198aff305cdac3debb56ffcaed93ff8ed7ce2e23c685adec624356ee08297cd"
 size_bytes = 3025
 title = "airSpring — Precision Agriculture & Irrigation"
+section = "lab"
 
 [pages."lab/springs/groundspring.md"]
 blake3 = "eefd0c7a34817f3ebd6600087809ed82849e5c77b8a27c9d8e71edb49a59e3f5"
 size_bytes = 4654
 title = "groundSpring — Uncertainty Budget, Inverse Problems, Spectral Theory"
+section = "lab"
 
 [pages."lab/springs/healthspring.md"]
 blake3 = "db9b53ada36f588f5a88eca703dc0c491a034362835f2b3905d68ea39f98ebd8"
 size_bytes = 3510
 title = "healthSpring — Human Health: PK/PD, Microbiome, Biosignal, Drug Discovery"
+section = "lab"
 
 [pages."lab/springs/hotspring.md"]
 blake3 = "11e05a1f317a60facc40f8185071b60248c2ecbcbd3f8c46a9c0734898bee828"
 size_bytes = 3176
 title = "hotSpring — Computational Plasma Physics, Lattice QCD, Spectral Theory"
+section = "lab"
 
 [pages."lab/springs/ludospring.md"]
 blake3 = "a0add706cccbb3f62f4fc960f03babf2c7d42f9f21cea585012f2ba73e0502bf"
 size_bytes = 4643
 title = "ludoSpring — Game Science, HCI, Provenance Economics"
+section = "lab"
 
 [pages."lab/springs/neuralspring.md"]
 blake3 = "4abcf8439d79d8c33c38527a89170908cfea21874bfacec97fcfb54025e6858a"
 size_bytes = 4388
 title = "neuralSpring — Neural Architectures, Structure Prediction, ML Surrogates"
+section = "lab"
 
 [pages."lab/springs/primalspring.md"]
 blake3 = "f62ad1c9d8ec09d716865d402e2bbe69ac9775e122e55a299e802989f7c0d7fa"
 size_bytes = 3671
 title = "primalSpring — Composition Parity, Deploy Graphs, NUCLEUS Validation"
+section = "lab"
 
 [pages."lab/springs/wetspring.md"]
 blake3 = "4d2bb0897da3bea6f443bbb81e1b1eb4bbd32100563eed2b04a01f82544bfbfa"
 size_bytes = 4370
 title = "wetSpring — Life Science & Analytical Chemistry"
+section = "lab"
 
 [pages."lab/wetspring-validation-summary.md"]
 blake3 = "46f79434a566d1c14d132e5bd97aa4923f194a54f0b106a6d26636f240eefeb4"
 size_bytes = 3567
 title = "wetSpring Validation Summary"
+section = "lab"
 
 [pages."lab/wetspring-validation.md"]
 blake3 = "bbe1d7ff94230d17593d22cb6f67ce1fbf47f39060a8c51c0039d6528fe5aa57"
 size_bytes = 4700
 title = "wetSpring Validation Results"
+section = "lab"
 
 [pages."methodology/CONSTRAINED_EVOLUTION_FORMAL.md"]
 blake3 = "eeb2be1c25faa6a2869dbae4507127bd10b076a6c5e8dd2e8bfa99e6b54a0fb6"
 size_bytes = 48836
 title = "Constrained Evolution: How Environmental Pressure Drives Convergence in Biological and Computational Systems"
+section = "methodology"
+companions = [
+    "/philosophy/the-human-search/",
+    "/thesis/03-theoretical-framework/",
+]
 
 [pages."methodology/HOW_TO_START_A_SPRING.md"]
 blake3 = "82a2bff71e81a6fbff4ca46dd94df466230044b4e69d5b83e89e45b5bb96f795"
 size_bytes = 16483
 title = "How to Start a Spring"
+section = "methodology"
 
 [pages."methodology/KNOME_EVOLUTION.md"]
 blake3 = "a96eb88211bc860058cf9225bbd49d70ac247b883c8011d7418f81806b42c905"
 size_bytes = 4984
 title = "K-NOME at Scale"
+section = "methodology"
 
 [pages."methodology/KNOWLEDGE_COMMONS_TARGETS.md"]
 blake3 = "375033b65327f890e2301eb99c9f2c394a313699783a0967ec662ab60c46d1d0"
 size_bytes = 13078
 title = "Knowledge Commons Targets: What Others Can Build, and Why It Can't Be Taken Back"
+section = "methodology"
 
 [pages."methodology/K_NOME_PROGRAMMING.md"]
-blake3 = "17a4d1402224ddc34a2d200baddc05aaeb98220a892ec82c6ed6d3294e4ae927"
-size_bytes = 17407
+blake3 = "0fcb4a11a51a779986fc2d5af4e1accf87b990dcfd6d61afbfdd500780c71d10"
+size_bytes = 17432
 title = "K-NOME Programming"
+section = "methodology"
+trails = ["methodology"]
+companions = [
+    "/philosophy/the-knowledge-numeric/",
+    "/story/i-dont-know-rust/",
+]
 
 [pages."methodology/P_NP_ENZYME_THESIS.md"]
 blake3 = "6b559e3f666ffe1690eefd0406ceb1cbcff4f5507112efba1cf27af6e14836ea"
 size_bytes = 35616
 title = "The Generation-Verification Asymmetry: Biological Evidence for a Physical Law of Computation"
+section = "methodology"
 
 [pages."methodology/SCYBORG_LICENSING.md"]
 blake3 = "c7f79fcb8667a3f6a4a2961d127ab7748e45516731b8a68175a2a884ecc2e023"
 size_bytes = 10712
 title = "scyBorg Triple License — Why Three Licenses for Three Artifact Types"
+section = "methodology"
+companions = ["/philosophy/sovereign-science/"]
 
 [pages."methodology/_index.md"]
 blake3 = "fd01c02b65a65aaaf93219ed88ed9c6e6a215940b490cf68e2311ad23c53b26d"
 size_bytes = 1985
 title = "Methodology"
+section = "methodology"
 
 [pages."methodology/acknowledgments.md"]
 blake3 = "2133ae424701d0928bd53043906d1ddddaecb6275670d344199da57c983e1b6a"
 size_bytes = 7878
 title = "Acknowledgments — The Systems We Stand On"
+section = "methodology"
 
 [pages."methodology/constrained_optimization_ai.md"]
 blake3 = "5477cfed51c8b28a19256c425b7c6d177aefb7e09329138a1ebe3dd4abaeadde"
 size_bytes = 23239
 title = "Constrained Optimization in AI-Assisted Development"
+section = "methodology"
+
+[pages."methodology/conversation_constraint.md"]
+blake3 = "fa778dc6d17d29f091faab566ca462ab3f6e3bd0d13d8c9d230282be11615b1b"
+size_bytes = 4484
+title = "The Conversation Constraint"
+section = "methodology"
+trails = ["methodology"]
+companions = [
+    "/methodology/massively-parallel-mentoring/",
+    "/methodology/prompt-bank/",
+    "/story/i-dont-know-rust/",
+]
+
+[pages."methodology/massively_parallel_mentoring.md"]
+blake3 = "ae95342dceab6eb4c48ceabfe72b0c7e05b9ec0a7438a068dcd56901cdcc77ee"
+size_bytes = 4317
+title = "Massively Parallel Mentoring"
+section = "methodology"
+trails = ["methodology"]
+companions = [
+    "/methodology/conversation-constraint/",
+    "/methodology/prompt-bank/",
+    "/architecture/coordination-triad/",
+]
+
+[pages."methodology/prompt_bank.md"]
+blake3 = "45c5230a6df5f85294f6d5ea263a9df2d1cf7d4f0fd88f1949f3c471b7f59b60"
+size_bytes = 3655
+title = "The Prompt Bank"
+section = "methodology"
+trails = ["methodology"]
+companions = [
+    "/methodology/conversation-constraint/",
+    "/methodology/massively-parallel-mentoring/",
+]
 
 [pages."methodology/scyborg_exception_protocol.md"]
 blake3 = "d8f9e90663aaf9470c4b13701c20b1e970f810f2de63cc17f59c1f2c070d8590"
 size_bytes = 13236
 title = "scyBorg Exception Protocol"
+section = "methodology"
 
 [pages."methodology/sharing_the_pen.md"]
 blake3 = "161baa4864c395f16f57720a3f93dc1377e81c63d31f9b3276ed44331e6b3f3c"
 size_bytes = 10598
 title = "Sharing the Pen"
+section = "methodology"
+
+[pages."methodology/sovereign_publication.md"]
+blake3 = "a491a99d9dcc895669c8b5d481dc8a52557a11f9660e18886b2889da0268e11f"
+size_bytes = 4773
+title = "The Sovereign Publication"
+section = "methodology"
+trails = [
+    "sovereignty",
+    "methodology",
+    "nf-pipeline",
+    "grant-ready",
+]
+companions = [
+    "/guidestone/deployable-artifact-standard/",
+    "/products/nf-case-study/",
+    "/philosophy/fossil-lineage/",
+]
 
 [pages."outreach/01_i_dont_know_rust.md"]
 blake3 = "b6b80f3c6069973907018e773b9df71303dfeb478312bb9908d3b34d154d070e"
 size_bytes = 478
 title = "I Don't Know Rust"
+section = "outreach"
 
 [pages."outreach/02_the_sovereign_lab.md"]
 blake3 = "5340c2f10c6a81f16492a0398e13d0bd6059f5f7210396210755f89073a2dd94"
 size_bytes = 466
 title = "The Sovereign Lab"
+section = "outreach"
 
 [pages."outreach/03_70_papers_one_stack.md"]
 blake3 = "aaa0639138082c71136227a49bc39379bf779714a2f328375da2fccb74f64eaf"
 size_bytes = 561
 title = "175+ Papers, One Stack"
+section = "outreach"
 
 [pages."outreach/04_while_they_were_writing_manifestos.md"]
 blake3 = "41de1ec4cca868ac6b05ba94ad2934fe32b276a6d8da7086ebeaee10e5252404"
 size_bytes = 403
 title = "While They Were Writing Manifestos"
+section = "outreach"
 
 [pages."outreach/04a_the_bread_thief_and_the_billionaire.md"]
 blake3 = "af2f290c7724cd6e1709409bd6cdc8ecbc056fb5dd294a19c636e99e2a04f858"
 size_bytes = 353
 title = "The Bread Thief and the Billionaire"
+section = "outreach"
 
 [pages."outreach/04b_the_tollbooth_economy.md"]
 blake3 = "e035a3e755aedac97923f8ac66364d0ce3785633bc03dc8ed8a62324ebff4b05"
 size_bytes = 317
 title = "The Tollbooth Economy"
+section = "outreach"
 
 [pages."outreach/04c_the_kingdom_builders.md"]
 blake3 = "869c0dcb8e0279d3ab5584e4f1ecfe70b0f0a7e8fee4b04098e7b482a0348a28"
 size_bytes = 335
 title = "The Kingdom Builders"
+section = "outreach"
 
 [pages."outreach/04d_detachment_201.md"]
 blake3 = "3eafecb34622dea83bf5dc5248e6b0b49afa859b650d8ef00b99ec81a6148b7c"
 size_bytes = 322
 title = "Detachment 201"
+section = "outreach"
 
 [pages."outreach/_index.md"]
 blake3 = "edcd7d4aa6eaed8dfc2c27627df07ae2ccf69a3a1023b6ee222850ed51d953d4"
 size_bytes = 2290
 title = "reachOut"
+section = "outreach"
 
 [pages."outreach/gaming_invitation.md"]
 blake3 = "4c929f3f39aa29f9922869048f9a0b8ad353204ab0b3f77f3e3f5fc80999cdc3"
 size_bytes = 658
 title = "An Invitation to Gaming Platforms"
+section = "outreach"
 
 [pages."outreach/gpu_invitation.md"]
 blake3 = "6dd244dbaabe61d37c5fa884c00c2150b39ea586e5583b27c602bbc550a298da"
 size_bytes = 743
 title = "An Invitation to GPU Manufacturers"
+section = "outreach"
 
 [pages."outreach/neuromorphic_invitation.md"]
 blake3 = "8e9e1b936154be3ad405503b17e71736aeb651a6871d8d5f084e0fe28186d8e3"
 size_bytes = 764
 title = "An Invitation to Neuromorphic Hardware Manufacturers"
+section = "outreach"
 
 [pages."philosophy/_index.md"]
 blake3 = "d85462d8329d4bcaf03ca0b292cd150670c496cd040df52e2e73e380bcc3e52b"
 size_bytes = 4271
 title = "Philosophy"
+section = "philosophy"
 
 [pages."philosophy/bibliography.md"]
 blake3 = "c7e36e92eb0fd0be3941b7d681b6032a32cbf17d1716c071e8a38619c9894731"
 size_bytes = 12090
 title = "Bibliography"
+section = "philosophy"
 
 [pages."philosophy/discovery_is_local.md"]
 blake3 = "7bf923f8a66903fcd4e4012805aab371294210372d454da57307549a78e08430"
 size_bytes = 16384
 title = "Discovery Is Local — Why the Substrate Is Universal"
+section = "philosophy"
+companions = [
+    "/thesis/14-biological-validation/",
+    "/story/175-papers-one-stack/",
+]
+
+[pages."philosophy/fossil_lineage.md"]
+blake3 = "937767c04587a83a3e1172c050e1b4281c93897ff6d1e2ba06d5bd7b8e82f263"
+size_bytes = 6110
+title = "Fossil Lineage — gen2 Origin Documents"
+section = "philosophy"
+trails = ["sovereignty"]
+companions = [
+    "/architecture/golden-cage/",
+    "/architecture/stadial-interstadial/",
+    "/architecture/primal-evolution/",
+]
 
 [pages."philosophy/i_own_nothing.md"]
 blake3 = "38f400ebe923d3cd8780823347b0907d24984c0fa9a3d5275f80b6928fa4d70d"
 size_bytes = 12316
 title = "I Own Nothing — Provenance, AGPL, and Commons Economics"
+section = "philosophy"
+companions = [
+    "/architecture/sovereign-deployment/",
+    "/story/the-sovereign-lab/",
+]
 
 [pages."philosophy/sovereign_science.md"]
 blake3 = "27ad72ea998499778bcc6b764afa903cff02795040cd8e5152bb079d0d3a7492"
 size_bytes = 8881
 title = "Sovereign Science — Reproducible Computation Over Citation-Sitting"
+section = "philosophy"
+companions = ["/methodology/scyborg-licensing/"]
 
 [pages."philosophy/the_city_of_omelas.md"]
 blake3 = "f266950b91b9a5bad7ed4af9782456e379ce432c6f9356f27a2f5b30bc9676d8"
 size_bytes = 11460
 title = "The City of Omelas — Five Questions for Sovereign Infrastructure"
+section = "philosophy"
+companions = ["/thesis/01-introduction/"]
 
 [pages."philosophy/the_human_search.md"]
 blake3 = "2c1f6fa7aa46962239c427a356b3b9bc9da75a0735a9464135f3968d5c5c50c9"
 size_bytes = 19627
 title = "The Human Search — How Everything Learns, from Bacteria to AI"
+section = "philosophy"
+companions = [
+    "/thesis/03-theoretical-framework/",
+    "/methodology/constrained-evolution-formal/",
+]
 
 [pages."philosophy/the_knowledge_numeric.md"]
 blake3 = "58ceadda20725da05dbdb688a5a68f1fd88d44d391b9708a8fc4f2c6531e1e6b"
 size_bytes = 20824
 title = "The Knowledge-Numeric — K-NOME Human-AI Scientific Method"
+section = "philosophy"
+companions = [
+    "/methodology/k-nome-programming/",
+    "/story/i-dont-know-rust/",
+]
 
 [pages."philosophy/the_loaves_and_the_fishes.md"]
 blake3 = "d572302e3a7812251fbb540a99a69d8417e0efc7ea33f9985458c154d315d6a0"
 size_bytes = 14959
 title = "The Loaves and the Fishes — Discovery as Revealing What Already Exists"
+section = "philosophy"
 
 [pages."philosophy/the_love_letter.md"]
 blake3 = "c5ed2008e6f78fce78e60c3eb3f02d150351ea2cbd6ec8fc81abf5b56af3f35f"
 size_bytes = 22130
 title = "The Love Letter — AI Authorship and scyBorg as Acknowledgment"
+section = "philosophy"
 
 [pages."philosophy/the_many_rooms.md"]
 blake3 = "05ab8dd6de7b02e71d454d28ffab137602410206fd2df80d80861149ced2f386"
 size_bytes = 24068
 title = "The Many Rooms — Preparing a Place and the Copyleft Covenant"
+section = "philosophy"
 
 [pages."philosophy/the_mobility_edge.md"]
 blake3 = "9bb404f3ec3504ed4fccaef5ada41399b74bbe35a0438931c1f9386c6f751784"
 size_bytes = 24746
 title = "The Mobility Edge — Anderson Localization and Sovereign Networks"
+section = "philosophy"
+companions = ["/science/01-anderson-qs/"]
 
 [pages."philosophy/the_new_city.md"]
 blake3 = "3460c5dc2f5435ec6fbf0efefaf5f6eb27a5aa706b8987a089d6c113a59ed3d2"
 size_bytes = 13679
 title = "The New City — Architecture as Ethics for Sovereign Infrastructure"
+section = "philosophy"
 
 [pages."philosophy/the_orthogonal_synthesis.md"]
 blake3 = "d56fefa46b77dadd3d157ff917b798c2239c2368025bc2eb797454ac420cf46c"
 size_bytes = 14861
 title = "The Orthogonal Synthesis — Smith, Paine, Rand, Marx and One Structural Requirement"
+section = "philosophy"
+companions = ["/thesis/03-theoretical-framework/"]
 
 [pages."philosophy/the_temptation_of_kingdoms.md"]
 blake3 = "20f94649115b0f202f91abcb508bc515e7bc851180c07c788d6180cb3441c27c"
 size_bytes = 13438
 title = "The Temptation of Kingdoms — Tollbooths, Rent-Seeking, and Open Commons"
+section = "philosophy"
+companions = ["/methodology/constrained-evolution-formal/"]
 
 [pages."products/_index.md"]
 blake3 = "34d827231f35bcefbc9ea8276442f429fe8e4e91c9904ee5217473db45a6264f"
 size_bytes = 1745
 title = "Products"
+section = "products"
 
 [pages."products/blueFish.md"]
 blake3 = "937e9078d369d6ccc95b32fc604704ef6630d8229bf5d409028c0c73adcfc219"
 size_bytes = 3261
 title = "blueFish — Sovereign Data Pipeline"
+section = "products"
+
+[pages."products/coralforge.md"]
+blake3 = "ba2d2ae42a451bc7fef7934889859cb81d5d075783e0931aad9b27f3e791511f"
+size_bytes = 5248
+title = "coralForge — Sovereign Structure Prediction Engine"
+section = "products"
+maturity = "implemented"
+companions = [
+    "/architecture/discovery-log/",
+    "/products/nautilus/",
+    "/science/baseCamp/",
+]
 
 [pages."products/esotericWebb.md"]
 blake3 = "c138ebde14b582895ee67a17742f24a2b43411764f3fe933104ae0c0e22fac48"
 size_bytes = 3419
 title = "esotericWebb — Cross-Evolution CRPG"
+section = "products"
 
 [pages."products/helixVision.md"]
 blake3 = "d1b7f65bb4b64b0e39aaa88b027a167795078b88e4123a6637cafa9fc40b049e"
 size_bytes = 5189
 title = "helixVision — Self-Hosted Structure Prediction"
+section = "products"
 
 [pages."products/initioChem.md"]
 blake3 = "36a21d4116d36fba821e2920fba9ebfa0a7a98e33708c53e17112452a98240a3"
 size_bytes = 2898
 title = "initioChem — Interactive Computational Chemistry"
+section = "products"
 
 [pages."products/lattice_qcd.md"]
 blake3 = "d8465fb816e330039ff7bdf81e29ded1b458b7e6783ff72ae0110358a46aa72e"
 size_bytes = 6493
 title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
+section = "products"
 
 [pages."products/lithoSpore.md"]
 blake3 = "440d443073996e6041fffdc84180c19254030257431fdea263378103afc04bc2"
 size_bytes = 6016
 title = "lithoSpore — Targeted GuideStone Deployment"
+section = "products"
+
+[pages."products/nautilus.md"]
+blake3 = "b76af9c957bbb662599d53b3dd9f3b698be3fcea4d9ab345fd0d6a9b8fde29fc"
+size_bytes = 5690
+title = "nautilus — Neuromorphic Reservoir Computing"
+section = "products"
+maturity = "implemented"
+companions = [
+    "/products/coralforge/",
+    "/architecture/discovery-log/",
+    "/architecture/primal-evolution/",
+]
+
+[pages."products/nf_case_study.md"]
+blake3 = "6a9b99884d38f508464758b7cb801c4accec1bd8b9ab17cc7ed0b2d56c5d536f"
+size_bytes = 10873
+title = "NF Case Study — First Multi-Product Composition for External Science"
+section = "products"
+maturity = "scaffold"
+trails = ["nf-pipeline"]
+companions = [
+    "/collaborators/gonzales-nf/",
+    "/products/tideglass/",
+    "/architecture/deploy-graph-composition/",
+]
+
+[pages."products/tideglass.md"]
+blake3 = "8225859d1a17af95d239c5c498257ea5d03aa16b6c445986d8760d1ef07a498b"
+size_bytes = 14975
+title = "tideGlass — Sovereign Pallet for Field Science and Humanitarian Infrastructure"
+section = "products"
+maturity = "architectural"
+trails = ["nf-pipeline"]
+companions = [
+    "/products/nf-case-study/",
+    "/architecture/sovereign-hpc-evolution/",
+    "/collaborators/gonzales-nf/",
+]
 
 [pages."science/01_anderson_qs.md"]
 blake3 = "be0b0551882b11bab38f5cbd26eca7c0445a3095873969e24b5bf61bb3b66e4b"
 size_bytes = 16309
 title = "Anderson Localization as QS Null Hypothesis"
+section = "science"
+companions = [
+    "/philosophy/the-mobility-edge/",
+    "/thesis/10-results-wetspring/",
+]
 
 [pages."science/02_ltee_extensions.md"]
 blake3 = "c9455fdb46d4fe8febc3d7d124f63be4ef259bf92785789b8091520102dfaba8"
 size_bytes = 13847
 title = "LTEE Extensions"
+section = "science"
+companions = ["/thesis/14-biological-validation/"]
 
 [pages."science/03_bioag_microbiome.md"]
 blake3 = "386851979dc77032141af2482d68b63d2ecadedfe4ecbd1247d9b41227671f30"
 size_bytes = 15124
 title = "BioAg Microbiome"
+section = "science"
+companions = ["/thesis/10-results-wetspring/"]
 
 [pages."science/04_sentinel_microbes.md"]
 blake3 = "8574b2bc5e1050a213cc3eb0e83de0b64e955c580784a04f4ed8d142218239dc"
 size_bytes = 17426
 title = "Sentinel Microbes"
+section = "science"
 
 [pages."science/05_cross_species_signaling.md"]
 blake3 = "2be65dc27d77c512b695c445ec058d24cc93e4dc06f947d4f815436d7839dc3e"
 size_bytes = 16171
 title = "Cross-Species Signaling"
+section = "science"
 
 [pages."science/06_notill_anderson.md"]
 blake3 = "bc19f74dac906481a1b9aba741e3c599fd4a73968eda7d654733ae0fefd3d207"
 size_bytes = 27292
 title = "Anderson as No-Till Soil Health Mechanism"
+section = "science"
 
 [pages."science/07_sovereign_wdm.md"]
 blake3 = "3c5d456f767b022934368d10a44cb3bdc35c143e3991f80661cbedf89ce8aa98"
 size_bytes = 24746
 title = "Sovereign WDM Simulation on Consumer GPU"
+section = "science"
+companions = ["/thesis/08-results-hotspring/"]
 
 [pages."science/08_npu_agricultural_iot.md"]
 blake3 = "f5a0c46c990c2568dd948740f5228f80299ae7e4b3442d4fbd232f5bfd642d3b"
 size_bytes = 18899
 title = "NPU Agricultural IoT"
+section = "science"
 
 [pages."science/09_field_genomics.md"]
 blake3 = "49778ad6c9083e68575a72268129290808166d53ecb3ab030f2c263e833851bd"
 size_bytes = 16904
 title = "Field Genomics"
+section = "science"
 
 [pages."science/10_dynamical_qcd_production.md"]
 blake3 = "974d58eff719aab2ce0990cc7c8c7160a90ddd996c915d63b9f1fb3b7aff0075"
 size_bytes = 23503
 title = "First Dynamical QCD Production on Consumer GPU"
+section = "science"
+companions = ["/thesis/08-results-hotspring/"]
 
 [pages."science/11_bingocube_nautilus_shell.md"]
 blake3 = "83422c19d1ec8d3dd1f9f5f58a29efabd2cb400aa6a1c72980964aa539561416"
 size_bytes = 31875
 title = "BingoCube Nautilus Shell"
+section = "science"
 
 [pages."science/12_immunological_anderson.md"]
 blake3 = "aba79bfb1c81605378788bced3b3667fec03d3e5cebb1f12b143dd4d885cb77a"
 size_bytes = 26452
 title = "Anderson in Immunological Signaling"
+section = "science"
 
 [pages."science/13_sovereign_human_health.md"]
 blake3 = "ff144de878c094e0405035986943c723f24743c926a8d96d169285f70c775cc1"
 size_bytes = 30495
 title = "Sovereign Human Health"
+section = "science"
 
 [pages."science/14_sovereign_compute_hardware.md"]
 blake3 = "85e5e2425f5357beadcfe56782e4ff60ceb93fe4f815a28ee99555f7af3d7965"
 size_bytes = 50584
 title = "Sovereign Compute Hardware"
+section = "science"
 
 [pages."science/15_precision_brain_heterogeneous_gpu.md"]
 blake3 = "c6c212644739e2c7f79a2f6a19c5439758a80cd375a74ad920709d77b16553b5"
 size_bytes = 7255
 title = "Precision Brain on Heterogeneous GPU"
+section = "science"
 
 [pages."science/16_anaerobic_aerobic_qs.md"]
 blake3 = "379c7a0503409137b8170cbcfc4b08f8db78ccb9fcb449e7741c6ff5ec70851e"
 size_bytes = 12952
 title = "Anaerobic-Aerobic QS"
+section = "science"
 
 [pages."science/17_game_design_rigorous_science.md"]
 blake3 = "3e6df70d8aa8ab11609c893dd48e80d3c57151bfce9d0427f5304fce4914dc8f"
 size_bytes = 16201
 title = "Game Design as Rigorous Science"
+section = "science"
 
 [pages."science/18_rpgpt_sovereign_rpg_engine.md"]
 blake3 = "22f440507fa5f2ce5404449ccb4164f06c2801d90c3e8247b225cbc94e76dd8c"
 size_bytes = 22464
 title = "RPGPT Sovereign RPG Engine"
+section = "science"
 
 [pages."science/19_games_at_home_distributed_human_computation.md"]
 blake3 = "a352091a8c9a480bfa2e4cc2697f14de5f5bb2f68e7bdee2bf5c4f6fa3fb72c7"
 size_bytes = 13826
 title = "Games@Home Distributed Human Computation"
+section = "science"
 
 [pages."science/20_novel_ferment_transcript_economics.md"]
 blake3 = "c28bf1420324300d9df341de92d8c9774aa34bedc2c91b6316633cc0ec95aab5"
 size_bytes = 17258
 title = "Novel Ferment Transcript Economics"
+section = "science"
 
 [pages."science/21_sovereign_sample_provenance.md"]
 blake3 = "d494d165c31118cefe0701ad929170b9c3ef7086fff2de63a1b011f892371fde"
 size_bytes = 11496
 title = "Sovereign Sample Provenance"
+section = "science"
 
 [pages."science/22_zero_knowledge_medical_provenance.md"]
 blake3 = "f8ae190bf39733f293c458b5fa63cdf1deebcf404d86c222b38768bccd7bdfa8"
 size_bytes = 11519
 title = "Zero-Knowledge Medical Provenance"
+section = "science"
 
 [pages."science/23_mass_energy_information_equivalence.md"]
 blake3 = "44f94a23f0f70b26f188c45041b508b478c96f2c6d1cf5868c53e25e28a336d7"
 size_bytes = 26826
 title = "Mass-Energy-Information Equivalence"
+section = "science"
 
 [pages."science/24_all_silicon_science.md"]
 blake3 = "01ff0af641667249a2cb795f746867b9481955f0652c045be23fd49f398d6051"
 size_bytes = 8840
 title = "All-Silicon Science"
+section = "science"
 
 [pages."science/24_esotericwebb_composition_patterns.md"]
 blake3 = "3f02bbfb150a74b6a8e1b151eff878c8daa75e5d68cf305ecdb598aca4229c0a"
 size_bytes = 8838
 title = "Esoteric Webb — Primal Composition as Creative Infrastructure"
+section = "science"
 
 [pages."science/25_self_tuning_simulation.md"]
 blake3 = "e75942e78fb255ac19b5e5afabb25386586269938280272b8b2d04c76972ca12"
 size_bytes = 12451
 title = "Self-Tuning Simulation"
+section = "science"
 
 [pages."science/26_neuromorphic_sovereign_driver.md"]
 blake3 = "bdebdacd04f5346efa76fb936d024ea45e532f92b9054cdf161e6064fcd9a3c8"
 size_bytes = 11928
 title = "Neuromorphic Sovereign Driver"
+section = "science"
 
 [pages."science/27_nature_preserve_applied_npu_science.md"]
 blake3 = "918b16a045e7f5c7f689109882eb27d94709286a48ba3b618bb813e43808c725"
 size_bytes = 10315
 title = "Nature Preserve — Applied NPU Science Across 7 Domains"
+section = "science"
 
 [pages."science/28_primal_composition_methodology.md"]
 blake3 = "1c19c4324b19925b1975c78acdb19199c339225b9a2409ddcd46ec591d76ce2c"
 size_bytes = 14406
 title = "baseCamp 28 — Primal Composition as Scientific Methodology"
+section = "science"
 
 [pages."science/29_heterogeneous_fabric_economics.md"]
 blake3 = "592a68e9b3a441f4253de0080ff75bcdd8feb4990915103894d5033b37d1d22e"
 size_bytes = 22032
 title = "baseCamp 29 — Heterogeneous Fabric Economics"
+section = "science"
 
 [pages."science/CROSS_SPRING_EVIDENCE_MAP.md"]
 blake3 = "355443ef0915c7ca6f7f0b21365854b90de4888c7ee08e67e58b567e0c4d0ac1"
 size_bytes = 16417
 title = "Cross-Spring Evidence Map"
+section = "science"
 
 [pages."science/STRUCTURE_PREDICTION_ROADMAP.md"]
 blake3 = "94556d4f13933184b8fc30a7d436288cc686aa5e8b033ccebd942afa051f0c2e"
 size_bytes = 9950
 title = "Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quality"
+section = "science"
 
 [pages."science/_index.md"]
 blake3 = "424883e0aa435e79654649440f90fdd0b4615e6f60ba2faa5f2160ad44a5a397"
 size_bytes = 5974
 title = "Science"
+section = "science"
 
 [pages."science/gonzales_explorer.md"]
 blake3 = "3e82381c0df87431845635e6f0e190ece18f9700e01e80f11a159b664e7d1520"
 size_bytes = 5729
 title = "Gonzales Interactive Explorer"
+section = "science"
 
 [pages."site-index/_index.md"]
-blake3 = "e3b6fd0c6505254a2ae8d88f77a6dd1eb255f2d07ac49ce9595a8fb18ac8b65a"
+blake3 = "91e71ae07f8167e60405c3a111c441b874b7d63b0b602e428a8e67d769566834"
 size_bytes = 223
 title = "Site Index"
+section = "site-index"
 
 [pages."sitemap/_index.md"]
-blake3 = "b0a6c1046361340fd999fbac5978eeace2bbfb125f7b2595e23f71f1e0cbe6bc"
-size_bytes = 3437
+blake3 = "85fe1775e9af746be098cc9d847e0b81499769fb17292386eb4a341efc59654b"
+size_bytes = 4224
 title = "Site Map"
+section = "sitemap"
 
 [pages."story/70_papers_one_stack.md"]
 blake3 = "68dd89be890c6de459502674a2f9042726e3333398bb30a47a34e70326f39326"
 size_bytes = 8506
 title = "175+ Papers, One Stack — Reproducing Science on Sovereign Hardware"
+section = "story"
+companions = [
+    "/philosophy/discovery-is-local/",
+    "/science/",
+]
 
 [pages."story/_index.md"]
 blake3 = "abde2eabe2639ff86427741fae875046e0155718b21eba5fe9d512c2478e4c51"
 size_bytes = 1598
 title = "Story"
+section = "story"
 
 [pages."story/i_dont_know_rust.md"]
-blake3 = "c1e9ab0ef920dc22bf3a8b3b3c1d6aaf727db3adaa4c45afb4bd69a645024cfb"
-size_bytes = 8452
+blake3 = "7b4a507618d693c41709916da62fc3c77279ad1b1ef082d4898afd4ce7ba7a87"
+size_bytes = 8492
 title = "I Don't Know Rust — Building a Scientific Computing Ecosystem Through Conversation"
+section = "story"
+trails = [
+    "first-visit",
+    "methodology",
+]
+companions = [
+    "/philosophy/the-knowledge-numeric/",
+    "/methodology/k-nome-programming/",
+]
 
 [pages."story/the_sovereign_lab.md"]
 blake3 = "4a195470dca243ab61ac440b5233199cd7bbf03f906c4dc6f03e9e2c6a470b20"
 size_bytes = 7160
 title = "The Sovereign Lab"
+section = "story"
+companions = [
+    "/philosophy/i-own-nothing/",
+    "/architecture/sovereign-deployment/",
+]
 
 [pages."technical/DRUG_DISCOVERY_PIPELINE.md"]
 blake3 = "86718b74d8fe9936d82ae65d8b4c56b1956058ba494ca9409790b7b985175323"
 size_bytes = 15891
 title = "Drug Discovery Pipeline: iPSC → HTS → MATRIX → Anderson → Validation"
+section = "technical"
 
 [pages."technical/GRANT_TECHNICAL_APPENDIX.md"]
-blake3 = "a6cf219814736a8b96a8af63e7946beff2fc1ef24aadfd9bdf0319a7884b4c2e"
-size_bytes = 18365
+blake3 = "53617abc0c9ce81c16b508bf45fa25d923ea5938c6adcb5c6d5f74e4f25ddada"
+size_bytes = 18390
 title = "Grant Technical Appendix: Validation Evidence by Agency Program"
+section = "technical"
+trails = ["grant-ready"]
 
 [pages."technical/HARDWARE_COST_ANALYSIS.md"]
 blake3 = "70d53053cf66a60cee7e4ea5a37deb6b0aa8ba26616df00fde6fcb8b40818fad"
 size_bytes = 11323
 title = "Hardware Cost Analysis: Sovereign Consumer HPC vs Institutional Infrastructure"
+section = "technical"
 
 [pages."technical/KNOME_TEACHING_BRIEF.md"]
 blake3 = "681813684ca1e1daad49081dc81acd6e7505ffe21beaf5ebfcd24cdf83c17ba6"
 size_bytes = 11747
 title = "K-Nome: A Pedagogy for Real Science Pipelines"
+section = "technical"
 
 [pages."technical/MSU_ASSET_ACCELERATION.md"]
 blake3 = "0bef56bb67cb12bcfb431f618e732b0d81bf9a865b1843075ed4d56bcf76a1da"
 size_bytes = 13289
 title = "MSU Asset Acceleration: How University Infrastructure Plugs into Validated Pipelines"
+section = "technical"
 
 [pages."technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md"]
 blake3 = "86f1fb7104c02945051a3772bb1e9984ff9511ed92b60af182001aeb563e2b94"
 size_bytes = 11624
 title = "Sovereign GPU Pipeline: The Vendor Replacement Story"
+section = "technical"
 
 [pages."technical/_index.md"]
 blake3 = "08cd10102d8e21d76f93a6e995e3b18ad853f573a197fd8497c210adc168e8b6"
 size_bytes = 1126
 title = "Technical"
+section = "technical"
 
 [pages."technical/barracuda_compute_gaps.md"]
 blake3 = "be374483e0fd0419e3f9815913e07f52059bcafab7c4271817f4de77f4f740a6"
 size_bytes = 19910
 title = "BarraCuda Scientific Compute Gaps"
+section = "technical"
 
 [pages."technical/neuromorphic_benchmark.md"]
 blake3 = "86057f3edaeb6146aed829a2802eb1576c1a6b120a1681dcf7e6adf84f0f701d"
 size_bytes = 13359
 title = "Neuromorphic Benchmark Datasheet"
+section = "technical"
 
 [pages."thesis/00_front_matter.md"]
 blake3 = "d002682f463e067e95ece7aeac6b02f1a0e2ab03a60e64e33a8d3c823a4201a0"
 size_bytes = 5694
 title = "Front Matter"
+section = "thesis"
 
 [pages."thesis/01_introduction.md"]
 blake3 = "802c0532242c83f4a36bf323425341fa1c8617e164c487d04b80db24f62f0466"
 size_bytes = 10513
 title = "Chapter 1: Introduction"
+section = "thesis"
+companions = ["/philosophy/the-city-of-omelas/"]
 
 [pages."thesis/02_literature_review.md"]
 blake3 = "bf28e56e5c6b89bba3a3471bcb52d00c8308f5aa2cbc12b86d99bda536e8cff6"
 size_bytes = 20595
 title = "Chapter 2: Literature Review"
+section = "thesis"
 
 [pages."thesis/03_theoretical_framework.md"]
 blake3 = "a850578c2c65fb511d4840746b6846b340e0358daa82703f398123cb7dbb198b"
 size_bytes = 29023
 title = "Chapter 3: Theoretical Framework"
+section = "thesis"
+companions = [
+    "/philosophy/the-human-search/",
+    "/philosophy/the-orthogonal-synthesis/",
+]
 
 [pages."thesis/04_pnp_enzyme.md"]
 blake3 = "d602dd386daf47c7c8d29808f1eb77edbd95731058d2814cdb67fa8223bbe4ec"
 size_bytes = 18649
 title = "Chapter 4: Accept and Generate"
+section = "thesis"
 
 [pages."thesis/05_system_architecture.md"]
 blake3 = "163d009a9a99ca2571e527a6de898403b30e3d3383aeeb85835c1e5968c3faac"
 size_bytes = 8858
 title = "Chapter 5: System Architecture"
+section = "thesis"
+companions = [
+    "/architecture/ecosystem-architecture/",
+    "/architecture/nucleus-architecture/",
+]
 
 [pages."thesis/06_barracuda.md"]
 blake3 = "d020eb5c9e0a63ffae42fceb9a40ce557f2b5eab18ec9af9f2f05217623f9e2c"
 size_bytes = 10911
 title = "Chapter 6: BarraCuda"
+section = "thesis"
+companions = ["/technical/sovereign-gpu-pipeline-profile/"]
 
 [pages."thesis/07_experimental_methodology.md"]
 blake3 = "bc89bb724b3ab1abfe5dd40f108217675a727f2f68432c195cebb3bd743e9139"
 size_bytes = 10395
 title = "Chapter 7: Experimental Methodology"
+section = "thesis"
 
 [pages."thesis/08_results_hotspring.md"]
 blake3 = "1e3858317dbfb37cd1b533505d54ce91d3ece4140a3a0979b88ec60bfdefdb74"
 size_bytes = 17446
 title = "Chapter 8: Results — hotSpring"
+section = "thesis"
+companions = [
+    "/science/07-sovereign-wdm/",
+    "/science/10-dynamical-qcd-production/",
+]
 
 [pages."thesis/09_results_airspring.md"]
 blake3 = "16c80035a64ebffd8b271e351160d35b903b17e0afdff0bde78387d3e17601a1"
 size_bytes = 9142
 title = "Chapter 9: Results — airSpring"
+section = "thesis"
 
 [pages."thesis/10_results_wetspring.md"]
 blake3 = "d91ec6500bbe5af481e8e28441e6710ab89f9517bd108758789392efd19bfffe"
 size_bytes = 9680
 title = "Chapter 10: Results — wetSpring"
+section = "thesis"
+companions = [
+    "/science/02-ltee-extensions/",
+    "/science/03-bioag-microbiome/",
+]
 
 [pages."thesis/11_results_groundspring.md"]
 blake3 = "7d4f8f580942024ed658f8cad5aea79c81179edbbe4b567b04ec987364ffe0b3"
 size_bytes = 8414
 title = "Chapter 11: Results — groundSpring"
+section = "thesis"
 
 [pages."thesis/12_results_neuralspring.md"]
 blake3 = "fe1f58ea904c2f82f33ea72f2de30613b0c7442332aad30bc4c619009ef436de"
 size_bytes = 23888
 title = "Chapter 12: Results — neuralSpring"
+section = "thesis"
 
 [pages."thesis/13_quantitative_evidence.md"]
 blake3 = "6dadddd8da5310d72affce260727120aa8617effa0e50efebe4c0c0389b1cd73"
 size_bytes = 12541
 title = "Chapter 13: Quantitative Evidence"
+section = "thesis"
 
 [pages."thesis/14_biological_validation.md"]
 blake3 = "92e9d35813dba415c8c1b73bd35b000b53fdc2625915a16f75bfe42068f1c5df"
 size_bytes = 12084
 title = "Chapter 14: Biological Validation"
+section = "thesis"
+companions = [
+    "/philosophy/discovery-is-local/",
+    "/science/02-ltee-extensions/",
+]
 
 [pages."thesis/15_discussion.md"]
 blake3 = "a54c38ef2c005f86fbbd01c19b1d6a4bdffacdfb1088b42a8a83bb35b3d64bdd"
 size_bytes = 10042
 title = "Chapter 15: Discussion"
+section = "thesis"
 
 [pages."thesis/16_conclusion.md"]
 blake3 = "7f6ae18f376256edbe18f7f8b1cfdaa21b66f90b3b4671a822f87161a88a261e"
 size_bytes = 10304
 title = "Chapter 16: Conclusion"
+section = "thesis"
 
 [pages."thesis/_index.md"]
 blake3 = "43f07e5030da18848be75b564fe099b42b74e0b903a838dad7bf9c1f647612ce"
 size_bytes = 7353
 title = "Thesis"
+section = "thesis"
 
 [pages."thesis/references.md"]
 blake3 = "2d49330276c16c0062504adb46382b5a438d3e1e06e4aa2b4c2b17de7d21cccb"
 size_bytes = 16175
 title = "References"
+section = "thesis"

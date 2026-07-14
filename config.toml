@@ -15,6 +15,9 @@ feed = false
 name = "springs"
 feed = false
 
+[[taxonomies]]
+name = "trails"
+feed = false
 
 [link_checker]
 skip_prefixes = [
@@ -915,6 +918,78 @@ kind = "concept"
 description = "Core methodology — environmental constraints drive specialization, not predetermined solutions"
 page = "/methodology/constrained-evolution-formal/"
 
+# ── Deep architecture concepts ───────────────────────────────────────────
+
+[extra.entity_registry.goldencage]
+display = "Golden Cage"
+emoji = "🏛️🔒"
+kind = "concept"
+description = "External services that are individually excellent and collectively a single point of failure — bootstrapping sovereignty inside them"
+page = "/architecture/golden-cage/"
+
+[extra.entity_registry.silicondeism]
+display = "Silicon Deism"
+emoji = "🖥️🔮"
+kind = "concept"
+description = "Abstraction elimination thesis — from vendor-agnostic to silicon-deistic, treating hardware as self-revealing substrate"
+page = "/architecture/silicon-deism/"
+
+[extra.entity_registry.coordinationtriad]
+display = "Coordination Triad"
+emoji = "🌊🔄"
+kind = "concept"
+description = "Three runtime coordination patterns: quorumSignal (sense) + rootPulse (action) + waterFall (sync)"
+page = "/architecture/coordination-triad/"
+
+[extra.entity_registry.atlas]
+display = "Atlas"
+emoji = "🗺️🏔️"
+kind = "concept"
+description = "The ecosystem as a navigable landscape — mountain (primals), river (springs), garden (products), water (sync)"
+page = "/architecture/atlas-memory-palace/"
+
+[extra.entity_registry.stadialinterstadial]
+display = "Stadial/Interstadial"
+emoji = "❄️🔥"
+kind = "concept"
+description = "Evolution framework based on glacial cycles — stadials consolidate, interstadials radiate new capability"
+page = "/architecture/stadial-interstadial/"
+
+[extra.entity_registry.sovereigntransactionmembrane]
+display = "Sovereign Transaction Membrane"
+emoji = "💰🧬"
+kind = "concept"
+description = "Value flow and trust boundary architecture — how transactions cross membrane layers"
+page = "/architecture/sovereign-transaction-membrane/"
+
+[extra.entity_registry.conversationconstraint]
+display = "Conversation Constraint"
+emoji = "💬🔒"
+kind = "concept"
+description = "Zero human-written code — the conversation is the interface between human mentor and AI"
+page = "/methodology/conversation-constraint/"
+
+[extra.entity_registry.sovereignpublication]
+display = "Sovereign Publication"
+emoji = "📖🏛️"
+kind = "concept"
+description = "Reproducible code + data + environment on sovereign hardware is more valuable than a journal paper"
+page = "/methodology/sovereign-publication/"
+
+[extra.entity_registry.creativesurface]
+display = "Creative Surface"
+emoji = "🎨🌱"
+kind = "concept"
+description = "The sporeGarden organizational model for external collaborator access to ecosystem compositions"
+page = "/architecture/creative-surface/"
+
+[extra.entity_registry.deployableartifact]
+display = "Deployable Artifact"
+emoji = "📦🔬"
+kind = "concept"
+description = "Six-layer portable science standard — from entry point through binary layout to documentation"
+page = "/guidestone/deployable-artifact-standard/"
+
 # ── Infrastructure repos ─────────────────────────────────────────────────
 
 [extra.entity_registry.sporeprint]
@@ -1017,6 +1092,131 @@ primal_count = 15
 total_primals = 15
 spring_count = 8
 total_springs = 8
-content_pages = 270
+content_pages = 304
 measured_date = "2026-07-12"
 # All entity metrics refreshed via spore-validate refresh on this date
+
+# ── Sidebar Section Order ────────────────────────────────────────────────
+# Controls auto-generated sidebar tree in base.html. Sections not listed here
+# are excluded from the sidebar (site-index, sitemap are utility sections).
+
+[extra.sidebar]
+sections = [
+  "glossary",
+  "audience",
+  "collaborators",
+  "science",
+  "architecture",
+  "methodology",
+  "technical",
+  "guidestone",
+  "products",
+  "lab",
+  "philosophy",
+  "thesis",
+  "story",
+  "outreach",
+]
+
+# Group labels for sections with structured subsections.
+# Key = section name, value = array of {at = index, label = "Group Name"}.
+[extra.sidebar.groups.philosophy]
+labels = [
+  { at = 0, label = "The Stories" },
+  { at = 3, label = "The Framework" },
+  { at = 8, label = "The Synthesis" },
+  { at = 12, label = "Discussion" },
+  { at = 13, label = "Reference" },
+]
+
+[extra.sidebar.groups.thesis]
+labels = [
+  { at = 0, label = "Foundations" },
+  { at = 3, label = "Theory" },
+  { at = 5, label = "The System" },
+  { at = 7, label = "Validation" },
+  { at = 13, label = "Analysis" },
+  { at = 15, label = "Synthesis" },
+  { at = 17, label = "Back Matter" },
+]
+
+# ── Trail Definitions ────────────────────────────────────────────────────
+# Ordered reading paths through the site. Pages opt in via [taxonomies] trails = ["name"].
+# The order here is canonical — templates sort pages by position in this list.
+
+[extra.trail_definitions.first-visit]
+title = "First Visit"
+description = "New to ecoPrimals? Start here — a guided tour from landing page through ecosystem architecture to live evidence."
+emoji = "🗺️"
+pages = [
+  "architecture/ECOSYSTEM_ARCHITECTURE.md",
+  "architecture/atlas_memory_palace.md",
+  "architecture/primal_evolution.md",
+  "architecture/discovery_log.md",
+  "story/i_dont_know_rust.md",
+  "audience/FOR_FACULTY_AND_PIS.md",
+]
+
+[extra.trail_definitions.sovereignty]
+title = "Sovereignty Trail"
+description = "The sovereignty narrative — from naming the cage to transcending it."
+emoji = "🏛️"
+pages = [
+  "philosophy/fossil_lineage.md",
+  "architecture/golden_cage.md",
+  "architecture/silicon_deism.md",
+  "architecture/sovereign_hpc_evolution.md",
+  "architecture/k_derm_reconciliation.md",
+  "architecture/sovereign_transaction_membrane.md",
+  "methodology/sovereign_publication.md",
+]
+
+[extra.trail_definitions.methodology]
+title = "Methodology Trail"
+description = "How ecoPrimals was built — AI-assisted development from constraint to production."
+emoji = "🔬"
+pages = [
+  "methodology/K_NOME_PROGRAMMING.md",
+  "methodology/conversation_constraint.md",
+  "methodology/prompt_bank.md",
+  "methodology/massively_parallel_mentoring.md",
+  "methodology/sovereign_publication.md",
+  "story/i_dont_know_rust.md",
+]
+
+[extra.trail_definitions.coordination]
+title = "Coordination Trail"
+description = "How the ecosystem coordinates — the triad pattern and its implementation."
+emoji = "🌊"
+pages = [
+  "architecture/coordination_triad.md",
+  "architecture/waterfall.md",
+  "architecture/rootpulse.md",
+  "architecture/neural_api.md",
+  "architecture/primal_interactions.md",
+  "architecture/coordination.md",
+]
+
+[extra.trail_definitions.nf-pipeline]
+title = "NF Pipeline Trail"
+description = "The Neurofibromatosis case study — first multi-product composition for external science."
+emoji = "🧬"
+pages = [
+  "products/nf_case_study.md",
+  "collaborators/gonzales_nf.md",
+  "products/tideglass.md",
+  "architecture/deploy_graph_composition.md",
+  "methodology/sovereign_publication.md",
+]
+
+[extra.trail_definitions.grant-ready]
+title = "Grant-Ready Trail"
+description = "For PIs and evaluators — the evidence path from faculty guide to technical proof."
+emoji = "📋"
+pages = [
+  "audience/FOR_FACULTY_AND_PIS.md",
+  "architecture/EVIDENCE_SNAPSHOT.md",
+  "audience/CAPABILITY_PARITY_BRIEF.md",
+  "methodology/sovereign_publication.md",
+  "technical/GRANT_TECHNICAL_APPENDIX.md",
+]

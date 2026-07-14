@@ -4,6 +4,9 @@ description = "The tollbooth economy inverted — why publishing everything into
 date = 2026-03-17
 weight = 10
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/architecture/sovereign-deployment/"
 title = "Sovereign Deployment"

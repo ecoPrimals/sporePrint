@@ -7,6 +7,10 @@ date = 2026-06-20
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["healthspring", "hotspring", "neuralspring", "wetspring"]
+
+[extra]
+domain = "Architecture"
+maturity = "implemented"
 +++
 
 ## At a Glance
@@ -202,7 +206,7 @@ The springs are {{ entity(name="toadstool") }}'s acceptance tests. {{ entity(nam
 
 **Domain**: Primal orchestration and ecosystem coordination  
 {{ entity_metrics(name="biomeos") }}  
-**Security**: A++ LEGENDARY ({{ entity(name="darkforest") }})  
+**Security**: {{ entity(name="darkforest") }} zero-metadata discovery  
 **Coverage**: ~48%
 
 {{ entity(name="biomeos") }} is the conductor. If {{ entity(name="beardog") }} is the immune system and {{ entity(name="songbird") }} is the nervous system, {{ entity(name="biomeos") }} is the **endocrine system**: it coordinates all the organs without micromanaging any of them. It starts primals in the correct order, maintains a capability registry, routes requests semantically, composes primals into atomics (Tower, Node, Nest, {{ entity(name="nucleus") }}), and manages the lifecycle of the entire ecosystem. Without {{ entity(name="biomeos") }}, primals are isolated services. With {{ entity(name="biomeos") }}, they are an ecosystem.
@@ -211,7 +215,7 @@ The springs are {{ entity(name="toadstool") }}'s acceptance tests. {{ entity(nam
 
 **What Pure Rust means here**: {{ entity(name="biomeos") }} implements the **{{ entity(name="neuralapi") }}** — 124 semantic capability translations. Callers don't address primals by name; they request capabilities: `capability.call("crypto.sign", ...)` routes to {{ entity(name="beardog") }}, `capability.call("ai.chat", ...)` routes to {{ entity(name="squirrel") }}. The caller never knows which primal handled it. This decoupling is what makes hot-swapping primals possible. Deploy graphs are TOML manifests referencing primals by capability, not name — graph-based deployment, not imperative scripting.
 
-The **{{ entity(name="darkforest") }}** protocol (A++ LEGENDARY) provides zero-metadata-leakage discovery: beacons are indistinguishable from random noise to anyone without the family key. The **{{ entity(name="plasmodium") }}** collective enables multi-machine {{ entity(name="nucleus") }}: {{ entity(name="biomeos") }} instances meld, split, and mix across machines, scaling from one basement server to a distributed mesh.
+The **{{ entity(name="darkforest") }}** protocol provides zero-metadata-leakage discovery: beacons are indistinguishable from random noise to anyone without the family key. The **{{ entity(name="plasmodium") }}** collective enables multi-machine {{ entity(name="nucleus") }}: {{ entity(name="biomeos") }} instances meld, split, and mix across machines, scaling from one basement server to a distributed mesh.
 
 | Category | Primitives |
 |----------|-----------|
@@ -453,11 +457,11 @@ benchScale measures how primals scale — individually and in composition. It pr
 
 ### 4.2 Key Achievements
 
-**{{ entity(name="toweratomic") }} - Pure Rust HTTPS**: {{ entity(name="beardog") }} + {{ entity(name="songbird") }} achieve TLS 1.3 with 93% validation rate across 87 production sites, zero C dependencies, 366ms average latency. No other Pure Rust project has achieved this at comparable scale.
+**{{ entity(name="toweratomic") }} - Pure Rust HTTPS**: {{ entity(name="beardog") }} + {{ entity(name="songbird") }} achieve TLS 1.3 with 93% validation rate across 87 production sites, zero C dependencies, 366ms average latency.
 
-**Sovereign Compute Pipeline**: {{ entity(name="barracuda") }} (primal #14) writes WGSL math shaders, {{ entity(name="coralreef") }} (primal #13) compiles to native GPU binaries, {{ entity(name="toadstool") }} dispatches on hardware. 786 production WGSL shaders across 10 scientific domains. Both {{ entity(name="coralreef") }} and {{ entity(name="barracuda") }} were promoted from {{ entity(name="toadstool") }} sub-crates to independent primals as the pipeline matured. See `gen3/primals/13_coralreef.md` and `gen3/primals/14_barracuda.md`.
+**Sovereign Compute Pipeline**: {{ entity(name="barracuda") }} (primal #14) writes WGSL math shaders, {{ entity(name="coralreef") }} (primal #13) compiles to native GPU binaries, {{ entity(name="toadstool") }} dispatches on hardware. {{ total_stat(stat="wgsl_files") }} production WGSL shaders across 10 scientific domains. Both {{ entity(name="coralreef") }} and {{ entity(name="barracuda") }} were promoted from {{ entity(name="toadstool") }} sub-crates to independent primals as the pipeline matured. See `gen3/primals/13_coralreef.md` and `gen3/primals/14_barracuda.md`.
 
-**{{ entity(name="darkforest") }} - Zero Metadata Security**: {{ entity(name="biomeos") }}'s discovery protocol leaks zero metadata to observers. Beacons are indistinguishable from random noise. Better than Signal or Tor for metadata privacy (Signal leaks sender/receiver metadata; Tor leaks timing metadata; {{ entity(name="darkforest") }} leaks nothing).
+**{{ entity(name="darkforest") }} - Zero Metadata Security**: {{ entity(name="biomeos") }}'s discovery protocol leaks zero metadata to observers. Beacons are indistinguishable from random noise. Signal leaks sender/receiver metadata; Tor leaks timing metadata; {{ entity(name="darkforest") }} is designed to leak nothing — though this has not been externally audited.
 
 **Pure Rust Tor**: {{ entity(name="songbird") }} implements Tor directory, circuit, stream, and onion service in 3,345 lines of Pure Rust, delegating all crypto to {{ entity(name="beardog") }}. Sovereign P2P without dependency on the Tor network.
 
@@ -475,7 +479,7 @@ benchScale measures how primals scale — individually and in composition. It pr
 | Full {{ entity(name="nucleus") }} | All foundation primals | Production |
 | {{ entity(name="rootpulse") }} | {{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="nestgate") }} + {{ entity(name="beardog") }} + {{ entity(name="sweetgrass") }} + {{ entity(name="songbird") }} | Architecture defined, integration evolving |
 | Memory Stack | {{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }} | All primals production-ready, composition evolving |
-| {{ entity(name="darkforest") }} | {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="biomeos") }} | Production (A++ LEGENDARY) |
+| {{ entity(name="darkforest") }} | {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="biomeos") }} | Production |
 | Sovereign NAT | {{ entity(name="songbird") }} + {{ entity(name="beardog") }} (Tower) | Production (Tiers 1-3) |
 
 ### 4.4 Showcase Inventory

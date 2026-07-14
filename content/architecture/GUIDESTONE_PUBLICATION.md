@@ -2,6 +2,10 @@
 title = "Self-Certifying Publication: sporePrint as guideStone"
 description = "Every claim on this site is backed by executable verification. Clone the repo, run one command, compare the hash."
 weight = 15
+
+[extra]
+domain = "Architecture"
+maturity = "implemented"
 +++
 
 ## The Principle

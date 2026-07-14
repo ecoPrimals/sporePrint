@@ -6,6 +6,7 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "petaltongue"]
 springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
+trails = ["first-visit", "grant-ready"]
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  

@@ -6,6 +6,7 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "beardog", "bingocube", "coralreef", "nestgate", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
+trails = ["grant-ready"]
 +++
 
 **Audience:** Grant reviewers — NIH, NSF, USDA, DOE, ARPA-H  

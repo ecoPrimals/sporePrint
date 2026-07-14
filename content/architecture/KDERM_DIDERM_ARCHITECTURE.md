@@ -6,6 +6,7 @@ weight = 15
 
 [extra]
 domain = "Architecture"
+maturity = "implemented"
 +++
 
 ## Overview
@@ -124,3 +125,10 @@ flockGate validates that the diderm model works across WAN, not just LAN:
 
 The same architecture that works on the LAN mesh works identically for a
 remote gate on the other side of the state, connected only via public internet.
+
+---
+
+## Related
+
+- [K-Derm Reconciliation](@/architecture/k_derm_reconciliation.md) — how gen4 terminology evolved to the canonical K-Derm model
+- [K_DERM_TOPOLOGY_STANDARD](https://github.com/ecoPrimals/wateringHole/blob/main/K_DERM_TOPOLOGY_STANDARD.md) — the operational standard in wateringHole

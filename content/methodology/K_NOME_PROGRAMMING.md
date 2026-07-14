@@ -4,6 +4,7 @@ description = "Knowledge-Numeric Observed and Mentored Evolutionary Programming"
 date = 2026-03-17
 
 [extra]
+maturity = "implemented"
 
 [[extra.companions]]
 url = "/philosophy/the-knowledge-numeric/"
@@ -20,6 +21,7 @@ label = "The constraint that made everything else possible"
 [taxonomies]
 primals = ["barracuda", "squirrel"]
 springs = ["airspring", "groundspring", "wetspring"]
+trails = ["methodology"]
 +++
 
 ## At a Glance

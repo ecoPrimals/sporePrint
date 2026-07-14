@@ -1,6 +1,6 @@
 +++
 title = "neuralSpring — Neural Architectures, Structure Prediction, ML Surrogates"
-description = "Proves the Isomorphism Theorem — all neural architectures decompose into 6 primitives. 1,425 tests, 113,515 LOC, AlphaFold2/3 in pure Rust f64."
+description = "Proves the Isomorphism Theorem — all neural architectures decompose into 6 primitives. 1,425 tests, 113,515 LOC, AlphaFold2/3 primitives validated in pure Rust f64."
 date = 2026-05-07
 weight = 6
 
@@ -26,7 +26,7 @@ The spring validates this across 25 papers, 4 research groups, and 5 disciplines
 - **1,425 tests** passing, 0 failed
 - **113,515 lines of Rust** across 3 crates
 - **6 primitives** → every neural architecture (GEMM, Attention, Normalization, Nonlinearity, Reduction, Gating)
-- **AlphaFold2/3** Evoformer + IPA + diffusion in pure Rust f64 — no Python, no JAX
+- **AlphaFold2/3 primitives** (Evoformer, IPA, diffusion modules) validated in pure Rust f64 — end-to-end pipeline [architectural](@/products/helixVision.md)
 - **83.6x faster** than Python/NumPy on equivalent workloads
 - **47 CPU ops promoted to GPU**, 384/384 bit-identical multi-GPU results
 - **NPU inference** at 2.8 us/step on AKD1000 — 1,000x faster than GPU for streaming

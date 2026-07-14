@@ -4,6 +4,9 @@ description = "Anderson localization as a metaphor for sovereign network discove
 date = 2026-03-17
 weight = 7
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/science/01-anderson-qs/"
 title = "Anderson Localization as QS Null Hypothesis"

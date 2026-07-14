@@ -6,6 +6,11 @@ date = 2026-03-17
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "loamspine", "nestgate", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
+trails = ["first-visit"]
+
+[extra]
+domain = "Architecture"
+maturity = "architectural"
 +++
 
 **Status**: Working paper  
@@ -446,4 +451,4 @@ Full technical specifications are in `whitePaper/technical/`:
 
 ---
 
-**Note**: This paper describes an architecture that exists and runs on physical hardware. Every pattern described here is implemented in Rust, tested, and deployed. The gap between paper and practice is zero - the architecture IS the implementation, and the implementation IS the evidence for the constrained evolution methodology that produced it.
+**Note**: This paper describes the ecoPrimals architecture as implemented in Rust and deployed on physical hardware. Core patterns (NUCLEUS composition, Tower Atomic, Neural API, sovereign CI) are running and tested. Some emergent coordination systems (rootPulse CLI, full PathwayLearner, sunCloud economics) remain at design or prototype stage — see individual pages for maturity status. The [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) provides current measurements.

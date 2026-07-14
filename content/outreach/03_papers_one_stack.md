@@ -12,4 +12,4 @@ springs = ["hotspring", "wetspring", "airspring", "groundspring", "neuralspring"
 
 ---
 
-*This page is a scaffold. The full article is being prepared for external publication. The [story version](@/story/70_papers_one_stack.md) on this site covers the same ground in more detail.*
+*This page is a scaffold. The full article is being prepared for external publication. The [story version](@/story/papers_one_stack.md) on this site covers the same ground in more detail.*

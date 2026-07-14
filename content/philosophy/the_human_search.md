@@ -4,6 +4,9 @@ description = "Iteration, recursion, time — the universal framework for how ev
 date = 2026-03-17
 weight = 4
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/thesis/03-theoretical-framework/"
 title = "Chapter 3: Theoretical Framework"

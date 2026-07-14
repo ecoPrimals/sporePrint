@@ -6,6 +6,7 @@ weight = 16
 
 [extra]
 domain = "Architecture"
+maturity = "implemented"
 
 [[extra.companions]]
 url = "/philosophy/i-own-nothing/"

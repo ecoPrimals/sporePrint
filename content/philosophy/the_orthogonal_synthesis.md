@@ -4,6 +4,9 @@ description = "Smith, Paine, Rand, Marx — four thinkers describing one structu
 date = 2026-03-17
 weight = 2
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/thesis/03-theoretical-framework/"
 title = "Chapter 3: Theoretical Framework"

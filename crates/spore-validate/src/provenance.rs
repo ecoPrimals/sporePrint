@@ -26,6 +26,14 @@ pub struct PageEntry {
     pub blake3: String,
     pub size_bytes: u64,
     pub title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub section: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub maturity: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub trails: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub companions: Vec<String>,
 }
 
 pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
@@ -46,6 +54,7 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
             root_hasher.update(hash.as_bytes());
 
             let title = extract_title(&bytes);
+            let (section, maturity, trails, companions) = extract_semantic_metadata(&rel, &bytes);
 
             pages.insert(
                 rel,
@@ -53,6 +62,10 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
                     blake3: hash_hex,
                     size_bytes: bytes.len() as u64,
                     title,
+                    section,
+                    maturity,
+                    trails,
+                    companions,
                 },
             );
         }
@@ -110,6 +123,63 @@ pub fn write_manifest(manifest: &ContentManifest, output: &Path) -> std::io::Res
 fn load_manifest(path: &Path) -> Option<ContentManifest> {
     let text = fs::read_to_string(path).ok()?;
     toml::from_str(&text).ok()
+}
+
+fn extract_semantic_metadata(
+    rel_path: &str,
+    bytes: &[u8],
+) -> (Option<String>, Option<String>, Vec<String>, Vec<String>) {
+    let section = rel_path.split('/').next().map(String::from);
+
+    let text = match std::str::from_utf8(bytes) {
+        Ok(t) => t,
+        Err(_) => return (section, None, Vec::new(), Vec::new()),
+    };
+    let fm = match parse_front_matter(text) {
+        Some(t) => t,
+        None => return (section, None, Vec::new(), Vec::new()),
+    };
+
+    let maturity = fm
+        .get("extra")
+        .and_then(|e| e.get("maturity"))
+        .and_then(|v| v.as_str())
+        .map(String::from);
+
+    let trails = fm
+        .get("taxonomies")
+        .and_then(|t| t.get("trails"))
+        .and_then(|v| v.as_array())
+        .map(|arr| {
+            arr.iter()
+                .filter_map(|v| v.as_str().map(String::from))
+                .collect()
+        })
+        .unwrap_or_default();
+
+    let companions = fm
+        .get("extra")
+        .and_then(|e| e.get("companions"))
+        .and_then(|v| v.as_array())
+        .map(|arr| {
+            arr.iter()
+                .filter_map(|c| c.get("url").and_then(|u| u.as_str()).map(String::from))
+                .collect()
+        })
+        .unwrap_or_default();
+
+    (section, maturity, trails, companions)
+}
+
+fn parse_front_matter(text: &str) -> Option<toml::Table> {
+    let trimmed = text.trim_start();
+    if !trimmed.starts_with("+++") {
+        return None;
+    }
+    let after_delim = &trimmed[3..];
+    let end = after_delim.find("+++")?;
+    let fm_str = after_delim[..end].trim();
+    toml::from_str(fm_str).ok()
 }
 
 fn extract_title(bytes: &[u8]) -> Option<String> {
@@ -188,6 +258,10 @@ mod tests {
                 blake3: "def".into(),
                 size_bytes: 10,
                 title: None,
+                section: None,
+                maturity: None,
+                trails: Vec::new(),
+                companions: Vec::new(),
             },
         );
         let new_manifest = ContentManifest {

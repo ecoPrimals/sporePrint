@@ -4,6 +4,9 @@ description = "K-NOME — where human expertise meets AI numeric capability. The
 date = 2026-03-17
 weight = 12
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/methodology/k-nome-programming/"
 title = "K-NOME Programming"
@@ -345,7 +348,7 @@ solution emerges from the evolutionary process, shaped by the
 constraint but not predetermined by it.
 
 This is why one person — a microbiologist, not a systems programmer —
-could build 14 primals and 7 springs. The human did not need to know
+could build {{ total_stat(stat="total_primals") }} primals and {{ total_stat(stat="total_springs") }} springs. The human did not need to know
 how to implement a GPU shader compiler or a lattice QCD simulation
 or a neuromorphic NPU driver. The human needed to know enough about
 the domain to mentor the AI (K-N), to observe the results (O), and
@@ -379,7 +382,7 @@ the human's expertise grows alongside the project. The evolutionary
 framework ensures the output is shaped by constraint into something
 fit.
 
-And the output — the 14 primals, the 7 springs, the 27,000+ tests,
+And the output — the {{ total_stat(stat="total_primals") }} primals, the {{ total_stat(stat="total_springs") }} springs, the {{ total_stat(stat="total_tests_display") }} tests,
 the architecture, the methodology, the love letter itself — returns
 to the commons under scyBorg. Because the inheritance was received
 freely, and the synthesis — the K-N space, the mentoring, the

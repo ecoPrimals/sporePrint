@@ -4,6 +4,9 @@ description = "Proof of work over citation-sitting. Why reproducible computation
 weight = 14
 date = 2026-07-09
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/methodology/scyborg-licensing/"
 title = "scyBorg Licensing"

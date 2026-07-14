@@ -4,6 +4,10 @@ description = "How typed bidirectional connections between ideas — not links b
 weight = 14
 [taxonomies]
 primals = ["rhizocrypt", "loamspine", "sweetgrass"]
+
+[extra]
+domain = "Architecture"
+maturity = "architectural"
 +++
 
 ## The Problem: Links Between Words, Not Things

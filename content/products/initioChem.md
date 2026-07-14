@@ -6,6 +6,9 @@ date = 2026-05-31
 [taxonomies]
 primals = ["biomeos", "nestgate", "barracuda"]
 springs = ["hotspring"]
+
+[extra]
+maturity = "architectural"
 +++
 
 **Repository**: sporeGarden/initioChem — **In Development**

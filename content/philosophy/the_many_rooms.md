@@ -4,6 +4,9 @@ description = "Preparing a place — John 14, the Good Samaritan, Maimonides' hi
 date = 2026-03-17
 weight = 9
 
+[extra]
+voice = "attsi"
+
 [taxonomies]
 primals = []
 springs = []

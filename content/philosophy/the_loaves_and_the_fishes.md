@@ -4,6 +4,9 @@ description = "Preconditions, pollution, and the miracle of knowing what is alre
 date = 2026-03-17
 weight = 5
 
+[extra]
+voice = "attsi"
+
 [taxonomies]
 primals = []
 springs = []

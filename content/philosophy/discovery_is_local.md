@@ -4,6 +4,9 @@ description = "Gravity, fermentation, and the things that were already there —
 date = 2026-03-17
 weight = 8
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/thesis/14-biological-validation/"
 title = "Chapter 14: Biological Validation"

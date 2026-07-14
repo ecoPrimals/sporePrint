@@ -7,6 +7,10 @@ date = 2026-03-31
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
 springs = ["groundspring", "healthspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
+
+[extra]
+domain = "Architecture"
+maturity = "implemented"
 +++
 
 **Repository**: [github.com/ecoPrimals/plasmidBin](https://github.com/ecoPrimals/plasmidBin) — **Public**

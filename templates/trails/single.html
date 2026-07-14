@@ -1,0 +1,70 @@
+{# SPDX-License-Identifier: AGPL-3.0-or-later #}
+{% extends "base.html" %}
+
+{% block title %}{% if config.extra.trail_definitions[term.name] %}{{ config.extra.trail_definitions[term.name].title }}{% else %}{{ term.name | title }}{% endif %} — {{ config.title }}{% endblock title %}
+{% block description %}{% if config.extra.trail_definitions[term.name] %}{{ config.extra.trail_definitions[term.name].description }}{% else %}Reading trail: {{ term.name | title }}{% endif %}{% endblock description %}
+{% block og_title %}{% if config.extra.trail_definitions[term.name] %}{{ config.extra.trail_definitions[term.name].title }}{% else %}{{ term.name | title }}{% endif %} — {{ config.title }}{% endblock og_title %}
+{% block og_desc %}{% if config.extra.trail_definitions[term.name] %}{{ config.extra.trail_definitions[term.name].description }}{% else %}Reading trail: {{ term.name | title }}{% endif %}{% endblock og_desc %}
+{% block tw_title %}{% if config.extra.trail_definitions[term.name] %}{{ config.extra.trail_definitions[term.name].title }}{% else %}{{ term.name | title }}{% endif %} — {{ config.title }}{% endblock tw_title %}
+{% block tw_desc %}{% if config.extra.trail_definitions[term.name] %}{{ config.extra.trail_definitions[term.name].description }}{% else %}Reading trail: {{ term.name | title }}{% endif %}{% endblock tw_desc %}
+
+{% block content %}
+{% set trail_def = config.extra.trail_definitions[term.name] | default(value=false) %}
+{% if trail_def %}{% set trail_title = trail_def.title %}{% else %}{% set trail_title = term.name | title %}{% endif %}
+
+<article class="section-page trail-page">
+  <header class="section-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/trails/">Trails</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ trail_title }}</span>
+    </nav>
+    <h1>{% if trail_def.emoji %}<span aria-hidden="true">{{ trail_def.emoji }}</span> {% endif %}{{ trail_title }}</h1>
+    {% if trail_def.description %}
+    <p class="section-desc">{{ trail_def.description }}</p>
+    {% endif %}
+  </header>
+
+  {% if trail_def and trail_def.pages %}
+  <nav class="trail-sequence" aria-label="Trail reading order">
+    <ol class="trail-steps">
+      {% for page_path in trail_def.pages %}
+      {% set pg = get_page(path=page_path) %}
+      <li class="trail-step">
+        <a href="{{ pg.permalink }}" class="trail-step-link">
+          <span class="trail-step-number" aria-hidden="true">{{ loop.index }}</span>
+          <div class="trail-step-content">
+            <strong>{{ pg.title }}</strong>
+            {% if pg.description %}<span class="trail-step-desc">{{ pg.description }}</span>{% endif %}
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </nav>
+
+  <div class="trail-start">
+    {% set first_page = get_page(path=trail_def.pages[0]) %}
+    <a href="{{ first_page.permalink }}" class="trail-start-btn">Start This Trail →</a>
+  </div>
+  {% else %}
+  <section class="entity-pages" aria-label="Pages in this trail">
+    <h2>{{ term.pages | length }} page{{ term.pages | length | pluralize }}</h2>
+    <nav class="page-listing">
+      <ul>
+        {% for page in term.pages %}
+        <li>
+          <a href="{{ page.permalink }}">
+            <strong>{{ page.title }}</strong>
+            {% if page.description %}<span>{{ page.description }}</span>{% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </section>
+  {% endif %}
+</article>
+{% endblock content %}

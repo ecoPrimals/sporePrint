@@ -6,6 +6,7 @@ weight = 5
 
 [extra]
 domain = "Architecture"
+maturity = "architectural"
 +++
 
 ## The Arc

@@ -4,6 +4,9 @@ description = "Five questions for John Galt — Le Guin's Omelas, Rand's Atlas, 
 date = 2026-03-17
 weight = 1
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/thesis/01-introduction/"
 title = "Chapter 1: Introduction"

@@ -1,5 +1,5 @@
 +++
-title = "Evolution Timeline: 27 Days, Seven Domains, 15,000+ Checks"
+title = "Evolution Timeline: 27 Days, Seven Domains, 20,695+ Checks"
 weight = 80
 description = "27-day sprint day-by-day record and velocity analysis"
 date = 2026-03-17
@@ -7,6 +7,10 @@ date = 2026-03-17
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
+
+[extra]
+domain = "Architecture"
+maturity = "reproduced"
 +++
 
 **The velocity of the {{ entity(name="ecoprimals") }} springs is evidence for the K-Nome methodology.**

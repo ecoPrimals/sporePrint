@@ -4,6 +4,9 @@ description = "Architecture as ethics — building a city where exploitation is 
 date = 2026-03-17
 weight = 3
 
+[extra]
+voice = "attsi"
+
 [taxonomies]
 primals = []
 springs = []

@@ -21,6 +21,7 @@ label = "The operational model behind the constraint"
 [taxonomies]
 primals = []
 springs = []
+trails = ["first-visit", "methodology"]
 +++
 
 *{{ total_stat(stat="total_primals") }} primals. {{ total_stat(stat="total_tests_display") }} tests. {{ total_stat(stat="papers_reproduced") }} papers reproduced. Built through conversation by someone who can't read the language.*

@@ -4,6 +4,9 @@ description = "A recurring pattern — kingdoms, tollbooths, and the architectur
 date = 2026-03-17
 weight = 6
 
+[extra]
+voice = "attsi"
+
 [[extra.companions]]
 url = "/methodology/constrained-evolution-formal/"
 title = "Constrained Evolution — Formal"

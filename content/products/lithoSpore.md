@@ -6,6 +6,9 @@ date = 2026-07-09
 [taxonomies]
 primals = ["barracuda", "toadstool", "nestgate", "biomeos", "petaltongue"]
 springs = ["groundspring", "wetspring", "hotspring", "neuralspring"]
+
+[extra]
+maturity = "implemented"
 +++
 
 ## What This Is

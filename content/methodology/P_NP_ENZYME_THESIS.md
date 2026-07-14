@@ -5,6 +5,9 @@ date = 2026-03-17
 
 [taxonomies]
 springs = ["wetspring", "hotspring", "groundspring"]
+
+[extra]
+maturity = "architectural"
 +++
 
 **Status**: Working thesis  

@@ -6,6 +6,9 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "coralreef", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
+
+[extra]
+maturity = "architectural"
 +++
 
 **Public data + basement hardware + triple-copyleft licensing = permanently secured knowledge commons.**

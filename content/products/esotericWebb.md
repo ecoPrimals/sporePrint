@@ -15,7 +15,7 @@ springs = ["ludospring"]
 
 ## What It Is
 
-{{ entity(name="esotericwebb") }} is a cross-evolution CRPG (computer role-playing game) that uses the {{ entity(name="ecoprimals") }} infrastructure as its engine. It is not a tech demo — it is a playable game that composes real primals via JSON-RPC to deliver gameplay mechanics grounded in validated science.
+{{ entity(name="esotericwebb") }} is a cross-evolution CRPG (computer role-playing game) that uses the {{ entity(name="ecoprimals") }} infrastructure as its engine. It composes real primals via JSON-RPC to deliver gameplay mechanics grounded in validated science. The game's composition architecture and science integration are in active development — content and playable experience are being built.
 
 The game exists to prove a thesis: that sovereign, composable infrastructure can produce creative software as good as anything built on proprietary engines, while giving the player full data sovereignty and the developer zero vendor lock-in.
 

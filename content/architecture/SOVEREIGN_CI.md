@@ -9,6 +9,7 @@ primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "nestgat
 
 [extra]
 domain = "Architecture"
+maturity = "implemented"
 +++
 
 ## Overview
@@ -126,3 +127,5 @@ The write model is conflict-free: `wave.toml` is sole-writer (overwatch), each g
 - [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) — how binaries flow from depot to gates
 - [Living Systems](@/lab/living-systems.md) — what's actually running right now
 - [Gate Mesh — Live Topology](@/architecture/MESH_TOPOLOGY.md) — how gates connect
+- [Ecosystem Coordination](@/architecture/coordination.md) — wateringHole standards and operational documents
+- [provision-golgi.sh](https://github.com/ecoPrimals/wateringHole/blob/main/provision/provision-golgi.sh) — the VPS provisioning script in wateringHole

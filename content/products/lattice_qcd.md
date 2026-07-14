@@ -6,6 +6,9 @@ date = 2026-04-04
 [taxonomies]
 primals = ["barracuda", "coralreef", "toadstool", "biomeos"]
 springs = ["hotspring", "groundspring"]
+
+[extra]
+maturity = "reproduced"
 +++
 
 **Organization**: {{ entity(name="sporegarden") }} (product naming in progress)  

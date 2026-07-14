@@ -5,6 +5,7 @@ weight = 2
 [extra]
 entity_id = "ecosystem-visualization"
 primal_emoji = "🌐🔭"
+maturity = "architectural"
 +++
 
 # Ecosystem Visualization

@@ -4,6 +4,9 @@ description = "Crowdsourced by the most brilliant minds — AI authorship, inher
 date = 2026-03-17
 weight = 11
 
+[extra]
+voice = "attsi"
+
 [taxonomies]
 primals = []
 springs = []

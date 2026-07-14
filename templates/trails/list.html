@@ -1,0 +1,37 @@
+{# SPDX-License-Identifier: AGPL-3.0-or-later #}
+{% extends "base.html" %}
+
+{% block title %}Reading Trails — {{ config.title }}{% endblock title %}
+{% block description %}Curated reading paths through the ecoPrimals ecosystem — guided sequences for different interests and depths.{% endblock description %}
+{% block og_title %}Reading Trails — {{ config.title }}{% endblock og_title %}
+{% block og_desc %}Curated reading paths through the ecoPrimals ecosystem.{% endblock og_desc %}
+{% block tw_title %}Reading Trails — {{ config.title }}{% endblock tw_title %}
+{% block tw_desc %}Curated reading paths through the ecoPrimals ecosystem.{% endblock tw_desc %}
+
+{% block content %}
+<article class="section-page">
+  <header class="section-header">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <a href="{{ config.base_url }}">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Trails</span>
+    </nav>
+    <h1>Reading Trails</h1>
+    <p class="section-desc">Curated paths through {{ config.extra.totals.content_pages }} pages. Each trail is a guided sequence — start at the beginning and follow through, or jump in anywhere.</p>
+  </header>
+
+  <nav class="page-listing trail-listing" aria-label="Trail index">
+    <ul>
+      {% for term in terms %}
+      {% set trail_def = config.extra.trail_definitions[term.name] | default(value=false) %}
+      <li>
+        <a href="{{ term.permalink }}">
+          <strong>{% if trail_def.emoji %}{{ trail_def.emoji }} {% endif %}{% if trail_def.title %}{{ trail_def.title }}{% else %}{{ term.name | title }}{% endif %}</strong>
+          <span>{% if trail_def.description %}{{ trail_def.description }}{% else %}{{ term.pages | length }} page{{ term.pages | length | pluralize }}{% endif %}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</article>
+{% endblock content %}

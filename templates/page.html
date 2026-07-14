@@ -100,6 +100,32 @@
       {{ page.content | safe }}
     </div>
 
+    {% if page.taxonomies.trails is defined and page.taxonomies.trails | length > 0 %}
+    {% for trail_name in page.taxonomies.trails %}
+    {% set trail_def = config.extra.trail_definitions[trail_name] | default(value=false) %}
+    {% if trail_def and trail_def.pages %}
+    {% set_global trail_pos = 0 %}
+    {% set_global trail_total = trail_def.pages | length %}
+    {% for tp in trail_def.pages %}
+    {% if tp == page.relative_path %}{% set_global trail_pos = loop.index %}{% endif %}
+    {% endfor %}
+    {% if trail_pos > 0 %}
+    {% set_global prev_idx = trail_pos - 2 %}
+    {% set_global next_idx = trail_pos %}
+    <nav class="trail-breadcrumb" aria-label="{{ trail_def.title }} trail navigation">
+      <span class="trail-breadcrumb-name">{% if trail_def.emoji %}{{ trail_def.emoji }} {% endif %}{{ trail_def.title }}</span>
+      <span>{{ trail_pos }} of {{ trail_total }}</span>
+      <span class="trail-breadcrumb-nav">
+        {% if trail_pos > 1 %}{% set prev_page = get_page(path=trail_def.pages[prev_idx]) %}<a href="{{ prev_page.permalink }}">← Previous</a>{% endif %}
+        <a href="/trails/{{ trail_name }}/">Trail Index</a>
+        {% if trail_pos < trail_total %}{% set next_page = get_page(path=trail_def.pages[next_idx]) %}<a href="{{ next_page.permalink }}">Next →</a>{% endif %}
+      </span>
+    </nav>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
     {% if page.extra.companions is defined and page.extra.companions | length > 0 %}
     <nav class="companions" aria-label="Companion pages across sections">
       <h2>Companion Pages</h2>

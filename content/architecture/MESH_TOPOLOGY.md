@@ -9,6 +9,7 @@ primals = ["beardog", "biomeos", "songbird"]
 
 [extra]
 domain = "Architecture"
+maturity = "implemented"
 +++
 
 ## Overview

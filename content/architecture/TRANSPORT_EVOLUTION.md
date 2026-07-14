@@ -6,6 +6,7 @@ weight = 17
 
 [extra]
 domain = "Architecture"
+maturity = "architectural"
 +++
 
 ## Current State: Nanowire

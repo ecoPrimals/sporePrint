@@ -6,6 +6,7 @@ weight = 12
 
 [extra]
 domain = "Architecture"
+maturity = "architectural"
 +++
 
 ## The Composition Layer

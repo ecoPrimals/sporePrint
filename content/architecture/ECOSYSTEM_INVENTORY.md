@@ -7,6 +7,10 @@ date = 2026-06-20
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
+
+[extra]
+domain = "Architecture"
+maturity = "implemented"
 +++
 
 **Last Updated**: June 20, 2026

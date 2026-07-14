@@ -6,6 +6,9 @@ date = 2026-03-31
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "toadstool"]
 springs = ["neuralspring"]
+
+[extra]
+maturity = "architectural"
 +++
 
 **Repository**: sporeGarden/helixVision (moving from {{ entity(name="syntheticchemistry") }} — repo pending)  

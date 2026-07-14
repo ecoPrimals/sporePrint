@@ -7,6 +7,10 @@ date = 2026-05-06
 [taxonomies]
 primals = ["beardog", "biomeos", "toadstool", "barracuda"]
 springs = ["primalspring", "wetspring", "hotspring", "healthspring"]
+
+[extra]
+domain = "Architecture"
+maturity = "architectural"
 +++
 
 ## The Bridge

@@ -41,3 +41,33 @@ foundation                       → institutional adoption
 - **[Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md)** — complete map across all organizations
 - **[Sovereign Prior Art](@/architecture/SOVEREIGN_PRIOR_ART_CATALOG.md)** — AGPL analysis per primal
 - **[Composition Pipeline](@/architecture/COMPOSITION_PIPELINE.md)** — springs → compositions → products → foundation
+
+## Deep Architecture (gen4)
+
+- **[The Golden Cage](@/architecture/golden_cage.md)** — bootstrapping sovereignty inside the services you will replace
+- **[Sovereign HPC Evolution](@/architecture/sovereign_hpc_evolution.md)** — basement cluster to gram-negative organism
+- **[Silicon Deism](@/architecture/silicon_deism.md)** — the abstraction elimination thesis
+- **[Stadial/Interstadial Pattern](@/architecture/stadial_interstadial.md)** — constraint-driven evolution framework
+- **[Sovereign Transaction Membrane](@/architecture/sovereign_transaction_membrane.md)** — how the organism transacts with the world
+- **[K-Derm Reconciliation](@/architecture/k_derm_reconciliation.md)** — from gram-staining to cell envelope architecture
+- **[Deploy Graph Composition](@/architecture/deploy_graph_composition.md)** — the product interface via BYOB TOML
+- **[Creative Surface Architecture](@/architecture/creative_surface.md)** — the sporeGarden organizational model
+
+## Coordination Triad
+
+- **[Coordination Triad](@/architecture/coordination_triad.md)** — sense, action, sync — the ecosystem's nervous system
+- **[waterFall](@/architecture/waterfall.md)** — temporal ecosystem sync (SYNC domain)
+- **[rootPulse](@/architecture/rootpulse.md)** — emergent version control (ACTION domain)
+- **[Neural API](@/architecture/neural_api.md)** — adaptive multi-layer orchestration (integration)
+
+## Primal Deep-Docs
+
+- **[Primal Evolution](@/architecture/primal_evolution.md)** — gen1 to gen3, splits, merges, promotions
+- **[Primal Interactions](@/architecture/primal_interactions.md)** — IPC architecture, JSON-RPC, discovery
+- **[Discovery Log](@/architecture/discovery_log.md)** — capability hunting methodology
+
+## Ecosystem
+
+- **[Atlas Memory Palace](@/architecture/atlas_memory_palace.md)** — mountain, river, garden, water
+- **[Ecosystem Economics](@/architecture/economics.md)** — flywheel, sunCloud, loam certificates
+- **[Ecosystem Coordination](@/architecture/coordination.md)** — wateringHole standards and public operations

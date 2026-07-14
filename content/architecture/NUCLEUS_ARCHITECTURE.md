@@ -6,6 +6,10 @@ date = 2026-03-31
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
+
+[extra]
+domain = "Architecture"
+maturity = "architectural"
 +++
 
 {{ entity(name="nucleus") }} is not a single binary. It is the **emergent state** when foundation primals are running and coordinated by {{ entity(name="biomeos") }} on a gate. This page describes how individual primals compose into a coherent system through named patterns, semantic routing, and cryptographic trust.
@@ -272,4 +276,5 @@ songBird + nestGate + membrane → + squirrel (AI) → + petalTongue (rendering)
 
 *See also: [Primal Catalog](@/architecture/PRIMAL_CATALOG.md) for individual primal details,
 [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) for {{ entity(name="byob") }} binary distribution,
-[Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the full repository map.*
+[Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the full repository map,
+[COMPOSITION_ROUTING_STANDARD](https://github.com/ecoPrimals/wateringHole/blob/main/COMPOSITION_ROUTING_STANDARD.md) for the operational routing standard.*

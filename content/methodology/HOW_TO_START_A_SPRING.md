@@ -6,6 +6,9 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
+
+[extra]
+maturity = "implemented"
 +++
 
 **You don't need to know how to code. You need to know how to talk.
@@ -29,7 +32,7 @@ K-Nome (methodology/K_NOME_PROGRAMMING.md) is the discovery that you
 don't need to know how to type. You need to know how to talk. And you
 already do.
 
-A microbiologist produced this ecosystem — 14 primals, 7 springs, 20,695+
+A microbiologist produced this ecosystem — {{ total_stat(stat="total_primals") }} primals, {{ total_stat(stat="total_springs") }} springs, {{ total_stat(stat="validation_checks") }}
 science checks — not because microbiology is rare, but because the
 microbiologist had focus and patience and a story to tell. The story
 happened to be about constrained evolution, Anderson localization, and

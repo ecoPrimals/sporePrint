@@ -6,6 +6,7 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
+trails = ["grant-ready"]
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  
@@ -42,7 +43,7 @@ The detailed comparison data is in tables below. Here is a text summary:
 5. **Biosignal Processing** (vs LabChart/MATLAB/MNE): healthSpring Track 3 — full parity on Pan-Tompkins QRS, HRV, SpO2, arrhythmia classification, WFDB parsing. Partial on EDA decomposition.
 6. **Provenance & Data Integrity** (vs LabArchives/Benchling/LIMS): SCYBORG Provenance Trio + BearDog — exceeds on cryptographic DAG, Ed25519 signatures, fraud detection. Novel: consent-gated access (DID-based). Gaps: no physical inventory, no barcode scanning.
 7. **GPU Scientific Computing** (vs CUDA/Kokkos/MATLAB): barraCuda + toadStool + coralReef — full f64 parity, vendor-agnostic (WebGPU), sovereign shader compiler. Novel: NPU support (BrainChip AKD1000). Gaps: CUDA raw throughput, multi-GPU, tensor cores.
-8. **Aggregate**: 175+ papers reproduced, 27,000+ tests, 15,334+ validation checks, 806+ WGSL shaders, pure Rust, zero unsafe code, ~$15K consumer hardware.
+8. **Aggregate**: {{ total_stat(stat="papers_reproduced") }} papers reproduced, {{ total_stat(stat="total_tests_display") }} tests, {{ total_stat(stat="validation_checks") }} validation checks, {{ total_stat(stat="wgsl_files") }} WGSL shaders, pure Rust, zero unsafe code, ~$15K consumer hardware.
 
 </details>
 

@@ -52,7 +52,7 @@ codebases.
 
 | Property | Mechanism | Verification |
 |----------|-----------|:------------:|
-| Same input → same output | No global mutable state, no random seeds without explicit parameters | All 27,000+ tests pass deterministically |
+| Same input → same output | No global mutable state, no random seeds without explicit parameters | All {{ total_stat(stat="total_tests_display") }} tests pass deterministically |
 | Bit-exact GPU results | f64 WGSL shaders with explicit rounding | CPU↔GPU parity checks across all springs |
 | No Jupyter state corruption | No notebooks — compiled binaries only | Structural guarantee |
 | No Python version drift | No Python dependency in production code | `Cargo.lock` pins all dependencies |
@@ -305,9 +305,9 @@ cargo tree               # Full dependency tree
 
 | Metric | Value | How to Verify |
 |--------|-------|:-------------:|
-| Total automated tests | 27,000+ across 7 springs | `cargo test --workspace` in each spring |
-| Validation checks (numerical) | 15,334+ with explicit tolerances | `cargo run --release --bin validate_*` |
-| Papers reproduced | 70+ across physics, biology, pharmacology, chemistry | Each paper has dedicated experiment(s) |
+| Total automated tests | {{ total_stat(stat="total_tests_display") }} across {{ total_stat(stat="total_springs") }} springs | `cargo test --workspace` in each spring |
+| Validation checks (numerical) | {{ total_stat(stat="validation_checks") }} with explicit tolerances | `cargo run --release --bin validate_*` |
+| Papers reproduced | {{ total_stat(stat="papers_reproduced") }} across physics, biology, pharmacology, chemistry | Each paper has dedicated experiment(s) |
 | Validation binaries | 306 ({{ entity(name="wetspring") }}) + others per spring | `ls barracuda/src/bin/validate_*.rs` |
 | Clippy warnings | 0 (pedantic + nursery) | `cargo clippy --all-targets -- -D warnings` |
 | Unsafe code blocks | 0 | `#![forbid(unsafe_code)]` in lib.rs |
