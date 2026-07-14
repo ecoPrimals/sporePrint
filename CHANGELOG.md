@@ -5,6 +5,36 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.22.0] — 2026-07-14 — Rust Evolution: Expect→Result, IPC Constants, Test Dedup (Wave 138b)
+
+**Crate-level deep debt: eliminate production panic paths, centralize magic
+numbers, deduplicate test infrastructure, remove duplicate tests.**
+
+### Changed
+
+- **`tower.rs` `.expect()` → `Result`** — embedded TOML parse now returns
+  `Result<ProbeList, String>` through `probe_tower_status`, surfacing errors
+  via `Error::Config` instead of panicking at runtime.
+- **`ipc::JSONRPC_METHOD_NOT_FOUND`** — centralized `-32601` constant. Replaced
+  inline magic numbers in `tower.rs` and `petaltongue.rs` with the shared constant.
+- **`ipc::mock::MockStream`** — shared NDJSON mock stream extracted from
+  duplicate implementations in `ipc.rs` and `petaltongue.rs` tests. Single
+  `pub(crate)` module used by both test suites.
+- **Duplicate tests removed** — `today_utc_is_valid_format` test deduplicated
+  (was in `time.rs`, `refresh.rs`, and `notebook.rs`; canonical copy retained
+  in `time.rs`).
+- **`biomeos-validation-summary.md`** — added missing `weight` field to
+  resolve Zola build warning in weight-sorted `lab` section.
+
+### Metrics
+
+- Tests: 287 (249 unit + 29 integration + 3 refresh_write + 6 parity ignored)
+- Pages: 270 across 18 sections
+- Clippy: 0 warnings (pedantic + nursery)
+- `validate --strict`: 0 errors, 0 warnings
+
+---
+
 ## [3.21.0] — 2026-07-13 — Deep Debt Sweep: Dead Code, Alt Text, TBD Cleanup (Wave 137b)
 
 **Systematic deep debt elimination: dead CSS/code removal, WCAG alt text

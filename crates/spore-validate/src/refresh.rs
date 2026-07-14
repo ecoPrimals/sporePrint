@@ -424,14 +424,6 @@ fn another() {}
     }
 
     #[test]
-    fn today_utc_is_valid_format() {
-        let date = today_utc();
-        assert_eq!(date.len(), 10);
-        assert_eq!(&date[4..5], "-");
-        assert_eq!(&date[7..8], "-");
-    }
-
-    #[test]
     fn count_metrics_on_empty_dir() {
         let dir = tempfile::tempdir().unwrap();
         let m = count_metrics(dir.path());

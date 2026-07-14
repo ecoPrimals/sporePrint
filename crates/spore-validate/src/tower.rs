@@ -31,19 +31,25 @@ struct DefaultProbeFile {
     probes: Vec<DefaultProbe>,
 }
 
-static DEFAULT_TOWER_PROBES: LazyLock<Vec<(String, Vec<String>)>> = LazyLock::new(|| {
+type ProbeList = Vec<(String, Vec<String>)>;
+
+static DEFAULT_TOWER_PROBES: LazyLock<Result<ProbeList, String>> = LazyLock::new(|| {
     const EMBEDDED: &str = include_str!("../default_tower_probes.toml");
-    let file: DefaultProbeFile =
-        toml::from_str(EMBEDDED).expect("embedded default_tower_probes.toml must parse");
-    file.probes
+    let file: DefaultProbeFile = toml::from_str(EMBEDDED)
+        .map_err(|e| format!("embedded default_tower_probes.toml: {e}"))?;
+    Ok(file
+        .probes
         .into_iter()
         .map(|p| (p.slug, p.methods))
-        .collect()
+        .collect())
 });
 
 /// Return the default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
-fn default_tower_probes() -> &'static [(String, Vec<String>)] {
-    &DEFAULT_TOWER_PROBES
+fn default_tower_probes() -> Result<&'static [(String, Vec<String>)], String> {
+    DEFAULT_TOWER_PROBES
+        .as_ref()
+        .map(Vec::as_slice)
+        .map_err(Clone::clone)
 }
 
 /// Result of probing a single method on a Tower primal.
@@ -73,8 +79,10 @@ pub struct TowerPrimalStatus {
 /// When a profile is provided, primals with `probe_methods` declared use those
 /// methods instead of the built-in defaults. This makes the probe table
 /// data-driven (from TOML profiles) rather than hardcoded in Rust.
-pub fn probe_tower_status(profile: Option<&crate::nucleus::NucleusProfile>) -> TowerStatus {
-    let probe_targets = build_probe_targets(profile);
+pub fn probe_tower_status(
+    profile: Option<&crate::nucleus::NucleusProfile>,
+) -> Result<TowerStatus, String> {
+    let probe_targets = build_probe_targets(profile)?;
     let mut primals = Vec::new();
 
     for (slug, methods) in &probe_targets {
@@ -107,13 +115,15 @@ pub fn probe_tower_status(profile: Option<&crate::nucleus::NucleusProfile>) -> T
         });
     }
 
-    TowerStatus { primals }
+    Ok(TowerStatus { primals })
 }
 
 /// Build the probe target list: profile-driven methods override defaults.
+///
+/// Returns `Err` only if no profile is provided and the embedded probe TOML is corrupt.
 fn build_probe_targets(
     profile: Option<&crate::nucleus::NucleusProfile>,
-) -> Vec<(String, Vec<String>)> {
+) -> Result<Vec<(String, Vec<String>)>, String> {
     if let Some(p) = profile {
         let mut targets: Vec<(String, Vec<String>)> = Vec::new();
         for (name, entry) in &p.primals {
@@ -122,14 +132,14 @@ fn build_probe_targets(
             }
         }
         if !targets.is_empty() {
-            return targets;
+            return Ok(targets);
         }
     }
 
-    default_tower_probes()
+    Ok(default_tower_probes()?
         .iter()
         .map(|(slug, methods)| (slug.clone(), methods.clone()))
-        .collect()
+        .collect())
 }
 
 /// Probe a single JSON-RPC method on a socket, returning availability.
@@ -194,7 +204,7 @@ fn probe_single_method(socket_path: &str, method: &str) -> MethodProbe {
                 .unwrap_or("unknown");
             MethodProbe {
                 method: method.to_string(),
-                available: code != -32601,
+                available: code != crate::ipc::JSONRPC_METHOD_NOT_FOUND,
                 response_summary: Some(format!("[{code}] {msg}")),
             }
         },
@@ -252,7 +262,7 @@ mod tests {
 
     #[test]
     fn default_tower_probes_cover_all_three_primals() {
-        let probes = default_tower_probes();
+        let probes = default_tower_probes().unwrap();
         assert_eq!(probes.len(), 3);
         let slugs: Vec<&str> = probes.iter().map(|(s, _)| s.as_str()).collect();
         assert!(slugs.contains(&"beardog"));
@@ -262,7 +272,7 @@ mod tests {
 
     #[test]
     fn build_probe_targets_defaults_without_profile() {
-        let targets = build_probe_targets(None);
+        let targets = build_probe_targets(None).unwrap();
         assert_eq!(targets.len(), 3);
         assert_eq!(targets[0].0, "beardog");
         assert!(!targets[0].1.is_empty());
@@ -296,7 +306,7 @@ mod tests {
             mesh: None,
         };
 
-        let targets = build_probe_targets(Some(&profile));
+        let targets = build_probe_targets(Some(&profile)).unwrap();
         assert_eq!(targets.len(), 1);
         assert_eq!(targets[0].0, "custom_primal");
         assert_eq!(targets[0].1, vec!["custom.method", "custom.other"]);
@@ -330,7 +340,7 @@ mod tests {
             mesh: None,
         };
 
-        let targets = build_probe_targets(Some(&profile));
+        let targets = build_probe_targets(Some(&profile)).unwrap();
         assert_eq!(
             targets.len(),
             3,

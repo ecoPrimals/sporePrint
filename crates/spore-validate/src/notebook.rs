@@ -369,11 +369,4 @@ mod tests {
         assert!(content.contains("Content"));
     }
 
-    #[test]
-    fn today_has_valid_format() {
-        let d = today_utc();
-        assert_eq!(d.len(), 10);
-        assert_eq!(&d[4..5], "-");
-        assert_eq!(&d[7..8], "-");
-    }
 }

@@ -127,6 +127,9 @@ pub fn extract_error_message(response: &Value) -> Option<String> {
     Some(format!("[{code}] {message}"))
 }
 
+/// JSON-RPC standard error code: method not found.
+pub const JSONRPC_METHOD_NOT_FOUND: i64 = -32601;
+
 /// Check if a JSON-RPC error is "method not found" (-32601).
 #[must_use]
 pub fn is_method_not_found(response: &Value) -> bool {
@@ -134,7 +137,7 @@ pub fn is_method_not_found(response: &Value) -> bool {
         .get("error")
         .and_then(|e| e.get("code"))
         .and_then(Value::as_i64)
-        .is_some_and(|code| code == -32601)
+        .is_some_and(|code| code == JSONRPC_METHOD_NOT_FOUND)
 }
 
 /// Probe a primal's health using the ecosystem standard method.
@@ -167,18 +170,18 @@ pub fn probe_health(
     Ok(resp)
 }
 
+/// Shared NDJSON mock stream for IPC testing (used by `ipc` and `petaltongue` tests).
 #[cfg(test)]
-mod tests {
-    use super::*;
+pub(crate) mod mock {
     use std::io::Cursor;
 
-    struct MockStream {
+    pub(crate) struct MockStream {
         read_buf: Cursor<Vec<u8>>,
         write_buf: Vec<u8>,
     }
 
     impl MockStream {
-        fn with_response(json: &Value) -> Self {
+        pub(crate) fn with_response(json: &serde_json::Value) -> Self {
             let mut data = serde_json::to_string(json).unwrap();
             data.push('\n');
             Self {
@@ -187,7 +190,7 @@ mod tests {
             }
         }
 
-        fn with_responses(responses: &[Value]) -> Self {
+        pub(crate) fn with_responses(responses: &[serde_json::Value]) -> Self {
             let mut data = String::new();
             for r in responses {
                 data.push_str(&serde_json::to_string(r).unwrap());
@@ -215,6 +218,12 @@ mod tests {
             Ok(())
         }
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use super::mock::MockStream;
 
     #[test]
     fn send_rpc_roundtrip() {

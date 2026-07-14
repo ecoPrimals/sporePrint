@@ -6,7 +6,7 @@ for sporePrint. It lives at `crates/spore-validate/` and enforces
 
 ## Current State (Wave 137b — July 2026)
 
-- **34 modules**, **11,012L**, 289 tests (251 unit + 29 integration + 3 refresh_write + 6 parity ignored)
+- **34 modules**, **11,012L**, 287 tests (249 unit + 29 integration + 3 refresh_write + 6 parity ignored)
 - Zero warnings for `clippy::pedantic` + `clippy::nursery`
 - `#![warn(missing_docs)]` active, `#![forbid(unsafe_code)]`
 - 7 `#[allow()]` justified (4 cast_precision_loss for display formatting, 2 unnecessary_wraps for uniform dispatch, 1 dead_code for P2 maturity CSS). Wave 137a eliminated 4 cast_possible_truncation by evolving `as_millis() as u64` to `as_secs() * 1000 + u64::from(subsec_millis())`.

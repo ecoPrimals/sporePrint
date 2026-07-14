@@ -270,7 +270,7 @@ impl PetalTongueClient {
 
         resp.get("error").map_or(Ok(true), |err| {
             let code = err.get("code").and_then(Value::as_i64).unwrap_or(0);
-            Ok(code != -32601)
+            Ok(code != crate::ipc::JSONRPC_METHOD_NOT_FOUND)
         })
     }
 
@@ -423,42 +423,7 @@ mod tests {
         assert!(debug.contains("latency_ms"));
     }
 
-    use std::io::{Cursor, Read, Write};
-
-    struct MockStream {
-        read_buf: Cursor<Vec<u8>>,
-        write_buf: Vec<u8>,
-    }
-
-    impl MockStream {
-        fn with_responses(responses: &[Value]) -> Self {
-            let mut data = String::new();
-            for r in responses {
-                data.push_str(&serde_json::to_string(r).unwrap());
-                data.push('\n');
-            }
-            Self {
-                read_buf: Cursor::new(data.into_bytes()),
-                write_buf: Vec::new(),
-            }
-        }
-    }
-
-    impl Read for MockStream {
-        fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
-            self.read_buf.read(buf)
-        }
-    }
-
-    impl Write for MockStream {
-        fn write(&mut self, buf: &[u8]) -> std::io::Result<usize> {
-            self.write_buf.extend_from_slice(buf);
-            Ok(buf.len())
-        }
-        fn flush(&mut self) -> std::io::Result<()> {
-            Ok(())
-        }
-    }
+    use crate::ipc::mock::MockStream;
 
     #[test]
     fn health_check_parses_response() {

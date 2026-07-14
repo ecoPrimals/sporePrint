@@ -2,7 +2,7 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 13, 2026 (Wave 137b — dead CSS cleanup, deprecated script removal, dead_code allow removal, WCAG alt text for 12 notebook images, TBD content markers resolved)
+Last reviewed: July 14, 2026 (Wave 138b — tower.rs expect→Result, JSON-RPC constant centralized, MockStream deduplicated, duplicate tests removed, biomeos weight fix)
 
 ---
 

@@ -141,7 +141,8 @@ fn run_pt_status() -> Result<(), Error> {
 /// Run Tower P1 readiness probe.
 #[allow(clippy::unnecessary_wraps)]
 fn run_tower_status() -> Result<(), Error> {
-    let status = tower::probe_tower_status(None);
+    let status = tower::probe_tower_status(None)
+        .map_err(|e| Error::Config(format!("tower probe config: {e}")))?;
     tower::print_tower_status(&status);
     Ok(())
 }
