@@ -3,6 +3,10 @@ title = "sporePrint"
 description = "Self-hosted scientific computing in pure Rust with vendor-agnostic WebGPU/WGSL GPU compute. Reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics, and pharmacometrics on commodity hardware — no CUDA, no cloud, no vendor lock-in."
 +++
 
+**ecoPrimals** is the ecosystem. **sporePrint** is this site — the permanent evidence record. **primals.eco** is where you're reading it.
+
+---
+
 ## Try It
 
 **In 5 minutes, you can verify core claims on this site:**
@@ -17,10 +21,9 @@ cargo deny check                # zero license violations, zero C dependencies
 ```
 
 ```bash
-# Or: pre-built guideStone artifact (no Rust required)
-tar xf hotspring-guidestone-v0.7.0.tar.gz && cd validation/
-./hotspring validate            # 59/59 pass, ~3 min, any x86_64 Linux
-./hotspring benchmark           # characterize your hardware
+# Or: pre-built binaries from the depot (no Rust required)
+# See https://primals.eco/lab/getting-started-plasmidbin/ for full instructions
+# Binaries are musl-static, BLAKE3-verified, zero runtime dependencies
 ```
 
 If those commands run, the claims are verified. No institutional access. No proprietary software. No cloud.

@@ -83,9 +83,10 @@ External scientists whose work the ecosystem serves: Gonzales (NF data mining),
 Jones (PFAS/blueFish), ABG (whole-cell modeling/initioChem).
 - Section index: https://primals.eco/collaborators/
 
-### reachOut (11 pages)
-Partnership invitations and articles — GPU manufacturers, game platforms,
-neuromorphic hardware, and the broader scientific computing community.
+### reachOut (14 pages)
+Partnership invitations, community landing pages, and articles — GPU manufacturers,
+game platforms, neuromorphic hardware, homelabbers, LLM builders, and the broader
+scientific computing community.
 - Section index: https://primals.eco/outreach/
 
 ### Technical (8 pages)
@@ -105,7 +106,7 @@ provenance chains, reproducibility tiers, deployable artifact standard.
 
 ### Story (3 essays)
 Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
-"175+ Papers, One Stack." Author: attsi.
+"Papers, One Stack." Author: attsi.
 - Section index: https://primals.eco/story/
 
 ### Other

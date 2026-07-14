@@ -17,8 +17,8 @@ template = "page.html"
 
 ### Compute Access
 
-For JupyterHub access to the live 13-primal composition, see [Compute Access](/lab/compute-access/).
+For JupyterHub access to the live {{ total_stat(stat="total_primals") }}-primal ecosystem, see [Compute Access](/lab/compute-access/).
 
 ### For Institutions and PIs
 
-If you're evaluating ecoPrimals for institutional adoption, start with [the lab](/lab/) and [projectFOUNDATION](/products/projectfoundation/) — every claim has executable evidence behind it.
+If you're evaluating ecoPrimals for institutional adoption, start with [the lab](/lab/) and [projectFOUNDATION validation](/lab/projectfoundation-validation-summary/) — every claim has executable evidence behind it.

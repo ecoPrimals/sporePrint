@@ -90,8 +90,9 @@ by category and alphabetized within each group.
   Defines which primals run on a given machine.
 
 **NUCLEUS**
-: The fixed 13-primal composition on a gate. Built from three atomic
-  layers: Tower (crypto + networking), Node (Tower + compute),
+: The standard composition of primals on a gate. The full ecosystem has 15 primals;
+  a typical gate deploys 13 based on its role and hardware profile. Built from three
+  atomic layers: Tower (crypto + networking), Node (Tower + compute),
   Nest (Tower + storage). Binaries are sourced from plasmidBin, verified
   via BLAKE3 checksums, and coordinated by biomeOS.
   See [NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md).
