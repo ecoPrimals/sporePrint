@@ -1,5 +1,5 @@
-generated = "2026-07-14T13:15:24Z"
-root_hash = "5fe2bdf12206ab024b18df28adf8c8ddd62c9b2a4496ca50c36eb96b95c7c047"
+generated = "2026-07-14T13:32:09Z"
+root_hash = "29c8d3bd9e9817b2f1d15942574e4067596199b3f4cebe08c03f3d90e0b6773a"
 page_count = 289
 
 [pages."_index.md"]
@@ -33,8 +33,8 @@ size_bytes = 11738
 title = "Ecosystem Inventory"
 
 [pages."architecture/ECOSYSTEM_VISUALIZATION.md"]
-blake3 = "1c8bbc7a80d37b74ed85be80e175b36fd49f9aa6bf9508909aa6e3b303eb9046"
-size_bytes = 1886
+blake3 = "5dcf77dd08105d08ce45eedbd4a9e82d1a623641b566c11f6faf39df56e522b2"
+size_bytes = 1980
 title = "Ecosystem Visualization"
 
 [pages."architecture/EVIDENCE_SNAPSHOT.md"]
@@ -68,18 +68,18 @@ size_bytes = 4510
 title = "Self-Certifying Publication: sporePrint as guideStone"
 
 [pages."architecture/KDERM_DIDERM_ARCHITECTURE.md"]
-blake3 = "c072583cea19e21c207b85649cf35739256ea54e8ae4b37313474ed0e662b9cd"
-size_bytes = 5555
+blake3 = "ece13ee9f2e1a306743ea924133f8be3fc99dd16805f21c298fd5a74c6e41f61"
+size_bytes = 5653
 title = "K-Derm Diderm Architecture"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
-blake3 = "020f375826ec76e968762c93b15068178613d406e95e4ef1d64c9dc70bb3ef11"
-size_bytes = 4739
+blake3 = "411c699ed9116f571ed014781beddb17c227703626a6f98fb71dae4f279b9faf"
+size_bytes = 4832
 title = "Gate Mesh — Live Topology"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "c1b37e96a782250927896679fdbf74a3881d8fc7e31abd060d76c629a940166c"
-size_bytes = 16328
+blake3 = "a3bdcfbea5590cbd0a900bc1c2a8aceb5eb8a6e6fe269632d35ddc09ca95c64b"
+size_bytes = 16416
 title = "NUCLEUS Composition Model"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
@@ -93,8 +93,8 @@ size_bytes = 7503
 title = "Renvois de Choses: Knowledge Topology via the Provenance Trio"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "8ca3993378c437a8f82be020faf023f36778c5577120706dd5efc6ac7955264f"
-size_bytes = 5806
+blake3 = "ddbdebb60b4abe4bca1c1ca084133d5e2e1d28daf0f5c5f95548829338bcd3a5"
+size_bytes = 5890
 title = "Sovereign CI — Build Infrastructure"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
@@ -248,8 +248,8 @@ size_bytes = 6306
 title = "lithoSpore — LTEE Reproduction and Portable Validation"
 
 [pages."lab/living-systems.md"]
-blake3 = "ce66da87cb5f17c6df68730783494a2afd781ef1296dc74e0a6cb8db0eb8b7d6"
-size_bytes = 6266
+blake3 = "72eea7ac817609b02e65b6e495150452badaf162c8fd0d2487a3e4982abed858"
+size_bytes = 6347
 title = "Living Systems — What's Running Now"
 
 [pages."lab/murillo_reproduction_plan.md"]

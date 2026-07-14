@@ -5,6 +5,35 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.23.0] — 2026-07-14 — Branch-Agnostic Fetch, WCAG Figure/Table, Constant Sweep (Wave 138b)
+
+**Fetch evolution: configurable branch per source. Accessibility: figure/figcaption
+for all visualizations, table scope/caption for screen readers. Constants centralized.**
+
+### Changed
+
+- **`ForgeArchiveBackend` branch-agnostic** — `Source.branch` field (default: `main`)
+  threaded through `VcsBackend` trait. Both `GitBackend` (via `--branch`) and
+  `ForgeArchiveBackend` (archive URL) now respect per-source branch configuration.
+  Eliminates hardcoded `main` in archive URL construction.
+- **WCAG: `viz_embed` → `<figure>/<figcaption>`** — shortcode output now uses
+  semantic HTML5 `<figure>` with optional `caption` parameter. All 6 viz pages
+  updated with descriptive captions for screen readers.
+- **WCAG: table `scope`/`<caption>`** — capability table in `taxonomy_single.html`
+  now has `scope="col"` on headers, `scope="row"` on category cells, and a
+  visually-hidden `<caption>` for screen readers.
+- **`.sr-only` CSS utility** — standard screen-reader-only class added to
+  `_layout.scss` for hidden-but-accessible content.
+- **Notebook constants centralized** — `NOTEBOOK_DEFAULT_WEIGHT` (50) and
+  `NOTEBOOK_DEFAULT_DOMAIN` ("Lab") extracted to `paths.rs` from inline literals.
+
+### Metrics
+
+- Tests: 287 (249 unit + 29 integration + 3 refresh_write + 6 parity ignored)
+- Pages: 270 across 18 sections
+- Clippy: 0 warnings (pedantic + nursery)
+- `validate --strict`: 0 errors, 0 warnings
+
 ## [3.22.0] — 2026-07-14 — Rust Evolution: Expect→Result, IPC Constants, Test Dedup (Wave 138b)
 
 **Crate-level deep debt: eliminate production panic paths, centralize magic

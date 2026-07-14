@@ -72,10 +72,11 @@
   <section class="entity-capabilities" aria-label="Capabilities">
     <h2>Capabilities</h2>
     <table class="cap-table">
-      <thead><tr><th>Category</th><th>Primitives</th></tr></thead>
+      <caption class="sr-only">Capability categories and primitives for {{ entry.display }}</caption>
+      <thead><tr><th scope="col">Category</th><th scope="col">Primitives</th></tr></thead>
       <tbody>
       {% for cap in entry.capabilities %}
-        <tr><td class="cap-category">{{ cap.category }}</td><td>{{ cap.items }}</td></tr>
+        <tr><th scope="row" class="cap-category">{{ cap.category }}</th><td>{{ cap.items }}</td></tr>
       {% endfor %}
       </tbody>
     </table>

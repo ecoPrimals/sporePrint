@@ -15,7 +15,7 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 ## Composition Diagram
 
 <div id="viz-nucleus" class="viz-container">
-{{ viz_embed(src="/viz/nucleus-composition") }}
+{{ viz_embed(src="/viz/nucleus-composition", caption="NUCLEUS composition layers: primals, springs, and deploy graph relationships") }}
 </div>
 
 <script type="module" src="/js/viz-hydrate.js"></script>

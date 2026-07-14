@@ -16,7 +16,7 @@ Ten gates are tracked, seven are actively meshed, and {{ entity(name="songbird")
 routes `capability.call` across all of them. Two physical sites are linked by
 an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
 
-{{ viz_embed(src="/viz/gate-mesh?live=true") }}
+{{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
 ## Active Gates
 

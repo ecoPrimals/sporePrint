@@ -15,7 +15,7 @@ domain = "Architecture"
 
 The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via WireGuard overlay and coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 
-{{ viz_embed(src="/viz/gate-mesh?live=true") }}
+{{ viz_embed(src="/viz/gate-mesh?live=true", caption="Gate mesh topology: eastGate, sporeGate, golgi, and WireGuard overlay connections") }}
 
 ## How Gates Connect
 

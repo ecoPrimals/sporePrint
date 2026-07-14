@@ -1,7 +1,9 @@
 {# SPDX-License-Identifier: AGPL-3.0-or-later #}
 {% set viz_name = src | split(pat="?") | first | split(pat="/") | last %}
 {% set static_path = "/viz/" ~ viz_name ~ ".svg" %}
-<div class="viz-embed" data-viz-src="{{ src }}">
-  <img src="{{ static_path }}" alt="Visualization: {{ viz_name }}" loading="lazy" />
-  <noscript>Visualization: <a href="{{ src }}">{{ src }}</a></noscript>
-</div>
+{% set caption = caption | default(value="Visualization: " ~ viz_name | replace(from="-", to=" ") | replace(from="_", to=" ")) %}
+<figure class="viz-embed" data-viz-src="{{ src }}">
+  <img src="{{ static_path }}" alt="{{ caption }}" loading="lazy" />
+  <figcaption>{{ caption }}</figcaption>
+  <noscript><a href="{{ src }}">{{ caption }}</a></noscript>
+</figure>

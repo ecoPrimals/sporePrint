@@ -105,9 +105,9 @@ Last reviewed: July 14, 2026 (Wave 138b — tower.rs expect→Result, JSON-RPC c
 - [x] ~~JSON-LD `hasPart` on all 12 sections with child pages~~ — Wave 137a (generic CollectionPage fallback + ScholarlyArticle for science)
 - [ ] viz-hydrate.js: keyboard pan/zoom, focusable nodes, labeled controls
 - [x] Notebook chart alt text: meaningful descriptions for 12 matplotlib PNGs (done Wave 137b)
-- [ ] `<figure>` / `<figcaption>` for diagrams and viz_embed outputs
+- [x] `<figure>` / `<figcaption>` for viz_embed shortcode + descriptive captions on all 6 viz pages (done Wave 138b)
 - [ ] `<summary>` containing `<a>` anti-pattern in sidebar — needs UX redesign
-- [ ] Table `<caption>` and `scope` attributes for complex data tables
+- [x] Table `<caption>` and `scope` attributes for capability tables (done Wave 138b)
 - [ ] Entity tooltip descriptions: move from `title` attr to visible or `aria-describedby`
 - [ ] Test with Orca (Linux), NVDA (Windows), VoiceOver (macOS)
 - [x] `html5validator` integration in CI pipeline (`scripts/validate_a11y.sh`, deploy.yml)

@@ -22,7 +22,7 @@ direction information flows.
 ## Interactive Topology
 
 <div id="viz-kderm" class="viz-container">
-{{ viz_embed(src="/viz/kderm-topology") }}
+{{ viz_embed(src="/viz/kderm-topology", caption="K-Derm diderm membrane model: five-layer cross-section from extracellular to cytoplasm") }}
 </div>
 
 <script type="module" src="/js/viz-hydrate.js"></script>

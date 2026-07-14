@@ -46,6 +46,11 @@ pub const ENV_PLASMIDBIN_CHECKSUMS: &str = "PLASMIDBIN_CHECKSUMS";
 /// Default forge URL when `SPOREPRINT_FORGE_URL` is not set.
 pub const DEFAULT_FORGE_URL: &str = "https://github.com";
 
+/// Default weight for rendered notebook pages (positions in lab section).
+pub const NOTEBOOK_DEFAULT_WEIGHT: u32 = 50;
+/// Default domain for rendered notebook pages.
+pub const NOTEBOOK_DEFAULT_DOMAIN: &str = "Lab";
+
 /// Resolve the content directory, returning an error if missing.
 pub fn require_content_dir(root: &Path) -> Result<PathBuf, Error> {
     let content = root.join(CONTENT_DIR);

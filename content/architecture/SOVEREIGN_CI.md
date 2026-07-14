@@ -17,7 +17,7 @@ Every ecoPrimals binary is built from source on sovereign infrastructure. No Git
 
 ## Build Pipeline
 
-{{ viz_embed(src="/viz/ci-pipeline") }}
+{{ viz_embed(src="/viz/ci-pipeline", caption="Sovereign CI pipeline: Forgejo commit to sporeGate build to golgi deploy") }}
 
 ```
 Forgejo (git.primals.eco)

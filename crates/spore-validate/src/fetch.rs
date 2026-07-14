@@ -32,6 +32,12 @@ pub struct Source {
     pub kind: Option<String>,
     #[serde(default)]
     pub private: bool,
+    #[serde(default = "default_branch")]
+    pub branch: String,
+}
+
+fn default_branch() -> String {
+    "main".into()
 }
 
 /// Default forge URL prefix used when a source has no explicit `origin`.
@@ -87,8 +93,8 @@ impl Source {
 /// The `url` parameter on `pull_repo` enables backends that don't persist
 /// remote state (e.g., `ForgeArchiveBackend` re-downloads on "pull").
 pub trait VcsBackend {
-    fn clone_repo(&self, url: &str, target: &Path) -> Result<(), Error>;
-    fn pull_repo(&self, url: &str, target: &Path) -> Result<(), Error>;
+    fn clone_repo(&self, url: &str, target: &Path, branch: &str) -> Result<(), Error>;
+    fn pull_repo(&self, url: &str, target: &Path, branch: &str) -> Result<(), Error>;
     fn is_repo(&self, target: &Path) -> bool;
 }
 
@@ -112,7 +118,7 @@ impl GitBackend {
 }
 
 impl VcsBackend for GitBackend {
-    fn clone_repo(&self, url: &str, target: &Path) -> Result<(), Error> {
+    fn clone_repo(&self, url: &str, target: &Path, branch: &str) -> Result<(), Error> {
         if let Some(parent) = target.parent() {
             std::fs::create_dir_all(parent).map_err(|e| {
                 Error::Git(format!(
@@ -122,7 +128,7 @@ impl VcsBackend for GitBackend {
             })?;
         }
         let status = std::process::Command::new("git")
-            .args(["clone", "--depth", "1", "--quiet", url])
+            .args(["clone", "--depth", "1", "--branch", branch, "--quiet", url])
             .arg(target)
             .status()
             .map_err(|e| Error::Git(format!("git clone spawn failed: {e}")))?;
@@ -135,7 +141,7 @@ impl VcsBackend for GitBackend {
         }
     }
 
-    fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
+    fn pull_repo(&self, _url: &str, target: &Path, _branch: &str) -> Result<(), Error> {
         let status = std::process::Command::new("git")
             .arg("-C")
             .arg(target)
@@ -172,15 +178,15 @@ impl ForgeArchiveBackend {
     ///
     /// Forge type is detected from the configured forge URL — no hardcoded
     /// forge assumptions. GitHub uses direct paths; Forgejo uses API routes.
-    fn archive_url(clone_url: &str) -> String {
+    fn archive_url(clone_url: &str, branch: &str) -> String {
         let url = clone_url.trim_end_matches(".git");
         let forge_base = default_forge_url();
 
         match detect_forge_kind(forge_base) {
-            ForgeKind::GitHub => format!("{url}/archive/refs/heads/main.tar.gz"),
+            ForgeKind::GitHub => format!("{url}/archive/refs/heads/{branch}.tar.gz"),
             ForgeKind::Forgejo => {
                 let path = url.strip_prefix(forge_base).unwrap_or(url);
-                format!("{forge_base}/api/v1/repos{path}/archive/main.tar.gz")
+                format!("{forge_base}/api/v1/repos{path}/archive/{branch}.tar.gz")
             }
         }
     }
@@ -204,14 +210,14 @@ impl ForgeArchiveBackend {
 }
 
 impl VcsBackend for ForgeArchiveBackend {
-    fn clone_repo(&self, url: &str, target: &Path) -> Result<(), Error> {
-        let archive = Self::archive_url(url);
+    fn clone_repo(&self, url: &str, target: &Path, branch: &str) -> Result<(), Error> {
+        let archive = Self::archive_url(url, branch);
         Self::download_and_extract(&archive, target)
     }
 
-    fn pull_repo(&self, url: &str, target: &Path) -> Result<(), Error> {
+    fn pull_repo(&self, url: &str, target: &Path, branch: &str) -> Result<(), Error> {
         let _ = std::fs::remove_dir_all(target);
-        self.clone_repo(url, target)
+        self.clone_repo(url, target, branch)
     }
 
     fn is_repo(&self, target: &Path) -> bool {
@@ -285,7 +291,7 @@ pub fn fetch_sources(
         let url = source.clone_url();
 
         let outcome = if vcs.is_repo(&target) {
-            match vcs.pull_repo(&url, &target) {
+            match vcs.pull_repo(&url, &target, &source.branch) {
                 Ok(()) => FetchOutcome::Pulled {
                     key: key_owned,
                     kind: kind_label.to_string(),
@@ -296,7 +302,7 @@ pub fn fetch_sources(
                 },
             }
         } else {
-            match vcs.clone_repo(&url, &target) {
+            match vcs.clone_repo(&url, &target, &source.branch) {
                 Ok(()) => FetchOutcome::Cloned {
                     key: key_owned,
                     kind: kind_label.to_string(),
@@ -386,14 +392,14 @@ mod tests {
     }
 
     impl VcsBackend for MockBackend {
-        fn clone_repo(&self, url: &str, _target: &Path) -> Result<(), Error> {
+        fn clone_repo(&self, url: &str, _target: &Path, _branch: &str) -> Result<(), Error> {
             match self.clone_results.get(url) {
                 Some(Err(reason)) => Err(Error::Git(reason.clone())),
                 Some(Ok(())) | None => Ok(()),
             }
         }
 
-        fn pull_repo(&self, _url: &str, target: &Path) -> Result<(), Error> {
+        fn pull_repo(&self, _url: &str, target: &Path, _branch: &str) -> Result<(), Error> {
             let key = target.to_string_lossy().to_string();
             match self.pull_results.get(&key) {
                 Some(Err(reason)) => Err(Error::Git(reason.clone())),
@@ -448,6 +454,7 @@ origin = "ssh://git@git.primals.eco:2222/ecoPrimals/repo.git"
             origin: Some("ssh://custom.git".into()),
             kind: None,
             private: false,
+            branch: "main".into(),
         };
         assert_eq!(s.clone_url(), "ssh://custom.git");
     }
@@ -459,6 +466,7 @@ origin = "ssh://git@git.primals.eco:2222/ecoPrimals/repo.git"
             origin: None,
             kind: None,
             private: false,
+            branch: "main".into(),
         };
         assert_eq!(s.clone_url(), "https://github.com/ecoPrimals/bearDog.git");
     }

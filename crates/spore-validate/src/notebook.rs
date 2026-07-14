@@ -204,15 +204,17 @@ fn render_one(nb_path: &Path, output_dir: &Path) -> Result<String, crate::error:
     }
 
     let date = today_utc();
+    let weight = crate::paths::NOTEBOOK_DEFAULT_WEIGHT;
+    let domain = crate::paths::NOTEBOOK_DEFAULT_DOMAIN;
     let page = format!(
         "+++\n\
          title = \"{title}\"\n\
          description = \"Rendered from {stem}.ipynb\"\n\
          date = {date}\n\
-         weight = 50\n\
+         weight = {weight}\n\
          \n\
          [extra]\n\
-         domain = \"Lab\"\n\
+         domain = \"{domain}\"\n\
          rendered_from = \"{stem}.ipynb\"\n\
          +++\n\
          \n\

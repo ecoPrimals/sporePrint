@@ -89,7 +89,16 @@
 
 /* Visualization interactive enhancements */
 .viz-container { position: relative; }
-.viz-embed img { width: 100%; height: auto; border-radius: 8px; }
+.viz-embed {
+  margin: 1.5rem 0;
+  img { width: 100%; height: auto; border-radius: 8px; }
+  figcaption {
+    font-size: 0.85rem;
+    color: var(--c-muted);
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+}
 .viz-interactive { cursor: grab; }
 .viz-interactive:active { cursor: grabbing; }
 .viz-tooltip {
