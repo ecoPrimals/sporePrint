@@ -11,7 +11,9 @@ a live {{ total_stat(stat="total_primals") }}-primal {{ entity(name="nucleus") }
 cryptographic provenance chain: BLAKE3 content hashes → rhizoCrypt DAG → loamSpine
 ledger → sweetGrass ed25519-witnessed braid.
 
-**Security status**: All 13 primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. JH-0 MethodGate adopted 13/13 primals. 445 registered capability methods. Zero DEBT markers (primalSpring Wave 35).
+> **This page is public.** All evidence, notebooks, and validation summaries below are freely accessible — no sign-in required. `lab.primals.eco` is a separate service (JupyterHub) for hands-on compute access and requires authentication. If you're reviewing evidence, you're in the right place.
+
+**Security status**: All {{ total_stat(stat="total_primals") }} primals default `127.0.0.1` bind. BTSP Phase 3 AEAD on all connections. NestGate method-level auth gating. JH-0 MethodGate adopted 13/13 primals. 445 registered capability methods. Zero DEBT markers (primalSpring Wave 35).
 
 ---
 
