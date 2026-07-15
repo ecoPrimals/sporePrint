@@ -57,7 +57,7 @@ pub enum TransportEndpoint {
     MeshRelay { peer_id: String, capability: String },
 }
 
-use crate::paths::{TRANSPORT_CONNECT_TIMEOUT, TRANSPORT_IO_TIMEOUT};
+use crate::paths::{transport_connect_timeout, transport_io_timeout};
 
 use crate::ipc::{ribocipher_enabled, send_ribocipher_signal};
 
@@ -78,8 +78,8 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
                     "failed to connect to NestGate via UDS at {path}: {e}"
                 ))
             })?;
-            s.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-            s.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            s.set_write_timeout(Some(transport_io_timeout())).ok();
+            s.set_read_timeout(Some(transport_io_timeout())).ok();
             Box::new(s)
         }
         TransportEndpoint::Tcp { host, port } => {
@@ -87,14 +87,14 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
             let addr: std::net::SocketAddr = addr_str
                 .parse()
                 .map_err(|e| Error::Config(format!("invalid TCP address {addr_str}: {e}")))?;
-            let s = std::net::TcpStream::connect_timeout(&addr, TRANSPORT_CONNECT_TIMEOUT)
+            let s = std::net::TcpStream::connect_timeout(&addr, transport_connect_timeout())
                 .map_err(|e| {
                     Error::Config(format!(
                         "failed to connect to NestGate via TCP at {addr_str}: {e}"
                     ))
                 })?;
-            s.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-            s.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+            s.set_write_timeout(Some(transport_io_timeout())).ok();
+            s.set_read_timeout(Some(transport_io_timeout())).ok();
             Box::new(s)
         }
         TransportEndpoint::MeshRelay {

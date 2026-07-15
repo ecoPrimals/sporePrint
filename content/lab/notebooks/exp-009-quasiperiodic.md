@@ -5,7 +5,7 @@ date = 2026-07-10
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "physics"
 rendered_from = "exp-009-quasiperiodic.ipynb"
 +++
 

@@ -7,6 +7,16 @@ date = 2026-03-30
 paper_number = 14
 domain = "Physics and Materials"
 
+[[extra.companions]]
+url = "/thesis/06-barracuda/"
+title = "Chapter 6: BarraCuda"
+relation = "extends"
+
+[[extra.companions]]
+url = "/technical/sovereign-gpu-pipeline-profile/"
+title = "Sovereign GPU Pipeline Profile"
+relation = "evidence_for"
+
 [taxonomies]
 primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]

@@ -7,6 +7,11 @@ date = 2026-04-29
 paper_number = 26
 domain = "Neuromorphic Hardware"
 
+[[extra.companions]]
+url = "/technical/neuromorphic-benchmark/"
+title = "Neuromorphic Benchmark Datasheet"
+relation = "evidence_for"
+
 [taxonomies]
 primals = ["toadstool", "coralreef", "barracuda"]
 springs = ["hotspring", "airspring", "wetspring"]

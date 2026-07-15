@@ -21,6 +21,7 @@ label = "The full academic expansion — fitness landscapes, formal predictions"
 [taxonomies]
 primals = ["barracuda", "beardog", "nestgate", "songbird", "squirrel"]
 springs = ["hotspring"]
+trails = ["reproducibility"]
 +++
 
 **Status**: Working paper  

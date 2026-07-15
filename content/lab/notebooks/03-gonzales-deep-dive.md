@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "health"
 rendered_from = "03-gonzales-deep-dive.ipynb"
 +++
 

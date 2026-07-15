@@ -10,6 +10,7 @@ domain = "Provenance"
 [taxonomies]
 primals = ["rhizocrypt", "loamspine", "sweetgrass", "beardog", "nestgate", "toadstool"]
 springs = ["primalspring"]
+trails = ["evidence-chain"]
 +++
 
 ## The Provenance Trio

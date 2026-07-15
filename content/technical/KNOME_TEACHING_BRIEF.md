@@ -6,6 +6,13 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda"]
 springs = ["wetspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/methodology/k-nome-programming/"
+title = "K-NOME Programming"
+relation = "extends"
 +++
 
 **Audience:** Curriculum committees, MSDS faculty, DS/CS instructors  

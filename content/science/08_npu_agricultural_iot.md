@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 8
 domain = "Agriculture and Field Science"
 
+[[extra.companions]]
+url = "/thesis/09-results-airspring/"
+title = "Chapter 9: Results — airSpring"
+relation = "extends"
+
 [taxonomies]
 primals = ["barracuda", "toadstool"]
 springs = ["airspring", "neuralspring", "wetspring"]

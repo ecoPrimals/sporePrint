@@ -6,6 +6,18 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["hotspring", "wetspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/thesis/06-barracuda/"
+title = "Chapter 6: BarraCuda"
+relation = "evidence_for"
+
+[[extra.companions]]
+url = "/science/14-sovereign-compute-hardware/"
+title = "Sovereign Compute Hardware"
+relation = "pairs_with"
 +++
 
 **What we have already replaced, what we're replacing next, and what the

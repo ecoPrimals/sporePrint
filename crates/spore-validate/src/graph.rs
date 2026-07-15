@@ -7,9 +7,8 @@
 //! suitable for Zola templates and future rhizoCrypt DAG integration.
 
 use crate::error::Diagnostic;
-use crate::model::Entity;
+use crate::model::EntityRegistry;
 use serde::Serialize;
-use std::collections::HashMap;
 use std::path::Path;
 
 /// A resolved, bidirectional edge in the graph.
@@ -46,7 +45,7 @@ pub struct GraphStats {
 }
 
 /// Build the entity graph from the registry, computing inverse edges.
-pub fn build_graph(registry: &HashMap<String, Entity>) -> EntityGraph {
+pub fn build_graph(registry: &EntityRegistry) -> EntityGraph {
     let mut edges: Vec<ResolvedEdge> = Vec::new();
 
     for (source_key, entity) in registry {
@@ -96,7 +95,7 @@ pub fn build_graph(registry: &HashMap<String, Entity>) -> EntityGraph {
 }
 
 /// Validate that all edge targets resolve to existing registry keys.
-pub fn validate_edges(registry: &HashMap<String, Entity>, diagnostics: &mut Vec<Diagnostic>) {
+pub fn validate_edges(registry: &EntityRegistry, diagnostics: &mut Vec<Diagnostic>) {
     for (source_key, entity) in registry {
         if let Some(ref edges) = entity.edges {
             for edge in edges {
@@ -143,7 +142,8 @@ pub fn edges_for_entity<'a>(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::model::{Edge, EdgeRelation, EntityKind, Tier};
+    use crate::model::{Edge, EdgeRelation, Entity, EntityKind, Tier};
+    use std::collections::HashMap;
 
     fn test_registry() -> HashMap<String, Entity> {
         let mut reg = HashMap::new();

@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "computation"
 rendered_from = "02-benchmark-python-vs-rust.ipynb"
 +++
 

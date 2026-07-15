@@ -10,7 +10,7 @@
 //! hand-rolled POSIX tar reader for extraction. Zero external C dependencies.
 
 use crate::error::Error;
-use crate::paths::{TRANSPORT_CONNECT_TIMEOUT, TRANSPORT_IO_TIMEOUT};
+use crate::paths::{transport_connect_timeout, transport_io_timeout};
 use std::net::SocketAddr;
 use std::path::Path;
 
@@ -184,11 +184,11 @@ fn request_raw(url: &str) -> Result<(u16, String, Vec<u8>), Error> {
         .next()
         .ok_or_else(|| Error::Git(format!("no addresses for {host_port_owned}")))?;
 
-    let mut stream = TcpStream::connect_timeout(&addr, TRANSPORT_CONNECT_TIMEOUT)
+    let mut stream = TcpStream::connect_timeout(&addr, transport_connect_timeout())
         .map_err(|e| Error::Git(format!("TCP connect to {host_port_owned} failed: {e}")))?;
 
-    stream.set_write_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
-    stream.set_read_timeout(Some(TRANSPORT_IO_TIMEOUT)).ok();
+    stream.set_write_timeout(Some(transport_io_timeout())).ok();
+    stream.set_read_timeout(Some(transport_io_timeout())).ok();
 
     let request =
         format!("GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\nAccept: */*\r\n\r\n");

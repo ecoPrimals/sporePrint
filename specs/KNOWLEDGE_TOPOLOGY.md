@@ -2,7 +2,7 @@
 
 The intellectual foundations that guide HOW sporePrint connects, presents, and relates information. These are not decorative references — they are structural constraints on how the site's information architecture works.
 
-Last updated: June 1, 2026 (Wave 66 — Renvois de Choses implementation)
+Last updated: July 15, 2026 (Wave 140a — cortical folds, 10 reading trails, 79 entities, companion metadata)
 
 ---
 

@@ -70,7 +70,7 @@ pub fn discover() -> Result<(), Error> {
                 peer.primal_id,
                 peer.socket_path.as_deref().unwrap_or("?")
             );
-            for cap in peer.capabilities {
+            for cap in &peer.capabilities {
                 println!("      - {cap}");
             }
         }

@@ -3,6 +3,22 @@ title = "Chapter 7: Experimental Methodology"
 description = "The spring framework: Python control to Rust to GPU phased validation across five springs and eight scientific domains."
 weight = 7
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/methodology/k-nome-programming/"
+title = "K-NOME Programming"
+relation = "methodology"
+
+[[extra.companions]]
+url = "/lab/reproduce/"
+title = "Reproduce It Yourself"
+relation = "evidence_for"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

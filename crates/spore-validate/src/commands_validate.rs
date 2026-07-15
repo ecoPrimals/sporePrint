@@ -123,7 +123,8 @@ pub fn scan_viz_embeds(content_dir: &Path) -> Vec<String> {
     use regex::Regex;
 
     static VIZ_RE: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(r#"\{\{[\s]*viz_embed\s*\([^)]*name\s*=\s*"([^"]+)""#).expect("static regex")
+        Regex::new(r#"\{\{[\s]*viz_embed\s*\([^)]*name\s*=\s*"([^"]+)""#)
+            .unwrap_or_else(|e| unreachable!("VIZ_RE is a static literal: {e}"))
     });
 
     let mut names = std::collections::BTreeSet::new();

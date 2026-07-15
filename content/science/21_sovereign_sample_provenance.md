@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 21
 domain = "Economics and Provenance"
 
+[[extra.companions]]
+url = "/architecture/sovereign-deployment/"
+title = "Sovereign Deployment"
+relation = "extends"
+
 [taxonomies]
 primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweetgrass"]
 springs = ["ludospring", "wetspring"]

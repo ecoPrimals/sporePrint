@@ -11,13 +11,29 @@ use std::time::Duration;
 use walkdir::WalkDir;
 
 /// IPC timeout for health / method probes (fast operations).
-pub const PROBE_TIMEOUT: Duration = Duration::from_secs(3);
+/// Overridable via `SPOREPRINT_PROBE_TIMEOUT_SECS`.
+pub fn probe_timeout() -> Duration {
+    duration_from_env("SPOREPRINT_PROBE_TIMEOUT_SECS", 3)
+}
 
 /// Transport connect timeout for CAS push and HTTP fetch.
-pub const TRANSPORT_CONNECT_TIMEOUT: Duration = Duration::from_secs(15);
+/// Overridable via `SPOREPRINT_CONNECT_TIMEOUT_SECS`.
+pub fn transport_connect_timeout() -> Duration {
+    duration_from_env("SPOREPRINT_CONNECT_TIMEOUT_SECS", 15)
+}
 
 /// Transport I/O (read/write) timeout for CAS push and HTTP fetch.
-pub const TRANSPORT_IO_TIMEOUT: Duration = Duration::from_secs(30);
+/// Overridable via `SPOREPRINT_IO_TIMEOUT_SECS`.
+pub fn transport_io_timeout() -> Duration {
+    duration_from_env("SPOREPRINT_IO_TIMEOUT_SECS", 30)
+}
+
+fn duration_from_env(var: &str, default_secs: u64) -> Duration {
+    std::env::var(var)
+        .ok()
+        .and_then(|v| v.parse::<u64>().ok())
+        .map_or_else(|| Duration::from_secs(default_secs), Duration::from_secs)
+}
 
 pub const CONFIG_FILE: &str = "config.toml";
 pub const SOURCES_FILE: &str = "sources.toml";

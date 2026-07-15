@@ -7,6 +7,18 @@ date = 2026-03-17
 primals = ["barracuda", "beardog", "bingocube", "coralreef", "nestgate", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 trails = ["grant-ready"]
+
+[extra]
+
+[[extra.companions]]
+url = "/audience/capability-parity-brief/"
+title = "Capability & Parity Assessment"
+relation = "pairs_with"
+
+[[extra.companions]]
+url = "/architecture/evidence-snapshot/"
+title = "Evidence Snapshot"
+relation = "evidence_for"
 +++
 
 **Audience:** Grant reviewers — NIH, NSF, USDA, DOE, ARPA-H  

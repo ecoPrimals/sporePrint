@@ -41,8 +41,17 @@ pub struct NucleusProfile {
     pub mesh: Option<MeshConfig>,
 }
 
-/// Known deployment roles.
-const KNOWN_ROLES: &[&str] = &["canary", "production", "development", "relay", "compute"];
+/// Common deployment roles — used for informational warnings only.
+/// Custom roles are valid; this list helps catch typos.
+const COMMON_ROLES: &[&str] = &[
+    "canary",
+    "production",
+    "development",
+    "relay",
+    "compute",
+    "storage",
+    "gateway",
+];
 
 impl NucleusProfile {
     /// Whether federation is configured in this profile.
@@ -68,10 +77,10 @@ impl NucleusProfile {
         let primal_names: Vec<&str> = self.primals.keys().map(String::as_str).collect();
 
         if let Some(ref role) = self.profile.role {
-            if !KNOWN_ROLES.contains(&role.as_str()) {
+            if !COMMON_ROLES.contains(&role.as_str()) {
                 warnings.push(format!(
-                    "profile.role '{role}' is not a known role ({})",
-                    KNOWN_ROLES.join(", ")
+                    "profile.role '{role}' is not a common role — verify spelling (common: {})",
+                    COMMON_ROLES.join(", ")
                 ));
             }
         }
@@ -140,7 +149,7 @@ pub struct ProfileMeta {
     /// Base profile this extends (e.g., "full", "tower").
     #[serde(default)]
     pub extends: Option<String>,
-    /// Deployment role — validated by `structural_warnings()` against `KNOWN_ROLES`.
+    /// Deployment role — checked against common roles for typo warnings.
     #[serde(default)]
     pub role: Option<String>,
 }

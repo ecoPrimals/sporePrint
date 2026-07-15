@@ -3,6 +3,13 @@ title = "Structure Prediction Roadmap: helixVision — Sovereign AlphaFold-Quali
 description = "helixVision (formerly coralForge) — sovereign AlphaFold-quality protein structure prediction in pure Rust f64, moving to sporeGarden."
 date = 2026-03-31
 
+[extra]
+
+[[extra.companions]]
+url = "/products/coralforge/"
+title = "coralForge"
+relation = "evidence_for"
+
 [taxonomies]
 primals = ["barracuda"]
 springs = ["neuralspring", "wetspring"]

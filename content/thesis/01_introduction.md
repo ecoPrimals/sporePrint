@@ -12,6 +12,9 @@ title = "The City of Omelas"
 relation = "narrative_version"
 label = "Le Guin's Omelas, Rand's Atlas — and the choice to return and build"
 
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

@@ -16,6 +16,8 @@ label = "The physics — 3D Anderson model, W_c = 16.26, quorum sensing null hyp
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 **Anderson Localization, the Network as Filter, and How the City Grows**

@@ -10,6 +10,7 @@ domain = "Bioinformatics"
 [taxonomies]
 springs = ["wetspring"]
 primals = ["barracuda", "beardog", "loamspine", "nestgate", "rhizocrypt", "sweetgrass", "toadstool"]
+trails = ["evidence-chain"]
 +++
 
 ## Overview

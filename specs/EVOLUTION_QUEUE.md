@@ -2,7 +2,10 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 14, 2026 (Wave 138b — tower.rs expect→Result, JSON-RPC constant centralized, MockStream deduplicated, duplicate tests removed, biomeos weight fix)
+Last reviewed: July 15, 2026 (Wave 140a — freshness republished, protoKarya content, CAC transplant, cross-platform parity page, duplicate notebooks removed, root docs updated)
+
+**Current state**: 307 pages, 79 entities, 10 trails, 5 cortical folds, 3.57M LOC, 116K tests.
+Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ---
 

@@ -100,11 +100,11 @@ Interactive Jupyter notebooks that visualize baseCamp science. Each notebook loa
 - **[Soil Anderson Deep Dive](@/lab/notebooks/05-soil-anderson-deep-dive.md)** — Anderson localization in soil biology — physics meets ecology
 
 **groundSpring notebooks:**
-- **[Composition Validation](@/lab/notebooks/gs-01-composition-validation.md)** — 6 deploy graphs, guideStone Level 3, verb reconciliation
-- **[Benchmark Comparison](@/lab/notebooks/gs-02-benchmark-comparison.md)** — Rust vs Python timing, three-mode GPU, 110 barraCuda delegations
-- **[Ecosystem Evidence](@/lab/notebooks/gs-03-ecosystem-evidence.md)** — 35 experiments, 10 domains, gap resolution, security posture
-- **[Cross-Spring Connections](@/lab/notebooks/gs-04-cross-spring-connections.md)** — 5 primals consumed, 7 ecosystem flows, patterns pioneered
-- **[Measurement Science Deep Dive](@/lab/notebooks/gs-05-measurement-science-deep-dive.md)** — Five pillars, 13-tier tolerance architecture, Anderson thread
+- **[Composition Validation](@/lab/notebooks/01-composition-validation.md)** — 6 deploy graphs, guideStone Level 3, verb reconciliation
+- **[Benchmark Comparison](@/lab/notebooks/02-benchmark-comparison.md)** — Rust vs Python timing, three-mode GPU, 110 barraCuda delegations
+- **[Ecosystem Evidence](@/lab/notebooks/03-ecosystem-evidence.md)** — 35 experiments, 10 domains, gap resolution, security posture
+- **[Cross-Spring Connections](@/lab/notebooks/04-cross-spring-connections.md)** — 5 primals consumed, 7 ecosystem flows, patterns pioneered
+- **[Measurement Science Deep Dive](@/lab/notebooks/05-measurement-science-deep-dive.md)** — Five pillars, 13-tier tolerance architecture, Anderson thread
 
 **primalSpring notebooks:**
 - **[Composition Validation](@/lab/notebooks/01-composition-validation.md)** — Deploy graphs, bond types, profiles, discovery tiers

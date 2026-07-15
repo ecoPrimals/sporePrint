@@ -18,6 +18,9 @@ title = "First Dynamical QCD on Consumer GPU"
 relation = "validated_by"
 label = "First dynamical fermion production on consumer GPU"
 
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

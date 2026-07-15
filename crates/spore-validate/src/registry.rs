@@ -6,11 +6,10 @@
 //! and that tier assignments are consistent.
 
 use crate::error::Diagnostic;
-use crate::model::{Entity, EntityKind};
-use std::collections::HashMap;
+use crate::model::{Entity, EntityKind, EntityRegistry};
 
 /// Validate all entities in the registry for schema completeness.
-pub fn validate(registry: &HashMap<String, Entity>, diagnostics: &mut Vec<Diagnostic>) {
+pub fn validate(registry: &EntityRegistry, diagnostics: &mut Vec<Diagnostic>) {
     let mut keys: Vec<&str> = registry.keys().map(String::as_str).collect();
     keys.sort_unstable();
 

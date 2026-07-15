@@ -13,6 +13,9 @@ use std::collections::HashMap;
 use std::fmt;
 use std::path::Path;
 
+/// Canonical type for the entity registry map.
+pub type EntityRegistry = HashMap<String, Entity>;
+
 /// Top-level Zola `config.toml` structure (only fields we consume).
 #[derive(Debug, Deserialize)]
 pub struct Config {
@@ -21,7 +24,7 @@ pub struct Config {
 
 #[derive(Debug, Deserialize)]
 pub struct Extra {
-    pub entity_registry: HashMap<String, Entity>,
+    pub entity_registry: EntityRegistry,
     pub totals: Totals,
 }
 
@@ -276,14 +279,13 @@ impl MaturityLevel {
         ]
     }
 
-    /// Parse from string, case-insensitive.
+    /// Parse from string, case-insensitive. Zero-allocation.
     #[must_use]
     pub fn from_str_loose(s: &str) -> Option<Self> {
-        let lower = s.to_lowercase();
         Self::all()
             .iter()
             .copied()
-            .find(|level| level.label().to_lowercase() == lower)
+            .find(|level| s.eq_ignore_ascii_case(level.label()))
     }
 }
 

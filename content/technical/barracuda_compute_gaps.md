@@ -7,6 +7,18 @@ date = 2026-07-09
 [taxonomies]
 primals = ["barracuda", "toadstool", "coralreef"]
 springs = ["hotspring", "wetspring", "neuralspring", "groundspring", "airspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/thesis/06-barracuda/"
+title = "Chapter 6: BarraCuda"
+relation = "extends"
+
+[[extra.companions]]
+url = "/architecture/ecosystem-architecture/"
+title = "Ecosystem Architecture"
+relation = "pairs_with"
 +++
 
 {{ maturity(level="architectural") }}

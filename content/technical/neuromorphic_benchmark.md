@@ -7,6 +7,13 @@ date = 2026-07-09
 [taxonomies]
 primals = ["barracuda", "toadstool", "biomeos"]
 springs = ["neuralspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/science/26-neuromorphic-sovereign-driver/"
+title = "Neuromorphic Sovereign Driver"
+relation = "pairs_with"
 +++
 
 {{ maturity(level="architectural") }}

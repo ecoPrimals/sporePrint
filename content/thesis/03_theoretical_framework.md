@@ -18,6 +18,9 @@ title = "The Orthogonal Synthesis"
 relation = "narrative_version"
 label = "Smith, Paine, Rand, Marx — four descriptions of one structural requirement"
 
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

@@ -6,6 +6,13 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "beardog", "loamspine", "nestgate", "rhizocrypt", "sweetgrass", "toadstool"]
 springs = ["groundspring", "healthspring", "wetspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/architecture/evidence-snapshot/"
+title = "Evidence Snapshot"
+relation = "evidence_for"
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  

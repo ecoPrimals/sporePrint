@@ -10,6 +10,8 @@ voice = "attsi"
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 ---

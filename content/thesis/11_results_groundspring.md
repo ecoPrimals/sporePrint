@@ -3,6 +3,22 @@ title = "Chapter 11: Results — groundSpring"
 description = "Measurement noise and uncertainty across ten domains — 376 checks forming the tolerance foundation for all springs."
 weight = 11
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/science/24-all-silicon-science/"
+title = "All-Silicon Science"
+relation = "validated_by"
+
+[[extra.companions]]
+url = "/lab/springs/groundspring/"
+title = "groundSpring Validation"
+relation = "evidence_for"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

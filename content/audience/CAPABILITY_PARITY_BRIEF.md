@@ -7,6 +7,18 @@ date = 2026-03-17
 primals = ["barracuda", "beardog", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 trails = ["grant-ready"]
+
+[extra]
+
+[[extra.companions]]
+url = "/architecture/evidence-snapshot/"
+title = "Evidence Snapshot"
+relation = "evidence_for"
+
+[[extra.companions]]
+url = "/technical/grant-technical-appendix/"
+title = "Grant Technical Appendix"
+relation = "pairs_with"
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  

@@ -6,6 +6,18 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["hotspring", "wetspring", "airspring", "healthspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/architecture/ecosystem-architecture/"
+title = "Ecosystem Architecture"
+relation = "pairs_with"
+
+[[extra.companions]]
+url = "/science/14-sovereign-compute-hardware/"
+title = "Sovereign Compute Hardware"
+relation = "extends"
 +++
 
 **The f64 GPU discovery, the $0.044 run, and what consumer hardware actually does.**

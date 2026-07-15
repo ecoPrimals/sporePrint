@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "physics"
 rendered_from = "09-abelian-higgs.ipynb"
 +++
 

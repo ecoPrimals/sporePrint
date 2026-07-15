@@ -7,6 +7,7 @@ weight = 2
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "loamspine", "sourdough", "sweetgrass", "toadstool"]
 springs = ["hotspring"]
+trails = ["reproducibility"]
 +++
 
 ## What a Deployment Artifact Is

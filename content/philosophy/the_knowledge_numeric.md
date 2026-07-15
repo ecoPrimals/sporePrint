@@ -22,6 +22,8 @@ label = "The constraint that made everything else possible — the builder's nar
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 **K-NOME: Where Human Expertise Meets the Silicon Inheritance**

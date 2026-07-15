@@ -3,6 +3,17 @@ title = "Chapter 2: Literature Review"
 description = "Survey of extremophile biology, Lenski LTEE, type theory, evolutionary computation, and AI-assisted development — identifying the unified-framework gap."
 weight = 2
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/bibliography/"
+title = "Bibliography"
+relation = "pairs_with"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

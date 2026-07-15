@@ -6,6 +6,18 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "beardog", "toadstool"]
 springs = ["healthspring", "wetspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/lab/reproduce/"
+title = "Reproduce It Yourself"
+relation = "evidence_for"
+
+[[extra.companions]]
+url = "/methodology/k-nome-programming/"
+title = "K-NOME Programming"
+relation = "methodology"
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  

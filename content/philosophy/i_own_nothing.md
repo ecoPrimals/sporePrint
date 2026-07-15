@@ -22,6 +22,8 @@ label = "The builder's narrative of what sovereign means — hardware, data, ele
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 **The Tollbooth and the Well**

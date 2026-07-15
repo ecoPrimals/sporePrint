@@ -7,6 +7,16 @@ date = 2026-03-17
 paper_number = 6
 domain = "Microbiology and Ecology"
 
+[[extra.companions]]
+url = "/thesis/09-results-airspring/"
+title = "Chapter 9: Results — airSpring"
+relation = "extends"
+
+[[extra.companions]]
+url = "/philosophy/the-mobility-edge/"
+title = "The Mobility Edge"
+relation = "narrative_version"
+
 [taxonomies]
 primals = ["barracuda", "nestgate", "toadstool"]
 springs = ["airspring", "groundspring", "neuralspring", "wetspring"]

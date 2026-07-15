@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 4
 domain = "Microbiology and Ecology"
 
+[[extra.companions]]
+url = "/thesis/10-results-wetspring/"
+title = "Chapter 10: Results — wetSpring"
+relation = "extends"
+
 [taxonomies]
 primals = ["barracuda", "toadstool"]
 springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]

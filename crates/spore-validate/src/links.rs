@@ -49,7 +49,10 @@ fn collect_pages(content_root: &Path) -> HashSet<String> {
 fn extract_internal_links(content: &str) -> Vec<String> {
     use std::sync::LazyLock;
     static LINK_RE: LazyLock<regex::Regex> =
-        LazyLock::new(|| regex::Regex::new(r"(?:\]\()(@/[^)#\s]+)").expect("static regex"));
+        LazyLock::new(|| {
+            regex::Regex::new(r"(?:\]\()(@/[^)#\s]+)")
+                .unwrap_or_else(|e| unreachable!("LINK_RE is a static literal: {e}"))
+        });
 
     let mut links = Vec::new();
     for cap in LINK_RE.captures_iter(content) {

@@ -112,6 +112,8 @@ The gene (source code) stays inside.
 
 ## Projected Catalog
 
+### sporeGarden Products
+
 | Product | Domain | Status |
 |---------|--------|--------|
 | esotericWebb | Creative gaming with primal composition | Active |
@@ -119,7 +121,13 @@ The gene (source code) stays inside.
 | {{ entity(name="initiochem") }} | Conformational dynamics and FEL | Implemented |
 | {{ entity(name="bluefish") }} | PFAS analytical chemistry ETL | Specification |
 | {{ entity(name="lithospore") }} | Bootable sovereign USB environment | Designed |
-| [tideGlass](@/products/tideglass.md) | Sovereign field pallet | Architectural |
+
+### protoKarya Protists
+
+| Protist | Domain | Status |
+|---------|--------|--------|
+| [footPrint](@/products/footprint.md) | GIS home planning | **Partially live** |
+| [tideGlass](@/products/tideglass.md) | Sovereign GPS platform | Phase 0 |
 
 ---
 

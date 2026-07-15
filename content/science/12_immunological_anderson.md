@@ -7,6 +7,16 @@ date = 2026-03-17
 paper_number = 12
 domain = "Human Health"
 
+[[extra.companions]]
+url = "/philosophy/the-mobility-edge/"
+title = "The Mobility Edge"
+relation = "narrative_version"
+
+[[extra.companions]]
+url = "/science/01-anderson-qs/"
+title = "Anderson Localization as QS Null Hypothesis"
+relation = "extends"
+
 [taxonomies]
 springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
 +++

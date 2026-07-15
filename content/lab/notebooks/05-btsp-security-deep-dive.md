@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "computation"
 rendered_from = "05-btsp-security-deep-dive.ipynb"
 +++
 

@@ -29,6 +29,8 @@ pub struct PageEntry {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub section: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub fold: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub maturity: Option<String>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub trails: Vec<String>,
@@ -37,6 +39,7 @@ pub struct PageEntry {
 }
 
 pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
+    let fold_map = load_fold_map(content_dir);
     let mut pages = BTreeMap::new();
     let mut root_hasher = blake3::Hasher::new();
 
@@ -55,6 +58,10 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
 
             let title = extract_title(&bytes);
             let (section, maturity, trails, companions) = extract_semantic_metadata(&rel, &bytes);
+            let fold = section
+                .as_deref()
+                .and_then(|s| fold_map.get(s))
+                .cloned();
 
             pages.insert(
                 rel,
@@ -63,6 +70,7 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
                     size_bytes: bytes.len() as u64,
                     title,
                     section,
+                    fold,
                     maturity,
                     trails,
                     companions,
@@ -79,6 +87,43 @@ pub fn generate_manifest(content_dir: &Path) -> ContentManifest {
         page_count: pages.len(),
         pages,
     }
+}
+
+fn load_fold_map(content_dir: &Path) -> BTreeMap<String, String> {
+    let config_path = content_dir.parent().map(|p| p.join("config.toml"));
+    let Some(path) = config_path else {
+        return BTreeMap::new();
+    };
+    let Ok(text) = fs::read_to_string(path) else {
+        return BTreeMap::new();
+    };
+    let Ok(config) = text.parse::<toml::Table>() else {
+        return BTreeMap::new();
+    };
+
+    let mut fold_map = BTreeMap::new();
+    let Some(cortex) = config
+        .get("extra")
+        .and_then(|e| e.get("cortex"))
+        .and_then(|c| c.as_array())
+    else {
+        return fold_map;
+    };
+
+    for fold in cortex {
+        let Some(key) = fold.get("key").and_then(|k| k.as_str()) else {
+            continue;
+        };
+        let Some(sections) = fold.get("sections").and_then(|s| s.as_array()) else {
+            continue;
+        };
+        for sec in sections {
+            if let Some(sec_name) = sec.as_str() {
+                fold_map.insert(sec_name.to_string(), key.to_string());
+            }
+        }
+    }
+    fold_map
 }
 
 pub fn diff_manifests(
@@ -257,6 +302,7 @@ mod tests {
                 size_bytes: 10,
                 title: None,
                 section: None,
+                fold: None,
                 maturity: None,
                 trails: Vec::new(),
                 companions: Vec::new(),

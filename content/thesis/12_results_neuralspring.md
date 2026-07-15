@@ -3,6 +3,22 @@ title = "Chapter 12: Results — neuralSpring"
 description = "ML primitives and the Isomorphism Theorem: all architectures decompose into six operations. 2,450+ checks, coralForge AlphaFold2/3."
 weight = 12
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/lab/springs/neuralspring/"
+title = "neuralSpring Validation"
+relation = "evidence_for"
+
+[[extra.companions]]
+url = "/science/15-precision-brain-heterogeneous-gpu/"
+title = "Precision Brain on Heterogeneous GPU"
+relation = "validated_by"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

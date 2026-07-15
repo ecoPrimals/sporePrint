@@ -7,7 +7,7 @@ weight = 1
 [taxonomies]
 primals = ["barracuda", "beardog", "nestgate", "songbird", "squirrel", "sweetgrass", "toadstool"]
 springs = ["primalspring"]
-trails = ["grant-ready"]
+trails = ["grant-ready", "evidence-chain"]
 
 [extra]
 domain = "Architecture"

@@ -5,6 +5,18 @@ date = 2026-03-17
 
 [taxonomies]
 springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/products/coralforge/"
+title = "coralForge"
+relation = "evidence_for"
+
+[[extra.companions]]
+url = "/lab/springs/neuralspring/"
+title = "neuralSpring Validation"
+relation = "validated_by"
 +++
 
 **Audience:** Gonzales lab, ADDRC, MSU Drug Discovery Program  

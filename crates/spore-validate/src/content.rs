@@ -6,11 +6,11 @@
 //! internal links use Zola's `@/` prefix for proper resolution.
 
 use crate::error::Diagnostic;
-use crate::model::{Entity, EntityKind, MaturityLevel};
+use crate::model::{EntityKind, EntityRegistry, MaturityLevel};
 use crate::paths;
 use regex::Regex;
 use std::borrow::Cow;
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 use std::path::Path;
 use std::sync::LazyLock;
 
@@ -19,14 +19,14 @@ static ENTITY_SHORTCODE_RE: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(
         r#"\{\{\s*entity(?:_metrics|_stat)?\(\s*name\s*=\s*"([^"]+)"\s*(?:,\s*stat\s*=\s*"[^"]*"\s*)?\)\s*\}\}"#,
     )
-    .expect("static regex")
+    .unwrap_or_else(|e| unreachable!("ENTITY_SHORTCODE_RE is a static literal: {e}"))
 });
 
 /// Validate taxonomy tags in front matter reference valid registry keys.
 pub fn validate_taxonomies(
     root: &Path,
     content_dir: &Path,
-    registry: &HashMap<String, Entity>,
+    registry: &EntityRegistry,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
     let registry_keys: HashSet<&str> = registry.keys().map(String::as_str).collect();
@@ -108,7 +108,7 @@ fn normalize_key(key: &str) -> Cow<'_, str> {
 pub fn check_integrity(
     root: &Path,
     content_dir: &Path,
-    registry: &HashMap<String, Entity>,
+    registry: &EntityRegistry,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
     let shortcode_re = &*ENTITY_SHORTCODE_RE;
@@ -136,19 +136,29 @@ pub fn check_integrity(
         }
     }
 
+    let broken_count = broken.len();
     for b in broken {
         diagnostics.push(Diagnostic::error(b));
     }
 
-    diagnostics.push(Diagnostic::info(format!(
-        "check: {shortcode_count} entity shortcodes scanned, all resolved"
-    )));
+    if broken_count == 0 {
+        diagnostics.push(Diagnostic::info(format!(
+            "check: {shortcode_count} entity shortcodes scanned, all resolved"
+        )));
+    } else {
+        diagnostics.push(Diagnostic::info(format!(
+            "check: {shortcode_count} entity shortcodes scanned, {broken_count} broken"
+        )));
+    }
 }
 
 /// Detect bare `.md` links that bypass Zola's internal-link resolver.
 pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Vec<Diagnostic>) {
     static BARE_MD_RE: LazyLock<Regex> =
-        LazyLock::new(|| Regex::new(r"\]\(([^@\)][^:\)]*\.md)\)").expect("static regex"));
+        LazyLock::new(|| {
+            Regex::new(r"\]\(([^@\)][^:\)]*\.md)\)")
+                .unwrap_or_else(|e| unreachable!("BARE_MD_RE is a static literal: {e}"))
+        });
     let bare_md_re = &*BARE_MD_RE;
     let mut count: u32 = 0;
 
@@ -188,7 +198,7 @@ pub fn lint_internal_links(root: &Path, content_dir: &Path, diagnostics: &mut Ve
 pub fn audit_taxonomy_coverage(
     _root: &Path,
     content_dir: &Path,
-    registry: &HashMap<String, Entity>,
+    registry: &EntityRegistry,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
     let shortcode_re = &*ENTITY_SHORTCODE_RE;
@@ -272,7 +282,8 @@ fn strip_front_matter(text: &str) -> &str {
 /// the `MaturityLevel` enum.
 pub fn validate_maturity_levels(content_dir: &Path, diagnostics: &mut Vec<Diagnostic>) {
     static MATURITY_RE: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(r#"\{\{[\s]*maturity\s*\(\s*level\s*=\s*"([^"]+)""#).expect("static regex")
+        Regex::new(r#"\{\{[\s]*maturity\s*\(\s*level\s*=\s*"([^"]+)""#)
+            .unwrap_or_else(|e| unreachable!("MATURITY_RE is a static literal: {e}"))
     });
 
     for entry in paths::walk_markdown_files(content_dir) {
@@ -312,6 +323,8 @@ pub fn extract_front_matter(path: &Path) -> Option<toml::Table> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::model::Entity;
+    use std::collections::HashMap;
     use std::io::Write;
 
     #[test]

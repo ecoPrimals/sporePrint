@@ -3,6 +3,10 @@ title = "References"
 description = "Full author-date bibliography for the constrained evolution thesis."
 weight = 17
 date = 2026-07-09
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "computation"
 rendered_from = "paper-015-swarm-robotics.ipynb"
 +++
 

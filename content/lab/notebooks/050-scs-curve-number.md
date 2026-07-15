@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "agriculture"
 rendered_from = "050-scs-curve-number.ipynb"
 +++
 

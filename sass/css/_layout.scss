@@ -129,6 +129,43 @@
   margin-top: 0.25rem;
   pointer-events: none;
 }
+.tree-fold {
+  margin-bottom: 0.25rem;
+}
+.tree-fold > details > summary {
+  list-style: none;
+}
+.tree-fold > details > summary::-webkit-details-marker { display: none; }
+.tree-fold > details > summary::before {
+  content: "▸";
+  font-size: 0.65rem;
+  margin-right: 0.3rem;
+  color: var(--c-text-muted);
+  transition: transform 0.15s;
+}
+.tree-fold > details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.tree-fold-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-accent);
+  cursor: pointer;
+  padding: 0.3rem 0.4rem;
+  border-radius: 4px;
+}
+.tree-fold-label:hover {
+  background: var(--c-accent-light);
+}
+.tree-fold-sections {
+  list-style: none;
+  padding: 0 0 0 0.4rem;
+  margin: 0.1rem 0 0;
+  border-left: 2px solid var(--c-accent-light);
+}
+
 .tree-divider {
   border-top: 1px solid var(--c-border);
   margin: 0.5rem 0.5rem;

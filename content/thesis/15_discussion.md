@@ -3,6 +3,22 @@ title = "Chapter 15: Discussion"
 description = "Strengths, limitations, the fastidiousness trade-off, alternative explanations, and broader implications."
 weight = 15
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-human-search/"
+title = "The Human Search"
+relation = "narrative_version"
+
+[[extra.companions]]
+url = "/architecture/primal-evolution/"
+title = "Primal Evolution"
+relation = "evidence_for"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

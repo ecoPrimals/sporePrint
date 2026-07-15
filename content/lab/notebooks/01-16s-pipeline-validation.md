@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "biology"
 rendered_from = "01-16s-pipeline-validation.ipynb"
 +++
 

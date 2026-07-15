@@ -3,6 +3,10 @@ title = "Front Matter"
 description = "Dissertation title page and abstract: constrained evolution across biology and computation, ecoPrimals platform, eight validation springs, and proposed LTEE sequencing."
 weight = 0
 date = 2026-07-09
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

@@ -8,7 +8,7 @@
 
 use crate::ipc::RIBOCIPHER_MITO_CLEAR;
 use crate::nucleus::{HealthContract, ProbeResult};
-use crate::paths::PROBE_TIMEOUT;
+use crate::paths::probe_timeout;
 use serde_json::Value;
 use std::io::{BufRead, BufReader, Write};
 use std::time::Instant;
@@ -35,7 +35,7 @@ fn probe_failed(start: Instant, error: String) -> ProbeResult {
 pub fn probe_socket_health(socket_path: &str) -> ProbeResult {
     let start = Instant::now();
 
-    let mut reader = match crate::ipc::connect_uds(socket_path, PROBE_TIMEOUT) {
+    let mut reader = match crate::ipc::connect_uds(socket_path, probe_timeout()) {
         Ok(r) => r,
         Err(e) => return probe_failed(start, format!("{e}")),
     };
@@ -105,8 +105,8 @@ pub fn probe_ribocipher_acceptance(socket_path: &str) -> bool {
         return false;
     };
 
-    stream.set_write_timeout(Some(PROBE_TIMEOUT)).ok();
-    stream.set_read_timeout(Some(PROBE_TIMEOUT)).ok();
+    stream.set_write_timeout(Some(probe_timeout())).ok();
+    stream.set_read_timeout(Some(probe_timeout())).ok();
 
     let request = serde_json::json!({
         "jsonrpc": "2.0",

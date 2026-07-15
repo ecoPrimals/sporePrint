@@ -6,6 +6,18 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweetgrass", "toadstool"]
 springs = ["ludospring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/outreach/homelab-llm-landing/"
+title = "Homelab & LLM Landing"
+relation = "pairs_with"
+
+[[extra.companions]]
+url = "/lab/getting-started-plasmidbin/"
+title = "Getting Started with plasmidBin"
+relation = "evidence_for"
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  

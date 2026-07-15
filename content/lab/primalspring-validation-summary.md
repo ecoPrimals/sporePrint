@@ -7,6 +7,7 @@ weight = 21
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool", "nestgate", "beardog", "songbird", "squirrel", "rhizocrypt", "loamspine", "sweetgrass", "petaltongue", "skunkbat", "coralreef"]
 springs = ["primalspring"]
+trails = ["evidence-chain"]
 +++
 
 ## Status

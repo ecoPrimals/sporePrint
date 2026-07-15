@@ -6,12 +6,11 @@
 //! registry. Catches metric drift introduced by partial updates.
 
 use crate::error::Diagnostic;
-use crate::model::{Entity, EntityKind, Totals};
-use std::collections::HashMap;
+use crate::model::{Entity, EntityKind, EntityRegistry, Totals};
 
 /// Verify that stored totals match computed sums from the registry.
 pub fn validate(
-    registry: &HashMap<String, Entity>,
+    registry: &EntityRegistry,
     totals: &Totals,
     diagnostics: &mut Vec<Diagnostic>,
 ) {
@@ -72,7 +71,7 @@ pub fn validate(
 }
 
 fn sum_field(
-    registry: &HashMap<String, Entity>,
+    registry: &EntityRegistry,
     kind: EntityKind,
     field: impl Fn(&Entity) -> Option<u64>,
 ) -> u64 {
@@ -95,6 +94,7 @@ fn check(stored: u64, computed: u64, field: &str, label: &str, diagnostics: &mut
 mod tests {
     use super::*;
     use crate::model::{EntityKind, Tier};
+    use std::collections::HashMap;
 
     fn registry_with(entries: Vec<(&str, EntityKind, u64, u64)>) -> HashMap<String, Entity> {
         entries

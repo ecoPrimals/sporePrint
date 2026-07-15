@@ -3,6 +3,17 @@ title = "Chapter 4: Accept and Generate"
 description = "Nature's strategy for hard problems — enzymes as generators, selection as verifier, and the constrained evolution methodology as an instance."
 weight = 4
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/methodology/constrained-evolution-formal/"
+title = "Constrained Evolution — Formal"
+relation = "methodology"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

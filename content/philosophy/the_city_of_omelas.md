@@ -16,6 +16,8 @@ label = "The academic framing — Taq polymerase motivation, thesis statement, f
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 ---

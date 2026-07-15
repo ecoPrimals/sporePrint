@@ -10,6 +10,7 @@ domain = "Infrastructure"
 [taxonomies]
 primals = ["toadstool", "beardog", "nestgate", "rhizocrypt", "loamspine", "sweetgrass", "barracuda"]
 springs = ["wetspring", "primalspring"]
+trails = ["reproducibility"]
 +++
 
 Everything in the [Lab](@/lab/_index.md) ran on a single machine. You can

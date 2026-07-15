@@ -1,11 +1,11 @@
 +++
-title = "tideGlass — Sovereign Pallet for Field Science and Humanitarian Infrastructure"
-description = "Self-sustaining deployable unit providing power, compute, connectivity, and sovereign identity — with zero infrastructure dependency. A gate in the sovereign mesh that happens to be portable."
-date = 2026-06-28
+title = "tideGlass — Sovereign GPS Platform"
+description = "Sovereign GPS data analysis platform — reproducing published GPS methodology in pure Rust. Phase 0: reproduce GPS paper figures vs Python baseline. Second protoKarya protist."
+date = 2026-07-15
 
 [taxonomies]
-primals = ["beardog", "biomeos", "cellmembrane", "nestgate", "rhizocrypt", "songbird", "sweetgrass"]
-springs = ["wetspring", "hotspring", "neuralspring"]
+primals = ["beardog", "biomeos", "cellmembrane", "nestgate", "rhizocrypt", "songbird", "sweetgrass", "barracuda", "coralreef"]
+springs = ["wetspring", "hotspring", "neuralspring", "groundspring"]
 trails = ["nf-pipeline"]
 
 [extra]
@@ -16,6 +16,12 @@ url = "/products/nf-case-study/"
 title = "NF Case Study"
 relation = "pairs_with"
 label = "First multi-product composition this enables"
+
+[[extra.companions]]
+url = "/products/footprint/"
+title = "footPrint"
+relation = "pairs_with"
+label = "Sister protist — GIS home planner sharing composition patterns"
 
 [[extra.companions]]
 url = "/architecture/sovereign-hpc-evolution/"
@@ -30,15 +36,76 @@ relation = "pairs_with"
 label = "GPS platform rebuild as first tideGlass deliverable"
 +++
 
-{{ maturity(level="architectural") }} Concept designed; hardware tiers specified; software stack mapped to NUCLEUS primals. Prototype planning in progress.
+{{ maturity(level="architectural") }} Phase 0: GPS paper reproduction in progress. Sovereign pallet hardware designed.
 
 ---
 
 ## What It Is
 
-A pallet-sized, self-sustaining unit that provides power, compute, heat, hot water, connectivity, and sovereign identity storage — with zero infrastructure dependency. Drop it in a forest for cave research. Drop it at a humanitarian service location for hot water and phone charging. Drop it in the outback for edge science. Drop it at a disaster zone for communications.
+tideGlass has two identities that share one architecture:
 
-It is not a solar generator. It is not a charging station. It is a **gate in the sovereign mesh** that happens to be portable, self-powered, and designed for the people who have the least.
+1. **Sovereign GPS Platform** (Phase 0, active) — reproducing published GPS
+   methodology in pure Rust, validated against Python baselines. This is the
+   immediate deliverable: a self-hosted GPS data analysis tool that replaces
+   commercial platforms with sovereign computation.
+
+2. **Sovereign Pallet** (future) — a self-sustaining deployable unit providing
+   power, compute, connectivity, and sovereign identity storage for field science
+   and humanitarian infrastructure.
+
+The GPS platform is the first composition that runs on the pallet. Build the
+software first, then deploy it to sovereign hardware.
+
+---
+
+## GPS Platform — Phase 0
+
+The immediate focus: reproduce GPS paper figures from the Gonzales NF data
+mining collaboration, validated against the Python baseline. This proves
+that sovereign Rust can replace commercial GPS analysis tools.
+
+### Validation Modules (per guideStone spec)
+
+Seven validation modules, each reproducing a specific GPS analysis capability:
+
+| Module | What it validates | Status |
+|--------|------------------|--------|
+| Coordinate transforms | WGS84 ↔ UTM ↔ local frames | Planned |
+| Signal processing | L1/L2 carrier phase, pseudorange | Planned |
+| Positioning engine | Least-squares + Kalman filter | Planned |
+| Atmospheric correction | Troposphere/ionosphere models | Planned |
+| Time series analysis | Station velocity, seasonal signals | Planned |
+| Network adjustment | Multi-station baseline resolution | Planned |
+| Visualization | Displacement maps, time series plots | Planned |
+
+### Drawbridge Bonds
+
+tideGlass consumes external data via {{ entity(name="songbird") }} drawbridge:
+
+| Source | Data | Registration |
+|--------|------|-------------|
+| LINCS L1000 | Gene expression profiles | Planned |
+| GEO | Genomics datasets | Planned |
+| ChEMBL | Bioactivity data | Planned |
+| NF Data Portal | Neurofibromatosis datasets | Planned |
+
+### Composition Evolution
+
+| Step | Owner | Status |
+|------|-------|--------|
+| Clone repo into `protists/tideGlass` | overwatch | Planned |
+| Phase 0: reproduce GPS paper figures | tideGlass team | Planned |
+| Caddy block at `tideglass.primals.eco` | cellMembrane team | Planned |
+| Drawbridge bond registration | songBird team | Planned |
+| {{ entity(name="lithospore") }} packaging | lithoSpore team | Planned |
+| `tideglass-composition-routing` scenario | {{ entity(name="primalspring") }} | Missing |
+
+---
+
+## Sovereign Pallet — Future Hardware
+
+The GPS platform is software. The sovereign pallet is the hardware it
+runs on when deployed to the field.
 
 ---
 

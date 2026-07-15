@@ -22,6 +22,7 @@ label = "How these results fit the constrained evolution framework"
 [taxonomies]
 primals = ["barracuda", "toadstool"]
 springs = ["groundspring", "hotspring", "neuralspring", "wetspring"]
+trails = ["evidence-chain"]
 +++
 
 **Date:** March 1, 2026

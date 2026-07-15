@@ -66,6 +66,11 @@ foundation                       → institutional adoption
 - **[Primal Interactions](@/architecture/primal_interactions.md)** — IPC architecture, JSON-RPC, discovery
 - **[Discovery Log](@/architecture/discovery_log.md)** — capability hunting methodology
 
+## Convergence and Platform
+
+- **[Content-Addressed Convergence](@/architecture/content_addressed_convergence.md)** — the Newton-Leibniz pattern: content identity supersedes temporal identity
+- **[Cross-Platform Parity](@/architecture/cross_platform_parity.md)** — OS Atheism → Silicon Atheism: deploying on any substrate
+
 ## Ecosystem
 
 - **[Atlas Memory Palace](@/architecture/atlas_memory_palace.md)** — mountain, river, garden, water

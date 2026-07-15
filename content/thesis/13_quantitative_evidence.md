@@ -3,6 +3,22 @@ title = "Chapter 13: Quantitative Evidence"
 description = "Measurable constrained-evolution signatures: NTT-to-FFT kernel identity (~97%), convergent IPC, fastidious specialization."
 weight = 13
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/architecture/evidence-snapshot/"
+title = "Evidence Snapshot"
+relation = "extends"
+
+[[extra.companions]]
+url = "/science/cross-spring-evidence-map/"
+title = "Cross-Spring Evidence Map"
+relation = "evidence_for"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

@@ -5,7 +5,7 @@ date = 2026-07-04
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "chemistry"
 rendered_from = "jones-pfas-chemistry.ipynb"
 +++
 

@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 17
 domain = "Game Science and Systems"
 
+[[extra.companions]]
+url = "/products/esotericwebb/"
+title = "esotericWebb"
+relation = "evidence_for"
+
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
 springs = ["ludospring", "wetspring"]

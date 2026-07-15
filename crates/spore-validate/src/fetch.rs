@@ -62,9 +62,18 @@ enum ForgeKind {
     Forgejo,
 }
 
-/// Detect forge type from URL. GitHub-like forges use direct archive paths;
-/// Forgejo/Gitea uses the `/api/v1/repos/` pattern.
+/// Detect forge type from URL or env override.
+///
+/// Priority: `SPOREPRINT_FORGE_KIND` env var (`github` | `forgejo`) → URL heuristic.
+/// The URL heuristic checks for `github.com`/`github.io` domains; all other
+/// hosts are treated as Forgejo/Gitea API-compatible.
 fn detect_forge_kind(forge_url: &str) -> ForgeKind {
+    if let Ok(kind) = std::env::var("SPOREPRINT_FORGE_KIND") {
+        return match kind.to_lowercase().as_str() {
+            "github" => ForgeKind::GitHub,
+            _ => ForgeKind::Forgejo,
+        };
+    }
     if forge_url.contains("github.com") || forge_url.contains("github.io") {
         ForgeKind::GitHub
     } else {

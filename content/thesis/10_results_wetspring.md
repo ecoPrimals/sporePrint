@@ -18,6 +18,9 @@ title = "BioAg Microbiome"
 relation = "validated_by"
 label = "Anderson-derived microbiome design for perennial tree crops"
 
+[taxonomies]
+trails = ["evidence-chain", "thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

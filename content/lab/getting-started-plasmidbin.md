@@ -6,6 +6,7 @@ weight = 12
 
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "coralreef", "nestgate", "skunkbat", "songbird", "toadstool"]
+trails = ["reproducibility"]
 
 [extra]
 domain = "Infrastructure"

@@ -22,6 +22,8 @@ label = "The operational methodology that emerged from these philosophical const
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 **Iteration, Recursion, Time — and How Everything Learns**

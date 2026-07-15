@@ -100,53 +100,96 @@ pub const SELF: SelfCapabilities = SelfCapabilities {
 /// A discovered peer primal with its capabilities.
 #[derive(Debug)]
 pub struct DiscoveredPeer {
-    pub primal_id: &'static str,
+    pub primal_id: String,
     pub socket_path: Option<String>,
-    pub capabilities: &'static [&'static str],
+    pub capabilities: Vec<String>,
 }
 
-/// `NestGate` capabilities (CAS storage).
-const NESTGATE_CAPABILITIES: &[&str] = &[
-    "content.put",
-    "content.get",
-    "content.exists",
-    "content.replicate.pull",
-    "route.register",
-];
-
-/// petalTongue capabilities (visualization rendering).
-const PETALTONGUE_CAPABILITIES: &[&str] = &[
-    "visualization.render.graph",
-    "visualization.render.scene",
-    "visualization.export",
-    "health.check",
+/// Well-known peers with explicit env var overrides. Peer discovery falls
+/// through to directory scanning for any additional primals.
+const WELL_KNOWN_PEERS: &[(&str, &str)] = &[
+    ("nestgate", "NESTGATE_SOCKET"),
+    ("petaltongue", "PETALTONGUE_SOCKET"),
 ];
 
 /// Discover available peer primals from the environment.
 ///
-/// Probes for primals that sporePrint consumes: `NestGate` (CAS storage)
-/// and `petalTongue` (content rendering). Each is discovered via the
-/// standard socket probe chain — no paths are assumed.
+/// Two-phase discovery:
+/// 1. Probe well-known peers via their dedicated env vars
+/// 2. Scan socket directories for any additional primal sockets
+///
+/// Capabilities are not assumed — discovered peers report empty capabilities
+/// until a `primal.announce` handshake populates them at runtime.
 pub fn discover_peers() -> Vec<DiscoveredPeer> {
     let mut peers = Vec::new();
+    let mut seen_slugs = std::collections::HashSet::new();
 
-    if let Some(socket) = probe_socket("nestgate", "NESTGATE_SOCKET") {
-        peers.push(DiscoveredPeer {
-            primal_id: "nestGate",
-            socket_path: Some(socket),
-            capabilities: NESTGATE_CAPABILITIES,
-        });
+    for &(slug, env_var) in WELL_KNOWN_PEERS {
+        if let Some(socket) = probe_socket(slug, env_var) {
+            seen_slugs.insert(slug.to_string());
+            peers.push(DiscoveredPeer {
+                primal_id: slug.to_string(),
+                socket_path: Some(socket),
+                capabilities: Vec::new(),
+            });
+        }
     }
 
-    if let Some(socket) = probe_socket("petaltongue", "PETALTONGUE_SOCKET") {
+    for socket_path in scan_socket_dirs() {
+        let Some(slug) = extract_slug_from_socket(&socket_path) else {
+            continue;
+        };
+        if seen_slugs.contains(&slug) {
+            continue;
+        }
+        seen_slugs.insert(slug.clone());
         peers.push(DiscoveredPeer {
-            primal_id: "petalTongue",
-            socket_path: Some(socket),
-            capabilities: PETALTONGUE_CAPABILITIES,
+            primal_id: slug,
+            socket_path: Some(socket_path),
+            capabilities: Vec::new(),
         });
     }
 
     peers
+}
+
+/// Scan known socket directories for `.sock` files.
+fn scan_socket_dirs() -> Vec<String> {
+    let mut sockets = Vec::new();
+
+    let dirs_to_scan: Vec<String> = [
+        std::env::var(crate::paths::ENV_BIOMEOS_SOCKET_DIR).ok(),
+        Some(systemd_socket_dir().into_owned()),
+        std::env::var(crate::paths::ENV_XDG_RUNTIME)
+            .ok()
+            .map(|xdg| format!("{xdg}/biomeos")),
+    ]
+    .into_iter()
+    .flatten()
+    .collect();
+
+    for dir in dirs_to_scan {
+        let Ok(entries) = std::fs::read_dir(&dir) else {
+            continue;
+        };
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.extension().is_some_and(|ext| ext == "sock") && path.exists() {
+                if let Some(s) = path.to_str() {
+                    sockets.push(s.to_string());
+                }
+            }
+        }
+    }
+
+    sockets
+}
+
+/// Extract a primal slug from a socket filename (e.g., `/run/membrane/nestgate.sock` → `nestgate`).
+fn extract_slug_from_socket(path: &str) -> Option<String> {
+    let filename = std::path::Path::new(path).file_stem()?.to_str()?;
+    let slug = filename.strip_suffix("-standalone").unwrap_or(filename);
+    Some(slug.to_string())
 }
 
 /// Probe for a primal's socket path from environment variables.
@@ -342,9 +385,9 @@ mod tests {
     #[test]
     fn discovered_peer_debug_format() {
         let peer = DiscoveredPeer {
-            primal_id: "testPrimal",
+            primal_id: "testPrimal".to_string(),
             socket_path: Some("/tmp/test.sock".into()),
-            capabilities: &["foo.bar"],
+            capabilities: vec!["foo.bar".to_string()],
         };
         let debug = format!("{peer:?}");
         assert!(debug.contains("testPrimal"));

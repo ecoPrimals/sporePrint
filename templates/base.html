@@ -125,39 +125,67 @@
         <summary>Site Map</summary>
         <nav>
           <ul class="tree-root">
-            {# Auto-generated from config.extra.sidebar.sections #}
-            {% for sec_name in config.extra.sidebar.sections %}
-            {% set sec = get_section(path=sec_name ~ "/_index.md") %}
-            {% set sec_path = "/" ~ sec_name %}
-            {% set is_active = current_path is starting_with(sec_path) %}
-            {% set group_cfg = config.extra.sidebar.groups[sec_name] | default(value=false) %}
-            <li class="tree-section{% if is_active %} tree-active{% endif %}">
-              {% if sec.pages | length == 0 and sec.subsections | length == 0 %}
-              <a href="{{ sec.permalink }}">{{ sec.title }}</a>
-              {% else %}
-              <details{% if is_active %} open{% endif %}>
-                <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
-                <ul class="tree-pages">
-                  {% for pg in sec.pages %}
-                  {% set pg_idx = loop.index0 %}
-                  {% if group_cfg and group_cfg.labels %}{% for lbl in group_cfg.labels %}{% if lbl.at == pg_idx %}<li class="tree-label">{{ lbl.label }}</li>{% endif %}{% endfor %}{% endif %}
-                  <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
-                  {% endfor %}
-                  {% for sub in sec.subsections %}
-                  {% set subsec = get_section(path=sub) %}
-                  <li class="tree-section tree-nested{% if current_path is starting_with(subsec.path) %} tree-active{% endif %}">
-                    <details{% if current_path is starting_with(subsec.path) %} open{% endif %}>
-                      <summary><a href="{{ subsec.permalink }}">{{ subsec.title }}</a></summary>
+            {# Fold-grouped sidebar — iterates cortical folds, nests sections within each #}
+            {% for fold in config.extra.cortex %}
+            {% set_global fold_has_active = false %}
+            {% for sec_name in fold.sections %}
+              {% if current_path is starting_with("/" ~ sec_name) %}{% set_global fold_has_active = true %}{% endif %}
+            {% endfor %}
+            <li class="tree-fold">
+              <details{% if fold_has_active %} open{% endif %}>
+                <summary class="tree-fold-label">{{ fold.label }}</summary>
+                <ul class="tree-fold-sections">
+                  {% for sec_name in fold.sections %}
+                  {% set sec = get_section(path=sec_name ~ "/_index.md") %}
+                  {% set sec_path = "/" ~ sec_name %}
+                  {% set is_active = current_path is starting_with(sec_path) %}
+                  {% set group_cfg = config.extra.sidebar.groups[sec_name] | default(value=false) %}
+                  <li class="tree-section{% if is_active %} tree-active{% endif %}">
+                    {% if sec.pages | length == 0 and sec.subsections | length == 0 %}
+                    <a href="{{ sec.permalink }}">{{ sec.title }}</a>
+                    {% else %}
+                    <details{% if is_active %} open{% endif %}>
+                      <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
                       <ul class="tree-pages">
-                        {% for pg in subsec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                        {% for pg in sec.pages %}
+                        {% set pg_idx = loop.index0 %}
+                        {% if group_cfg and group_cfg.labels %}{% for lbl in group_cfg.labels %}{% if lbl.at == pg_idx %}<li class="tree-label">{{ lbl.label }}</li>{% endif %}{% endfor %}{% endif %}
+                        <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                        {% endfor %}
+                        {% for sub in sec.subsections %}
+                        {% set subsec = get_section(path=sub) %}
+                        <li class="tree-section tree-nested{% if current_path is starting_with(subsec.path) %} tree-active{% endif %}">
+                          <details{% if current_path is starting_with(subsec.path) %} open{% endif %}>
+                            <summary><a href="{{ subsec.permalink }}">{{ subsec.title }}</a></summary>
+                            <ul class="tree-pages">
+                              {% if sub is containing("notebooks") and config.extra.lab_domains %}
+                              {% for domain in config.extra.lab_domains %}
+                              {% set_global domain_has_pages = false %}
+                              {% for pg in subsec.pages %}{% if pg.extra.domain is defined and pg.extra.domain == domain.key %}{% set_global domain_has_pages = true %}{% endif %}{% endfor %}
+                              {% if domain_has_pages %}
+                              <li class="tree-label">{{ domain.label }}</li>
+                              {% for pg in subsec.pages %}
+                              {% if pg.extra.domain is defined and pg.extra.domain == domain.key %}
+                              <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                              {% endif %}
+                              {% endfor %}
+                              {% endif %}
+                              {% endfor %}
+                              {% else %}
+                              {% for pg in subsec.pages %}<li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
+                              {% endfor %}
+                              {% endif %}
+                            </ul>
+                          </details>
+                        </li>
                         {% endfor %}
                       </ul>
                     </details>
+                    {% endif %}
                   </li>
                   {% endfor %}
                 </ul>
               </details>
-              {% endif %}
             </li>
             {% endfor %}
 

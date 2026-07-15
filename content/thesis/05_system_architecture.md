@@ -18,6 +18,9 @@ title = "NUCLEUS Architecture"
 relation = "evidence_for"
 label = "Atomics ladder, deploy graphs, lifecycle — the composition model"
 
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

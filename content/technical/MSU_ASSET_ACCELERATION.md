@@ -6,6 +6,13 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/architecture/foundation-connection/"
+title = "Foundation Connection"
+relation = "pairs_with"
 +++
 
 **Audience:** MSU faculty, ICER, Genomics Core, Pharm & Tox, ADDRC  

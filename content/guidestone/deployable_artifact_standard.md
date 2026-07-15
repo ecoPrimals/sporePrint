@@ -18,6 +18,9 @@ url = "/architecture/coordination/"
 title = "Ecosystem Coordination"
 relation = "architecture"
 label = "Coordination standards for artifact distribution"
+
+[taxonomies]
+trails = ["reproducibility"]
 +++
 
 ## From Repository to Portable Science

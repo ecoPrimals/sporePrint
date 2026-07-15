@@ -11,8 +11,9 @@
 #   ecoPrimals/          — Primals + infra (public, except bearDog + skunkBat)
 #   syntheticChemistry/  — Springs (science validation, private)
 #   sporeGarden/         — Products (gen4 consumers, public)
+#   protoKarya/          — Protists (wider-world compositions, public)
 #
-# Updated: 2026-06-02
+# Updated: 2026-07-15
 
 # =============================================================================
 # PRIMALS — Tower Atomic (trust boundary)
@@ -199,4 +200,16 @@ type = "product"
 
 [sources.cellmembrane]
 repo = "sporeGarden/cellMembrane"
+type = "product"
+
+# =============================================================================
+# PROTISTS — protoKarya (wider-world compositions)
+# =============================================================================
+
+[sources.footprint]
+repo = "protoKarya/footPrint"
+type = "product"
+
+[sources.tideglass]
+repo = "protoKarya/tideGlass"
 type = "product"

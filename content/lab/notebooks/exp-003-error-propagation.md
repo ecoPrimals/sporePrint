@@ -5,7 +5,7 @@ date = 2026-07-10
 weight = 50
 
 [extra]
-domain = "Lab"
+domain = "agriculture"
 rendered_from = "exp-003-error-propagation.ipynb"
 +++
 

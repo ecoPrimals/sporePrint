@@ -22,6 +22,8 @@ label = "The evidence — reproducing published science at scale"
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 **Gravity, Fermentation, and the Things That Were Already There**

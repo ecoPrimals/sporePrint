@@ -17,7 +17,7 @@
 ## What This Site Is
 
 primals.eco is the public-facing science site for the ecoPrimals ecosystem.
-304 pages across 16 sections. Every quantitative claim is backed by executable
+302 pages across 16 sections. Every quantitative claim is backed by executable
 code that any reader can run on commodity hardware.
 
 ## Contact
@@ -29,92 +29,94 @@ code that any reader can run on commodity hardware.
 - Forgejo: https://git.primals.eco
 - License: AGPL-3.0-or-later (code), CC-BY-SA-4.0 (essays)
 
-## Site Structure
+## Site Structure — Cortical Folds
 
-The site has 16 sections. Each section index lists all child pages.
-Fetch the section index to discover every page in that section.
+The site has 302 pages across 16 sections, organized into 5 navigable folds.
+Each fold groups related sections. Ridge pages are the best entry points.
+Section indexes list all child pages within that section.
 
-### Architecture (40 pages)
-Ecosystem design: primal composition, NUCLEUS atomics, K-Derm deployment,
-transport evolution, catalogs, inventory, deployment model. Deep architecture:
-Golden Cage, Silicon Deism, Stadial/Interstadial, coordination triad
-(waterFall, rootPulse, Neural API), sovereign HPC/transaction membrane,
-deploy graphs, creative surface, primal evolution/interactions, discovery log,
-atlas memory palace, economics, ecosystem coordination.
-- Section index: https://primals.eco/architecture/
-- Start here: https://primals.eco/architecture/ecosystem-architecture/
-- Atlas overview: https://primals.eco/architecture/atlas-memory-palace/
+### Fold 1: Evidence (60% of site)
+What we proved — live validation results, reproduced science, lab notebooks.
 
-### Science (33 papers)
-28 executable baseCamp papers across 6 domains: physics, microbiology,
-immunology, neural networks, game science, provenance.
-- Section index: https://primals.eco/science/
+- **Lab** (132 pages): Validation results, spring hubs, 104 notebooks grouped by domain (physics, biology, agriculture, health, chemistry, computation).
+  - Section index: https://primals.eco/lab/
+- **Science** (33 papers): 28 executable baseCamp papers across 6 domains.
+  - Section index: https://primals.eco/science/
+- Ridge pages: https://primals.eco/lab/ , https://primals.eco/architecture/evidence-snapshot/ , https://primals.eco/science/cross-spring-evidence-map/
 
-### Lab (132 pages + notebooks)
-Live validation results, spring science hubs, compute access, provenance.
-Jupyter notebooks with frozen experiment data.
-- Section index: https://primals.eco/lab/
+### Fold 2: Architecture (19% of site)
+How it works — ecosystem design, technical depth, emergent products.
 
-### Thesis (18 chapters)
-"Constrained Evolution" — working dissertation connecting biology,
-AI-assisted development, Rust, and sovereign infrastructure.
-- Section index: https://primals.eco/thesis/
-- Start here: https://primals.eco/thesis/01-introduction/
+- **Architecture** (42 pages): Primal composition, NUCLEUS, K-Derm, coordination triad, sovereignty architecture, content-addressed convergence, cross-platform parity.
+  - Section index: https://primals.eco/architecture/
+  - Start here: https://primals.eco/architecture/ecosystem-architecture/
+  - New: https://primals.eco/architecture/content-addressed-convergence/ (Newton-Leibniz pattern)
+  - New: https://primals.eco/architecture/cross-platform-parity/ (OS Atheism roadmap)
+- **Technical** (8 pages): Grant appendices, hardware costs, GPU pipeline, drug discovery, teaching brief.
+  - Section index: https://primals.eco/technical/
+- **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
+  - Section index: https://primals.eco/products/
+  - New: https://primals.eco/products/footprint/ (GIS Home Planner — partially live)
+  - protoKarya protists: footPrint (GIS, partially live), tideGlass (GPS platform, Phase 0)
+- Ridge pages: https://primals.eco/architecture/ecosystem-architecture/ , https://primals.eco/architecture/nucleus-architecture/
 
-### Philosophy (15 essays)
-atlasHugged — 12 essays on sovereign science, copyleft economics,
-and why infrastructure determines outcomes. Plus gen2 fossil lineage.
-- Section index: https://primals.eco/philosophy/
-- Start here: https://primals.eco/philosophy/the-human-search/
+### Fold 3: Methodology (7% of site)
+How to build — development methodology, verification, certification.
 
-### Methodology (15 pages)
-Constrained evolution theory, K-NOME AI-assisted development,
-conversation constraint, massively parallel mentoring, prompt bank,
-sovereign publication, spring playbook, scyBorg licensing, sharing the pen.
-- Section index: https://primals.eco/methodology/
+- **Methodology** (15 pages): Constrained evolution, K-NOME, conversation constraint, sovereign publication.
+  - Section index: https://primals.eco/methodology/
+- **guideStone** (7 pages): Verification system — BLAKE3 Merkle roots, provenance chains, deployable artifacts.
+  - Section index: https://primals.eco/guidestone/
+- Ridge pages: https://primals.eco/methodology/k-nome-programming/ , https://primals.eco/methodology/constrained-evolution-formal/
 
-### Products (10 pages)
-Emergent tools: esotericWebb, helixVision, blueFish, lattice QCD, lithoSpore,
-initioChem, coralForge, nautilus, tideGlass, NF case study.
-- Section index: https://primals.eco/products/
+### Fold 4: Philosophy (12% of site)
+Why it matters — the philosophical argument, builder's story, dissertation.
 
-### Collaborators (3 profiles)
-External scientists whose work the ecosystem serves: Gonzales (NF data mining),
-Jones (PFAS/blueFish), ABG (whole-cell modeling/initioChem).
-- Section index: https://primals.eco/collaborators/
+- **Philosophy** (15 essays): atlasHugged — 12 essays on sovereign science, copyleft economics, infrastructure ethics.
+  - Section index: https://primals.eco/philosophy/
+  - Start here: https://primals.eco/philosophy/the-human-search/
+- **Story** (3 essays): Builder's narrative by attsi.
+  - Section index: https://primals.eco/story/
+- **Thesis** (18 chapters): "Constrained Evolution" — working dissertation.
+  - Section index: https://primals.eco/thesis/
+  - Start here: https://primals.eco/thesis/01-introduction/
+- Ridge pages: https://primals.eco/philosophy/the-human-search/ , https://primals.eco/thesis/01-introduction/
 
-### reachOut (14 pages)
-Partnership invitations, community landing pages, and articles — GPU manufacturers,
-game platforms, neuromorphic hardware, homelabbers, LLM builders, and the broader
-scientific computing community.
-- Section index: https://primals.eco/outreach/
+### Fold 5: Engagement (8% of site)
+Who and how to reach — audience guides, outreach, collaborators.
 
-### Technical (8 pages)
-Grant appendices, hardware costs, GPU pipeline, drug discovery,
-teaching brief. For institutional reviewers and collaborators.
-- Section index: https://primals.eco/technical/
+- **Glossary**: Plain-language definitions for every term on the site.
+  - https://primals.eco/glossary/
+- **Audience** (6 guides): Role-based entry points for faculty, students, hardware builders, compliance reviewers.
+  - Section index: https://primals.eco/audience/
+- **Outreach** (14 pages): Partnership invitations, community landing pages, homelabbers, LLM builders.
+  - Section index: https://primals.eco/outreach/
+- **Collaborators** (3 profiles): Gonzales (NF), Jones (PFAS/blueFish), ABG (whole-cell modeling).
+  - Section index: https://primals.eco/collaborators/
+- Ridge pages: https://primals.eco/glossary/ , https://primals.eco/audience/capability-parity-brief/
 
-### Audience (6 guides)
-Role-based entry points: faculty/PIs, students, hardware builders,
-compliance reviewers, capability evaluators.
-- Section index: https://primals.eco/audience/
-
-### guideStone (7 pages)
-Verification and certification system — BLAKE3 Merkle roots,
-provenance chains, reproducibility tiers, deployable artifact standard.
-- Section index: https://primals.eco/guidestone/
-
-### Story (3 essays)
-Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
-"Papers, One Stack." Author: attsi.
-- Section index: https://primals.eco/story/
-
-### Other
-- Glossary: https://primals.eco/glossary/
+### Navigation Aids
 - Contact: https://primals.eco/contact/
 - Sitemap (HTML): https://primals.eco/sitemap/
 - Sitemap (XML): https://primals.eco/sitemap.xml
 - Full page index: https://primals.eco/site-index/
+
+## Reading Trails
+
+10 curated paths through the site. Each trail threads pages across fold boundaries.
+
+- **First Visit** (6 pages): Guided tour from ecosystem architecture to live evidence.
+- **Sovereignty** (7 pages): From naming the cage to transcending it.
+- **Methodology** (6 pages): How ecoPrimals was built — AI-assisted development.
+- **Coordination** (6 pages): The triad pattern and its implementation.
+- **NF Pipeline** (5 pages): Neurofibromatosis case study — first multi-product composition.
+- **Grant-Ready** (5 pages): For PIs and evaluators — the evidence path.
+- **Evidence Chain** (7 pages): Lab validation → reproduced science → thesis results.
+- **Reproducibility** (7 pages): From theory to verification on your own hardware.
+- **Thesis** (18 pages): Full dissertation in reading order.
+- **atlasHugged** (12 pages): The 12 philosophical essays in argument order.
+
+Trail pages: https://primals.eco/trails/
 
 ## Key Concepts
 
@@ -130,7 +132,11 @@ Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
 - **Constrained Evolution**: Core theory — removing dependencies forces genuine capability
 - **Coordination Triad**: quorumSignal (sense) + rootPulse (action) + waterFall (sync)
 - **Golden Cage**: Bootstrapping sovereignty inside the services you will replace
-- **Sovereign Pallet (tideGlass)**: Field science + humanitarian deployable unit
+- **Content-Addressed Convergence**: Newton-Leibniz pattern — content identity supersedes temporal identity
+- **Cross-Platform Parity**: OS Atheism → Silicon Atheism — 6-phase roadmap to universal substrate
+- **protoKarya**: Protist organization — wider-world compositions (footPrint GIS, tideGlass GPS)
+- **footPrint**: GIS home planner — first protist, partially live at primals.eco/footprint/
+- **tideGlass**: Sovereign GPS platform (Phase 0) + future sovereign pallet for field science
 
 ## Identity Model
 
@@ -140,11 +146,12 @@ Builder's narrative: "I Don't Know Rust," "The Sovereign Lab,"
 
 ## Numbers (live, machine-verified)
 
-- 15 primals, 8 springs
-- 3.46M lines of Rust
-- 114,000+ tests across ecosystem
+- 15 primals, 8 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
+- 3.57M lines of Rust (42 repos)
+- 116,826 tests across ecosystem
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
+- 45 depot binaries across 4 architectures (x86_64 Linux, aarch64 Linux, aarch64 Android, x86_64 Windows)
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
 
@@ -169,7 +176,7 @@ Pages reinforce each other across four registers:
 - methodology (operational) <-> thesis (theoretical) — how to do it <-> why it works
 - science (experimental) <-> thesis results (analysis) — raw evidence <-> interpreted evidence
 
-28 key pages carry "companion" metadata in their JSON-LD (relatedLink)
+~80 pages carry "companion" metadata in their JSON-LD (relatedLink)
 and in a visible "Companion Pages" panel. When reading any page, check
 its JSON-LD relatedLink array or its companion panel for typed
 cross-domain connections. Philosophy and code docs are designed to
@@ -182,21 +189,18 @@ Relation types in companion metadata:
 - extends / extended_by — methodology lineage
 - evidence_for — technical/lab <-> thesis/science
 
-Key pairings:
-- The Human Search <-> Thesis Ch.3 (narrative <-> formal)
-- I Don't Know Rust <-> The Knowledge-Numeric (story <-> philosophy)
-- The Sovereign Lab <-> I Own Nothing (story <-> philosophy)
-- 175+ Papers, One Stack <-> Discovery Is Local (story <-> philosophy)
-- Sovereign Deployment <-> I Own Nothing (architecture <-> philosophy)
-- Anderson QS <-> The Mobility Edge (science <-> philosophy)
-- scyBorg Licensing <-> Sovereign Science (methodology <-> philosophy)
+Navigation layers:
+1. **Cortical folds** — 5 conceptual clusters grouping 16 sections
+2. **Reading trails** — 10 curated linear paths through the site
+3. **Companions** — typed bidirectional edges between pages across folds
+4. **Entity registry** — machine-readable entity graph linking primals, springs, concepts
 
 Richness levels for AI agents:
 - Level 0 (Billboard): robots.txt, sitemap.xml, meta tags
 - Level 1 (Overview): This file (llms.txt) + /site-index/
 - Level 2 (Catalog): Section indexes with hasPart JSON-LD
 - Level 3 (Topology): Per-page JSON-LD with typed relatedLink companions
-- Level 4 (Reinforcement): Visible companion panels + cross-domain summaries
+- Level 4 (Reinforcement): Visible companion panels + cross-domain summaries + fold grouping
 
 ## Machine-Readable Endpoints
 

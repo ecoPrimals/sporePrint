@@ -12,6 +12,9 @@ title = "Sovereign GPU Pipeline Profile"
 relation = "evidence_for"
 label = "How toadStool/wgpu replaces the CUDA stack in practice"
 
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

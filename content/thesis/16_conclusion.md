@@ -3,6 +3,17 @@ title = "Chapter 16: Conclusion"
 description = "Five contributions restated with evidence, future work (LTEE sequencing, NUCLEUS scaling, baseCamp), and closing synthesis."
 weight = 16
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/philosophy/the-knowledge-numeric/"
+title = "The Knowledge-Numeric"
+relation = "narrative_version"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

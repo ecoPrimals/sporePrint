@@ -16,6 +16,8 @@ label = "Why removing dependencies forces genuine capability — the formal argu
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 **A Recurring Pattern, and the Architecture That Makes It Irrelevant**

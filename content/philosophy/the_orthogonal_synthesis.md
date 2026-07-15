@@ -16,6 +16,8 @@ label = "The formal constrained evolution principle — orthogonal pressure as m
 [taxonomies]
 primals = []
 springs = []
+trails = ["philosophy-thread"]
+
 +++
 
 ---

@@ -3,6 +3,22 @@ title = "Chapter 9: Results — airSpring"
 description = "Precision agriculture validation: FAO-56 Penman-Monteith ET, Dong sensor calibration, 3,123+ checks, real Michigan station data."
 weight = 9
 date = 2026-07-09
+
+[extra]
+
+[[extra.companions]]
+url = "/science/06-notill-anderson/"
+title = "Anderson as No-Till Soil Health Mechanism"
+relation = "validated_by"
+
+[[extra.companions]]
+url = "/lab/springs/airspring/"
+title = "airSpring Validation"
+relation = "evidence_for"
+
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

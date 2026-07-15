@@ -6,6 +6,13 @@ date = 2026-07-09
 
 [taxonomies]
 springs = ["hotspring", "wetspring", "airspring", "healthspring", "groundspring", "neuralspring"]
+
+[extra]
+
+[[extra.companions]]
+url = "/audience/for-faculty-and-pis/"
+title = "For Faculty and PIs"
+relation = "pairs_with"
 +++
 
 {{ maturity(level="architectural") }}

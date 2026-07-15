@@ -6,6 +6,7 @@ date = 2026-03-17
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "nestgate", "rhizocrypt", "skunkbat", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
+trails = ["evidence-chain", "reproducibility"]
 +++
 
 **How the {{ entity(name="basecamp") }} papers draw from multiple springs — and why that matters.**

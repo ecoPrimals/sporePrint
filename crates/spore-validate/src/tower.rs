@@ -14,7 +14,7 @@
 //! EXISTS — it just needs activation.
 
 use crate::discovery;
-use crate::paths::PROBE_TIMEOUT;
+use crate::paths::probe_timeout;
 use serde::Deserialize;
 use serde_json::{Value, json};
 use std::sync::LazyLock;
@@ -144,7 +144,7 @@ fn build_probe_targets(
 
 /// Probe a single JSON-RPC method on a socket, returning availability.
 fn probe_single_method(socket_path: &str, method: &str) -> MethodProbe {
-    let Ok(mut reader) = crate::ipc::connect_uds(socket_path, PROBE_TIMEOUT) else {
+    let Ok(mut reader) = crate::ipc::connect_uds(socket_path, probe_timeout()) else {
         return MethodProbe {
             method: method.to_string(),
             available: false,

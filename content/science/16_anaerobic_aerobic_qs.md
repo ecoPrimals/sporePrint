@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 16
 domain = "Microbiology and Ecology"
 
+[[extra.companions]]
+url = "/science/01-anderson-qs/"
+title = "Anderson Localization as QS Null Hypothesis"
+relation = "extends"
+
 [taxonomies]
 primals = ["barracuda"]
 springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]

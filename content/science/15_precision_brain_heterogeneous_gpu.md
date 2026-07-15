@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 15
 domain = "Physics and Materials"
 
+[[extra.companions]]
+url = "/thesis/12-results-neuralspring/"
+title = "Chapter 12: Results — neuralSpring"
+relation = "extends"
+
 [taxonomies]
 primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["hotspring"]

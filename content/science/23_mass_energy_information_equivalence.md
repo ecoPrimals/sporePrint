@@ -7,6 +7,11 @@ date = 2026-03-30
 paper_number = 23
 domain = "Physics and Materials"
 
+[[extra.companions]]
+url = "/philosophy/the-knowledge-numeric/"
+title = "The Knowledge-Numeric"
+relation = "narrative_version"
+
 [taxonomies]
 primals = ["barracuda", "songbird"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "primalspring", "wetspring"]

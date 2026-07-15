@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 20
 domain = "Economics and Provenance"
 
+[[extra.companions]]
+url = "/architecture/economics/"
+title = "Economics"
+relation = "extends"
+
 [taxonomies]
 primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "sweetgrass"]
 springs = ["ludospring"]

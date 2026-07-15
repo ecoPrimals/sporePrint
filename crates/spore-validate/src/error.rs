@@ -99,6 +99,12 @@ impl Diagnostic {
     }
 
     #[must_use]
+    #[allow(dead_code)]
+    pub const fn is_warning(&self) -> bool {
+        matches!(self.severity, Severity::Warning)
+    }
+
+    #[must_use]
     pub fn message(&self) -> &str {
         &self.message
     }

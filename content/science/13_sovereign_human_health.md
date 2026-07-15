@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 13
 domain = "Human Health"
 
+[[extra.companions]]
+url = "/thesis/12-results-neuralspring/"
+title = "Chapter 12: Results — neuralSpring"
+relation = "extends"
+
 [taxonomies]
 primals = ["barracuda", "biomeos", "coralreef", "petaltongue", "songbird", "sweetgrass"]
 springs = ["airspring", "groundspring", "healthspring", "neuralspring", "wetspring"]

@@ -7,6 +7,18 @@ date = 2026-03-17
 primals = ["barracuda", "beardog", "biomeos", "petaltongue"]
 springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 trails = ["first-visit", "grant-ready"]
+
+[extra]
+
+[[extra.companions]]
+url = "/lab/"
+title = "Lab"
+relation = "evidence_for"
+
+[[extra.companions]]
+url = "/audience/faculty-spring-profiles/"
+title = "Faculty Spring Profiles"
+relation = "pairs_with"
 +++
 
 **From:** ecoPrimal — human + synthetic intelligence  

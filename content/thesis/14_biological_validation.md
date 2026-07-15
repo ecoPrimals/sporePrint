@@ -18,6 +18,9 @@ title = "LTEE Extensions"
 relation = "validated_by"
 label = "Falsifiable Anderson-QS predictions for LTEE populations"
 
+[taxonomies]
+trails = ["thesis-narrative"]
+
 +++
 
 {{ maturity(level="architectural") }}

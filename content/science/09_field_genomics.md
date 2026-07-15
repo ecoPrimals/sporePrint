@@ -7,6 +7,11 @@ date = 2026-03-17
 paper_number = 9
 domain = "Agriculture and Field Science"
 
+[[extra.companions]]
+url = "/thesis/10-results-wetspring/"
+title = "Chapter 10: Results — wetSpring"
+relation = "extends"
+
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "nestgate", "songbird", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]

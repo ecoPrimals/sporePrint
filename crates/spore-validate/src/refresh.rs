@@ -6,9 +6,8 @@
 //! then compares against the stored registry values to detect drift.
 
 use crate::error::Error;
-use crate::model::{Entity, EntityKind};
+use crate::model::{EntityKind, EntityRegistry};
 use crate::time::today_utc;
-use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use toml_edit::DocumentMut;
 use walkdir::WalkDir;
@@ -30,7 +29,7 @@ pub struct RefreshResult {
 
 /// Scan repos and compare metrics against the registry.
 pub fn scan(
-    registry: &HashMap<String, Entity>,
+    registry: &EntityRegistry,
     repos_root: &Path,
     source_filter: Option<&str>,
 ) -> RefreshResult {

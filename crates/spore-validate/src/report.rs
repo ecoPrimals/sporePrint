@@ -6,8 +6,7 @@
 //! correctly and provides machine-readable output for CI. This ensures
 //! all deserialized fields are actually accessed (not dead code).
 
-use crate::model::{Config, Entity, EntityKind};
-use std::collections::HashMap;
+use crate::model::{Config, Entity, EntityKind, EntityRegistry};
 use std::fmt::Write;
 
 /// Summary statistics for the entity registry.
@@ -115,7 +114,7 @@ pub fn format_entity(key: &str, entity: &Entity) -> String {
 }
 
 /// Format the full registry as a report string (for `--verbose` output).
-pub fn format_registry(registry: &HashMap<String, Entity>) -> String {
+pub fn format_registry(registry: &EntityRegistry) -> String {
     let mut keys: Vec<&str> = registry.keys().map(String::as_str).collect();
     keys.sort_unstable();
     let mut out = String::new();
@@ -175,6 +174,7 @@ pub fn format_totals(totals: &crate::model::Totals) -> String {
 mod tests {
     use super::*;
     use crate::model::{Capability, EntityKind, Tier, Totals};
+    use std::collections::HashMap;
 
     fn test_config() -> Config {
         let mut registry = HashMap::new();
