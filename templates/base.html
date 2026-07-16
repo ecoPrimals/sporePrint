@@ -120,12 +120,14 @@
       {% block content %}{% endblock content %}
     </main>
 
-    <aside class="site-tree" aria-label="Site navigation tree">
+    {# Sidebar: data-nosnippet tells Google/AI to skip this navigation block.
+       Only the active fold is open — reduces 37KB of repeated nav to ~3KB for bots. #}
+    <aside class="site-tree" aria-label="Site navigation tree" data-nosnippet>
       <details open>
         <summary>Site Map</summary>
         <nav>
           <ul class="tree-root">
-            {# Fold-grouped sidebar — iterates cortical folds, nests sections within each #}
+            {# Fold-grouped sidebar — only the fold containing the current page is expanded #}
             {% for fold in config.extra.cortex %}
             {% set_global fold_has_active = false %}
             {% for sec_name in fold.sections %}
@@ -134,6 +136,7 @@
             <li class="tree-fold">
               <details{% if fold_has_active %} open{% endif %}>
                 <summary class="tree-fold-label">{{ fold.label }}</summary>
+                {% if fold_has_active %}
                 <ul class="tree-fold-sections">
                   {% for sec_name in fold.sections %}
                   {% set sec = get_section(path=sec_name ~ "/_index.md") %}
@@ -146,6 +149,7 @@
                     {% else %}
                     <details{% if is_active %} open{% endif %}>
                       <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
+                      {% if is_active %}
                       <ul class="tree-pages">
                         {% for pg in sec.pages %}
                         {% set pg_idx = loop.index0 %}
@@ -180,11 +184,20 @@
                         </li>
                         {% endfor %}
                       </ul>
+                      {% endif %}
                     </details>
                     {% endif %}
                   </li>
                   {% endfor %}
                 </ul>
+                {% else %}
+                <ul class="tree-fold-sections">
+                  {% for sec_name in fold.sections %}
+                  {% set sec = get_section(path=sec_name ~ "/_index.md") %}
+                  <li class="tree-section"><a href="{{ sec.permalink }}">{{ sec.title }}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
               </details>
             </li>
             {% endfor %}
