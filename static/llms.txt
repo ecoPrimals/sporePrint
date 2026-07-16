@@ -148,10 +148,12 @@ Trail pages: https://primals.eco/trails/
 
 - 15 primals, 8 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.57M lines of Rust (42 repos)
-- 116,826 tests across ecosystem
+- 116,472 tests across ecosystem
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- 45 depot binaries across 4 architectures (x86_64 Linux, aarch64 Linux, aarch64 Android, x86_64 Windows)
+- 59 depot binaries across 4 architectures (14 x86_64 Linux, 14 aarch64 Linux, 14 aarch64 Android, 14 x86_64 Windows)
+- Phase 2 transport abstraction complete: all 14 primals cross-compile for all 4 targets
+- Content-Addressed Convergence: all 6 layers complete
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
 

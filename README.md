@@ -57,7 +57,7 @@ sporePrint/
 ├── config.toml          # Zola config + entity_registry (79 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
 ├── content-manifest.toml # BLAKE3 content provenance (generated)
-├── content/             # 307 published pages with TOML front matter
+├── content/             # 302 published pages with TOML front matter
 │   ├── lab/             # 132 pages: spring hubs, 104 notebooks (6 domains), spore gallery
 │   ├── science/         # 33 baseCamp companion papers
 │   ├── architecture/    # 42 pages: composition, NUCLEUS, K-Derm, CAC, cross-platform, coordination

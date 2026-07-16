@@ -34,7 +34,7 @@ relation = "extends"
 label = "Content-addressed convergence is K-NOME at the infrastructure layer"
 +++
 
-{{ maturity(level="implemented") }} Applied at git and depot layers. Formalized as architectural pattern. Four remaining layers have implementation plans.
+{{ maturity(level="implemented") }} All 6 layers complete (Wave 144a). Content identity supersedes temporal identity across the entire ecosystem.
 
 ---
 
@@ -140,35 +140,34 @@ if local_hash == remote_hash {
 }
 ```
 
-### Layer 3: Heads Metadata (Planned)
+### Layer 3: Heads Metadata (Complete)
 
-Auto-published metadata files can create commit divergence when multiple
-gates publish nearly simultaneously. The fix: apply TreeParity before
-flagging. If trees match, the divergence is Newton-Leibniz — auto-resolve.
+Auto-published metadata files created commit divergence when multiple
+gates published nearly simultaneously. TreeParity is now applied before
+flagging — if trees match, the divergence auto-resolves.
 
-### Layer 4: Impulses (Planned)
+### Layer 4: Impulses (Complete)
 
-Event notifications can be created independently by different gates
-detecting the same condition. The fix: BLAKE3 hash the semantic content
-(subject + body, excluding creation timestamp and gate ID). Skip if a
-content-equivalent impulse already exists.
+Event notifications are content-hash deduplicated. Before creating an
+impulse, the system hashes the semantic content (subject + body, excluding
+creation timestamp and gate ID). Content-equivalent impulses are skipped.
 
-### Layer 5: {{ entity(name="rhizocrypt") }} DAG (Partial)
+### Layer 5: {{ entity(name="rhizocrypt") }} DAG (Complete)
 
-{{ entity(name="rhizocrypt") }} already embodies the two-tier model:
+{{ entity(name="rhizocrypt") }} embodies the two-tier model:
 - **VertexId** = BLAKE3(CBOR of parents, timestamp, agent, event_type, payload, metadata) — temporal identity
 - **PayloadRef** = BLAKE3(payload bytes) — content identity
 
-The extension: `SessionTreeHash` — a content-addressed session state. Two
-sessions that reach the same semantic state via different event paths
+`SessionTreeHash` completes the pattern: a content-addressed session state.
+Two sessions that reach the same semantic state via different event paths
 produce the same `SessionTreeHash`. This gives {{ entity(name="rhizocrypt") }}
 the same power that `HEAD^{tree}` gives git.
 
-### Layer 6: Cascade Divergence (Planned)
+### Layer 6: Cascade Divergence (Complete)
 
-The cascade resolver should check tree parity BEFORE policy dispatch.
-If trees match, the divergence is content-convergent and should
-auto-resolve regardless of configured policy.
+The cascade resolver checks tree parity BEFORE policy dispatch. If trees
+match, the divergence is content-convergent and auto-resolves regardless
+of configured policy.
 
 ---
 
@@ -241,12 +240,12 @@ they arrived at the same truth.
 
 | Layer | What | Status |
 |-------|------|--------|
-| Git repos | `HEAD^{tree}` in freshness, TreeParity detection | **Applied** |
-| Depot binaries | BLAKE3 diff in depot sync | **Applied** |
-| Heads metadata | TreeParity for auto-publish conflicts | Planned |
-| Impulses | Content-hash deduplication | Planned |
-| {{ entity(name="rhizocrypt") }} DAG | SessionTreeHash primitive | Planned |
-| Cascade divergence | Tree-parity before policy dispatch | Planned |
+| Git repos | `HEAD^{tree}` in freshness, TreeParity detection | **Complete** (Wave 138c) |
+| Depot binaries | BLAKE3 diff in depot sync | **Complete** (Wave 139e) |
+| Heads metadata | TreeParity for auto-publish conflicts | **Complete** (Wave 143a) |
+| Impulses | Content-hash deduplication | **Complete** (Wave 143a) |
+| {{ entity(name="rhizocrypt") }} DAG | SessionTreeHash primitive | **Complete** (Wave 144a) |
+| Cascade divergence | Tree-parity before policy dispatch | **Complete** (Wave 144a) |
 
 ---
 
