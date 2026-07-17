@@ -74,9 +74,7 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
     let mut stream: Box<dyn ReadWrite> = match endpoint {
         TransportEndpoint::Uds { path } => {
             let s = std::os::unix::net::UnixStream::connect(path).map_err(|e| {
-                Error::Config(format!(
-                    "failed to connect to NestGate via UDS at {path}: {e}"
-                ))
+                Error::Config(format!("UDS connect failed at {path}: {e}"))
             })?;
             s.set_write_timeout(Some(transport_io_timeout())).ok();
             s.set_read_timeout(Some(transport_io_timeout())).ok();
@@ -89,9 +87,7 @@ pub fn connect_transport(endpoint: &TransportEndpoint) -> Result<Box<dyn ReadWri
                 .map_err(|e| Error::Config(format!("invalid TCP address {addr_str}: {e}")))?;
             let s = std::net::TcpStream::connect_timeout(&addr, transport_connect_timeout())
                 .map_err(|e| {
-                    Error::Config(format!(
-                        "failed to connect to NestGate via TCP at {addr_str}: {e}"
-                    ))
+                    Error::Config(format!("TCP connect failed at {addr_str}: {e}"))
                 })?;
             s.set_write_timeout(Some(transport_io_timeout())).ok();
             s.set_read_timeout(Some(transport_io_timeout())).ok();
@@ -309,8 +305,7 @@ pub fn push_manifest(
         }
     }
 
-    let d = t0.elapsed();
-    let elapsed = d.as_secs() * 1000 + u64::from(d.subsec_millis());
+    let elapsed = u64::try_from(t0.elapsed().as_millis()).unwrap_or(u64::MAX);
 
     Ok(PushResult {
         stored,
@@ -391,7 +386,7 @@ mod tests {
         let result = push_manifest(&manifest, dir.path(), &endpoint);
         assert!(result.is_err());
         let msg = result.unwrap_err().to_string();
-        assert!(msg.contains("failed to connect"));
+        assert!(msg.contains("UDS connect failed"));
     }
 
     #[test]

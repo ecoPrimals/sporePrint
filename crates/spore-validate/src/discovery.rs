@@ -105,12 +105,38 @@ pub struct DiscoveredPeer {
     pub capabilities: Vec<String>,
 }
 
-/// Well-known peers with explicit env var overrides. Peer discovery falls
-/// through to directory scanning for any additional primals.
+/// Peers with dedicated env var overrides — used as first-phase discovery
+/// hints before directory scanning. Additional peers are discovered via
+/// socket dir scanning regardless of whether these resolve.
+///
+/// The env var naming convention (`{SLUG}_SOCKET`) is an ecosystem standard;
+/// any primal following it will be discoverable without being listed here.
 const WELL_KNOWN_PEERS: &[(&str, &str)] = &[
     ("nestgate", "NESTGATE_SOCKET"),
     ("petaltongue", "PETALTONGUE_SOCKET"),
 ];
+
+/// Build the peer hint list, extending well-known peers with any additional
+/// slugs configured via `SPOREPRINT_EXTRA_PEERS` (comma-separated slug list).
+///
+/// Each extra slug derives its env var as `{SLUG_UPPER}_SOCKET`.
+fn peer_hints() -> Vec<(String, String)> {
+    let mut hints: Vec<(String, String)> = WELL_KNOWN_PEERS
+        .iter()
+        .map(|&(slug, var)| (slug.to_string(), var.to_string()))
+        .collect();
+
+    if let Ok(extra) = std::env::var(crate::paths::ENV_EXTRA_PEERS) {
+        for slug in extra.split(',').map(str::trim).filter(|s| !s.is_empty()) {
+            let var = format!("{}_SOCKET", slug.to_uppercase());
+            if !hints.iter().any(|(s, _)| s == slug) {
+                hints.push((slug.to_string(), var));
+            }
+        }
+    }
+
+    hints
+}
 
 /// Discover available peer primals from the environment.
 ///
@@ -124,11 +150,11 @@ pub fn discover_peers() -> Vec<DiscoveredPeer> {
     let mut peers = Vec::new();
     let mut seen_slugs = std::collections::HashSet::new();
 
-    for &(slug, env_var) in WELL_KNOWN_PEERS {
-        if let Some(socket) = probe_socket(slug, env_var) {
-            seen_slugs.insert(slug.to_string());
+    for (slug, env_var) in peer_hints() {
+        if let Some(socket) = probe_socket(&slug, &env_var) {
+            seen_slugs.insert(slug.clone());
             peers.push(DiscoveredPeer {
-                primal_id: slug.to_string(),
+                primal_id: slug,
                 socket_path: Some(socket),
                 capabilities: Vec::new(),
             });
@@ -348,6 +374,29 @@ mod tests {
                 cap.name
             );
         }
+    }
+
+    #[test]
+    fn peer_hints_includes_well_known() {
+        let hints = peer_hints();
+        assert!(
+            hints.iter().any(|(s, _)| s == "nestgate"),
+            "well-known nestgate should always be present"
+        );
+        assert!(
+            hints.iter().any(|(s, _)| s == "petaltongue"),
+            "well-known petaltongue should always be present"
+        );
+    }
+
+    #[test]
+    fn peer_hints_deduplicates() {
+        let hints = peer_hints();
+        let slugs: Vec<&str> = hints.iter().map(|(s, _)| s.as_str()).collect();
+        let mut deduped = slugs.clone();
+        deduped.sort_unstable();
+        deduped.dedup();
+        assert_eq!(slugs.len(), deduped.len(), "peer_hints has duplicates");
     }
 
     #[test]

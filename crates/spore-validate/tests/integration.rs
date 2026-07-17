@@ -351,7 +351,7 @@ fn cas_push_fails_without_socket() {
     );
     let stderr = stderr_of(&output);
     assert!(
-        stderr.contains("failed to connect"),
+        stderr.contains("UDS connect failed"),
         "expected connection error, got: {stderr}"
     );
 }

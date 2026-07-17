@@ -15,6 +15,9 @@ use crate::time::today_utc;
 use serde::Serialize;
 use std::path::Path;
 
+const SCHEMA_VERSION: &str = "1.0.0";
+const DRIFT_TOLERANCE: &str = "5%/30d";
+
 /// The certification manifest — a self-verifying summary of all published claims.
 ///
 /// Emits both `schema_version`/`merkle_root` (primalSpring expectation) and
@@ -77,8 +80,8 @@ pub fn build_manifest(
         .unwrap_or_else(today_utc);
 
     CertificationManifest {
-        schema_version: "1.0.0",
-        version: "1.0.0",
+        schema_version: SCHEMA_VERSION,
+        version: SCHEMA_VERSION,
         generated: format!("{}T00:00:00Z", today_utc()),
         entity_count,
         primal_count,
@@ -91,7 +94,7 @@ pub fn build_manifest(
         total_tests,
         validation_errors,
         measured_date,
-        drift_tolerance: "5%/30d",
+        drift_tolerance: DRIFT_TOLERANCE,
     }
 }
 

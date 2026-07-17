@@ -126,8 +126,8 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 | Pepti rebuild (5 stale binaries) | 134a | **NEXT** — songBird, skunkBat, nestGate, coralReef, sweetGrass |
 | WAN-DISPATCH-01 FULL PASS | 134a | After pepti rebuild — songBird drawbridge committed |
 | grapheneGate 13/13 from fresh pepti | 134a | After pepti rebuild |
-| bearDog CryptoProvider fix (UNIT-DIV-04) | 134b | **P1 BLOCKER** for DNS cutover |
-| DNS cutover: `primals.eco` → golgi (bearDog ACME) | 134b | After CryptoProvider fix |
+| ~~bearDog CryptoProvider fix (UNIT-DIV-04)~~ | 134b | **DONE** — resolved, DNS live |
+| ~~DNS cutover: `primals.eco` → golgi (bearDog ACME)~~ | 134b | **DONE** — sovereign DNS live since Wave 100+ |
 | strandGate SSH enrollment | 134b | Physical access to House 2 needed |
 | Live mesh visualization (petalTongue on golgi) | 134b+ | sporePrint host composition |
 

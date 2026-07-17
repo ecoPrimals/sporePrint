@@ -61,7 +61,7 @@ pub fn discover() -> Result<(), Error> {
     let peers = discovery::discover_peers();
     if peers.is_empty() {
         println!(
-            "    (none discovered — set BIOMEOS_SOCKET_DIR or NESTGATE_SOCKET/PETALTONGUE_SOCKET)"
+            "    (none discovered — set BIOMEOS_SOCKET_DIR, peer-specific *_SOCKET vars, or SPOREPRINT_EXTRA_PEERS)"
         );
     } else {
         for peer in &peers {

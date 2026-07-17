@@ -13,6 +13,9 @@ keywords = ["validation", "content", "integrity", "scientific-computing"]
 categories = ["command-line-utilities", "science"]
 readme = "README.md"
 
+# Runtime dependencies (not crate deps):
+#   git — required by `refresh` subcommand for upstream repo fetch (GitBackend)
+
 [dependencies]
 base64 = "0.22"
 blake3 = { version = "1", default-features = false, features = ["std", "pure"] }

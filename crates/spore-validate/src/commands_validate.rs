@@ -74,10 +74,7 @@ pub fn validate(
     }
 
     let infos: Vec<&Diagnostic> = diagnostics.iter().filter(|d| d.is_info()).collect();
-    let warnings: Vec<&Diagnostic> = diagnostics
-        .iter()
-        .filter(|d| !d.is_error() && !d.is_info())
-        .collect();
+    let warnings: Vec<&Diagnostic> = diagnostics.iter().filter(|d| d.is_warning()).collect();
     let errors: Vec<&Diagnostic> = diagnostics.iter().filter(|d| d.is_error()).collect();
 
     for i in &infos {

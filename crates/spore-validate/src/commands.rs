@@ -182,6 +182,19 @@ pub fn graph(root: &Path, config: &model::Config, emit: bool) -> Result<(), Erro
         entity_graph.stats.inverse_edges,
     );
 
+    let isolated: Vec<&str> = entity_graph
+        .nodes
+        .iter()
+        .filter(|n| {
+            let (out, inb) = graph::edges_for_entity(&entity_graph, &n.id);
+            out.is_empty() && inb.is_empty()
+        })
+        .map(|n| n.id.as_str())
+        .collect();
+    if !isolated.is_empty() {
+        println!("  isolated (0 edges): {}", isolated.len());
+    }
+
     if emit {
         let output_path = root.join(paths::ENTITY_GRAPH_JSON);
         graph::emit_graph_json(&entity_graph, &output_path)

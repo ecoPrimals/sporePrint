@@ -1,5 +1,5 @@
-generated = "2026-07-17T11:08:26Z"
-root_hash = "4ba08b8504c61ad9da5cc7ffac9b481832fe01e1f4177f0744c6e10b4697c733"
+generated = "2026-07-17T14:00:03Z"
+root_hash = "070089715d0a457d7b303e1bc2c6340e12a7c50ae49c0ae87f3b108a077d78a8"
 page_count = 322
 
 [pages."_index.md"]
@@ -270,8 +270,8 @@ companions = [
 ]
 
 [pages."architecture/cross_platform_parity.md"]
-blake3 = "28c0dca647cfc3ba021ae5311b75808204d79e16e48ab37b174879ed07a224d2"
-size_bytes = 6994
+blake3 = "1b72ca47b4a61931c71d8d5df81cc475685fd8dcc8248d1b467ba7eb7d24f328"
+size_bytes = 7000
 title = "Cross-Platform Parity — OS Atheism to Silicon Atheism"
 section = "architecture"
 fold = "architecture"
@@ -665,8 +665,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/biomeos-validation-summary.md"]
-blake3 = "8ebf88ada8baf0054e910a2b9f01dc2ad28064aa6a56b55dbbfd1e31214f0a5b"
-size_bytes = 8105
+blake3 = "a066972dbe7c200ddd88daa94532f4953260c6679db4e82bfe25f63b6515d2f4"
+size_bytes = 8118
 title = "biomeOS Validation Summary"
 section = "lab"
 fold = "evidence"

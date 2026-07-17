@@ -58,6 +58,7 @@ pub const ENV_BIOMEOS_SOCKET_DIR: &str = "BIOMEOS_SOCKET_DIR";
 pub const ENV_BIOMEOS_SYSTEMD_DIR: &str = "BIOMEOS_SYSTEMD_SOCKET_DIR";
 pub const ENV_XDG_RUNTIME: &str = "XDG_RUNTIME_DIR";
 pub const ENV_PLASMIDBIN_CHECKSUMS: &str = "PLASMIDBIN_CHECKSUMS";
+pub const ENV_EXTRA_PEERS: &str = "SPOREPRINT_EXTRA_PEERS";
 
 /// Default forge URL when `SPOREPRINT_FORGE_URL` is not set.
 pub const DEFAULT_FORGE_URL: &str = "https://github.com";

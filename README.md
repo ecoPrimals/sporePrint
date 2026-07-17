@@ -22,7 +22,7 @@ Gate pushes to Forgejo (golgi) → Sovereign CI
 ## Stack
 
 - **[Zola](https://www.getzola.org/) 0.22.1** — Rust static site generator (single binary, zero deps)
-- **`spore-validate`** — Rust validation + certification crate (34 modules, 287 tests, zero C deps)
+- **`spore-validate`** — Rust validation + certification crate (34 modules, 289 tests, zero C deps)
 - **petalTongue viz pipeline** — Server-rendered SVG with WASM progressive enhancement
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
 - **Custom theme** — Catppuccin Mocha/Latte, system fonts, dark/light, zero external deps
@@ -85,7 +85,7 @@ sporePrint/
 │   ├── identity.json    # Schema.org JSON-LD identity graph
 │   └── .well-known/     # Keyoxide ASPE verification
 ├── crates/
-│   └── spore-validate/  # Rust crate: 34 modules, 284 tests, zero C toolchain
+│   └── spore-validate/  # Rust crate: 34 modules, 289 tests, zero C toolchain
 ├── scripts/             # Validation scripts (a11y, agent parity)
 ├── specs/               # Internal standards (not built by Zola)
 └── .github/workflows/   # deploy.yml, auto-refresh.yml (trailing shadow)
@@ -109,7 +109,7 @@ typed companion metadata for cross-domain discovery.
 ## spore-validate
 
 Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
-zero warnings, 287 tests, 34 modules, zero C toolchain dependencies.
+zero warnings, 289 tests, 34 modules, zero C toolchain dependencies.
 Edition 2024, Rust 1.85+.
 
 | Subcommand | Purpose |
@@ -160,11 +160,11 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 ## Remaining
 
-- [ ] DNS registrar NS cutover to ns1/ns2.primals.eco
+- [x] DNS registrar NS cutover to ns1/ns2.primals.eco — live since Wave 100+
+- [x] Forgejo webhook triggers sovereign CI rebuild — Sovereign CI live (Wave 119)
 - [ ] Archive GitHub Pages deploy workflow to fossilRecord
 - [ ] CAS route registration (path→hash mapping for NestGate HTTP serving)
 - [ ] petalTongue renders live dashboards from primal APIs
-- [ ] Forgejo webhook triggers sovereign CI rebuild (no GitHub Actions)
 
 ## License
 

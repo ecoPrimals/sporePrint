@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 16, 2026 — Wave 145a)
+## Current State (July 17, 2026 — Wave 145a)
 
 - **302 published pages** across 16 sections, organized into 5 cortical folds
 - **79 typed entities** across 8 kinds (primal, spring, product, composition, concept, infra, org, protist) with metrics, descriptions, and link targets
@@ -16,7 +16,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **10 reading trails** threading pages across fold boundaries
 - **~80 pages** carry companion metadata for cross-domain discovery
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
-- **`spore-validate` v0.3.1** — 34-module Rust crate, 287 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
+- **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals** (machine-verified): 3.57M LOC, 116,472 tests, 42 repos, 59 depot binaries across 4 architectures
 - **Phase 2 transport abstraction**: 14/14 primals complete — trait + backend patterns replace all `#[cfg]` fences
 - **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity

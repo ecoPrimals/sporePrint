@@ -1,5 +1,5 @@
-generated = "2026-07-15T16:15:05Z"
-root_hash = "224329500d02b78ad794917645a93248bbcc2a91706b643c5b05aca2e0c9303d"
+generated = "2026-07-17T14:00:03Z"
+root_hash = "070089715d0a457d7b303e1bc2c6340e12a7c50ae49c0ae87f3b108a077d78a8"
 page_count = 322
 
 [pages."_index.md"]
@@ -215,8 +215,8 @@ companions = [
 ]
 
 [pages."architecture/content_addressed_convergence.md"]
-blake3 = "0558d5eeeefe13ba39c9f3312885ed50dac41607a0bc80dd16c4f406818bb57e"
-size_bytes = 10146
+blake3 = "8ff4b8202b1653c181cb0c3064042db91e6bb26fc893b6cc26375a546232fed8"
+size_bytes = 10166
 title = "Content-Addressed Convergence — The Newton-Leibniz Pattern"
 section = "architecture"
 fold = "architecture"
@@ -270,12 +270,12 @@ companions = [
 ]
 
 [pages."architecture/cross_platform_parity.md"]
-blake3 = "b3696d83401ec07edc6f4ae33cdf2acbedc6b432b27ecbfd75b05321bc0be157"
-size_bytes = 6485
+blake3 = "1b72ca47b4a61931c71d8d5df81cc475685fd8dcc8248d1b467ba7eb7d24f328"
+size_bytes = 7000
 title = "Cross-Platform Parity — OS Atheism to Silicon Atheism"
 section = "architecture"
 fold = "architecture"
-maturity = "scaffold"
+maturity = "implemented"
 companions = [
     "/architecture/silicon-deism/",
     "/architecture/deployment-model/",
@@ -665,8 +665,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/biomeos-validation-summary.md"]
-blake3 = "8ebf88ada8baf0054e910a2b9f01dc2ad28064aa6a56b55dbbfd1e31214f0a5b"
-size_bytes = 8105
+blake3 = "a066972dbe7c200ddd88daa94532f4953260c6679db4e82bfe25f63b6515d2f4"
+size_bytes = 8118
 title = "biomeOS Validation Summary"
 section = "lab"
 fold = "evidence"

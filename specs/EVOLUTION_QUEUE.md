@@ -139,7 +139,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality at 270 pages
+- [ ] Evaluate elasticlunr search quality at 302+ pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 

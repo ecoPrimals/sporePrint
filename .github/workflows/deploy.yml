@@ -1,7 +1,7 @@
 # TRAILING SHADOW — Primary deployment is sovereign on golgiBody-ext (VPS).
-# This GitHub Pages deploy continues as the extracellular mirror until
-# DNS registrar NS cutover is complete. After cutover, this workflow
-# can be archived to fossilRecord.
+# DNS NS cutover is complete (ns1/ns2.primals.eco, Wave 100+).
+# This GitHub Pages deploy continues as the extracellular mirror.
+# Archive this workflow to fossilRecord when shadow is no longer needed.
 name: Deploy to GitHub Pages (trailing shadow)
 
 on:

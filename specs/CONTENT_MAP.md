@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: July 12, 2026
+Last reviewed: July 17, 2026 (Wave 145a — 302 pages, 79 entities, 5 cortical folds)
 
 ## Sections
 
