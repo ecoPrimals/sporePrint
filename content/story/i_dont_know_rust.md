@@ -1,6 +1,6 @@
 +++
 title = "I Don't Know Rust — Building a Scientific Computing Ecosystem Through Conversation"
-description = "15 primals. 114,000+ tests. 175+ papers reproduced. Built through conversation by someone who can't read the language."
+description = "15 primals. 116,000+ tests. 175+ papers reproduced. Built through conversation by someone who can't read the language."
 date = 2026-07-08
 weight = 10
 

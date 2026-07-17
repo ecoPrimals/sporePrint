@@ -14,7 +14,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **79 typed entities** across 8 kinds (primal, spring, product, composition, concept, infra, org, protist) with metrics, descriptions, and link targets
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **10 reading trails** threading pages across fold boundaries
-- **~80 pages** carry companion metadata for cross-domain discovery
+- **~105 pages** carry companion metadata for cross-domain discovery
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals** (machine-verified): 3.57M LOC, 116,472 tests, 42 repos, 59 depot binaries across 4 architectures

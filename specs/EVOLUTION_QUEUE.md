@@ -16,7 +16,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [ ] Update Squirrel version/tests if alpha has advanced
 - [x] ~~Verify plasmidBin inventory count~~ — 59 binaries across 4 architectures (16+16+13+14)
 - [x] ~~Check if new baseCamp papers exist~~ — 28 papers confirmed
-- [ ] Verify LOC estimates in PRIMAL_CATALOG.md — run tokei on each primal repo for ground truth
+- [x] ~~Verify LOC in PRIMAL_CATALOG.md~~ — catalog uses `entity_metrics` shortcodes (live from registry); periodic refresh via `spore-validate refresh --write`
 - [x] ~~rustChip entity registry refresh~~ — 23,655 LOC, 370 tests, 118 files
 
 ### Content gaps
@@ -40,7 +40,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~Cross-link Story ↔ Philosophy sections~~ — "Read More" sections with mapped pairs
 - [x] ~~Fix "Try It" cold-start~~ — replaced wetSpring (broken cold-clone) with groundSpring
 - [ ] Expand products pages with composition diagrams and BYOB examples
-- [ ] Add cross-spring data flow diagram to SPRING_CATALOG.md or a dedicated page
+- [x] ~~Add cross-spring data flow diagram to SPRING_CATALOG.md~~ — ASCII diagram in §2.2 (Wave 134+)
 
 ### Thesis integration (gen3/ → sporePrint)
 - [x] ~~gen3/thesis/ (16 chapters) — scientific thesis transplant planning~~ — `content/thesis/` scaffolded (18 files, stubs with abstracts + cross-links)

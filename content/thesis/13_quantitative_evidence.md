@@ -114,11 +114,11 @@ Phase 1 primals average 6.4× more code and 3.4× more tests than Phase 2 primal
 
 The largest primals are also the most specialized:
 
-- **Squirrel** (681,933 lines, 25,359 tests) — deeply adapted to multi-provider AI coordination, MCP protocol, model routing. Could not be ported to another IPC model without complete rewrite.
-- **ToadStool** (788,209 lines, 13,503 tests) — deeply adapted to WGSL/Vulkan compute, f64 emulation, shader pipeline management. The 628 WGSL shaders represent extreme specialization to the GPU constraint.
-- **BearDog** (577,341 lines, 11,872 tests) — deeply adapted to cryptographic operations, 91 methods, HSM integration. The entropy hierarchy principle is BearDog-specific.
+- **Squirrel** ({{ entity_stat(name="squirrel", stat="loc_display") }} lines, {{ entity_stat(name="squirrel", stat="tests_display") }} tests) — deeply adapted to multi-provider AI coordination, MCP protocol, model routing. Could not be ported to another IPC model without complete rewrite.
+- **ToadStool** ({{ entity_stat(name="toadstool", stat="loc_display") }} lines, {{ entity_stat(name="toadstool", stat="tests_display") }} tests) — deeply adapted to WGSL/Vulkan compute, f64 emulation, shader pipeline management. The {{ total_stat(stat="wgsl_files") }} WGSL shaders represent extreme specialization to the GPU constraint.
+- **BearDog** ({{ entity_stat(name="beardog", stat="loc_display") }} lines, {{ entity_stat(name="beardog", stat="tests_display") }} tests) — deeply adapted to cryptographic operations, 91 methods, HSM integration. The entropy hierarchy principle is BearDog-specific.
 
-Meanwhile, younger primals like **skunkBat** (7,366 lines, 48 tests) and **rhizoCrypt** (27,565 lines, 278 tests) remain more generic — less specialized because they have undergone fewer evolutionary cycles.
+Meanwhile, younger primals like **skunkBat** ({{ entity_stat(name="skunkbat", stat="loc_display") }} lines, {{ entity_stat(name="skunkbat", stat="tests_display") }} tests) and **rhizoCrypt** ({{ entity_stat(name="rhizocrypt", stat="loc_display") }} lines, {{ entity_stat(name="rhizocrypt", stat="tests_display") }} tests) remain more generic — less specialized because they have undergone fewer evolutionary cycles.
 
 ### 13.4.3 Expected Full Analysis
 
@@ -184,7 +184,7 @@ The quantitative evidence shows:
 4. **Velocity**: 11,161+ checks across 70+ papers in ~69 days exceeds institutional reproduction rates by an order of magnitude, with 3.9× growth in the most recent 5 weeks driven by cross-domain kernel reuse
 5. **Fastidious specialization**: Phase 1 primals average 6.4× more code and 3.4× more tests than Phase 2 primals, reflecting evolutionary maturity under constraint
 
-These are not analogies. They are measurements from 757,000 lines of Rust, 914 WGSL shaders, across 11 primals and 5 springs. The constrained evolution principle predicts all five observations. Alternative hypotheses ("good engineering") predict convergence and velocity but not cross-domain fitness from unrelated constraints (NTT→FFT). "Fast AI" predicts velocity but not the specific pattern of implementation convergence within directed architecture. The full pattern — convergence, specialization, cross-domain fitness, superlinear growth via kernel reuse — is predicted by the constrained evolution model.
+These are not analogies. They are measurements from {{ total_stat(stat="total_loc_display") }} lines of Rust, {{ total_stat(stat="wgsl_files") }} WGSL shaders, across {{ total_stat(stat="total_primals") }} primals and 8 springs. The constrained evolution principle predicts all five observations. Alternative hypotheses ("good engineering") predict convergence and velocity but not cross-domain fitness from unrelated constraints (NTT→FFT). "Fast AI" predicts velocity but not the specific pattern of implementation convergence within directed architecture. The full pattern — convergence, specialization, cross-domain fitness, superlinear growth via kernel reuse — is predicted by the constrained evolution model.
 
 
 ---

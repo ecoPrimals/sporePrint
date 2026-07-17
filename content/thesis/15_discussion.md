@@ -62,7 +62,7 @@ The thesis itself was produced with AI under constraint — the same constrained
 
 ### 15.3.1 AI-Generated Code Quality
 
-The methodology relies on AI (Cursor/Claude) for code generation. Concerns: hallucination, subtle bugs, technical debt accumulation. Mitigations: Rust type system eliminates broad classes of errors at compile time; 104,000+ tests; phased validation with Python baselines. Nevertheless, AI-generated code may contain latent issues not yet discovered (Pearce et al., 2022; Jesse et al., 2023).
+The methodology relies on AI (Cursor/Claude) for code generation. Concerns: hallucination, subtle bugs, technical debt accumulation. Mitigations: Rust type system eliminates broad classes of errors at compile time; {{ total_stat(stat="total_tests_display") }} tests; phased validation with Python baselines. Nevertheless, AI-generated code may contain latent issues not yet discovered (Pearce et al., 2022; Jesse et al., 2023).
 
 ### 15.3.2 No Production Users
 

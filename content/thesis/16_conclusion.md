@@ -108,7 +108,7 @@ They connect back to constrained evolution where the biology demands it.
 
 This dissertation began when a microbiologist who had worked with bacterial populations under selective pressure saw the same dynamics in AI-assisted code generation. The question was not "can AI write code?" but "does the *environment* in which AI writes code determine what gets built?"
 
-The answer, across 757,000 lines of Rust, 914 WGSL shaders, 104,000+ tests, and 11,161+ scientific checks, is yes. The Rust type system did not merely accelerate development. It reshaped the fitness landscape. Tower Atomic, the NTT→FFT evolution, the convergent IPC patterns, and the bonding model emerged because the constraint made certain solutions possible and others impossible. The system reflects its environment.
+The answer, across {{ total_stat(stat="total_loc_display") }} lines of Rust, {{ total_stat(stat="wgsl_files") }} WGSL shaders, {{ total_stat(stat="total_tests_display") }} tests, and {{ total_stat(stat="validation_checks") }} scientific checks, is yes. The Rust type system did not merely accelerate development. It reshaped the fitness landscape. Tower Atomic, the NTT→FFT evolution, the convergent IPC patterns, and the bonding model emerged because the constraint made certain solutions possible and others impossible. The system reflects its environment.
 
 ### 16.4.2 The General Principle
 

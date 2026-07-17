@@ -1,5 +1,5 @@
-generated = "2026-07-17T14:00:03Z"
-root_hash = "070089715d0a457d7b303e1bc2c6340e12a7c50ae49c0ae87f3b108a077d78a8"
+generated = "2026-07-17T15:03:35Z"
+root_hash = "ec91f9f14bbfe534ae8c9e6d6bde4ae7553400f369321a66f806e08ee468aa4e"
 page_count = 322
 
 [pages."_index.md"]
@@ -722,8 +722,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "72eea7ac817609b02e65b6e495150452badaf162c8fd0d2487a3e4982abed858"
-size_bytes = 6347
+blake3 = "05841b6f74357768421bd128e226418de2e3fb9ac0c25ac1ace312e36ea00206"
+size_bytes = 6379
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"

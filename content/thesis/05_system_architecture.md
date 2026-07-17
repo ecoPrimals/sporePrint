@@ -63,21 +63,21 @@ BarraCuda (914 WGSL shaders, f64, vendor-agnostic) is ToadStool's GPU compute su
 
 | Primal | Rust Lines | #[test] | Phase |
 |--------|----------:|--------:|-------|
-| BearDog | 577,341 | 11,872 | 1 |
-| Songbird | 401,900 | 7,314 | 1 |
-| Squirrel | 681,933 | 25,359 | 1 |
-| ToadStool | 788,209 | 13,503 | 1 |
-| NestGate | 645,445 | 14,807 | 1 |
-| biomeOS | 321,534 | 14,179 | 2 |
-| petalTongue | 160,970 | 6,186 | 2 |
-| sweetGrass | 66,168 | 3,769 | 2 |
-| sourDough | 50,746 | 3,622 | 2 |
-| LoamSpine | 44,453 | 1,952 | 2 |
-| rhizoCrypt | 27,565 | 278 | 2 |
-| skunkBat | 7,366 | 48 | 2 |
-| **Total** | **3,773,630** | **102,889** | |
+| BearDog | {{ entity_stat(name="beardog", stat="loc_display") }} | {{ entity_stat(name="beardog", stat="tests_display") }} | 1 |
+| Songbird | {{ entity_stat(name="songbird", stat="loc_display") }} | {{ entity_stat(name="songbird", stat="tests_display") }} | 1 |
+| Squirrel | {{ entity_stat(name="squirrel", stat="loc_display") }} | {{ entity_stat(name="squirrel", stat="tests_display") }} | 1 |
+| ToadStool | {{ entity_stat(name="toadstool", stat="loc_display") }} | {{ entity_stat(name="toadstool", stat="tests_display") }} | 1 |
+| NestGate | {{ entity_stat(name="nestgate", stat="loc_display") }} | {{ entity_stat(name="nestgate", stat="tests_display") }} | 1 |
+| biomeOS | {{ entity_stat(name="biomeos", stat="loc_display") }} | {{ entity_stat(name="biomeos", stat="tests_display") }} | 2 |
+| petalTongue | {{ entity_stat(name="petaltongue", stat="loc_display") }} | {{ entity_stat(name="petaltongue", stat="tests_display") }} | 2 |
+| sweetGrass | {{ entity_stat(name="sweetgrass", stat="loc_display") }} | {{ entity_stat(name="sweetgrass", stat="tests_display") }} | 2 |
+| sourDough | {{ entity_stat(name="sourdough", stat="loc_display") }} | {{ entity_stat(name="sourdough", stat="tests_display") }} | 2 |
+| LoamSpine | {{ entity_stat(name="loamspine", stat="loc_display") }} | {{ entity_stat(name="loamspine", stat="tests_display") }} | 2 |
+| rhizoCrypt | {{ entity_stat(name="rhizocrypt", stat="loc_display") }} | {{ entity_stat(name="rhizocrypt", stat="tests_display") }} | 2 |
+| skunkBat | {{ entity_stat(name="skunkbat", stat="loc_display") }} | {{ entity_stat(name="skunkbat", stat="tests_display") }} | 2 |
+| **Total** | **{{ total_stat(stat="primal_loc_display") }}** | **{{ total_stat(stat="primal_tests_display") }}** | |
 
-Note: line counts via `wc -l` (including comments, blank lines, tests). Springs add 119,669 Rust + 103,663 Python + 48,698 WGSL = 272,030 additional lines. Grand total compiled code (Rust + WGSL): ~3.8M lines.
+Note: line counts via `tokei` (including comments, blank lines, tests). Springs add {{ total_stat(stat="spring_loc_display") }} additional Rust lines. Grand total Rust (primals + springs): {{ total_stat(stat="total_loc_display") }} lines.
 
 ---
 
@@ -139,18 +139,18 @@ Zero metadata leakage: beacons encrypted with ChaCha20-Poly1305 are indistinguis
 
 | Metric | Value | Method |
 |--------|-------|--------|
-| Total Rust lines (primals) | 3,773,630 | `wc -l` |
-| Total Rust lines (springs) | 119,669 | `wc -l` |
-| Total WGSL lines | 48,698 | `wc -l` |
-| WGSL shader files | 628 | `find *.wgsl` |
-| #[test] annotations (primals) | 102,889 | `grep -c` |
-| #[test] annotations (springs) | 1,294 | `grep -c` |
-| Validation checks (springs) | 11,161+ | Automated CI |
+| Total Rust lines (primals) | {{ total_stat(stat="primal_loc_display") }} | `tokei` |
+| Total Rust lines (springs) | {{ total_stat(stat="spring_loc_display") }} | `tokei` |
+| Total WGSL lines | {{ total_stat(stat="wgsl_lines_display") }} | `tokei` |
+| WGSL shader files | {{ total_stat(stat="wgsl_files") }} | `find *.wgsl` |
+| #[test] annotations (primals) | {{ total_stat(stat="primal_tests_display") }} | `grep -c` |
+| #[test] annotations (springs) | {{ total_stat(stat="spring_tests_display") }} | `grep -c` |
+| Validation checks (springs) | {{ total_stat(stat="validation_checks") }} | Automated CI |
 | C dependencies | Zero (application layer) | `cargo tree` |
 | IPC | JSON-RPC 2.0, Unix sockets | — |
 | Platforms | Linux, macOS, Android, Windows, FreeBSD, illumos, WASM | — |
 
-Squirrel (681,933 lines) is the largest primal by Rust volume; BearDog has the most cryptographic surface area (91 methods); ToadStool houses the most WGSL (914 shaders via BarraCuda). The disparity between phase 1 and phase 2 primals reflects evolutionary maturity — the five foundation primals have undergone ~10 months of constrained evolution; the seven post-NUCLEUS primals are younger.
+ToadStool ({{ entity_stat(name="toadstool", stat="loc_display") }} lines) is the largest primal by Rust volume; BearDog has the most cryptographic surface area (91 methods); ToadStool houses the most WGSL (914 shaders via BarraCuda). The disparity between phase 1 and phase 2 primals reflects evolutionary maturity — the five foundation primals have undergone ~10 months of constrained evolution; the seven post-NUCLEUS primals are younger.
 
 ---
 

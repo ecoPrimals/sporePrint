@@ -178,7 +178,7 @@ Pages reinforce each other across four registers:
 - methodology (operational) <-> thesis (theoretical) — how to do it <-> why it works
 - science (experimental) <-> thesis results (analysis) — raw evidence <-> interpreted evidence
 
-~80 pages carry "companion" metadata in their JSON-LD (relatedLink)
+~105 pages carry "companion" metadata in their JSON-LD (relatedLink)
 and in a visible "Companion Pages" panel. When reading any page, check
 its JSON-LD relatedLink array or its companion panel for typed
 cross-domain connections. Philosophy and code docs are designed to
