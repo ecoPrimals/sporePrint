@@ -2,9 +2,9 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 15, 2026 (Wave 140a — freshness republished, protoKarya content, CAC transplant, cross-platform parity page, duplicate notebooks removed, root docs updated)
+Last reviewed: July 17, 2026 (Wave 145a — Phase 2 transport 14/14 complete, CAC 6/6 complete, metrics refresh, depot 59 binaries, certification manifest re-emitted, page/notebook counts corrected)
 
-**Current state**: 307 pages, 79 entities, 10 trails, 5 cortical folds, 3.57M LOC, 116K tests.
+**Current state**: 302 pages, 79 entities, 10 trails, 5 cortical folds, 3.57M LOC, 116K tests, 59 depot binaries.
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ---
@@ -14,10 +14,10 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 ### Periodic refresh: counts and versions
 - [x] ~~Sync landing page stat cards~~ — stats ribbon reads from `config.extra.totals` dynamically
 - [ ] Update Squirrel version/tests if alpha has advanced
-- [x] ~~Verify plasmidBin inventory count~~ — 14 x86_64 + 14 aarch64 confirmed (6 local size-drift from Sovereign CI rebuilds)
-- [x] ~~Check if new baseCamp papers exist~~ — 27 papers confirmed
+- [x] ~~Verify plasmidBin inventory count~~ — 59 binaries across 4 architectures (16+16+13+14)
+- [x] ~~Check if new baseCamp papers exist~~ — 28 papers confirmed
 - [ ] Verify LOC estimates in PRIMAL_CATALOG.md — run tokei on each primal repo for ground truth
-- [x] ~~rustChip entity registry refresh~~ — 23,733 LOC, 367 tests, 118 files
+- [x] ~~rustChip entity registry refresh~~ — 23,655 LOC, 370 tests, 118 files
 
 ### Content gaps
 - [x] ~~guideStone section has only `_index.md`~~ — 4 substantive pages
@@ -27,7 +27,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 ### Taxonomy completeness
 - [x] ~~Audit all 222 content pages: grep content for entity names not tagged in front matter~~ → `spore-validate validate --check` audit_taxonomy_coverage (Wave 120)
 - [x] ~~Build-time validation~~ → `spore-validate` Rust crate
-- [x] ~~Internal link validation~~ → `spore-validate check-links` (155 links validated)
+- [x] ~~Internal link validation~~ → `spore-validate check-links` (543 links validated)
 
 ---
 

@@ -38,7 +38,7 @@ Section indexes list all child pages within that section.
 ### Fold 1: Evidence (60% of site)
 What we proved — live validation results, reproduced science, lab notebooks.
 
-- **Lab** (132 pages): Validation results, spring hubs, 104 notebooks grouped by domain (physics, biology, agriculture, health, chemistry, computation).
+- **Lab** (127 pages): Validation results, spring hubs, 98 notebooks grouped by domain (physics, biology, agriculture, health, chemistry, computation).
   - Section index: https://primals.eco/lab/
 - **Science** (33 papers): 28 executable baseCamp papers across 6 domains.
   - Section index: https://primals.eco/science/
@@ -65,7 +65,7 @@ How to build — development methodology, verification, certification.
 
 - **Methodology** (15 pages): Constrained evolution, K-NOME, conversation constraint, sovereign publication.
   - Section index: https://primals.eco/methodology/
-- **guideStone** (7 pages): Verification system — BLAKE3 Merkle roots, provenance chains, deployable artifacts.
+- **guideStone** (6 pages): Verification system — BLAKE3 Merkle roots, provenance chains, deployable artifacts.
   - Section index: https://primals.eco/guidestone/
 - Ridge pages: https://primals.eco/methodology/k-nome-programming/ , https://primals.eco/methodology/constrained-evolution-formal/
 
@@ -151,7 +151,7 @@ Trail pages: https://primals.eco/trails/
 - 116,472 tests across ecosystem
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- 59 depot binaries across 4 architectures (14 x86_64 Linux, 14 aarch64 Linux, 14 aarch64 Android, 14 x86_64 Windows)
+- 59 depot binaries across 4 architectures (16 x86_64 Linux, 16 aarch64 Linux, 13 aarch64 Android, 14 x86_64 Windows)
 - Phase 2 transport abstraction complete: all 14 primals cross-compile for all 4 targets
 - Content-Addressed Convergence: all 6 layers complete
 - Zero commercial dependencies in inner membrane

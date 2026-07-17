@@ -22,7 +22,7 @@ Gate pushes to Forgejo (golgi) → Sovereign CI
 ## Stack
 
 - **[Zola](https://www.getzola.org/) 0.22.1** — Rust static site generator (single binary, zero deps)
-- **`spore-validate`** — Rust validation + certification crate (34 modules, 284 tests, zero C deps)
+- **`spore-validate`** — Rust validation + certification crate (34 modules, 287 tests, zero C deps)
 - **petalTongue viz pipeline** — Server-rendered SVG with WASM progressive enhancement
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
 - **Custom theme** — Catppuccin Mocha/Latte, system fonts, dark/light, zero external deps
@@ -58,7 +58,7 @@ sporePrint/
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
 ├── content-manifest.toml # BLAKE3 content provenance (generated)
 ├── content/             # 302 published pages with TOML front matter
-│   ├── lab/             # 132 pages: spring hubs, 104 notebooks (6 domains), spore gallery
+│   ├── lab/             # 127 pages: spring hubs, 98 notebooks (6 domains), spore gallery
 │   ├── science/         # 33 baseCamp companion papers
 │   ├── architecture/    # 42 pages: composition, NUCLEUS, K-Derm, CAC, cross-platform, coordination
 │   ├── thesis/          # 18 chapters: PhD dissertation (constrained evolution)
@@ -67,7 +67,7 @@ sporePrint/
 │   ├── outreach/        # 14 pages: partnership briefs, community landings
 │   ├── products/        # 11 pages: footPrint, tideGlass, helixVision, lithoSpore, etc.
 │   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
-│   ├── guidestone/      # 7 pages: verification class
+│   ├── guidestone/      # 6 pages: verification class
 │   ├── audience/        # 6 pages: PI, student, builder, compliance guides
 │   ├── story/           # 3 pages: builder narrative essays
 │   ├── collaborators/   # 3 profiles: Gonzales (NF), Jones (PFAS), ABG
@@ -109,7 +109,7 @@ typed companion metadata for cross-domain discovery.
 ## spore-validate
 
 Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
-zero warnings, 284 tests, 34 modules, zero C toolchain dependencies.
+zero warnings, 287 tests, 34 modules, zero C toolchain dependencies.
 Edition 2024, Rust 1.85+.
 
 | Subcommand | Purpose |

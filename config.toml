@@ -88,8 +88,8 @@ platforms = ["medium", "primals.eco/philosophy", "primals.eco/story"]
 content_sections = ["philosophy", "story"]
 license = "CC-BY-SA 4.0"
 
-# ── Measured 2026-04-04 via tokei (primals + springs pulled and counted) ──
-# Update procedure: pull all repos, run tokei, update numbers here.
+# ── Entity Registry (refreshed 2026-07-16 via spore-validate refresh --write) ──
+# Update procedure: spore-validate refresh --write <repos_root>
 # Shortcodes and templates read from this registry — update once, propagates everywhere.
 
 # ── Primals ──────────────────────────────────────────────────────────────

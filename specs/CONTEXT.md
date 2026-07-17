@@ -16,7 +16,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **10 reading trails** threading pages across fold boundaries
 - **~80 pages** carry companion metadata for cross-domain discovery
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
-- **`spore-validate` v0.3.1** — 34-module Rust crate, 284 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
+- **`spore-validate` v0.3.1** — 34-module Rust crate, 287 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals** (machine-verified): 3.57M LOC, 116,472 tests, 42 repos, 59 depot binaries across 4 architectures
 - **Phase 2 transport abstraction**: 14/14 primals complete — trait + backend patterns replace all `#[cfg]` fences
 - **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity

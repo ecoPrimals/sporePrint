@@ -129,10 +129,10 @@ The depot serves 59 signed binaries across 4 architectures:
 
 | Architecture | Binaries | Status |
 |-------------|----------|--------|
-| `x86_64-unknown-linux-musl` | 14 | Fresh |
-| `aarch64-unknown-linux-musl` | 14 | Fresh |
-| `aarch64-linux-android` | 14 | Fresh |
-| `x86_64-pc-windows-gnu` | 14 | Fresh — **all 14 unblocked by Phase 2** |
+| `x86_64-unknown-linux-musl` | 16 | Fresh |
+| `aarch64-unknown-linux-musl` | 16 | Fresh |
+| `aarch64-linux-android` | 13 | Fresh |
+| `x86_64-pc-windows-gnu` | 14 | Fresh — **unblocked from 1 to 14 by Phase 2** |
 
 All binaries are BLAKE3 checksummed and Ed25519 signed. The VPS depot
 serves them over HTTPS. Phase 2 transport completion is what moved
