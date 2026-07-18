@@ -1,11 +1,11 @@
 +++
 title = "Turc (1961) Temperature-Radiation ET₀"
 description = "Rendered from 034-turc-et0.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "034-turc-et0.ipynb"
 +++
 
@@ -42,7 +42,7 @@ def _find_repo_root() -> Path:
         if (p / "control" / "turc").is_dir():
             return p
         p = p.parent
-    return Path(os.environ.get('AIRSPRING_ROOT', '../airSpring'))
+    return Path('/home/eastgate/Development/ecoPrimals/springs/airSpring')
 
 REPO = _find_repo_root()
 BENCHMARK_PATH = REPO / "control" / "turc" / "benchmark_turc.json"

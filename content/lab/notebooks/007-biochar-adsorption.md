@@ -1,11 +1,11 @@
 +++
 title = "Biochar Phosphorus Adsorption Isotherms (Kumari et al. 2025)"
 description = "Rendered from 007-biochar-adsorption.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "007-biochar-adsorption.ipynb"
 +++
 
@@ -41,7 +41,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import curve_fit
 
-REPO = Path(os.environ.get('AIRSPRING_ROOT', '../airSpring')).resolve()
+REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
 BENCH = REPO / "control/biochar/benchmark_biochar.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"

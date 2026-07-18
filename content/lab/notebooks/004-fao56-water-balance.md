@@ -1,11 +1,11 @@
 +++
 title = "FAO-56 Chapter 8 — Daily Soil Water Balance Scheduling"
 description = "Rendered from 004-fao56-water-balance.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "004-fao56-water-balance.ipynb"
 +++
 

@@ -1,11 +1,11 @@
 +++
 title = "Priestley-Taylor (1972) Radiation-Based ET₀"
 description = "Rendered from 019-priestley-taylor-et0.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "019-priestley-taylor-et0.ipynb"
 +++
 

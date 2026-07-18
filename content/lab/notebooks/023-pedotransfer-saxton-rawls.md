@@ -1,11 +1,11 @@
 +++
 title = "Saxton-Rawls (2006) Pedotransfer Functions"
 description = "Rendered from 023-pedotransfer-saxton-rawls.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "023-pedotransfer-saxton-rawls.ipynb"
 +++
 
@@ -44,7 +44,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-REPO = Path(os.environ.get('AIRSPRING_ROOT', '../airSpring')).resolve()
+REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
 BENCH = REPO / "control/pedotransfer/benchmark_pedotransfer.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"

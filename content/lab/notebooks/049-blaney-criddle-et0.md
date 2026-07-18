@@ -1,11 +1,11 @@
 +++
 title = "Blaney–Criddle (1950) Temperature-Based PET"
 description = "Rendered from 049-blaney-criddle-et0.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "049-blaney-criddle-et0.ipynb"
 +++
 
@@ -39,7 +39,7 @@ def _find_repo_root() -> Path:
         if (p / "control" / "blaney_criddle").is_dir():
             return p
         p = p.parent
-    return Path(os.environ.get('AIRSPRING_ROOT', '../airSpring'))
+    return Path('/home/eastgate/Development/ecoPrimals/springs/airSpring')
 
 REPO = _find_repo_root()
 BENCHMARK_PATH = REPO / "control" / "blaney_criddle" / "benchmark_blaney_criddle.json"

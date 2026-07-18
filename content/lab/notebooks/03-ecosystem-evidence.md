@@ -1,146 +1,154 @@
 +++
-title = "Ecosystem Evidence — groundSpring"
+title = "Ecosystem Evidence — airSpring"
 description = "Rendered from 03-ecosystem-evidence.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "computation"
+domain = "Lab"
 rendered_from = "03-ecosystem-evidence.ipynb"
 +++
 
 <!-- Auto-generated from 03-ecosystem-evidence.ipynb by spore-validate render-notebooks -->
 
-# Ecosystem Evidence — groundSpring
+# Ecosystem Evidence — airSpring
 
-35 experiments across 10 scientific domains, each proving that Python
-baselines can be faithfully ported to sovereign Rust+GPU compute.
-This notebook visualizes the experiment catalog, domain distribution,
-gap resolution timeline, and security posture.
+87 experiments validating precision agriculture and irrigation science.
+1,284 Python baselines → 1,364 Rust tests → 91 validation binaries.
+60 named tolerances with full provenance tracking.
 
-**Data sources**: `experiments/results/experiment_catalog.json`, `security_gaps.json`
+**Data sources**: `experiment_catalog.json`, `test_suite_report.json`, `security_convergence.json`
 
----
+**Reproduce**: `cargo test --lib && cargo test --tests --all-features`
 
-*For other springs*: Replace with your experiment catalog and gap registry.
-The domain breakdown and gap resolution pattern adapts to any spring.
+**For other springs**: Replace experiment categories with your domain areas.
+The pattern of categorized experiments with check counts and named tolerances
+applies universally.
 
 ```python
 import json
-import matplotlib
-import matplotlib.pyplot as plt
 from pathlib import Path
 
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 RESULTS = Path('..') / 'experiments' / 'results'
-PASS = '#2ecc71'
-FAIL = '#e74c3c'
-INFO = '#3498db'
-WARN = '#f39c12'
 
 def load(name):
     with open(RESULTS / name) as f:
         return json.load(f)
 
 catalog = load('experiment_catalog.json')
-gaps = load('security_gaps.json')
+tests = load('test_suite_report.json')
+security = load('security_convergence.json')
 
 print(f"Total experiments: {catalog['total_experiments']}")
-print(f"Validation checks: {catalog['total_validation_checks']} ({catalog['core_checks']} core + {catalog['nucleus_checks']} NUCLEUS)")
-print(f"Math parity: {catalog['math_parity_proven']}")
-print(f"Domains: {len(catalog['domains'])}")
-print(f"Gaps: {gaps['gaps']['active']}/{gaps['gaps']['total']} active, {gaps['gaps']['resolved']} resolved")
+print(f"  Complete: {catalog['status_breakdown']['complete']}")
+print(f"  Active: {catalog['status_breakdown']['active']}")
+print(f"Categories: {len(catalog['categories'])}")
+print(f"Tolerances: {tests['tolerances']['total_named']} named, {tests['tolerances']['submodules']} submodules")
 ```
 
-## Experiment Distribution by Domain
+## Experiment Distribution by Category
 
 ```python
-domains = catalog['domains']
-domain_names = list(domains.keys())
-domain_counts = [domains[d]['count'] for d in domain_names]
-domain_labels = [d.replace('_', ' ').title() for d in domain_names]
+categories = catalog['categories']
+cat_names = [c['name'] for c in categories]
+cat_counts = [len(c['experiments']) for c in categories]
+cat_checks = [c['total_checks'] for c in categories]
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
-colors = plt.cm.Set3([i / len(domain_names) for i in range(len(domain_names))])
-wedges, texts, autotexts = ax1.pie(domain_counts, labels=domain_labels,
-    autopct='%1.0f%%', colors=colors, startangle=90)
-ax1.set_title(f'{catalog["total_experiments"]} Experiments Across {len(domains)} Domains')
+ax1.barh(cat_names, cat_counts, color='#3498db', edgecolor='white')
+ax1.set_xlabel('Experiments')
+ax1.set_title(f'Experiments by Category ({catalog["total_experiments"]} total)')
+for i, v in enumerate(cat_counts):
+    ax1.text(v + 0.1, i, str(v), va='center', fontsize=9)
 
-ax2.barh(domain_labels[::-1], domain_counts[::-1], color=INFO)
-ax2.set_xlabel('Experiment Count')
-ax2.set_title('Experiments per Domain')
+ax2.barh(cat_names, cat_checks, color='#2ecc71', edgecolor='white')
+ax2.set_xlabel('Validation Checks')
+ax2.set_title('Validation Checks by Category')
+for i, v in enumerate(cat_checks):
+    ax2.text(v + 5, i, str(v), va='center', fontsize=9)
 
 plt.tight_layout()
-plt.savefig('/tmp/groundspring_03_domains.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/airspring_03_categories.png', dpi=150)
 plt.show()
 ```
 
-## Rust vs Python Parity Across All Experiments
+## Test Suite Composition
 
 ```python
-exps = catalog['experiments']
-has_speedup = [e for e in exps if e.get('speedup') and 'x' in str(e['speedup'])]
-names = [f"{e['id']}: {e['title'][:25]}" for e in has_speedup]
-speeds = [float(str(e['speedup']).replace('x', '')) for e in has_speedup]
+test_cats = tests['categories']
+labels = [c['name'] for c in test_cats]
+counts = [c['count'] for c in test_cats]
+colors = ['#2ecc71', '#3498db', '#9b59b6', '#e74c3c', '#f39c12', '#1abc9c', '#34495e']
 
-fig, ax = plt.subplots(figsize=(12, 8))
-colors = [PASS if s >= 10 else INFO if s >= 5 else '#95a5a6' for s in speeds]
-ax.barh(names[::-1], speeds[::-1], color=colors[::-1])
-ax.axvline(x=1.0, color=FAIL, linestyle='--', alpha=0.5, label='Python baseline')
-ax.set_xlabel('Speedup (×)')
-ax.set_title(f'Rust vs Python: {len(has_speedup)} Experiments with Measured Speedups')
-ax.legend()
-
+fig, ax = plt.subplots(figsize=(8, 8))
+wedges, texts, autotexts = ax.pie(counts, labels=labels, colors=colors[:len(labels)],
+                                   autopct='%1.0f%%', startangle=90, pctdistance=0.85)
+for text in texts:
+    text.set_fontsize(8)
+for autotext in autotexts:
+    autotext.set_fontsize(7)
+total = sum(counts)
+ax.set_title(f'Test Suite: {total:,} total checks')
 plt.tight_layout()
-plt.savefig('/tmp/groundspring_03_parity.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/airspring_03_tests.png', dpi=150)
 plt.show()
 ```
 
-## Gap Resolution & Security Posture
+## Quality Gates & Safety
 
 ```python
-gap_data = gaps['gaps']
-labels = ['Resolved', 'Active (low)', 'Blocked upstream']
-counts = [
-    gap_data['resolved'],
-    gap_data['active'] - gap_data['blocked_upstream'],
-    gap_data['blocked_upstream']
+safety = security['rust_safety']
+deps = security['dependency_security']
+validation = security['validation_integrity']
+
+gates = [
+    ('forbid(unsafe_code)', safety['forbid_unsafe_code']),
+    ('deny(cast_*)', safety['deny_cast_lints']),
+    ('deny(unwrap_used)', safety['deny_clippy_unwrap']),
+    ('warn(missing_docs)', safety['warn_missing_docs']),
+    ('zero #[allow()]', safety['zero_allow_attributes']),
+    ('#[expect(reason)]', safety['expect_with_reason']),
+    ('cargo-deny clean', deps['cargo_deny_clean']),
+    ('zero C deps', deps['c_dependencies'] == 0),
+    ('ecoBin compliant', deps['ecobin_compliant']),
+    ('zero-panic (91 bins)', validation['zero_panic_binaries'] == 91),
+    ('determinism contract', validation['determinism_contract']),
+    (f'{validation["named_tolerances"]} named tolerances', True),
 ]
-colors_g = [PASS, WARN, '#95a5a6']
 
-sec = gaps['security_posture']
-sec_labels = ['unsafe blocks', 'allow attrs', 'TODO/FIXME', 'prod mocks', 'hardcoded addrs', 'sys crates']
-sec_values = [sec['unsafe_blocks'], sec['allow_attributes'], sec['todo_fixme'],
-              sec['production_mocks'], sec['hardcoded_addresses'], sec['direct_sys_crates']]
-
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
-
-ax1.bar(labels, counts, color=colors_g)
-ax1.set_title(f'Gap Registry: {gap_data["total"]} Total')
-ax1.set_ylabel('Count')
-
-bar_colors = [PASS if v == 0 else FAIL for v in sec_values]
-ax2.barh(sec_labels, sec_values, color=bar_colors)
-ax2.set_title('Security Posture — All Zero')
-ax2.set_xlabel('Count')
-ax2.set_xlim(-0.5, 1)
-
+fig, ax = plt.subplots(figsize=(8, 5))
+gate_names = [g[0] for g in gates]
+gate_pass = [1 if g[1] else 0 for g in gates]
+gate_colors = ['#2ecc71' if g[1] else '#e74c3c' for g in gates]
+ax.barh(gate_names, gate_pass, color=gate_colors, edgecolor='white')
+ax.set_xlim(0, 1.5)
+ax.set_xticks([])
+for i, (name, passed) in enumerate(gates):
+    ax.text(1.05, i, 'PASS' if passed else 'FAIL', va='center',
+            color='#2ecc71' if passed else '#e74c3c', fontweight='bold', fontsize=9)
+ax.set_title('Quality Gates')
 plt.tight_layout()
-plt.savefig('/tmp/groundspring_03_gaps.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/airspring_03_gates.png', dpi=150)
 plt.show()
 ```
 
-## Validation Summary
+## Summary
 
 | Metric | Value |
 |--------|-------|
-| Experiments | 35 across 10 domains |
-| Validation checks | 395/395 (340 core + 55 NUCLEUS) |
-| Math parity | 29/29 proven |
-| Gaps | 4 resolved, 5 active (low), 2 blocked upstream |
-| Security | Zero unsafe, zero mocks, zero hardcoded addresses |
-| Tolerance tiers | 13 library + 5 epsilon + 25 validation-specific |
+| Experiments | 87 (86 complete, 1 active) |
+| Python baselines | 1,284 checks |
+| Rust tests | 1,364 (986 lib + 316 integration + 62 forge) |
+| Validation binaries | 91 (all zero-panic) |
+| Line coverage | 90.56% (gated at 90%) |
+| Named tolerances | 60 in 5 submodules (Python mirror) |
+| Quality gates | 12/12 PASS |
+| Provenance baselines | 63 registered |
 
-**Provenance**: All data from `groundSpring V143 (May 16, 2026)).
-See [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco.
+**Provenance**: airSpring v0.10.0 · AGPL-3.0-or-later · [primals.eco](https://primals.eco)
 

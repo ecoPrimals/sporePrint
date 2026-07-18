@@ -1,11 +1,11 @@
 +++
 title = "Hamon (1961) Temperature-Based PET"
 description = "Rendered from 035-hamon-pet.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "035-hamon-pet.ipynb"
 +++
 
@@ -41,7 +41,7 @@ def _find_repo_root() -> Path:
         if (p / "control" / "hamon").is_dir():
             return p
         p = p.parent
-    return Path(os.environ.get('AIRSPRING_ROOT', '../airSpring'))
+    return Path('/home/eastgate/Development/ecoPrimals/springs/airSpring')
 
 REPO = _find_repo_root()
 BENCHMARK_PATH = REPO / "control" / "hamon" / "benchmark_hamon.json"

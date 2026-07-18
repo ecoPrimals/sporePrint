@@ -1,11 +1,11 @@
 +++
 title = "Standardized Precipitation Index (SPI)"
 description = "Rendered from 081-spi-drought-index.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "081-spi-drought-index.ipynb"
 +++
 
@@ -35,7 +35,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-REPO = Path(os.environ.get('AIRSPRING_ROOT', '../airSpring')).resolve()
+REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
 BENCH = REPO / "control/drought_index/benchmark_drought_index.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"

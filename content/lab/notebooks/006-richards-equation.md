@@ -1,11 +1,11 @@
 +++
 title = "1D Richards Equation with van Genuchten–Mualem Hydraulics"
 description = "Rendered from 006-richards-equation.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "006-richards-equation.ipynb"
 +++
 
@@ -48,7 +48,7 @@ from scipy.integrate import solve_ivp
 
 warnings.filterwarnings("ignore", category=RuntimeWarning, module="scipy")
 
-REPO = Path(os.environ.get('AIRSPRING_ROOT', '../airSpring')).resolve()
+REPO = Path('/home/eastgate/Development/ecoPrimals/springs/airSpring').resolve()
 BENCH = REPO / "control/richards/benchmark_richards.json"
 
 C_GREEN, C_RED, C_BLUE = "#2ecc71", "#e74c3c", "#3498db"

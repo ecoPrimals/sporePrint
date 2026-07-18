@@ -1,11 +1,11 @@
 +++
 title = "Domain Deep Dive — airSpring"
 description = "Rendered from 05-domain-deep-dive.ipynb"
-date = 2026-07-04
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "05-domain-deep-dive.ipynb"
 +++
 

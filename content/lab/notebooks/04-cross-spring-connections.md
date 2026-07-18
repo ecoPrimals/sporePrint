@@ -1,128 +1,140 @@
 +++
-title = "Cross-Spring Connections — groundSpring"
+title = "Cross-Spring Connections — airSpring"
 description = "Rendered from 04-cross-spring-connections.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "computation"
+domain = "Lab"
 rendered_from = "04-cross-spring-connections.ipynb"
 +++
 
 <!-- Auto-generated from 04-cross-spring-connections.ipynb by spore-validate render-notebooks -->
 
-# Cross-Spring Connections — groundSpring
+# Cross-Spring Connections — airSpring
 
-groundSpring consumes 5 primals and contributes uncertainty budgets to
-every baseCamp paper. This notebook maps the primal consumption matrix,
-cross-spring data flows, and ecosystem patterns pioneered by groundSpring.
+barraCuda integration (25 Tier A GPU modules), cross-spring shader evolution
+(767+ WGSL shaders), and primal consumption matrix across the ecosystem.
 
-**Data sources**: `experiments/results/cross_spring_matrix.json`
+**Data sources**: `cross_spring_matrix.json`, `composition_validation.json`
 
----
+**Reproduce**: `cargo run --release --bin bench_cross_spring_evolution` (146/146)
 
-*For other springs*: Replace with your own primal consumption and
-cross-spring flow data. The matrix visualization pattern stays the same.
+**For other springs**: Replace shader families and primal consumption with your
+domain's ecosystem connections. The cross-spring matrix pattern shows how
+springs give and receive capabilities.
 
 ```python
 import json
-import matplotlib
-import matplotlib.pyplot as plt
 from pathlib import Path
 
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 RESULTS = Path('..') / 'experiments' / 'results'
-PASS = '#2ecc71'
-FAIL = '#e74c3c'
-INFO = '#3498db'
-WARN = '#f39c12'
 
 def load(name):
     with open(RESULTS / name) as f:
         return json.load(f)
 
 matrix = load('cross_spring_matrix.json')
+comp = load('composition_validation.json')
 
-consumed = matrix['primals_consumed']
-not_consumed = matrix['primals_not_yet_consumed']
-flows = matrix['cross_spring_flows']
+bc = matrix['barracuda_integration']
+print(f"barraCuda {bc['version']} (wgpu {bc['wgpu_version']})")
+print(f"Ecosystem shaders: {bc['total_shaders_ecosystem']}+")
+print(f"Tier A GPU modules: {bc['tier_a_gpu_modules']}")
+print(f"Upstream batched ops: {bc['upstream_batched_ops']}")
+print(f"local_dispatch retired: {bc['local_dispatch_retired']}")
+print(f"Cross-spring checks: {matrix['cross_spring_checks']['total']}")
+```
 
-print(f"Primals consumed: {len(consumed)}")
-print(f"Primals not yet consumed: {len(not_consumed)}")
-print(f"Cross-spring flows: {len(flows)}")
-print(f"Patterns pioneered: {len(matrix['ecosystem_contribution']['patterns_pioneered'])}")
+## Cross-Spring Shader Families
+
+airSpring consumes shaders from 4 sibling springs and contributed 3 upstream fixes.
+
+```python
+families = matrix['cross_spring_shader_families']
+springs = [f['spring'] for f in families]
+shader_counts = [f['shaders'] for f in families]
+
+fig, ax = plt.subplots(figsize=(8, 4))
+colors = ['#e74c3c', '#3498db', '#9b59b6', '#f39c12']
+bars = ax.bar(springs, shader_counts, color=colors, edgecolor='white')
+ax.set_ylabel('Shaders')
+ax.set_title(f'Cross-Spring Shader Families ({bc["total_shaders_ecosystem"]}+ ecosystem total)')
+for bar, count in zip(bars, shader_counts):
+    if count > 0:
+        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5,
+                str(count), ha='center', fontsize=10)
+plt.tight_layout()
+plt.savefig('/tmp/airspring_04_shaders.png', dpi=150)
+plt.show()
+
+print('\nWhat airSpring uses from each spring:')
+for f in families:
+    if f['shaders'] > 0:
+        print(f"  {f['spring']}: {f['airspring_uses']}")
+
+print('\nWhat airSpring contributed upstream:')
+for f in families:
+    if f['airspring_contributed']:
+        print(f"  {f['spring']}: {f['airspring_contributed']}")
 ```
 
 ## Primal Consumption Matrix
 
 ```python
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+consumption = matrix['primal_consumption']
+primals = list(consumption.keys())
+wired = [1 if consumption[p]['wired'] else 0 for p in primals]
+cap_counts = [len(consumption[p]['capabilities_used']) for p in primals]
 
-# Consumed primals with capability counts
-primal_names = list(consumed.keys())
-cap_counts = [len(consumed[p]['capabilities_used']) for p in primal_names]
-statuses = [consumed[p]['status'] for p in primal_names]
-colors = [PASS if s == 'validated' else WARN for s in statuses]
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
-ax1.barh(primal_names, cap_counts, color=colors)
-ax1.set_xlabel('Capabilities Used')
-ax1.set_title(f'{len(consumed)} Primals Consumed')
-for i, (name, count) in enumerate(zip(primal_names, cap_counts)):
-    role = consumed[name]['role']
-    ax1.text(count + 0.2, i, f'({role})', va='center', fontsize=8, color='gray')
+wire_colors = ['#2ecc71' if w else '#e74c3c' for w in wired]
+ax1.barh(primals, wired, color=wire_colors, edgecolor='white')
+ax1.set_xlim(0, 1.5)
+ax1.set_xticks([])
+for i, (p, w) in enumerate(zip(primals, wired)):
+    label = 'IPC wired' if w else consumption[p].get('note', 'not wired')
+    ax1.text(1.05, i, label, va='center', fontsize=8)
+ax1.set_title('Primal IPC Status')
 
-# Not-consumed primals
-nc_names = list(not_consumed.keys())
-nc_reasons = [not_consumed[n]['reason'][:40] for n in nc_names]
-ax2.barh(nc_names, [1]*len(nc_names), color='#95a5a6')
-ax2.set_title(f'{len(nc_names)} Not Yet Consumed')
-for i, reason in enumerate(nc_reasons):
-    ax2.text(0.05, i, reason, va='center', fontsize=7)
-ax2.set_xlim(0, 1.2)
+ax2.barh(primals, cap_counts, color='#3498db', edgecolor='white')
+ax2.set_xlabel('Capabilities Used')
+ax2.set_title('Capabilities Consumed per Primal')
+for i, v in enumerate(cap_counts):
+    ax2.text(v + 0.1, i, str(v), va='center', fontsize=9)
 
 plt.tight_layout()
-plt.savefig('/tmp/groundspring_04_primals.png', dpi=150, bbox_inches='tight')
+plt.savefig('/tmp/airspring_04_consumption.png', dpi=150)
 plt.show()
 ```
 
-## Cross-Spring Data Flows
+## Hardware Validation Matrix
 
 ```python
-print('Cross-Spring Flows:')
-print()
-for flow in flows:
-    direction = f"{flow['from']:15s} → {flow['to']:15s}"
-    exps = ', '.join(flow['experiments'])
-    print(f"  {direction}  [{flow['capability'][:40]}]  (Exp {exps})")
+hw = matrix['hardware_validated']
+print('Validated Hardware:')
+for h in hw:
+    details = h.get('features', h.get('api', h.get('device', '')))
+    print(f"  {h['component']:6s} | {h['model']:30s} | {details}")
 ```
 
-## Patterns Pioneered by groundSpring
-
-```python
-patterns = matrix['ecosystem_contribution']['patterns_pioneered']
-
-fig, ax = plt.subplots(figsize=(10, 4))
-ax.barh(range(len(patterns)), [1]*len(patterns), color=PASS)
-ax.set_yticks(range(len(patterns)))
-ax.set_yticklabels(patterns)
-ax.set_title(f'{len(patterns)} Patterns Pioneered for Ecosystem Adoption')
-ax.set_xlim(0, 1.2)
-ax.set_xlabel('Adopted')
-
-plt.tight_layout()
-plt.savefig('/tmp/groundspring_04_patterns.png', dpi=150, bbox_inches='tight')
-plt.show()
-```
-
-## Validation Summary
+## Summary
 
 | Metric | Value |
 |--------|-------|
-| Primals consumed | 5 (beardog, songbird, toadstool, nestgate, barracuda) |
-| Primals not consumed | 7 (low priority or implicit) |
-| Cross-spring flows | 7 bidirectional connections |
-| Patterns pioneered | 7 for ecosystem-wide adoption |
-| barraCuda delegations | 110 (67 CPU + 43 GPU) |
+| barraCuda version | 0.3.7 (wgpu 28) |
+| Ecosystem shaders | 767+ WGSL (f64 canonical) |
+| Tier A GPU modules | 25 (20 upstream batched, 5 dedicated) |
+| Cross-spring checks | 211 (146 evolution + 32 provenance + 33 cross-validation) |
+| Upstream contributions | 8 ops + 3 bug fixes |
+| Primals IPC-wired | 5 / 9 core |
+| Hardware substrates | 4 (CPU, GPU×2, NPU) |
+| local_dispatch | Retired (Write→Absorb→Lean complete) |
 
-**Provenance**: All data from `groundSpring V143 (May 16, 2026)).
-See [Spring Catalog](https://primals.eco/architecture/spring-catalog/) on primals.eco.
+**Provenance**: airSpring v0.10.0 · barraCuda 0.3.7 · [primals.eco](https://primals.eco)
 
