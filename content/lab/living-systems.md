@@ -26,7 +26,7 @@ an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
 | **eastGate** | Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
 | **ironGate** | Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
 | **southGate** | Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
-| **flockGate** | WAN only | WG via golgi (72ms p50) | Tower atomic, **esotericWebb LIVE** (:8090), songBird, bearDog, skunkBat |
+| **flockGate** | WAN only | WG via golgi (72ms p50) | Tower atomic, **esotericWebb V19.1 LIVE** (:8090, systemd), songBird, bearDog, skunkBat |
 | **golgi** | Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
 | **northGate** | Enrolled | LAN + WG | Windows 11, RTX 5090, 6th mesh node |
 | **grapheneGate** | Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (13/13 after pepti rebuild) |
@@ -55,8 +55,9 @@ best available provider.
 | Capability | Provider | Status |
 |------------|----------|--------|
 | `jupyter.execute` | ironGate | **JupyterHub 5.4.5 LIVE** — `lab.primals.eco → 200` |
-| `footprint.serve` | sporeGate | **LIVE** — [footprint.primals.eco](https://footprint.primals.eco) (routing P0) |
-| `esotericwebb.serve` | flockGate | **LIVE on gate** — [webb.primals.eco](https://webb.primals.eco) (Caddy vhost pending) |
+| `footprint.serve` | sporeGate | **LIVE** — [footprint.primals.eco](https://footprint.primals.eco) (200, 216ms) |
+| `esotericwebb.serve` | flockGate | **LIVE** — [webb.primals.eco](https://webb.primals.eco) (200, 235ms) |
+| `ws.bridge` | sporeGate | **LIVE** — petalTongue `/ws` JSON-RPC on :8080 (Wave 150g) |
 | `compute.gpu` | ironGate | RTX 5070 Ti ready, capability registration in progress |
 | `compute.cpu` | strandGate | Awaiting hardware enrollment |
 

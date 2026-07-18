@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 18, 2026 — Wave 150d)
+## Current State (July 18, 2026 — Wave 150g)
 
 - **302 published pages** across 16 sections, organized into 5 cortical folds
 - **79 typed entities** across 8 kinds (primal, spring, product, composition, concept, infra, org, protist) with metrics, descriptions, and link targets
@@ -22,9 +22,11 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity
 - **Identity model**: ecoPrimal (developer), attsi (philosopher) — dual-voice, no PII
 - **Sovereign deployment**: golgiBody VPS via Caddy (67ms TTFB), sovereign CI (Forgejo → sporeGate → golgi)
-- **2 LIVE products on mesh**: footPrint (footprint.primals.eco), esotericWebb (webb.primals.eco)
+- **5 surfaces LIVE from WAN**: footPrint (216ms), esotericWebb (235ms), sporePrint (524ms), TOPO-VIS, Forgejo
+- **ALL P1 inter-primal wiring resolved**: nestGate CAS, squirrel health, songBird mesh.enroll, petalTongue WS
 - **Three-domain model**: primals.eco (intra-membrane), primal.eco (inner membrane), nestgate.io (data service)
 - **URL standard**: `prefix.primals.eco` subdomains for all compositions (path-based prohibited)
+- **Zero P1 items** — demand signal is P2-only
 
 ## Site Topology — Cortical Folds
 

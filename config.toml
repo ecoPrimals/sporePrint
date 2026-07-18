@@ -720,10 +720,10 @@ capabilities = [
 display = "esotericWebb"
 emoji = "🔮🕸️"
 kind = "product"
-description = "Cross-evolution CRPG — first gen4 LIVE product. 9 domains, 32 PrimalBridge methods, 6/9 primals connected, voice interjection engine. Live on flockGate:8090."
+description = "Cross-evolution CRPG — V19.1 LIVE at webb.primals.eco. HTTP-aware TCP listener, 6/9 primals connected, voice interjection engine. systemd user unit on flockGate."
 domain = "Sovereign creative tool"
-tests = 472
-tests_display = "472"
+tests = 453
+tests_display = "453"
 repo = "sporeGarden/esotericWebb"
 page = "/products/esotericwebb/"
 
@@ -741,8 +741,8 @@ emoji = "🧫🔗"
 kind = "infra"
 description = "Sovereign VPS control plane — diderm envelope relay, temporal sync, impulse cascade, gate.enroll (7-phase automated mesh enrollment), Caddy config generation. Pure Rust."
 domain = "Infrastructure"
-tests = 1092
-tests_display = "1,092"
+tests = 1100
+tests_display = "1,100"
 repo = "sporeGarden/cellMembrane"
 
 [extra.entity_registry.initiochem]
@@ -783,7 +783,7 @@ repo = "sporeGarden/projectNUCLEUS"
 display = "footPrint"
 emoji = "👣🗺️"
 kind = "product"
-description = "GIS home planner — first protoKarya protist. LIVE at footprint.primals.eco, code complete (responsive, a11y), 10 GIS sources via songBird drawbridge. Routing P0 pending."
+description = "GIS home planner — first protoKarya protist. LIVE at footprint.primals.eco (200, 216ms). Code complete: responsive, a11y, CSP, 10 GIS sources via songBird drawbridge."
 domain = "Geospatial"
 tests = 466
 tests_display = "466"

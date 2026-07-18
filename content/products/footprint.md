@@ -36,7 +36,7 @@ relation = "architecture"
 label = "The organizational model footPrint emerges from"
 +++
 
-{{ maturity(level="live") }} **LIVE** at [footprint.primals.eco](https://footprint.primals.eco). Code complete: {{ entity_stat(name="footprint", stat="tests_display") }} tests, responsive design, accessibility. Routing P0 pending (cellMembrane).
+{{ maturity(level="live") }} **LIVE** at [footprint.primals.eco](https://footprint.primals.eco) (200, 216ms WAN). Code complete: {{ entity_stat(name="footprint", stat="tests_display") }} tests, responsive design, accessibility, CSP + security headers.
 
 ---
 
@@ -57,9 +57,10 @@ ecoPrimals infrastructure via drawbridge routing rather than source coupling.
 
 | Surface | URL | Status |
 |---------|-----|--------|
-| Static SPA | [footprint.primals.eco](https://footprint.primals.eco) | **Live** (routing P0) |
+| Static SPA | [footprint.primals.eco](https://footprint.primals.eco) | **Live** (200) |
 | GIS proxy (10 upstream hosts) | via Caddy drawbridge | **Live** |
-| Express backend (CRUD, agent WS) | — | Not deployed |
+| WebSocket bridge | `/ws` → petalTongue:8080 | **Live** (Wave 150g) |
+| CAS backend | nestGate `PROJECTS_PATH` | **Wired** (consumer verify pending) |
 
 The static SPA provides the full mapping UI. The GIS proxy routes tile
 requests through {{ entity(name="songbird") }}'s drawbridge to 10 upstream
@@ -95,7 +96,7 @@ Browser (SPA)
   │
   ├── Map UI (Leaflet + custom layers)
   ├── Drawing tools (polygon, line, point)
-  ├── Project storage (localStorage, future: NestGate CAS)
+  ├── Project storage (localStorage + NestGate CAS wired)
   │
   └── Tile requests
         │
@@ -120,14 +121,17 @@ evolution wires footPrint into the full primal stack:
 | ~~Wire `PROXY_PATH` → {{ entity(name="songbird") }} drawbridge~~ | Drawbridge-managed routing | **Done** (Wave 148b) |
 | ~~Responsive design + accessibility~~ | Breakpoints, ARIA, focus traps, mobile drawer | **Done** (Wave 150c) |
 | ~~Known locations + E2E tutorial~~ | 5 verification locations per Live Frontend Standard | **Done** (Wave 149b) |
-| Fix Caddy routing + CSP | Route `footprint.primals.eco` → sporeGate:8090 | **P0** (cellMembrane) |
-| Wire `PROJECTS_PATH` → {{ entity(name="nestgate") }} CAS | Content-addressed project storage | Open |
-| Wire `WS_PATH` → agent bridge | AI-assisted planning via {{ entity(name="squirrel") }} | Open |
+| ~~Fix Caddy routing + CSP~~ | Route `footprint.primals.eco` → sporeGate:8090, CSP for tile domains | **Done** (Wave 150e) |
+| ~~Wire `PROJECTS_PATH` → {{ entity(name="nestgate") }} CAS~~ | Content-addressed project storage | **Done** (Wave 150e) |
+| ~~Wire `WS_PATH` → {{ entity(name="petaltongue") }} bridge~~ | WebSocket JSON-RPC on `/ws` :8080 | **Done** (Wave 150g) |
+| Verify CAS consumer wiring | footPrint client → nestGate | Pending (footPrint team) |
 | Create `footprint_composition.toml` | TOML deploy graph manifest | Open |
 
-When complete, footPrint becomes a full composition: the SPA talks to
-a Rust backend, projects are content-addressed in {{ entity(name="nestgate") }},
-and an AI agent can help with property planning via the WebSocket bridge.
+footPrint is now a full composition: the SPA serves from Express on
+sporeGate, projects are content-addressed via {{ entity(name="nestgate") }},
+and the {{ entity(name="petaltongue") }} WebSocket bridge enables real-time
+agent communication. Client-side wiring for CAS and WS is the remaining
+integration step.
 
 ---
 
