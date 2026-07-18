@@ -1,11 +1,11 @@
 +++
 title = "Experiment 022 — ET₀-Anderson Error Propagation"
 description = "Rendered from exp-022-et0-anderson-propagation.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "exp-022-et0-anderson-propagation.ipynb"
 +++
 

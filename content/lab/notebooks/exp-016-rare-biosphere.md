@@ -1,11 +1,11 @@
 +++
 title = "Experiment 016 — Rare Biosphere Signal Detection"
 description = "Rendered from exp-016-rare-biosphere.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "biology"
+domain = "Lab"
 rendered_from = "exp-016-rare-biosphere.ipynb"
 +++
 

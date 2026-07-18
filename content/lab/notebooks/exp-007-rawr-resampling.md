@@ -1,11 +1,11 @@
 +++
 title = "Experiment 007 — RAWR Bootstrap Resampling"
 description = "Rendered from exp-007-rawr-resampling.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "biology"
+domain = "Lab"
 rendered_from = "exp-007-rawr-resampling.ipynb"
 +++
 

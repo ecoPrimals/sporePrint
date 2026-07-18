@@ -1,11 +1,11 @@
 +++
 title = "Experiment 027 — GPU Vendor Parity"
 description = "Rendered from exp-027-vendor-parity.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "computation"
+domain = "Lab"
 rendered_from = "exp-027-vendor-parity.ipynb"
 +++
 

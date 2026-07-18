@@ -1,11 +1,11 @@
 +++
 title = "Experiment 014 — Drift vs Selection in Microbial Populations"
 description = "Rendered from exp-014-drift-selection.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "biology"
+domain = "Lab"
 rendered_from = "exp-014-drift-selection.ipynb"
 +++
 

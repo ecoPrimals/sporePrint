@@ -1,11 +1,11 @@
 +++
 title = "Measurement Science Deep Dive — groundSpring"
 description = "Rendered from 05-measurement-science-deep-dive.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "computation"
+domain = "Lab"
 rendered_from = "05-measurement-science-deep-dive.ipynb"
 +++
 

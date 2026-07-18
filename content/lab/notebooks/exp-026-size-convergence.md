@@ -1,11 +1,11 @@
 +++
 title = "Experiment 026 — System-Size Convergence"
 description = "Rendered from exp-026-size-convergence.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "physics"
+domain = "Lab"
 rendered_from = "exp-026-size-convergence.ipynb"
 +++
 

@@ -1,11 +1,11 @@
 +++
 title = "Experiment 003 — Error Propagation FAO-56"
 description = "Rendered from exp-003-error-propagation.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "exp-003-error-propagation.ipynb"
 +++
 

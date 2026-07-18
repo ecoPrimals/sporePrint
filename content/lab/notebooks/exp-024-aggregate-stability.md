@@ -1,11 +1,11 @@
 +++
 title = "Experiment 024 — Aggregate Stability Noise Analysis"
 description = "Rendered from exp-024-aggregate-stability.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "agriculture"
+domain = "Lab"
 rendered_from = "exp-024-aggregate-stability.ipynb"
 +++
 

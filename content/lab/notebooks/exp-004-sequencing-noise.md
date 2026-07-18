@@ -1,11 +1,11 @@
 +++
 title = "Experiment 004 — Sequencing Noise Characterization"
 description = "Rendered from exp-004-sequencing-noise.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "biology"
+domain = "Lab"
 rendered_from = "exp-004-sequencing-noise.ipynb"
 +++
 

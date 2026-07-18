@@ -1,11 +1,11 @@
 +++
 title = "Experiment 019 — Jackknife Error Estimation"
 description = "Rendered from exp-019-jackknife-estimation.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "physics"
+domain = "Lab"
 rendered_from = "exp-019-jackknife-estimation.ipynb"
 +++
 

@@ -1,11 +1,11 @@
 +++
 title = "Experiment 025 — f32 vs f64 Precision Drift"
 description = "Rendered from exp-025-precision-drift.ipynb"
-date = 2026-07-10
+date = 2026-07-18
 weight = 50
 
 [extra]
-domain = "computation"
+domain = "Lab"
 rendered_from = "exp-025-precision-drift.ipynb"
 +++
 
