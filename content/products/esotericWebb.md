@@ -1,6 +1,6 @@
 +++
 title = "esotericWebb — Cross-Evolution CRPG"
-description = "A CRPG that composes primals via JSON-RPC — the first proof that sovereign infrastructure produces real games."
+description = "A CRPG that composes primals via JSON-RPC — LIVE on sovereign mesh. 9 domains, 32 bridge methods, 6/9 primals connected."
 date = 2026-03-31
 
 [taxonomies]
@@ -46,7 +46,21 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 
 ## Current Status
 
-{{ maturity(level="architectural") }} {{ entity(name="esotericwebb") }} is the first {{ entity(name="sporegarden") }} product. It demonstrates end-to-end primal composition in a domain (gaming) where user experience is the primary metric. The constituent primals are validated and the composition architecture is defined. Game content and integration layer are in development.
+{{ maturity(level="live") }} {{ entity(name="esotericwebb") }} is **LIVE on flockGate:8090** — the first {{ entity(name="sporegarden") }} product serving on the sovereign mesh. {{ entity_stat(name="esotericwebb", stat="tests_display") }} tests, 9 domains, 32 PrimalBridge methods, 6/9 primals connected, voice interjection engine.
+
+| Surface | URL | Status |
+|---------|-----|--------|
+| flockGate binary | flockGate:8090 (mesh) | **Live** |
+| Public route | primals.eco/webb/ | Caddy route pending (golgiBody ops) |
+
+### Remaining
+
+| Step | Status |
+|------|--------|
+| systemd enable on flockGate | **Pending** (sporeGate ops) |
+| Caddy route `/webb/` on golgiBody | **Pending** (sporeGate ops) |
+| E2E guided demo scenario | Not started |
+| biomeOS neural-api + executors | P2 (GAP-017, GAP-018) |
 
 ---
 

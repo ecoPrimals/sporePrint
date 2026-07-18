@@ -1,6 +1,6 @@
 +++
 title = "footPrint — GIS Home Planner"
-description = "Sovereign GIS home planning tool — the first protoKarya protist. Static SPA live at primals.eco/footprint/, with 10 GIS upstream sources via drawbridge proxy."
+description = "Sovereign GIS home planning tool — the first protoKarya protist. LIVE at primals.eco/footprint/ with 10 GIS upstream sources via songBird drawbridge proxy."
 date = 2026-07-15
 
 [taxonomies]
@@ -9,7 +9,7 @@ springs = ["groundspring"]
 trails = ["first-visit"]
 
 [extra]
-maturity = "scaffold"
+maturity = "live"
 
 [[extra.companions]]
 url = "/products/nf-case-study/"
@@ -36,7 +36,7 @@ relation = "architecture"
 label = "The organizational model footPrint emerges from"
 +++
 
-{{ maturity(level="scaffold") }} Static SPA live. GIS proxy operational (10 upstream hosts). Server composition not yet deployed.
+{{ maturity(level="live") }} **LIVE** at [primals.eco/footprint/](https://primals.eco/footprint/). SPA + drawbridge proxy operational (10 upstream GIS hosts). {{ entity_stat(name="footprint", stat="tests_display") }} tests.
 
 ---
 
@@ -115,13 +115,13 @@ Browser (SPA)
 The current architecture is a static SPA with a proxy layer. The composition
 evolution wires footPrint into the full primal stack:
 
-| Step | What | Owner |
-|------|------|-------|
-| Wire `PROXY_PATH` → {{ entity(name="songbird") }} drawbridge | Drawbridge-managed routing | songBird team |
-| Wire `PROJECTS_PATH` → {{ entity(name="nestgate") }} CAS | Content-addressed project storage | nestGate team |
-| Wire `WS_PATH` → agent bridge | AI-assisted planning via {{ entity(name="squirrel") }} | petalTongue team |
-| Deploy composition on sporeGate | Full server-side composition | sporeGate team |
-| Create `footprint_composition.toml` | TOML deploy graph manifest | overwatch |
+| Step | What | Status |
+|------|------|--------|
+| ~~Wire `PROXY_PATH` → {{ entity(name="songbird") }} drawbridge~~ | Drawbridge-managed routing | **Done** (Wave 148b) |
+| Wire `PROJECTS_PATH` → {{ entity(name="nestgate") }} CAS | Content-addressed project storage | Open |
+| Wire `WS_PATH` → agent bridge | AI-assisted planning via {{ entity(name="squirrel") }} | Open |
+| Known locations + E2E tutorial | 5 verification locations per Live Frontend Standard | **P1** |
+| Create `footprint_composition.toml` | TOML deploy graph manifest | Open |
 
 When complete, footPrint becomes a full composition: the SPA talks to
 a Rust backend, projects are content-addressed in {{ entity(name="nestgate") }},

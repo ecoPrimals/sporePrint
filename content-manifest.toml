@@ -1,5 +1,5 @@
-generated = "2026-07-17T15:03:35Z"
-root_hash = "ec91f9f14bbfe534ae8c9e6d6bde4ae7553400f369321a66f806e08ee468aa4e"
+generated = "2026-07-18T12:18:37Z"
+root_hash = "260462c48e4a2b5714b665a0c94e7af30f79b9fa04b9307f72904d5b52aabbe5"
 page_count = 322
 
 [pages."_index.md"]
@@ -722,8 +722,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "05841b6f74357768421bd128e226418de2e3fb9ac0c25ac1ace312e36ea00206"
-size_bytes = 6379
+blake3 = "2f4c3163c43e95f5f135e86b1d163e3190bd2a3aa0fcaa623b0a13140aad1a3c"
+size_bytes = 6697
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"
@@ -2007,8 +2007,8 @@ trails = ["philosophy-thread"]
 companions = ["/methodology/constrained-evolution-formal/"]
 
 [pages."products/_index.md"]
-blake3 = "d3b73bc8b61b3f9dd33e0914eac5304b835bd5604b5cb543be997e7f903c38e5"
-size_bytes = 2097
+blake3 = "b360fc398983532656abdde563b17a246fa22d2a15c78bd97ef105c2701fbec2"
+size_bytes = 2308
 title = "Products"
 section = "products"
 fold = "architecture"
@@ -2034,19 +2034,19 @@ companions = [
 ]
 
 [pages."products/esotericWebb.md"]
-blake3 = "5de1c0d2290b8726d3a4b3285aa5849bb0848d7aacdc720781ac00a56baf93fc"
-size_bytes = 3508
+blake3 = "96fd6b36e62af4ba54749a956f45cff5eb8e62d0e1f44e89528f01284d6c02f2"
+size_bytes = 3944
 title = "esotericWebb — Cross-Evolution CRPG"
 section = "products"
 fold = "architecture"
 
 [pages."products/footprint.md"]
-blake3 = "d1fdfb3a1e70abd0f2df51cb809ac955db1d66399c82142d556b0dde1c1bb722"
-size_bytes = 5529
+blake3 = "3026e729dfdb0470e9e3e45bcbebd659cf215e86f367d4fbdb1f45dcfb912e6f"
+size_bytes = 5617
 title = "footPrint — GIS Home Planner"
 section = "products"
 fold = "architecture"
-maturity = "scaffold"
+maturity = "live"
 trails = ["first-visit"]
 companions = [
     "/products/nf-case-study/",
@@ -2427,7 +2427,7 @@ section = "story"
 fold = "philosophy"
 
 [pages."story/i_dont_know_rust.md"]
-blake3 = "7b4a507618d693c41709916da62fc3c77279ad1b1ef082d4898afd4ce7ba7a87"
+blake3 = "b4fb687d1e001b343b6bec31e9d5cb5f5cec8e5d6ee1d860914225fbeca74269"
 size_bytes = 8492
 title = "I Don't Know Rust — Building a Scientific Computing Ecosystem Through Conversation"
 section = "story"
@@ -2551,16 +2551,16 @@ fold = "architecture"
 companions = ["/science/26-neuromorphic-sovereign-driver/"]
 
 [pages."thesis/00_front_matter.md"]
-blake3 = "c00d537fd6fc89eba672043643b499162bfd93687ae57f5591e7781f29a7aa90"
-size_bytes = 5669
+blake3 = "360bb30ef83b69848651dc2d05dbc325f5c6ef809f7626205e83bc263f54b348"
+size_bytes = 5808
 title = "Front Matter"
 section = "thesis"
 fold = "philosophy"
 trails = ["thesis-narrative"]
 
 [pages."thesis/01_introduction.md"]
-blake3 = "cf2f79c3a265c205192eba40e1ce0430de69e7df44d1e15ff967e25c756fd6db"
-size_bytes = 10487
+blake3 = "b46396d641ad33849d7ec7dee9989d2c91f429bd1aba7012c053eaa3710e603e"
+size_bytes = 10626
 title = "Chapter 1: Introduction"
 section = "thesis"
 fold = "philosophy"
@@ -2598,8 +2598,8 @@ trails = ["thesis-narrative"]
 companions = ["/methodology/constrained-evolution-formal/"]
 
 [pages."thesis/05_system_architecture.md"]
-blake3 = "71f2887a78f847a4e52b6f158560ced6d6b845bd7b002d58e0fc1566ae5c58f3"
-size_bytes = 8902
+blake3 = "b0db17b36bb7b29dc68af940e83c54b7933a07794c6223365b015538a2c08536"
+size_bytes = 10502
 title = "Chapter 5: System Architecture"
 section = "thesis"
 fold = "philosophy"
@@ -2694,8 +2694,8 @@ companions = [
 ]
 
 [pages."thesis/13_quantitative_evidence.md"]
-blake3 = "2d480823b263eec91965ae75c1883091d27ef06ede55e53e7e5317b36370418f"
-size_bytes = 12835
+blake3 = "d0115d855982e2e81500075d9b400d5421ad2339f08ec2de2ea49ac7a2035994"
+size_bytes = 13469
 title = "Chapter 13: Quantitative Evidence"
 section = "thesis"
 fold = "philosophy"
@@ -2718,8 +2718,8 @@ companions = [
 ]
 
 [pages."thesis/15_discussion.md"]
-blake3 = "664c66f355f1fa958f62c7b1fe803e00a9e3b565441ce6bbe447531882c0780d"
-size_bytes = 10330
+blake3 = "1df21af814ba3eb367e9ea19c94b2bcda08b3a103f846c04ca6f59dabc8c2c4c"
+size_bytes = 10366
 title = "Chapter 15: Discussion"
 section = "thesis"
 fold = "philosophy"
@@ -2730,8 +2730,8 @@ companions = [
 ]
 
 [pages."thesis/16_conclusion.md"]
-blake3 = "deb1444fb71461675112689d8c42997ebab2849f5f69c05e522ab38b38a81c19"
-size_bytes = 10336
+blake3 = "f9d460f16bbf62f2dbe9a4334a9a902abc48dcfef0a3514d81e6e94b908dbd5d"
+size_bytes = 10474
 title = "Chapter 16: Conclusion"
 section = "thesis"
 fold = "philosophy"

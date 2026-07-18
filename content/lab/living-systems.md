@@ -22,12 +22,13 @@ an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
 
 | Gate | Status | Transport | What's Running |
 |------|--------|-----------|----------------|
-| **sporeGate** | Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo |
+| **sporeGate** | Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo, **footPrint LIVE** |
 | **eastGate** | Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
 | **ironGate** | Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
 | **southGate** | Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
-| **flockGate** | WAN only | WG via golgi (72ms p50) | Tower atomic evolution: songBird, bearDog, skunkBat dev |
+| **flockGate** | WAN only | WG via golgi (72ms p50) | Tower atomic, **esotericWebb LIVE** (:8090), songBird, bearDog, skunkBat |
 | **golgi** | Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
+| **northGate** | Enrolled | LAN + WG | Windows 11, RTX 5090, 6th mesh node |
 | **grapheneGate** | Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (13/13 after pepti rebuild) |
 | **strandGate** | Pending | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, enrollment pending |
 | **fieldGate** | Pending | House 2 | Future enrollment via Omada |
@@ -54,6 +55,8 @@ best available provider.
 | Capability | Provider | Status |
 |------------|----------|--------|
 | `jupyter.execute` | ironGate | **JupyterHub 5.4.5 LIVE** — `lab.primals.eco → 200` |
+| `footprint.serve` | sporeGate | **LIVE** — [primals.eco/footprint/](https://primals.eco/footprint/) |
+| `esotericwebb.serve` | flockGate | **LIVE on gate** — flockGate:8090 (Caddy route pending) |
 | `compute.gpu` | ironGate | RTX 5070 Ti ready, capability registration in progress |
 | `compute.cpu` | strandGate | Awaiting hardware enrollment |
 

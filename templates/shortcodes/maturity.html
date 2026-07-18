@@ -1,8 +1,8 @@
 {# SPDX-License-Identifier: AGPL-3.0-or-later #}
 {# Maturity badge: {{ maturity(level="implemented") }} #}
-{# Levels: implemented, reproduced, certified, architectural, planned, scaffold, unaudited #}
-{% set icons = "implemented:✅,reproduced:🔬,certified:🛡️,architectural:📐,planned:🗺️,scaffold:🏗️,unaudited:⚠️" %}
-{% set labels = "implemented:Implemented,reproduced:Reproduced,certified:Certified,architectural:Architecture-ready,planned:Planned,scaffold:Scaffold,unaudited:Unaudited" %}
+{# Levels: live, implemented, reproduced, certified, architectural, planned, scaffold, unaudited #}
+{% set icons = "live:🟢,implemented:✅,reproduced:🔬,certified:🛡️,architectural:📐,planned:🗺️,scaffold:🏗️,unaudited:⚠️" %}
+{% set labels = "live:Live,implemented:Implemented,reproduced:Reproduced,certified:Certified,architectural:Architecture-ready,planned:Planned,scaffold:Scaffold,unaudited:Unaudited" %}
 {% set icon = "" %}{% set label = "" %}
 {% for pair in icons | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global icon = kv[1] %}{% endif %}{% endfor %}
 {% for pair in labels | split(pat=",") %}{% set kv = pair | split(pat=":") %}{% if kv[0] == level %}{% set_global label = kv[1] %}{% endif %}{% endfor %}

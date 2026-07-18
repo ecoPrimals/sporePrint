@@ -23,8 +23,12 @@ Products come from two organizations:
 
 | Protist | Domain | Status |
 |---------|--------|--------|
-| [footPrint](@/products/footprint.md) | GIS home planning | **Partially live** — SPA + GIS proxy |
+| [footPrint](@/products/footprint.md) | GIS home planning | **LIVE** — SPA + drawbridge at [primals.eco/footprint/](https://primals.eco/footprint/) |
 | [tideGlass](@/products/tideglass.md) | Sovereign GPS platform | Phase 0 — GPS paper reproduction |
+
+### Creative Products (sporeGarden)
+
+- **[esotericWebb](@/products/esotericWebb.md)** — cross-evolution CRPG, **LIVE on flockGate** (6/9 primals, 472 tests)
 
 ### Infrastructure (sporeGarden)
 

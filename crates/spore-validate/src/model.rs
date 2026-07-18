@@ -241,6 +241,7 @@ impl EdgeRelation {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum MaturityLevel {
+    Live,
     Implemented,
     Reproduced,
     Certified,
@@ -255,6 +256,7 @@ impl MaturityLevel {
     #[must_use]
     pub const fn label(self) -> &'static str {
         match self {
+            Self::Live => "Live",
             Self::Implemented => "Implemented",
             Self::Reproduced => "Reproduced",
             Self::Certified => "Certified",
@@ -269,6 +271,7 @@ impl MaturityLevel {
     #[must_use]
     pub const fn all() -> &'static [Self] {
         &[
+            Self::Live,
             Self::Implemented,
             Self::Reproduced,
             Self::Certified,

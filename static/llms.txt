@@ -56,8 +56,9 @@ How it works — ecosystem design, technical depth, emergent products.
   - Section index: https://primals.eco/technical/
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
   - Section index: https://primals.eco/products/
-  - New: https://primals.eco/products/footprint/ (GIS Home Planner — partially live)
-  - protoKarya protists: footPrint (GIS, partially live), tideGlass (GPS platform, Phase 0)
+  - https://primals.eco/products/footprint/ (GIS Home Planner — LIVE)
+  - protoKarya protists: footPrint (GIS, LIVE), tideGlass (GPS platform, Phase 0)
+  - sporeGarden products: esotericWebb (CRPG, LIVE on flockGate)
 - Ridge pages: https://primals.eco/architecture/ecosystem-architecture/ , https://primals.eco/architecture/nucleus-architecture/
 
 ### Fold 3: Methodology (7% of site)
@@ -135,7 +136,7 @@ Trail pages: https://primals.eco/trails/
 - **Content-Addressed Convergence**: Newton-Leibniz pattern — content identity supersedes temporal identity
 - **Cross-Platform Parity**: OS Atheism → Silicon Atheism — 6-phase roadmap to universal substrate
 - **protoKarya**: Protist organization — wider-world compositions (footPrint GIS, tideGlass GPS)
-- **footPrint**: GIS home planner — first protist, partially live at primals.eco/footprint/
+- **footPrint**: GIS home planner — first protist, LIVE at primals.eco/footprint/
 - **tideGlass**: Sovereign GPS platform (Phase 0) + future sovereign pallet for field science
 
 ## Identity Model

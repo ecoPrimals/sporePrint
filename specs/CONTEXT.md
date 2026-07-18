@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 17, 2026 — Wave 145a)
+## Current State (July 18, 2026 — Wave 148b)
 
 - **302 published pages** across 16 sections, organized into 5 cortical folds
 - **79 typed entities** across 8 kinds (primal, spring, product, composition, concept, infra, org, protist) with metrics, descriptions, and link targets
@@ -22,6 +22,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity
 - **Identity model**: ecoPrimal (developer), attsi (philosopher) — dual-voice, no PII
 - **Sovereign deployment**: golgiBody VPS via Caddy (67ms TTFB), sovereign CI (Forgejo → sporeGate → golgi)
+- **2 LIVE products on mesh**: footPrint (GIS, sporeGate), esotericWebb (CRPG, flockGate)
 
 ## Site Topology — Cortical Folds
 
