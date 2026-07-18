@@ -1,6 +1,6 @@
 +++
 title = "footPrint — GIS Home Planner"
-description = "Sovereign GIS home planning tool — the first protoKarya protist. LIVE at primals.eco/footprint/ with 10 GIS upstream sources via songBird drawbridge proxy."
+description = "Sovereign GIS home planning tool — the first protoKarya protist. LIVE at footprint.primals.eco with 10 GIS upstream sources via songBird drawbridge proxy."
 date = 2026-07-15
 
 [taxonomies]
@@ -36,7 +36,7 @@ relation = "architecture"
 label = "The organizational model footPrint emerges from"
 +++
 
-{{ maturity(level="live") }} **LIVE** at [primals.eco/footprint/](https://primals.eco/footprint/). SPA + drawbridge proxy operational (10 upstream GIS hosts). {{ entity_stat(name="footprint", stat="tests_display") }} tests.
+{{ maturity(level="live") }} **LIVE** at [footprint.primals.eco](https://footprint.primals.eco). Code complete: {{ entity_stat(name="footprint", stat="tests_display") }} tests, responsive design, accessibility. Routing P0 pending (cellMembrane).
 
 ---
 
@@ -57,7 +57,7 @@ ecoPrimals infrastructure via drawbridge routing rather than source coupling.
 
 | Surface | URL | Status |
 |---------|-----|--------|
-| Static SPA | [primals.eco/footprint/](https://primals.eco/footprint/) | **Live** |
+| Static SPA | [footprint.primals.eco](https://footprint.primals.eco) | **Live** (routing P0) |
 | GIS proxy (10 upstream hosts) | via Caddy drawbridge | **Live** |
 | Express backend (CRUD, agent WS) | — | Not deployed |
 
@@ -118,10 +118,11 @@ evolution wires footPrint into the full primal stack:
 | Step | What | Status |
 |------|------|--------|
 | ~~Wire `PROXY_PATH` → {{ entity(name="songbird") }} drawbridge~~ | Drawbridge-managed routing | **Done** (Wave 148b) |
-| Responsive design + accessibility | Breakpoints, ARIA, focus traps, mobile drawer | **P1** |
+| ~~Responsive design + accessibility~~ | Breakpoints, ARIA, focus traps, mobile drawer | **Done** (Wave 150c) |
+| ~~Known locations + E2E tutorial~~ | 5 verification locations per Live Frontend Standard | **Done** (Wave 149b) |
+| Fix Caddy routing + CSP | Route `footprint.primals.eco` → sporeGate:8090 | **P0** (cellMembrane) |
 | Wire `PROJECTS_PATH` → {{ entity(name="nestgate") }} CAS | Content-addressed project storage | Open |
 | Wire `WS_PATH` → agent bridge | AI-assisted planning via {{ entity(name="squirrel") }} | Open |
-| ~~Known locations + E2E tutorial~~ | 5 verification locations per Live Frontend Standard | **Shipped** (Wave 149b) |
 | Create `footprint_composition.toml` | TOML deploy graph manifest | Open |
 
 When complete, footPrint becomes a full composition: the SPA talks to

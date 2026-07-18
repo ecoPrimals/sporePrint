@@ -133,7 +133,7 @@ Collaborators interact at the ionic bond layer — controlled sharing through
 the periplasm. They see:
 
 - JupyterHub notebooks (`lab.primals.eco`)
-- GIS tools (`primals.eco/footprint/`)
+- GIS tools (`footprint.primals.eco`)
 - Product compositions (tideGlass, {{ entity(name="helixvision") }})
 - {{ entity(name="guidestone") }}-verified results
 

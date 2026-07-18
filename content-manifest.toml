@@ -1,6 +1,6 @@
-generated = "2026-07-18T12:58:03Z"
-root_hash = "03d5b27e78966425cb00c0f47257a0059c3131c4bbcfc2a90617f15b58dddb51"
-page_count = 322
+generated = "2026-07-18T14:27:42Z"
+root_hash = "fe83ad8b5ee567bbc226a030d0d7ce1fd2a587d56e5701b86fa44ac282da6a6f"
+page_count = 327
 
 [pages."_index.md"]
 blake3 = "402e17e6ba317e148d061c1665b3e2afbeee2684e6afab2b08abdc6512e5648c"
@@ -417,8 +417,8 @@ companions = [
 ]
 
 [pages."architecture/sovereign_hpc_evolution.md"]
-blake3 = "2138ea12f948b626ea1161dab6645af436e12429c686c8dcf67ce409e11f4b87"
-size_bytes = 5970
+blake3 = "284356fadebd1ee291c6b4a4831b20771637b272a78e4940ef60f84678b33145"
+size_bytes = 5969
 title = "Sovereign HPC Evolution"
 section = "architecture"
 fold = "architecture"
@@ -665,8 +665,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/biomeos-validation-summary.md"]
-blake3 = "a066972dbe7c200ddd88daa94532f4953260c6679db4e82bfe25f63b6515d2f4"
-size_bytes = 8118
+blake3 = "8ebf88ada8baf0054e910a2b9f01dc2ad28064aa6a56b55dbbfd1e31214f0a5b"
+size_bytes = 8105
 title = "biomeOS Validation Summary"
 section = "lab"
 fold = "evidence"
@@ -722,8 +722,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "2f4c3163c43e95f5f135e86b1d163e3190bd2a3aa0fcaa623b0a13140aad1a3c"
-size_bytes = 6697
+blake3 = "c02cf4afc0fd5ab164afdeb73d230e9aab4f4e09900954e7632abeb323dc3d90"
+size_bytes = 6738
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"
@@ -1480,9 +1480,23 @@ title = "pseudoSpore Gallery"
 section = "lab"
 fold = "evidence"
 
+[pages."lab/spores/airspring-agricultural-meteorology.md"]
+blake3 = "ada53ed087eb5507fc9a46144ae90bee4f805b7429f4d2371208275bd5956c52"
+size_bytes = 2267
+title = "airSpring Agricultural Meteorology"
+section = "lab"
+fold = "evidence"
+
+[pages."lab/spores/groundspring-ltee-measurement.md"]
+blake3 = "6c519a0bf1b7db5efe17830ec724aeaf2bb2247534a62dcc4d15cf7ecf1edb1f"
+size_bytes = 2721
+title = "groundSpring LTEE Measurement"
+section = "lab"
+fold = "evidence"
+
 [pages."lab/spores/healthspring-clinical-pkpd.md"]
-blake3 = "2a973198b311e2e72047252f10f12a46c5091a2bd736f6c43f77e2b226a4ee68"
-size_bytes = 2981
+blake3 = "0240b5e27f923d7e678bad41a831a1d529418f131302ac5c65373c45d4526181"
+size_bytes = 3095
 title = "healthSpring Clinical PK-PD"
 section = "lab"
 fold = "evidence"
@@ -1491,6 +1505,27 @@ fold = "evidence"
 blake3 = "34282e85d7e82869952ed33a87a291af335e20d2a73164f431e99043eed55b22"
 size_bytes = 3261
 title = "hotSpring CompChem GuideStone"
+section = "lab"
+fold = "evidence"
+
+[pages."lab/spores/ludospring-game-science.md"]
+blake3 = "d0eabd3baefc02b661badc91b9cddb9ba043f3c22558a272bc51f7a303b452d1"
+size_bytes = 2240
+title = "ludoSpring Game Science"
+section = "lab"
+fold = "evidence"
+
+[pages."lab/spores/neuralspring-ml-surrogates.md"]
+blake3 = "762d4f11ae2f50aaf6f469b36655297f4321ce306d48bff2c27f7efcf6adae14"
+size_bytes = 2221
+title = "neuralSpring ML Surrogates"
+section = "lab"
+fold = "evidence"
+
+[pages."lab/spores/wetspring-life-science-analytics.md"]
+blake3 = "862f843498fcceab4d45dc6538383be2b8707a356bdec801cb53d70642ab1c35"
+size_bytes = 2429
+title = "wetSpring Life Science Analytics"
 section = "lab"
 fold = "evidence"
 
@@ -2007,8 +2042,8 @@ trails = ["philosophy-thread"]
 companions = ["/methodology/constrained-evolution-formal/"]
 
 [pages."products/_index.md"]
-blake3 = "b360fc398983532656abdde563b17a246fa22d2a15c78bd97ef105c2701fbec2"
-size_bytes = 2308
+blake3 = "04cb8ca683a421842e146e92de80b29bdbab2808bfb257c03e1de80a4053fd39"
+size_bytes = 2299
 title = "Products"
 section = "products"
 fold = "architecture"
@@ -2034,16 +2069,16 @@ companions = [
 ]
 
 [pages."products/esotericWebb.md"]
-blake3 = "e8dd6978899abfffbb0bc0bcaa5155557057281bcf1c0cda34e430318767607e"
-size_bytes = 4025
+blake3 = "461714f822d856f99deee3f1135aa7ce7f89cc395b7bf37a7ca389c4031b17ad"
+size_bytes = 4052
 title = "esotericWebb — Cross-Evolution CRPG"
 section = "products"
 fold = "architecture"
 maturity = "live"
 
 [pages."products/footprint.md"]
-blake3 = "6f835becb3efcbe9b1892814d298aa5fca03f818ef04f01652ec83dcab030d37"
-size_bytes = 5733
+blake3 = "d1a3937d9d29e5170eae326c40d36553564b5fdd969663187159ed8fab0f277f"
+size_bytes = 5883
 title = "footPrint — GIS Home Planner"
 section = "products"
 fold = "architecture"

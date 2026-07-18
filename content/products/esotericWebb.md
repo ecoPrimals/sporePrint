@@ -54,7 +54,7 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 | Surface | URL | Status |
 |---------|-----|--------|
 | flockGate binary | flockGate:8090 (mesh) | **Live** |
-| Public route | primals.eco/webb/ | Caddy route pending (golgiBody ops) |
+| Public route | [webb.primals.eco](https://webb.primals.eco) | Caddy vhost pending (golgiBody ops) |
 
 ### Remaining
 

@@ -23,7 +23,7 @@ Products come from two organizations:
 
 | Protist | Domain | Status |
 |---------|--------|--------|
-| [footPrint](@/products/footprint.md) | GIS home planning | **LIVE** — SPA + drawbridge at [primals.eco/footprint/](https://primals.eco/footprint/) |
+| [footPrint](@/products/footprint.md) | GIS home planning | **LIVE** — [footprint.primals.eco](https://footprint.primals.eco) (routing P0) |
 | [tideGlass](@/products/tideglass.md) | Sovereign GPS platform | Phase 0 — GPS paper reproduction |
 
 ### Creative Products (sporeGarden)

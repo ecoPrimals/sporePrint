@@ -55,8 +55,8 @@ best available provider.
 | Capability | Provider | Status |
 |------------|----------|--------|
 | `jupyter.execute` | ironGate | **JupyterHub 5.4.5 LIVE** — `lab.primals.eco → 200` |
-| `footprint.serve` | sporeGate | **LIVE** — [primals.eco/footprint/](https://primals.eco/footprint/) |
-| `esotericwebb.serve` | flockGate | **LIVE on gate** — flockGate:8090 (Caddy route pending) |
+| `footprint.serve` | sporeGate | **LIVE** — [footprint.primals.eco](https://footprint.primals.eco) (routing P0) |
+| `esotericwebb.serve` | flockGate | **LIVE on gate** — [webb.primals.eco](https://webb.primals.eco) (Caddy vhost pending) |
 | `compute.gpu` | ironGate | RTX 5070 Ti ready, capability registration in progress |
 | `compute.cpu` | strandGate | Awaiting hardware enrollment |
 
