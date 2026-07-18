@@ -10,10 +10,10 @@ springs = ["healthspring"]
 [extra]
 domain = "Clinical Pharmacology"
 spore_name = "healthSpring-Clinical-PKPD"
-spore_version = "0.1.0"
+spore_version = "1.0.0"
 spore_origin = "ecoPrimals/springs/healthSpring"
 spore_spring = "healthSpring"
-spore_status = "PROFILE_READY"
+spore_status = "PENDING"
 modules_pass = 0
 modules_total = 6
 methods = ["compartmental ODE", "Hill equation", "Monte Carlo population PK", "PBPK modeling", "Anderson localization"]
@@ -26,8 +26,8 @@ Clinical pharmacokinetics and pharmacodynamics validation covering PBPK
 compartmental modeling, dose-response curves, drug-drug interaction prediction,
 microbiome-mediated metabolism, and GPU-accelerated population pharmacokinetics.
 
-**Status:** Domain profile complete. pseudoSpore emission pending validation
-of all 6 modules.
+**Status:** pseudoSpore v1.0.0 emitted (375 KB, 374 files). Module validation
+pending — spring team needs to run validators and populate `validation.json`.
 
 ## Module Status
 
@@ -47,10 +47,11 @@ of all 6 modules.
 | Property | Value |
 |----------|-------|
 | Origin | `ecoPrimals/springs/healthSpring` |
-| Version | 0.1.0 (domain profile) |
+| Version | 1.0.0 |
 | Spring | healthSpring |
-| Domain profile | `domain_profile.toml` shipped Wave 63 |
-| Emission | Pending — awaiting module validation |
+| Emission method | `litho emit-pseudospore` |
+| Integrity | BLAKE3 checksums in `receipts/checksums.blake3` (363 entries) |
+| Braid | FermentBraid provenance chain (who/what/when/how) |
 
 ## Validation Checks
 
