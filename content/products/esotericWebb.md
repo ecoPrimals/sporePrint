@@ -1,11 +1,14 @@
 +++
 title = "esotericWebb — Cross-Evolution CRPG"
-description = "A CRPG that composes primals via JSON-RPC — LIVE on sovereign mesh. 9 domains, 32 bridge methods, 6/9 primals connected."
+description = "A CRPG that composes primals via JSON-RPC — V18 LIVE on sovereign mesh. 9 domains, 32 bridge methods, 6/9 primals connected."
 date = 2026-03-31
 
 [taxonomies]
 primals = ["biomeos", "loamspine", "rhizocrypt", "sweetgrass"]
 springs = ["ludospring"]
+
+[extra]
+maturity = "live"
 +++
 
 **Repository**: [sporeGarden/esotericWebb](https://github.com/sporeGarden/esotericWebb) — **Public**  
@@ -59,7 +62,7 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 |------|--------|
 | systemd enable on flockGate | **Pending** (sporeGate ops) |
 | Caddy route `/webb/` on golgiBody | **Pending** (sporeGate ops) |
-| E2E guided demo scenario | Not started |
+| ~~E2E guided demo scenario~~ | **Shipped** (V18) — `aldric` NPC false-positive pending |
 | biomeOS neural-api + executors | P2 (GAP-017, GAP-018) |
 
 ---

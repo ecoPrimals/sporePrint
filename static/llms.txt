@@ -149,7 +149,7 @@ Trail pages: https://primals.eco/trails/
 
 - 15 primals, 8 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.57M lines of Rust (42 repos)
-- 116,472 tests across ecosystem
+- 116,000 tests across ecosystem
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
 - 59 depot binaries across 4 architectures (16 x86_64 Linux, 16 aarch64 Linux, 13 aarch64 Android, 14 x86_64 Windows)

@@ -118,9 +118,10 @@ evolution wires footPrint into the full primal stack:
 | Step | What | Status |
 |------|------|--------|
 | ~~Wire `PROXY_PATH` → {{ entity(name="songbird") }} drawbridge~~ | Drawbridge-managed routing | **Done** (Wave 148b) |
+| Responsive design + accessibility | Breakpoints, ARIA, focus traps, mobile drawer | **P1** |
 | Wire `PROJECTS_PATH` → {{ entity(name="nestgate") }} CAS | Content-addressed project storage | Open |
 | Wire `WS_PATH` → agent bridge | AI-assisted planning via {{ entity(name="squirrel") }} | Open |
-| Known locations + E2E tutorial | 5 verification locations per Live Frontend Standard | **P1** |
+| ~~Known locations + E2E tutorial~~ | 5 verification locations per Live Frontend Standard | **Shipped** (Wave 149b) |
 | Create `footprint_composition.toml` | TOML deploy graph manifest | Open |
 
 When complete, footPrint becomes a full composition: the SPA talks to

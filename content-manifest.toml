@@ -1,5 +1,5 @@
-generated = "2026-07-18T12:18:37Z"
-root_hash = "260462c48e4a2b5714b665a0c94e7af30f79b9fa04b9307f72904d5b52aabbe5"
+generated = "2026-07-18T12:58:03Z"
+root_hash = "03d5b27e78966425cb00c0f47257a0059c3131c4bbcfc2a90617f15b58dddb51"
 page_count = 322
 
 [pages."_index.md"]
@@ -2034,15 +2034,16 @@ companions = [
 ]
 
 [pages."products/esotericWebb.md"]
-blake3 = "96fd6b36e62af4ba54749a956f45cff5eb8e62d0e1f44e89528f01284d6c02f2"
-size_bytes = 3944
+blake3 = "e8dd6978899abfffbb0bc0bcaa5155557057281bcf1c0cda34e430318767607e"
+size_bytes = 4025
 title = "esotericWebb — Cross-Evolution CRPG"
 section = "products"
 fold = "architecture"
+maturity = "live"
 
 [pages."products/footprint.md"]
-blake3 = "3026e729dfdb0470e9e3e45bcbebd659cf215e86f367d4fbdb1f45dcfb912e6f"
-size_bytes = 5617
+blake3 = "6f835becb3efcbe9b1892814d298aa5fca03f818ef04f01652ec83dcab030d37"
+size_bytes = 5733
 title = "footPrint — GIS Home Planner"
 section = "products"
 fold = "architecture"
