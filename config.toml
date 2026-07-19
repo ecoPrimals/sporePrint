@@ -738,7 +738,7 @@ repo = "sporeGarden/helixVision"
 [extra.entity_registry.cellmembrane]
 display = "cellMembrane"
 emoji = "🧫🔗"
-kind = "infra"
+kind = "garden"
 description = "Sovereign VPS control plane — diderm envelope relay, temporal sync, impulse cascade, gate.enroll (7-phase automated mesh enrollment), Caddy config generation. Pure Rust."
 domain = "Infrastructure"
 tests = 1100
@@ -1081,7 +1081,7 @@ repo = "ecoPrimals/whitePaper"
 [extra.entity_registry.rustchip]
 display = "rustChip"
 emoji = "🦀🧠"
-kind = "infra"
+kind = "spring"
 description = "Pure Rust Akida neuromorphic driver — VFIO passthrough, FBZ reverse engineering, 80-NPU mesh, 10 MB SRAM, glowplug sovereign boot, HW/SW backends explicit and never conflated. 5 standalone science demos. scyBorg triple licensed."
 domain = "Neuromorphic hardware"
 loc = 23655
