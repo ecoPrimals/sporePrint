@@ -1,4 +1,4 @@
-base_url = "https://primals.eco"
+base_url = "https://sporeprint.primals.eco"
 title = "ecoPrimals — Self-Hosted Scientific Computing"
 description = "Self-hosted scientific computing in pure Rust with vendor-agnostic WebGPU/WGSL GPU compute. Reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics, and pharmacometrics on commodity hardware — no CUDA, no cloud, no vendor lock-in."
 compile_sass = true
@@ -47,7 +47,7 @@ license_code = "AGPL-3.0-or-later"
 last_push = "2026-07-15"
 shadow_status = "sovereign-primary"
 deploy_locations = ["golgiBody-ext", "github-pages"]
-sovereign_url = "https://primals.eco"
+sovereign_url = "https://sporeprint.primals.eco"
 sovereign_rebuild = "systemd-timer + relay-chain"
 
 # ── Identity ──────────────────────────────────────────────────────────────
