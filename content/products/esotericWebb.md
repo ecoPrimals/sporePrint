@@ -1,6 +1,6 @@
 +++
 title = "esotericWebb — Cross-Evolution CRPG"
-description = "A CRPG that composes primals via JSON-RPC — V19.1 LIVE at webb.primals.eco. HTTP-aware TCP listener, 6/9 primals connected."
+description = "A CRPG that composes primals via JSON-RPC — V22 LIVE at webb.primals.eco. Scene binding fixed, 6/9 primals connected."
 date = 2026-03-31
 
 [taxonomies]
@@ -49,7 +49,7 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 
 ## Current Status
 
-{{ maturity(level="live") }} {{ entity(name="esotericwebb") }} is **V19.1, LIVE at [webb.primals.eco](https://webb.primals.eco)** (200, 235ms WAN). {{ entity_stat(name="esotericwebb", stat="tests_display") }} tests, HTTP-aware TCP listener (raw + HTTP JSON-RPC coexist on :8090), systemd user unit enabled.
+{{ maturity(level="live") }} {{ entity(name="esotericwebb") }} is **V22, LIVE at [webb.primals.eco](https://webb.primals.eco)** (200 WAN). {{ entity_stat(name="esotericwebb", stat="tests_display") }} tests, 6/9 primals connected, scene binding fixed (game_scene + fallback). systemd user unit enabled.
 
 | Surface | URL | Status |
 |---------|-----|--------|
@@ -64,7 +64,8 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 | ~~Caddy vhost `webb.primals.eco`~~ | **Done** (Wave 150e) |
 | ~~E2E guided demo scenario~~ | **Shipped** (V18) — `aldric` NPC false-positive pending |
 | GET handler for browser navigation | P2 (currently POST/JSON-RPC only) |
-| V19.1 binary to depot | P2 (local build only) |
+| V22 binary to depot | P2 (local build only) |
+| Deploy petalTongue v1.7+ | P2 (activates full scene graph pipeline) |
 | biomeOS neural-api + executors | P2 (GAP-017, GAP-018) |
 
 ---

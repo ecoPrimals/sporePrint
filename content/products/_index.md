@@ -28,7 +28,7 @@ Products come from two organizations:
 
 ### Creative Products (sporeGarden)
 
-- **[esotericWebb](@/products/esotericWebb.md)** — cross-evolution CRPG, **V19.1 LIVE** at [webb.primals.eco](https://webb.primals.eco)
+- **[esotericWebb](@/products/esotericWebb.md)** — cross-evolution CRPG, **V22 LIVE** at [webb.primals.eco](https://webb.primals.eco)
 
 ### Infrastructure (sporeGarden)
 
