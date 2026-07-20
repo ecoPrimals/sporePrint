@@ -37,6 +37,10 @@ Products come from two organizations:
 - **{{ entity(name="projectfoundation") }}** — institutional adoption bridge
 - **{{ entity(name="lithospore") }}** — [self-verifying scientific deployment](@/products/lithoSpore.md): USB-deployable validation artifacts that carry the science, the data, the tools, and the provenance chain. First instance: LTEE reproduction (75/75 checks, 7 modules)
 
+### Campus
+
+- **[The Lansing Scuffle](@/vision/lansing_scuffle.md)** — the physical-scale expression of the primal composition model. A 464K SF wartime factory where all the products converge: {{ entity(name="songbird") }} federation at building scale, {{ entity(name="nestgate") }} CAS for lab provenance, {{ entity(name="toadstool") }} thermal-aware dispatch, rooftop {{ entity(name="airspring") }} sensor grids, and [footPrint](@/products/footprint.md) as spatial documentation. Not a product to sell — a place where sovereign infrastructure meets community need
+
 See also: [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the
 complete repository map, and [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md)
 for how products consume primals via {{ entity(name="plasmidbin") }}.

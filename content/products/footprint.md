@@ -154,6 +154,17 @@ tool. The pattern: springs validate the science, protists make it usable.
 
 ---
 
+## Known Locations
+
+The footPrint project system includes modeled locations:
+
+- **Lansing Scuffle** (`projects/lansing-scuffle.json`) — parcel boundary,
+  building footprint, and K-Derm zone polygons for the 464K SF campus at
+  1305 S Cedar St. See [The Lansing Scuffle](@/vision/lansing_scuffle.md)
+  for the campus vision
+
+---
+
 *footPrint is not a product for sale. It is a demonstration that sovereign
 infrastructure can serve everyday needs — plan your garden, map your property,
 understand your land. No account required. No data leaves your machine.*
