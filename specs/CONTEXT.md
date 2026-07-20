@@ -8,9 +8,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 20, 2026 — Wave 150o)
+## Current State (July 20, 2026 — Wave 150q)
 
-- **311 published pages** across 17 sections (new: vision/), organized into 5 cortical folds
+- **311 published pages** across 17 sections (new in 150p: vision/), organized into 5 cortical folds
 - **79 typed entities** across 8 kinds (primal, spring, product, composition, concept, infra, org, protist) with metrics, descriptions, and link targets
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **10 reading trails** threading pages across fold boundaries
@@ -22,14 +22,15 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity
 - **Identity model**: ecoPrimal (developer), attsi (philosopher) — dual-voice, no PII
 - **Sovereign deployment**: golgiBody VPS via Caddy (67ms TTFB), sovereign CI (Forgejo → sporeGate → golgi)
-- **5 surfaces LIVE from WAN** (esotericWebb 502 — process down on flockGate, needs restart): footPrint, sporePrint, TOPO-VIS, Forgejo, JupyterHub
+- **6 surfaces LIVE from WAN**: footPrint, esotericWebb (V22), sporePrint, TOPO-VIS, Forgejo, JupyterHub
 - **ALL P1 inter-primal wiring resolved**: nestGate CAS, squirrel health, songBird mesh.enroll, petalTongue WS
 - **4-org Forgejo**: 43/43 repos mirrored, origin=Forgejo, push mirrors → GitHub
 - **USB gate enrollment**: gate-usb-bootstrap.sh for offline mesh bootstrapping
 - **Three-domain model**: primals.eco (intra-membrane), primal.eco (inner membrane), nestgate.io (data service)
 - **URL standard**: `prefix.primals.eco` subdomains for all compositions (path-based prohibited)
-- **New content**: vision/ section (Lansing Scuffle, thermal sovereignty), consulting model, companies audience page
-- **P1**: esotericWebb 502 (flockGate restart needed)
+- **New content** (150p): vision/ section (Lansing Scuffle, thermal sovereignty), consulting model, companies audience page
+- **nestGate vendor analysis** (150q): 27 TODOs confirmed as vendored upstream (rustls-webpki/rustls-rustcrypto), 0 project debt across all 15 primals
+- **Zero P1 items** — demand signal is P2-only
 
 ## Site Topology — Cortical Folds
 

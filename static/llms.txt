@@ -57,9 +57,9 @@ How it works — ecosystem design, technical depth, emergent products.
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
   - Section index: https://primals.eco/products/
   - https://footprint.primals.eco (GIS Home Planner — LIVE, 200)
-  - https://webb.primals.eco (esotericWebb CRPG — V22, 502 — process down)
+  - https://webb.primals.eco (esotericWebb CRPG — V22 LIVE, 200)
   - protoKarya protists: footPrint (GIS, LIVE), tideGlass (GPS platform, Phase 0)
-  - sporeGarden products: esotericWebb (CRPG, V22 at webb.primals.eco — 502, needs restart)
+  - sporeGarden products: esotericWebb (CRPG, V22 LIVE at webb.primals.eco)
 - Ridge pages: https://primals.eco/architecture/ecosystem-architecture/ , https://primals.eco/architecture/nucleus-architecture/
 
 ### Fold 3: Methodology (7% of site)
