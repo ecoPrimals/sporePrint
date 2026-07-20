@@ -49,12 +49,12 @@ The cross-spring experiments ({{ entity(name="ludospring") }} Track 11) proved t
 
 ## Current Status
 
-{{ maturity(level="live") }} {{ entity(name="esotericwebb") }} is **V22, LIVE at [webb.primals.eco](https://webb.primals.eco)** (200 WAN). {{ entity_stat(name="esotericwebb", stat="tests_display") }} tests, 6/9 primals connected, scene binding fixed (game_scene + fallback). systemd user unit enabled.
+{{ maturity(level="live") }} {{ entity(name="esotericwebb") }} is **V22** at [webb.primals.eco](https://webb.primals.eco). {{ entity_stat(name="esotericwebb", stat="tests_display") }} tests, 6/9 primals connected, scene binding fixed (game_scene + fallback). systemd user unit enabled.
 
 | Surface | URL | Status |
 |---------|-----|--------|
-| flockGate binary | flockGate:8090 (mesh) | **Live** |
-| Public route | [webb.primals.eco](https://webb.primals.eco) | **Live** (200) |
+| flockGate binary | flockGate:8090 (mesh) | **502** — process down, needs restart |
+| Public route | [webb.primals.eco](https://webb.primals.eco) | **502** — Caddy TLS fine, backend down |
 
 ### Remaining
 
