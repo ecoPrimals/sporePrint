@@ -11,7 +11,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 ## Current State (July 20, 2026 — Wave 150q)
 
 - **311 published pages** across 17 sections (new in 150p: vision/), organized into 5 cortical folds
-- **79 typed entities** across 8 kinds (primal, spring, product, composition, concept, infra, org, protist) with metrics, descriptions, and link targets
+- **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **10 reading trails** threading pages across fold boundaries
 - **~110 pages** carry companion metadata for cross-domain discovery

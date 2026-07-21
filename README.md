@@ -5,7 +5,7 @@ sovereign scientific computing.
 
 **Live site:** [primals.eco](https://primals.eco)
 **Sovereign primary:** golgiBody VPS via Caddy + Let's Encrypt
-**Trailing shadow:** GitHub Pages (extracellular mirror, will be archived after NS cutover)
+**Trailing shadow:** GitHub Pages (extracellular mirror, pending archival)
 
 ## Deployment Architecture
 
@@ -57,20 +57,21 @@ sporePrint/
 ├── config.toml          # Zola config + entity_registry (79 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
 ├── content-manifest.toml # BLAKE3 content provenance (generated)
-├── content/             # 302 published pages with TOML front matter
-│   ├── lab/             # 127 pages: spring hubs, 98 notebooks (6 domains), spore gallery
+├── content/             # 311 published pages with TOML front matter
+│   ├── lab/             # 132 pages: spring hubs, 99 notebooks (6 domains), spore gallery
 │   ├── science/         # 33 baseCamp companion papers
 │   ├── architecture/    # 42 pages: composition, NUCLEUS, K-Derm, CAC, cross-platform, coordination
 │   ├── thesis/          # 18 chapters: PhD dissertation (constrained evolution)
 │   ├── philosophy/      # 15 essays: atlasHugged (12 essays + bibliography + sovereign science)
 │   ├── methodology/     # 15 pages: constrained evolution, K-NOME, scyBorg, acknowledgments
-│   ├── outreach/        # 14 pages: partnership briefs, community landings
+│   ├── outreach/        # 15 pages: partnership briefs, community landings, consulting
 │   ├── products/        # 11 pages: footPrint, tideGlass, helixVision, lithoSpore, etc.
 │   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
+│   ├── audience/        # 7 pages: PI, student, builder, compliance, companies guides
 │   ├── guidestone/      # 6 pages: verification class
-│   ├── audience/        # 6 pages: PI, student, builder, compliance guides
 │   ├── story/           # 3 pages: builder narrative essays
 │   ├── collaborators/   # 3 profiles: Gonzales (NF), Jones (PFAS), ABG
+│   ├── vision/          # 2 pages: Lansing Scuffle campus, thermal sovereignty
 │   ├── glossary/        # Plain-language ecosystem glossary
 │   └── sitemap/         # Full site navigation
 ├── templates/           # 14 Tera HTML templates + shortcodes
@@ -93,7 +94,7 @@ sporePrint/
 
 ## Site Topology — Cortical Folds
 
-The site is organized into 5 navigable folds grouping 16 sections:
+The site is organized into 5 navigable folds grouping 17 sections:
 
 | Fold | Sections | What |
 |------|----------|------|
@@ -101,9 +102,9 @@ The site is organized into 5 navigable folds grouping 16 sections:
 | **Architecture** | Architecture, Technical, Products | How it works (19%) |
 | **Methodology** | Methodology, guideStone | How to build (7%) |
 | **Philosophy** | Philosophy, Story, Thesis | Why it matters (12%) |
-| **Engagement** | Glossary, Audience, Outreach, Collaborators | Who and how (8%) |
+| **Engagement** | Glossary, Audience, Outreach, Collaborators, Vision | Who and how (8%) |
 
-10 reading trails thread pages across fold boundaries. ~80 pages carry
+10 reading trails thread pages across fold boundaries. ~110 pages carry
 typed companion metadata for cross-domain discovery.
 
 ## spore-validate

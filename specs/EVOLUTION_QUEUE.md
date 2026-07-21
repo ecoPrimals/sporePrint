@@ -2,9 +2,9 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 17, 2026 (Wave 145a — Phase 2 transport 14/14 complete, CAC 6/6 complete, metrics refresh, depot 59 binaries, certification manifest re-emitted, page/notebook counts corrected)
+Last reviewed: July 21, 2026 (Wave 150q — full-ecosystem dimensional refresh 150o, Lansing Scuffle content 150p, nestGate vendor analysis 150q, esotericWebb recovered)
 
-**Current state**: 302 pages, 79 entities, 10 trails, 5 cortical folds, 3.57M LOC, 116K tests, 59 depot binaries.
+**Current state**: 311 pages (17 sections), 79 entities, 10 trails, 5 cortical folds, 3.60M LOC, 98,955 tests, 59 depot binaries.
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ---
@@ -105,7 +105,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [ ] AAA contrast ratios (7:1 for normal text, 4.5:1 for large) — pass for heading sizes, audit body text
 - [x] ~~`prefers-contrast: more` / forced-colors (Windows High Contrast) support~~ — Wave 136b
 - [x] ~~AI accessibility: all 23 navigational tables → ordered/unordered lists~~ — Wave 137a (tables strip links in AI fetch-to-text tools)
-- [x] ~~JSON-LD `hasPart` on all 12 sections with child pages~~ — Wave 137a (generic CollectionPage fallback + ScholarlyArticle for science)
+- [x] ~~JSON-LD `hasPart` on all sections with child pages~~ — Wave 137a (generic CollectionPage fallback + ScholarlyArticle for science); 17 sections as of Wave 150p
 - [ ] viz-hydrate.js: keyboard pan/zoom, focusable nodes, labeled controls
 - [x] Notebook chart alt text: meaningful descriptions for 12 matplotlib PNGs (done Wave 137b)
 - [x] `<figure>` / `<figcaption>` for viz_embed shortcode + descriptive captions on all 6 viz pages (done Wave 138b)
@@ -139,7 +139,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality at 302+ pages
+- [ ] Evaluate elasticlunr search quality at 311+ pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 
@@ -660,7 +660,7 @@ These were in the original queue and have been completed:
 
 ### Sovereign Deployment AAR
 - [x] `SPOREPRINT_SOVEREIGN_DEPLOY_AAR_133a.md` — 5 divergences identified:
-  - SP-DIV-01: GitHub Pages still primary (DNS cutover pending)
+  - ~~SP-DIV-01: GitHub Pages still primary (DNS cutover pending)~~ — **RESOLVED**: sovereign VPS primary since Wave 100+
   - SP-DIV-02: Dual-push required (origin + forgejo)
   - SP-DIV-03: No NUCLEUS on VPS (blocks live viz)
   - SP-DIV-04: `temporal.cascade` doesn't rebuild Zola

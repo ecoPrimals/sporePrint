@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: July 17, 2026 (Wave 145a — 302 pages, 79 entities, 5 cortical folds)
+Last reviewed: July 21, 2026 (Wave 150q — 311 pages, 17 sections, 79 entities, 5 cortical folds)
 
 ## Sections
 
@@ -40,7 +40,7 @@ Uses custom `science_section.html` template.
 
 **Staleness risk**: New papers added in whitePaper/baseCamp before sporePrint.
 
-### Lab (`lab/`) — 133 pages + _index
+### Lab (`lab/`) — 132 pages + _index
 
 Live validation results from a running NUCLEUS composition. Includes auto-merged spring notebooks. Subsections:
 
@@ -49,7 +49,7 @@ Live validation results from a running NUCLEUS composition. Includes auto-merged
 
 **Staleness risk**: Medium — notebooks may diverge from upstream spring outputs.
 
-### Architecture (`architecture/`) — 22 pages + _index
+### Architecture (`architecture/`) — 42 pages + _index
 
 | Page | What | Staleness risk |
 |------|------|----------------|
@@ -84,7 +84,7 @@ Live validation results from a running NUCLEUS composition. Includes auto-merged
 
 **Staleness risk**: Capability comparisons against external tools. Researcher table (reproduced work, not endorsement).
 
-### Methodology (`methodology/`) — 11 pages + _index
+### Methodology (`methodology/`) — 15 pages + _index
 
 - CONSTRAINED_EVOLUTION_FORMAL.md — core methodology paper
 - HOW_TO_START_A_SPRING.md — practical guide
@@ -107,7 +107,7 @@ Live validation results from a running NUCLEUS composition. Includes auto-merged
 
 **Staleness risk**: Hardware inventory drifts. GPU pipeline profile needs updates as coralReef evolves.
 
-### guideStone (`guidestone/`) — 4 pages + _index
+### guideStone (`guidestone/`) — 6 pages + _index
 
 | Page | What |
 |------|------|
@@ -116,24 +116,29 @@ Live validation results from a running NUCLEUS composition. Includes auto-merged
 | cross_substrate_validation.md | 5 substrates, 40/40 bit-identical |
 | live_spore_feed.md | Automated liveSpore.json provenance feed pipeline |
 
-### Products (`products/`) — 6 pages + _index
+### Products (`products/`) — 11 pages + _index
 
 | Page | Product |
 |------|---------|
-| esotericWebb.md | Sovereign creative tool (composable primal-powered) |
+| footprint.md | GIS home planner — first protoKarya protist (LIVE) |
+| esotericWebb.md | Cross-evolution CRPG (V22 LIVE at webb.primals.eco) |
+| tideglass.md | Sovereign GPS platform (Phase 0) |
 | helixVision.md | Sovereign protein structure prediction (AlphaFold-quality, pure Rust) |
 | blueFish.md | Sovereign data pipeline (ETL, NCBI integration) |
+| lithoSpore.md | Self-verifying scientific deployment artifacts |
 | lattice_qcd.md | Lattice QCD interactive explorer |
-| lithoSpore.md | Spore taxonomy, operating modes, validation tiers |
 | pseudoSpore.md | pseudoSpore lifecycle documentation |
+| nf-case-study.md | Multi-product composition pattern |
+| composition-evolution.md | Composition model documentation |
+| creative-surface.md | Creative product organizational model |
 
 ### Glossary (`glossary/`) — _index only
 
 Plain-language definitions of every ecosystem term.
 
-### Philosophy (`philosophy/`) — 14 pages + _index
+### Philosophy (`philosophy/`) — 15 pages + _index
 
-12 atlasHugged essays (complete), bibliography, and sovereign science. Author: attsi.
+12 atlasHugged essays (complete), bibliography, sovereign science, and The Knowledge Numeric. Author: attsi.
 Sidebar groups by category: Stories (01–05), Framework (06–08), Synthesis (09–11), Reference (12 + bibliography).
 
 ### Story (`story/`) — 3 pages + _index
@@ -144,33 +149,40 @@ Builder narrative essays: I Don't Know Rust, The Sovereign Lab, 70 Papers One St
 
 PhD dissertation: 16 chapters fully transplanted, front matter, references. Constrained evolution across 8 scientific domains.
 
-### reachOut (`outreach/`) — 11 pages + _index
+### reachOut (`outreach/`) — 15 pages + _index
 
-Partnership invitations and articles. 3 partnership briefs (GPU, gaming, neuromorphic) front-loaded. 8 articles scaffolded. Maturity: scaffold.
+Partnership invitations, articles, and consulting. 4 partnership briefs (GPU, gaming, neuromorphic, Steam), 2 community landings (99pi/Radiolab, homelabbers), 8 articles (evidence + critique series), 1 consulting page (Wave 150p).
 
-**Staleness risk**: Scaffold pages need full content transplant from whitePaper.
+### Vision (`vision/`) — 2 pages + _index (new in Wave 150p)
+
+| Page | What |
+|------|------|
+| lansing_scuffle.md | 464K SF solarpunk sovereign campus — building facts, K-Derm zones, thermal loop, humanitarian anchor |
+| thermal_sovereignty_building.md | Building-scale thermal sovereignty — solar → GPU → sand → hot water → food |
 
 ## Content Summary
 
 | Section | Pages (excl. _index) |
 |---------|---------------------|
-| lab | 133 |
+| lab | 132 |
+| architecture | 42 |
 | science | 33 |
-| architecture | 22 |
 | thesis | 18 |
-| philosophy | 14 |
-| outreach | 11 |
-| methodology | 11 |
+| philosophy | 15 |
+| methodology | 15 |
+| outreach | 15 |
+| products | 11 |
 | technical | 8 |
-| audience | 6 |
-| products | 6 |
-| guidestone | 5 |
+| audience | 7 |
+| guidestone | 6 |
 | story | 3 |
+| collaborators | 3 |
+| vision | 2 |
 | glossary | 0 |
 | sitemap | 0 |
 | landing | 1 |
 | contact | 1 |
-| **Total** | **~272 + _index files = 289** |
+| **Total** | **311 pages (including _index files)** |
 
 ## Validation
 
