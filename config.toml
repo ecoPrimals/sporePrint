@@ -806,8 +806,8 @@ page = "/products/tideglass/"
 display = "Tower Atomic"
 emoji = "🏗️🔐"
 kind = "composition"
-description = "BearDog + Songbird → Pure Rust HTTPS (crypto + TLS + network)"
-page = "/architecture/nucleus-architecture/"
+description = "BearDog + Songbird + SkunkBat → sovereign transport stack. Exceeds WireGuard: 1.56x LAN throughput, 9.7x less jitter, 6 exploration domains LIVE. 213 shadow benchmarks across 7 gates."
+page = "/architecture/tower-atomic/"
 
 [extra.entity_registry.nodeatomic]
 display = "Node Atomic"
