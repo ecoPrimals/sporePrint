@@ -56,14 +56,12 @@ pub fn send_ribocipher_signal(stream: &mut dyn Write) -> Result<(), Error> {
 pub fn connect_uds(
     path: &str,
     timeout: Duration,
-) -> Result<BufReader<Box<dyn crate::cas_push::ReadWrite>>, Error> {
+) -> Result<BufReader<Box<dyn ReadWrite>>, Error> {
     let stream = std::os::unix::net::UnixStream::connect(path)
         .map_err(|e| Error::Config(format!("UDS connect to {path}: {e}")))?;
     stream.set_write_timeout(Some(timeout)).ok();
     stream.set_read_timeout(Some(timeout)).ok();
-    Ok(BufReader::new(
-        Box::new(stream) as Box<dyn crate::cas_push::ReadWrite>
-    ))
+    Ok(BufReader::new(Box::new(stream) as Box<dyn ReadWrite>))
 }
 
 /// Send a JSON-RPC 2.0 request over an NDJSON stream and read the response.

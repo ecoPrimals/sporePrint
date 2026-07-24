@@ -94,6 +94,16 @@ pub const SELF: SelfCapabilities = SelfCapabilities {
             category: "content",
             description: "Request content rendering from petalTongue via IPC",
         },
+        Capability {
+            name: "tower-status",
+            category: "mesh",
+            description: "Probe Tower Atomic primals for P1 method availability",
+        },
+        Capability {
+            name: "depot-verify",
+            category: "integrity",
+            description: "BLAKE3 integrity verification of depot binaries",
+        },
     ],
 };
 
@@ -111,9 +121,16 @@ pub struct DiscoveredPeer {
 ///
 /// The env var naming convention (`{SLUG}_SOCKET`) is an ecosystem standard;
 /// any primal following it will be discoverable without being listed here.
+/// Tower Atomic primals (beardog, songbird, skunkbat) are included because
+/// `tower-status` probes them and they are core infrastructure.
 const WELL_KNOWN_PEERS: &[(&str, &str)] = &[
+    ("beardog", "BEARDOG_SOCKET"),
+    ("songbird", "SONGBIRD_SOCKET"),
+    ("skunkbat", "SKUNKBAT_SOCKET"),
     ("nestgate", "NESTGATE_SOCKET"),
     ("petaltongue", "PETALTONGUE_SOCKET"),
+    ("sweetgrass", "SWEETGRASS_SOCKET"),
+    ("squirrel", "SQUIRREL_SOCKET"),
 ];
 
 /// Build the peer hint list, extending well-known peers with any additional
@@ -365,7 +382,7 @@ mod tests {
 
     #[test]
     fn capabilities_have_valid_categories() {
-        let valid = ["content", "integrity", "storage", "sync", "knowledge"];
+        let valid = ["content", "integrity", "storage", "sync", "knowledge", "mesh"];
         for cap in SELF.capabilities {
             assert!(
                 valid.contains(&cap.category),
@@ -379,14 +396,12 @@ mod tests {
     #[test]
     fn peer_hints_includes_well_known() {
         let hints = peer_hints();
-        assert!(
-            hints.iter().any(|(s, _)| s == "nestgate"),
-            "well-known nestgate should always be present"
-        );
-        assert!(
-            hints.iter().any(|(s, _)| s == "petaltongue"),
-            "well-known petaltongue should always be present"
-        );
+        for slug in ["beardog", "songbird", "skunkbat", "nestgate", "petaltongue", "sweetgrass", "squirrel"] {
+            assert!(
+                hints.iter().any(|(s, _)| s == slug),
+                "well-known {slug} should always be present"
+            );
+        }
     }
 
     #[test]
