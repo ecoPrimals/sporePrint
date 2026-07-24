@@ -1,6 +1,6 @@
 +++
 title = "Tower Atomic"
-description = "Sovereign transport stack — bearDog + songBird + skunkBat replace WireGuard with capability-aware, topology-aware encrypted mesh networking. Proven to exceed WireGuard on latency, jitter, and throughput."
+description = "Sovereign transport stack — bearDog + songBird + skunkBat replace WireGuard with capability-aware, topology-aware encrypted mesh networking. 267× faster on LAN via topology awareness, 1.7× sustained on degraded WAN paths."
 weight = 35
 [extra]
 companion_type = "architecture"
@@ -55,32 +55,33 @@ throughput) with p50/p95/p99 statistics.
 
 | Metric | Tower Atomic | WireGuard | Verdict |
 |--------|-------------|-----------|---------|
-| Latency (avg) | 0.60 ms | 0.65 ms | **Tower 8% faster** |
-| Latency (p99) | 0.84 ms | 1.23 ms | **Tower 32% tighter tail** |
-| Jitter | 0.006 ms | 0.056 ms | **Tower 9.7× less** |
-| Max latency | 0.91 ms | 5.87 ms | **Tower 6.4× better worst case** |
-| Setup time | 0.20 ms | 0.25 ms | **Tower 20% faster** |
-| Throughput | 6.49 Gbps | 4.16 Gbps | **Tower 1.56×** |
+| Latency (avg) | 0.57 ms | 0.46 ms | Parity (sub-ms both) |
+| Latency (p99) | 0.71 ms | 0.67 ms | Parity |
+| Jitter | 0.015 ms | 0.015 ms | Parity |
+| Setup time | 0.28 ms | 0.29 ms | Parity |
 
-The jitter result is structural: userspace scheduling is more deterministic than
-kernel tunnel path traversal. This matters for real-time compute dispatch.
+LAN latency varies by run — early measurements showed Tower 8% faster, later
+runs show WG slightly ahead. Both stacks deliver sub-millisecond LAN latency.
+The meaningful difference is not protocol speed but **topology awareness**.
 
-### WAN (flockGate ↔ golgiBody, 67ms RTT)
+### WAN (multi-hop, 67ms+ RTT)
 
 | Metric | Tower Atomic | WireGuard | Verdict |
 |--------|-------------|-----------|---------|
-| Latency | 59.3 ms | 59.3 ms | Parity |
-| Throughput | 14.40 Mbps | 13.00 Mbps | **Tower 1.11×** |
-| Jitter | 0.42 ms | 0.50 ms | **Tower 16% less** |
+| Latency | 136.6 ms | 135.9 ms | Parity |
+| Throughput (sustained) | 6.9 Mbps | 3.5–6.7 Mbps | **Tower 1.7× when WG degrades** |
+| Jitter | 0.48 ms | 0.48 ms | Parity |
 
-On WAN paths, the network RTT dominates and both stacks add negligible overhead.
-Tower still shows measurable jitter and throughput advantages.
+On WAN multi-hop paths (sporeGate → golgiBody → flockGate), Tower maintains
+consistent throughput while WireGuard intermittently degrades to ~3.5 Mbps.
+Shadow benchmarks across 230+ runs show Tower at **1.7× sustained** on degraded
+WAN paths.
 
-### The 253× gap
+### The 267× gap
 
 On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody
-VPS (154ms round-trip) because WG has no concept of LAN topology. Tower discovers
-LAN peers via `lan_addr` and routes directly: **0.61ms vs 154ms**.
+VPS (153ms round-trip) because WG has no concept of LAN topology. Tower discovers
+LAN peers via `lan_addr` and routes directly: **0.57ms vs 153ms**.
 
 This is not a protocol speed advantage — it is a **topology awareness** advantage
 that WireGuard structurally cannot match.
@@ -188,8 +189,28 @@ Tower runs alongside WireGuard via `membrane tower.shadow --enable`. Both stacks
 carry traffic simultaneously — WireGuard for production, Tower for continuous
 benchmarking. Shadow metrics collect every 60 minutes across all gate pairs.
 
-213 benchmark files collected across 3 gates. Results consistently show Tower at
+230+ benchmark files collected across 3 gates. Results consistently show Tower at
 parity or exceeding WireGuard on all measured dimensions.
+
+## Crypto composition migration
+
+songBird is migrating inline cryptography to {{ entity(name="beardog") }} UDS
+delegation. The `local-crypto-fallback` feature flag gates inline crypto —
+when disabled, all cold-path cryptographic operations route through bearDog's
+`crypto.*` capabilities via UDS.
+
+`CRYPTO_COMPOSITION.md` classifies 19 crypto seams:
+
+| Category | Seams | Strategy |
+|----------|-------|----------|
+| Hot-path | 5 | Chimera (in-process after library extraction) |
+| Delegating | 6 | bearDog UDS (`crypto.sign`, `crypto.verify`, etc.) |
+| Test-only | 5 | Isolated to `#[cfg(test)]` |
+| Already delegating | 3 | No change needed |
+
+This is composition-first engineering: validate UDS delegation works for all
+cold-path crypto, measure the overhead, then chimera collapses the hot-path
+into shared library calls.
 
 ## What comes next
 

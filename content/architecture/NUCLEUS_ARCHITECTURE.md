@@ -33,7 +33,9 @@ Primals compose in layers. Each layer is a **named composition pattern** — not
 **Composition**: {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }}  
 **What emerges**: Sovereign encrypted mesh — replaces WireGuard with capability-aware transport
 
-Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, BTSP crypto, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, capability routing, and federation. {{ entity(name="skunkbat") }} provides protocol negotiation and defensive security. Together they form an encrypted peer-to-peer mesh that **exceeds WireGuard** on throughput (1.56× LAN), jitter (9.7× less), and latency (8% faster) — while adding capability-aware routing that WireGuard structurally cannot provide.
+Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, BTSP crypto, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, capability routing, and federation. {{ entity(name="skunkbat") }} provides protocol negotiation and defensive security. Together they form an encrypted peer-to-peer mesh that is **267× faster** than WireGuard on LAN (topology awareness) and **1.7× sustained** on degraded WAN paths — while adding capability-aware routing that WireGuard structurally cannot provide.
+
+songBird is actively migrating inline cryptography to bearDog UDS delegation (`local-crypto-fallback` feature flag). 19 crypto seams classified: 6 delegating to bearDog UDS, 5 reserved for chimera hot-path, 5 test-only, 3 already delegating.
 
 6 exploration domains are PROVEN LIVE: capability-aware routing, multi-stack routing, large data transfer via CAS, secure compute mesh with per-session BTSP keys, distributed compute dispatch, and edge/SFF profiles (30MB RSS). See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data and architecture.
 

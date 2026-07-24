@@ -32,7 +32,7 @@ Products come from two organizations:
 
 ### Transport (Tower Atomic)
 
-- **[Tower Atomic](@/architecture/tower_atomic.md)** — {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }}: sovereign encrypted mesh replacing WireGuard. **1.56× throughput**, **9.7× less jitter** on LAN. 6 exploration domains PROVEN LIVE. [Architecture →](@/architecture/tower_atomic.md)
+- **[Tower Atomic](@/architecture/tower_atomic.md)** — {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }}: sovereign encrypted mesh replacing WireGuard. **267× faster** on LAN (topology awareness), **1.7× sustained** WAN. 6 exploration domains PROVEN LIVE. Crypto composition migration active. [Architecture →](@/architecture/tower_atomic.md)
 
 ### Infrastructure (sporeGarden)
 

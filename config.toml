@@ -132,7 +132,7 @@ edges = [
 display = "Songbird"
 emoji = "🎵🐦"
 kind = "primal"
-description = "Pure Rust networking — TCP/UDP, HTTP/2, WebSocket, mDNS, IPC sockets, mesh routing, TURN relay, and capability-aware dispatch. Tower Atomic transport layer: LAN peer discovery, 5-tier NAT traversal, drawbridge HTTP bridge. Proven to exceed WireGuard (1.56x LAN throughput, 9.7x less jitter)."
+description = "Pure Rust networking — TCP/UDP, HTTP/2, WebSocket, mDNS, IPC sockets, mesh routing, TURN relay, and capability-aware dispatch. Tower Atomic transport layer: LAN peer discovery, 5-tier NAT traversal, drawbridge HTTP bridge. 267x faster than WG on LAN (topology awareness), 1.7x sustained WAN. Crypto composition migration active — delegating cold-path crypto to bearDog UDS."
 domain = "Networking"
 loc = 337946
 loc_display = "337,946"
@@ -806,7 +806,7 @@ page = "/products/tideglass/"
 display = "Tower Atomic"
 emoji = "🏗️🔐"
 kind = "composition"
-description = "BearDog + Songbird + SkunkBat → sovereign transport stack. Exceeds WireGuard: 1.56x LAN throughput, 9.7x less jitter, 6 exploration domains LIVE. 213 shadow benchmarks across 7 gates."
+description = "BearDog + Songbird + SkunkBat → sovereign transport stack. 267x faster than WG on LAN (topology awareness), 1.7x sustained WAN. 6 exploration domains LIVE. 230+ shadow benchmarks. Crypto composition migration active."
 page = "/architecture/tower-atomic/"
 
 [extra.entity_registry.nodeatomic]

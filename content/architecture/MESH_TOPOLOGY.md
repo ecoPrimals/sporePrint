@@ -31,11 +31,11 @@ Peers discover each other through four path types, selected by songBird at runti
 | **WireGuard overlay** | `10.13.37.0/24` via golgi hub | 5-30ms LAN, 67-154ms WAN | Legacy (being replaced by Tower) |
 | **TURN relay** | NAT traversal fallback via golgiBody | 50-200ms | Hostile NAT, mobile |
 
-songBird discovers LAN peers via `lan_addr` and routes directly — bypassing the VPS entirely. This is the core advantage over WireGuard: same-switch gates communicate at 0.6ms instead of 154ms through the VPS hub.
+songBird discovers LAN peers via `lan_addr` and routes directly — bypassing the VPS entirely. This is the core advantage over WireGuard: same-switch gates communicate at 0.57ms instead of 153ms through the VPS hub.
 
-### The 253× Gap
+### The 267× Gap
 
-On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody VPS (154ms) because WG has no concept of LAN topology. Tower discovers LAN peers and routes directly: **0.61ms vs 154ms**.
+On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody VPS (153ms) because WG has no concept of LAN topology. Tower discovers LAN peers and routes directly: **0.57ms vs 153ms**.
 
 ## Capability Routing
 
