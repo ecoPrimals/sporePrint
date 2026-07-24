@@ -75,25 +75,28 @@ out using absolute positions — no ambiguous "inner/outer" terminology.
 WAN gates like flockGate exercise the full diderm path — their traffic
 traverses real internet to reach the periplasm.
 
-## WireGuard Mesh Overlay
+## Transport: WireGuard → Tower Atomic
 
-All gates connect through a sovereign encrypted overlay network:
+The mesh is transitioning from WireGuard kernel tunnels to [Tower Atomic](@/architecture/tower_atomic.md) — a userspace capability-aware encrypted mesh. Both stacks currently run in parallel (shadow mode), with Tower proven to exceed WireGuard on throughput and jitter.
 
-| Node | Overlay IP | Role | Measured RTT |
-|------|-----------|------|--------------|
-| golgi (hub) | 10.13.37.1 | VPS hub, Forgejo, Caddy, WAN depot | — |
-| sporeGate | 10.13.37.2 | Compute node, Sovereign CI, Nest | <1ms to golgi |
-| eastGate | 10.13.37.5 | Meta (orchestration, AI, viz) | <1ms to golgi |
-| flockGate | 10.13.37.6 | WAN, Tower Atomic, sporePrint | 27ms to golgi |
-| ironGate | 10.13.37.7 | Node Atomic (GPU, fleet dispatch) | <1ms to golgi |
+| Node | Overlay IP | Role | Tower Status |
+|------|-----------|------|-------------|
+| golgi (hub) | 10.13.37.1 | VPS hub, Forgejo, Caddy, WAN depot, TURN relay | LIVE |
+| sporeGate | 10.13.37.2 | Build authority, HPC interface, benchmark driver | LIVE (shadow) |
+| eastGate | 10.13.37.5 | Code hub, primalSpring overwatch | LIVE (shadow) |
+| flockGate | 10.13.37.6 | WAN, Tower primal teams | LIVE (shadow) |
+| northGate | 10.13.37.8 | Windows 11, RTX 5090 | Enrolled |
+| grapheneGate | — | HSM testing | Tower LIVE |
 
-Hub-and-spoke topology with golgi as the central peer. Each gate maintains
-a persistent tunnel. The mesh provides:
+Tower Atomic adds topology awareness that WireGuard cannot provide: LAN peer discovery via `lan_addr` bypasses the VPS hub entirely (0.61ms vs 154ms for same-switch gates). See [Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md) for the full gate map and enrollment process.
 
-- **Identity**: Each gate has a stable cryptographic identity (WireGuard public key)
-- **Encryption**: All inter-gate traffic is encrypted regardless of transport
-- **Connectivity**: Gates behind NAT, cellular, or restrictive firewalls connect through the hub
+The mesh provides:
+
+- **Identity**: Each gate has a stable cryptographic identity (bearDog Ed25519 + WireGuard key)
+- **Encryption**: All inter-gate traffic encrypted via BTSP per-session keys (Tower) or WireGuard tunnel
+- **Connectivity**: Gates behind NAT, cellular, or restrictive firewalls connect through TURN relay on golgiBody
 - **Addressability**: Stable overlay IPs survive physical network changes
+- **Capability routing**: Tower dispatches by capability name, not IP address
 
 ## Gate Enrollment
 
@@ -238,6 +241,22 @@ the composition profile and the ecobins change.
 
 Query a gate's composition: `membrane plasmid.composition --gate golgiBody`
 List all profiles: `membrane plasmid.composition`
+
+## Sovereign CI Pipeline
+
+All primals are continuously built from source on sporeGate's [Sovereign CI](@/architecture/SOVEREIGN_CI.md). No GitHub Actions, no Jenkins — Forgejo webhooks trigger builds on the sovereign build authority. See [Sovereign CI](@/architecture/SOVEREIGN_CI.md) for the full architecture.
+
+### Crash-Loop Breaker
+
+systemd services across the mesh are hardened with crash-loop detection via `membrane gate.crash-loop`. Real-world validation: `biomeos-beacon` accumulated 29,081 restarts before the breaker was shipped. The fix is structural — `StartLimitIntervalSec` placement, `WorkingDirectory` validation at install time.
+
+### systemd Hardening
+
+Every primal service runs under systemd with `ProtectSystem=strict`, `PrivateTmp=yes`, `NoNewPrivileges=yes`, `MemoryDenyWriteExecute=yes`, and other defense-in-depth measures.
+
+### DNSSEC
+
+All three ecosystem domains (`primals.eco`, `primal.eco`, `nestgate.io`) are DNSSEC-signed.
 
 ## The Cascade Pipeline
 

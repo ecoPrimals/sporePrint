@@ -30,10 +30,12 @@ Primals compose in layers. Each layer is a **named composition pattern** — not
 
 ### Tower Atomic
 
-**Composition**: {{ entity(name="beardog") }} + {{ entity(name="songbird") }}  
-**What emerges**: Pure Rust HTTPS — cryptographic identity + TLS + network mesh
+**Composition**: {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }}  
+**What emerges**: Sovereign encrypted mesh — replaces WireGuard with capability-aware transport
 
-Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, and federation. Together they give every gate a cryptographic identity and the ability to discover and communicate with other gates.
+Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, BTSP crypto, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, capability routing, and federation. {{ entity(name="skunkbat") }} provides protocol negotiation and defensive security. Together they form an encrypted peer-to-peer mesh that **exceeds WireGuard** on throughput (1.56× LAN), jitter (9.7× less), and latency (8% faster) — while adding capability-aware routing that WireGuard structurally cannot provide.
+
+6 exploration domains are PROVEN LIVE: capability-aware routing, multi-stack routing, large data transfer via CAS, secure compute mesh with per-session BTSP keys, distributed compute dispatch, and edge/SFF profiles (30MB RSS). See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data and architecture.
 
 ### Node Atomic
 

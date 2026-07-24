@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: July 21, 2026 (Wave 150q — 311 pages, 17 sections, 79 entities, 5 cortical folds)
+Last reviewed: July 24, 2026 (Wave 150x — 312 pages, 17 sections, 79 entities, 5 cortical folds. New: Tower Atomic page, Sovereign CI + Mesh Topology updated)
 
 ## Sections
 
@@ -49,7 +49,9 @@ Live validation results from a running NUCLEUS composition. Includes auto-merged
 
 **Staleness risk**: Medium — notebooks may diverge from upstream spring outputs.
 
-### Architecture (`architecture/`) — 42 pages + _index
+### Architecture (`architecture/`) — 43 pages + _index
+
+New in 150x: `tower_atomic.md` (Tower Atomic sovereign transport). Updated: `SOVEREIGN_CI.md` (crash-loop breaker, systemd hardening, DNSSEC), `MESH_TOPOLOGY.md` (Tower transport, traffic classes, USB enrollment).
 
 | Page | What | Staleness risk |
 |------|------|----------------|

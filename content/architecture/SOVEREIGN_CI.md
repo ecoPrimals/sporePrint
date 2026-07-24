@@ -122,8 +122,49 @@ mesh.status enrichment:
 
 The write model is conflict-free: `wave.toml` is sole-writer (overwatch), each gate writes only its own `heads/<gate>.toml`. No merge conflicts. Ever.
 
+## Crash-Loop Breaker (Wave 150x)
+
+{{ entity(name="cellmembrane") }} provides `membrane gate.crash-loop` — a self-recovery
+system that detects and stops runaway systemd services. The crash-loop breaker
+scans all primal services and detects restart spirals.
+
+Real-world validation: `biomeos-beacon` accumulated 29,081 restarts before the
+breaker was shipped. The fix is structural:
+
+| Problem | Fix |
+|---------|-----|
+| `StartLimitIntervalSec` in `[Service]` | Moved to `[Unit]` (where systemd reads it) |
+| `WorkingDirectory` missing | Validated at install time |
+| No restart ceiling | `CrashLoopReport` scan + disable logic |
+
+The breaker runs at bootstrap/preflight and as an operator command. It detects
+services with restart counts exceeding threshold, stops the crash-looping service,
+reports to the operator, and prevents resource exhaustion.
+
+## systemd Hardening
+
+Every primal service runs under systemd with defense-in-depth:
+
+| Hardening | Purpose |
+|-----------|---------|
+| `ProtectSystem=strict` | Read-only root filesystem |
+| `PrivateTmp=yes` | Isolated `/tmp` |
+| `NoNewPrivileges=yes` | Prevent privilege escalation |
+| `MemoryDenyWriteExecute=yes` | W^X enforcement |
+
+## DNSSEC
+
+All three ecosystem domains are DNSSEC-signed:
+
+| Domain | Purpose | DNSSEC |
+|--------|---------|--------|
+| `primals.eco` | Intra-membrane (gate-to-gate) | Signed |
+| `primal.eco` | Inner membrane (public services) | Signed |
+| `nestgate.io` | Data service point (NestGate CAS) | Signed |
+
 ## Related
 
+- [Tower Atomic](@/architecture/tower_atomic.md) — the transport stack that Sovereign CI builds and deploys
 - [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md) — how binaries flow from depot to gates
 - [Living Systems](@/lab/living-systems.md) — what's actually running right now
 - [Gate Mesh — Live Topology](@/architecture/MESH_TOPOLOGY.md) — how gates connect

@@ -17,7 +17,7 @@
 ## What This Site Is
 
 primals.eco is the public-facing science site for the ecoPrimals ecosystem.
-311 pages across 17 sections. Every quantitative claim is backed by executable
+312 pages across 17 sections. Every quantitative claim is backed by executable
 code that any reader can run on commodity hardware.
 
 ## Contact
@@ -31,7 +31,7 @@ code that any reader can run on commodity hardware.
 
 ## Site Structure — Cortical Folds
 
-The site has 311 pages across 17 sections, organized into 5 navigable folds.
+The site has 312 pages across 17 sections, organized into 5 navigable folds.
 Each fold groups related sections. Ridge pages are the best entry points.
 Section indexes list all child pages within that section.
 
@@ -47,11 +47,12 @@ What we proved — live validation results, reproduced science, lab notebooks.
 ### Fold 2: Architecture (19% of site)
 How it works — ecosystem design, technical depth, emergent products.
 
-- **Architecture** (42 pages): Primal composition, NUCLEUS, K-Derm, coordination triad, sovereignty architecture, content-addressed convergence, cross-platform parity.
+- **Architecture** (43 pages): Primal composition, NUCLEUS, K-Derm, coordination triad, sovereignty architecture, content-addressed convergence, cross-platform parity, Tower Atomic, Sovereign CI, Mesh Topology.
   - Section index: https://primals.eco/architecture/
   - Start here: https://primals.eco/architecture/ecosystem-architecture/
-  - New: https://primals.eco/architecture/content-addressed-convergence/ (Newton-Leibniz pattern)
-  - New: https://primals.eco/architecture/cross-platform-parity/ (OS Atheism roadmap)
+  - Key: https://primals.eco/architecture/tower-atomic/ (sovereign transport stack — exceeds WireGuard)
+  - Updated: https://primals.eco/architecture/sovereign-ci/ (Forgejo → sporeGate → depot + crash-loop breaker + DNSSEC)
+  - Updated: https://primals.eco/architecture/mesh-topology/ (6-gate mesh, Tower shadow, traffic classes)
 - **Technical** (8 pages): Grant appendices, hardware costs, GPU pipeline, drug discovery, teaching brief.
   - Section index: https://primals.eco/technical/
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
@@ -128,8 +129,10 @@ Trail pages: https://primals.eco/trails/
 - **Springs**: Validation domains (wetSpring=biology, hotSpring=physics, etc.)
 - **NUCLEUS**: Full composition of primals running on a single machine
 - **Atomics**: Minimum viable compositions (Tower, Node, Nest, Relay)
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (1.56× throughput, 9.7× less jitter on LAN, 6 exploration domains PROVEN LIVE)
 - **K-Derm**: Diderm (two-membrane) deployment architecture
-- **BearDog**: Sovereign TLS and authentication (pure Rust, no OpenSSL)
+- **BearDog**: Sovereign TLS, BTSP crypto, enrollment verification (pure Rust, no OpenSSL)
+- **SongBird**: Mesh networking, capability-aware routing, TURN relay, drawbridge HTTP bridge
 - **BarraCuda**: Vendor-agnostic GPU compute (WGSL/Vulkan, f64 precision)
 - **guideStone**: Cryptographic certification and provenance system
 - **K-NOME**: AI-assisted development methodology (human constraint + AI implementation)
@@ -151,13 +154,17 @@ Trail pages: https://primals.eco/trails/
 ## Numbers (live, machine-verified)
 
 - 15 primals, 8 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
-- 3.57M lines of Rust (42 repos)
+- 3.60M lines of Rust (43 repos)
 - 98,955 tests across ecosystem (15 primals + 9 springs)
+- 196 validation scenarios (7 stress + 7 pen tests), 30 known debt
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
 - 59 depot binaries across 4 architectures (16 x86_64 Linux, 16 aarch64 Linux, 13 aarch64 Android, 14 x86_64 Windows)
+- Tower Atomic proven: exceeds WireGuard (1.56× LAN throughput, 9.7× less jitter), 6/6 exploration domains LIVE, 213 shadow benchmark files
+- Sovereign CI: Forgejo → sporeGate build → depot → all gates (no external CI)
 - Phase 2 transport abstraction complete: all 14 primals cross-compile for all 4 targets
 - Content-Addressed Convergence: all 6 layers complete
+- DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
 

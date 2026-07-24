@@ -14,7 +14,10 @@ springs = ["primalspring"]
 The ecoPrimals ecosystem is not a description of future work. It is running.
 Ten gates are tracked, seven are actively meshed, and {{ entity(name="songbird") }}
 routes `capability.call` across all of them. Two physical sites are linked by
-an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
+an 80m 10G AOC trunk. [Tower Atomic](@/architecture/tower_atomic.md) — the sovereign
+transport stack — runs alongside WireGuard in shadow mode, proven to **exceed
+WireGuard** on throughput (1.56×), jitter (9.7× less), and latency (8% faster)
+on LAN paths. This page shows what is actually deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
@@ -22,14 +25,14 @@ an 80m 10G AOC trunk. This page shows what is actually deployed and operational.
 
 | Gate | Status | Transport | What's Running |
 |------|--------|-----------|----------------|
-| **sporeGate** | Online | LAN + WG | Sovereign CI, Caddy TLS, songBird mesh hub, Forgejo, **footPrint FULL NUCLEUS** |
-| **eastGate** | Online | LAN + WG (10GbE) | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue |
+| **sporeGate** | Online | LAN + WG + Tower | Sovereign CI build authority, songBird mesh hub, **footPrint FULL NUCLEUS**, Tower shadow benchmarks |
+| **eastGate** | Online | LAN + WG + Tower | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue, Tower shadow timer |
 | **ironGate** | Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
 | **southGate** | Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
-| **flockGate** | WAN only | WG via golgi (72ms p50) | Tower atomic, **esotericWebb V22 LIVE** (:8090, systemd), songBird, bearDog, skunkBat |
-| **golgi** | Online | VPS | WireGuard hub, Forgejo host, depot (30/30 ecobins), cascade timer |
-| **northGate** | Enrolled | LAN + WG | Windows 11, RTX 5090, 6th mesh node |
-| **grapheneGate** | Online | ADB (USB) | Pixel 8a, 12/13 primals LIVE (13/13 after pepti rebuild) |
+| **flockGate** | WAN only | WG + Tower shadow | Tower Atomic 3/3 LIVE, **esotericWebb V22 LIVE** (:8090), 6/6 exploration domains PROVEN, 213 shadow benchmarks |
+| **golgi** | Online | VPS | WAN hub, TURN relay, Forgejo, depot, cascade timer, DNSSEC |
+| **northGate** | Enrolled | LAN + WG | Windows 11, RTX 5090, mesh enrolled |
+| **grapheneGate** | Online | Tower LIVE | HSM testing, Tower Atomic 3/3 LIVE, CredentialStore |
 | **strandGate** | Pending | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, enrollment pending |
 | **fieldGate** | Pending | House 2 | Future enrollment via Omada |
 | **biomeGate** | Offline | House 1 | Offline — pending reactivation |
@@ -137,6 +140,8 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 
 ## Related
 
+- [Tower Atomic](@/architecture/tower_atomic.md) — sovereign transport stack replacing WireGuard
+- [Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md) — gate topology, enrollment, traffic classes
+- [Sovereign CI](@/architecture/SOVEREIGN_CI.md) — Forgejo → sporeGate → depot
 - [Compute Access](@/lab/compute-access.md) — tiers, hardware, how to connect
-- [Gate Mesh — Live Topology](@/architecture/MESH_TOPOLOGY.md) — mesh architecture and enrollment
 - [Reproduce Results](@/lab/reproduce.md) — run the same pipelines on your hardware

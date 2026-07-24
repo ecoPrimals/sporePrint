@@ -2,7 +2,7 @@
 
 The intellectual foundations that guide HOW sporePrint connects, presents, and relates information. These are not decorative references — they are structural constraints on how the site's information architecture works.
 
-Last updated: July 21, 2026 (Wave 150q — cortical folds, 10 reading trails, 79 entities, 126 edges, companion metadata)
+Last updated: July 24, 2026 (Wave 150x — Tower Atomic, Sovereign CI, Mesh Topology pages added to architecture fold)
 
 ---
 

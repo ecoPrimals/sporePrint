@@ -66,6 +66,12 @@ foundation                       → institutional adoption
 - **[Primal Interactions](@/architecture/primal_interactions.md)** — IPC architecture, JSON-RPC, discovery
 - **[Discovery Log](@/architecture/discovery_log.md)** — capability hunting methodology
 
+## Infrastructure
+
+- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign transport stack: bearDog + songBird + skunkBat replace WireGuard. 9.7× less jitter, 1.56× throughput on LAN. 6 exploration domains PROVEN LIVE
+- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — Forgejo → sporeGate build → depot → all gates. Crash-loop breaker, systemd hardening, DNSSEC
+- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 6-gate mesh, 1G/10G MikroTik backbone, WAN via Tower Atomic, USB and network enrollment
+
 ## Convergence and Platform
 
 - **[Content-Addressed Convergence](@/architecture/content_addressed_convergence.md)** — the Newton-Leibniz pattern: content identity supersedes temporal identity

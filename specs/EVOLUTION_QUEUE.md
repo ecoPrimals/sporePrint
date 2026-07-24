@@ -2,9 +2,9 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 21, 2026 (Wave 150q — full-ecosystem dimensional refresh 150o, Lansing Scuffle content 150p, nestGate vendor analysis 150q, esotericWebb recovered)
+Last reviewed: July 24, 2026 (Wave 150x — Tower Atomic transplant, Sovereign CI page, Mesh Topology page, entity descriptions updated, exploration domains documented)
 
-**Current state**: 311 pages (17 sections), 79 entities, 10 trails, 5 cortical folds, 3.60M LOC, 98,955 tests, 59 depot binaries.
+**Current state**: 312 pages (17 sections), 79 entities, 10 trails, 5 cortical folds, 3.60M LOC, 98,955 tests, 59 depot binaries, 196 validation scenarios.
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ---

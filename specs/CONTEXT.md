@@ -8,9 +8,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 20, 2026 — Wave 150q)
+## Current State (July 24, 2026 — Wave 150x)
 
-- **311 published pages** across 17 sections (new in 150p: vision/), organized into 5 cortical folds
+- **312 published pages** across 17 sections (new in 150x: Tower Atomic architecture page, Sovereign CI + Mesh Topology updated), organized into 5 cortical folds
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **10 reading trails** threading pages across fold boundaries
@@ -18,6 +18,11 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals** (150o fresh audit): 3.60M LOC, 98,955 tests (15 primals + 9 springs), 43 repos, 59 depot binaries across 4 architectures
+- **Tower Atomic PROVEN**: bearDog + songBird + skunkBat exceed WireGuard — 1.56× LAN throughput, 9.7× less jitter, 8% lower latency. 6/6 exploration domains PROVEN LIVE. 213 shadow benchmark files
+- **196 validation scenarios**: 7 stress + 7 penetration tests, 30 known debt findings, all PASS
+- **Sovereign CI pipeline**: Forgejo → sporeGate build → depot → all gates. No GitHub Actions
+- **Crash-loop breaker**: cellMembrane `gate.crash-loop` — self-recovery shipped (29,081-restart divergence resolved)
+- **DNSSEC**: all 3 domains signed (primals.eco, primal.eco, nestgate.io)
 - **Phase 2 transport abstraction**: 14/14 primals complete — trait + backend patterns replace all `#[cfg]` fences
 - **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity
 - **Identity model**: ecoPrimal (developer), attsi (philosopher) — dual-voice, no PII
@@ -28,8 +33,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **USB gate enrollment**: gate-usb-bootstrap.sh for offline mesh bootstrapping
 - **Three-domain model**: primals.eco (intra-membrane), primal.eco (inner membrane), nestgate.io (data service)
 - **URL standard**: `prefix.primals.eco` subdomains for all compositions (path-based prohibited)
-- **New content** (150p): vision/ section (Lansing Scuffle, thermal sovereignty), consulting model, companies audience page
-- **nestGate vendor analysis** (150q): 27 TODOs confirmed as vendored upstream (rustls-webpki/rustls-rustcrypto), 0 project debt across all 15 primals
+- **Gate mesh**: 5 active + northGate (enrolled) + grapheneGate (Tower LIVE), 10G backbone between houses
 - **Zero P1 items** — demand signal is P2-only
 
 ## Site Topology — Cortical Folds

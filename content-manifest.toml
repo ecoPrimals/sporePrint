@@ -1,6 +1,6 @@
-generated = "2026-07-21T17:01:09Z"
-root_hash = "18da5960844263e85c8a640f977baaa88cbe5829a5316b9d7cde6f6c0a16c0ec"
-page_count = 332
+generated = "2026-07-24T14:09:58Z"
+root_hash = "091e0b93fb911a2da52a7cdc0dc3809d4f8a02822534daacf41aee43d44a9ec2"
+page_count = 333
 
 [pages."_index.md"]
 blake3 = "402e17e6ba317e148d061c1665b3e2afbeee2684e6afab2b08abdc6512e5648c"
@@ -118,16 +118,16 @@ fold = "architecture"
 maturity = "implemented"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
-blake3 = "0e27f34b0ae23c20b5ffa498a01d6728e94046a18df9aa70ac10447ad541203c"
-size_bytes = 4857
+blake3 = "2eda7f46b35a3ffc9e29bb6fbea56a3cf952892c466241196bf3d3ac40b80197"
+size_bytes = 6952
 title = "Gate Mesh — Live Topology"
 section = "architecture"
 fold = "architecture"
 maturity = "implemented"
 
 [pages."architecture/NUCLEUS_ARCHITECTURE.md"]
-blake3 = "6d259924c3bd9436120dcaca65fb56a280015487faca8705b24d8072a2e275ac"
-size_bytes = 16631
+blake3 = "b7ace339b816d99713520e79fcb392ceb3763b0f0046b39f48e3aa89bbfbca01"
+size_bytes = 17236
 title = "NUCLEUS Composition Model"
 section = "architecture"
 fold = "architecture"
@@ -150,16 +150,16 @@ fold = "architecture"
 maturity = "architectural"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "335c8cfba057bba43a0ff89aa4875bb9b560d41ff3d5d7333a7b678c64baea2c"
-size_bytes = 6181
+blake3 = "905b20b505c9cc7cf74016a375ce0f9efae4f9f8449c0ca8b4c0f81d6fc10f83"
+size_bytes = 7785
 title = "Sovereign CI — Build Infrastructure"
 section = "architecture"
 fold = "architecture"
 maturity = "implemented"
 
 [pages."architecture/SOVEREIGN_DEPLOYMENT.md"]
-blake3 = "b284db51feed8f403cb32b7e55fdd1025059d58c50df9779fca453d1239b5099"
-size_bytes = 13758
+blake3 = "419ed2e7a10857ff67b2a7ae218ad8fdd6399ad3b5100aefa21f921704df625a"
+size_bytes = 15310
 title = "Sovereign Deployment"
 section = "architecture"
 fold = "architecture"
@@ -194,8 +194,8 @@ fold = "architecture"
 maturity = "architectural"
 
 [pages."architecture/_index.md"]
-blake3 = "4c8bed33ee34312139309c75bdd8b047f96300ea3c8610c274758ac1d78a51f9"
-size_bytes = 5279
+blake3 = "80df40985e9fbc0972d34ee64b0525db4f4037cfc8ee7121477ade3cd68acac2"
+size_bytes = 5819
 title = "Architecture"
 section = "architecture"
 fold = "architecture"
@@ -454,6 +454,13 @@ companions = [
     "/architecture/primal-evolution/",
     "/philosophy/fossil-lineage/",
 ]
+
+[pages."architecture/tower_atomic.md"]
+blake3 = "44e9b921ee9b8db9703368628cecbdeadfd79a089e0cd35a25de5cbb7e39562b"
+size_bytes = 9851
+title = "Tower Atomic"
+section = "architecture"
+fold = "architecture"
 
 [pages."architecture/waterfall.md"]
 blake3 = "bf44bff74ea014274c091683becef88dfb9682d8f1fbef4986cd07c10ab92c6f"
@@ -739,8 +746,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "724feb411dcee0723c19c7f8a9510f1fa1012cd85515020f74b47803c12fd4d3"
-size_bytes = 6826
+blake3 = "233841564da0b4764bbc087eb59353ac61e8442ff801fb5a208fe4512b6979f1"
+size_bytes = 7309
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"
@@ -2073,8 +2080,8 @@ trails = ["philosophy-thread"]
 companions = ["/methodology/constrained-evolution-formal/"]
 
 [pages."products/_index.md"]
-blake3 = "8f93ae9861db50a3ef981c6936d619039efb167359daef4440b46193ba3e7e7c"
-size_bytes = 2877
+blake3 = "a7cc89836f50cc6f0d55902a21567a434797eb02f33301113d59de1e4f7c9a1b"
+size_bytes = 3244
 title = "Products"
 section = "products"
 fold = "architecture"

@@ -57,10 +57,10 @@ sporePrint/
 ├── config.toml          # Zola config + entity_registry (79 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
 ├── content-manifest.toml # BLAKE3 content provenance (generated)
-├── content/             # 311 published pages with TOML front matter
+├── content/             # 312 published pages with TOML front matter
 │   ├── lab/             # 132 pages: spring hubs, 99 notebooks (6 domains), spore gallery
 │   ├── science/         # 33 baseCamp companion papers
-│   ├── architecture/    # 42 pages: composition, NUCLEUS, K-Derm, CAC, cross-platform, coordination
+│   ├── architecture/    # 43 pages: composition, NUCLEUS, K-Derm, CAC, Tower Atomic, Sovereign CI, Mesh Topology
 │   ├── thesis/          # 18 chapters: PhD dissertation (constrained evolution)
 │   ├── philosophy/      # 15 essays: atlasHugged (12 essays + bibliography + sovereign science)
 │   ├── methodology/     # 15 pages: constrained evolution, K-NOME, scyBorg, acknowledgments

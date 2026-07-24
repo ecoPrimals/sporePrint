@@ -30,6 +30,10 @@ Products come from two organizations:
 
 - **[esotericWebb](@/products/esotericWebb.md)** — cross-evolution CRPG, **V22 LIVE** at [webb.primals.eco](https://webb.primals.eco)
 
+### Transport (Tower Atomic)
+
+- **[Tower Atomic](@/architecture/tower_atomic.md)** — {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }}: sovereign encrypted mesh replacing WireGuard. **1.56× throughput**, **9.7× less jitter** on LAN. 6 exploration domains PROVEN LIVE. [Architecture →](@/architecture/tower_atomic.md)
+
 ### Infrastructure (sporeGarden)
 
 - **{{ entity(name="cellmembrane") }}** — sovereign VPS control plane, K-Derm relay management
