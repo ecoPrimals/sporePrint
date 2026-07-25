@@ -14,7 +14,7 @@ The landing page is a hybrid: `_index.md` contains the Try It and Why sporePrint
 - **Try It** — two code blocks (build from source / guideStone artifact)
 - **Stats ribbon** — 6 stat cards (checks, papers, tests, cost, hardware, zero C deps)
 - **Find Your Path** — 6 audience cards linking to role-based guides
-- **The Ecosystem** — 3 org cards (ecoPrimals, syntheticChemistry, sporeGarden)
+- **The Ecosystem** — 4 org cards (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - **Explore** — 7 quick-link cards to key pages and taxonomy indexes
 - **Why sporePrint** — the spore print metaphor
 - **Footer** — license, attribution
@@ -56,8 +56,8 @@ New in 150x: `tower_atomic.md` (Tower Atomic sovereign transport). Updated: `SOV
 | Page | What | Staleness risk |
 |------|------|----------------|
 | PRIMAL_CATALOG.md | All 15 primals — narrative identity, LOC, tests, coverage | Medium — versions, test counts |
-| SPRING_CATALOG.md | All 8 springs — identity, headline results, phases, researcher map | Medium — check counts |
-| ECOSYSTEM_INVENTORY.md | Master repo inventory across all 3 orgs | Medium — new repos, status changes |
+| SPRING_CATALOG.md | All 9 springs — identity, headline results, phases, researcher map | Medium — check counts |
+| ECOSYSTEM_INVENTORY.md | Master repo inventory across all 4 orgs | Medium — new repos, status changes |
 | NUCLEUS_ARCHITECTURE.md | NUCLEUS composition model, atomics ladder, Neural API, Dark Forest | Low |
 | DEPLOYMENT_MODEL.md | plasmidBin, BYOB model, binary distribution | Low |
 | ECOSYSTEM_ARCHITECTURE.md | High-level system design | Low |
@@ -201,7 +201,7 @@ CI runs `spore-validate validate --check` + `zola check` before every deploy.
 Zola generates these automatically from front matter `[taxonomies]` tags:
 - `/primals/` — index of all 15 primals
 - `/primals/{name}/` — cross-reference: every page that tags this primal
-- `/springs/` — index of all 8 springs
+- `/springs/` — index of all 9 springs
 - `/springs/{name}/` — cross-reference: every page that tags this spring
 
 These pages render using `taxonomy_list.html` and `taxonomy_single.html`, pulling display names and emojis from the entity registry in `config.toml`.

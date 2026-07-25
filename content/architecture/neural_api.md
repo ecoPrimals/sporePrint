@@ -39,7 +39,7 @@ rather than being engineered as monoliths.
 
 ## The Combinatorial Problem
 
-8 springs validate across 13 primals. Each spring needs different capabilities
+9 springs validate across 15 primals. Each spring needs different capabilities
 from different primals. Without composition collapse, every spring (and every product)
 must independently discover, connect to, and manage 427 methods.
 

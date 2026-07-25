@@ -17,7 +17,7 @@ composition, concept, infrastructure, organization) and sized by connectivity.
 ## Entity Graph Explorer
 
 <div id="viz-entity-graph" class="viz-container">
-{{ viz_embed(src="/viz/entity-graph", caption="Entity graph: 66 entities with typed relationships across 15 primals and 8 springs") }}
+{{ viz_embed(src="/viz/entity-graph", caption="Entity graph: 66 entities with typed relationships across 15 primals and 9 springs") }}
 </div>
 
 ### Reading the Graph

@@ -231,7 +231,7 @@ plt.show()
 | GPU | barraCuda WGSL via ToadStool | 2.19x pipeline, 1,077x spectral | lower | tolerance 1e-6 |
 
 The three-tier validation pattern (Python baseline -> Rust parity -> GPU acceleration)
-was pioneered in wetSpring and adopted across all 8 springs.
+was pioneered in wetSpring and adopted across all 9 springs.
 
 ---
 

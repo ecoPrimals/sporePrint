@@ -72,7 +72,7 @@ back.
 
 | Primal | Tests | What It Provides |
 |--------|:-----:|-----------------|
-| BarraCuda | 3,772 | 806 WGSL shaders — the math layer |
+| BarraCuda | {{ entity_stat(name="barracuda", stat="tests") }} | {{ total_stat(stat="wgsl_files") }} WGSL shaders — the math layer |
 | {{ entity(name="toadstool") }} | 21,156 | Hardware discovery + compute orchestration |
 | {{ entity(name="coralreef") }} | 2,241 | Sovereign WGSL→native GPU compiler |
 

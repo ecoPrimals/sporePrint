@@ -104,13 +104,14 @@ See: [Spring Catalog](@/architecture/SPRING_CATALOG.md)
 The garden is **information**: what the world sees when the mountain's mass
 is converted to energy by the river and crystallized into deliverables.
 
-### Three Organizations
+### Four Organizations
 
 | Organization | Question | Audience |
 |-------------|----------|----------|
 | ecoPrimals | Does the infrastructure work? | Developers |
 | syntheticChemistry | Does the science reproduce? | Scientists |
 | sporeGarden | Does someone use it? | Creators, collaborators |
+| protoKarya | Can it serve the wider world? | End users, institutions |
 
 ### Spore Taxonomy
 

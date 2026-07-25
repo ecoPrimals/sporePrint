@@ -1,6 +1,6 @@
 +++
 title = "Products"
-description = "Emergent compositions of primals — what happens when standalone tools combine to do real work. Not commercial software; chemical reaction products."
+description = "Emergent compositions of primals organized by maturity — deployable systems, research previews, and architectural direction."
 sort_by = "title"
 template = "section.html"
 +++
@@ -17,33 +17,46 @@ Products come from two organizations:
 - **[sporeGarden](https://github.com/sporeGarden)** — infrastructure compositions
   and established products that consume primals via JSON-RPC
 - **[protoKarya](https://github.com/protoKarya)** — protists: wider-world
-  compositions evolving toward external usability. The first living things.
+  compositions evolving toward external usability
 
-### Protists (protoKarya)
+---
 
-| Protist | Domain | Status |
+## Deploy Now
+
+Tested, versioned, running on live infrastructure. Instructions available.
+
+| Product | Domain | Where |
+|---------|--------|-------|
+| **[footPrint](@/products/footprint.md)** | GIS home planning | [footprint.primals.eco](https://footprint.primals.eco) |
+| **[esotericWebb](@/products/esotericWebb.md)** | Cross-evolution CRPG | [webb.primals.eco](https://webb.primals.eco) (V22) |
+| **[Tower Atomic](@/architecture/tower_atomic.md)** | Sovereign encrypted mesh | 6 gates, 267× LAN throughput advantage, 1.7× WAN sustained |
+| **{{ entity(name="cellmembrane") }}** | VPS control plane | All gates — crash-loop breaker, systemd hardening |
+
+---
+
+## Research Preview
+
+Functioning components with validated results. End-to-end workflow incomplete
+or dependent on unreleased compositions.
+
+| Product | Domain | Status |
 |---------|--------|--------|
-| [footPrint](@/products/footprint.md) | GIS home planning | **LIVE** — [footprint.primals.eco](https://footprint.primals.eco) (200) |
-| [tideGlass](@/products/tideglass.md) | Sovereign GPS platform | Phase 0 — GPS paper reproduction |
+| **{{ entity(name="lithospore") }}** | [Self-verifying scientific deployment](@/products/lithoSpore.md) | LTEE reproduction: 75/75 checks, 7 modules. USB-deployable |
+| **{{ entity(name="projectfoundation") }}** | Institutional adoption bridge | Pattern library complete, awaiting external pilot |
+| **[tideGlass](@/products/tideglass.md)** | Sovereign GPS platform | Phase 0 — GPS paper reproduction underway |
 
-### Creative Products (sporeGarden)
+---
 
-- **[esotericWebb](@/products/esotericWebb.md)** — cross-evolution CRPG, **V22 LIVE** at [webb.primals.eco](https://webb.primals.eco)
+## Architectural Direction
 
-### Transport (Tower Atomic)
+Named, designed, and documented. Not presented as usable today.
 
-- **[Tower Atomic](@/architecture/tower_atomic.md)** — {{ entity(name="beardog") }} + {{ entity(name="songbird") }} + {{ entity(name="skunkbat") }}: sovereign encrypted mesh replacing WireGuard. **267× faster** on LAN (topology awareness), **1.7× sustained** WAN. 6 exploration domains PROVEN LIVE. Crypto composition migration active. [Architecture →](@/architecture/tower_atomic.md)
+| Product | Domain | Status |
+|---------|--------|--------|
+| **{{ entity(name="projectnucleus") }}** | Deployment and composition layer | TOML deploy graphs, multi-gate orchestration |
+| **[The Lansing Scuffle](@/vision/lansing_scuffle.md)** | Solarpunk sovereign campus | 464K SF vision — where primal composition meets community need |
 
-### Infrastructure (sporeGarden)
-
-- **{{ entity(name="cellmembrane") }}** — sovereign VPS control plane, K-Derm relay management
-- **{{ entity(name="projectnucleus") }}** — deployment and composition layer (TOML deploy graphs)
-- **{{ entity(name="projectfoundation") }}** — institutional adoption bridge
-- **{{ entity(name="lithospore") }}** — [self-verifying scientific deployment](@/products/lithoSpore.md): USB-deployable validation artifacts that carry the science, the data, the tools, and the provenance chain. First instance: LTEE reproduction (75/75 checks, 7 modules)
-
-### Campus
-
-- **[The Lansing Scuffle](@/vision/lansing_scuffle.md)** — the physical-scale expression of the primal composition model. A 464K SF wartime factory where all the products converge: {{ entity(name="songbird") }} federation at building scale, {{ entity(name="nestgate") }} CAS for lab provenance, {{ entity(name="toadstool") }} thermal-aware dispatch, rooftop {{ entity(name="airspring") }} sensor grids, and [footPrint](@/products/footprint.md) as spatial documentation. Not a product to sell — a place where sovereign infrastructure meets community need
+---
 
 See also: [Ecosystem Inventory](@/architecture/ECOSYSTEM_INVENTORY.md) for the
 complete repository map, and [Deployment Model](@/architecture/DEPLOYMENT_MODEL.md)

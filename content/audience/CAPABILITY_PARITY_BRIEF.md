@@ -342,7 +342,7 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 | Hardware discovery | **Exceeds** | toadStool discovers GPU + CPU + NPU at runtime |
 | Mixed hardware dispatch | **Exceeds** | CPU + GPU + NPU routing by capability, not hardcoding |
 | Neuromorphic (NPU) support | **No equivalent** | BrainChip AKD1000 via pure Rust driver |
-| 806+ validated WGSL shaders | **Specialized** | Bio/physics domain; not general-purpose |
+| {{ total_stat(stat="wgsl_files") }} validated WGSL shaders | **Specialized** | Bio/physics domain; not general-purpose |
 
 ### What CUDA / Kokkos Still Do Better
 
@@ -365,7 +365,7 @@ cargo run --release --bin validate_massbank_gpu_scale  # GPU spectral matching
 | **Total tests** | 27,000+ across all springs |
 | **Total validation checks** | 15,334+ |
 | **Papers reproduced** | 175+ (across {{ entity(name="wetspring") }} + {{ entity(name="healthspring") }} + {{ entity(name="neuralspring") }} + {{ entity(name="hotspring") }} + others) |
-| **WGSL shaders ({{ entity(name="barracuda") }})** | 806+ |
+| **WGSL shaders ({{ entity(name="barracuda") }})** | {{ total_stat(stat="wgsl_files") }} |
 | **Languages** | Pure Rust (zero C/C++/Fortran in application code) |
 | **Unsafe code** | Zero (`#![forbid(unsafe_code)]` in all spring lib crates) |
 | **External dependencies** | Minimal; all pure Rust or explicit `rust_backend` |

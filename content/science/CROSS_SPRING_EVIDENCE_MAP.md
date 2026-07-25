@@ -1,6 +1,6 @@
 +++
 title = "Cross-Spring Evidence Map"
-description = "Convergence analysis across all 8 springs — shared mathematical structures, open questions, and cross-domain validation."
+description = "Convergence analysis across all 9 springs — shared mathematical structures, open questions, and cross-domain validation."
 date = 2026-03-17
 
 [taxonomies]

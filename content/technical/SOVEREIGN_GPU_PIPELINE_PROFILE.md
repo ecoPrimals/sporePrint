@@ -76,7 +76,7 @@ supports f64 and has >8GB VRAM."
 | cuSOLVER | Eigensolve, LU, Cholesky | 15+ | Full parity for f64 | |
 | Thrust | Reduction, scan, sort | 20+ | Full parity | |
 
-**806 WGSL shaders total** — every one is f64-canonical (native f64 on pro GPUs,
+**{{ total_stat(stat="wgsl_files") }} WGSL shaders total** — every one is f64-canonical (native f64 on pro GPUs,
 DF64 emulation on consumer GPUs). Key domains:
 
 | Domain | Shader Count | Example Operations |
@@ -184,7 +184,7 @@ patterns per iteration:
 | Tool | Cost | What {{ entity(name="ecoprimals") }} Replaces It With |
 |------|:----:|--------------------------------|
 | CUDA Toolkit | Free (vendor lock) | wgpu/Vulkan (open standard, cross-vendor) |
-| cuBLAS/cuFFT | Free (NVIDIA-only) | BarraCuda 806 WGSL shaders (any GPU) |
+| cuBLAS/cuFFT | Free (NVIDIA-only) | BarraCuda {{ total_stat(stat="wgsl_files") }} WGSL shaders (any GPU with Vulkan) |
 | nvcc compiler | Free (NVIDIA-only) | {{ entity(name="coralreef") }} (pure Rust, SM70–SM89 + RDNA2) |
 | NVIDIA driver | Free (proprietary binary) | coral-glowplug + VFIO (upstream Linux kernel) |
 | A100 GPU | ~$10K–15K | RTX 3090 (~$500 used), DF64: 3.24 TFLOPS |
@@ -209,7 +209,7 @@ Application Layer
       └── Science experiments: reproduce published papers
 
 Math Layer
-  └── BarraCuda v0.3.5 (806 WGSL shaders, 3,772 tests)
+  └── BarraCuda ({{ total_stat(stat="wgsl_files") }} WGSL shaders)
       └── f64-canonical math: what to compute
 
 Orchestration Layer

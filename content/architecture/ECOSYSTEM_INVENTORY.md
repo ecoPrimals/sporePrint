@@ -135,7 +135,7 @@ User-facing products that compose primals into complete applications. Each produ
 | Infrastructure repos | 5 ({{ entity(name="wateringhole") }}, {{ entity(name="sporeprint") }}, {{ entity(name="plasmidbin") }}, cellMembrane, {{ entity(name="whitepaper") }}) |
 | Science springs | 8 (7 domain + 1 meta-spring) |
 | User-facing products | 3 ({{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish) |
-| Public repos (today) | 13 primals + 8 springs + 3 infra + 1 product = **25** |
+| Public repos (today) | 15 primals + 9 springs + 3 infra + 2 products = **29** |
 | Source publishing in progress | ~5 (bearDog, skunkBat, agentReagents, benchScale, whitePaper) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
 | Total Rust LOC | {{ total_stat(stat="total_loc_display") }} ({{ total_stat(stat="primal_loc_display") }} primals + {{ total_stat(stat="spring_loc_display") }} springs, measured {{ total_stat(stat="measured_date") }}) |

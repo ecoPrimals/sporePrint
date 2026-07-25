@@ -27,19 +27,20 @@ relation = "extends"
 label = "The garden region in the Atlas landscape"
 +++
 
-## Three Organizations
+## Four Organizations
 
-The ecosystem is organized into three organizations, each answering a different question:
+The ecosystem is organized into four organizations, each answering a different question:
 
 | Organization | Question | Audience |
 |-------------|----------|----------|
 | **ecoPrimals** | Does the infrastructure work? | Developers |
 | **syntheticChemistry** | Does the science reproduce? | Scientists |
 | **sporeGarden** | Does someone use it? | Creators, scientists, collaborators |
+| **protoKarya** | Can it serve the wider world? | End users, institutions |
 
 This separation is not organizational convenience — it reflects the biological distinction
-between mycelium (infrastructure), fruiting conditions (springs), and the cultivation
-surface (products).
+between mycelium (infrastructure), fruiting conditions (springs), the cultivation
+surface (products), and the wider-world organisms (protists) that consume them.
 
 ---
 

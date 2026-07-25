@@ -80,7 +80,7 @@ for storage, etc.). There are {{ total_stat(stat="total_primals") }}.
 
 **Springs** are science validation environments: domain-specific test suites that
 reproduce published results. There are {{ total_stat(stat="total_springs") }}
-(7 science domains + 1 meta-spring for ecosystem validation).
+(7 science domains + neuromorphic hardware + 1 meta-spring for ecosystem validation).
 
 **Products** are compositions of primals aimed at specific use cases
 ({{ entity(name="helixvision") }}, {{ entity(name="bluefish") }},
@@ -121,6 +121,24 @@ Claims across this site carry maturity labels:
 
 When you see a claim without a maturity badge, assume {{ maturity(level="implemented") }}
 for code claims and {{ maturity(level="unaudited") }} for compliance/security claims.
+
+---
+
+## Safety Model
+
+**`#![forbid(unsafe_code)]`** is enforced at the crate root of all spring crates,
+all provenance crates ({{ entity(name="beardog") }}, {{ entity(name="nestgate") }},
+{{ entity(name="squirrel") }}), the validation binary (`spore-validate`), and most
+infrastructure crates.
+
+The exception is **{{ entity(name="toadstool") }}**: GPU and NPU dispatch requires
+unsafe FFI at hardware boundaries. toadStool contains documented, safety-audited
+unsafe blocks confined to hardware-containment crates. These are explicitly scoped,
+individually justified, and isolated from the rest of the ecosystem.
+
+**Dependency chain**: No C/C++/Fortran libraries appear in the runtime dependency
+chain. `blake3` uses the `pure` feature (Rust-only); `flate2` uses `rust_backend`.
+The `cc` crate appears only as an unused build dependency.
 
 ---
 

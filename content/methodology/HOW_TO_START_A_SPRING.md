@@ -168,7 +168,7 @@ BarraCuda's math library.
 - Speedup is measured and reported honestly
 - Energy consumption is measured where feasible
 
-**How K-Nome helps here:** BarraCuda already has 806 validated WGSL
+**How K-Nome helps here:** BarraCuda already has {{ total_stat(stat="wgsl_files") }} validated WGSL
 shaders across linear algebra, statistics, signal processing,
 bioinformatics, physics, pharmacometrics, and ML. Most science
 operations map to existing shaders. You say: "This matrix multiply is

@@ -147,7 +147,7 @@ fundamental research NSF values.
 | Claim | Evidence | Verify |
 |-------|----------|--------|
 | Pure Rust GPU (no CUDA), zero C dependencies | All springs: `cargo deny check` passes | `cargo deny check --workspace` |
-| 806 WGSL f64 shaders in {{ entity(name="barracuda") }} | {{ entity(name="barracuda") }} primal (public) | github.com/ecoPrimals/barraCuda |
+| {{ total_stat(stat="wgsl_files") }} WGSL f64 shaders in {{ entity(name="barracuda") }} | {{ entity(name="barracuda") }} primal (public) | github.com/ecoPrimals/barraCuda |
 | Sovereign WGSL→native compiler ({{ entity(name="coralreef") }}) | 46/46 shaders compile to SM70/SM86/RDNA2 | github.com/ecoPrimals/coralReef |
 | NPU (AKD1000) live: 3 classifiers, 136 gen/sec | {{ entity(name="hotspring") }} Exp193–195, live hardware | `cargo run --bin validate_npu_live` |
 | GPU-NPU-CPU parity ({{ entity(name="metalforge") }} cross-substrate) | {{ entity(name="groundspring") }}, 395/395 checks + 140 {{ entity(name="metalforge") }} | `cargo run --bin validate_cross_substrate` |

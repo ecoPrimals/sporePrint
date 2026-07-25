@@ -164,7 +164,7 @@ via {{ entity(name="ecoprimals") }}.
 
 | Capability | Type | Description |
 |-----------|------|-------------|
-| 806 WGSL scientific shaders | **Novel** | Largest AGPL-3.0 scientific shader library. Covers QCD, plasma physics, bioinformatics, pharmacology, Anderson localization, RHMC, neural networks, and more. |
+| {{ total_stat(stat="wgsl_files") }} WGSL scientific shaders | **Novel** | Largest AGPL-3.0 scientific shader library. Covers QCD, plasma physics, bioinformatics, pharmacology, Anderson localization, RHMC, neural networks, and more. |
 | DF64 (double-float emulation) | **Novel** | Hardware-atheistic FP64 precision via f32×2 pairs in WGSL. Works on GPUs without native FP64. 30+ DF64 shaders. No other WGSL DF64 library exists. |
 | RHMC (Rational HMC) | **Novel** | Remez exchange, multi-shift CG, rational approximations for lattice QCD fermion dynamics. Pure Rust + WGSL. |
 | #![forbid(unsafe_code)] math engine | **Novel** | 291,543 lines of Rust + 64,737 lines of WGSL with zero unsafe. No other GPU math engine of this scale has this guarantee. |
@@ -172,7 +172,7 @@ via {{ entity(name="ecoprimals") }}.
 | GpuBackend trait | Established | Trait-based GPU abstraction. Pattern exists elsewhere; the sovereign dispatch integration is novel. |
 | Precision tiers specification | **Novel** | F32/F64/F64Precise/DF64 tiers with per-shader, per-hardware routing. No other framework offers this granularity. |
 
-**806 WGSL shaders | 291,543 lines Rust | 64,737 lines WGSL | 3,415 tests**
+**{{ total_stat(stat="wgsl_files") }} WGSL shaders | {{ entity_stat(name="barracuda", stat="loc_display") }} lines Rust | {{ total_stat(stat="wgsl_lines_display") }} lines WGSL | {{ entity_stat(name="barracuda", stat="tests") }} tests**
 
 ---
 
@@ -392,7 +392,7 @@ These capabilities exist NOWHERE else in open source:
 | 2 | WGSL → native GPU ISA compiler (AGPL) | {{ entity(name="coralreef") }} | No AGPL shader compiler exists. The only ones are in Mesa (MIT) and NVIDIA (proprietary). |
 | 3 | Self-teaching GPU hardware learning | toadStool hw-learn | Observe → distill → apply → share. GPUs teach each other initialization sequences. |
 | 4 | Hardware-atheistic DF64 precision | {{ entity(name="barracuda") }} | FP64 precision on any GPU via f32×2, with per-shader precision routing. |
-| 5 | 806 scientific WGSL shaders (AGPL) | {{ entity(name="barracuda") }} | Largest open scientific shader library under copyleft. |
+| 5 | {{ total_stat(stat="wgsl_files") }} scientific WGSL shaders (AGPL) | {{ entity(name="barracuda") }} | Largest open scientific shader library under copyleft. |
 | 6 | PrecisionBrain routing | toadStool | Domain-aware precision selection with NVVM transcendental risk detection. |
 | 7 | Pure Rust Tor stack (AGPL) | songBird | Only AGPL-3.0 Tor implementation. Full directory/circuit/stream/onion. |
 | 8 | {{ entity(name="toweratomic") }} crypto delegation | bearDog + songBird | Network layer has zero crypto state. All delegated via IPC. |

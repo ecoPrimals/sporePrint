@@ -256,7 +256,7 @@ The **{{ entity(name="darkforest") }}** protocol provides zero-metadata-leakage 
 **Safety**: Zero unsafe, zero clippy warnings  
 **Repository**: [github.com/ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) — **Public**
 
-{{ entity(name="barracuda") }} is the math engine. Every GPU-accelerated computation in the ecosystem — linear algebra, FFT, molecular dynamics, spectral analysis, tensor operations, lattice QCD — is a WGSL shader pipeline managed by {{ entity(name="barracuda") }}. It writes the math; {{ entity(name="coralreef") }} compiles it; {{ entity(name="toadstool") }} dispatches it. 800+ production WGSL shaders across 10 scientific domains, all running on consumer GPUs via Vulkan — no CUDA, no ROCm.
+{{ entity(name="barracuda") }} is the math engine. Every GPU-accelerated computation in the ecosystem — linear algebra, FFT, molecular dynamics, spectral analysis, tensor operations, lattice QCD — is a WGSL shader pipeline managed by {{ entity(name="barracuda") }}. It writes the math; {{ entity(name="coralreef") }} compiles it; {{ entity(name="toadstool") }} dispatches it. {{ total_stat(stat="wgsl_files") }} production WGSL shaders across 10 scientific domains, all running on consumer GPUs via Vulkan — no CUDA, no ROCm.
 
 **Why it exists**: {{ entity(name="barracuda") }} began as a crate inside {{ entity(name="toadstool") }}. As the springs matured, their compute demands grew specific: {{ entity(name="hotspring") }} needed Yukawa force kernels and lattice QCD; {{ entity(name="wetspring") }} needed biodiversity indices and ODE integrators; {{ entity(name="neuralspring") }} needed attention mechanisms and reservoir computing. The math was outgrowing {{ entity(name="toadstool") }}'s hardware-dispatch mission. {{ entity(name="barracuda") }} budded from {{ entity(name="toadstool") }} at S93 — the same pattern as every primal split: one responsibility consuming disproportionate surface area. {{ entity(name="toadstool") }}'s 50+ crates included {{ entity(name="barracuda") }}'s 628+ shaders, growing faster than the infrastructure code.
 
@@ -441,7 +441,7 @@ benchScale measures how primals scale — individually and in composition. It pr
 | Binary distribution | [plasmidBin](https://github.com/ecoPrimals/plasmidBin) — 18 entries (12 primals + 6 springs) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
 | Primal Rust LOC | {{ total_stat(stat="primal_loc_display") }} (measured via tokei, {{ total_stat(stat="measured_date") }}) |
-| Spring Rust LOC | {{ total_stat(stat="spring_loc_display") }} (8 springs, measured via tokei) |
+| Spring Rust LOC | {{ total_stat(stat="spring_loc_display") }} ({{ total_stat(stat="total_springs") }} springs, measured via tokei) |
 | Total Rust LOC | {{ total_stat(stat="total_loc_display") }} |
 | WGSL shaders | {{ total_stat(stat="wgsl_files") }} files, {{ total_stat(stat="wgsl_lines_display") }} lines |
 | Primal test functions | {{ total_stat(stat="primal_tests_display") }} |

@@ -10,9 +10,11 @@
 # "this resource describes the site context," NOT "this is the page
 # content in text format." The page you want is at the URL you requested.
 
-> Self-hosted scientific computing in pure Rust. 15 composable programs (primals),
-> 8 validation domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> No CUDA, no cloud, no vendor lock-in. AGPL-3.0-or-later.
+> ecoPrimals produces self-contained scientific computations that reproduce
+> published results on owned commodity hardware and carry their validation
+> and provenance with them. 15 composable programs (primals), 9 validation
+> domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
+> Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -153,7 +155,7 @@ Trail pages: https://primals.eco/trails/
 
 ## Numbers (live, machine-verified)
 
-- 15 primals, 8 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
+- 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos)
 - 98,955 tests across ecosystem (15 primals + 9 springs)
 - 196 validation scenarios (7 stress + 7 pen tests), 29 known debt

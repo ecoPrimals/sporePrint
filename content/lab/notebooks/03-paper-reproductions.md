@@ -248,7 +248,7 @@ print(f'Directories with frozen data: {len(dirs_with_json)}')
 
 ## Key Discovery: Three-Tier Validation
 
-wetSpring pioneered the pattern now used across all 8 springs:
+wetSpring pioneered the pattern now used across all 9 springs:
 
 ```
 Tier 1: Python/R baseline → frozen JSON

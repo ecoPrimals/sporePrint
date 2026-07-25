@@ -1,7 +1,7 @@
 +++
 title = "Composition Pipeline: Springs → Primals → Products → Foundation"
 weight = 13
-description = "How validated science from 8 springs flows through primal composition into emergent products and institutional adoption."
+description = "How validated science from 9 springs flows through primal composition into emergent products and institutional adoption."
 date = 2026-05-06
 
 [taxonomies]

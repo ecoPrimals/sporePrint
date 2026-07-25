@@ -29,7 +29,7 @@ cargo deny check                # zero license violations, zero C dependencies
 If those commands run, the claims are verified. No institutional access. No proprietary software. No cloud.
 
 - 🧬 **Run real scientific pipelines locally** — genomics, protein structure, lattice QCD, pharmacometrics, precision agriculture
-- 📄 **Reproduce published results** — {{ total_stat(stat="papers_reproduced") }} papers across 8 domains, each as a binary you can run
+- 📄 **Reproduce published results** — {{ total_stat(stat="papers_reproduced") }} papers across {{ total_stat(stat="total_springs") }} springs, each as a binary you can run
 - ⚡ **Use any GPU** — NVIDIA, AMD, Intel — no CUDA lock-in, no vendor toolchain
 - 🔒 **Own your data and compute** — nothing leaves your machine
 - ✅ **Validate with {{ entity(name="guidestone") }}** — self-verifying build artifacts that prove their own correctness
@@ -53,20 +53,19 @@ This site is the spore print for {{ entity(name="ecoprimals") }}. The permanent,
 
 ## What This Is (In Standard Terms)
 
-ecoPrimals is a **self-hosted high-performance scientific computing platform** written entirely in Rust. It replaces the conventional stack — Python + CUDA + cloud services — with a vendor-agnostic, locally executable, cryptographically verifiable alternative.
+ecoPrimals produces **self-contained scientific computations that reproduce published results on owned commodity hardware and carry their validation and provenance with them**. The platform is written entirely in Rust and provides a vendor-agnostic, locally executable, cryptographically verifiable alternative to the conventional stack.
 
-| Standard term | ecoPrimals equivalent |
+| Conventional tool | ecoPrimals equivalent |
 |---|---|
-| GPU compute library (replaces CUDA) | **barraCuda** — WGSL/WebGPU compute shaders, f64 precision, any GPU vendor |
-| Bioinformatics pipeline (replaces Galaxy/QIIME2) | **wetSpring** — sovereign 16S metagenomics, phylogenetics, PFAS chemistry |
-| Protein structure prediction (replaces cloud AlphaFold) | **helixVision** — coralForge AlphaFold2/3 in pure Rust, local GPU |
-| Lattice QCD framework | **hotSpring** — SU(3) gauge theory, nuclear EOS, plasma physics |
-| Molecular dynamics engine (replaces GROMACS) | **hotSpring** — Sarkas Yukawa MD on consumer GPUs |
-| Pharmacometrics / PK-PD modeling | **healthSpring** — clinical simulation, toxicology, biosignal analysis |
-| Precision agriculture / remote sensing | **airSpring** — FAO-56 ET, soil moisture, crop modeling |
-| Hardware abstraction layer | **toadStool** — unified Vulkan/WebGPU dispatch, multi-vendor GPU management |
-| Service mesh / IPC | **songBird** — JSON-RPC 2.0 capability routing, multi-node federation |
-| Content-addressable storage | **NestGate** — BLAKE3-hashed CAS with provenance chains |
-| Package distribution | **plasmidBin** — musl-static binaries, BLAKE3 verified, zero runtime deps |
+| CUDA GPU compute | **barraCuda** — WGSL/WebGPU compute shaders, f64 precision, any GPU with Vulkan |
+| Galaxy/QIIME2 bioinformatics | **wetSpring** — sovereign 16S metagenomics, phylogenetics, PFAS chemistry |
+| Cloud AlphaFold | **helixVision** — coralForge AlphaFold2/3 in pure Rust, local GPU |
+| GROMACS / MD engines | **hotSpring** — SU(3) gauge theory, Sarkas Yukawa MD, nuclear EOS |
+| NONMEM / Monolix PK-PD | **healthSpring** — clinical simulation, toxicology, biosignal analysis |
+| Cloud remote sensing | **airSpring** — FAO-56 ET, soil moisture, crop modeling |
+| Vendor GPU SDKs | **toadStool** — unified Vulkan/WebGPU dispatch, multi-vendor GPU management |
+| VPN / service mesh | **songBird** — JSON-RPC 2.0 capability routing, multi-node federation |
+| Cloud object storage | **NestGate** — BLAKE3-hashed CAS with provenance chains |
+| Package managers | **plasmidBin** — musl-static binaries, BLAKE3 verified, zero runtime deps |
 
-All components are pure Rust, statically linked (musl), zero C dependencies, and licensed AGPL-3.0. The system runs on consumer hardware: a single workstation with any GPU (NVIDIA, AMD, Intel) can execute the entire stack.
+All components are pure Rust, statically linked (musl), and licensed AGPL-3.0. Unsafe code is forbidden by default (`#![forbid(unsafe_code)]`) and isolated to narrowly scoped, safety-documented hardware-containment crates where required (e.g., toadStool GPU/NPU dispatch). The system runs on consumer hardware with any GPU exposing Vulkan drivers (tested: NVIDIA, AMD, Intel).

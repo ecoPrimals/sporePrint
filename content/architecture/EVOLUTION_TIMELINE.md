@@ -102,7 +102,7 @@ For comparison:
 
 ### 1. The Substrate Matters
 
-The springs were fast because the infrastructure existed. BarraCuda's 806 WGSL
+The springs were fast because the infrastructure existed. BarraCuda's {{ total_stat(stat="wgsl_files") }} WGSL
 shaders, toadStool's hardware dispatch, the capability-based IPC — the springs
 consumed these instead of building them. The 8-month primal build phase is the
 hidden investment that made 27-day sprints possible.
@@ -175,7 +175,7 @@ The springs do not build their own GPU stack. They consume:
 
 ```
 barraCuda v0.3.5
-  ├── 806 WGSL f64 shaders
+  ├── {{ total_stat(stat="wgsl_files") }} WGSL f64 shaders
   ├── Precision strategy: f64 / DF64 / f32 by hardware
   ├── Bio: diversity, alignment, phylogeny, biosignal, drug models
   ├── Physics: MD, spectral, Anderson, QCD, plasma transport

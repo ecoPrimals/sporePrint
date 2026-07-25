@@ -72,8 +72,8 @@ AGPL prevents this — every modification remains open. The network-use clause
 specifically addresses cloud providers who would otherwise wrap open code
 in a proprietary API.
 
-**Applies to all three organizations**: ecoPrimals (primals), syntheticChemistry
-(springs), sporeGarden (products).
+**Applies to all four organizations**: ecoPrimals (primals), syntheticChemistry
+(springs), sporeGarden (products), protoKarya (protists).
 
 ---
 
@@ -115,9 +115,9 @@ to revoke the Open Gaming License (OGL). The ORC is designed to be
 **irrevocable by design** — no single entity can pull it back. This aligns
 with ecoPrimals' structural guarantee: no single entity controls the commons.
 
-**Applies to all three organizations**: every system design, interaction
+**Applies to all four organizations**: every system design, interaction
 pattern, composition rule, and mechanical structure across ecoPrimals,
-syntheticChemistry, and sporeGarden.
+syntheticChemistry, sporeGarden, and protoKarya.
 
 ---
 
@@ -142,7 +142,7 @@ rights, including attribution — the creator gets no credit. CC-BY-SA balances
 openness (anyone can use it) with protection (derivatives must also be open
 and attributed).
 
-**Applies to all three organizations**: every README, paper, guide,
+**Applies to all four organizations**: every README, paper, guide,
 architecture document, and this website (sporePrint).
 
 ---
@@ -172,7 +172,7 @@ demanded it. scyBorg makes this structurally impossible.
 
 ## How It Applies Across the Ecosystem
 
-All three licenses apply to all three organizations. They are orthogonal —
+All three licenses apply to all four organizations. They are orthogonal —
 each covers a different dimension of the same work, not a different subset
 of projects.
 

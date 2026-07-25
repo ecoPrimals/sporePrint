@@ -155,7 +155,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 | Org | Purpose | Repos |
 |-----|---------|-------|
 | [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 |
-| [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 8 springs | 8 |
+| [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |
 

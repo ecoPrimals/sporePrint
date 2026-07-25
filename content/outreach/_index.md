@@ -10,7 +10,7 @@ Open invitations to the communities and companies whose work makes sovereign sci
 
 ## Partnership Briefs
 
-- **[GPU Manufacturers](@/outreach/gpu_invitation.md)** — Vendor-agnostic f64 compute via WebGPU/WGSL proves the hardware works without CUDA. 806+ validated shaders across NVIDIA, AMD, and Intel
+- **[GPU Manufacturers](@/outreach/gpu_invitation.md)** — Vendor-agnostic f64 compute via WebGPU/WGSL proves the hardware works without CUDA. {{ total_stat(stat="wgsl_files") }} validated shaders across NVIDIA, AMD, and Intel (Vulkan required)
 - **[Game Platforms](@/outreach/gaming_invitation.md)** — NUCLEUS federation, Plasmodium bonding, 791 ludoSpring tests — sovereign gaming infrastructure on the same substrate that runs science
 - **[Neuromorphic Hardware](@/outreach/neuromorphic_invitation.md)** — BrainChip AKD1000 integration, pure Rust driver, three-substrate pipeline — standing offer to NPU manufacturers
 - **[Valve / Steam](@/outreach/steam_invitation.md)** — The immortal platform: 132M potential gates, shared Vulkan/Linux values, sea biome exploration

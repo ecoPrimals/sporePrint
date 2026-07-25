@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 
 {% block title %}ecoPrimals — Self-Hosted Scientific Computing in Rust (WebGPU, Bioinformatics, HPC){% endblock title %}
-{% block description %}Self-hosted scientific computing platform: pure Rust, vendor-agnostic WebGPU/WGSL GPU compute replacing CUDA. Reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics, pharmacometrics. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero C dependencies.{% endblock description %}
+{% block description %}Self-hosted scientific computing in pure Rust. Vendor-agnostic WebGPU/WGSL GPU compute. Reproducible bioinformatics, protein structure, lattice QCD, molecular dynamics, pharmacometrics on commodity hardware. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests.{% endblock description %}
 {% block og_title %}ecoPrimals — Self-Hosted Scientific Computing in Rust{% endblock og_title %}
 {% block og_desc %}Pure Rust scientific computing: vendor-agnostic GPU compute (WebGPU/WGSL), reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics. {{ config.extra.totals.total_loc_display }} lines of Rust, {{ config.extra.totals.total_tests_display }} tests, zero CUDA dependency.{% endblock og_desc %}
 {% block tw_title %}ecoPrimals — Self-Hosted Scientific Computing in Rust{% endblock tw_title %}
@@ -21,7 +21,7 @@
     <div class="stat-card">
       <span class="stat-num">{{ config.extra.totals.total_loc_display }}</span>
       <span class="stat-label">lines of Rust</span>
-      <span class="stat-sub">zero C dependencies, entire stack</span>
+      <span class="stat-sub">pure Rust, entire stack</span>
     </div>
     <div class="stat-card">
       <span class="stat-num">{{ config.extra.totals.total_tests_display }}</span>
@@ -36,7 +36,7 @@
     <div class="stat-card">
       <span class="stat-num">{{ config.extra.totals.validation_checks }}</span>
       <span class="stat-label">validation checks</span>
-      <span class="stat-sub">exit 0 on pass, 8 domains</span>
+      <span class="stat-sub">quantitative, tolerance-gated</span>
     </div>
     <div class="stat-card">
       <span class="stat-num">{{ config.extra.totals.wgsl_files }}</span>
@@ -58,7 +58,7 @@
       <a href="{{ get_url(path='@/audience/FOR_FACULTY_AND_PIS.md') }}" class="audience-card">
         <span class="audience-icon" role="img" aria-label="Faculty">🎓</span>
         <strong>Faculty or PI</strong>
-        <span>What this replaces in your lab, what it costs, what it produces</span>
+        <span>What this runs in your lab, what it costs, what it produces</span>
       </a>
       <a href="{{ get_url(path='@/audience/FOR_STUDENTS_AND_CORE_FACILITIES.md') }}" class="audience-card">
         <span class="audience-icon" role="img" aria-label="Research">🔬</span>
@@ -83,15 +83,15 @@
       <a href="{{ get_url(path='@/audience/CAPABILITY_PARITY_BRIEF.md') }}" class="audience-card">
         <span class="audience-icon" role="img" aria-label="Overview">📊</span>
         <strong>Not Sure? Start Here</strong>
-        <span>Capability parity brief — direct comparison across 8 domains</span>
+        <span>Capability parity brief — direct comparison across 9 domains</span>
       </a>
     </div>
   </section>
 
-  {# ── Three organizations ── #}
+  {# ── Four organizations ── #}
   <section class="card-section" aria-label="The ecosystem">
     <h2>The Ecosystem</h2>
-    <p class="card-section-desc">Three organizations, each with a distinct role. Primals build capabilities. Springs validate the science. Products compose them into tools people use.</p>
+    <p class="card-section-desc">Four organizations, each with a distinct role. Primals build capabilities. Springs validate the science. Products compose them into tools people use. Protists evolve toward wider-world usability.</p>
     <div class="org-grid">
       <a href="https://github.com/ecoPrimals" class="org-card" rel="noopener">
         <span class="org-icon" role="img" aria-label="Infrastructure">🔧</span>
@@ -104,7 +104,7 @@
         <span class="org-icon" role="img" aria-label="Science">🧪</span>
         <strong>syntheticChemistry</strong>
         <span class="org-role">Science Validation</span>
-        <span>8 springs — physics, agriculture, biology, health, games, ML, uncertainty, composition</span>
+        <span>9 springs — physics, agriculture, biology, health, games, ML, uncertainty, neuromorphic, composition</span>
         <span class="org-link">→ <em>Spring catalog</em></span>
       </a>
       <a href="https://github.com/sporeGarden" class="org-card" rel="noopener">
@@ -112,6 +112,13 @@
         <strong>sporeGarden</strong>
         <span class="org-role">Products</span>
         <span>esotericWebb · helixVision · blueFish — tools for scientists and creatives</span>
+        <span class="org-link">→ <em>Product pages</em></span>
+      </a>
+      <a href="https://github.com/protoKarya" class="org-card" rel="noopener">
+        <span class="org-icon" role="img" aria-label="Applications">🦠</span>
+        <strong>protoKarya</strong>
+        <span class="org-role">Applications</span>
+        <span>footPrint · tideGlass — sovereign user-facing tools on commodity hardware</span>
         <span class="org-link">→ <em>Product pages</em></span>
       </a>
     </div>
@@ -127,7 +134,7 @@
       </a>
       <a href="/springs/" class="explore-card">
         <strong>Springs Index</strong>
-        <span>8 springs — cross-referenced validation environments</span>
+        <span>{{ config.extra.totals.total_springs }} springs — cross-referenced validation environments</span>
       </a>
       <a href="{{ get_url(path='@/architecture/NUCLEUS_ARCHITECTURE.md') }}" class="explore-card">
         <strong>NUCLEUS Architecture</strong>
