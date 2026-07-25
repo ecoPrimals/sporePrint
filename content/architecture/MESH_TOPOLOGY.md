@@ -16,7 +16,7 @@ maturity = "implemented"
 
 The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport (and legacy WireGuard overlay) coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 
-Tower Atomic runs alongside WireGuard in shadow mode — **267× faster** on LAN via topology awareness and **1.7× sustained** on degraded WAN paths. 360+ shadow benchmark files collected continuously across the mesh.
+Tower Atomic runs alongside WireGuard in shadow mode — **353× faster** on LAN via topology awareness and **1.7× sustained** on degraded WAN paths. 360+ shadow benchmark files collected continuously across the mesh.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Gate mesh topology: eastGate, sporeGate, golgi, and WireGuard overlay connections") }}
 
@@ -33,7 +33,7 @@ Peers discover each other through four path types, selected by songBird at runti
 
 songBird discovers LAN peers via `lan_addr` and routes directly — bypassing the VPS entirely. This is the core advantage over WireGuard: same-switch gates communicate at 0.57ms instead of 153ms through the VPS hub.
 
-### The 267× Gap
+### The 353× Gap
 
 On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody VPS (153ms) because WG has no concept of LAN topology. Tower discovers LAN peers and routes directly: **0.57ms vs 153ms**.
 

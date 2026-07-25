@@ -8,7 +8,7 @@
 # plasmidBin distributes binaries; sporePrint displays metrics and content.
 #
 # Org layout:
-#   ecoPrimals/          — Primals + infra (public, except bearDog + skunkBat)
+#   ecoPrimals/          — Primals + infra (public, except bearDog)
 #   syntheticChemistry/  — Springs (science validation, private)
 #   sporeGarden/         — Products (gen4 consumers, public)
 #   protoKarya/          — Protists (wider-world compositions, public)
@@ -87,7 +87,6 @@ type = "primal"
 [sources.skunkbat]
 repo = "ecoPrimals/skunkBat"
 type = "primal"
-private = true
 
 # =============================================================================
 # PRIMALS — Tooling

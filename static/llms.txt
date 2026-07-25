@@ -131,7 +131,7 @@ Trail pages: https://primals.eco/trails/
 - **Springs**: Validation domains (wetSpring=biology, hotSpring=physics, etc.)
 - **NUCLEUS**: Full composition of primals running on a single machine
 - **Atomics**: Minimum viable compositions (Tower, Node, Nest, Relay)
-- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (267× LAN via topology awareness, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). Crypto composition Phase 1 COMPLETE — all 6 delegation seams wired. bearDog cipher floor + crypto.hash.blake3, songBird IPC hardened (SO_PEERCRED, symlink rejection)
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). skunkBat now public. bearDog remains private (crypto root of trust, pending pen-test validation). Crypto delegation advancing — blake3 LIVE, 6 seams remaining
 - **K-Derm**: Diderm (two-membrane) deployment architecture
 - **BearDog**: Sovereign TLS, BTSP crypto, enrollment verification (pure Rust, no OpenSSL)
 - **SongBird**: Mesh networking, capability-aware routing, TURN relay, drawbridge HTTP bridge
@@ -157,8 +157,8 @@ Trail pages: https://primals.eco/trails/
 
 - 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos)
-- 98,955 tests across ecosystem (15 primals + 9 springs)
-- 196 validation scenarios (7 stress + 7 pen tests), 29 known debt
+- 100,972 tests across ecosystem (15 primals + 9 springs)
+- 197 validation scenarios (7 stress + 7 pen tests), 9 known debt
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
 - 59 depot binaries across 4 architectures (16 x86_64 Linux, 16 aarch64 Linux, 13 aarch64 Android, 14 x86_64 Windows)

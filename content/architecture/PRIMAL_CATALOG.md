@@ -63,10 +63,10 @@ All primals are **{{ entity(name="scyborg") }}-licensed** (AGPL-3.0-or-later for
 | {{ entity(name="rhizocrypt") }} | [ecoPrimals/rhizoCrypt](https://github.com/ecoPrimals/rhizoCrypt) | **Public** |
 | {{ entity(name="sweetgrass") }} | [ecoPrimals/sweetGrass](https://github.com/ecoPrimals/sweetGrass) | **Public** |
 | {{ entity(name="loamspine") }} | [ecoPrimals/loamSpine](https://github.com/ecoPrimals/loamSpine) | **Public** |
-| {{ entity(name="skunkbat") }} | ecoPrimals/skunkBat | Source publishing in progress (binary via [plasmidBin](https://github.com/ecoPrimals/plasmidBin)) |
+| {{ entity(name="skunkbat") }} | [ecoPrimals/skunkBat](https://github.com/ecoPrimals/skunkBat) | **Public** |
 | {{ entity(name="sourdough") }} | [ecoPrimals/sourDough](https://github.com/ecoPrimals/sourDough) | **Public** |
 
-Thirteen primals are fully public on GitHub: **songBird**, **nestGate**, **toadStool**, **squirrel**, **biomeOS**, **coralReef**, **barraCuda**, **petalTongue**, **sourDough**, **bingoCube**, **rhizoCrypt**, **sweetGrass**, and **loamSpine**. All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
+Fourteen primals are fully public on GitHub: **songBird**, **nestGate**, **toadStool**, **squirrel**, **biomeOS**, **coralReef**, **barraCuda**, **petalTongue**, **sourDough**, **bingoCube**, **rhizoCrypt**, **sweetGrass**, **loamSpine**, and **skunkBat**. bearDog remains private pending comprehensive pen-test validation (crypto root of trust). All springs ([syntheticChemistry](https://github.com/syntheticChemistry) org) are public. Pre-built binaries for all primals are distributed via [plasmidBin](https://github.com/ecoPrimals/plasmidBin).
 
 ---
 

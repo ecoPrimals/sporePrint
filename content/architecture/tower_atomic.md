@@ -1,6 +1,6 @@
 +++
 title = "Tower Atomic"
-description = "Sovereign transport stack — bearDog + songBird + skunkBat replace WireGuard with capability-aware, topology-aware encrypted mesh networking. 267× faster on LAN via topology awareness, 1.7× sustained on degraded WAN paths."
+description = "Sovereign transport stack — bearDog + songBird + skunkBat replace WireGuard with capability-aware, topology-aware encrypted mesh networking. 353× faster on LAN via topology awareness, 1.7× sustained on degraded WAN paths."
 weight = 35
 [extra]
 companion_type = "architecture"
@@ -77,7 +77,7 @@ consistent throughput while WireGuard intermittently degrades to ~3.5 Mbps.
 Shadow benchmarks across 360+ runs show Tower at **1.7× sustained** on degraded
 WAN paths.
 
-### The 267× gap
+### The 353× gap
 
 On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody
 VPS (153ms round-trip) because WG has no concept of LAN topology. Tower discovers

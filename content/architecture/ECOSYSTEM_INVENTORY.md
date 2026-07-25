@@ -48,7 +48,7 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 | 🌱🔐 [rhizoCrypt](https://github.com/ecoPrimals/rhizoCrypt) | Scratch pad — ephemeral DAG, 6 slice modes, dehydration to {{ entity(name="loamspine") }} | **Public** | 509 |
 | 🍯🌾 [sweetGrass](https://github.com/ecoPrimals/sweetGrass) | Attribution — W3C PROV-O provenance, Braid model, fair credit | **Public** | 496 |
 | 🪨📖 [loamSpine](https://github.com/ecoPrimals/loamSpine) | Fossil record — immutable ledger, Loam certificates, federation | **Public** | 416 |
-| {{ entity(name="skunkbat") }} | Immune system — metadata-only threat detection, graduated response | Source publishing in progress | — |
+| 🦨🦇 [skunkBat](https://github.com/ecoPrimals/skunkBat) | Immune system — metadata-only threat detection, graduated response | **Public** | {{ entity_stat(name="skunkbat", stat="tests") }} |
 
 ### Tooling & Infrastructure (9)
 
@@ -136,7 +136,7 @@ User-facing products that compose primals into complete applications. Each produ
 | Science springs | 8 (7 domain + 1 meta-spring) |
 | User-facing products | 3 ({{ entity(name="esotericwebb") }}, {{ entity(name="helixvision") }}, blueFish) |
 | Public repos (today) | 15 primals + 9 springs + 3 infra + 2 products = **29** |
-| Source publishing in progress | ~5 (bearDog, skunkBat, agentReagents, benchScale, whitePaper) |
+| Source publishing in progress | ~4 (bearDog, agentReagents, benchScale, whitePaper) |
 | License | **{{ entity(name="scyborg") }}** — AGPL-3.0-or-later (code) + ORC (game mechanics) + CC-BY-SA 4.0 (creative/docs) |
 | Total Rust LOC | {{ total_stat(stat="total_loc_display") }} ({{ total_stat(stat="primal_loc_display") }} primals + {{ total_stat(stat="spring_loc_display") }} springs, measured {{ total_stat(stat="measured_date") }}) |
 | WGSL shaders | {{ total_stat(stat="wgsl_files") }} files, {{ total_stat(stat="wgsl_lines_display") }} lines |

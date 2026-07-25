@@ -58,12 +58,11 @@ All binaries distributed through {{ entity(name="plasmidbin") }} are under **AGP
 Per AGPL, corresponding source must be obtainable when binaries are
 distributed:
 
-- **Public primals** (songBird, nestGate, toadStool, squirrel, biomeOS, {{ entity(name="coralreef") }}, {{ entity(name="barracuda") }}, petalTongue, sourDough, bingoCube, rhizoCrypt, sweetGrass, loamSpine): source
+- **Public primals** (songBird, nestGate, toadStool, squirrel, biomeOS, {{ entity(name="coralreef") }}, {{ entity(name="barracuda") }}, petalTongue, sourDough, bingoCube, rhizoCrypt, sweetGrass, loamSpine, skunkBat): source
   is on GitHub at [github.com/ecoPrimals](https://github.com/ecoPrimals).
-- **Remaining primals** (bearDog, skunkBat): source is available on request. Each
-  `metadata.toml` includes a `[provenance] built_from` field that
-  identifies the source tree. Repositories are progressively published as
-  primals mature.
+- **bearDog**: source available on request. Crypto root of trust — goes public
+  after comprehensive pen-test validation. Each `metadata.toml` includes a
+  `[provenance] built_from` field identifying the source tree.
 
 ---
 

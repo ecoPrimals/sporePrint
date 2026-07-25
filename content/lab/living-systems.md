@@ -15,7 +15,7 @@ The ecoPrimals ecosystem is not a description of future work. It is running.
 Ten gates are tracked, seven are actively meshed, and {{ entity(name="songbird") }}
 routes `capability.call` across all of them. Two physical sites are linked by
 an 80m 10G AOC trunk. [Tower Atomic](@/architecture/tower_atomic.md) — the sovereign
-transport stack — runs alongside WireGuard in shadow mode, **267× faster** on LAN
+transport stack — runs alongside WireGuard in shadow mode, **353× faster** on LAN
 via topology awareness and **1.7× sustained** on degraded WAN paths. songBird is
 actively migrating inline crypto to bearDog UDS delegation (`local-crypto-fallback`
 feature flag). This page shows what is actually deployed and operational.

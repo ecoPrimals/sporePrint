@@ -7,7 +7,7 @@
 #   2. workflow_dispatch for manual refresh (single source or all)
 #   3. Weekly schedule for full-sweep consistency
 #
-# Private repos (bearDog, skunkBat, all springs) are cloned using
+# Private repos (bearDog, all springs) are cloned using
 # SPOREPRINT_REFRESH_PAT via git insteadOf.
 #
 # Flow: determine source -> clone repo -> spore-validate refresh --write
