@@ -35,7 +35,7 @@ Primals compose in layers. Each layer is a **named composition pattern** — not
 
 Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, BTSP crypto, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, capability routing, and federation. {{ entity(name="skunkbat") }} provides protocol negotiation and defensive security. Together they form an encrypted peer-to-peer mesh that is **267× faster** than WireGuard on LAN (topology awareness) and **1.7× sustained** on degraded WAN paths — while adding capability-aware routing that WireGuard structurally cannot provide.
 
-songBird is actively migrating inline cryptography to bearDog UDS delegation (`local-crypto-fallback` feature flag). 19 crypto seams classified: 6 delegating to bearDog UDS, 5 reserved for chimera hot-path, 5 test-only, 3 already delegating.
+songBird has completed Phase 1 crypto composition migration — all 6 "SHOULD DELEGATE" seams are wired to bearDog UDS (`local-crypto-fallback` feature flag). bearDog now exposes `crypto.hash.blake3` as a UDS capability. 19 crypto seams classified: 6 delegating to bearDog UDS (DONE), 5 reserved for chimera hot-path, 5 test-only, 3 already delegating. Phase 2: IPC cost benchmarking.
 
 6 exploration domains are PROVEN LIVE: capability-aware routing, multi-stack routing, large data transfer via CAS, secure compute mesh with per-session BTSP keys, distributed compute dispatch, and edge/SFF profiles (30MB RSS). See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data and architecture.
 

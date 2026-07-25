@@ -16,7 +16,7 @@ maturity = "implemented"
 
 The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport (and legacy WireGuard overlay) coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 
-Tower Atomic runs alongside WireGuard in shadow mode, proven to **exceed WireGuard** on throughput (1.56×), jitter (9.7× less), and latency (8% faster) on LAN. 213 shadow benchmark files collected continuously across the mesh.
+Tower Atomic runs alongside WireGuard in shadow mode — **267× faster** on LAN via topology awareness and **1.7× sustained** on degraded WAN paths. 360+ shadow benchmark files collected continuously across the mesh.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Gate mesh topology: eastGate, sporeGate, golgi, and WireGuard overlay connections") }}
 
@@ -144,6 +144,6 @@ routes each class to the correct provider via `capability.call` dispatch.
 ## Shadow Metrics
 
 Tower shadow deployment collects benchmark data every 60 minutes across all gate
-pairs. 213 benchmark files have been collected, providing continuous parity evidence.
+pairs. 360+ benchmark files have been collected, providing continuous parity evidence.
 Results are stored in `benchScale/tower_shadow/` and consumed by
 {{ entity(name="primalspring") }} validation scenarios.

@@ -30,7 +30,7 @@ feature flag). This page shows what is actually deployed and operational.
 | **eastGate** | Online | LAN + WG + Tower | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue, Tower shadow timer |
 | **ironGate** | Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
 | **southGate** | Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
-| **flockGate** | WAN only | WG + Tower shadow | Tower Atomic 3/3 LIVE, **esotericWebb V22 LIVE** (:8090), 6/6 exploration domains PROVEN, 230+ shadow benchmarks |
+| **flockGate** | WAN only | WG + Tower shadow | Tower Atomic 3/3 LIVE, **esotericWebb V22 LIVE** (:8090), 6/6 exploration domains PROVEN, 360+ shadow benchmarks, IPC hardened (SO_PEERCRED + symlink rejection) |
 | **golgi** | Online | VPS | WAN hub, TURN relay, Forgejo, depot, cascade timer, DNSSEC |
 | **northGate** | Enrolled | LAN + WG | Windows 11, RTX 5090, mesh enrolled |
 | **grapheneGate** | Online | Tower LIVE | HSM testing, Tower Atomic 3/3 LIVE, CredentialStore |

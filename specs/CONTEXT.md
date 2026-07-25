@@ -18,7 +18,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals** (150o fresh audit): 3.60M LOC, 98,955 tests (15 primals + 9 springs), 43 repos, 59 depot binaries across 4 architectures
-- **Tower Atomic PROVEN**: bearDog + songBird + skunkBat exceed WireGuard — 267× LAN via topology awareness, 1.7× sustained on degraded WAN. 6/6 exploration domains PROVEN LIVE. 230+ shadow benchmark files. Crypto composition migration active (songBird → bearDog UDS delegation)
+- **Tower Atomic PROVEN**: bearDog + songBird + skunkBat exceed WireGuard — 267× LAN via topology awareness, 1.7× sustained on degraded WAN. 6/6 exploration domains PROVEN LIVE. 360+ shadow benchmark files. Crypto composition Phase 1 COMPLETE — all 6 delegation seams wired (songBird → bearDog UDS). bearDog cipher floor + `crypto.hash.blake3` shipped. songBird IPC hardened (SO_PEERCRED, symlink rejection, socket permissions)
 - **196 validation scenarios**: 7 stress + 7 penetration tests, 29 known debt findings, all PASS
 - **Sovereign CI pipeline**: Forgejo → sporeGate build → depot → all gates. No GitHub Actions
 - **Crash-loop breaker**: cellMembrane `gate.crash-loop` — self-recovery shipped (29,081-restart divergence resolved)

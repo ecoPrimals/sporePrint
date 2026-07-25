@@ -129,7 +129,7 @@ Trail pages: https://primals.eco/trails/
 - **Springs**: Validation domains (wetSpring=biology, hotSpring=physics, etc.)
 - **NUCLEUS**: Full composition of primals running on a single machine
 - **Atomics**: Minimum viable compositions (Tower, Node, Nest, Relay)
-- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (267× LAN via topology awareness, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). Crypto composition migration active — songBird delegating cold-path crypto to bearDog UDS
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (267× LAN via topology awareness, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). Crypto composition Phase 1 COMPLETE — all 6 delegation seams wired. bearDog cipher floor + crypto.hash.blake3, songBird IPC hardened (SO_PEERCRED, symlink rejection)
 - **K-Derm**: Diderm (two-membrane) deployment architecture
 - **BearDog**: Sovereign TLS, BTSP crypto, enrollment verification (pure Rust, no OpenSSL)
 - **SongBird**: Mesh networking, capability-aware routing, TURN relay, drawbridge HTTP bridge
@@ -160,7 +160,7 @@ Trail pages: https://primals.eco/trails/
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
 - 59 depot binaries across 4 architectures (16 x86_64 Linux, 16 aarch64 Linux, 13 aarch64 Android, 14 x86_64 Windows)
-- Tower Atomic proven: 267× LAN (topology awareness), 1.7× sustained WAN, 6/6 exploration domains LIVE, 230+ shadow benchmark files
+- Tower Atomic proven: 267× LAN (topology awareness), 1.7× sustained WAN, 6/6 exploration domains LIVE, 360+ shadow benchmark files
 - Sovereign CI: Forgejo → sporeGate build → depot → all gates (no external CI)
 - Phase 2 transport abstraction complete: all 14 primals cross-compile for all 4 targets
 - Content-Addressed Convergence: all 6 layers complete

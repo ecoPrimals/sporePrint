@@ -74,7 +74,7 @@ The meaningful difference is not protocol speed but **topology awareness**.
 
 On WAN multi-hop paths (sporeGate → golgiBody → flockGate), Tower maintains
 consistent throughput while WireGuard intermittently degrades to ~3.5 Mbps.
-Shadow benchmarks across 230+ runs show Tower at **1.7× sustained** on degraded
+Shadow benchmarks across 360+ runs show Tower at **1.7× sustained** on degraded
 WAN paths.
 
 ### The 267× gap
@@ -189,7 +189,7 @@ Tower runs alongside WireGuard via `membrane tower.shadow --enable`. Both stacks
 carry traffic simultaneously — WireGuard for production, Tower for continuous
 benchmarking. Shadow metrics collect every 60 minutes across all gate pairs.
 
-230+ benchmark files collected across 3 gates. Results consistently show Tower at
+360+ benchmark files collected across 3 gates. Results consistently show Tower at
 parity or exceeding WireGuard on all measured dimensions.
 
 ## Crypto composition migration
@@ -208,9 +208,39 @@ when disabled, all cold-path cryptographic operations route through bearDog's
 | Test-only | 5 | Isolated to `#[cfg(test)]` |
 | Already delegating | 3 | No change needed |
 
+**Phase 1 complete** — all 6 "SHOULD DELEGATE" seams are wired:
+
+| Seam | Crate | Delegation Path |
+|------|-------|----------------|
+| JWT HMAC-SHA256 | orchestrator | `CryptoProvider` → `crypto.hmac.sha256` |
+| Checkpoint SHA-256 | orchestrator | `CryptoProvider` → `crypto.sha256` |
+| Discovery SHA-256 | discovery | `CryptoProvider` → `crypto.sha256` |
+| Discovery BLAKE3 | discovery | `CryptoProvider` → `crypto.hash.blake3` |
+| Federation SHA-256 | network-federation | `CryptoProvider` → `crypto.sha256` |
+| Federation HMAC | network-federation | `CryptoProvider` → `crypto.hmac.sha256` |
+
+bearDog now exposes `crypto.hash.blake3` as a UDS capability — songBird's
+`dark_forest_beacon` routes BLAKE3 hashing through `crypto_helpers::blake3_hash_sync`
+instead of inline `blake3::Hasher`. Phase 2 will benchmark IPC cost per seam
+(target: <1ms per call).
+
 This is composition-first engineering: validate UDS delegation works for all
 cold-path crypto, measure the overhead, then chimera collapses the hot-path
 into shared library calls.
+
+## IPC hardening
+
+songBird's IPC layer has been hardened with 4 security controls:
+
+| Control | Implementation |
+|---------|---------------|
+| Caller identity verification | `SO_PEERCRED` extraction (uid/pid) from `UnixStream` |
+| Directory guard | Detect/remove stale directory at socket path |
+| Symlink rejection | Refuse bind over symlinks (path hijack prevention) |
+| Socket permissions | `chmod 0600` after bind (owner-only access) |
+
+Credential extraction is wired into the connection handler — every IPC call
+carries `CallerContext` with the caller's uid and pid.
 
 ## What comes next
 
