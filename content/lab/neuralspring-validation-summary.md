@@ -156,7 +156,7 @@ Remaining batches: 19 papers across 4 additional faculties.
 ## See Also
 
 - [Spring Catalog](@/architecture/SPRING_CATALOG.md) on primals.eco
-- [baseCamp Papers 01, 02, 04, 05, 06, 07](https://primals.eco/science/)
+- [baseCamp Papers 01, 02, 04, 05, 06, 07](https://sporeprint.primals.eco/science/)
 
 ---
 

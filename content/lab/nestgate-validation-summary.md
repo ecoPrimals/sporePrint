@@ -73,6 +73,6 @@ Browser → petalTongue :8080 (HTTP edge)
 
 ## See Also
 
-- [Primal Catalog](https://primals.eco/architecture/primal-catalog/) on primals.eco
+- [Primal Catalog](https://sporeprint.primals.eco/architecture/primal-catalog/) on primals.eco
 - `capability_registry.toml` — machine-readable capability surface
 - `CHANGELOG.md` — full session history

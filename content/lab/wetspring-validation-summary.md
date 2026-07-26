@@ -71,4 +71,4 @@ springs = ["wetspring"]
 ## See Also
 
 - [Spring Catalog](@/architecture/SPRING_CATALOG.md) on primals.eco
-- [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
+- [Lab Notebooks](https://sporeprint.primals.eco/lab/notebooks/) for rendered notebook views

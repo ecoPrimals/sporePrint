@@ -322,7 +322,7 @@ driver roadmap: direct `/dev/akida0` access, zero vendor code in the path.
 
 ---
 
-**Contact:** ecoPrimals project — [primals.eco](https://primals.eco)  
+**Contact:** ecoPrimals project — [sporeprint.primals.eco](https://sporeprint.primals.eco)  
 **Framework:** ToadStool Universal Compute (AGPL3)  
 **Hardware:** Personal compute mesh (~$15k investment)
 

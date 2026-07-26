@@ -27,7 +27,7 @@ attribution chains and {{ entity(name="loamspine") }} permanence ledgers.
 The latest `liveSpore.json` is served as raw JSON:
 
 ```
-https://primals.eco/lab/guidestone/liveSpore.json
+https://sporeprint.primals.eco/lab/guidestone/liveSpore.json
 ```
 
 This endpoint updates automatically when upstream guideStone repos push

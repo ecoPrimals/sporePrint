@@ -60,7 +60,7 @@ Higher-order capabilities that compose on the foundation. Active codebases, evol
 | 🧪🤖 agentReagents | Agent chemistry — composable reagent patterns for sovereign AI agents | Publishing soon |
 | ⚖️📊 benchScale | Scaling studies — cross-primal benchmarks, composition cost characterization | Publishing soon |
 | 💧📡 [wateringHole](https://github.com/ecoPrimals/wateringHole) | Ecosystem communications, standards, glossary — shared dev context | **Public** |
-| 🖨️🌐 [sporePrint](https://github.com/ecoPrimals/sporePrint) | This website — [primals.eco](https://primals.eco) | **Public** |
+| 🖨️🌐 [sporePrint](https://github.com/ecoPrimals/sporePrint) | This website — [sporeprint.primals.eco](https://sporeprint.primals.eco) | **Public** |
 | 🧬📦 [plasmidBin](https://github.com/ecoPrimals/plasmidBin) | Binary distribution surface — genomeBins, ecoBins, metadata.toml | **Public** |
 | 📄🔒 {{ entity(name="whitepaper") }} | Research documentation — will bud public sub-repos over time | Private |
 

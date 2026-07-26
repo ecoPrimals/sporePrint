@@ -69,5 +69,5 @@ Not yet created — contribute to `projectNUCLEUS/workloads/hotspring/`.
 ## See Also
 
 - [Spring Catalog](@/architecture/SPRING_CATALOG.md) on primals.eco
-- [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
-- [baseCamp Papers](https://primals.eco/science/) — nuclear EOS, lattice QCD, plasma physics
+- [Lab Notebooks](https://sporeprint.primals.eco/lab/notebooks/) for rendered notebook views
+- [baseCamp Papers](https://sporeprint.primals.eco/science/) — nuclear EOS, lattice QCD, plasma physics

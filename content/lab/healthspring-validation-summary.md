@@ -34,5 +34,5 @@ Skeleton available in `projectNUCLEUS/workloads/healthspring/`.
 
 ## See Also
 
-- [healthSpring Science Hub](https://primals.eco/lab/springs/healthspring/) on primals.eco
-- [baseCamp Paper 13](https://primals.eco/science/)
+- [healthSpring Science Hub](https://sporeprint.primals.eco/lab/springs/healthspring/) on primals.eco
+- [baseCamp Paper 13](https://sporeprint.primals.eco/science/)

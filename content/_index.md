@@ -22,7 +22,7 @@ cargo deny check                # zero license violations, zero C dependencies
 
 ```bash
 # Or: pre-built binaries from the depot (no Rust required)
-# See https://primals.eco/lab/getting-started-plasmidbin/ for full instructions
+# See https://sporeprint.primals.eco/lab/getting-started-plasmidbin/ for full instructions
 # Binaries are musl-static, BLAKE3-verified, zero runtime dependencies
 ```
 

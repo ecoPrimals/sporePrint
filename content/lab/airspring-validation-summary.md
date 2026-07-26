@@ -92,6 +92,6 @@ Available in both `foundation/workloads/thread06_ag/` and `projectNUCLEUS/worklo
 
 ## See Also
 
-- [Spring Catalog](https://primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
-- [Lab Notebooks](https://primals.eco/lab/notebooks/) for rendered notebook views
-- [baseCamp Papers](https://primals.eco/science/) (Dong lab, FAO-56, Richards, Stewart)
+- [Spring Catalog](https://sporeprint.primals.eco/architecture/spring-catalog-status-science-and-evolution/) on primals.eco
+- [Lab Notebooks](https://sporeprint.primals.eco/lab/notebooks/) for rendered notebook views
+- [baseCamp Papers](https://sporeprint.primals.eco/science/) (Dong lab, FAO-56, Richards, Stewart)
