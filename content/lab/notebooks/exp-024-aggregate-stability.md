@@ -1,6 +1,6 @@
 +++
 title = "Experiment 024 — Aggregate Stability Noise Analysis"
-description = "Rendered from exp-024-aggregate-stability.ipynb"
+description = "Analyzes aggregate stability measurement noise in soil health assays, quantifying replicate variability and detection limits for wet-sieving protocol validation."
 date = 2026-07-18
 weight = 50
 

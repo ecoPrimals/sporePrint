@@ -1,6 +1,6 @@
 +++
 title = "Experiment 002 — Observation Gap Analysis"
-description = "Rendered from exp-002-observation-gap.ipynb"
+description = "Analyzes observation gap impacts on FAO-56 water balance estimates, simulating missing data intervals and interpolation effects on irrigation scheduling."
 date = 2026-07-18
 weight = 50
 

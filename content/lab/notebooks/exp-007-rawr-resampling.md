@@ -1,6 +1,6 @@
 +++
 title = "Experiment 007 — RAWR Bootstrap Resampling"
-description = "Rendered from exp-007-rawr-resampling.ipynb"
+description = "Applies RAWR bootstrap resampling to amplicon sequencing count data, estimating confidence intervals for diversity metrics and differential abundance."
 date = 2026-07-18
 weight = 50
 

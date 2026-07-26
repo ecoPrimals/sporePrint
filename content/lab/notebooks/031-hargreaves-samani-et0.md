@@ -1,6 +1,6 @@
 +++
 title = "Hargreaves-Samani (1985) Temperature-Based ET₀"
-description = "Rendered from 031-hargreaves-samani-et0.ipynb"
+description = "Computes Hargreaves-Samani (1985) temperature-based reference ET₀ from daily min/max temperatures and extraterrestrial radiation for data-sparse regions."
 date = 2026-07-18
 weight = 50
 

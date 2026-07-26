@@ -1,6 +1,6 @@
 +++
 title = "1D Richards Equation with van Genuchten–Mualem Hydraulics"
-description = "Rendered from 006-richards-equation.ipynb"
+description = "Solves the 1D Richards equation with van Genuchten–Mualem hydraulic conductivity and retention curves for unsaturated soil flow using finite-difference methods."
 date = 2026-07-18
 weight = 50
 

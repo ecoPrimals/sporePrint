@@ -1,6 +1,6 @@
 +++
 title = "Turc (1961) Temperature-Radiation ET₀"
-description = "Rendered from 034-turc-et0.ipynb"
+description = "Implements Turc (1961) temperature-radiation ET₀ formula combining monthly mean temperature and sunshine hours for regional evapotranspiration estimation."
 date = 2026-07-18
 weight = 50
 

@@ -1,6 +1,6 @@
 +++
 title = "Paper 016 — HMM Forward / Backward / Viterbi for Genomic Inference"
-description = "Rendered from paper-016-hmm-phylo.ipynb"
+description = "Implements HMM forward, backward, and Viterbi algorithms for genomic inference, computing posterior state probabilities and most likely evolutionary paths."
 date = 2026-07-04
 weight = 50
 

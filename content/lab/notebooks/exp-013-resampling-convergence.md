@@ -1,6 +1,6 @@
 +++
 title = "Experiment 013 — Resampling Convergence Analysis"
-description = "Rendered from exp-013-resampling-convergence.ipynb"
+description = "Analyzes resampling convergence for bootstrap diversity estimates, determining minimum replicate counts for stable alpha and beta diversity metrics."
 date = 2026-07-18
 weight = 50
 

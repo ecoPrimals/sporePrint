@@ -1,6 +1,6 @@
 +++
 title = "LTEE B2 — Anderson Disorder Analogy for Fitness Dynamics"
-description = "Rendered from 13-ltee-anderson-fitness.ipynb"
+description = "Models LTEE B2 fitness dynamics using Anderson disorder analogy, linking long-term evolution experiment mutation rates to localization in fitness landscapes."
 date = 2026-07-04
 weight = 50
 

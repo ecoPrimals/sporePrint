@@ -1,6 +1,6 @@
 +++
 title = "Priestley-Taylor (1972) Radiation-Based ET₀"
-description = "Rendered from 019-priestley-taylor-et0.ipynb"
+description = "Calculates Priestley-Taylor (1972) radiation-based reference ET₀ using net radiation and the alpha coefficient for humid-climate irrigation scheduling."
 date = 2026-07-18
 weight = 50
 

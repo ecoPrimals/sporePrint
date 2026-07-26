@@ -1,6 +1,6 @@
 +++
 title = "Thornthwaite (1948) Monthly Evapotranspiration"
-description = "Rendered from 021-thornthwaite-et0.ipynb"
+description = "Estimates Thornthwaite (1948) monthly evapotranspiration from temperature data using heat index and day-length corrections for water balance studies."
 date = 2026-07-18
 weight = 50
 

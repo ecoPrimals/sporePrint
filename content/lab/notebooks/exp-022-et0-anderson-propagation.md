@@ -1,6 +1,6 @@
 +++
 title = "Experiment 022 — ET₀-Anderson Error Propagation"
-description = "Rendered from exp-022-et0-anderson-propagation.ipynb"
+description = "Studies ET₀ error propagation through Anderson localization analogies, linking evapotranspiration measurement noise to downstream water balance uncertainty."
 date = 2026-07-18
 weight = 50
 

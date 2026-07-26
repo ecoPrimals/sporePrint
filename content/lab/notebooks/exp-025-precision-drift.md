@@ -1,6 +1,6 @@
 +++
 title = "Experiment 025 — f32 vs f64 Precision Drift"
-description = "Rendered from exp-025-precision-drift.ipynb"
+description = "Compares f32 versus f64 floating-point precision drift in spectral and transport solvers, quantifying numerical error accumulation in iterative physics algorithms."
 date = 2026-07-18
 weight = 50
 

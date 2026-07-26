@@ -1,6 +1,6 @@
 +++
 title = "Experiment 010 — Bistable Phenotypic Switching"
-description = "Rendered from exp-010-bistable-switching.ipynb"
+description = "Models bistable phenotypic switching in microbial populations, simulating hysteresis, noise-induced transitions, and stable state occupancy in gene networks."
 date = 2026-07-18
 weight = 50
 

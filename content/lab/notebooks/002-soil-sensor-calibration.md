@@ -1,6 +1,6 @@
 +++
 title = "Soil Moisture Sensor Calibration (Dong et al., 2020)"
-description = "Rendered from 002-soil-sensor-calibration.ipynb"
+description = "Calibrates FDR/TDR soil moisture sensors using Dong et al. (2020) permittivity-to-water-content models, RMSE metrics, and nonlinear correction fits validated in Rust."
 date = 2026-07-18
 weight = 50
 

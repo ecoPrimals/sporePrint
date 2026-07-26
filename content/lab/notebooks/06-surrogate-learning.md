@@ -1,6 +1,6 @@
 +++
 title = "Surrogate Learning — Directed Sampling for Nuclear EOS"
-description = "Rendered from 06-surrogate-learning.ipynb"
+description = "Demonstrates surrogate learning with directed sampling for nuclear equation-of-state exploration, building Gaussian process emulators over dense matter calculations."
 date = 2026-07-04
 weight = 50
 

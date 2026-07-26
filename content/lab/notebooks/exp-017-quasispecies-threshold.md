@@ -1,6 +1,6 @@
 +++
 title = "Experiment 017 — Quasispecies Error Threshold"
-description = "Rendered from exp-017-quasispecies-threshold.ipynb"
+description = "Computes quasispecies error threshold for RNA virus mutation-selection balance, determining critical mutation rates where faithful replication breaks down."
 date = 2026-07-18
 weight = 50
 

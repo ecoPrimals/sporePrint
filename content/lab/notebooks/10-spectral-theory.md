@@ -1,6 +1,6 @@
 +++
 title = "Spectral Theory — Anderson Localization, Hofstadter Butterfly, Lyapunov Exponents"
-description = "Rendered from 10-spectral-theory.ipynb"
+description = "Explores spectral theory including Anderson localization, Hofstadter butterfly fractal spectra, and Lyapunov exponents for quasiperiodic and disordered quantum systems."
 date = 2026-07-04
 weight = 50
 

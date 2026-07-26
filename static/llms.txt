@@ -50,72 +50,72 @@ Section indexes list all child pages within that section.
 What we proved — live validation results, reproduced science, lab notebooks.
 
 - **Lab** (127 pages): Validation results, spring hubs, 98 notebooks grouped by domain (physics, biology, agriculture, health, chemistry, computation).
-  - Section index: https://primals.eco/lab/
+  - Section index: https://sporeprint.primals.eco/lab/
 - **Science** (33 papers): 28 executable baseCamp papers across 6 domains.
-  - Section index: https://primals.eco/science/
-- Ridge pages: https://primals.eco/lab/ , https://primals.eco/architecture/evidence-snapshot/ , https://primals.eco/science/cross-spring-evidence-map/
+  - Section index: https://sporeprint.primals.eco/science/
+- Ridge pages: https://sporeprint.primals.eco/lab/ , https://sporeprint.primals.eco/architecture/evidence-snapshot/ , https://sporeprint.primals.eco/science/cross-spring-evidence-map/
 
 ### Fold 2: Architecture (19% of site)
 How it works — ecosystem design, technical depth, emergent products.
 
 - **Architecture** (43 pages): Primal composition, NUCLEUS, K-Derm, coordination triad, sovereignty architecture, content-addressed convergence, cross-platform parity, Tower Atomic, Sovereign CI, Mesh Topology.
-  - Section index: https://primals.eco/architecture/
-  - Start here: https://primals.eco/architecture/ecosystem-architecture/
-  - Key: https://primals.eco/architecture/tower-atomic/ (sovereign transport stack — exceeds WireGuard)
-  - Updated: https://primals.eco/architecture/sovereign-ci/ (Forgejo → sporeGate → depot + crash-loop breaker + DNSSEC)
-  - Updated: https://primals.eco/architecture/mesh-topology/ (6-gate mesh, Tower shadow, traffic classes)
+  - Section index: https://sporeprint.primals.eco/architecture/
+  - Start here: https://sporeprint.primals.eco/architecture/ecosystem-architecture/
+  - Key: https://sporeprint.primals.eco/architecture/tower-atomic/ (sovereign transport stack — exceeds WireGuard)
+  - Updated: https://sporeprint.primals.eco/architecture/sovereign-ci/ (Forgejo → sporeGate → depot + crash-loop breaker + DNSSEC)
+  - Updated: https://sporeprint.primals.eco/architecture/mesh-topology/ (6-gate mesh, Tower shadow, traffic classes)
 - **Technical** (8 pages): Grant appendices, hardware costs, GPU pipeline, drug discovery, teaching brief.
-  - Section index: https://primals.eco/technical/
+  - Section index: https://sporeprint.primals.eco/technical/
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
-  - Section index: https://primals.eco/products/
+  - Section index: https://sporeprint.primals.eco/products/
   - https://footprint.primals.eco (GIS Home Planner — LIVE, 200)
   - https://webb.primals.eco (esotericWebb CRPG — V22 LIVE, 200)
   - protoKarya protists: footPrint (GIS, LIVE), tideGlass (GPS platform, Phase 0)
   - sporeGarden products: esotericWebb (CRPG, V22 LIVE at webb.primals.eco)
-- Ridge pages: https://primals.eco/architecture/ecosystem-architecture/ , https://primals.eco/architecture/nucleus-architecture/
+- Ridge pages: https://sporeprint.primals.eco/architecture/ecosystem-architecture/ , https://sporeprint.primals.eco/architecture/nucleus-architecture/
 
 ### Fold 3: Methodology (7% of site)
 How to build — development methodology, verification, certification.
 
 - **Methodology** (15 pages): Constrained evolution, K-NOME, conversation constraint, sovereign publication.
-  - Section index: https://primals.eco/methodology/
+  - Section index: https://sporeprint.primals.eco/methodology/
 - **guideStone** (6 pages): Verification system — BLAKE3 Merkle roots, provenance chains, deployable artifacts.
-  - Section index: https://primals.eco/guidestone/
-- Ridge pages: https://primals.eco/methodology/k-nome-programming/ , https://primals.eco/methodology/constrained-evolution-formal/
+  - Section index: https://sporeprint.primals.eco/guidestone/
+- Ridge pages: https://sporeprint.primals.eco/methodology/k-nome-programming/ , https://sporeprint.primals.eco/methodology/constrained-evolution-formal/
 
 ### Fold 4: Philosophy (12% of site)
 Why it matters — the philosophical argument, builder's story, dissertation.
 
 - **Philosophy** (15 essays): atlasHugged — 12 essays on sovereign science, copyleft economics, infrastructure ethics.
-  - Section index: https://primals.eco/philosophy/
-  - Start here: https://primals.eco/philosophy/the-human-search/
+  - Section index: https://sporeprint.primals.eco/philosophy/
+  - Start here: https://sporeprint.primals.eco/philosophy/the-human-search/
 - **Story** (3 essays): Builder's narrative by attsi.
-  - Section index: https://primals.eco/story/
+  - Section index: https://sporeprint.primals.eco/story/
 - **Thesis** (18 chapters): "Constrained Evolution" — working dissertation.
-  - Section index: https://primals.eco/thesis/
-  - Start here: https://primals.eco/thesis/01-introduction/
-- Ridge pages: https://primals.eco/philosophy/the-human-search/ , https://primals.eco/thesis/01-introduction/
+  - Section index: https://sporeprint.primals.eco/thesis/
+  - Start here: https://sporeprint.primals.eco/thesis/01-introduction/
+- Ridge pages: https://sporeprint.primals.eco/philosophy/the-human-search/ , https://sporeprint.primals.eco/thesis/01-introduction/
 
 ### Fold 5: Engagement (8% of site)
 Who and how to reach — audience guides, outreach, collaborators.
 
 - **Glossary**: Plain-language definitions for every term on the site.
-  - https://primals.eco/glossary/
+  - https://sporeprint.primals.eco/glossary/
 - **Audience** (7 guides): Role-based entry points for faculty, students, hardware builders, compliance reviewers, companies.
-  - Section index: https://primals.eco/audience/
-- **Outreach** (15 pages): Partnership invitations, community landing pages, homelabbers, LLM builders, consulting.
-  - Section index: https://primals.eco/outreach/
+  - Section index: https://sporeprint.primals.eco/audience/
+- **Outreach** (16 pages): Partnership invitations (GPU, Valve, 99PI, Karpathy), community landing pages, homelabbers, consulting.
+  - Section index: https://sporeprint.primals.eco/outreach/
 - **Vision** (3 pages): Long-range plans — Lansing Scuffle campus vision, building-scale thermal sovereignty.
-  - Section index: https://primals.eco/vision/
+  - Section index: https://sporeprint.primals.eco/vision/
 - **Collaborators** (3 profiles): Gonzales (NF), Jones (PFAS/blueFish), ABG (whole-cell modeling).
-  - Section index: https://primals.eco/collaborators/
-- Ridge pages: https://primals.eco/glossary/ , https://primals.eco/audience/capability-parity-brief/
+  - Section index: https://sporeprint.primals.eco/collaborators/
+- Ridge pages: https://sporeprint.primals.eco/glossary/ , https://sporeprint.primals.eco/audience/capability-parity-brief/
 
 ### Navigation Aids
-- Contact: https://primals.eco/contact/
-- Sitemap (HTML): https://primals.eco/sitemap/
-- Sitemap (XML): https://primals.eco/sitemap.xml
-- Full page index: https://primals.eco/site-index/
+- Contact: https://sporeprint.primals.eco/contact/
+- Sitemap (HTML): https://sporeprint.primals.eco/sitemap/
+- Sitemap (XML): https://sporeprint.primals.eco/sitemap.xml
+- Full page index: https://sporeprint.primals.eco/site-index/
 
 ## Reading Trails
 
@@ -132,7 +132,7 @@ Who and how to reach — audience guides, outreach, collaborators.
 - **Thesis** (18 pages): Full dissertation in reading order.
 - **atlasHugged** (12 pages): The 12 philosophical essays in argument order.
 
-Trail pages: https://primals.eco/trails/
+Trail pages: https://sporeprint.primals.eco/trails/
 
 ## Key Concepts
 
@@ -228,9 +228,9 @@ Richness levels for AI agents:
 
 ## Machine-Readable Endpoints
 
-- Sitemap XML: https://primals.eco/sitemap.xml
-- Identity (JSON-LD): https://primals.eco/identity.json
-- Entity graph: https://primals.eco/graph/entity-graph.json
-- Certification manifest: https://primals.eco/certification/manifest.json
-- Content manifest: https://primals.eco/content-manifest.toml (BLAKE3 per page)
-- This file: https://primals.eco/llms.txt
+- Sitemap XML: https://sporeprint.primals.eco/sitemap.xml
+- Identity (JSON-LD): https://sporeprint.primals.eco/identity.json
+- Entity graph: https://sporeprint.primals.eco/graph/entity-graph.json
+- Certification manifest: https://sporeprint.primals.eco/certification/manifest.json
+- Content manifest: https://sporeprint.primals.eco/content-manifest.toml (BLAKE3 per page)
+- This file: https://sporeprint.primals.eco/llms.txt

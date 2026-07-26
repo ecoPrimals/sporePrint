@@ -1,6 +1,6 @@
 +++
 title = "Experiment 015 — Uncertainty Bridge: Sensor Noise → Localization"
-description = "Rendered from exp-015-uncertainty-bridge.ipynb"
+description = "Bridges sensor noise uncertainty to Anderson localization metrics, propagating measurement error from soil monitoring to spatial pattern detection thresholds."
 date = 2026-07-18
 weight = 50
 

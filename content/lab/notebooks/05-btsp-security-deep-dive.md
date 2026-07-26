@@ -1,6 +1,6 @@
 +++
 title = "05 — BTSP Security Deep Dive"
-description = "Rendered from 05-btsp-security-deep-dive.ipynb"
+description = "Explores BTSP security protocols for trusted sensor data transmission, analyzing cryptographic attestation, integrity verification, and secure measurement chains."
 date = 2026-07-04
 weight = 50
 

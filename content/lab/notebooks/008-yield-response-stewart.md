@@ -1,6 +1,6 @@
 +++
 title = "Stewart (1977) Yield Response to Water Stress"
-description = "Rendered from 008-yield-response-stewart.ipynb"
+description = "Applies Stewart (1977) yield response to water stress, relating relative crop yield to seasonal evapotranspiration deficits for drought impact assessment."
 date = 2026-07-18
 weight = 50
 

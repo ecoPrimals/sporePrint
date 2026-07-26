@@ -1,6 +1,6 @@
 +++
 title = "SCS Curve Number Runoff Method (USDA 1972)"
-description = "Rendered from 050-scs-curve-number.ipynb"
+description = "Models SCS Curve Number runoff from rainfall using USDA (1972) antecedent moisture conditions, land cover, and hydrologic soil group classification."
 date = 2026-07-18
 weight = 50
 

@@ -1,6 +1,6 @@
 +++
 title = "Experiment 003 — Error Propagation FAO-56"
-description = "Rendered from exp-003-error-propagation.ipynb"
+description = "Propagates sensor and climate input uncertainties through FAO-56 water balance equations using Monte Carlo methods for irrigation recommendation confidence intervals."
 date = 2026-07-18
 weight = 50
 

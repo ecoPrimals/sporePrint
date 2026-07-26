@@ -1,6 +1,6 @@
 +++
 title = "Standardized Precipitation Index (SPI)"
-description = "Rendered from 081-spi-drought-index.ipynb"
+description = "Computes the Standardized Precipitation Index (SPI) at multiple timescales from precipitation records to classify drought severity and monitor water deficits."
 date = 2026-07-18
 weight = 50
 

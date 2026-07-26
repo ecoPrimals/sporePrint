@@ -1,6 +1,6 @@
 +++
 title = "Experiment 023 — No-Till vs Tilled 16S Sampling"
-description = "Rendered from exp-023-notill-sampling.ipynb"
+description = "Compares no-till versus tilled soil 16S rRNA amplicon sequencing diversity metrics, analyzing tillage effects on microbial community composition and alpha diversity."
 date = 2026-07-18
 weight = 50
 

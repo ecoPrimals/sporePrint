@@ -1,6 +1,6 @@
 +++
 title = "FAO-56 Chapter 7 — Dual Crop Coefficient ($K_{cb} + K_e$)"
-description = "Rendered from 009-fao56-dual-kc.ipynb"
+description = "Implements FAO-56 Chapter 7 dual crop coefficient method separating transpiration and soil evaporation for daily ET estimation in irrigation management."
 date = 2026-07-18
 weight = 50
 

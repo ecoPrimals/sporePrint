@@ -1,6 +1,6 @@
 +++
 title = "Experiment 019 — Jackknife Error Estimation"
-description = "Rendered from exp-019-jackknife-estimation.ipynb"
+description = "Applies jackknife resampling for error estimation in spectral and transport calculations, quantifying bias and variance in finite-size physics results."
 date = 2026-07-18
 weight = 50
 

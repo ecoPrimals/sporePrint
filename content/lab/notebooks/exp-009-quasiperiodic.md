@@ -1,6 +1,6 @@
 +++
 title = "Experiment 009 — Almost-Mathieu Quasiperiodic Localization"
-description = "Rendered from exp-009-quasiperiodic.ipynb"
+description = "Studies almost-Mathieu quasiperiodic localization, computing localization lengths and spectral gaps for incommensurate potentials in disordered lattice models."
 date = 2026-07-18
 weight = 50
 

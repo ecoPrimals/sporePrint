@@ -1,6 +1,6 @@
 +++
 title = "Experiment 026 — System-Size Convergence"
-description = "Rendered from exp-026-size-convergence.ipynb"
+description = "Analyzes system-size convergence for Anderson localization and spectral calculations, extrapolating thermodynamic limits from finite lattice scaling studies."
 date = 2026-07-18
 weight = 50
 

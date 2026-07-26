@@ -1,6 +1,6 @@
 +++
 title = "Composition Validation — airSpring"
-description = "Rendered from 01-composition-validation.ipynb"
+description = "Validates agricultural science notebook composition, verifying FAO-56, ET₀, and soil hydrology implementations against published benchmarks with Rust parity checks."
 date = 2026-07-18
 weight = 50
 

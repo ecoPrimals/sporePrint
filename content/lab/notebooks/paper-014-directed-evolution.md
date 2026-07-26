@@ -1,6 +1,6 @@
 +++
 title = "Paper 014 — Directed Evolution via Selection Algorithms"
-description = "Rendered from paper-014-directed-evolution.ipynb"
+description = "Implements directed evolution via selection algorithms, simulating mutation-recombination cycles and fitness-based parent selection for protein optimization."
 date = 2026-07-04
 weight = 50
 

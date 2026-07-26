@@ -1,6 +1,6 @@
 +++
 title = "Paper Reproductions — 63/63 Papers in Sovereign Rust"
-description = "Rendered from 03-paper-reproductions.ipynb"
+description = "Catalogs reproduction of 63 published papers in Rust, documenting algorithm implementations, benchmark parity, and validation status across scientific domains."
 date = 2026-07-04
 weight = 50
 

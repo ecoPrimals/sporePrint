@@ -1,6 +1,6 @@
 +++
 title = "Saxton-Rawls (2006) Pedotransfer Functions"
-description = "Rendered from 023-pedotransfer-saxton-rawls.ipynb"
+description = "Derives soil hydraulic properties from texture using Saxton-Rawls (2006) pedotransfer functions for water retention, saturated conductivity, and field capacity."
 date = 2026-07-18
 weight = 50
 

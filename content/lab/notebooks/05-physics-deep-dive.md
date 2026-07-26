@@ -1,6 +1,6 @@
 +++
 title = "Physics Deep Dive — hotSpring"
-description = "Rendered from 05-physics-deep-dive.ipynb"
+description = "Deep dive into physics notebooks covering nuclear SEMF binding energies, Yukawa screening, laser plasma TTM, and Anderson localization spectral methods."
 date = 2026-07-04
 weight = 50
 

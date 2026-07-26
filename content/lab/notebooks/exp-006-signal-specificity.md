@@ -1,6 +1,6 @@
 +++
 title = "Experiment 006 — Signal Specificity in Quorum Sensing"
-description = "Rendered from exp-006-signal-specificity.ipynb"
+description = "Tests signal specificity in bacterial quorum sensing circuits, measuring cross-talk between AHL autoinducer variants and receptor binding selectivity."
 date = 2026-07-18
 weight = 50
 

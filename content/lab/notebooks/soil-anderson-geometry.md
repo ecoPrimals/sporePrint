@@ -1,6 +1,6 @@
 +++
 title = "Soil Quorum Sensing & Anderson Geometry — Track 4"
-description = "Rendered from soil-anderson-geometry.ipynb"
+description = "Models soil quorum sensing with Anderson geometry framework, connecting microbial signaling thresholds to spatial localization patterns in rhizosphere communities."
 date = 2026-07-04
 weight = 50
 

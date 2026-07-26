@@ -1,6 +1,6 @@
 +++
 title = "Gonzales Deep Dive — wetSpring"
-description = "Rendered from 03-gonzales-deep-dive.ipynb"
+description = "Deep dive into Gonzales lab pharmacology and Jak-STAT signaling notebooks, covering drug response modeling and kinase pathway dynamics in cellular systems."
 date = 2026-07-04
 weight = 50
 

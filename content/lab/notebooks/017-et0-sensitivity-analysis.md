@@ -1,6 +1,6 @@
 +++
 title = "ET₀ Sensitivity Analysis (One-at-a-Time)"
-description = "Rendered from 017-et0-sensitivity-analysis.ipynb"
+description = "Performs one-at-a-time sensitivity analysis on Penman-Monteith ET₀ inputs—temperature, humidity, wind, and radiation—to rank climate variable influence."
 date = 2026-07-18
 weight = 50
 

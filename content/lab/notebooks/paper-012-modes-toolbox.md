@@ -1,6 +1,6 @@
 +++
 title = "Paper 012 — MODES Toolbox: Metrics of Open-Ended Evolution"
-description = "Rendered from paper-012-modes-toolbox.ipynb"
+description = "Introduces MODES toolbox metrics of open-ended evolution, quantifying novelty, diversity, and complexity in artificial life and evolutionary computation."
 date = 2026-07-04
 weight = 50
 

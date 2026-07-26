@@ -1,6 +1,6 @@
 +++
 title = "Algal Pond Ecology & Bloom Surveillance — Cahill/Smallwood (Sandia)"
-description = "Rendered from cahill-smallwood-algae.ipynb"
+description = "Monitors algal pond ecology and bloom surveillance using Cahill/Smallwood models, tracking nutrient cycling, growth kinetics, and harmful bloom risk indicators."
 date = 2026-07-04
 weight = 50
 

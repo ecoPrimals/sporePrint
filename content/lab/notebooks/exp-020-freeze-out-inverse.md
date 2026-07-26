@@ -1,6 +1,6 @@
 +++
 title = "Experiment 020 — Freeze-Out Inverse Problem"
-description = "Rendered from exp-020-freeze-out-inverse.ipynb"
+description = "Solves the freeze-out inverse problem in heavy-ion collision thermodynamics, inferring chemical freeze-out temperature and baryon chemical potential from yields."
 date = 2026-07-18
 weight = 50
 

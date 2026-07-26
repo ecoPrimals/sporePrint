@@ -1,6 +1,6 @@
 +++
 title = "Hamon (1961) Temperature-Based PET"
-description = "Rendered from 035-hamon-pet.ipynb"
+description = "Estimates Hamon (1961) temperature-based potential evapotranspiration from monthly temperature and day length for hydrologic water balance modeling."
 date = 2026-07-18
 weight = 50
 

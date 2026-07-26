@@ -239,6 +239,28 @@ to hardware lifecycle management — belongs to the user.
 
 ---
 
+---
+
+## Reproduce It
+
+```bash
+git clone https://github.com/ecoPrimals/barraCuda && cd barraCuda
+cargo test --workspace          # all tests pass
+cargo run --release --bin validate  # exit 0 = pass
+```
+
+**Hardware tested**: NVIDIA RTX 4070, RTX 5090, AMD RDNA2, Intel Arc  
+**Precision**: f64 via Vulkan `SHADER_F64` extension  
+**Date**: July 2026  
+**Author**: ecoPrimal ([ORCID 0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321))
+
+## Limitations
+
+- f64 GPU support requires Vulkan `shaderFloat64` — some mobile and integrated GPUs lack this
+- Shader compilation is pure Rust (coralReef) but currently targets SPIR-V; Metal/DX12 backends are planned
+- Performance comparisons to CUDA are indirect — we benchmark scientific output, not raw FLOPS
+- No CUDA interop; this is a clean replacement, not a compatibility layer
+
 *Repositories:  
 [ecoPrimals/barraCuda](https://github.com/ecoPrimals/barraCuda) ·
 [ecoPrimals/toadStool](https://github.com/ecoPrimals/toadStool) ·

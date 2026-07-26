@@ -1,6 +1,6 @@
 +++
 title = "Biochar Phosphorus Adsorption Isotherms (Kumari et al. 2025)"
-description = "Rendered from 007-biochar-adsorption.ipynb"
+description = "Models biochar phosphorus adsorption isotherms from Kumari et al. (2025) using Langmuir and Freundlich equations to estimate nutrient retention in amended soils."
 date = 2026-07-18
 weight = 50
 

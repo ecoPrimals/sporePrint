@@ -1,6 +1,6 @@
 +++
 title = "FAO-56 Chapter 8 — Daily Soil Water Balance Scheduling"
-description = "Rendered from 004-fao56-water-balance.ipynb"
+description = "Simulates FAO-56 Chapter 8 daily soil water balance for irrigation scheduling, tracking root-zone depletion, rainfall, and crop evapotranspiration with Rust solvers."
 date = 2026-07-18
 weight = 50
 

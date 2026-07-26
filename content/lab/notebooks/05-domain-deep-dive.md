@@ -1,6 +1,6 @@
 +++
 title = "Domain Deep Dive — airSpring"
-description = "Rendered from 05-domain-deep-dive.ipynb"
+description = "Deep dive into agricultural domain notebooks covering FAO-56 irrigation scheduling, Richards equation soil flow, and multi-method ET₀ comparison workflows."
 date = 2026-07-18
 weight = 50
 

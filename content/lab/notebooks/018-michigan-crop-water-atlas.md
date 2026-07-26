@@ -1,6 +1,6 @@
 +++
 title = "Michigan Crop Water Atlas — 100 Stations, 80 Years"
-description = "Rendered from 018-michigan-crop-water-atlas.ipynb"
+description = "Analyzes Michigan Crop Water Atlas data from 100 weather stations over 80 years, computing crop water requirements, ET₀ trends, and regional irrigation demand."
 date = 2026-07-18
 weight = 50
 

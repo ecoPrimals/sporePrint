@@ -1,6 +1,6 @@
 +++
 title = "Experiment 018 — Band Edge Structure"
-description = "Rendered from exp-018-band-edge.ipynb"
+description = "Analyzes band edge structure in disordered lattice models, computing density of states and mobility edges near Anderson localization transitions."
 date = 2026-07-18
 weight = 50
 

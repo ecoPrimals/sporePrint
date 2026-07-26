@@ -1,6 +1,6 @@
 +++
 title = "Paper 018 — PhyloNet-HMM for Introgression Detection"
-description = "Rendered from paper-018-introgression.ipynb"
+description = "Detects introgression events with PhyloNet-HMM, inferring reticulate evolutionary history and hybridization signals from multi-species genomic alignments."
 date = 2026-07-04
 weight = 50
 

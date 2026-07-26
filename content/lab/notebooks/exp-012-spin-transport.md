@@ -1,6 +1,6 @@
 +++
 title = "Experiment 012 — Spin Chain Transport"
-description = "Rendered from exp-012-spin-transport.ipynb"
+description = "Models spin chain transport dynamics, computing spin current, diffusion constants, and boundary-driven steady states in one-dimensional quantum spin systems."
 date = 2026-07-18
 weight = 50
 

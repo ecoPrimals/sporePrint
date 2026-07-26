@@ -1,6 +1,6 @@
 +++
 title = "Science Validation — wetSpring"
-description = "Rendered from 01-science-validation.ipynb"
+description = "Validates biology and microbiology notebook implementations against published results, verifying quorum sensing, phylogenetics, and evolution simulation accuracy in Rust."
 date = 2026-07-04
 weight = 50
 

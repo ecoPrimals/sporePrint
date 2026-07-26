@@ -1,6 +1,6 @@
 +++
 title = "Green-Ampt (1911) Infiltration Model"
-description = "Rendered from 051-green-ampt-infiltration.ipynb"
+description = "Simulates Green-Ampt (1911) infiltration with wetting front suction, hydraulic conductivity, and porosity to predict cumulative infiltration and runoff."
 date = 2026-07-18
 weight = 50
 

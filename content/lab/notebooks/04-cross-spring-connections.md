@@ -1,6 +1,6 @@
 +++
 title = "Cross-Spring Connections — airSpring"
-description = "Rendered from 04-cross-spring-connections.ipynb"
+description = "Maps cross-domain connections between ET₀ methods and physics, biology notebooks sharing Anderson localization and uncertainty quantification frameworks."
 date = 2026-07-18
 weight = 50
 

@@ -1,6 +1,6 @@
 +++
 title = "Anaerobic Biogas Kinetics & Community Diversity — Track 6"
-description = "Rendered from liao-anaerobic-biogas.ipynb"
+description = "Models anaerobic biogas production kinetics and microbial community diversity, simulating methanogenesis rates, substrate degradation, and digester performance."
 date = 2026-07-04
 weight = 50
 

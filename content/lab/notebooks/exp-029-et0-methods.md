@@ -1,6 +1,6 @@
 +++
 title = "Experiment 029 — Multi-Method ET₀ Comparison"
-description = "Rendered from exp-029-et0-methods.ipynb"
+description = "Compares multiple ET₀ estimation methods—Penman-Monteith, Hargreaves, Priestley-Taylor, and Thornthwaite—against reference values across climate zones."
 date = 2026-07-18
 weight = 50
 

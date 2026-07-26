@@ -1,6 +1,6 @@
 +++
 title = "Paper 015 — Heterogeneous Swarm Robotics"
-description = "Rendered from paper-015-swarm-robotics.ipynb"
+description = "Models heterogeneous swarm robotics coordination, simulating task allocation, communication protocols, and emergent collective behavior in multi-agent systems."
 date = 2026-07-04
 weight = 50
 

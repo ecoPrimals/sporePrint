@@ -1,6 +1,6 @@
 +++
 title = "Measurement Science Deep Dive — groundSpring"
-description = "Rendered from 05-measurement-science-deep-dive.ipynb"
+description = "Deep dive into measurement science notebooks covering sensor calibration, error propagation, uncertainty quantification, and statistical validation methods."
 date = 2026-07-18
 weight = 50
 

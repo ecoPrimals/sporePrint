@@ -1,6 +1,6 @@
 +++
 title = "Experiment 028 — NPU Anderson Classification"
-description = "Rendered from exp-028-npu-anderson.ipynb"
+description = "Classifies Anderson localization regimes using NPU-accelerated neural network inference on spectral features from disordered lattice Hamiltonian eigenvalues."
 date = 2026-07-18
 weight = 50
 

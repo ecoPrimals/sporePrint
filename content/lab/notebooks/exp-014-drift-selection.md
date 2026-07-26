@@ -1,6 +1,6 @@
 +++
 title = "Experiment 014 — Drift vs Selection in Microbial Populations"
-description = "Rendered from exp-014-drift-selection.ipynb"
+description = "Distinguishes genetic drift from selection in microbial populations using Wright-Fisher simulations and neutrality tests on amplicon frequency trajectories."
 date = 2026-07-18
 weight = 50
 

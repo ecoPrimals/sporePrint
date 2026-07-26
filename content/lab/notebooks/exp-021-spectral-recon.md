@@ -1,6 +1,6 @@
 +++
 title = "Experiment 021 — Spectral Reconstruction"
-description = "Rendered from exp-021-spectral-recon.ipynb"
+description = "Reconstructs spectral properties from limited eigenvalue samples using inverse methods, recovering density of states and localization measures from partial spectra."
 date = 2026-07-18
 weight = 50
 

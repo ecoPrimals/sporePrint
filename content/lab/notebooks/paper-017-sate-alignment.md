@@ -1,6 +1,6 @@
 +++
 title = "Paper 017 — SATé: Iterative Co-estimation of MSA and Phylogeny"
-description = "Rendered from paper-017-sate-alignment.ipynb"
+description = "Demonstrates SATé iterative co-estimation of multiple sequence alignment and phylogeny, alternating alignment refinement with tree reconstruction."
 date = 2026-07-04
 weight = 50
 

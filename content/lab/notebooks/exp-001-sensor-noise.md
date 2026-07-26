@@ -1,6 +1,6 @@
 +++
 title = "Experiment 001 — Sensor Noise Characterization"
-description = "Rendered from exp-001-sensor-noise.ipynb"
+description = "Characterizes soil moisture sensor noise distributions, autocorrelation, and signal-to-noise ratios to quantify measurement uncertainty in field monitoring."
 date = 2026-07-18
 weight = 50
 

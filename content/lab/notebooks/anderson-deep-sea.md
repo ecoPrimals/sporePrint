@@ -1,6 +1,6 @@
 +++
 title = "Deep-Sea Hydrothermal Vent Ecology — R. Anderson Lab (Carleton)"
-description = "Rendered from anderson-deep-sea.ipynb"
+description = "Explores deep-sea hydrothermal vent microbial ecology from R. Anderson Lab, analyzing chemosynthetic community structure and quorum sensing in extremophile habitats."
 date = 2026-07-04
 weight = 50
 

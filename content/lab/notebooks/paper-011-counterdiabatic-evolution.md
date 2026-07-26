@@ -1,6 +1,6 @@
 +++
 title = "Paper 011 — Counterdiabatic Driving of Evolution"
-description = "Rendered from paper-011-counterdiabatic-evolution.ipynb"
+description = "Demonstrates counterdiabatic driving of evolutionary dynamics, applying shortcut-to-adiabaticity protocols to accelerate convergence in population optimization."
 date = 2026-07-04
 weight = 50
 

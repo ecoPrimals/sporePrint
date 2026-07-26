@@ -239,6 +239,29 @@ was pioneered in wetSpring and adopted across all 9 springs.
 
 ---
 
+---
+
+## Reproduce It
+
+```bash
+git clone https://github.com/syntheticChemistry/wetSpring && cd wetSpring
+cargo test --workspace          # all tests pass
+cargo run --release --bin validate  # exit 0 = pass
+```
+
+**Hardware used**: i9-14900K, 96 GB DDR5, NVIDIA RTX 4070 (Vulkan, no CUDA SDK)  
+**Dataset**: NCBI SRA PRJNA488170 (11.9M paired-end 16S reads)  
+**Date**: July 2026  
+**Author**: ecoPrimal ([ORCID 0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321))
+
+## Limitations
+
+- GPU speedups are workload-dependent; some stages (FASTQ parsing, I/O-bound) show no GPU benefit
+- Tested on NVIDIA RTX 4070 and RTX 3090; AMD and Intel GPU validation is in progress
+- The pipeline reproduces DADA2 *results* but does not wrap the R DADA2 package — it is a clean-room Rust implementation
+- No GUI; all interaction is via CLI and JSON output
+
 **Source**: [syntheticChemistry/wetSpring](https://github.com/syntheticChemistry/wetSpring) |
-**Live results**: [primals.eco/lab](https://primals.eco/lab/)
+**GPU pipeline**: [Cross-vendor f64 GPU computing](@/technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md) |
+**Full validation**: [Self-hosted 16S bioinformatics](@/lab/wetspring-validation.md)
 

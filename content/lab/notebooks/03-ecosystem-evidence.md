@@ -1,6 +1,6 @@
 +++
 title = "Ecosystem Evidence — airSpring"
-description = "Rendered from 03-ecosystem-evidence.ipynb"
+description = "Documents ecosystem evidence for agricultural hydrology notebooks, linking ET₀ methods, water balance models, and soil sensor calibration to field applications."
 date = 2026-07-18
 weight = 50
 

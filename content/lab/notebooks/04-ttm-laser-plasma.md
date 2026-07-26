@@ -1,6 +1,6 @@
 +++
 title = "Two-Temperature Model — Laser-Heated Plasma Equilibration"
-description = "Rendered from 04-ttm-laser-plasma.ipynb"
+description = "Simulates two-temperature model laser-heated plasma equilibration, coupling electron and ion heat baths with electron-phonon coupling for ultrafast heating dynamics."
 date = 2026-07-04
 weight = 50
 

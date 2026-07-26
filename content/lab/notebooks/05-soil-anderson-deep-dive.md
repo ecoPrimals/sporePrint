@@ -1,6 +1,6 @@
 +++
 title = "Soil Anderson Deep Dive — Track 4 Domain Exemplar"
-description = "Rendered from 05-soil-anderson-deep-dive.ipynb"
+description = "Deep dive into soil Anderson geometry and quorum sensing notebooks, covering signal specificity, bistable switching, and microbial spatial dynamics."
 date = 2026-07-04
 weight = 50
 

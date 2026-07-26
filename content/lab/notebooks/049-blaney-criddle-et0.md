@@ -1,6 +1,6 @@
 +++
 title = "Blaney–Criddle (1950) Temperature-Based PET"
-description = "Rendered from 049-blaney-criddle-et0.ipynb"
+description = "Applies Blaney-Criddle (1950) temperature-based consumptive use method for monthly ET₀ estimation using mean temperature and day-length factors."
 date = 2026-07-18
 weight = 50
 

@@ -1,6 +1,6 @@
 +++
 title = "Screened Coulomb (Yukawa) Bound-State Eigenvalues"
-description = "Rendered from 02-yukawa-screening.ipynb"
+description = "Solves screened Coulomb (Yukawa) potential bound-state eigenvalues numerically, computing energy levels for short-range nuclear and plasma interaction potentials."
 date = 2026-07-04
 weight = 50
 

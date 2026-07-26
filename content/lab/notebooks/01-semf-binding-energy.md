@@ -1,6 +1,6 @@
 +++
 title = "Semi-Empirical Mass Formula — Nuclear Binding Energies"
-description = "Rendered from 01-semf-binding-energy.ipynb"
+description = "Computes nuclear binding energies with the Bethe-Weizsacker semi-empirical mass formula and Skyrme coefficients, validated against AME2020 with GPU-accelerated Rust parity."
 date = 2026-07-04
 weight = 50
 

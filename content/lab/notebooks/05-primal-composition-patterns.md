@@ -1,6 +1,6 @@
 +++
 title = "Primal Composition Patterns — wetSpring"
-description = "Rendered from 05-primal-composition-patterns.ipynb"
+description = "Analyzes composition patterns across biology notebooks, documenting shared module structure, experiment workflows, and reusable scientific computing design patterns."
 date = 2026-07-04
 weight = 50
 

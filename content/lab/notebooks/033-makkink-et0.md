@@ -1,6 +1,6 @@
 +++
 title = "Makkink (1957) Radiation-Based ET₀"
-description = "Rendered from 033-makkink-et0.ipynb"
+description = "Calculates Makkink (1957) radiation-based ET₀ using solar radiation and temperature as a simplified Penman alternative for irrigation scheduling."
 date = 2026-07-18
 weight = 50
 

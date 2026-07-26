@@ -105,7 +105,30 @@ NVIDIA's CUDA pricing model throttles consumer f64 to 1:64 throughput to protect
 
 ---
 
+---
+
+## Reproduce It
+
+```bash
+git clone https://github.com/syntheticChemistry/hotSpring && cd hotSpring
+cargo test --workspace          # all tests pass (59/59 QCD checks)
+cargo run --release --bin validate  # exit 0 = pass
+```
+
+**Hardware**: RTX 4070 (consumer, $600), f64 via Vulkan SHADER_F64  
+**Publications reproduced**: Creutz (1980), Wilson (1974), Sarkas (1999)  
+**Date**: July 2026  
+**Author**: ecoPrimal ([ORCID 0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321))
+
+## Limitations
+
+- Product packaging is in progress — the physics engine is validated, the standalone binary is not yet released
+- ILDG gauge configuration output is in development; current output is internal format
+- Dynamical fermion performance has not been benchmarked against QUDA on equivalent hardware
+- Tested on NVIDIA GPUs; AMD/Intel GPU validation for lattice QCD specifically is pending
+
 *See also: [guideStone](@/guidestone/_index.md) for the verification class,
 [Paper 10 — First Dynamical QCD on Consumer GPU](@/science/10_dynamical_qcd_production.md),
 [Paper 07 — Sovereign WDM Simulation](@/science/07_sovereign_wdm.md),
+[Cross-vendor f64 GPU computing](@/technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md),
 [Primal Catalog](@/architecture/PRIMAL_CATALOG.md) for barraCuda and coralReef details.*

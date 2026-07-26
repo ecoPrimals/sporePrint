@@ -1,6 +1,6 @@
 +++
 title = "Experiment 011 — Multi-Signal Quorum Sensing Integration"
-description = "Rendered from exp-011-multisignal-qs.ipynb"
+description = "Integrates multi-signal quorum sensing pathways, computing combined autoinducer response curves and cooperative threshold behavior in bacterial networks."
 date = 2026-07-18
 weight = 50
 

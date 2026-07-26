@@ -1,6 +1,6 @@
 +++
 title = "Paper 013 — Ecological Theory in Evolutionary Computation"
-description = "Rendered from paper-013-eco-dynamics.ipynb"
+description = "Applies ecological theory to evolutionary computation, modeling niche construction, species coexistence, and community assembly in digital ecosystem simulations."
 date = 2026-07-04
 weight = 50
 

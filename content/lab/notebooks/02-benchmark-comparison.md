@@ -1,6 +1,6 @@
 +++
 title = "Benchmark Comparison — airSpring"
-description = "Rendered from 02-benchmark-comparison.ipynb"
+description = "Benchmarks Rust implementations against Python and R reference code for soil water balance, ET₀, and infiltration model numerical parity."
 date = 2026-07-18
 weight = 50
 

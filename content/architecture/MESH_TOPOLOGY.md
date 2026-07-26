@@ -147,3 +147,15 @@ Tower shadow deployment collects benchmark data every 60 minutes across all gate
 pairs. 360+ benchmark files have been collected, providing continuous parity evidence.
 Results are stored in `benchScale/tower_shadow/` and consumed by
 {{ entity(name="primalspring") }} validation scenarios.
+
+## Limitations
+
+- The mesh currently runs on 6 gates across 2 physical sites; multi-continent deployment is untested
+- USB enrollment assumes a trusted physical carrier (no remote enrollment yet)
+- 353× LAN advantage is measured on 1G links; 10G backbone testing is in progress
+- No web dashboard; all monitoring is via CLI and JSON-RPC
+- Tower Atomic source code: songBird is public, bearDog and skunkBat are public (AGPL-3.0)
+
+**Hardware**: MikroTik 1G switches, consumer x86_64 Linux boxes, WireGuard baseline  
+**Date**: July 2026  
+**Author**: ecoPrimal ([ORCID 0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321))

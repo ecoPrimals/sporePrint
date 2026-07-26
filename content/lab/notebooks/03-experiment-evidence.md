@@ -1,6 +1,6 @@
 +++
 title = "Experiment Evidence — hotSpring"
-description = "Rendered from 03-experiment-evidence.ipynb"
+description = "Documents experimental evidence supporting physics notebooks, linking spectral theory, surrogate learning, and precision benchmarks to published nuclear results."
 date = 2026-07-04
 weight = 50
 

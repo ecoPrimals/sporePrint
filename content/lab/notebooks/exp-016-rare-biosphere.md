@@ -1,6 +1,6 @@
 +++
 title = "Experiment 016 — Rare Biosphere Signal Detection"
-description = "Rendered from exp-016-rare-biosphere.ipynb"
+description = "Detects rare biosphere signals in amplicon sequencing data, evaluating low-abundance taxa detection limits, noise floors, and statistical significance."
 date = 2026-07-18
 weight = 50
 
