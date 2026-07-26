@@ -4,7 +4,7 @@ Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
 Last reviewed: July 24, 2026 (Wave 150x — Tower Atomic transplant, Sovereign CI page, Mesh Topology page, entity descriptions updated, exploration domains documented)
 
-**Current state**: 312 pages (17 sections), 79 entities, 10 trails, 5 cortical folds, 3.60M LOC, 100,972 tests, 59 depot binaries, 197 validation scenarios, 9 known debt.
+**Current state**: 312 pages (17 sections), 79 entities, 10 trails, 5 cortical folds, 3.60M LOC, 104,989 tests, 59 depot binaries, 197 validation scenarios, 2 known debt.
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ---

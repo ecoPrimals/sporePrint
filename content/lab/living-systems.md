@@ -17,8 +17,9 @@ routes `capability.call` across all of them. Two physical sites are linked by
 an 80m 10G AOC trunk. [Tower Atomic](@/architecture/tower_atomic.md) — the sovereign
 transport stack — runs alongside WireGuard in shadow mode, **353× faster** on LAN
 via topology awareness and **1.7× sustained** on degraded WAN paths. songBird is
-actively migrating inline crypto to bearDog UDS delegation (`local-crypto-fallback`
-feature flag). This page shows what is actually deployed and operational.
+running with all cold-path crypto delegated to bearDog UDS (6/6 seams complete).
+BTSP strict mode is enforced on sporeGate. This page shows what is actually
+deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 

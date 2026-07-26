@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 24, 2026 — Wave 150x)
+## Current State (July 26, 2026 — Wave 151b)
 
 - **312 published pages** across 17 sections (new in 150x: Tower Atomic architecture page, Sovereign CI + Mesh Topology updated), organized into 5 cortical folds
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
@@ -17,9 +17,9 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **~110 pages** carry companion metadata for cross-domain discovery
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals** (150x refresh): 3.60M LOC, 100,972 tests (15 primals + 9 springs), 43 repos, 59 depot binaries across 4 architectures
-- **Tower Atomic PROVEN**: bearDog + songBird + skunkBat exceed WireGuard — 353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained on degraded WAN. 6/6 exploration domains PROVEN LIVE. 360+ shadow benchmark files. skunkBat NOW PUBLIC. bearDog remains private (crypto root of trust, pending pen-test validation). Crypto delegation advancing — blake3 LIVE, 6 seams remaining. songBird IPC hardened (SO_PEERCRED, symlink rejection, socket permissions)
-- **197 validation scenarios**: 7 stress + 7 penetration tests, 9 known debt findings, all PASS
+- **Ecosystem totals** (151b refresh): 3.60M LOC, 104,989 tests (15 primals + 9 springs), 43 repos, 59 depot binaries across 4 architectures
+- **Tower Atomic PROVEN**: bearDog + songBird + skunkBat exceed WireGuard — 353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained on degraded WAN. 6/6 exploration domains PROVEN LIVE. 360+ shadow benchmark files. skunkBat NOW PUBLIC. bearDog remains private (crypto root of trust, pending pen-test validation). Crypto delegation 6/6 COMPLETE. BTSP strict mode LIVE on sporeGate. songBird IPC hardened (SO_PEERCRED, symlink rejection, socket permissions)
+- **197 validation scenarios**: 7 stress + 7 penetration tests, 2 known debt findings (grapheneGate provenance), all PASS
 - **Sovereign CI pipeline**: Forgejo → sporeGate build → depot → all gates. No GitHub Actions
 - **Crash-loop breaker**: cellMembrane `gate.crash-loop` — self-recovery shipped (29,081-restart divergence resolved)
 - **DNSSEC**: all 3 domains signed (primals.eco, primal.eco, nestgate.io)

@@ -192,23 +192,23 @@ benchmarking. Shadow metrics collect every 60 minutes across all gate pairs.
 360+ benchmark files collected across 3 gates. Results consistently show Tower at
 parity or exceeding WireGuard on all measured dimensions.
 
-## Crypto composition migration
+## Crypto composition — 6/6 COMPLETE
 
-songBird is migrating inline cryptography to {{ entity(name="beardog") }} UDS
-delegation. The `local-crypto-fallback` feature flag gates inline crypto —
-when disabled, all cold-path cryptographic operations route through bearDog's
-`crypto.*` capabilities via UDS.
+songBird has completed migration of all cold-path cryptography to
+{{ entity(name="beardog") }} UDS delegation. The `local-crypto-fallback`
+feature flag remains for environments without bearDog, but all production
+gates now delegate.
 
 `CRYPTO_COMPOSITION.md` classifies 19 crypto seams:
 
-| Category | Seams | Strategy |
-|----------|-------|----------|
+| Category | Seams | Status |
+|----------|-------|--------|
 | Hot-path | 5 | Chimera (in-process after library extraction) |
-| Delegating | 6 | bearDog UDS (`crypto.sign`, `crypto.verify`, etc.) |
+| Delegating | 6 | **6/6 COMPLETE** — bearDog UDS |
 | Test-only | 5 | Isolated to `#[cfg(test)]` |
 | Already delegating | 3 | No change needed |
 
-**Phase 1 complete** — all 6 "SHOULD DELEGATE" seams are wired:
+All 6 delegation seams are wired and validated:
 
 | Seam | Crate | Delegation Path |
 |------|-------|----------------|
@@ -219,14 +219,13 @@ when disabled, all cold-path cryptographic operations route through bearDog's
 | Federation SHA-256 | network-federation | `CryptoProvider` → `crypto.sha256` |
 | Federation HMAC | network-federation | `CryptoProvider` → `crypto.hmac.sha256` |
 
-bearDog now exposes `crypto.hash.blake3` as a UDS capability — songBird's
-`dark_forest_beacon` routes BLAKE3 hashing through `crypto_helpers::blake3_hash_sync`
-instead of inline `blake3::Hasher`. Phase 2 will benchmark IPC cost per seam
-(target: <1ms per call).
+songBird also shipped a full BTSP `ClientHello` handshake (268 lines) — the
+4-step challenge-response protocol that all primals must implement before
+Nest Atomic. sporeGate now enforces BTSP strict mode (`BEARDOG_AUTH_MODE=enforced`);
+legacy plaintext JSON-RPC is rejected.
 
-This is composition-first engineering: validate UDS delegation works for all
-cold-path crypto, measure the overhead, then chimera collapses the hot-path
-into shared library calls.
+Chimera Phase 0 (collapsing Tower into a single process) is now unblocked
+by the validated composition model.
 
 ## IPC hardening
 
