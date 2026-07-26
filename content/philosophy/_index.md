@@ -9,7 +9,7 @@ sort_by = "weight"
 sporePrint documents **what** ecoPrimals is and **how** it works. This section
 addresses the harder question: **why**.
 
-Why publish 3.2 million lines of code under AGPL-3.0? Why attach so little
+Why publish {{ total_stat(stat="total_loc_display") }} lines of code under AGPL-3.0? Why attach so little
 personal identity to the work? Why build sovereign infrastructure when cloud
 services exist? Why insist on zero C dependencies when battle-tested C libraries
 are available?

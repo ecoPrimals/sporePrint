@@ -1,6 +1,6 @@
 +++
 title = "Stanton-Murillo Transport Coefficients — Yukawa OCP"
-description = "Rendered from 05-stanton-murillo-transport.ipynb"
+description = "Stanton-Murillo transport coefficients: viscosity, diffusion, thermal conductivity in warm dense matter. GPU-accelerated reproduction in Rust."
 date = 2026-07-04
 weight = 50
 

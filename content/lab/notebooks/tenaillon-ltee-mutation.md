@@ -1,6 +1,6 @@
 +++
 title = "LTEE B7 — Tenaillon 2016: Mutation Accumulation in 50,000 Generations"
-description = "Rendered from tenaillon-ltee-mutation.ipynb"
+description = "LTEE mutation accumulation: Tenaillon et al. reproduction — mutation rates, beneficial mutation distribution, fitness trajectory. GPU-accelerated in Rust."
 date = 2026-07-04
 weight = 50
 

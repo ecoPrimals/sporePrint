@@ -1,6 +1,6 @@
 +++
 title = "Drug Repurposing & Knowledge Graphs — Fajgenbaum Lab (Track 3)"
-description = "Rendered from fajgenbaum-drug-repurposing.ipynb"
+description = "Computational drug repurposing: NMF factorization, TransE knowledge graph embeddings, pathway scoring. Fajgenbaum lab reproduction in Rust."
 date = 2026-07-04
 weight = 50
 

@@ -1,6 +1,6 @@
 +++
 title = "Quorum Sensing & Biofilm Dynamics — Waters Lab (MSU MMG)"
-description = "Rendered from waters-quorum-sensing.ipynb"
+description = "Quorum sensing signal dynamics: AHL autoinducer kinetics, bistable switching, population-level gene regulation. Waters lab paper reproduction in Rust."
 date = 2026-07-04
 weight = 50
 

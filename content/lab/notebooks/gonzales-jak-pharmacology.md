@@ -1,6 +1,6 @@
 +++
 title = "JAK/STAT Pharmacology — Gonzales Lab"
-description = "Rendered from gonzales-jak-pharmacology.ipynb"
+description = "JAK inhibitor pharmacology: tofacitinib PK/PD modeling, dose-response curves, population pharmacokinetics. Gonzales lab reproduction in Rust."
 date = 2026-07-04
 weight = 50
 

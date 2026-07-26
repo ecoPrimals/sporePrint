@@ -18,19 +18,19 @@ relation = "pairs_with"
 label = "The licensing model that makes this possible"
 
 [[extra.companions]]
-url = "/audience/FOR_FACULTY_AND_PIS/"
+url = "/audience/for-faculty-and-pis/"
 title = "For Faculty and PIs"
 relation = "pairs_with"
 label = "What the stack replaces in your lab"
 
 [[extra.companions]]
-url = "/audience/CAPABILITY_PARITY_BRIEF/"
+url = "/audience/capability-parity-brief/"
 title = "Capability Parity Brief"
 relation = "evidence_for"
 label = "Domain-by-domain comparison against proprietary tools"
 
 [[extra.companions]]
-url = "/architecture/SOVEREIGN_PRIOR_ART_CATALOG/"
+url = "/architecture/sovereign-prior-art-catalog/"
 title = "Sovereign Prior Art Catalog"
 relation = "evidence_for"
 label = "52 innovations locked in the commons"

@@ -1,6 +1,6 @@
 +++
 title = "Abelian Higgs Model — (1+1)D Lattice Field Theory"
-description = "Rendered from 09-abelian-higgs.ipynb"
+description = "Abelian Higgs model on consumer GPU: U(1) gauge-Higgs, Metropolis updates, topological charge measurement. Pure Rust + WGSL."
 date = 2026-07-04
 weight = 50
 

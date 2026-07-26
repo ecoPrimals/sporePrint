@@ -9,7 +9,7 @@ springs = ["wetspring", "healthspring", "hotspring", "neuralspring", "airspring"
 trails = ["nf-pipeline"]
 
 [extra]
-maturity = "scaffold"
+maturity = "architectural"
 
 [[extra.companions]]
 url = "/collaborators/gonzales-nf/"
@@ -30,7 +30,7 @@ relation = "architecture"
 label = "How multiple products compose for this case"
 +++
 
-{{ maturity(level="scaffold") }} Product composition mapped; computational infrastructure validated; grant alignment in progress.
+{{ maturity(level="architectural") }} Product composition mapped; computational infrastructure validated; grant alignment in progress.
 
 ---
 

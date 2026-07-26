@@ -18,7 +18,7 @@ relation = "extended_by"
 label = "The membrane model this reconciliation clarifies"
 
 [[extra.companions]]
-url = "/architecture/KDERM-DIDERM-ARCHITECTURE/"
+url = "/architecture/kderm-diderm-architecture/"
 title = "K-Derm/Diderm Architecture"
 relation = "extends"
 label = "The primary architecture document"

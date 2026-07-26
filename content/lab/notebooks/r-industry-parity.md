@@ -1,6 +1,6 @@
 +++
 title = "R Industry Parity — vegan / DADA2 / phyloseq"
-description = "Rendered from r-industry-parity.ipynb"
+description = "Rust vs R parity: DADA2, phyloseq, vegan function-level comparison. Every R bioinformatics primitive reproduced in sovereign Rust."
 date = 2026-07-04
 weight = 50
 

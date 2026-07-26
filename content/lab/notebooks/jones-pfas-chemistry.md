@@ -1,6 +1,6 @@
 +++
 title = "PFAS Detection & Environmental Chemistry — Jones Lab (MSU BMB)"
-description = "Rendered from jones-pfas-chemistry.ipynb"
+description = "PFAS analytical chemistry: LC-MS feature extraction, quantification, method validation. Jones lab reproduction in sovereign Rust pipeline."
 date = 2026-07-04
 weight = 50
 

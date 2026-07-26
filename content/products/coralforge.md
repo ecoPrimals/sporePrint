@@ -23,7 +23,7 @@ relation = "pairs_with"
 label = "Neuromorphic computing as the complementary intelligence layer"
 
 [[extra.companions]]
-url = "/science/baseCamp/"
+url = "/science/"
 title = "Science"
 relation = "validated_by"
 label = "175+ papers validating the computational primitives"

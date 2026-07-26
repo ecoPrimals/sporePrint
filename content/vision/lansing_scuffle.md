@@ -11,7 +11,7 @@ trails = ["first-visit"]
 [extra]
 
 [[extra.companions]]
-url = "/vision/thermal_sovereignty_building/"
+url = "/vision/thermal-sovereignty-building/"
 title = "Building-Scale Thermal Sovereignty"
 relation = "pairs_with"
 label = "The energy loop that makes the campus self-sustaining"

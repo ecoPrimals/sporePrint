@@ -1,6 +1,6 @@
 +++
 title = "Dynamical Fermion QCD — Staggered HMC, HVP, Freeze-Out"
-description = "Rendered from 08-dynamical-fermions.ipynb"
+description = "Dynamical fermion simulation on consumer GPU: staggered fermions, RHMC algorithm, Dirac operator. Pure Rust + WGSL lattice QCD without CUDA."
 date = 2026-07-04
 weight = 50
 

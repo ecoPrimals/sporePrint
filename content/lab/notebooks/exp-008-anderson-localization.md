@@ -1,6 +1,6 @@
 +++
 title = "Experiment 008 — Anderson Localization"
-description = "Rendered from exp-008-anderson-localization.ipynb"
+description = "Anderson localization experiment: disorder-driven metal-insulator transition, GPU-accelerated tight-binding diagonalization. Pure Rust + WGSL."
 date = 2026-07-18
 weight = 50
 

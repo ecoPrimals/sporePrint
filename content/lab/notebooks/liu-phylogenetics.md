@@ -1,6 +1,6 @@
 +++
 title = "Computational Phylogenetics — Liu Lab (MSU CMSE)"
-description = "Rendered from liu-phylogenetics.ipynb"
+description = "Phylogenetic tree construction and species delimitation: GPU-accelerated Jukes-Cantor, Kimura, GTR models. Liu lab paper reproduction in pure Rust."
 date = 2026-07-04
 weight = 50
 

@@ -1,6 +1,6 @@
 +++
 title = "Wilson Gradient Flow — Scale Setting with $t_0$ and $w_0$"
-description = "Rendered from 11-gradient-flow.ipynb"
+description = "Wilson flow / gradient flow on consumer GPU: scale setting, topological charge, energy density. Lattice QCD in pure Rust + WGSL."
 date = 2026-07-04
 weight = 50
 

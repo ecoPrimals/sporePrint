@@ -1,6 +1,6 @@
 +++
 title = "Quenched SU(3) Lattice QCD — Deconfinement Transition"
-description = "Rendered from 07-quenched-qcd.ipynb"
+description = "Quenched SU(3) lattice QCD on consumer GPU: Wilson gauge action, heatbath + overrelaxation, plaquette convergence. Pure Rust + WGSL, no CUDA."
 date = 2026-07-04
 weight = 50
 

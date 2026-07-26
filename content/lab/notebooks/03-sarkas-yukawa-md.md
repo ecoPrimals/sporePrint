@@ -1,6 +1,6 @@
 +++
 title = "Sarkas Yukawa MD — Plasma Transport from Molecular Dynamics"
-description = "Rendered from 03-sarkas-yukawa-md.ipynb"
+description = "Sarkas Yukawa molecular dynamics on consumer GPU: warm dense matter, pair correlation functions. Murillo et al. reproduction in pure Rust + WGSL."
 date = 2026-07-04
 weight = 50
 

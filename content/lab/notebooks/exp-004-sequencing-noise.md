@@ -1,6 +1,6 @@
 +++
 title = "Experiment 004 — Sequencing Noise Characterization"
-description = "Rendered from exp-004-sequencing-noise.ipynb"
+description = "Sequencing noise characterization: Illumina error profiles, quality score distributions, DADA2 error model validation. Sovereign bioinformatics in Rust."
 date = 2026-07-18
 weight = 50
 

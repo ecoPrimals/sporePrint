@@ -40,7 +40,7 @@ clear, advancing front that already produces paper-parity lattice QCD on a
 $500 consumer GPU.
 
 This is not a research prototype. These are production-grade primals with
-107,000+ combined test functions across 3.2 million lines of Rust, zero unsafe code, and zero C dependencies in
+{{ total_stat(stat="total_tests_display") }} combined test functions across {{ total_stat(stat="total_loc_display") }} lines of Rust, zero unsafe code, and zero C dependencies in
 application code.
 
 ---

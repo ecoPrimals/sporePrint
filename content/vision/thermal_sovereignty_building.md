@@ -11,7 +11,7 @@ trails = ["first-visit"]
 [extra]
 
 [[extra.companions]]
-url = "/vision/lansing_scuffle/"
+url = "/vision/lansing-scuffle/"
 title = "The Lansing Scuffle"
 relation = "pairs_with"
 label = "The campus where this thermal architecture deploys"

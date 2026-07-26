@@ -1,6 +1,6 @@
 +++
 title = "FAO-56 Penman-Monteith Reference Evapotranspiration (ET₀)"
-description = "Rendered from 001-fao56-penman-monteith.ipynb"
+description = "FAO-56 Penman-Monteith reference evapotranspiration: validated to 1e-5 parity against published examples. Self-hosted precision agriculture in Rust."
 date = 2026-07-18
 weight = 50
 

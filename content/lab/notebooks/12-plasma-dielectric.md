@@ -1,6 +1,6 @@
 +++
 title = "Plasma Dielectric Functions — BGK/Mermin + Kinetic-Fluid Coupling"
-description = "Rendered from 12-plasma-dielectric.ipynb"
+description = "Plasma dielectric function: warm dense matter response, GPU-accelerated Lindhard calculation. Pure Rust + WGSL physics."
 date = 2026-07-04
 weight = 50
 

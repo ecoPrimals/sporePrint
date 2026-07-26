@@ -49,7 +49,7 @@ This section exists because two podcasts shaped how the builder of ecoPrimals th
 
 ### What 99PI Could Do With This
 
-A story about a person who built 3.5 million lines of Rust from their basement — not as a startup, not as a research grant, but as a structural response to the observation that every "free" tool on the internet is a dependency you can't control. The story isn't about the technology. The story is about the design decision: why you would build your own infrastructure from scratch, and what you see when you actually do it.
+A story about a person who built {{ total_stat(stat="total_loc_display") }} lines of Rust from their basement — not as a startup, not as a research grant, but as a structural response to the observation that every "free" tool on the internet is a dependency you can't control. The story isn't about the technology. The story is about the design decision: why you would build your own infrastructure from scratch, and what you see when you actually do it.
 
 The same design lens 99PI brought to "The Ruin of an Architect's Home" or "McMansion Hell" — examining the structural decisions beneath the visible surface.
 
@@ -69,7 +69,7 @@ K-NOME programming — the methodology behind ecoPrimals — is structurally ide
 | Understanding emerges through friction | Working software emerges through constraint |
 | Listener follows the journey | Repository preserves the journey |
 
-The conversation constraint is real: zero human-written code in 3.5 million lines of Rust. Not because the human can't code — because the conversation itself is the interface. The human mentors intent. The AI implements. The friction between them produces understanding that neither could reach alone.
+The conversation constraint is real: zero human-written code in {{ total_stat(stat="total_loc_display") }} lines of Rust. Not because the human can't code — because the conversation itself is the interface. The human mentors intent. The AI implements. The friction between them produces understanding that neither could reach alone.
 
 ### What Radiolab Could Do With This
 

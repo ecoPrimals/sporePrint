@@ -17,13 +17,13 @@ relation = "pairs_with"
 label = "Full licensing framework — AGPL + ORC + CC-BY-SA"
 
 [[extra.companions]]
-url = "/audience/CAPABILITY_PARITY_BRIEF/"
+url = "/audience/capability-parity-brief/"
 title = "Capability Parity Brief"
 relation = "evidence_for"
 label = "Domain-by-domain parity assessment against 40+ proprietary tools"
 
 [[extra.companions]]
-url = "/architecture/SOVEREIGN_PRIOR_ART_CATALOG/"
+url = "/architecture/sovereign-prior-art-catalog/"
 title = "Sovereign Prior Art Catalog"
 relation = "evidence_for"
 label = "52 innovations permanently locked in the commons"

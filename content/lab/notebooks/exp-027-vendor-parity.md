@@ -1,6 +1,6 @@
 +++
 title = "Experiment 027 — GPU Vendor Parity"
-description = "Rendered from exp-027-vendor-parity.ipynb"
+description = "Cross-vendor GPU parity test: identical WGSL shaders on NVIDIA, AMD, Intel. f64 precision comparison without CUDA."
 date = 2026-07-18
 weight = 50
 
