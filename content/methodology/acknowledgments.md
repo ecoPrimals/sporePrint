@@ -35,7 +35,7 @@ Rust is not a tool we chose. It is the constraint that shaped us. Everything eco
 
 [getzola.org](https://www.getzola.org/) · [github.com/getzola/zola](https://github.com/getzola/zola)
 
-The static site generator that builds primals.eco. Single Rust binary, zero runtime dependencies, TOML front matter, Tera templates, built-in search, taxonomy system, minification. 307 pages built in under 20 seconds. Zola is what sporePrint uses for sovereign validation — petalTongue handles live serving, but Zola remains the oracle.
+The static site generator that builds primals.eco. Single Rust binary, zero runtime dependencies, TOML front matter, Tera templates, built-in search, taxonomy system, minification. {{ total_stat(stat="content_pages") }} pages built in under 20 seconds. Zola is what sporePrint uses for sovereign validation — petalTongue handles live serving, but Zola remains the oracle.
 
 **License**: MIT
 

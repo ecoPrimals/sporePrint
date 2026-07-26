@@ -1,18 +1,18 @@
 {# SPDX-License-Identifier: AGPL-3.0-or-later #}
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }} — {{ config.title }}{% endblock title %}
+{% block title %}{{ page.title }} | ecoPrimals{% endblock title %}
 {% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
-{% block og_title %}{{ page.title }} — {{ config.title }}{% endblock og_title %}
+{% block og_title %}{{ page.title }} | ecoPrimals{% endblock og_title %}
 {% block og_desc %}{{ page.description | default(value=config.description) }}{% endblock og_desc %}
-{% block tw_title %}{{ page.title }} — {{ config.title }}{% endblock tw_title %}
+{% block tw_title %}{{ page.title }} | ecoPrimals{% endblock tw_title %}
 {% block tw_desc %}{{ page.description | default(value=config.description) }}{% endblock tw_desc %}
 
 {% block content %}
 {% set_global page_type = "Article" %}
 {% set_global author_type = "Organization" %}
 {% set_global author_name = "ecoPrimals" %}
-{% set_global author_url = "https://primals.eco" %}
+{% set_global author_url = "https://sporeprint.primals.eco" %}
 {% set_global page_license = "https://www.gnu.org/licenses/agpl-3.0.html" %}
 
 {% if page.relative_path is starting_with("philosophy/") %}

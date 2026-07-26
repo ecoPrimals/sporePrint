@@ -147,20 +147,24 @@
                     {% if sec.pages | length == 0 and sec.subsections | length == 0 %}
                     <a href="{{ sec.permalink }}">{{ sec.title }}</a>
                     {% else %}
+                    {% set page_count = sec.pages | length %}
                     <details{% if is_active %} open{% endif %}>
-                      <summary><a href="{{ sec.permalink }}">{{ sec.title }}</a></summary>
+                      <summary><a href="{{ sec.permalink }}">{{ sec.title }}{% if page_count > 0 %} <span class="tree-count">({{ page_count }})</span>{% endif %}</a></summary>
                       {% if is_active %}
                       <ul class="tree-pages">
+                        {% if page_count < 40 %}
                         {% for pg in sec.pages %}
                         {% set pg_idx = loop.index0 %}
                         {% if group_cfg and group_cfg.labels %}{% for lbl in group_cfg.labels %}{% if lbl.at == pg_idx %}<li class="tree-label">{{ lbl.label }}</li>{% endif %}{% endfor %}{% endif %}
                         <li{% if pg.path == current_path %} class="tree-current"{% endif %}><a href="{{ pg.permalink }}">{{ pg.title }}</a></li>
                         {% endfor %}
+                        {% endif %}
                         {% for sub in sec.subsections %}
                         {% set subsec = get_section(path=sub) %}
                         <li class="tree-section tree-nested{% if current_path is starting_with(subsec.path) %} tree-active{% endif %}">
                           <details{% if current_path is starting_with(subsec.path) %} open{% endif %}>
-                            <summary><a href="{{ subsec.permalink }}">{{ subsec.title }}</a></summary>
+                            <summary><a href="{{ subsec.permalink }}">{{ subsec.title }}{% if subsec.pages | length > 0 %} <span class="tree-count">({{ subsec.pages | length }})</span>{% endif %}</a></summary>
+                            {% if current_path is starting_with(subsec.path) %}
                             <ul class="tree-pages">
                               {% if sub is containing("notebooks") and config.extra.lab_domains %}
                               {% for domain in config.extra.lab_domains %}
@@ -180,6 +184,7 @@
                               {% endfor %}
                               {% endif %}
                             </ul>
+                            {% endif %}
                           </details>
                         </li>
                         {% endfor %}

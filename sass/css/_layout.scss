@@ -159,6 +159,10 @@
 .tree-fold-label:hover {
   background: var(--c-accent-light);
 }
+.tree-count {
+  opacity: 0.5;
+  font-size: 0.85em;
+}
 .tree-fold-sections {
   list-style: none;
   padding: 0 0 0 0.4rem;

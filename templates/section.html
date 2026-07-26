@@ -1,11 +1,11 @@
 {# SPDX-License-Identifier: AGPL-3.0-or-later #}
 {% extends "base.html" %}
 
-{% block title %}{{ section.title }} — {{ config.title }}{% endblock title %}
+{% block title %}{{ section.title }} | ecoPrimals{% endblock title %}
 {% block description %}{{ section.description }}{% endblock description %}
-{% block og_title %}{{ section.title }} — {{ config.title }}{% endblock og_title %}
+{% block og_title %}{{ section.title }} | ecoPrimals{% endblock og_title %}
 {% block og_desc %}{{ section.description | default(value=config.description) }}{% endblock og_desc %}
-{% block tw_title %}{{ section.title }} — {{ config.title }}{% endblock tw_title %}
+{% block tw_title %}{{ section.title }} | ecoPrimals{% endblock tw_title %}
 {% block tw_desc %}{{ section.description | default(value=config.description) }}{% endblock tw_desc %}
 
 {% block content %}
@@ -15,7 +15,7 @@
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
   "headline": "Constrained Evolution — Environmental Pressure, Sovereign Computing, and the Convergence of Biological and Computational Systems",
-  "author": { "@type": "Organization", "name": "ecoPrimals", "url": "https://primals.eco" },
+  "author": { "@type": "Organization", "name": "ecoPrimals", "url": "https://sporeprint.primals.eco" },
   "license": "https://www.gnu.org/licenses/agpl-3.0.html",
   "url": "{{ section.permalink }}",
   "description": "{{ section.description }}",
@@ -87,7 +87,7 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "{{ section.title }}",
-  "author": { "@type": "Organization", "name": "ecoPrimals", "url": "https://primals.eco" },
+  "author": { "@type": "Organization", "name": "ecoPrimals", "url": "https://sporeprint.primals.eco" },
   "license": "https://www.gnu.org/licenses/agpl-3.0.html",
   "url": "{{ section.permalink }}",
   "description": "{{ section.description }}",
