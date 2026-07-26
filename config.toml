@@ -1,5 +1,5 @@
 base_url = "https://sporeprint.primals.eco"
-title = "ecoPrimals — Self-Hosted Scientific Computing"
+title = "ecoPrimals — Self-Hosted Scientific Computing in Rust"
 description = "Self-hosted scientific computing in pure Rust with vendor-agnostic WebGPU/WGSL GPU compute. Reproducible bioinformatics, protein structure prediction, lattice QCD, molecular dynamics, and pharmacometrics on commodity hardware — no CUDA, no cloud, no vendor lock-in."
 compile_sass = true
 build_search_index = true

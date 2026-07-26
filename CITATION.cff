@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software or reference this work, please cite it as below."
+title: "ecoPrimals: Sovereign Scientific Computing in Pure Rust"
+type: software
+authors:
+  - alias: ecoPrimal
+    email: eco.primal@pm.me
+    orcid: "https://orcid.org/0009-0004-2141-0321"
+repository-code: "https://github.com/ecoPrimals"
+url: "https://sporeprint.primals.eco"
+license: AGPL-3.0-or-later
+keywords:
+  - scientific computing
+  - GPU computing
+  - Rust
+  - WGSL
+  - WebGPU
+  - bioinformatics
+  - lattice QCD
+  - DADA2
+  - vendor-agnostic
+  - reproducible science
+  - sovereign computing
+  - distributed computing
+abstract: >-
+  ecoPrimals is a sovereign scientific computing ecosystem written in pure Rust.
+  It provides GPU-accelerated computation via WebGPU/WGSL across NVIDIA, AMD,
+  and Intel GPUs without CUDA or vendor SDKs. The ecosystem includes validated
+  pipelines for 16S rRNA bioinformatics (DADA2-compatible), lattice QCD on
+  consumer GPUs, pharmacometrics, and 7 additional scientific domains.
+  All components are self-hosted, reproducible, and verifiable.
+date-released: "2026-07-26"

@@ -1,6 +1,6 @@
 +++
-title = "Python vs Rust vs GPU — Performance Evidence"
-description = "Rendered from 02-benchmark-python-vs-rust.ipynb"
+title = "GPU-Accelerated DADA2 Benchmark: Rust vs Python — 16S Pipeline Performance"
+description = "Head-to-head benchmark of DADA2-style 16S rRNA pipeline: Python/NumPy vs Rust CPU vs GPU-accelerated WGSL on consumer hardware. Reproducible results with commodity GPUs."
 date = 2026-07-04
 weight = 50
 
@@ -11,7 +11,11 @@ rendered_from = "02-benchmark-python-vs-rust.ipynb"
 
 <!-- Auto-generated from 02-benchmark-python-vs-rust.ipynb by spore-validate render-notebooks -->
 
-# Python vs Rust vs GPU — Performance Evidence
+# GPU-Accelerated DADA2 Benchmark: Rust vs Python
+
+This page benchmarks GPU-accelerated 16S rRNA pipeline performance against
+the standard Python/Galaxy DADA2 stack. All results are reproducible on
+commodity hardware (RTX 4070, no CUDA required).
 
 Benchmark data from three tiers of the wetSpring pipeline:
 

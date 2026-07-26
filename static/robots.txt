@@ -45,10 +45,13 @@
 
 User-agent: *
 Allow: /
-Sitemap: https://primals.eco/sitemap.xml
+Sitemap: https://sporeprint.primals.eco/sitemap.xml
 
 # AI agent overview (structured site summary for LLMs):
-# https://primals.eco/llms.txt
+# https://sporeprint.primals.eco/llms.txt
 #
 # Complete page index (every page with description, one document):
-# https://primals.eco/site-index/
+# https://sporeprint.primals.eco/site-index/
+#
+# Legacy domain primals.eco redirects to sporeprint.primals.eco.
+# All canonical URLs use the subdomain.

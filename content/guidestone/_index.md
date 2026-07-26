@@ -1,11 +1,11 @@
 +++
-title = "guideStone"
-description = "The verification class — how computation becomes proof. Self-leveling benchmark. Deployable artifact standard."
+title = "Reproducible, Self-Verifying Scientific Software — guideStone"
+description = "Self-verifying scientific binaries that carry their validation and provenance with them. Deterministic output, reference traceability, environment independence."
 sort_by = "weight"
 template = "section.html"
 +++
 
-## The Verification Class: How Computation Becomes Proof
+## Reproducible Scientific Software That Proves Its Own Correctness
 
 {{ entity(name="guidestone") }} is a **verification class** — a quality grade for any {{ entity(name="ecobin") }}
 in the ecosystem that certifies the artifact produces reproducible,
@@ -29,7 +29,7 @@ runtime and adapts its execution path, but the mathematical result is invariant.
 
 **2. Reference-Traceable** — Every numeric claim traces to a source: a published
 paper, a mathematical proof, a physical constant, or a standard (ILDG, MILC,
-FAO-56, DADA2). No numbers float in space.
+FAO-56, [DADA2](@/lab/notebooks/02-benchmark-python-vs-rust.md)). No numbers float in space.
 
 **3. Self-Verifying** — The artifact carries its own integrity. CHECKSUMS validated
 before execution. CRC on data payloads. Merkle roots when the provenance trio

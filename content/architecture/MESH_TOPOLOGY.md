@@ -1,6 +1,6 @@
 +++
-title = "Gate Mesh — Live Topology"
-description = "Real-time view of the ecoPrimals sovereign compute mesh: gates, links, latencies, and capability routing."
+title = "Self-Hosted Distributed Scientific Compute Mesh — Gate Topology"
+description = "Self-hosted distributed scientific computing on commodity hardware. Multi-gate encrypted mesh with 353× LAN throughput advantage, capability-aware routing, and USB enrollment."
 date = 2026-07-07
 weight = 20
 

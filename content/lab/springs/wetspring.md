@@ -1,6 +1,6 @@
 +++
-title = "wetSpring — Life Science & Analytical Chemistry"
-description = "16S metagenomics, LC-MS, PFAS screening — 5,707+ checks across 376 experiments, 63/63 papers reproduced in sovereign Rust"
+title = "GPU-Accelerated 16S Bioinformatics Without Galaxy or CUDA — wetSpring"
+description = "Self-hosted 16S rRNA pipeline replacing Galaxy/QIIME2: DADA2 denoising, GPU-accelerated UniFrac, LC-MS, PFAS screening. 63/63 papers reproduced in pure Rust."
 date = 2026-05-06
 weight = 1
 

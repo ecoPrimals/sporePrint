@@ -48,7 +48,7 @@ what proprietary tools still do better, and where to find everything.
 This page assesses ecoPrimals parity against proprietary tools across 8 domains.
 The detailed comparison data is in tables below. Here is a text summary:
 
-1. **Bioinformatics** (vs Galaxy/QIIME2/mothur): wetSpring — full parity on FASTQ, DADA2, UniFrac, diversity, PCoA, alignment, HMM, spectral matching. Exceeds on GPU acceleration (150+ primitives). Novel: Anderson localization for community structure. Gaps: no GUI, no plugin ecosystem.
+1. **Bioinformatics** (vs Galaxy/QIIME2/mothur): wetSpring — full parity on FASTQ, [DADA2](@/lab/notebooks/02-benchmark-python-vs-rust.md), UniFrac, diversity, PCoA, alignment, HMM, spectral matching. Exceeds on [GPU acceleration](@/technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md) (150+ primitives). Novel: Anderson localization for community structure. Gaps: no GUI, no plugin ecosystem.
 2. **Pharmacometrics** (vs NONMEM/Monolix/WinNonlin): healthSpring — full parity on Hill, 1/2-compartment PK, population Monte Carlo, NCA, NLME diagnostics. Near parity on FOCE/SAEM. Exceeds on GPU population MC (207 M/s). Gaps: synthetic data only, no FDA submission format.
 3. **Drug Repurposing** (vs Every Cure MATRIX/ROBOKOP): wetSpring Track 3 + neuralSpring — full parity on pathway scoring, NMF factorization, TransE embeddings. Novel: Anderson geometry-aware drug scoring. Gaps: scale (6 drugs × 6 diseases vs 4K × 18K).
 4. **Analytical Chemistry** (vs MassHunter/Chromeleon/MZmine): wetSpring Track 2 — full parity on mzML/mzXML/JCAMP-DX, EIC, peak detection, KMD, PFAS screening. Exceeds on spectral cosine (1,077× speedup). Gaps: no instrument control, mzML/mzXML only.
@@ -84,7 +84,7 @@ The detailed comparison data is in tables below. Here is a text summary:
 | FASTQ parsing + quality filtering | **Full parity** | Sovereign parser, no `needletail` dependency |
 | Read merging (paired-end) | **Full parity** | Overlap detection, quality-aware consensus |
 | Dereplication | **Full parity** | Hash-based, GPU-accelerated |
-| DADA2 denoising | **Full parity** | Error model + denoising validated against R DADA2 |
+| [DADA2 denoising](@/lab/notebooks/02-benchmark-python-vs-rust.md) | **Full parity** | Error model + denoising validated against R DADA2 |
 | {{ entity(name="chimera") }} detection | **Full parity** | de novo + reference-based |
 | Taxonomy classification | **Full parity** | Naïve Bayes, k-mer, spectral matching |
 | UniFrac (weighted/unweighted) | **Full parity** | GPU-accelerated, validated against phyloseq |

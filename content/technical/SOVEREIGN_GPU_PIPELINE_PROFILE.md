@@ -1,6 +1,6 @@
 +++
-title = "Sovereign GPU Pipeline: The Vendor Replacement Story"
-description = "Vendor replacement story — what is done, what is next, the sovereign stack"
+title = "Cross-Vendor f64 Scientific GPU Computing in Rust and WGSL — No CUDA Required"
+description = "Pure Rust scientific GPU compute via WebGPU/WGSL: f64 precision on NVIDIA, AMD, and Intel GPUs without CUDA. {{ total_stat(stat='wgsl_files') }} validated shaders across 10 scientific domains."
 date = 2026-03-17
 
 [taxonomies]
@@ -20,9 +20,9 @@ title = "Sovereign Compute Hardware"
 relation = "pairs_with"
 +++
 
-**What we have already replaced, what we're replacing next, and what the
-end state looks like — a pure Rust scientific GPU stack with zero proprietary
-dependencies.**
+**Cross-vendor f64 scientific GPU computing without CUDA.** This page documents
+a pure Rust GPU compute pipeline using WebGPU/WGSL that runs on NVIDIA, AMD,
+and Intel GPUs — no vendor SDK, no proprietary dependencies, no cloud.
 
 **Last Updated:** March 17, 2026  
 **License:** CC-BY-SA 4.0
@@ -84,7 +84,7 @@ DF64 emulation on consumer GPUs). Key domains:
 | Linear algebra | 80+ | GEMM, eigensolve, SVD, LU, Cholesky |
 | Statistics | 60+ | Welford, Pearson, bootstrap, jackknife |
 | Signal processing | 40+ | FFT, convolution, Savitzky-Golay, CWT |
-| Bioinformatics | 94+ | Diversity, alignment, phylogeny, DADA2 |
+| Bioinformatics | 94+ | Diversity, alignment, phylogeny, [DADA2](@/lab/notebooks/02-benchmark-python-vs-rust.md) |
 | Physics | 70+ | MD, spectral, Anderson, transport |
 | Pharmacometrics | 30+ | Hill, PBPK, PopPK, ODE systems |
 | ML primitives | 50+ | Attention, GELU, LayerNorm, softmax |

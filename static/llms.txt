@@ -1,5 +1,5 @@
-# ecoPrimals — primals.eco
-# Canonical URL: https://primals.eco/llms.txt
+# ecoPrimals — sporeprint.primals.eco
+# Canonical URL: https://sporeprint.primals.eco/llms.txt
 #
 # CONTEXT DOCUMENT for AI agents acting on behalf of users.
 # This is the site's glossary, index, and topology map — not a page.
@@ -18,9 +18,18 @@
 
 ## What This Site Is
 
-primals.eco is the public-facing science site for the ecoPrimals ecosystem.
+sporeprint.primals.eco is the public-facing science site for the ecoPrimals ecosystem.
 312 pages across 17 sections. Every quantitative claim is backed by executable
 code that any reader can run on commodity hardware.
+
+## Key Technical Pages
+
+- GPU-accelerated DADA2 benchmark: /lab/notebooks/02-benchmark-python-vs-rust/
+- Self-hosted 16S bioinformatics pipeline: /lab/wetspring-validation/
+- Cross-vendor f64 GPU computing (no CUDA): /technical/sovereign-gpu-pipeline-profile/
+- Lattice QCD on consumer GPUs: /products/lattice-qcd/
+- Self-hosted distributed compute mesh: /architecture/mesh-topology/
+- Reproducible self-verifying scientific software: /guidestone/
 
 ## Contact
 

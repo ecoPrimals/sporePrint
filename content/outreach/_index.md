@@ -1,6 +1,6 @@
 +++
-title = "reachOut"
-description = "Partnership invitations, community landings, and articles — how ecoPrimals connects with GPU manufacturers, game platforms, science communicators, and the broader sovereign computing community."
+title = "reachOut — Partnerships and Community"
+description = "Partnership invitations, community landings, and articles. GPU-accelerated bioinformatics, lattice QCD, and distributed scientific computing — built for collaboration."
 sort_by = "weight"
 +++
 

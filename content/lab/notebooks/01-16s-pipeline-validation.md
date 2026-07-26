@@ -1,6 +1,6 @@
 +++
-title = "16S Pipeline Validation — wetSpring"
-description = "Rendered from 01-16s-pipeline-validation.ipynb"
+title = "Self-Hosted GPU-Accelerated 16S Pipeline — DADA2 to Diversity in Rust"
+description = "Complete 16S rRNA pipeline validation: FASTQ to DADA2 denoising to UniFrac diversity, GPU-accelerated in pure Rust. Single binary, no Galaxy, no cloud dependency."
 date = 2026-07-04
 weight = 50
 
@@ -11,7 +11,10 @@ rendered_from = "01-16s-pipeline-validation.ipynb"
 
 <!-- Auto-generated from 01-16s-pipeline-validation.ipynb by spore-validate render-notebooks -->
 
-# 16S Pipeline Validation — wetSpring
+# Self-Hosted 16S Pipeline: DADA2 to Diversity in Rust
+
+A GPU-accelerated 16S rRNA analysis pipeline that runs on your own hardware.
+No Galaxy server, no QIIME2 conda environment, no cloud compute.
 
 The complete 16S metagenomics pipeline — FASTQ parsing, quality filtering,
 dereplication, DADA2 denoising, chimera detection, taxonomy classification,

@@ -1,6 +1,6 @@
 +++
-title = "wetSpring Validation Results"
-description = "235+ bioinformatics checks across 8 workloads, dispatched through a live 13-primal NUCLEUS composition with full provenance chains."
+title = "Self-Hosted GPU-Accelerated 16S Bioinformatics — wetSpring Validation"
+description = "235+ bioinformatics validation checks: GPU-accelerated DADA2, phylogenetic placement, PFAS chemistry on commodity hardware. No cloud, no CUDA. Reproducible from source."
 date = 2026-05-06
 weight = 20
 
@@ -13,7 +13,10 @@ primals = ["barracuda", "beardog", "loamspine", "nestgate", "rhizocrypt", "sweet
 trails = ["evidence-chain"]
 +++
 
-## Overview
+## Self-Hosted 16S Bioinformatics on Commodity GPUs
+
+This page validates a self-hosted, GPU-accelerated 16S rRNA analysis pipeline
+that runs entirely on owned hardware — no Galaxy, no cloud, no CUDA dependency.
 
 10 workloads dispatched through {{ entity(name="toadstool") }} on a live 13-primal
 {{ entity(name="nucleus") }} composition. 235+ structured science checks passed across

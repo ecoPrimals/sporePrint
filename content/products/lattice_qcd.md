@@ -1,6 +1,6 @@
 +++
-title = "Sovereign Lattice QCD — Pure Rust Gauge Theory on Consumer GPUs"
-description = "Lattice QCD physics engine in pure Rust + WGSL — 59/59 checks, 3 published papers reproduced, guideStone-certified. Product packaging in development."
+title = "Lattice QCD on Consumer GPUs Without CUDA — Pure Rust Gauge Theory"
+description = "Lattice QCD on consumer GPUs without CUDA or vendor SDKs. Pure Rust + WGSL, 59/59 validation checks, 3 published papers reproduced, single static binary. Runs on NVIDIA, AMD, Intel."
 date = 2026-04-04
 
 [taxonomies]
@@ -17,9 +17,11 @@ maturity = "reproduced"
 
 ---
 
-## What It Is
+## Lattice QCD on Consumer GPUs — No CUDA, No Cluster
 
-A sovereign lattice QCD stack — pure Rust, zero C dependencies, no CUDA — that produces MILC-compatible gauge configurations on consumer GPUs. The physics engine already exists across {{ entity(name="hotspring") }}, {{ entity(name="barracuda") }}, {{ entity(name="coralreef") }}, and {{ entity(name="toadstool") }}. The product is the packaging: a {{ entity(name="guidestone") }}-certified deployment artifact that a lattice physicist can `scp` to any machine and run.
+Run lattice QCD on a consumer GPU (NVIDIA, AMD, Intel via Vulkan) — no CUDA,
+no vendor SDK, no HPC cluster access required. A single static Rust binary
+produces MILC-compatible gauge configurations. The physics engine already exists across {{ entity(name="hotspring") }}, {{ entity(name="barracuda") }}, {{ entity(name="coralreef") }}, and {{ entity(name="toadstool") }}. The product is the packaging: a {{ entity(name="guidestone") }}-certified deployment artifact that a lattice physicist can `scp` to any machine and run.
 
 The established lattice QCD toolchain — [QUDA](https://github.com/lattice/quda) (C++/CUDA, GPU), [MILC](https://github.com/lattice/milc_qcd) (C, CPU), [Chroma](https://github.com/lattice/chroma) (C++, JeffersonLab) — requires CUDA, vendor SDKs, MPI, and HPC cluster access. This product replaces all of it with a single static binary.
 
