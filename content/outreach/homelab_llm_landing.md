@@ -9,7 +9,7 @@ primals = ["barracuda", "toadstool", "biomeos", "songbird", "squirrel", "beardog
 springs = ["hotspring", "neuralspring"]
 
 [extra]
-maturity = "scaffold"
+maturity = "live"
 
 [[extra.companions]]
 url = "/architecture/economics/"
@@ -30,7 +30,7 @@ relation = "methodology"
 label = "Zero human-written code — how AI built the whole thing"
 +++
 
-{{ maturity(level="scaffold") }} This page is a starting point. The ecosystem is real and running. The pathway to hands-on use is being formalized.
+**Questions? A human reads and responds to every message at [eco.primal@pm.me](mailto:eco.primal@pm.me).**
 
 ---
 

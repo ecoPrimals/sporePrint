@@ -9,7 +9,7 @@ primals = ["barracuda", "biomeos", "songbird", "beardog", "toadstool", "coralree
 springs = ["ludospring", "hotspring"]
 
 [extra]
-maturity = "scaffold"
+maturity = "live"
 voice = "attsi"
 
 [[extra.companions]]
@@ -25,7 +25,7 @@ relation = "evidence_for"
 label = "f64 on consumer GPUs — the discovery that validates the Vulkan thesis"
 +++
 
-{{ maturity(level="scaffold") }} This invitation is being prepared for delivery. The engineering proof already exists.
+**This is a standing invitation. A human reads and responds to every message at [eco.primal@pm.me](mailto:eco.primal@pm.me).**
 
 ---
 

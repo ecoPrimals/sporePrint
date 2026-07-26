@@ -57,7 +57,7 @@ sovereign_rebuild = "systemd-timer + relay-chain"
 [extra.identity]
 name = "ecoPrimal"
 tagline = "sovereign scientific computing in pure Rust"
-email = "eco.primal@pm.me"
+email = "eco.primal@pm.me"  # transitioning to eco.primal@primal.eco
 orcid = "0009-0004-2141-0321"
 orcid_url = "https://orcid.org/0009-0004-2141-0321"
 website = "https://primals.eco"
@@ -1164,7 +1164,7 @@ primal_count = 15
 total_primals = 15
 spring_count = 9
 total_springs = 9
-content_pages = 312
+content_pages = 313
 measured_date = "2026-07-26"
 # All entity metrics refreshed via spore-validate refresh on this date
 

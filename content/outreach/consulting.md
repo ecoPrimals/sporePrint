@@ -36,6 +36,8 @@ relation = "evidence_for"
 label = "52 innovations locked in the commons"
 +++
 
+**A human reads and responds to every inquiry at [eco.primal@pm.me](mailto:eco.primal@pm.me).**
+
 ## The Code Is Free
 
 Every binary, every shader, every primal — **AGPL-3.0-or-later**, free for

@@ -6,7 +6,7 @@ date = 2026-07-14
 
 [extra]
 voice = "attsi"
-maturity = "scaffold"
+maturity = "live"
 
 [[extra.companions]]
 url = "/philosophy/fossil-lineage/"
@@ -21,7 +21,7 @@ relation = "pairs_with"
 label = "The story of building this — and the shows that were playing during it"
 +++
 
-{{ maturity(level="scaffold") }} This page is a scaffold — the invitation is being developed. The connection to these shows is real and runs deep.
+**This is a standing invitation. A human reads and responds to every message at [eco.primal@pm.me](mailto:eco.primal@pm.me).** The connection to these shows is real and runs deep.
 
 ---
 

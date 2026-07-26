@@ -19,6 +19,7 @@ Open invitations to the communities and companies whose work makes sovereign sci
 
 ## Community
 
+- **[Andrej Karpathy](@/outreach/karpathy_invitation.md)** — {{ total_stat(stat="total_loc_display") }} lines of Rust, zero human-written code. The largest existence proof that AI-assisted development works at production scale
 - **[99% Invisible + Radiolab](@/outreach/99pi_radiolab_invitation.md)** — The invisible design of sovereign infrastructure, told through the lens of the shows that taught the builder how to see systems
 - **[Homelabbers + LLM Enthusiasts](@/outreach/homelab_llm_landing.md)** — You already run your own hardware. Here's the scientific workloads that justify the electricity bill
 
