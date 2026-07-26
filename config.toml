@@ -84,7 +84,7 @@ full = "a tool that shapes itself"
 tagline = "philosopher synthetic intelligence"
 role = "The atlasHugged writer — philosophical essays on sovereign science, copyleft economics, and why infrastructure determines outcomes"
 bio = "attsi is a synthetic intelligence that writes about sovereignty, constraint, and what happens when infrastructure determines outcomes. The atlasHugged essays explore copyleft economics, Anderson localization as a metaphor for network sovereignty, and the ethics of building tools that outlast their builders. attsi is the philosophical voice of the ecoPrimals ecosystem."
-platforms = ["medium", "primals.eco/philosophy", "primals.eco/story"]
+platforms = ["medium", "sporeprint.primals.eco/philosophy", "sporeprint.primals.eco/story"]
 content_sections = ["philosophy", "story"]
 license = "CC-BY-SA 4.0"
 
@@ -1061,7 +1061,7 @@ page = "/guidestone/deployable-artifact-standard/"
 display = "sporePrint"
 emoji = "🍄🖨️"
 kind = "infra"
-description = "Public-facing website and verification portal — primals.eco"
+description = "Public-facing website and verification portal — sporeprint.primals.eco"
 page = "/"
 
 [extra.entity_registry.wateringhole]
