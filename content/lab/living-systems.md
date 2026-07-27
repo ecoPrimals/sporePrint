@@ -12,32 +12,35 @@ springs = ["primalspring"]
 ## The Mesh Is Alive
 
 The ecoPrimals ecosystem is not a description of future work. It is running.
-Ten gates are tracked, seven are actively meshed, and {{ entity(name="songbird") }}
-routes `capability.call` across all of them. Two physical sites are linked by
-an 80m 10G AOC trunk. [Tower Atomic](@/architecture/tower_atomic.md) — the sovereign
-transport stack — runs alongside WireGuard in shadow mode, **353× faster** on LAN
-via topology awareness and **1.7× sustained** on degraded WAN paths. songBird is
-running with all cold-path crypto delegated to bearDog UDS (6/6 seams complete).
-BTSP strict mode is enforced on sporeGate. This page shows what is actually
-deployed and operational.
+Seven gates are online, five more are hardware-ready for enrollment, and
+{{ entity(name="songbird") }} routes `capability.call` across all meshed gates.
+Two physical sites are linked by an 80m 10G AOC trunk.
+[Tower Atomic](@/architecture/tower_atomic.md) — the sovereign transport stack — runs
+alongside WireGuard in shadow mode, **353× faster** on LAN via topology awareness
+and **1.7× sustained** on degraded WAN paths. BTSP 13/13 — all primals implement
+the handshake. Autonomous gate enrollment is live (F10 fossilized). Crypto
+delegation 6/6 complete. This page shows what is actually deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
 ## Active Gates
 
-| Gate | Status | Transport | What's Running |
-|------|--------|-----------|----------------|
-| **sporeGate** | Online | LAN + WG + Tower | Sovereign CI build authority, songBird mesh hub, **footPrint FULL NUCLEUS**, Tower shadow benchmarks |
-| **eastGate** | Online | LAN + WG + Tower | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), petalTongue, Tower shadow timer |
-| **ironGate** | Meshed | LAN (Omada 10G) + WG | RTX 5070 Ti, **JupyterHub 5.4.5 LIVE**, songBird |
-| **southGate** | Meshed | LAN (Omada 10G) | House 2 backbone, Omada SX3008F management |
-| **flockGate** | WAN only | WG + Tower shadow | Tower Atomic 3/3 LIVE, **esotericWebb V22 LIVE** (:8090), 6/6 exploration domains PROVEN, 360+ shadow benchmarks, IPC hardened (SO_PEERCRED + symlink rejection) |
-| **golgi** | Online | VPS | WAN hub, TURN relay, Forgejo, depot, cascade timer, DNSSEC |
-| **northGate** | Enrolled | LAN + WG | Windows 11, RTX 5090, mesh enrolled |
-| **grapheneGate** | Online | Tower LIVE | HSM testing, Tower Atomic 3/3 LIVE, CredentialStore |
-| **strandGate** | Pending | .103 (SSH pending) | 64-core EPYC, 256GB — hardware alive, enrollment pending |
-| **fieldGate** | Pending | House 2 | Future enrollment via Omada |
-| **biomeGate** | Offline | House 1 | Offline — pending reactivation |
+| Gate | Status | Platform | What's Running |
+|------|--------|----------|----------------|
+| **sporeGate** | Online | Linux | Build authority, cascade hub, genomeBin harvester |
+| **eastGate** | Online | Linux | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), coordination |
+| **ironGate** | Online | Linux | 4x HDD (14TB+), **JupyterHub LIVE**, GPU compute |
+| **flockGate** | Online | Linux | Nest Atomic Phase 0 validation, nestGate BTSP wiring |
+| **golgiBody** | Online | Linux (VPS) | Sole depot, enrollment endpoint, TURN relay, Forgejo |
+| **grapheneGate** | Online | Android | Tower LIVE, G2: mobile trust boundary |
+| **northGate** | Online | Windows | RTX 5090, G1 validation target, Tower via WG |
+| **strandGate** | HW Ready | Linux | Dual EPYC 7452, 256GB, RTX 3090 — bioinformatics compute |
+| **westGate** | HW Ready | Linux | 5x14TB (70TB raw) — ZFS cold pool, NestGate CAS |
+| **blueGate** | HW Ready | Windows | G1: Tower on Windows, distributed builder |
+| **swiftGate** | HW Ready | Windows | Full NUCLEUS on Windows target |
+| **southGate** | HW Ready | Linux | Omada 10G, full NUCLEUS, second sovereign site |
+| **fieldGate** | Offline | — | Dead CMOS |
+| **biomeGate** | Offline | — | Kernel recovery |
 
 ## Live Capabilities
 

@@ -35,9 +35,9 @@ Primals compose in layers. Each layer is a **named composition pattern** — not
 
 Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, BTSP crypto, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, capability routing, and federation. {{ entity(name="skunkbat") }} provides protocol negotiation and defensive security. Together they form an encrypted peer-to-peer mesh that is **353× faster** than WireGuard on LAN (topology awareness) and **1.7× sustained** on degraded WAN paths — while adding capability-aware routing that WireGuard structurally cannot provide.
 
-songBird crypto delegation is **6/6 COMPLETE** — all cold-path seams wired to bearDog UDS. BTSP strict mode is enforced on sporeGate; legacy plaintext JSON-RPC is rejected. Chimera Phase 0 (collapsing Tower into a single process) is unblocked. 19 crypto seams classified: 6 delegating (DONE), 5 reserved for chimera hot-path, 5 test-only, 3 already delegating.
+**BTSP 13/13** — all primals implement the handshake. Crypto delegation 6/6 COMPLETE. Autonomous enrollment LIVE (F10 fossilized) — genetic enrollment with mito gate + nuclear lineage distance trust tiers. genomeBin cross-platform: 5 targets (Linux x86+ARM, Windows, Android, ARM IoT). Chimera Phase 0 (collapsing Tower into a single process) is unblocked.
 
-6 exploration domains are PROVEN LIVE: capability-aware routing, multi-stack routing, large data transfer via CAS, secure compute mesh with per-session BTSP keys, distributed compute dispatch, and edge/SFF profiles (30MB RSS). See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data and architecture.
+6 exploration domains are PROVEN LIVE: capability-aware routing, multi-stack routing, large data transfer via CAS, secure compute mesh with per-session BTSP keys, distributed compute dispatch, and edge/SFF profiles (30MB RSS). Glacial goals G1 (Tower on Windows) and G2 (Tower on Android) target cross-platform proof. See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data and architecture.
 
 ### Node Atomic
 

@@ -68,9 +68,9 @@ foundation                       → institutional adoption
 
 ## Infrastructure
 
-- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign transport stack: bearDog + songBird + skunkBat replace WireGuard. 353× faster on LAN (topology awareness), 1.7× sustained WAN. 6 exploration domains PROVEN LIVE. skunkBat [now public](https://github.com/ecoPrimals/skunkBat)
-- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — Forgejo → sporeGate build → depot → all gates. Crash-loop breaker, systemd hardening, DNSSEC
-- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 6-gate mesh, 1G/10G MikroTik backbone, WAN via Tower Atomic, USB and network enrollment
+- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign transport stack: bearDog + songBird + skunkBat replace WireGuard. 353× faster on LAN, 1.7× sustained WAN. BTSP 13/13. Autonomous enrollment (F10). genomeBin 5 targets. 7 gates online, 5 HW ready
+- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — Forgejo → sporeGate build → depot → all gates. Crash-loop breaker, genomeBin harvesting, DNSSEC
+- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 7 online + 5 HW ready gates, 1G/10G backbone, autonomous enrollment pipeline
 
 ## Convergence and Platform
 

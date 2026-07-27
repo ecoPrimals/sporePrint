@@ -63,30 +63,40 @@ When songBird is unavailable, the visualization gracefully degrades to static to
 
 ## Enrolled Gates
 
-| Gate | Mesh IP | Role | Transport | Status |
-|------|---------|------|-----------|--------|
-| golgiBody | 10.13.37.1 | WAN hub, TURN relay, Forgejo, depot, DNSSEC | VPS | LIVE |
-| sporeGate | 10.13.37.2 | Build authority, HPC interface, benchmark driver | LAN + WG + Tower | LIVE (shadow) |
-| eastGate | 10.13.37.5 | Code hub, primalSpring overwatch | LAN + WG + Tower | LIVE (shadow) |
-| flockGate | 10.13.37.6 | WAN, Tower primal teams, esotericWebb | WG + Tower | LIVE (6/6 domains) |
-| northGate | 10.13.37.8 | Windows 11, RTX 5090 | LAN + WG | Enrolled |
-| grapheneGate | — | HSM testing, CredentialStore | Tower | LIVE |
-| ironGate | 10.13.37.7 | GPU compute (RTX 5070 Ti), JupyterHub | LAN (Omada 10G) + WG | LIVE |
-| southGate | — | House 2 backbone | LAN (Omada 10G) | Meshed |
-| strandGate | — | CPU compute (64-core EPYC) | LAN (pending enrollment) | Pending |
-| fieldGate | — | Future House 2 compute | LAN (pending) | Pending |
-| biomeGate | — | Offline | House 1 | Offline |
+| Gate | Platform | Role | Status |
+|------|----------|------|--------|
+| **golgiBody** | Linux (VPS) | Sole depot, enrollment endpoint, TURN relay, Forgejo, DNSSEC | **ONLINE** |
+| **sporeGate** | Linux | Build authority, genomeBin harvester, cascade hub | **ONLINE** |
+| **eastGate** | Linux | Code hub, overwatch, coordination | **ONLINE** |
+| **ironGate** | Linux | 4x HDD (14TB+), JupyterHub, GPU compute | **ONLINE** |
+| **flockGate** | Linux | Nest Atomic Phase 0 validation, nestGate BTSP | **ONLINE** |
+| **grapheneGate** | Android | Tower LIVE, G2: mobile trust boundary | **ONLINE** |
+| **northGate** | Windows | RTX 5090, G1: Tower on Windows validation | **ONLINE** |
+| **strandGate** | Linux | Dual EPYC 7452, 256GB, RTX 3090 — bioinformatics compute | **HW READY** |
+| **westGate** | Linux | 5x14TB (70TB raw) — ZFS cold pool, NestGate CAS | **HW READY** |
+| **blueGate** | Windows | Flint2 2.5G — distributed builder, G1 proof | **HW READY** |
+| **swiftGate** | Windows | Flint2 2.5G — full NUCLEUS on Windows | **HW READY** |
+| **southGate** | Linux | Omada 10G — second sovereign site | **HW READY** |
+| fieldGate | — | Dead CMOS | Offline |
+| biomeGate | — | Kernel recovery | Offline |
 
 ### Physical Topology
 
 ```
-House 1 (CRS310 backbone):
+House 1 (CRS310 backbone — 1G MikroTik):
   sporeGate, eastGate, northGate, biomeGate(offline)
 
-House 2 (Omada SX3008F):
-  ironGate, southGate, strandGate(pending), fieldGate
+House 2 (Omada SX3008F — 10G):
+  ironGate, strandGate(HW ready), westGate(HW ready),
+  blueGate(HW ready), swiftGate(HW ready),
+  southGate(HW ready), fieldGate(offline)
 
 Link: 80m 10G AOC trunk between adjacent lots
+
+Remote:
+  golgiBody (VPS — sole depot)
+  flockGate (WAN — Tower primal teams)
+  grapheneGate (Android — mobile)
 ```
 
 ## Key Invariants
@@ -98,15 +108,16 @@ Link: 80m 10G AOC trunk between adjacent lots
 
 ## Topology Evolution
 
-The mesh grows by enrollment:
+The mesh grows by autonomous enrollment (F10 fossilized):
 
 ```
 New hardware arrives
-  → Install NUCLEUS (cascade from depot)
-  → songBird starts, calls peer.connect to known seeds
-  → Bilateral BTSP exchange establishes trust
-  → primal.announce registers capabilities
-  → Mesh absorbs — routing tables updated across all peers
+  → gate-enroll.sh (Linux) or gate-enroll.ps1 (Windows)
+  → WG peer registered, Forgejo SSH key, family seed delivered
+  → Clone 43+ repos from Forgejo over mesh
+  → membrane gate.bootstrap → fetch genomeBins from golgiBody depot
+  → primalSpring scenarios pass → head published → ONLINE
+  → Self-registration — gates declare name + composition
 ```
 
 strandGate (64-core EPYC, 256GB, House 2) will follow this pattern once SSH

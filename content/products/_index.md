@@ -29,8 +29,8 @@ Tested, versioned, running on live infrastructure. Instructions available.
 |---------|--------|-------|
 | **[footPrint](@/products/footprint.md)** | GIS home planning | [footprint.primals.eco](https://footprint.primals.eco) |
 | **[esotericWebb](@/products/esotericWebb.md)** | Cross-evolution CRPG | [webb.primals.eco](https://webb.primals.eco) (V22) |
-| **[Tower Atomic](@/architecture/tower_atomic.md)** | Sovereign encrypted mesh | 6 gates, 353× LAN throughput advantage, 1.7× WAN sustained |
-| **{{ entity(name="cellmembrane") }}** | VPS control plane | All gates — crash-loop breaker, systemd hardening |
+| **[Tower Atomic](@/architecture/tower_atomic.md)** | Sovereign encrypted mesh | 7 gates online, BTSP 13/13, 353× LAN, genomeBin 5 targets |
+| **{{ entity(name="cellmembrane") }}** | VPS control plane | All gates — autonomous enrollment, crash-loop breaker, cross-platform nucleus |
 
 ---
 

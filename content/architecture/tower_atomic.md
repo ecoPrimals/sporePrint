@@ -27,8 +27,10 @@ Together they provide encrypted peer-to-peer communication that replaces WireGua
 ```
 
 This is the first **atomic** composition — three primals bonded via JSON-RPC over
-UNIX domain sockets, running as independent systemd services, forming a single
-capability: sovereign encrypted mesh networking.
+IPC sockets (UDS on Linux, named pipes on Windows, abstract sockets on Android),
+running as independent services, forming a single capability: sovereign
+encrypted mesh networking. BTSP 13/13 — all primals implement the handshake.
+Tower runs on 7 gates, with 5 more hardware-ready for enrollment.
 
 ## Why replace WireGuard?
 
@@ -166,22 +168,29 @@ specialize its overhead for small hardware.
 | Phase 2 | Shadow deploy across all live topology + exploration | **COMPLETE** — 6/6 domains PROVEN LIVE |
 | Phase 3 | Cutover: Tower replaces WG for inter-gate traffic | Pending Phase 2 validation |
 
-## Mesh enrollment
+## Autonomous enrollment (F10 — fossilized)
 
-Gates join the Tower mesh via HMAC-verified enrollment:
+Gates self-enroll into the Tower mesh via genetic enrollment — a two-layer
+model mirroring biological DNA:
 
 ```
-Enrolling gate computes:
-  proof = HMAC-SHA256(family_seed, node_id|public_key|timestamp)
+Layer 1 — Mitochondrial gate:
+  FAMILY_SEED HMAC → gate identity
 
-Sends to hub gate:
-  mesh.enroll { node_id, public_key, timestamp, proof, address }
+Layer 2 — Nuclear lineage distance:
+  tree hops → trust tiers (identity/kin/sibling/extended/distant)
+  seed rotation via HKDF hierarchy, generation-based with grace period
 
-Hub verifies via bearDog:
-  songBird → enrollment.verify → bearDog (HMAC check)
-
-On success: node persisted to peers.toml, added to live mesh.
+Enrollment pipeline:
+  gate-enroll.sh (Linux) or gate-enroll.ps1 (Windows)
+  → WG peer registered, Forgejo SSH key, family seed
+  → clone 43+ repos from Forgejo over mesh
+  → membrane gate.bootstrap → fetch genomeBins from depot
+  → primalSpring scenarios pass → head published → online
 ```
+
+Self-registration — gates declare name + composition. golgiBody is the sole
+depot. No USB, no SCP, no local depots. `mesh.gate_enroll` live on golgiBody.
 
 ## Shadow deployment
 
@@ -241,9 +250,31 @@ songBird's IPC layer has been hardened with 4 security controls:
 Credential extraction is wired into the connection handler — every IPC call
 carries `CallerContext` with the caller's uid and pid.
 
-## What comes next
+## Cross-platform proof (genomeBin)
+
+Tower targets 5 platforms via genomeBin cross-platform distribution:
+
+| Target | Architecture | Status |
+|--------|-------------|--------|
+| Linux x86_64 | Server/desktop | **LIVE** — all gates |
+| Linux aarch64 | ARM (Pi, NUC) | **LIVE** — edge/SFF |
+| Windows x86_64 | Desktop/builder | **HW READY** — blueGate, swiftGate |
+| Android aarch64 | Mobile | **HW READY** — grapheneGate |
+| ARM IoT | Embedded | Target defined |
+
+songBird's `universal-ipc` module handles platform-specific IPC:
+UDS (Linux), named pipes (Windows), abstract sockets (Android),
+XPC (iOS), TCP (fallback). cellMembrane's `Platform::detect()` provides
+`TargetOs × CpuArch × LinkModel` for each gate.
+
+## Glacial goals
+
+| # | Goal | What It Proves |
+|---|------|---------------|
+| G1 | Tower on Windows | OS abstraction (IPC, service management, paths) |
+| G2 | Tower on Android | Mobile trust boundary |
+| G5 | Chimera Phase 0 | `libtower.so` shared library extraction |
 
 **Chimera optimization**: Collapsing bearDog + songBird + skunkBat into a single
 process eliminates 3-6 UDS hops per operation. Estimated LAN latency improvement:
-12× (from ~0.6ms to ~0.05ms). This is a {{ entity(name="biomeos") }} design task —
-library extraction from each primal to enable in-process composition.
+12× (from ~0.6ms to ~0.05ms). The `beardog-core` crate extraction is the first step.

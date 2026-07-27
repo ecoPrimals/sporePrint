@@ -140,7 +140,7 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - **Springs**: Validation domains (wetSpring=biology, hotSpring=physics, etc.)
 - **NUCLEUS**: Full composition of primals running on a single machine
 - **Atomics**: Minimum viable compositions (Tower, Node, Nest, Relay)
-- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). skunkBat now public. bearDog remains private (crypto root of trust, pending pen-test validation). Crypto delegation 6/6 COMPLETE. BTSP strict mode LIVE on sporeGate
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). BTSP 13/13. Autonomous enrollment LIVE (F10). genomeBin cross-platform: 5 targets (Linux x86+ARM, Windows, Android, ARM IoT). Crypto delegation 6/6 COMPLETE. skunkBat public. Chimera Phase 0 unblocked
 - **K-Derm**: Diderm (two-membrane) deployment architecture
 - **BearDog**: Sovereign TLS, BTSP crypto, enrollment verification (pure Rust, no OpenSSL)
 - **SongBird**: Mesh networking, capability-aware routing, TURN relay, drawbridge HTTP bridge
@@ -166,16 +166,18 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 - 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
-- 104,989+ tests across ecosystem (15 primals + 9 springs)
-- 197 validation scenarios (7 stress + 7 pen tests), 2 known debt
+- 93,700+ tests across ecosystem (15 primals + 9 springs)
+- 197 validation scenarios, all PASS. 10 fossilized dimensions
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- 59 depot binaries across 4 architectures (16 x86_64 Linux, 16 aarch64 Linux, 13 aarch64 Android, 14 x86_64 Windows)
-- Tower Atomic proven: 353× LAN (topology awareness + LAN dispatch priority), 1.7× sustained WAN, 6/6 exploration domains LIVE, 360+ shadow benchmark files. Crypto delegation 6/6 COMPLETE. BTSP strict mode on sporeGate
+- genomeBin 5 targets (Linux x86+ARM, Windows, Android, ARM IoT), golgiBody sole depot
+- 7 gates ONLINE, 5 HW READY (strandGate, westGate, blueGate, swiftGate, southGate)
+- Tower Atomic proven: 353× LAN, 1.7× sustained WAN, 6/6 exploration domains, BTSP 13/13, autonomous enrollment (F10)
 - Sovereign CI: Forgejo → sporeGate build → depot → all gates (no external CI)
-- Phase 2 transport abstraction complete: all 14 primals cross-compile for all 4 targets
+- Phase 2 transport abstraction complete: all 14 primals cross-compile for all targets
 - Content-Addressed Convergence: all 6 layers complete
 - DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)
+- Glacial goals: G1 Windows, G2 Android, G3 Nest Atomic, G5 Chimera, G6 bearDog public, G9 JOSS
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
 
