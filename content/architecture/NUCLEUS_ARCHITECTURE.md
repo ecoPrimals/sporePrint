@@ -44,7 +44,27 @@ Tower is the foundation of all networked communication. {{ entity(name="beardog"
 **Composition**: Tower Atomic + {{ entity(name="nestgate") }} + Provenance Trio ({{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }})
 **What emerges**: Content-addressed storage with cryptographic provenance
 
-Nest Atomic is the first **multi-composition deployment** — 8 services running simultaneously, with {{ entity(name="biomeos") }} auto-discovering **1,704 capabilities** across all primals. westGate runs ZFS (25.4TB mirrors + 2TB SSD L2ARC) with all 5 storage tiers operational. 6 PDB protein structures stored in CAS with dedup verified. The Provenance Trio triangle is **CLOSED** — sweetGrass G3 wiring complete (v0.8.0), enabling braid.commit → loamSpine ledger proof for cross-gate provenance chains.
+Nest Atomic is **LIVE on two gates** — westGate (Linux, ZFS 25.4TB, 3,216 CAS objects) and blueGate (Windows, 10/10 primals, 107.6 MB, TCP-only). {{ entity(name="biomeos") }} serves as composition broker with **704 capabilities COORDINATED** on westGate. The Provenance Trio is **6/7** — sweetGrass G3 wiring complete, bearDog `crypto.sign_ed25519` blocks the final step.
+
+### Node Atomic — **VALIDATED ON STRANDGATE**
+
+**Composition**: Tower Atomic + {{ entity(name="toadstool") }} + {{ entity(name="barracuda") }} + {{ entity(name="coralreef") }}
+**What emerges**: GPU-accelerated distributed scientific compute
+
+Node Atomic has been validated on strandGate (Dual EPYC 7452, 256GB, RTX 3090) — **746 pipelines/sec**, 450 methods registered. The Compute Trio runs FP64 on both RTX 3090 and RX 6950 XT with 100% pass rate. 3 signal graphs defined.
+
+### NUCLEUS — **NEXT MILESTONE**
+
+All three atomics are now proven independently:
+
+| Composition | Primals | Gates | Status |
+|-------------|---------|-------|--------|
+| Tower | 3 (bearDog + songBird + skunkBat) | 6 gates | LIVE |
+| Nest | 7 (Tower + nestGate + Provenance Trio) | 2 gates | LIVE |
+| Node | 6 (Tower + Compute Trio) | 1 gate | VALIDATED |
+| **NUCLEUS** | **13 (all)** | — | **NEXT** |
+
+The gap is not the primals — it's the orchestration. All 13 primals compile, pass tests, and run independently. What remains is {{ entity(name="biomeos") }} evolving from composition broker to **composition lifecycle manager**: startup ordering, health gating, composition transitions, and signal-graph-driven orchestration across all atomics. **ZERO P0s remain.**
 
 ### Node Atomic
 

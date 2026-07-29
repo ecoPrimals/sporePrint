@@ -29,9 +29,10 @@ Tested, versioned, running on live infrastructure. Instructions available.
 |---------|--------|-------|
 | **[footPrint](@/products/footprint.md)** | GIS home planning | [footprint.primals.eco](https://footprint.primals.eco) |
 | **[esotericWebb](@/products/esotericWebb.md)** | Cross-evolution CRPG | [webb.primals.eco](https://webb.primals.eco) (V22) |
-| **[Tower Atomic](@/architecture/tower_atomic.md)** | Sovereign encrypted mesh | 8+ gates online, BTSP 13/13, 353× LAN, genomeBin 39 binaries |
-| **[Nest Atomic](@/architecture/NUCLEUS_ARCHITECTURE.md)** | Content-addressed storage + provenance | LIVE on westGate: 8 services, 1,704 capabilities, ZFS 25.4TB, Provenance Trio CLOSED |
-| **{{ entity(name="cellmembrane") }}** | Deployment fabric | All gates — autonomous enrollment, crash-loop breaker, glibc auto-target |
+| **[Tower Atomic](@/architecture/tower_atomic.md)** | Sovereign encrypted mesh | 6 gates LIVE, BTSP 13/13, 353× LAN |
+| **[Nest Atomic](@/architecture/NUCLEUS_ARCHITECTURE.md)** | Content-addressed storage + provenance | westGate (ZFS, 3,216 CAS) + blueGate (Windows, 10/10) |
+| **[Node Atomic](@/architecture/NUCLEUS_ARCHITECTURE.md)** | GPU-accelerated distributed compute | strandGate VALIDATED: RTX 3090, 746 pipelines/sec |
+| **{{ entity(name="cellmembrane") }}** | Deployment fabric | All gates — autonomous enrollment, glibc auto-target |
 
 ---
 

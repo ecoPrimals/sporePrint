@@ -12,15 +12,13 @@ springs = ["primalspring"]
 ## The Mesh Is Alive
 
 The ecoPrimals ecosystem is not a description of future work. It is running.
-Eight gates are online, with more hardware-ready for enrollment. {{ entity(name="songbird") }}
-routes `capability.call` across all meshed gates — **1,704 capabilities** auto-discovered
-on westGate alone. Two physical sites are linked by an 80m 10G AOC trunk.
-[Tower Atomic](@/architecture/tower_atomic.md) runs alongside WireGuard, **353× faster**
-on LAN via topology awareness and **1.7× sustained** on degraded WAN paths.
-**Nest Atomic is LIVE on westGate** — the first multi-composition deployment
-(8 services, ZFS 25.4TB + 2TB L2ARC, all 5 storage tiers, 6 PDB protein structures
-in CAS). Provenance Trio triangle CLOSED (sweetGrass G3 wired). BTSP 13/13.
-This page shows what is actually deployed and operational.
+Ten gates are online across two physical sites linked by an 80m 10G AOC trunk.
+All three atomic compositions are **proven independently** — Tower (6 gates),
+Nest (2 gates, including Windows), and Node (1 gate, RTX 3090). {{ entity(name="biomeos") }}
+serves as composition broker with **704 capabilities COORDINATED** on westGate.
+**ZERO P0s remain.** The next milestone is the first full NUCLEUS deployment —
+all 13 primals orchestrated by biomeOS on a single gate. This page shows what
+is actually deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
