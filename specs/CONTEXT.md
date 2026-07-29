@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 27, 2026 — Wave 155b)
+## Current State (July 29, 2026 — Wave 155i)
 
 - **313 published pages** across 17 sections, organized into 5 cortical folds
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
@@ -17,11 +17,13 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **~110 pages** carry companion metadata for cross-domain discovery
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals** (155b refresh): 3.60M LOC, 93,700 tests (15 primals + 9 springs), 43 repos, genomeBin 5 targets
-- **Tower Atomic PROVEN**: bearDog + songBird + skunkBat exceed WireGuard — 353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained on degraded WAN. 6/6 exploration domains PROVEN LIVE. 360+ shadow benchmark files. BTSP 13/13. Crypto delegation 6/6 COMPLETE. Autonomous enrollment LIVE (F10 fossilized). genomeBin cross-platform: 5 targets. skunkBat public. Chimera Phase 0 unblocked
-- **197 validation scenarios**: all PASS. 10 fossilized dimensions
-- **7 gates ONLINE** (sporeGate, eastGate, ironGate, flockGate, golgiBody, grapheneGate, northGate), **5 HW READY** (strandGate, westGate, blueGate, swiftGate, southGate)
-- **Glacial goals**: G1 Tower on Windows, G2 Tower on Android, G3 Nest Atomic Phase 0, G5 Chimera, G6 bearDog public, G7 gate enmeshment, G9 JOSS
+- **Ecosystem totals** (155i refresh): 3.60M LOC, 106,791 tests (15 primals + 9 springs), 43 repos, genomeBin 5 targets, 39 depot binaries
+- **Tower Atomic PROVEN**: 353× LAN, 1.7× sustained WAN, 6/6 exploration domains, BTSP 13/13, autonomous enrollment (F10). LIVE on 8+ gates
+- **Nest Atomic LIVE on westGate**: first multi-composition — 8 services, 1,704 capabilities auto-discovered, ZFS 25.4TB + 2TB L2ARC, all 5 storage tiers, 6 PDBs in CAS. Provenance Trio CLOSED (sweetGrass G3 v0.8.0). G3 LIVE
+- **strandGate Tower + Compute Trio LIVE**: toadStool + barraCuda + coralReef deployed, RTX 3090
+- **197 validation scenarios**: all PASS. 10 fossilized dimensions. 27 signal graphs
+- **8+ gates ONLINE** (sporeGate, eastGate, ironGate, flockGate, golgiBody, grapheneGate, northGate, westGate, strandGate, blueGate, swiftGate)
+- **Glacial goals**: G3 Nest Atomic **LIVE**, G7 gate enmeshment **ADVANCING**, G1 Tower on Windows FRONTLOADED, G6 bearDog public READY
 - **Sovereign CI pipeline**: Forgejo → sporeGate build → depot → all gates. No GitHub Actions
 - **Crash-loop breaker**: cellMembrane `gate.crash-loop` — self-recovery shipped
 - **DNSSEC**: all 3 domains signed (primals.eco, primal.eco, nestgate.io)

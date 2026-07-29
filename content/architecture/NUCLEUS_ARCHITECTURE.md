@@ -35,9 +35,16 @@ Primals compose in layers. Each layer is a **named composition pattern** — not
 
 Tower is the foundation of all networked communication. {{ entity(name="beardog") }} provides Ed25519 identity, key management, BTSP crypto, and genetic lineage trust. {{ entity(name="songbird") }} provides mesh networking, peer discovery, capability routing, and federation. {{ entity(name="skunkbat") }} provides protocol negotiation and defensive security. Together they form an encrypted peer-to-peer mesh that is **353× faster** than WireGuard on LAN (topology awareness) and **1.7× sustained** on degraded WAN paths — while adding capability-aware routing that WireGuard structurally cannot provide.
 
-**BTSP 13/13** — all primals implement the handshake. Crypto delegation 6/6 COMPLETE. Autonomous enrollment LIVE (F10 fossilized) — genetic enrollment with mito gate + nuclear lineage distance trust tiers. genomeBin cross-platform: 5 targets (Linux x86+ARM, Windows, Android, ARM IoT). Chimera Phase 0 (collapsing Tower into a single process) is unblocked.
+**BTSP 13/13** — all primals implement the handshake. Crypto delegation 6/6 COMPLETE. Autonomous enrollment LIVE (F10 fossilized). genomeBin 5 targets. Tower LIVE on 8+ gates including westGate (Nest Atomic) and strandGate (Compute Trio).
 
-6 exploration domains are PROVEN LIVE: capability-aware routing, multi-stack routing, large data transfer via CAS, secure compute mesh with per-session BTSP keys, distributed compute dispatch, and edge/SFF profiles (30MB RSS). Glacial goals G1 (Tower on Windows) and G2 (Tower on Android) target cross-platform proof. See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data and architecture.
+6 exploration domains are PROVEN LIVE. See [Tower Atomic](@/architecture/tower_atomic.md) for full benchmark data.
+
+### Nest Atomic — **LIVE ON WESTGATE**
+
+**Composition**: Tower Atomic + {{ entity(name="nestgate") }} + Provenance Trio ({{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }})
+**What emerges**: Content-addressed storage with cryptographic provenance
+
+Nest Atomic is the first **multi-composition deployment** — 8 services running simultaneously, with {{ entity(name="biomeos") }} auto-discovering **1,704 capabilities** across all primals. westGate runs ZFS (25.4TB mirrors + 2TB SSD L2ARC) with all 5 storage tiers operational. 6 PDB protein structures stored in CAS with dedup verified. The Provenance Trio triangle is **CLOSED** — sweetGrass G3 wiring complete (v0.8.0), enabling braid.commit → loamSpine ledger proof for cross-gate provenance chains.
 
 ### Node Atomic
 

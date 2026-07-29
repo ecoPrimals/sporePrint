@@ -12,14 +12,15 @@ springs = ["primalspring"]
 ## The Mesh Is Alive
 
 The ecoPrimals ecosystem is not a description of future work. It is running.
-Seven gates are online, five more are hardware-ready for enrollment, and
-{{ entity(name="songbird") }} routes `capability.call` across all meshed gates.
-Two physical sites are linked by an 80m 10G AOC trunk.
-[Tower Atomic](@/architecture/tower_atomic.md) — the sovereign transport stack — runs
-alongside WireGuard in shadow mode, **353× faster** on LAN via topology awareness
-and **1.7× sustained** on degraded WAN paths. BTSP 13/13 — all primals implement
-the handshake. Autonomous gate enrollment is live (F10 fossilized). Crypto
-delegation 6/6 complete. This page shows what is actually deployed and operational.
+Eight gates are online, with more hardware-ready for enrollment. {{ entity(name="songbird") }}
+routes `capability.call` across all meshed gates — **1,704 capabilities** auto-discovered
+on westGate alone. Two physical sites are linked by an 80m 10G AOC trunk.
+[Tower Atomic](@/architecture/tower_atomic.md) runs alongside WireGuard, **353× faster**
+on LAN via topology awareness and **1.7× sustained** on degraded WAN paths.
+**Nest Atomic is LIVE on westGate** — the first multi-composition deployment
+(8 services, ZFS 25.4TB + 2TB L2ARC, all 5 storage tiers, 6 PDB protein structures
+in CAS). Provenance Trio triangle CLOSED (sweetGrass G3 wired). BTSP 13/13.
+This page shows what is actually deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
@@ -27,20 +28,20 @@ delegation 6/6 complete. This page shows what is actually deployed and operation
 
 | Gate | Status | Platform | What's Running |
 |------|--------|----------|----------------|
-| **sporeGate** | Online | Linux | Build authority, cascade hub, genomeBin harvester |
-| **eastGate** | Online | Linux | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), coordination |
-| **ironGate** | Online | Linux | 4x HDD (14TB+), **JupyterHub LIVE**, GPU compute |
-| **flockGate** | Online | Linux | Nest Atomic Phase 0 validation, nestGate BTSP wiring |
-| **golgiBody** | Online | Linux (VPS) | Sole depot, enrollment endpoint, TURN relay, Forgejo |
+| **sporeGate** | Online | Linux | Build authority, genomeBin harvester, depot rebuild |
+| **eastGate** | Online | Linux | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), biomeOS evolution |
+| **westGate** | **Nest Atomic LIVE** | Linux | **8 services, 1,704 capabilities, ZFS 25.4TB + 2TB L2ARC, 6 PDBs in CAS** |
+| **strandGate** | **Tower+Compute LIVE** | Linux | Dual EPYC 7452, 256GB, RTX 3090, Compute Trio deployed |
+| **ironGate** | Online | Linux | 4x HDD (14TB+), HDD enclave experiment |
+| **flockGate** | Online | Linux | Nest Atomic validation |
+| **golgiBody** | Online | Linux (VPS) | Sole depot (39 genomeBins), enrollment endpoint, Forgejo |
+| **northGate** | Online | Windows | RTX 5090, AlphaFold source (~1TB), G1 target |
 | **grapheneGate** | Online | Android | Tower LIVE, G2: mobile trust boundary |
-| **northGate** | Online | Windows | RTX 5090, G1 validation target, Tower via WG |
-| **strandGate** | HW Ready | Linux | Dual EPYC 7452, 256GB, RTX 3090 — bioinformatics compute |
-| **westGate** | HW Ready | Linux | 5x14TB (70TB raw) — ZFS cold pool, NestGate CAS |
-| **blueGate** | HW Ready | Windows | G1: Tower on Windows, distributed builder |
-| **swiftGate** | HW Ready | Windows | Full NUCLEUS on Windows target |
-| **southGate** | HW Ready | Linux | Omada 10G, full NUCLEUS, second sovereign site |
-| **fieldGate** | Offline | — | Dead CMOS |
-| **biomeGate** | Offline | — | Kernel recovery |
+| **blueGate** | Online | Windows | G1: Tower on Windows, peptidoglycan anchor H2 |
+| **swiftGate** | Online | Windows | G1: Tower on Windows |
+| **southGate** | HW Ready | Linux | Omada 10G, enrollment pending |
+| fieldGate | Offline | — | Dead CMOS |
+| biomeGate | Offline | — | Kernel recovery |
 
 ## Live Capabilities
 

@@ -65,18 +65,18 @@ When songBird is unavailable, the visualization gracefully degrades to static to
 
 | Gate | Platform | Role | Status |
 |------|----------|------|--------|
-| **golgiBody** | Linux (VPS) | Sole depot, enrollment endpoint, TURN relay, Forgejo, DNSSEC | **ONLINE** |
-| **sporeGate** | Linux | Build authority, genomeBin harvester, cascade hub | **ONLINE** |
-| **eastGate** | Linux | Code hub, overwatch, coordination | **ONLINE** |
-| **ironGate** | Linux | 4x HDD (14TB+), JupyterHub, GPU compute | **ONLINE** |
-| **flockGate** | Linux | Nest Atomic Phase 0 validation, nestGate BTSP | **ONLINE** |
+| **golgiBody** | Linux (VPS) | Sole depot (39 genomeBins), enrollment endpoint, Forgejo, DNSSEC | **ONLINE** |
+| **sporeGate** | Linux | Build authority, genomeBin harvester, depot rebuild | **ONLINE** |
+| **eastGate** | Linux | Code hub, overwatch, biomeOS evolution | **ONLINE** |
+| **westGate** | Linux | **Nest Atomic LIVE** — 8 services, 1,704 capabilities, ZFS 25.4TB + 2TB L2ARC | **ONLINE** |
+| **strandGate** | Linux | **Tower+Compute LIVE** — Dual EPYC, 256GB, RTX 3090, Compute Trio | **ONLINE** |
+| **ironGate** | Linux | 4x HDD (14TB+), HDD enclave experiment | **ONLINE** |
+| **flockGate** | Linux | Nest Atomic validation | **ONLINE** |
 | **grapheneGate** | Android | Tower LIVE, G2: mobile trust boundary | **ONLINE** |
-| **northGate** | Windows | RTX 5090, G1: Tower on Windows validation | **ONLINE** |
-| **strandGate** | Linux | Dual EPYC 7452, 256GB, RTX 3090 — bioinformatics compute | **HW READY** |
-| **westGate** | Linux | 5x14TB (70TB raw) — ZFS cold pool, NestGate CAS | **HW READY** |
-| **blueGate** | Windows | Flint2 2.5G — distributed builder, G1 proof | **HW READY** |
-| **swiftGate** | Windows | Flint2 2.5G — full NUCLEUS on Windows | **HW READY** |
-| **southGate** | Linux | Omada 10G — second sovereign site | **HW READY** |
+| **northGate** | Windows | RTX 5090, AlphaFold source (~1TB), G1 target | **ONLINE** |
+| **blueGate** | Windows | G1: Tower on Windows, peptidoglycan anchor H2 | **ONLINE** |
+| **swiftGate** | Windows | G1: Tower on Windows | **ONLINE** |
+| **southGate** | Linux | Omada 10G — enrollment pending | **HW READY** |
 | fieldGate | — | Dead CMOS | Offline |
 | biomeGate | — | Kernel recovery | Offline |
 
@@ -85,11 +85,13 @@ When songBird is unavailable, the visualization gracefully degrades to static to
 ```
 House 1 (CRS310 backbone — 1G MikroTik):
   sporeGate, eastGate, northGate, biomeGate(offline)
+  Peptidoglycan anchor: sporeGate
 
 House 2 (Omada SX3008F — 10G):
-  ironGate, strandGate(HW ready), westGate(HW ready),
-  blueGate(HW ready), swiftGate(HW ready),
+  ironGate, strandGate(COMPUTE LIVE), westGate(NEST ATOMIC LIVE),
+  blueGate(ONLINE), swiftGate(ONLINE),
   southGate(HW ready), fieldGate(offline)
+  Peptidoglycan anchor: blueGate
 
 Link: 80m 10G AOC trunk between adjacent lots
 

@@ -30,7 +30,7 @@ This is the first **atomic** composition — three primals bonded via JSON-RPC o
 IPC sockets (UDS on Linux, named pipes on Windows, abstract sockets on Android),
 running as independent services, forming a single capability: sovereign
 encrypted mesh networking. BTSP 13/13 — all primals implement the handshake.
-Tower runs on 7 gates, with 5 more hardware-ready for enrollment.
+Tower runs on 8+ gates, including westGate (Nest Atomic) and strandGate (Compute Trio).
 
 ## Why replace WireGuard?
 
@@ -266,6 +266,20 @@ songBird's `universal-ipc` module handles platform-specific IPC:
 UDS (Linux), named pipes (Windows), abstract sockets (Android),
 XPC (iOS), TCP (fallback). cellMembrane's `Platform::detect()` provides
 `TargetOs × CpuArch × LinkModel` for each gate.
+
+## Compositions built on Tower
+
+Tower Atomic is the transport foundation for higher compositions:
+
+| Composition | What It Adds | Status |
+|-------------|-------------|--------|
+| **Nest Atomic** | {{ entity(name="nestgate") }} CAS + Provenance Trio ({{ entity(name="rhizocrypt") }}, {{ entity(name="loamspine") }}, {{ entity(name="sweetgrass") }}) | **LIVE on westGate** — 8 services, 1,704 capabilities, ZFS 25.4TB |
+| **Compute Trio** | {{ entity(name="toadstool") }} + {{ entity(name="barracuda") }} + {{ entity(name="coralreef") }} | **LIVE on strandGate** — RTX 3090, BTSP Phase 3 |
+| **NUCLEUS** | All primals composed by {{ entity(name="biomeos") }} | Architectural — 27 signal graphs designed |
+
+westGate's Nest Atomic deployment is the first **multi-composition**: Tower provides the mesh, nestGate provides content-addressed storage on ZFS (25.4TB mirrors + 2TB SSD L2ARC, all 5 storage tiers), and the Provenance Trio provides cryptographic provenance with sweetGrass G3 wiring complete (braid.commit → loamSpine ledger proof). 6 PDB protein structures stored in CAS with dedup verified.
+
+See [NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md) for the full composition ladder.
 
 ## Glacial goals
 

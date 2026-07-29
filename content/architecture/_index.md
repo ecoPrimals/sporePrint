@@ -68,9 +68,10 @@ foundation                       → institutional adoption
 
 ## Infrastructure
 
-- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign transport stack: bearDog + songBird + skunkBat replace WireGuard. 353× faster on LAN, 1.7× sustained WAN. BTSP 13/13. Autonomous enrollment (F10). genomeBin 5 targets. 7 gates online, 5 HW ready
-- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — Forgejo → sporeGate build → depot → all gates. Crash-loop breaker, genomeBin harvesting, DNSSEC
-- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 7 online + 5 HW ready gates, 1G/10G backbone, autonomous enrollment pipeline
+- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign transport stack: bearDog + songBird + skunkBat replace WireGuard. 353× LAN, 1.7× WAN. BTSP 13/13. 8+ gates online
+- **[Nest Atomic](@/architecture/NUCLEUS_ARCHITECTURE.md)** — LIVE on westGate: 8 services, 1,704 capabilities, ZFS 25.4TB + 2TB L2ARC, Provenance Trio CLOSED. First multi-composition deployment
+- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — Forgejo → sporeGate build → depot → all gates. genomeBin 39 binaries, DNSSEC
+- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 8+ gates online (westGate Nest Atomic LIVE, strandGate Compute LIVE), 1G/10G backbone
 
 ## Convergence and Platform
 

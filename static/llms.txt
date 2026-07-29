@@ -140,7 +140,8 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - **Springs**: Validation domains (wetSpring=biology, hotSpring=physics, etc.)
 - **NUCLEUS**: Full composition of primals running on a single machine
 - **Atomics**: Minimum viable compositions (Tower, Node, Nest, Relay)
-- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (353× LAN via topology awareness + LAN dispatch priority, 1.7× sustained WAN, 6 exploration domains PROVEN LIVE). BTSP 13/13. Autonomous enrollment LIVE (F10). genomeBin cross-platform: 5 targets (Linux x86+ARM, Windows, Android, ARM IoT). Crypto delegation 6/6 COMPLETE. skunkBat public. Chimera Phase 0 unblocked
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (353× LAN, 1.7× sustained WAN, 6 exploration domains). BTSP 13/13. Autonomous enrollment (F10). genomeBin 5 targets. LIVE on 8+ gates
+- **Nest Atomic**: Tower + nestGate + Provenance Trio — LIVE on westGate. First multi-composition: 8 services, 1,704 capabilities auto-discovered, ZFS 25.4TB + 2TB L2ARC, 6 PDBs in CAS. Provenance Trio CLOSED (sweetGrass G3 v0.8.0). 27 signal graphs
 - **K-Derm**: Diderm (two-membrane) deployment architecture
 - **BearDog**: Sovereign TLS, BTSP crypto, enrollment verification (pure Rust, no OpenSSL)
 - **SongBird**: Mesh networking, capability-aware routing, TURN relay, drawbridge HTTP bridge
@@ -166,13 +167,14 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 - 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
-- 93,700+ tests across ecosystem (15 primals + 9 springs)
-- 197 validation scenarios, all PASS. 10 fossilized dimensions
+- 105,568+ tests across ecosystem (15 primals + 9 springs)
+- 197 validation scenarios, all PASS. 10 fossilized dimensions. 27 signal graphs
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- genomeBin 5 targets (Linux x86+ARM, Windows, Android, ARM IoT), golgiBody sole depot
-- 7 gates ONLINE, 5 HW READY (strandGate, westGate, blueGate, swiftGate, southGate)
-- Tower Atomic proven: 353× LAN, 1.7× sustained WAN, 6/6 exploration domains, BTSP 13/13, autonomous enrollment (F10)
+- genomeBin depot: 39 binaries (13 × 3 musl targets) + glibc auto-add for GPU primals
+- 8+ gates ONLINE (westGate Nest Atomic LIVE, strandGate Compute Trio LIVE)
+- Tower Atomic proven: 353× LAN, 1.7× sustained WAN, 6/6 exploration domains, BTSP 13/13
+- Nest Atomic LIVE: 8 services, 1,704 capabilities, ZFS 25.4TB, Provenance Trio CLOSED
 - Sovereign CI: Forgejo → sporeGate build → depot → all gates (no external CI)
 - Phase 2 transport abstraction complete: all 14 primals cross-compile for all targets
 - Content-Addressed Convergence: all 6 layers complete
