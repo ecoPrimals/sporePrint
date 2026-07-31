@@ -150,7 +150,7 @@ The GPU MD pipeline uses the same mathematical substrate that ML workloads evolv
 | L1 throughput | 1008 evals / 184s | 6028 evals / 2.3s | **478x** |
 | L1 GPU energy | 5,648 J | 126 J | **44.8x less** |
 | GPU MD (9 PP cases) | Python Sarkas only | f64 WGSL on RTX 4070 | **Novel capability** |
-| DF64 vs native f64 | N/A | 9.9× throughput at 14-digit precision | **Novel discovery** |
+| DF64 vs native f64 | N/A | DF64 uses f32 ALU pairs for ~14-digit precision (measured: 2,130 matmul/sec) | **Novel technique** |
 | Lattice QCD (32⁴ SU(3)) | Not in Python stack | 10 β points, 5,900 meas, $0.61 | **Novel capability** |
 | NPU adaptive steering | Not available | 63% therm savings, 80.4% rejection pred | **Novel substrate** |
 | Cross-run learning | Not available | ESN weights bootstrap between runs | **Novel capability** |
@@ -175,7 +175,7 @@ Based on the constrained evolution framework, the next selective pressures are:
 5. **Large-N scaling**: N=10,000 MD in 5.3 min on RTX 3090 with cell-list optimization (4.1× faster). **Confirmed.**
 6. **Paper-parity long run**: 9/9 PP Yukawa cases × 80,000 steps, $0.044 total. 0.000% drift. **Confirmed.**
 7. **3D FFT pipeline**: ToadStool `Fft1DF64`/`Fft3DF64` achieved, roundtrip error 1e-10. FFT gap closed. **Confirmed.**
-8. **DF64 Core Streaming**: Discovery — 3.24 TFLOPS at 14-digit precision on RTX 3090 FP32 cores (9.9× native f64 throughput). Lattice QCD trajectories 2× faster. **Novel contribution.**
+8. **DF64 Core Streaming**: Discovery — ~14-digit precision on RTX 3090 FP32 cores via Dekker/Knuth double-float. Measured: 2,130 matmul/sec. Lattice QCD trajectories benefit from DF64 for force computation. **Novel contribution.**
 9. **Lattice QCD production**: 32⁴ pure gauge SU(3) β-scan, deconfinement at β_c=5.69, 13.6 hours, $0.58. **Confirmed.**
 10. **NPU adaptive steering**: Live AKD1000 ESN inference during HMC (Exp 022). 63% thermalization savings, cross-run learning. **Novel contribution.**
 

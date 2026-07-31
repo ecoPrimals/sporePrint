@@ -18,7 +18,7 @@ maturity = "live"
 
 The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport (and legacy WireGuard overlay) coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 
-Tower Atomic runs alongside WireGuard in shadow mode — **353× faster** on LAN via topology awareness and **1.7× sustained** on degraded WAN paths. 360+ shadow benchmark files collected continuously across the mesh.
+Tower Atomic runs alongside WireGuard in shadow mode. On LAN, Tower uses direct TCP (topology-aware path selection) while WireGuard routes through the overlay — so Tower avoids overhead that WireGuard was never designed to avoid. On degraded WAN paths, Tower sustains ~1.7× WireGuard throughput via adaptive retry. 360+ shadow benchmark files collected continuously across the mesh.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Gate mesh topology: eastGate, sporeGate, golgi, and WireGuard overlay connections") }}
 
@@ -35,9 +35,9 @@ Peers discover each other through four path types, selected by songBird at runti
 
 songBird discovers LAN peers via `lan_addr` and routes directly — bypassing the VPS entirely. This is the core advantage over WireGuard: same-switch gates communicate at 0.57ms instead of 153ms through the VPS hub.
 
-### The 353× Gap
+### Why Tower Exists Alongside WireGuard
 
-On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody VPS (153ms) because WG has no concept of LAN topology. Tower discovers LAN peers and routes directly: **0.57ms vs 153ms**.
+WireGuard is an excellent VPN — but it's a VPN, not a LAN-aware mesh. It has no concept of network topology: two gates on the same switch still route through the VPS hub (153ms round-trip). Tower discovers LAN peers via `lan_addr` and routes directly (0.57ms). This isn't "faster than WireGuard" — it's solving a different problem (topology-aware routing) that WireGuard doesn't attempt.
 
 ## Capability Routing
 
@@ -167,7 +167,7 @@ Results are stored in `benchScale/tower_shadow/` and consumed by
 
 - The mesh currently runs on 6 gates across 2 physical sites; multi-continent deployment is untested
 - USB enrollment assumes a trusted physical carrier (no remote enrollment yet)
-- 353× LAN advantage is measured on 1G links; 10G backbone testing is in progress
+- LAN advantage over WireGuard is a topology difference, not a protocol speed difference — Tower routes locally, WireGuard routes through VPS
 - No web dashboard; all monitoring is via CLI and JSON-RPC
 - Tower Atomic source code: songBird is public, bearDog and skunkBat are public (AGPL-3.0)
 

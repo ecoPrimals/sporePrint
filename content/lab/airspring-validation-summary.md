@@ -1,6 +1,6 @@
 +++
 title = "airSpring Validation Summary"
-description = "Precision agriculture & irrigation — 1,446 Rust tests, 90 experiments, 10 UniBin validation scenarios, 14.3× speedup, 57 registered / 46 live capabilities, eastGate operational, zero failures"
+description = "Precision agriculture & irrigation — 1,446 Rust tests, 90 experiments, 10 UniBin validation scenarios, 57 registered / 46 live capabilities, eastGate operational, zero failures"
 date = 2026-06-10
 
 [taxonomies]

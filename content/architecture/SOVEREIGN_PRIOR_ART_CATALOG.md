@@ -290,18 +290,18 @@ via {{ entity(name="ecoprimals") }}.
 
 | Capability | Type | Description |
 |-----------|------|-------------|
-| DF64 hybrid precision (9.9× native f64) | **Novel** | 3.24 TFLOPS at 14-digit precision on consumer FP32 cores. f32×2 double-float emulation exceeding native f64 throughput. No other GPU physics framework offers this. |
+| DF64 hybrid precision | **Novel** | 14-digit precision on consumer FP32 cores via f32×2 double-float emulation. Measured 2,130 matmul/sec on RTX 3090 (benchmark: `benchmark_df64`). Throughput depends on operation mix. |
 | NPU physics pipeline | **Novel** | MD → ESN → AKD1000 NPU → transport coefficients at 9,017× less energy. First neuromorphic silicon in a physics pipeline. |
 | Lattice QCD phase detection without FFT | **Novel** | NPU phase classification from position-space observables. Bypasses Fourier transform entirely. |
 | 10 NPU SDK assumptions overturned | **Novel** | Documented in `BEYOND_SDK.md`. Proved vendor assumptions wrong about their own hardware. |
 | Heterogeneous real-time HMC monitor | **Novel** | Live phase detection with 0.09% overhead, predictive steering. |
 | Backend-agnostic MD engine | **Novel** | `MdEngine<B: GpuBackend>` — same physics, any dispatch path (wgpu, VFIO, DRM). |
 | Dense plasma MD (Sarkas) | Established | 9/9 DSF cases, 0.000% drift. Yukawa OCP. Sovereign Rust implementation. |
-| Nuclear EOS (SEMF+HFB) | Established | L1 χ²=2.27 (478× faster than Python). AME2020 validated. |
+| Nuclear EOS (SEMF+HFB) | Established | L1 χ²=2.27 (Rust vs Python, compiled vs interpreted). AME2020 validated. |
 | Green-Kubo transport | Established | D*/η*/λ* from Stanton-Murillo 2016. 13/13 validated. |
 | Pure gauge SU(3) lattice QCD | Established | Wilson action, HMC, gradient flow. 12/12 validated. |
 | Anderson localization (1D/2D/3D) | Established | Kachkovskiy spectral theory. 31/31 validated. |
-| Abelian Higgs model | Established | Bazavov 2015. 17/17, 143× faster than Python. |
+| Abelian Higgs model | Established | Bazavov 2015. 17/17 validated (Rust implementation). |
 | Chuna dielectric/BGK | Established | Gradient flow, Mermin dielectric, kinetic-fluid. 44/44 validated. |
 
 **2 crates | 86 WGSL shaders | 848 lib tests + 115 validation binaries | 25+ papers reproduced | 10 scientific domains**
@@ -338,7 +338,7 @@ via {{ entity(name="ecoprimals") }}.
 | QS-disorder prediction from diversity | **Novel** | Real ecosystem diversity profiles → Anderson regime prediction. Connects microbial ecology to condensed matter physics. |
 | NPU reservoir deployment (biology) | **Novel** | ESN → int8 quantization → AKD1000: QS phase classifier, phylogenetic placement, genome binning, spectral triage, bloom sentinel. |
 | Nanopore signal bridge | **Novel** | Sovereign POD5/NRS parsing without ONT SDK. Synthetic community reads, int8 quantization for NPU. |
-| Pure GPU streaming pipeline | **Novel** | Multi-stage bio pipeline with zero CPU round-trips. 441–837× speedup vs round-trip architecture. |
+| Pure GPU streaming pipeline | **Novel** | Multi-stage bio pipeline with zero CPU round-trips. Speedup vs CPU-round-trip baseline varies by pipeline stage. |
 | 16S rRNA pipeline (DADA2) | Established | FASTQ QC, denoising, chimera, taxonomy, UniFrac, diversity. Sovereign Rust replacing QIIME2. |
 | Phylogenetics suite | Established | Felsenstein pruning, NJ, bootstrap, Robinson-Foulds, DTL reconciliation, HMM. |
 | Population genomics | Established | ANI, SNP calling, dN/dS, molecular clock, pangenome. |
@@ -446,7 +446,7 @@ These capabilities exist NOWHERE else in open source:
 | 45 | WDM ESN regime classifier | {{ entity(name="neuralspring") }} | GPU echo state network for warm dense matter. 96.5% accuracy. |
 | 46 | Anderson-QS coupling | {{ entity(name="wetspring") }} | Anderson localization applied to quorum sensing. W_c ≈ 16.5, geometry-dependent. New theoretical connection. |
 | 47 | 3D Anderson dimensional phase diagram | {{ entity(name="wetspring") }} | 1D→2D→3D sweep. 28-biome global atlas mapping geometry to QS regime. |
-| 48 | Pure GPU streaming bio pipeline | {{ entity(name="wetspring") }} | Zero CPU round-trips. 441–837× speedup. |
+| 48 | Pure GPU streaming bio pipeline | {{ entity(name="wetspring") }} | Zero CPU round-trips (GPU-parallel vs CPU-serial baseline). |
 | 49 | Nanopore signal bridge (no ONT SDK) | {{ entity(name="wetspring") }} | Sovereign POD5/NRS parsing. Only open-source nanopore reader in Rust. |
 | 50 | GPU agricultural science | {{ entity(name="airspring") }} | BatchedEt0, KrigingInterpolator, SeasonalReducer on GPU. No other ag framework uses GPU. |
 | 51 | Cross-domain noise framework | {{ entity(name="groundspring") }} | Unified bias-variance across agriculture, meteorology, microbiology, seismology. |

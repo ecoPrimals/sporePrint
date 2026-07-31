@@ -215,12 +215,12 @@ Native FP64 on consumer GPUs runs at 1:64 throughput (CUDA or Vulkan). The Titan
 
 ### 8.9.2 The Discovery
 
-Double-float (DF64) arithmetic — representing each f64 as a pair of f32 values — runs on the FP32 cores at full throughput. On an RTX 3090 (10,496 FP32 cores), this delivers **3.24 TFLOPS at 14-digit precision** — 9.9× the throughput of native FP64.
+Double-float (DF64) arithmetic — representing each f64 as a pair of f32 values — runs on the FP32 cores. On an RTX 3090 (10,496 FP32 cores), each DF64 operation requires ~11 f32 ops (Dekker splitting + Knuth two-sum). Measured throughput: 2,130 matmul/sec at ~14-digit precision. Theoretical peak is higher but depends on operation mix and memory bandwidth.
 
 | Substrate | Throughput | Precision | Cost |
 |-----------|-----------|-----------|------|
 | Native FP64 (consumer) | 0.33 TFLOPS | 16 digits | $600 |
-| DF64 on FP32 cores | **3.24 TFLOPS** | 14 digits | $600 |
+| DF64 on FP32 cores | 2,130 matmul/sec (measured) | ~14 digits | $600 |
 | Native FP64 (Titan V) | 6.1 TFLOPS | 16 digits | $500 used |
 
 ### 8.9.3 Production Validation

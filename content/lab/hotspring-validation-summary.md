@@ -37,7 +37,7 @@ springs = ["hotspring"]
 | # | Notebook | Focus |
 |---|----------|-------|
 | 01 | Composition Validation | Deploy graphs (7), guideStone Level 6, capability routing, atomic types |
-| 02 | Benchmark Comparison | Python vs Rust (44.8x–2274x), GPU vs CPU (44–72x), DF64 3.24 TFLOPS |
+| 02 | Benchmark Comparison | Python vs Rust timing (compiled vs interpreted), GPU vs CPU, DF64 14-digit on FP32 |
 | 03 | Experiment Evidence | 234 experiments, science ladder milestones, evolution timeline |
 | 04 | Cross-Spring Connections | 10 primals consumed, 5 patterns handed back, ecosystem flows |
 | 05 | Physics Deep Dive | Nuclear EOS, lattice QCD, sovereign GPU pipeline, code safety |

@@ -1,6 +1,6 @@
 +++
 title = "neuralSpring Validation Summary"
-description = "ML primitives and sovereign structure prediction — 4,900+ checks, Isomorphism Theorem, 38.6x faster than Python"
+description = "ML primitives and sovereign structure prediction — 4,900+ checks, Isomorphism Theorem, all 6 AlphaFold primitives validated"
 date = 2026-06-03
 weight = 20
 

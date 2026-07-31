@@ -293,7 +293,7 @@ Agent-based models map naturally to GPU compute: each agent is an independent wo
 | **Paper 6: Murillo-Weisheit Screened Coulomb** | **DONE — 23/23 Sturm bisection, Δ≈10⁻¹²** |
 | **Papers 7-10, 13: Bazavov Lattice QCD** | **DONE — HotQCD EOS, pure gauge, dynamical, Abelian Higgs** |
 | **Papers 14-22: Kachkovskiy Spectral Theory** | **DONE — 45/45 Anderson, Hofstadter, GPU Lanczos** |
-| **DF64 Core Streaming Discovery** | **DONE — 9.9× native f64 throughput on FP32 cores (3.24 TFLOPS)** |
+| **DF64 Core Streaming Discovery** | **DONE — ~14-digit precision on FP32 cores (measured: 2,130 matmul/sec on RTX 3090)** |
 | **Exp 013: Production 32⁴ β-scan** | **DONE — β_c=5.69 (known 5.692). 13.6h, $0.58. Deconfinement** |
 | **Exp 020-021: NPU Characterization + Cross-Substrate** | **DONE — 6 SDK assumptions overturned. ESN 9,017× less energy** |
 | **Exp 022: Live NPU Mixed Pipeline (32⁴)** | **DONE — 10 β pts, 5,900 meas, 63% therm savings, 5,978 NPU calls** |

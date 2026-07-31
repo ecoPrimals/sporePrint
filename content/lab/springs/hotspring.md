@@ -24,7 +24,7 @@ hotSpring is the primary GPU science driver — the spring that proves barraCuda
 - **Sarkas Yukawa MD** at paper parity (N=10,000, 80k steps) on a **$600 RTX 4070** for **$0.044** in electricity
 - **Full AME2020 nuclear dataset** (2,042 nuclei — 39× the published paper) on a single consumer GPU
 - **Lattice QCD** β-scans (32⁴, 12 temperatures) resolving the deconfinement transition on a $500 RTX 3090 for $0.58
-- **DF64** delivers 3.24 TFLOPS of double precision on FP32 cores
+- **DF64** delivers ~14-digit precision on consumer FP32 cores (measured: 2,130 matmul/sec on RTX 3090)
 - Phase 0 discovered and fixed **5 silent bugs** in the upstream Sarkas code
 
 ## Validation Phases

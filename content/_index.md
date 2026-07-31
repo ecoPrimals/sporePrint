@@ -40,7 +40,7 @@ If those commands run, the claims are verified. No institutional access. No prop
 - [Self-hosted 16S bioinformatics](@/lab/wetspring-validation.md) — 235+ validation checks, real NCBI data
 - [Cross-vendor f64 GPU computing](@/technical/SOVEREIGN_GPU_PIPELINE_PROFILE.md) — WGSL shaders on NVIDIA, AMD, Intel without CUDA
 - [Lattice QCD on consumer GPUs](@/products/lattice_qcd.md) — gauge theory without CUDA, 59/59 checks
-- [Self-hosted distributed compute mesh](@/architecture/MESH_TOPOLOGY.md) — multi-gate topology, 353× LAN throughput
+- [Self-hosted distributed compute mesh](@/architecture/MESH_TOPOLOGY.md) — multi-gate topology, LAN-aware routing
 - [Reproducible self-verifying software](@/guidestone/_index.md) — guideStone verification class
 
 New here? [Get Started](@/getting-started/_index.md) — deploy NUCLEUS on your own hardware.

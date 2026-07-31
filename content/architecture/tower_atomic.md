@@ -1,6 +1,6 @@
 +++
 title = "Tower Atomic"
-description = "Sovereign transport stack — bearDog + songBird + skunkBat replace WireGuard with capability-aware, topology-aware encrypted mesh networking. 353× faster on LAN via topology awareness, 1.7× sustained on degraded WAN paths."
+description = "Sovereign transport stack — bearDog + songBird + skunkBat provide capability-aware, topology-aware encrypted mesh networking alongside WireGuard. LAN-aware routing, BTSP 13/13, 6+ gates LIVE."
 weight = 35
 [extra]
 companion_type = "architecture"
@@ -79,14 +79,15 @@ consistent throughput while WireGuard intermittently degrades to ~3.5 Mbps.
 Shadow benchmarks across 360+ runs show Tower at **1.7× sustained** on degraded
 WAN paths.
 
-### The 353× gap
+### LAN topology awareness
 
 On the same LAN, WireGuard routes sporeGate↔eastGate traffic through golgiBody
 VPS (153ms round-trip) because WG has no concept of LAN topology. Tower discovers
-LAN peers via `lan_addr` and routes directly: **0.57ms vs 153ms**.
+LAN peers via `lan_addr` and routes directly (0.57ms).
 
-This is not a protocol speed advantage — it is a **topology awareness** advantage
-that WireGuard structurally cannot match.
+This is not a protocol speed advantage — it is a **topology awareness** feature
+that WireGuard was never designed to provide. Comparing latencies across different
+routing paths is not a fair benchmark of the two protocols.
 
 ## Socket topology
 

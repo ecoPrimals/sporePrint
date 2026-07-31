@@ -65,9 +65,9 @@ Every tier uses silicon that is physically present on the GPU die:
 
 | Tier | Mantissa | Digits | Hardware | Throughput (RTX 3090) | Use Case |
 |------|----------|--------|----------|----------------------|----------|
-| **f32** | 23 bits | ~7 | Native FP32 ALUs | 35.6 TFLOPS | Visualization, inference, index computation |
-| **df64** | ~48 bits | ~14 | FP32 ALU pairs (Dekker/Knuth) | 3.24 TFLOPS | **Scientific bulk math** — forces, integration, transport |
-| **f64** | 52 bits | ~16 | Native FP64 ALUs | 0.33 TFLOPS (1:64 on consumer) | Gold standard validation, accumulation, Metropolis ΔH |
+| **f32** | 23 bits | ~7 | Native FP32 ALUs | 35.6 TFLOPS (spec) | Visualization, inference, index computation |
+| **df64** | ~48 bits | ~14 | FP32 ALU pairs (Dekker/Knuth) | 2,130 matmul/sec (measured) | **Scientific bulk math** — forces, integration, transport |
+| **f64** | 52 bits | ~16 | Native FP64 ALUs | 0.33 TFLOPS (1:64, hardware design) | Gold standard validation, accumulation, Metropolis ΔH |
 
 The critical insight, discovered in {{ entity(name="hotspring") }}'s lattice QCD campaign and
 formalized in {{ entity(name="barracuda") }} v0.3: **df64 is not "software f64."** It is a
@@ -157,7 +157,7 @@ From `about/HARDWARE.md`, the full fleet mapped to precision tiers:
 | Gate | GPU(s) | f64 Rate | df64 Value | Sovereign Driver |
 |------|--------|----------|------------|-----------------|
 | **Strandgate** | RX 6950 XT + RTX 3090 | 1:16 + 1:64 | High (dual-vendor) | amdgpu (AMD), nvidia (NVIDIA) |
-| **Eastgate** | RTX 4070 + Titan V | 1:64 + **1:2** | RTX 4070 df64 proven (3.24 TFLOPS) | nvidia + nouveau/NVK (Titan V) |
+| **Eastgate** | RTX 4070 + Titan V | 1:64 + **1:2** | RTX 4070 df64 proven (14-digit via DF64) | nvidia + nouveau/NVK (Titan V) |
 | **biomeGate** | RTX 3090 + Titan V | 1:64 + **1:2** | Large df64 + native f64 | nvidia + nouveau/NVK |
 | **Northgate** | RTX 5090 | 1:64 | Highest f32, best df64 candidate (pending benchmarks) | nvidia |
 | **Southgate** | RTX 3090 | 1:64 | Same as Strandgate NVIDIA | nvidia |

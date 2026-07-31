@@ -12,7 +12,7 @@ build-to-deploy for 35 binaries across 3 platforms.
 ## Live Systems
 
 - **[NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md)** — 3 gates running 13/13 primals. Provenance 7/7 COMPLETE. gen4 DONE, gen5 begins
-- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign mesh: 353× LAN, BTSP 13/13, 6+ gates LIVE, autonomous enrollment
+- **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign mesh: LAN-aware routing, BTSP 13/13, 6+ gates LIVE, autonomous enrollment
 - **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — push-to-deploy: Forgejo → build → sandbox → depot → serve. 35 binaries, zero human intervention
 - **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 10 gates online, 3 NUCLEUS, 1G/10G backbone, autonomous enrollment
 

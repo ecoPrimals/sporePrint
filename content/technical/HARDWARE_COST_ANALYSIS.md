@@ -36,7 +36,7 @@ relation = "extends"
 | Metric | Sovereign cluster | Institutional HPC | Cloud (AWS/GCP) |
 |--------|:-----------------:|:-----------------:|:---------------:|
 | **Hardware cost** | $15K (one-time) | $0 (shared allocation) | $0 (per-use) |
-| **f64 GPU TFLOPS** | 3.24 (DF64, RTX 3090) | 9.7 (A100 SXM, native) | 9.7 (A100 SXM) |
+| **f64 GPU precision** | 14-digit DF64 (RTX 3090, measured: 2,130 matmul/sec) | native f64 (A100 SXM) | native f64 (A100 SXM) |
 | **Lattice QCD production run** | **$0.044** (electricity) | ~$50–500 (allocation) | ~$50–500 |
 | **100K patient population PK** | ~$0.001 (consumer RTX) | ~$5–20 (HPC) | ~$10–50 |
 | **16S pipeline (1,000 samples)** | ~$0.10 (RTX 4070) | ~$2–5 (cluster) | ~$5–20 |
@@ -55,43 +55,44 @@ at $50–500 depending on node type, queue priority, and facility pricing.
 
 This is the discovery that makes the cost story possible.
 
-### The CUDA Throttle vs the Vulkan Reality
+### The f64 Rate Gap
 
-NVIDIA throttles f64 performance on consumer ("gaming") GPUs at the driver
-level to protect data center revenue:
+NVIDIA consumer GPUs have far fewer f64 FPUs than data center GPUs — this is
+a hardware design choice, not just a driver restriction:
 
 | GPU Class | f64 TFLOPS (native) | f32 TFLOPS | f64:f32 ratio |
 |-----------|:------------------:|:----------:|:-------------:|
-| RTX 3090 (consumer) | ~0.35 | ~35.6 | **1:102** (throttled by CUDA) |
+| RTX 3090 (consumer) | ~0.35 | ~35.6 | **1:64** (hardware: fewer f64 FPUs) |
 | A100 SXM (data center) | ~19.5 | ~19.5 | **1:1** |
 | H100 SXM | ~33.5 | ~33.5 | **1:1** |
-| Titan V (consumer, HBM2) | ~6.9 | ~13.8 | **1:2** (unthrottled) |
+| Titan V (consumer, HBM2) | ~6.9 | ~13.8 | **1:2** (GV100: full f64 FPUs) |
 
-The CUDA throttle means: using CUDA, a $500 RTX 3090 runs f64 at 1/100th of
-its f32 capability. This is software-enforced artificial restriction.
+Consumer GPUs have abundant f32 ALUs but very few f64 FPUs. Using native f64
+on an RTX 3090 means only ~0.35 TFLOPS — the silicon is optimized for gaming (f32).
 
-### The WebGPU / Vulkan Bypass
+### The DF64 Technique
 
-WebGPU (WGSL shaders via wgpu) bypasses the CUDA driver entirely and talks
-directly to the Vulkan API. The Vulkan API does not enforce NVIDIA's CUDA f64
-throttle. The silicon is still there. The throttle is a driver policy, not a
-hardware limitation.
+DF64 (double-float) uses pairs of f32 operations to achieve ~14-digit precision.
+Since consumer GPUs have massive f32 throughput, this reclaims those ALUs for
+science — using WebGPU/WGSL via wgpu, bypassing the CUDA SDK entirely.
 
-**Result: DF64 (double-float precision using two f32 values):**
+**What DF64 delivers:**
 
-| GPU | DF64 TFLOPS | Native f64 | Precision |
-|-----|:-----------:|:----------:|:---------:|
-| RTX 3090 | **3.24** | 0.35 | 14-digit |
-| RTX 4070 | ~2.1 | ~0.2 | 14-digit |
-| Titan V | ~6.9 | 6.9 | 14-digit |
+| GPU | Measured benchmark | Native f64 | DF64 Precision |
+|-----|:------------------:|:----------:|:--------------:|
+| RTX 3090 | 2,130 matmul/sec | 0.35 TFLOPS | ~14 digits (48-bit mantissa) |
+| RTX 4070 | benchmarks pending | ~0.2 TFLOPS | ~14 digits |
+| Titan V | native f64 preferred | 6.9 TFLOPS | not needed (full f64 HW) |
 
-A consumer RTX 3090 delivers **9.9× more f64-precision compute than its
-CUDA-reported spec** when accessed through WebGPU + WGSL. The same GPU that
-CUDA tells you is a $500 toy is doing data-center-class f64 science work
-in {{ entity(name="ecoprimals") }}.
-
-This is not a workaround. It is the actual hardware capability, accessed via
-the open Vulkan standard rather than NVIDIA's proprietary CUDA layer.
+**Important caveats:**
+- DF64 gives ~14 digits, not the full 16 of IEEE f64. For most scientific
+  workloads this is sufficient, but accumulation and Metropolis ΔH still need
+  native f64 (which is what Titan V provides).
+- Theoretical DF64 peak (~f32 TFLOPS / 11 ops per DF64 op) is not sustained
+  throughput. Real workload performance depends on operation mix, memory bandwidth,
+  and pipeline efficiency. Use `benchmark_df64` for your workload.
+- The f64 rate gap on consumer GPUs is primarily a hardware design difference
+  (fewer f64 FPUs), not purely a software restriction.
 
 ---
 
@@ -240,7 +241,7 @@ The short version:
 
 | GPU | What CUDA Tells You | What WebGPU+{{ entity(name="ecoprimals") }} Does |
 |-----|--------------------|-----------------------------|
-| RTX 3090 | 35.6 TFLOPS f32, 0.35 TFLOPS f64 | **3.24 TFLOPS DF64** (14-digit precision) |
+| RTX 3090 | 35.6 TFLOPS f32, 0.35 TFLOPS f64 | 14-digit DF64 (measured: 2,130 matmul/sec) |
 | RTX 4070 | 29.1 TFLOPS f32, 0.2 TFLOPS f64 | **~2.1 TFLOPS DF64** |
 | RTX 4090 | 82.6 TFLOPS f32, 0.5 TFLOPS f64 | **~8.2 TFLOPS DF64** |
 | Titan V | 13.8 TFLOPS f32, 6.9 TFLOPS f64 | **6.9 TFLOPS DF64** (native f64 silicon) |

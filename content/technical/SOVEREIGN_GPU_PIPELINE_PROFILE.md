@@ -126,12 +126,12 @@ health monitoring, and graceful shutdown — all via JSON-RPC 2.0 over Unix sock
 
 ## Current Performance vs CUDA/Kokkos
 
-| Benchmark | CUDA/Kokkos | {{ entity(name="ecoprimals") }} (wgpu) | {{ entity(name="ecoprimals") }} (DF64) | Gap |
+| Benchmark | CUDA/Kokkos | {{ entity(name="ecoprimals") }} (wgpu) | {{ entity(name="ecoprimals") }} (DF64) | Notes |
 |-----------|:-----------:|:-----------------:|:-----------------:|:---:|
-| Yukawa MD (N=10K, 80K steps) | ~1 hr (HPC) | 3.66 hrs (RTX 4070) | — | 3.7× |
-| Lattice QCD 32⁴ β-scan | — | 13.6 hrs ($0.58) | — | First consumer |
-| Nuclear EOS L1 | 184 s (Python) | **2.3 s** | — | **0.012×** (80× faster) |
-| f64 throughput | 9.7 TFLOPS (A100) | 0.35 TFLOPS (native) | **3.24 TFLOPS** (DF64) | 3× |
+| Yukawa MD (N=10K, 80K steps) | ~1 hr (HPC) | 3.66 hrs (RTX 4070) | — | 3.7× slower than CUDA |
+| Lattice QCD 32⁴ β-scan | — | 13.6 hrs ($0.58) | — | First on consumer GPU |
+| Nuclear EOS L1 | 184 s (Python) | **2.3 s** | — | Rust vs Python (compiled vs interpreted) |
+| f64 throughput | A100 native f64 | 0.35 TFLOPS (native) | 2,130 matmul/sec (measured) | Apples-to-oranges: A100 is native f64, DF64 is emulated ~14-digit |
 | Kokkos Verlet stepper | 1.0× reference | — | 0.27× (3.7× gap) | Active optimization |
 
 **The gap is narrowing:** {{ entity(name="hotspring") }} Kokkos parity tracking shows 27×→12.4×→3.7×
@@ -187,7 +187,7 @@ patterns per iteration:
 | cuBLAS/cuFFT | Free (NVIDIA-only) | BarraCuda {{ total_stat(stat="wgsl_files") }} WGSL shaders (any GPU with Vulkan) |
 | nvcc compiler | Free (NVIDIA-only) | {{ entity(name="coralreef") }} (pure Rust, SM70–SM89 + RDNA2) |
 | NVIDIA driver | Free (proprietary binary) | coral-glowplug + VFIO (upstream Linux kernel) |
-| A100 GPU | ~$10K–15K | RTX 3090 (~$500 used), DF64: 3.24 TFLOPS |
+| A100 GPU | ~$10K–15K | RTX 3090 (~$500 used), DF64: 2,130 matmul/sec measured |
 | HPC allocation | $50–500/run | $0.044/run (electricity, consumer GPU) |
 | MATLAB Parallel | ~$2K/yr + GPU toolbox | toadStool + BarraCuda (AGPL-3.0, free) |
 | Kokkos | Free (C++, complex build) | BarraCuda (Rust, `cargo build`) |

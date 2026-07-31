@@ -197,7 +197,8 @@ plt.show()
 
 CPU vs GPU parity on the 16S math pipeline.
 The GPU path delegates to barraCuda via ToadStool — zero local WGSL.
-**1,077x speedup** for spectral cosine matching at production scale.
+GPU vs single-threaded CPU Rust for spectral cosine matching. Note: this compares
+GPU-parallel to CPU-serial — the multiplier reflects parallelism, not algorithmic improvement.
 
 ```python
 print(f'Experiment: {gpu_parity["experiment"]}')

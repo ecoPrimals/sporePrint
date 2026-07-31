@@ -234,7 +234,7 @@ plt.show()
 | Nuclear EOS | **2,042 AME2020 nuclei**, L1-L3 on single RTX 4070, 1,990 novel predictions |
 | Lattice QCD | **SU(3) HMC/RHMC**, gradient flow, beta-scan deconfinement at β=5.69 |
 | Sovereign GPU | **3 generations** (Kepler/Volta/Blackwell), 8-stage SovereignInit, zero nouveau |
-| DF64 | **3.24 TFLOPS** emulated double precision on FP32 cores |
+| DF64 | ~14-digit emulated double precision on FP32 cores (measured: 2,130 matmul/sec on RTX 3090) |
 | guideStone | **Level 5**, 30/30 bare, BLAKE3 P3, 5/5 properties |
 | Code safety | **forbid(unsafe)** in lib, deny.toml, zero dyn dispatch, zero #[allow] |
 | PRIMAL_GAPS | **32/43 resolved**, 8 active, 3 blocked upstream |
