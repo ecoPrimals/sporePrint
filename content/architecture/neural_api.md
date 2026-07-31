@@ -1,7 +1,7 @@
 +++
 title = "Neural API — Adaptive Multi-Layer Orchestration"
-description = "The biomeOS orchestration layer — capability graph execution over 13 primals, composition collapse, and bidirectional learning."
-date = 2026-05-05
+description = "The biomeOS orchestration layer — capability graph execution over 13 primals. LIVE on westGate (654 capabilities), strandGate (1,742 capabilities). biomeOS v4.51."
+date = 2026-07-31
 weight = 41
 
 [taxonomies]
@@ -9,7 +9,7 @@ trails = ["coordination"]
 
 [extra]
 domain = "Architecture"
-maturity = "architectural"
+maturity = "live"
 
 [[extra.companions]]
 url = "/architecture/coordination-triad/"

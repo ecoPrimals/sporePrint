@@ -7,6 +7,8 @@ template = "science_section.html"
 
 {{ total_stat(stat="basecamp_papers") }} {{ entity(name="basecamp") }} papers across 6 research domains. Every paper is executable — the science is runnable code that reproduces published results on commodity hardware. "Sovereign" means **self-hosted and cloud-independent**.
 
+Papers marked **✓ VALIDATED** have been confirmed on live NUCLEUS hardware — the claims are not projections but measured results from running gates.
+
 Each paper stands alone as a potential publication. Together they demonstrate that a pure-Rust, self-hosted computing ecosystem produces real, publishable science across physics, biology, medicine, neuroscience, game design, and economics.
 
 ---

@@ -1,7 +1,7 @@
 +++
 title = "lithoSpore — Targeted GuideStone Deployment"
-description = "USB-deployable, self-verifying scientific validation artifacts. The first instance reproduces the Long-Term Evolution Experiment (LTEE) targeting the Barrick Lab at UT Austin."
-date = 2026-07-09
+description = "USB-deployable, self-verifying scientific artifacts. First instance: LTEE reproduction (75/75 checks). pseudoSpore pipeline maturing toward external science."
+date = 2026-07-31
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "nestgate", "biomeos", "petaltongue"]

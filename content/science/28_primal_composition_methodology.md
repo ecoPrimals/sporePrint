@@ -6,7 +6,12 @@ date = 2026-07-09
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool", "nestgate", "songbird", "beardog"]
 springs = ["primalspring", "hotspring", "wetspring"]
+
+[extra]
+validated_on_hardware = true
 +++
+
+> **✓ VALIDATED ON LIVE HARDWARE** — Validated by NUCLEUS on 3 gates. Deploy graph composition proven across westGate, blueGate, strandGate. 1,742 capabilities on strandGate.
 
 {{ maturity(level="architectural") }}
 

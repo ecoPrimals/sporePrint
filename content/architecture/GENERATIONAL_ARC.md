@@ -1,12 +1,12 @@
 +++
 title = "Generational Arc"
-description = "The five-generation evolution of ecoPrimals — from building hardware to producing external science."
-date = 2026-05-31
+description = "gen4 COMPLETE — NUCLEUS is LIVE on 3 gates. gen5 begins: the platform serves real workloads. Five generations from hardware to external science."
+date = 2026-07-31
 weight = 5
 
 [extra]
 domain = "Architecture"
-maturity = "architectural"
+maturity = "live"
 +++
 
 ## The Arc
@@ -19,8 +19,8 @@ be asked because the previous generation's answer existed.
 | **gen1** | Can we build it? | Yes — $11K cluster, fault-tolerant HPC, AI-assisted dev | ~2024–mid 2025 | AI Swarm whitepaper, NestGate, Squirrel |
 | **gen2** | What should we build? | A sovereign protocol — 8 composable primals, AGPL as trust, Philosophy of Forgetting, BYOAI | mid 2025–early 2026 | Sovereignty whitepaper, biomeOS manifesto |
 | **gen3** | Does it work? | Yes — 12,510+ checks, 70+ papers, 7 springs, 14 primals | Feb–Mar 2026 | Constrained evolution, baseCamp, atlasHugged |
-| **gen4** | Who uses it? | Creatives, scientists, sovereign builders — via compositions | Mar–May 2026 | esotericWebb, lithoSpore, pseudoSpore, initioChem |
-| **gen5** | Does someone else's science come out? | In progress — first collaborators engaged | May 2026– | External science production, challenge participation |
+| **gen4** | Who uses it? | **COMPLETE** — 3 NUCLEUS gates, Provenance 7/7, Sovereign CI LIVE, 35 depot binaries | Mar–Jul 2026 | NUCLEUS, Tower/Nest/Node Atomic, footPrint, esotericWebb |
+| **gen5** | Does someone else's science come out? | **In progress** — NUCLEUS is the platform. squirrel + biomeOS + petalTongue + Node Atomics | Jul 2026– | tideGlass, pseudoSpore, AlphaFold ingestion, JOSS paper |
 
 ## The Biological Metaphor
 

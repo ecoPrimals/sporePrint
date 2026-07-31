@@ -1,8 +1,8 @@
 +++
 title = "ecoPrimals Ecosystem Architecture: From Binary to Bonding"
 weight = 6
-description = "UniBin/ecoBin/genomeBin ladder, NUCLEUS deployment, bonding model, Neural API"
-date = 2026-03-17
+description = "15 primals compose into NUCLEUS via genomeBin distribution, JSON-RPC IPC, and biomeOS orchestration. LIVE on 3 gates."
+date = 2026-07-31
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "loamspine", "nestgate", "rhizocrypt", "songbird", "squirrel", "sweetgrass", "toadstool"]
@@ -10,18 +10,19 @@ trails = ["first-visit"]
 
 [extra]
 domain = "Architecture"
-maturity = "architectural"
+maturity = "live"
 +++
 
-**Status**: Working paper  
-**Lineage**: Technical companion to `CONSTRAINED_EVOLUTION_FORMAL.md`  
-**Last Updated**: February 7, 2026
+**Status**: Live reference — NUCLEUS running on 3 gates  
+**Last Updated**: July 31, 2026
+
+> **NUCLEUS is running.** This is no longer a design document. The architecture described here is operational on westGate (Linux, Provenance 7/7), blueGate (Windows, Provenance 7/7), and strandGate (RTX 3090, 1,742 capabilities). Sovereign CI automates the full build-deploy pipeline.
 
 ---
 
 ## At a Glance
 
-The full architectural model: how 15 Rust binaries (primals) compose into NUCLEUS deployments, communicate via JSON-RPC, discover each other at runtime, and bond across machines using a chemistry-inspired trust model. This is the reference document for understanding the whole system.
+15 Rust binaries (primals) compose into NUCLEUS deployments, communicate via JSON-RPC 2.0 over IPC sockets, discover each other at runtime, and bond across machines using a chemistry-inspired trust model. This page is the reference for understanding the whole system.
 
 ---
 

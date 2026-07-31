@@ -24,10 +24,10 @@ relation = "pairs_with"
 a pure Rust GPU compute pipeline using WebGPU/WGSL that runs on NVIDIA, AMD,
 and Intel GPUs — no vendor SDK, no proprietary dependencies, no cloud.
 
-**Last Updated:** March 17, 2026  
+**Last Updated:** July 31, 2026  
 **License:** CC-BY-SA 4.0
 
-> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) (measured {{ total_stat(stat="measured_date") }}).
+> **✓ VALIDATED ON LIVE HARDWARE** — strandGate RTX 3090: 2,130 matmul/sec, 746 pipelines/sec, 98 capabilities LIVE. Dual-vendor proof: RTX 3090 + RX 6950 XT, 100% pass rate. {{ total_stat(stat="wgsl_files") }} validated WGSL shaders. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md) (measured {{ total_stat(stat="measured_date") }}).
 
 ---
 

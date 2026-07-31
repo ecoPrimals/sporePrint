@@ -1,7 +1,7 @@
 +++
 title = "helixVision — Self-Hosted Structure Prediction"
-description = "Protein structure prediction pipeline in pure Rust f64 — no cloud, no PyTorch, no CUDA, no data leaves the lab. Primitives validated; end-to-end pipeline in progress."
-date = 2026-03-31
+description = "Protein structure prediction in pure Rust f64 — no cloud, no PyTorch, no CUDA. AlphaFold primitives validated. strandGate capacity: 20-30 structures/day."
+date = 2026-07-31
 
 [taxonomies]
 primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "toadstool"]
@@ -11,9 +11,10 @@ springs = ["neuralspring"]
 maturity = "architectural"
 +++
 
-**Repository**: sporeGarden/helixVision (moving from {{ entity(name="syntheticchemistry") }} — repo pending)  
+**Repository**: sporeGarden/helixVision (absorbed coralForge)  
 **License**: {{ entity(name="scyborg") }} (AGPL-3.0-or-later + ORC + CC-BY-SA 4.0)  
-**Formerly**: coralForge (syntheticChemistry/coralForge, now archived)
+**Formerly**: coralForge (syntheticChemistry/coralForge, now archived)  
+**Compute Capacity**: strandGate (RTX 3090) can predict 20-30 structures/day via Nest Atomic CAS pipeline
 
 ---
 

@@ -22,10 +22,12 @@ relation = "extends"
 
 **The f64 GPU discovery, the $0.044 run, and what consumer hardware actually does.**
 
-**Last Updated:** March 17, 2026  
+**Last Updated:** July 31, 2026  
 **License:** CC-BY-SA 4.0
 
-> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md).
+> **Current fleet (Wave 155n):** 10 operational gates, $11K total hardware investment. RTX 3090 (strandGate): 2,130 matmul/sec, AlphaFold 20-30 structures/day. RTX 5090 (northGate): dedicated AlphaFold source. ZFS 25.4TB on westGate. The cost-per-run claims below are validated on live hardware.
+
+> **Historical snapshot.** Hardware pricing below reflects early 2026 acquisitions. Current fleet: [Living Systems](@/lab/living-systems.md).
 
 ---
 

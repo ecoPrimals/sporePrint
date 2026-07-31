@@ -1,7 +1,7 @@
 +++
 title = "Sovereign CI — Build Infrastructure"
-description = "How ecoPrimals builds, checksums, and distributes 30 binary artifacts across 15 primals and 2 architectures — entirely self-hosted."
-date = 2026-07-06
+description = "LIVE push-to-deploy pipeline: Forgejo → sporeGate build → sandbox validate → BLAKE3 depot → HTTPS serve. 35 binaries across 3 platforms. Zero human intervention."
+date = 2026-07-31
 weight = 18
 
 [taxonomies]
@@ -9,12 +9,14 @@ primals = ["barracuda", "beardog", "biomeos", "coralreef", "loamspine", "nestgat
 
 [extra]
 domain = "Architecture"
-maturity = "implemented"
+maturity = "live"
 +++
 
 ## Overview
 
-Every ecoPrimals binary is built from source on sovereign infrastructure. No GitHub Actions for production builds. No cloud CI. No third-party artifact registry. Any build authority gate (sporeGate, eastGate, or any future gate with `build_authority = true`) pulls from Forgejo (`git.primals.eco`), cross-compiles for two target triples, computes BLAKE3 checksums, publishes to the depot, and broadcasts `mesh.publish depot.updated` so consumer gates auto-fetch.
+> **Status (Wave 155n):** Sovereign CI is **LIVE**. sporeGate is the build authority — push to Forgejo triggers auto build → sandbox validate → depot push → HTTPS serve. **35 binaries** (16 musl + 4 gnu + 15 Windows), all BLAKE3 verified. J9+J10+J11 jelly strings KILLED — zero human intervention for musl builds. sporeGate is **11/11 HEALTHY**.
+
+Every ecoPrimals binary is built from source on sovereign infrastructure. No GitHub Actions for production builds. No cloud CI. No third-party artifact registry. sporeGate pulls from Forgejo (`git.primals.eco`), cross-compiles for three target triples, computes BLAKE3 checksums, publishes to the depot, and broadcasts `mesh.publish depot.updated` so consumer gates auto-fetch.
 
 ## Build Pipeline
 
@@ -41,9 +43,17 @@ Builder gate (sporeGate / eastGate / any build_authority)
         └── depot-verify validates BLAKE3 integrity
 ```
 
-## Binary Inventory (Wave 133a)
+## Binary Inventory (Wave 155n)
 
-{{ total_stat(stat="total_primals") }} primals compiled to **30 ecobins** — 15 per architecture.
+{{ total_stat(stat="total_primals") }} primals compiled to **35 depot binaries** across 3 platforms:
+
+| Target | Binaries | Gates |
+|--------|----------|-------|
+| `x86_64-unknown-linux-musl` | 16 | eastGate, sporeGate, westGate, strandGate, ironGate, flockGate |
+| `x86_64-unknown-linux-gnu` | 4 (GPU trio + biomeOS) | strandGate (GPU compute) |
+| `x86_64-pc-windows-gnu` | 15 | blueGate, swiftGate, northGate |
+
+Per-binary sizes (x86_64-musl):
 
 | Binary | x86_64-musl | aarch64-musl | Ratio |
 |--------|-------------|--------------|-------|

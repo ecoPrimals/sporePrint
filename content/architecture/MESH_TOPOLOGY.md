@@ -1,7 +1,7 @@
 +++
 title = "Self-Hosted Distributed Scientific Compute Mesh — Gate Topology"
-description = "Self-hosted distributed scientific computing on commodity hardware. Multi-gate encrypted mesh with 353× LAN throughput advantage, capability-aware routing, and USB enrollment."
-date = 2026-07-07
+description = "10 operational gates, 10G backbone, WireGuard + Tower Atomic mesh. NUCLEUS running on 3 gates. Capability-aware routing, USB enrollment."
+date = 2026-07-31
 weight = 20
 
 [taxonomies]
@@ -9,10 +9,12 @@ primals = ["beardog", "biomeos", "songbird"]
 
 [extra]
 domain = "Architecture"
-maturity = "implemented"
+maturity = "live"
 +++
 
 ## Overview
+
+> **Status (Wave 155n):** 10 operational gates (9 active + southGate validation). NUCLEUS confirmed on 3 gates (westGate, blueGate, strandGate). 10G MikroTik backbone. WireGuard overlay + Tower Atomic in shadow mode. bearDog `crypto.sign` LIVE on all Tower gates.
 
 The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport (and legacy WireGuard overlay) coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 

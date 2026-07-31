@@ -50,40 +50,40 @@
     </div>
   </section>
 
-  {# ── Audience cards ── #}
+  {# ── Quick entry points ── #}
   <section class="card-section" aria-label="Find your path">
     <h2>Find Your Path</h2>
-    <p class="card-section-desc">Not sure where to start? Pick your role.</p>
+    <p class="card-section-desc">Not sure where to start? Pick what matters to you.</p>
     <div class="audience-grid">
-      <a href="{{ get_url(path='@/audience/FOR_FACULTY_AND_PIS.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Faculty">🎓</span>
-        <strong>Faculty or PI</strong>
-        <span>What this runs in your lab, what it costs, what it produces</span>
+      <a href="{{ get_url(path='@/lab/living-systems.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Live">🖥️</span>
+        <strong>See What's Running</strong>
+        <span>3 NUCLEUS gates, 35 depot binaries, live gate status</span>
       </a>
-      <a href="{{ get_url(path='@/audience/FOR_STUDENTS_AND_CORE_FACILITIES.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Research">🔬</span>
-        <strong>Student or Core Facility</strong>
-        <span>Setup guide, 16S walkthrough, how to start using the ecosystem</span>
+      <a href="{{ get_url(path='@/getting-started/_index.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Deploy">🛠️</span>
+        <strong>Deploy It Yourself</strong>
+        <span>NUCLEUS on commodity hardware — Linux, Windows, or Android</span>
       </a>
-      <a href="{{ get_url(path='@/audience/FOR_HARDWARE_BUILDERS_AND_HOBBYISTS.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Hardware">🛠️</span>
-        <strong>Hardware Builder or Hobbyist</strong>
-        <span>The f64 Vulkan discovery, what your GPU does, Games@Home</span>
+      <a href="{{ get_url(path='@/lab/_index.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Science">🔬</span>
+        <strong>Run the Science</strong>
+        <span>136 lab pages — genomics, QCD, pharmacometrics, GPU benchmarks</span>
       </a>
-      <a href="{{ get_url(path='@/audience/FOR_COMPLIANCE_AND_INSTITUTIONAL_REVIEW.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Compliance">📋</span>
-        <strong>Compliance or IRB</strong>
-        <span>FDA/ISO/HIPAA/GDPR mapping for institutional review</span>
+      <a href="{{ get_url(path='@/science/_index.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Papers">📄</span>
+        <strong>Read the Research</strong>
+        <span>{{ config.extra.totals.papers_reproduced }} baseCamp papers — executable, reproducible</span>
       </a>
-      <a href="{{ get_url(path='@/guidestone/_index.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Physics">⚛️</span>
-        <strong>Physicist or Computational Scientist</strong>
-        <span>guideStone — self-leveling benchmark and deployment artifact</span>
+      <a href="{{ get_url(path='@/architecture/NUCLEUS_ARCHITECTURE.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Architecture">⚛️</span>
+        <strong>Understand the Architecture</strong>
+        <span>NUCLEUS composition — Tower, Nest, Node atomics on live hardware</span>
       </a>
-      <a href="{{ get_url(path='@/audience/CAPABILITY_PARITY_BRIEF.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Overview">📊</span>
-        <strong>Not Sure? Start Here</strong>
-        <span>Capability parity brief — direct comparison across 9 domains</span>
+      <a href="{{ get_url(path='@/products/_index.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Products">🌱</span>
+        <strong>Use the Products</strong>
+        <span>footPrint, esotericWebb, helixVision — compositions you can run</span>
       </a>
     </div>
   </section>
