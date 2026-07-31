@@ -32,7 +32,7 @@ page shows what is actually deployed and operational.
 | **westGate** | **Nest Atomic LIVE** | Linux | **8 services, 1,704 capabilities, ZFS 25.4TB + 2TB L2ARC, 6 PDBs in CAS** |
 | **strandGate** | **Tower+Compute LIVE** | Linux | Dual EPYC 7452, 256GB, RTX 3090, Compute Trio deployed |
 | **ironGate** | Online | Linux | 4x HDD (14TB+), HDD enclave experiment |
-| **flockGate** | Online | Linux | Nest Atomic validation |
+| flockGate | **DOWN** | Linux | Rebooted, RustDesk locked out |
 | **golgiBody** | Online | Linux (VPS) | Sole depot (39 genomeBins), enrollment endpoint, Forgejo |
 | **northGate** | Online | Windows | RTX 5090, AlphaFold source (~1TB), G1 target |
 | **grapheneGate** | Online | Android | Tower LIVE, G2: mobile trust boundary |

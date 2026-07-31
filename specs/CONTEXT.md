@@ -17,7 +17,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **~110 pages** carry companion metadata for cross-domain discovery
 - **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals** (155m): 3.60M LOC, 94,927 tests (15 primals + 9 springs), 43 repos, 35 depot binaries (16 musl + 4 gnu + 15 Windows)
+- **Ecosystem totals** (155m): 3.60M LOC, 101,308 tests (15 primals + 9 springs), 43 repos, 35 depot binaries (16 musl + 4 gnu + 15 Windows)
 - **NUCLEUS ACHIEVED**: 3 gates running full NUCLEUS (13/13 primals). gen4 COMPLETE
 - **Provenance 7/7 COMPLETE**: Full signed chain validated on Linux (ZFS) + Windows
 - **Sovereign CI LIVE**: push-to-deploy automated, zero human intervention

@@ -167,7 +167,7 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 - 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
-- 94,927+ tests across ecosystem (15 primals + 9 springs)
+- 101,308+ tests across ecosystem (15 primals + 9 springs)
 - 27 signal graphs. 13 fossilized dimensions. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
