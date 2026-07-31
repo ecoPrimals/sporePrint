@@ -68,10 +68,10 @@ foundation                       → institutional adoption
 
 ## Infrastructure
 
+- **[NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md)** — **ACHIEVED**: 3 gates running 13/13 primals. Provenance 7/7 COMPLETE. gen4 DONE
 - **[Tower Atomic](@/architecture/tower_atomic.md)** — sovereign transport stack: 353× LAN, BTSP 13/13. 6 gates LIVE
-- **[NUCLEUS Architecture](@/architecture/NUCLEUS_ARCHITECTURE.md)** — all three atomics proven: Tower (6 gates), Nest (2 gates), Node (1 gate). NUCLEUS deployment next
-- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — Forgejo → sporeGate build → depot → all gates. 19 Linux + 14 Windows binaries
-- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 10 gates online, 1G/10G backbone, NUCLEUS convergence
+- **[Sovereign CI](@/architecture/SOVEREIGN_CI.md)** — push-to-deploy: Forgejo → build → sandbox → depot → serve. 35 binaries
+- **[Gate Mesh Topology](@/architecture/MESH_TOPOLOGY.md)** — 10 gates online, 3 NUCLEUS gates, 1G/10G backbone
 
 ## Convergence and Platform
 

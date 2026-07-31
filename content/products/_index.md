@@ -29,10 +29,9 @@ Tested, versioned, running on live infrastructure. Instructions available.
 |---------|--------|-------|
 | **[footPrint](@/products/footprint.md)** | GIS home planning | [footprint.primals.eco](https://footprint.primals.eco) |
 | **[esotericWebb](@/products/esotericWebb.md)** | Cross-evolution CRPG | [webb.primals.eco](https://webb.primals.eco) (V22) |
+| **[NUCLEUS](@/architecture/NUCLEUS_ARCHITECTURE.md)** | Full sovereign compute substrate | **3 gates LIVE** (13/13 primals, Provenance 7/7, Sovereign CI) |
 | **[Tower Atomic](@/architecture/tower_atomic.md)** | Sovereign encrypted mesh | 6 gates LIVE, BTSP 13/13, 353× LAN |
-| **[Nest Atomic](@/architecture/NUCLEUS_ARCHITECTURE.md)** | Content-addressed storage + provenance | westGate (ZFS, 3,216 CAS) + blueGate (Windows, 10/10) |
-| **[Node Atomic](@/architecture/NUCLEUS_ARCHITECTURE.md)** | GPU-accelerated distributed compute | strandGate VALIDATED: RTX 3090, 746 pipelines/sec |
-| **{{ entity(name="cellmembrane") }}** | Deployment fabric | All gates — autonomous enrollment, glibc auto-target |
+| **{{ entity(name="cellmembrane") }}** | Deployment fabric | 35 depot binaries, boot ordering, push-to-deploy |
 
 ---
 

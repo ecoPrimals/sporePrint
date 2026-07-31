@@ -53,18 +53,21 @@ Nest Atomic is **LIVE on two gates** — westGate (Linux, ZFS 25.4TB, 3,216 CAS 
 
 Node Atomic has been validated on strandGate (Dual EPYC 7452, 256GB, RTX 3090) — **746 pipelines/sec**, 450 methods registered. The Compute Trio runs FP64 on both RTX 3090 and RX 6950 XT with 100% pass rate. 3 signal graphs defined.
 
-### NUCLEUS — **NEXT MILESTONE**
+### NUCLEUS — **ACHIEVED**
 
-All three atomics are now proven independently:
+Three gates now run full NUCLEUS — all 13 primals composed:
 
-| Composition | Primals | Gates | Status |
-|-------------|---------|-------|--------|
-| Tower | 3 (bearDog + songBird + skunkBat) | 6 gates | LIVE |
-| Nest | 7 (Tower + nestGate + Provenance Trio) | 2 gates | LIVE |
-| Node | 6 (Tower + Compute Trio) | 1 gate | VALIDATED |
-| **NUCLEUS** | **13 (all)** | — | **NEXT** |
+| Gate | Platform | Primals | Capabilities | Provenance | Key Feature |
+|------|----------|---------|-------------|-----------|-------------|
+| **westGate** | Linux | 13/13 | 654 | **7/7 COMPLETE** | ZFS 25.4TB, 3,252 CAS, 29 sockets |
+| **blueGate** | Windows | 13/13 | — | **7/7 VALIDATED** | 131.1 MB, TCP-only, cross-platform proof |
+| **strandGate** | Linux | 13/13 | 1,742 | — | RTX 3090, 674 IPC methods, sub-ms GPU |
 
-The gap is not the primals — it's the orchestration. All 13 primals compile, pass tests, and run independently. What remains is {{ entity(name="biomeos") }} evolving from composition broker to **composition lifecycle manager**: startup ordering, health gating, composition transitions, and signal-graph-driven orchestration across all atomics. **ZERO P0s remain.**
+**Provenance 7/7**: Full 7-step provenance chain (CAS → DAG → Merkle → Spine → Ed25519 signature → Attribution braid) works on live hardware. Validated across Linux (ZFS backend) and Windows. Boot order discipline (Tower → Nest → Node → biomeOS) is the deployment standard.
+
+**Sovereign CI**: Push to Forgejo → auto build → sandbox validate → depot push → HTTPS serve. Zero human intervention for musl builds. 35 depot binaries (16 musl + 4 gnu + 15 Windows).
+
+**ZERO P0s. ZERO P1s. ZERO blocking P2s.** gen4 is COMPLETE. The project has shifted to gen5: NUCLEUS as a platform serving real workloads.
 
 ### Node Atomic
 

@@ -13,12 +13,13 @@ springs = ["primalspring"]
 
 The ecoPrimals ecosystem is not a description of future work. It is running.
 Ten gates are online across two physical sites linked by an 80m 10G AOC trunk.
-All three atomic compositions are **proven independently** — Tower (6 gates),
-Nest (2 gates, including Windows), and Node (1 gate, RTX 3090). {{ entity(name="biomeos") }}
-serves as composition broker with **704 capabilities COORDINATED** on westGate.
-**ZERO P0s remain.** The next milestone is the first full NUCLEUS deployment —
-all 13 primals orchestrated by biomeOS on a single gate. This page shows what
-is actually deployed and operational.
+**Three gates now run full NUCLEUS** — all 13 primals composed and orchestrated
+by {{ entity(name="biomeos") }}. [Provenance 7/7](@/architecture/NUCLEUS_ARCHITECTURE.md)
+is **COMPLETE** — the full signed chain (CAS → DAG → Merkle → Spine → Ed25519 →
+Attribution braid) works on live hardware, validated across Linux and Windows.
+[Sovereign CI](@/architecture/SOVEREIGN_CI.md) automates push-to-deploy with
+35 depot binaries. **ZERO P0s, P1s, or blocking P2s.** gen4 is COMPLETE. This
+page shows what is actually deployed and operational.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 

@@ -102,8 +102,8 @@ description = "Pure Rust cryptography — hashing, signing, key exchange, TLS, X
 domain = "Cryptography"
 loc = 372644
 loc_display = "372,644"
-tests = 11993
-tests_display = "11,993"
+tests = 14019
+tests_display = "14,019"
 files = 2092
 crates = 30
 repo = "ecoPrimals/bearDog"
@@ -246,7 +246,7 @@ edges = [
 display = "biomeOS"
 emoji = "🌿🖥️"
 kind = "primal"
-description = "Orchestration kernel — process supervision, deploy graphs, signal graph execution, IPC bus, Neural API routing, and Dark Forest discovery. 27 signal graphs (Tower 8, Nest 9, Node 3, Meta 5, Braid 2). Composition broker LIVE: 704 capabilities COORDINATED on westGate. Evolving from broker to composition lifecycle manager for NUCLEUS deployment."
+description = "Orchestration kernel — process supervision, deploy graphs, signal graph execution, IPC bus, Neural API routing, and Dark Forest discovery. 27 signal graphs. NUCLEUS orchestrator v4.50: composition lifecycle, boot ordering, socket persistence, capability routing. 3 NUCLEUS gates orchestrated."
 domain = "Orchestration"
 loc = 231992
 loc_display = "231,992"
@@ -367,8 +367,8 @@ description = "Ephemeral content-addressed DAG — Merkle trees, IPLD-compatible
 domain = "Content-addressed DAG"
 loc = 45357
 loc_display = "45,357"
-tests = 1456
-tests_display = "1,456"
+tests = 1900
+tests_display = "1,900"
 files = 217
 crates = 4
 repo = "ecoPrimals/rhizoCrypt"
@@ -395,8 +395,8 @@ description = "Attribution and provenance — tracks authorship, contribution ch
 domain = "Attribution and provenance"
 loc = 44772
 loc_display = "44,772"
-tests = 1636
-tests_display = "1,636"
+tests = 1639
+tests_display = "1,639"
 files = 202
 crates = 11
 repo = "ecoPrimals/sweetGrass"
@@ -741,8 +741,8 @@ emoji = "🧫🔗"
 kind = "infra"
 description = "Sovereign VPS control plane — diderm envelope relay, temporal sync, impulse cascade, gate.enroll (7-phase automated mesh enrollment), gate.bootstrap (cross-platform genomeBin deployment), tower.shadow (Tower vs WG benchmarking), crash-loop breaker, LAN registry, Caddy config generation, nucleus.rs (systemd + Windows Service + launchd + init). Platform::detect() provides TargetOs × CpuArch × LinkModel. Pure Rust."
 domain = "Infrastructure"
-tests = 1221
-tests_display = "1,221"
+tests = 1247
+tests_display = "1,247"
 repo = "sporeGarden/cellMembrane"
 
 [extra.entity_registry.initiochem]
@@ -806,7 +806,7 @@ page = "/products/tideglass/"
 display = "Tower Atomic"
 emoji = "🏗️🔐"
 kind = "composition"
-description = "BearDog + Songbird + SkunkBat → sovereign transport stack. 353x faster than WG on LAN (topology awareness + LAN dispatch priority), 1.7x sustained WAN. 6 exploration domains LIVE. 360+ shadow benchmarks. BTSP 13/13. Crypto delegation 6/6 COMPLETE. Autonomous enrollment LIVE (F10). genomeBin 5 targets. LIVE on 8+ gates including westGate (Nest Atomic) and strandGate (Compute Trio)."
+description = "BearDog + Songbird + SkunkBat → sovereign transport stack. 353x faster than WG on LAN, 1.7x sustained WAN. BTSP 13/13. Crypto delegation 6/6. Part of 3 NUCLEUS gates (westGate, blueGate, strandGate). Provenance 7/7 COMPLETE."
 page = "/architecture/tower-atomic/"
 
 [extra.entity_registry.nodeatomic]
@@ -820,7 +820,7 @@ page = "/architecture/nucleus-architecture/"
 display = "Nest Atomic"
 emoji = "🏗️🪺"
 kind = "composition"
-description = "Tower + NestGate + Provenance Trio → secure content-addressed storage with cryptographic provenance. LIVE on westGate (ZFS, 3,216 CAS objects) and blueGate (Windows, 10/10 primals). Provenance Trio 6/7 (bearDog crypto.sign blocks 7/7). G3 LIVE."
+description = "Tower + NestGate + Provenance Trio → secure content-addressed storage with cryptographic provenance. LIVE on westGate (ZFS, 3,252 CAS) and blueGate (Windows). Provenance 7/7 COMPLETE — full signed chain validated on Linux + Windows. G3 LIVE."
 page = "/architecture/nucleus-architecture/"
 
 [extra.entity_registry.nucleus]
@@ -1148,12 +1148,12 @@ spring_loc = 873954
 spring_loc_display = "873,954"
 total_loc = 3595463
 total_loc_display = "3,595,463"
-primal_tests = 80878
-primal_tests_display = "80,878"
+primal_tests = 83351
+primal_tests_display = "83,351"
 spring_tests = 11576
 spring_tests_display = "11,576"
-total_tests = 92454
-total_tests_display = "92,454"
+total_tests = 94927
+total_tests_display = "94,927"
 wgsl_files = 952
 wgsl_lines = 73838
 wgsl_lines_display = "74K"
@@ -1165,7 +1165,7 @@ total_primals = 15
 spring_count = 9
 total_springs = 9
 content_pages = 313
-measured_date = "2026-07-29"
+measured_date = "2026-07-30"
 # All entity metrics refreshed via spore-validate refresh on this date
 
 # ── Cortical Folds ──────────────────────────────────────────────────────
