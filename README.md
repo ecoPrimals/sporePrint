@@ -3,9 +3,9 @@
 The public-facing science site for [ecoPrimals](https://github.com/ecoPrimals) —
 sovereign scientific computing.
 
-**Live site:** [primals.eco](https://primals.eco)
+**Live site:** [sporeprint.primals.eco](https://sporeprint.primals.eco)
 **Sovereign primary:** golgiBody VPS via Caddy + Let's Encrypt
-**Trailing shadow:** GitHub Pages (extracellular mirror, pending archival)
+**Trailing shadow:** GitHub Pages (extracellular mirror)
 
 ## Deployment Architecture
 
@@ -147,14 +147,14 @@ Merkle root of the entity graph, and content page totals.
 # Verify the site independently:
 git clone https://github.com/ecoPrimals/sporePrint.git && cd sporePrint
 cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
-# Compare graph_merkle with https://primals.eco/certification/manifest.json
+# Compare graph_merkle with https://sporeprint.primals.eco/certification/manifest.json
 ```
 
 ## Organizations
 
 | Org | Purpose | Repos |
 |-----|---------|-------|
-| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (106K+ tests) |
+| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (94K+ tests) |
 | [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |
@@ -162,8 +162,10 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 ## Remaining
 
 - [x] DNS registrar NS cutover to ns1/ns2.primals.eco — live since Wave 100+
-- [x] Forgejo webhook triggers sovereign CI rebuild — Sovereign CI live (Wave 119)
-- [ ] Archive GitHub Pages deploy workflow to fossilRecord
+- [x] Forgejo webhook triggers sovereign CI rebuild — Sovereign CI LIVE (Wave 155m)
+- [x] Sovereign CI push-to-deploy automated (J9+J10+J11 killed)
+- [x] NUCLEUS ACHIEVED — 3 gates running 13/13 primals (Wave 155m)
+- [x] Provenance 7/7 COMPLETE — full signed chain on Linux + Windows
 - [ ] CAS route registration (path→hash mapping for NestGate HTTP serving)
 - [ ] petalTongue renders live dashboards from primal APIs
 

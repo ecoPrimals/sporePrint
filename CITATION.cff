@@ -29,4 +29,4 @@ abstract: >-
   pipelines for 16S rRNA bioinformatics (DADA2-compatible), lattice QCD on
   consumer GPUs, pharmacometrics, and 7 additional scientific domains.
   All components are self-hosted, reproducible, and verifiable.
-date-released: "2026-07-26"
+date-released: "2026-07-30"
