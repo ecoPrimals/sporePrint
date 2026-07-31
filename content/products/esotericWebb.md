@@ -1,6 +1,6 @@
 +++
 title = "esotericWebb — Cross-Evolution CRPG"
-description = "A CRPG that composes primals via JSON-RPC — V22 LIVE at webb.primals.eco. Scene binding fixed, 6/9 primals connected."
+description = "A CRPG that composes primals via JSON-RPC — V22 LIVE at webb.primals.eco. 472 tests. Moving to ironGate (14TB+)."
 date = 2026-03-31
 
 [taxonomies]

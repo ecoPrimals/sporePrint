@@ -3,6 +3,7 @@ title = "Ecosystem Visualization"
 description = "Interactive entity graph explorer for the ecoPrimals ecosystem"
 weight = 2
 [extra]
+foundation = true
 entity_id = "ecosystem-visualization"
 primal_emoji = "🌐🔭"
 maturity = "architectural"

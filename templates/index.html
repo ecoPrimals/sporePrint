@@ -12,8 +12,8 @@
 <article class="landing">
   <header class="hero">
     <h1>sporePrint</h1>
-    <p class="hero-sub">Sovereign Scientific Computing</p>
-    <p class="hero-desc">The science is executable. The infrastructure is inspectable.<br>Every claim can be reproduced on commodity hardware.</p>
+    <p class="hero-sub">Sovereign Scientific Computing — NUCLEUS Is Running</p>
+    <p class="hero-desc">3 gates. 13 primals. Provenance 7/7. The science is executable.<br>Every claim can be reproduced on commodity hardware you already own.</p>
   </header>
 
   {# ── Stats ribbon (immediately after hero — establishes scale) ── #}
@@ -128,6 +128,30 @@
   <section class="card-section" aria-label="Explore">
     <h2>Explore</h2>
     <div class="explore-grid">
+      <a href="{{ get_url(path='@/lab/living-systems.md') }}" class="explore-card">
+        <strong>Living Systems</strong>
+        <span>What's running now — 3 NUCLEUS gates, Sovereign CI, mesh status</span>
+      </a>
+      <a href="{{ get_url(path='@/architecture/NUCLEUS_ARCHITECTURE.md') }}" class="explore-card">
+        <strong>NUCLEUS — LIVE</strong>
+        <span>13 primals, 3 gates, Provenance 7/7. gen4 COMPLETE</span>
+      </a>
+      <a href="{{ get_url(path='@/lab/_index.md') }}" class="explore-card">
+        <strong>Lab — Live Results</strong>
+        <span>136 notebooks, experiments, and validation evidence</span>
+      </a>
+      <a href="{{ get_url(path='@/science/_index.md') }}" class="explore-card">
+        <strong>{{ config.extra.totals.papers_reproduced }} baseCamp Papers</strong>
+        <span>Executable science across {{ config.extra.totals.total_springs }} domains</span>
+      </a>
+      <a href="{{ get_url(path='@/products/_index.md') }}" class="explore-card">
+        <strong>Products</strong>
+        <span>footPrint, esotericWebb, NUCLEUS — what emerges when primals compose</span>
+      </a>
+      <a href="{{ get_url(path='@/getting-started/_index.md') }}" class="explore-card">
+        <strong>Get Started</strong>
+        <span>Deploy NUCLEUS on your own hardware. Any chip, any drive</span>
+      </a>
       <a href="/primals/" class="explore-card">
         <strong>Primals Index</strong>
         <span>15 primals — every page that references each one</span>
@@ -135,30 +159,6 @@
       <a href="/springs/" class="explore-card">
         <strong>Springs Index</strong>
         <span>{{ config.extra.totals.total_springs }} springs — cross-referenced validation environments</span>
-      </a>
-      <a href="{{ get_url(path='@/architecture/NUCLEUS_ARCHITECTURE.md') }}" class="explore-card">
-        <strong>NUCLEUS Architecture</strong>
-        <span>How primals compose — atomics ladder, Neural API, Dark Forest</span>
-      </a>
-      <a href="{{ get_url(path='@/architecture/DEPLOYMENT_MODEL.md') }}" class="explore-card">
-        <strong>Deployment Model</strong>
-        <span>plasmidBin, BYOB composition, how binaries flow</span>
-      </a>
-      <a href="{{ get_url(path='@/methodology/HOW_TO_START_A_SPRING.md') }}" class="explore-card">
-        <strong>Start a Spring</strong>
-        <span>Domain knowledge + patience + a used GPU. No CS degree.</span>
-      </a>
-      <a href="{{ get_url(path='@/science/_index.md') }}" class="explore-card">
-        <strong>{{ config.extra.totals.papers_reproduced }} baseCamp Papers</strong>
-        <span>Executable science across 8 domains</span>
-      </a>
-      <a href="{{ get_url(path='@/lab/_index.md') }}" class="explore-card">
-        <strong>Lab — Live Results</strong>
-        <span>13-primal composition on real hardware. Run it yourself or review the evidence.</span>
-      </a>
-      <a href="{{ get_url(path='@/lab/living-systems.md') }}" class="explore-card">
-        <strong>Living Systems</strong>
-        <span>What's running now — active gates, mesh status, JupyterHub, Sovereign CI.</span>
       </a>
     </div>
   </section>

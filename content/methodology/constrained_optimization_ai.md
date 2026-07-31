@@ -7,6 +7,9 @@ date = 2026-07-09
 [taxonomies]
 primals = ["biomeos", "barracuda", "toadstool"]
 springs = ["primalspring"]
+
+[extra]
+foundation = true
 +++
 
 {{ maturity(level="architectural") }}

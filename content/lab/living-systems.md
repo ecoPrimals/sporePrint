@@ -11,15 +11,9 @@ springs = ["primalspring"]
 
 ## The Mesh Is Alive
 
-The ecoPrimals ecosystem is not a description of future work. It is running.
-Ten gates are online across two physical sites linked by an 80m 10G AOC trunk.
-**Three gates now run full NUCLEUS** — all 13 primals composed and orchestrated
-by {{ entity(name="biomeos") }}. [Provenance 7/7](@/architecture/NUCLEUS_ARCHITECTURE.md)
-is **COMPLETE** — the full signed chain (CAS → DAG → Merkle → Spine → Ed25519 →
-Attribution braid) works on live hardware, validated across Linux and Windows.
-[Sovereign CI](@/architecture/SOVEREIGN_CI.md) automates push-to-deploy with
-35 depot binaries. **ZERO P0s, P1s, or blocking P2s.** gen4 is COMPLETE. This
-page shows what is actually deployed and operational.
+This is not a description of future work. It is running.
+
+**NUCLEUS is LIVE on 3 gates.** Provenance 7/7 validated on Linux and Windows. Sovereign CI automates push-to-deploy for 35 binaries across 3 platforms. sporeGate is 11/11 HEALTHY — the first clean gate health check. **ZERO P0s. ZERO P1s. ZERO blocking P2s.** gen4 is COMPLETE — gen5 begins: NUCLEUS as a platform serving real workloads.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
@@ -27,18 +21,18 @@ page shows what is actually deployed and operational.
 
 | Gate | Status | Platform | What's Running |
 |------|--------|----------|----------------|
-| **sporeGate** | Online | Linux | Build authority, genomeBin harvester, depot rebuild |
-| **eastGate** | Online | Linux | Overwatch, primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), biomeOS evolution |
-| **westGate** | **Nest Atomic LIVE** | Linux | **8 services, 1,704 capabilities, ZFS 25.4TB + 2TB L2ARC, 6 PDBs in CAS** |
-| **strandGate** | **Tower+Compute LIVE** | Linux | Dual EPYC 7452, 256GB, RTX 3090, Compute Trio deployed |
-| **ironGate** | Online | Linux | 4x HDD (14TB+), HDD enclave experiment |
-| flockGate | **DOWN** | Linux | Rebooted, RustDesk locked out |
-| **golgiBody** | Online | Linux (VPS) | Sole depot (39 genomeBins), enrollment endpoint, Forgejo |
-| **northGate** | Online | Windows | RTX 5090, AlphaFold source (~1TB), G1 target |
-| **grapheneGate** | Online | Android | Tower LIVE, G2: mobile trust boundary |
-| **blueGate** | Online | Windows | G1: Tower on Windows, peptidoglycan anchor H2 |
-| **swiftGate** | Online | Windows | G1: Tower on Windows |
+| **sporeGate** | **11/11 HEALTHY** | Linux | Sovereign CI LIVE, build authority, depot 35 binaries. biomeOS v4.51 |
+| **eastGate** | Overwatch | Linux | primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), biomeOS + squirrel + petalTongue evolution |
+| **westGate** | **NUCLEUS** | Linux | **13/13, 654 caps, 29 sockets, Provenance 7/7 COMPLETE.** ZFS 25.4TB, 3,252 CAS objects |
+| **strandGate** | **NUCLEUS** | Linux | **13/13, 1,742 caps, 674 IPC methods.** RTX 3090, sub-ms GPU, 2,130 matmul/sec |
+| **blueGate** | **NUCLEUS** | Windows | **13/13, Provenance 7/7 VALIDATED.** 131.1 MB, TCP-only, DID key verified |
+| **ironGate** | Online | Linux | 14TB+1TB+1TB+2TB. Takes esotericWebb from flockGate. Tower + HDD enclave |
+| **golgiBody** | Online | Linux (VPS) | Depot (35 genomeBins), enrollment endpoint, Forgejo push mirror |
+| **northGate** | Online | Windows | RTX 5090, AlphaFold source (~1TB) |
+| **grapheneGate** | Online | Android | Tower LIVE (Pixel 8a), ADB mesh expansion |
+| **swiftGate** | HW Ready | Windows | After blueGate sub-builder stable |
 | **southGate** | HW Ready | Linux | Omada 10G, enrollment pending |
+| flockGate | **DOWN** | Linux | Rebooted, RustDesk locked out. esotericWebb → ironGate |
 | fieldGate | Offline | — | Dead CMOS |
 | biomeGate | Offline | — | Kernel recovery |
 

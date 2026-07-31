@@ -8,6 +8,7 @@ primals = ["biomeos", "nestgate", "barracuda"]
 springs = ["hotspring"]
 
 [extra]
+foundation = true
 maturity = "architectural"
 +++
 

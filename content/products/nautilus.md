@@ -8,6 +8,7 @@ primals = ["barracuda", "toadstool", "squirrel"]
 springs = ["neuralspring", "hotspring"]
 
 [extra]
+foundation = true
 maturity = "implemented"
 
 [[extra.companions]]

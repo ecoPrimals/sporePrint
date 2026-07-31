@@ -1,6 +1,6 @@
 +++
 title = "Products"
-description = "Emergent compositions of primals organized by maturity — deployable systems, research previews, and architectural direction."
+description = "What emerges when primals compose — NUCLEUS on 3 gates, Tower Atomic on 6+, footPrint and esotericWebb deployed. Live products only."
 sort_by = "title"
 template = "section.html"
 +++

@@ -1,8 +1,8 @@
 +++
-title = "BarraCuda Scientific Compute Gaps"
-description = "Gap analysis: 60-70% of scientific compute primitives predicted to share character-identical kernels across domains via constrained evolution."
+title = "BarraCuda Scientific Compute — 98 Capabilities LIVE"
+description = "Gap analysis evolved to completion: 98 capabilities LIVE on strandGate RTX 3090. 2,130 matmul/sec, 746 pipelines/sec. All P0/P1 gaps CLOSED."
 weight = 7
-date = 2026-07-09
+date = 2026-07-31
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "coralreef"]
@@ -21,12 +21,17 @@ title = "Ecosystem Architecture"
 relation = "pairs_with"
 +++
 
-{{ maturity(level="architectural") }}
+{{ maturity(level="live") }}
 
-**Status**: Historical discovery document (Phase C) + Feb 27 status annotations  
-**Purpose**: Map what computational physics reveals as new evolution targets for BarraCuda  
-**Context**: First analysis of BarraCuda through the lens of scientific computing (Sarkas MD, surrogate learning, TTM, ABM) rather than ML/AI/FHE. Originally Feb 7, updated Feb 14 with Phase C GPU MD. As of Feb 27: FFT gap is CLOSED (ToadStool Fft1DF64/Fft3DF64), lattice QCD is production (6 papers, 32⁴), DF64 discovery provides 9.9× f64 throughput, NPU integration adds a third substrate. Most P0/P1 gaps are resolved.  
-**Last Updated**: February 27, 2026
+> **✓ VALIDATED ON LIVE HARDWARE** — 98 capabilities LIVE on strandGate (RTX 3090). 2,130 matmul/sec, 746 pipelines/sec. All P0/P1 gaps CLOSED. Dual-vendor proof: RTX 3090 + RX 6950 XT, 100% pass rate.
+
+**Status**: Gap analysis **COMPLETE**. All identified gaps are CLOSED and running on live hardware.
+**Last Updated**: July 31, 2026
+
+This page documents the original gap analysis (February 2026) that identified missing
+scientific compute primitives in barraCuda. As of Wave 155n, all P0 and P1 gaps have been
+resolved. The analysis below is preserved as historical context showing how constrained
+evolution systematically closed capability gaps.
 
 ---
 

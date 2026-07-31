@@ -9,6 +9,7 @@ primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgat
 springs = ["groundspring", "healthspring", "ludospring", "neuralspring", "primalspring", "wetspring"]
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "implemented"
 +++

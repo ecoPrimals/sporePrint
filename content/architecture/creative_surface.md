@@ -5,6 +5,7 @@ date = 2026-04-25
 weight = 36
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "architectural"
 

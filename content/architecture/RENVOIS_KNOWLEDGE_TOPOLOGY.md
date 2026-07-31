@@ -6,6 +6,7 @@ weight = 14
 primals = ["rhizocrypt", "loamspine", "sweetgrass"]
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "architectural"
 +++

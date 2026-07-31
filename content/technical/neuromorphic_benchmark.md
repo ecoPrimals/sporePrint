@@ -9,6 +9,7 @@ primals = ["barracuda", "toadstool", "biomeos"]
 springs = ["neuralspring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/science/26-neuromorphic-sovereign-driver/"

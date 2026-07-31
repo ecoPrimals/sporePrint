@@ -8,6 +8,7 @@ weight = 46
 trails = ["first-visit"]
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "architectural"
 

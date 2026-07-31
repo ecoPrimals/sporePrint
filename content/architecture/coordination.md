@@ -8,6 +8,7 @@ weight = 47
 trails = ["coordination"]
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "implemented"
 

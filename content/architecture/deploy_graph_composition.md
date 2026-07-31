@@ -8,6 +8,7 @@ weight = 35
 trails = ["nf-pipeline"]
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "architectural"
 

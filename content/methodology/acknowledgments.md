@@ -5,6 +5,9 @@ weight = 90
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "coralreef", "nestgate", "petaltongue", "songbird", "toadstool"]
+
+[extra]
+foundation = true
 +++
 
 ## Why This Page Exists

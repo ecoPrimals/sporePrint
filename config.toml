@@ -1183,7 +1183,7 @@ ridge_pages = ["/lab/", "/architecture/evidence-snapshot/", "/science/cross-spri
 key = "architecture"
 label = "Architecture"
 sections = ["architecture", "technical", "products"]
-ridge_pages = ["/architecture/ecosystem-architecture/", "/architecture/nucleus-architecture/", "/architecture/primal-catalog/"]
+ridge_pages = ["/architecture/nucleus-architecture/", "/architecture/ecosystem-architecture/", "/architecture/primal-catalog/"]
 
 [[extra.cortex]]
 key = "methodology"
@@ -1192,16 +1192,10 @@ sections = ["methodology", "guidestone"]
 ridge_pages = ["/methodology/k-nome-programming/", "/methodology/constrained-evolution-formal/", "/guidestone/"]
 
 [[extra.cortex]]
-key = "philosophy"
-label = "Philosophy"
-sections = ["philosophy", "story", "thesis"]
-ridge_pages = ["/philosophy/the-human-search/", "/thesis/01-introduction/", "/story/i-dont-know-rust/"]
-
-[[extra.cortex]]
-key = "engagement"
-label = "Engagement"
-sections = ["glossary", "audience", "outreach", "collaborators"]
-ridge_pages = ["/glossary/", "/audience/capability-parity-brief/", "/outreach/homelab-llm-landing/"]
+key = "getting-started"
+label = "Getting Started"
+sections = ["getting-started"]
+ridge_pages = ["/getting-started/"]
 
 # ── Sidebar Section Order ────────────────────────────────────────────────
 # Flat fallback ordering — used within each fold to determine section display order.
@@ -1216,13 +1210,7 @@ sections = [
   "products",
   "methodology",
   "guidestone",
-  "philosophy",
-  "story",
-  "thesis",
-  "glossary",
-  "audience",
-  "outreach",
-  "collaborators",
+  "getting-started",
 ]
 
 # Lab notebook domain sub-folds. Used to group the 104 notebooks in sidebar and templates.

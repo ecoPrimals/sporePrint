@@ -1,6 +1,6 @@
 +++
 title = "tideGlass — Sovereign GPS Platform"
-description = "Sovereign GPS data analysis platform — reproducing published GPS methodology in pure Rust. Phase 0: reproduce GPS paper figures vs Python baseline. Second protoKarya protist."
+description = "Sovereign GPS data analysis platform — AlphaFold pipeline mapped on strandGate (20-30/day capacity). Phase 0: GPS paper reproduction underway."
 date = 2026-07-15
 
 [taxonomies]

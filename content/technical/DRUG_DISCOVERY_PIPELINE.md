@@ -9,8 +9,8 @@ springs = ["groundspring", "healthspring", "neuralspring", "wetspring"]
 [extra]
 
 [[extra.companions]]
-url = "/products/coralforge/"
-title = "coralForge"
+url = "/products/helixVision/"
+title = "helixVision"
 relation = "evidence_for"
 
 [[extra.companions]]
@@ -22,9 +22,11 @@ relation = "validated_by"
 **Audience:** Gonzales lab, ADDRC, MSU Drug Discovery Program  
 **Status:** Computationally validated (329/329 checks) — awaiting wet lab integration  
 **License:** CC-BY-SA 4.0  
-**Last Updated:** March 17, 2026
+**Last Updated:** July 31, 2026
 
-> **Historical snapshot.** Metrics reflect March 2026. Current numbers: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md).
+> **AlphaFold Capacity (Wave 155n):** strandGate (Dual EPYC 7452, 256GB, RTX 3090) can predict 20-30 structures/day via Nest Atomic CAS pipeline. Provenance 7/7 ensures every prediction has a cryptographic chain from input to result.
+
+> **Historical snapshot.** Pipeline design from March 2026. Current compute capacity: [Evidence Snapshot](@/architecture/EVIDENCE_SNAPSHOT.md).
 
 ---
 

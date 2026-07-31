@@ -2,9 +2,12 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 30, 2026 (Wave 155m — NUCLEUS ACHIEVED, Provenance 7/7, gen4 COMPLETE, Sovereign CI LIVE)
+Last reviewed: July 31, 2026 (Wave 155n — SITE RESTRUCTURED: conceptual → demonstration era)
 
-**Current state**: 313 pages (17 sections), 79 entities, 10 trails, 5 cortical folds, 3.60M LOC, 94,927 tests, 35 depot binaries, 3 NUCLEUS gates, ZERO P0/P1/P2.
+**Current state**: 313 pages (23 sections), 79 entities, 4 cortical folds (Evidence, Architecture, Methodology, Getting Started), 3.60M LOC, 101,308 tests, 35 depot binaries, 3 NUCLEUS gates, ZERO P0/P1/P2.
+
+**Wave 155n restructuring**: Top nav: Lab | Science | Architecture | Products | Get Started. 47 pages marked `foundation = true` (not in nav). Thesis/philosophy/story → Backstory section. Audience/outreach/collaborators → Foundation section. Architecture: 15 live pages stay, 29 design docs move to foundation. VALIDATED badges on 4 baseCamp papers. Homepage leads with "NUCLEUS Is Running".
+
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ---

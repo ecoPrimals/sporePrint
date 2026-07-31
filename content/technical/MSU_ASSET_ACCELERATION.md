@@ -8,6 +8,7 @@ primals = ["barracuda", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "neuralspring", "wetspring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/architecture/foundation-connection/"

@@ -8,6 +8,7 @@ primals = ["barracuda"]
 springs = ["wetspring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/methodology/k-nome-programming/"

@@ -94,18 +94,19 @@ sporePrint/
 
 ## Site Topology — Cortical Folds
 
-The site is organized into 5 navigable folds grouping 17 sections:
+The site is organized into 4 navigable folds with Foundation and Backstory sections:
 
 | Fold | Sections | What |
 |------|----------|------|
-| **Evidence** | Lab, Science | What we proved (60% of site) |
-| **Architecture** | Architecture, Technical, Products | How it works (19%) |
-| **Methodology** | Methodology, guideStone | How to build (7%) |
-| **Philosophy** | Philosophy, Story, Thesis | Why it matters (12%) |
-| **Engagement** | Glossary, Audience, Outreach, Collaborators, Vision | Who and how (8%) |
+| **Evidence** | Lab, Science | What we proved — notebooks, experiments, baseCamp papers |
+| **Architecture** | Architecture, Technical, Products | How it works — live operational docs |
+| **Methodology** | Methodology, guideStone | How to build — K-NOME, constrained evolution |
+| **Getting Started** | Getting Started | Deploy NUCLEUS on your hardware |
+| *Foundation* | *(47 design docs within active sections + audience, outreach, collaborators)* | *Proven design history — accessible, not prominent* |
+| *Backstory* | *(thesis, philosophy, story)* | *Finished works — the why behind the system* |
 
-10 reading trails thread pages across fold boundaries. ~110 pages carry
-typed companion metadata for cross-domain discovery.
+Top nav: **Lab | Science | Architecture | Products | Get Started** + Foundation, Backstory, Contact.
+10 reading trails thread pages across fold boundaries.
 
 ## spore-validate
 
@@ -154,7 +155,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 | Org | Purpose | Repos |
 |-----|---------|-------|
-| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (94K+ tests) |
+| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (101K+ tests) |
 | [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |

@@ -4,6 +4,7 @@ description = "Hardware Architecture x Sovereign Computing — precision tier ta
 date = 2026-03-30
 
 [extra]
+validated_on_hardware = true
 paper_number = 14
 domain = "Physics and Materials"
 
@@ -21,6 +22,8 @@ relation = "evidence_for"
 primals = ["barracuda", "coralreef", "toadstool"]
 springs = ["airspring", "groundspring", "hotspring", "neuralspring", "wetspring"]
 +++
+
+> **✓ VALIDATED ON LIVE HARDWARE** — Proven on 4 NUCLEUS gates (westGate, blueGate, strandGate, sporeGate). 35 depot binaries across 3 platforms.
 
 ## At a Glance
 

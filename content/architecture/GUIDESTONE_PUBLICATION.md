@@ -4,6 +4,7 @@ description = "Every claim on this site is backed by executable verification. Cl
 weight = 15
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "implemented"
 +++

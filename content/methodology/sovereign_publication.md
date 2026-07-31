@@ -8,6 +8,7 @@ weight = 23
 trails = ["sovereignty", "methodology", "nf-pipeline", "grant-ready"]
 
 [extra]
+foundation = true
 domain = "Methodology"
 maturity = "architectural"
 

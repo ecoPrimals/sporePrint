@@ -1,18 +1,20 @@
 +++
 title = "NUCLEUS Composition Model"
 weight = 8
-description = "How primals compose into a system — the atomics ladder, Neural API, deploy graphs, Dark Forest, and Plasmodium."
-date = 2026-03-31
+description = "NUCLEUS is LIVE on 3 gates with Provenance 7/7 validated on Linux and Windows. 13 primals, 3 atomic compositions, 1 orchestrator."
+date = 2026-07-31
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "squirrel", "sweetgrass", "toadstool"]
 
 [extra]
 domain = "Architecture"
-maturity = "architectural"
+maturity = "live"
 +++
 
-{{ entity(name="nucleus") }} is not a single binary. It is the **emergent state** when foundation primals are running and coordinated by {{ entity(name="biomeos") }} on a gate. This page describes how individual primals compose into a coherent system through named patterns, semantic routing, and cryptographic trust.
+{{ entity(name="nucleus") }} is **LIVE on 3 gates** — westGate (Linux, Provenance 7/7), blueGate (Windows, Provenance 7/7), and strandGate (RTX 3090, 1,742 capabilities). It is the emergent state when all 13 primals are running and coordinated by {{ entity(name="biomeos") }}. Sovereign CI automates the entire build-deploy pipeline. **gen4 is COMPLETE.** gen5 begins: NUCLEUS as a platform serving real workloads.
+
+> **Status (Wave 155n):** ZERO P0s. ZERO P1s. ZERO blocking P2s. 35 depot binaries across 3 platforms. Provenance 7/7 validated end-to-end on live hardware.
 
 ---
 
@@ -44,7 +46,7 @@ Tower is the foundation of all networked communication. {{ entity(name="beardog"
 **Composition**: Tower Atomic + {{ entity(name="nestgate") }} + Provenance Trio ({{ entity(name="rhizocrypt") }} + {{ entity(name="loamspine") }} + {{ entity(name="sweetgrass") }})
 **What emerges**: Content-addressed storage with cryptographic provenance
 
-Nest Atomic is **LIVE on two gates** — westGate (Linux, ZFS 25.4TB, 3,216 CAS objects) and blueGate (Windows, 10/10 primals, 107.6 MB, TCP-only). {{ entity(name="biomeos") }} serves as composition broker with **704 capabilities COORDINATED** on westGate. The Provenance Trio is **6/7** — sweetGrass G3 wiring complete, bearDog `crypto.sign_ed25519` blocks the final step.
+Nest Atomic is **LIVE on two gates** — westGate (Linux, ZFS 25.4TB, 3,252 CAS objects, 1.56× compression) and blueGate (Windows, 13/13 primals, 131.1 MB, TCP-only). {{ entity(name="biomeos") }} serves as composition broker with **654 capabilities COORDINATED** on westGate. The Provenance Trio is **7/7 COMPLETE** — full cryptographic provenance chain validated end-to-end on both platforms.
 
 ### Node Atomic — **VALIDATED ON STRANDGATE**
 
@@ -59,9 +61,10 @@ Three gates now run full NUCLEUS — all 13 primals composed:
 
 | Gate | Platform | Primals | Capabilities | Provenance | Key Feature |
 |------|----------|---------|-------------|-----------|-------------|
-| **westGate** | Linux | 13/13 | 654 | **7/7 COMPLETE** | ZFS 25.4TB, 3,252 CAS, 29 sockets |
-| **blueGate** | Windows | 13/13 | — | **7/7 VALIDATED** | 131.1 MB, TCP-only, cross-platform proof |
-| **strandGate** | Linux | 13/13 | 1,742 | — | RTX 3090, 674 IPC methods, sub-ms GPU |
+| **westGate** | Linux | 13/13 | 654 | **7/7 COMPLETE** | ZFS 25.4TB, 3,252 CAS objects, 29 sockets |
+| **blueGate** | Windows | 13/13 | — | **7/7 VALIDATED** | 131.1 MB, TCP-only, DID key verified |
+| **strandGate** | Linux | 13/13 | 1,742 | — | RTX 3090, 674 IPC methods, 2,130 matmul/sec |
+| **sporeGate** | Linux | CI | 11/11 | — | Sovereign CI: push-to-deploy, depot authority |
 
 **Provenance 7/7**: Full 7-step provenance chain (CAS → DAG → Merkle → Spine → Ed25519 signature → Attribution braid) works on live hardware. Validated across Linux (ZFS backend) and Windows. Boot order discipline (Tower → Nest → Node → biomeOS) is the deployment standard.
 

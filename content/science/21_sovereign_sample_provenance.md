@@ -4,6 +4,7 @@ description = "Field Genomics x Fraud Detection — field-to-publication chain-o
 date = 2026-03-17
 
 [extra]
+validated_on_hardware = true
 paper_number = 21
 domain = "Economics and Provenance"
 
@@ -16,6 +17,8 @@ relation = "extends"
 primals = ["beardog", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweetgrass"]
 springs = ["ludospring", "wetspring"]
 +++
+
+> **✓ VALIDATED ON LIVE HARDWARE** — Provenance 7/7 COMPLETE — full cryptographic chain (CAS → DAG → Merkle → Spine → Ed25519 → Attribution) validated on westGate (ZFS) and blueGate (Windows).
 
 **Status**: Active | **Date**: March 13, 2026
 **Depends on**: Papers 04 (Sentinels), 09 (Field Genomics), 16 (Anaerobic QS), 20 (NFT Economics)

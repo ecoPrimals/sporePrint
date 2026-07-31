@@ -8,6 +8,7 @@ weight = 21
 trails = ["methodology"]
 
 [extra]
+foundation = true
 domain = "Methodology"
 maturity = "implemented"
 

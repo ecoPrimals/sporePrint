@@ -3,7 +3,7 @@ title = "sporePrint"
 description = "Self-hosted GPU-accelerated scientific computing in Rust: DADA2 bioinformatics, lattice QCD, pharmacometrics on commodity hardware. No CUDA, no cloud. WebGPU/WGSL on NVIDIA, AMD, Intel."
 +++
 
-**ecoPrimals** produces self-hosted scientific computing in pure Rust — GPU-accelerated bioinformatics, lattice QCD, pharmacometrics, and more, on commodity hardware without CUDA or cloud dependencies. **sporePrint** is this site — the permanent evidence record.
+**ecoPrimals** is running. Three gates operate the full 13-primal [NUCLEUS](@/architecture/NUCLEUS_ARCHITECTURE.md) composition with [Provenance 7/7](@/architecture/NUCLEUS_ARCHITECTURE.md) validated on Linux and Windows. Self-hosted scientific computing in pure Rust — GPU-accelerated bioinformatics, lattice QCD, pharmacometrics, and more, on commodity hardware without CUDA or cloud dependencies.
 
 ---
 
@@ -43,9 +43,9 @@ If those commands run, the claims are verified. No institutional access. No prop
 - [Self-hosted distributed compute mesh](@/architecture/MESH_TOPOLOGY.md) — multi-gate topology, 353× LAN throughput
 - [Reproducible self-verifying software](@/guidestone/_index.md) — guideStone verification class
 
-New here? Start with the [Glossary](@/glossary/_index.md) or skip straight to
-[Getting Started with plasmidBin](@/lab/getting-started-plasmidbin.md) — pre-built
-binaries, BLAKE3 verified, running in 5 minutes.
+New here? [Get Started](@/getting-started/_index.md) — deploy NUCLEUS on your own hardware.
+Or skip straight to [plasmidBin](@/lab/getting-started-plasmidbin.md) — pre-built binaries,
+BLAKE3 verified, running in 5 minutes.
 
 ---
 

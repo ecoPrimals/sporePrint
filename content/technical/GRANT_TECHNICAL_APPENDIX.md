@@ -9,6 +9,7 @@ springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring
 trails = ["grant-ready"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/audience/capability-parity-brief/"

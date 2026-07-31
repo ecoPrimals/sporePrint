@@ -5,6 +5,7 @@ date = 2026-07-16
 weight = 57
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "implemented"
 voice = "ecoPrimals"

@@ -4,6 +4,7 @@ description = "Lattice QCD x GPU Compute — first dynamical fermion production 
 date = 2026-03-17
 
 [extra]
+validated_on_hardware = true
 paper_number = 10
 domain = "Physics and Materials"
 
@@ -17,6 +18,8 @@ label = "How dynamical fermion production fits the sovereign compute thesis"
 primals = ["coralreef"]
 springs = ["hotspring"]
 +++
+
+> **✓ VALIDATED ON LIVE HARDWARE** — Validated by hotSpring + barraCuda on strandGate RTX 3090. 2,130 matmul/sec, 98 capabilities LIVE.
 
 **Date:** March 9, 2026
 **Status:** Complete (all 17 β points finished, 1,071 trajectories). **Chuna Papers 43-45: 44/44 overnight checks pass** (v0.6.24). Dynamical N_f=4 ext 3/3 complete. {{ entity(name="coralreef") }} sovereign compilation: 44/46 shaders, full `GpuBackend` impl.

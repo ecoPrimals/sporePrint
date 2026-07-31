@@ -6,6 +6,9 @@ date = 2026-03-31
 [taxonomies]
 primals = ["beardog", "biomeos", "nestgate", "rhizocrypt", "loamspine", "sweetgrass"]
 springs = ["wetspring", "primalspring"]
+
+[extra]
+foundation = true
 +++
 
 **Repository**: sporeGarden/blueFish (moving from {{ entity(name="syntheticchemistry") }} — repo pending)  

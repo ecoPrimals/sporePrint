@@ -1,6 +1,6 @@
 +++
 title = "footPrint — GIS Home Planner"
-description = "Sovereign GIS home planning tool — the first protoKarya protist. LIVE at footprint.primals.eco with 10 GIS upstream sources via songBird drawbridge proxy."
+description = "Sovereign GIS home planning tool — LIVE at footprint.primals.eco. 478 TS tests, 10 GIS upstream sources via songBird drawbridge proxy."
 date = 2026-07-15
 
 [taxonomies]

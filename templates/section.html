@@ -145,14 +145,35 @@
     {% else %}
       <ul>
         {% for page in section.pages %}
+        {% if not page.extra.foundation %}
         <li>
           <a href="{{ page.permalink }}">
             <strong>{{ page.title }}</strong>
             {% if page.description %}<span>{{ page.description }}</span>{% endif %}
           </a>
         </li>
+        {% endif %}
         {% endfor %}
       </ul>
+      {% set_global foundation_count = 0 %}
+      {% for page in section.pages %}{% if page.extra.foundation %}{% set_global foundation_count = foundation_count + 1 %}{% endif %}{% endfor %}
+      {% if foundation_count > 0 %}
+      <details class="foundation-pages">
+        <summary>Foundation pages ({{ foundation_count }})</summary>
+        <ul>
+          {% for page in section.pages %}
+          {% if page.extra.foundation %}
+          <li>
+            <a href="{{ page.permalink }}">
+              <strong>{{ page.title }}</strong>
+              {% if page.description %}<span>{{ page.description }}</span>{% endif %}
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </details>
+      {% endif %}
     {% endif %}
   </nav>
   {% endif %}

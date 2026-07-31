@@ -8,6 +8,7 @@ weight = 37
 trails = ["sovereignty"]
 
 [extra]
+foundation = true
 domain = "Architecture"
 maturity = "architectural"
 

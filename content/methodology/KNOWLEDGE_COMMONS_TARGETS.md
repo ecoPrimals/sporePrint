@@ -8,6 +8,7 @@ primals = ["barracuda", "coralreef", "squirrel", "sweetgrass", "toadstool"]
 springs = ["airspring", "groundspring", "healthspring", "hotspring", "ludospring", "neuralspring", "wetspring"]
 
 [extra]
+foundation = true
 maturity = "architectural"
 +++
 

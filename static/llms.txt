@@ -19,8 +19,10 @@
 ## What This Site Is
 
 sporeprint.primals.eco is the public-facing science site for the ecoPrimals ecosystem.
-313 pages across 17 sections. Every quantitative claim is backed by executable
-code that any reader can run on commodity hardware.
+313 pages organized into 5 main sections (Lab, Science, Architecture, Products, Get Started)
+plus Foundation (design history) and Backstory (thesis, philosophy, narrative). NUCLEUS is
+LIVE on 3 gates. Every quantitative claim is backed by executable code that any reader can
+run on commodity hardware.
 
 ## Key Technical Pages
 
