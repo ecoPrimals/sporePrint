@@ -6,6 +6,9 @@ weight = 12
 
 [taxonomies]
 springs = ["hotspring", "wetspring", "airspring", "groundspring", "neuralspring", "healthspring", "ludospring"]
+
+[extra]
+foundation = true
 +++
 
 {{ maturity(level="scaffold") }}

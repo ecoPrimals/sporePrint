@@ -9,6 +9,7 @@ primals = ["barracuda", "toadstool", "biomeos", "songbird", "squirrel", "beardog
 springs = ["hotspring", "neuralspring"]
 
 [extra]
+foundation = true
 maturity = "live"
 
 [[extra.companions]]

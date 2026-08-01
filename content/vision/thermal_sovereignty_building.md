@@ -9,6 +9,7 @@ springs = ["airspring"]
 trails = ["first-visit"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/vision/lansing-scuffle/"

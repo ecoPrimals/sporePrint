@@ -8,6 +8,7 @@ primals = ["barracuda", "beardog", "loamspine", "nestgate", "rhizocrypt", "sweet
 springs = ["groundspring", "healthspring", "wetspring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/architecture/evidence-snapshot/"

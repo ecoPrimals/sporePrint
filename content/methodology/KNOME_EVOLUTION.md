@@ -5,6 +5,7 @@ date = 2026-05-31
 weight = 20
 
 [extra]
+foundation = true
 domain = "Methodology"
 maturity = "implemented"
 +++

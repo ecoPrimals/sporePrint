@@ -8,6 +8,7 @@ primals = ["barracuda", "loamspine", "toadstool"]
 springs = ["wetspring"]
 
 [extra]
+foundation = true
 status = "active"
 
 [[extra.companions]]

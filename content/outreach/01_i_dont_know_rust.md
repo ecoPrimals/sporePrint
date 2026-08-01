@@ -5,6 +5,9 @@ weight = 10
 
 [taxonomies]
 primals = ["barracuda", "toadstool", "beardog"]
+
+[extra]
+foundation = true
 +++
 
 {{ maturity(level="scaffold") }}

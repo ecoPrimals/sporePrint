@@ -5,6 +5,9 @@ weight = 23
 
 [taxonomies]
 primals = []
+
+[extra]
+foundation = true
 +++
 
 {{ maturity(level="scaffold") }}

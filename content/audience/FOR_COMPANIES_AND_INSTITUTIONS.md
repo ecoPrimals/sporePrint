@@ -9,6 +9,7 @@ springs = ["groundspring", "healthspring", "hotspring", "wetspring"]
 trails = ["first-visit", "grant-ready"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/methodology/scyborg-licensing/"

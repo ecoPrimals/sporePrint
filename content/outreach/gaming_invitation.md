@@ -6,6 +6,9 @@ weight = 2
 [taxonomies]
 primals = ["biomeos", "songbird", "beardog"]
 springs = ["ludospring"]
+
+[extra]
+foundation = true
 +++
 
 **This is a standing invitation. A human reads and responds to every message at [eco.primal@pm.me](mailto:eco.primal@pm.me).**

@@ -9,6 +9,7 @@ springs = ["groundspring", "healthspring", "hotspring", "neuralspring", "wetspri
 trails = ["first-visit", "grant-ready"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/lab/"

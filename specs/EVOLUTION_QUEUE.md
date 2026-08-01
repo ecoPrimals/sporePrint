@@ -2,11 +2,20 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: July 31, 2026 (Wave 155n — SITE RESTRUCTURED: conceptual → demonstration era)
+Last reviewed: August 1, 2026 (post-155n — demonstration era LIVE on primals.eco)
 
-**Current state**: 313 pages (23 sections), 79 entities, 4 cortical folds (Evidence, Architecture, Methodology, Getting Started), 3.60M LOC, 101,308 tests, 35 depot binaries, 3 NUCLEUS gates, ZERO P0/P1/P2.
+**Current state**: 313 pages (23 sections), 79 entities, 4 cortical folds (Evidence, Architecture, Methodology, Getting Started), 3.60M LOC, 101,308 tests, 35 depot binaries, 4 NUCLEUS gates, ZERO P0/P1/P2. biomeOS v4.56, G22 convergence.
 
-**Wave 155n restructuring**: Top nav: Lab | Science | Architecture | Products | Get Started. 47 pages marked `foundation = true` (not in nav). Thesis/philosophy/story → Backstory section. Audience/outreach/collaborators → Foundation section. Architecture: 15 live pages stay, 29 design docs move to foundation. VALIDATED badges on 4 baseCamp papers. Homepage leads with "NUCLEUS Is Running".
+**Demonstration era (Wave 155n+):**
+- Top nav: Lab | Science | Architecture | Products | Get Started
+- 79 pages marked `foundation = true` (47 initial + 32 outreach/audience/collaborators/vision/methodology)
+- Thesis/philosophy/story → Backstory section (links in nav footer)
+- VALIDATED badges on 7 baseCamp papers (10, 14, 21, 24, 7, 17, 28)
+- 6 architecture pages upgraded to `maturity = "live"` (SOVEREIGN_CI, MESH_TOPOLOGY, GENERATIONAL_ARC, ECOSYSTEM_ARCHITECTURE, KDERM, neural_api)
+- Homepage leads with "NUCLEUS Is Running", "Find Your Path" cards point to live systems
+- Hype cleanup: 353× WireGuard claims removed (topology awareness, not speed), 3.24 TFLOPS DF64 replaced with measured 2,130 matmul/sec, Rust-vs-Python comparisons qualified as compiled-vs-interpreted
+- Auto-publish: 15-min timer on golgi-ext pulls from Forgejo, rebuilds if new commits
+- Getting Started section: full rewrite with stack table, boot order, mesh enrollment
 
 Most items below pre-Wave 138 are completed — retained as fossil record.
 

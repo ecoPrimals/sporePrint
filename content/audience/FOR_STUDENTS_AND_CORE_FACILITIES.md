@@ -8,6 +8,7 @@ primals = ["barracuda", "beardog", "toadstool"]
 springs = ["healthspring", "wetspring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/lab/reproduce/"

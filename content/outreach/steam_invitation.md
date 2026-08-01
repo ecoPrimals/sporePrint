@@ -9,6 +9,7 @@ primals = ["barracuda", "biomeos", "songbird", "beardog", "toadstool", "coralree
 springs = ["ludospring", "hotspring"]
 
 [extra]
+foundation = true
 maturity = "live"
 voice = "attsi"
 

@@ -8,6 +8,7 @@ date = 2026-07-09
 springs = ["hotspring", "wetspring", "airspring", "healthspring", "groundspring", "neuralspring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/audience/for-faculty-and-pis/"

@@ -9,6 +9,7 @@ primals = ["squirrel", "barracuda", "biomeos", "toadstool"]
 springs = ["neuralspring", "wetspring", "hotspring"]
 
 [extra]
+foundation = true
 maturity = "live"
 voice = "attsi"
 

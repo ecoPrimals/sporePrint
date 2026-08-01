@@ -5,6 +5,7 @@ weight = 5
 date = 2026-07-14
 
 [extra]
+foundation = true
 voice = "attsi"
 maturity = "live"
 

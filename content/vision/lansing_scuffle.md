@@ -9,6 +9,7 @@ springs = ["airspring", "groundspring", "wetspring"]
 trails = ["first-visit"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/vision/thermal-sovereignty-building/"

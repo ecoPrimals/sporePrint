@@ -4,6 +4,7 @@ description = "Knowledge-Numeric Observed and Mentored Evolutionary Programming"
 date = 2026-03-17
 
 [extra]
+foundation = true
 maturity = "implemented"
 
 [[extra.companions]]

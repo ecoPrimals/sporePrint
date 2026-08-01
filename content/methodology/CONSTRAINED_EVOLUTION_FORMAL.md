@@ -4,6 +4,7 @@ description = "The core methodology paper — environmental constraints drive sp
 date = 2026-03-17
 
 [extra]
+foundation = true
 maturity = "reproduced"
 
 [[extra.companions]]

@@ -8,6 +8,7 @@ date = 2026-07-26
 primals = ["barracuda", "toadstool", "coralreef"]
 
 [extra]
+foundation = true
 maturity = "live"
 
 [[extra.companions]]

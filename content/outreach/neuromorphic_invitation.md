@@ -6,6 +6,9 @@ weight = 3
 [taxonomies]
 primals = ["toadstool", "barracuda"]
 springs = ["neuralspring"]
+
+[extra]
+foundation = true
 +++
 
 **This is a standing invitation. A human reads and responds to every message at [eco.primal@pm.me](mailto:eco.primal@pm.me).**

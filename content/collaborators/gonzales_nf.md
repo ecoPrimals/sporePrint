@@ -9,6 +9,7 @@ springs = ["wetspring", "healthspring", "hotspring", "neuralspring"]
 trails = ["nf-pipeline"]
 
 [extra]
+foundation = true
 status = "engaged"
 
 [[extra.companions]]

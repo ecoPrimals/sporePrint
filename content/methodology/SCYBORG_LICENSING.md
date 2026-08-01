@@ -4,6 +4,7 @@ description = "AGPL-3.0-or-later for code, ORC for game mechanics, CC-BY-SA 4.0 
 date = 2026-05-03
 
 [extra]
+foundation = true
 maturity = "implemented"
 
 [[extra.companions]]

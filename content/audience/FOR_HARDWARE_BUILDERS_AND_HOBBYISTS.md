@@ -8,6 +8,7 @@ primals = ["barracuda", "biomeos", "loamspine", "rhizocrypt", "songbird", "sweet
 springs = ["ludospring"]
 
 [extra]
+foundation = true
 
 [[extra.companions]]
 url = "/outreach/homelab-llm-landing/"
