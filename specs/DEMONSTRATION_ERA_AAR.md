@@ -70,6 +70,24 @@ When bonding validates:
 
 ---
 
+## RESOLVED SINCE INITIAL AAR (Aug 1 PM)
+
+### golgi auto-publish — FIXED
+Three compounding bugs resolved by sporeGate team:
+1. Worktree ownership (`git:git` vs `root:root`)
+2. Missing `--force` on `zola build`
+3. SSH config pointing at wrong golgi IP
+
+sporePrint now deploys correctly to both inner and outer membrane via
+the Forgejo push → timer → zola build → Caddy serve pipeline.
+
+### P2 plaquette divergence — ROOT-CAUSED
+GPU PRNG polyfill bias caused plaquette values to diverge from CPU reference.
+`cpu_mom` workaround deployed on strandGate. Production data now flowing.
+arXiv Section 3.2 (plaquette measurements) is UNBLOCKED.
+
+---
+
 ## WHAT WE CAN DO NOW (no dependencies)
 
 ### 1. spore-validate refresh (metric sync)

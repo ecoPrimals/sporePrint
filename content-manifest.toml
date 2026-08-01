@@ -1,5 +1,5 @@
-generated = "2026-08-01T16:03:44Z"
-root_hash = "33477282f968582c31e33585468864767b1fac4acffbc8e335bcf2fbe8dc49c5"
+generated = "2026-08-01T22:34:41Z"
+root_hash = "d4ad450e8b5db0d15766e70c4403e06ffad4986bbeec68ddf643b4b8b51fc877"
 page_count = 345
 
 [pages."_index.md"]
@@ -2235,8 +2235,8 @@ section = "pseudospore"
 fold = "pseudospore"
 
 [pages."pseudospore/hotspring-qcd-su2.md"]
-blake3 = "38e05d5d4285e42c8ee49dfafd1808019ba133cefe4e22b7365b246e2c80e866"
-size_bytes = 5475
+blake3 = "b3703ebaabe16ebb0de05ab20a6e7f08118c3bbba362bae0b16c684708b4e842"
+size_bytes = 5779
 title = "pseudoSpore: hotSpring QCD — SU(2) Lattice Gauge Theory"
 section = "pseudospore"
 fold = "pseudospore"

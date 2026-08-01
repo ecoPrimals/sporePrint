@@ -42,6 +42,11 @@ hotSpring (physics domain)
 DF64 precision (double-float emulation on FP32 cores) for physics accuracy.
 ~14 significant digits — validated against f64 reference implementations.
 
+**Note on momentum generation**: HMC momentum is generated on CPU (`cpu_mom`
+workaround) due to a GPU PRNG polyfill bias discovered during plaquette
+validation. Gauge updates and force computations remain fully GPU-accelerated.
+The PRNG bias has been root-caused and a GPU-native fix is in development.
+
 ---
 
 ## Lattice Scaling Results
