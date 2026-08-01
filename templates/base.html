@@ -92,10 +92,10 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
+        <li><a href="{{ get_url(path='@/pseudospore/_index.md') }}" {% if current_path is starting_with("/pseudospore") %}class="active" aria-current="true"{% endif %}>pseudoSpore</a></li>
         <li><a href="{{ get_url(path='@/lab/_index.md') }}" {% if current_path is starting_with("/lab") %}class="active" aria-current="true"{% endif %}>Lab</a></li>
         <li><a href="{{ get_url(path='@/science/_index.md') }}" {% if current_path is starting_with("/science") %}class="active" aria-current="true"{% endif %}>Science</a></li>
         <li><a href="{{ get_url(path='@/architecture/_index.md') }}" {% if current_path is starting_with("/architecture") or current_path is starting_with("/technical") %}class="active" aria-current="true"{% endif %}>Architecture</a></li>
-        <li><a href="{{ get_url(path='@/products/_index.md') }}" {% if current_path is starting_with("/products") %}class="active" aria-current="true"{% endif %}>Products</a></li>
         <li><a href="{{ get_url(path='@/getting-started/_index.md') }}" {% if current_path is starting_with("/getting-started") %}class="active" aria-current="true"{% endif %}>Get Started</a></li>
         <li class="nav-divider"></li>
         <li><a href="{{ get_url(path='@/foundation/_index.md') }}" {% if current_path is starting_with("/foundation") %}class="active" aria-current="true"{% endif %}>Foundation</a></li>

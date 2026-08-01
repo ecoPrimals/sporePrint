@@ -12,8 +12,8 @@
 <article class="landing">
   <header class="hero">
     <h1>sporePrint</h1>
-    <p class="hero-sub">Sovereign Scientific Computing — NUCLEUS Is Running</p>
-    <p class="hero-desc">3 gates. 13 primals. Provenance 7/7. The science is executable.<br>Every claim can be reproduced on commodity hardware you already own.</p>
+    <p class="hero-sub">Sovereign Scientific Computing — 38 GB of Real Science Data, Full Provenance</p>
+    <p class="hero-desc">4 NUCLEUS gates. 13 primals. Provenance 7/7. 38.2 GB ingested across 6 domains.<br>Download a pseudoSpore. Verify every hash. Reproduce on your own hardware.</p>
   </header>
 
   {# ── Stats ribbon (immediately after hero — establishes scale) ── #}
@@ -55,10 +55,15 @@
     <h2>Find Your Path</h2>
     <p class="card-section-desc">Not sure where to start? Pick what matters to you.</p>
     <div class="audience-grid">
+      <a href="{{ get_url(path='@/pseudospore/_index.md') }}" class="audience-card">
+        <span class="audience-icon" role="img" aria-label="Data">🧬</span>
+        <strong>Grab a pseudoSpore</strong>
+        <span>38.2 GB of real science data with full cryptographic provenance — download and verify</span>
+      </a>
       <a href="{{ get_url(path='@/lab/living-systems.md') }}" class="audience-card">
         <span class="audience-icon" role="img" aria-label="Live">🖥️</span>
         <strong>See What's Running</strong>
-        <span>3 NUCLEUS gates, 35 depot binaries, live gate status</span>
+        <span>4 NUCLEUS gates, 35 depot binaries, live gate status</span>
       </a>
       <a href="{{ get_url(path='@/getting-started/_index.md') }}" class="audience-card">
         <span class="audience-icon" role="img" aria-label="Deploy">🛠️</span>
@@ -79,11 +84,6 @@
         <span class="audience-icon" role="img" aria-label="Architecture">⚛️</span>
         <strong>Understand the Architecture</strong>
         <span>NUCLEUS composition — Tower, Nest, Node atomics on live hardware</span>
-      </a>
-      <a href="{{ get_url(path='@/products/_index.md') }}" class="audience-card">
-        <span class="audience-icon" role="img" aria-label="Products">🌱</span>
-        <strong>Use the Products</strong>
-        <span>footPrint, esotericWebb, helixVision — compositions you can run</span>
       </a>
     </div>
   </section>

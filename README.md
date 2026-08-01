@@ -22,7 +22,7 @@ Gate pushes to Forgejo (golgi) → Sovereign CI
 ## Stack
 
 - **[Zola](https://www.getzola.org/) 0.22.1** — Rust static site generator (single binary, zero deps)
-- **`spore-validate`** — Rust validation + certification crate (34 modules, 289 tests, zero C deps)
+- **`spore-validate`** — Rust validation + certification crate (34 modules, 283 tests, zero C deps)
 - **petalTongue viz pipeline** — Server-rendered SVG with WASM progressive enhancement
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
 - **Custom theme** — Catppuccin Mocha/Latte, system fonts, dark/light, zero external deps
@@ -102,7 +102,7 @@ The site is organized into 4 navigable folds with Foundation and Backstory secti
 | **Architecture** | Architecture, Technical, Products | How it works — live operational docs |
 | **Methodology** | Methodology, guideStone | How to build — K-NOME, constrained evolution |
 | **Getting Started** | Getting Started | Deploy NUCLEUS on your hardware |
-| *Foundation* | *(47 design docs within active sections + audience, outreach, collaborators)* | *Proven design history — accessible, not prominent* |
+| *Foundation* | *(79 design docs across architecture, methodology, outreach, audience, products, technical, collaborators, vision)* | *Proven design history — accessible, not prominent* |
 | *Backstory* | *(thesis, philosophy, story)* | *Finished works — the why behind the system* |
 
 Top nav: **Lab | Science | Architecture | Products | Get Started** + Foundation, Backstory, Contact.
@@ -111,7 +111,7 @@ Top nav: **Lab | Science | Architecture | Products | Get Started** + Foundation,
 ## spore-validate
 
 Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
-zero warnings, 289 tests, 34 modules, zero C toolchain dependencies.
+zero warnings, 283 tests, 34 modules, zero C toolchain dependencies.
 Edition 2024, Rust 1.85+.
 
 | Subcommand | Purpose |

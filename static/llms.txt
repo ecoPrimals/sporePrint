@@ -19,9 +19,9 @@
 ## What This Site Is
 
 sporeprint.primals.eco is the public-facing science site for the ecoPrimals ecosystem.
-313 pages organized into 5 main sections (Lab, Science, Architecture, Products, Get Started)
-plus Foundation (design history) and Backstory (thesis, philosophy, narrative). NUCLEUS is
-LIVE on 3 gates. Every quantitative claim is backed by executable code that any reader can
+337 pages organized into 5 main sections (Lab, Science, Architecture, Products, Get Started)
+plus Foundation (79 proven design docs) and Backstory (thesis, philosophy, narrative). NUCLEUS is
+LIVE on 4 gates. Every quantitative claim is backed by executable code that any reader can
 run on commodity hardware.
 
 ## Key Technical Pages
@@ -44,7 +44,7 @@ run on commodity hardware.
 
 ## Site Structure — Cortical Folds
 
-The site has 313 pages across 17 sections, organized into 5 navigable folds.
+The site has 337 pages across 23 sections, organized into 5 navigable folds.
 Each fold groups related sections. Ridge pages are the best entry points.
 Section indexes list all child pages within that section.
 
@@ -60,12 +60,12 @@ What we proved — live validation results, reproduced science, lab notebooks.
 ### Fold 2: Architecture (19% of site)
 How it works — ecosystem design, technical depth, emergent products.
 
-- **Architecture** (43 pages): Primal composition, NUCLEUS, K-Derm, coordination triad, sovereignty architecture, content-addressed convergence, cross-platform parity, Tower Atomic, Sovereign CI, Mesh Topology.
+- **Architecture** (14 active + 29 foundation): Primal composition, NUCLEUS, K-Derm, Sovereign CI, Mesh Topology, Ecosystem Architecture, neural API — all with `maturity = "live"`.
   - Section index: https://sporeprint.primals.eco/architecture/
   - Start here: https://sporeprint.primals.eco/architecture/ecosystem-architecture/
-  - Key: https://sporeprint.primals.eco/architecture/tower-atomic/ (sovereign transport stack — exceeds WireGuard)
-  - Updated: https://sporeprint.primals.eco/architecture/sovereign-ci/ (Forgejo → sporeGate → depot + crash-loop breaker + DNSSEC)
-  - Updated: https://sporeprint.primals.eco/architecture/mesh-topology/ (6-gate mesh, Tower shadow, traffic classes)
+  - Key: https://sporeprint.primals.eco/architecture/tower-atomic/ (sovereign transport stack — LAN-aware routing)
+  - Live: https://sporeprint.primals.eco/architecture/sovereign-ci/ (Forgejo → sporeGate → depot, push-to-deploy, DNSSEC)
+  - Live: https://sporeprint.primals.eco/architecture/mesh-topology/ (10-gate mesh, 10G backbone, 4 NUCLEUS gates)
 - **Technical** (8 pages): Grant appendices, hardware costs, GPU pipeline, drug discovery, teaching brief.
   - Section index: https://sporeprint.primals.eco/technical/
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
@@ -98,20 +98,27 @@ Why it matters — the philosophical argument, builder's story, dissertation.
   - Start here: https://sporeprint.primals.eco/thesis/01-introduction/
 - Ridge pages: https://sporeprint.primals.eco/philosophy/the-human-search/ , https://sporeprint.primals.eco/thesis/01-introduction/
 
-### Fold 5: Engagement (8% of site)
-Who and how to reach — audience guides, outreach, collaborators.
+### Foundation (79 pages — design history, not in main nav)
+Proven design documents, audience guides, outreach briefs — still accessible, not prominent.
 
-- **Glossary**: Plain-language definitions for every term on the site.
-  - https://sporeprint.primals.eco/glossary/
-- **Audience** (7 guides): Role-based entry points for faculty, students, hardware builders, compliance reviewers, companies.
-  - Section index: https://sporeprint.primals.eco/audience/
-- **Outreach** (16 pages): Partnership invitations (GPU, Valve, 99PI, Karpathy), community landing pages, homelabbers, consulting.
-  - Section index: https://sporeprint.primals.eco/outreach/
-- **Vision** (3 pages): Long-range plans — Lansing Scuffle campus vision, building-scale thermal sovereignty.
-  - Section index: https://sporeprint.primals.eco/vision/
-- **Collaborators** (3 profiles): Gonzales (NF), Jones (PFAS/blueFish), ABG (whole-cell modeling).
-  - Section index: https://sporeprint.primals.eco/collaborators/
-- Ridge pages: https://sporeprint.primals.eco/glossary/ , https://sporeprint.primals.eco/audience/capability-parity-brief/
+- **Architecture foundation** (29 pages): Design documents for proven concepts (CAS convergence, silicon deism, transport evolution, etc.)
+- **Methodology foundation** (14 pages): Constrained evolution proofs, K-NOME, scyBorg
+- **Outreach** (16 pages): Partnership briefs (now foundation-flagged)
+- **Audience** (7 pages): Role-based guides (now foundation-flagged)
+- **Products foundation** (4 pages): Retired/absorbed products
+- **Technical foundation** (4 pages): Historical hardware analysis
+- **Collaborators** (3 profiles), **Vision** (2 pages)
+
+### Backstory (36 pages — finished works)
+Thesis, philosophy, narrative — accessible via nav footer.
+
+- **Thesis** (18 chapters): "Constrained Evolution" PhD dissertation
+- **Philosophy** (15 essays): atlasHugged — 12 essays on sovereign science
+- **Story** (3 essays): Builder's narrative by attsi
+
+### Other
+- **Glossary**: Plain-language definitions — https://sporeprint.primals.eco/glossary/
+- **guideStone** (6 pages): Verification class — https://sporeprint.primals.eco/guidestone/
 
 ### Navigation Aids
 - Contact: https://sporeprint.primals.eco/contact/
@@ -142,7 +149,7 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - **Springs**: Validation domains (wetSpring=biology, hotSpring=physics, etc.)
 - **NUCLEUS**: Full composition of primals running on a single machine
 - **Atomics**: Minimum viable compositions (Tower, Node, Nest, Relay)
-- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport replacing WireGuard (353× LAN, 1.7× sustained WAN, 6 exploration domains). BTSP 13/13. Autonomous enrollment (F10). genomeBin 5 targets. LIVE on 8+ gates
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport with LAN-aware routing (topology awareness, not protocol speed). BTSP 13/13. Autonomous enrollment (F10). genomeBin 5 targets. LIVE on 8+ gates
 - **Nest Atomic**: Tower + nestGate + Provenance Trio — LIVE on westGate. First multi-composition: 8 services, 1,704 capabilities auto-discovered, ZFS 25.4TB + 2TB L2ARC, 6 PDBs in CAS. Provenance Trio CLOSED (sweetGrass G3 v0.8.0). 27 signal graphs
 - **K-Derm**: Diderm (two-membrane) deployment architecture
 - **BearDog**: Sovereign TLS, BTSP crypto, enrollment verification (pure Rust, no OpenSSL)
@@ -169,15 +176,15 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 - 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
-- 101,308+ tests across ecosystem (15 primals + 9 springs)
+- 116,930+ tests across ecosystem (15 primals + 9 springs)
 - 27 signal graphs. 13 fossilized dimensions. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
 - genomeBin depot: 39 binaries (13 × 3 musl targets) + glibc auto-add for GPU primals
-- **NUCLEUS ACHIEVED**: 3 gates running 13/13 primals (westGate, blueGate, strandGate)
+- **NUCLEUS ACHIEVED**: 4 gates running 13/13 primals (westGate, blueGate, strandGate + southGate). gen4 COMPLETE, gen5 VALIDATED
 - Provenance 7/7 COMPLETE: full signed chain on Linux (ZFS) + Windows
 - Sovereign CI LIVE: push-to-deploy, 35 depot binaries (16 musl + 4 gnu + 15 Windows)
-- 10 gates ONLINE. gen4 COMPLETE. Next: gen5 — NUCLEUS as platform
+- 10 gates ONLINE. biomeOS v4.56: 244 capabilities, unified socket namespace
 - Sovereign CI: Forgejo → sporeGate build → depot → all gates (no external CI)
 - Phase 2 transport abstraction complete: all 14 primals cross-compile for all targets
 - Content-Addressed Convergence: all 6 layers complete

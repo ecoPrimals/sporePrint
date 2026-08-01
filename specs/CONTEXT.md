@@ -8,48 +8,47 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (July 30, 2026 — Wave 155m, NUCLEUS ACHIEVED)
+## Current State (August 1, 2026 — post-155n, DEMONSTRATION ERA)
 
-- **313 published pages** across 17 sections, organized into 5 cortical folds
-- **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org) with metrics, descriptions, and link targets
+- **313 published pages** across 23 sections: 190 active in main nav, 36 in backstory, 79 foundation (not in nav)
+- **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
-- **10 reading trails** threading pages across fold boundaries
-- **~110 pages** carry companion metadata for cross-domain discovery
-- **4 organizations**: ecoPrimals (infra), syntheticChemistry (springs), sporeGarden (products), protoKarya (protists)
-- **`spore-validate` v0.3.1** — 34-module Rust crate, 289 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals** (155n): 3.60M LOC, 101,308 tests (15 primals + 9 springs), 43 repos, 35 depot binaries (16 musl + 4 gnu + 15 Windows)
-- **Site restructure** (155n): 313 pages, 23 sections, 4 cortical folds. Top nav: Lab | Science | Architecture | Products | Get Started. 47 pages marked foundation. Thesis/philosophy/story → Backstory. Audience/outreach/collaborators → Foundation. Homepage leads with "NUCLEUS Is Running"
-- **NUCLEUS ACHIEVED**: 3 gates running full NUCLEUS (13/13 primals). gen4 COMPLETE
-- **Provenance 7/7 COMPLETE**: Full signed chain validated on Linux (ZFS) + Windows
-- **Sovereign CI LIVE**: push-to-deploy automated, zero human intervention
-- **ZERO P0s. ZERO P1s. ZERO blocking P2s**
-- **27 signal graphs**. 13 fossilized dimensions
-- **10 gates ONLINE**. 3 NUCLEUS gates (westGate, blueGate, strandGate)
-- **Next**: gen5 — NUCLEUS as platform. steamGate (Steam Deck). AlphaFold ingestion. JOSS
-- **Sovereign CI pipeline**: Forgejo → sporeGate build → depot → all gates. No GitHub Actions
-- **Crash-loop breaker**: cellMembrane `gate.crash-loop` — self-recovery shipped
-- **DNSSEC**: all 3 domains signed (primals.eco, primal.eco, nestgate.io)
-- **Phase 2 transport abstraction**: 14/14 primals complete — trait + backend patterns replace all `#[cfg]` fences
-- **Content-Addressed Convergence**: 6/6 layers complete — content identity supersedes temporal identity
-- **Identity model**: ecoPrimal (developer), attsi (philosopher) — dual-voice, no PII
-- **Sovereign deployment**: golgiBody VPS via Caddy, sovereign CI (Forgejo → sporeGate → golgi), golgiBody sole depot
-- **6 surfaces LIVE from WAN**: footPrint, esotericWebb (V22), sporePrint, TOPO-VIS, Forgejo, JupyterHub
-- **4-org Forgejo**: 43/43 repos mirrored, origin=Forgejo, push mirrors → GitHub
-- **Autonomous enrollment**: gate-enroll.sh (Linux) / gate-enroll.ps1 (Windows), genetic enrollment (mito + nuclear lineage)
-- **Three-domain model**: primals.eco (intra-membrane), primal.eco (inner membrane), nestgate.io (data service)
-- **URL standard**: `prefix.primals.eco` subdomains for all compositions (path-based prohibited)
-- **Tracks converged**: Evolution (A) and Fleet Convergence (B) unified — next frontier is cross-platform proof
-- **P0 CLEAR all gates**
+- **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
+- **Ecosystem totals**: 3.60M LOC, 116,930 tests (15 primals + 9 springs), 43 repos, 35 depot binaries
+- **4 NUCLEUS gates**: westGate, blueGate, strandGate, + southGate enrolled. gen4 COMPLETE, gen5 VALIDATED
+- **biomeOS v4.56**: G22 convergence, 244 capabilities, unified socket namespace
+- **ZERO P0/P1/P2**
 
-## Site Topology — Cortical Folds
+### Demonstration Era Changes (Wave 155n+)
+- **Nav triage**: Lab | Science | Architecture | Products | Get Started
+- **79 foundation pages**: architecture (29), methodology (14), outreach (16), audience (7), products (4), technical (4), collaborators (3), vision (2)
+- **Backstory**: thesis (18), philosophy (15), story (3) — accessible via nav footer
+- **7 VALIDATED badges** on baseCamp papers (10, 14, 21, 24, 7, 17, 28)
+- **6 architecture pages** upgraded to `maturity = "live"`
+- **Hype cleanup**: 353x WireGuard → topology awareness. 3.24 TFLOPS DF64 → measured 2,130 matmul/sec. Rust-vs-Python → compiled-vs-interpreted
+- **Auto-publish**: golgi-ext 15-min systemd timer (Forgejo pull → zola build → Caddy serves)
+- **Homepage**: "NUCLEUS Is Running", "Find Your Path" cards point to live systems
 
-| Fold | Sections | % of site |
-|------|----------|-----------|
-| Evidence | Lab, Science | 60% |
-| Architecture | Architecture, Technical, Products | 19% |
-| Methodology | Methodology, guideStone | 7% |
-| Philosophy | Philosophy, Story, Thesis | 12% |
-| Engagement | Glossary, Audience, Outreach, Collaborators | 8% |
+## Site Topology — Active Pages by Section
+
+| Section | Active | Foundation | Total | Nav |
+|---------|--------|-----------|-------|-----|
+| Lab | 132 | 0 | 132 | Main |
+| Science | 33 | 0 | 33 | Main |
+| Architecture | 14 | 29 | 43 | Main |
+| Products | 7 | 4 | 11 | Main |
+| Getting Started | 0 (+index) | 0 | 1 | Main |
+| Technical | 4 | 4 | 8 | Main |
+| Thesis | 18 | 0 | 18 | Backstory |
+| Philosophy | 15 | 0 | 15 | Backstory |
+| Story | 3 | 0 | 3 | Backstory |
+| guideStone | 6 | 0 | 6 | Foundation |
+| Methodology | 1 | 14 | 15 | Foundation |
+| Outreach | 0 | 16 | 16 | Foundation |
+| Audience | 0 | 7 | 7 | Foundation |
+| Collaborators | 0 | 3 | 3 | Foundation |
+| Vision | 0 | 2 | 2 | Foundation |
+| **Total** | **233** | **79** | **313** | |
 
 ## Key Technical Facts
 
