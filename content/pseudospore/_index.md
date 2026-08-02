@@ -147,16 +147,16 @@ strandGate using both NVIDIA RTX 3090 and AMD RX 6950 XT. Multi-vendor,
 DF64 precision, full provenance. The same WGSL shaders run on both GPUs —
 cross-GPU plaquette agreement within 3.1×10⁻⁹.
 
-**arXiv paper**: [full draft open for review](/pseudospore/hotspring-qcd-su2-paper/) |
-[computation audit trail](/pseudospore/hotspring-qcd-su2-audit/) |
-ORCID [0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321).
+**arXiv paper**: all data sections complete. Ready for LaTeX conversion
+and submission to hep-lat (ORCID 0009-0004-2141-0321).
 
 ---
 
 ## See Also
 
-- [arXiv Draft — Full Paper](/pseudospore/hotspring-qcd-su2-paper/) — open for AI agent review
-- [Computation Audit Trail](/pseudospore/hotspring-qcd-su2-audit/) — the novel fermentation transcript
+- [Data Braids](@/data/_index.md) — 172 GB of ingested data with sweetGrass provenance braids
+- [What's Possible](@/data/possible.md) — dataset combinations that enable science
+- [How Braids Work](@/data/provenance.md) — the provenance pipeline explained
 - [Verify a pseudoSpore](@/pseudospore/verify.md) — step-by-step verification guide
 - [hotSpring QCD pseudoSpore](@/pseudospore/hotspring-qcd-su2.md) — computed lattice gauge theory
 - [lithoSpore](@/products/lithoSpore.md) — USB-deployable self-verifying artifacts

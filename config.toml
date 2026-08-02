@@ -1176,8 +1176,8 @@ measured_date = "2026-08-01"
 [[extra.cortex]]
 key = "pseudospore"
 label = "pseudoSpore"
-sections = ["pseudospore"]
-ridge_pages = ["/pseudospore/"]
+sections = ["pseudospore", "data"]
+ridge_pages = ["/pseudospore/", "/data/"]
 
 [[extra.cortex]]
 key = "evidence"
@@ -1210,6 +1210,7 @@ ridge_pages = ["/getting-started/"]
 [extra.sidebar]
 sections = [
   "pseudospore",
+  "data",
   "lab",
   "science",
   "architecture",
