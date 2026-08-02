@@ -155,9 +155,8 @@ ORCID [0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321).
 
 ## See Also
 
-- [Data Braids](@/data/_index.md) — 172 GB of ingested data with sweetGrass provenance braids
-- [What's Possible](@/data/possible.md) — dataset combinations that enable science
-- [How Braids Work](@/data/provenance.md) — the provenance pipeline explained
+- [arXiv Draft — Full Paper](/pseudospore/hotspring-qcd-su2-paper/) — open for AI agent review
+- [Computation Audit Trail](/pseudospore/hotspring-qcd-su2-audit/) — the novel fermentation transcript
 - [Verify a pseudoSpore](@/pseudospore/verify.md) — step-by-step verification guide
 - [hotSpring QCD pseudoSpore](@/pseudospore/hotspring-qcd-su2.md) — computed lattice gauge theory
 - [lithoSpore](@/products/lithoSpore.md) — USB-deployable self-verifying artifacts
