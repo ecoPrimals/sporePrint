@@ -1,6 +1,6 @@
 +++
 title = "pseudoSpore: hotSpring QCD — SU(2) Lattice Gauge Theory"
-description = "Lattice QCD trajectories computed on a single RTX 3090. DF64 precision, full provenance, downloadable and verifiable. The system produces science, not just stores it."
+description = "Lattice QCD trajectories computed on RTX 3090 + RX 6950 XT. Multi-vendor, DF64 precision, full provenance, downloadable and verifiable. arXiv paper complete."
 date = 2026-08-01
 weight = 5
 
@@ -13,8 +13,9 @@ maturity = "live"
 validated_on_hardware = true
 +++
 
-> **Computed on live hardware** — strandGate RTX 3090, Dual EPYC 7452.
+> **Computed on live hardware** — strandGate RTX 3090 + RX 6950 XT, Dual EPYC 7452.
 > Every trajectory has full CAS + Provenance Trio coverage.
+> arXiv draft: [COMPLETE — ready for LaTeX conversion and submission](/pseudospore/hotspring-qcd-su2/#arxiv-status)
 
 This pseudoSpore is different from the data catalog. The catalog shows
 **ingested** reference data (ChEMBL, PDB, LINCS). This shows **computed**
@@ -35,8 +36,8 @@ The computation ran through the hotSpring validation pipeline:
 ```
 hotSpring (physics domain)
   → barraCuda (GPU math — WGSL shaders)
-    → coralReef (shader compilation — WGSL → PTX)
-      → toadStool (hardware dispatch — RTX 3090, SM86, 24 GB VRAM)
+    → coralReef (shader compilation — WGSL → PTX/RDNA IL)
+      → toadStool (hardware dispatch — RTX 3090 + RX 6950 XT)
 ```
 
 DF64 precision (double-float emulation on FP32 cores) for physics accuracy.
@@ -51,24 +52,51 @@ The PRNG bias has been root-caused and a GPU-native fix is in development.
 
 ## Lattice Scaling Results
 
-All measured on strandGate RTX 3090. Same algorithm, same machine,
-GPU dispatch via barraCuda vs CPU dispatch via toadStool:
+All measured on strandGate (Dual EPYC 7452, 128 threads). Both GPUs tested
+with identical WGSL shaders, same algorithm, `cpu_mom` validated path:
 
-| Lattice | Volume | GPU ms/traj | CPU ms/traj | Speedup | Accept Rate |
-|---------|--------|-------------|-------------|---------|-------------|
-| 4^4 | 256 | 9.4 | 93.1 | 9.9x | 19-20/20 |
-| 8^4 | 4,096 | 25.8 | 1,490.7 | **57.8x** | 20/20 |
-| 8^3 x 4 | 2,048 | 14.8 | 751.8 | 50.8x | 20/20 |
-| 16^3 x 4 | 16,384 | 150.4 | 5,985.9 | 39.8x | 5/5 |
-| 16^3 x 8 | 32,768 | 316.4 | 11,959.7 | 37.8x | 5/5 |
-| **16^4** | **65,536** | **625.9** | **24,007.7** | **38.4x** | 5/5 |
+| Lattice | Volume | RTX 3090 ms/traj | RX 6950 XT ms/traj | CPU ms/traj | Best Speedup |
+|---------|--------|------------------|--------------------|-----------|----|
+| 4^4 | 256 | 17.2 | 7.4 | 185.0 | **25.1x** |
+| 8^4 | 4,096 | 62.9 | 15.6 | 2,965.8 | **190.0x** |
 
-These are GPU-vs-CPU comparisons on identical hardware running identical algorithms.
-The speedup reflects GPU parallelism on lattice site updates.
+GPU-vs-CPU comparisons on identical hardware running identical algorithms
+(Omelyan 2MN integrator, n_md=20, dt=0.02). The RX 6950 XT achieves higher
+throughput than the RTX 3090 at these volumes — likely due to RDNA2 compute
+unit scheduling for the workgroup dispatch pattern used in lattice kernels.
 
-**Production rate**: 5,500 trajectories/hour sustained on a single RTX 3090.
-**Thermalization**: 1,000 trajectories in ~10 minutes.
-**Production run**: 10,000 trajectories in ~1.7 hours.
+**Cross-GPU agreement**: Both GPUs produce identical plaquette values to
+within DF64 accumulated precision (|Δ|_GPU-GPU = 3.1×10⁻⁹ at 8⁴, five
+orders of magnitude below statistical error).
+
+## Plaquette Validation
+
+Production HMC: 200 thermalization + 200 production trajectories at β=2.3.
+
+| Lattice | β | ⟨P⟩ (GPU, cpu_mom) | ⟨P⟩ (f64 CPU) | |Δ|/σ | Accept |
+|---------|---|---------------------|----------------|-------|--------|
+| 4^4 | 2.3 | 0.15023811 ± 5.08e-4 | 0.15067734 ± 5.27e-4 | 0.60 | 100% |
+| 8^4 | 2.3 | 0.15092764 ± 1.12e-4 | 0.15105782 ± 1.14e-4 | 0.82 | 99.5% |
+
+|Δ|/σ < 1 demonstrates GPU molecular dynamics produces statistically
+identical physics to the CPU reference implementation.
+
+## DF64 Precision
+
+DF64 plaquette computation validated against native f64 CPU reference
+on identical lattice configurations:
+
+| Configuration | ⟨P⟩ CPU (f64) | ⟨P⟩ GPU (DF64) | |Δ| | Relative Error |
+|---------------|---------------|----------------|-----|----------------|
+| Cold start (U=I, 4^4) | 1.000000000000000 | 1.000000000000000 | 0 | 0 |
+| Hot start (4^4, seed=42) | 0.069413282606898 | 0.069413282772277 | 1.65e-10 | 2.4e-9 |
+| Thermalized (4^4, 200 HMC) | 0.154412193829055 | 0.154412194382328 | 5.53e-10 | 3.6e-9 |
+
+~9 significant digits for accumulated observables (plaquette sums over
+6×256 = 1,536 oriented plaquettes). Per-operation DF64 preserves ~14
+digits; the reduction is consistent with error propagation in floating-point
+summation over O(10³) terms. Both precision levels exceed Monte Carlo
+statistical uncertainties by orders of magnitude.
 
 ---
 
@@ -80,8 +108,8 @@ The computation uses custom WGSL compute shaders compiled by coralReef:
 WGSL source (gauge_update, df64_leapfrog)
   → coralReef naga parser
     → SPIR-V intermediate
-      → PTX (sm_86 for RTX 3090)
-        → GPU dispatch via wgpu/Vulkan
+      → PTX (NVIDIA) / RDNA IL (AMD)
+        → GPU dispatch via wgpu/Vulkan 1.4
 ```
 
 No CUDA. No ROCm. No vendor SDK. The same shaders run on any GPU with
@@ -95,14 +123,17 @@ AMD (RX 6950 XT).
 ```
 pseudospore-hotspring-qcd-su2/
 ├── trajectories/              # Raw HMC trajectory data
-│   ├── lattice_8x8x8x8/      # 8⁴ production run
-│   └── lattice_16x16x16x16/  # 16⁴ production run
+│   ├── lattice_4x4x4x4/      # 4⁴ production run
+│   └── lattice_8x8x8x8/      # 8⁴ production run
 ├── benchmarks/                # Timing data, scaling curves
 │   ├── gpu_hmc_scaling.csv
+│   ├── cross_gpu_validation.csv  # RTX 3090 vs RX 6950 XT
 │   └── cpu_vs_gpu_comparison.csv
 ├── shaders/                   # The actual WGSL compute kernels
-│   ├── gauge_update_f32.wgsl
-│   └── df64_leapfrog.wgsl
+│   ├── gauge_update_df64.wgsl
+│   ├── df64_leapfrog.wgsl
+│   ├── plaquette_df64.wgsl
+│   └── metropolis.wgsl
 ├── provenance/                # Full chain for every output
 │   ├── blake3_checksums.txt
 │   ├── cas_manifest.json
@@ -111,16 +142,16 @@ pseudospore-hotspring-qcd-su2/
 │   ├── ed25519_signature.json
 │   └── attribution_braid.json
 ├── hardware/                  # Silicon deism evidence
-│   ├── gpu_profile.json       # RTX 3090, SM86, 24 GB VRAM
-│   └── gate_identity.json     # strandGate, Dual EPYC 7452
+│   ├── gpu_profile_rtx3090.json   # SM86, 24 GB VRAM
+│   ├── gpu_profile_rx6950xt.json  # RDNA2, 16 GB VRAM
+│   └── gate_identity.json         # strandGate, Dual EPYC 7452
 ├── validate.sh
 └── README.md
 ```
 
-The `hardware/` directory is unique to compute pseudoSpores — it records
-exactly which silicon produced the results. `gpu_profile.json` includes
-GPU model, SM architecture, VRAM, and Vulkan driver version.
-`gate_identity.json` identifies the gate and its BTSP enrollment lineage.
+The `hardware/` directory records exactly which silicon produced the results —
+both GPU architectures are profiled with model, VRAM, and Vulkan driver version.
+Cross-GPU validation data in `benchmarks/` proves hardware independence.
 
 ---
 
@@ -144,14 +175,37 @@ b3sum --check provenance/blake3_checksums.txt
 
 ## The Point
 
-This lattice QCD computation ran on a $1,500 GPU in a basement.
+This lattice QCD computation ran on consumer GPUs — both NVIDIA and AMD —
+in a basement. The same WGSL shaders, different silicon, identical physics.
 Here are the trajectories. Here's the provenance chain proving every byte.
-Here are the shaders that ran on the GPU. Download it, verify it,
-reproduce it on your own hardware.
+Here are the shaders. Download it, verify it, reproduce it on your own
+hardware.
 
-No AWS bill. No CUDA license. No vendor lock-in. Pure Rust shaders
+No AWS bill. No CUDA license. No vendor lock-in. WGSL shaders
 compiled by coralReef, dispatched by toadStool, computed by barraCuda,
-stored by nestGate, proven by the Provenance Trio. On a consumer GPU.
+stored by nestGate, proven by the Provenance Trio. On consumer GPUs.
+
+arXiv paper: complete and ready for submission (hep-lat, cross-list cs.DC).
+
+---
+
+## arXiv Status {#arxiv-status}
+
+| Section | Status |
+|---------|--------|
+| 1. Introduction | **COMPLETE** |
+| 2. Method (gauge theory, DF64, shaders, provenance) | **COMPLETE** |
+| 3.1 Lattice scaling (RTX 3090 + RX 6950 XT) | **COMPLETE** |
+| 3.2 Plaquette values (|Δ|/σ < 1 vs CPU) | **COMPLETE** |
+| 3.3 DF64 precision validation | **COMPLETE** |
+| 3.4 Multi-vendor results (cross-GPU agreement) | **COMPLETE** |
+| 3.5 Autocorrelation (τ_int) | **COMPLETE** |
+| 4. Discussion (cost, validation methodology, limitations) | **COMPLETE** |
+| 5. Reproducibility | **COMPLETE** |
+| 6. Conclusion | **COMPLETE** |
+
+**Next**: markdown to LaTeX (REVTeX4-2) conversion, then arXiv hep-lat submission
+under ORCID 0009-0004-2141-0321.
 
 ---
 

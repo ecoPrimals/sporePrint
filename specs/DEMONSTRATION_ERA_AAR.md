@@ -81,10 +81,21 @@ Three compounding bugs resolved by sporeGate team:
 sporePrint now deploys correctly to both inner and outer membrane via
 the Forgejo push → timer → zola build → Caddy serve pipeline.
 
-### P2 plaquette divergence — ROOT-CAUSED
+### P2 plaquette divergence — ROOT-CAUSED + VALIDATED
 GPU PRNG polyfill bias caused plaquette values to diverge from CPU reference.
 `cpu_mom` workaround deployed on strandGate. Production data now flowing.
 arXiv Section 3.2 (plaquette measurements) is UNBLOCKED.
+
+### arXiv draft — ALL DATA SECTIONS COMPLETE (Aug 2)
+hotSpring team filled all 5 remaining sections with production data:
+- **Section 3.2**: Plaquette values at β=2.3 (4⁴, 8⁴). |Δ|/σ < 1 vs CPU. COMPLETE.
+- **Section 3.3**: DF64 precision — ~9 significant digits for accumulated observables. COMPLETE.
+- **Section 3.4**: AMD RX 6950 XT benchmarks. 190× speedup at 8⁴. Cross-GPU agreement 3.1e-9. COMPLETE.
+- **Section 3.5**: Autocorrelation τ_int = 1.63 (4⁴), 3.37 (8⁴). COMPLETE.
+- **Section 4.2**: Three-path validation methodology (A/B/C comparison). COMPLETE.
+
+Paper status: COMPLETE. Zero [TODO] markers remaining.
+Next: markdown → LaTeX (REVTeX4-2) → arXiv hep-lat submission.
 
 ---
 

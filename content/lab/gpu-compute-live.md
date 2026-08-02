@@ -33,26 +33,27 @@ is real (verified against f64 reference). The throughput is lower than native
 f64 on datacenter GPUs (A100, H100) that have full-rate FP64 units. The advantage
 is running on $500 consumer hardware instead of $15,000 datacenter cards.
 
-## Lattice QCD — GPU vs CPU (strandGate RTX 3090)
+## Lattice QCD — Multi-Vendor GPU vs CPU (strandGate)
 
-Real SU(2) HMC (Hybrid Monte Carlo) lattice gauge theory trajectories. Same algorithm,
-same machine, GPU dispatch via barraCuda vs CPU dispatch via toadStool:
+SU(2) HMC (Hybrid Monte Carlo) lattice gauge theory. Same algorithm, same machine,
+both GPUs running identical WGSL shaders, `cpu_mom` validated path:
 
-| Lattice | Volume | GPU ms/traj | CPU ms/traj | Speedup | Accept Rate |
-|---------|--------|-------------|-------------|---------|-------------|
-| 4^4 | 256 | 9.4 | 93.1 | 9.9x | 19-20/20 |
-| 8^4 | 4,096 | 25.8 | 1,490.7 | **57.8x** | 20/20 |
-| 8^3 x 4 | 2,048 | 14.8 | 751.8 | 50.8x | 20/20 |
-| 16^3 x 4 | 16,384 | 150.4 | 5,985.9 | 39.8x | 5/5 |
-| 16^3 x 8 | 32,768 | 316.4 | 11,959.7 | 37.8x | 5/5 |
-| **16^4** | **65,536** | **625.9** | **24,007.7** | **38.4x** | 5/5 |
+| Lattice | Volume | RTX 3090 ms | RX 6950 XT ms | CPU ms | Best Speedup |
+|---------|--------|-------------|---------------|--------|-------------|
+| 4^4 | 256 | 17.2 | 7.4 | 185.0 | **25.1x** |
+| 8^4 | 4,096 | 62.9 | 15.6 | 2,965.8 | **190.0x** |
 
-Production rate: **5,500 trajectories/hour** sustained on a single RTX 3090.
-Thermalization: 1,000 trajectories in ~10 minutes. 10,000-traj run in ~1.7 hours.
-Shader pipeline: WGSL → coralReef compilation → PTX (sm_86). DF64 precision.
+Omelyan 2MN integrator, n_md=20, dt=0.02. `cpu_mom` path (CPU-generated
+momenta, GPU molecular dynamics) after root-causing GPU PRNG polyfill bias.
 
-These are GPU-vs-CPU comparisons on identical hardware running identical algorithms —
-the speedup reflects GPU parallelism on lattice site updates.
+**Cross-GPU agreement**: Both GPUs produce identical plaquette values within
+DF64 accumulated precision (|Δ|_GPU-GPU = 3.1×10⁻⁹ at 8^4 — five orders
+of magnitude below statistical error). Vendor-agnostic proof: same WGSL
+shaders, different silicon, identical physics.
+
+**Plaquette validation**: |Δ|/σ < 1 vs CPU f64 reference at both lattice
+volumes. GPU molecular dynamics produces statistically identical physics
+to the CPU implementation.
 
 Download the full trajectory data + provenance chain:
 [hotSpring QCD pseudoSpore](@/pseudospore/hotspring-qcd-su2.md)

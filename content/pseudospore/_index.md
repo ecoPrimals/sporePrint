@@ -143,8 +143,12 @@ store science. It **produces** science.
 
 [hotSpring QCD — SU(2) Lattice Gauge Theory](@/pseudospore/hotspring-qcd-su2.md)
 is the second pseudoSpore: original lattice QCD trajectories computed on
-strandGate's RTX 3090. 5,500 trajectories/hour, DF64 precision, full provenance.
-The shaders that ran on the GPU are included in the bundle.
+strandGate using both NVIDIA RTX 3090 and AMD RX 6950 XT. Multi-vendor,
+DF64 precision, full provenance. The same WGSL shaders run on both GPUs —
+cross-GPU plaquette agreement within 3.1×10⁻⁹.
+
+**arXiv paper**: all data sections complete. Ready for LaTeX conversion
+and submission to hep-lat (ORCID 0009-0004-2141-0321).
 
 ---
 
