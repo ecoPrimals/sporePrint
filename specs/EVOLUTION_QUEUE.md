@@ -2,20 +2,22 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 1, 2026 (post-155n — demonstration era LIVE on primals.eco)
+Last reviewed: August 2, 2026 (post-155n — arXiv paper COMPLETE)
 
-**Current state**: 313 pages (23 sections), 79 entities, 4 cortical folds (Evidence, Architecture, Methodology, Getting Started), 3.60M LOC, 101,308 tests, 35 depot binaries, 4 NUCLEUS gates, ZERO P0/P1/P2. biomeOS v4.56, G22 convergence.
+**Current state**: 313 pages (23 sections), 79 entities, 4 cortical folds (Evidence, Architecture, Methodology, Getting Started), 3.60M LOC, 116,930 tests, 35 depot binaries, 4 NUCLEUS gates, ZERO P0/P1/P2. biomeOS v4.56, G22 convergence.
 
 **Demonstration era (Wave 155n+):**
-- Top nav: Lab | Science | Architecture | Products | Get Started
+- Top nav: pseudoSpore | Lab | Science | Architecture | Get Started
 - 79 pages marked `foundation = true` (47 initial + 32 outreach/audience/collaborators/vision/methodology)
 - Thesis/philosophy/story → Backstory section (links in nav footer)
 - VALIDATED badges on 7 baseCamp papers (10, 14, 21, 24, 7, 17, 28)
 - 6 architecture pages upgraded to `maturity = "live"` (SOVEREIGN_CI, MESH_TOPOLOGY, GENERATIONAL_ARC, ECOSYSTEM_ARCHITECTURE, KDERM, neural_api)
-- Homepage leads with "NUCLEUS Is Running", "Find Your Path" cards point to live systems
-- Hype cleanup: 353× WireGuard claims removed (topology awareness, not speed), 3.24 TFLOPS DF64 replaced with measured 2,130 matmul/sec, Rust-vs-Python comparisons qualified as compiled-vs-interpreted
-- Auto-publish: 15-min timer on golgi-ext pulls from Forgejo, rebuilds if new commits
-- Getting Started section: full rewrite with stack table, boot order, mesh enrollment
+- Homepage leads with multi-vendor lattice QCD, "Find Your Path" cards point to live systems
+- Hype cleanup: 353× WireGuard claims removed (topology awareness, not speed), 3.24 TFLOPS DF64 replaced with measured values, Rust-vs-Python comparisons qualified as compiled-vs-interpreted
+- Auto-publish: fixed on golgi (3 bugs resolved), push-to-deploy operational
+- pseudoSpore section: lead nav item with data catalog (38.2 GB), QCD page, verification guide
+- arXiv draft: ALL DATA COMPLETE. LaTeX (REVTeX4-2) conversion done. Ready for submission
+- Multi-vendor GPU: RTX 3090 + RX 6950 XT, cross-GPU agreement 3.1e-9, |Δ|/σ < 1 vs CPU
 
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
