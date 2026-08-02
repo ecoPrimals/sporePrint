@@ -199,6 +199,46 @@ Mirror: [github.com/ecoPrimals](https://github.com/ecoPrimals)
 
 ---
 
+## Phase 7: AI Review and Reframing (Aug 2, 2026)
+
+The complete preprint was submitted to AI agents for review. The review
+correctly identified the paper as **Rung 1 of a lattice QCD program**
+rather than a finished QCD paper, and identified specific validation gaps.
+
+### What the review found right
+
+- Every self-contained, falsifiable claim (plaquette values, precision
+  measurements, PRNG isolation) checked out
+- The three-path validation methodology is sound
+- SU(2) is a legitimate preprint on its own merits
+
+### What the review identified as gaps
+
+| Gap | Priority | Status |
+|-----|----------|--------|
+| Title suggests finished QCD | Must fix | **FIXED** — retitled to "Toward..." |
+| Single β value (2.3) | Must fix | Experiment queue: β-scan |
+| Limited statistics (200 trajectories, 1 seed) | Must fix | Experiment queue: 4-8 seeds |
+| Missing HMC diagnostics (ΔH, reversibility) | Must fix | Experiment queue |
+| 16⁴ claims without production data | Must fix | **FIXED** — removed overclaims |
+| No published SU(2) comparison | Must fix | Experiment queue |
+| Precision path matrix | Must fix | **FIXED** — added to Section 2.2 |
+| Plaquette normalization equation | Must fix | **FIXED** — added to Section 2.1 |
+| pseudoSpore not version-frozen | Should fix | Experiment queue |
+
+### Paper changes made
+
+1. **Title**: "Toward Vendor-Agnostic Lattice QCD on Consumer GPUs: SU(2)..."
+2. **Section 1.2**: Added 6-rung ladder table (scope statement)
+3. **Section 2.1**: Added explicit plaquette normalization equation
+4. **Section 2.2**: Added precision path matrix
+5. **Section 4.3**: Reframed as "Limitations of the Present Result"
+6. **Section 4.4**: Added "Remaining Validation Work" with experiment table
+7. **Section 6**: Reframed conclusion around what Rung 1 proves
+8. **Abstract**: Removed 16⁴ overclaims, added "first rung" framing
+
+---
+
 ## Agent Session Context
 
 This computation was developed through AI-assisted sessions (K-NOME methodology:
@@ -210,11 +250,11 @@ were made through iterative validation cycles where:
 3. Failed results (plaquette divergence) triggered systematic debugging
 4. The three-path methodology was developed collaboratively to isolate root causes
 5. Each resolution was validated against independent reference values
+6. AI agents reviewed the preprint and identified validation gaps
+7. The paper was reframed as Rung 1 of a 6-rung ladder
 
 The full session transcripts for the sporePrint publication pipeline are
-part of the ecosystem's internal documentation. The key technical
-decisions — PRNG isolation, cpu_mom validation, cross-GPU testing — are
-documented above with their reasoning and evidence.
+part of the ecosystem's internal documentation.
 
 ---
 
