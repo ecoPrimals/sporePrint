@@ -1,6 +1,6 @@
 +++
 title = "pseudoSpore: hotSpring QCD — SU(2) Lattice Gauge Theory"
-description = "Lattice QCD trajectories computed on RTX 3090 + RX 6950 XT. Multi-vendor, DF64 precision, full provenance, downloadable and verifiable. arXiv paper complete."
+description = "SU(2) lattice gauge trajectories computed on RTX 3090 + RX 6950 XT. Multi-vendor, DF64 precision, full provenance, downloadable and verifiable. Rung 1 toward lattice QCD."
 date = 2026-08-01
 weight = 5
 
@@ -15,11 +15,12 @@ validated_on_hardware = true
 
 > **Computed on live hardware** — strandGate RTX 3090 + RX 6950 XT, Dual EPYC 7452.
 > Every trajectory has full CAS + Provenance Trio coverage.
-> arXiv draft: [COMPLETE — ready for LaTeX conversion and submission](/pseudospore/hotspring-qcd-su2/#arxiv-status)
+> arXiv draft: [Preprint under refinement — validation experiment queue in progress](/pseudospore/hotspring-qcd-su2-paper/)
 
 This pseudoSpore is different from the data catalog. The catalog shows
 **ingested** reference data (ChEMBL, PDB, LINCS). This shows **computed**
-data — original lattice QCD trajectories generated on sovereign hardware.
+data — original SU(2) lattice gauge theory trajectories generated on
+sovereign hardware. Rung 1 toward vendor-agnostic lattice QCD.
 
 The system doesn't just store science. It produces science.
 
@@ -28,20 +29,23 @@ The system doesn't just store science. It produces science.
 ## What Was Computed
 
 SU(2) gauge theory HMC (Hybrid Monte Carlo) trajectories. Wilson gauge action,
-leapfrog integrator, Metropolis accept/reject. The standard lattice gauge
-theory algorithm used in production QCD research worldwide.
+Omelyan 2MN integrator, Metropolis accept/reject. The standard lattice gauge
+theory algorithm, applied here with the SU(2) gauge group as the first rung
+toward SU(3) and full QCD.
 
 The computation ran through the hotSpring validation pipeline:
 
 ```
 hotSpring (physics domain)
   → barraCuda (GPU math — WGSL shaders)
-    → coralReef (shader compilation — WGSL → PTX/RDNA IL)
-      → toadStool (hardware dispatch — RTX 3090 + RX 6950 XT)
+    → coralReef (shader compilation — WGSL → SPIR-V via naga)
+      → Vulkan driver (SPIR-V → native GPU ISA)
+        → toadStool (hardware dispatch — RTX 3090 + RX 6950 XT)
 ```
 
 DF64 precision (double-float emulation on FP32 cores) for physics accuracy.
-~14 significant digits — validated against f64 reference implementations.
+~14 significant digits per operation, ~9 digits for accumulated observables —
+validated against f64 reference implementations.
 
 **Note on momentum generation**: HMC momentum is generated on CPU (`cpu_mom`
 workaround) due to a GPU PRNG polyfill bias discovered during plaquette
@@ -112,9 +116,10 @@ WGSL source (gauge_update, df64_leapfrog)
         → GPU dispatch via wgpu/Vulkan 1.4
 ```
 
-No CUDA. No ROCm. No vendor SDK. The same shaders run on any GPU with
-Vulkan 1.2+ support. Tested on NVIDIA (RTX 3090, 4060, 5090) and
-AMD (RX 6950 XT).
+No CUDA. No ROCm. No vendor SDK. Designed to support any GPU with
+Vulkan 1.2+ support. Physics validation presently covers NVIDIA (RTX 3090)
+and AMD (RX 6950 XT). Intel Xe support is architecturally present but
+not yet physics-validated.
 
 ---
 
@@ -175,37 +180,40 @@ b3sum --check provenance/blake3_checksums.txt
 
 ## The Point
 
-This lattice QCD computation ran on consumer GPUs — both NVIDIA and AMD —
-in a basement. The same WGSL shaders, different silicon, identical physics.
-Here are the trajectories. Here's the provenance chain proving every byte.
-Here are the shaders. Download it, verify it, reproduce it on your own
-hardware.
+This SU(2) lattice gauge theory computation ran on consumer GPUs — both
+NVIDIA and AMD — in a basement. The same WGSL shaders, different silicon,
+identical physics. Here are the trajectories. Here's the provenance chain
+proving every byte. Here are the shaders. Download it, verify it,
+reproduce it on your own hardware.
 
 No AWS bill. No CUDA license. No vendor lock-in. WGSL shaders
 compiled by coralReef, dispatched by toadStool, computed by barraCuda,
 stored by nestGate, proven by the Provenance Trio. On consumer GPUs.
 
-arXiv paper: complete and ready for submission (hep-lat, cross-list cs.DC).
+arXiv preprint: under refinement (hep-lat, cross-list cs.DC).
+Validation experiment queue in progress.
 
 ---
 
 ## arXiv Status {#arxiv-status}
 
-| Section | Status |
-|---------|--------|
-| 1. Introduction | **COMPLETE** |
-| 2. Method (gauge theory, DF64, shaders, provenance) | **COMPLETE** |
-| 3.1 Lattice scaling (RTX 3090 + RX 6950 XT) | **COMPLETE** |
-| 3.2 Plaquette values (|Δ|/σ < 1 vs CPU) | **COMPLETE** |
-| 3.3 DF64 precision validation | **COMPLETE** |
-| 3.4 Multi-vendor results (cross-GPU agreement) | **COMPLETE** |
-| 3.5 Autocorrelation (τ_int) | **COMPLETE** |
-| 4. Discussion (cost, validation methodology, limitations) | **COMPLETE** |
-| 5. Reproducibility | **COMPLETE** |
-| 6. Conclusion | **COMPLETE** |
+**Status**: Preprint under refinement. Validation experiment queue in progress.
 
-**Next**: markdown to LaTeX (REVTeX4-2) conversion, then arXiv hep-lat submission
-under ORCID 0009-0004-2141-0321.
+| Section | Data | Validation |
+|---------|------|-----------|
+| 1. Introduction + Scope | Written | — |
+| 2. Method (gauge theory, DF64, shaders, provenance) | Written | — |
+| 3.1 Lattice scaling (RTX 3090 + RX 6950 XT) | Data in | — |
+| 3.2 Plaquette values | Data in | **Normalization under review** |
+| 3.3 DF64 precision validation | Data in | — |
+| 3.4 Multi-vendor results | Data in | — |
+| 3.5 Autocorrelation | Data in | Needs more statistics |
+| 4. Discussion | Written | Experiment queue pending |
+| 5. Reproducibility | Written | pseudoSpore not yet frozen |
+| 6. Conclusion | Written | — |
+
+**Blocking**: Plaquette normalization verification, β-scan, HMC diagnostics.
+See [experiment queue](/pseudospore/hotspring-qcd-su2-paper/) for full list.
 
 ---
 

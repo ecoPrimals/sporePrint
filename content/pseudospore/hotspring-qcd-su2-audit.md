@@ -237,6 +237,51 @@ rather than a finished QCD paper, and identified specific validation gaps.
 7. **Section 6**: Reframed conclusion around what Rung 1 proves
 8. **Abstract**: Removed 16⁴ overclaims, added "first rung" framing
 
+### Phase 8: Factor-of-Four Plaquette Discovery (Aug 2, 2026)
+
+A second AI review of the live preprint identified a critical normalization
+question: the reported plaquette values (~0.15 at β=2.3) are exactly 1/4
+of the conventional SU(2) Monte Carlo value (~0.60).
+
+    4 × 0.15023811 = 0.60095244
+    4 × 0.15105782 = 0.60423128
+
+This is too exact to be coincidence. Two possibilities:
+
+1. **Measurement-only bug**: The generated configurations are correct at
+   β=2.3, but the plaquette measurement applies an extra division by 4
+   (e.g., dividing by 24V instead of 6V, or applying 1/N twice).
+
+2. **Action/force bug**: The action uses an effective coupling of β/4 ≈ 0.575,
+   making the configurations physically correct for the wrong coupling.
+
+**Critical insight**: The GPU-vs-CPU agreement (|Δ|/σ < 1) does NOT
+distinguish these possibilities. Both implementations use the same
+normalization, so they agree with each other regardless of whether
+the shared normalization is correct.
+
+**Impact**: This is now the **first blocker** before launching the statistics
+campaign. Running thousands of trajectories at a potentially mislabelled
+coupling would produce more of the same potentially-incorrect data.
+
+**Diagnostic protocol**: Added as Appendix B to the paper. Four quick
+tests (cold-lattice normalization, coupling audit, numerical force
+derivative, short β-scan) will resolve this before any long production runs.
+
+**Experiment queue reordered**: Normalization → force test → β-scan → HMC
+diagnostics → statistics → PRNG characterization → larger volumes → freeze.
+
+### Additional fixes from this review
+
+| Issue | Fix |
+|-------|-----|
+| pseudoSpore page says "arXiv complete" | Changed to "preprint under refinement" |
+| Naga described as compiling directly to PTX | Fixed: naga→SPIR-V, Vulkan driver→native ISA |
+| Claims "runs on Intel" without validation | Qualified: "designed to support; physics validation covers AMD and NVIDIA" |
+| "bit-exact" used where Δ is nonzero | Changed to "agrees to machine precision" |
+| Cost table claims "$0.03 per 10K" | Removed specific figure; will report with 12⁴/16⁴ data |
+| "SU(3) gauge force" in three-path section | Fixed to "SU(2) gauge force" |
+
 ---
 
 ## Agent Session Context
@@ -264,8 +309,8 @@ If you are reviewing the [arXiv draft](/pseudospore/hotspring-qcd-su2-paper/)
 and have read this audit trail, here are the specific questions:
 
 ### Physics Validation
-- [ ] Are plaquette values at β=2.3 consistent with known SU(2) results?
-- [ ] Is |Δ|/σ < 1 the correct criterion for GPU-CPU agreement?
+- [ ] **CRITICAL**: Is the ~0.15 plaquette at β=2.3 correctly normalized? Published SU(2) values are ~0.60 (exactly 4× the reported value).
+- [ ] Is |Δ|/σ < 1 the correct criterion for GPU-CPU agreement? (Note: GPU-CPU agreement does not validate normalization if both use the same convention.)
 - [ ] Are the autocorrelation times (τ_int ≈ 1.6–3.4) physically reasonable?
 - [ ] Is 200 thermalization + 200 production sufficient at these volumes?
 

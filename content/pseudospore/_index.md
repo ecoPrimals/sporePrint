@@ -135,20 +135,20 @@ you could build from Micro Center parts.
 
 ---
 
-## pseudoSpore #2: Computed Science (hotSpring QCD)
+## pseudoSpore #2: Computed Science (hotSpring SU(2) Gauge Theory)
 
 The data catalog above shows **ingested** reference data — public datasets
 pulled through the CAS + Provenance pipeline. But the system doesn't just
 store science. It **produces** science.
 
-[hotSpring QCD — SU(2) Lattice Gauge Theory](@/pseudospore/hotspring-qcd-su2.md)
-is the second pseudoSpore: original lattice QCD trajectories computed on
-strandGate using both NVIDIA RTX 3090 and AMD RX 6950 XT. Multi-vendor,
-DF64 precision, full provenance. The same WGSL shaders run on both GPUs —
-cross-GPU plaquette agreement within 3.1×10⁻⁹.
+[hotSpring SU(2) — Lattice Gauge Theory](@/pseudospore/hotspring-qcd-su2.md)
+is the second pseudoSpore: original SU(2) lattice gauge theory trajectories
+computed on strandGate using both NVIDIA RTX 3090 and AMD RX 6950 XT.
+Multi-vendor, DF64 precision, full provenance. The same WGSL shaders run
+on both GPUs — cross-GPU plaquette agreement within 3.1×10⁻⁹.
 
-**arXiv paper**: all data sections complete. Ready for LaTeX conversion
-and submission to hep-lat (ORCID 0009-0004-2141-0321).
+**arXiv preprint**: under refinement. Validation experiment queue in progress.
+Rung 1 of 6 toward vendor-agnostic lattice QCD (ORCID 0009-0004-2141-0321).
 
 ---
 
