@@ -40,6 +40,28 @@ and benchmarking.
 - Baseline for sovereign health monitoring on gate hardware
 - Combine with **GTEx V8** tissue expression for cardiac gene expression context
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:physionet-mitbih-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://physionet.org/content/mitdb/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "ODbl-1.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 23068672
+}
+```
+
 ---
 
 ## See Also

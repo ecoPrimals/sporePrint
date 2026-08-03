@@ -41,6 +41,28 @@ by the USDA National Agricultural Statistics Service.
 - Economic modeling of farm operations across regions and crop types
 - Combine with satellite data (future AmeriFlux/ERA5) for yield prediction
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:usda-nass-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.nass.usda.gov/AgCensus/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 138412032
+}
+```
+
 ---
 
 ## See Also

@@ -2,12 +2,16 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 3, 2026 (Wave 155q/156b — ironGate downstream host)
+Last reviewed: August 3, 2026 (Wave 155q/156b — Data Braids visibility)
 
 **Current state**: 337 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 121,000+ tests, 11 gates online, NUCLEUS 26/27 HEALTHY, ZERO P0/P1/P2. 519 GB / 130 datasets.
 
 **Demonstration era (Wave 155n → 155q/156b):**
-- Top nav: pseudoSpore | Lab | Science | Architecture | Get Started
+- Top nav: pseudoSpore | **Data** | Lab | Science | Architecture | Get Started
+- Data Braids: 16 domain pages with inline W3C PROV-O braids for every dataset
+- Transplant page: pseudoSpore/lithoSpore paths for PIs to carry data + provenance
+- 3 stubs upgraded to full domain pages (cancer-genomics, disease-ontology, genomic-reference)
+- nestgate.io handoff prepared for sporeGate team (DNS/Caddy routing)
 - 79 pages marked `foundation = true`
 - VALIDATED badges on 7 baseCamp papers
 - Homepage: 11 gates, 519 GB, 121K+ tests, G19 milestone

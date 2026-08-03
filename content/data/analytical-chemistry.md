@@ -41,6 +41,28 @@ for metabolomics and environmental chemistry, including PFAS
   from unknown spectra
 - Feed sovereign environmental monitoring workflows
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:massbank-nist-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://massbank.eu/MassBank/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "CC-BY-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 66060288
+}
+```
+
 ---
 
 ## See Also

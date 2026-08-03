@@ -41,6 +41,28 @@ present.
 - Combine with **USGS seismic** data for multi-hazard environmental analysis
 - Ground truth for precision agriculture yield prediction (**groundSpring**)
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:noaa-ghcnd-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.ncbi.noaa.gov/pub/data/ghcn/daily/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 3,
+  "eco:size_bytes": 3758096384
+}
+```
+
 ---
 
 ## USGS earthquake catalog (monthly) {#usgs-earthquake}
@@ -63,6 +85,28 @@ location (lat/lon/depth), and focal mechanism for global seismic events.
 - Seismic pattern analysis for **groundSpring**
 - Combine with **NOAA GHCND** weather for multi-hazard correlation studies
 - Feed environmental risk models with real-time seismic data
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:usgs-earthquake-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://earthquake.usgs.gov/fdsnws/event/1/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 2202009
+}
+```
 
 ---
 

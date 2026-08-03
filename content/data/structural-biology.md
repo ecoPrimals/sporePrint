@@ -86,6 +86,28 @@ cross-references to 180+ external databases.
 - Combine with **PDB** for sequence-structure-function triangulation
 - Feed **wetSpring** evolutionary analysis with curated functional context
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:uniprot-swissprot-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "CC-BY-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 3,
+  "eco:size_bytes": 801112064
+}
+```
+
 ---
 
 ## UniProt TrEMBL (unreviewed) {#uniprot-trembl}
@@ -109,6 +131,28 @@ Complete proteome coverage for computational biology workflows.
 - Combine with **UniRef90** for clustered analysis at different identity thresholds
 - Feed **neuralSpring** for structure prediction at scale
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:uniprot-trembl-westgate-20260801",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-08-01T...",
+  "eco:license": "CC-BY-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 3,
+  "eco:size_bytes": 158913789952
+}
+```
+
 ---
 
 ## PDB70 HHblits database {#pdb70}
@@ -131,6 +175,28 @@ Template-based structure prediction and profile-profile alignment.
 - Template detection for **neuralSpring** structure prediction
 - Combine with **PDB mmCIF** for full template-based modeling pipeline
 - Remote homology detection for proteins with no close PDB match
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:pdb70-westgate-20260801",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-08-01T...",
+  "eco:license": "CC-BY-SA-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 4,
+  "eco:size_bytes": 28991029248
+}
+```
 
 ---
 

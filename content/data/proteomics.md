@@ -40,6 +40,28 @@ construction. The standard reference for evolutionary covariance analysis.
 - Cross-reference with **PDB** for template-based modeling
 - Combine with **UniProt Swiss-Prot** for functional annotation of sequence clusters
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:uniref90-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "CC-BY-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 32212254720
+}
+```
+
 ---
 
 ## PDB structures (506 individual) {#pdb-structures}
@@ -63,6 +85,28 @@ validation. Each file has its own CAS object and sweetGrass braid.
 - Direct input for **hotSpring** molecular dynamics simulations on sovereign hardware
 - Validation targets for **neuralSpring** structure prediction
 - Cross-reference with **UniProt** annotations for function assignment
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:pdb-structures-westgate-20260728",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://files.rcsb.org/download/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-28T...",
+  "eco:license": "CC0-1.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 506,
+  "eco:size_bytes": 378535936
+}
+```
 
 ---
 

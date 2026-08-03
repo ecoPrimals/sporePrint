@@ -44,6 +44,28 @@ targets. This is the primary input for tideGlass pharmacometric modeling.
 - Map compounds to **PubChem** identifiers for cross-database linking
 - Feed **healthSpring** clinical models with bioactivity data
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:chembl-37-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "CC-BY-SA-3.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 2,
+  "eco:size_bytes": 16106127360
+}
+```
+
 ---
 
 ## ZINC20 SMILES (drug-like subset) {#zinc20}
@@ -68,6 +90,28 @@ Virtual screening library for tideGlass.
 - Virtual screening library for **tideGlass** — compounds ready for docking
 - Combine with **ChEMBL** bioactivity to prioritize screening candidates
 - Cross-reference with **PDB** binding sites for structure-based screening
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:zinc20-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://zinc20.docking.org/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "Free for research",
+  "eco:blake3_root": "...",
+  "eco:file_count": 110,
+  "eco:size_bytes": 167772160
+}
+```
 
 ---
 
@@ -94,6 +138,28 @@ The glue layer for cross-database chemical identity resolution.
 - Feed **MassBank** spectral matching with exact masses for unknown compound identification
 - Map **ChEMBL** bioactivity to PubChem compound metadata
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:pubchem-westgate-20260730",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://ftp.ncbi.nlm.nih.gov/pubchem/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-30T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 5,
+  "eco:size_bytes": 11811160064
+}
+```
+
 ---
 
 ## BindingDB binding affinity {#bindingdb}
@@ -118,6 +184,28 @@ at the binding level.
 - Combine with **ChEMBL** for comprehensive bioactivity landscape across two databases
 - Cross-reference with **PDB** for structure-based affinity prediction
 - Feed **tideGlass** compound ranking with experimentally measured affinities
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:bindingdb-westgate-20260802",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.bindingdb.org/rwd/bind/index.jsp",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-08-02T...",
+  "eco:license": "CC-BY-3.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 611319808
+}
+```
 
 ---
 
@@ -144,6 +232,28 @@ differential expression). tideGlass Module 7 — completes the 7/7 base data.
   signatures for neurofibromatosis therapeutic candidates
 - Cross-reference NF kinomics with **ChEMBL** kinase inhibitor bioactivity
 - Feed **tideGlass** Module 7 for the NF extension of the drug repurposing pipeline
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:nf-data-portal-westgate-20260802",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://nf.synapse.org/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-08-02T...",
+  "eco:license": "Synapse Terms of Use",
+  "eco:blake3_root": "...",
+  "eco:file_count": 658,
+  "eco:size_bytes": 698351616
+}
+```
 
 ---
 

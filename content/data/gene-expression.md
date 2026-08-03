@@ -46,6 +46,28 @@ or genetic perturbation.
 - The **gen5 critical path** for tideGlass drug repurposing: LINCS + ChEMBL +
   GTEx = computational pharmacology without wet lab access
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:lincs-l1000-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE92742",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "CC-BY-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 6,
+  "eco:size_bytes": 21474836480
+}
+```
+
 ---
 
 ## GTEx V8 expression {#gtex-v8}
@@ -70,6 +92,28 @@ The baseline map of where genes are expressed in the human body.
 - Identify tissue selectivity of drug candidates with **ChEMBL + LINCS**
 - Feed **healthSpring** clinical models with tissue context
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:gtex-v8-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://gtexportal.org/home/downloads/adult-gtex/bulk_tissue_expression",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "dbGaP (public summary data)",
+  "eco:blake3_root": "...",
+  "eco:file_count": 4,
+  "eco:size_bytes": 2576980378
+}
+```
+
 ---
 
 ## GEO SOFT cancer series (11 series) {#geo-soft-cancer}
@@ -93,6 +137,28 @@ and other cancer cell line profiling datasets. Pre-processed SOFT format.
 - Drug sensitivity modeling: combine CCLE/GDSC expression with **ChEMBL** bioactivity
 - Cancer-specific perturbation profiles for **tideGlass**
 - Cross-reference with **TCGA Xena** clinical data for translational analysis
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:geo-soft-cancer-westgate-20260801",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.ncbi.nlm.nih.gov/geo/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-08-01T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 11,
+  "eco:size_bytes": 3221225472
+}
+```
 
 ---
 

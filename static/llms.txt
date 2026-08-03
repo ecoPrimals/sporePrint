@@ -51,7 +51,9 @@ including PRNG bias discovery and three-path validation methodology.
 - Lattice QCD on consumer GPUs: /products/lattice-qcd/
 - Self-hosted distributed compute mesh: /architecture/mesh-topology/
 - Reproducible self-verifying scientific software: /guidestone/
-- pseudoSpore catalog (519 GB science data across 17 domains): /pseudospore/
+- Data Braids catalog (519 GB across 130+ datasets, inline provenance braids): /data/
+- Transplant guide (pseudoSpore/lithoSpore for PIs): /data/transplant/
+- pseudoSpore catalog (downloadable verified archives): /pseudospore/
 
 ## Contact
 

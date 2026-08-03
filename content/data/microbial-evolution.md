@@ -42,6 +42,28 @@ longest-running evolution experiment in history.
 - Feed **lithoSpore** for self-verifying genomic artifacts
 - Map mutations across 75K generations to functional annotations in **UniProt**
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:ltee-rel606-westgate-20260728",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.ncbi.nlm.nih.gov/nuccore/CP000819.1",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-28T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 6082560
+}
+```
+
 ---
 
 ## SILVA 138.1 (16S ref) {#silva-138}
@@ -65,6 +87,28 @@ QIIME2, and every major microbiome analysis pipeline.
 - Classify microbial communities from 16S amplicon data
   (**wetSpring** GPU-accelerated DADA2 pipeline)
 - Combine with **LTEE REL606** for evolutionary context of *E. coli* populations
+
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:silva-138-westgate-20260729",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www.arb-silva.de/download/archive/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-29T...",
+  "eco:license": "CC-BY-4.0",
+  "eco:blake3_root": "...",
+  "eco:file_count": 1,
+  "eco:size_bytes": 197132288
+}
+```
 
 ---
 

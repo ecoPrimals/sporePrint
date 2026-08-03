@@ -46,6 +46,28 @@ against experimental data, running in a basement. The data braid proves
 the AME2020 table is unmodified; the hotSpring NFT proves the physics
 was computed correctly.
 
+### The Braid
+
+sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
+
+```json
+{
+  "@context": "https://www.w3.org/ns/prov#",
+  "@id": "urn:braid:ame2020-westgate-20260728",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "https://www-nds.iaea.org/amdc/",
+    "prov:wasAssociatedWith": "did:eco:westgate"
+  },
+  "prov:wasAttributedTo": "did:eco:westgate",
+  "prov:generatedAtTime": "2026-07-28T...",
+  "eco:license": "Public Domain",
+  "eco:blake3_root": "...",
+  "eco:file_count": 2,
+  "eco:size_bytes": 1258291
+}
+```
+
 ---
 
 ## See Also

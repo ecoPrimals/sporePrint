@@ -1,13 +1,13 @@
 +++
 title = "pseudoSpore — Sovereign Science Data"
-description = "38.2 GB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
+description = "519 GB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
 sort_by = "weight"
 template = "section.html"
 +++
 
 Real science data. Sovereign hardware. Full provenance. Verify it yourself.
 
-westGate has ingested **38.2 GB** across 6 scientific domains through the complete
+westGate has ingested **519 GB** across 17+ scientific domains through the complete
 CAS + Provenance Trio pipeline. Every object is content-addressed (BLAKE3),
 DAG-tracked (rhizoCrypt), ledger-committed (loamSpine), Ed25519-signed (bearDog),
 and attribution-braided (sweetGrass). **100% provenance coverage.**
@@ -32,7 +32,10 @@ on a Ryzen 9 / 96 GB DDR5 / 50.7 TB ZFS raidz1 machine running in a basement.
 | **MassBank NIST** | 63 MB | 1 | Mass spectrometry reference | wetSpring | 5/5 FULL |
 | **NOAA GHCND** | 11 MB | 2 | Weather station data | groundSpring, airSpring | 5/5 FULL |
 | **LTEE REL606** | 5.8 MB | 1 | Microbial evolution reference | wetSpring | 5/5 FULL |
-| **Total** | **~38.2 GB** | **4,752** | **6 domains** | **8 springs** | **100%** |
+| **Total (this table)** | **~38.2 GB** | **4,752** | **6 domains** | **8 springs** | **100%** |
+
+*This table shows the original pseudoSpore data catalog. The full [Data Braids catalog](/data/)
+now covers 519 GB across 130+ datasets and 17+ domains.*
 
 ---
 
@@ -154,7 +157,8 @@ Rung 1 of 6 toward vendor-agnostic lattice QCD (ORCID 0009-0004-2141-0321).
 
 ## See Also
 
-- [Data Braids](@/data/_index.md) — 172 GB of ingested data with sweetGrass provenance braids
+- [Data Braids](@/data/_index.md) — 519 GB of ingested data with sweetGrass provenance braids
+- [Transplant — Carry the Data With You](@/data/transplant.md) — pseudoSpore/lithoSpore paths for PIs
 - [What's Possible](@/data/possible.md) — dataset combinations that enable science
 - [How Braids Work](@/data/provenance.md) — the provenance pipeline explained
 - [Verify a pseudoSpore](@/pseudospore/verify.md) — step-by-step verification guide

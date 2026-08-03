@@ -1,13 +1,14 @@
 +++
 title = "Data Braids — Federated Science Catalog"
-description = "362 GB of science data across 38 datasets, each with a full sweetGrass provenance braid. Browse what's ingested, see what science it enables, verify the chain yourself."
+description = "519 GB of science data across 130+ datasets and 17 domains, each with a full sweetGrass provenance braid. Browse, verify, transplant to your own hardware via pseudoSpore or lithoSpore."
 sort_by = "weight"
 template = "section.html"
 +++
 
 Real data. Sovereign hardware. Full provenance braids. Verify it yourself.
+Take it with you.
 
-westGate has ingested **362 GB** across **38 datasets** and **17 science domains**
+westGate has ingested **519 GB** across **130+ datasets** and **17+ science domains**
 through the complete Provenance Trio pipeline. Every dataset has a
 **sweetGrass braid** — a W3C PROV-O JSON-LD attestation recording who
 ingested the data, when, from where, under what license, and the
@@ -16,6 +17,10 @@ cryptographic chain proving it hasn't been tampered with.
 This is **proof of provenance over external data**. We didn't create it,
 but we can prove exactly what it is, where it came from, and that it's
 unmodified. The braid is the access and verification layer.
+
+**Want to take data with you?** See [Transplant — Carry the Data With You](/data/transplant/)
+for how pseudoSpores and lithoSpores let you carry data + provenance to
+your own hardware.
 
 ---
 
