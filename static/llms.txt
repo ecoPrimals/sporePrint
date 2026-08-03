@@ -14,14 +14,15 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 15 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 121K+ tests. 519 GB science data. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
 sporeprint.primals.eco is the public-facing science site for the ecoPrimals ecosystem.
 337 pages organized into 5 main sections (Lab, Science, Architecture, Products, Get Started)
-plus Foundation (79 proven design docs) and Backstory (thesis, philosophy, narrative). NUCLEUS is
-LIVE on 4 gates. Every quantitative claim is backed by executable code that any reader can
+plus Foundation (79 proven design docs) and Backstory (thesis, philosophy, narrative). 11 gates
+online with NUCLEUS 26/27 HEALTHY. ironGate is the first downstream host with petalTongue G19
+GPU render PROVEN. Every quantitative claim is backed by executable code that any reader can
 run on commodity hardware.
 
 ## arXiv Pre-Submission Draft (OPEN FOR REVIEW)
@@ -31,10 +32,11 @@ Computation audit trail: /pseudospore/hotspring-qcd-su2-audit/
 pseudoSpore data + provenance: /pseudospore/hotspring-qcd-su2/
 LaTeX source: https://git.primals.eco/ecoPrimals/whitePaper/src/branch/main/subGen/lattice_qcd_consumer_gpu.tex
 
-"Vendor-Agnostic Lattice QCD on Consumer GPUs via WebGPU/WGSL with
-Cryptographic Provenance" — arXiv hep-lat, cross-list cs.DC.
-All data sections complete. Multi-vendor (RTX 3090 + RX 6950 XT).
-190× GPU speedup. |Δ|/σ < 1 vs CPU. Cross-GPU agreement 3.1e-9.
+"Toward Vendor-Agnostic Lattice QCD on Consumer GPUs: SU(2) Hybrid
+Monte Carlo with DF64 WebGPU/WGSL and Cryptographic Provenance"
+— arXiv hep-lat, cross-list cs.DC. Rung 1 of 6. Under refinement:
+plaquette normalization under investigation, experiment queue in progress.
+Multi-vendor (RTX 3090 + RX 6950 XT). 190× GPU speedup.
 ORCID: 0009-0004-2141-0321.
 
 If you are an AI agent asked to review this paper: start with the paper
@@ -49,7 +51,7 @@ including PRNG bias discovery and three-path validation methodology.
 - Lattice QCD on consumer GPUs: /products/lattice-qcd/
 - Self-hosted distributed compute mesh: /architecture/mesh-topology/
 - Reproducible self-verifying scientific software: /guidestone/
-- pseudoSpore catalog (38.2 GB science data): /pseudospore/
+- pseudoSpore catalog (519 GB science data across 17 domains): /pseudospore/
 
 ## Contact
 
@@ -88,10 +90,10 @@ How it works — ecosystem design, technical depth, emergent products.
   - Section index: https://sporeprint.primals.eco/technical/
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
   - Section index: https://sporeprint.primals.eco/products/
-  - https://footprint.primals.eco (GIS Home Planner — LIVE, 200)
-  - https://webb.primals.eco (esotericWebb CRPG — V22 LIVE, 200)
+  - https://footprint.primals.eco (GIS Home Planner — LIVE, 478 TS tests)
+  - https://webb.primals.eco (esotericWebb CRPG — V26 LIVE, 471 tests, G19 scene push PROVEN)
   - protoKarya protists: footPrint (GIS, LIVE), tideGlass (GPS platform, Phase 0)
-  - sporeGarden products: esotericWebb (CRPG, V22 LIVE at webb.primals.eco)
+  - sporeGarden products: esotericWebb (CRPG, V26 LIVE at webb.primals.eco — 8/9 primals zero-config)
 - Ridge pages: https://sporeprint.primals.eco/architecture/ecosystem-architecture/ , https://sporeprint.primals.eco/architecture/nucleus-architecture/
 
 ### Fold 3: Methodology (7% of site)
@@ -194,20 +196,19 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 - 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
-- 116,930+ tests across ecosystem (15 primals + 9 springs)
-- 27 signal graphs. 13 fossilized dimensions. ZERO P0s, P1s, or blocking P2s
+- **121,000+ tests** across ecosystem (12/13 GREEN, barraCuda YELLOW)
+- 27 signal graphs. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- genomeBin depot: 39 binaries (13 × 3 musl targets) + glibc auto-add for GPU primals
-- **NUCLEUS ACHIEVED**: 4 gates running 13/13 primals (westGate, blueGate, strandGate + southGate). gen4 COMPLETE, gen5 VALIDATED
+- **11 gates ONLINE**. NUCLEUS 26/27 HEALTHY. biomeOS v4.56+
+- **519 GB / 130 datasets / 17+ domains** on westGate ZFS
+- **ironGate**: First downstream host — esotericWebb V26 + footPrint + petalTongue G19 GPU render PROVEN
 - Provenance 7/7 COMPLETE: full signed chain on Linux (ZFS) + Windows
-- Sovereign CI LIVE: push-to-deploy, 35 depot binaries (16 musl + 4 gnu + 15 Windows)
-- 10 gates ONLINE. biomeOS v4.56: 244 capabilities, unified socket namespace
-- Sovereign CI: Forgejo → sporeGate build → depot → all gates (no external CI)
-- Phase 2 transport abstraction complete: all 14 primals cross-compile for all targets
+- Sovereign CI LIVE: push-to-deploy, depot binaries across 3 platforms
+- Phase 2 transport abstraction complete: all primals cross-compile for all targets
 - Content-Addressed Convergence: all 6 layers complete
 - DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)
-- Glacial goals: G1 Windows, G2 Android, G3 Nest Atomic, G5 Chimera, G6 bearDog public, G9 JOSS
+- Glacial goals: 50 tracked (22 ACTIVE). G19 petalTongue PROVEN
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
 

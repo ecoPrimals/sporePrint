@@ -1148,12 +1148,12 @@ spring_loc = 879118
 spring_loc_display = "879,118"
 total_loc = 3598358
 total_loc_display = "3,598,358"
-primal_tests = 105242
-primal_tests_display = "105,242"
-spring_tests = 11688
-spring_tests_display = "11,688"
-total_tests = 116930
-total_tests_display = "116,930"
+primal_tests = 86240
+primal_tests_display = "86,240"
+spring_tests = 34760
+spring_tests_display = "34,760"
+total_tests = 121000
+total_tests_display = "121,000+"
 wgsl_files = 952
 wgsl_lines = 73838
 wgsl_lines_display = "74K"
@@ -1164,8 +1164,12 @@ primal_count = 15
 total_primals = 15
 spring_count = 9
 total_springs = 9
-content_pages = 313
-measured_date = "2026-08-01"
+content_pages = 337
+gates_online = 11
+nucleus_gates = 5
+data_volume_gb = 519
+data_datasets = 130
+measured_date = "2026-08-03"
 # All entity metrics refreshed via spore-validate refresh on this date
 
 # ── Cortical Folds ──────────────────────────────────────────────────────

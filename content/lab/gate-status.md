@@ -1,40 +1,35 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 10 gates online, 4 running NUCLEUS, biomeOS v4.56 orchestrating 244 capabilities."
-date = 2026-08-01
+description = "Current fleet status — 11 gates online, NUCLEUS 26/27 HEALTHY, ironGate downstream host with G19 petalTongue render PROVEN."
+date = 2026-08-03
 weight = 2
 
 [extra]
 maturity = "live"
 +++
 
-Current fleet status as of August 2026. These numbers come from `biomeOS neuralAPI`
-health probes on each gate. When petalTongue G19 rendering lands, this page will
-serve live data.
+Current fleet status as of August 3, 2026. When petalTongue G19
+rendering matures, this page will serve live data from `biomeOS neuralAPI`.
 
-## NUCLEUS Gates (13/13 primals)
+## Gate Role Taxonomy
 
-| Gate | Hardware | biomeOS | Capabilities | Status |
-|------|----------|---------|-------------|--------|
-| **westGate** | i9-14900K, 96 GB DDR5, RTX 4070 | v4.56 | 244 | HEALTHY |
-| **blueGate** | i9-14900K, 96 GB DDR5 | v4.56 | 244 | HEALTHY |
-| **strandGate** | Ryzen 9 5900X, 64 GB, RTX 3090 | v4.56 | 244 | HEALTHY |
-| **southGate** | (validation gate) | v4.56 | 244 | ENROLLED |
+| Gate | Role | Hardware | What Runs |
+|------|------|----------|-----------|
+| **ironGate** | Downstream host | i9-14900K, RTX 5070, 94 GB | esotericWebb + footPrint + squirrel + petalTongue live render |
+| **westGate** | Data NAS | i9-14900K, 96 GB DDR5, 50.7 TB ZFS | tideGlass + wetSpring + groundSpring + airSpring (519 GB / 130 datasets) |
+| **strandGate** | Compute dev | Dual EPYC 7452, RTX 3090 + RX 6950 XT | hotSpring + neuralSpring + GPU experiment queue |
+| **biomeGate** | GPU lab | Threadripper 3970X, 3 VFIO GPUs | G32 silicon deism, coralReef diesel engine, cross-vendor validation |
+| **blueGate** | Windows dev | i9-14900K, 96 GB DDR5 | ludoSpring, Windows NUCLEUS, G29 H2 DNS |
+| **sporeGate** | CI / membrane | — | Sovereign CI, G34/G35, build authority, depot, DNS |
+| **southGate** | Validation | — | NUCLEUS 22/22 reference gate (G17+G8 PROVEN) |
+| **eastGate** | Overwatch | — | squirrel local dev, orchestration |
+| **northGate** | Windows dev | RTX 5090 | Daily driver, AlphaFold data source |
+| **grapheneGate** | Mobile | Pixel 8a | Tower (TCP), beacon seed |
+| **golgi** | VPS relay | VPS | Forgejo + depot + sporePrint (thin-relay composition) |
 
-## Tower Gates (transport mesh)
+## NUCLEUS Health (26/27)
 
-| Gate | Role | Platform | Mesh |
-|------|------|----------|------|
-| eastGate | Overwatch, dev primary | Linux | WireGuard |
-| ironGate | Windows parity | Windows 11 | WireGuard |
-| sandGate | Android parity | Android | WireGuard |
-| nestGate | Data services, CAS | Linux | WireGuard |
-| sporeGate | CI builds, depot | Linux | WireGuard |
-| golgiBody | WAN serving (primals.eco) | Linux VPS | External |
-
-## What "HEALTHY" Means
-
-Each NUCLEUS gate runs the full 13-primal composition:
+NUCLEUS composition runs the full 13-primal stack:
 
 ```
 cellMembrane → biomeOS → songBird → bearDog → skunkBat →
@@ -43,21 +38,58 @@ sweetGrass → nestGate → squirrel
 ```
 
 biomeOS `neuralAPI` probes every primal's health endpoint. All 13 must
-respond for HEALTHY status. Any failure triggers cellMembrane's crash-loop
-breaker for automatic recovery.
+respond for HEALTHY status. 8/9 primals now compose zero-config.
+
+## ironGate — First Downstream Host
+
+ironGate creates a vertical slice through the entire primal-to-product stack:
+
+```
+squirrel (agent dispatch) → signal.plan + signal.dispatch
+    │
+biomeOS (composition) → graph.execute + cell graph deploy
+    │
+petalTongue (rendering) → WebGL/WASM live render on RTX 5070
+    │
+├── esotericWebb (CRPG) — V26, 471 tests, G19 scene push PROVEN
+└── footPrint (GIS) — Nest Atomic + drawbridge, 478 TS tests
+```
+
+**G19 MILESTONE**: petalTongue scene push is firing on ironGate —
+esotericWebb exp006 went from 21/22 PASS to 22/22 PASS. Game scenes
+pushed via `visualization.render.scene` through NUCLEUS IPC to RTX 5070.
+
+## Primal Health Dashboard
+
+| Primal | Tests | Health |
+|--------|-------|--------|
+| songBird | 14,840+ | GREEN |
+| bearDog | 14,019 | GREEN |
+| nestGate | 13,095+ | GREEN |
+| toadStool | 9,193+ | GREEN |
+| biomeOS | 8,570+ | GREEN |
+| petalTongue | 6,755 | GREEN |
+| barraCuda | 5,037 | YELLOW |
+| squirrel | 4,613 | GREEN |
+| coralReef | 3,553 | GREEN |
+| rhizoCrypt | 1,900 | GREEN |
+| loamSpine | 1,740 | GREEN |
+| sweetGrass | 1,644 | GREEN |
+| cellMembrane | 1,281+ | GREEN |
+
+**Total**: ~121,000+ tests. 12/13 GREEN. barraCuda YELLOW (PRNG validation).
 
 ## Network
 
 - **Backbone**: 10G between Tower gates on the local mesh
-- **WireGuard**: Encrypted overlay connecting all gates
-- **Tower Atomic**: bearDog + songBird + skunkBat provide sovereign transport
-  with LAN-aware routing (topology awareness for local vs remote traffic)
 - **BTSP**: 13/13 primals using BearDog-native TLS (no OpenSSL)
+- **Tower Atomic**: bearDog + songBird + skunkBat provide sovereign transport
+  with LAN-aware routing
+- **Mesh probes**: songBird `mesh.connectivity_check` + `mesh.throughput` SHIPPED
 
 ## Pending: Live Dashboard
 
-This page currently shows static data. When petalTongue G19
-Node Atomics rendering is complete, it will serve real-time health
-data from `biomeOS neuralAPI` via `spore-validate pt-render`.
+This page currently shows static data. When petalTongue G19 rendering
+matures, it will serve real-time health data from `biomeOS neuralAPI`.
 
 Data source: `spore-validate nucleus <profile> --probe`

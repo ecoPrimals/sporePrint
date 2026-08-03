@@ -2,22 +2,24 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 2, 2026 (post-155n — arXiv paper COMPLETE)
+Last reviewed: August 3, 2026 (Wave 155q/156b — ironGate downstream host)
 
-**Current state**: 313 pages (23 sections), 79 entities, 4 cortical folds (Evidence, Architecture, Methodology, Getting Started), 3.60M LOC, 116,930 tests, 35 depot binaries, 4 NUCLEUS gates, ZERO P0/P1/P2. biomeOS v4.56, G22 convergence.
+**Current state**: 337 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 121,000+ tests, 11 gates online, NUCLEUS 26/27 HEALTHY, ZERO P0/P1/P2. 519 GB / 130 datasets.
 
-**Demonstration era (Wave 155n+):**
+**Demonstration era (Wave 155n → 155q/156b):**
 - Top nav: pseudoSpore | Lab | Science | Architecture | Get Started
-- 79 pages marked `foundation = true` (47 initial + 32 outreach/audience/collaborators/vision/methodology)
-- Thesis/philosophy/story → Backstory section (links in nav footer)
-- VALIDATED badges on 7 baseCamp papers (10, 14, 21, 24, 7, 17, 28)
-- 6 architecture pages upgraded to `maturity = "live"` (SOVEREIGN_CI, MESH_TOPOLOGY, GENERATIONAL_ARC, ECOSYSTEM_ARCHITECTURE, KDERM, neural_api)
-- Homepage leads with multi-vendor lattice QCD, "Find Your Path" cards point to live systems
-- Hype cleanup: 353× WireGuard claims removed (topology awareness, not speed), 3.24 TFLOPS DF64 replaced with measured values, Rust-vs-Python comparisons qualified as compiled-vs-interpreted
-- Auto-publish: fixed on golgi (3 bugs resolved), push-to-deploy operational
-- pseudoSpore section: lead nav item with data catalog (38.2 GB), QCD page, verification guide
-- arXiv draft: ALL DATA COMPLETE. LaTeX (REVTeX4-2) conversion done. Ready for submission
-- Multi-vendor GPU: RTX 3090 + RX 6950 XT, cross-GPU agreement 3.1e-9, |Δ|/σ < 1 vs CPU
+- 79 pages marked `foundation = true`
+- VALIDATED badges on 7 baseCamp papers
+- Homepage: 11 gates, 519 GB, 121K+ tests, G19 milestone
+- Hype cleanup complete. Auto-publish operational on golgi.
+- pseudoSpore section: lead nav item with data catalog, QCD page, verification guide
+- arXiv Rung 1: BLOCKED on plaquette ×4 normalization (experiment queue reordered)
+- Multi-vendor GPU: RTX 3090 + RX 6950 XT, cross-GPU agreement 3.1e-9
+- G19 MILESTONE: petalTongue scene push PROVEN on ironGate (RTX 5070)
+- esotericWebb V22→V26 in one day. 471 tests, 8/9 primals zero-config
+- Data NAS: westGate at 519 GB / 130 datasets / 17+ domains
+- Gate status page updated with 11-gate role taxonomy
+- ironGate downstream host stack: squirrel → biomeOS → petalTongue → products
 
 Most items below pre-Wave 138 are completed — retained as fossil record.
 
