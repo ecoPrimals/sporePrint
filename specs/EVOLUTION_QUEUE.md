@@ -2,18 +2,24 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 4, 2026 PM (Wave 155v/156d — K-Derm DNS COMPLETE, nestgate.io LIVE)
+Last reviewed: August 4, 2026 PM (Wave 155v/156d — biomeOS v4.57 cell attach, Phase 1 UNBLOCKED)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 519 GB / 130 datasets. K-Derm DNS 3/3 layers separated. nestgate.io LIVE on sovereign Knot DNS.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 519 GB / 130 datasets. K-Derm DNS 3/3. nestgate.io LIVE. biomeOS v4.57 `nucleus attach` SHIPPED. ironGate Phase 1 cell boot UNBLOCKED.
 
 **Demonstration era (Wave 155n → 155v/156d):**
 - Top nav: pseudoSpore | **Data** | Lab | Science | Architecture | Get Started
 - **K-Derm DNS COMPLETE** — 3/3 layers separated: primals.eco (Cloudflare), nestgate.io (sovereign Knot DNS, LIVE), primal.eco (sealed)
 - **13/13 GREEN** — barraCuda PRNG FIXED (YELLOW→GREEN), last holdout resolved
 - **135K+ tests** across 15 primals + 9 springs
-- **esotericWebb V30d** (677 tests, G18 signal dispatch, petalTongue live site)
-- **Provenance throughput RESOLVED**: 122× improvement via trailer pattern. Batch RPCs proposed.
-- **arXiv UNBLOCKED** (paper relabel pending, strandGate validation COMPLETE)
+- **biomeOS v4.57** — `nucleus attach` CLI SHIPPED, ironGate Phase 1 cell boot UNBLOCKED
+- **esotericWebb V30d** (482 tests, exp006 22/22 PASS on ironGate, signed provenance)
+- **footPrint 628 tests** — manifest-driven, riboCipher wired, Phase 2 DEPLOY READY
+- **Provenance throughput RESOLVED**: 122× improvement via trailer pattern. Loop CLOSED.
+- **arXiv UNBLOCKED** (plaquette normalization RESOLVED, 12⁴ paper-ready)
+- **nestgate.io work assigned** — 4 DIVs for content backend
+- **14 live Caddy-routed subdomains** on golgi
+- **songBird drawbridge** — 22 bonds, inter-gate content.get dispatch validated
+- **barraCuda MultiDevicePool** — 4,959 tests, cross-vendor
 - Data Braids: 16 domain pages with inline W3C PROV-O braids for every dataset
 - Transplant page: pseudoSpore/lithoSpore paths for PIs to carry data + provenance
 - 3 stubs upgraded to full domain pages (cancer-genomics, disease-ontology, genomic-reference)

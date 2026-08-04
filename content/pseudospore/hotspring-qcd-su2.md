@@ -50,7 +50,8 @@ validated against f64 reference implementations.
 **Note on momentum generation**: HMC momentum is generated on CPU (`cpu_mom`
 workaround) due to a GPU PRNG polyfill bias discovered during plaquette
 validation. Gauge updates and force computations remain fully GPU-accelerated.
-The PRNG bias has been root-caused and a GPU-native fix is in development.
+The PRNG half-range bug has been **FIXED** in barraCuda (GREEN, 4,959 tests)
+with a statistical validation harness in place.
 
 ---
 
@@ -190,31 +191,32 @@ No AWS bill. No CUDA license. No vendor lock-in. WGSL shaders
 compiled by coralReef, dispatched by toadStool, computed by barraCuda,
 stored by nestGate, proven by the Provenance Trio. On consumer GPUs.
 
-arXiv preprint: under refinement (hep-lat, cross-list cs.DC).
-Validation experiment queue in progress.
+arXiv preprint: UNBLOCKED (hep-lat, cross-list cs.DC).
+12⁴ paper-ready. 16⁴ production running.
 
 ---
 
 ## arXiv Status {#arxiv-status}
 
-**Status**: UNBLOCKED. strandGate validation COMPLETE — paper relabel pending.
+**Status**: UNBLOCKED. Plaquette normalization RESOLVED. 12⁴ paper-ready. 16⁴ running.
 
 | Section | Data | Validation |
 |---------|------|-----------|
 | 1. Introduction + Scope | Written | — |
 | 2. Method (gauge theory, DF64, shaders, provenance) | Written | — |
 | 3.1 Lattice scaling (RTX 3090 + RX 6950 XT) | Data in | — |
-| 3.2 Plaquette values | Data in | **Normalization under review** |
+| 3.2 Plaquette values | Data in | **RESOLVED** (×4 gauge group mismatch fixed) |
 | 3.3 DF64 precision validation | Data in | — |
 | 3.4 Multi-vendor results | Data in | — |
 | 3.5 Autocorrelation | Data in | Needs more statistics |
-| 4. Discussion | Written | Experiment queue pending |
+| 4. Discussion | Written | — |
 | 5. Reproducibility | Written | pseudoSpore not yet frozen |
 | 6. Conclusion | Written | — |
 
-**Status**: strandGate validation ALL high-priority COMPLETE. Action-force (6 sig figs).
-Creutz equality (5 sig figs). Dual-GPU parity: RTX 3090 + RX 6950 XT, |ΔP| < 10⁻³.
-β-scan matches SU(3) published data. Paper relabel (SU(2)→SU(3) terminology) pending.
+**12⁴ volume scan COMPLETE**: β=6.0/6.2 sub-0.1% agreement with published values.
+Plaquette ×4 normalization RESOLVED (gauge group mismatch SU(2)→SU(3)).
+Action-force (6 sig figs). Creutz equality (5 sig figs). Dual-GPU parity.
+16⁴ running. Compute config caching next (37 min thermalization → instant via CAS).
 See [experiment queue](/pseudospore/hotspring-qcd-su2-paper/) for full list.
 
 ---

@@ -52,8 +52,8 @@ biomeOS (composition) → graph.execute + cell graph deploy
     │
 petalTongue (rendering) → WebGL/WASM live render on RTX 5070
     │
-├── esotericWebb (CRPG) — V30d, 677 tests, G19 scene push PROVEN
-└── footPrint (GIS) — 563 tests, nestGate CAS + petalTongue RPC wired
+├── esotericWebb (CRPG) — V30d, 482 tests, exp006 22/22 PASS, signed provenance
+└── footPrint (GIS) — 628 tests, manifest-driven sources, riboCipher wired
 ```
 
 **G19 MILESTONE**: petalTongue scene push is firing on ironGate —
@@ -68,15 +68,15 @@ pushed via `visualization.render.scene` through NUCLEUS IPC to RTX 5070.
 | bearDog | 14,019 | GREEN | — |
 | nestGate | 13,095+ | GREEN | `content.fetch` (HTTP→BLAKE3→CAS atomic) |
 | toadStool | 9,193+ | GREEN | 48 dead deps removed |
-| biomeOS | 8,570+ | GREEN | 8 signal graphs wired |
-| petalTongue | 6,755 | GREEN | 0 doc warnings |
-| barraCuda | 5,037+ | **GREEN** | **PRNG half-range FIXED** (was YELLOW) |
-| squirrel | 4,613 | GREEN | test perf 400s→16s, 34→1 binaries |
+| biomeOS | 8,570+ | GREEN | **v4.57**: `nucleus attach` CLI shipped. Cell boot UNBLOCKED. |
+| petalTongue | 6,755 | GREEN | TCP bind hardened, family ID unified |
+| barraCuda | 4,959 | **GREEN** | MultiDevicePool wired. Cross-vendor validated. |
+| squirrel | 4,613 | GREEN | 156d PUSHED, sovereignty cleanup |
 | coralReef | 3,512 | GREEN | ShaderInfo dedup, 156b debt pass |
-| rhizoCrypt | 1,900 | GREEN | G31 batch provenance pipeline |
-| loamSpine | 1,740 | GREEN | certificate.history RPC |
-| sweetGrass | 1,644 | GREEN | zero-copy Arc\<str\>, batch pipeline |
-| tideGlass | 147 | GREEN | full Rust rebuild, 9 crates, 92.71% coverage |
+| rhizoCrypt | 1,900 | GREEN | Batch notify wired. Port collision fix. |
+| loamSpine | 1,740 | GREEN | 52/52 niche mappings. MCP batch tools. |
+| sweetGrass | 1,645 | GREEN | Concurrent batch\_commit. Trailer aligned. |
+| tideGlass | 176 | GREEN | G56 Neural API routing. Provenance write. |
 | cellMembrane | 1,281+ | GREEN | — |
 
 **Total**: ~135,000+ tests. **13/13 GREEN.** barraCuda PRNG FIXED (YELLOW→GREEN).
@@ -104,12 +104,39 @@ Batch RPCs (`dag.event.batch` + `spine.entry.batch`) are the permanent fix.
 Three data provenance states on westGate — convergence path defined.
 `is_dataset_converged()` gate for springs.
 
+## ironGate Phase 1 — Cell Boot UNBLOCKED
+
+All blockers cleared for the first-ever live cell composition boot:
+
+- biomeOS `nucleus attach` CLI — **SHIPPED** (v4.57, 8 tests)
+- esotericWebb V30d — **VALIDATED** (482 tests, exp006 22/22 PASS)
+- NUCLEUS 26/27 HEALTHY
+- RTX 5070 available
+- Cell graphs ready
+
+**Next**: `biomeos nucleus attach --cell esotericwebb_cell.toml` on ironGate.
+
+## Subsites on golgi Caddy
+
+14 live Caddy-routed subdomains via wildcard `*.primals.eco`:
+
+| Subsite | Status |
+|---------|--------|
+| sporeprint.primals.eco | **LIVE** |
+| nestgate.io | **LIVE** (4 DIVs remaining) |
+| footprint.primals.eco | **Caddy LIVE** |
+| webb.primals.eco | **Caddy LIVE** |
+| depot.primals.eco | **LIVE** |
+| git.primals.eco | **LIVE** |
+
 ## Network
 
 - **Backbone**: 10G between Tower gates on the local mesh
 - **BTSP**: 13/13 primals using BearDog-native TLS (no OpenSSL)
-- **Tower Atomic**: bearDog + songBird + skunkBat provide sovereign transport
-  with LAN-aware routing
+- **Tower Atomic**: bearDog + songBird + skunkBat — sovereign transport,
+  353× faster than WG on LAN. All components shipped.
+- **songBird drawbridge**: 22 bonds (arcgis, usgs\_eq added), inter-gate
+  `content.get` dispatch validated
 - **Mesh probes**: songBird `mesh.connectivity_check` + `mesh.throughput` SHIPPED
 
 ## Pending: Live Dashboard

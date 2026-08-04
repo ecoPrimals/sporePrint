@@ -204,8 +204,8 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 8 scientific domains validated
 - **11 gates ONLINE**. NUCLEUS 26/27 HEALTHY. biomeOS v4.56+
 - **519 GB / 130 datasets / 17+ domains** on westGate ZFS
-- **ironGate**: First downstream host — esotericWebb V30d (677 tests) + footPrint (563 tests) + petalTongue G19 GPU render PROVEN
-- **K-Derm DNS COMPLETE**: primals.eco (outer), nestgate.io (peptidoglycan, LIVE), primal.eco (inner, sealed)
+- **ironGate Phase 1 UNBLOCKED**: biomeOS v4.57 cell attach SHIPPED. esotericWebb V30d (482 tests) + footPrint (628 tests)
+- **K-Derm DNS COMPLETE**: primals.eco (outer), nestgate.io (LIVE), primal.eco (sealed). 14 Caddy subsites.
 - Provenance 7/7 COMPLETE: full signed chain on Linux (ZFS) + Windows
 - Sovereign CI LIVE: push-to-deploy, depot binaries across 3 platforms
 - Phase 2 transport abstraction complete: all primals cross-compile for all targets

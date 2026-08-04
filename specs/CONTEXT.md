@@ -23,20 +23,24 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 ### Demonstration Era Changes (Wave 155n → 155v/156d)
 - **Nav triage**: pseudoSpore | Data | Lab | Science | Architecture | Products | Get Started
+- **biomeOS v4.57**: `nucleus attach` CLI SHIPPED — ironGate Phase 1 cell boot UNBLOCKED
 - **K-Derm DNS COMPLETE**: 3/3 layers separated. nestgate.io LIVE on sovereign DNS with DNSSEC.
-- **13/13 GREEN**: barraCuda PRNG FIXED. esotericWebb V30d (677 tests). 135K+ tests.
+- **13/13 GREEN**: barraCuda PRNG FIXED + MultiDevicePool (4,959 tests). 135K+ tests.
+- **esotericWebb V30d**: 482 tests, exp006 22/22 PASS on ironGate. Signed provenance.
+- **footPrint 628 tests**: manifest-driven, riboCipher wired, Phase 2 DEPLOY READY
 - **Data Braids**: 16 domain pages with inline W3C PROV-O braids + transplant page
-- **Provenance pipeline**: 122× throughput improvement via trailer pattern (was 12× gap)
-- **arXiv UNBLOCKED**: strandGate validation COMPLETE, paper relabel pending
+- **Provenance pipeline**: 122× throughput improvement. Loop CLOSED (bearDog sig in braid).
+- **arXiv UNBLOCKED**: plaquette normalization RESOLVED, 12⁴ paper-ready
 - **79 foundation pages**: architecture (29), methodology (14), outreach (16), audience (7), products (4), technical (4), collaborators (3), vision (2)
 - **Backstory**: thesis (18), philosophy (15), story (3) — accessible via nav footer
 - **7 VALIDATED badges** on baseCamp papers (10, 14, 21, 24, 7, 17, 28)
 - **6 architecture pages** upgraded to `maturity = "live"`
 - **Auto-publish**: golgi-ext 15-min systemd timer (Forgejo pull → zola build → Caddy serves)
-- **Homepage**: 11 gates, 519 GB, 135K+ tests, 13/13 GREEN, K-Derm DNS, nestgate.io LIVE
+- **Homepage**: 11 gates, 519 GB, 135K+ tests, 13/13 GREEN, cell attach SHIPPED, nestgate.io LIVE
 - **G19 MILESTONE**: petalTongue scene push PROVEN on ironGate (RTX 5070)
-- **esotericWebb V30d**: 677 tests, G18 signal dispatch, petalTongue live site
-- **ironGate downstream**: esotericWebb V30d + footPrint (563 tests) + squirrel + petalTongue
+- **esotericWebb V30d**: 482 tests, exp006 22/22 PASS, signed provenance
+- **ironGate downstream**: esotericWebb V30d + footPrint (628 tests) + squirrel + petalTongue
+- **14 Caddy-routed subdomains** on golgi (sporeprint, nestgate.io, footprint, webb, depot, git...)
 - **squirrel**: test perf 400s→16s, 34→1 binaries, pushed 156d
 - **tideGlass**: full Rust rebuild, 9 crates, 176 tests
 - **59 glacial goals** (31 ACTIVE), 94 docs fossilized
