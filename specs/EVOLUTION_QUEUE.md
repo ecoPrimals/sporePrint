@@ -2,28 +2,35 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 3, 2026 (Wave 155q/156b — Data Braids visibility)
+Last reviewed: August 4, 2026 (Wave 155u/156b — 13/13 GREEN, provenance divergence)
 
-**Current state**: 337 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 121,000+ tests, 11 gates online, NUCLEUS 26/27 HEALTHY, ZERO P0/P1/P2. 519 GB / 130 datasets.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 130,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 519 GB / 130 datasets.
 
-**Demonstration era (Wave 155n → 155q/156b):**
+**Demonstration era (Wave 155n → 155u/156b):**
 - Top nav: pseudoSpore | **Data** | Lab | Science | Architecture | Get Started
+- **13/13 GREEN** — barraCuda PRNG FIXED (YELLOW→GREEN), last holdout resolved
+- **130K+ tests** across 15 primals + 9 springs
+- **esotericWebb V29** (8 commits: G18 signal dispatch, petalTongue live site, deep debt)
+- **Provenance × Acquisition divergence**: 12× throughput gap discovered (74/s → 6/s with inline provenance). Trailer pattern + batch RPC proposal.
+- **arXiv UNBLOCKED** (paper relabel pending, strandGate validation COMPLETE)
 - Data Braids: 16 domain pages with inline W3C PROV-O braids for every dataset
 - Transplant page: pseudoSpore/lithoSpore paths for PIs to carry data + provenance
 - 3 stubs upgraded to full domain pages (cancer-genomics, disease-ontology, genomic-reference)
 - nestgate.io handoff prepared for sporeGate team (DNS/Caddy routing)
 - 79 pages marked `foundation = true`
 - VALIDATED badges on 7 baseCamp papers
-- Homepage: 11 gates, 519 GB, 121K+ tests, G19 milestone
+- Homepage: 11 gates, 519 GB, 130K+ tests, 13/13 GREEN
 - Hype cleanup complete. Auto-publish operational on golgi.
 - pseudoSpore section: lead nav item with data catalog, QCD page, verification guide
-- arXiv Rung 1: BLOCKED on plaquette ×4 normalization (experiment queue reordered)
 - Multi-vendor GPU: RTX 3090 + RX 6950 XT, cross-GPU agreement 3.1e-9
 - G19 MILESTONE: petalTongue scene push PROVEN on ironGate (RTX 5070)
-- esotericWebb V22→V26 in one day. 471 tests, 8/9 primals zero-config
+- esotericWebb V22→V29. 471 tests, 8/9 primals zero-config
 - Data NAS: westGate at 519 GB / 130 datasets / 17+ domains
-- Gate status page updated with 11-gate role taxonomy
+- Gate status page: 11-gate role taxonomy, provenance divergence section
 - ironGate downstream host stack: squirrel → biomeOS → petalTongue → products
+- hotSpring 13 commits (arXiv production), nestGate content.fetch, coralReef 156b
+- squirrel: test perf 400s→16s, 34→1 binaries
+- tideGlass full Rust rebuild: 9 crates, 147 tests, 92.71% coverage
 
 Most items below pre-Wave 138 are completed — retained as fossil record.
 

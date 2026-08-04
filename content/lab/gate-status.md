@@ -1,14 +1,14 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 11 gates online, NUCLEUS 26/27 HEALTHY, ironGate downstream host with G19 petalTongue render PROVEN."
-date = 2026-08-03
+description = "Current fleet status — 11 gates online, NUCLEUS 13/13 GREEN, 130K+ tests. ironGate downstream host. barraCuda PRNG FIXED."
+date = 2026-08-04
 weight = 2
 
 [extra]
 maturity = "live"
 +++
 
-Current fleet status as of August 3, 2026. When petalTongue G19
+Current fleet status as of August 4, 2026. When petalTongue G19
 rendering matures, this page will serve live data from `biomeOS neuralAPI`.
 
 ## Gate Role Taxonomy
@@ -22,12 +22,12 @@ rendering matures, this page will serve live data from `biomeOS neuralAPI`.
 | **blueGate** | Windows dev | i9-14900K, 96 GB DDR5 | ludoSpring, Windows NUCLEUS, G29 H2 DNS |
 | **sporeGate** | CI / membrane | — | Sovereign CI, G34/G35, build authority, depot, DNS |
 | **southGate** | Validation | — | NUCLEUS 22/22 reference gate (G17+G8 PROVEN) |
-| **eastGate** | Overwatch | — | squirrel local dev, orchestration |
+| **eastGate** | Overwatch | — | squirrel local dev (400s→16s, 34→1 binaries) |
 | **northGate** | Windows dev | RTX 5090 | Daily driver, AlphaFold data source |
 | **grapheneGate** | Mobile | Pixel 8a | Tower (TCP), beacon seed |
 | **golgi** | VPS relay | VPS | Forgejo + depot + sporePrint (thin-relay composition) |
 
-## NUCLEUS Health (26/27)
+## NUCLEUS Health (13/13)
 
 NUCLEUS composition runs the full 13-primal stack:
 
@@ -51,8 +51,8 @@ biomeOS (composition) → graph.execute + cell graph deploy
     │
 petalTongue (rendering) → WebGL/WASM live render on RTX 5070
     │
-├── esotericWebb (CRPG) — V26, 471 tests, G19 scene push PROVEN
-└── footPrint (GIS) — Nest Atomic + drawbridge, 478 TS tests
+├── esotericWebb (CRPG) — V29, 471 tests, G19 scene push PROVEN
+└── footPrint (GIS) — 563 tests, nestGate CAS + petalTongue RPC wired
 ```
 
 **G19 MILESTONE**: petalTongue scene push is firing on ironGate —
@@ -61,23 +61,40 @@ pushed via `visualization.render.scene` through NUCLEUS IPC to RTX 5070.
 
 ## Primal Health Dashboard
 
-| Primal | Tests | Health |
-|--------|-------|--------|
-| songBird | 14,840+ | GREEN |
-| bearDog | 14,019 | GREEN |
-| nestGate | 13,095+ | GREEN |
-| toadStool | 9,193+ | GREEN |
-| biomeOS | 8,570+ | GREEN |
-| petalTongue | 6,755 | GREEN |
-| barraCuda | 5,037 | YELLOW |
-| squirrel | 4,613 | GREEN |
-| coralReef | 3,553 | GREEN |
-| rhizoCrypt | 1,900 | GREEN |
-| loamSpine | 1,740 | GREEN |
-| sweetGrass | 1,644 | GREEN |
-| cellMembrane | 1,281+ | GREEN |
+| Primal | Tests | Health | Recent |
+|--------|-------|--------|--------|
+| songBird | 14,840+ | GREEN | mesh probes shipped |
+| bearDog | 14,019 | GREEN | — |
+| nestGate | 13,095+ | GREEN | `content.fetch` (HTTP→BLAKE3→CAS atomic) |
+| toadStool | 9,193+ | GREEN | 48 dead deps removed |
+| biomeOS | 8,570+ | GREEN | 8 signal graphs wired |
+| petalTongue | 6,755 | GREEN | 0 doc warnings |
+| barraCuda | 5,037+ | **GREEN** | **PRNG half-range FIXED** (was YELLOW) |
+| squirrel | 4,613 | GREEN | test perf 400s→16s, 34→1 binaries |
+| coralReef | 3,512 | GREEN | ShaderInfo dedup, 156b debt pass |
+| rhizoCrypt | 1,900 | GREEN | G31 batch provenance pipeline |
+| loamSpine | 1,740 | GREEN | certificate.history RPC |
+| sweetGrass | 1,644 | GREEN | zero-copy Arc\<str\>, batch pipeline |
+| tideGlass | 147 | GREEN | full Rust rebuild, 9 crates, 92.71% coverage |
+| cellMembrane | 1,281+ | GREEN | — |
 
-**Total**: ~121,000+ tests. 12/13 GREEN. barraCuda YELLOW (PRNG validation).
+**Total**: ~130,000+ tests. **13/13 GREEN.** barraCuda PRNG FIXED (YELLOW→GREEN).
+
+## Provenance × Acquisition Divergence
+
+**Discovery (Wave 155u)**: Inline provenance during bulk data download caused
+a 12× throughput collapse (74 files/s → 6 files/s) due to sequential UDS RPC
+serialization. Three data provenance states now exist on westGate:
+
+| State | Meaning | Count |
+|-------|---------|-------|
+| **Primordial** | No CAS object | Legacy downloads |
+| **CAS-only** | BLAKE3 hash, no DAG/spine | Fast-ingest data |
+| **Fully braided** | Complete provenance chain | Target state |
+
+**Fix path**: Trailer pattern (download fast, braid later) + batch RPCs
+(`dag.event.batch` + `spine.entry.batch`). `is_dataset_converged()` gate
+for springs.
 
 ## Network
 

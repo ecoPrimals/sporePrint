@@ -197,7 +197,7 @@ Validation experiment queue in progress.
 
 ## arXiv Status {#arxiv-status}
 
-**Status**: Preprint under refinement. Validation experiment queue in progress.
+**Status**: UNBLOCKED. strandGate validation COMPLETE — paper relabel pending.
 
 | Section | Data | Validation |
 |---------|------|-----------|
@@ -212,7 +212,9 @@ Validation experiment queue in progress.
 | 5. Reproducibility | Written | pseudoSpore not yet frozen |
 | 6. Conclusion | Written | — |
 
-**Blocking**: Plaquette normalization verification, β-scan, HMC diagnostics.
+**Status**: strandGate validation ALL high-priority COMPLETE. Action-force (6 sig figs).
+Creutz equality (5 sig figs). Dual-GPU parity: RTX 3090 + RX 6950 XT, |ΔP| < 10⁻³.
+β-scan matches SU(3) published data. Paper relabel (SU(2)→SU(3) terminology) pending.
 See [experiment queue](/pseudospore/hotspring-qcd-su2-paper/) for full list.
 
 ---
