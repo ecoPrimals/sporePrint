@@ -1,6 +1,6 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 11 gates online, NUCLEUS 13/13 GREEN, 130K+ tests. ironGate downstream host. barraCuda PRNG FIXED."
+description = "Current fleet status — 11 gates online, NUCLEUS 13/13 GREEN, 135K+ tests. K-Derm DNS COMPLETE. nestgate.io LIVE."
 date = 2026-08-04
 weight = 2
 
@@ -8,7 +8,8 @@ weight = 2
 maturity = "live"
 +++
 
-Current fleet status as of August 4, 2026. When petalTongue G19
+Current fleet status as of August 4, 2026 (Wave 155v/156d). K-Derm DNS
+separation COMPLETE — three-domain topology live. When petalTongue G19
 rendering matures, this page will serve live data from `biomeOS neuralAPI`.
 
 ## Gate Role Taxonomy
@@ -22,7 +23,7 @@ rendering matures, this page will serve live data from `biomeOS neuralAPI`.
 | **blueGate** | Windows dev | i9-14900K, 96 GB DDR5 | ludoSpring, Windows NUCLEUS, G29 H2 DNS |
 | **sporeGate** | CI / membrane | — | Sovereign CI, G34/G35, build authority, depot, DNS |
 | **southGate** | Validation | — | NUCLEUS 22/22 reference gate (G17+G8 PROVEN) |
-| **eastGate** | Overwatch | — | squirrel local dev (400s→16s, 34→1 binaries) |
+| **eastGate** | Overwatch | — | squirrel (pushed 156d), sovereignty cleanup |
 | **northGate** | Windows dev | RTX 5090 | Daily driver, AlphaFold data source |
 | **grapheneGate** | Mobile | Pixel 8a | Tower (TCP), beacon seed |
 | **golgi** | VPS relay | VPS | Forgejo + depot + sporePrint (thin-relay composition) |
@@ -51,7 +52,7 @@ biomeOS (composition) → graph.execute + cell graph deploy
     │
 petalTongue (rendering) → WebGL/WASM live render on RTX 5070
     │
-├── esotericWebb (CRPG) — V29, 471 tests, G19 scene push PROVEN
+├── esotericWebb (CRPG) — V30d, 677 tests, G19 scene push PROVEN
 └── footPrint (GIS) — 563 tests, nestGate CAS + petalTongue RPC wired
 ```
 
@@ -78,23 +79,30 @@ pushed via `visualization.render.scene` through NUCLEUS IPC to RTX 5070.
 | tideGlass | 147 | GREEN | full Rust rebuild, 9 crates, 92.71% coverage |
 | cellMembrane | 1,281+ | GREEN | — |
 
-**Total**: ~130,000+ tests. **13/13 GREEN.** barraCuda PRNG FIXED (YELLOW→GREEN).
+**Total**: ~135,000+ tests. **13/13 GREEN.** barraCuda PRNG FIXED (YELLOW→GREEN).
 
-## Provenance × Acquisition Divergence
+## K-Derm DNS Separation — Three-Domain Topology
+
+K-Derm DNS separation is COMPLETE as of Wave 155v/156d:
+
+| Domain | Layer | DNS | Purpose |
+|--------|-------|-----|---------|
+| **primals.eco** | Outer membrane | Cloudflare | Public site, 14 Caddy-routed subdomains |
+| **nestgate.io** | Peptidoglycan | Sovereign Knot DNS + DNSSEC | Data identity surface, petalTongue mesh |
+| **primal.eco** | Inner membrane | Sovereign Knot DNS (LAN only) | Internal mesh — 6 public A records REMOVED |
+
+DNSSEC chain verified end-to-end (DS 2371/13/2). Wildcard `*.primals.eco`
+means sporeGate owns all subdomain routing autonomously.
+
+## Provenance Pipeline — 122× Throughput
 
 **Discovery (Wave 155u)**: Inline provenance during bulk data download caused
-a 12× throughput collapse (74 files/s → 6 files/s) due to sequential UDS RPC
-serialization. Three data provenance states now exist on westGate:
+a 12× throughput collapse (74 files/s → 6 files/s). **Resolution (Wave 155v)**:
+Trailer pattern (download fast, braid later) achieved **122× improvement**.
+Batch RPCs (`dag.event.batch` + `spine.entry.batch`) are the permanent fix.
 
-| State | Meaning | Count |
-|-------|---------|-------|
-| **Primordial** | No CAS object | Legacy downloads |
-| **CAS-only** | BLAKE3 hash, no DAG/spine | Fast-ingest data |
-| **Fully braided** | Complete provenance chain | Target state |
-
-**Fix path**: Trailer pattern (download fast, braid later) + batch RPCs
-(`dag.event.batch` + `spine.entry.batch`). `is_dataset_converged()` gate
-for springs.
+Three data provenance states on westGate — convergence path defined.
+`is_dataset_converged()` gate for springs.
 
 ## Network
 

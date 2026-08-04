@@ -2,16 +2,17 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 4, 2026 (Wave 155u/156b — 13/13 GREEN, provenance divergence)
+Last reviewed: August 4, 2026 PM (Wave 155v/156d — K-Derm DNS COMPLETE, nestgate.io LIVE)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 130,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 519 GB / 130 datasets.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 519 GB / 130 datasets. K-Derm DNS 3/3 layers separated. nestgate.io LIVE on sovereign Knot DNS.
 
-**Demonstration era (Wave 155n → 155u/156b):**
+**Demonstration era (Wave 155n → 155v/156d):**
 - Top nav: pseudoSpore | **Data** | Lab | Science | Architecture | Get Started
+- **K-Derm DNS COMPLETE** — 3/3 layers separated: primals.eco (Cloudflare), nestgate.io (sovereign Knot DNS, LIVE), primal.eco (sealed)
 - **13/13 GREEN** — barraCuda PRNG FIXED (YELLOW→GREEN), last holdout resolved
-- **130K+ tests** across 15 primals + 9 springs
-- **esotericWebb V29** (8 commits: G18 signal dispatch, petalTongue live site, deep debt)
-- **Provenance × Acquisition divergence**: 12× throughput gap discovered (74/s → 6/s with inline provenance). Trailer pattern + batch RPC proposal.
+- **135K+ tests** across 15 primals + 9 springs
+- **esotericWebb V30d** (677 tests, G18 signal dispatch, petalTongue live site)
+- **Provenance throughput RESOLVED**: 122× improvement via trailer pattern. Batch RPCs proposed.
 - **arXiv UNBLOCKED** (paper relabel pending, strandGate validation COMPLETE)
 - Data Braids: 16 domain pages with inline W3C PROV-O braids for every dataset
 - Transplant page: pseudoSpore/lithoSpore paths for PIs to carry data + provenance
@@ -19,12 +20,12 @@ Last reviewed: August 4, 2026 (Wave 155u/156b — 13/13 GREEN, provenance diverg
 - nestgate.io handoff prepared for sporeGate team (DNS/Caddy routing)
 - 79 pages marked `foundation = true`
 - VALIDATED badges on 7 baseCamp papers
-- Homepage: 11 gates, 519 GB, 130K+ tests, 13/13 GREEN
+- Homepage: 11 gates, 519 GB, 135K+ tests, 13/13 GREEN, K-Derm DNS, nestgate.io LIVE
 - Hype cleanup complete. Auto-publish operational on golgi.
 - pseudoSpore section: lead nav item with data catalog, QCD page, verification guide
 - Multi-vendor GPU: RTX 3090 + RX 6950 XT, cross-GPU agreement 3.1e-9
 - G19 MILESTONE: petalTongue scene push PROVEN on ironGate (RTX 5070)
-- esotericWebb V22→V29. 471 tests, 8/9 primals zero-config
+- esotericWebb V22→V30d. 677 tests, 8/9 primals zero-config
 - Data NAS: westGate at 519 GB / 130 datasets / 17+ domains
 - Gate status page: 11-gate role taxonomy, provenance divergence section
 - ironGate downstream host stack: squirrel → biomeOS → petalTongue → products
@@ -40,7 +41,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ### Periodic refresh: counts and versions
 - [x] ~~Sync landing page stat cards~~ — stats ribbon reads from `config.extra.totals` dynamically
-- [ ] Update Squirrel version/tests if alpha has advanced
+- [x] ~~Update Squirrel version/tests if alpha has advanced~~ — squirrel 4,613 tests, pushed 156d, 400s→16s perf (Wave 155v)
 - [x] ~~Verify plasmidBin inventory count~~ — 59 binaries across 4 architectures (16+16+13+14)
 - [x] ~~Check if new baseCamp papers exist~~ — 28 papers confirmed
 - [x] ~~Verify LOC in PRIMAL_CATALOG.md~~ — catalog uses `entity_metrics` shortcodes (live from registry); periodic refresh via `spore-validate refresh --write`
