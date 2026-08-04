@@ -77,7 +77,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~gen3/constrained_optimization_ai.md~~ — transplanted to `content/methodology/constrained_optimization_ai.md`
 - [ ] gen3/about/LICENSING_STRATEGY.md — may overlap with scyBorg, evaluate
 - [ ] gen3/primals/ — primal specification pages (15 primals, interactions, discovery log)
-- [ ] gen3/data/ remaining: MISE_EN_PLACE (historical conda fossil, skip)
+- [x] ~~gen3/data/ remaining: MISE_EN_PLACE~~ — historical conda fossil, intentionally skipped (Wave 156b audit)
 
 ### Visual evolution
 - [x] ~~Add a full site map page (`/sitemap/`)~~ — sitemap/_index.md now lists all sections with page counts
@@ -159,7 +159,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
-- [ ] Evaluate elasticlunr search quality at 311+ pages
+- [ ] Evaluate elasticlunr search quality at 338+ pages
 - [ ] Consider whether taxonomy pages should be included in the search index
 - [ ] Evaluate faceted search (filter by primal/spring) if page count grows significantly
 

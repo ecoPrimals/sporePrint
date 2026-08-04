@@ -57,7 +57,7 @@ sporePrint/
 ├── config.toml          # Zola config + entity_registry (79 entities) + totals
 ├── sources.toml         # Upstream repo map (GitHub + Forgejo origins)
 ├── content-manifest.toml # BLAKE3 content provenance (generated)
-├── content/             # 313 published pages with TOML front matter
+├── content/             # 338 published pages with TOML front matter
 │   ├── lab/             # 132 pages: spring hubs, 99 notebooks (6 domains), spore gallery
 │   ├── science/         # 33 baseCamp companion papers
 │   ├── architecture/    # 43 pages: composition, NUCLEUS, K-Derm, CAC, Tower Atomic, Sovereign CI, Mesh Topology
@@ -68,6 +68,8 @@ sporePrint/
 │   ├── products/        # 11 pages: footPrint, tideGlass, helixVision, lithoSpore, etc.
 │   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
 │   ├── audience/        # 7 pages: PI, student, builder, compliance, companies guides
+│   ├── pseudospore/     # 8 pages: downloadable verified archives + QCD paper
+│   ├── data/            # 18 pages: Data Braids catalog (519 GB, 130+ datasets, 17+ domains)
 │   ├── guidestone/      # 6 pages: verification class
 │   ├── story/           # 3 pages: builder narrative essays
 │   ├── collaborators/   # 3 profiles: Gonzales (NF), Jones (PFAS), ABG
@@ -105,7 +107,7 @@ The site is organized into 4 navigable folds with Foundation and Backstory secti
 | *Foundation* | *(79 design docs across architecture, methodology, outreach, audience, products, technical, collaborators, vision)* | *Proven design history — accessible, not prominent* |
 | *Backstory* | *(thesis, philosophy, story)* | *Finished works — the why behind the system* |
 
-Top nav: **Lab | Science | Architecture | Products | Get Started** + Foundation, Backstory, Contact.
+Top nav: **pseudoSpore | Data | Lab | Science | Architecture | Products | Get Started** + Foundation, Backstory, Contact.
 10 reading trails thread pages across fold boundaries.
 
 ## spore-validate
@@ -155,7 +157,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 | Org | Purpose | Repos |
 |-----|---------|-------|
-| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (101K+ tests) |
+| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (121K+ tests) |
 | [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |

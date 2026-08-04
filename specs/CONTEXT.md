@@ -8,26 +8,31 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 1, 2026 — post-155n, DEMONSTRATION ERA)
+## Current State (August 3, 2026 — Wave 155q/156b, DEMONSTRATION ERA)
 
-- **313 published pages** across 23 sections: 190 active in main nav, 36 in backstory, 79 foundation (not in nav)
+- **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals**: 3.60M LOC, 116,930 tests (15 primals + 9 springs), 43 repos, 35 depot binaries
-- **4 NUCLEUS gates**: westGate, blueGate, strandGate, + southGate enrolled. gen4 COMPLETE, gen5 VALIDATED
+- **Ecosystem totals**: 3.60M LOC, 121,000+ tests (15 primals + 9 springs), 43 repos
+- **11 NUCLEUS gates**: eastGate, westGate, blueGate, strandGate, southGate, sporeGate, flockGate, golgiBody, biomeGate, ironGate, redGate
 - **biomeOS v4.56**: G22 convergence, 244 capabilities, unified socket namespace
+- **519 GB / 130+ datasets** on westGate across 17+ domains
 - **ZERO P0/P1/P2**
 
-### Demonstration Era Changes (Wave 155n+)
-- **Nav triage**: Lab | Science | Architecture | Products | Get Started
+### Demonstration Era Changes (Wave 155n → 155q/156b)
+- **Nav triage**: pseudoSpore | Data | Lab | Science | Architecture | Products | Get Started
+- **Data Braids**: 16 domain pages with inline W3C PROV-O braids + transplant page
 - **79 foundation pages**: architecture (29), methodology (14), outreach (16), audience (7), products (4), technical (4), collaborators (3), vision (2)
 - **Backstory**: thesis (18), philosophy (15), story (3) — accessible via nav footer
 - **7 VALIDATED badges** on baseCamp papers (10, 14, 21, 24, 7, 17, 28)
 - **6 architecture pages** upgraded to `maturity = "live"`
 - **Hype cleanup**: 353x WireGuard → topology awareness. 3.24 TFLOPS DF64 → measured 2,130 matmul/sec. Rust-vs-Python → compiled-vs-interpreted
 - **Auto-publish**: golgi-ext 15-min systemd timer (Forgejo pull → zola build → Caddy serves)
-- **Homepage**: "NUCLEUS Is Running", "Find Your Path" cards point to live systems
+- **Homepage**: 11 gates, 519 GB, 121K+ tests, G19 milestone
+- **G19 MILESTONE**: petalTongue scene push PROVEN on ironGate (RTX 5070)
+- **esotericWebb V26**: 471 tests, 8/9 primals zero-config on ironGate
+- **arXiv Rung 1**: BLOCKED on plaquette ×4 normalization (experiment queue reordered)
 
 ## Site Topology — Active Pages by Section
 
@@ -37,6 +42,8 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 | Science | 33 | 0 | 33 | Main |
 | Architecture | 14 | 29 | 43 | Main |
 | Products | 7 | 4 | 11 | Main |
+| pseudoSpore | 8 | 0 | 8 | Main |
+| Data | 18 | 0 | 18 | Main |
 | Getting Started | 0 (+index) | 0 | 1 | Main |
 | Technical | 4 | 4 | 8 | Main |
 | Thesis | 18 | 0 | 18 | Backstory |
@@ -48,7 +55,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 | Audience | 0 | 7 | 7 | Foundation |
 | Collaborators | 0 | 3 | 3 | Foundation |
 | Vision | 0 | 2 | 2 | Foundation |
-| **Total** | **233** | **79** | **313** | |
+| **Total** | **259** | **79** | **338** | |
 
 ## Key Technical Facts
 

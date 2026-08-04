@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: July 24, 2026 (Wave 150x — 312 pages, 17 sections, 79 entities, 5 cortical folds. New: Tower Atomic page, Sovereign CI + Mesh Topology updated)
+Last reviewed: August 3, 2026 (Wave 155q/156b — 338 pages, 25 sections, 79 entities, 5 cortical folds. New: Data Braids inline braids, transplant page, pseudoSpore + Data in main nav)
 
 ## Sections
 

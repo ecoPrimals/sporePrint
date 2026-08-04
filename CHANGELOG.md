@@ -5,6 +5,44 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.24.0] — 2026-08-03 — Data Braids Visibility, Demonstration Era (Waves 155n → 155q/156b)
+
+**Data Braids catalog with inline provenance. Ecosystem metrics refresh.
+11 gates, 519 GB data, 121K+ tests. G19 proven on ironGate.**
+
+### Added
+
+- **Data Braids inline braids** — W3C PROV-O JSON-LD attestation on every
+  dataset across 13 domain pages (22 braids total, up from 1)
+- **Transplant page** (`/data/transplant/`) — pseudoSpore/lithoSpore paths
+  for PIs carrying data + provenance to their own hardware
+- **"Data" in main nav** — between pseudoSpore and Lab
+- **3 stub pages upgraded** — cancer-genomics, disease-ontology, genomic-reference
+  now full domain pages with frontmatter, "What's Possible", and braids
+- **pseudoSpore section** — lead nav item with data catalog, QCD paper,
+  verification guide, computation audit trail
+- **arXiv preprint page** — Rung 1 SU(2) Lattice Gauge Theory paper
+  (PREPRINT UNDER REFINEMENT — plaquette normalization blocker)
+- **Gate status page** — 11-gate role taxonomy with NUCLEUS health dashboard
+
+### Changed
+
+- **Homepage** — 11 gates, 519 GB, 121K+ tests, G19 milestone
+- **Data catalog** — synced to 519 GB / 130+ datasets / 17+ domains
+- **pseudoSpore catalog** — fixed stale 38.2 GB → 519 GB references
+- **llms.txt** — added Data Braids + transplant entries
+- **config.toml** — `total_tests = 121000+`, `gates_online = 11`,
+  `data_volume_gb = 519`, `data_datasets = 130`
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- Tests (sporePrint): 283 (spore-validate)
+- Tests (ecosystem): 121,000+
+- NUCLEUS gates: 11 online
+
+---
+
 ## [3.23.0] — 2026-07-14 — Branch-Agnostic Fetch, WCAG Figure/Table, Constant Sweep (Wave 138b)
 
 **Fetch evolution: configurable branch per source. Accessibility: figure/figcaption
