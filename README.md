@@ -69,7 +69,7 @@ sporePrint/
 │   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
 │   ├── audience/        # 7 pages: PI, student, builder, compliance, companies guides
 │   ├── pseudospore/     # 8 pages: downloadable verified archives + QCD paper
-│   ├── data/            # 18 pages: Data Braids catalog (519 GB, 130+ datasets, 17+ domains)
+│   ├── data/            # 18 pages: Data Braids catalog (3.21 TB, 153 datasets, 17+ domains)
 │   ├── guidestone/      # 6 pages: verification class
 │   ├── story/           # 3 pages: builder narrative essays
 │   ├── collaborators/   # 3 profiles: Gonzales (NF), Jones (PFAS), ABG
@@ -157,7 +157,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 | Org | Purpose | Repos |
 |-----|---------|-------|
-| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (121K+ tests) |
+| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (135K+ tests) |
 | [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |
@@ -167,10 +167,13 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 - [x] DNS registrar NS cutover to ns1/ns2.primals.eco — live since Wave 100+
 - [x] Forgejo webhook triggers sovereign CI rebuild — Sovereign CI LIVE (Wave 155m)
 - [x] Sovereign CI push-to-deploy automated (J9+J10+J11 killed)
-- [x] NUCLEUS ACHIEVED — 3 gates running 13/13 primals (Wave 155m)
+- [x] NUCLEUS ACHIEVED — all 6 NUCLEUS gates v4.57+ (Wave 156d)
 - [x] Provenance 7/7 COMPLETE — full signed chain on Linux + Windows
-- [ ] CAS route registration (path→hash mapping for NestGate HTTP serving)
-- [ ] petalTongue renders live dashboards from primal APIs
+- [x] Phase 1 cell boot SUCCEEDED — esotericWebb on ironGate (Wave 156d)
+- [x] footPrint Phase 2 DEPLOYED — footprint.primals.eco LIVE (Wave 156d)
+- [x] G18 signal dispatch LIVE — 9 providers on ironGate (Wave 156d)
+- [ ] petalTongue renders live dashboards from primal APIs (G19)
+- [ ] CAS route registration for NestGate HTTP serving
 
 ## License
 

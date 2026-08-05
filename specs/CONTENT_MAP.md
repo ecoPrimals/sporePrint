@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 3, 2026 (Wave 155q/156b — 338 pages, 25 sections, 79 entities, 5 cortical folds. New: Data Braids inline braids, transplant page, pseudoSpore + Data in main nav)
+Last reviewed: August 5, 2026 (Wave 156d — 338 pages, 25 sections, 79 entities, 5 cortical folds. Data Flow Activation Era: G18 LIVE, Phase 1 SUCCEEDED, footPrint DEPLOYED, 3.21 TB / 153 datasets, 16⁴ dual-GPU COMPLETE)
 
 ## Sections
 

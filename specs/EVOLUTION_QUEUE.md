@@ -80,8 +80,8 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~gen3/baseCamp/26~~ — transplanted as `content/science/28_primal_composition_methodology.md`
 - [x] ~~gen3/baseCamp/27~~ — transplanted as `content/science/29_heterogeneous_fabric_economics.md`
 - [x] ~~gen3/constrained_optimization_ai.md~~ — transplanted to `content/methodology/constrained_optimization_ai.md`
-- [ ] gen3/about/LICENSING_STRATEGY.md — may overlap with scyBorg, evaluate
-- [ ] gen3/primals/ — primal specification pages (15 primals, interactions, discovery log)
+- [x] ~~gen3/about/LICENSING_STRATEGY.md~~ — scyBorg triple-copyleft documented in methodology, licensing in README. Fossil. (Wave 156d audit)
+- [ ] gen3/primals/ — primal specification pages (15 primals, interactions, discovery log) — LOW: entity registry + taxonomy pages serve this role now
 - [x] ~~gen3/data/ remaining: MISE_EN_PLACE~~ — historical conda fossil, intentionally skipped (Wave 156b audit)
 
 ### Visual evolution
@@ -94,7 +94,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~Pre-build validation script~~ → `spore-validate validate` (Rust typed replacement)
 - [x] ~~Entity metrics in one place, referenced everywhere~~ → `config.toml` registry + shortcodes
 - [x] ~~Entity names in prose match taxonomy tags~~ → `spore-validate validate --check` (scans 2,488 shortcodes)
-- [ ] Entity registry entries match wateringHole PRIMAL_EMOJI_STANDARD (cross-repo check)
+- [x] ~~Entity registry entries match wateringHole PRIMAL_EMOJI_STANDARD~~ — emoji removed from titles (Wave 134), registry is SSOT. squirrel 156d purged 27 deprecated aliases. (Wave 156d audit)
 - [x] ~~Metrics in registry haven't drifted from source repos~~ → `spore-validate refresh <repos_root>`
 
 ### petalTongue integration
@@ -160,7 +160,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~peptidoglycan build pipeline~~ — replaced by Sovereign CI (Forgejo→sporeGate→golgi, Wave 119)
 - [x] ~~GitHub Pages becomes extracellular shadow~~ — deploy.yml labeled "trailing shadow", VPS is sovereign-primary
 - [x] ~~Post-DNS: Caddy HTTPS on golgiBody-ext~~ — LIVE with automatic cert renewal
-- [ ] Post-DNS: sporePrint deploy.yml → archive to fossilRecord (disable GitHub Pages deploy)
+- [ ] Post-DNS: sporePrint deploy.yml → archive to fossilRecord (disable GitHub Pages deploy) — LOW: trailing shadow still useful for extracellular visibility
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search
@@ -618,14 +618,14 @@ These were in the original queue and have been completed:
 - [x] Result: `initialized: true`, `bootstrap_peers_added: 1`
 - [x] `mesh.peers` now returns `{online: 1, peers: [{address: "10.13.37.1:7700", reachable: true}]}`
 - [x] golgi peer at WG .1 visible via direct path (`path_type: "direct"`)
-- [ ] `mesh.capabilities_announce` rejected ("unknown peer") — requires BTSP trust
+- [x] ~~`mesh.capabilities_announce` rejected ("unknown peer")~~ — BTSP 13/13 SHIPPED, 835+ caps. Tower Atomic PROVEN (Wave 155+)
 
 ### BearDog Trust Protocol (P1 — PARTIALLY DONE)
 - [x] `auth.trust_issuer` method validated — requires `{public_key, did, gate_id}`
 - [x] Self-trust registered (flockGate → flockGate): `total_trusted_issuers: 1`
-- [ ] Cross-gate trust: need public keys from eastGate, sporeGate, golgi, ironGate BearDog instances
-- [ ] Protocol: call `auth.public_key` on remote gate → register via `auth.trust_issuer` locally
-- [ ] Token verification: issue token on gate A, verify on gate B (BTSP success criterion)
+- [x] ~~Cross-gate trust~~ — BTSP 13/13, Ed25519 + FIDO2. All gates enrolled. (Wave 155+)
+- [x] ~~Protocol: `auth.public_key` → `auth.trust_issuer`~~ — SHIPPED, 6-phase enrollment pipeline
+- [x] ~~Token verification: cross-gate~~ — BTSP mutual auth operational across all gates
 
 ### nucleus.rs Refactor (code quality)
 - [x] Tower probe code extracted to `tower.rs` (275 lines)

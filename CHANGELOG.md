@@ -5,6 +5,41 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.25.0] — 2026-08-05 — Data Flow Activation Era (Wave 156d)
+
+**G18 signal dispatch LIVE. Phase 1 cell boot SUCCEEDED. footPrint Phase 2 DEPLOYED.
+3.21 TB / 153 datasets. Convoy at 145/s. 16⁴ dual-GPU data COMPLETE. All 6 NUCLEUS gates v4.57+.**
+
+### Added
+
+- **Phase execution status** — gate-status page tracks 5 phases with current status
+- **Fleet table** — all 6 NUCLEUS gates with NUCLEUS version and status
+- **Convoy provenance section** — 145/s (460× total), convergence sweep data
+- **Live sites table** — sporePrint, footPrint, nestgate.io, esotericWebb with status
+- **Overwatch handoff** (`OVERWATCH_WAVE156D_DATA_FLOW_HANDOFF.md`) — gate team assignments
+
+### Changed
+
+- **Homepage** — 3.21 TB, G18 dispatch LIVE, Phase 1 SUCCEEDED, convoy 145/s
+- **Gate status** — full rewrite: phase execution, fleet table, ironGate 12.7 TB CAS
+- **Data index + pseudoSpore** — 3.21 TB / 153 datasets (was 519 GB / 130)
+- **hotSpring QCD** — 16⁴ dual-GPU COMPLETE, 42-item reviewer rubric, config cache
+- **llms.txt** — Data Flow Activation Era, corrected counts, live sites
+- **EVOLUTION_QUEUE** — Wave 156d current state, demonstration era collapsed
+- **CONTEXT** — Data Flow Activation Era header
+- **Primal dashboard** — rhizoCrypt 1,791 (G63), sweetGrass 1,636, tideGlass 214,
+  nestGate content.query SHIPPED, cellMembrane harvest scheduler, esotericWebb V31b 484
+- **README** — 3.21 TB, 135K+, remaining milestones updated
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- Tests (sporePrint): 283 (spore-validate)
+- Tests (ecosystem): 135,000+
+- NUCLEUS gates: 11 online, 6 at v4.57+
+
+---
+
 ## [3.24.0] — 2026-08-03 — Data Braids Visibility, Demonstration Era (Waves 155n → 155q/156b)
 
 **Data Braids catalog with inline provenance. Ecosystem metrics refresh.
