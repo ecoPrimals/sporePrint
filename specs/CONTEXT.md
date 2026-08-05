@@ -8,42 +8,40 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 4, 2026 — Wave 155v/156d, DEMONSTRATION ERA)
+## Current State (August 5, 2026 — Wave 156d, DATA FLOW ACTIVATION ERA)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals**: 3.60M LOC, 135,000+ tests (15 primals + 9 springs), 43 repos
-- **13/13 GREEN** — barraCuda PRNG FIXED (last holdout)
-- **11 NUCLEUS gates**: eastGate, westGate, blueGate, strandGate, southGate, sporeGate, flockGate, golgiBody, biomeGate, ironGate, redGate
-- **K-Derm DNS COMPLETE**: primals.eco (Cloudflare), nestgate.io (sovereign Knot DNS, LIVE), primal.eco (sealed)
-- **519 GB / 130+ datasets** on westGate across 17+ domains
+- **13/13 GREEN**. All 6 NUCLEUS gates v4.57+.
+- **11 gates**: eastGate, westGate, blueGate, strandGate, southGate, sporeGate, biomeGate, ironGate, northGate, grapheneGate, golgi
+- **K-Derm 3/3 FULLY OPERATIONAL**: primals.eco (outer), nestgate.io (peptidoglycan), primal.eco (inner, dnsmasq)
+- **3.21 TB / 153 datasets** on westGate across 17+ domains. 452 GB CAS pool. Convoy at 145/s.
+- **ironGate**: G18 signal dispatch LIVE (9 providers). 12.7 TB CAS. Phase 1 SUCCEEDED. footPrint Phase 2 DEPLOYED.
 - **ZERO P0/P1/P2**
 
-### Demonstration Era Changes (Wave 155n → 155v/156d)
-- **Nav triage**: pseudoSpore | Data | Lab | Science | Architecture | Products | Get Started
-- **biomeOS v4.57**: `nucleus attach` CLI SHIPPED — ironGate Phase 1 cell boot UNBLOCKED
-- **K-Derm DNS COMPLETE**: 3/3 layers separated. nestgate.io LIVE on sovereign DNS with DNSSEC.
-- **13/13 GREEN**: barraCuda PRNG FIXED + MultiDevicePool (4,959 tests). 135K+ tests.
-- **esotericWebb V30d**: 482 tests, exp006 22/22 PASS on ironGate. Signed provenance.
-- **footPrint 628 tests**: manifest-driven, riboCipher wired, Phase 2 DEPLOY READY
-- **Data Braids**: 16 domain pages with inline W3C PROV-O braids + transplant page
-- **Provenance pipeline**: 122× throughput improvement. Loop CLOSED (bearDog sig in braid).
-- **arXiv UNBLOCKED**: plaquette normalization RESOLVED, 12⁴ paper-ready
-- **79 foundation pages**: architecture (29), methodology (14), outreach (16), audience (7), products (4), technical (4), collaborators (3), vision (2)
-- **Backstory**: thesis (18), philosophy (15), story (3) — accessible via nav footer
-- **7 VALIDATED badges** on baseCamp papers (10, 14, 21, 24, 7, 17, 28)
-- **6 architecture pages** upgraded to `maturity = "live"`
-- **Auto-publish**: golgi-ext 15-min systemd timer (Forgejo pull → zola build → Caddy serves)
-- **Homepage**: 11 gates, 519 GB, 135K+ tests, 13/13 GREEN, cell attach SHIPPED, nestgate.io LIVE
-- **G19 MILESTONE**: petalTongue scene push PROVEN on ironGate (RTX 5070)
-- **esotericWebb V30d**: 482 tests, exp006 22/22 PASS, signed provenance
-- **ironGate downstream**: esotericWebb V30d + footPrint (628 tests) + squirrel + petalTongue
-- **14 Caddy-routed subdomains** on golgi (sporeprint, nestgate.io, footprint, webb, depot, git...)
-- **squirrel**: test perf 400s→16s, 34→1 binaries, pushed 156d
-- **tideGlass**: full Rust rebuild, 9 crates, 176 tests
-- **59 glacial goals** (31 ACTIVE), 94 docs fossilized
+### Data Flow Activation Era (Wave 156d)
+- **G18 SIGNAL DISPATCH LIVE** — ironGate, 9 providers, cross-primal routing validated
+- **Phase 1 cell boot SUCCEEDED** — first-ever cell attachment (esotericWebb V31b, 484 tests)
+- **footPrint Phase 2 DEPLOYED** — 708 tests, CAS E2E, golgi Caddy routing DONE
+- **ironGate NUCLEUS storage** — 12.7 TB CAS, nestGate v0.5.0, songBird federation to westGate
+- **All 6 NUCLEUS gates v4.57+** — 52/52 harvest complete
+- **16⁴ dual-GPU data COMPLETE** — +0.01% at β=6.0, 6 ppm cross-vendor, 42-item reviewer rubric
+- **Convoy provenance 145/s** (460× total improvement). CAS pool 452 GB.
+- **tideGlass 214 tests** — 17 IPC methods, GPS data converted, content.query wired
+- **nestGate `content.query` SHIPPED** — ZFS REST, nestgate.io content backend
+- **rhizoCrypt G63 SO_PEERCRED SHIPPED** — CAS local-trust
+- **3.21 TB / 153 datasets** (was 519 GB / 130)
+- **footprint.primals.eco LIVE** — golgi Caddy → ironGate :3002
+- **59 glacial goals** (30 ACTIVE), 145 docs fossilized
+
+### Previous Era (Wave 155n → 155v)
+- Nav triage, K-Derm DNS COMPLETE, 13/13 GREEN, biomeOS v4.57 cell attach SHIPPED
+- Data Braids (16 pages, transplant), 79 foundation pages, 7 VALIDATED baseCamp
+- G19 PROVEN, esotericWebb V30d, squirrel 400s→16s, tideGlass Rust rebuild
+- Provenance pipeline 122× improvement. arXiv UNBLOCKED.
 
 ## Site Topology — Active Pages by Section
 

@@ -1168,8 +1168,8 @@ content_pages = 338
 gates_online = 11
 nucleus_gates = 5
 data_volume_gb = 519
-data_datasets = 130
-measured_date = "2026-08-04-PM"
+data_datasets = 153
+measured_date = "2026-08-05-AM"
 # All entity metrics refreshed via spore-validate refresh on this date
 
 # ── Cortical Folds ──────────────────────────────────────────────────────

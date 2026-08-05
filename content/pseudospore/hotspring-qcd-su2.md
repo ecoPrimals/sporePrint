@@ -198,25 +198,25 @@ arXiv preprint: UNBLOCKED (hep-lat, cross-list cs.DC).
 
 ## arXiv Status {#arxiv-status}
 
-**Status**: UNBLOCKED. Plaquette normalization RESOLVED. 12⁴ paper-ready. 16⁴ running.
+**Status**: **16⁴ DUAL-GPU DATA COMPLETE.** 42-item reviewer rubric shipped. arXiv submission target.
 
 | Section | Data | Validation |
 |---------|------|-----------|
 | 1. Introduction + Scope | Written | — |
 | 2. Method (gauge theory, DF64, shaders, provenance) | Written | — |
 | 3.1 Lattice scaling (RTX 3090 + RX 6950 XT) | Data in | — |
-| 3.2 Plaquette values | Data in | **RESOLVED** (×4 gauge group mismatch fixed) |
+| 3.2 Plaquette values | **12⁴ + 16⁴** | **RESOLVED** — β=6.0 +0.01%, β=6.2 -0.04% vs published |
 | 3.3 DF64 precision validation | Data in | — |
-| 3.4 Multi-vendor results | Data in | — |
-| 3.5 Autocorrelation | Data in | Needs more statistics |
+| 3.4 Multi-vendor results | **16⁴ dual-GPU** | **6 ppm cross-vendor** at β=6.2. AMD 9.4× faster at 16⁴. |
+| 3.5 Autocorrelation | Data in | — |
 | 4. Discussion | Written | — |
 | 5. Reproducibility | Written | pseudoSpore not yet frozen |
 | 6. Conclusion | Written | — |
 
-**12⁴ volume scan COMPLETE**: β=6.0/6.2 sub-0.1% agreement with published values.
-Plaquette ×4 normalization RESOLVED (gauge group mismatch SU(2)→SU(3)).
-Action-force (6 sig figs). Creutz equality (5 sig figs). Dual-GPU parity.
-16⁴ running. Compute config caching next (37 min thermalization → instant via CAS).
+**16⁴ dual-GPU data COMPLETE**: RTX 3090 + RX 6950 XT from same cached configs.
+β=6.0: +0.01% vs published. β=6.2: -0.04%. Cross-vendor parity: **6 ppm** at β=6.2.
+AMD 9.4× faster at 16⁴. Config cache LIVE (9/10, 325 MB — 37 min → instant).
+42-item reviewer rubric: Bazavov 12, Chuna 10, Murillo 10, cross 10. 12 MUST-fix.
 See [experiment queue](/pseudospore/hotspring-qcd-su2-paper/) for full list.
 
 ---

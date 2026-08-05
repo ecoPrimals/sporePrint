@@ -14,16 +14,16 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 15 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 11 gates online. 135K+ tests. 13/13 GREEN. 519 GB science data. K-Derm DNS COMPLETE. nestgate.io LIVE. Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. G18 signal dispatch LIVE. Phase 1 cell boot SUCCEEDED. footPrint Phase 2 DEPLOYED. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
 sporeprint.primals.eco is the public-facing science site for the ecoPrimals ecosystem.
-337 pages organized into 5 main sections (Lab, Science, Architecture, Products, Get Started)
+338 pages organized into 5 main sections (Lab, Science, Architecture, Products, Get Started)
 plus Foundation (79 proven design docs) and Backstory (thesis, philosophy, narrative). 11 gates
-online with NUCLEUS 26/27 HEALTHY. ironGate is the first downstream host with petalTongue G19
-GPU render PROVEN. Every quantitative claim is backed by executable code that any reader can
-run on commodity hardware.
+online, all 6 NUCLEUS gates at v4.57+. ironGate is the first downstream host with G18 signal
+dispatch LIVE (9 providers), 12.7 TB CAS, and footPrint Phase 2 DEPLOYED. Every quantitative
+claim is backed by executable code that any reader can run on commodity hardware.
 
 ## arXiv Pre-Submission Draft (OPEN FOR REVIEW)
 
@@ -34,8 +34,8 @@ LaTeX source: https://git.primals.eco/ecoPrimals/whitePaper/src/branch/main/subG
 
 "Toward Vendor-Agnostic Lattice QCD on Consumer GPUs: SU(2) Hybrid
 Monte Carlo with DF64 WebGPU/WGSL and Cryptographic Provenance"
-— arXiv hep-lat, cross-list cs.DC. Rung 1 of 6. Under refinement:
-plaquette normalization under investigation, experiment queue in progress.
+— arXiv hep-lat, cross-list cs.DC. Rung 1 of 6. 16⁴ dual-GPU data COMPLETE
+(+0.01% at β=6.0, 6 ppm cross-vendor). 42-item reviewer rubric shipped.
 Multi-vendor (RTX 3090 + RX 6950 XT). 190× GPU speedup.
 ORCID: 0009-0004-2141-0321.
 
@@ -51,7 +51,7 @@ including PRNG bias discovery and three-path validation methodology.
 - Lattice QCD on consumer GPUs: /products/lattice-qcd/
 - Self-hosted distributed compute mesh: /architecture/mesh-topology/
 - Reproducible self-verifying scientific software: /guidestone/
-- Data Braids catalog (519 GB across 130+ datasets, inline provenance braids): /data/
+- Data Braids catalog (3.21 TB across 153 datasets, inline provenance braids): /data/
 - Transplant guide (pseudoSpore/lithoSpore for PIs): /data/transplant/
 - pseudoSpore catalog (downloadable verified archives): /pseudospore/
 
@@ -66,7 +66,7 @@ including PRNG bias discovery and three-path validation methodology.
 
 ## Site Structure — Cortical Folds
 
-The site has 337 pages across 23 sections, organized into 5 navigable folds.
+The site has 338 pages across 25 sections, organized into 5 navigable folds.
 Each fold groups related sections. Ridge pages are the best entry points.
 Section indexes list all child pages within that section.
 
@@ -92,10 +92,10 @@ How it works — ecosystem design, technical depth, emergent products.
   - Section index: https://sporeprint.primals.eco/technical/
 - **Products** (11 pages): esotericWebb, helixVision, blueFish, lithoSpore, coralForge, footPrint, tideGlass, etc.
   - Section index: https://sporeprint.primals.eco/products/
-  - https://footprint.primals.eco (GIS Home Planner — LIVE, 478 TS tests)
-  - https://webb.primals.eco (esotericWebb CRPG — V26 LIVE, 471 tests, G19 scene push PROVEN)
-  - protoKarya protists: footPrint (GIS, LIVE), tideGlass (GPS platform, Phase 0)
-  - sporeGarden products: esotericWebb (CRPG, V26 LIVE at webb.primals.eco — 8/9 primals zero-config)
+  - https://footprint.primals.eco (GIS Home Planner — LIVE, 708 tests, Phase 2 DEPLOYED on ironGate)
+  - https://webb.primals.eco (esotericWebb CRPG — V31b, 484 tests, cell boot SUCCEEDED)
+  - protoKarya protists: footPrint (GIS, LIVE), tideGlass (GPS platform, 214 tests)
+  - sporeGarden products: esotericWebb (CRPG, V31b, cell boot on ironGate)
 - Ridge pages: https://sporeprint.primals.eco/architecture/ecosystem-architecture/ , https://sporeprint.primals.eco/architecture/nucleus-architecture/
 
 ### Fold 3: Methodology (7% of site)
@@ -202,16 +202,16 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 27 signal graphs. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **11 gates ONLINE**. NUCLEUS 26/27 HEALTHY. biomeOS v4.56+
-- **519 GB / 130 datasets / 17+ domains** on westGate ZFS
-- **ironGate Phase 1 UNBLOCKED**: biomeOS v4.57 cell attach SHIPPED. esotericWebb V30d (482 tests) + footPrint (628 tests)
-- **K-Derm DNS COMPLETE**: primals.eco (outer), nestgate.io (LIVE), primal.eco (sealed). 14 Caddy subsites.
-- Provenance 7/7 COMPLETE: full signed chain on Linux (ZFS) + Windows
-- Sovereign CI LIVE: push-to-deploy, depot binaries across 3 platforms
-- Phase 2 transport abstraction complete: all primals cross-compile for all targets
+- **11 gates ONLINE**. All 6 NUCLEUS gates v4.57+
+- **3.21 TB / 153 datasets / 17+ domains** on westGate ZFS. 452 GB CAS. Convoy at 145/s.
+- **ironGate**: G18 signal dispatch LIVE (9 providers). 12.7 TB CAS. Phase 1 SUCCEEDED. footPrint Phase 2 DEPLOYED.
+- **16⁴ dual-GPU data COMPLETE**: +0.01% at β=6.0, 6 ppm cross-vendor. 42-item reviewer rubric.
+- **K-Derm 3/3 FULLY OPERATIONAL**: primals.eco (outer), nestgate.io (LIVE), primal.eco (inner, dnsmasq). 14 Caddy subsites.
+- Provenance 7/7 COMPLETE. Loop CLOSED (bearDog sig in braid). 460× throughput improvement.
+- Sovereign CI LIVE: push-to-deploy, 52/52 harvest, depot binaries across 3 platforms
 - Content-Addressed Convergence: all 6 layers complete
 - DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)
-- Glacial goals: 50 tracked (22 ACTIVE). G19 petalTongue PROVEN
+- Glacial goals: 59 tracked (30 ACTIVE). G19 petalTongue PROVEN
 - Zero commercial dependencies in inner membrane
 - AGPL-3.0-or-later throughout
 

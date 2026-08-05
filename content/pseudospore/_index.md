@@ -1,13 +1,13 @@
 +++
 title = "pseudoSpore — Sovereign Science Data"
-description = "519 GB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
+description = "3.21 TB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
 sort_by = "weight"
 template = "section.html"
 +++
 
 Real science data. Sovereign hardware. Full provenance. Verify it yourself.
 
-westGate has ingested **519 GB** across 17+ scientific domains through the complete
+westGate has ingested **3.21 TB** across 17+ scientific domains through the complete
 CAS + Provenance Trio pipeline. Every object is content-addressed (BLAKE3),
 DAG-tracked (rhizoCrypt), ledger-committed (loamSpine), Ed25519-signed (bearDog),
 and attribution-braided (sweetGrass). **100% provenance coverage.**
