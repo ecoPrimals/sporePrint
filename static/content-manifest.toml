@@ -2234,7 +2234,7 @@ title = "pseudoSpore — Sovereign Science Data"
 section = "pseudospore"
 fold = "pseudospore"
 
-[pages."pseudospore/hotspring-qcd-su2.md"]
+[pages."pseudospore/hotspring-qcd-sun.md"]
 blake3 = "b3703ebaabe16ebb0de05ab20a6e7f08118c3bbba362bae0b16c684708b4e842"
 size_bytes = 5779
 title = "pseudoSpore: hotSpring QCD — SU(2) Lattice Gauge Theory"

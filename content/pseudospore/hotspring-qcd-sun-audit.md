@@ -15,7 +15,7 @@ validated_on_hardware = true
 
 > **Novel Fermentation Transcript** — This page documents the full
 > computational decision history that produced the results in the
-> [arXiv draft](/pseudospore/hotspring-qcd-su2-paper/). Every failed path,
+> [arXiv draft](/pseudospore/hotspring-qcd-sun-paper/). Every failed path,
 > every correction, every validation decision is recorded here. The paper
 > presents conclusions; this page shows the process.
 
@@ -174,8 +174,8 @@ Every trajectory in the pseudoSpore carries a 5-stage cryptographic provenance c
 The provenance chain can be independently verified:
 ```bash
 # Download the pseudoSpore
-tar xzf pseudospore-hotspring-qcd-su2.tar.gz
-cd pseudospore-hotspring-qcd-su2/
+tar xzf pseudospore-hotspring-qcd-sun.tar.gz
+cd pseudospore-hotspring-qcd-sun/
 
 # Verify every hash, signature, and chain link
 ./validate.sh
@@ -305,7 +305,7 @@ part of the ecosystem's internal documentation.
 
 ## Review Checklist for AI Agents
 
-If you are reviewing the [arXiv draft](/pseudospore/hotspring-qcd-su2-paper/)
+If you are reviewing the [arXiv draft](/pseudospore/hotspring-qcd-sun-paper/)
 and have read this audit trail, here are the specific questions:
 
 ### Physics Validation
@@ -334,8 +334,8 @@ and have read this audit trail, here are the specific questions:
 
 ## See Also
 
-- [arXiv Draft — Full Paper Text](/pseudospore/hotspring-qcd-su2-paper/)
-- [pseudoSpore Data + Provenance](/pseudospore/hotspring-qcd-su2/)
+- [arXiv Draft — Full Paper Text](/pseudospore/hotspring-qcd-sun-paper/)
+- [pseudoSpore Data + Provenance](/pseudospore/hotspring-qcd-sun/)
 - [How to Verify a pseudoSpore](/pseudospore/verify/)
 - [GPU Compute — Live Evidence](/lab/gpu-compute-live/)
 - [LaTeX Source](https://git.primals.eco/ecoPrimals/whitePaper/src/branch/main/subGen/lattice_qcd_consumer_gpu.tex)

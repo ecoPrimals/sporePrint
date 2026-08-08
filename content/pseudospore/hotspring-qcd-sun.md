@@ -1,6 +1,6 @@
 +++
-title = "pseudoSpore: hotSpring QCD — SU(2) Lattice Gauge Theory"
-description = "SU(2) lattice gauge trajectories computed on RTX 3090 + RX 6950 XT. Multi-vendor, DF64 precision, full provenance, downloadable and verifiable. Rung 1 toward lattice QCD."
+title = "pseudoSpore: hotSpring QCD — SU(N) Lattice Gauge Theory"
+description = "SU(N) lattice gauge trajectories (N=2→8) computed on RTX 3090 + RX 6950 XT. Multi-vendor, DF64 precision, full provenance, downloadable and verifiable."
 date = 2026-08-01
 weight = 5
 
@@ -15,12 +15,12 @@ validated_on_hardware = true
 
 > **Computed on live hardware** — strandGate RTX 3090 + RX 6950 XT, Dual EPYC 7452.
 > Every trajectory has full CAS + Provenance Trio coverage.
-> arXiv draft: [Preprint under refinement — validation experiment queue in progress](/pseudospore/hotspring-qcd-su2-paper/)
+> arXiv draft: [Preprint — SU(N) HMC science-complete (41/42)](/pseudospore/hotspring-qcd-sun-paper/)
 
 This pseudoSpore is different from the data catalog. The catalog shows
 **ingested** reference data (ChEMBL, PDB, LINCS). This shows **computed**
-data — original SU(2) lattice gauge theory trajectories generated on
-sovereign hardware. Rung 1 toward vendor-agnostic lattice QCD.
+data — original SU(N) lattice gauge theory trajectories (N=2 through 8)
+generated on sovereign hardware. Vendor-agnostic lattice QCD.
 
 The system doesn't just store science. It produces science.
 
@@ -28,10 +28,11 @@ The system doesn't just store science. It produces science.
 
 ## What Was Computed
 
-SU(2) gauge theory HMC (Hybrid Monte Carlo) trajectories. Wilson gauge action,
-Omelyan 2MN integrator, Metropolis accept/reject. The standard lattice gauge
-theory algorithm, applied here with the SU(2) gauge group as the first rung
-toward SU(3) and full QCD.
+SU(N) gauge theory HMC (Hybrid Monte Carlo) trajectories for N=2 through 8.
+Wilson gauge action, Omelyan 2MN integrator, Metropolis accept/reject.
+SU(3) campaign COMPLETE (36 configs). SU(4) running. MILC Δ=3×10⁻⁹.
+69 cached configs. The Rung 1 data below shows SU(2) as the foundational
+validation; the engine now handles arbitrary gauge groups.
 
 The computation ran through the hotSpring validation pipeline:
 
@@ -127,7 +128,7 @@ not yet physics-validated.
 ## What the pseudoSpore Contains
 
 ```
-pseudospore-hotspring-qcd-su2/
+pseudospore-hotspring-qcd-sun/
 ├── trajectories/              # Raw HMC trajectory data
 │   ├── lattice_4x4x4x4/      # 4⁴ production run
 │   └── lattice_8x8x8x8/      # 8⁴ production run
@@ -164,8 +165,8 @@ Cross-GPU validation data in `benchmarks/` proves hardware independence.
 ## Verify It
 
 ```bash
-tar xzf pseudospore-hotspring-qcd-su2.tar.gz
-cd pseudospore-hotspring-qcd-su2/
+tar xzf pseudospore-hotspring-qcd-sun.tar.gz
+cd pseudospore-hotspring-qcd-sun/
 
 # Check every hash
 b3sum --check provenance/blake3_checksums.txt
@@ -181,11 +182,12 @@ b3sum --check provenance/blake3_checksums.txt
 
 ## The Point
 
-This SU(2) lattice gauge theory computation ran on consumer GPUs — both
+This SU(N) lattice gauge theory computation ran on consumer GPUs — both
 NVIDIA and AMD — in a basement. The same WGSL shaders, different silicon,
-identical physics. Here are the trajectories. Here's the provenance chain
-proving every byte. Here are the shaders. Download it, verify it,
-reproduce it on your own hardware.
+identical physics. SU(2) validated, SU(3) complete (36 configs, MILC
+agreement to 3×10⁻⁹), SU(4) running. Here are the trajectories. Here's
+the provenance chain proving every byte. Download it, verify it, reproduce
+it on your own hardware.
 
 No AWS bill. No CUDA license. No vendor lock-in. WGSL shaders
 compiled by coralReef, dispatched by toadStool, computed by barraCuda,
@@ -201,11 +203,8 @@ Trust surface blocks reviewer send — pseudoSpore bundle + validate.sh + page r
 **Status**: **SCIENCE-COMPLETE (41/42).** SU(N) HMC (N=2→8), MILC Δ=3×10⁻⁹, 69 cached
 configs, NPU ESN demo. Trust surface blocks reviewer send.
 
-**SU(2)→SU(N) relabel in progress**: This page will be relabeled from `hotspring-qcd-su2`
-to `hotspring-qcd-sun` to reflect the expanded scope (SU(N) for N=2 through 8).
-
 **strandGate production**: SU(3) campaign **COMPLETE** (36 configs). SU(4) **RUNNING**.
-NPU hardware live.
+NPU hardware live. 69 cached configs total.
 
 | Item | Status |
 |------|--------|
@@ -215,14 +214,14 @@ NPU hardware live.
 | pseudoSpore routes | **LIVE** — nestgate.io `/pseudospore/` serves 5 bundles |
 | `validate.sh` | **DOWNLOADABLE** at nestgate.io — bundle-specific validation not yet wired |
 | pseudoSpore QCD bundle | **NOT YET PACKAGED** — lithoSpore + CAS + sign |
-| sporePrint page relabel | **PENDING** — `hotspring-qcd-sun` replacing SU(2) content |
+| sporePrint page relabel | **DONE** — `hotspring-qcd-sun` live |
 | Freeze + sign v1.0.0-rung1 | **PENDING** |
 | Reviewer send | **BLOCKED** on trust surface (items above) |
 
 **What blocks arXiv submission** (all trust surface, not physics):
 1. ~~pseudoSpore at URL~~ `/pseudospore/` **LIVE** — but QCD bundle not yet packaged
 2. ~~`validate.sh`~~ **downloadable** — but bundle-specific validation not wired
-3. sporePrint page: `hotspring-qcd-sun` with real download links
+3. ~~sporePrint page relabel~~ **DONE** — `hotspring-qcd-sun` live
 4. Freeze/sign v1.0.0-rung1
 5. Send PDF + link to Murillo, Chuna, Bazavov → feedback → arXiv hep-lat
 

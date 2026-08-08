@@ -39,7 +39,7 @@ Data Section.
 - Direct input for **hotSpring** nuclear binding energy calculations on GPU
 - Validate lattice QCD results against experimental nuclear masses
 - Cross-reference with hotSpring QCD trajectories
-  (see [pseudoSpore: hotSpring QCD](/pseudospore/hotspring-qcd-su2/))
+  (see [pseudoSpore: hotSpring QCD](/pseudospore/hotspring-qcd-sun/))
 
 This dataset + hotSpring + consumer GPU = nuclear physics validated
 against experimental data, running in a basement. The data braid proves
@@ -72,5 +72,5 @@ sweetGrass `braid.create` produced a W3C PROV-O JSON-LD attestation:
 
 ## See Also
 
-- [pseudoSpore: hotSpring QCD](/pseudospore/hotspring-qcd-su2/) — computed lattice QCD (NFT)
+- [pseudoSpore: hotSpring QCD](/pseudospore/hotspring-qcd-sun/) — computed lattice QCD (NFT)
 - [Structural Biology](/data/structural-biology/) — PDB (protein structure context)

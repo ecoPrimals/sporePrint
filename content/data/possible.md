@@ -109,7 +109,7 @@ experimental AME2020 data. This is the data braid (AME2020) + NFT
 computed results, both with full provenance.
 
 **Data status**: AME2020 braided. hotSpring QCD trajectories computed.
-See [hotSpring QCD pseudoSpore](/pseudospore/hotspring-qcd-su2/) for the
+See [hotSpring QCD pseudoSpore](/pseudospore/hotspring-qcd-sun/) for the
 computed results.
 
 ---

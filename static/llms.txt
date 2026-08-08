@@ -27,9 +27,9 @@ claim is backed by executable code that any reader can run on commodity hardware
 
 ## arXiv Pre-Submission Draft (OPEN FOR REVIEW)
 
-Full paper: /pseudospore/hotspring-qcd-su2-paper/
-Computation audit trail: /pseudospore/hotspring-qcd-su2-audit/
-pseudoSpore data + provenance: /pseudospore/hotspring-qcd-su2/
+Full paper: /pseudospore/hotspring-qcd-sun-paper/
+Computation audit trail: /pseudospore/hotspring-qcd-sun-audit/
+pseudoSpore data + provenance: /pseudospore/hotspring-qcd-sun/
 LaTeX source: https://git.primals.eco/ecoPrimals/whitePaper/src/branch/main/subGen/lattice_qcd_consumer_gpu.tex
 
 "Toward Vendor-Agnostic Lattice QCD on Consumer GPUs: SU(2) Hybrid

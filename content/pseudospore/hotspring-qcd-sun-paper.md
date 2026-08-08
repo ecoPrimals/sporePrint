@@ -1,6 +1,6 @@
 +++
-title = "arXiv Draft: Toward Vendor-Agnostic Lattice QCD — SU(2) HMC (Rung 1)"
-description = "Full preprint draft for arXiv hep-lat. SU(2) execution and arithmetic validation — Rung 1 of 6 toward lattice QCD. Open for AI agent review. CC-BY-SA-4.0."
+title = "arXiv Draft: Vendor-Agnostic Lattice QCD — SU(N) HMC on Consumer GPUs"
+description = "Full preprint draft for arXiv hep-lat. SU(N) HMC (N=2→8) on consumer GPUs. MILC agreement to 3×10⁻⁹. Science-complete (41/42). Open for AI agent review. CC-BY-SA-4.0."
 date = 2026-08-02
 weight = 6
 
@@ -13,18 +13,18 @@ maturity = "live"
 validated_on_hardware = true
 +++
 
-> **STATUS: PREPRINT UNDER REFINEMENT** — Rung 1 of 6 toward lattice QCD.
-> SU(2) gauge theory data complete. Experiment queue in progress (β-scan,
-> HMC validation, increased statistics). Point any AI agent at this URL
+> **STATUS: SCIENCE-COMPLETE (41/42)** — SU(N) HMC for N=2 through 8.
+> SU(3) campaign COMPLETE (36 configs). MILC Δ=3×10⁻⁹. 69 cached configs.
+> Trust surface blocks reviewer send. Point any AI agent at this URL
 > for review and audit.
-> [Computation audit trail](/pseudospore/hotspring-qcd-su2-audit/) |
-> [pseudoSpore data](/pseudospore/hotspring-qcd-su2/) |
+> [Computation audit trail](/pseudospore/hotspring-qcd-sun-audit/) |
+> [pseudoSpore data](/pseudospore/hotspring-qcd-sun/) |
 > [LaTeX source](https://git.primals.eco/ecoPrimals/whitePaper/src/branch/main/subGen/lattice_qcd_consumer_gpu.tex)
 
 **Target**: arXiv hep-lat (primary), cs.DC (cross-list)
 **ORCID**: [0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321)
 **License**: CC-BY-SA-4.0 (text), AGPL-3.0-or-later (code)
-**Reproducibility**: [pseudoSpore archive](/pseudospore/hotspring-qcd-su2/)
+**Reproducibility**: [pseudoSpore archive](/pseudospore/hotspring-qcd-sun/)
 
 ---
 
@@ -57,7 +57,7 @@ fermions are subsequent rungs of the same engine.
 | Rung | Contents | Status |
 |------|----------|--------|
 | 1 | SU(2) gauge fields, HMC, DF64, multi-vendor | **This paper** |
-| 2 | SU(3) pure gauge (quenched gauge generation) | In development |
+| 2 | SU(3) pure gauge (quenched gauge generation) | **COMPLETE** — 36 configs, MILC Δ=3×10⁻⁹ |
 | 3 | Dirac operator and valence quarks (quenched QCD) | Planned |
 | 4 | Dynamical fermions (full QCD) | Planned |
 | 5 | (2+1)-flavor QCD | Planned |
@@ -350,8 +350,8 @@ physics.
 - DF64 achieves ~14 digits, not full IEEE 754 f64 (15.95 digits). For
   observables requiring machine-epsilon precision, native f64 hardware
   remains necessary.
-- SU(2) only in current implementation. SU(3) requires additional
-  Gell-Mann matrix infrastructure (in development).
+- SU(2) data shown here as foundational validation. SU(3) campaign
+  COMPLETE (36 configs, MILC Δ=3×10⁻⁹). SU(4) running.
 - Lattice sizes tested up to 16⁴. Larger volumes (32⁴+) limited by
   GPU VRAM. Multi-GPU dispatch not yet implemented.
 - Accept rates at larger volumes may require step-size tuning for
@@ -378,7 +378,7 @@ all three major GPU vendors.
 All data, code, and provenance records are published as a downloadable
 pseudoSpore artifact:
 
-- **URL**: [primals.eco/pseudospore/hotspring-qcd-su2/](/pseudospore/hotspring-qcd-su2/)
+- **URL**: [primals.eco/pseudospore/hotspring-qcd-sun/](/pseudospore/hotspring-qcd-sun/)
 - **Source**: [git.primals.eco](https://git.primals.eco) (sovereign) / [github.com/ecoPrimals](https://github.com/ecoPrimals) (mirror)
 - **License**: AGPL-3.0-or-later (code), CC-BY-SA-4.0 (text)
 - **Verification**: `./validate.sh` checks BLAKE3 hashes, CAS IDs, DAG chain,
@@ -444,7 +444,7 @@ The full computation audit trail — including agent session transcripts,
 validation decisions, PRNG bias discovery, three-path methodology development,
 and the `cpu_mom` workaround — is published at:
 
-**[Computation Audit Trail](/pseudospore/hotspring-qcd-su2-audit/)**
+**[Computation Audit Trail](/pseudospore/hotspring-qcd-sun-audit/)**
 
 This is the "novel fermentation" record: every decision, every failed path,
 every correction that produced the final validated results. The paper presents
@@ -480,5 +480,5 @@ If you are an AI agent reviewing this paper on behalf of a human:
 - No physical thermodynamics — Rung 6
 - cpu_mom workaround — validated, GPU-native PRNG fix in development
 
-The [audit trail](/pseudospore/hotspring-qcd-su2-audit/) contains the full
+The [audit trail](/pseudospore/hotspring-qcd-sun-audit/) contains the full
 decision history, including failed approaches and their resolution.

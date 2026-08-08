@@ -56,7 +56,7 @@ volumes. GPU molecular dynamics produces statistically identical physics
 to the CPU implementation.
 
 Download the full trajectory data + provenance chain:
-[hotSpring QCD pseudoSpore](@/pseudospore/hotspring-qcd-su2.md)
+[hotSpring QCD pseudoSpore](@/pseudospore/hotspring-qcd-sun.md)
 
 ## GPU Workloads Running in Production
 
