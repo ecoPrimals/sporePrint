@@ -5,6 +5,36 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.27.0] — 2026-08-08 — 6/6 Gates Redeployed, NG-05 CLOSED, SU(N) Relabel (Wave 157a)
+
+**6/6 NUCLEUS gates redeployed. NG-05 CLOSED (westGate CAS federation: 26 capabilities,
+2.5 TB). QCD pseudoSpore PACKAGED. SU(2)→SU(N) relabel DONE. cellMembrane plasmid.fetch
+FIXED. toadStool S370: WASM compute.**
+
+### Changed
+
+- **SU(2)→SU(N) relabel** — 3 pages renamed (`hotspring-qcd-su2` → `hotspring-qcd-sun`),
+  10 files updated. Titles, descriptions, scope reflect SU(N) for N=2→8.
+  SU(3) COMPLETE, SU(4) running. Rung 2 marked COMPLETE in paper.
+- **Homepage** — 6/6 redeployed, NG-05 CLOSED, QCD pseudoSpore PACKAGED
+- **Gate status** — full rewrite: 6/6 fleet table with RSS/capabilities, NG-05
+  section (26 capabilities, 2.5 TB CAS), toadStool S370 WASM, cellMembrane
+  plasmid.fetch FIXED, Phase 5 upgraded to UNBLOCKED
+- **hotSpring QCD** — pseudoSpore PACKAGED (was NOT YET), arXiv blockers 3/6 resolved,
+  relabel marked DONE
+- **llms.txt** — 6/6, NG-05, QCD packaged, sovereign deploy path
+- **All specs** — EVOLUTION_QUEUE, CONTEXT, CONTENT_MAP current
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- Gates redeployed: 6/6
+- NG-05: CLOSED (26 capabilities)
+- QCD pseudoSpore: PACKAGED
+- arXiv: 41/42 (validate.sh + freeze/sign remain)
+
+---
+
 ## [3.26.1] — 2026-08-08 — Gate Redeploy + Trust Surfaces LIVE (Wave 157a)
 
 **3/6 NUCLEUS gates redeployed. Trust surfaces LIVE on nestgate.io. strandGate DIVERGED.

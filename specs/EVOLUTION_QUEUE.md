@@ -2,20 +2,20 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 8, 2026 9:10AM (Wave 157a — Gate Redeploy + Trust Surfaces LIVE)
+Last reviewed: August 8, 2026 9:50AM (Wave 157a — 6/6 Gates Redeployed, NG-05 CLOSED)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. G68 COMPLETE. 3/6 gates redeployed. Trust surfaces LIVE. arXiv 41/42.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. 6/6 NUCLEUS gates redeployed. NG-05 CLOSED. QCD pseudoSpore PACKAGED. arXiv 41/42.
 
-**Wave 157a — Gate Redeploy + Trust Surfaces:**
-- **3/6 NUCLEUS gates redeployed** — sporeGate 13/13, blueGate 13/13 (Windows), southGate 13/13
-- **Trust surfaces LIVE on nestgate.io** — `/api/content/stats`, `/pseudospore/` (5 bundles), `validate.sh`
-- **Cascade auto-push** to golgi via ExecStartPost rsync. synced=15, zero drift.
-- **strandGate DIVERGED** — 2+ months stale, needs SSH depot access to golgi
-- **SU(3) campaign COMPLETE** (36 configs), SU(4) running, NPU hardware live
-- **SSH key discipline ENFORCED** — eastGate, blueGate, southGate all compliant
-- **blueGate Windows issues** — 3 P3/P4 (skunkBat env, petalTongue port, songBird PID)
-- **Forgejo plasmid.fetch** — API parse fix needed (cellMembrane)
-- **arXiv 41/42** — pseudoSpore routes LIVE, QCD bundle not yet packaged
+**Wave 157a — All Gates Redeployed:**
+- **6/6 NUCLEUS gates redeployed** — all running G68-converged binaries from golgi depot
+- **NG-05 CLOSED** — westGate CAS federation: 26 capabilities, 2.5 TB CAS, TCP on :8080
+- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1 bundled
+- **SU(2)→SU(N) relabel DONE** — hotspring-qcd-sun live across 10 files
+- **cellMembrane `plasmid.fetch --source forgejo` FIXED** — sovereign deploy path
+- **toadStool S370** — WASM compute (15 crates on wasm32), 16 deployment targets
+- **SSH key discipline ENFORCED** — zero `github` remotes ecosystem-wide
+- **Cascade auto-push** to golgi operational. synced=15, zero drift.
+- **arXiv 41/42** — validate.sh wiring + freeze/sign remain
 
 **Previous era (Wave 155n → 155v):**
 - K-Derm DNS COMPLETE, 13/13 GREEN, biomeOS v4.57 cell attach SHIPPED

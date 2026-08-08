@@ -8,32 +8,33 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 8, 2026 — Wave 157a, GATE REDEPLOY + TRUST SURFACES LIVE)
+## Current State (August 8, 2026 — Wave 157a, 6/6 GATES REDEPLOYED + NG-05 CLOSED)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals**: 3.60M LOC, 135,000+ tests (15 primals + 9 springs), 43 repos
-- **13/13 GREEN**. G68 COMPLETE. **3/6 NUCLEUS gates redeployed.**
-- **Trust surfaces LIVE**: nestgate.io `/api/content/stats`, `/pseudospore/` (5 bundles), `validate.sh`
-- **SSH key discipline ENFORCED**: eastGate, blueGate, southGate all compliant.
-- **3.21 TB / 153 datasets** on westGate. Depot: Musl 17/17, Windows 15/15. Cascade auto-push.
-- **arXiv 41/42**: SU(3) COMPLETE (36 configs), SU(4) running. Trust surface partially unblocked.
-- **strandGate DIVERGED**: needs SSH depot access to golgi.
+- **13/13 GREEN**. G68 COMPLETE. **6/6 NUCLEUS gates redeployed.**
+- **NG-05 CLOSED**: westGate CAS federation — 26 capabilities, 2.5 TB CAS, TCP on :8080
+- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1. SU(N) relabel DONE.
+- **SSH key discipline ENFORCED**: zero `github` remotes ecosystem-wide.
+- **arXiv 41/42**: validate.sh + freeze/sign remain.
 - **ZERO P0/P1/P2**
 
-### Wave 157a — Gate Redeploy + Trust Surfaces
-- **3/6 gates redeployed** — sporeGate 13/13, blueGate 13/13 (Windows), southGate 13/13 (96 MB RSS)
-- **Trust surfaces LIVE** — nestgate.io `/api/content/stats` + `/pseudospore/` + `validate.sh`
-- **Cascade auto-push** — ExecStartPost rsync to golgi. synced=15, zero drift.
-- **strandGate DIVERGED** — 2+ months stale, GitHub stale, Forgejo parse fails, no SSH to golgi
-- **SU(3) COMPLETE** (36 configs), SU(4) running, NPU hardware live
-- **blueGate Windows issues** — 3 P3/P4 (skunkBat env, petalTongue port, songBird PID)
-- **SSH discipline** — eastGate, blueGate, southGate compliant. K-Derm relay chain enforced.
+### Wave 157a — All Gates Redeployed
+- **6/6 gates redeployed** — all running G68-converged binaries from golgi depot
+- **NG-05 CLOSED** — westGate CAS: 26 capabilities, 2.5 TB, `capability.resolve` working
+- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1
+- **SU(2)→SU(N) relabel DONE** — 3 pages renamed, 10 files updated
+- **cellMembrane `plasmid.fetch` FIXED** — sovereign deploy path for all remote gates
+- **toadStool S370** — WASM compute (15 crates on wasm32), 16 deployment targets
+- **SSH discipline** — all gates compliant. K-Derm relay chain enforced.
+- **primalSpring** now owns eastGate hardware cascade
 
 ### Previous Eras
-- **156d**: G18 LIVE, Phase 1 SUCCEEDED, footPrint DEPLOYED, 16⁴ dual-GPU COMPLETE, Convoy 145/s
+- **157a early**: G68 convergence, SSH key discipline, trust surfaces LIVE
+- **156d**: G18 LIVE, Phase 1 SUCCEEDED, footPrint DEPLOYED, 16⁴ dual-GPU COMPLETE
 - **155n–155v**: K-Derm DNS, Data Braids, G19 PROVEN, tideGlass Rust rebuild
 
 ## Site Topology — Active Pages by Section

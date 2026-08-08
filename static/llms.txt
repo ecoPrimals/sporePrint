@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 15 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. G68 COMPLETE — 3/6 gates redeployed. Trust surfaces LIVE. pseudoSpore bundles served. arXiv 41/42. Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. 6/6 NUCLEUS gates redeployed. NG-05 CLOSED. QCD pseudoSpore PACKAGED. arXiv 41/42. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -202,14 +202,14 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 27 signal graphs. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **11 gates ONLINE**. G68 COMPLETE. **3/6 NUCLEUS gates redeployed** (sporeGate, blueGate, southGate).
-- **Trust surfaces LIVE on nestgate.io**: `/api/content/stats`, `/pseudospore/` (5 bundles), `validate.sh`
-- **3.21 TB / 153 datasets / 17+ domains** on westGate ZFS. 452 GB CAS.
-- **Depot current on golgi**: Musl 17/17, Windows 15/15. Cascade auto-push operational.
-- **SSH key discipline ENFORCED**: eastGate, blueGate, southGate all compliant. K-Derm relay only.
-- **arXiv 41/42**: SU(3) COMPLETE (36 configs), SU(4) running. Trust surface partially unblocked.
-- **strandGate DIVERGED**: 2+ months stale binaries. Needs SSH depot access to golgi.
-- Sovereign CI LIVE: cascade auto-push to golgi via ExecStartPost rsync
+- **11 gates ONLINE**. G68 COMPLETE. **6/6 NUCLEUS gates redeployed**. Zero drift.
+- **NG-05 CLOSED**: westGate CAS federation — 26 capabilities, 2.5 TB CAS, TCP on :8080
+- **Trust surfaces LIVE**: `/api/content/stats`, `/pseudospore/` (bundles), `validate.sh`
+- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1. SU(N) relabel DONE.
+- **Depot current on golgi**: Musl 17/17, Windows 15/15. Cascade auto-push. toadStool S370: WASM.
+- **SSH key discipline ENFORCED** across all gates. Zero `github` remotes ecosystem-wide.
+- **arXiv 41/42**: SU(3) COMPLETE, SU(4) running. validate.sh + freeze/sign remain.
+- **cellMembrane**: `plasmid.fetch --source forgejo` FIXED — sovereign deploy path for all gates
 - Content-Addressed Convergence: all 6 layers complete
 - DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)
 - Glacial goals: 59 tracked (30 ACTIVE). G19 petalTongue PROVEN

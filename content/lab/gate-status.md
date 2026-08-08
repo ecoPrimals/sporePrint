@@ -1,6 +1,6 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 11 gates online, 13/13 GREEN, 135K+ tests. G68 COMPLETE — 3/6 gates redeployed. Trust surfaces LIVE on nestgate.io."
+description = "Current fleet status — 11 gates online, 13/13 GREEN, 135K+ tests. 6/6 NUCLEUS gates redeployed. NG-05 CLOSED. QCD pseudoSpore PACKAGED."
 date = 2026-08-08
 weight = 2
 
@@ -8,78 +8,89 @@ weight = 2
 maturity = "live"
 +++
 
-Current fleet status as of August 8, 2026 (Wave 157a — gate redeploy in
-progress). G68 converged, depot current on golgi, cascade auto-push operational.
-3/6 NUCLEUS gates redeployed to G68-converged binaries.
+Current fleet status as of August 8, 2026 (Wave 157a — all gates redeployed).
+G68 converged, depot current on golgi, cascade auto-push operational.
+6/6 NUCLEUS gates running G68-converged binaries. NG-05 CLOSED.
 
-## Gate Redeploy — 3/6 Complete
+## Gate Fleet — 6/6 NUCLEUS Redeployed
 
-| Gate | Status | Details |
-|------|--------|---------|
-| **sporeGate** | **DONE** — 13/13 ALIVE | S369 deployed, cascade auto-push, zero drift |
-| **blueGate** | **DONE** — 13/13 ALIVE | Windows 15/15 pulled. 264 MB RSS. 3 P3/P4 issues. |
-| **southGate** | **DONE** — 13/13 ALIVE | 96 MB RSS, 0.058ms Tower (2.6× faster). SSH compliant. |
-| **strandGate** | **DIVERGED** | v2026.05.30 binaries (2+ months stale). Needs SSH depot access. |
-| **westGate** | **PENDING** | Awaiting redeploy |
-| **ironGate** | **PENDING** | Awaiting redeploy |
+| Gate | NUCLEUS | RSS | Status |
+|------|---------|-----|--------|
+| **sporeGate** | 13/13 ALIVE | — | S369, cascade auto-push, zero drift |
+| **blueGate** | 13/13 ALIVE | 264 MB | Windows 15/15. 3 P3/P4 issues. |
+| **southGate** | 13/13 ALIVE | 96 MB | 0.058ms Tower (2.6×). SSH compliant. |
+| **ironGate** | 13/13 ALIVE | 41 MB | 2,058 capabilities. 42 repos SSH clean. |
+| **strandGate** | 11/13 ALIVE | 127 MB | First NUCLEUS boot. K-derm enforced. |
+| **westGate** | 13/13 ALIVE | — | **NG-05 DONE**: 26 capabilities registered. 2.5 TB CAS. |
 
-### strandGate Divergence
+All gates running biomeOS 4.57.0 (Stage 2), G68-converged depot binaries.
+SSH discipline enforced across all gates — zero `github` remotes ecosystem-wide.
 
-strandGate cannot fetch G68 binaries: GitHub releases stale, Forgejo API parse
-fails, no SSH access to golgi depot directory. **Science is unblocked** — SU(3)
-campaign COMPLETE (36 configs), SU(4) running, NPU hardware live. Only primal
-binary deployment is blocked. Resolution: SSH key registration on golgi for
-rsync depot pull.
+## NG-05 — westGate CAS Federation CLOSED
+
+nestGate TCP on `0.0.0.0:8080` serving CAS to mesh. Full provenance chain
+registered with songBird:
+
+| Primal | Capabilities |
+|--------|-------------|
+| nestGate | 6 (content.get, content.put, etc.) |
+| loamSpine | 8 (ledger, certificate, etc.) |
+| rhizoCrypt | 5 (dag, verification, etc.) |
+| sweetGrass | 4 (braid, attribution, etc.) |
+| bearDog | 3 (crypto, auth, etc.) |
+| **Total** | **26 capabilities** |
+
+CAS pool: **2.5 TB** (1.1 TB warm NVMe + 1.4 TB cold ZFS).
+`songbird-register.service` for persistent registration at boot.
+`capability.resolve("content.get")` → nestGate working.
+
+**Unblocks**: nestgate.io data braids, cross-gate `content.replicate.pull`,
+Neural API capability routing.
 
 ## G68 Convergence — 16/16 Prod-Clean
 
 Every primal and cellMembrane has zero production G68 violations (sourDough
 scanner v2). 205→0 production violations.
 
-| Level | Primals |
-|-------|---------|
-| **G68** (zero violations) | sourDough, nestGate, petalTongue, bingoCube, loamSpine, barraCuda, cellMembrane, +1 |
-| **G68-prod** (test-only) | squirrel, bearDog, songBird, rhizoCrypt, skunkBat, sweetGrass, coralReef, biomeOS, toadStool |
-
 ## Depot + Cascade
 
 | Target | Binaries | Status |
 |--------|----------|--------|
-| **Musl** | 17/17 | At Forgejo HEAD (inc. toadStool S369) |
+| **Musl** | 17/17 | At Forgejo HEAD (inc. toadStool S370) |
 | **Windows** | 15/15 | squirrel.exe added this wave |
 
 Cascade auto-push to golgi via `ExecStartPost` rsync. Pipeline:
 `Forgejo → fetch → drift detect → harvest → stage → golgi push`.
-synced=15, zero drift. Only manual step: per-gate NUCLEUS deploy.
+synced=15, zero drift.
+
+### cellMembrane — Sovereign Deploy Path
+`plasmid.fetch --source forgejo` API parse + auth **FIXED** (`55fdff3`).
+All remote gates now have a sovereign deploy path — no GitHub dependency.
+
+### toadStool S370 — WASM Compute
+15 crates compile on `wasm32-unknown-unknown`. New architecture axis:
+desktop (native) + server (musl) + browser (wasm32). 16 deployment targets total.
 
 ## SSH Key Discipline — K-Derm Enforced
 
-GitHub direct access cut. SSH discipline enforced on eastGate, blueGate,
-southGate. All routes through the K-Derm relay chain:
+All gates route through the K-Derm relay chain. Zero `github` remotes
+ecosystem-wide:
 
 ```
 gate → Forgejo (inner) → pepti (peptidoglycan) → golgi-ext (outer) → GitHub
 ```
 
-| Entity | Forgejo SSH | GitHub SSH | Role |
-|--------|-------------|------------|------|
-| **golgi** | YES (host) | NO | Sole sovereign Git store |
-| **golgi-ext** | NO | **YES (sole writer)** | K-Derm relay |
-| **eastGate** | YES (key `eastGate`) | **REVOKED** | Overwatch |
-| **blueGate** | YES | **REVOKED** | Windows dev |
-| **southGate** | YES | **REVOKED** (33 repos cleaned) | Validation |
+## Trust Surfaces — LIVE
 
-## Trust Surfaces — LIVE on nestgate.io
+| Route | Status |
+|-------|--------|
+| `/api/content/stats` | **LIVE** — rhizoCrypt CAS via UDS |
+| `/pseudospore/` | **LIVE** — 5 bundles + QCD v1.0.0-rung1 PACKAGED |
+| `/api/pseudospore/bundles` | **LIVE** — bundle listing with provenance |
+| `/pseudospore/validate.sh` | **LIVE** — verification script |
 
-| Route | Status | What |
-|-------|--------|------|
-| `/api/content/stats` | **LIVE** | rhizoCrypt CAS via UDS — object counts, sizes, namespaces |
-| `/pseudospore/` | **LIVE** | 5 pseudoSpore bundles as downloadable files |
-| `/api/pseudospore/bundles` | **LIVE** | Bundle listing with provenance metadata |
-| `/pseudospore/validate.sh` | **LIVE** | Downloadable verification script |
-
-petalTongue commits: `037535e` (content stats) + `01961ce` (pseudospore routes).
-QCD bundle not yet packaged — routes serve but Rung 1 bundle awaits lithoSpore.
+QCD pseudoSpore bundle PACKAGED by lithoSpore. `validate.sh` needs
+bundle-specific BLAKE3 + DAG + Ed25519 wiring. Freeze/sign pending.
 
 ## Phase Execution Status
 
@@ -93,29 +104,30 @@ First-ever cell attachment on ironGate. esotericWebb exp006 21/22 PASS.
 9 primal providers on ironGate. petalTongue G19 render — NEXT.
 
 ### Phase 4: westGate Science Springs — UNBLOCKED
-tideGlass GPS data converted. Cell TOMLs ready. Awaits gate redeploy.
+NG-05 CLOSED. 2.5 TB CAS. 26 capabilities. Cell boot ready.
 
-### Phase 5: Inter-gate Mesh — FUTURE
-songBird probes + nestGate `content.fetch` ready.
+### Phase 5: Inter-gate Mesh — UNBLOCKED
+NG-05 enables cross-gate content access. songBird federation to westGate
+configured. `content.replicate.pull` ready.
 
 ## Primal Health Dashboard
 
 | Primal | Tests | Health | Recent |
 |--------|-------|--------|--------|
-| songBird | 14,840+ | GREEN | 22 drawbridge bonds. LAN-first Tower. |
+| songBird | 14,840+ | GREEN | 22 bonds. NG-05: 26 capabilities registered. |
 | bearDog | 14,019 | GREEN | — |
-| nestGate | 13,095+ | GREEN | `content.query` SHIPPED. nestgate.io wired. |
-| toadStool | 9,193+ | GREEN | **S369: 15/15 cross-arch + iOS.** |
-| biomeOS | 8,570+ | GREEN | v4.57.0 Stage 2. Cell boot SUCCEEDED. |
-| petalTongue | 6,755 | GREEN | **Trust surfaces: `/api/content/stats` + `/pseudospore/` LIVE.** |
+| nestGate | 13,095+ | GREEN | **NG-05: TCP on :8080 serving CAS.** |
+| toadStool | 9,193+ | GREEN | **S370: WASM compute (15 crates on wasm32).** |
+| biomeOS | 8,570+ | GREEN | v4.57.0 Stage 2. All 6 gates deployed. |
+| petalTongue | 6,755 | GREEN | Trust surfaces LIVE. |
 | barraCuda | 4,959 | GREEN | MultiDevicePool. Cross-vendor. |
 | squirrel | 4,613 | GREEN | G68 prod-clean. |
 | coralReef | 3,512 | GREEN | G68 prod-clean. |
-| rhizoCrypt | 1,791 | GREEN | G63 SO\_PEERCRED. CAS backing trust surfaces. |
-| loamSpine | 1,740 | GREEN | G68 zero violations. |
-| sweetGrass | 1,636 | GREEN | `capability.call` handler SHIPPED. |
+| rhizoCrypt | 1,791 | GREEN | G63 SO\_PEERCRED. NG-05: 5 caps registered. |
+| loamSpine | 1,740 | GREEN | NG-05: 8 caps registered. |
+| sweetGrass | 1,636 | GREEN | NG-05: 4 caps registered. `capability.call` SHIPPED. |
 | tideGlass | 214 | GREEN | 17 IPC methods. GPS converted. |
-| cellMembrane | 1,327 | GREEN | Platform abstraction (15 cfg→3). G68 zero. |
+| cellMembrane | 1,327 | GREEN | **`plasmid.fetch --source forgejo` FIXED.** |
 
 **Total**: ~135,000+ tests. **13/13 GREEN.** 16/16 G68 prod-clean.
 
@@ -123,26 +135,18 @@ songBird probes + nestGate `content.fetch` ready.
 
 | Site | URL | Status |
 |------|-----|--------|
-| **sporePrint** | `sporeprint.primals.eco` | **LIVE** — 338 pages, science content |
-| **footPrint** | `footprint.primals.eco` | **LIVE** — CAS works, map + agent bridge |
-| **nestgate.io** | `nestgate.io` | **LIVE** — 10/12 sections + trust surface routes |
-| **esotericWebb** | `webb.primals.eco` | 502 — needs petalTongue WebGL pipeline |
+| **sporePrint** | `sporeprint.primals.eco` | **LIVE** — 338 pages |
+| **footPrint** | `footprint.primals.eco` | **LIVE** — CAS works |
+| **nestgate.io** | `nestgate.io` | **LIVE** — trust surfaces + NG-05 unblocks data braids |
+| **esotericWebb** | `webb.primals.eco` | 502 — needs petalTongue WebGL |
 
 ## K-Derm Three-Domain Topology — Fully Operational
 
 | Domain | Layer | DNS | Status |
 |--------|-------|-----|--------|
 | **primals.eco** | Outer | Cloudflare (wildcard) | **LIVE** — 14 Caddy routes |
-| **nestgate.io** | Peptidoglycan | Sovereign Knot DNS + DNSSEC | **LIVE** — trust surfaces + dashboard |
-| **primal.eco** | Inner | Sovereign Knot DNS (zero public) | **LIVE** — dnsmasq, all 11 gates |
-
-## blueGate Windows Issues (P3/P4)
-
-| ID | Issue | Workaround |
-|----|-------|------------|
-| P3 | skunkBat ignores `PRIMAL_BIND_MODE=tcp` env | Pass `--bind-mode tcp` on CLI |
-| P4 | petalTongue `--port` ignored in server mode | Accept dynamic ports |
-| P3 | songBird stale PID file blocks startup | Clean PID dir before start |
+| **nestgate.io** | Peptidoglycan | Sovereign Knot DNS + DNSSEC | **LIVE** — trust surfaces + data braids unblocked |
+| **primal.eco** | Inner | Sovereign Knot DNS (zero public) | **LIVE** — all 11 gates |
 
 ## Pending: Live Dashboard
 

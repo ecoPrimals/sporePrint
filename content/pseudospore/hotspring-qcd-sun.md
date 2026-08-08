@@ -194,7 +194,7 @@ compiled by coralReef, dispatched by toadStool, computed by barraCuda,
 stored by nestGate, proven by the Provenance Trio. On consumer GPUs.
 
 arXiv preprint: science-complete, 41/42 (hep-lat, cross-list cs.DC).
-Trust surface blocks reviewer send — pseudoSpore bundle + validate.sh + page relabel.
+pseudoSpore bundle PACKAGED. validate.sh + freeze/sign remain.
 
 ---
 
@@ -211,19 +211,20 @@ NPU hardware live. 69 cached configs total.
 | Physics content | **COMPLETE** — SU(N) HMC (N=2→8), MILC Δ=3×10⁻⁹, 69 cached configs |
 | SU(3) campaign | **COMPLETE** — 36 configs on strandGate |
 | SU(4) campaign | **RUNNING** on strandGate |
-| pseudoSpore routes | **LIVE** — nestgate.io `/pseudospore/` serves 5 bundles |
-| `validate.sh` | **DOWNLOADABLE** at nestgate.io — bundle-specific validation not yet wired |
-| pseudoSpore QCD bundle | **NOT YET PACKAGED** — lithoSpore + CAS + sign |
+| pseudoSpore routes | **LIVE** — nestgate.io `/pseudospore/` serves bundles |
+| pseudoSpore QCD bundle | **PACKAGED** — lithoSpore v1.0.0-rung1 |
+| `validate.sh` | **DOWNLOADABLE** — bundle-specific BLAKE3+DAG+Ed25519 wiring needed |
 | sporePrint page relabel | **DONE** — `hotspring-qcd-sun` live |
-| Freeze + sign v1.0.0-rung1 | **PENDING** |
-| Reviewer send | **BLOCKED** on trust surface (items above) |
+| Freeze + sign v1.0.0-rung1 | **PENDING** — bearDog Ed25519 |
+| Reviewer send | **BLOCKED** on validate.sh + freeze/sign |
 
 **What blocks arXiv submission** (all trust surface, not physics):
-1. ~~pseudoSpore at URL~~ `/pseudospore/` **LIVE** — but QCD bundle not yet packaged
-2. ~~`validate.sh`~~ **downloadable** — but bundle-specific validation not wired
-3. ~~sporePrint page relabel~~ **DONE** — `hotspring-qcd-sun` live
-4. Freeze/sign v1.0.0-rung1
-5. Send PDF + link to Murillo, Chuna, Bazavov → feedback → arXiv hep-lat
+1. ~~pseudoSpore bundle~~ **PACKAGED** (lithoSpore v1.0.0-rung1)
+2. ~~pseudoSpore at URL~~ `/pseudospore/` **LIVE**
+3. ~~sporePrint page relabel~~ **DONE** (`hotspring-qcd-sun`)
+4. `validate.sh` — bundle-specific BLAKE3 + DAG + Ed25519 verification
+5. Freeze/sign v1.0.0-rung1 (bearDog Ed25519)
+6. Send PDF + link to Murillo, Chuna, Bazavov → feedback → arXiv hep-lat
 
 ---
 
