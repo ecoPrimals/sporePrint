@@ -191,33 +191,34 @@ No AWS bill. No CUDA license. No vendor lock-in. WGSL shaders
 compiled by coralReef, dispatched by toadStool, computed by barraCuda,
 stored by nestGate, proven by the Provenance Trio. On consumer GPUs.
 
-arXiv preprint: UNBLOCKED (hep-lat, cross-list cs.DC).
-12⁴ paper-ready. 16⁴ production running.
+arXiv preprint: science-complete, 41/42 (hep-lat, cross-list cs.DC).
+Trust surface blocks reviewer send — pseudoSpore bundle + validate.sh + page relabel.
 
 ---
 
 ## arXiv Status {#arxiv-status}
 
-**Status**: **16⁴ DUAL-GPU DATA COMPLETE.** 42-item reviewer rubric shipped. arXiv submission target.
+**Status**: **SCIENCE-COMPLETE (41/42).** SU(N) HMC (N=2→8), MILC Δ=3×10⁻⁹, 69 cached
+configs, NPU ESN demo. Trust surface blocks reviewer send.
 
-| Section | Data | Validation |
-|---------|------|-----------|
-| 1. Introduction + Scope | Written | — |
-| 2. Method (gauge theory, DF64, shaders, provenance) | Written | — |
-| 3.1 Lattice scaling (RTX 3090 + RX 6950 XT) | Data in | — |
-| 3.2 Plaquette values | **12⁴ + 16⁴** | **RESOLVED** — β=6.0 +0.01%, β=6.2 -0.04% vs published |
-| 3.3 DF64 precision validation | Data in | — |
-| 3.4 Multi-vendor results | **16⁴ dual-GPU** | **6 ppm cross-vendor** at β=6.2. AMD 9.4× faster at 16⁴. |
-| 3.5 Autocorrelation | Data in | — |
-| 4. Discussion | Written | — |
-| 5. Reproducibility | Written | pseudoSpore not yet frozen |
-| 6. Conclusion | Written | — |
+**SU(2)→SU(N) relabel in progress**: This page will be relabeled from `hotspring-qcd-su2`
+to `hotspring-qcd-sun` to reflect the expanded scope (SU(N) for N=2 through 8).
 
-**16⁴ dual-GPU data COMPLETE**: RTX 3090 + RX 6950 XT from same cached configs.
-β=6.0: +0.01% vs published. β=6.2: -0.04%. Cross-vendor parity: **6 ppm** at β=6.2.
-AMD 9.4× faster at 16⁴. Config cache LIVE (9/10, 325 MB — 37 min → instant).
-42-item reviewer rubric: Bazavov 12, Chuna 10, Murillo 10, cross 10. 12 MUST-fix.
-See [experiment queue](/pseudospore/hotspring-qcd-su2-paper/) for full list.
+| Item | Status |
+|------|--------|
+| Physics content | **COMPLETE** — SU(N) HMC, MILC agreement, 69 configs |
+| pseudoSpore bundle | **NOT YET PACKAGED** — needs lithoSpore + CAS + sign |
+| `validate.sh` | **NOT WRITTEN** — BLAKE3 + DAG + Ed25519 chain |
+| sporePrint page relabel | **PENDING** — `hotspring-qcd-sun` replacing SU(2) content |
+| Freeze + sign v1.0.0-rung1 | **PENDING** |
+| Reviewer send | **BLOCKED** on trust surface (items above) |
+
+**What blocks arXiv submission** (all trust surface, not physics):
+1. pseudoSpore at URL cited in paper (not yet served)
+2. `validate.sh` (BLAKE3 + DAG + Ed25519 verification script)
+3. sporePrint page: `hotspring-qcd-sun` with real download links
+4. Freeze/sign v1.0.0-rung1
+5. Send PDF + link to Murillo, Chuna, Bazavov → feedback → arXiv hep-lat
 
 ---
 

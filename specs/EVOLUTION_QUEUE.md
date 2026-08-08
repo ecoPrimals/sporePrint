@@ -2,24 +2,22 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 5, 2026 AM (Wave 156d — Data Flow Activation Era)
+Last reviewed: August 8, 2026 AM (Wave 157a — G68 Convergence + SSH Key Discipline)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. All 6 NUCLEUS gates v4.57+. G18 signal dispatch LIVE (9 providers). Phase 1 cell boot SUCCEEDED. footPrint Phase 2 DEPLOYED. 16⁴ dual-GPU data COMPLETE. Convoy at 145/s (460×).
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. G68 COMPLETE (16/16 prod-clean, 205→0 violations). Depot current on golgi (Musl 17/17, Windows 15/15). SSH key discipline enforced. arXiv 41/42 science-complete.
 
-**Data Flow Activation Era (Wave 156d):**
-- **G18 SIGNAL DISPATCH LIVE** on ironGate — 9 primal providers, cross-primal routing validated
-- **Phase 1 cell boot SUCCEEDED** — first-ever cell attachment (esotericWebb V31b, 484 tests)
-- **footPrint Phase 2 DEPLOYED** — 708 tests, CAS E2E, golgi Caddy routing DONE
-- **ironGate NUCLEUS storage** — 12.7 TB CAS, nestGate v0.5.0, songBird federation
-- **All 6 NUCLEUS gates v4.57+** — sporeGate 14/14, ironGate 10/10, westGate 14/14, etc.
-- **16⁴ dual-GPU data COMPLETE** — β=6.0 +0.01%, β=6.2 -0.04%, 6 ppm cross-vendor
-- **Convoy provenance at 145/s** (460× total improvement), CAS pool 452 GB
-- **tideGlass 214 tests** — 17 IPC methods, GPS data converted, content.query wired
-- **Reviewer rubric shipped** — 42 items for arXiv Rung 1
-- **nestGate `content.query` SHIPPED** — ZFS REST, nestgate.io content backend wired
-- **rhizoCrypt G63 SO\_PEERCRED SHIPPED** — CAS local-trust for Phase 2
-- **3.21 TB / 153 datasets** on westGate ZFS (was 519 GB / 130)
-- **K-Derm 3/3 FULLY OPERATIONAL** — dnsmasq deployed, all 11 gates resolving
+**Wave 157a — G68 + SSH Discipline:**
+- **G68 COMPLETE** — 16/16 prod-clean, 205→0 production violations (sourDough scanner v2)
+- **SSH key discipline enforced** — eastGate GitHub SSH REVOKED, K-Derm relay chain only
+- **Depot ALL CURRENT on golgi** — Musl 17/17, Windows 15/15 (squirrel.exe added)
+- **toadStool S369** — 15/15 cross-arch + iOS target
+- **arXiv 41/42** — SU(N) HMC science-complete, trust surface blocks reviewer send
+- **SU(2)→SU(N) relabel needed** — hotspring-qcd-su2 → hotspring-qcd-sun
+- **nestgate.io** — 10/12 dashboard sections, data braids NOT live (NG-05 gap)
+- **cellMembrane 1,327 tests** — platform abstraction (15 cfg→3), G68 zero violations
+- **sweetGrass** — `capability.call` handler SHIPPED
+- **primalSpring** — Neural API evolution owner, capability\_registry.toml
+- **Wave cadence change** — ecosystem-wide convergence days DONE, targeted waves now
 
 **Previous era (Wave 155n → 155v):**
 - K-Derm DNS COMPLETE, 13/13 GREEN, biomeOS v4.57 cell attach SHIPPED

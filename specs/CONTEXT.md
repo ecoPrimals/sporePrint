@@ -8,40 +8,36 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 5, 2026 — Wave 156d, DATA FLOW ACTIVATION ERA)
+## Current State (August 8, 2026 — Wave 157a, G68 CONVERGENCE + SSH KEY DISCIPLINE)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals**: 3.60M LOC, 135,000+ tests (15 primals + 9 springs), 43 repos
-- **13/13 GREEN**. All 6 NUCLEUS gates v4.57+.
-- **11 gates**: eastGate, westGate, blueGate, strandGate, southGate, sporeGate, biomeGate, ironGate, northGate, grapheneGate, golgi
-- **K-Derm 3/3 FULLY OPERATIONAL**: primals.eco (outer), nestgate.io (peptidoglycan), primal.eco (inner, dnsmasq)
-- **3.21 TB / 153 datasets** on westGate across 17+ domains. 452 GB CAS pool. Convoy at 145/s.
-- **ironGate**: G18 signal dispatch LIVE (9 providers). 12.7 TB CAS. Phase 1 SUCCEEDED. footPrint Phase 2 DEPLOYED.
+- **13/13 GREEN**. **G68 COMPLETE — 16/16 prod-clean.** 205→0 production violations.
+- **11 gates**: all 6 NUCLEUS gates v4.57+. Depot current on golgi.
+- **SSH key discipline**: GitHub access via K-Derm relay only. eastGate GitHub SSH REVOKED.
+- **3.21 TB / 153 datasets** on westGate. Depot: Musl 17/17, Windows 15/15.
+- **arXiv 41/42**: SU(N) HMC science-complete. Trust surface blocks reviewer send.
 - **ZERO P0/P1/P2**
 
-### Data Flow Activation Era (Wave 156d)
-- **G18 SIGNAL DISPATCH LIVE** — ironGate, 9 providers, cross-primal routing validated
-- **Phase 1 cell boot SUCCEEDED** — first-ever cell attachment (esotericWebb V31b, 484 tests)
-- **footPrint Phase 2 DEPLOYED** — 708 tests, CAS E2E, golgi Caddy routing DONE
-- **ironGate NUCLEUS storage** — 12.7 TB CAS, nestGate v0.5.0, songBird federation to westGate
-- **All 6 NUCLEUS gates v4.57+** — 52/52 harvest complete
-- **16⁴ dual-GPU data COMPLETE** — +0.01% at β=6.0, 6 ppm cross-vendor, 42-item reviewer rubric
-- **Convoy provenance 145/s** (460× total improvement). CAS pool 452 GB.
-- **tideGlass 214 tests** — 17 IPC methods, GPS data converted, content.query wired
-- **nestGate `content.query` SHIPPED** — ZFS REST, nestgate.io content backend
-- **rhizoCrypt G63 SO_PEERCRED SHIPPED** — CAS local-trust
-- **3.21 TB / 153 datasets** (was 519 GB / 130)
-- **footprint.primals.eco LIVE** — golgi Caddy → ironGate :3002
-- **59 glacial goals** (30 ACTIVE), 145 docs fossilized
+### Wave 157a — G68 Convergence
+- **G68 COMPLETE** — 16/16 prod-clean (sourDough scanner v2), 205→0 violations
+- **SSH key discipline** — eastGate GitHub SSH REVOKED, K-Derm relay chain enforced
+- **Depot ALL CURRENT** — Musl 17/17, Windows 15/15 (toadStool S369: 15/15 cross-arch + iOS)
+- **arXiv 41/42** — SU(N) HMC science-complete, trust surface blocks
+- **SU(2)→SU(N) relabel** pending for QCD pages
+- **nestgate.io** — 10/12 dashboard sections, data braids NOT live
+- **cellMembrane 1,327 tests** — platform abstraction shipped (15 cfg→3)
+- **sweetGrass `capability.call` handler SHIPPED**
+- **primalSpring** — Neural API evolution owner
+- **Wave cadence** — targeted waves, no more ecosystem-wide convergence days
 
-### Previous Era (Wave 155n → 155v)
-- Nav triage, K-Derm DNS COMPLETE, 13/13 GREEN, biomeOS v4.57 cell attach SHIPPED
-- Data Braids (16 pages, transplant), 79 foundation pages, 7 VALIDATED baseCamp
-- G19 PROVEN, esotericWebb V30d, squirrel 400s→16s, tideGlass Rust rebuild
-- Provenance pipeline 122× improvement. arXiv UNBLOCKED.
+### Previous Era (Wave 156d)
+- G18 signal dispatch LIVE. Phase 1 cell boot SUCCEEDED. footPrint Phase 2 DEPLOYED.
+- ironGate 12.7 TB CAS. All 6 gates v4.57+. 16⁴ dual-GPU COMPLETE.
+- Convoy provenance 145/s (460×). tideGlass 214 tests. content.query SHIPPED.
 
 ## Site Topology — Active Pages by Section
 

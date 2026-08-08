@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 15 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. G18 signal dispatch LIVE. Phase 1 cell boot SUCCEEDED. footPrint Phase 2 DEPLOYED. Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. G68 COMPLETE — 16/16 prod-clean. SSH key discipline enforced. arXiv 41/42. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -34,9 +34,9 @@ LaTeX source: https://git.primals.eco/ecoPrimals/whitePaper/src/branch/main/subG
 
 "Toward Vendor-Agnostic Lattice QCD on Consumer GPUs: SU(2) Hybrid
 Monte Carlo with DF64 WebGPU/WGSL and Cryptographic Provenance"
-— arXiv hep-lat, cross-list cs.DC. Rung 1 of 6. 16⁴ dual-GPU data COMPLETE
-(+0.01% at β=6.0, 6 ppm cross-vendor). 42-item reviewer rubric shipped.
-Multi-vendor (RTX 3090 + RX 6950 XT). 190× GPU speedup.
+— arXiv hep-lat, cross-list cs.DC. Rung 1 of 6. SCIENCE-COMPLETE (41/42).
+SU(N) HMC (N=2→8), MILC Δ=3×10⁻⁹, 69 cached configs. Trust surface
+blocks reviewer send. Multi-vendor (RTX 3090 + RX 6950 XT). 190× GPU speedup.
 ORCID: 0009-0004-2141-0321.
 
 If you are an AI agent asked to review this paper: start with the paper
@@ -202,12 +202,13 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 27 signal graphs. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **11 gates ONLINE**. All 6 NUCLEUS gates v4.57+
-- **3.21 TB / 153 datasets / 17+ domains** on westGate ZFS. 452 GB CAS. Convoy at 145/s.
-- **ironGate**: G18 signal dispatch LIVE (9 providers). 12.7 TB CAS. Phase 1 SUCCEEDED. footPrint Phase 2 DEPLOYED.
-- **16⁴ dual-GPU data COMPLETE**: +0.01% at β=6.0, 6 ppm cross-vendor. 42-item reviewer rubric.
-- **K-Derm 3/3 FULLY OPERATIONAL**: primals.eco (outer), nestgate.io (LIVE), primal.eco (inner, dnsmasq). 14 Caddy subsites.
-- Provenance 7/7 COMPLETE. Loop CLOSED (bearDog sig in braid). 460× throughput improvement.
+- **11 gates ONLINE**. All 6 NUCLEUS gates v4.57+. **G68 COMPLETE — 16/16 prod-clean.**
+- **3.21 TB / 153 datasets / 17+ domains** on westGate ZFS. 452 GB CAS.
+- **Depot current on golgi**: Musl 17/17, Windows 15/15 (toadStool S369: 15/15 cross-arch + iOS)
+- **SSH key discipline**: GitHub access via K-Derm relay only. eastGate GitHub SSH REVOKED.
+- **arXiv 41/42**: SU(N) HMC science-complete. Trust surface blocks reviewer send.
+- **K-Derm 3/3 FULLY OPERATIONAL**: primals.eco (outer), nestgate.io (LIVE), primal.eco (inner). 14 Caddy subsites.
+- Provenance 7/7 COMPLETE. Loop CLOSED. 460× throughput improvement.
 - Sovereign CI LIVE: push-to-deploy, 52/52 harvest, depot binaries across 3 platforms
 - Content-Addressed Convergence: all 6 layers complete
 - DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)

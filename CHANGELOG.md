@@ -5,6 +5,33 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.26.0] — 2026-08-08 — G68 Convergence + SSH Key Discipline (Wave 157a)
+
+**G68 COMPLETE — 16/16 prod-clean, 205→0 violations. SSH key discipline enforced.
+Depot current on golgi (Musl 17/17, Windows 15/15). arXiv 41/42 science-complete.**
+
+### Changed
+
+- **Homepage** — G68 COMPLETE, SSH discipline, arXiv 41/42, depot current
+- **Gate status** — full rewrite: G68 audit table, depot table, SSH discipline section,
+  fleet shows redeploy status, primal dashboard updated (toadStool S369, cellMembrane 1,327,
+  sweetGrass capability.call SHIPPED, nestgate.io 10/12 sections)
+- **hotSpring QCD** — arXiv 41/42 science-complete, trust surface blocks documented,
+  SU(2)→SU(N) relabel note, pseudoSpore bundle status (NOT YET PACKAGED)
+- **llms.txt** — G68, SSH discipline, arXiv 41/42, depot metrics
+- **EVOLUTION_QUEUE** — Wave 157a current state
+- **CONTEXT** — Wave 157a header, G68 convergence
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- Tests (sporePrint): 283 (spore-validate)
+- Tests (ecosystem): 135,000+
+- G68: 16/16 prod-clean
+- Depot: Musl 17/17, Windows 15/15
+
+---
+
 ## [3.25.0] — 2026-08-05 — Data Flow Activation Era (Wave 156d)
 
 **G18 signal dispatch LIVE. Phase 1 cell boot SUCCEEDED. footPrint Phase 2 DEPLOYED.
