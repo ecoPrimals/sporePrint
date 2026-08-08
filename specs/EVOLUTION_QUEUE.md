@@ -2,22 +2,20 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 8, 2026 AM (Wave 157a — G68 Convergence + SSH Key Discipline)
+Last reviewed: August 8, 2026 9:10AM (Wave 157a — Gate Redeploy + Trust Surfaces LIVE)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. G68 COMPLETE (16/16 prod-clean, 205→0 violations). Depot current on golgi (Musl 17/17, Windows 15/15). SSH key discipline enforced. arXiv 41/42 science-complete.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. G68 COMPLETE. 3/6 gates redeployed. Trust surfaces LIVE. arXiv 41/42.
 
-**Wave 157a — G68 + SSH Discipline:**
-- **G68 COMPLETE** — 16/16 prod-clean, 205→0 production violations (sourDough scanner v2)
-- **SSH key discipline enforced** — eastGate GitHub SSH REVOKED, K-Derm relay chain only
-- **Depot ALL CURRENT on golgi** — Musl 17/17, Windows 15/15 (squirrel.exe added)
-- **toadStool S369** — 15/15 cross-arch + iOS target
-- **arXiv 41/42** — SU(N) HMC science-complete, trust surface blocks reviewer send
-- **SU(2)→SU(N) relabel needed** — hotspring-qcd-su2 → hotspring-qcd-sun
-- **nestgate.io** — 10/12 dashboard sections, data braids NOT live (NG-05 gap)
-- **cellMembrane 1,327 tests** — platform abstraction (15 cfg→3), G68 zero violations
-- **sweetGrass** — `capability.call` handler SHIPPED
-- **primalSpring** — Neural API evolution owner, capability\_registry.toml
-- **Wave cadence change** — ecosystem-wide convergence days DONE, targeted waves now
+**Wave 157a — Gate Redeploy + Trust Surfaces:**
+- **3/6 NUCLEUS gates redeployed** — sporeGate 13/13, blueGate 13/13 (Windows), southGate 13/13
+- **Trust surfaces LIVE on nestgate.io** — `/api/content/stats`, `/pseudospore/` (5 bundles), `validate.sh`
+- **Cascade auto-push** to golgi via ExecStartPost rsync. synced=15, zero drift.
+- **strandGate DIVERGED** — 2+ months stale, needs SSH depot access to golgi
+- **SU(3) campaign COMPLETE** (36 configs), SU(4) running, NPU hardware live
+- **SSH key discipline ENFORCED** — eastGate, blueGate, southGate all compliant
+- **blueGate Windows issues** — 3 P3/P4 (skunkBat env, petalTongue port, songBird PID)
+- **Forgejo plasmid.fetch** — API parse fix needed (cellMembrane)
+- **arXiv 41/42** — pseudoSpore routes LIVE, QCD bundle not yet packaged
 
 **Previous era (Wave 155n → 155v):**
 - K-Derm DNS COMPLETE, 13/13 GREEN, biomeOS v4.57 cell attach SHIPPED

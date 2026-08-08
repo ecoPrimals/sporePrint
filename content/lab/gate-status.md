@@ -1,6 +1,6 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 11 gates online, 13/13 GREEN, 135K+ tests. G68 COMPLETE — 16/16 prod-clean. Depot current. SSH key discipline enforced."
+description = "Current fleet status — 11 gates online, 13/13 GREEN, 135K+ tests. G68 COMPLETE — 3/6 gates redeployed. Trust surfaces LIVE on nestgate.io."
 date = 2026-08-08
 weight = 2
 
@@ -8,50 +8,54 @@ weight = 2
 maturity = "live"
 +++
 
-Current fleet status as of August 8, 2026 (Wave 157a — G68 convergence + SSH key
-discipline). All primal teams clear. Depot current on golgi. Gate redeploy to
-modern G68-converged binaries next.
+Current fleet status as of August 8, 2026 (Wave 157a — gate redeploy in
+progress). G68 converged, depot current on golgi, cascade auto-push operational.
+3/6 NUCLEUS gates redeployed to G68-converged binaries.
+
+## Gate Redeploy — 3/6 Complete
+
+| Gate | Status | Details |
+|------|--------|---------|
+| **sporeGate** | **DONE** — 13/13 ALIVE | S369 deployed, cascade auto-push, zero drift |
+| **blueGate** | **DONE** — 13/13 ALIVE | Windows 15/15 pulled. 264 MB RSS. 3 P3/P4 issues. |
+| **southGate** | **DONE** — 13/13 ALIVE | 96 MB RSS, 0.058ms Tower (2.6× faster). SSH compliant. |
+| **strandGate** | **DIVERGED** | v2026.05.30 binaries (2+ months stale). Needs SSH depot access. |
+| **westGate** | **PENDING** | Awaiting redeploy |
+| **ironGate** | **PENDING** | Awaiting redeploy |
+
+### strandGate Divergence
+
+strandGate cannot fetch G68 binaries: GitHub releases stale, Forgejo API parse
+fails, no SSH access to golgi depot directory. **Science is unblocked** — SU(3)
+campaign COMPLETE (36 configs), SU(4) running, NPU hardware live. Only primal
+binary deployment is blocked. Resolution: SSH key registration on golgi for
+rsync depot pull.
 
 ## G68 Convergence — 16/16 Prod-Clean
 
 Every primal and cellMembrane has zero production G68 violations (sourDough
-scanner v2). 205→0 production violations. The ecosystem is deploy-ready.
+scanner v2). 205→0 production violations.
 
 | Level | Primals |
 |-------|---------|
 | **G68** (zero violations) | sourDough, nestGate, petalTongue, bingoCube, loamSpine, barraCuda, cellMembrane, +1 |
 | **G68-prod** (test-only) | squirrel, bearDog, songBird, rhizoCrypt, skunkBat, sweetGrass, coralReef, biomeOS, toadStool |
 
-## Depot — All Current on golgi
+## Depot + Cascade
 
 | Target | Binaries | Status |
 |--------|----------|--------|
 | **Musl** | 17/17 | At Forgejo HEAD (inc. toadStool S369) |
 | **Windows** | 15/15 | squirrel.exe added this wave |
 
-toadStool S369: full cross-arch (15/15 targets + iOS). Cascade timer:
-synced=15, zero drift.
+Cascade auto-push to golgi via `ExecStartPost` rsync. Pipeline:
+`Forgejo → fetch → drift detect → harvest → stage → golgi push`.
+synced=15, zero drift. Only manual step: per-gate NUCLEUS deploy.
 
-## Gate Fleet
+## SSH Key Discipline — K-Derm Enforced
 
-| Gate | NUCLEUS | Status |
-|------|---------|--------|
-| **sporeGate** | 13/13 ALIVE v4.57+ | **Current.** 3 cascade cycles validated. toadStool S369 deployed. |
-| **ironGate** | 10/10 v4.57+ | G18 dispatch LIVE. 12.7 TB CAS. Redeploy from depot next. |
-| **westGate** | 14/14 v4.57 | 3.21 TB / 153 datasets. Redeploy from depot next. |
-| **strandGate** | v4.57+ | GPU QCD production. Redeploy from depot next. |
-| **blueGate** | 14/14 v4.57+ | Redeploy from depot next. |
-| **southGate** | 13/13 v4.57+ | Redeploy from depot next. |
-| **biomeGate** | Source-built | GPU lab. 3 VFIO GPUs. |
-| **golgi** | Thin relay | Forgejo + depot + sporePrint. Caddy routing. |
-| **eastGate** | Overwatch | GitHub SSH **REVOKED** — Forgejo only. |
-| **northGate** | — | Daily driver. RTX 5090. |
-| **grapheneGate** | Tower | Mobile. Pixel 8a. |
-
-## SSH Key Discipline — K-Derm Relay Enforced
-
-GitHub direct access cut from eastGate (Wave 157a). `github` remotes removed
-from all 23 repos. All gates route through the K-Derm relay chain:
+GitHub direct access cut. SSH discipline enforced on eastGate, blueGate,
+southGate. All routes through the K-Derm relay chain:
 
 ```
 gate → Forgejo (inner) → pepti (peptidoglycan) → golgi-ext (outer) → GitHub
@@ -62,7 +66,20 @@ gate → Forgejo (inner) → pepti (peptidoglycan) → golgi-ext (outer) → Git
 | **golgi** | YES (host) | NO | Sole sovereign Git store |
 | **golgi-ext** | NO | **YES (sole writer)** | K-Derm relay |
 | **eastGate** | YES (key `eastGate`) | **REVOKED** | Overwatch |
-| **All other gates** | YES (per-gate key) | NO | Inner membrane |
+| **blueGate** | YES | **REVOKED** | Windows dev |
+| **southGate** | YES | **REVOKED** (33 repos cleaned) | Validation |
+
+## Trust Surfaces — LIVE on nestgate.io
+
+| Route | Status | What |
+|-------|--------|------|
+| `/api/content/stats` | **LIVE** | rhizoCrypt CAS via UDS — object counts, sizes, namespaces |
+| `/pseudospore/` | **LIVE** | 5 pseudoSpore bundles as downloadable files |
+| `/api/pseudospore/bundles` | **LIVE** | Bundle listing with provenance metadata |
+| `/pseudospore/validate.sh` | **LIVE** | Downloadable verification script |
+
+petalTongue commits: `037535e` (content stats) + `01961ce` (pseudospore routes).
+QCD bundle not yet packaged — routes serve but Rung 1 bundle awaits lithoSpore.
 
 ## Phase Execution Status
 
@@ -90,11 +107,11 @@ songBird probes + nestGate `content.fetch` ready.
 | nestGate | 13,095+ | GREEN | `content.query` SHIPPED. nestgate.io wired. |
 | toadStool | 9,193+ | GREEN | **S369: 15/15 cross-arch + iOS.** |
 | biomeOS | 8,570+ | GREEN | v4.57.0 Stage 2. Cell boot SUCCEEDED. |
-| petalTongue | 6,755 | GREEN | nestgate.io 10/12 dashboard sections. |
+| petalTongue | 6,755 | GREEN | **Trust surfaces: `/api/content/stats` + `/pseudospore/` LIVE.** |
 | barraCuda | 4,959 | GREEN | MultiDevicePool. Cross-vendor. |
-| squirrel | 4,613 | GREEN | 156d sovereignty. G68 prod-clean. |
+| squirrel | 4,613 | GREEN | G68 prod-clean. |
 | coralReef | 3,512 | GREEN | G68 prod-clean. |
-| rhizoCrypt | 1,791 | GREEN | G63 SO\_PEERCRED. G68 prod-clean. |
+| rhizoCrypt | 1,791 | GREEN | G63 SO\_PEERCRED. CAS backing trust surfaces. |
 | loamSpine | 1,740 | GREEN | G68 zero violations. |
 | sweetGrass | 1,636 | GREEN | `capability.call` handler SHIPPED. |
 | tideGlass | 214 | GREEN | 17 IPC methods. GPS converted. |
@@ -102,13 +119,13 @@ songBird probes + nestGate `content.fetch` ready.
 
 **Total**: ~135,000+ tests. **13/13 GREEN.** 16/16 G68 prod-clean.
 
-## Live Trust Surfaces
+## Live Sites
 
 | Site | URL | Status |
 |------|-----|--------|
 | **sporePrint** | `sporeprint.primals.eco` | **LIVE** — 338 pages, science content |
 | **footPrint** | `footprint.primals.eco` | **LIVE** — CAS works, map + agent bridge |
-| **nestgate.io** | `nestgate.io` | **LIVE** — 10/12 dashboard sections. Data braids NOT live. |
+| **nestgate.io** | `nestgate.io` | **LIVE** — 10/12 sections + trust surface routes |
 | **esotericWebb** | `webb.primals.eco` | 502 — needs petalTongue WebGL pipeline |
 
 ## K-Derm Three-Domain Topology — Fully Operational
@@ -116,15 +133,16 @@ songBird probes + nestGate `content.fetch` ready.
 | Domain | Layer | DNS | Status |
 |--------|-------|-----|--------|
 | **primals.eco** | Outer | Cloudflare (wildcard) | **LIVE** — 14 Caddy routes |
-| **nestgate.io** | Peptidoglycan | Sovereign Knot DNS + DNSSEC | **LIVE** — 10/12 sections |
+| **nestgate.io** | Peptidoglycan | Sovereign Knot DNS + DNSSEC | **LIVE** — trust surfaces + dashboard |
 | **primal.eco** | Inner | Sovereign Knot DNS (zero public) | **LIVE** — dnsmasq, all 11 gates |
 
-## Network
+## blueGate Windows Issues (P3/P4)
 
-- **BTSP**: 13/13 primals using BearDog-native TLS (no OpenSSL)
-- **Tower Atomic**: 353× faster than WG on LAN. All components shipped.
-- **songBird drawbridge**: 22 bonds, inter-gate `content.get` dispatch validated
-- **SSH discipline**: GitHub access via K-Derm relay only (golgi-ext sole writer)
+| ID | Issue | Workaround |
+|----|-------|------------|
+| P3 | skunkBat ignores `PRIMAL_BIND_MODE=tcp` env | Pass `--bind-mode tcp` on CLI |
+| P4 | petalTongue `--port` ignored in server mode | Accept dynamic ports |
+| P3 | songBird stale PID file blocks startup | Clean PID dir before start |
 
 ## Pending: Live Dashboard
 

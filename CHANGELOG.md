@@ -5,6 +5,25 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.26.1] — 2026-08-08 — Gate Redeploy + Trust Surfaces LIVE (Wave 157a)
+
+**3/6 NUCLEUS gates redeployed. Trust surfaces LIVE on nestgate.io. strandGate DIVERGED.
+SU(3) campaign COMPLETE, SU(4) running. Cascade auto-push operational.**
+
+### Changed
+
+- **Homepage** — 3/6 redeployed, trust surfaces LIVE, pseudoSpore bundles served
+- **Gate status** — redeploy table (3 DONE, 1 DIVERGED, 2 PENDING), strandGate
+  divergence section, trust surface routes table, cascade auto-push, blueGate Windows
+  issues (3 P3/P4), SSH discipline per-gate compliance
+- **hotSpring QCD** — SU(3) COMPLETE (36 configs), SU(4) running, pseudoSpore routes
+  LIVE, arXiv blockers 2/5 partially resolved
+- **llms.txt** — 3/6 redeployed, trust surfaces, strandGate diverged
+- **All specs** — EVOLUTION_QUEUE, CONTEXT, CONTENT_MAP at redeploy status
+- **wateringHole** — overwatch handoff updated, sporePrint blurb rewritten
+
+---
+
 ## [3.26.0] — 2026-08-08 — G68 Convergence + SSH Key Discipline (Wave 157a)
 
 **G68 COMPLETE — 16/16 prod-clean, 205→0 violations. SSH key discipline enforced.

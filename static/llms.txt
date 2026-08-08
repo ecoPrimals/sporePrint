@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 15 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. G68 COMPLETE — 16/16 prod-clean. SSH key discipline enforced. arXiv 41/42. Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. G68 COMPLETE — 3/6 gates redeployed. Trust surfaces LIVE. pseudoSpore bundles served. arXiv 41/42. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -202,14 +202,14 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 27 signal graphs. ZERO P0s, P1s, or blocking P2s
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **11 gates ONLINE**. All 6 NUCLEUS gates v4.57+. **G68 COMPLETE — 16/16 prod-clean.**
+- **11 gates ONLINE**. G68 COMPLETE. **3/6 NUCLEUS gates redeployed** (sporeGate, blueGate, southGate).
+- **Trust surfaces LIVE on nestgate.io**: `/api/content/stats`, `/pseudospore/` (5 bundles), `validate.sh`
 - **3.21 TB / 153 datasets / 17+ domains** on westGate ZFS. 452 GB CAS.
-- **Depot current on golgi**: Musl 17/17, Windows 15/15 (toadStool S369: 15/15 cross-arch + iOS)
-- **SSH key discipline**: GitHub access via K-Derm relay only. eastGate GitHub SSH REVOKED.
-- **arXiv 41/42**: SU(N) HMC science-complete. Trust surface blocks reviewer send.
-- **K-Derm 3/3 FULLY OPERATIONAL**: primals.eco (outer), nestgate.io (LIVE), primal.eco (inner). 14 Caddy subsites.
-- Provenance 7/7 COMPLETE. Loop CLOSED. 460× throughput improvement.
-- Sovereign CI LIVE: push-to-deploy, 52/52 harvest, depot binaries across 3 platforms
+- **Depot current on golgi**: Musl 17/17, Windows 15/15. Cascade auto-push operational.
+- **SSH key discipline ENFORCED**: eastGate, blueGate, southGate all compliant. K-Derm relay only.
+- **arXiv 41/42**: SU(3) COMPLETE (36 configs), SU(4) running. Trust surface partially unblocked.
+- **strandGate DIVERGED**: 2+ months stale binaries. Needs SSH depot access to golgi.
+- Sovereign CI LIVE: cascade auto-push to golgi via ExecStartPost rsync
 - Content-Addressed Convergence: all 6 layers complete
 - DNSSEC on all 3 domains (primals.eco, primal.eco, nestgate.io)
 - Glacial goals: 59 tracked (30 ACTIVE). G19 petalTongue PROVEN

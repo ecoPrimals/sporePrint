@@ -204,18 +204,24 @@ configs, NPU ESN demo. Trust surface blocks reviewer send.
 **SU(2)→SU(N) relabel in progress**: This page will be relabeled from `hotspring-qcd-su2`
 to `hotspring-qcd-sun` to reflect the expanded scope (SU(N) for N=2 through 8).
 
+**strandGate production**: SU(3) campaign **COMPLETE** (36 configs). SU(4) **RUNNING**.
+NPU hardware live.
+
 | Item | Status |
 |------|--------|
-| Physics content | **COMPLETE** — SU(N) HMC, MILC agreement, 69 configs |
-| pseudoSpore bundle | **NOT YET PACKAGED** — needs lithoSpore + CAS + sign |
-| `validate.sh` | **NOT WRITTEN** — BLAKE3 + DAG + Ed25519 chain |
+| Physics content | **COMPLETE** — SU(N) HMC (N=2→8), MILC Δ=3×10⁻⁹, 69 cached configs |
+| SU(3) campaign | **COMPLETE** — 36 configs on strandGate |
+| SU(4) campaign | **RUNNING** on strandGate |
+| pseudoSpore routes | **LIVE** — nestgate.io `/pseudospore/` serves 5 bundles |
+| `validate.sh` | **DOWNLOADABLE** at nestgate.io — bundle-specific validation not yet wired |
+| pseudoSpore QCD bundle | **NOT YET PACKAGED** — lithoSpore + CAS + sign |
 | sporePrint page relabel | **PENDING** — `hotspring-qcd-sun` replacing SU(2) content |
 | Freeze + sign v1.0.0-rung1 | **PENDING** |
 | Reviewer send | **BLOCKED** on trust surface (items above) |
 
 **What blocks arXiv submission** (all trust surface, not physics):
-1. pseudoSpore at URL cited in paper (not yet served)
-2. `validate.sh` (BLAKE3 + DAG + Ed25519 verification script)
+1. ~~pseudoSpore at URL~~ `/pseudospore/` **LIVE** — but QCD bundle not yet packaged
+2. ~~`validate.sh`~~ **downloadable** — but bundle-specific validation not wired
 3. sporePrint page: `hotspring-qcd-sun` with real download links
 4. Freeze/sign v1.0.0-rung1
 5. Send PDF + link to Murillo, Chuna, Bazavov → feedback → arXiv hep-lat

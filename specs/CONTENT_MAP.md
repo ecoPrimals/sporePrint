@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 8, 2026 (Wave 157a — 338 pages, 25 sections, 79 entities, 5 cortical folds. G68 COMPLETE, SSH key discipline, depot current, arXiv 41/42, SU(N) relabel pending)
+Last reviewed: August 8, 2026 9:10AM (Wave 157a — 338 pages, 25 sections. 3/6 gates redeployed. Trust surfaces LIVE. strandGate DIVERGED. arXiv 41/42, SU(3) COMPLETE)
 
 ## Sections
 
