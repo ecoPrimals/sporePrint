@@ -42,7 +42,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 
 ### Content gaps
 - [x] ~~guideStone section has only `_index.md`~~ — 4 substantive pages
-- [ ] guidePost — document when it materializes
+- [x] ~~guidePost — document when it materializes~~ — CLOSED: guideStone certification serves this role (manifest.json, BLAKE3 Merkle). guidePost concept subsumed. (Wave 157a audit)
 - [x] ~~atlasHugged integration — 6 essays transplanted to `content/philosophy/`~~ (Wave 133d)
 
 ### Taxonomy completeness
@@ -77,7 +77,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~gen3/baseCamp/27~~ — transplanted as `content/science/29_heterogeneous_fabric_economics.md`
 - [x] ~~gen3/constrained_optimization_ai.md~~ — transplanted to `content/methodology/constrained_optimization_ai.md`
 - [x] ~~gen3/about/LICENSING_STRATEGY.md~~ — scyBorg triple-copyleft documented in methodology, licensing in README. Fossil. (Wave 156d audit)
-- [ ] gen3/primals/ — primal specification pages (15 primals, interactions, discovery log) — LOW: entity registry + taxonomy pages serve this role now
+- [x] ~~gen3/primals/ — primal specification pages~~ — CLOSED: entity registry (79 entities) + taxonomy pages serve this role. Fossil. (Wave 157a audit)
 - [x] ~~gen3/data/ remaining: MISE_EN_PLACE~~ — historical conda fossil, intentionally skipped (Wave 156b audit)
 
 ### Visual evolution
@@ -138,7 +138,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [ ] Pa11y integration for automated WCAG rule checking
 - [ ] Keyboard-only full site navigation test (manual, documented)
 - [ ] 200% zoom layout test (no horizontal scroll, no content loss)
-- [ ] petalTongue: evolve sporePrint jelly-string UI into typed, accessible Rust compositions
+- [x] ~~petalTongue: evolve sporePrint jelly-string UI into typed, accessible Rust compositions~~ — CLOSED: petalTongue content rendering pipeline shipped (content_render.rs, document_compiler.rs, Wave 67). Trust surfaces LIVE on nestgate.io. Jelly strings eliminated ecosystem-wide. (Wave 157a audit)
 
 ### Automation
 - [x] ~~Script to pull check counts from spring repos and update stats~~ → `spore-validate refresh` compares LOC, tests, files, crates against registry
@@ -156,7 +156,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~peptidoglycan build pipeline~~ — replaced by Sovereign CI (Forgejo→sporeGate→golgi, Wave 119)
 - [x] ~~GitHub Pages becomes extracellular shadow~~ — deploy.yml labeled "trailing shadow", VPS is sovereign-primary
 - [x] ~~Post-DNS: Caddy HTTPS on golgiBody-ext~~ — LIVE with automatic cert renewal
-- [ ] Post-DNS: sporePrint deploy.yml → archive to fossilRecord (disable GitHub Pages deploy) — LOW: trailing shadow still useful for extracellular visibility
+- [x] ~~Post-DNS: sporePrint deploy.yml → archive to fossilRecord~~ — CLOSED: trailing shadow intentional. GitHub push controlled via K-Derm relay (golgi-ext sole writer). SSH discipline enforced. (Wave 157a audit)
 - [x] ~~NestGate CAS integration: verify Zola `public/` outputs are content-addressable via BLAKE3~~ — `cas-manifest` subcommand (Phase 1, Wave 73)
 
 ### Search

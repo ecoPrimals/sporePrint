@@ -172,8 +172,14 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 - [x] Phase 1 cell boot SUCCEEDED — esotericWebb on ironGate (Wave 156d)
 - [x] footPrint Phase 2 DEPLOYED — footprint.primals.eco LIVE (Wave 156d)
 - [x] G18 signal dispatch LIVE — 9 providers on ironGate (Wave 156d)
+- [x] G68 COMPLETE — 16/16 prod-clean, 6/6 NUCLEUS gates redeployed (Wave 157a)
+- [x] NG-05 CLOSED — westGate CAS federation: 26 capabilities, 2.5 TB CAS (Wave 157a)
+- [x] QCD pseudoSpore PACKAGED — lithoSpore v1.0.0-rung1 (Wave 157a)
+- [x] SU(2)→SU(N) relabel DONE — hotspring-qcd-sun live (Wave 157a)
+- [x] SSH key discipline ENFORCED — zero github remotes ecosystem-wide (Wave 157a)
+- [x] CAS route registration — NG-05 on nestgate.io `/api/content/stats` + `/pseudospore/` (Wave 157a)
 - [ ] petalTongue renders live dashboards from primal APIs (G19)
-- [ ] CAS route registration for NestGate HTTP serving
+- [ ] arXiv 41/42 — validate.sh + freeze/sign v1.0.0-rung1 remain
 
 ## License
 
