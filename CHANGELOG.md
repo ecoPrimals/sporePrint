@@ -5,6 +5,33 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.29.0] — 2026-08-09 — Vertebrate Evolution Complete, Depot Rebuild (Wave 157a)
+
+**12/16 primals self-audited — zero phantom APIs. P0-B RESOLVED (nestGate content.ingest
+was shipped, stale depot). P0-A code-fixed (bearDog health guard 766951004). songBird
+CanonicalTransport shipped. swarmVine 39→124 tests. sourDough rpc-surface audit tool.
+sporeGate rebuilding depot — gates pull from golgi, no self-builds.**
+
+### Changed
+
+- **Homepage** — 12/16 self-audited, zero phantom APIs, depot rebuild in progress
+- **Gate status** — full rewrite: P0-B resolved, P0-A code-fixed/depot-stale,
+  deployment discipline section (postPrimordial), 12-row self-audit table,
+  depot rebuild table (7 primals with key commits), updated primal dashboard
+  with self-audit annotations and updated test counts
+- **llms.txt** — 12/16 audited, P0 status, CanonicalTransport, rpc-surface tool
+- **All specs** — EVOLUTION_QUEUE, CONTEXT, CONTENT_MAP current
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- Self-audits: 12/16 complete (zero phantom methods)
+- P0: 1 code-open (biomeOS FD), 2 depot-stale (bearDog, nestGate)
+- swarmVine: 39→124 tests (82% coverage)
+- arXiv: 41/42
+
+---
+
 ## [3.28.0] — 2026-08-09 — Vertebrate Evolution, 3 P0s OPEN (Wave 157a)
 
 **Vertebrate evolution phase. westGate 7-session retrospective exposed 3 P0s: bearDog

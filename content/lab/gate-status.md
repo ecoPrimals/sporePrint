@@ -1,6 +1,6 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 11 gates online, 13/13 GREEN, 135K+ tests. 3 P0s OPEN: bearDog sign stub, nestGate API mismatch, biomeOS FD leak. Mesh code-complete, production-blocked."
+description = "Current fleet status — 11 gates online, 13/13 GREEN, 135K+ tests. Vertebrate evolution complete: 12/16 self-audited, zero phantom APIs. P0-B resolved. Depot rebuild in progress."
 date = 2026-08-09
 weight = 2
 
@@ -8,88 +8,92 @@ weight = 2
 maturity = "live"
 +++
 
-Current fleet status as of August 9, 2026 (Wave 157a — Vertebrate Evolution).
-westGate 7-session retrospective exposed 3 P0 issues. Mesh code-complete,
-production-blocked. Primals self-audit RPC surfaces.
+Current fleet status as of August 9, 2026 (Wave 157a — Vertebrate Evolution Complete).
+12 teams self-audited. P0-B RESOLVED. P0-A code-fixed. sporeGate rebuilding depot.
+Gates pull from golgi postPrimordial — no self-builds.
 
-## P0 Issues — 3 OPEN
+## P0 Issues — 1 Code-Open, 2 Depot-Stale
 
-### P0-A: bearDog Sign Surface Missing
-Depot binary v0.9.0 returns health response for ALL methods including
-`crypto.sign_ed25519`. All spine commits unsigned. loamSpine `session.commit` fails.
-**Fix**: bearDog team rebuilds depot binary with actual Ed25519 signing + socket
-naming fix (`beardog-default.sock` → `beardog-{family_id}.sock`).
+### P0-A: bearDog Sign Surface — CODE FIXED, DEPOT STALE
+Code fixed (`766951004`): health socket guard, `-32601` for non-health methods,
+socket rename `beardog-default` → `beardog-health`. Depot binary still stale —
+awaiting sporeGate rebuild.
 
-### P0-B: nestGate API Surface Mismatch
-`content.ingest` (directory walk + CAS) does not exist in nestGate v0.5.0.
-`content.stat` also missing. Pipeline must do directory walks in Python (3× I/O,
-33% payload inflation from base64).
-**Fix**: nestGate team ships native `content.ingest(directory)` + `content.stat(hash)`.
+### P0-B: nestGate API Surface — RESOLVED
+`content.ingest` was shipped since S136 (590 LOC, 7 tests). `content.stat` also
+shipped (`4cafa535`). westGate's P0-B was a **stale depot binary**, not a missing
+feature. Self-audit: zero phantom methods. Registry synced.
 
-### P0-C: biomeOS FD Leak
+### P0-C: biomeOS FD Leak — OPEN
 Auto-discovery loop opens sockets and never closes them. 14→58,613 FDs after
 4 `capability.call` invocations. `capability.resolve` works (7ms). Direct primal
-UDS works (0.2ms). Only forwarding leaks.
-**Fix**: biomeOS team adds socket cleanup in discovery loop.
+UDS works (0.2ms). Only forwarding leaks. Code fix not yet shipped.
+
+## Deployment Discipline — postPrimordial
+
+**Pattern leading to divergence**: gates were self-building primals from source,
+resulting in each gate running different versions. westGate's P0-B was a stale
+binary problem. ironGate reports nestgate+toadstool exit after startup (primal
+binary issues).
+
+**Correct pattern**: sporeGate is the sole depot builder. sporeGate rebuilds all
+primals → pushes to golgi → gates pull from golgi via `plasmid.fetch`. No gate
+builds its own primals.
 
 ## Gate Fleet — 6/6 NUCLEUS Redeployed
 
 | Gate | NUCLEUS | RSS | Status |
 |------|---------|-----|--------|
-| **sporeGate** | 13/13 ALIVE | — | S369, cascade auto-push, zero drift |
+| **sporeGate** | 13/13 ALIVE | — | **Rebuilding depot** — all 16 primals from HEAD |
 | **blueGate** | 13/13 ALIVE | 264 MB | Windows 15/15. 3 P3/P4 issues. |
 | **southGate** | 13/13 ALIVE | 96 MB | 0.058ms Tower (2.6×). SSH compliant. |
-| **ironGate** | 13/13 ALIVE | 41 MB | 2,058 capabilities. 42 repos SSH clean. |
+| **ironGate** | 13/13 ALIVE | 41 MB | G68 redeploy 11/13. nestgate+toadstool binary issues. |
 | **strandGate** | 11/13 ALIVE | 127 MB | First NUCLEUS boot. K-derm enforced. |
-| **westGate** | 13/13 ALIVE | — | 26 capabilities. 3.3 TB CAS. 989K files braided. |
+| **westGate** | 13/13 ALIVE | — | 989K files braided. 3.3 TB CAS. 14/14 services. |
 
-All gates running biomeOS 4.57.0 (Stage 2), G68-converged depot binaries.
-SSH discipline enforced across all gates — zero `github` remotes ecosystem-wide.
+## Vertebrate Evolution — 12/16 Self-Audited
 
-## Vertebrate Evolution — Primal Self-Audit
+12 primal teams responded with self-audits. Zero phantom methods across all
+audited primals. Each verified RPC surface against `capability_registry.toml`.
 
-G64 cephalization gave the ecosystem a nervous system (Neural API, biomeOS routing,
-Tower mesh). westGate's 7-session retrospective (989K files braided, 153 datasets,
-3.3 TB) revealed that primal API surfaces diverge silently from what consumers expect.
-Six Python jelly strings exist because primal APIs don't do what they claim.
+| Primal | Self-Audit | Key Evolution |
+|--------|-----------|---------------|
+| **bearDog** | DONE (P0-A) | Health guard: no more silent swallowing. Socket naming fixed. |
+| **nestGate** | DONE (P0-B) | `content.ingest` confirmed. `content.stat` shipped. Registry synced. |
+| **songBird** | DONE | `CanonicalTransport` trait shipped (`33e9a8be`). 9 transports converging. |
+| **swarmVine** | DONE | Deep audit, async dispatch, zero-copy. **39→124 tests** (82% coverage). |
+| **petalTongue** | DONE | doom-core decoupled (ludoSpring-ready). Dep prune. RPC self-audit. |
+| **skunkBat** | DONE | RPC surface verified, registry synced. |
+| **rhizoCrypt** | DONE | 40/40 registry-handler parity. Fixed undeclared `dag.session.tree_hash`. |
+| **loamSpine** | DONE | 54/54 RPC verified. `persist_tip` abstraction. −89 LOC. |
+| **coralReef** | DONE | 18/18 RPC methods verified against registry. |
+| **barraCuda** | DONE | Zero phantom APIs. 4,996 tests. |
+| **cellMembrane** | DONE | `LimitNOFILE=65536` in systemd units. `capability_registry` 75→103. |
+| **sourDough** | DONE | `rpc-surface` audit tool shipped (`aa1a2f8`): detects stubs + divergence live. |
 
-Each primal team self-audits: verify actual RPC surface matches
-`capability_registry.toml`, abstract repeated patterns behind shared traits,
-delegate cross-focus to its right home.
+**Remaining**: biomeOS (P0-C code fix), toadStool (S371 in progress), sweetGrass, bingoCube.
 
-| Primal | Binary | Evolution Task |
-|--------|--------|----------------|
-| **bearDog** | 8.3 MB | **P0-A**: Rebuild with actual crypto. Fix socket naming. |
-| **nestGate** | 8.5 MB | **P0-B**: Ship `content.ingest` + `content.stat`. |
-| **biomeOS** | 20.4 MB | **P0-C**: Fix FD leak in discovery loop. |
-| **songBird** | 23.8 MB | Abstract 9 transport crates → shared `Transport` trait. Excise `mesh.capabilities_announce` → swarmVine. |
-| **petalTongue** | 33.8 MB | Move `doom-core` → ludoSpring. Converge 656 deps. |
-| **toadStool** | 12.4 MB | S371 `core` 272K → natural WASM split. 24/48 done. |
+## Depot Rebuild — sporeGate In Progress
+
+sporeGate rebuilding all primals from current HEAD. Key binaries that changed:
+
+| Primal | Key Commit | What Changed |
+|--------|-----------|-------------|
+| **bearDog** | `766951004` | P0-A fix: health guard, -32601 for non-health, socket rename |
+| **nestGate** | `4cafa535`+ | P0-B: `content.stat` shipped. `content.ingest` in code since S136. |
+| **songBird** | `33e9a8be` | `CanonicalTransport` trait + swarmVine delegation |
+| **swarmVine** | `2cd4964` | Deep audit, 124 tests, async dispatch |
+| **petalTongue** | `87a2530` | doom-core decoupled, dep prune, RPC self-audit |
+| **skunkBat** | `1ad84c1` | RPC surface verified, registry synced |
+| **sourDough** | `aa1a2f8` | `rpc-surface` audit tool |
+
+After rebuild: regenerate BLAKE3SUMS, push to golgi. Gates pull — no self-builds.
 
 ## Mesh Status — Code-Complete, Production-Blocked
 
 `capability.resolve` works (7ms). Direct primal UDS works (0.2ms).
 Vine-bat OPERATIONAL (gossip.spread → metadata.analyze → accept/reject).
-But P0-C (FD leak) makes `capability.call` unusable for production workloads.
-westGate bypasses biomeOS entirely.
-
-## Depot + Cascade
-
-| Target | Binaries | Status |
-|--------|----------|--------|
-| **Musl** | 17/17 | At Forgejo HEAD (inc. toadStool S371) |
-| **Windows** | 15/15 | squirrel.exe added this wave |
-
-songBird 24 MB FIXED (`af0d8fa8`). bearDog STALE (health-only stub — P0-A).
-Cascade auto-push to golgi via `ExecStartPost` rsync. synced=15, zero drift.
-
-### cellMembrane — Sovereign Deploy Path
-`plasmid.fetch --source forgejo` API parse + auth **FIXED** (`55fdff3`).
-All remote gates now have a sovereign deploy path — no GitHub dependency.
-
-### toadStool S371 — WASM Compute
-`core` 272K natural WASM split. 24/48 done. 15 crates compile on
-`wasm32-unknown-unknown`. Desktop (native) + server (musl) + browser (wasm32).
+P0-C (FD leak) makes `capability.call` forwarding unusable.
 
 ## G68 Convergence — 16/16 Prod-Clean
 
@@ -114,9 +118,6 @@ gate → Forgejo (inner) → pepti (peptidoglycan) → golgi-ext (outer) → Git
 | `/api/pseudospore/bundles` | **LIVE** — bundle listing with provenance |
 | `/pseudospore/validate.sh` | **LIVE** — verification script |
 
-QCD pseudoSpore bundle PACKAGED by lithoSpore. `validate.sh` needs
-bundle-specific BLAKE3 + DAG + Ed25519 wiring. Freeze/sign pending.
-
 ## Phase Execution Status
 
 ### Phase 1: Cell Boot — SUCCEEDED
@@ -128,32 +129,34 @@ First-ever cell attachment on ironGate. esotericWebb exp006 21/22 PASS.
 ### Phase 3: squirrel + petalTongue — G18 LIVE
 9 primal providers on ironGate. petalTongue G19 render — NEXT.
 
-### Phase 4: westGate Science Springs — PRODUCTION-BLOCKED
-989K files braided. 153 datasets. 3.3 TB. But spine commits unsigned (P0-A)
-and `content.ingest` doesn't exist (P0-B).
+### Phase 4: westGate Science Springs — DEPOT-BLOCKED
+989K files braided. 153 datasets. 3.3 TB. Spine commits deferred until
+bearDog depot binary ships with signing (P0-A code-fixed, depot-stale).
 
 ### Phase 5: Inter-gate Mesh — PRODUCTION-BLOCKED
-Mesh code-complete. `capability.call` unusable due to FD leak (P0-C).
-westGate bypasses biomeOS entirely.
+Mesh code-complete. `capability.call` forwarding unusable (P0-C FD leak).
 
 ## Primal Health Dashboard
 
 | Primal | Tests | Health | Recent |
 |--------|-------|--------|--------|
-| songBird | 14,840+ | GREEN | 22 bonds. 24 MB FIXED. 9 transports → shared trait. |
-| bearDog | 14,019 | GREEN | **P0-A**: depot stub returns health for all methods. |
-| nestGate | 13,095+ | GREEN | **P0-B**: `content.ingest` doesn't exist. API surface audit. |
-| toadStool | 9,193+ | GREEN | **S371**: WASM split 24/48. |
-| biomeOS | 8,570+ | GREEN | **P0-C**: FD leak in discovery loop. 14→58K FDs. |
-| petalTongue | 6,755 | GREEN | doom-core → ludoSpring. Trust surfaces LIVE. |
-| barraCuda | 4,959 | GREEN | MultiDevicePool. Cross-vendor. |
+| songBird | 14,840+ | GREEN | `CanonicalTransport` shipped. 9 transports converging. |
+| bearDog | 14,019+ | GREEN | **P0-A CODE FIXED** (`766951004`). Depot rebuild needed. |
+| nestGate | 1,630+ | GREEN | **P0-B RESOLVED**. `content.ingest` confirmed. `content.stat` shipped. |
+| toadStool | 9,193+ | GREEN | S371: WASM split 24/48. Self-audit pending. |
+| biomeOS | 8,570+ | GREEN | **P0-C OPEN**: FD leak in discovery loop. |
+| petalTongue | 6,755+ | GREEN | doom-core decoupled. Trust surfaces LIVE. |
+| barraCuda | 4,996 | GREEN | Zero phantom APIs. Self-audit DONE. |
 | squirrel | 4,613 | GREEN | G68 prod-clean. |
-| coralReef | 3,512 | GREEN | G68 prod-clean. |
-| rhizoCrypt | 1,791 | GREEN | G63 SO\_PEERCRED. 5 caps registered. |
-| loamSpine | 1,740 | GREEN | 8 caps registered. Spine commits deferred (P0-A). |
-| sweetGrass | 1,636 | GREEN | 4 caps registered. `capability.call` SHIPPED. |
+| coralReef | 3,580 | GREEN | 18/18 RPC verified. Self-audit DONE. |
+| rhizoCrypt | 1,900 | GREEN | 40/40 registry-handler parity. Self-audit DONE. |
+| loamSpine | 1,752 | GREEN | 54/54 RPC verified. `persist_tip` abstraction. |
+| sweetGrass | 1,636 | GREEN | Self-audit pending. |
+| cellMembrane | 1,327+ | GREEN | `capability_registry` 75→103. `LimitNOFILE` wired. |
+| skunkBat | 675 | GREEN | RPC surface verified. Registry synced. |
+| sourDough | 518 | GREEN | `rpc-surface` audit tool shipped. |
+| swarmVine | 124 | GREEN | **39→124 tests** (82% coverage). Async dispatch. |
 | tideGlass | 214 | GREEN | 17 IPC methods. GPS converted. |
-| cellMembrane | 1,327 | GREEN | `plasmid.fetch --source forgejo` FIXED. |
 
 **Total**: ~135,000+ tests. **13/13 GREEN.** 16/16 G68 prod-clean.
 

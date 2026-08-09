@@ -2,22 +2,20 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 9, 2026 9:15AM (Wave 157a — Vertebrate Evolution, 3 P0s OPEN)
+Last reviewed: August 9, 2026 10:20AM (Wave 157a — Vertebrate Evolution Complete, 1 P0 code-open)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN. **3 P0s OPEN** (bearDog sign stub, nestGate API mismatch, biomeOS FD leak). 3.3 TB / 153 datasets. Mesh code-complete, production-blocked. 16 primals (N-series 90/91).
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN. 12/16 primals self-audited — zero phantom APIs. P0-B RESOLVED. P0-A code-fixed (depot-stale). **P0-C OPEN** (biomeOS FD leak). 3.3 TB / 153 datasets. 16 primals (N-series 90/91). sporeGate rebuilding depot.
 
-**Wave 157a — Vertebrate Evolution:**
-- **3 P0s OPEN** — westGate 7-session retrospective exposed critical gaps
-  - **P0-A**: bearDog depot binary health-only stub (all spine commits unsigned)
-  - **P0-B**: nestGate `content.ingest` doesn't exist (API surface diverged)
-  - **P0-C**: biomeOS FD leak (14→58K FDs, `capability.call` unusable)
-- **Mesh code-complete, production-blocked** by P0-C
-- **Vertebrate evolution** — primals self-audit RPC surfaces, abstract shared traits
-- **westGate** — 989K files braided, 153 datasets, 3.3 TB, 14/14 services
-- **songBird** — 9 transports → shared `Transport` trait. songBird 24 MB FIXED.
-- **petalTongue** — doom-core → ludoSpring. 656 deps convergence.
-- **toadStool S371** — WASM split 24/48. `core` 272K natural split.
-- **Vine-bat OPERATIONAL** — gossip.spread → metadata.analyze → accept/reject
+**Wave 157a — Vertebrate Evolution Complete:**
+- **12/16 primals self-audited** — zero phantom methods across all audited primals
+- **P0-B RESOLVED** — nestGate `content.ingest` was shipped since S136, stale depot was root cause
+- **P0-A CODE FIXED** — bearDog health guard (`766951004`), socket rename. Depot-stale.
+- **P0-C OPEN** — biomeOS FD leak (14→58K FDs, `capability.call` unusable)
+- **songBird** — `CanonicalTransport` trait shipped (`33e9a8be`). 9 transports converging.
+- **swarmVine** — 39→124 tests (82% coverage), async dispatch, zero-copy
+- **petalTongue** — doom-core decoupled (ludoSpring-ready)
+- **sourDough** — `rpc-surface` audit tool shipped (`aa1a2f8`)
+- **Deployment discipline** — sporeGate sole depot builder → golgi → gates pull. No self-builds.
 - **arXiv 41/42** — validate.sh wiring + freeze/sign remain
 
 **Previous era (Wave 155n → 155v):**

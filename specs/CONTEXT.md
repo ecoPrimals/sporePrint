@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 9, 2026 — Wave 157a, VERTEBRATE EVOLUTION — 3 P0s OPEN)
+## Current State (August 9, 2026 — Wave 157a, VERTEBRATE EVOLUTION COMPLETE)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
@@ -16,22 +16,23 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
 - **Ecosystem totals**: 3.60M LOC, 135,000+ tests (16 primals + 9 springs), 43 repos
 - **13/13 GREEN**. G68 COMPLETE. **6/6 NUCLEUS gates redeployed.**
-- **3 P0s OPEN**: bearDog sign stub (P0-A), nestGate API mismatch (P0-B), biomeOS FD leak (P0-C)
-- **Mesh**: code-complete, production-blocked by P0-C
-- **westGate**: 989K files braided, 153 datasets, 3.3 TB
+- **12/16 primals self-audited** — zero phantom APIs
+- **P0-B RESOLVED**: nestGate `content.ingest` was shipped (stale depot was root cause)
+- **P0-A CODE FIXED**: bearDog health guard (`766951004`). Depot-stale.
+- **P0-C OPEN**: biomeOS FD leak (14→58K FDs, `capability.call` unusable)
+- **Depot rebuild in progress**: sporeGate sole builder → golgi → gates pull
 - **arXiv 41/42**: validate.sh + freeze/sign remain
 
-### Wave 157a — Vertebrate Evolution
-- **3 P0s OPEN** — westGate 7-session retrospective exposed critical gaps:
-  - **P0-A**: bearDog depot binary returns health for ALL methods (spine commits unsigned)
-  - **P0-B**: nestGate `content.ingest` doesn't exist (API surface diverged from consumers)
-  - **P0-C**: biomeOS FD leak (14→58K FDs after 4 `capability.call` invocations)
-- **Mesh code-complete, production-blocked** — `capability.resolve` works, forwarding leaks
-- **Vertebrate evolution** — primals self-audit RPC surface, abstract shared traits
-- **songBird** — 9 transports → shared `Transport` trait. 24 MB FIXED.
-- **petalTongue** — doom-core → ludoSpring. 656 deps.
-- **toadStool S371** — WASM split 24/48. `core` 272K natural split.
-- **Vine-bat OPERATIONAL** — gossip.spread → metadata.analyze → accept/reject
+### Wave 157a — Vertebrate Evolution Complete
+- **12 teams self-audited** — zero phantom methods across all audited primals
+- **P0-B RESOLVED** — `content.ingest` shipped since S136. Stale depot binary, not missing feature.
+- **P0-A CODE FIXED** — bearDog health guard, socket rename. Depot rebuild needed.
+- **P0-C OPEN** — biomeOS FD leak. `capability.call` forwarding unusable.
+- **songBird** — `CanonicalTransport` trait shipped. 9 transports converging.
+- **swarmVine** — 39→124 tests (82% coverage). Async dispatch.
+- **petalTongue** — doom-core decoupled (ludoSpring-ready)
+- **sourDough** — `rpc-surface` audit tool shipped: detects stubs + divergence live
+- **Deployment discipline** — sporeGate sole depot builder. No gate self-builds.
 
 ### Previous Eras
 - **157a early**: G68 convergence, SSH key discipline, trust surfaces LIVE

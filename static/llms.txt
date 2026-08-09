@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 16 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 11 gates online. 135K+ tests. 13/13 GREEN. 3.3 TB science data. Vertebrate evolution: 3 P0s (bearDog sign stub, nestGate API mismatch, biomeOS FD leak). Mesh code-complete, production-blocked. Primals self-audit RPC surfaces. Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 135K+ tests. 13/13 GREEN. 3.3 TB science data. Vertebrate evolution complete: 12/16 self-audited, zero phantom APIs. P0-B resolved. P0-A code-fixed. P0-C open (biomeOS FD leak). songBird CanonicalTransport shipped. sourDough rpc-surface audit tool. Depot rebuild in progress. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
