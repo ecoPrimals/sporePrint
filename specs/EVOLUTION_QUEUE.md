@@ -2,20 +2,20 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 9, 2026 10:20AM (Wave 157a — Vertebrate Evolution Complete, 1 P0 code-open)
+Last reviewed: August 9, 2026 3:55PM (Wave 157d — Depot Unified + G69 Lineage Spec)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN. 12/16 primals self-audited — zero phantom APIs. P0-B RESOLVED. P0-A code-fixed (depot-stale). **P0-C OPEN** (biomeOS FD leak). 3.3 TB / 153 datasets. 16 primals (N-series 90/91). sporeGate rebuilding depot.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 145,000+ tests, 11 gates online, NUCLEUS 13/13+ GREEN, **ZERO P0**. 3.3 TB / 153 datasets. 16 primals. Depot unified + pruned (60 binaries, 4 arches). G69 lineage spec. Mesh-native build. Neural API unblocked (13,910 caps).
 
-**Wave 157a — Vertebrate Evolution Complete:**
-- **12/16 primals self-audited** — zero phantom methods across all audited primals
-- **P0-B RESOLVED** — nestGate `content.ingest` was shipped since S136, stale depot was root cause
-- **P0-A CODE FIXED** — bearDog health guard (`766951004`), socket rename. Depot-stale.
-- **P0-C OPEN** — biomeOS FD leak (14→58K FDs, `capability.call` unusable)
-- **songBird** — `CanonicalTransport` trait shipped (`33e9a8be`). 9 transports converging.
-- **swarmVine** — 39→124 tests (82% coverage), async dispatch, zero-copy
-- **petalTongue** — doom-core decoupled (ludoSpring-ready)
-- **sourDough** — `rpc-surface` audit tool shipped (`aa1a2f8`)
-- **Deployment discipline** — sporeGate sole depot builder → golgi → gates pull. No self-builds.
+**Wave 157d — Depot Unified + G69 Lineage Spec:**
+- **ZERO P0** — all 3 resolved: bearDog (`766951004`), nestGate (stale depot), biomeOS FD (`6a51638d`)
+- **Depot unified + pruned** — 60 primal binaries, 4 arches, BLAKE3SUMS all. G69 lineage spec.
+- **Build system mesh-native** — blueGate primary (`builder.serve :9800`), 14/14 vertebrate (23 min)
+- **Neural API unblocked** — `capability.call` fleet-wide. 13,910 caps (up from 1,987).
+- **barraCuda Silicon Fold ABSORBED** — 5 device abstractions, buffer 512M→1G, 5,025 tests
+- **coralReef** — 18/18 IPC, integer subgroup fix, 3,702 tests. GEMM tiling next.
+- **cellMembrane** — G69 `depot.prune` shipped, deep debt, 1,347 tests
+- **strandGate** — 13/13 ALIVE. Silicon Fold AAR: 15/15 units, AMD 20x root cause
+- **sporeGate** — 15/15 ALIVE. 13,910 caps. Topology owner.
 - **arXiv 41/42** — validate.sh wiring + freeze/sign remain
 
 **Previous era (Wave 155n → 155v):**

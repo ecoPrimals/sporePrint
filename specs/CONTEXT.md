@@ -8,31 +8,29 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 9, 2026 — Wave 157a, VERTEBRATE EVOLUTION COMPLETE)
+## Current State (August 9, 2026 — Wave 157d, DEPOT UNIFIED + G69 LINEAGE SPEC)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals**: 3.60M LOC, 135,000+ tests (16 primals + 9 springs), 43 repos
-- **13/13 GREEN**. G68 COMPLETE. **6/6 NUCLEUS gates redeployed.**
-- **12/16 primals self-audited** — zero phantom APIs
-- **P0-B RESOLVED**: nestGate `content.ingest` was shipped (stale depot was root cause)
-- **P0-A CODE FIXED**: bearDog health guard (`766951004`). Depot-stale.
-- **P0-C OPEN**: biomeOS FD leak (14→58K FDs, `capability.call` unusable)
-- **Depot rebuild in progress**: sporeGate sole builder → golgi → gates pull
+- **Ecosystem totals**: 3.60M LOC, 145,000+ tests (16 primals + 9 springs), 43 repos
+- **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0.**
+- **Depot unified + pruned**: 60 primal binaries, 4 arches, BLAKE3SUMS. G69 lineage spec.
+- **Build system mesh-native**: blueGate primary, sporeGate fallback, eastGate tertiary
+- **Neural API unblocked**: `capability.call` fleet-wide. 13,910 caps.
 - **arXiv 41/42**: validate.sh + freeze/sign remain
 
-### Wave 157a — Vertebrate Evolution Complete
-- **12 teams self-audited** — zero phantom methods across all audited primals
-- **P0-B RESOLVED** — `content.ingest` shipped since S136. Stale depot binary, not missing feature.
-- **P0-A CODE FIXED** — bearDog health guard, socket rename. Depot rebuild needed.
-- **P0-C OPEN** — biomeOS FD leak. `capability.call` forwarding unusable.
-- **songBird** — `CanonicalTransport` trait shipped. 9 transports converging.
-- **swarmVine** — 39→124 tests (82% coverage). Async dispatch.
-- **petalTongue** — doom-core decoupled (ludoSpring-ready)
-- **sourDough** — `rpc-surface` audit tool shipped: detects stubs + divergence live
-- **Deployment discipline** — sporeGate sole depot builder. No gate self-builds.
+### Wave 157d — Depot Unified + G69 Lineage Spec
+- **ZERO P0** — all 3 resolved: bearDog, nestGate (stale depot), biomeOS FD (`6a51638d`)
+- **Depot unified + pruned** — 60 binaries, 4 arches, test/demo/bench pruned
+- **G69 lineage spec** — binary evolution via provenance trio (CAS/spine/braid)
+- **Build system mesh-native** — blueGate :9800 Tower Atomic, 14/14 vertebrate (23 min)
+- **Neural API call path unblocked** — capability.resolve + capability.call operational
+- **barraCuda Silicon Fold ABSORBED** — 5 device abstractions, 5,025 tests
+- **coralReef** — 18/18 IPC, integer subgroup fix, 3,702 tests
+- **cellMembrane** — G69 `depot.prune`, deep debt, 1,347 tests
+- **strandGate 13/13 ALIVE** — Silicon Fold AAR, AMD 20x root cause
 
 ### Previous Eras
 - **157a early**: G68 convergence, SSH key discipline, trust surfaces LIVE

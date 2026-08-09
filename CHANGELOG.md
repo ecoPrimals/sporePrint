@@ -5,6 +5,35 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.30.0] — 2026-08-09 — Depot Unified + G69 Lineage Spec (Wave 157d)
+
+**ZERO P0. Depot unified + pruned (60 binaries, 4 arches). G69 depot lineage spec.
+Mesh-native build (blueGate primary). Neural API unblocked (13,910 caps). barraCuda
+Silicon Fold ABSORBED. coralReef 18/18 IPC. cellMembrane depot.prune. 145K+ tests.**
+
+### Changed
+
+- **Homepage** — 145K+ tests, zero P0, depot unified, mesh-native build, Neural API unblocked
+- **Gate status** — full rewrite: infrastructure phase complete table, 6/6 fleet with
+  updated caps/status (sporeGate 15/15, strandGate 13/13), depot unified + pruned
+  section (G69 lineage, 4-arch table), mesh-native build system, Neural API unblocked
+  (13,910 caps), self-audit summary (13 primals), Phases 4+5 upgraded to UNBLOCKED
+- **Primal dashboard** — updated test counts (barraCuda 5,025, coralReef 3,702,
+  cellMembrane 1,347), Silicon Fold ABSORBED, P0-C IN DEPOT
+- **llms.txt** — zero P0, depot unified, G69, mesh-native, 13,910 caps
+- **All specs** — EVOLUTION_QUEUE, CONTEXT, CONTENT_MAP current
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- P0: ZERO (was 3 → 1 → 0)
+- Tests: ~145,000+ (was ~135,000+)
+- Caps: 13,910 (was 1,987 pre-vertebrate)
+- Depot: 60 binaries, 4 arches, BLAKE3SUMS
+- arXiv: 41/42
+
+---
+
 ## [3.29.0] — 2026-08-09 — Vertebrate Evolution Complete, Depot Rebuild (Wave 157a)
 
 **12/16 primals self-audited — zero phantom APIs. P0-B RESOLVED (nestGate content.ingest

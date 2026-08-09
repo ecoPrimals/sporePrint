@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 9, 2026 10:20AM (Wave 157a — 338 pages, 25 sections. Vertebrate evolution complete. 12/16 self-audited. P0-B resolved. Depot rebuild in progress.)
+Last reviewed: August 9, 2026 3:55PM (Wave 157d — 338 pages, 25 sections. Zero P0. Depot unified + pruned. G69 lineage spec. Mesh-native build. 145K+ tests.)
 
 ## Sections
 
