@@ -1,7 +1,7 @@
 +++
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 weight = 20
-description = "All 15 primals — capabilities, test counts, production status, repository visibility"
+description = "All 16 primals — capabilities, test counts, production status, repository visibility"
 date = 2026-06-20
 
 [taxonomies]

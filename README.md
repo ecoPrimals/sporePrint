@@ -69,7 +69,7 @@ sporePrint/
 │   ├── technical/       # 8 pages: hardware, grants, pipelines, neuromorphic
 │   ├── audience/        # 7 pages: PI, student, builder, compliance, companies guides
 │   ├── pseudospore/     # 8 pages: downloadable verified archives + QCD paper
-│   ├── data/            # 18 pages: Data Braids catalog (3.21 TB, 153 datasets, 17+ domains)
+│   ├── data/            # 18 pages: Data Braids catalog (3.3 TB, 153 datasets, 17+ domains)
 │   ├── guidestone/      # 6 pages: verification class
 │   ├── story/           # 3 pages: builder narrative essays
 │   ├── collaborators/   # 3 profiles: Gonzales (NF), Jones (PFAS), ABG
@@ -157,7 +157,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 | Org | Purpose | Repos |
 |-----|---------|-------|
-| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 15 primals + tooling | 17 (135K+ tests) |
+| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 16 primals + tooling | 17 (145K+ tests) |
 | [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |
@@ -178,6 +178,10 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 - [x] SU(2)→SU(N) relabel DONE — hotspring-qcd-sun live (Wave 157a)
 - [x] SSH key discipline ENFORCED — zero github remotes ecosystem-wide (Wave 157a)
 - [x] CAS route registration — NG-05 on nestgate.io `/api/content/stats` + `/pseudospore/` (Wave 157a)
+- [x] ALL P0s RESOLVED — bearDog sign (`766951004`), nestGate stale depot, biomeOS FD (`6a51638d`) (Wave 157d)
+- [x] Depot UNIFIED + PRUNED — 60 binaries, 4 arches, BLAKE3SUMS, G69 lineage spec (Wave 157d)
+- [x] Build system MESH-NATIVE — blueGate primary, Tower Atomic dispatch (Wave 157d)
+- [x] Neural API UNBLOCKED — `capability.call` fleet-wide, 13,910 caps (Wave 157d)
 - [ ] petalTongue renders live dashboards from primal APIs (G19)
 - [ ] arXiv 41/42 — validate.sh + freeze/sign v1.0.0-rung1 remain
 

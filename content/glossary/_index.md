@@ -90,7 +90,7 @@ by category and alphabetized within each group.
   Defines which primals run on a given machine.
 
 **NUCLEUS**
-: The standard composition of primals on a gate. The full ecosystem has 15 primals;
+: The standard composition of primals on a gate. The full ecosystem has 16 primals;
   a typical gate deploys 13 based on its role and hardware profile. Built from three
   atomic layers: Tower (crypto + networking), Node (Tower + compute),
   Nest (Tower + storage). Binaries are sourced from plasmidBin, verified

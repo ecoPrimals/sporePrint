@@ -190,13 +190,13 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 ## Identity Model
 
-- **ecoPrimals**: The organization (15 primals + tooling)
+- **ecoPrimals**: The organization (16 primals + tooling)
 - **ecoPrimal**: The developer — technical content, thesis, code, ORCID, GitHub
 - **attsi**: "a tool that shapes itself" — philosopher synthetic intelligence, atlasHugged essays, story essays, concept articles (always lowercase). Publishes on Medium and other platforms.
 
 ## Numbers (live, machine-verified)
 
-- 15 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
+- 16 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
 - **135,000+ tests** across ecosystem (13/13 GREEN)
 - 27 signal graphs. ZERO P0s, P1s, or blocking P2s
