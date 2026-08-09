@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 8, 2026 9:50AM (Wave 157a — 338 pages, 25 sections. 6/6 gates redeployed. NG-05 CLOSED. QCD pseudoSpore PACKAGED. SU(N) relabel DONE)
+Last reviewed: August 9, 2026 9:15AM (Wave 157a — 338 pages, 25 sections. Vertebrate evolution. 3 P0s OPEN. Mesh code-complete, production-blocked.)
 
 ## Sections
 

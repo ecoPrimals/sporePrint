@@ -8,29 +8,30 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 8, 2026 — Wave 157a, 6/6 GATES REDEPLOYED + NG-05 CLOSED)
+## Current State (August 9, 2026 — Wave 157a, VERTEBRATE EVOLUTION — 3 P0s OPEN)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals**: 3.60M LOC, 135,000+ tests (15 primals + 9 springs), 43 repos
+- **Ecosystem totals**: 3.60M LOC, 135,000+ tests (16 primals + 9 springs), 43 repos
 - **13/13 GREEN**. G68 COMPLETE. **6/6 NUCLEUS gates redeployed.**
-- **NG-05 CLOSED**: westGate CAS federation — 26 capabilities, 2.5 TB CAS, TCP on :8080
-- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1. SU(N) relabel DONE.
-- **SSH key discipline ENFORCED**: zero `github` remotes ecosystem-wide.
-- **arXiv 41/42**: validate.sh + freeze/sign remain.
-- **ZERO P0/P1/P2**
+- **3 P0s OPEN**: bearDog sign stub (P0-A), nestGate API mismatch (P0-B), biomeOS FD leak (P0-C)
+- **Mesh**: code-complete, production-blocked by P0-C
+- **westGate**: 989K files braided, 153 datasets, 3.3 TB
+- **arXiv 41/42**: validate.sh + freeze/sign remain
 
-### Wave 157a — All Gates Redeployed
-- **6/6 gates redeployed** — all running G68-converged binaries from golgi depot
-- **NG-05 CLOSED** — westGate CAS: 26 capabilities, 2.5 TB, `capability.resolve` working
-- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1
-- **SU(2)→SU(N) relabel DONE** — 3 pages renamed, 10 files updated
-- **cellMembrane `plasmid.fetch` FIXED** — sovereign deploy path for all remote gates
-- **toadStool S370** — WASM compute (15 crates on wasm32), 16 deployment targets
-- **SSH discipline** — all gates compliant. K-Derm relay chain enforced.
-- **primalSpring** now owns eastGate hardware cascade
+### Wave 157a — Vertebrate Evolution
+- **3 P0s OPEN** — westGate 7-session retrospective exposed critical gaps:
+  - **P0-A**: bearDog depot binary returns health for ALL methods (spine commits unsigned)
+  - **P0-B**: nestGate `content.ingest` doesn't exist (API surface diverged from consumers)
+  - **P0-C**: biomeOS FD leak (14→58K FDs after 4 `capability.call` invocations)
+- **Mesh code-complete, production-blocked** — `capability.resolve` works, forwarding leaks
+- **Vertebrate evolution** — primals self-audit RPC surface, abstract shared traits
+- **songBird** — 9 transports → shared `Transport` trait. 24 MB FIXED.
+- **petalTongue** — doom-core → ludoSpring. 656 deps.
+- **toadStool S371** — WASM split 24/48. `core` 272K natural split.
+- **Vine-bat OPERATIONAL** — gossip.spread → metadata.analyze → accept/reject
 
 ### Previous Eras
 - **157a early**: G68 convergence, SSH key discipline, trust surfaces LIVE

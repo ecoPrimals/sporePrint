@@ -5,6 +5,35 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.28.0] — 2026-08-09 — Vertebrate Evolution, 3 P0s OPEN (Wave 157a)
+
+**Vertebrate evolution phase. westGate 7-session retrospective exposed 3 P0s: bearDog
+sign stub (spine commits unsigned), nestGate API mismatch (content.ingest doesn't exist),
+biomeOS FD leak (capability.call unusable). Mesh code-complete, production-blocked.**
+
+### Changed
+
+- **Homepage** — 16 primals, 3.3 TB, vertebrate evolution + 3 P0s status
+- **Gate status** — full rewrite: P0 section (P0-A/B/C with evidence + fixes),
+  vertebrate evolution table (6 primals with evolution tasks), mesh status
+  (code-complete, production-blocked), updated westGate to 3.3 TB / 989K files,
+  Phase 4+5 upgraded to PRODUCTION-BLOCKED, toadStool S371
+- **Primal health dashboard** — P0 annotations on bearDog, nestGate, biomeOS.
+  songBird 24 MB FIXED. loamSpine commits deferred.
+- **llms.txt** — 16 primals, 3 P0s, mesh status, vertebrate evolution
+- **All specs** — EVOLUTION_QUEUE, CONTEXT, CONTENT_MAP current
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- P0: 3 OPEN (was ZERO)
+- Primals: 16 (N-series 90/91)
+- westGate: 989K files, 153 datasets, 3.3 TB
+- Mesh: code-complete, production-blocked
+- arXiv: 41/42
+
+---
+
 ## [3.27.0] — 2026-08-08 — 6/6 Gates Redeployed, NG-05 CLOSED, SU(N) Relabel (Wave 157a)
 
 **6/6 NUCLEUS gates redeployed. NG-05 CLOSED (westGate CAS federation: 26 capabilities,

@@ -2,19 +2,22 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 8, 2026 9:50AM (Wave 157a — 6/6 Gates Redeployed, NG-05 CLOSED)
+Last reviewed: August 9, 2026 9:15AM (Wave 157a — Vertebrate Evolution, 3 P0s OPEN)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN, ZERO P0/P1/P2. 3.21 TB / 153 datasets. 6/6 NUCLEUS gates redeployed. NG-05 CLOSED. QCD pseudoSpore PACKAGED. arXiv 41/42.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 135,000+ tests, 11 gates online, NUCLEUS 13/13 GREEN. **3 P0s OPEN** (bearDog sign stub, nestGate API mismatch, biomeOS FD leak). 3.3 TB / 153 datasets. Mesh code-complete, production-blocked. 16 primals (N-series 90/91).
 
-**Wave 157a — All Gates Redeployed:**
-- **6/6 NUCLEUS gates redeployed** — all running G68-converged binaries from golgi depot
-- **NG-05 CLOSED** — westGate CAS federation: 26 capabilities, 2.5 TB CAS, TCP on :8080
-- **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1 bundled
-- **SU(2)→SU(N) relabel DONE** — hotspring-qcd-sun live across 10 files
-- **cellMembrane `plasmid.fetch --source forgejo` FIXED** — sovereign deploy path
-- **toadStool S370** — WASM compute (15 crates on wasm32), 16 deployment targets
-- **SSH key discipline ENFORCED** — zero `github` remotes ecosystem-wide
-- **Cascade auto-push** to golgi operational. synced=15, zero drift.
+**Wave 157a — Vertebrate Evolution:**
+- **3 P0s OPEN** — westGate 7-session retrospective exposed critical gaps
+  - **P0-A**: bearDog depot binary health-only stub (all spine commits unsigned)
+  - **P0-B**: nestGate `content.ingest` doesn't exist (API surface diverged)
+  - **P0-C**: biomeOS FD leak (14→58K FDs, `capability.call` unusable)
+- **Mesh code-complete, production-blocked** by P0-C
+- **Vertebrate evolution** — primals self-audit RPC surfaces, abstract shared traits
+- **westGate** — 989K files braided, 153 datasets, 3.3 TB, 14/14 services
+- **songBird** — 9 transports → shared `Transport` trait. songBird 24 MB FIXED.
+- **petalTongue** — doom-core → ludoSpring. 656 deps convergence.
+- **toadStool S371** — WASM split 24/48. `core` 272K natural split.
+- **Vine-bat OPERATIONAL** — gossip.spread → metadata.analyze → accept/reject
 - **arXiv 41/42** — validate.sh wiring + freeze/sign remain
 
 **Previous era (Wave 155n → 155v):**

@@ -12,9 +12,9 @@
 
 > ecoPrimals produces self-contained scientific computations that reproduce
 > published results on owned commodity hardware and carry their validation
-> and provenance with them. 15 composable programs (primals), 9 validation
+> and provenance with them. 16 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 11 gates online. 135K+ tests. 13/13 GREEN. 3.21 TB science data. 6/6 NUCLEUS gates redeployed. NG-05 CLOSED. QCD pseudoSpore PACKAGED. arXiv 41/42. Pure Rust, AGPL-3.0-or-later.
+> 11 gates online. 135K+ tests. 13/13 GREEN. 3.3 TB science data. Vertebrate evolution: 3 P0s (bearDog sign stub, nestGate API mismatch, biomeOS FD leak). Mesh code-complete, production-blocked. Primals self-audit RPC surfaces. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
