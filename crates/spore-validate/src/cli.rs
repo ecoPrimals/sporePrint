@@ -192,7 +192,11 @@ pub enum Command {
     PtStatus,
 
     /// Probe Tower primals for P1 method availability
-    TowerStatus,
+    TowerStatus {
+        /// External TOML probe definition file (overrides embedded G69 baseline)
+        #[arg(long)]
+        probes: Option<std::path::PathBuf>,
+    },
 
     /// Request a visualization from petalTongue (SVG or scene-JSON)
     PtViz {

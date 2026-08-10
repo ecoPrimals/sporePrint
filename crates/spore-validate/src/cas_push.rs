@@ -24,7 +24,7 @@
 //! ## Discovery
 //!
 //! `NestGate` socket path is discovered via `discovery::probe_socket`:
-//! 1. `NESTGATE_SOCKET` env var (explicit override)
+//! 1. `NESTGATE_SOCKET` env var (derived via `env_var_for_slug`)
 //! 2. `$BIOMEOS_SOCKET_DIR/nestgate.sock` (ecosystem standard)
 //! 3. `$XDG_RUNTIME_DIR/biomeos/nestgate.sock` (XDG fallback)
 
@@ -187,7 +187,7 @@ fn encode_file_payload(
     Ok(json!({
         "data": data_b64,
         "content_type": content_type,
-        "source": "sporePrint",
+        "source": crate::discovery::SELF.primal_id,
         "pipeline": "zola-build",
         "stored_by": "spore-validate cas-push",
         "metadata": metadata,

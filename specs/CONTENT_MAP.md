@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 9, 2026 3:55PM (Wave 157d — 338 pages, 25 sections. Zero P0. Depot unified + pruned. G69 lineage spec. Mesh-native build. 145K+ tests.)
+Last reviewed: August 10, 2026 1:20PM (Wave 157d — 338 pages, 25 sections. Zero P0. Depot unified + pruned. G69 lineage spec. spore-validate deep debt resolved. 116,930+ tests.)
 
 ## Sections
 
@@ -55,7 +55,7 @@ New in 150x: `tower_atomic.md` (Tower Atomic sovereign transport). Updated: `SOV
 
 | Page | What | Staleness risk |
 |------|------|----------------|
-| PRIMAL_CATALOG.md | All 15 primals — narrative identity, LOC, tests, coverage | Medium — versions, test counts |
+| PRIMAL_CATALOG.md | All 16 primals — narrative identity, LOC, tests, coverage | Medium — versions, test counts |
 | SPRING_CATALOG.md | All 9 springs — identity, headline results, phases, researcher map | Medium — check counts |
 | ECOSYSTEM_INVENTORY.md | Master repo inventory across all 4 orgs | Medium — new repos, status changes |
 | NUCLEUS_ARCHITECTURE.md | NUCLEUS composition model, atomics ladder, Neural API, Dark Forest | Low |
@@ -199,7 +199,7 @@ CI runs `spore-validate validate --check` + `zola check` before every deploy.
 ## Taxonomy-Generated Pages (not in content/)
 
 Zola generates these automatically from front matter `[taxonomies]` tags:
-- `/primals/` — index of all 15 primals
+- `/primals/` — index of all 16 primals
 - `/primals/{name}/` — cross-reference: every page that tags this primal
 - `/springs/` — index of all 9 springs
 - `/springs/{name}/` — cross-reference: every page that tags this spring

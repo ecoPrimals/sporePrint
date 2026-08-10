@@ -22,7 +22,11 @@ use std::path::{Path, PathBuf};
 fn resolve_transport_endpoint(
     socket_override: Option<&str>,
 ) -> Result<cas_push::TransportEndpoint, Error> {
-    discovery::resolve_primal_endpoint("nestgate", "NESTGATE_SOCKET", socket_override)
+    discovery::resolve_primal_endpoint(
+        "nestgate",
+        &discovery::env_var_for_slug("nestgate"),
+        socket_override,
+    )
 }
 
 /// Resolve a possibly-relative public directory to an absolute path.

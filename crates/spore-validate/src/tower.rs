@@ -19,30 +19,46 @@ use serde::Deserialize;
 use serde_json::{Value, json};
 use std::sync::LazyLock;
 
-/// A default Tower primal probe definition (from bundled TOML).
+/// A Tower primal probe definition (from bundled or external TOML).
 #[derive(Debug, Deserialize)]
-struct DefaultProbe {
+struct ProbeEntry {
     slug: String,
     methods: Vec<String>,
 }
 
 #[derive(Debug, Deserialize)]
-struct DefaultProbeFile {
-    probes: Vec<DefaultProbe>,
+struct ProbeFile {
+    probes: Vec<ProbeEntry>,
 }
 
 type ProbeList = Vec<(String, Vec<String>)>;
 
+/// G69 baseline: embedded Tower Atomic P1 probe definitions.
+///
+/// These are the stable P1 methods for the three Tower Atomic primals.
+/// Use `--probes <file.toml>` to override with an external definition
+/// (e.g., for extended deployments or non-standard primal sets).
 static DEFAULT_TOWER_PROBES: LazyLock<Result<ProbeList, String>> = LazyLock::new(|| {
     const EMBEDDED: &str = include_str!("../default_tower_probes.toml");
-    let file: DefaultProbeFile = toml::from_str(EMBEDDED)
-        .map_err(|e| format!("embedded default_tower_probes.toml: {e}"))?;
+    parse_probe_toml(EMBEDDED).map_err(|e| format!("embedded default_tower_probes.toml: {e}"))
+});
+
+fn parse_probe_toml(toml_str: &str) -> Result<ProbeList, String> {
+    let file: ProbeFile =
+        toml::from_str(toml_str).map_err(|e| format!("probe TOML parse error: {e}"))?;
     Ok(file
         .probes
         .into_iter()
         .map(|p| (p.slug, p.methods))
         .collect())
-});
+}
+
+/// Load a probe definition file from disk.
+pub fn load_probes_file(path: &std::path::Path) -> Result<ProbeList, String> {
+    let content = std::fs::read_to_string(path)
+        .map_err(|e| format!("reading {}: {e}", path.display()))?;
+    parse_probe_toml(&content)
+}
 
 /// Return the default Tower primal P1 readiness methods (fallback when profile has no `probe_methods`).
 fn default_tower_probes() -> Result<&'static [(String, Vec<String>)], String> {
@@ -76,17 +92,19 @@ pub struct TowerPrimalStatus {
 
 /// Probe Tower primals for P1 method availability.
 ///
-/// When a profile is provided, primals with `probe_methods` declared use those
-/// methods instead of the built-in defaults. This makes the probe table
-/// data-driven (from TOML profiles) rather than hardcoded in Rust.
+/// Resolution order for probe definitions:
+/// 1. `external_probes` (from `--probes` CLI flag)
+/// 2. Profile `probe_methods` (from NUCLEUS profile TOML)
+/// 3. Embedded G69 baseline (`default_tower_probes.toml`)
 pub fn probe_tower_status(
     profile: Option<&crate::nucleus::NucleusProfile>,
+    external_probes: Option<&[(String, Vec<String>)]>,
 ) -> Result<TowerStatus, String> {
-    let probe_targets = build_probe_targets(profile)?;
+    let probe_targets = build_probe_targets(profile, external_probes)?;
     let mut primals = Vec::new();
 
     for (slug, methods) in &probe_targets {
-        let env_var = format!("{}_SOCKET", slug.to_uppercase());
+        let env_var = discovery::env_var_for_slug(slug);
         let socket = discovery::probe_socket(slug, &env_var);
 
         let method_results: Vec<MethodProbe> = socket.as_ref().map_or_else(
@@ -118,12 +136,17 @@ pub fn probe_tower_status(
     Ok(TowerStatus { primals })
 }
 
-/// Build the probe target list: profile-driven methods override defaults.
+/// Build the probe target list: external → profile → embedded defaults.
 ///
-/// Returns `Err` only if no profile is provided and the embedded probe TOML is corrupt.
+/// Returns `Err` only if no overrides are provided and the embedded probe TOML is corrupt.
 fn build_probe_targets(
     profile: Option<&crate::nucleus::NucleusProfile>,
+    external_probes: Option<&[(String, Vec<String>)]>,
 ) -> Result<Vec<(String, Vec<String>)>, String> {
+    if let Some(ext) = external_probes {
+        return Ok(ext.to_vec());
+    }
+
     if let Some(p) = profile {
         let mut targets: Vec<(String, Vec<String>)> = Vec::new();
         for (name, entry) in &p.primals {
@@ -272,7 +295,7 @@ mod tests {
 
     #[test]
     fn build_probe_targets_defaults_without_profile() {
-        let targets = build_probe_targets(None).unwrap();
+        let targets = build_probe_targets(None, None).unwrap();
         assert_eq!(targets.len(), 3);
         assert_eq!(targets[0].0, "beardog");
         assert!(!targets[0].1.is_empty());
@@ -306,7 +329,7 @@ mod tests {
             mesh: None,
         };
 
-        let targets = build_probe_targets(Some(&profile)).unwrap();
+        let targets = build_probe_targets(Some(&profile), None).unwrap();
         assert_eq!(targets.len(), 1);
         assert_eq!(targets[0].0, "custom_primal");
         assert_eq!(targets[0].1, vec!["custom.method", "custom.other"]);
@@ -340,7 +363,7 @@ mod tests {
             mesh: None,
         };
 
-        let targets = build_probe_targets(Some(&profile)).unwrap();
+        let targets = build_probe_targets(Some(&profile), None).unwrap();
         assert_eq!(
             targets.len(),
             3,
@@ -366,6 +389,33 @@ mod tests {
     #[test]
     fn summarize_result_none() {
         assert!(summarize_result(None).is_none());
+    }
+
+    #[test]
+    fn build_probe_targets_uses_external_probes() {
+        let external = vec![
+            ("myprimal".to_string(), vec!["my.method".to_string()]),
+        ];
+        let targets = build_probe_targets(None, Some(&external)).unwrap();
+        assert_eq!(targets.len(), 1);
+        assert_eq!(targets[0].0, "myprimal");
+    }
+
+    #[test]
+    fn parse_probe_toml_roundtrip() {
+        let toml = r#"
+[[probes]]
+slug = "alpha"
+methods = ["a.one", "a.two"]
+
+[[probes]]
+slug = "beta"
+methods = ["b.one"]
+"#;
+        let probes = parse_probe_toml(toml).unwrap();
+        assert_eq!(probes.len(), 2);
+        assert_eq!(probes[0].0, "alpha");
+        assert_eq!(probes[1].1, vec!["b.one"]);
     }
 
     #[test]

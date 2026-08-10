@@ -2,11 +2,11 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 9, 2026 3:55PM (Wave 157d — Depot Unified + G69 Lineage Spec)
+Last reviewed: August 10, 2026 1:20PM (Wave 157d — Deep Debt Resolved)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 145,000+ tests, 11 gates online, NUCLEUS 13/13+ GREEN, **ZERO P0**. 3.3 TB / 153 datasets. 16 primals. Depot unified + pruned (60 binaries, 4 arches). G69 lineage spec. Mesh-native build. Neural API unblocked (13,910 caps).
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, 116,930+ tests, 11 gates online, NUCLEUS 13/13+ GREEN, **ZERO P0**. 3.3 TB / 153 datasets. 16 primals. Depot unified + pruned (60 binaries, 4 arches). G69 lineage spec. Mesh-native build. Neural API unblocked (13,910 caps). spore-validate deep debt resolved.
 
-**Wave 157d — Depot Unified + G69 Lineage Spec:**
+**Wave 157d — Depot Unified + G69 + Deep Debt:**
 - **ZERO P0** — all 3 resolved: bearDog (`766951004`), nestGate (stale depot), biomeOS FD (`6a51638d`)
 - **Depot unified + pruned** — 60 primal binaries, 4 arches, BLAKE3SUMS all. G69 lineage spec.
 - **Build system mesh-native** — blueGate primary (`builder.serve :9800`), 14/14 vertebrate (23 min)
@@ -17,6 +17,7 @@ Last reviewed: August 9, 2026 3:55PM (Wave 157d — Depot Unified + G69 Lineage 
 - **strandGate** — 13/13 ALIVE. Silicon Fold AAR: 15/15 units, AMD 20x root cause
 - **sporeGate** — 15/15 ALIVE. 13,910 caps. Topology owner.
 - **arXiv 41/42** — validate.sh wiring + freeze/sign remain
+- **spore-validate deep debt** — WELL_KNOWN_PEERS removed (pure runtime discovery), `env_var_for_slug()` centralized, Forgejo-first default, `--probes` CLI for tower, monorepo tests gated, hero-sub templated, stale totals fixed
 
 **Previous era (Wave 155n → 155v):**
 - K-Derm DNS COMPLETE, 13/13 GREEN, biomeOS v4.57 cell attach SHIPPED

@@ -115,37 +115,25 @@ pub struct DiscoveredPeer {
     pub capabilities: Vec<String>,
 }
 
-/// Peers with dedicated env var overrides — used as first-phase discovery
-/// hints before directory scanning. Additional peers are discovered via
-/// socket dir scanning regardless of whether these resolve.
+/// Derive the canonical env var name for a primal slug.
 ///
-/// The env var naming convention (`{SLUG}_SOCKET`) is an ecosystem standard;
-/// any primal following it will be discoverable without being listed here.
-/// Tower Atomic primals (beardog, songbird, skunkbat) are included because
-/// `tower-status` probes them and they are core infrastructure.
-const WELL_KNOWN_PEERS: &[(&str, &str)] = &[
-    ("beardog", "BEARDOG_SOCKET"),
-    ("songbird", "SONGBIRD_SOCKET"),
-    ("skunkbat", "SKUNKBAT_SOCKET"),
-    ("nestgate", "NESTGATE_SOCKET"),
-    ("petaltongue", "PETALTONGUE_SOCKET"),
-    ("sweetgrass", "SWEETGRASS_SOCKET"),
-    ("squirrel", "SQUIRREL_SOCKET"),
-];
+/// Ecosystem standard: `{SLUG_UPPER}_SOCKET` (e.g., `nestgate` → `NESTGATE_SOCKET`).
+#[must_use]
+pub fn env_var_for_slug(slug: &str) -> String {
+    format!("{}_SOCKET", slug.to_uppercase())
+}
 
-/// Build the peer hint list, extending well-known peers with any additional
-/// slugs configured via `SPOREPRINT_EXTRA_PEERS` (comma-separated slug list).
+/// Build the peer hint list from `SPOREPRINT_EXTRA_PEERS` (comma-separated).
 ///
-/// Each extra slug derives its env var as `{SLUG_UPPER}_SOCKET`.
+/// Peers are discovered at runtime via socket directory scanning. This function
+/// provides explicit hints for primals whose sockets may not be in a standard
+/// directory. Each slug derives its env var via `env_var_for_slug`.
 fn peer_hints() -> Vec<(String, String)> {
-    let mut hints: Vec<(String, String)> = WELL_KNOWN_PEERS
-        .iter()
-        .map(|&(slug, var)| (slug.to_string(), var.to_string()))
-        .collect();
+    let mut hints = Vec::new();
 
     if let Ok(extra) = std::env::var(crate::paths::ENV_EXTRA_PEERS) {
         for slug in extra.split(',').map(str::trim).filter(|s| !s.is_empty()) {
-            let var = format!("{}_SOCKET", slug.to_uppercase());
+            let var = env_var_for_slug(slug);
             if !hints.iter().any(|(s, _)| s == slug) {
                 hints.push((slug.to_string(), var));
             }
@@ -158,11 +146,13 @@ fn peer_hints() -> Vec<(String, String)> {
 /// Discover available peer primals from the environment.
 ///
 /// Two-phase discovery:
-/// 1. Probe well-known peers via their dedicated env vars
-/// 2. Scan socket directories for any additional primal sockets
+/// 1. Probe explicit hints from `SPOREPRINT_EXTRA_PEERS` env var
+/// 2. Scan socket directories for any primal sockets (`{slug}.sock`)
 ///
-/// Capabilities are not assumed — discovered peers report empty capabilities
-/// until a `primal.announce` handshake populates them at runtime.
+/// Any primal following the `{slug}.sock` socket convention is auto-discovered
+/// without needing to be listed anywhere. Capabilities are not assumed —
+/// discovered peers report empty capabilities until a `primal.announce`
+/// handshake populates them at runtime.
 pub fn discover_peers() -> Vec<DiscoveredPeer> {
     let mut peers = Vec::new();
     let mut seen_slugs = std::collections::HashSet::new();
@@ -394,24 +384,20 @@ mod tests {
     }
 
     #[test]
-    fn peer_hints_includes_well_known() {
+    fn peer_hints_empty_without_env() {
         let hints = peer_hints();
-        for slug in ["beardog", "songbird", "skunkbat", "nestgate", "petaltongue", "sweetgrass", "squirrel"] {
-            assert!(
-                hints.iter().any(|(s, _)| s == slug),
-                "well-known {slug} should always be present"
-            );
-        }
+        assert!(
+            hints.is_empty()
+                || std::env::var(crate::paths::ENV_EXTRA_PEERS).is_ok(),
+            "peer_hints should be empty unless SPOREPRINT_EXTRA_PEERS is set"
+        );
     }
 
     #[test]
-    fn peer_hints_deduplicates() {
-        let hints = peer_hints();
-        let slugs: Vec<&str> = hints.iter().map(|(s, _)| s.as_str()).collect();
-        let mut deduped = slugs.clone();
-        deduped.sort_unstable();
-        deduped.dedup();
-        assert_eq!(slugs.len(), deduped.len(), "peer_hints has duplicates");
+    fn env_var_for_slug_derives_correctly() {
+        assert_eq!(env_var_for_slug("nestgate"), "NESTGATE_SOCKET");
+        assert_eq!(env_var_for_slug("beardog"), "BEARDOG_SOCKET");
+        assert_eq!(env_var_for_slug("petaltongue"), "PETALTONGUE_SOCKET");
     }
 
     #[test]

@@ -8,20 +8,21 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 9, 2026 — Wave 157d, DEPOT UNIFIED + G69 LINEAGE SPEC)
+## Current State (August 10, 2026 — Wave 157d, DEEP DEBT RESOLVED)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
-- **`spore-validate` v0.3.1** — 34-module Rust crate, 283 tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Ecosystem totals**: 3.60M LOC, 145,000+ tests (16 primals + 9 springs), 43 repos
+- **`spore-validate` v0.3.1** — 34-module Rust crate, 283+ tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
+- **Deep debt resolved**: WELL_KNOWN_PEERS removed, Forgejo-first forge default, tower probes externally overridable, env_var_for_slug helper, self-identity centralized
+- **Ecosystem totals**: 3.60M LOC, 116,930+ tests (16 primals + 9 springs), 43 repos
 - **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0.**
 - **Depot unified + pruned**: 60 primal binaries, 4 arches, BLAKE3SUMS. G69 lineage spec.
 - **Build system mesh-native**: blueGate primary, sporeGate fallback, eastGate tertiary
 - **Neural API unblocked**: `capability.call` fleet-wide. 13,910 caps.
 - **arXiv 41/42**: validate.sh + freeze/sign remain
 
-### Wave 157d — Depot Unified + G69 Lineage Spec
+### Wave 157d — Depot Unified + G69 + Deep Debt
 - **ZERO P0** — all 3 resolved: bearDog, nestGate (stale depot), biomeOS FD (`6a51638d`)
 - **Depot unified + pruned** — 60 binaries, 4 arches, test/demo/bench pruned
 - **G69 lineage spec** — binary evolution via provenance trio (CAS/spine/braid)
@@ -31,6 +32,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **coralReef** — 18/18 IPC, integer subgroup fix, 3,702 tests
 - **cellMembrane** — G69 `depot.prune`, deep debt, 1,347 tests
 - **strandGate 13/13 ALIVE** — Silicon Fold AAR, AMD 20x root cause
+- **spore-validate deep debt** — WELL_KNOWN_PEERS removed (pure runtime discovery), `env_var_for_slug()` helper, Forgejo-first forge default, tower `--probes` CLI, monorepo tests gated, hero-sub templated, stale test totals fixed
 
 ### Previous Eras
 - **157a early**: G68 convergence, SSH key discipline, trust surfaces LIVE

@@ -61,7 +61,9 @@ pub const ENV_PLASMIDBIN_CHECKSUMS: &str = "PLASMIDBIN_CHECKSUMS";
 pub const ENV_EXTRA_PEERS: &str = "SPOREPRINT_EXTRA_PEERS";
 
 /// Default forge URL when `SPOREPRINT_FORGE_URL` is not set.
-pub const DEFAULT_FORGE_URL: &str = "https://github.com";
+/// Forgejo (`git.primals.eco`) is the sovereign primary; GitHub access
+/// requires explicit `SPOREPRINT_FORGE_URL=https://github.com` override.
+pub const DEFAULT_FORGE_URL: &str = "https://git.primals.eco";
 
 /// Default weight for rendered notebook pages (positions in lab section).
 pub const NOTEBOOK_DEFAULT_WEIGHT: u32 = 50;

@@ -5,6 +5,40 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.31.0] — 2026-08-10 — spore-validate Deep Debt Evolution
+
+**Systematic deep debt resolution: hardcoded ecosystem knowledge evolved to
+capability-based runtime discovery. Forgejo-first forge default. Tower probes
+externally overridable. Stale test totals and hero-sub data fixed.**
+
+### Changed
+
+- **discovery.rs** — removed `WELL_KNOWN_PEERS` hardcoded 7-primal array; peer
+  discovery is now pure runtime via socket dir scan + `SPOREPRINT_EXTRA_PEERS` env var
+- **discovery.rs** — added `env_var_for_slug()` public helper; all scattered
+  `"PETALTONGUE_SOCKET"` / `"NESTGATE_SOCKET"` strings in dispatch.rs, commands.rs,
+  petaltongue.rs replaced with derived env vars
+- **cas_push.rs** — replaced hardcoded `"sporePrint"` source identity with
+  `discovery::SELF.primal_id`
+- **paths.rs** — `DEFAULT_FORGE_URL` changed from `github.com` to `git.primals.eco`
+  (Forgejo sovereign primary); GitHub access requires explicit env override
+- **tower.rs** — added `--probes <file.toml>` CLI flag for external probe definitions;
+  embedded `default_tower_probes.toml` documented as G69 baseline
+- **nucleus.rs** — cross-repo test paths gated behind `#[ignore]` (monorepo layout)
+- **templates/index.html** — hero-sub `3.21 TB` replaced with Tera template variable
+  `config.extra.totals.data_volume`; added `data_volume` key to config.toml
+- **config.toml** — fixed stale test totals (primal 105,242, spring 11,688, total 116,930+)
+- **fetch.rs** — tests updated to use `DEFAULT_FORGE_URL` constant instead of
+  hardcoded GitHub URLs
+
+### Metrics
+
+- Unit tests: 251 passed, 2 ignored (monorepo), 0 failed
+- Integration tests: 29 passed, 6 ignored (server), 0 failed
+- Zero new dependencies added
+
+---
+
 ## [3.30.0] — 2026-08-09 — Depot Unified + G69 Lineage Spec (Wave 157d)
 
 **ZERO P0. Depot unified + pruned (60 binaries, 4 arches). G69 depot lineage spec.

@@ -14,7 +14,7 @@
 //! ## Transport
 //!
 //! Uses the same `TransportEndpoint` injection pattern as `cas_push`.
-//! Discovery via `probe_socket("petaltongue", "PETALTONGUE_SOCKET")`.
+//! Discovery via `probe_socket("petaltongue", &env_var_for_slug("petaltongue"))`.
 //!
 //! ## Protocol
 //!
@@ -285,8 +285,11 @@ impl PetalTongueClient {
 
 /// Quick status check: connect, announce, probe key methods.
 pub fn status() -> Result<PetalTongueStatus, Error> {
-    let endpoint =
-        crate::discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", None)?;
+    let endpoint = crate::discovery::resolve_primal_endpoint(
+        "petaltongue",
+        &crate::discovery::env_var_for_slug("petaltongue"),
+        None,
+    )?;
     let socket = match &endpoint {
         TransportEndpoint::Uds { path } => path.clone(),
         TransportEndpoint::Tcp { host, port } => format!("{host}:{port}"),
@@ -360,8 +363,11 @@ mod tests {
 
     #[test]
     fn resolve_endpoint_returns_result() {
-        let result =
-            crate::discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", None);
+        let result = crate::discovery::resolve_primal_endpoint(
+            "petaltongue",
+            &crate::discovery::env_var_for_slug("petaltongue"),
+            None,
+        );
         assert!(result.is_ok() || result.is_err());
     }
 

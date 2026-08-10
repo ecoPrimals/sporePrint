@@ -655,25 +655,23 @@ role = "undefined_role"
     }
 
     #[test]
+    #[ignore = "requires monorepo layout (../../infra/plasmidBin/profiles/)"]
     fn parse_real_irongate_profile() {
         let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
             .join("../../infra/plasmidBin/profiles/irongate-full.toml");
-        if path.exists() {
-            let profile = parse_profile(&path).unwrap();
-            assert_eq!(profile.profile.name, "irongate-full");
-            assert_eq!(profile.primals.len(), 13);
-        }
+        let profile = parse_profile(&path).unwrap();
+        assert_eq!(profile.profile.name, "irongate-full");
+        assert_eq!(profile.primals.len(), 13);
     }
 
     #[test]
+    #[ignore = "requires monorepo layout (../../infra/plasmidBin/profiles/)"]
     fn parse_real_flockgate_profile() {
         let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
             .join("../../infra/plasmidBin/profiles/flockgate-wan.toml");
-        if path.exists() {
-            let profile = parse_profile(&path).unwrap();
-            assert_eq!(profile.profile.name, "flockgate-wan");
-            assert_eq!(profile.primals.len(), 13);
-            assert!(profile.mesh.as_ref().unwrap().federation_enabled.unwrap());
-        }
+        let profile = parse_profile(&path).unwrap();
+        assert_eq!(profile.profile.name, "flockgate-wan");
+        assert_eq!(profile.primals.len(), 13);
+        assert!(profile.mesh.as_ref().unwrap().federation_enabled.unwrap());
     }
 }

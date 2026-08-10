@@ -1,6 +1,6 @@
-generated = "2026-08-01T22:34:41Z"
-root_hash = "d4ad450e8b5db0d15766e70c4403e06ffad4986bbeec68ddf643b4b8b51fc877"
-page_count = 345
+generated = "2026-08-10T17:17:51Z"
+root_hash = "ad3c6855de5e2108e8286b31518ee1bd13778eefcfd5f6308af2157c1c0b3e8f"
+page_count = 364
 
 [pages."_index.md"]
 blake3 = "1a28d5ca9def9035a60377a6dab6649f36e0c3da4ef9c8aa134b90cf6b4650b4"
@@ -134,7 +134,7 @@ fold = "architecture"
 maturity = "live"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
-blake3 = "d19e723985a2f3505ff220755b25b9f70d2412f615c73086bc893ae8f0cdda21"
+blake3 = "d7a1ee4f5d58ae6bcd78c7d8be65c94beda884ceb0fc87c41f4e778f8403b16a"
 size_bytes = 55199
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 section = "architecture"
@@ -606,6 +606,141 @@ size_bytes = 1660
 title = "Contact"
 section = "contact.md"
 
+[pages."data/_index.md"]
+blake3 = "1897ab509b97cbf2816604fb1b1dbdc81eb6d93a70af88a44734b7fb750372a2"
+size_bytes = 7997
+title = "Data Braids — Federated Science Catalog"
+section = "data"
+fold = "pseudospore"
+
+[pages."data/agriculture.md"]
+blake3 = "0bcee88d577eba31f60f8db85bb93c3407f9202f7297f6114721c7c82eaf6f66"
+size_bytes = 2034
+title = "Agriculture — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/analytical-chemistry.md"]
+blake3 = "bb250455e23cf307471a1916c93ac03eeb6102c9b80c8645bb337a8963aa2dc9"
+size_bytes = 1951
+title = "Analytical Chemistry — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/biosignals.md"]
+blake3 = "bbd53289dfdd3d5686d067b4cd54059104b8dd4ce2fd924cdfcf227426ebb09a"
+size_bytes = 1888
+title = "Biosignals — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/cancer-genomics.md"]
+blake3 = "38b868bd74cc9ad0e4b827489b0b6f0f2ddadac12544e8d72b09ee954470e5f7"
+size_bytes = 2257
+title = "Cancer Genomics — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/disease-ontology.md"]
+blake3 = "8f8d1fa4fdab6f7d4d08f5249fc1ecc350a722e48fdfadabe4a9300ce2aef78d"
+size_bytes = 3527
+title = "Disease Ontology — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/drug-discovery.md"]
+blake3 = "02fba07474e2c8e0254c16a542cbd6128f19bfc8002f1c542aaacd93e8e1d04b"
+size_bytes = 7977
+title = "Drug Discovery — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/environmental.md"]
+blake3 = "bcc94d102993703922d4ba5bc4ba8a8c9889f1af73b66601577e7f7ad0c77461"
+size_bytes = 3346
+title = "Environmental — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/gene-expression.md"]
+blake3 = "7b65d8890539a29e408e2cc06ccbc4c5f52a2b812552e91ae1a54ae42b89a331"
+size_bytes = 5271
+title = "Gene Expression — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/genomic-reference.md"]
+blake3 = "15eb359f30dabac032fab65b05802b9b43a8ca3e75144133cbc09262a812b7d8"
+size_bytes = 3614
+title = "Genomic Reference — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/microbial-evolution.md"]
+blake3 = "565e302174f929d65d0739460140472b8d2e9aca3714d5efc697187da9e2e65f"
+size_bytes = 3397
+title = "Microbial Evolution — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/nuclear-physics.md"]
+blake3 = "1c7fda28723fd56e679e5f0399a9fe5f72566c865fee0240c8e061f34aebd73e"
+size_bytes = 2281
+title = "Nuclear Physics — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/possible.md"]
+blake3 = "4a4a2f5b8c8a8b9b79c8e2d693692a2641ade780b1e443d2a33b5998e5abfb49"
+size_bytes = 7363
+title = "What's Possible — Dataset Combinations"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/proteomics.md"]
+blake3 = "4eca6f37da458d76a643ff3898cf9ea95cdbaf848254799ca1107791cf468fdb"
+size_bytes = 3425
+title = "Proteomics — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/provenance.md"]
+blake3 = "5a6153ab877a90af9f54c7c39b06bbdf7e99861aa13de300b982a1f85b958c15"
+size_bytes = 8965
+title = "How Braids Work — The Provenance Pipeline"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/structural-biology.md"]
+blake3 = "0ee89f4c2d46ac1e8d35c450dd5077b25449f20ca8fa6b8fce7ddb08a5cb7e77"
+size_bytes = 6318
+title = "Structural Biology — Data Braids"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."data/transplant.md"]
+blake3 = "830998d213a6d1087dfda1ca9dfe11b7a479c96b6c5953e81b8d5abe5e2b63d2"
+size_bytes = 6572
+title = "Transplant — Carry the Data With You"
+section = "data"
+fold = "pseudospore"
+maturity = "live"
+
 [pages."foundation/_index.md"]
 blake3 = "f8ed62e862614671780a299b5d76309582831f8c542ba050aecee25aca4b12c9"
 size_bytes = 2070
@@ -620,7 +755,7 @@ section = "getting-started"
 fold = "getting-started"
 
 [pages."glossary/_index.md"]
-blake3 = "ee90b719d2301ea12498689ec2b74a715e5349c116aa181ed9a699ed389b2d74"
+blake3 = "b951bdb12e406132edc00532f30f67c02af63eb07ad320b817254285e0da67ba"
 size_bytes = 11336
 title = "Glossary"
 section = "glossary"
@@ -717,8 +852,8 @@ fold = "evidence"
 maturity = "live"
 
 [pages."lab/gate-status.md"]
-blake3 = "1708d993d52a41c98e1fd06c69216ef13731b42116e6f8412f7b03e03622163b"
-size_bytes = 2314
+blake3 = "651fed08918e5badb70c808e4a7f158d817cc1d07184987e57a2ceaee6980c3a"
+size_bytes = 8203
 title = "Gate Status"
 section = "lab"
 fold = "evidence"
@@ -733,8 +868,8 @@ fold = "evidence"
 trails = ["reproducibility"]
 
 [pages."lab/gpu-compute-live.md"]
-blake3 = "7cdc71b410f67e37344152575e5df6f31106513f9b2b048b1afad58f0018c664"
-size_bytes = 3683
+blake3 = "91f512ccf631f83205430c63bbff5cea81d35a718c1588f9242e78c2f4a9940c"
+size_bytes = 3663
 title = "GPU Compute — Live Evidence"
 section = "lab"
 fold = "evidence"
@@ -2228,16 +2363,32 @@ companions = [
 ]
 
 [pages."pseudospore/_index.md"]
-blake3 = "18287449d53babaf7703334b345ce5f0083c683f777c9b62911b9a34f57f7b50"
-size_bytes = 6696
+blake3 = "20d413d54e6482d6f59c0c031e4ae01fadd651301d2389b72c0d376d20703ab8"
+size_bytes = 7444
 title = "pseudoSpore — Sovereign Science Data"
 section = "pseudospore"
 fold = "pseudospore"
 
+[pages."pseudospore/hotspring-qcd-sun-audit.md"]
+blake3 = "b978c585d8ef98540f57b98bd92d15a64ca9453e85ffc715dd4d81609c8e36d1"
+size_bytes = 14288
+title = "Computation Audit Trail: hotSpring QCD"
+section = "pseudospore"
+fold = "pseudospore"
+maturity = "live"
+
+[pages."pseudospore/hotspring-qcd-sun-paper.md"]
+blake3 = "9da4e200f0943e563cb6536a07be59d385e9a233e4a0ca2786b11cc93c50792a"
+size_bytes = 23695
+title = "arXiv Draft: Vendor-Agnostic Lattice QCD — SU(N) HMC on Consumer GPUs"
+section = "pseudospore"
+fold = "pseudospore"
+maturity = "live"
+
 [pages."pseudospore/hotspring-qcd-sun.md"]
-blake3 = "b3703ebaabe16ebb0de05ab20a6e7f08118c3bbba362bae0b16c684708b4e842"
-size_bytes = 5779
-title = "pseudoSpore: hotSpring QCD — SU(2) Lattice Gauge Theory"
+blake3 = "313dea2dcba241c2157a95942be0c411eae1574e776c9b495db775d31b0a7ff8"
+size_bytes = 9614
+title = "pseudoSpore: hotSpring QCD — SU(N) Lattice Gauge Theory"
 section = "pseudospore"
 fold = "pseudospore"
 maturity = "live"

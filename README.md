@@ -22,7 +22,7 @@ Gate pushes to Forgejo (golgi) → Sovereign CI
 ## Stack
 
 - **[Zola](https://www.getzola.org/) 0.22.1** — Rust static site generator (single binary, zero deps)
-- **`spore-validate`** — Rust validation + certification crate (34 modules, 283 tests, zero C deps)
+- **`spore-validate`** — Rust validation + certification crate (34 modules, 283+ tests, zero C deps)
 - **petalTongue viz pipeline** — Server-rendered SVG with WASM progressive enhancement
 - **Markdown + TOML front matter** — human-readable, AI-parseable content
 - **Custom theme** — Catppuccin Mocha/Latte, system fonts, dark/light, zero external deps
@@ -113,8 +113,9 @@ Top nav: **pseudoSpore | Data | Lab | Science | Architecture | Products | Get St
 ## spore-validate
 
 Pure Rust validation binary — `#![forbid(unsafe_code)]`, clippy pedantic+nursery
-zero warnings, 283 tests, 34 modules, zero C toolchain dependencies.
-Edition 2024, Rust 1.85+.
+zero warnings, 283+ tests, 34 modules, zero C toolchain dependencies.
+Edition 2024, Rust 1.85+. Deep debt resolved: runtime-only peer discovery,
+Forgejo-first forge default, externally overridable tower probes.
 
 | Subcommand | Purpose |
 |---|---|
@@ -137,7 +138,7 @@ Edition 2024, Rust 1.85+.
 | `depot-verify` | BLAKE3 integrity check of depot binaries against checksums.toml |
 | `depot-list-arches` | Inventory available architectures and binary counts |
 | `pt-render`, `pt-status`, `pt-viz` | petalTongue IPC visualization commands |
-| `tower-status` | Probe Tower primals for P1 method availability |
+| `tower-status [--probes]` | Probe Tower primals for P1 method availability (G69 baseline, external override) |
 | `build-viz` | Generate static SVG visualizations via petalTongue IPC |
 
 ## Self-Certification (guideStone)
@@ -148,7 +149,7 @@ Merkle root of the entity graph, and content page totals.
 
 ```bash
 # Verify the site independently:
-git clone https://github.com/ecoPrimals/sporePrint.git && cd sporePrint
+git clone https://git.primals.eco/ecoPrimals/sporePrint.git && cd sporePrint
 cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 # Compare graph_merkle with https://sporeprint.primals.eco/certification/manifest.json
 ```
@@ -157,7 +158,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 
 | Org | Purpose | Repos |
 |-----|---------|-------|
-| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 16 primals + tooling | 17 (145K+ tests) |
+| [ecoPrimals](https://github.com/ecoPrimals) | Infrastructure — 16 primals + tooling | 17 (116K+ tests) |
 | [syntheticChemistry](https://github.com/syntheticChemistry) | Science validation — 9 springs | 9 |
 | [sporeGarden](https://github.com/sporeGarden) | Products — infrastructure compositions | 11 |
 | [protoKarya](https://github.com/protoKarya) | Protists — wider-world compositions | 6 |
@@ -182,6 +183,7 @@ cargo run --manifest-path crates/spore-validate/Cargo.toml -- certify
 - [x] Depot UNIFIED + PRUNED — 60 binaries, 4 arches, BLAKE3SUMS, G69 lineage spec (Wave 157d)
 - [x] Build system MESH-NATIVE — blueGate primary, Tower Atomic dispatch (Wave 157d)
 - [x] Neural API UNBLOCKED — `capability.call` fleet-wide, 13,910 caps (Wave 157d)
+- [x] spore-validate DEEP DEBT — WELL_KNOWN_PEERS removed, Forgejo-first, tower probes external, env_var_for_slug (Wave 157d)
 - [ ] petalTongue renders live dashboards from primal APIs (G19)
 - [ ] arXiv 41/42 — validate.sh + freeze/sign v1.0.0-rung1 remain
 

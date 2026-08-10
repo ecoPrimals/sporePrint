@@ -37,7 +37,9 @@ pub fn dispatch_standalone(cli: &Cli) -> Option<Result<(), Error>> {
             socket,
         }) => Some(run_pt_render(path, modality.as_deref(), socket.as_deref())),
         Some(Command::PtStatus) => Some(run_pt_status()),
-        Some(Command::TowerStatus) => Some(run_tower_status()),
+        Some(Command::TowerStatus { probes }) => {
+            Some(run_tower_status(probes.as_deref()))
+        }
         Some(Command::PtViz {
             name,
             format,
@@ -71,13 +73,16 @@ fn run_pt_render(
     modality: Option<&str>,
     socket_override: Option<&str>,
 ) -> Result<(), Error> {
-    let endpoint =
-        discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", socket_override)?;
+    let endpoint = discovery::resolve_primal_endpoint(
+        "petaltongue",
+        &discovery::env_var_for_slug("petaltongue"),
+        socket_override,
+    )?;
 
     let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
 
     let graph = load_entity_graph_for_render(&client_root())?;
-    let session_id = format!("sporePrint-render-{path}");
+    let session_id = format!("{}-render-{path}", discovery::SELF.primal_id);
     let result = client.render_graph(&session_id, &graph, modality)?;
 
     println!("sporePrint: petalTongue render.graph");
@@ -140,8 +145,13 @@ fn run_pt_status() -> Result<(), Error> {
 
 /// Run Tower P1 readiness probe.
 #[allow(clippy::unnecessary_wraps)]
-fn run_tower_status() -> Result<(), Error> {
-    let status = tower::probe_tower_status(None)
+fn run_tower_status(probes_file: Option<&std::path::Path>) -> Result<(), Error> {
+    let external_probes = probes_file
+        .map(tower::load_probes_file)
+        .transpose()
+        .map_err(|e| Error::Config(format!("tower probe file: {e}")))?;
+
+    let status = tower::probe_tower_status(None, external_probes.as_deref())
         .map_err(|e| Error::Config(format!("tower probe config: {e}")))?;
     tower::print_tower_status(&status);
     Ok(())
@@ -159,8 +169,11 @@ fn run_pt_viz(name: &str, format: &str, socket_override: Option<&str>) -> Result
         }
     };
 
-    let endpoint =
-        discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", socket_override)?;
+    let endpoint = discovery::resolve_primal_endpoint(
+        "petaltongue",
+        &discovery::env_var_for_slug("petaltongue"),
+        socket_override,
+    )?;
 
     let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
     let result = client.viz(name, viz_format)?;
@@ -192,8 +205,11 @@ pub fn run_build_viz(socket_override: Option<&str>) -> Result<(), Error> {
         viz_names.len()
     );
 
-    let endpoint =
-        discovery::resolve_primal_endpoint("petaltongue", "PETALTONGUE_SOCKET", socket_override)?;
+    let endpoint = discovery::resolve_primal_endpoint(
+        "petaltongue",
+        &discovery::env_var_for_slug("petaltongue"),
+        socket_override,
+    )?;
 
     let mut client = petaltongue::PetalTongueClient::connect(&endpoint)?;
 
@@ -284,7 +300,7 @@ pub fn dispatch_with_config(cli: &Cli, root: &Path) -> Result<(), Error> {
             | Command::DepotVerify { .. }
             | Command::PtRender { .. }
             | Command::PtStatus
-            | Command::TowerStatus
+            | Command::TowerStatus { .. }
             | Command::PtViz { .. }
             | Command::BuildViz { .. },
         ) => unreachable!("handled by dispatch_standalone"),

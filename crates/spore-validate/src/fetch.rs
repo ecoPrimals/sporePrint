@@ -66,7 +66,8 @@ enum ForgeKind {
 ///
 /// Priority: `SPOREPRINT_FORGE_KIND` env var (`github` | `forgejo`) → URL heuristic.
 /// The URL heuristic checks for `github.com`/`github.io` domains; all other
-/// hosts are treated as Forgejo/Gitea API-compatible.
+/// hosts (including `git.primals.eco`, the sovereign default) are treated as
+/// Forgejo/Gitea API-compatible.
 fn detect_forge_kind(forge_url: &str) -> ForgeKind {
     if let Ok(kind) = std::env::var("SPOREPRINT_FORGE_KIND") {
         return match kind.to_lowercase().as_str() {
@@ -469,7 +470,7 @@ origin = "ssh://git@git.primals.eco:2222/ecoPrimals/repo.git"
     }
 
     #[test]
-    fn source_clone_url_falls_back_to_github() {
+    fn source_clone_url_falls_back_to_default_forge() {
         let s = Source {
             repo: "ecoPrimals/bearDog".into(),
             origin: None,
@@ -477,12 +478,16 @@ origin = "ssh://git@git.primals.eco:2222/ecoPrimals/repo.git"
             private: false,
             branch: "main".into(),
         };
-        assert_eq!(s.clone_url(), "https://github.com/ecoPrimals/bearDog.git");
+        assert_eq!(
+            s.clone_url(),
+            format!("{}/ecoPrimals/bearDog.git", crate::paths::DEFAULT_FORGE_URL)
+        );
     }
 
     #[test]
     fn mock_backend_clones_successfully() {
-        let mock = MockBackend::new().with_clone_success("https://github.com/org/repo.git");
+        let url = format!("{}/org/repo.git", crate::paths::DEFAULT_FORGE_URL);
+        let mock = MockBackend::new().with_clone_success(&url);
 
         let sources: SourcesFile = toml::from_str(
             r#"
@@ -500,8 +505,8 @@ repo = "org/repo"
 
     #[test]
     fn mock_backend_reports_clone_failure() {
-        let mock =
-            MockBackend::new().with_clone_failure("https://github.com/org/repo.git", "auth denied");
+        let url = format!("{}/org/repo.git", crate::paths::DEFAULT_FORGE_URL);
+        let mock = MockBackend::new().with_clone_failure(&url, "auth denied");
 
         let sources: SourcesFile = toml::from_str(
             r#"

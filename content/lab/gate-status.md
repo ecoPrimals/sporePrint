@@ -1,6 +1,6 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 6/6 NUCLEUS, 13/13+ GREEN, 145K+ tests. Zero P0. Depot unified + pruned (60 binaries, 4 arches). G69 lineage spec. Mesh-native build. Neural API unblocked."
+description = "Current fleet status — 6/6 NUCLEUS, 13/13+ GREEN, 116,930+ tests. Zero P0. Depot unified + pruned (60 binaries, 4 arches). G69 lineage spec. Mesh-native build. Neural API unblocked."
 date = 2026-08-09
 weight = 2
 
@@ -120,7 +120,7 @@ P0-C fix deployed fleet-wide. Both call paths operational:
 | tideGlass | 214 | GREEN | 17 IPC methods. GPS converted. |
 | swarmVine | 124 | GREEN | 39→124 tests (82%). Windows port handoff filed. |
 
-**Total**: ~145,000+ tests. **13/13 GREEN.** 16/16 G68 prod-clean.
+**Total**: ~116,930+ tests. **13/13 GREEN.** 16/16 G68 prod-clean.
 
 ## Live Sites
 
