@@ -18,7 +18,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **4-gate gossip mesh LIVE**: westGate → sporeGate, eastGate, strandGate. Epidemic propagation.
 - **Gossip injection**: 6/16 primals LIVE (barraCuda 19 events fully wired, esotericWebb 2, songBird 1)
 - **hotSpring pseudoSpore E2E**: pure Rust pipeline shipped (compute → sign → register)
-- **darwinGate**: M4 Mac Mini arrived, first `aarch64-apple-darwin` target, GLACIAL→ACTIVE
+- **graftGate**: M4 Mac Mini arrived, first `aarch64-apple-darwin` target, GLACIAL→ACTIVE
 - **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
 - **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0. ZERO P1. 1 P2.**
 - **P2 braid.verify CLOSED** (sweetGrass behavioral tests)
@@ -33,7 +33,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **sweetGrass** — **P2 braid.verify CLOSED** (5 behavioral tests). Batch+verify extraction.
 - **Gossip injection 6/16** — barraCuda 19 events fully wired, esotericWebb 2, songBird 1. Was 3/16.
 - **hotSpring pseudoSpore E2E** — pure Rust: compute → manifest → bundle → sign → register.
-- **darwinGate** — M4 Mac Mini arrived. iPhone XS tethering. GLACIAL→ACTIVE.
+- **graftGate** — M4 Mac Mini arrived. iPhone XS tethering. GLACIAL→ACTIVE.
 - **Tier 2 queued** — HTTP→songBird, axum→0.8, wgpu→28, YAML unification.
 
 ### Previous (Wave 157g — Stadial Shift + 4-Gate Gossip Mesh)

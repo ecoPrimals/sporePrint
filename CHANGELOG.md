@@ -10,16 +10,16 @@ Format: `[version] — date — description`
 **G72 TIER 1 COMPLETE: 9/9 teams responded, ~114 crates shed fleet-wide. toadStool
 tokio 118→65 files. P2 braid.verify CLOSED (0/0/1). Gossip injection 6/16 LIVE
 (barraCuda 19 events). hotSpring pseudoSpore E2E pipeline shipped (pure Rust).
-darwinGate M4 arrived — GLACIAL→ACTIVE.**
+graftGate M4 arrived — GLACIAL→ACTIVE.**
 
 ### Changed
 
-- **Homepage** — hero-desc updated: G72 Tier 1 complete, gossip 6/16, pseudoSpore E2E, darwinGate M4
+- **Homepage** — hero-desc updated: G72 Tier 1 complete, gossip 6/16, pseudoSpore E2E, graftGate M4
 - **Gate status** — full rewrite: G72 Tier 1 table (9/9 teams with deps shed / impact),
   gossip injection 6/16 (barraCuda 19 events, esotericWebb 2, songBird 1), science
-  pipeline section (hotSpring pseudoSpore E2E), darwinGate section (M4 Mac Mini,
+  pipeline section (hotSpring pseudoSpore E2E), graftGate section (M4 Mac Mini,
   aarch64-apple-darwin), immediate post-pandemic work table, updated primal dashboard
-- **llms.txt** — G72 Tier 1 complete, gossip 6/16, pseudoSpore E2E, darwinGate
+- **llms.txt** — G72 Tier 1 complete, gossip 6/16, pseudoSpore E2E, graftGate
 - **config.toml** — measured_date updated to 2026-08-11
 - **All specs** — CONTEXT, EVOLUTION_QUEUE, CONTENT_MAP current at Wave 157i
 
@@ -32,7 +32,7 @@ darwinGate M4 arrived — GLACIAL→ACTIVE.**
 - Gossip injection: 6/16 primals LIVE (was 3/16)
 - Gossip mesh: 4-gate (sporeGate, eastGate, strandGate, westGate)
 - Science: hotSpring pseudoSpore E2E shipped (pure Rust)
-- darwinGate: M4 Mac Mini arrived, GLACIAL→ACTIVE
+- graftGate: M4 Mac Mini arrived, GLACIAL→ACTIVE
 
 ---
 

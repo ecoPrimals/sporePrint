@@ -4,7 +4,7 @@ Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
 Last reviewed: August 11, 2026 (Wave 157i — Pandemic Responds)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, 6/6 NUCLEUS gates, 13/13+ GREEN, **ZERO P0, ZERO P1, 1 P2**. 3.3 TB / 153 datasets. 16 primals. G72 Tier 1 COMPLETE (9/9 teams, ~114 crates shed). Gossip injection 6/16 LIVE. hotSpring pseudoSpore E2E shipped. darwinGate M4 arrived.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, 6/6 NUCLEUS gates, 13/13+ GREEN, **ZERO P0, ZERO P1, 1 P2**. 3.3 TB / 153 datasets. 16 primals. G72 Tier 1 COMPLETE (9/9 teams, ~114 crates shed). Gossip injection 6/16 LIVE. hotSpring pseudoSpore E2E shipped. graftGate M4 arrived.
 
 **Wave 157i — Pandemic Responds (G72 Tier 1 Complete):**
 - **G72 Tier 1 COMPLETE** — 9/9 teams responded. ~114 crates shed. toadStool tokio 118→65 (45% reduction).
@@ -18,7 +18,7 @@ Last reviewed: August 11, 2026 (Wave 157i — Pandemic Responds)
 - **wetSpring** — verified clean (pollster already removed V211).
 - **Gossip injection 6/16** — barraCuda 19 events fully wired, esotericWebb 2, songBird 1.
 - **hotSpring pseudoSpore E2E** — pure Rust pipeline: compute → manifest → bundle → sign → register.
-- **darwinGate** — M4 Mac Mini arrived. iPhone XS tethering. First `aarch64-apple-darwin`. GLACIAL→ACTIVE.
+- **graftGate** — M4 Mac Mini arrived. iPhone XS tethering. First `aarch64-apple-darwin`. GLACIAL→ACTIVE.
 - **Tier 2 queued** — HTTP→songBird, axum→0.8, wgpu→28, YAML unification.
 
 **Previous (Wave 157g — Stadial Shift + 4-Gate Gossip Mesh):**

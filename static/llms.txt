@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 16 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 6/6 NUCLEUS gates. ~150K+ tests. 13/13 GREEN. 3.3 TB science data. Zero P0. G72 Tier 1 COMPLETE: 9/9 teams, ~114 crates shed. Gossip injection 6/16 primals LIVE (barraCuda 19 events). hotSpring pseudoSpore E2E shipped. darwinGate M4 arrived. Pure Rust, AGPL-3.0-or-later.
+> 6/6 NUCLEUS gates. ~150K+ tests. 13/13 GREEN. 3.3 TB science data. Zero P0. G72 Tier 1 COMPLETE: 9/9 teams, ~114 crates shed. Gossip injection 6/16 primals LIVE (barraCuda 19 events). hotSpring pseudoSpore E2E shipped. graftGate M4 arrived. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -202,7 +202,7 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 27 signal graphs. ZERO P0s, P1s. 1 P2 (petalTongue port)
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **11 gates ONLINE** (darwinGate arriving — first `aarch64-apple-darwin`). G68 COMPLETE. **6/6 NUCLEUS gates redeployed**. Zero drift.
+- **11 gates ONLINE** (graftGate arriving — first `aarch64-apple-darwin`). G68 COMPLETE. **6/6 NUCLEUS gates redeployed**. Zero drift.
 - **NG-05 CLOSED**: westGate CAS federation — 26 capabilities, 2.5 TB CAS, TCP on :8080
 - **Trust surfaces LIVE**: `/api/content/stats`, `/pseudospore/` (bundles), `validate.sh`
 - **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1. SU(N) relabel DONE.

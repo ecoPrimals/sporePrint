@@ -11,7 +11,7 @@ maturity = "live"
 Current fleet status as of August 11, 2026 (Wave 157i — Pandemic Responds).
 G72 Tier 1 COMPLETE: 9/9 teams responded, ~114 crates shed fleet-wide.
 Gossip injection expanded to 6/16 primals. hotSpring pseudoSpore E2E shipped.
-darwinGate M4 arrived. Zero P0.
+graftGate M4 arrived. Zero P0.
 
 ## G72 Dependency Pandemic — Tier 1 COMPLETE
 
@@ -43,7 +43,7 @@ All 9 teams responded. ~114 crates shed fleet-wide. toadStool tokio 118→65 fil
 | **blueGate** | **13/13** | **BLOCKED** | NUCLEUS alive. No swarmVine on Windows. Needs MeshRelay. |
 | **southGate** | **13/13** | **BLOCKED** | NUCLEUS healthy. 4 upstream blockers. Needs depot rebuild. |
 | **eastGate** | overwatch + primalSpring | **MESH** (3-gate) | Overwatch (gate-agnostic). biome.yaml consumption DONE. |
-| **darwinGate** | — | **PENDING** | M4 Mac Mini arrived. Bootstrap imminent. `aarch64-apple-darwin`. |
+| **graftGate** | — | **PENDING** | M4 Mac Mini arrived. Bootstrap imminent. `aarch64-apple-darwin`. |
 
 ## Gossip Injection — 6/16 Primals LIVE (was 3/16)
 
@@ -68,7 +68,7 @@ Pure Rust pipeline shipped:
 - 32⁴ thermalization fix (dt 0.01→0.005, warmup 500→1500)
 - 10 gossip events defined (scaffold — not yet hooked)
 
-## darwinGate — M4 Mac Mini
+## graftGate — M4 Mac Mini
 
 **Hardware**: M4 Mac Mini (Apple Silicon, aarch64-apple-darwin)
 **Network**: iPhone XS tethering via USB
@@ -76,7 +76,7 @@ Pure Rust pipeline shipped:
 
 Setup: Bootstrap Rust toolchain → clone from Forgejo → self-compile Tower Atomic → gate enrollment → depot push → NUCLEUS lifecycle validation (launchd vs systemd).
 
-**darwinGate: GLACIAL → ACTIVE (G12).**
+**graftGate: GLACIAL → ACTIVE (G12).**
 
 ## Depot — Unified + Pruned (G69)
 
@@ -86,7 +86,7 @@ Setup: Bootstrap Rust toolchain → clone from Forgejo → self-compile Tower At
 | **x86_64-windows-gnu** | 16 | Current |
 | **x86_64-gnu** | 16 | Current |
 | **aarch64-musl** | 13 | Partially stale |
-| **aarch64-apple-darwin** | — | Pending (darwinGate) |
+| **aarch64-apple-darwin** | — | Pending (graftGate) |
 
 G69 lineage spec: binary evolution tracked via provenance trio (CAS/spine/braid).
 
@@ -136,7 +136,7 @@ Auto-prune. CAS archival operational (G69 Phase 1+2+3).
 |----------|------|-------|--------|
 | **HIGH** | **songBird MeshRelay** | songBird | Days — blueGate + southGate blocked |
 | **HIGH** | **Depot rebuild** with gossip + MeshRelay binaries | sporeGate | Hours |
-| **HIGH** | **darwinGate bootstrap** | overwatch + primalSpring | Days |
+| **HIGH** | **graftGate bootstrap** | overwatch + primalSpring | Days |
 | **HIGH** | **sourDough `convergence` + `rpc-surface` live CI** | cellMembrane + sourDough | Days |
 | **MED** | **G72 Tier 2**: HTTP→songBird, axum→0.8, wgpu→28 | Fleet-wide | Sprint |
 | **MED** | **Remaining gossip hooks** | hotSpring (10), wetSpring (2), barraCuda (3 edge) | Days |
