@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 10, 2026 1:20PM (Wave 157d — 338 pages, 25 sections. Zero P0. Depot unified + pruned. G69 lineage spec. spore-validate deep debt resolved. 116,930+ tests.)
+Last reviewed: August 10, 2026 9:35PM (Wave 157g — 338 pages, 25 sections. Zero P0. 4-gate gossip mesh LIVE. G72 dependency pandemic. ~150K+ tests.)
 
 ## Sections
 

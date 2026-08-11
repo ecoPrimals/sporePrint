@@ -5,6 +5,34 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.32.0] — 2026-08-10 — Stadial Shift + 4-Gate Gossip Mesh (Wave 157g)
+
+**STADIAL → INTERSTADIAL. 4-gate gossip mesh LIVE. G72 Dependency Pandemic (664
+Cargo.toml audited, 3-tier excision plan). Primals shed vestigial deps. sourDough CI
+shipped. biome.yaml manifest CONVERGED. ~150K+ tests. Zero P0. Zero P1.**
+
+### Changed
+
+- **Homepage** — hero-desc updated: stadial shift, 4-gate gossip mesh, G72, ~150K+ tests
+- **Gate status** — full rewrite: 4-gate gossip mesh table, G72 dep pandemic section, gossip
+  injection 3/16 primals, three-pillar architecture, stadial shift narrative, updated primal
+  dashboard (coralReef 3,963, cellMembrane 1,353, sweetGrass braid.verify)
+- **llms.txt** — stadial shift posture, gossip mesh, G72, ~150K+ tests
+- **config.toml** — test totals updated (~150K+), measured_date 2026-08-10-PM
+- **All specs** — CONTEXT, EVOLUTION_QUEUE, CONTENT_MAP current at Wave 157g
+
+### Metrics
+
+- Pages: 338 across 25 sections
+- P0: ZERO | P1: ZERO | P2: 2
+- Tests: ~150,000+ (was 116,930+)
+- Gossip: 4-gate mesh (sporeGate, eastGate, strandGate, westGate)
+- Gossip injection: 3/16 primals LIVE
+- WASM: 38/48 (79%)
+- G72: 664 Cargo.toml audited
+
+---
+
 ## [3.31.0] — 2026-08-10 — spore-validate Deep Debt Evolution
 
 **Systematic deep debt resolution: hardcoded ecosystem knowledge evolved to

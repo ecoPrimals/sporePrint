@@ -8,31 +8,38 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 10, 2026 — Wave 157d, DEEP DEBT RESOLVED)
+## Current State (August 10, 2026 — Wave 157g, STADIAL SHIFT)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283+ tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Deep debt resolved**: WELL_KNOWN_PEERS removed, Forgejo-first forge default, tower probes externally overridable, env_var_for_slug helper, self-identity centralized
-- **Ecosystem totals**: 3.60M LOC, 116,930+ tests (16 primals + 9 springs), 43 repos
-- **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0.**
-- **Depot unified + pruned**: 60 primal binaries, 4 arches, BLAKE3SUMS. G69 lineage spec.
-- **Build system mesh-native**: blueGate primary, sporeGate fallback, eastGate tertiary
-- **Neural API unblocked**: `capability.call` fleet-wide. 13,910 caps.
-- **arXiv 41/42**: validate.sh + freeze/sign remain
+- **Stadial → Interstadial**: primals shed vestigial deps as compositions close gaps
+- **G72 Dependency Pandemic**: 664 Cargo.toml audited, 3-tier excision plan
+- **4-gate gossip mesh LIVE**: westGate → sporeGate, eastGate, strandGate. Epidemic propagation.
+- **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
+- **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0. ZERO P1.**
+- **Gossip injection**: 3/16 primals LIVE (rhizoCrypt, loamSpine, lithoSpore)
+- **NUCLEUS manifest**: biome.yaml CONVERGED (toadStool S377: 5→2 structs)
+- **sourDough CI**: shipped (4 static validators, 15 repos, advisory)
+- **arXiv 41/42**: campaign IN PROGRESS (hotSpring 18 commits, 105 configs, AMD 18.5x)
 
-### Wave 157d — Depot Unified + G69 + Deep Debt
-- **ZERO P0** — all 3 resolved: bearDog, nestGate (stale depot), biomeOS FD (`6a51638d`)
-- **Depot unified + pruned** — 60 binaries, 4 arches, test/demo/bench pruned
-- **G69 lineage spec** — binary evolution via provenance trio (CAS/spine/braid)
-- **Build system mesh-native** — blueGate :9800 Tower Atomic, 14/14 vertebrate (23 min)
-- **Neural API call path unblocked** — capability.resolve + capability.call operational
-- **barraCuda Silicon Fold ABSORBED** — 5 device abstractions, 5,025 tests
-- **coralReef** — 18/18 IPC, integer subgroup fix, 3,702 tests
-- **cellMembrane** — G69 `depot.prune`, deep debt, 1,347 tests
-- **strandGate 13/13 ALIVE** — Silicon Fold AAR, AMD 20x root cause
-- **spore-validate deep debt** — WELL_KNOWN_PEERS removed (pure runtime discovery), `env_var_for_slug()` helper, Forgejo-first forge default, tower `--probes` CLI, monorepo tests gated, hero-sub templated, stale test totals fixed
+### Wave 157g — Stadial Shift + 4-Gate Gossip Mesh
+- **STADIAL → INTERSTADIAL** — primals shed vestigial deps as compositions close gaps
+- **G72 Dependency Pandemic** — 664 Cargo.toml audited. 3-tier excision plan. toadStool exemplar: S378 ~35k LOC feature-gated.
+- **4-gate gossip mesh LIVE** — westGate → sporeGate, eastGate, strandGate. Epidemic propagation confirmed.
+- **Gossip injection 3/16** — rhizoCrypt (3 DAG events), loamSpine (4 spine events), lithoSpore (4 validation events). barraCuda 20 keys spec'd.
+- **biome.yaml CONVERGED** — toadStool S377: 5→2 BiomeManifest structs. primalSpring consuming (exp122 37/37 PASS).
+- **sourDough CI shipped** — 4 static validators in golgi post-receive (15 repos, advisory). `convergence`+`rpc-surface` pending.
+- **coralReef** — 3,963 tests (+147). GEMM Phase 2 IPC. SM20 encoder.
+- **cellMembrane** — 13-commit evolution. G69 Phase 1+2+3. 1,353 tests.
+- **sweetGrass** — `braid.verify` shipped (method #48). P2 behavioral tests.
+- **F15 + F16 fossilized** — Neural API activation 90/91, Primal Builder mesh-native.
+
+### Previous (Wave 157d — Depot Unified + G69 + Deep Debt)
+- ZERO P0 — all 3 resolved. Depot unified + pruned. G69 lineage spec.
+- Build system mesh-native. Neural API unblocked. 13,910 caps.
+- spore-validate deep debt resolved (8 items).
 
 ### Previous Eras
 - **157a early**: G68 convergence, SSH key discipline, trust surfaces LIVE
