@@ -1,5 +1,5 @@
-generated = "2026-08-10T17:17:51Z"
-root_hash = "ad3c6855de5e2108e8286b31518ee1bd13778eefcfd5f6308af2157c1c0b3e8f"
+generated = "2026-08-11T11:24:45Z"
+root_hash = "bb2df287d27879cbbab8975f59bec9b20d170bd24544496da3a5a10c10ece914"
 page_count = 364
 
 [pages."_index.md"]
@@ -852,8 +852,8 @@ fold = "evidence"
 maturity = "live"
 
 [pages."lab/gate-status.md"]
-blake3 = "651fed08918e5badb70c808e4a7f158d817cc1d07184987e57a2ceaee6980c3a"
-size_bytes = 8203
+blake3 = "879ad3066f82372a069b0ae30ced6424c5f5057681a09d4c1374a3d00c69081c"
+size_bytes = 9043
 title = "Gate Status"
 section = "lab"
 fold = "evidence"

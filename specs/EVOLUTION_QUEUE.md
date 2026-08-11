@@ -2,22 +2,28 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 10, 2026 9:35PM (Wave 157g — Stadial Shift)
+Last reviewed: August 11, 2026 (Wave 157i — Pandemic Responds)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, 11 gates online, NUCLEUS 13/13+ GREEN, **ZERO P0, ZERO P1**. 3.3 TB / 153 datasets. 16 primals. 4-gate gossip mesh LIVE. G72 Dependency Pandemic (664 Cargo.toml audited). biome.yaml CONVERGED. sourDough CI shipped.
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, 6/6 NUCLEUS gates, 13/13+ GREEN, **ZERO P0, ZERO P1, 1 P2**. 3.3 TB / 153 datasets. 16 primals. G72 Tier 1 COMPLETE (9/9 teams, ~114 crates shed). Gossip injection 6/16 LIVE. hotSpring pseudoSpore E2E shipped. darwinGate M4 arrived.
 
-**Wave 157g — Stadial Shift + 4-Gate Gossip Mesh:**
-- **STADIAL → INTERSTADIAL** — deps accumulated during Aug 2025 stadial now metabolically expensive. Primals shed.
-- **G72 Dependency Pandemic** — 664 Cargo.toml audited. 3-tier excision plan (`specs/DEPENDENCY_PANDEMIC_SPEC.md`).
-- **4-gate gossip mesh LIVE** — westGate → sporeGate, eastGate, strandGate. Epidemic propagation within 30s.
-- **Gossip injection** — 3/16 primals LIVE (rhizoCrypt, loamSpine, lithoSpore). barraCuda 20 keys spec'd.
-- **biome.yaml CONVERGED** — toadStool S377: 5→2 BiomeManifest structs. primalSpring consuming (exp122 37/37).
-- **sourDough CI shipped** — 4 static validators in golgi post-receive (15 repos, advisory).
-- **toadStool G72 exemplar** — S378: ~35k LOC feature-gated behind `legacy-*`. 118→~85 tokio files.
-- **coralReef** — 3,963 tests (+147). GEMM Phase 2 IPC. SM20 encoder.
-- **cellMembrane** — 13-commit evolution. G69 Phase 1+2+3 complete. 1,353 tests.
-- **F15 + F16 fossilized** — Neural API activation 90/91, Primal Builder mesh-native.
-- **arXiv** — campaign IN PROGRESS (hotSpring 18 commits, 105 configs, AMD 18.5x)
+**Wave 157i — Pandemic Responds (G72 Tier 1 Complete):**
+- **G72 Tier 1 COMPLETE** — 9/9 teams responded. ~114 crates shed. toadStool tokio 118→65 (45% reduction).
+- **nestGate** — jsonrpsee removed (1,864 LOC, -10 crates). Deep debt S146.
+- **rhizoCrypt** — wiremock removed, -46 crates (14.6%).
+- **loamSpine** — url+ICU chain excised, -7 crates. RustCrypto unified.
+- **sweetGrass** — **P2 braid.verify CLOSED** (5 behavioral tests). Batch+verify extraction.
+- **coralReef** — `#[allow]→#[expect]` Rust 2024. tarpc-transport feature gating.
+- **cellMembrane** — socket name dedup 3→1. NUCLEUS install lifecycle extraction.
+- **tideGlass** — tokio rt-multi-thread→rt (current-thread). Lean gen5 primal.
+- **wetSpring** — verified clean (pollster already removed V211).
+- **Gossip injection 6/16** — barraCuda 19 events fully wired, esotericWebb 2, songBird 1.
+- **hotSpring pseudoSpore E2E** — pure Rust pipeline: compute → manifest → bundle → sign → register.
+- **darwinGate** — M4 Mac Mini arrived. iPhone XS tethering. First `aarch64-apple-darwin`. GLACIAL→ACTIVE.
+- **Tier 2 queued** — HTTP→songBird, axum→0.8, wgpu→28, YAML unification.
+
+**Previous (Wave 157g — Stadial Shift + 4-Gate Gossip Mesh):**
+- STADIAL → INTERSTADIAL. 4-gate gossip mesh LIVE. G72 Dependency Pandemic formalized (664 Cargo.toml audited).
+- biome.yaml CONVERGED. sourDough CI shipped. F15 + F16 fossilized.
 
 **Previous (Wave 157d — Depot Unified + G69 + Deep Debt):**
 - ZERO P0. Depot unified + pruned (60 binaries, 4 arches, G69). Mesh-native build.

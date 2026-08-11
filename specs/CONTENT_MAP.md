@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 10, 2026 9:35PM (Wave 157g — 338 pages, 25 sections. Zero P0. 4-gate gossip mesh LIVE. G72 dependency pandemic. ~150K+ tests.)
+Last reviewed: August 11, 2026 (Wave 157i — 338 pages, 25 sections. Zero P0. G72 Tier 1 COMPLETE 9/9. Gossip 6/16 LIVE. ~150K+ tests.)
 
 ## Sections
 

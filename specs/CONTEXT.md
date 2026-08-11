@@ -8,33 +8,38 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 10, 2026 — Wave 157g, STADIAL SHIFT)
+## Current State (August 11, 2026 — Wave 157i, PANDEMIC RESPONDS)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283+ tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **Stadial → Interstadial**: primals shed vestigial deps as compositions close gaps
-- **G72 Dependency Pandemic**: 664 Cargo.toml audited, 3-tier excision plan
+- **G72 Tier 1 COMPLETE**: 9/9 teams responded, ~114 crates shed fleet-wide
 - **4-gate gossip mesh LIVE**: westGate → sporeGate, eastGate, strandGate. Epidemic propagation.
+- **Gossip injection**: 6/16 primals LIVE (barraCuda 19 events fully wired, esotericWebb 2, songBird 1)
+- **hotSpring pseudoSpore E2E**: pure Rust pipeline shipped (compute → sign → register)
+- **darwinGate**: M4 Mac Mini arrived, first `aarch64-apple-darwin` target, GLACIAL→ACTIVE
 - **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
-- **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0. ZERO P1.**
-- **Gossip injection**: 3/16 primals LIVE (rhizoCrypt, loamSpine, lithoSpore)
-- **NUCLEUS manifest**: biome.yaml CONVERGED (toadStool S377: 5→2 structs)
+- **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0. ZERO P1. 1 P2.**
+- **P2 braid.verify CLOSED** (sweetGrass behavioral tests)
 - **sourDough CI**: shipped (4 static validators, 15 repos, advisory)
-- **arXiv 41/42**: campaign IN PROGRESS (hotSpring 18 commits, 105 configs, AMD 18.5x)
+- **arXiv 41/42**: campaign IN PROGRESS
 
-### Wave 157g — Stadial Shift + 4-Gate Gossip Mesh
-- **STADIAL → INTERSTADIAL** — primals shed vestigial deps as compositions close gaps
-- **G72 Dependency Pandemic** — 664 Cargo.toml audited. 3-tier excision plan. toadStool exemplar: S378 ~35k LOC feature-gated.
-- **4-gate gossip mesh LIVE** — westGate → sporeGate, eastGate, strandGate. Epidemic propagation confirmed.
-- **Gossip injection 3/16** — rhizoCrypt (3 DAG events), loamSpine (4 spine events), lithoSpore (4 validation events). barraCuda 20 keys spec'd.
-- **biome.yaml CONVERGED** — toadStool S377: 5→2 BiomeManifest structs. primalSpring consuming (exp122 37/37 PASS).
-- **sourDough CI shipped** — 4 static validators in golgi post-receive (15 repos, advisory). `convergence`+`rpc-surface` pending.
-- **coralReef** — 3,963 tests (+147). GEMM Phase 2 IPC. SM20 encoder.
-- **cellMembrane** — 13-commit evolution. G69 Phase 1+2+3. 1,353 tests.
-- **sweetGrass** — `braid.verify` shipped (method #48). P2 behavioral tests.
-- **F15 + F16 fossilized** — Neural API activation 90/91, Primal Builder mesh-native.
+### Wave 157i — Pandemic Responds (G72 Tier 1 Complete)
+- **G72 Tier 1 COMPLETE** — 9/9 teams responded. ~114 crates shed fleet-wide. toadStool tokio 118→65 files (45% reduction).
+- **nestGate** — jsonrpsee removed (1,864 LOC, -10 crates). Deep debt S146.
+- **rhizoCrypt** — wiremock removed (0 usage), -46 crates (14.6%).
+- **loamSpine** — url+ICU chain excised, -7 crates. RustCrypto unified.
+- **sweetGrass** — **P2 braid.verify CLOSED** (5 behavioral tests). Batch+verify extraction.
+- **Gossip injection 6/16** — barraCuda 19 events fully wired, esotericWebb 2, songBird 1. Was 3/16.
+- **hotSpring pseudoSpore E2E** — pure Rust: compute → manifest → bundle → sign → register.
+- **darwinGate** — M4 Mac Mini arrived. iPhone XS tethering. GLACIAL→ACTIVE.
+- **Tier 2 queued** — HTTP→songBird, axum→0.8, wgpu→28, YAML unification.
+
+### Previous (Wave 157g — Stadial Shift + 4-Gate Gossip Mesh)
+- STADIAL → INTERSTADIAL — primals shed vestigial deps as compositions close gaps.
+- G72 Dependency Pandemic formalized — 664 Cargo.toml audited. 3-tier excision plan.
+- 4-gate gossip mesh LIVE. biome.yaml CONVERGED. sourDough CI shipped.
 
 ### Previous (Wave 157d — Depot Unified + G69 + Deep Debt)
 - ZERO P0 — all 3 resolved. Depot unified + pruned. G69 lineage spec.

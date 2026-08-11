@@ -44,7 +44,7 @@ org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
 
-last_push = "2026-07-24"
+last_push = "2026-08-11"
 shadow_status = "sovereign-primary"
 deploy_locations = ["golgiBody-ext", "github-pages"]
 sovereign_url = "https://sporeprint.primals.eco"
@@ -1148,12 +1148,12 @@ spring_loc = 879118
 spring_loc_display = "879,118"
 total_loc = 3598358
 total_loc_display = "3,598,358"
-primal_tests = 115000
-primal_tests_display = "115,000+"
-spring_tests = 35000
-spring_tests_display = "35,000+"
-total_tests = 150000
-total_tests_display = "150,000+"
+primal_tests = 105242
+primal_tests_display = "105,242+"
+spring_tests = 11688
+spring_tests_display = "11,688+"
+total_tests = 116930
+total_tests_display = "116,930+"
 wgsl_files = 952
 wgsl_lines = 73838
 wgsl_lines_display = "74K"
@@ -1170,7 +1170,7 @@ nucleus_gates = 6
 data_volume_gb = 519
 data_volume = "3.3 TB"
 data_datasets = 153
-measured_date = "2026-08-10-PM"
+measured_date = "2026-08-11"
 # All entity metrics refreshed via spore-validate refresh on this date
 
 # ── Cortical Folds ──────────────────────────────────────────────────────
