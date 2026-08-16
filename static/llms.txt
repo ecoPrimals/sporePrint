@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 16 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 6/6 NUCLEUS gates. ~150K+ tests. 13/13 GREEN. 3.3 TB science data. Zero P0. G72 Tier 1 COMPLETE: 9/9 teams, ~114 crates shed. Gossip injection 6/16 primals LIVE (barraCuda 19 events). hotSpring pseudoSpore E2E shipped. graftGate M4 arrived. Pure Rust, AGPL-3.0-or-later.
+> 12 gates ONLINE. Zero P0, P1, P2. 3.3 TB science data. bonsai-bt FORKED — DECIDE layer meta-primal ingesting. rootPulse 6/6 graphs REGISTERED. Titan V Tier 1 CONFIRMED. graftGate FULL NUCLEUS (Darwin). G72 Tier 1 COMPLETE (9/9 teams, ~114 crates). Gossip 6/16 LIVE. Pipeline + provenance CONVERGED. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -198,16 +198,17 @@ Trail pages: https://sporeprint.primals.eco/trails/
 
 - 16 primals, 9 springs, 4 organizations (ecoPrimals, syntheticChemistry, sporeGarden, protoKarya)
 - 3.60M lines of Rust (43 repos) — see config.toml for exact count
-- **~150,000+ tests** across ecosystem (13/13 GREEN)
-- 27 signal graphs. ZERO P0s, P1s. 1 P2 (petalTongue port)
+- **~150,000+ tests** across ecosystem. **ZERO P0, P1, P2.**
+- 27 signal graphs. rootPulse 6/6 graphs REGISTERED.
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **11 gates ONLINE** (graftGate arriving — first `aarch64-apple-darwin`). G68 COMPLETE. **6/6 NUCLEUS gates redeployed**. Zero drift.
-- **NG-05 CLOSED**: westGate CAS federation — 26 capabilities, 2.5 TB CAS, TCP on :8080
+- **12 gates ONLINE**. G68 COMPLETE. **6/6 NUCLEUS gates redeployed**. graftGate FULL NUCLEUS (Darwin). biomeGate ONLINE (Titan V Tier 1 CONFIRMED). Zero drift.
+- **bonsai-bt FORKED** — DECIDE layer meta-primal. exp125 23/24 checks. Phase 0 ingesting.
+- **NG-05 CLOSED**: westGate CAS federation — 26 capabilities, 50.7 TB ZFS, TCP on :8080
 - **Trust surfaces LIVE**: `/api/content/stats`, `/pseudospore/` (bundles), `validate.sh`
 - **QCD pseudoSpore PACKAGED** — lithoSpore v1.0.0-rung1. SU(N) relabel DONE.
-- **Depot current on golgi**: Musl 17/17, Windows 15/15. Cascade auto-push. toadStool S370: WASM.
-- **SSH key discipline ENFORCED** across all gates. Zero `github` remotes ecosystem-wide.
+- **Depot**: x86_64-musl 13/13, aarch64-musl 15/15, aarch64-apple-darwin 16/16, Windows 0/13 STALE. Cascade autonomous.
+- **SSH key discipline ENFORCED** across all gates. NanoWire Tier 1 RETIRED (3/3 builders enmeshed).
 - **arXiv 41/42**: SU(3) COMPLETE, SU(4) running. validate.sh + freeze/sign remain.
 - **cellMembrane**: `plasmid.fetch --source forgejo` FIXED — sovereign deploy path for all gates
 - Content-Addressed Convergence: all 6 layers complete

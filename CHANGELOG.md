@@ -5,6 +5,38 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.34.0] — 2026-08-16 — Enmeshment + Ingestion (Wave 157k)
+
+**12 GATES ONLINE. 0/0/0. bonsai-bt FORKED — DECIDE layer meta-primal ingesting
+(exp125 23/24). rootPulse 6/6 graphs REGISTERED (item #10 CLOSED). Titan V Tier 1
+CONFIRMED (4 measurement bugs fixed). graftGate FULL NUCLEUS (Darwin, 16/16 depot).
+NanoWire Tier 1 RETIRED. 227 files fossilized (1,513 total). Pipeline + provenance CONVERGED.**
+
+### Changed
+
+- **Homepage** — hero: 12 gates, 0/0/0, bonsai-bt DECIDE layer, rootPulse 6/6, Titan V, graftGate
+- **Gate status** — full rewrite: 12-gate fleet table (biomeGate/grapheneGate/iosGate/steamGate),
+  bonsai-bt ingestion section (exp125 5 trees, EcoAction architecture), rootPulse 6/6 section,
+  Titan V Tier 1 section, depot table (4 arches including aarch64-apple-darwin 16/16),
+  NanoWire SSH retirement, active code teams, downstream patterns
+- **llms.txt** — 12 gates, 0/0/0, bonsai-bt, rootPulse 6/6, Titan V, depot status
+- **config.toml** — gates_online=12, measured_date 2026-08-16
+- **All specs** — CONTEXT, EVOLUTION_QUEUE, CONTENT_MAP current at Wave 157k
+
+### Metrics
+
+- Gates: **12 ONLINE** (was 11). graftGate FULL NUCLEUS (Darwin). biomeGate Tower+Node.
+- P0 / P1 / P2: **0 / 0 / 0** (was 0/0/1)
+- bonsai-bt: FORKED, exp125 23/24, Phase 0 ingesting
+- rootPulse: 6/6 graphs REGISTERED (item #10 CLOSED)
+- biomeGate: Titan V Tier 1 CONFIRMED (4 bugs fixed)
+- Depot: x86_64-musl 13/13, aarch64-musl 15/15, aarch64-darwin 16/16, Windows 0/13 STALE
+- NanoWire: Tier 1 RETIRED (3/3 builders enmeshed)
+- Fossilized: 227 files (1,513 total records)
+- Pages: 338 across 25 sections
+
+---
+
 ## [3.33.0] — 2026-08-11 — Pandemic Responds: G72 Tier 1 Complete (Wave 157i)
 
 **G72 TIER 1 COMPLETE: 9/9 teams responded, ~114 crates shed fleet-wide. toadStool

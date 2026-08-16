@@ -8,37 +8,43 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 11, 2026 — Wave 157i, PANDEMIC RESPONDS)
+## Current State (August 16, 2026 — Wave 157k, ENMESHMENT + INGESTION)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
 - **126 bidirectional edges** (typed entity graph, 14 relation types)
 - **`spore-validate` v0.3.1** — 34-module Rust crate, 283+ tests, `#![forbid(unsafe_code)]`, zero C toolchain deps
-- **G72 Tier 1 COMPLETE**: 9/9 teams responded, ~114 crates shed fleet-wide
-- **4-gate gossip mesh LIVE**: westGate → sporeGate, eastGate, strandGate. Epidemic propagation.
-- **Gossip injection**: 6/16 primals LIVE (barraCuda 19 events fully wired, esotericWebb 2, songBird 1)
-- **hotSpring pseudoSpore E2E**: pure Rust pipeline shipped (compute → sign → register)
-- **graftGate**: M4 Mac Mini arrived, first `aarch64-apple-darwin` target, GLACIAL→ACTIVE
+- **12 gates ONLINE**: eastGate, ironGate, strandGate, westGate, sporeGate, blueGate, graftGate, southGate, biomeGate, grapheneGate, iosGate, steamGate
+- **ZERO P0, P1, P2** — all cleared
+- **bonsai-bt FORKED**: DECIDE layer meta-primal. exp125 23/24 checks. Phase 0 ingesting.
+- **rootPulse 6/6 graphs REGISTERED** (biomeOS `af1dc9d3`). Item #10 CLOSED.
+- **Titan V Tier 1 CONFIRMED** (biomeGate). 4 measurement bugs fixed. `RegisterRead` enum.
+- **graftGate FULL NUCLEUS** (Darwin). 16/16 depot CURRENT. builder.serve LIVE.
+- **Gossip injection**: 6/16 primals LIVE (barraCuda 19 events, esotericWebb 2, songBird 1)
+- **G72 Tier 1 COMPLETE**: 9/9 teams, ~114 crates shed fleet-wide
 - **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
-- **13/13+ GREEN**. G68 COMPLETE. **6/6 NUCLEUS.** **ZERO P0. ZERO P1. 1 P2.**
-- **P2 braid.verify CLOSED** (sweetGrass behavioral tests)
-- **sourDough CI**: shipped (4 static validators, 15 repos, advisory)
+- **227 files fossilized** (1,513 total records). 11 active handoffs remain.
 - **arXiv 41/42**: campaign IN PROGRESS
+- **NOTE**: primals.eco Zola build/deploy regression — triage needed on sporeGate
 
-### Wave 157i — Pandemic Responds (G72 Tier 1 Complete)
-- **G72 Tier 1 COMPLETE** — 9/9 teams responded. ~114 crates shed fleet-wide. toadStool tokio 118→65 files (45% reduction).
-- **nestGate** — jsonrpsee removed (1,864 LOC, -10 crates). Deep debt S146.
-- **rhizoCrypt** — wiremock removed (0 usage), -46 crates (14.6%).
-- **loamSpine** — url+ICU chain excised, -7 crates. RustCrypto unified.
-- **sweetGrass** — **P2 braid.verify CLOSED** (5 behavioral tests). Batch+verify extraction.
-- **Gossip injection 6/16** — barraCuda 19 events fully wired, esotericWebb 2, songBird 1. Was 3/16.
-- **hotSpring pseudoSpore E2E** — pure Rust: compute → manifest → bundle → sign → register.
-- **graftGate** — M4 Mac Mini arrived. iPhone XS tethering. GLACIAL→ACTIVE.
-- **Tier 2 queued** — HTTP→songBird, axum→0.8, wgpu→28, YAML unification.
+### Wave 157k — Enmeshment + Ingestion
+- **12 gates ONLINE** — biomeGate (Tower+Node), grapheneGate (ADB), iosGate (BearDogApp), steamGate (portable) join fleet
+- **0/0/0** — all P0, P1, P2 cleared
+- **bonsai-bt FORKED** — MIT, 3,197 LOC, 0 unsafe. DECIDE layer between squirrel REASON and biomeOS ROUTE.
+- **exp125 LIVE** — 23/24 checks (5 behavior trees against NUCLEUS). EcoAction generic over Neural API.
+- **rootPulse 6/6 REGISTERED** — commit, harvest, branch, merge, diff, federate. biomeOS 1,608 tests.
+- **Titan V Tier 1 CONFIRMED** — 4 measurement bugs fixed. RegisterRead enum. K80 blocked (GK210).
+- **graftGate FULL NUCLEUS** — aarch64-apple-darwin 16/16 depot CURRENT. builder.serve LIVE :9800.
+- **tideGlass Phase 0** — external review from northGate. 5-7 days estimate. "Pivot point is now."
+- **227 fossilized** — 10 files this wave. 1,513 total records.
+- **NanoWire Tier 1 RETIRED** — 3/3 sub-builders enmeshed (no SSH for CI dispatch).
+
+### Previous (Wave 157i — Pandemic Responds)
+- G72 Tier 1 COMPLETE (9/9 teams, ~114 crates shed). Gossip 6/16 LIVE.
+- hotSpring pseudoSpore E2E shipped. darwinGate→graftGate M4 arrived.
 
 ### Previous (Wave 157g — Stadial Shift + 4-Gate Gossip Mesh)
-- STADIAL → INTERSTADIAL — primals shed vestigial deps as compositions close gaps.
-- G72 Dependency Pandemic formalized — 664 Cargo.toml audited. 3-tier excision plan.
+- STADIAL → INTERSTADIAL. G72 Dependency Pandemic formalized.
 - 4-gate gossip mesh LIVE. biome.yaml CONVERGED. sourDough CI shipped.
 
 ### Previous (Wave 157d — Depot Unified + G69 + Deep Debt)

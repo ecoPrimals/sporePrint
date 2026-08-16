@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 11, 2026 (Wave 157i — 338 pages, 25 sections. Zero P0. G72 Tier 1 COMPLETE 9/9. Gossip 6/16 LIVE. ~150K+ tests.)
+Last reviewed: August 16, 2026 (Wave 157k — 338 pages, 25 sections. 0/0/0. 12 gates ONLINE. bonsai-bt FORKED. rootPulse 6/6 REGISTERED.)
 
 ## Sections
 
