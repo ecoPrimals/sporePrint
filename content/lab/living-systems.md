@@ -1,7 +1,7 @@
 +++
 title = "Living Systems — What's Running Now"
-description = "Real-time status of the ecoPrimals sovereign mesh: active gates, deployed primals, capability routing, and live JupyterHub compute."
-date = 2026-07-07
+description = "Real-time status of the ecoPrimals sovereign mesh: 12 gates ONLINE, 6 NUCLEUS, 4-architecture depot, rootPulse 6/6 REGISTERED."
+date = 2026-08-17
 weight = 5
 
 [taxonomies]
@@ -13,28 +13,26 @@ springs = ["primalspring"]
 
 This is not a description of future work. It is running.
 
-**NUCLEUS is LIVE on 3 gates.** Provenance 7/7 validated on Linux and Windows. Sovereign CI automates push-to-deploy for 35 binaries across 3 platforms. sporeGate is 11/11 HEALTHY — the first clean gate health check. **ZERO P0s. ZERO P1s. ZERO blocking P2s.** gen4 is COMPLETE — gen5 begins: NUCLEUS as a platform serving real workloads.
+**12 gates ONLINE. NUCLEUS on 6 gates.** Cascade autonomous across 4 architectures. rootPulse 6/6 graphs REGISTERED. bonsai-bt DECIDE layer ingesting. **ZERO P0s. ZERO P1s. ZERO P2s.** Pipeline + provenance CONVERGED.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
 ## Active Gates
 
-| Gate | Status | Platform | What's Running |
-|------|--------|----------|----------------|
-| **sporeGate** | **11/11 HEALTHY** | Linux | Sovereign CI LIVE, build authority, depot 35 binaries. biomeOS v4.51 |
-| **eastGate** | Overwatch | Linux | primalSpring ({{ entity_stat(name="primalspring", stat="tests_display") }} tests), biomeOS + squirrel + petalTongue evolution |
-| **westGate** | **NUCLEUS** | Linux | **13/13, 654 caps, 29 sockets, Provenance 7/7 COMPLETE.** ZFS 25.4TB, 3,252 CAS objects |
-| **strandGate** | **NUCLEUS** | Linux | **13/13, 1,742 caps, 674 IPC methods.** RTX 3090, sub-ms GPU, 2,130 matmul/sec |
-| **blueGate** | **NUCLEUS** | Windows | **13/13, Provenance 7/7 VALIDATED.** 131.1 MB, TCP-only, DID key verified |
-| **ironGate** | Online | Linux | 14TB+1TB+1TB+2TB. Takes esotericWebb from flockGate. Tower + HDD enclave |
-| **golgiBody** | Online | Linux (VPS) | Depot (35 genomeBins), enrollment endpoint, Forgejo push mirror |
-| **northGate** | Online | Windows | RTX 5090, AlphaFold source (~1TB) |
-| **grapheneGate** | Online | Android | Tower LIVE (Pixel 8a), ADB mesh expansion |
-| **swiftGate** | HW Ready | Windows | After blueGate sub-builder stable |
-| **southGate** | HW Ready | Linux | Omada 10G, enrollment pending |
-| flockGate | **DOWN** | Linux | Rebooted, RustDesk locked out. esotericWebb → ironGate |
-| fieldGate | Offline | — | Dead CMOS |
-| biomeGate | Offline | — | Kernel recovery |
+| Gate | Composition | Status |
+|------|-------------|--------|
+| **eastGate** | Full NUCLEUS + overwatch | rootPulse 6/6 REGISTERED. exp125 bonsai-bt LIVE. biomeOS {{ entity_stat(name="biomeos", stat="tests_display") }} tests. |
+| **ironGate** | Full NUCLEUS + 14TB CAS | 13/13, 2ms dispatch, 4 mesh peers |
+| **strandGate** | Full NUCLEUS + dual EPYC | DF64 shaders SHIPPED. arXiv ACTIVE. 32⁴ SU(3) production COMPLETE. |
+| **westGate** | Full NUCLEUS + 50.7TB ZFS | AlphaFold ingress ACTIVE. rootPulse handlers SHIPPED. |
+| **sporeGate** | Foreman + depot | 13/13 x86_64 CURRENT. Cascade autonomous. |
+| **blueGate** | ENMESHED (Windows) | builder.serve ALIVE :9800. Depot 0/13 STALE. |
+| **graftGate** | FULL NUCLEUS (Darwin) | builder.serve LIVE :9800. Depot 16/16 CURRENT. M4 Mac Mini. |
+| **southGate** | NUCLEUS + canary | neuralSpring 71/80. SSH ready. |
+| **biomeGate** | Tower 4/4 + Node Atomic | ONLINE. Titan V Tier 1 CONFIRMED. K80 blocked (GK210). |
+| **grapheneGate** | Tower Atomic | ADB deploy. Pixel 8a. |
+| **iosGate** | BearDogApp | 6th OS family. iPhone XS. |
+| **steamGate** | Tower Atomic | Portable compute. Steam Deck. |
 
 ## Live Capabilities
 
@@ -94,6 +92,18 @@ or any future compute node. The notebook doesn't know which gate ran it.
 Each workload runs against the same infrastructure that produced the
 [baseCamp results](@/science/_index.md). Every run gets a provenance chain.
 
+## Depot — 4-Architecture Binary Distribution
+
+| Architecture | Binaries | Status |
+|-------------|----------|--------|
+| **x86_64-unknown-linux-musl** | 13/13 | Current (rebuilt Aug 14) |
+| **aarch64-unknown-linux-musl** | 15/15 | Current (ironGate sub-builder) |
+| **aarch64-apple-darwin** | 16/16 | Current (graftGate) |
+| **x86_64-pc-windows-gnu** | 0/13 | STALE (awaiting autonomous dispatch) |
+
+3/3 sub-builders enmeshed. NanoWire SSH Tier 1 **RETIRED** — builders communicate
+via Tower Atomic, no SSH dispatch. Cascade autonomous.
+
 ## Sovereign CI Pipeline
 
 All {{ total_stat(stat="total_primals") }} primals are continuously built from source
@@ -103,14 +113,14 @@ on sporeGate's Sovereign CI. The pipeline:
 Developer pushes to Forgejo (git.primals.eco)
     → golgi cascade timer (15-min quorum)
     → sporeGate pulls, builds x86_64-musl + aarch64-musl
+    → ironGate sub-builder: aarch64-musl
+    → graftGate sub-builder: aarch64-apple-darwin
     → BLAKE3 checksums computed
     → Binaries published to depot (membrane.primals.eco/depot/)
     → Gates cascade + pull from depot
 ```
 
-**Wave 133e result**: 30/30 ecobins in pepti (15 x86_64 + 15 aarch64),
-all checksummed. 13/13 primals converged — zero CI workarounds, zero code debt.
-4–5 binaries pending rebuild from latest source.
+13/13 primals converged — zero CI workarounds, zero code debt.
 
 ## Mesh Health
 
@@ -126,16 +136,17 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 
 ## What's Next
 
-| Item | Wave | Status |
-|------|------|--------|
-| ~~JupyterHub deploy~~ | 132 | **LIVE** — JupyterHub 5.4.5, `lab.primals.eco → 200` |
-| Pepti rebuild (5 stale binaries) | 134a | **NEXT** — songBird, skunkBat, nestGate, coralReef, sweetGrass |
-| WAN-DISPATCH-01 FULL PASS | 134a | After pepti rebuild — songBird drawbridge committed |
-| grapheneGate 13/13 from fresh pepti | 134a | After pepti rebuild |
-| ~~bearDog CryptoProvider fix (UNIT-DIV-04)~~ | 134b | **DONE** — resolved, DNS live |
-| ~~DNS cutover: `primals.eco` → golgi (bearDog ACME)~~ | 134b | **DONE** — sovereign DNS live since Wave 100+ |
-| strandGate SSH enrollment | 134b | Physical access to House 2 needed |
-| Live mesh visualization (petalTongue on golgi) | 134b+ | sporePrint host composition |
+| Item | Priority | Status |
+|------|----------|--------|
+| **FIX primals.eco** — Zola build/deploy regression | **CRITICAL** | Blocks arXiv reviewer send |
+| bonsai-bt Phase 0→1 (sourDough scaffold) | HIGH | exp125 23/24. DECIDE layer. |
+| blueGate depot rebuild via autonomous dispatch | HIGH | 0/13 STALE |
+| tideGlass Phase 0 START | HIGH | QUEUED — external review 5-7 days |
+| arXiv reviewer send (Murillo, Chuna, Bazavov) | HIGH | BLOCKED on primals.eco fix |
+| bearDog AEAD Neural API surfacing | MED | ironGate |
+| cellMembrane UDS→TCP fallback (Windows) | MED | sporeGate |
+| Graph visualization spec | MED | ironGate + eastGate |
+| SSH → Tower Atomic graduation (NanoWire Tiers 2-7) | NEXT | Tier 1 RETIRED |
 
 ## Related
 

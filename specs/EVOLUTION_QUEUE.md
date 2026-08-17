@@ -2,21 +2,24 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 16, 2026 (Wave 157k — Enmeshment + Ingestion)
+Last reviewed: August 17, 2026 (Wave 157k+ — QCD Production Complete + Site Refresh)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. 16 primals. bonsai-bt FORKED (DECIDE layer). rootPulse 6/6 REGISTERED. Titan V Tier 1 CONFIRMED. graftGate FULL NUCLEUS. Pipeline + provenance CONVERGED. 227 files fossilized (1,513 total).
+**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. 16 primals. **32⁴ SU(3) PRODUCTION COMPLETE** (45/45 configs, 0.3% literature, 0.19% cross-vendor). arXiv 41/42. Normalization RESOLVED. bonsai-bt FORKED. rootPulse 6/6. Pipeline + provenance CONVERGED.
 
-**Wave 157k — Enmeshment + Ingestion:**
+**Site Refresh (Aug 17) — QCD Production Complete:**
+- **32⁴ SU(3) production COMPLETE** — 45/45 configs, literature ~0.3%, cross-GPU Δ=0.19%.
+- **Normalization RESOLVED** — gauge-group mismatch (SU(3) vs SU(2) literature), not a bug.
+- **Lattice capacity 73⁴** dual GPU (121× more sites).
+- **10 pages refreshed** — QCD cluster, infrastructure pages, data volumes.
+- **3.21→3.3 TB** corrected across pseudospore + data pages.
+- **living-systems.md + MESH_TOPOLOGY.md** — rewritten for 12 gates, 6 NUCLEUS, Wave 157k.
+- **primals.eco** — Zola build/deploy regression. Triage needed on sporeGate.
+
+**Wave 157k — Enmeshment + Ingestion (Aug 16):**
 - **12 gates ONLINE** — biomeGate, grapheneGate, iosGate, steamGate join fleet.
 - **0/0/0** — all P0, P1, P2 cleared.
-- **bonsai-bt FORKED** — MIT, 3,197 LOC, 0 unsafe. DECIDE layer meta-primal. exp125 23/24 checks.
-- **rootPulse 6/6 REGISTERED** — commit, harvest, branch, merge, diff, federate. biomeOS 1,608 tests. Item #10 CLOSED.
-- **Titan V Tier 1 CONFIRMED** — biomeGate. 4 measurement bugs fixed. RegisterRead enum. K80 blocked (GK210).
-- **graftGate FULL NUCLEUS** — aarch64-apple-darwin 16/16 depot CURRENT. builder.serve LIVE.
-- **tideGlass Phase 0** — external review from northGate. 5-7 days. "Pivot point is now."
-- **227 fossilized** — 10 files this wave. 1,513 total records.
-- **NanoWire Tier 1 RETIRED** — 3/3 sub-builders enmeshed.
-- **primals.eco** — Zola build/deploy regression. Triage needed on sporeGate.
+- **bonsai-bt FORKED** — DECIDE layer meta-primal. exp125 23/24. Phase 0.
+- **rootPulse 6/6 REGISTERED**. NanoWire Tier 1 RETIRED.
 
 **Previous (Wave 157i — Pandemic Responds):**
 - G72 Tier 1 COMPLETE (9/9 teams, ~114 crates shed). Gossip 6/16 LIVE.

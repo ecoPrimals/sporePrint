@@ -5,6 +5,41 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.35.0] — 2026-08-17 — QCD Production Complete + Site Refresh
+
+**32⁴ SU(3) PRODUCTION COMPLETE — 45/45 cross-vendor configs, literature ~0.3%,
+cross-GPU Δ=0.19% at β=6.20. Normalization RESOLVED (gauge-group mismatch, not bug).
+arXiv 41/42, reviewer send blocked on primals.eco. Lattice capacity 73⁴ dual GPU.
+Site-wide staleness sweep: 10 pages updated to Wave 157k reality.**
+
+### Changed
+
+- **pseudoSpore QCD** (`hotspring-qcd-sun.md`) — 32⁴ production data, 45/45 configs,
+  cross-vendor 0.19%, lattice capacity 73⁴, normalization resolution, streaming encoder
+- **arXiv draft** (`hotspring-qcd-sun-paper.md`) — SU(N) rung table, 32⁴ data,
+  resolved known issues (normalization, β-scan, statistics, 16⁴ validation)
+- **Audit trail** (`hotspring-qcd-sun-audit.md`) — Phases 9-12: gauge group resolution,
+  32⁴ production campaign (57 configs), full silicon activation (45/45), current status
+- **pseudoSpore catalog** (`pseudospore/_index.md`) — 3.21→3.3 TB, updated QCD status
+- **Data Braids** (`data/_index.md`) — 3.21→3.3 TB, added date
+- **GPU Compute Live** — 16⁴/32⁴ benchmarks, streaming encoder, SU(3) production data
+- **Living Systems** — full rewrite: 12 gates, 6 NUCLEUS, 4-arch depot, Wave 157k backlog
+- **Mesh Topology** — full rewrite: 12 gates, 6 NUCLEUS, graftGate/iosGate/steamGate, Wave 157k
+- **Sovereign CI** — Wave 155n→157k, 3/3 builders enmeshed, 4-arch depot, NanoWire retired
+- **llms.txt** — 32⁴ complete, arXiv status, lattice capacity, 12 gates × 6 OS families
+- **config.toml** — measured_date 2026-08-17
+
+### Metrics
+
+- QCD: **32⁴ production COMPLETE** — 45/45 configs, 0.3% literature, 0.19% cross-vendor
+- arXiv: **41/42** — physics done, reviewer send blocked on primals.eco
+- Normalization: **RESOLVED** — SU(3) vs SU(2) literature mismatch, not a bug
+- Lattice capacity: **73⁴ dual GPU** (121× more sites)
+- Streaming encoder: GPU utilization **43%→85-95%**
+- Pages refreshed: **10** (QCD + infrastructure + data volumes)
+
+---
+
 ## [3.34.0] — 2026-08-16 — Enmeshment + Ingestion (Wave 157k)
 
 **12 GATES ONLINE. 0/0/0. bonsai-bt FORKED — DECIDE layer meta-primal ingesting

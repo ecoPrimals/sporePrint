@@ -1,7 +1,7 @@
 +++
 title = "Self-Hosted Distributed Scientific Compute Mesh — Gate Topology"
-description = "10 operational gates, 10G backbone, WireGuard + Tower Atomic mesh. NUCLEUS running on 3 gates. Capability-aware routing, USB enrollment."
-date = 2026-07-31
+description = "12 operational gates across 6 OS families, 10G backbone, Tower Atomic mesh. NUCLEUS running on 6 gates. 3/3 sub-builders enmeshed. Capability-aware routing."
+date = 2026-08-17
 weight = 20
 
 [taxonomies]
@@ -14,11 +14,11 @@ maturity = "live"
 
 ## Overview
 
-> **Status (Wave 155n):** 10 operational gates (9 active + southGate validation). NUCLEUS confirmed on 3 gates (westGate, blueGate, strandGate). 10G MikroTik backbone. WireGuard overlay + Tower Atomic in shadow mode. bearDog `crypto.sign` LIVE on all Tower gates.
+> **Status (Wave 157k):** 12 operational gates across 6 OS families (Linux, Windows, Darwin, Android, iOS, SteamOS). NUCLEUS confirmed on 6 gates (eastGate, ironGate, strandGate, westGate, graftGate, southGate). 3/3 sub-builders enmeshed. NanoWire SSH Tier 1 RETIRED. bearDog `crypto.sign` LIVE on all Tower gates.
 
-The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport (and legacy WireGuard overlay) coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
+The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 
-Tower Atomic runs alongside WireGuard in shadow mode. On LAN, Tower uses direct TCP (topology-aware path selection) while WireGuard routes through the overlay — so Tower avoids overhead that WireGuard was never designed to avoid. On degraded WAN paths, Tower sustains ~1.7× WireGuard throughput via adaptive retry. 360+ shadow benchmark files collected continuously across the mesh.
+Tower Atomic runs in production. On LAN, Tower uses direct TCP (topology-aware path selection) — same-switch gates communicate at 0.57ms. On degraded WAN paths, Tower sustains ~1.7× throughput via adaptive retry. Shadow benchmark data collected continuously across the mesh.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Gate mesh topology: eastGate, sporeGate, golgi, and WireGuard overlay connections") }}
 
@@ -63,44 +63,42 @@ The visualization above updates from songBird's `mesh.peers` endpoint. Color ind
 
 When songBird is unavailable, the visualization gracefully degrades to static topology data — showing known gates and their roles without live latency.
 
-## Enrolled Gates
+## Enrolled Gates — 12 ONLINE
 
-| Gate | Platform | Role | Status |
-|------|----------|------|--------|
-| **golgiBody** | Linux (VPS) | Sole depot (39 genomeBins), enrollment endpoint, Forgejo, DNSSEC | **ONLINE** |
-| **sporeGate** | Linux | Build authority, genomeBin harvester, depot rebuild | **ONLINE** |
-| **eastGate** | Linux | Code hub, overwatch, biomeOS evolution | **ONLINE** |
-| **westGate** | Linux | **Nest Atomic LIVE** — 8 services, 1,704 capabilities, ZFS 25.4TB + 2TB L2ARC | **ONLINE** |
-| **strandGate** | Linux | **Tower+Compute LIVE** — Dual EPYC, 256GB, RTX 3090, Compute Trio | **ONLINE** |
-| **ironGate** | Linux | 4x HDD (14TB+), HDD enclave experiment | **ONLINE** |
-| **flockGate** | Linux | Nest Atomic validation | **ONLINE** |
-| **grapheneGate** | Android | Tower LIVE, G2: mobile trust boundary | **ONLINE** |
-| **northGate** | Windows | RTX 5090, AlphaFold source (~1TB), G1 target | **ONLINE** |
-| **blueGate** | Windows | G1: Tower on Windows, peptidoglycan anchor H2 | **ONLINE** |
-| **swiftGate** | Windows | G1: Tower on Windows | **ONLINE** |
-| **southGate** | Linux | Omada 10G — enrollment pending | **HW READY** |
-| fieldGate | — | Dead CMOS | Offline |
-| biomeGate | — | Kernel recovery | Offline |
+| Gate | Platform | Composition | Status |
+|------|----------|-------------|--------|
+| **eastGate** | Linux | Full NUCLEUS + overwatch | **ONLINE** — rootPulse 6/6, bonsai-bt exp125 |
+| **ironGate** | Linux | Full NUCLEUS + 14TB CAS | **ONLINE** — 13/13, 2ms dispatch, 4 mesh peers |
+| **strandGate** | Linux | Full NUCLEUS + dual EPYC | **ONLINE** — DF64 shaders SHIPPED, arXiv ACTIVE |
+| **westGate** | Linux | Full NUCLEUS + 50.7TB ZFS | **ONLINE** — AlphaFold ingress, rootPulse handlers |
+| **sporeGate** | Linux | Foreman + depot | **ONLINE** — 13/13 x86_64 CURRENT, cascade autonomous |
+| **blueGate** | Windows | ENMESHED | **ONLINE** — builder.serve :9800, depot 0/13 STALE |
+| **graftGate** | Darwin (M4) | FULL NUCLEUS | **ONLINE** — 16/16 depot CURRENT, builder.serve :9800 |
+| **southGate** | Linux | NUCLEUS + canary | **ONLINE** — neuralSpring 71/80, SSH ready |
+| **biomeGate** | Linux | Tower 4/4 + Node Atomic | **ONLINE** — Titan V Tier 1 CONFIRMED |
+| **grapheneGate** | Android | Tower Atomic | **ONLINE** — ADB deploy, Pixel 8a |
+| **iosGate** | iOS | BearDogApp | **ONLINE** — 6th OS family, iPhone XS |
+| **steamGate** | SteamOS | Tower Atomic | **ONLINE** — portable compute, Steam Deck |
 
 ### Physical Topology
 
 ```
 House 1 (CRS310 backbone — 1G MikroTik):
-  sporeGate, eastGate, northGate, biomeGate(offline)
+  sporeGate, eastGate, biomeGate(Titan V)
   Peptidoglycan anchor: sporeGate
 
 House 2 (Omada SX3008F — 10G):
-  ironGate, strandGate(COMPUTE LIVE), westGate(NEST ATOMIC LIVE),
-  blueGate(ONLINE), swiftGate(ONLINE),
-  southGate(HW ready), fieldGate(offline)
+  ironGate, strandGate(COMPUTE LIVE), westGate(50.7TB ZFS),
+  blueGate(Windows), southGate(canary), graftGate(Darwin M4)
   Peptidoglycan anchor: blueGate
 
 Link: 80m 10G AOC trunk between adjacent lots
 
 Remote:
-  golgiBody (VPS — sole depot)
-  flockGate (WAN — Tower primal teams)
+  golgiBody (VPS — depot relay, Forgejo)
   grapheneGate (Android — mobile)
+  iosGate (iOS — mobile)
+  steamGate (SteamOS — portable)
 ```
 
 ## Key Invariants
@@ -165,12 +163,12 @@ Results are stored in `benchScale/tower_shadow/` and consumed by
 
 ## Limitations
 
-- The mesh currently runs on 6 gates across 2 physical sites; multi-continent deployment is untested
+- The mesh currently runs on 12 gates across 2 physical sites + remote devices; multi-continent deployment is untested
 - USB enrollment assumes a trusted physical carrier (no remote enrollment yet)
-- LAN advantage over WireGuard is a topology difference, not a protocol speed difference — Tower routes locally, WireGuard routes through VPS
+- LAN advantage is a topology difference — Tower routes locally, avoiding VPS round-trips
 - No web dashboard; all monitoring is via CLI and JSON-RPC
-- Tower Atomic source code: songBird is public, bearDog and skunkBat are public (AGPL-3.0)
+- blueGate depot 0/13 STALE — Windows autonomous dispatch pending
 
-**Hardware**: MikroTik 1G switches, consumer x86_64 Linux boxes, WireGuard baseline  
-**Date**: July 2026  
+**Hardware**: MikroTik 1G + Omada 10G switches, consumer hardware across 6 OS families  
+**Date**: August 17, 2026 (Wave 157k)  
 **Author**: ecoPrimal ([ORCID 0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321))

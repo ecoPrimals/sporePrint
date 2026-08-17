@@ -1,13 +1,14 @@
 +++
 title = "pseudoSpore — Sovereign Science Data"
-description = "3.21 TB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
+description = "3.3 TB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
+date = 2026-08-17
 sort_by = "weight"
 template = "section.html"
 +++
 
 Real science data. Sovereign hardware. Full provenance. Verify it yourself.
 
-westGate has ingested **3.21 TB** across 17+ scientific domains through the complete
+westGate has ingested **3.3 TB** across 17+ scientific domains through the complete
 CAS + Provenance Trio pipeline. Every object is content-addressed (BLAKE3),
 DAG-tracked (rhizoCrypt), ledger-committed (loamSpine), Ed25519-signed (bearDog),
 and attribution-braided (sweetGrass). **100% provenance coverage.**
@@ -35,7 +36,7 @@ on a Ryzen 9 / 96 GB DDR5 / 50.7 TB ZFS raidz1 machine running in a basement.
 | **Total (this table)** | **~38.2 GB** | **4,752** | **6 domains** | **8 springs** | **100%** |
 
 *This table shows the original pseudoSpore data catalog. The full [Data Braids catalog](/data/)
-now covers 519 GB across 130+ datasets and 17+ domains.*
+now covers 3.3 TB across 153 datasets and 17+ domains.*
 
 ---
 
@@ -147,17 +148,18 @@ store science. It **produces** science.
 [hotSpring SU(N) — Lattice Gauge Theory](@/pseudospore/hotspring-qcd-sun.md)
 is the second pseudoSpore: original SU(N) lattice gauge theory trajectories
 (N=2 through 8) computed on strandGate using NVIDIA RTX 3090 and AMD RX 6950 XT.
-SU(3) campaign COMPLETE (36 configs, MILC Δ=3×10⁻⁹). SU(4) running. 69 cached
-configs. Multi-vendor, DF64 precision, full provenance.
+**32⁴ SU(3) production COMPLETE** — 45/45 cross-vendor configs, literature
+agreement ~0.3%, cross-GPU Δ=0.19% at β=6.20. SU(4) 24⁴ thermalization running.
+87+ cached configs. Multi-vendor, DF64 precision, full provenance.
 
-**arXiv preprint**: science-complete (41/42). Trust surface blocks reviewer send.
-(ORCID 0009-0004-2141-0321).
+**arXiv preprint**: science-complete (41/42). Reviewer send blocked on
+primals.eco operability. (ORCID 0009-0004-2141-0321).
 
 ---
 
 ## See Also
 
-- [Data Braids](@/data/_index.md) — 519 GB of ingested data with sweetGrass provenance braids
+- [Data Braids](@/data/_index.md) — 3.3 TB of ingested data with sweetGrass provenance braids
 - [Transplant — Carry the Data With You](@/data/transplant.md) — pseudoSpore/lithoSpore paths for PIs
 - [What's Possible](@/data/possible.md) — dataset combinations that enable science
 - [How Braids Work](@/data/provenance.md) — the provenance pipeline explained

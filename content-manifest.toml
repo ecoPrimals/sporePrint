@@ -1,5 +1,5 @@
-generated = "2026-08-16T17:44:57Z"
-root_hash = "e1129abd4c51d69c7d13200191f22403029a5bb4fecadf132d7a18d72d975ba2"
+generated = "2026-08-17T11:27:31Z"
+root_hash = "c3591b4644224267b33690864f1672aee68f91ab5722229102b25e08b5aa9241"
 page_count = 364
 
 [pages."_index.md"]
@@ -118,8 +118,8 @@ fold = "architecture"
 maturity = "live"
 
 [pages."architecture/MESH_TOPOLOGY.md"]
-blake3 = "7b724beadbf2bd81dfdb034aaa4157efb9e664143060545d40f5ef1166d05726"
-size_bytes = 8998
+blake3 = "1efc79e5648ae5709b823e009133a20adf73aa8c7b3fc8b9e13de92976c03ec7"
+size_bytes = 8922
 title = "Self-Hosted Distributed Scientific Compute Mesh — Gate Topology"
 section = "architecture"
 fold = "architecture"
@@ -150,8 +150,8 @@ fold = "architecture"
 maturity = "architectural"
 
 [pages."architecture/SOVEREIGN_CI.md"]
-blake3 = "4073723bce958f4a5c7678651496e49da93a2e5811625975759fefc15ef03178"
-size_bytes = 8433
+blake3 = "3f9d89516315409670a3e452b6fd2c502e4fe2c9d0d33f4de1e574946c1a4b38"
+size_bytes = 8478
 title = "Sovereign CI — Build Infrastructure"
 section = "architecture"
 fold = "architecture"
@@ -607,8 +607,8 @@ title = "Contact"
 section = "contact.md"
 
 [pages."data/_index.md"]
-blake3 = "1897ab509b97cbf2816604fb1b1dbdc81eb6d93a70af88a44734b7fb750372a2"
-size_bytes = 7997
+blake3 = "a86a412592e975b34f6a5adc248c17b56bc0601ed2f76a5bc2399dbfcd1368aa"
+size_bytes = 8013
 title = "Data Braids — Federated Science Catalog"
 section = "data"
 fold = "pseudospore"
@@ -868,8 +868,8 @@ fold = "evidence"
 trails = ["reproducibility"]
 
 [pages."lab/gpu-compute-live.md"]
-blake3 = "91f512ccf631f83205430c63bbff5cea81d35a718c1588f9242e78c2f4a9940c"
-size_bytes = 3663
+blake3 = "119578629fe23a7ebcd36acdf41c0d52e1798ba6e5010eb066a9edebe847c376"
+size_bytes = 4008
 title = "GPU Compute — Live Evidence"
 section = "lab"
 fold = "evidence"
@@ -911,8 +911,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "a9bbad867295eedd5db29731810375a3a34738b72e52d2f1600c443379fb3ec3"
-size_bytes = 7304
+blake3 = "5286a2c5f6c6de914be1f9c5dba71531a096c2288b7497bb6dae9a7bab19317e"
+size_bytes = 7329
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"
@@ -2363,31 +2363,31 @@ companions = [
 ]
 
 [pages."pseudospore/_index.md"]
-blake3 = "20d413d54e6482d6f59c0c031e4ae01fadd651301d2389b72c0d376d20703ab8"
-size_bytes = 7444
+blake3 = "1ce4b6cb63a7e729df88cc9a61b25b086c301c778ee4b1010bba03bdbafff07b"
+size_bytes = 7563
 title = "pseudoSpore — Sovereign Science Data"
 section = "pseudospore"
 fold = "pseudospore"
 
 [pages."pseudospore/hotspring-qcd-sun-audit.md"]
-blake3 = "b978c585d8ef98540f57b98bd92d15a64ca9453e85ffc715dd4d81609c8e36d1"
-size_bytes = 14288
+blake3 = "4f2bdb94b0b5788474256593fe5ff949e1358c2cc50c139da86e690d72135644"
+size_bytes = 17292
 title = "Computation Audit Trail: hotSpring QCD"
 section = "pseudospore"
 fold = "pseudospore"
 maturity = "live"
 
 [pages."pseudospore/hotspring-qcd-sun-paper.md"]
-blake3 = "9da4e200f0943e563cb6536a07be59d385e9a233e4a0ca2786b11cc93c50792a"
-size_bytes = 23695
+blake3 = "45caeae6367324d93e27a3ce690426ad44883a07b8cd22bcf8a89870154ae87c"
+size_bytes = 23828
 title = "arXiv Draft: Vendor-Agnostic Lattice QCD — SU(N) HMC on Consumer GPUs"
 section = "pseudospore"
 fold = "pseudospore"
 maturity = "live"
 
 [pages."pseudospore/hotspring-qcd-sun.md"]
-blake3 = "313dea2dcba241c2157a95942be0c411eae1574e776c9b495db775d31b0a7ff8"
-size_bytes = 9614
+blake3 = "5d66a60cd3c8718183f6642d7df238803a01bde05b95b8bf93922b1658d14942"
+size_bytes = 11729
 title = "pseudoSpore: hotSpring QCD — SU(N) Lattice Gauge Theory"
 section = "pseudospore"
 fold = "pseudospore"

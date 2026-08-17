@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: August 16, 2026 (Wave 157k — 338 pages, 25 sections. 0/0/0. 12 gates ONLINE. bonsai-bt FORKED. rootPulse 6/6 REGISTERED.)
+Last reviewed: August 17, 2026 (Wave 157k+ — 338 pages, 25 sections. 0/0/0. 12 gates ONLINE. 32⁴ SU(3) production COMPLETE. 10 pages refreshed.)
 
 ## Sections
 

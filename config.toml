@@ -44,7 +44,7 @@ org = "ecoPrimals"
 license_docs = "CC-BY-SA 4.0"
 license_code = "AGPL-3.0-or-later"
 
-last_push = "2026-08-16"
+last_push = "2026-08-17"
 shadow_status = "sovereign-primary"
 deploy_locations = ["golgiBody-ext", "github-pages"]
 sovereign_url = "https://sporeprint.primals.eco"
@@ -1170,7 +1170,7 @@ nucleus_gates = 6
 data_volume_gb = 519
 data_volume = "3.3 TB"
 data_datasets = 153
-measured_date = "2026-08-16"
+measured_date = "2026-08-17"
 # All entity metrics refreshed via spore-validate refresh on this date
 
 # ── Cortical Folds ──────────────────────────────────────────────────────

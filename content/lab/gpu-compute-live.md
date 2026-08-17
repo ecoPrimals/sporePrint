@@ -1,7 +1,7 @@
 +++
 title = "GPU Compute — Live Evidence"
 description = "Measured GPU compute performance on commodity hardware. DF64 precision, matmul throughput, vendor-agnostic via WebGPU/WGSL."
-date = 2026-08-01
+date = 2026-08-17
 weight = 3
 
 [extra]
@@ -35,25 +35,30 @@ is running on $500 consumer hardware instead of $15,000 datacenter cards.
 
 ## Lattice QCD — Multi-Vendor GPU vs CPU (strandGate)
 
-SU(2) HMC (Hybrid Monte Carlo) lattice gauge theory. Same algorithm, same machine,
-both GPUs running identical WGSL shaders, `cpu_mom` validated path:
+SU(N) HMC (Hybrid Monte Carlo) lattice gauge theory. Same algorithm, same machine,
+both GPUs running identical WGSL shaders, `cpu_mom` validated path.
+**32⁴ SU(3) production COMPLETE** — 45/45 cross-vendor configs.
 
 | Lattice | Volume | RTX 3090 ms | RX 6950 XT ms | CPU ms | Best Speedup |
 |---------|--------|-------------|---------------|--------|-------------|
-| 4^4 | 256 | 17.2 | 7.4 | 185.0 | **25.1x** |
-| 8^4 | 4,096 | 62.9 | 15.6 | 2,965.8 | **190.0x** |
+| 4⁴ | 256 | 17.2 | 7.4 | 185.0 | **25.1×** |
+| 8⁴ | 4,096 | 62.9 | 15.6 | 2,965.8 | **190.0×** |
+| 16⁴ | 65,536 | — | 29.5 | — | — |
+| 32⁴ | 1,048,576 | — | 521.7 | — | — |
 
 Omelyan 2MN integrator, n_md=20, dt=0.02. `cpu_mom` path (CPU-generated
 momenta, GPU molecular dynamics) after root-causing GPU PRNG polyfill bias.
+Streaming HMC encoder: GPU utilization 43%→85-95%.
+
+**32⁴ SU(3) production** (Aug 9-16, 2026): 45/45 configs across β=6.0/6.10/6.20.
+⟨P⟩ at β=6.0, 16⁴: 0.5916 vs NS02 0.5935 (**0.3% agreement**).
+Cross-vendor at β=6.20, 32⁴: **0.19% delta** (AMD vs NVIDIA).
+Lattice capacity: **73⁴ dual GPU** (121× more sites via software guard bypass).
 
 **Cross-GPU agreement**: Both GPUs produce identical plaquette values within
-DF64 accumulated precision (|Δ|_GPU-GPU = 3.1×10⁻⁹ at 8^4 — five orders
+DF64 accumulated precision (|Δ|_GPU-GPU = 3.1×10⁻⁹ at 8⁴ — five orders
 of magnitude below statistical error). Vendor-agnostic proof: same WGSL
 shaders, different silicon, identical physics.
-
-**Plaquette validation**: |Δ|/σ < 1 vs CPU f64 reference at both lattice
-volumes. GPU molecular dynamics produces statistically identical physics
-to the CPU implementation.
 
 Download the full trajectory data + provenance chain:
 [hotSpring QCD pseudoSpore](@/pseudospore/hotspring-qcd-sun.md)

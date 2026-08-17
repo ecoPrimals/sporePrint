@@ -1,7 +1,7 @@
 +++
 title = "Sovereign CI — Build Infrastructure"
-description = "LIVE push-to-deploy pipeline: Forgejo → sporeGate build → sandbox validate → BLAKE3 depot → HTTPS serve. 35 binaries across 3 platforms. Zero human intervention."
-date = 2026-07-31
+description = "LIVE push-to-deploy pipeline: Forgejo → sporeGate build → sandbox validate → BLAKE3 depot → HTTPS serve. 4-architecture depot (x86_64, aarch64, Darwin, Windows). 3/3 builders enmeshed."
+date = 2026-08-17
 weight = 18
 
 [taxonomies]
@@ -14,7 +14,7 @@ maturity = "live"
 
 ## Overview
 
-> **Status (Wave 155n):** Sovereign CI is **LIVE**. sporeGate is the build authority — push to Forgejo triggers auto build → sandbox validate → depot push → HTTPS serve. **35 binaries** (16 musl + 4 gnu + 15 Windows), all BLAKE3 verified. J9+J10+J11 jelly strings KILLED — zero human intervention for musl builds. sporeGate is **11/11 HEALTHY**.
+> **Status (Wave 157k):** Sovereign CI is **LIVE**. 3/3 sub-builders enmeshed (sporeGate x86_64, ironGate aarch64, graftGate Darwin). NanoWire SSH Tier 1 **RETIRED** — builders communicate via Tower Atomic. **4-architecture depot**: x86_64-musl 13/13, aarch64-musl 15/15, aarch64-apple-darwin 16/16, Windows 0/13 STALE. Cascade **autonomous**. sporeGate is **13/13 CURRENT**.
 
 Every ecoPrimals binary is built from source on sovereign infrastructure. No GitHub Actions for production builds. No cloud CI. No third-party artifact registry. sporeGate pulls from Forgejo (`git.primals.eco`), cross-compiles for three target triples, computes BLAKE3 checksums, publishes to the depot, and broadcasts `mesh.publish depot.updated` so consumer gates auto-fetch.
 

@@ -1,6 +1,7 @@
 +++
 title = "Data Braids — Federated Science Catalog"
-description = "3.21 TB of science data across 153 datasets and 17 domains, each with a full sweetGrass provenance braid. Browse, verify, transplant to your own hardware via pseudoSpore or lithoSpore."
+description = "3.3 TB of science data across 153 datasets and 17 domains, each with a full sweetGrass provenance braid. Browse, verify, transplant to your own hardware via pseudoSpore or lithoSpore."
+date = 2026-08-17
 sort_by = "weight"
 template = "section.html"
 +++
@@ -8,7 +9,7 @@ template = "section.html"
 Real data. Sovereign hardware. Full provenance braids. Verify it yourself.
 Take it with you.
 
-westGate has ingested **3.21 TB** across **153 datasets** and **17+ science domains**
+westGate has ingested **3.3 TB** across **153 datasets** and **17+ science domains**
 through the complete Provenance Trio pipeline. Every dataset has a
 **sweetGrass braid** — a W3C PROV-O JSON-LD attestation recording who
 ingested the data, when, from where, under what license, and the
