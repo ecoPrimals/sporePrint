@@ -1,7 +1,6 @@
 +++
 title = "pseudoSpore — Sovereign Science Data"
 description = "3.3 TB of real science data with full cryptographic provenance. Downloadable and verifiable on commodity hardware. No cloud. No trust required."
-date = 2026-08-17
 sort_by = "weight"
 template = "section.html"
 +++

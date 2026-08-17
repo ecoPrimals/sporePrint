@@ -1,7 +1,6 @@
 +++
 title = "Data Braids — Federated Science Catalog"
 description = "3.3 TB of science data across 153 datasets and 17 domains, each with a full sweetGrass provenance braid. Browse, verify, transplant to your own hardware via pseudoSpore or lithoSpore."
-date = 2026-08-17
 sort_by = "weight"
 template = "section.html"
 +++
