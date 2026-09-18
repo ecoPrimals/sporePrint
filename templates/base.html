@@ -22,7 +22,7 @@
   {% if config.build_search_index %}
   <link rel="stylesheet" href="{{ get_url(path='search.css', trailing_slash=false) }}">
   {% endif %}
-  <meta name="keywords" content="GPU accelerated DADA2, WGSL f64 scientific computing, lattice QCD consumer GPU, self-hosted bioinformatics, scientific computing without CUDA, cross-vendor GPU compute, distributed scientific computing, reproducible scientific software, 16S pipeline GPU, Rust scientific computing, WebGPU, vendor-agnostic, open source, AGPL">
+  <meta name="keywords" content="ecoPrimals, ecoPrimal, ecoprimals, sovereign scientific computing, self-hosted scientific computing, GPU accelerated DADA2, WGSL f64 scientific computing, lattice QCD consumer GPU, self-hosted bioinformatics, scientific computing without CUDA, cross-vendor GPU compute, distributed scientific computing, reproducible scientific software, Rust scientific computing, WebGPU, pure Rust GPU computing, no CUDA alternative, self-hosted HPC, commodity GPU science, AGPL scientific software, vendor-agnostic GPU, open source scientific computing">
   <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml') }}">
   <link rel="describedby" type="text/plain" title="Site context for AI agents" href="{{ get_url(path='llms.txt', trailing_slash=false) }}">
   <script type="application/ld+json">
@@ -30,48 +30,78 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": "{{ config.base_url }}#org",
+        "name": "ecoPrimals",
+        "alternateName": ["ecoPrimal", "eco Primals", "eco Primal", "ecoprimals"],
+        "url": "{{ config.base_url }}",
+        "logo": "{{ get_url(path='img/og-card.svg') }}",
+        "description": "Sovereign distributed scientific computing in Pure Rust. 16 composable daemons, 9 validation springs, 116,000+ tests. No C, no cloud, no vendor lock-in. Self-hosted on commodity hardware. AGPL-3.0.",
+        "sameAs": [
+          "https://github.com/ecoPrimals",
+          "https://github.com/syntheticChemistry",
+          "https://github.com/sporeGarden",
+          "https://www.linkedin.com/in/ecoprimal",
+          "https://git.primals.eco"
+        ],
+        "knowsAbout": [
+          "Scientific Computing", "Bioinformatics", "GPU Computing",
+          "Lattice QCD", "Molecular Dynamics", "WebGPU", "WGSL",
+          "Rust Programming", "Distributed Computing", "Self-Hosted",
+          "Protein Structure Prediction", "Pharmacometrics",
+          "Precision Agriculture", "Reproducible Science"
+        ],
+        "foundingDate": "2025",
+        "email": "{{ config.extra.identity.email }}"
+      },
+      {
         "@type": "WebSite",
-        "name": "sporePrint",
-        "alternateName": ["ecoPrimals", "primals.eco"],
+        "@id": "{{ config.base_url }}#website",
+        "name": "sporePrint — ecoPrimals",
+        "alternateName": ["ecoPrimals", "primals.eco", "sporeprint.primals.eco", "ecoPrimal"],
         "url": "{{ config.base_url }}",
         "description": "{{ config.description }}",
         "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-        "publisher": {
-          "@type": "Organization",
-          "name": "{{ config.extra.org }}",
-          "url": "{{ config.extra.identity.orgs.primals }}",
-          "description": "{{ config.extra.identity.bio }}",
-          "sameAs": [
-            "{{ config.extra.identity.orcid_url }}",
-            "{{ config.extra.identity.orgs.primals }}",
-            "{{ config.extra.identity.forgejo }}"
-          ]
+        "publisher": { "@id": "{{ config.base_url }}#org" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{{ config.base_url }}?q={search_term_string}",
+          "query-input": "required name=search_term_string"
         }
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "{{ config.base_url }}#software",
         "name": "ecoPrimals",
-        "applicationCategory": "Scientific Computing",
-        "applicationSubCategory": "Bioinformatics, Computational Physics, Molecular Dynamics, High-Performance Computing",
-        "operatingSystem": "Linux",
+        "alternateName": ["ecoPrimal", "eco Primals", "eco-primals"],
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Scientific Computing",
+        "operatingSystem": ["Linux", "Windows"],
+        "processorRequirements": "x86_64, aarch64",
         "programmingLanguage": ["Rust", "WGSL"],
         "license": "https://www.gnu.org/licenses/agpl-3.0.html",
         "url": "{{ config.base_url }}",
-        "description": "Self-hosted scientific computing ecosystem: {{ config.extra.totals.total_primals }} Rust binaries coordinated via JSON-RPC 2.0, executing reproducible science across genomics, protein structure prediction, lattice QCD, pharmacometrics, and precision agriculture using vendor-agnostic WebGPU/WGSL compute shaders on consumer GPUs.",
+        "downloadUrl": "https://sporeprint.primals.eco/lab/getting-started-plasmidbin/",
+        "softwareVersion": "Wave 157k",
+        "description": "Self-hosted scientific computing ecosystem — {{ config.extra.totals.total_primals }} Pure Rust binaries for GPU-accelerated bioinformatics, lattice QCD, molecular dynamics, pharmacometrics, and more. Vendor-agnostic WebGPU/WGSL compute on consumer GPUs. No CUDA, no cloud, no vendor lock-in.",
+        "featureList": "GPU-accelerated DADA2, Lattice QCD on consumer GPUs, AlphaFold-class protein folding, Precision agriculture (FAO-56), Cross-vendor GPU compute (NVIDIA/AMD/Intel), 175+ reproduced papers, BLAKE3 provenance verification",
+        "author": { "@id": "{{ config.base_url }}#org" },
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
         }
       },
       {
         "@type": "SoftwareSourceCode",
         "name": "barraCuda",
-        "description": "Vendor-agnostic GPU compute library: pure Rust, WGSL/WebGPU compute shaders, f64 precision on consumer GPUs (NVIDIA, AMD, Intel via Vulkan).",
+        "description": "Sovereign math engine — 900+ WGSL shaders, GPU-accelerated scientific computing across any vendor. Pure Rust, f64 precision, no CUDA dependency.",
         "programmingLanguage": ["Rust", "WGSL"],
-        "codeRepository": "https://github.com/ecoPrimals/toadStool",
+        "codeRepository": "https://github.com/ecoPrimals/barraCuda",
         "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-        "runtimePlatform": "WebGPU / Vulkan"
+        "runtimePlatform": "WebGPU / Vulkan",
+        "author": { "@id": "{{ config.base_url }}#org" }
       }
     ]
   }
