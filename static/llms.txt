@@ -129,6 +129,7 @@ Proven design documents, audience guides, outreach briefs — still accessible, 
 - **Architecture foundation** (29 pages): Design documents for proven concepts (CAS convergence, silicon deism, transport evolution, etc.)
 - **Methodology foundation** (14 pages): Constrained evolution proofs, K-NOME, scyBorg
 - **Outreach** (16 pages): Partnership briefs (now foundation-flagged)
+- **Public Record** (/outreach/public_record/): ecoPrimals infrastructure applied to public accountability — [detroit.primals.eco](https://detroit.primals.eco)
 - **Audience** (7 pages): Role-based guides (now foundation-flagged)
 - **Products foundation** (4 pages): Retired/absorbed products
 - **Technical foundation** (4 pages): Historical hardware analysis
