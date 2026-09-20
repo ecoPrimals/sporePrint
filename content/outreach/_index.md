@@ -30,6 +30,10 @@ Open invitations to the communities and companies whose work makes sovereign sci
 - **[The Lansing Scuffle](@/vision/lansing_scuffle.md)** — A 464K SF factory becoming a solarpunk sovereign campus: data center, wet lab, community services, and rooftop gardens in one building
 - **[Building-Scale Thermal Sovereignty](@/vision/thermal_sovereignty_building.md)** — Solar → compute → heat → hot water → food. The full thermal loop at industrial scale
 
+## Public Accountability
+
+- **[Public Record — Infrastructure for Accountability](@/outreach/public_record.md)** — ecoPrimals infrastructure applied to public accountability: git-signed evidence, cryptographic timestamps, and verifiable public records at [detroit.primals.eco](https://detroit.primals.eco)
+
 ## Services
 
 - **[Sovereign Consulting](@/outreach/consulting.md)** — The code is AGPL-3.0 and free forever. Deployment, training, and integration consulting for departments and companies
