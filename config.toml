@@ -1077,6 +1077,7 @@ emoji = "🏭"
 kind = "product"
 domain = "Public Accountability"
 description = "Public evidence library — Detroit charter school investigation. First guerillaGorilla deployment. Digital instantiation of preSCENT."
+url = "https://detroit.primals.eco"
 page = "/outreach/public-record/"
 repo = "publicRecord/detroit"
 

@@ -4,6 +4,7 @@ The public-facing science site for [ecoPrimals](https://github.com/ecoPrimals) â
 sovereign scientific computing.
 
 **Live site:** [sporeprint.primals.eco](https://sporeprint.primals.eco)
+**Public Record:** [detroit.primals.eco](https://detroit.primals.eco) â€” first guerillaGorilla deployment
 **Sovereign primary:** golgiBody VPS via Caddy + Let's Encrypt
 **Trailing shadow:** GitHub Pages (extracellular mirror)
 
