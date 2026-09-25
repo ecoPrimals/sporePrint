@@ -77,6 +77,7 @@ pub enum EntityKind {
     Product,
     Composition,
     Concept,
+    Methodology,
     Infra,
     Org,
 }
@@ -104,6 +105,7 @@ impl fmt::Display for EntityKind {
             Self::Product => "product",
             Self::Composition => "composition",
             Self::Concept => "concept",
+            Self::Methodology => "methodology",
             Self::Infra => "infra",
             Self::Org => "org",
         })

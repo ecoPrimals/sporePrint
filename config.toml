@@ -1055,6 +1055,31 @@ kind = "concept"
 description = "Six-layer portable science standard — from entry point through binary layout to documentation"
 page = "/guidestone/deployable-artifact-standard/"
 
+# ── Methodologies ─────────────────────────────────────────────────────────
+
+[extra.entity_registry.guerillagorilla]
+display = "guerillaGorilla"
+emoji = "🦍"
+kind = "methodology"
+description = "Legal meta-primal — coordinates the Provenance Trio for public accountability. Sensory triad: fEAR (hearing), preSCENT (olfaction), STRIDe (gait). Fourth independent Provenance Trio instantiation."
+
+[extra.entity_registry.pursuitpredation]
+display = "Pursuit Predation"
+emoji = "🏃"
+kind = "methodology"
+description = "Evolutionary anchor — metabolic asymmetry as convergent optimization. Operator cost constant, adversary cost escalating. Unifies fEAR, preSCENT, and STRIDe."
+
+# ── Products ─────────────────────────────────────────────────────────────
+
+[extra.entity_registry.detroit]
+display = "detroit"
+emoji = "🏭"
+kind = "product"
+domain = "Public Accountability"
+description = "Public evidence library — Detroit charter school investigation. First guerillaGorilla deployment. Digital instantiation of preSCENT."
+page = "/outreach/public-record/"
+repo = "publicRecord/detroit"
+
 # ── Infrastructure repos ─────────────────────────────────────────────────
 
 [extra.entity_registry.sporeprint]

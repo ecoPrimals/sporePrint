@@ -1,8 +1,8 @@
 +++
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 weight = 20
-description = "All 16 primals — capabilities, test counts, production status, repository visibility"
-date = 2026-06-20
+description = "All 16 primals + methodologies — capabilities, test counts, production status, repository visibility"
+date = 2026-09-25
 
 [taxonomies]
 primals = ["beardog", "barracuda", "biomeos", "bingocube", "coralreef", "loamspine", "nestgate", "petaltongue", "rhizocrypt", "skunkbat", "songbird", "sourdough", "squirrel", "sweetgrass", "toadstool"]
@@ -503,7 +503,52 @@ Every foundation primal has demonstration material. Most post-{{ entity(name="nu
 
 ---
 
-## 5. The Evidence
+## 5. Methodologies
+
+While primals are standalone Rust binaries and springs are domain-specific validation harnesses, **methodologies** are the coordination patterns that emerge when primals compose under real-world constraint pressure. They are not code artifacts — they are named patterns discovered through operational use.
+
+### 5.1 guerillaGorilla — Legal Meta-Primal
+
+{{ entity(name="guerillagorilla") }} treats **legal existence as infrastructure** — the same way {{ entity(name="barracuda") }} treats GPU compute. It coordinates the Provenance Trio ({{ entity(name="rhizocrypt") }}, {{ entity(name="loamspine") }}, {{ entity(name="sweetgrass") }}) for public accountability operations.
+
+**Seven subsystems**: Identity, Rights, Finance, Protection, Navigation, Accountability, Formalization.
+
+**Sensory triad** (three sensing/motion modalities, named from biology):
+
+| Sense | Name | Mode | Range | Legal instantiation |
+|-------|------|------|-------|---------------------|
+| Hearing | fEAR | Event-driven, discrete, receive-only | Long | PACER, OSINT, court filings, adversary actions as fuel |
+| Olfaction | preSCENT | State-driven, gradients, bidirectional | Close | Behavioral shifts, institutional weather, presence broadcast |
+| Gait | STRIDe | Continuous, proprioceptive | Self | Filing sequence, route planning, R⇄I loop, deployment |
+
+**Provenance Trio — fourth independent instantiation**:
+
+The same three-layer pattern emerged under legal operational pressure without reference to Papers 20–22:
+
+| Layer | ecoPrimals | guerillaGorilla (manual) |
+|-------|-----------|--------------------------|
+| Past/immutable | {{ entity(name="rhizocrypt") }} | fossilRecord (epoch archives, git-preserved supersession) |
+| Certificates | {{ entity(name="loamspine") }} | CASE_REGISTRY (typed roles, case metadata, filing authority) |
+| Attribution | {{ entity(name="sweetgrass") }} | GRAPH_DATA (entity-relationship intelligence, temporal edges) |
+
+**First deployment**: {{ entity(name="detroit") }} at [detroit.primals.eco](https://detroit.primals.eco) — a public evidence library documenting charter school fraud. The site is the **digital instantiation of preSCENT**: ambient presence broadcast + state detection through discovery patterns.
+
+**Validation**: Paper 28 (Banks/Smith case), active since Aug 29, 2026. 124 archived artifacts, 10+ cases, 2 counties. Cost ratio: 60-100x vs professional baseline.
+
+### 5.2 Pursuit Predation — Evolutionary Anchor
+
+{{ entity(name="pursuitpredation") }} is the biomechanical foundation that unifies the sensory triad. It models **metabolic asymmetry**: operator cost constant, adversary cost escalating — the same optimization principle as ecoPrimals' constrained evolution but applied to adversarial systems.
+
+**Terminal posture**: Positional Patience — landscape saturation does the work while operator metabolic cost approaches zero and adversary decision cost approaches maximum. This is what {{ entity(name="detroit") }} achieves at steady state: site indexed, SEO accruing, agencies holding packets.
+
+### 5.3 Methodology Evidence
+
+**Claim**: The Provenance Trio architecture is domain-independent.
+**Evidence**: Four independent instantiations — gaming, science, medical, legal — each emerged from constraint, not design. The legal trio (fossilRecord + CASE_REGISTRY + GRAPH_DATA) appeared under operational pressure (10+ cases, 124+ artifacts, 2 counties) without reference to Papers 20–22 where the pattern was first formalized.
+
+---
+
+## 6. The Evidence
 
 This catalog documents what 6-8 months of constrained evolution produced. The primary focus has been the 8 foundation primals that form {{ entity(name="nucleus") }} — getting the core deployment architecture stable. The post-{{ entity(name="nucleus") }} primals have been started and have functional code, but receive less focus until {{ entity(name="nucleus") }} is solid. The methodology paper (`CONSTRAINED_EVOLUTION_FORMAL.md`) makes claims about how environmental constraints drive specialization. This catalog is the evidence.
 

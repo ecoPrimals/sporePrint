@@ -214,27 +214,16 @@ fn extract_semantic_metadata(
     (section, maturity, trails, companions)
 }
 
+/// Delegates to litho_core::frontmatter::parse for shared `+++ TOML +++` splitting.
 fn parse_front_matter(text: &str) -> Option<toml::Table> {
-    let trimmed = text.trim_start();
-    if !trimmed.starts_with("+++") {
-        return None;
-    }
-    let after_delim = &trimmed[3..];
-    let end = after_delim.find("+++")?;
-    let fm_str = after_delim[..end].trim();
-    toml::from_str(fm_str).ok()
+    let parsed = litho_core::frontmatter::parse(text)?;
+    parsed.front.as_table().cloned()
 }
 
 fn extract_title(bytes: &[u8]) -> Option<String> {
     let text = std::str::from_utf8(bytes).ok()?;
-    for line in text.lines() {
-        let trimmed = line.trim();
-        if trimmed.starts_with("title") && trimmed.contains('=') {
-            let value = trimmed.split('=').nth(1)?.trim();
-            return Some(value.trim_matches('"').to_string());
-        }
-    }
-    None
+    let parsed = litho_core::frontmatter::parse(text)?;
+    litho_core::frontmatter::get_opt_str(&parsed.front, "title")
 }
 
 pub fn manifest_path(root: &Path) -> PathBuf {

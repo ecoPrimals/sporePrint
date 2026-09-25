@@ -1,5 +1,5 @@
-generated = "2026-09-25T13:04:38Z"
-root_hash = "167a58535d42ec3358216d124589a388789bc0232abcc5919ae4b560ca342cec"
+generated = "2026-09-25T12:02:43Z"
+root_hash = "c36fed45c7e60b06d23537f3d53c9bdec5060a4abf2b1c916ae67d47b8d2d98a"
 page_count = 365
 
 [pages."_index.md"]
@@ -852,8 +852,8 @@ fold = "evidence"
 maturity = "live"
 
 [pages."lab/gate-status.md"]
-blake3 = "8ea10b05b0938bcaed7111f073988e45e2673fd67fabc990879357b04b4123da"
-size_bytes = 9458
+blake3 = "a1ec9cc5b9c39fb1b7b161ec6b1da49e3eb8a46708a74dba8f6c7daabe98183c"
+size_bytes = 7648
 title = "Gate Status"
 section = "lab"
 fold = "evidence"
@@ -911,8 +911,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "b3dbd4720ed39be77de0062a740d3c839f7c9e19ce872c46bd5cfd95186b9f79"
-size_bytes = 7483
+blake3 = "5286a2c5f6c6de914be1f9c5dba71531a096c2288b7497bb6dae9a7bab19317e"
+size_bytes = 7329
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"

@@ -66,9 +66,11 @@ const fn required_for_kind(kind: EntityKind) -> &'static [&'static str] {
             "repo",
         ],
         EntityKind::Product => &["domain"],
-        EntityKind::Composition | EntityKind::Concept | EntityKind::Infra | EntityKind::Org => {
-            &["description"]
-        }
+        EntityKind::Composition
+        | EntityKind::Concept
+        | EntityKind::Methodology
+        | EntityKind::Infra
+        | EntityKind::Org => &["description"],
     }
 }
 

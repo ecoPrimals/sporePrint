@@ -202,6 +202,15 @@ repo = "sporeGarden/cellMembrane"
 type = "product"
 
 # =============================================================================
+# PUBLIC RECORD — publicRecord (accountability applications)
+# =============================================================================
+
+[sources.detroit]
+repo = "publicRecord/detroit"
+type = "product"
+private = true
+
+# =============================================================================
 # PROTISTS — protoKarya (wider-world compositions)
 # =============================================================================
 

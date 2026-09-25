@@ -307,17 +307,14 @@ pub fn validate_maturity_levels(content_dir: &Path, diagnostics: &mut Vec<Diagno
 }
 
 /// Extract TOML front matter from a Zola content file.
+///
+/// Delegates to `litho_core::frontmatter::parse` for the shared `+++ TOML +++`
+/// splitting logic, then extracts the table.
 #[must_use]
 pub fn extract_front_matter(path: &Path) -> Option<toml::Table> {
     let text = std::fs::read_to_string(path).ok()?;
-    let trimmed = text.trim_start();
-    if !trimmed.starts_with("+++") {
-        return None;
-    }
-    let after_delim = &trimmed[3..];
-    let end = after_delim.find("+++")?;
-    let fm_str = after_delim[..end].trim();
-    toml::from_str(fm_str).ok()
+    let parsed = litho_core::frontmatter::parse(&text)?;
+    parsed.front.as_table().cloned()
 }
 
 #[cfg(test)]
