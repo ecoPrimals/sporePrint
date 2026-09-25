@@ -2,18 +2,16 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: August 17, 2026 (Wave 157k+ — QCD Production Complete + Site Refresh)
+Last reviewed: September 25, 2026 (Wave 157k+ — Cascade Restored + Public Record)
 
-**Current state**: 338 pages (25 sections), 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. 16 primals. **32⁴ SU(3) PRODUCTION COMPLETE** (45/45 configs, 0.3% literature, 0.19% cross-vendor). arXiv 41/42. Normalization RESOLVED. bonsai-bt FORKED. rootPulse 6/6. Pipeline + provenance CONVERGED.
+**Current state**: 338+ pages, 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **primals.eco LIVE**. **detroit.primals.eco LIVE** — public accountability on sovereign infrastructure. 32⁴ SU(3) production COMPLETE. arXiv 41/42. golgiBody cascade restored. Legal primal pattern emerging.
 
-**Site Refresh (Aug 17) — QCD Production Complete:**
-- **32⁴ SU(3) production COMPLETE** — 45/45 configs, literature ~0.3%, cross-GPU Δ=0.19%.
-- **Normalization RESOLVED** — gauge-group mismatch (SU(3) vs SU(2) literature), not a bug.
-- **Lattice capacity 73⁴** dual GPU (121× more sites).
-- **10 pages refreshed** — QCD cluster, infrastructure pages, data volumes.
-- **3.21→3.3 TB** corrected across pseudospore + data pages.
-- **living-systems.md + MESH_TOPOLOGY.md** — rewritten for 12 gates, 6 NUCLEUS, Wave 157k.
-- **primals.eco** — Zola build/deploy regression. Triage needed on sporeGate.
+**Cascade Restored + Public Record (Sep 25):**
+- **primals.eco LIVE** — Zola date fix + cascade restored Sep 15. GSC automation deployed.
+- **detroit.primals.eco LIVE** — 94 pages, charter school fraud documentation, legal primal pattern.
+- **golgiBody hardened** — chattr +i, journal cap, logrotate, VPS reserved blocks reduced.
+- **arXiv reviewer send UNBLOCKED** — primals.eco operational.
+- **4 primals rebuilt** — toadstool, biomeos, squirrel, petaltongue pushed to depot.
 
 **Wave 157k — Enmeshment + Ingestion (Aug 16):**
 - **12 gates ONLINE** — biomeGate, grapheneGate, iosGate, steamGate join fleet.

@@ -1,6 +1,6 @@
-generated = "2026-08-17T11:27:31Z"
-root_hash = "c3591b4644224267b33690864f1672aee68f91ab5722229102b25e08b5aa9241"
-page_count = 364
+generated = "2026-09-25T13:04:38Z"
+root_hash = "167a58535d42ec3358216d124589a388789bc0232abcc5919ae4b560ca342cec"
+page_count = 365
 
 [pages."_index.md"]
 blake3 = "1a28d5ca9def9035a60377a6dab6649f36e0c3da4ef9c8aa134b90cf6b4650b4"
@@ -607,8 +607,8 @@ title = "Contact"
 section = "contact.md"
 
 [pages."data/_index.md"]
-blake3 = "a86a412592e975b34f6a5adc248c17b56bc0601ed2f76a5bc2399dbfcd1368aa"
-size_bytes = 8013
+blake3 = "d4fb9b6b2918e4be7121dfbf5d9e9acf3ee8fb2d9a37d4fd86318829edaa1ed8"
+size_bytes = 7995
 title = "Data Braids — Federated Science Catalog"
 section = "data"
 fold = "pseudospore"
@@ -852,8 +852,8 @@ fold = "evidence"
 maturity = "live"
 
 [pages."lab/gate-status.md"]
-blake3 = "a1ec9cc5b9c39fb1b7b161ec6b1da49e3eb8a46708a74dba8f6c7daabe98183c"
-size_bytes = 7648
+blake3 = "8ea10b05b0938bcaed7111f073988e45e2673fd67fabc990879357b04b4123da"
+size_bytes = 9458
 title = "Gate Status"
 section = "lab"
 fold = "evidence"
@@ -911,8 +911,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "5286a2c5f6c6de914be1f9c5dba71531a096c2288b7497bb6dae9a7bab19317e"
-size_bytes = 7329
+blake3 = "b3dbd4720ed39be77de0062a740d3c839f7c9e19ce872c46bd5cfd95186b9f79"
+size_bytes = 7483
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"
@@ -2026,8 +2026,8 @@ companions = [
 ]
 
 [pages."outreach/_index.md"]
-blake3 = "4dc112d9cc95c1239184a7cad536f13c96dc912e7391805d9ef5112fb0ac96e3"
-size_bytes = 3732
+blake3 = "70385373d89370261dfa6ba03f777c39c9c40b86ba3b669f8c543f41150dd3e8"
+size_bytes = 4043
 title = "reachOut — Partnerships and Community"
 section = "outreach"
 
@@ -2089,6 +2089,12 @@ companions = [
 blake3 = "c6bb86d4190083fcab082faf1c2718942d6d81e3ac5e945cb0fcbcda2f6f76b4"
 size_bytes = 836
 title = "An Invitation to Neuromorphic Hardware Manufacturers"
+section = "outreach"
+
+[pages."outreach/public_record.md"]
+blake3 = "ad02a979a4dfec9dd0737eceb26cdd29b96e3bbcb3e99a7e6df4731a429d175d"
+size_bytes = 2155
+title = "Public Record — Infrastructure for Accountability"
 section = "outreach"
 
 [pages."outreach/steam_invitation.md"]
@@ -2363,8 +2369,8 @@ companions = [
 ]
 
 [pages."pseudospore/_index.md"]
-blake3 = "1ce4b6cb63a7e729df88cc9a61b25b086c301c778ee4b1010bba03bdbafff07b"
-size_bytes = 7563
+blake3 = "062b31de0d2cbd9aa442753a8dae3b555930f81ade1a9fd45af7dadebf40631d"
+size_bytes = 7545
 title = "pseudoSpore — Sovereign Science Data"
 section = "pseudospore"
 fold = "pseudospore"

@@ -1,7 +1,7 @@
 +++
 title = "Living Systems — What's Running Now"
-description = "Real-time status of the ecoPrimals sovereign mesh: 12 gates ONLINE, 6 NUCLEUS, 4-architecture depot, rootPulse 6/6 REGISTERED."
-date = 2026-08-17
+description = "Real-time status of the ecoPrimals sovereign mesh: 12 gates ONLINE, 6 NUCLEUS, 4-architecture depot. primals.eco LIVE. detroit.primals.eco LIVE."
+date = 2026-09-25
 weight = 5
 
 [taxonomies]
@@ -13,7 +13,7 @@ springs = ["primalspring"]
 
 This is not a description of future work. It is running.
 
-**12 gates ONLINE. NUCLEUS on 6 gates.** Cascade autonomous across 4 architectures. rootPulse 6/6 graphs REGISTERED. bonsai-bt DECIDE layer ingesting. **ZERO P0s. ZERO P1s. ZERO P2s.** Pipeline + provenance CONVERGED.
+**12 gates ONLINE. NUCLEUS on 6 gates.** Cascade autonomous across 4 architectures. primals.eco **LIVE** (Zola fix + cascade restored Sep 15). detroit.primals.eco **LIVE** — public accountability on sovereign infrastructure. **ZERO P0s. ZERO P1s. ZERO P2s.** Pipeline + provenance CONVERGED.
 
 {{ viz_embed(src="/viz/gate-mesh?live=true", caption="Live gate mesh: sovereign compute nodes and their network connections") }}
 
@@ -138,11 +138,12 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 
 | Item | Priority | Status |
 |------|----------|--------|
-| **FIX primals.eco** — Zola build/deploy regression | **CRITICAL** | Blocks arXiv reviewer send |
+| ~~FIX primals.eco~~ | ~~CRITICAL~~ | **FIXED** — Zola date bug + cascade restored Sep 15 |
+| arXiv reviewer send (Murillo, Chuna, Bazavov) | **HIGH** | UNBLOCKED — primals.eco LIVE |
+| detroit.primals.eco expansion | **HIGH** | LIVE — 94 pages, legal primal pattern |
 | bonsai-bt Phase 0→1 (sourDough scaffold) | HIGH | exp125 23/24. DECIDE layer. |
 | blueGate depot rebuild via autonomous dispatch | HIGH | 0/13 STALE |
-| tideGlass Phase 0 START | HIGH | QUEUED — external review 5-7 days |
-| arXiv reviewer send (Murillo, Chuna, Bazavov) | HIGH | BLOCKED on primals.eco fix |
+| tideGlass Phase 0 START | HIGH | QUEUED |
 | bearDog AEAD Neural API surfacing | MED | ironGate |
 | cellMembrane UDS→TCP fallback (Windows) | MED | sporeGate |
 | Graph visualization spec | MED | ironGate + eastGate |

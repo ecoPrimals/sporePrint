@@ -5,6 +5,35 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.36.0] — 2026-09-25 — Cascade Restored + Public Record
+
+**primals.eco LIVE — Zola date fix + golgiBody cascade restored (Sep 15). detroit.primals.eco
+LIVE — first public accountability application (94 pages, BLAKE3 manifest, git-signed
+evidence). Legal primal pattern: infrastructure IS the evidence integrity layer. arXiv
+reviewer send UNBLOCKED. GSC automation deployed. 4 primals rebuilt.**
+
+### Changed
+
+- **Gate status** — full status update: primals.eco LIVE, detroit.primals.eco LIVE,
+  golgiBody recovery section (3-week crash-loop), live sites table updated,
+  legal primal pattern section added
+- **Homepage** — hero updated: 32⁴ complete, primals.eco LIVE, detroit.primals.eco LIVE
+- **Living systems** — date + description updated, cascade restored, primals.eco LIVE,
+  What's Next table: primals.eco FIXED, arXiv UNBLOCKED, detroit expansion added
+- **llms.txt** — primals.eco LIVE, detroit site, cascade restored, arXiv unblocked
+- **config.toml** — measured_date 2026-09-25
+- **All specs** — CONTEXT, EVOLUTION_QUEUE, CONTENT_MAP current at Sep 25
+
+### Metrics
+
+- Live sites: **5** (sporePrint, detroit, footPrint, nestgate.io, esotericWebb)
+- primals.eco: **LIVE** (was TRIAGE NEEDED)
+- golgiBody: **HEALTHY** (was crash-looping 3 weeks)
+- arXiv: **UNBLOCKED** (was blocked on primals.eco)
+- detroit.primals.eco: **94 pages**, BLAKE3 manifest, 3 surfaces
+
+---
+
 ## [3.35.0] — 2026-08-17 — QCD Production Complete + Site Refresh
 
 **32⁴ SU(3) PRODUCTION COMPLETE — 45/45 cross-vendor configs, literature ~0.3%,

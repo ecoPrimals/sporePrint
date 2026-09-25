@@ -1,16 +1,17 @@
 +++
 title = "Gate Status"
-description = "Current fleet status — 12 gates ONLINE, 0/0/0, bonsai-bt FORKED, rootPulse 6/6 REGISTERED, Titan V Tier 1 CONFIRMED, graftGate FULL NUCLEUS. Pipeline + provenance CONVERGED."
-date = 2026-08-16
+description = "Current fleet status — 12 gates ONLINE, 0/0/0. primals.eco LIVE. detroit.primals.eco LIVE. golgiBody cascade restored. 32⁴ SU(3) production COMPLETE. Pipeline + provenance CONVERGED."
+date = 2026-09-25
 weight = 2
 
 [extra]
 maturity = "live"
 +++
 
-Current fleet status as of August 16, 2026 (Wave 157k — Enmeshment + Ingestion).
-12 gates ONLINE. Zero P0, P1, P2. bonsai-bt FORKED — first external ingestion.
-rootPulse 6/6 graphs REGISTERED. Titan V Tier 1 CONFIRMED. Pipeline + provenance CONVERGED.
+Current fleet status as of September 25, 2026 (Wave 157k+ — Cascade Restored + Public Record).
+12 gates ONLINE. Zero P0, P1, P2. primals.eco **LIVE** (Zola fix shipped Sep 15).
+detroit.primals.eco **LIVE** — first public accountability application.
+golgiBody cascade restored after 3-week crash-loop. 32⁴ SU(3) production COMPLETE.
 
 ## Gate Fleet — 12 Gates ONLINE
 
@@ -166,14 +167,50 @@ graftGate depot 16/16 CURRENT. Cascade autonomous.
 | SSH → Tower Atomic graduation (NanoWire Tiers 2-7) | NEXT |
 | Graph visualization | SPEC FILED |
 
+## golgiBody Recovery (Sep 15, 2026)
+
+Cascade was **crash-looping for 3 weeks** (Aug 27 – Sep 15). Root cause:
+stale `ecosystem_manifest.toml` with `mobility = "portable"` (unknown variant
+in deployed membrane binary). 1,784 sense failures before manual reset.
+
+| Fix | Detail |
+|-----|--------|
+| Cascade restored | Reset wateringHole checkout, deployed depot membrane binary |
+| Disk recovered | 79% → 70% (journal cap, ghost binaries, reserved blocks) |
+| Zola rebuild | Forced rebuild — sporePrint content serving fresh |
+| Binary immutability | `chattr +i` on caddy, hbbs, hbbr, membrane, zola |
+| GSC automation | Google Search Console API operational, sitemap resubmitted |
+
 ## Live Sites
 
 | Site | URL | Status |
 |------|-----|--------|
-| **sporePrint** | `sporeprint.primals.eco` | **Triage needed** — Zola build/deploy regression |
+| **sporePrint** | `sporeprint.primals.eco` | **LIVE** — Zola fix shipped, cascade rebuilt |
+| **detroit** | `detroit.primals.eco` | **LIVE** — public accountability (94 pages, BLAKE3 manifest) |
 | **footPrint** | `footprint.primals.eco` | **LIVE** — CAS works |
 | **nestgate.io** | `nestgate.io` | **LIVE** — trust surfaces + data braids |
 | **esotericWebb** | `webb.primals.eco` | 502 — needs petalTongue WebGL (G19) |
+
+## Public Accountability — The Legal Primal Pattern
+
+detroit.primals.eco applies ecoPrimals infrastructure to public accountability.
+Same substrate, different domain: git-signed evidence, BLAKE3 content manifests,
+three independent surfaces (live site + sovereign repo + GitHub mirror).
+
+This is the **legal primal** pattern — a meta-primal where the infrastructure
+IS the evidence integrity layer. The same properties that make science
+reproducible make public records tamper-proof:
+
+| Science | Accountability |
+|---------|---------------|
+| Reproducible results | Verifiable claims |
+| BLAKE3 provenance | Git-signed commits |
+| Peer review | Public verification |
+| No cloud dependency | No platform dependency |
+
+Infrastructure: Forgejo (`git.primals.eco/publicRecord/detroit`), Zola,
+Caddy, golgiBody auto-build. Protected by First Amendment, Michigan UPEPA
+(anti-SLAPP, effective March 2026), fair report privilege.
 
 ## Pending: Live Dashboard
 

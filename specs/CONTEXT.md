@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (August 17, 2026 — Wave 157k+, QCD Production Complete + Site Refresh)
+## Current State (September 25, 2026 — Wave 157k+, Cascade Restored + Public Record)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
@@ -25,7 +25,18 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Titan V Tier 1 CONFIRMED** (biomeGate). 4 measurement bugs fixed. `RegisterRead` enum.
 - **graftGate FULL NUCLEUS** (Darwin). 16/16 depot CURRENT. builder.serve LIVE.
 - **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
-- **NOTE**: primals.eco Zola build/deploy regression — triage needed on sporeGate
+- **primals.eco LIVE** — Zola date fix shipped, cascade restored Sep 15, GSC automation deployed
+- **detroit.primals.eco LIVE** — public accountability site (94 pages, BLAKE3 manifest, git-signed)
+- **Legal primal pattern** — ecoPrimals infrastructure applied to public records and civic accountability
+
+### Cascade Restored + Public Record (Sep 25)
+- **primals.eco LIVE** — Zola 0.19 `date` field on section `_index.md` caused build failure; fixed Sep 20
+- **golgiBody cascade restored** — 3-week crash-loop (Aug 27 – Sep 15) from stale `ecosystem_manifest.toml`. 1,784 failures before manual reset.
+- **detroit.primals.eco LIVE** — first public accountability application. 94 pages, charter school fraud documentation, BLAKE3 content manifest, git-signed evidence. Three surfaces: site + sovereign repo + GitHub mirror.
+- **Legal primal pattern** — meta-primal concept: infrastructure IS the evidence integrity layer. Same provenance that validates science validates public records.
+- **golgiBody hardened** — `chattr +i` on 5 critical binaries, journal capped 100M, logrotate deployed, VPS reserved blocks 5%→1%
+- **Google Search Console** — full API control, sitemap resubmitted, domain migration monitoring
+- **4 primals rebuilt** — toadstool, biomeos, squirrel, petaltongue pushed to depot
 
 ### Site Refresh (Aug 17) — QCD Production Complete
 - **32⁴ SU(3) production COMPLETE** — 45/45 configs (3 volumes × 3 β × 5 seeds)
