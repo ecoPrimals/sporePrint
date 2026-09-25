@@ -37,7 +37,7 @@ WebGPU/WGSL and Cryptographic Provenance"
 32⁴ SU(3) production COMPLETE — 45/45 cross-vendor configs, literature ~0.3%.
 Cross-GPU Δ=0.19% at β=6.20, 32⁴. SU(4) 24⁴ thermalization running.
 MILC Δ=3×10⁻⁹, 87+ cached configs. Normalization RESOLVED (gauge-group
-mismatch, not bug). Reviewer send blocked on primals.eco operability.
+mismatch, not bug). Reviewer send UNBLOCKED — primals.eco LIVE.
 Multi-vendor (RTX 3090 + RX 6950 XT). 190× GPU speedup. Lattice capacity
 up to 73⁴ dual GPU. ORCID: 0009-0004-2141-0321.
 
@@ -129,7 +129,8 @@ Proven design documents, audience guides, outreach briefs — still accessible, 
 - **Architecture foundation** (29 pages): Design documents for proven concepts (CAS convergence, silicon deism, transport evolution, etc.)
 - **Methodology foundation** (14 pages): Constrained evolution proofs, K-NOME, scyBorg
 - **Outreach** (16 pages): Partnership briefs (now foundation-flagged)
-- **Public Record** (/outreach/public_record/): ecoPrimals infrastructure applied to public accountability — [detroit.primals.eco](https://detroit.primals.eco)
+- **guerillaGorilla** (/outreach/guerilla-gorilla/): Legal meta-primal — Provenance Trio for public accountability, sensory triad, dispersal pattern
+- **Public Record** (/outreach/public-record/): ecoPrimals infrastructure applied to public accountability — [detroit.primals.eco](https://detroit.primals.eco)
 - **Audience** (7 pages): Role-based guides (now foundation-flagged)
 - **Products foundation** (4 pages): Retired/absorbed products
 - **Technical foundation** (4 pages): Historical hardware analysis
@@ -187,6 +188,11 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - **Coordination Triad**: quorumSignal (sense) + rootPulse (action) + waterFall (sync)
 - **Golden Cage**: Bootstrapping sovereignty inside the services you will replace
 - **Content-Addressed Convergence**: Newton-Leibniz pattern — content identity supersedes temporal identity
+- **guerillaGorilla**: Legal meta-primal — coordinates Provenance Trio for public accountability. Sensory triad: fEAR (hearing), preSCENT (olfaction), STRIDe (gait). Fourth independent Provenance Trio instantiation. See /outreach/guerilla-gorilla/
+- **Pursuit Predation**: Evolutionary anchor — metabolic asymmetry (operator cost constant, adversary cost escalating). Unifies fEAR/preSCENT/STRIDe. Terminal posture: Positional Patience
+- **detroit**: First guerillaGorilla deployment — public evidence library at detroit.primals.eco. 94 pages, BLAKE3 manifest, typed edges with epistemic grammar. See /outreach/public-record/
+- **Dispersal Pattern**: Primal-as-site pattern — any domain can produce a .primals.eco site using litho-core substrate. Documented in wateringHole/specs/DISPERSAL_PATTERN.md. Detroit is reference implementation
+- **Methodology (EntityKind)**: New entity kind in spore-validate — coordination patterns that emerge from constrained evolution, not code artifacts
 - **Cross-Platform Parity**: OS Atheism → Silicon Atheism — 6-phase roadmap to universal substrate
 - **protoKarya**: Protist organization — wider-world compositions (footPrint GIS, tideGlass GPS)
 - **footPrint**: GIS home planner — first protist, LIVE at footprint.primals.eco
@@ -209,7 +215,7 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - **12 gates ONLINE** across 6 OS families. **6 NUCLEUS gates**. graftGate FULL NUCLEUS (Darwin). biomeGate ONLINE (Titan V Tier 1 CONFIRMED). Zero drift.
 - **32⁴ SU(3) PRODUCTION COMPLETE** — 45/45 cross-vendor configs. Literature ~0.3%. Cross-GPU Δ=0.19%.
 - **arXiv 41/42**: Physics DONE. primals.eco LIVE — reviewer send UNBLOCKED.
-- **detroit.primals.eco** — public accountability site (94 pages, BLAKE3 manifest, git-signed). Legal primal pattern.
+- **detroit.primals.eco** — public accountability site (94 pages, BLAKE3 manifest, git-signed). First guerillaGorilla deployment. Dispersal pattern reference implementation.
 - **golgiBody cascade restored** (Sep 15) — 3-week crash-loop fixed. Binary immutability (`chattr +i`). GSC automation deployed.
 - **bonsai-bt FORKED** — DECIDE layer meta-primal. exp125 23/24. Phase 0 ingesting.
 - **rootPulse 6/6 REGISTERED** — commit, harvest, branch, merge, diff, federate.

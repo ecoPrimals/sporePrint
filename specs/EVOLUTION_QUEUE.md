@@ -4,7 +4,7 @@ Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
 Last reviewed: September 25, 2026 (Wave 157k+ — Cascade Restored + Public Record)
 
-**Current state**: 338+ pages, 79 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **primals.eco LIVE**. **detroit.primals.eco LIVE** — public accountability on sovereign infrastructure. 32⁴ SU(3) production COMPLETE. arXiv 41/42. golgiBody cascade restored. Legal primal pattern emerging.
+**Current state**: 339+ pages, 82 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **primals.eco LIVE**. **detroit.primals.eco LIVE** — public accountability on sovereign infrastructure. 32⁴ SU(3) production COMPLETE. arXiv 41/42. golgiBody cascade restored. Legal primal pattern emerging.
 
 **Cascade Restored + Public Record (Sep 25):**
 - **primals.eco LIVE** — Zola date fix + cascade restored Sep 15. GSC automation deployed.
@@ -12,6 +12,10 @@ Last reviewed: September 25, 2026 (Wave 157k+ — Cascade Restored + Public Reco
 - **golgiBody hardened** — chattr +i, journal cap, logrotate, VPS reserved blocks reduced.
 - **arXiv reviewer send UNBLOCKED** — primals.eco operational.
 - **4 primals rebuilt** — toadstool, biomeos, squirrel, petaltongue pushed to depot.
+- **guerillaGorilla** — legal meta-primal registered (methodology entity). Content page at /outreach/guerilla-gorilla/
+- **Pursuit Predation** — evolutionary anchor methodology. Metabolic asymmetry
+- **EntityKind::Methodology** — new variant in spore-validate. 82 entities total
+- **Dispersal pattern** — primal-as-site pattern. litho-core 6 modules. detroit is reference implementation
 
 **Wave 157k — Enmeshment + Ingestion (Aug 16):**
 - **12 gates ONLINE** — biomeGate, grapheneGate, iosGate, steamGate join fleet.

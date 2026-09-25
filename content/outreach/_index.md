@@ -32,6 +32,7 @@ Open invitations to the communities and companies whose work makes sovereign sci
 
 ## Public Accountability
 
+- **[guerillaGorilla — Legal Meta-Primal](@/outreach/guerilla_gorilla.md)** — Methodology pattern: the Provenance Trio applied to public accountability. Sensory triad, fourth independent instantiation, and the dispersal pattern
 - **[Public Record — Infrastructure for Accountability](@/outreach/public_record.md)** — ecoPrimals infrastructure applied to public accountability: git-signed evidence, cryptographic timestamps, and verifiable public records at [detroit.primals.eco](https://detroit.primals.eco)
 
 ## Services

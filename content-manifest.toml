@@ -1,6 +1,6 @@
-generated = "2026-09-25T12:02:43Z"
-root_hash = "c36fed45c7e60b06d23537f3d53c9bdec5060a4abf2b1c916ae67d47b8d2d98a"
-page_count = 365
+generated = "2026-09-25T13:34:36Z"
+root_hash = "744fb3c4d63e9237ab4fd5e15e6a53821587b5c64ba804491c07d42fa913a211"
+page_count = 366
 
 [pages."_index.md"]
 blake3 = "1a28d5ca9def9035a60377a6dab6649f36e0c3da4ef9c8aa134b90cf6b4650b4"
@@ -134,8 +134,8 @@ fold = "architecture"
 maturity = "live"
 
 [pages."architecture/PRIMAL_CATALOG.md"]
-blake3 = "d7a1ee4f5d58ae6bcd78c7d8be65c94beda884ceb0fc87c41f4e778f8403b16a"
-size_bytes = 55199
+blake3 = "071e9c660c8b192bfb75aecadf41a194fb7a9ebca96a550726d78eae60ca3efe"
+size_bytes = 58733
 title = "ecoPrimals Primal Catalog: Status, Capabilities, and Achievements"
 section = "architecture"
 fold = "architecture"
@@ -852,8 +852,8 @@ fold = "evidence"
 maturity = "live"
 
 [pages."lab/gate-status.md"]
-blake3 = "a1ec9cc5b9c39fb1b7b161ec6b1da49e3eb8a46708a74dba8f6c7daabe98183c"
-size_bytes = 7648
+blake3 = "ad4279e126d4f698e29d97037018d0a145ff45c3dce3368cb0f21f9d1a67703b"
+size_bytes = 10077
 title = "Gate Status"
 section = "lab"
 fold = "evidence"
@@ -911,8 +911,8 @@ section = "lab"
 fold = "evidence"
 
 [pages."lab/living-systems.md"]
-blake3 = "5286a2c5f6c6de914be1f9c5dba71531a096c2288b7497bb6dae9a7bab19317e"
-size_bytes = 7329
+blake3 = "c61e7a52f6cd60c221fbcdf720dd8c89c2f49e8e73c8e9e59fb47e93b53bddb9"
+size_bytes = 7516
 title = "Living Systems — What's Running Now"
 section = "lab"
 fold = "evidence"
@@ -2026,8 +2026,8 @@ companions = [
 ]
 
 [pages."outreach/_index.md"]
-blake3 = "70385373d89370261dfa6ba03f777c39c9c40b86ba3b669f8c543f41150dd3e8"
-size_bytes = 4043
+blake3 = "5a58db480f3c4a0419d7a2ea89439e000d038b16dda84ea275488639221c3b40"
+size_bytes = 4275
 title = "reachOut — Partnerships and Community"
 section = "outreach"
 
@@ -2061,6 +2061,12 @@ companions = [
     "/lab/notebooks/02-benchmark-python-vs-rust/",
 ]
 
+[pages."outreach/guerilla_gorilla.md"]
+blake3 = "51966792162d19342c86b1662b77bd535875cb4ad76e82301a8f5a36ebadb0e5"
+size_bytes = 6589
+title = "guerillaGorilla — Legal Meta-Primal"
+section = "outreach"
+
 [pages."outreach/homelab_llm_landing.md"]
 blake3 = "2267f2607c482058a5318f87ba0739702a1c693d404673cf2749167594f4095f"
 size_bytes = 7226
@@ -2092,8 +2098,8 @@ title = "An Invitation to Neuromorphic Hardware Manufacturers"
 section = "outreach"
 
 [pages."outreach/public_record.md"]
-blake3 = "ad02a979a4dfec9dd0737eceb26cdd29b96e3bbcb3e99a7e6df4731a429d175d"
-size_bytes = 2155
+blake3 = "1796e859bd6fa8e0c468a768f213de28e7a8607d63a75af92e822ad30dba18ef"
+size_bytes = 2397
 title = "Public Record — Infrastructure for Accountability"
 section = "outreach"
 

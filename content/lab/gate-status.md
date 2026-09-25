@@ -191,15 +191,15 @@ in deployed membrane binary). 1,784 sense failures before manual reset.
 | **nestgate.io** | `nestgate.io` | **LIVE** — trust surfaces + data braids |
 | **esotericWebb** | `webb.primals.eco` | 502 — needs petalTongue WebGL (G19) |
 
-## Public Accountability — The Legal Primal Pattern
+## Public Accountability — {{ entity(name="guerillagorilla") }}
 
-detroit.primals.eco applies ecoPrimals infrastructure to public accountability.
+{{ entity(name="detroit") }} at detroit.primals.eco applies ecoPrimals infrastructure to public accountability.
 Same substrate, different domain: git-signed evidence, BLAKE3 content manifests,
 three independent surfaces (live site + sovereign repo + GitHub mirror).
 
-This is the **legal primal** pattern — a meta-primal where the infrastructure
-IS the evidence integrity layer. The same properties that make science
-reproducible make public records tamper-proof:
+{{ entity(name="guerillagorilla") }} is the **legal meta-primal** — a methodology where the infrastructure
+IS the evidence integrity layer. Fourth independent instantiation of the {{ entity(name="provenancetrio") }}.
+The same properties that make science reproducible make public records tamper-proof:
 
 | Science | Accountability |
 |---------|---------------|
@@ -208,9 +208,13 @@ reproducible make public records tamper-proof:
 | Peer review | Public verification |
 | No cloud dependency | No platform dependency |
 
+Sensory triad: **fEAR** (hearing — OSINT, court filings), **preSCENT** (olfaction — presence broadcast, the site itself), **STRIDe** (gait — filing sequence, deployment). Anchored by {{ entity(name="pursuitpredation") }}: metabolic asymmetry where operator cost is constant.
+
 Infrastructure: Forgejo (`git.primals.eco/publicRecord/detroit`), Zola,
 Caddy, golgiBody auto-build. Protected by First Amendment, Michigan UPEPA
 (anti-SLAPP, effective March 2026), fair report privilege.
+
+See: [guerillaGorilla methodology page](@/outreach/guerilla_gorilla.md) | [dispersal pattern](https://git.primals.eco/ecoPrimals/wateringHole/src/branch/main/specs/DISPERSAL_PATTERN.md)
 
 ## Pending: Live Dashboard
 

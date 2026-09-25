@@ -2,7 +2,7 @@
 
 What exists in `content/`, how sections relate, and what may be stale.
 
-Last reviewed: September 25, 2026 (Wave 157k+ — 338+ pages. 0/0/0. 12 gates ONLINE. primals.eco LIVE. detroit.primals.eco LIVE. Legal primal pattern.)
+Last reviewed: September 25, 2026 (Wave 157k+ — 339+ pages, 82 entities. 0/0/0. 12 gates ONLINE. primals.eco LIVE. detroit.primals.eco LIVE. guerillaGorilla + Pursuit Predation + EntityKind::Methodology. Dispersal pattern.)
 
 ## Sections
 

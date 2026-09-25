@@ -1,7 +1,12 @@
 +++
 title = "Public Record — Infrastructure for Accountability"
 description = "ecoPrimals infrastructure applied to public accountability: git-signed evidence, cryptographic timestamps, and verifiable public records. The same substrate that runs science runs transparency."
+date = 2026-09-25
 weight = 50
+
+[taxonomies]
+primals = ["rhizocrypt", "loamspine", "sweetgrass"]
+springs = ["primalspring"]
 +++
 
 ## The Substrate Serves Accountability
@@ -10,11 +15,11 @@ ecoPrimals was built for sovereign scientific computing — reproducible results
 immutable provenance, zero vendor lock-in. The same properties that make it
 trustworthy for science make it trustworthy for public records.
 
-**[detroit.primals.eco](https://detroit.primals.eco)** is the first application of
+{{ entity(name="detroit") }} at **[detroit.primals.eco](https://detroit.primals.eco)** is the first application of
 ecoPrimals infrastructure to public accountability: a public evidence library
 documenting charter school fraud in Detroit, backed by a
 [git-signed repository](https://git.primals.eco/publicRecord/detroit) where
-every document is cryptographically timestamped.
+every document is cryptographically timestamped. It is the first deployment of {{ entity(name="guerillagorilla") }}, the legal meta-primal pattern.
 
 ---
 

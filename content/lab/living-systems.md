@@ -140,7 +140,7 @@ The Flint edge router is the plasma membrane. Gates are ephemeral compute.
 |------|----------|--------|
 | ~~FIX primals.eco~~ | ~~CRITICAL~~ | **FIXED** — Zola date bug + cascade restored Sep 15 |
 | arXiv reviewer send (Murillo, Chuna, Bazavov) | **HIGH** | UNBLOCKED — primals.eco LIVE |
-| detroit.primals.eco expansion | **HIGH** | LIVE — 94 pages, legal primal pattern |
+| {{ entity(name="detroit") }} expansion | **HIGH** | LIVE — 94 pages, {{ entity(name="guerillagorilla") }} pattern |
 | bonsai-bt Phase 0→1 (sourDough scaffold) | HIGH | exp125 23/24. DECIDE layer. |
 | blueGate depot rebuild via autonomous dispatch | HIGH | 0/13 STALE |
 | tideGlass Phase 0 START | HIGH | QUEUED |

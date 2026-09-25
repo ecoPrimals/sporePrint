@@ -27,7 +27,12 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
 - **primals.eco LIVE** — Zola date fix shipped, cascade restored Sep 15, GSC automation deployed
 - **detroit.primals.eco LIVE** — public accountability site (94 pages, BLAKE3 manifest, git-signed)
-- **Legal primal pattern** — ecoPrimals infrastructure applied to public records and civic accountability
+- **guerillaGorilla** — legal meta-primal registered as methodology entity. Sensory triad (fEAR/preSCENT/STRIDe). Fourth Provenance Trio instantiation
+- **Pursuit Predation** — evolutionary anchor methodology. Metabolic asymmetry
+- **detroit** — registered as product entity. First guerillaGorilla deployment
+- **EntityKind::Methodology** — new variant in spore-validate. 82 entities total
+- **Dispersal pattern** — primal-as-site pattern documented (`wateringHole/specs/DISPERSAL_PATTERN.md`). litho-core grew to 6 modules
+- **guerillaGorilla content page** — `/outreach/guerilla-gorilla/` with full methodology documentation
 
 ### Cascade Restored + Public Record (Sep 25)
 - **primals.eco LIVE** — Zola 0.19 `date` field on section `_index.md` caused build failure; fixed Sep 20

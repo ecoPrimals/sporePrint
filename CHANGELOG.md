@@ -5,6 +5,38 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.37.0] — 2026-09-25 — Catalogue Integration: guerillaGorilla + Dispersal Pattern
+
+**Three new entities registered (guerillaGorilla, detroit, Pursuit Predation) from
+upstream commit 7fd48dd4. EntityKind::Methodology variant added to spore-validate.
+guerillaGorilla content page created. Entity shortcodes wired into gate-status,
+living-systems, public_record. Dispersal pattern referenced. 82 entities total.**
+
+### Added
+
+- **`content/outreach/guerilla_gorilla.md`** — full methodology page: sensory triad,
+  seven subsystems, fourth Provenance Trio instantiation, dispersal pattern, verification links
+- **Entity shortcodes** — `{{ entity(name="guerillagorilla") }}`, `{{ entity(name="detroit") }}`,
+  `{{ entity(name="pursuitpredation") }}` wired into gate-status.md, living-systems.md, public_record.md
+- **Outreach index** — guerillaGorilla page linked in Public Accountability section
+
+### Changed
+
+- **public_record.md** — added taxonomies, entity shortcodes, guerillaGorilla reference, date
+- **gate-status.md** — legal primal section rewritten with entity shortcodes + sensory triad
+- **living-systems.md** — detroit backlog item uses entity shortcodes
+- **llms.txt** — guerillaGorilla, Pursuit Predation, detroit, Dispersal Pattern, Methodology kind
+  added to Key Concepts; outreach section updated; arXiv reviewer send UNBLOCKED
+- **All specs** — CONTEXT, EVOLUTION_QUEUE, CONTENT_MAP updated for 82 entities + methodology kind
+
+### Upstream
+
+- **sporePrint `7fd48dd4`** — 3 entities, EntityKind::Methodology, PRIMAL_CATALOG.md Section 5
+- **wateringHole `0237293ca`** — DISPERSAL_PATTERN.md spec
+- **detroit litho-core `89193b3`** — registry + provenance modules (6 total)
+
+---
+
 ## [3.36.0] — 2026-09-25 — Cascade Restored + Public Record
 
 **primals.eco LIVE — Zola date fix + golgiBody cascade restored (Sep 15). detroit.primals.eco
