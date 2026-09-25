@@ -18,7 +18,10 @@ readme = "README.md"
 
 [dependencies]
 base64 = "0.22"
-# Shared substrate — local path until litho-core is published to registry
+# Shared substrate — local path until litho-core is published to depot as versioned crate.
+# Convergence path: litho-core → lithoSpore shared substrate crate.
+# Requires detroit repo cloned at ../../../../../detroit/ (i.e. /home/*/Development/detroit/).
+# See: wateringHole/handoffs/SPOREPRINT_RESPONSE_CATALOGUE_INTEGRATION.md
 litho-core = { path = "../../../../../detroit/crates/litho-core" }
 blake3 = { version = "1", default-features = false, features = ["std", "pure"] }
 clap = { version = "4", features = ["derive", "env"] }

@@ -79,6 +79,7 @@ Most items below pre-Wave 138 are completed — retained as fossil record.
 - [x] ~~Cross-link Story ↔ Philosophy sections~~ — "Read More" sections with mapped pairs
 - [x] ~~Fix "Try It" cold-start~~ — replaced wetSpring (broken cold-clone) with groundSpring
 - [ ] Expand products pages with composition diagrams and BYOB examples
+- [ ] **litho-core path dep → versioned crate** — `spore-validate` currently depends on detroit `litho-core` via `path = "../../../../../detroit/crates/litho-core"`. Needs to evolve: (1) litho-core published to depot as versioned crate, (2) spore-validate switches to version dep, (3) litho-core converges into lithoSpore as shared substrate. Tracked in `wateringHole/handoffs/SPOREPRINT_RESPONSE_CATALOGUE_INTEGRATION.md`
 - [x] ~~Add cross-spring data flow diagram to SPRING_CATALOG.md~~ — ASCII diagram in §2.2 (Wave 134+)
 
 ### Thesis integration (gen3/ → sporePrint)
