@@ -4,17 +4,20 @@ Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
 Last reviewed: September 27, 2026 (Wave 158 — Rewake + Legal Primal + Mesh Expansion)
 
-**Current state**: 339+ pages, 82 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **REWAKE** — eastGate + golgiBody + sporeGate **ONLINE**. northGate **ENROLLING**. **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **primals.eco LIVE**. **detroit.primals.eco LIVE** (128+ pages). guerillaGorilla **FORMALIZED** — amicusContra named. 5-target depot. Milk-V Jupiter 2 ARRIVED (RISC-V, 7th arch). Windows depot 12/17.
+**Current state**: 339+ pages, 85 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **OPERATIONAL** — eastGate + golgiBody + sporeGate **ONLINE**. northGate **ENROLLING**. **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **4 LIVE SITES** (sporeprint + detroit + gorilla + alias). guerillaGorilla **LAUNCHED**. 5-target depot. Windows depot **14/17**. Milk-V Jupiter 2 + 3× Pi 500 ARRIVED. **8 architecture families.**
 
-**Wave 158 Rewake (Sep 27):**
-- **REWAKE posture** — eastGate + golgiBody + sporeGate ONLINE. House 2 power rebalance pending.
-- **northGate ENROLLING** — Windows 11, RTX 5090, 96GB DDR5. WG mesh → Tower Atomic target.
-- **Milk-V Jupiter 2 ARRIVED** — RISC-V RVA23. 7th architecture family. Bring-up pending.
-- **guerillaGorilla FORMALIZED** — amicusContra named. Dispersal site `guerillagorilla.primals.eco` planned.
-- **detroit expanded** — 128+ pages (dynasty expansion, 35+ actors). BLAKE3 braided.
-- **5-target depot** — x86_64-musl 19/19, x86_64-gnu 14/14, aarch64-musl 16/16, darwin 16/16, Windows 12/17.
-- **Windows depot 12/17** — 5 primals blocked on team unix fixes.
-- **rustChip standalone** — 367 tests, cleaned.
+**Wave 158+ Operational (Sep 27):**
+- **OPERATIONAL posture** — eastGate + golgiBody + sporeGate ONLINE. House 2 power rebalance next week.
+- **northGate ENROLLING** — Windows 11, RTX 5090, 96GB DDR5. Pushing to Forgejo. Target: vine-bat zero-SSH.
+- **nucleus-deploy Windows FIXED** — commit `58f6296`. 2 unix call sites gated. 0 warnings unix+windows+riscv.
+- **gorilla.primals.eco LIVE** — 20-page methodology site. Three-tier dispersal PROVEN.
+- **detroit expanded** — 127+ URLs (dynasty expansion, 35+ actors). BLAKE3 braided. GSC 97 pages, Success.
+- **Milk-V Jupiter 2 ARRIVED** — SpacemiT K3 (RVA23). 7th arch. RISC-V targets installed. Awaiting physical boot.
+- **3× Raspberry Pi 500 ACQUIRED** — 8th gate class. aarch64-linux. 15/15 depot binaries ready to deploy.
+- **HARDWARE.md written** — Full fleet inventory. 8 ISAs, 16+ gates, 200+ cores, ~244 GB GPU VRAM.
+- **5-target depot** — x86_64-musl 18/18, x86_64-gnu 14/14, aarch64-musl 15/15, darwin 16/16, Windows **14/17**.
+- **Windows depot 14/17** — 3 primals blocked on team unix fixes (was 4 — nucleus-deploy FIXED).
+- **swarmVine + guerillaGorilla registered** in sporePrint sources.toml + entity registry.
 - **sporePrint → NUCLEUS live data surface** — concept evolved: static → live phased.
 
 **Cascade Restored + Public Record (Sep 25):**
