@@ -8,7 +8,7 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 
 **sporePrint is human-facing.** wateringHole is the dev-facing shared context repo. sporePrint explains what the ecosystem IS, what it does, and how to verify it. It is not a technical reference manual — it is a compass.
 
-## Current State (September 25, 2026 — Wave 157k+, Cascade Restored + Public Record)
+## Current State (September 27, 2026 — Wave 158, Rewake + Legal Primal + Mesh Expansion)
 
 - **338 published pages** across 25 sections: ~200 active in main nav, 36 in backstory, 79 foundation (not in nav)
 - **79 typed entities** across 7 kinds (primal, spring, product, composition, concept, infra, org)
@@ -27,12 +27,18 @@ sporePrint is the public-facing website for the ecoPrimals sovereign scientific 
 - **Ecosystem totals**: 3.60M LOC, ~150,000+ tests (16 primals + 9 springs), 43 repos
 - **primals.eco LIVE** — Zola date fix shipped, cascade restored Sep 15, GSC automation deployed
 - **detroit.primals.eco LIVE** — public accountability site (94 pages, BLAKE3 manifest, git-signed)
-- **guerillaGorilla** — legal meta-primal registered as methodology entity. Sensory triad (fEAR/preSCENT/STRIDe). Fourth Provenance Trio instantiation
-- **Pursuit Predation** — evolutionary anchor methodology. Metabolic asymmetry
-- **detroit** — registered as product entity. First guerillaGorilla deployment
-- **EntityKind::Methodology** — new variant in spore-validate. 82 entities total
-- **Dispersal pattern** — primal-as-site pattern documented (`wateringHole/specs/DISPERSAL_PATTERN.md`). litho-core grew to 6 modules
-- **guerillaGorilla content page** — `/outreach/guerilla-gorilla/` with full methodology documentation
+- **Wave 158 REWAKE** — eastGate + golgiBody + sporeGate ONLINE. Most House 2 gates OFFLINE for power rebalance
+- **northGate ENROLLING** — Windows 11, RTX 5090, 96GB DDR5. WG mesh enrollment via golgi relay
+- **Milk-V Jupiter 2 ARRIVED** — RISC-V RVA23, full vector. 7th architecture family. `riscv64gc-unknown-linux-musl` target
+- **NUC bench** — DDR3 NUCs for mesh expansion (sub-builders, site hosts)
+- **guerillaGorilla FORMALIZED** — amicusContra named (outward projection: downward/lateral/upward). Dispersal site `guerillagorilla.primals.eco` planned
+- **detroit expanded** — 128+ pages (was 94), dynasty expansion (35+ actors), BLAKE3 braided
+- **5-target depot** — x86_64-musl 19/19, x86_64-gnu 14/14, aarch64-musl 16/16, darwin 16/16, Windows 12/17
+- **Windows depot 12/17** — 5 primals blocked on team unix fixes (`#[cfg(unix)]` gating)
+- **rustChip standalone** — 367 tests, cleaned
+- **sporePrint → NUCLEUS live data surface** — concept: static Zola → NUCLEUS-served live data (phased)
+- **EntityKind::Methodology** — 82 entities total
+- **Dispersal pattern PROVEN** — primal-as-site (`wateringHole/specs/DISPERSAL_PATTERN.md`). litho-core 6 modules
 
 ### Cascade Restored + Public Record (Sep 25)
 - **primals.eco LIVE** — Zola 0.19 `date` field on section `_index.md` caused build failure; fixed Sep 20

@@ -2,20 +2,25 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: September 25, 2026 (Wave 157k+ — Cascade Restored + Public Record)
+Last reviewed: September 27, 2026 (Wave 158 — Rewake + Legal Primal + Mesh Expansion)
 
-**Current state**: 339+ pages, 82 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **12 gates ONLINE**, **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **primals.eco LIVE**. **detroit.primals.eco LIVE** — public accountability on sovereign infrastructure. 32⁴ SU(3) production COMPLETE. arXiv 41/42. golgiBody cascade restored. Legal primal pattern emerging.
+**Current state**: 339+ pages, 82 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **REWAKE** — eastGate + golgiBody + sporeGate **ONLINE**. northGate **ENROLLING**. **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **primals.eco LIVE**. **detroit.primals.eco LIVE** (128+ pages). guerillaGorilla **FORMALIZED** — amicusContra named. 5-target depot. Milk-V Jupiter 2 ARRIVED (RISC-V, 7th arch). Windows depot 12/17.
+
+**Wave 158 Rewake (Sep 27):**
+- **REWAKE posture** — eastGate + golgiBody + sporeGate ONLINE. House 2 power rebalance pending.
+- **northGate ENROLLING** — Windows 11, RTX 5090, 96GB DDR5. WG mesh → Tower Atomic target.
+- **Milk-V Jupiter 2 ARRIVED** — RISC-V RVA23. 7th architecture family. Bring-up pending.
+- **guerillaGorilla FORMALIZED** — amicusContra named. Dispersal site `guerillagorilla.primals.eco` planned.
+- **detroit expanded** — 128+ pages (dynasty expansion, 35+ actors). BLAKE3 braided.
+- **5-target depot** — x86_64-musl 19/19, x86_64-gnu 14/14, aarch64-musl 16/16, darwin 16/16, Windows 12/17.
+- **Windows depot 12/17** — 5 primals blocked on team unix fixes.
+- **rustChip standalone** — 367 tests, cleaned.
+- **sporePrint → NUCLEUS live data surface** — concept evolved: static → live phased.
 
 **Cascade Restored + Public Record (Sep 25):**
 - **primals.eco LIVE** — Zola date fix + cascade restored Sep 15. GSC automation deployed.
-- **detroit.primals.eco LIVE** — 94 pages, charter school fraud documentation, legal primal pattern.
-- **golgiBody hardened** — chattr +i, journal cap, logrotate, VPS reserved blocks reduced.
-- **arXiv reviewer send UNBLOCKED** — primals.eco operational.
-- **4 primals rebuilt** — toadstool, biomeos, squirrel, petaltongue pushed to depot.
-- **guerillaGorilla** — legal meta-primal registered (methodology entity). Content page at /outreach/guerilla-gorilla/
-- **Pursuit Predation** — evolutionary anchor methodology. Metabolic asymmetry
-- **EntityKind::Methodology** — new variant in spore-validate. 82 entities total
-- **Dispersal pattern** — primal-as-site pattern. litho-core 6 modules. detroit is reference implementation
+- **guerillaGorilla** — legal meta-primal. EntityKind::Methodology. 82 entities total.
+- **Dispersal pattern** — primal-as-site. litho-core 6 modules. detroit reference implementation.
 
 **Wave 157k — Enmeshment + Ingestion (Aug 16):**
 - **12 gates ONLINE** — biomeGate, grapheneGate, iosGate, steamGate join fleet.

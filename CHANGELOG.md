@@ -5,6 +5,32 @@ Format: `[version] — date — description`
 
 ---
 
+## [3.38.0] — 2026-09-27 — Wave 158 Rewake + Mesh Expansion
+
+**Wave 158 REWAKE. northGate ENROLLING (RTX 5090). Milk-V Jupiter 2 ARRIVED (RISC-V RVA23,
+7th arch family). 5-target depot (19/19 + 14/14 + 16/16 + 16/16 + 12/17). guerillaGorilla
+FORMALIZED — amicusContra named. detroit expanded to 128+ pages. sporePrint → NUCLEUS
+live data surface concept.**
+
+### Changed
+
+- **Gate status** — full Wave 158 rewrite: northGate enrolling, Jupiter 2 arrived, NUC bench,
+  power states per gate, 5-target depot with Windows blocked primal table, updated infra items,
+  active code teams refreshed, downstream patterns with mesh expansion tracks, amicusContra
+  capabilities table in guerillaGorilla section
+- **Homepage** — hero updated for Wave 158: REWAKE, guerillaGorilla formalized, northGate, RISC-V
+- **Living systems** — Wave 158 rewake, 16-gate fleet table with power states, 5-target depot,
+  backlog refreshed (northGate, guerillaGorilla, Windows fixes, Jupiter 2, NUC bench, House 2)
+- **Mesh topology** — northGate + Jupiter 2 + NUC bench in physical topology, 7 arch families,
+  gate power states
+- **guerilla_gorilla.md** — amicusContra section (downward/lateral/upward), detroit 128+ pages,
+  dispersal site plan (guerillagorilla.primals.eco)
+- **llms.txt** — Wave 158 intro, amicusContra, 5-target depot, northGate, Jupiter 2
+- **config.toml** — measured_date 2026-09-27
+- **All specs** — CONTEXT, EVOLUTION_QUEUE, CONTENT_MAP for Wave 158
+
+---
+
 ## [3.37.0] — 2026-09-25 — Catalogue Integration: guerillaGorilla + Dispersal Pattern
 
 **Three new entities registered (guerillaGorilla, detroit, Pursuit Predation) from

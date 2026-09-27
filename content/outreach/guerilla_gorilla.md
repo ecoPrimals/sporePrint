@@ -36,6 +36,18 @@ guerillaGorilla coordinates three sensing/motion modalities, named from evolutio
 
 These map to {{ entity(name="pursuitpredation") }}, the evolutionary anchor: metabolic asymmetry where operator cost is constant and adversary cost escalates. The terminal posture is **Positional Patience** — landscape saturation does the work.
 
+### amicusContra — Outward Projection Function
+
+The sensory triad (fEAR/preSCENT/STRIDe) handles intake and action for cases the operator is party to. **amicusContra** is the outward function — projecting capability toward cases the operator is *not* party to:
+
+| Direction | Mode | Meaning |
+|-----------|------|---------|
+| **Downward** | Stabilize those beneath | Prepare rooms — infrastructure as service |
+| **Lateral** | Work with those who are like | Cross-protection — mutual defense |
+| **Upward** | Hold those above to account | Force reproducibility — same standard as science |
+
+*"Beside the small. Against unaccountable power. For the record."*
+
 ---
 
 ## Seven Subsystems
@@ -56,7 +68,7 @@ guerillaGorilla treats **legal existence as infrastructure**, the same way {{ en
 
 [detroit.primals.eco](https://detroit.primals.eco) is the **digital instantiation of preSCENT** — ambient presence broadcast through a public evidence library documenting charter school fraud.
 
-- **94 pages** across 18 sections
+- **128+ pages** across 18 sections (dynasty expansion — 35+ actors)
 - **BLAKE3 content manifest** — every document content-addressed
 - **Git-signed repository** at [git.primals.eco/publicRecord/detroit](https://git.primals.eco/publicRecord/detroit)
 - **Three surfaces**: live site + sovereign repo + GitHub mirror
@@ -81,6 +93,8 @@ The pattern components:
 | **Convergence depth** | 5-level verification: CAS → DAG → Spine → Braid → Signed witness |
 
 Future domains (science journals, medical protocols, gaming attribution) can adopt the same pattern. The substrate is domain-agnostic; each site owns its registries and edge grammar.
+
+**Planned**: `guerillagorilla.primals.eco` — methodology documentation, amicusContra templates, and case study framework. detroit.primals.eco is Case Study #1 under this umbrella. Wildcard subdomain evolution enables any methodology to produce its own `.primals.eco` site.
 
 ---
 

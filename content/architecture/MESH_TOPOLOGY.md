@@ -1,7 +1,7 @@
 +++
 title = "Self-Hosted Distributed Scientific Compute Mesh — Gate Topology"
-description = "12 operational gates across 6 OS families, 10G backbone, Tower Atomic mesh. NUCLEUS running on 6 gates. 3/3 sub-builders enmeshed. Capability-aware routing."
-date = 2026-08-17
+description = "Wave 158 REWAKE: 16 gates across 7 OS families (+ RISC-V pending). northGate ENROLLING (RTX 5090). Milk-V Jupiter 2 ARRIVED. 5-target depot. Capability-aware routing."
+date = 2026-09-27
 weight = 20
 
 [taxonomies]
@@ -14,7 +14,7 @@ maturity = "live"
 
 ## Overview
 
-> **Status (Wave 157k):** 12 operational gates across 6 OS families (Linux, Windows, Darwin, Android, iOS, SteamOS). NUCLEUS confirmed on 6 gates (eastGate, ironGate, strandGate, westGate, graftGate, southGate). 3/3 sub-builders enmeshed. NanoWire SSH Tier 1 RETIRED. bearDog `crypto.sign` LIVE on all Tower gates.
+> **Status (Wave 158 — Rewake):** 16 gates across 7 OS/arch families (Linux, Windows, Darwin, Android, iOS, SteamOS + RISC-V pending). eastGate + golgiBody + sporeGate **ONLINE**. northGate **ENROLLING** (Windows 11, RTX 5090, 96GB DDR5). Milk-V Jupiter 2 **ARRIVED** (RISC-V RVA23 — 7th arch family). NUC bench DDR3 units for mesh expansion. 3/3 sub-builders enmeshed. NanoWire SSH Tier 1 RETIRED. 5-target depot (19/19 + 14/14 + 16/16 + 16/16 + 12/17). House 2 gates OFFLINE — power rebalance next week.
 
 The ecoPrimals gate mesh is a sovereign, self-hosted network of compute gates connected via [Tower Atomic](@/architecture/tower_atomic.md) transport coordinated through {{ entity(name="songbird") }}. Each gate runs a NUCLEUS composition and participates in capability-based routing — no centralized orchestrator, no exposed ports.
 
@@ -84,20 +84,30 @@ When songBird is unavailable, the visualization gracefully degrades to static to
 
 ```
 House 1 (CRS310 backbone — 1G MikroTik):
-  sporeGate, eastGate, biomeGate(Titan V)
+  sporeGate (✅ ONLINE — foreman, depot, cascade hub)
+  northGate (🔄 ENROLLING — Win11, RTX 5090, 96GB DDR5)
+  biomeGate (⏸️ OFFLINE — Titan V, K80, GPU lab)
+  graftGate (⏸️ OFFLINE — Darwin M4, FULL NUCLEUS)
+  Jupiter 2 (🆕 ARRIVED — RISC-V RVA23, 7th arch)
+  NUC bench (🆕 DDR3 NUCs — mesh expansion)
   Peptidoglycan anchor: sporeGate
 
 House 2 (Omada SX3008F — 10G):
-  ironGate, strandGate(COMPUTE LIVE), westGate(50.7TB ZFS),
-  blueGate(Windows), southGate(canary), graftGate(Darwin M4)
-  Peptidoglycan anchor: blueGate
+  eastGate (✅ ONLINE — overwatch, rustChip 367 tests)
+  ironGate (⏸️ OFFLINE — power rebalance)
+  strandGate (⏸️ OFFLINE — 45 QCD configs banked)
+  westGate (⏸️ OFFLINE — 50.7TB ZFS)
+  blueGate (⏸️ OFFLINE — rack move incomplete)
+  southGate (⏸️ OFFLINE — power rebalance)
 
 Link: 80m 10G AOC trunk between adjacent lots
 
-Remote:
-  golgiBody (VPS — depot relay, Forgejo)
-  grapheneGate (Android — mobile)
-  iosGate (iOS — mobile)
+Cloud:
+  golgiBody (✅ ONLINE — VPS, depot relay, Forgejo, cascade)
+
+Mobile:
+  grapheneGate (Android)
+  iosGate (iOS — 6th OS family)
   steamGate (SteamOS — portable)
 ```
 

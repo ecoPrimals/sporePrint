@@ -14,7 +14,7 @@
 > published results on owned commodity hardware and carry their validation
 > and provenance with them. 16 composable programs (primals), 9 validation
 > domains (springs), vendor-agnostic GPU compute via WebGPU/WGSL.
-> 12 gates ONLINE. Zero P0, P1, P2. 3.3 TB science data. primals.eco LIVE. detroit.primals.eco LIVE — public accountability on sovereign infrastructure. 32⁴ SU(3) PRODUCTION COMPLETE — 45/45 cross-vendor configs. arXiv 41/42. golgiBody cascade restored. Pipeline + provenance CONVERGED. Pure Rust, AGPL-3.0-or-later.
+> Wave 158 REWAKE. Zero P0, P1, P2. 3.3 TB science data. primals.eco LIVE. detroit.primals.eco LIVE (128+ pages). guerillaGorilla FORMALIZED — amicusContra named. northGate ENROLLING (RTX 5090). Milk-V Jupiter 2 ARRIVED (RISC-V, 7th arch). 5-target depot. 32⁴ SU(3) COMPLETE. Pipeline + provenance CONVERGED. Pure Rust, AGPL-3.0-or-later.
 
 ## What This Site Is
 
@@ -188,7 +188,7 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - **Coordination Triad**: quorumSignal (sense) + rootPulse (action) + waterFall (sync)
 - **Golden Cage**: Bootstrapping sovereignty inside the services you will replace
 - **Content-Addressed Convergence**: Newton-Leibniz pattern — content identity supersedes temporal identity
-- **guerillaGorilla**: Legal meta-primal — coordinates Provenance Trio for public accountability. Sensory triad: fEAR (hearing), preSCENT (olfaction), STRIDe (gait). Fourth independent Provenance Trio instantiation. See /outreach/guerilla-gorilla/
+- **guerillaGorilla**: Legal meta-primal — coordinates Provenance Trio for public accountability. Sensory triad: fEAR (hearing), preSCENT (olfaction), STRIDe (gait). amicusContra: outward projection (downward/lateral/upward). Fourth independent Provenance Trio instantiation. See /outreach/guerilla-gorilla/
 - **Pursuit Predation**: Evolutionary anchor — metabolic asymmetry (operator cost constant, adversary cost escalating). Unifies fEAR/preSCENT/STRIDe. Terminal posture: Positional Patience
 - **detroit**: First guerillaGorilla deployment — public evidence library at detroit.primals.eco. 94 pages, BLAKE3 manifest, typed edges with epistemic grammar. See /outreach/public-record/
 - **Dispersal Pattern**: Primal-as-site pattern — any domain can produce a .primals.eco site using litho-core substrate. Documented in wateringHole/specs/DISPERSAL_PATTERN.md. Detroit is reference implementation
@@ -212,14 +212,14 @@ Trail pages: https://sporeprint.primals.eco/trails/
 - 27 signal graphs. rootPulse 6/6 graphs REGISTERED.
 - 175+ peer-reviewed papers reproduced
 - 8 scientific domains validated
-- **12 gates ONLINE** across 6 OS families. **6 NUCLEUS gates**. graftGate FULL NUCLEUS (Darwin). biomeGate ONLINE (Titan V Tier 1 CONFIRMED). Zero drift.
+- **Wave 158 REWAKE** — eastGate + golgiBody + sporeGate ONLINE. northGate ENROLLING (Win11, RTX 5090). Milk-V Jupiter 2 ARRIVED (RISC-V RVA23, 7th arch). House 2 power rebalance pending.
 - **32⁴ SU(3) PRODUCTION COMPLETE** — 45/45 cross-vendor configs. Literature ~0.3%. Cross-GPU Δ=0.19%.
 - **arXiv 41/42**: Physics DONE. primals.eco LIVE — reviewer send UNBLOCKED.
-- **detroit.primals.eco** — public accountability site (94 pages, BLAKE3 manifest, git-signed). First guerillaGorilla deployment. Dispersal pattern reference implementation.
+- **detroit.primals.eco** — public accountability site (128+ pages, dynasty expansion, BLAKE3 braided). First guerillaGorilla deployment. Dispersal pattern reference implementation.
 - **golgiBody cascade restored** (Sep 15) — 3-week crash-loop fixed. Binary immutability (`chattr +i`). GSC automation deployed.
 - **bonsai-bt FORKED** — DECIDE layer meta-primal. exp125 23/24. Phase 0 ingesting.
 - **rootPulse 6/6 REGISTERED** — commit, harvest, branch, merge, diff, federate.
-- **Depot**: x86_64-musl 13/13, aarch64-musl 15/15, aarch64-apple-darwin 16/16, Windows 0/13 STALE. 3/3 builders enmeshed.
+- **Depot (5-target)**: x86_64-musl 19/19, x86_64-gnu 14/14, aarch64-musl 16/16, aarch64-darwin 16/16, Windows 12/17 (5 blocked on unix fixes). 3/3 builders enmeshed.
 - **NanoWire SSH Tier 1 RETIRED** — builders communicate via Tower Atomic.
 - **Lattice capacity**: 22⁴ → 73⁴ dual GPU (121× more sites). Streaming encoder shipped.
 - **cellMembrane**: `plasmid.fetch --source forgejo` FIXED — sovereign deploy path for all gates
