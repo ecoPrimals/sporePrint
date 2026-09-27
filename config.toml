@@ -469,6 +469,20 @@ edges = [
   { target = "biomeos", relation = "validated_by" },
 ]
 
+[extra.entity_registry.swarmvine]
+display = "swarmVine"
+emoji = "🐜🌿"
+kind = "primal"
+description = "Gossip propagation and mesh relay — ant-colony-inspired topic-based message dissemination across sovereign gates. Paired with skunkBat (vine-bat loop) for pre-accept validation. Zero-SSH enrollment target for Tower Atomic."
+domain = "Mesh propagation"
+repo = "ecoPrimals/swarmVine"
+tier = "post-nucleus"
+edges = [
+  { target = "skunkbat", relation = "analogous_to" },
+  { target = "songbird", relation = "derived_from" },
+  { target = "toweratomic", relation = "composes_into" },
+]
+
 [extra.entity_registry.sourdough]
 display = "sourDough"
 emoji = "🍞🧪"
@@ -1080,6 +1094,15 @@ description = "Public evidence library — Detroit charter school investigation.
 url = "https://detroit.primals.eco"
 page = "/outreach/public-record/"
 repo = "publicRecord/detroit"
+
+[extra.entity_registry.gorilla]
+display = "gorilla.primals.eco"
+emoji = "🦍🌐"
+kind = "product"
+domain = "Methodology"
+description = "guerillaGorilla methodology site — 20 pages covering fEAR, preSCENT, STRIDe, amicusContra, pursuit predation, cross-protection, and the dispersal pattern. Three-tier dispersal: sporePrint (catalogue) → guerillaGorilla (methodology) → detroit (case study)."
+url = "https://gorilla.primals.eco"
+repo = "protoKarya/guerillaGorilla"
 
 # ── Infrastructure repos ─────────────────────────────────────────────────
 

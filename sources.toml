@@ -81,11 +81,15 @@ repo = "ecoPrimals/petalTongue"
 type = "primal"
 
 # =============================================================================
-# PRIMALS — Defense
+# PRIMALS — Defense + Mesh
 # =============================================================================
 
 [sources.skunkbat]
 repo = "ecoPrimals/skunkBat"
+type = "primal"
+
+[sources.swarmvine]
+repo = "ecoPrimals/swarmVine"
 type = "primal"
 
 # =============================================================================
@@ -213,6 +217,10 @@ private = true
 # =============================================================================
 # PROTISTS — protoKarya (wider-world compositions)
 # =============================================================================
+
+[sources.guerillagorilla]
+repo = "protoKarya/guerillaGorilla"
+type = "product"
 
 [sources.footprint]
 repo = "protoKarya/footPrint"
