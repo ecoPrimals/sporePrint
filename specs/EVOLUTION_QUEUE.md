@@ -2,23 +2,21 @@
 
 Planned changes, ordered by priority. When implemented, move to CHANGELOG.md.
 
-Last reviewed: September 27, 2026 (Wave 158 — Rewake + Legal Primal + Mesh Expansion)
+Last reviewed: September 28, 2026 (Wave 159 — Rewake + Team Reset)
 
-**Current state**: 339+ pages, 85 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **OPERATIONAL** — eastGate + golgiBody + sporeGate **ONLINE**. northGate **ENROLLING**. **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **4 LIVE SITES** (sporeprint + detroit + gorilla + alias). guerillaGorilla **LAUNCHED**. 5-target depot. Windows depot **14/17**. Milk-V Jupiter 2 + 3× Pi 500 ARRIVED. **8 architecture families.**
+**Current state**: 339+ pages, 85 entities, 5 cortical folds, 3.60M LOC, ~150,000+ tests, **REWAKE** — eastGate + golgiBody + sporeGate **ONLINE**. northGate **ENROLLING** (primals-only). **ZERO P0, P1, P2**. 3.3 TB / 153 datasets. **4 LIVE SITES** (sporeprint + detroit + gorilla + alias). guerillaGorilla **LAUNCHED**. 5-target depot. Windows depot **16/16 compile** (depot rebuild pending). Milk-V Jupiter 2 + 3× Pi 500 ARRIVED. **8 architecture families.**
 
-**Wave 158+ Operational (Sep 27):**
-- **OPERATIONAL posture** — eastGate + golgiBody + sporeGate ONLINE. House 2 power rebalance next week.
-- **northGate ENROLLING** — Windows 11, RTX 5090, 96GB DDR5. Pushing to Forgejo. Target: vine-bat zero-SSH.
-- **nucleus-deploy Windows FIXED** — commit `58f6296`. 2 unix call sites gated. 0 warnings unix+windows+riscv.
+**Wave 159 Rewake (Sep 28):**
+- **REWAKE posture** — eastGate + golgiBody + sporeGate ONLINE. House 2 power rebalance upcoming.
+- **Windows 16/16 primals compile** — toadStool (`7f8f0ad08`), sweetGrass (`e546171`), sourDough (`f4d5160`), petalTongue (`7952cf32`). Was 14/17. All `#[cfg(unix)]` gated. Depot rebuild pending.
+- **northGate ENROLLING** — Primals-only bootstrap (no SSH/nanowires). Pull from golgiBody depot.
+- **26 handoffs fossilized** — `fossilRecord/wave158_windows_rewake/`. Handoffs 35→9 active.
+- **Teams reset** — eastGate = code authority, sporeGate = ops authority, gate teams = deployment validators.
 - **gorilla.primals.eco LIVE** — 20-page methodology site. Three-tier dispersal PROVEN.
 - **detroit expanded** — 127+ URLs (dynasty expansion, 35+ actors). BLAKE3 braided. GSC 97 pages, Success.
-- **Milk-V Jupiter 2 ARRIVED** — SpacemiT K3 (RVA23). 7th arch. RISC-V targets installed. Awaiting physical boot.
-- **3× Raspberry Pi 500 ACQUIRED** — 8th gate class. aarch64-linux. 15/15 depot binaries ready to deploy.
-- **HARDWARE.md written** — Full fleet inventory. 8 ISAs, 16+ gates, 200+ cores, ~244 GB GPU VRAM.
-- **5-target depot** — x86_64-musl 18/18, x86_64-gnu 14/14, aarch64-musl 15/15, darwin 16/16, Windows **14/17**.
-- **Windows depot 14/17** — 3 primals blocked on team unix fixes (was 4 — nucleus-deploy FIXED).
+- **nucleus-deploy Windows FIXED** — commit `58f6296`. cellMembrane UDS→TCP DONE (`f99583c`).
+- **5-target depot** — x86_64-musl 18/18, x86_64-gnu 14/14, aarch64-musl 15/15, darwin 16/16, Windows **16/16 compile**.
 - **swarmVine + guerillaGorilla registered** in sporePrint sources.toml + entity registry.
-- **sporePrint → NUCLEUS live data surface** — concept evolved: static → live phased.
 
 **Cascade Restored + Public Record (Sep 25):**
 - **primals.eco LIVE** — Zola date fix + cascade restored Sep 15. GSC automation deployed.
