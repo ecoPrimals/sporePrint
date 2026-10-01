@@ -10,8 +10,10 @@ primals = ["barracuda", "toadstool", "beardog"]
 foundation = true
 +++
 
-{{ maturity(level="scaffold") }}
+The full story is published: **[I Don't Know Rust — Building a Scientific Computing Ecosystem Through Conversation](@/story/i_dont_know_rust.md)**.
+
+How a microbiologist who had never written a line of Rust built {{ total_stat(stat="total_loc_display") }} lines and {{ total_stat(stat="total_tests_display") }} tests through K-NOME conversation with AI. The story of the constraint that became the method.
 
 ---
 
-*This page is a scaffold. The full article is being prepared for external publication. The [story version](@/story/i_dont_know_rust.md) on this site covers the same ground in more detail.*
+**Read the full story**: [I Don't Know Rust](@/story/i_dont_know_rust.md)

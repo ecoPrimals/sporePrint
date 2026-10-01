@@ -10,8 +10,10 @@ primals = ["biomeos", "songbird", "nestgate"]
 foundation = true
 +++
 
-{{ maturity(level="scaffold") }}
+The full story is published: **[The Sovereign Lab — $15K in Hardware, $0 in Cloud](@/story/the_sovereign_lab.md)**.
+
+What sovereign means in practice: commodity hardware, owned infrastructure, zero cloud dependency. The story of building a scientific computing lab from a basement and why it matters.
 
 ---
 
-*This page is a scaffold. The full article is being prepared for external publication. The [story version](@/story/the_sovereign_lab.md) on this site covers the same ground in more detail.*
+**Read the full story**: [The Sovereign Lab](@/story/the_sovereign_lab.md)

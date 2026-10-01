@@ -11,8 +11,10 @@ springs = ["hotspring", "wetspring", "airspring", "groundspring", "neuralspring"
 foundation = true
 +++
 
-{{ maturity(level="scaffold") }}
+The full story is published: **[{{ total_stat(stat="papers_reproduced") }} Papers, One Stack — Reproducing Science on Sovereign Hardware](@/story/papers_one_stack.md)**.
+
+8 domains, provenance chains, darkforest security. How one stack reproduces published science across physics, biology, agriculture, and medicine — with full provenance on every result.
 
 ---
 
-*This page is a scaffold. The full article is being prepared for external publication. The [story version](@/story/papers_one_stack.md) on this site covers the same ground in more detail.*
+**Read the full story**: [{{ total_stat(stat="papers_reproduced") }} Papers, One Stack](@/story/papers_one_stack.md)
