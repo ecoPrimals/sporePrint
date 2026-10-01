@@ -1638,3 +1638,4 @@ guideStone section. Missing papers added. Search enabled.**
 ### Future — projectFOUNDATION Ingestion
 - Replace GitHub Actions dispatch with Foundation-driven content publishing
 - Temporal sync-driven rebuilds on flockGate (WAN shadow)
+# Wave 160: ownership DAG orthogonalized
