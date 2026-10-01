@@ -51,6 +51,23 @@ The infrastructure is the proof.
 
 ---
 
+## What's Documented
+
+The Detroit site maps a charter school fraud network across multiple dimensions:
+
+| Section | What it covers |
+|---------|---------------|
+| [Network Analysis](https://detroit.primals.eco/network/) | 35+ actors — judges, attorneys, political operatives, institutional enablers |
+| [Financial Extraction](https://detroit.primals.eco/analysis/funding-flow/) | $4.9M/year in public funding, 72.67% extraction rate through management company |
+| [RICO Pattern](https://detroit.primals.eco/analysis/rico-pattern/) | Enterprise structure analysis — 8 predicate acts across coordinated network |
+| [Historical Pattern](https://detroit.primals.eco/analysis/historical-pattern/) | Two eras of machine politics — Tammany Hall to Power Broker |
+| [Evidence Library](https://detroit.primals.eco/evidence/) | FOIA responses, court records, financial documents — timestamped and content-addressed |
+| [Timeline](https://detroit.primals.eco/timeline/) | Chronological sequence from 2005 convictions through 2026 charter expansion |
+| [Source Registry](https://detroit.primals.eco/sources/) | Every external database cited, with access instructions |
+| [Credential Audit](https://detroit.primals.eco/analysis/credential-audit/) | Systematic verification of teacher credentials via MOECS public search |
+
+---
+
 ## Verify Everything
 
 The [detroit.primals.eco/validate](https://detroit.primals.eco/validate/) page

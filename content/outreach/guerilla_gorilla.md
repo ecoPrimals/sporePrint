@@ -68,11 +68,13 @@ guerillaGorilla treats **legal existence as infrastructure**, the same way {{ en
 
 [detroit.primals.eco](https://detroit.primals.eco) is the **digital instantiation of preSCENT** — ambient presence broadcast through a public evidence library documenting charter school fraud.
 
-- **128+ pages** across 18 sections (dynasty expansion — 35+ actors)
+- **213+ pages** across 18 sections (dynasty expansion — 35+ actors)
 - **BLAKE3 content manifest** — every document content-addressed
 - **Git-signed repository** at [git.primals.eco/publicRecord/detroit](https://git.primals.eco/publicRecord/detroit)
 - **Three surfaces**: live site + sovereign repo + GitHub mirror
 - **Epistemic grammar** — 7 levels from `record` (CAS-anchored) to `adjudicated` (court determination)
+
+Key analytical sections: [RICO Pattern](https://detroit.primals.eco/analysis/rico-pattern/) · [Financial Extraction](https://detroit.primals.eco/analysis/funding-flow/) · [Historical Pattern](https://detroit.primals.eco/analysis/historical-pattern/) · [Network Map](https://detroit.primals.eco/network/) · [Evidence Library](https://detroit.primals.eco/evidence/) · [Verification](https://detroit.primals.eco/validate/)
 
 The site infrastructure — Forgejo, Zola, Caddy, golgiBody — is the same substrate that runs sporePrint. The evidence is the substrate.
 

@@ -93,6 +93,14 @@ Neither show needs to endorse the technology. The technology is just the evidenc
 
 ---
 
+## Applied: The Power Broker Pattern in Detroit
+
+The infrastructure analysis from 99PI's coverage of Robert Moses and Robert Caro's *The Power Broker* directly informed the recognition of the same pattern in Detroit charter schools. The [Two Eras of Machine Politics](https://detroit.primals.eco/analysis/historical-pattern/) analysis on [detroit.primals.eco](https://detroit.primals.eco) maps Boss Tweed → Robert Moses to Kilpatrick → Banks — the evolution from patronage machines to private authorities that capture public institutions without ever appearing on a ballot.
+
+99PI taught the builder to see invisible systems. Detroit is where that sight was applied to a real, active racketeering enterprise.
+
+---
+
 *Roman Mars is cited here because 99PI was a constant listening source during the 13 months of building this ecosystem. The habit of seeing invisible design came directly from that show. This is an acknowledgment, not a pitch.*
 
 *The Radiolab team — Jad, Robert, Lulu, Latif — modeled the methodology before it had a name. K-NOME is Radiolab's conversational method applied to software engineering. This is a structural citation.*

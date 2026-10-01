@@ -181,3 +181,9 @@ Then he picked it up again.
 ---
 
 *"I return to Omelas, to build a new city outside its gates. A city of shared burden, that no man may suffer for the good of others."*
+
+---
+
+## Applied: Not Walking Away
+
+[detroit.primals.eco](https://detroit.primals.eco) is what "not walking away from Omelas" looks like in practice. A Detroit charter school network captures public institutions — [judges on school boards](https://detroit.primals.eco/network/), [public money extracted through management companies](https://detroit.primals.eco/analysis/funding-flow/), [children's education as the basement](https://detroit.primals.eco/analysis/historical-pattern/). The [Two Eras of Machine Politics](https://detroit.primals.eco/analysis/historical-pattern/) analysis connects Le Guin's framework to the real structural pattern: you don't walk away. You document. You build. You verify. Every fact cited, every document timestamped, every letter open.
