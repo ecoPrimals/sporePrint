@@ -1,0 +1,389 @@
+{# SPDX-License-Identifier: AGPL-3.0-or-later #}
+{% extends "base.html" %}
+
+{% block title %}Observatory | ecoPrimals{% endblock title %}
+{% block description %}Live signal data — visitor classification from server logs. No cookies, no tracking, no third-party analytics.{% endblock description %}
+
+{% block content %}
+<div class="page-layout">
+  <article class="page-content observatory-page">
+    <header>
+      <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="{{ config.base_url }}">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Observatory</span>
+      </nav>
+      <h1>🔭 Observatory</h1>
+      <p class="page-desc">Live signal data from the membrane receptor — who visits, what crawls, how the network breathes.</p>
+    </header>
+
+    <div class="content">
+      {{ section.content | safe }}
+
+      <div id="observatory-root" class="observatory" aria-live="polite">
+        <noscript>
+          <p class="obs-notice">This page requires JavaScript to render the receptor data.
+          The data itself is a static JSON snapshot — no tracking occurs.</p>
+        </noscript>
+        <p class="obs-loading" id="obs-loading">Loading receptor data…</p>
+      </div>
+    </div>
+  </article>
+</div>
+
+<style>
+  .observatory {
+    margin-top: 2rem;
+  }
+  .obs-notice, .obs-loading, .obs-error {
+    padding: 1rem;
+    border-radius: 6px;
+    background: var(--bg-subtle, #1e293b);
+    color: var(--fg-muted, #94a3b8);
+    font-style: italic;
+  }
+  .obs-error { color: var(--accent-warn, #f97316); }
+
+  .obs-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .obs-card {
+    background: var(--bg-subtle, #1e293b);
+    border: 1px solid var(--border, #334155);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .obs-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent, #60a5fa);
+    line-height: 1.2;
+  }
+  .obs-card-label {
+    font-size: 0.85rem;
+    color: var(--fg-muted, #94a3b8);
+    margin-top: 0.25rem;
+  }
+
+  .obs-host-section {
+    margin-top: 2rem;
+    border-top: 1px solid var(--border, #334155);
+    padding-top: 1.5rem;
+  }
+  .obs-host-section h3 {
+    font-family: var(--font-mono, monospace);
+    font-size: 1.1rem;
+  }
+
+  .obs-bar-chart {
+    margin: 1rem 0;
+  }
+  .obs-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+  .obs-bar-label {
+    min-width: 200px;
+    max-width: 300px;
+    font-size: 0.85rem;
+    font-family: var(--font-mono, monospace);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .obs-bar-track {
+    flex: 1;
+    height: 18px;
+    background: var(--bg-subtle, #1e293b);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+  }
+  .obs-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  .obs-bar-fill.human   { background: var(--accent, #60a5fa); }
+  .obs-bar-fill.search   { background: #22c55e; }
+  .obs-bar-fill.ai       { background: #a855f7; }
+  .obs-bar-fill.social    { background: #f472b6; }
+  .obs-bar-fill.other     { background: #64748b; }
+  .obs-bar-count {
+    min-width: 40px;
+    font-size: 0.8rem;
+    color: var(--fg-muted, #94a3b8);
+    font-family: var(--font-mono, monospace);
+  }
+
+  .obs-legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.8rem;
+    color: var(--fg-muted, #94a3b8);
+  }
+  .obs-legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  .obs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 1rem 0;
+  }
+  .obs-table th, .obs-table td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--border, #334155);
+    text-align: left;
+  }
+  .obs-table th {
+    font-weight: 600;
+    color: var(--fg-muted, #94a3b8);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .obs-table td.num {
+    text-align: right;
+    font-family: var(--font-mono, monospace);
+  }
+  .obs-table tr:hover { background: var(--bg-subtle, #1e293b); }
+  .obs-table .obs-path {
+    font-family: var(--font-mono, monospace);
+    max-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .obs-meta {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border, #334155);
+    font-size: 0.8rem;
+    color: var(--fg-muted, #94a3b8);
+  }
+
+  @media (max-width: 640px) {
+    .obs-bar-label { min-width: 120px; max-width: 150px; font-size: 0.75rem; }
+    .obs-summary { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script>
+(function() {
+  var root = document.getElementById('observatory-root');
+  var loading = document.getElementById('obs-loading');
+
+  fetch('/observatory/data.json')
+    .then(function(r) {
+      if (!r.ok) throw new Error('No receptor data yet (HTTP ' + r.status + ')');
+      return r.json();
+    })
+    .then(render)
+    .catch(function(err) {
+      loading.className = 'obs-error';
+      loading.textContent = 'Receptor data not available yet. Data appears after the next site publish with receptor snapshot enabled.';
+    });
+
+  function render(data) {
+    loading.remove();
+    var html = [];
+
+    // window info
+    var wStart = new Date(data.window_start * 1000);
+    var wEnd = new Date(data.window_end * 1000);
+    var windowHours = ((data.window_end - data.window_start) / 3600).toFixed(1);
+
+    // aggregate across hosts
+    var totalReq = 0, totalHuman = 0, totalBot = 0, totalPaths = 0;
+    var hosts = data.hosts || {};
+    Object.keys(hosts).forEach(function(h) {
+      var s = hosts[h];
+      totalReq += s.total_requests;
+      totalHuman += s.total_human;
+      totalBot += s.total_search_bot;
+      totalPaths += s.unique_paths;
+    });
+
+    // summary cards
+    html.push('<div class="obs-summary">');
+    html.push(card(totalReq, 'Total Requests'));
+    html.push(card(totalHuman, '🧬 Humans'));
+    html.push(card(totalBot, '🔍 Search Bots'));
+    html.push(card(totalPaths, 'Unique Paths'));
+    html.push(card(windowHours + 'h', 'Time Window'));
+    html.push(card(Object.keys(hosts).length, 'Hosts'));
+    html.push('</div>');
+
+    // legend
+    html.push('<div class="obs-legend">');
+    html.push(legendItem('human', '🧬 Human'));
+    html.push(legendItem('search', '🔍 Search'));
+    html.push(legendItem('ai', '🤖 AI'));
+    html.push(legendItem('social', '🔗 Social'));
+    html.push(legendItem('other', '📡 Other'));
+    html.push('</div>');
+
+    // per-host sections
+    Object.keys(hosts).sort().forEach(function(hostName) {
+      var sig = hosts[hostName];
+      html.push('<div class="obs-host-section">');
+      html.push('<h3>' + esc(hostName) + '</h3>');
+
+      html.push('<div class="obs-summary">');
+      html.push(card(sig.total_requests, 'Requests'));
+      html.push(card(sig.total_human, 'Humans'));
+      html.push(card(sig.total_search_bot, 'Search Bots'));
+      var covPct = sig.unique_paths > 0
+        ? Math.round(sig.crawl_coverage / sig.unique_paths * 100)
+        : 0;
+      html.push(card(sig.crawl_coverage + '/' + sig.unique_paths, 'Crawl Coverage (' + covPct + '%)'));
+      html.push('</div>');
+
+      // pages sorted by total hits
+      var pages = sig.pages || {};
+      var pageList = Object.keys(pages).map(function(p) { return pages[p]; });
+      pageList.sort(function(a, b) { return b.total_hits - a.total_hits; });
+
+      // filter to content pages (skip static assets)
+      var contentPages = pageList.filter(function(p) {
+        return !(/\.(css|js|xml|json|toml|txt|ico|svg|woff2|png|jpg|webp)$/i.test(p.path));
+      });
+
+      if (contentPages.length > 0) {
+        var maxHits = contentPages[0].total_hits;
+
+        // bar chart — top 20
+        html.push('<h4>Top Pages</h4>');
+        html.push('<div class="obs-bar-chart">');
+        contentPages.slice(0, 20).forEach(function(p) {
+          html.push(barRow(p, maxHits));
+        });
+        html.push('</div>');
+
+        // full table
+        if (contentPages.length > 5) {
+          html.push('<details><summary>All ' + contentPages.length + ' content pages</summary>');
+          html.push(pageTable(contentPages));
+          html.push('</details>');
+        }
+      }
+
+      html.push('</div>');
+    });
+
+    // history section (for future JSONL data)
+    if (data.history && data.history.length > 1) {
+      html.push('<div class="obs-host-section">');
+      html.push('<h3>📈 Trend</h3>');
+      html.push(trendTable(data.history));
+      html.push('</div>');
+    }
+
+    // metadata footer
+    html.push('<div class="obs-meta">');
+    html.push('<p>Snapshot generated: ' + new Date(data.generated_at * 1000).toLocaleString());
+    html.push(' · Window: ' + wStart.toLocaleString() + ' → ' + wEnd.toLocaleString());
+    html.push(' · Lines processed: ' + data.lines_processed);
+    if (data.parse_errors > 0) html.push(' · Parse errors: ' + data.parse_errors);
+    html.push('</p>');
+    html.push('<p>Source: <code>membrane seo.receptor</code> — server-side Caddy log analysis. ');
+    html.push('No cookies. No tracking pixels. No third-party analytics.</p>');
+    html.push('</div>');
+
+    root.innerHTML = html.join('');
+  }
+
+  function card(value, label) {
+    return '<div class="obs-card"><div class="obs-card-value">' + value +
+           '</div><div class="obs-card-label">' + label + '</div></div>';
+  }
+
+  function legendItem(cls, label) {
+    return '<span><span class="obs-legend-dot obs-bar-fill ' + cls + '" style="display:inline-block"></span> ' + label + '</span>';
+  }
+
+  function barRow(page, max) {
+    var total = page.total_hits;
+    var pct = max > 0 ? (total / max * 100) : 0;
+    var h = page.human_hits, s = page.search_bot_hits;
+    var ai = page.ai_bot_hits, soc = page.social_bot_hits, oth = page.other_bot_hits;
+
+    var segments = '';
+    if (total > 0) {
+      segments += barSeg('human', h / total * pct);
+      segments += barSeg('search', s / total * pct);
+      segments += barSeg('ai', ai / total * pct);
+      segments += barSeg('social', soc / total * pct);
+      segments += barSeg('other', oth / total * pct);
+    }
+
+    return '<div class="obs-bar-row">' +
+      '<span class="obs-bar-label" title="' + esc(page.path) + '">' + esc(page.path) + '</span>' +
+      '<div class="obs-bar-track">' + segments + '</div>' +
+      '<span class="obs-bar-count">' + total + '</span>' +
+      '</div>';
+  }
+
+  function barSeg(cls, widthPct) {
+    if (widthPct <= 0) return '';
+    return '<div class="obs-bar-fill ' + cls + '" style="width:' + widthPct.toFixed(1) + '%"></div>';
+  }
+
+  function pageTable(pages) {
+    var rows = '<table class="obs-table"><thead><tr>' +
+      '<th>Path</th><th>Total</th><th>🧬</th><th>🔍</th><th>🤖</th><th>404</th><th>Avg ms</th>' +
+      '</tr></thead><tbody>';
+    pages.forEach(function(p) {
+      rows += '<tr>' +
+        '<td class="obs-path" title="' + esc(p.path) + '">' + esc(p.path) + '</td>' +
+        '<td class="num">' + p.total_hits + '</td>' +
+        '<td class="num">' + p.human_hits + '</td>' +
+        '<td class="num">' + p.search_bot_hits + '</td>' +
+        '<td class="num">' + p.ai_bot_hits + '</td>' +
+        '<td class="num">' + (p.not_found_count || 0) + '</td>' +
+        '<td class="num">' + p.avg_duration_ms.toFixed(1) + '</td>' +
+        '</tr>';
+    });
+    return rows + '</tbody></table>';
+  }
+
+  function trendTable(history) {
+    var rows = '<table class="obs-table"><thead><tr>' +
+      '<th>Date</th><th>Requests</th><th>Humans</th><th>Search Bots</th><th>Paths</th>' +
+      '</tr></thead><tbody>';
+    history.forEach(function(snap) {
+      rows += '<tr>' +
+        '<td>' + new Date(snap.generated_at * 1000).toLocaleDateString() + '</td>' +
+        '<td class="num">' + snap.total_requests + '</td>' +
+        '<td class="num">' + snap.total_human + '</td>' +
+        '<td class="num">' + snap.total_search_bot + '</td>' +
+        '<td class="num">' + snap.unique_paths + '</td>' +
+        '</tr>';
+    });
+    return rows + '</tbody></table>';
+  }
+
+  function esc(s) {
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+})();
+</script>
+{% endblock content %}
