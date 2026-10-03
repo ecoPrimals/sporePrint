@@ -2,6 +2,7 @@
 title = "biomeOS Validation Summary"
 description = "Orchestration kernel — guideStone startup contract + HEALTH-01 compliant + NUCLEUS supervisor, 27 capability domains, 320+ translations, 43 deploy graphs, zero blocking debt"
 date = 2026-06-11
+weight = 22
 
 [taxonomies]
 primals = ["biomeos", "beardog", "songbird", "skunkbat", "toadstool", "coralreef", "barracuda", "nestgate", "rhizocrypt", "loamspine", "sweetgrass", "squirrel", "petaltongue"]
