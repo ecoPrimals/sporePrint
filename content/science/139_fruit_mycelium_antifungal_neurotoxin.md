@@ -2,7 +2,9 @@
 title = "Fruit vs Mycelium: Antifungals Are Neurotoxins — A Coupled Dataset for Kingdom Fungi"
 date = 2026-10-24
 [taxonomies]
-tags = ["fungi", "mycelium", "taxonomy", "antifungal", "neurotoxin", "BBB", "hormesis", "galactic-bounce", "gAIa"]
+springs = ["wetspring"]
+primals = ["sourdough", "rhizocrypt", "sporeprint"]
+trails = ["membrane"]
 [extra]
 paper = 139
 session = "wave 200"
