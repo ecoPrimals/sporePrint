@@ -108,4 +108,6 @@ The thymus protocol is complete. The prion shield identifies self. The Rust synt
 
 ---
 
-*Paper 137 of the baseCamp series. ORCID [0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321). Licensed CC-BY-SA-4.0.*
+*Paper 137 of the baseCamp series. ORCID [0009-0004-2141-0321](https://orcid.org/0009-0004-2141-0321).*
+*scyBorg Triple License: AGPL-3.0-or-later (code) · ORC (mechanics — the rust synthase model, the secretory pathway protocol) · CC-BY-SA 4.0 (content).*
+*Data: [rust-synthase.json](https://hud.primals.eco/data/rust-synthase.json), [null-prion.json](https://hud.primals.eco/data/null-prion.json), [ribocyphere.json](https://hud.primals.eco/data/ribocyphere.json)*
