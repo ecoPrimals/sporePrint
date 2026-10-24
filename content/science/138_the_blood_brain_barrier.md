@@ -139,3 +139,30 @@ These are not metaphors. They are testable predictions derived from the membrane
 *scyBorg Triple License: AGPL-3.0-or-later (code) · ORC (mechanics — BBB crossing rules, LAT1 competition, meal protocol, monopolar→multipolar model, phase transition triggers) · CC-BY-SA 4.0 (content).*
 *Data: [blood-brain-barrier.json](https://hud.primals.eco/data/blood-brain-barrier.json), [neuroendocrine-map.json](https://hud.primals.eco/data/neuroendocrine-map.json), [locust-phase-transition.json](https://hud.primals.eco/data/locust-phase-transition.json), [metabolic-year.json](https://hud.primals.eco/data/metabolic-year.json), [metabolic-cycle.json](https://hud.primals.eco/data/metabolic-cycle.json)*
 *Continues: Paper 137 (Rust Synthase), Paper 136 (Compound Eye), Paper 91 (Homunculus)*
+
+## 8. The Lab Network
+
+Every protocol maps to a person with existing relationship and reproduced papers:
+
+| Protocol | Faculty | Reproduced | Status |
+|----------|---------|-----------|--------|
+| LAB-001 Quorum sensing | Dr. Christopher Waters (MMG, MSU) | 7 papers | Undergrad professor. His lab has everything. |
+| LAB-002 BBB transwell | Dr. Andrea Gonzales (PharmTox, MSU) | 6 papers, 359/359 | Apoquel discoverer. iPSC models ready. |
+| LAB-003+006 Metabolic+HRV | Dr. Charles Mok, MD | 9 experiments, 233/233 | Existing patient data. |
+| Computational | Dr. Murillo + TC Chuna (CMSE) | 195+41 checks | Same Rust framework. |
+| HTS screening | Dr. Erika Lisabeth (ADDRC) | Referred by Gonzales | 8000+ compounds. |
+
+## 9. ABG Community Onboarding
+
+Four sub-projects seeded into JupyterHub at lab.primals.eco:
+
+1. **pfAAT1 Chloroquine Resistance** — digestive vacuole as molecular-scale LAT1 competition
+2. **PTP Cancer Metastasis** — phosphatase screen, complement of JAK inhibitor work
+3. **CAZyme Landscapes** — gut carbohydrate metabolism → serotonin → vagus → mood
+4. **Salmon RNA-seq** — the measurement tool for all lab protocols
+
+Onboarding is the science. The notebooks ARE the tutorials.
+
+---
+
+*Updated wave 189, cycle 44. 5 papers tonight (134–138). 15+ feeds created. The secretory pathway is open.*
