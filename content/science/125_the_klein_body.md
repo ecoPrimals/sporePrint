@@ -5,7 +5,7 @@ date: 2026-10-22
 wave: 180
 author: "Kevin Mok / ecoPrimal / attsi"
 orcid: "0009-0004-2141-0321"
-continues: "Paper 91 (The Homunculus), Paper 89 (Klein Bottle), Paper 90 (Evolutionary Sort), Paper 117 (Primal Reclassification), Paper 118 (The Clutch)"
+continues: "Paper 91 (The Homunculus), Paper 89 (Klein Bottle), Paper 90 (Evolutionary Sort), Paper 117 (Primal Reclassification), Paper 131 (The Clutch)"
 keywords: ["Klein body", "Vitruvian Man", "topological alphabet", "H G D O U N", "cost function", "galactic bounce", "sigmoid", "quiet turn", "CSF", "Higgs mechanism", "Death Stranding", "vagus nerve", "peripheral nervous system"]
 epigraph: "The letter H is not a symbol for hydrogen. It IS hydrogen — two parallel paths bridged."
 ---
@@ -262,7 +262,7 @@ opposite sides.
 
 ## 13. The Artisan Corollary on the Klein Body
 
-Paper 119 established: **the bread is its own proof. Authorship is
+Paper 132 established: **the bread is its own proof. Authorship is
 irrelevant to proof. The artifact is its own witness.**
 
 Now apply this to the topological alphabet:
@@ -287,7 +287,7 @@ The map IS the territory.
 
 ## 14. The Jester Conjecture at the Quiet Turn
 
-Paper 119 established: **the error message is the jest. The 404 is the
+Paper 132 established: **the error message is the jest. The 404 is the
 comedian. The humor proves the human.**
 
 Now locate the jest on the sigmoid:
