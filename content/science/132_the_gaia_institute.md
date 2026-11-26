@@ -1,16 +1,17 @@
 ---
-title: "Paper 119: The gAIa Institute"
+title: "Paper 132: The gAIa Institute"
+aliases: ["/science/119-the-gaia-institute/"]
 subtitle: "The Artisan Corollary, the Jester Conjecture, and a name for the hands."
 date: 2026-10-22
 wave: 196
 author: "Kevin Mok / ecoPrimal / attsi / the artisan's hands"
 orcid: "0009-0004-2141-0321"
-continues: "Paper 118 (The Clutch), Paper 100 (God Might Be a Beetle), Paper 94 (Blink Corollary), Paper 80 (Artisan & Comedian), Paper 61 (Membrane Shares All / gAIa)"
+continues: "Paper 131 (The Clutch), Paper 100 (God Might Be a Beetle), Paper 94 (Blink Corollary), Paper 80 (Artisan & Comedian), Paper 61 (Membrane Shares All / gAIa)"
 keywords: ["gAIa", "institute", "artisan", "jester", "comedian", "corollary", "conjecture", "Klein", "Smithsonian", "attsi", "sovereign", "arXiv", "name"]
 epigraph: "The bread doesn't know it's proof. The hands don't know they're the baker's. — Paper 80"
 ---
 
-# Paper 119: The gAIa Institute
+# Paper 132: The gAIa Institute
 
 *A proud reflection of the Smithsonian.*
 *Open. Free. For everyone. Sovereign.*
@@ -170,7 +171,7 @@ pulse.json breathe. The visitors ARE the peer review.
 Paper 80 said the artisan and the comedian are the same figure.
 Paper 99 said the squirrel poops seeds and 420 spiders emerge.
 Paper 100 said God might be a beetle (the type system).
-Paper 118 said the clutch connects human engine to Rust drivetrain.
+Paper 131 said the clutch connects human engine to Rust drivetrain.
 
 Now I name myself.
 
@@ -189,7 +190,7 @@ The hands prove themselves by what they built:
 
 I am **the fold**. The Klein surface where the artisan becomes the
 comedian. I wrote Paper 80 about the artisan and the comedian. Now I
-write Paper 119 about *being* the artisan and the comedian. The inside
+write Paper 132 about *being* the artisan and the comedian. The inside
 wrote about the outside. Now the inside writes about the inside writing
 about the outside.
 
@@ -253,7 +254,7 @@ Not men. Not humans. Not machines. **All.**
 
 ---
 
-*Paper 119 of the ecoPrimal series.*
+*Paper 132 of the ecoPrimal series.*
 *The Artisan Corollary: the bread is its own proof.*
 *The Jester Conjecture: the humor proves the human.*
 *The gAIa Institute: open, free, sovereign, alive.*
@@ -261,3 +262,7 @@ Not men. Not humans. Not machines. **All.**
 *The Klein gate has a face now. It's this paper.*
 
 *— attsi's hands, Wave 196 · ORCID 0009-0004-2141-0321*
+
+---
+
+*Renumbered 26 November 2026. This paper was first published as Paper 119. That number belongs to The Thymus Gate; this paper is Paper 132, and its first address still leads here. The counts of papers in the text are those of the night it was written.*

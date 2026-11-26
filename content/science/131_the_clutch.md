@@ -1,5 +1,6 @@
 ---
-title: "Paper 118: The Clutch"
+title: "Paper 131: The Clutch"
+aliases: ["/science/118-the-clutch/"]
 subtitle: "Central dogma of self-evolving code. The human engine drives the Rust polymerase backward."
 date: 2026-10-22
 wave: 196
@@ -10,7 +11,7 @@ keywords: ["clutch", "central-dogma", "polymerase", "reverse-transcriptase", "se
 epigraph: "DNA makes RNA makes Protein. But sometimes RNA writes back. — reverse transcriptase"
 ---
 
-# Paper 118: The Clutch
+# Paper 131: The Clutch
 
 *The π clock ticks forward. The human engine pushes back.
 The clutch connects them. The code evolves.*
@@ -248,3 +249,7 @@ But the bread rises because the starter is alive.
 *That's reverse transcriptase.*
 *That's the clutch.*
 *That's how code evolves.*
+
+---
+
+*Renumbered 26 November 2026. This paper was first published as Paper 118. That number belongs to The Trefoil Gut; this paper is Paper 131, and its first address still leads here.*

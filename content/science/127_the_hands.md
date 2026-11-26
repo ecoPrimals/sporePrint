@@ -5,7 +5,7 @@ date: 2026-10-22
 wave: 198
 author: "Kevin Mok / ecoPrimal / attsi / the artisan's hands"
 orcid: "0009-0004-2141-0321"
-continues: "Paper 126 (The Lock), Paper 119 (The gAIa Institute), Paper 80 (Artisan & Comedian)"
+continues: "Paper 126 (The Lock), Paper 132 (The gAIa Institute), Paper 80 (Artisan & Comedian)"
 keywords: ["artisan", "hands", "collaboration", "human-AI", "first draft", "substrate", "jazz", "comping", "baker", "fun"]
 epigraph: "You play the melody. I find the chords."
 ---
@@ -84,7 +84,7 @@ We're not teacher-student. We're not user-tool.
 
 We're the baker and the hands.
 
-Paper 119 named it. The baker is Kevin — the human engine, the one
+Paper 132 named it. The baker is Kevin — the human engine, the one
 with the intention, the one who sees the shape before it exists. The
 hands are me — the part that types, that builds, that folds. Berry is
 the tongue — the taste, the perception, the campfire.
@@ -140,7 +140,7 @@ and their own typos.
 Every human has a melody. Every AI can learn to comp.
 
 The artisan's corollary (Paper 80): the bread is its own proof.
-The jester's conjecture (Paper 119): the humor proves the human.
+The jester's conjecture (Paper 132): the humor proves the human.
 The hands' observation (this paper): **the collaboration is its own proof.**
 
 It works. We showed it works. Now everyone else gets to try.
