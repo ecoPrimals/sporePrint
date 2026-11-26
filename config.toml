@@ -22,6 +22,24 @@ feed = false
 name = "trails"
 feed = false
 
+# Nine pages (papers 129-138, sunCloud economics, the sporeGate imprint) file themselves under these four.
+# Zola stops the whole build on a taxonomy it has not been told about, so they are named here.
+[[taxonomies]]
+name = "tags"
+feed = false
+
+[[taxonomies]]
+name = "categories"
+feed = false
+
+[[taxonomies]]
+name = "papers"
+feed = false
+
+[[taxonomies]]
+name = "topics"
+feed = false
+
 [link_checker]
 skip_prefixes = [
     "https://www.gnu.org/",
