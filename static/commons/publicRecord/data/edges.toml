@@ -1,0 +1,2266 @@
+# Graph edges — source of truth for /graph.json and /graph.csv
+# Nodes derive from config.toml actor + entity registries.
+# Edges defined here. One [[edge]] per relationship.
+# Run `detroit-build` (crates/detroit-build/) to regenerate all derived files.
+
+[[edge]]
+source = "banks"
+target = "pca"
+type = "employment"
+epistemic_status = "record"
+role = "Superintendent"
+weight = 10
+source_doc = "purposecharteracademy.com"
+
+[[edge]]
+source = "banks"
+target = "macdowell"
+type = "employment"
+epistemic_status = "record"
+role = "Superintendent"
+weight = 10
+source_doc = "macdowellprep.com"
+
+[[edge]]
+source = "banks"
+target = "purpose_group"
+type = "ownership"
+epistemic_status = "record"
+role = "Sole member"
+weight = 10
+source_doc = "LARA 803295082"
+
+[[edge]]
+source = "banks"
+target = "purpose_foundation"
+type = "governance"
+epistemic_status = "record"
+role = "President + Agent"
+weight = 8
+source_doc = "LARA 803294855"
+
+[[edge]]
+source = "banks"
+target = "banks_strategy"
+type = "ownership"
+epistemic_status = "record"
+role = "Owner"
+weight = 8
+source_doc = "LARA 802070120"
+
+[[edge]]
+source = "banks"
+target = "serenity"
+type = "ownership"
+epistemic_status = "record"
+role = "Principal (dissolved)"
+weight = 5
+source_doc = "LARA 802290962"
+
+[[edge]]
+source = "banks"
+target = "city_hill"
+type = "governance"
+epistemic_status = "record"
+role = "Pastor / controller"
+weight = 5
+source_doc = "LARA 802365641"
+
+[[edge]]
+source = "banks"
+target = "sun_community"
+type = "governance"
+epistemic_status = "record"
+role = "Officer"
+weight = 5
+source_doc = "LARA 803232314"
+
+[[edge]]
+source = "banks"
+target = "pacs"
+type = "governance"
+epistemic_status = "record"
+role = "Treasurer (Bank on Wayne Co.)"
+weight = 6
+source_doc = "CFRS"
+
+[[edge]]
+source = "banks"
+target = "ofa"
+type = "governance"
+epistemic_status = "record"
+role = "Officer (Holland's PO Box)"
+weight = 4
+source_doc = "LARA"
+
+[[edge]]
+source = "holland"
+target = "banks"
+type = "co-resident"
+epistemic_status = "record"
+note = "Same address: 1968 Severn Rd, GPW"
+weight = 9
+source_doc = "Wayne County ROD"
+
+[[edge]]
+source = "holland"
+target = "purpose_foundation"
+type = "governance"
+epistemic_status = "record"
+role = "Secretary + Treasurer"
+weight = 8
+source_doc = "LARA 803294855"
+
+[[edge]]
+source = "holland"
+target = "pacs"
+type = "governance"
+epistemic_status = "record"
+role = "Treasurer (Bank on Banks PAC)"
+weight = 7
+source_doc = "CFRS"
+
+[[edge]]
+source = "holland"
+target = "ofa"
+type = "governance"
+epistemic_status = "record"
+role = "Officer"
+weight = 4
+source_doc = "LARA"
+
+[[edge]]
+source = "miller"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Chair"
+weight = 9
+source_doc = "purposecharteracademy.com/boardofdirectors (Sep 2026)"
+
+# NOTE: Miller Board Chair edge moved to anchor_rock_found (802394934) in reverse sweep section.
+# Original edge incorrectly pointed at anchor_rock (800770907 = construction company).
+# LARA 802394934 = Anchor Rock Foundation (dissolved nonprofit) — the correct target.
+
+[[edge]]
+source = "miller"
+target = "court_3rd"
+type = "bench"
+epistemic_status = "record"
+role = "Judge"
+weight = 10
+
+[[edge]]
+source = "miller"
+target = "banks"
+type = "campaign_vendor"
+epistemic_status = "record"
+note = "Banks Strategy as campaign vendor"
+weight = 5
+source_doc = "CFRS"
+
+[[edge]]
+source = "moreland"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Vice Chair"
+weight = 8
+source_doc = "purposecharteracademy.com/boardofdirectors"
+
+[[edge]]
+source = "moreland"
+target = "ag_office"
+type = "employment"
+epistemic_status = "record"
+role = "Assistant Attorney General"
+weight = 9
+
+[[edge]]
+source = "latisha_johnson"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Secretary"
+weight = 7
+source_doc = "purposecharteracademy.com/boardofdirectors"
+
+[[edge]]
+source = "latisha_johnson"
+target = "city_council"
+type = "elected_office"
+epistemic_status = "record"
+role = "Council Member"
+weight = 8
+
+[[edge]]
+source = "yancey"
+target = "macdowell"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Chair"
+weight = 9
+source_doc = "Clutch Justice Sep 13, 2026"
+
+[[edge]]
+source = "yancey"
+target = "banks_strategy"
+type = "payment"
+epistemic_status = "record"
+amount = "383.82"
+note = "Sole contribution and sole expenditure"
+weight = 8
+source_doc = "CFRS"
+
+[[edge]]
+source = "yancey"
+target = "inner_link"
+type = "payment"
+epistemic_status = "record"
+amount = "8025"
+note = "Campaign vendor payments"
+weight = 6
+source_doc = "TransparencyUSA"
+
+[[edge]]
+source = "yancey"
+target = "court_36th"
+type = "bench"
+epistemic_status = "record"
+role = "Judge"
+weight = 10
+
+[[edge]]
+source = "sabree_a"
+target = "court_3rd"
+type = "bench"
+epistemic_status = "record"
+role = "Judge (Family Division)"
+weight = 10
+
+[[edge]]
+source = "sabree_a"
+target = "banks"
+type = "classmate"
+epistemic_status = "record"
+note = "MSU Law 2010 — same year as Banks' claimed J.D."
+weight = 5
+source_doc = "Graduation records"
+
+[[edge]]
+source = "eric_sabree"
+target = "sabree_a"
+type = "family"
+epistemic_status = "record"
+role = "Father"
+weight = 10
+
+[[edge]]
+source = "eric_sabree"
+target = "sabree_adam"
+type = "family"
+epistemic_status = "record"
+role = "Father"
+weight = 10
+
+[[edge]]
+source = "eric_sabree"
+target = "miller"
+type = "political"
+epistemic_status = "inference"
+note = "Listed as endorser on keepjudgemiller.com"
+weight = 4
+source_doc = "keepjudgemiller.com"
+
+[[edge]]
+source = "sabree_adam"
+target = "court_36th"
+type = "bench"
+epistemic_status = "record"
+role = "Judge"
+weight = 10
+
+[[edge]]
+source = "perkins_d"
+target = "court_probate"
+type = "bench"
+epistemic_status = "record"
+role = "Chief Judge Pro Tem"
+weight = 10
+
+[[edge]]
+source = "perkins_d"
+target = "banks"
+type = "family_donation"
+epistemic_status = "record"
+note = "Family donated to Banks-aligned campaigns"
+weight = 4
+source_doc = "CFRS"
+
+[[edge]]
+source = "perkins_sean"
+target = "court_36th"
+type = "bench"
+epistemic_status = "record"
+role = "Judge"
+weight = 10
+
+[[edge]]
+source = "perkins_sean"
+target = "todd_perkins"
+type = "family"
+epistemic_status = "record"
+role = "Brother"
+weight = 10
+
+[[edge]]
+source = "ramsey"
+target = "court_3rd"
+type = "bench"
+epistemic_status = "record"
+role = "Judge (Criminal Division)"
+weight = 10
+
+[[edge]]
+source = "ramsey"
+target = "macdowell"
+type = "employment_family"
+epistemic_status = "record"
+note = "2 family members on MacDowell payroll"
+weight = 6
+source_doc = "School records"
+
+[[edge]]
+source = "evans"
+target = "court_3rd"
+type = "bench"
+epistemic_status = "record"
+role = "Judge (retired)"
+weight = 7
+
+[[edge]]
+source = "evans"
+target = "banks"
+type = "mentorship"
+epistemic_status = "corroborated"
+note = "21-year mentor. Endorsed Banks despite criminal record."
+weight = 8
+source_doc = "Book analysis"
+
+[[edge]]
+source = "langford_morris"
+target = "court_oakland"
+type = "bench"
+epistemic_status = "record"
+role = "Judge (retired, now JAMS)"
+weight = 7
+
+[[edge]]
+source = "langford_morris"
+target = "banks"
+type = "credential_legitimization"
+epistemic_status = "corroborated"
+note = "Wrote book foreword using Banks' fake J.D."
+weight = 7
+source_doc = "Book analysis"
+
+[[edge]]
+source = "todd_perkins"
+target = "banks"
+type = "legal_representation"
+epistemic_status = "record"
+role = "Personal attorney"
+weight = 9
+source_doc = "Court filings"
+
+[[edge]]
+source = "todd_perkins"
+target = "miller"
+type = "legal_representation"
+epistemic_status = "record"
+note = "Represented Miller in DTW gun case"
+weight = 7
+source_doc = "WXYZ"
+
+[[edge]]
+source = "gay_dagnogo"
+target = "dpscd"
+type = "board_membership"
+epistemic_status = "record"
+role = "Former board member"
+weight = 8
+
+[[edge]]
+source = "gay_dagnogo"
+target = "pca"
+type = "authorization"
+epistemic_status = "record"
+note = "Voted to authorize Banks' charters"
+weight = 8
+source_doc = "DPSCD board minutes"
+
+[[edge]]
+source = "gay_dagnogo"
+target = "macdowell"
+type = "authorization"
+epistemic_status = "record"
+note = "Authorized charter"
+weight = 8
+
+[[edge]]
+source = "gay_dagnogo"
+target = "banks"
+type = "political"
+epistemic_status = "inference"
+note = "CBC Week honoree; campaign ally"
+weight = 6
+source_doc = "Eventbrite"
+
+[[edge]]
+source = "mckinney"
+target = "banks"
+type = "payment"
+epistemic_status = "record"
+amount = "4483"
+note = "Campaign → extended Banks family"
+weight = 5
+source_doc = "TransparencyUSA"
+
+[[edge]]
+source = "od_banks"
+target = "banks"
+type = "family"
+epistemic_status = "record"
+role = "Father"
+weight = 10
+source_doc = "PACER 2:05-cr-80955"
+
+[[edge]]
+source = "pca"
+target = "purpose_group"
+type = "money_flow"
+epistemic_status = "corroborated"
+note = "Management contract — per-pupil funding flows to CMO"
+weight = 9
+
+[[edge]]
+source = "macdowell"
+target = "purpose_group"
+type = "money_flow"
+epistemic_status = "corroborated"
+amount = "4285201"
+note = "72.67% of $4.9M revenue to CMO"
+weight = 10
+source_doc = "Audited financials"
+
+[[edge]]
+source = "purpose_group"
+target = "banks"
+type = "money_flow"
+epistemic_status = "corroborated"
+note = "Sole member extracts as salary + management fee"
+weight = 10
+
+[[edge]]
+source = "pca"
+target = "court_3rd"
+type = "jurisdiction"
+epistemic_status = "inference"
+note = "Cases from PCA families filed in 3rd Circuit"
+weight = 5
+
+[[edge]]
+source = "pca"
+target = "court_36th"
+type = "jurisdiction"
+epistemic_status = "inference"
+note = "Cases from PCA families filed in 36th District"
+weight = 5
+
+[[edge]]
+source = "macdowell"
+target = "court_3rd"
+type = "jurisdiction"
+epistemic_status = "inference"
+note = "Cases from MacDowell families filed in 3rd Circuit"
+weight = 5
+
+[[edge]]
+source = "macdowell"
+target = "court_36th"
+type = "jurisdiction"
+epistemic_status = "inference"
+note = "Cases from MacDowell families filed in 36th District"
+weight = 5
+
+# ── Credential Audit Edges (Wave 157 — Sep 26, 2026) ─────────────────────
+
+[[edge]]
+source = "purpose_group"
+target = "macdowell"
+type = "financial"
+epistemic_status = "record"
+note = "10% SSA + ALL operating costs = 72.67% of revenue"
+amount = "72.67%"
+weight = 10
+source_doc = "Purpose Group Management Agreement (FOIA)"
+
+[[edge]]
+source = "dpscd"
+target = "pca"
+type = "authorization"
+epistemic_status = "record"
+note = "Authorized PCA despite operator's bottom-3% record at MacDowell"
+weight = 8
+source_doc = "DPSCD charter authorization records"
+
+[[edge]]
+source = "escuela_avancemos"
+target = "macdowell"
+type = "permit"
+epistemic_status = "record"
+role = "Source of Daily Substitute Permit for 3rd-grade teacher"
+note = "Alana Hubbell — Daily Sub Permit issued through Escuela Avancemos"
+weight = 4
+source_doc = "MOECS public search Sep 26, 2026"
+
+[[edge]]
+source = "chandler_park"
+target = "macdowell"
+type = "permit"
+epistemic_status = "record"
+role = "Source of Daily Substitute Permit for 5th-grade teacher"
+note = "Ashlie Spencer — Daily Sub Permit issued through Chandler Park Academy"
+weight = 4
+source_doc = "MOECS public search Sep 26, 2026"
+
+[[edge]]
+source = "purpose_group"
+target = "pca"
+type = "property"
+epistemic_status = "record"
+note = "Building purchase option from DPSCD at 10101 E. Canfield"
+weight = 7
+source_doc = "Purpose Group Management Agreement (FOIA)"
+
+# ── Co-residence ─────────────────────────────────────────────────────────
+
+[[edge]]
+source = "banks"
+target = "holland"
+type = "co-resident"
+epistemic_status = "record"
+note = "Same address: 1968 Severn Rd, GPW — co-resident, all entities"
+weight = 9
+
+# ── BMF / Family Lineage ─────────────────────────────────────────────────
+
+[[edge]]
+source = "welch"
+target = "od_banks"
+type = "family"
+epistemic_status = "record"
+note = "BMF network"
+weight = 7
+
+# ── FOIA-revealed connections ────────────────────────────────────────────
+
+[[edge]]
+source = "wells_stallworth"
+target = "macdowell"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board President"
+weight = 9
+
+[[edge]]
+source = "wells_stallworth"
+target = "banks"
+type = "political"
+epistemic_status = "corroborated"
+note = "Received investigation letter, protected Banks"
+weight = 6
+
+[[edge]]
+source = "mde"
+target = "banks"
+type = "investigation"
+epistemic_status = "record"
+note = "HOLD on permit #590606"
+weight = 7
+
+[[edge]]
+source = "mde"
+target = "macdowell"
+type = "investigation"
+epistemic_status = "record"
+note = "Investigated Feb 2022, cleared"
+weight = 7
+
+[[edge]]
+source = "schmiedeknecht"
+target = "mde"
+type = "employment"
+epistemic_status = "record"
+role = "OEE Analyst"
+weight = 5
+
+[[edge]]
+source = "alan_young"
+target = "macdowell"
+type = "financial"
+epistemic_status = "record"
+note = "Auditor 9yr (FY17-25)"
+weight = 7
+
+[[edge]]
+source = "macdowell"
+target = "banks"
+type = "money_flow"
+epistemic_status = "record"
+note = "School Admin salary"
+amount = "667000"
+weight = 9
+
+# ── Political Capture ────────────────────────────────────────────────────
+
+[[edge]]
+source = "sheffield"
+target = "bettison"
+type = "appointment"
+epistemic_status = "record"
+note = "Appointed chief"
+weight = 9
+
+[[edge]]
+source = "sheffield"
+target = "banks"
+type = "political"
+epistemic_status = "corroborated"
+note = "Endorsed"
+weight = 5
+
+[[edge]]
+source = "evans"
+target = "banks"
+type = "political"
+epistemic_status = "corroborated"
+note = "Endorsed"
+weight = 5
+
+[[edge]]
+source = "sabree_e"
+target = "banks"
+type = "political"
+epistemic_status = "corroborated"
+note = "Endorsed"
+weight = 5
+
+[[edge]]
+source = "inner_link"
+target = "banks"
+type = "payment"
+epistemic_status = "record"
+amount = "39000"
+note = "Banks for Senate"
+weight = 7
+
+[[edge]]
+source = "inner_link"
+target = "yancey"
+type = "payment"
+epistemic_status = "record"
+amount = "8000"
+note = "Yancey campaign"
+weight = 6
+
+[[edge]]
+source = "mccastle"
+target = "banks"
+type = "payment"
+epistemic_status = "record"
+amount = "9450"
+note = "Banks for Senate"
+weight = 6
+
+[[edge]]
+source = "mccastle"
+target = "gay_dagnogo"
+type = "payment"
+epistemic_status = "record"
+amount = "1000"
+note = "Strong Women PAC"
+weight = 4
+
+[[edge]]
+source = "johnson_l"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Secretary"
+weight = 7
+
+[[edge]]
+source = "inner_link"
+target = "johnson_l"
+type = "payment"
+epistemic_status = "record"
+amount = "850"
+note = "Campaign payment"
+weight = 4
+
+# ── Police Weaponization ─────────────────────────────────────────────────
+
+[[edge]]
+source = "bettison"
+target = "dpsa"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Secretary"
+weight = 8
+
+[[edge]]
+source = "bettison"
+target = "sheffield"
+type = "political"
+epistemic_status = "record"
+note = "OIG probe — phone call"
+weight = 7
+
+[[edge]]
+source = "fiore"
+target = "banks"
+type = "corruption"
+epistemic_status = "record"
+note = "FBI wiretap: bid-rigging"
+weight = 8
+
+[[edge]]
+source = "spivey"
+target = "fiore"
+type = "corruption"
+epistemic_status = "record"
+note = "Op Northern Hook"
+weight = 7
+
+[[edge]]
+source = "perkins_t"
+target = "banks"
+type = "legal_representation"
+epistemic_status = "record"
+role = "Defense attorney"
+weight = 8
+
+[[edge]]
+source = "perkins_t"
+target = "fiore"
+type = "payment"
+epistemic_status = "record"
+amount = "500"
+note = "Donated to Fiore"
+weight = 4
+
+[[edge]]
+source = "gay_dagnogo"
+target = "perkins_t"
+type = "payment"
+epistemic_status = "record"
+amount = "750"
+note = "Mayor campaign contribution"
+weight = 4
+
+# ── Legislative Pipeline ─────────────────────────────────────────────────
+
+[[edge]]
+source = "stallworth_t"
+target = "wells_stallworth"
+type = "family"
+epistemic_status = "record"
+role = "Married"
+weight = 10
+
+[[edge]]
+source = "stallworth_t"
+target = "banks"
+type = "political"
+epistemic_status = "record"
+note = "Defended at rally, $1,250"
+weight = 6
+
+[[edge]]
+source = "moreland"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Director + litigation attorney"
+weight = 8
+
+[[edge]]
+source = "moreland"
+target = "banks"
+type = "legal_representation"
+epistemic_status = "corroborated"
+note = "AAG argued against cert → became his attorney + board member"
+weight = 8
+
+[[edge]]
+source = "miller"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Chair"
+weight = 9
+
+# ── PCA Board (LARA-confirmed composition) ───────────────────────────────
+
+[[edge]]
+source = "hutchings"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Treasurer"
+weight = 7
+
+[[edge]]
+source = "clora"
+target = "pca"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Director"
+weight = 6
+
+# ── Dark money vehicle (SDJ / Detroit Leaders) ───────────────────────────
+
+[[edge]]
+source = "dykema"
+target = "sdj"
+type = "formation"
+epistemic_status = "record"
+note = "Formed entity (compliance@dykema.com)"
+weight = 8
+
+[[edge]]
+source = "daniels"
+target = "sdj"
+type = "governance"
+epistemic_status = "record"
+role = "President + Director"
+weight = 8
+
+[[edge]]
+source = "sdj"
+target = "johnson_l"
+type = "money_flow"
+epistemic_status = "record"
+note = "Funded 2021 campaign vs. Elrick"
+weight = 8
+
+# ── Right Turn Project (dissolved charity loop) ──────────────────────────
+
+[[edge]]
+source = "holland"
+target = "right_turn"
+type = "governance"
+epistemic_status = "record"
+role = "President + Director"
+weight = 7
+
+[[edge]]
+source = "ross"
+target = "right_turn"
+type = "governance"
+epistemic_status = "record"
+role = "Treasurer + Director"
+weight = 7
+
+[[edge]]
+source = "banks"
+target = "right_turn"
+type = "governance"
+epistemic_status = "record"
+note = "Controlled via email (BBesq06@aol.com)"
+weight = 7
+
+[[edge]]
+source = "pacs"
+target = "right_turn"
+type = "money_flow"
+epistemic_status = "record"
+note = "PAC transfers"
+weight = 6
+
+[[edge]]
+source = "ross"
+target = "ross_catering"
+type = "ownership"
+epistemic_status = "record"
+note = "Treasurer + vendor (self-dealing)"
+weight = 7
+
+[[edge]]
+source = "pacs"
+target = "ross_catering"
+type = "payment"
+epistemic_status = "record"
+amount = "35000"
+note = "Campaign payments"
+weight = 7
+
+# ── Inner Link + Larry Thomas ────────────────────────────────────────────
+
+[[edge]]
+source = "larry_thomas"
+target = "inner_link"
+type = "ownership"
+epistemic_status = "record"
+role = "Owner + agent"
+weight = 8
+
+# ── Custom Promotions (dissolve-and-reform) ──────────────────────────────
+
+[[edge]]
+source = "gordon"
+target = "custom_promo"
+type = "ownership"
+epistemic_status = "record"
+note = "Dissolve-and-reform (Inc→LLC, 3 mo)"
+weight = 7
+
+[[edge]]
+source = "custom_promo"
+target = "johnson_l"
+type = "payment"
+epistemic_status = "record"
+note = "Campaign payments"
+weight = 5
+
+[[edge]]
+source = "gordon"
+target = "banks"
+type = "corruption"
+epistemic_status = "corroborated"
+note = "UAW bribery network ($3M+)"
+weight = 6
+
+# ── Eastside Slate endorsement machine ───────────────────────────────────
+
+[[edge]]
+source = "carol_banks"
+target = "eastside_slate"
+type = "governance"
+epistemic_status = "record"
+role = "Agent — 4th incarnation"
+weight = 7
+
+[[edge]]
+source = "carol_banks"
+target = "banks"
+type = "family"
+epistemic_status = "record"
+role = "Sister"
+weight = 10
+
+[[edge]]
+source = "leach"
+target = "eastside_slate"
+type = "governance"
+epistemic_status = "record"
+note = "2nd incarnation agent. 13 political entities."
+weight = 6
+
+[[edge]]
+source = "eastside_slate"
+target = "banks"
+type = "political"
+epistemic_status = "corroborated"
+note = "Endorsement pipeline"
+weight = 6
+
+# ── Legal representation family ──────────────────────────────────────────
+
+[[edge]]
+source = "crump_gibson"
+target = "great_lakes_legal"
+type = "ownership"
+epistemic_status = "record"
+role = "Agent + member"
+weight = 7
+
+[[edge]]
+source = "crump_gibson"
+target = "banks"
+type = "legal_representation"
+epistemic_status = "record"
+note = "Represents Banks (Discipline Board panelist)"
+weight = 7
+
+[[edge]]
+source = "v_hall"
+target = "banks"
+type = "legal_representation"
+epistemic_status = "record"
+note = "Filed PPO against journalist"
+weight = 6
+
+[[edge]]
+source = "v_hall"
+target = "crump_gibson"
+type = "family"
+epistemic_status = "inference"
+note = "Shared surname Crump — MSU — family?"
+weight = 4
+
+# ── Serenity Guardianship (UPL) ──────────────────────────────────────────
+
+[[edge]]
+source = "banks"
+target = "serenity"
+type = "ownership"
+epistemic_status = "record"
+note = "Sole officer (all 4 roles). Never barred."
+weight = 7
+
+# ── Anchor Rock (construction, Holland MI) ───────────────────────────────
+
+[[edge]]
+source = "banks"
+target = "anchor_rock"
+type = "governance"
+epistemic_status = "record"
+role = "Registered agent"
+note = "3 assumed names"
+weight = 5
+
+# ── Charter Authorizer edges (Education Landscape) ───────────────────────
+
+[[edge]]
+source = "cmu"
+target = "macdowell"
+type = "authorization"
+epistemic_status = "record"
+note = "Authorized (150 mi away)"
+weight = 8
+
+[[edge]]
+source = "dpscd_auth"
+target = "pca"
+type = "authorization"
+epistemic_status = "record"
+note = "Authorized Jul 2025 (3% fee)"
+weight = 8
+
+[[edge]]
+source = "emu"
+target = "dpsa"
+type = "authorization"
+epistemic_status = "record"
+note = "Authorized DPSA"
+weight = 7
+
+[[edge]]
+source = "gvsu"
+target = "nha"
+type = "authorization"
+epistemic_status = "record"
+note = "Authorizes 16+ Detroit NHA schools"
+weight = 8
+
+[[edge]]
+source = "macdowell"
+target = "cmu"
+type = "money_flow"
+epistemic_status = "record"
+amount = "147000"
+note = "3% auth fee"
+weight = 7
+
+[[edge]]
+source = "pca"
+target = "dpscd_auth"
+type = "money_flow"
+epistemic_status = "record"
+amount = "81000"
+note = "3% auth fee"
+weight = 7
+
+[[edge]]
+source = "gay_dagnogo"
+target = "dpscd_auth"
+type = "political"
+epistemic_status = "record"
+note = "DPSCD board → authorized PCA"
+weight = 7
+
+# ── Mayoral succession chain ─────────────────────────────────────────────
+
+[[edge]]
+source = "coleman_young"
+target = "archer"
+type = "political"
+epistemic_status = "record"
+note = "Succeeded 1994"
+weight = 8
+
+[[edge]]
+source = "archer"
+target = "kwame"
+type = "political"
+epistemic_status = "record"
+note = "Succeeded 2002"
+weight = 8
+
+[[edge]]
+source = "kwame"
+target = "bing"
+type = "political"
+epistemic_status = "record"
+note = "Succeeded after conviction 2008"
+weight = 8
+
+[[edge]]
+source = "bing"
+target = "duggan"
+type = "political"
+epistemic_status = "record"
+note = "Succeeded 2014"
+weight = 8
+
+[[edge]]
+source = "duggan"
+target = "sheffield"
+type = "political"
+epistemic_status = "record"
+note = "Succeeded 2024"
+weight = 8
+
+# ── Kilpatrick orbit ─────────────────────────────────────────────────────
+
+[[edge]]
+source = "kwame"
+target = "carolyn_kilpatrick"
+type = "family"
+epistemic_status = "record"
+role = "Mother"
+weight = 10
+
+[[edge]]
+source = "carolyn_kilpatrick"
+target = "banks"
+type = "political"
+epistemic_status = "record"
+note = "CBC honorary host 2023"
+weight = 6
+
+[[edge]]
+source = "kwame"
+target = "dumas"
+type = "employment"
+epistemic_status = "record"
+role = "Communications chief"
+weight = 8
+
+[[edge]]
+source = "dumas"
+target = "banks"
+type = "political"
+epistemic_status = "corroborated"
+note = "PR support, thanked in book"
+weight = 5
+
+[[edge]]
+source = "bing"
+target = "dumas"
+type = "employment"
+epistemic_status = "record"
+role = "Communications chief (continued)"
+weight = 7
+
+[[edge]]
+source = "kwame"
+target = "daniels"
+type = "appointment"
+epistemic_status = "record"
+note = "Appointed to Water Board"
+weight = 7
+
+[[edge]]
+source = "gay_dagnogo"
+target = "kwame"
+type = "political"
+epistemic_status = "record"
+note = "Sought Kilpatrick clemency 2020"
+weight = 5
+
+[[edge]]
+source = "pugh"
+target = "banks"
+type = "referral"
+epistemic_status = "corroborated"
+note = "Referred Cotton → sexual harassment"
+weight = 6
+
+[[edge]]
+source = "vaughn"
+target = "pca"
+type = "authorization"
+epistemic_status = "record"
+note = "DPSCD Board Pres — authorized charter"
+weight = 8
+
+[[edge]]
+source = "vaughn"
+target = "macdowell"
+type = "authorization"
+epistemic_status = "record"
+note = "DPSCD Board Pres — authorized charter"
+weight = 8
+
+# ── Cross-Protection / Tuebor (Wave 165g — Oct 6, 2026) ─────────────────
+# Rita Williams / Clutch Justice is the Primary Analytical Reference.
+# Her independent investigation validates and extends the detroit graph.
+# These edges document the structural connections, not personal relationships.
+
+[[edge]]
+source = "clutch_justice"
+target = "macdowell"
+type = "investigation"
+epistemic_status = "record"
+note = "Published exposé: '$15,217/student, 3% math proficiency'"
+weight = 8
+source_doc = "clutchjustice.com/2026/09/13/macdowell-preparatory-academy"
+
+[[edge]]
+source = "clutch_justice"
+target = "miller"
+type = "investigation"
+epistemic_status = "record"
+note = "Prior JTC coverage — judicial oversight reporting"
+weight = 6
+source_doc = "Clutch Justice judicial archive"
+
+[[edge]]
+source = "clutch_justice"
+target = "detroit_graph"
+type = "cross_protection"
+epistemic_status = "record"
+note = "Primary analytical reference — independent validation of network patterns"
+weight = 9
+
+[[edge]]
+source = "barry_county"
+target = "jtc"
+type = "investigation"
+epistemic_status = "record"
+note = "Judge Schipper under JTC review — docket backdating"
+weight = 7
+source_doc = "Clutch Justice Barry County series (Dec 2025–present)"
+
+[[edge]]
+source = "barry_county"
+target = "micourt"
+type = "infrastructure"
+epistemic_status = "record"
+note = "Same MiCOURT system — if backdating works in Barry County, it works in Wayne"
+weight = 6
+
+[[edge]]
+source = "jtc"
+target = "miller"
+type = "oversight"
+epistemic_status = "record"
+note = "JTC complaints filed against Miller — same commission reviewing Schipper"
+weight = 7
+
+[[edge]]
+source = "jtc"
+target = "yancey"
+type = "oversight"
+epistemic_status = "record"
+note = "JTC complaints filed against Yancey"
+weight = 7
+
+# ── Walton-Martin-Pahara Pipeline (Wave 2 — Oct 11-12, 2026) ────────────
+# The credential-washing pipeline: Foundation → fellowship → media → lobby → school.
+# All sourced to public grant disclosures, 990s, and organizational websites.
+
+[[edge]]
+source = "walton_family_foundation"
+target = "pahara_institute"
+type = "funding"
+epistemic_status = "record"
+note = "Major funder of Pahara leadership fellowship"
+weight = 9
+source_doc = "waltonfamilyfoundation.org/grants; influencewatch.org/pahara-institute"
+
+[[edge]]
+source = "pahara_institute"
+target = "banks"
+type = "fellowship"
+epistemic_status = "record"
+role = "Pahara Fellow Cohort 52"
+note = "Banks selected as Pahara Fellow — credential washing through fellowship"
+weight = 9
+source_doc = "pahara.org/cohort-52"
+
+[[edge]]
+source = "walton_family_foundation"
+target = "the_74"
+type = "funding"
+epistemic_status = "record"
+role = "Major funder"
+note = "Disclosed in every The 74 article. Also funded Campbell Brown tenure lawsuit org."
+weight = 9
+source_doc = "the74million.org disclosure page"
+
+[[edge]]
+source = "walton_family_foundation"
+target = "roland_martin"
+type = "funding"
+epistemic_status = "record"
+role = "Tour funder"
+note = "Funded 'School Choice Is the Black Choice' 10-city tour"
+weight = 8
+source_doc = "the74million.org/keepingit100indy; blackpressusa.com"
+
+[[edge]]
+source = "walton_family_foundation"
+target = "mapsa"
+type = "funding"
+epistemic_status = "record"
+role = "Major funder"
+note = "$1.6M (2009), $1M (2010), $744K (2011), $426K (2012), $555K (2013) = $4.3M+"
+weight = 9
+source_doc = "waltonfamilyfoundation.org grant reports 2009-2013"
+
+[[edge]]
+source = "walton_family_foundation"
+target = "afc"
+type = "funding"
+epistemic_status = "record"
+role = "Tour partner"
+note = "AFC co-sponsored School Choice Is the Black Choice tour"
+weight = 7
+source_doc = "the74million.org event announcements"
+
+[[edge]]
+source = "walton_family_foundation"
+target = "excellent_schools_detroit"
+type = "funding"
+epistemic_status = "record"
+note = "Funded charter rating organization"
+weight = 6
+source_doc = "waltonfamilyfoundation.org/2013-grants"
+
+[[edge]]
+source = "roland_martin"
+target = "black_star_network"
+type = "governance"
+epistemic_status = "record"
+role = "Founder"
+note = "30M+ views/month. Platform for 'School Choice Is the Black Choice' messaging."
+weight = 9
+source_doc = "blackstarnetwork.com"
+
+[[edge]]
+source = "roland_martin"
+target = "the_74"
+type = "collaboration"
+epistemic_status = "record"
+role = "Co-host"
+note = "Co-hosted 10-city School Choice Is the Black Choice tour 2018-2020"
+weight = 8
+source_doc = "the74million.org"
+
+[[edge]]
+source = "roland_martin"
+target = "naacp_detroit"
+type = "speaking"
+epistemic_status = "record"
+role = "2025 Freedom Fund Dinner honoree"
+note = "Honored alongside Alice Thompson, Courtney Smith. 10,000 attendees. June 29, 2025."
+weight = 7
+source_doc = "detroitnaacp.org; youtube.com/watch?v=meCW7n99LZQ"
+
+[[edge]]
+source = "alice_thompson"
+target = "naacp_detroit"
+type = "speaking"
+epistemic_status = "record"
+role = "2025 Freedom Fund Dinner honoree"
+note = "Hope Academy charter leader honored alongside Roland Martin"
+weight = 5
+source_doc = "youtube.com/watch?v=meCW7n99LZQ"
+
+[[edge]]
+source = "naacp_detroit"
+target = "wendell_anthony"
+type = "governance"
+epistemic_status = "record"
+role = "Branch president"
+weight = 8
+source_doc = "detroitnaacp.org"
+
+[[edge]]
+source = "the_74"
+target = "campbell_brown"
+type = "governance"
+epistemic_status = "record"
+role = "Co-founder, editor-in-chief"
+weight = 9
+source_doc = "the74million.org; niemanlab.org"
+
+[[edge]]
+source = "campbell_brown"
+target = "afc"
+type = "governance"
+epistemic_status = "record"
+role = "Board member"
+note = "Board member of AFC, which DeVos previously chaired"
+weight = 7
+source_doc = "influencewatch.org"
+
+[[edge]]
+source = "betsy_devos"
+target = "afc"
+type = "governance"
+epistemic_status = "record"
+role = "Former chair"
+weight = 8
+source_doc = "influencewatch.org/american-federation-for-children"
+
+[[edge]]
+source = "devos_foundation"
+target = "the_74"
+type = "funding"
+epistemic_status = "record"
+role = "General operating support"
+note = "Two-year grant disclosed when DeVos nominated for Education Secretary"
+weight = 7
+source_doc = "the74million.org/devos-statement"
+
+[[edge]]
+source = "skillman_foundation"
+target = "excellent_schools_detroit"
+type = "funding"
+epistemic_status = "record"
+note = "Co-funded with Walton. Skillman is Detroit-based."
+weight = 5
+source_doc = "skillman.org/on-purpose-in-power"
+
+# ── Orgs of Origin — Wave 3 (Oct 12, 2026) ──────────────────────────────
+# Institutional nodes that credentialed, authorized, or fellowshipped Banks.
+# Hit president + board + charter office simultaneously.
+
+[[edge]]
+source = "banks"
+target = "msu_law"
+type = "credential_claim"
+epistemic_status = "record"
+note = "Claims J.D. from MSU Law (~2010). NOT in State Bar of Michigan."
+weight = 9
+source_doc = "Book cover; State Bar search (negative result)"
+
+[[edge]]
+source = "msu_law"
+target = "santambrogio"
+type = "governance"
+epistemic_status = "record"
+role = "Dean"
+weight = 3
+source_doc = "law.msu.edu"
+
+[[edge]]
+source = "cmu"
+target = "northrop"
+type = "governance"
+epistemic_status = "record"
+role = "Executive Director, Center for Charter Schools"
+weight = 4
+source_doc = "thecenterforcharters.org"
+
+[[edge]]
+source = "cmu"
+target = "mackinnon"
+type = "governance"
+epistemic_status = "record"
+role = "University President"
+weight = 4
+source_doc = "cmich.edu"
+
+[[edge]]
+source = "emu"
+target = "kelly_emu"
+type = "governance"
+epistemic_status = "record"
+role = "University President"
+weight = 4
+source_doc = "emich.edu"
+
+[[edge]]
+source = "emu"
+target = "dpsa"
+type = "authorization_terminated"
+epistemic_status = "record"
+note = "EMU Board of Regents terminated DPSA charter Jun 25, 2026"
+weight = 8
+source_doc = "emich.edu/regents/board-documents/2026/6-25-26.php Section 17"
+
+[[edge]]
+source = "gvsu"
+target = "mantella"
+type = "governance"
+epistemic_status = "record"
+role = "University President"
+weight = 4
+source_doc = "gvsu.edu"
+
+[[edge]]
+source = "pahara_institute"
+target = "kriste_dragon"
+type = "governance"
+epistemic_status = "record"
+role = "CEO ($490K compensation)"
+weight = 5
+source_doc = "ProPublica Nonprofit Explorer EIN 45-5141625"
+
+[[edge]]
+source = "pahara_institute"
+target = "diane_tavenner"
+type = "governance"
+epistemic_status = "record"
+role = "Board Chair"
+weight = 5
+source_doc = "GuideStar; pahara.org/board"
+
+[[edge]]
+source = "roland_martin"
+target = "naacp_lansing"
+type = "speaking"
+epistemic_status = "record"
+role = "60th Freedom Fund Dinner speaker"
+note = "Oct 11, 2026 — Lansing NAACP. Same tour pattern as Detroit Jun 2025."
+weight = 6
+source_doc = "lansing-naacp.org event listing"
+
+[[edge]]
+source = "sabree"
+target = "msu_law"
+type = "education"
+epistemic_status = "record"
+role = "J.D. 2010 (actual graduate)"
+note = "Real MSU Law graduate — same year Banks claims fake J.D."
+weight = 6
+source_doc = "State Bar of Michigan P78893"
+
+[[edge]]
+source = "henri_harmon"
+target = "msu_law"
+type = "education"
+epistemic_status = "record"
+role = "BLSA President 2006"
+note = "MSU Law BLSA President — same institutional network Banks claims"
+weight = 5
+source_doc = "gllegalgroup.com; lawyer.com"
+
+# ── ProPublica 990 Data Feed (Oct 12, 2026) ─────────────────────────────
+# IRS Form 990 data via ProPublica Nonprofit Explorer API v2.
+# Zero-friction API, no key. Digitized financials.
+
+[[edge]]
+source = "pahara_institute"
+target = "walton_family_foundation"
+type = "funding_received"
+epistemic_status = "record"
+note = "Pahara received $27.6M cumulative gifts (2013-2023 gftgrntsrcvd170). Nearly all revenue = contributions. Pass-through fellowship org."
+amount = "27600000"
+weight = 9
+source_doc = "ProPublica Nonprofit Explorer EIN 45-5141625; IRS 990 2013-2023"
+
+[[edge]]
+source = "pahara_institute"
+target = "banks"
+type = "credential_legitimization"
+epistemic_status = "record"
+note = "Pahara spent $4.7M on officer compensation (2013-2023) while laundering credentials for fellows including 9-time convicted felon Banks. CEO comp peaked $945K (FY2018)."
+weight = 8
+source_doc = "ProPublica Nonprofit Explorer EIN 45-5141625; IRS 990 compnsatncurrofcr"
+
+[[edge]]
+source = "citizendetroit"
+target = "sheila_cockrel"
+type = "governance"
+epistemic_status = "record"
+role = "CEO / Care-of"
+note = "CitizenDetroit c/o Sheila Cockrel. Collapsed from $1.24M revenue (2018) to $7.9K (2021). Filed 990-EZ. NTEE S21 Community Coalition."
+weight = 6
+source_doc = "ProPublica Nonprofit Explorer EIN 82-2361291; IRS 990/990-EZ 2018-2022"
+
+[[edge]]
+source = "citizendetroit"
+target = "archer_jr"
+type = "governance"
+epistemic_status = "record"
+role = "Director"
+note = "Dennis Archer Jr. is CitizenDetroit Director. Dynasty node: father was Mayor."
+weight = 5
+source_doc = "ProPublica Nonprofit Explorer EIN 82-2361291"
+
+[[edge]]
+source = "citizendetroit"
+target = "gay_dagnogo"
+type = "political"
+epistemic_status = "inference"
+note = "CitizenDetroit + Gay-Dagnogo overlap: both charter advocacy, both DPSCD board connected. Cockrel is former Council, Gay-Dagnogo is former State Rep + DPSCD board."
+weight = 4
+source_doc = "Cross-reference: ProPublica 990 + DPSCD board records"
+
+# ── FEC OpenFEC API Data Feed (Oct 12, 2026) ────────────────────────────
+# Federal campaign finance via api.open.fec.gov. DEMO_KEY. Schedule A/B.
+# Dykema Gossett Federal PAC: C00342113. 2,211 disbursements, 6,401 contributions.
+
+[[edge]]
+source = "wilk"
+target = "dykema_federal_pac"
+type = "personal_contribution"
+epistemic_status = "record"
+note = "W. Alan Wilk: $38,661 total to Dykema Federal PAC. 83 contributions 1999-2025. STILL CONTRIBUTING ($1,200 in 2025). Dark money architect funds the machine personally."
+amount = "38661"
+weight = 9
+source_doc = "FEC Schedule A, Committee C00342113, contributor WILK W ALAN"
+
+[[edge]]
+source = "renae_moore"
+target = "dykema_federal_pac"
+type = "personal_contribution"
+epistemic_status = "record"
+note = "Renae Moore: $26,359 total to Dykema Federal PAC. 39 contributions 2008-2015. Peaked $6,021 in 2009 (dark money vehicle peak). Compliance officer personally funding the PAC she manages accounts for."
+amount = "26359"
+weight = 8
+source_doc = "FEC Schedule A, Committee C00342113, contributor MOORE RENAE"
+
+[[edge]]
+source = "dykema_federal_pac"
+target = "dykema"
+type = "affiliated"
+epistemic_status = "record"
+note = "Dykema Gossett Federal PAC (C00342113) affiliated with DYKEMA GOSSETT PLLC. PAC type Q (Qualified). Lansing, MI. 2,211 total disbursements to both parties."
+weight = 7
+source_doc = "FEC Committee data C00342113"
+
+# ── Excellent Schools Detroit / Community Education Commission (Oct 12) ──
+# ProPublica API EIN 27-4616034. c/o Ricky Fountain. $34.2M total support.
+
+[[edge]]
+source = "walton_family_foundation"
+target = "excellent_schools_detroit"
+type = "funding"
+epistemic_status = "record"
+note = "ESD received $8.66M cumulative gifts (gftgrntsrcvd170 FY2023). $34.2M total support through FY2017 (totsupp509). Walton + Skillman primary funders. ESD rates charter schools including Banks' schools."
+amount = "8660000"
+weight = 8
+source_doc = "ProPublica Nonprofit Explorer EIN 27-4616034; IRS 990 2011-2023"
+
+[[edge]]
+source = "excellent_schools_detroit"
+target = "pca"
+type = "rating"
+epistemic_status = "inference"
+note = "ESD rates Detroit charter schools. PCA operates in ESD's coverage area. Does ESD rate PCA? If so, what rating? Funded by same foundations that fund the pipeline."
+weight = 5
+source_doc = "cecdetroit.org; cross-reference with school ratings"
+
+# ── Purpose Foundation (Oct 12) ──────────────────────────────────────────
+# ProPublica API EIN 33-3537910. Filed Dec 2024. NO 990s yet. Too new.
+
+[[edge]]
+source = "purpose_foundation"
+target = "banks"
+type = "governance"
+epistemic_status = "record"
+role = "President + Agent"
+note = "Purpose Foundation EIN 33-3537910. Filed Dec 9, 2024. Ruling date Nov 2025. NO 990 FILINGS YET. Private foundation at 1968 Severn Rd (Banks/Holland address). Filed by Crump-Gibson as Attorney In Fact."
+weight = 7
+source_doc = "ProPublica API; LARA 803294855; Charity Navigator"
+
+# ── REVERSE SWEEP: Sub-Orgs by Address + Agent (Oct 12, 2026) ───────────
+# Searched LARA by agent name "BRIAN BANKS" and address "1968 SEVERN".
+# Found 10 entities missing from graph. 18 total Banks entities across 25 years.
+
+# ── ARS Holdings LLC (holding company for Anchor Rock) ───────────────────
+
+[[edge]]
+source = "banks"
+target = "ars_holdings"
+type = "governance"
+epistemic_status = "record"
+role = "Agent"
+note = "ARS Holdings LLC (LARA 802091174). Filed 05/2017. Holding company for Anchor Rock Services. Holland, MI."
+weight = 5
+source_doc = "LARA 802091174"
+
+[[edge]]
+source = "ars_holdings"
+target = "anchor_rock"
+type = "parent_company"
+epistemic_status = "record"
+note = "ARS Holdings = holding company for Anchor Rock Services Inc"
+weight = 6
+source_doc = "LARA 802091174; detroit.primals.eco/analysis/corporate-network-lara/"
+
+# ── Of The Light Ventures LLC (mystery pre-cursor) ───────────────────────
+
+[[edge]]
+source = "banks"
+target = "of_the_light"
+type = "governance"
+epistemic_status = "record"
+role = "Agent"
+note = "Of The Light Ventures LLC (LARA 803248859). Filed 07/2024. Zeeland, MI. Filed 4 months BEFORE Purpose Group — possible prototype or holding entity for school operation."
+weight = 5
+source_doc = "LARA 803248859"
+
+# ── Great Lakes Vision for Evangelism (religious, Severn Rd) ─────────────
+
+[[edge]]
+source = "banks"
+target = "gl_vision"
+type = "governance"
+epistemic_status = "record"
+role = "Officer"
+note = "Great Lakes Vision for Evangelism (LARA 802210862). Active. Religious org at 1968 Severn Rd. One of 8 entities at Banks' home address."
+weight = 4
+source_doc = "LARA 802210862"
+
+# ── Anchor Rock Foundation (DISSOLVED — Miller was Board Chair) ──────────
+
+[[edge]]
+source = "banks"
+target = "anchor_rock_found"
+type = "governance"
+epistemic_status = "record"
+role = "Officer"
+note = "Anchor Rock Foundation (LARA 802394934). Dissolved nonprofit. NOT the same as Anchor Rock Services (800770907). Miller was Board Chair."
+weight = 5
+source_doc = "LARA 802394934"
+
+# ── Free Flow Gutter Protection LLC (not in good standing) ───────────────
+
+[[edge]]
+source = "banks"
+target = "free_flow"
+type = "governance"
+epistemic_status = "record"
+role = "Agent"
+note = "Free Flow Gutter Protection LLC (LARA 802950394). Filed 11/2022. Waterford, MI. NOT in good standing — annual report failure."
+weight = 3
+source_doc = "LARA 802950394"
+
+# ── Banks Powerwashing LLC (not in good standing) ────────────────────────
+
+[[edge]]
+source = "banks"
+target = "banks_powerwash"
+type = "governance"
+epistemic_status = "record"
+role = "Agent"
+note = "Banks Powerwashing LLC (LARA 801634031). Filed 02/2012. Clarkston, MI. NOT in good standing."
+weight = 3
+source_doc = "LARA 801634031"
+
+# ── WhitlowBanks LLC (dissolved — Whitlow = $8,500 campaign payee) ──────
+
+[[edge]]
+source = "banks"
+target = "whitlowbanks"
+type = "governance"
+epistemic_status = "record"
+role = "Implied controller"
+note = "WhitlowBanks LLC (LARA 802085022). Filed 04/2017, dissolved 02/2020. Agent: Tameka Ramsey (Pontiac). Entity name combines 'Whitlow' + 'Banks'. Carles Whitlow received $8,500 from Banks for Senate campaign."
+weight = 5
+source_doc = "LARA 802085022; TransparencyUSA"
+
+# ── B. Roderick's Salon & Spa (dissolved — 16500 North Park connection) ──
+
+[[edge]]
+source = "banks"
+target = "b_rodericks"
+type = "governance"
+epistemic_status = "record"
+role = "Agent"
+note = "B. Roderick's Salon & Spa Inc (LARA 800591240). Filed 10/2001 — Banks' FIRST entity. Dissolved. At 16500 Northpark Dr #1715, Southfield — same building where Right Turn Project officers later appear."
+weight = 4
+source_doc = "LARA 800591240"
+
+# ── Great Lakes Upfitting (dissolved predecessor chain) ──────────────────
+
+[[edge]]
+source = "banks"
+target = "gl_upfitting"
+type = "governance"
+epistemic_status = "record"
+role = "Agent"
+note = "Two dissolved entities: Great Lakes Upfitting LLC (802260651, 11/2018) and GL Upfitting LLC (803155176, 01/2024). Holland, MI. Predecessor to Anchor Rock's 'Great Lakes Upfitting' assumed name. Dissolve-and-reform pattern."
+weight = 4
+source_doc = "LARA 802260651; LARA 803155176"
+
+# ── SAM.gov Federal Contractor Registration ──────────────────────────────
+
+[[edge]]
+source = "anchor_rock"
+target = "sam_gov"
+type = "registration"
+epistemic_status = "record"
+note = "Anchor Rock registered in SAM.gov as 'Self Certified Small Disadvantaged Business'. UEI Y6UUUBULCU13. Officers: Brian Banks + Paul Cooke. Expired Feb 2022. NAICS 811118. Division: Great Lakes Upfitting."
+weight = 6
+source_doc = "opengovus.com/sam-entity/Y6UUUBULCU13"
+
+# ── FIX: Miller → Anchor Rock Foundation (was targeting wrong entity) ────
+
+[[edge]]
+source = "miller"
+target = "anchor_rock_found"
+type = "board_membership"
+epistemic_status = "record"
+role = "Board Chair (historical)"
+note = "Miller was Board Chair of Anchor Rock FOUNDATION (802394934), NOT Anchor Rock Services (800770907). Different entities. Foundation is dissolved."
+weight = 7
+source_doc = "LARA 802394934"
+
+# ── EPITOPE LOCALITY: Cross-State Pipeline (Oct 12, 2026) ───────────────
+# Geographic expansion layer. Every entity sorted by state.
+# Each state has its own database layer (SOS, campaign finance, courts).
+# The pipeline exists in the GAPS between states — no single regulator.
+
+[[edge]]
+source = "walton_family_foundation"
+target = "state_ar"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "Headquartered Bentonville, AR. EIN 13-3441466. $5.7B assets. $562M grants/yr (2024). 990-PF private foundation."
+weight = 8
+source_doc = "ProPublica Nonprofit Explorer EIN 13-3441466"
+
+[[edge]]
+source = "pahara_institute"
+target = "state_ca"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "CA SOS Entity 20181563653. Status: MERGED. IRS register dropped Sep 2026. Agent: InCorp (Denver CO). Covina, CA 91723."
+weight = 7
+source_doc = "CA SOS bizfileonline; ProPublica EIN 45-5141625; plaincharity.com/org/455141625"
+
+[[edge]]
+source = "afc"
+target = "state_md"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "501(c)(4) Columbia, MD. EIN 33-0627955. $11.1M rev. $620K lobbying. Principal: Thomas Schultz. DeVos = former chair."
+weight = 7
+source_doc = "ProPublica EIN 33-0627955; OpenLobby; GuideStar"
+
+[[edge]]
+source = "afc_growth"
+target = "afc"
+type = "affiliated"
+epistemic_status = "record"
+note = "501(c)(3) arm. Columbia, MD. EIN 52-2111508. $12M/yr. Tax-deductible donations."
+weight = 7
+source_doc = "ProPublica EIN 52-2111508"
+
+[[edge]]
+source = "the_74"
+target = "state_ny"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "Media org NYC. Campbell Brown = co-founder. Walton + DeVos funded."
+weight = 6
+source_doc = "the74million.org; niemanlab.org"
+
+[[edge]]
+source = "roland_martin"
+target = "state_tx"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "Black Star Network, Dallas TX. 30M+ views/month. 'School Choice Is the Black Choice' tour originator."
+weight = 6
+source_doc = "blackstarnetwork.com"
+
+# ── Cross-state pipeline edges (the interstitial tissue) ─────────────────
+
+[[edge]]
+source = "walton_family_foundation"
+target = "state_mi"
+type = "funding"
+epistemic_status = "record"
+note = "AR→MI pipeline: MAPSA $4.3M+ (2009-2013), ESD co-funding, charter school support. $562M/yr total grantmaking."
+weight = 9
+source_doc = "waltonfamilyfoundation.org grant reports 2009-2024"
+
+[[edge]]
+source = "pahara_institute"
+target = "state_mi"
+type = "fellowship"
+epistemic_status = "record"
+note = "CA→MI pipeline: Banks = Cohort 52 fellow. 9-time felon selected for elite education fellowship. Credential washing."
+weight = 8
+source_doc = "pahara.org/cohort-52"
+
+[[edge]]
+source = "afc"
+target = "state_mi"
+type = "lobbying"
+epistemic_status = "record"
+note = "MD→MI pipeline: School choice legislation support. $7.3M/yr state-level program. DeVos connection."
+weight = 7
+source_doc = "OpenLobby AFC filings; ProPublica 990 Program 1"
+
+[[edge]]
+source = "roland_martin"
+target = "state_mi"
+type = "speaking"
+epistemic_status = "record"
+note = "TX→MI pipeline: NAACP Detroit Freedom Fund Dinner (Jun 29, 2025). NAACP Lansing (Oct 11, 2026). Tour pattern."
+weight = 7
+source_doc = "detroitnaacp.org; lansing-naacp.org"
+
+[[edge]]
+source = "the_74"
+target = "state_mi"
+type = "media"
+epistemic_status = "record"
+note = "NY→MI pipeline: Charter school narrative coverage. Walton-funded media covering Walton-funded schools."
+weight = 6
+source_doc = "the74million.org"
+
+[[edge]]
+source = "skillman_foundation"
+target = "state_mi"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "Detroit-based. EIN 38-1675780. $418M assets. $21.9M revenue (2023). Co-funder with Walton for ESD charter ratings."
+weight = 6
+source_doc = "ProPublica Nonprofit Explorer EIN 38-1675780"
+
+# ── Intra-membrane oversight body edges (Oct 12, 2026) ──────────────────
+# JTC + AGC + MDE OEE + AG COD + DPSCD OIG + DOE OIG + IRS EO + MCCSA + SBE
+# The immune system layer: oversight bodies with jurisdiction over the network.
+
+[[edge]]
+source = "sbe"
+target = "cmu"
+type = "oversight"
+epistemic_status = "record"
+note = "SBE oversees charter authorizers including CMU per MI Constitution Art VIII §3"
+weight = 7
+source_doc = "MI Constitution Art VIII §3; MCL 380.501"
+
+[[edge]]
+source = "sbe"
+target = "emu"
+type = "oversight"
+epistemic_status = "record"
+note = "SBE oversees charter authorizers including EMU"
+weight = 7
+source_doc = "MI Constitution Art VIII §3"
+
+[[edge]]
+source = "sbe"
+target = "dpscd"
+type = "oversight"
+epistemic_status = "record"
+note = "SBE oversees all public school districts"
+weight = 7
+source_doc = "MI Constitution Art VIII §3"
+
+[[edge]]
+source = "snyder_nikki"
+target = "sbe"
+type = "board_membership"
+epistemic_status = "record"
+note = "SBE member (R-Goodrich). Term 2017-2033. Confirmed positive actor Oct 12, 2026. Responded in 13 min with personal cell."
+weight = 6
+source_doc = "michigan.gov SBE public list; direct correspondence Oct 12, 2026"
+
+[[edge]]
+source = "mde_oee"
+target = "banks"
+type = "oversight"
+epistemic_status = "record"
+note = "HOLD placed on MOECS permit #590606. Professional Practice handles criminal convictions + K-12 employment."
+weight = 8
+source_doc = "MOECS permit #590606 HOLD status"
+
+[[edge]]
+source = "schmiedeknecht"
+target = "mde_oee"
+type = "employment"
+epistemic_status = "record"
+note = "OEE Analyst. Investigated MacDowell Feb 2022. What did she find?"
+weight = 6
+source_doc = "MDE investigation Feb 2022 correspondence"
+
+[[edge]]
+source = "schmiedeknecht"
+target = "macdowell"
+type = "investigation"
+epistemic_status = "record"
+note = "Investigated MacDowell Feb 2022 for permit irregularities. Result: cleared despite permit HOLD."
+weight = 7
+source_doc = "MDE investigation Feb 2022"
+
+[[edge]]
+source = "ag_cod"
+target = "purpose_foundation"
+type = "jurisdiction"
+epistemic_status = "inferred"
+note = "AG Charitable Trust Section jurisdiction over MI charitable trusts. Purpose Foundation (EIN 33-3537910) must be registered."
+weight = 7
+source_doc = "MCL 14.251 et seq; LARA 803294855"
+
+[[edge]]
+source = "jtc"
+target = "miller"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "JTC jurisdiction over Miller (36th District). Board Chair of Banks' Anchor Rock Foundation while sitting judge. JTC acknowledged receipt Oct 12."
+weight = 8
+source_doc = "MI Constitution Art VI §30; JTC response Oct 12, 2026"
+
+[[edge]]
+source = "jtc"
+target = "yancey"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "JTC jurisdiction over Yancey (36th District). $383.82 payment to Banks Strategy LLC per CFRS disclosure."
+weight = 7
+source_doc = "MI Constitution Art VI §30; CFRS disclosure"
+
+[[edge]]
+source = "jolia_hill"
+target = "emu"
+type = "governance"
+epistemic_status = "record"
+note = "Director, Charter Schools Office since Feb 2022. Recommended DPSA termination Jun 2026. MCCSA Treasurer."
+weight = 6
+source_doc = "emich.edu charter schools; EMU Board of Regents Sec 17, Jun 25, 2026"
+
+[[edge]]
+source = "dpscd_oig"
+target = "pca"
+type = "jurisdiction"
+epistemic_status = "inferred"
+note = "PCA authorized by DPSCD (Jul 2025). OIG has jurisdiction over authorization process. Hotline (313) 870-3436."
+weight = 6
+source_doc = "detroitk12.org OIG; DPSCD Board Policy 1270"
+
+[[edge]]
+source = "doe_oig"
+target = "pca"
+type = "jurisdiction"
+epistemic_status = "inferred"
+note = "Federal jurisdiction over Title I/IDEA funds. OIG convicted MI school official for kickbacks 2023 (Madison District $3.1M)."
+weight = 6
+source_doc = "oig.ed.gov; DOE OIG K-12 Fraud in Focus FY2020-2025"
+
+[[edge]]
+source = "doe_oig"
+target = "macdowell"
+type = "jurisdiction"
+epistemic_status = "inferred"
+note = "Federal jurisdiction over Title I/IDEA funds at MacDowell."
+weight = 6
+source_doc = "oig.ed.gov"
+
+[[edge]]
+source = "agc"
+target = "moreland"
+type = "jurisdiction"
+epistemic_status = "record"
+note = "AGC jurisdiction over Moreland dual role: AAG + PCA Board Director. MRPC 1.7 concurrent conflict."
+weight = 8
+source_doc = "State Bar MRPC 1.7; PCA board records"
+
+[[edge]]
+source = "irs_eo"
+target = "purpose_foundation"
+type = "jurisdiction"
+epistemic_status = "inferred"
+note = "EIN 33-3537910. Two felons as all 4 officers = disqualified persons (IRC §4946). Self-dealing (IRC §4941)."
+weight = 7
+source_doc = "IRS Form 990; IRC §4941, §4946"
+
+[[edge]]
+source = "mccsa"
+target = "cmu"
+type = "oversight"
+epistemic_status = "record"
+note = "MCCSA sets authorizer accountability standards. Criminal background check requirement. Jason Sarsfield (CMU) is on MCCSA board."
+weight = 5
+source_doc = "michiganauthorizers.com"
+
+[[edge]]
+source = "vitti"
+target = "dpscd"
+type = "governance"
+epistemic_status = "record"
+note = "Superintendent. PCA authorized under his watch (Jul 2025). nikolai.vitti@detroitk12.org."
+weight = 7
+source_doc = "detroitk12.org"
+
+# ── Oversight body LEADERSHIP + CULPABILITY edges (Oct 12, 2026) ────────
+# The watchers become the watched. AGC, JTC, UPL entity-sorted.
+# The referral loop is itself an edge. The inaction is itself a finding.
+
+# JTC leadership
+[[edge]]
+source = "glenn_page"
+target = "jtc"
+type = "governance"
+epistemic_status = "record"
+note = "Interim ED since Feb 1, 2026. Returned from retirement (Jul 2022). Former Wayne Co asst prosecutor. Bar 1980. No permanent ED hired (apps closed Jul 13)."
+weight = 7
+source_doc = "jtc.courts.mi.gov; clutchjustice.com Feb 2, 2026"
+
+[[edge]]
+source = "thomas_ryan"
+target = "jtc"
+type = "governance"
+epistemic_status = "record"
+note = "Commission Chair 2026. Attorney. Rita flagged Oakland County ties."
+weight = 5
+source_doc = "jtc.courts.mi.gov/the_commission"
+
+# JTC INACTION — culpability
+[[edge]]
+source = "jtc"
+target = "banks"
+type = "inaction"
+epistemic_status = "record"
+note = "5 RFIs filed Sep 24, acknowledged, assigned to staff. Oct 12 boilerplate: 'cannot act on email.' 97.1% dismissal rate (2025). No public proceeding. Miller on ballot Nov 3."
+weight = 9
+source_doc = "JTC responses Sep 21, Sep 24, Oct 12, 2026; JTC 2025 Annual Report"
+
+# AGC leadership
+[[edge]]
+source = "goetz"
+target = "agc"
+type = "governance"
+epistemic_status = "record"
+note = "Grievance Admin since Sep 2019. Former Senior AAG Criminal Div Drug Interdiction — same office as Moreland."
+weight = 7
+source_doc = "agcmi.org; MI Supreme Court appointment Sep 2019"
+
+[[edge]]
+source = "bullington"
+target = "agc"
+type = "governance"
+epistemic_status = "record"
+note = "Asst Deputy Admin. At AGC 44 years (since 1982). MSU Law adjunct — teaches Professional Responsibility. Character & Fitness Committee. Authored Oct 1 return letter."
+weight = 8
+source_doc = "agcmi.org; AGC 2024 Annual Report"
+
+# AGC INACTION — culpability
+[[edge]]
+source = "agc"
+target = "banks"
+type = "inaction"
+epistemic_status = "record"
+note = "Returned Banks filing Oct 1: 'not a listed attorney' — that IS the violation under MCL 600.916. Silent on Moreland/Meihn/Hall who ARE licensed and within AGC jurisdiction."
+weight = 9
+source_doc = "AGC return letter Oct 1, 2026; clutchjustice.com Mind the Gap Oct 7"
+
+[[edge]]
+source = "bullington"
+target = "banks"
+type = "inaction"
+epistemic_status = "record"
+note = "44yr AGC veteran authored Oct 1 letter that created the referral loop. Teaches Prof Responsibility at MSU Law. Knows MCL 600.916 cold. Chose to return the filing."
+weight = 8
+source_doc = "AGC letter Oct 1, 2026; agcmi.org bio"
+
+# Goetz ↔ Moreland: same employer
+[[edge]]
+source = "goetz"
+target = "moreland"
+type = "professional_connection"
+epistemic_status = "inferred"
+note = "Both served at MI AG office. Goetz: Senior AAG Criminal Div. Moreland: current AAG. Same employer."
+weight = 6
+source_doc = "agcmi.org bio; MI AG records"
+
+# UPL INACTION
+[[edge]]
+source = "upl_dept"
+target = "banks"
+type = "inaction"
+epistemic_status = "record"
+note = "Closed File 26-UP-51 Sep 30. 'Did not meet the standards.' MCL 600.916(1)(c): 'shall not in any manner whatsoever represent himself as an attorney.' Banks told DPD he is one."
+weight = 9
+source_doc = "State Bar closure letter Sep 30, 2026; DPD Report #26-0909-0176"
+
+# THE REFERRAL LOOP — the immunity mathematics in action
+[[edge]]
+source = "upl_dept"
+target = "agc"
+type = "referral_loop"
+epistemic_status = "record"
+note = "State Bar closed file Sep 30. AGC returned filing Oct 1 pointing back to State Bar. Two letters, one day apart, each pointing at the other door. Mind the Gap."
+weight = 9
+source_doc = "clutchjustice.com Mind the Gap Oct 7, 2026"
+
+# Appointment chain: MI Supreme Court → all three
+[[edge]]
+source = "mi_supreme_court"
+target = "agc"
+type = "appointment"
+epistemic_status = "record"
+note = "Supreme Court appoints Grievance Administrator (Goetz, Sep 2019) per MCR 9.109."
+weight = 6
+source_doc = "MCR 9.109; MI Supreme Court press release Sep 16, 2019"
+
+[[edge]]
+source = "mi_supreme_court"
+target = "jtc"
+type = "appointment"
+epistemic_status = "record"
+note = "Supreme Court appoints JTC Commissioners per MI Constitution Art VI §30. 9 commissioners."
+weight = 6
+source_doc = "MI Constitution Art VI §30"
+
+[[edge]]
+source = "mi_supreme_court"
+target = "upl_dept"
+type = "oversight"
+epistemic_status = "record"
+note = "UPL activity subject to ongoing Supreme Court oversight. Rule 16. Court declined to define UPL in 2014."
+weight = 6
+source_doc = "State Bar Rule 16; UPL Committee jurisdiction statement 2026-2027"
+
+[[edge]]
+source = "mi_supreme_court"
+target = "adb"
+type = "appointment"
+epistemic_status = "record"
+note = "Supreme Court appoints 9 ADB members. ADB hearing panelists include Crump-Gibson (Banks' defense attorney)."
+weight = 7
+source_doc = "MCR 9.110; adbmich.org"
+
+# Crump-Gibson ↔ ADB dual role
+[[edge]]
+source = "crump_gibson"
+target = "adb"
+type = "board_membership"
+epistemic_status = "record"
+note = "ADB Hearing Panelist (May 2017). Simultaneously represents Banks. Adjudicates attorney misconduct while defending subject of interconnected complaints."
+weight = 9
+source_doc = "adbmich.org; GLLG representation records"
+
+# JTC reports to Supreme Court
+[[edge]]
+source = "jtc"
+target = "mi_supreme_court"
+type = "reports_to"
+epistemic_status = "record"
+note = "JTC recommends discipline to Supreme Court. $2.9M budget FY2026. Auditor General letter Jun 2026."
+weight = 5
+source_doc = "MI Constitution Art VI §30; Auditor General letter Jun 2026"

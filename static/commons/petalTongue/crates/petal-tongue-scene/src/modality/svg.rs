@@ -1,0 +1,320 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+use std::fmt::Write;
+
+use bytes::Bytes;
+
+use crate::primitive::{AnchorPoint, Color, FillRule, Primitive};
+use crate::scene_graph::SceneGraph;
+use crate::transform::{Camera, Projection, Transform3D};
+
+use super::{ModalityCompiler, ModalityOutput};
+
+/// Fallback SVG viewport height when no camera is set.
+const DEFAULT_VIEWPORT_HEIGHT: f64 = 600.0;
+
+/// Compiles scene graph to SVG.
+#[derive(Debug, Clone, Default)]
+pub struct SvgCompiler;
+
+impl SvgCompiler {
+    /// Create a new SVG compiler.
+    #[must_use]
+    pub const fn new() -> Self {
+        Self
+    }
+
+    /// Extract viewport dimensions from the scene's camera projection.
+    /// For orthographic: uses width/height directly.
+    /// For perspective: derives from aspect ratio at a canonical height.
+    fn viewport_from_scene(scene: &SceneGraph) -> (f64, f64) {
+        match scene.effective_camera().projection {
+            Projection::Orthographic { width, height, .. } => (width, height),
+            Projection::Perspective { aspect, .. } => {
+                (DEFAULT_VIEWPORT_HEIGHT * aspect, DEFAULT_VIEWPORT_HEIGHT)
+            }
+        }
+    }
+}
+
+impl ModalityCompiler for SvgCompiler {
+    fn name(&self) -> &'static str {
+        "SvgCompiler"
+    }
+
+    fn compile(&self, scene: &SceneGraph) -> ModalityOutput {
+        let (vw, vh) = Self::viewport_from_scene(scene);
+        let camera = scene.effective_camera();
+        let mut buf = String::new();
+        let _ = write!(
+            buf,
+            r#"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {vw} {vh}">"#,
+        );
+
+        for (transform, prim, _node_id) in scene.flatten_3d() {
+            Self::emit_primitive(&mut buf, prim, &transform, &camera);
+        }
+
+        buf.push_str("</svg>");
+        ModalityOutput::Svg(Bytes::from(buf.into_bytes()))
+    }
+}
+
+impl SvgCompiler {
+    /// Apply a 3D world transform to a 2D point (z=0) then project through the camera.
+    fn project_point(
+        transform: &Transform3D,
+        camera: &Camera,
+        x: f64,
+        y: f64,
+    ) -> (f64, f64) {
+        let m = &transform.matrix;
+        let wx = m[0] * x + m[4] * y + m[12];
+        let wy = m[1] * x + m[5] * y + m[13];
+        let wz = m[2] * x + m[6] * y + m[14];
+        camera.project(wx, wy, wz)
+    }
+
+    #[expect(
+        clippy::too_many_lines,
+        reason = "emit_primitive is a single match over primitive variants"
+    )]
+    fn emit_primitive(buf: &mut String, prim: &Primitive, transform: &Transform3D, camera: &Camera) {
+        match prim {
+            Primitive::Point {
+                x,
+                y,
+                radius,
+                fill,
+                stroke,
+                ..
+            } => {
+                let (x, y) = Self::project_point(transform, camera, *x, *y);
+                let fill_attr = fill.map_or_else(|| "none".to_owned(), Self::color_attr);
+                let stroke_attr = stroke.as_ref().map_or_else(
+                    || "stroke=\"none\"".to_owned(),
+                    |s| {
+                        format!(
+                            r#"stroke="{}" stroke-width="{}""#,
+                            Self::color_attr(s.color),
+                            s.width
+                        )
+                    },
+                );
+                let _ = write!(
+                    buf,
+                    r#"<circle cx="{x}" cy="{y}" r="{radius}" fill="{fill_attr}" {stroke_attr} />"#
+                );
+            }
+            Primitive::Line { points, stroke, .. } => {
+                let pts: Vec<String> = points
+                    .iter()
+                    .map(|&[px, py]| {
+                        let (sx, sy) = Self::project_point(transform, camera, px, py);
+                        format!("{sx},{sy}")
+                    })
+                    .collect();
+                let _ = write!(
+                    buf,
+                    r#"<polyline points="{}" fill="none" stroke="{}" stroke-width="{}" />"#,
+                    pts.join(" "),
+                    Self::color_attr(stroke.color),
+                    stroke.width
+                );
+            }
+            Primitive::Rect {
+                x,
+                y,
+                width,
+                height,
+                fill,
+                stroke,
+                corner_radius,
+                ..
+            } => {
+                let (x, y) = Self::project_point(transform, camera, *x, *y);
+                let fill_attr = fill.map_or_else(|| "none".to_owned(), Self::color_attr);
+                let stroke_attr = stroke.as_ref().map_or_else(
+                    || "stroke=\"none\"".to_owned(),
+                    |s| {
+                        format!(
+                            r#"stroke="{}" stroke-width="{}""#,
+                            Self::color_attr(s.color),
+                            s.width
+                        )
+                    },
+                );
+                let _ = write!(
+                    buf,
+                    r#"<rect x="{x}" y="{y}" width="{width}" height="{height}" rx="{corner_radius}" fill="{fill_attr}" {stroke_attr} />"#
+                );
+            }
+            Primitive::Text {
+                x,
+                y,
+                content,
+                font_size,
+                color,
+                anchor,
+                ..
+            } => {
+                let (sx, sy) = Self::project_point(transform, camera, *x, *y);
+                let anchor_str = match anchor {
+                    AnchorPoint::TopLeft | AnchorPoint::CenterLeft | AnchorPoint::BottomLeft => {
+                        "start"
+                    }
+                    AnchorPoint::TopCenter | AnchorPoint::Center | AnchorPoint::BottomCenter => {
+                        "middle"
+                    }
+                    AnchorPoint::TopRight | AnchorPoint::CenterRight | AnchorPoint::BottomRight => {
+                        "end"
+                    }
+                };
+                let escaped = content
+                    .replace('&', "&amp;")
+                    .replace('<', "&lt;")
+                    .replace('>', "&gt;");
+                let _ = write!(
+                    buf,
+                    r#"<text x="{sx}" y="{sy}" font-size="{font_size}" fill="{}" text-anchor="{anchor_str}">{escaped}</text>"#,
+                    Self::color_attr(*color)
+                );
+            }
+            Primitive::Polygon {
+                points,
+                fill,
+                stroke,
+                fill_rule,
+                ..
+            } => {
+                let pts: Vec<String> = points
+                    .iter()
+                    .map(|&[px, py]| {
+                        let (sx, sy) = Self::project_point(transform, camera, px, py);
+                        format!("{sx},{sy}")
+                    })
+                    .collect();
+                let fill_rule_str = match fill_rule {
+                    FillRule::EvenOdd => "evenodd",
+                    FillRule::NonZero => "nonzero",
+                };
+                let stroke_attr = stroke.as_ref().map_or_else(
+                    || "stroke=\"none\"".to_owned(),
+                    |s| {
+                        format!(
+                            r#"stroke="{}" stroke-width="{}""#,
+                            Self::color_attr(s.color),
+                            s.width
+                        )
+                    },
+                );
+                let _ = write!(
+                    buf,
+                    r#"<polygon points="{}" fill="{}" fill-rule="{}" {stroke_attr} />"#,
+                    pts.join(" "),
+                    Self::color_attr(*fill),
+                    fill_rule_str
+                );
+            }
+            Primitive::Arc {
+                cx,
+                cy,
+                radius,
+                start_angle,
+                end_angle,
+                fill,
+                stroke,
+                ..
+            } => {
+                let (cx, cy) = Self::project_point(transform, camera, *cx, *cy);
+                let x1 = cx + radius * start_angle.cos();
+                let y1 = cy + radius * start_angle.sin();
+                let x2 = cx + radius * end_angle.cos();
+                let y2 = cy + radius * end_angle.sin();
+                let large = (end_angle - start_angle).abs() > std::f64::consts::PI;
+                let d = format!(
+                    "M {x1} {y1} A {radius} {radius} 0 {} 1 {x2} {y2}",
+                    i32::from(large)
+                );
+                let fill_attr = fill.map_or_else(|| "none".to_owned(), Self::color_attr);
+                let stroke_attr = stroke.as_ref().map_or_else(
+                    || "stroke=\"none\"".to_owned(),
+                    |s| {
+                        format!(
+                            r#"stroke="{}" stroke-width="{}""#,
+                            Self::color_attr(s.color),
+                            s.width
+                        )
+                    },
+                );
+                let _ = write!(buf, r#"<path d="{d}" fill="{fill_attr}" {stroke_attr} />"#);
+            }
+            Primitive::BezierPath {
+                start,
+                segments,
+                stroke,
+                fill,
+                fill_rule,
+                ..
+            } => {
+                let (sx, sy) = Self::project_point(transform, camera, start[0], start[1]);
+                let mut d = format!("M {sx} {sy}");
+                for seg in segments {
+                    let (c1x, c1y) = Self::project_point(transform, camera, seg.cp1[0], seg.cp1[1]);
+                    let (c2x, c2y) = Self::project_point(transform, camera, seg.cp2[0], seg.cp2[1]);
+                    let (ex, ey) = Self::project_point(transform, camera, seg.end[0], seg.end[1]);
+                    let _ = write!(d, " C {c1x} {c1y}, {c2x} {c2y}, {ex} {ey}");
+                }
+                let fill_attr = fill.map_or_else(|| "none".to_owned(), Self::color_attr);
+                let fill_rule_str = match fill_rule {
+                    FillRule::EvenOdd => "evenodd",
+                    FillRule::NonZero => "nonzero",
+                };
+                let _ = write!(
+                    buf,
+                    r#"<path d="{d}" fill="{fill_attr}" fill-rule="{fill_rule_str}" stroke="{}" stroke-width="{}" />"#,
+                    Self::color_attr(stroke.color),
+                    stroke.width
+                );
+            }
+            Primitive::Mesh { .. } => {
+                // 3D only; skip for 2D SVG
+            }
+            Primitive::Texture {
+                texture_id,
+                x,
+                y,
+                width,
+                height,
+                opacity,
+                ..
+            } => {
+                let (tx, ty) = Self::project_point(transform, camera, *x, *y);
+                let (bx, by) = Self::project_point(transform, camera, x + width, y + height);
+                let sw = (bx - tx).abs();
+                let sh = (by - ty).abs();
+                let _ = writeln!(
+                    buf,
+                    "  <image x=\"{tx:.1}\" y=\"{ty:.1}\" width=\"{sw:.1}\" height=\"{sh:.1}\" \
+                     opacity=\"{opacity}\" data-texture-id=\"{texture_id}\" />",
+                );
+            }
+        }
+    }
+
+    #[expect(
+        clippy::cast_possible_truncation,
+        clippy::cast_sign_loss,
+        reason = "color components clamped to [0,255] before cast"
+    )]
+    fn color_attr(c: Color) -> String {
+        let r = (c.r * 255.0).clamp(0.0, 255.0);
+        let g = (c.g * 255.0).clamp(0.0, 255.0);
+        let b = (c.b * 255.0).clamp(0.0, 255.0);
+        format!("rgb({},{},{})", r as u8, g as u8, b as u8)
+    }
+}
+
+#[cfg(test)]
+#[path = "svg_tests.rs"]
+mod tests;

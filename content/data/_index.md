@@ -147,3 +147,4 @@ The data grows in latent value — available to every spring and garden at LAN s
 - [How Braids Work](/data/provenance/) — the provenance pipeline explained
 - [pseudoSpore Catalog](/pseudospore/) — science we computed (NFTs)
 - [Verify a pseudoSpore](/pseudospore/verify/) — step-by-step verification guide
+- [The commons](/commons/) — the data files and scripts these pages name, held in this repository with their hashes

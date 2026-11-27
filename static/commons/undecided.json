@@ -1,0 +1,4610 @@
+[
+ {
+  "name": "01-composition-validation.ipynb",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/lab/neuralspring-validation-summary.md"
+  ],
+  "said": [
+   "01-composition-validation.ipynb"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "92c36ca2aa20d060172d1a13893a90a1af3136dda25e86ba38f0f9e5383d2fb6",
+    "bytes": 9883
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "a38b1649d00b363ae6b9d064cd9a8d97d3de007e651583247f7cf837d11cbcc4",
+    "bytes": 7460
+   },
+   {
+    "where": "gardens/springs/airSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "ca76d58d3212e539a6712efcffe4ca418b26411715a0522b31e86aff49d64d91",
+    "bytes": 6308
+   },
+   {
+    "where": "gardens/springs/groundSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "34cca2f55511d37071aeff2cc5311f49fe0f04e9edf3411f07f5be1e45407fe9",
+    "bytes": 7246
+   },
+   {
+    "where": "gardens/springs/hotSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "92c36ca2aa20d060172d1a13893a90a1af3136dda25e86ba38f0f9e5383d2fb6",
+    "bytes": 9883
+   },
+   {
+    "where": "gardens/springs/neuralSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "a38b1649d00b363ae6b9d064cd9a8d97d3de007e651583247f7cf837d11cbcc4",
+    "bytes": 7460
+   },
+   {
+    "where": "primalSpring/notebooks/01-composition-validation.ipynb",
+    "sha256": "503b5a1d1af629bb3bdf6245c124af0843606861dbfc4aa18d11c2fd31862444",
+    "bytes": 10754
+   }
+  ]
+ },
+ {
+  "name": "03-ecosystem-evidence.ipynb",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/lab/neuralspring-validation-summary.md"
+  ],
+  "said": [
+   "03-ecosystem-evidence.ipynb"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/notebooks/03-ecosystem-evidence.ipynb",
+    "sha256": "1f3862e7779e02c4bbfba7f2b16e67afd75bc78eceb0d8c327f90c582e63719f",
+    "bytes": 8690
+   },
+   {
+    "where": "gardens/springs/airSpring/notebooks/03-ecosystem-evidence.ipynb",
+    "sha256": "40445c6121416f5f70306379c563ccd1cc875c8997444615d8089af26c6b9ee8",
+    "bytes": 7028
+   },
+   {
+    "where": "gardens/springs/groundSpring/notebooks/03-ecosystem-evidence.ipynb",
+    "sha256": "ea0469e582ae1dfbedd03d30abddac85b9b491a4816fb0031b1efbe041ce05c1",
+    "bytes": 6673
+   },
+   {
+    "where": "gardens/springs/neuralSpring/notebooks/03-ecosystem-evidence.ipynb",
+    "sha256": "1f3862e7779e02c4bbfba7f2b16e67afd75bc78eceb0d8c327f90c582e63719f",
+    "bytes": 8690
+   },
+   {
+    "where": "primalSpring/notebooks/03-ecosystem-evidence.ipynb",
+    "sha256": "1c278f65b0584802669cdacf2d64b0de9575d32ee1cb6b26e149b4530d11e745",
+    "bytes": 10315
+   }
+  ]
+ },
+ {
+  "name": "04-cross-spring-connections.ipynb",
+  "why": "6 different files carry this name",
+  "pages": [
+   "content/lab/neuralspring-validation-summary.md"
+  ],
+  "said": [
+   "04-cross-spring-connections.ipynb"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "f783abb92c85dcb786dee5d98dc117308b177f2d8ce301cacdb765f25729c18c",
+    "bytes": 9461
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "77e2511bd368f1747cae2e9c800931c106be864098978263984cde69514b1d40",
+    "bytes": 7900
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "0e78c3d5e50402d3316e07da8a4a89ac77fa91af04bfe304d3cd65d307cca2b8",
+    "bytes": 10203
+   },
+   {
+    "where": "gardens/springs/airSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "40398fb8c2e4777bc7c77f7d4931e81af9a52af67b66451e82ad375213cf2128",
+    "bytes": 6331
+   },
+   {
+    "where": "gardens/springs/groundSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "36b19634a4b57c429cc63d1b7ce5d50ac5fac334e83d25ffa65d2c4d7d01c3c4",
+    "bytes": 5528
+   },
+   {
+    "where": "gardens/springs/hotSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "f783abb92c85dcb786dee5d98dc117308b177f2d8ce301cacdb765f25729c18c",
+    "bytes": 9461
+   },
+   {
+    "where": "gardens/springs/neuralSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "77e2511bd368f1747cae2e9c800931c106be864098978263984cde69514b1d40",
+    "bytes": 7900
+   },
+   {
+    "where": "gardens/springs/wetSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "0e78c3d5e50402d3316e07da8a4a89ac77fa91af04bfe304d3cd65d307cca2b8",
+    "bytes": 10203
+   },
+   {
+    "where": "primalSpring/notebooks/04-cross-spring-connections.ipynb",
+    "sha256": "442ba917efbba9c905a0210be5a95aa701785c38eb9bc684f66541d895a71ac3",
+    "bytes": 8924
+   }
+  ]
+ },
+ {
+  "name": "05-btsp-security-deep-dive.ipynb",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/lab/neuralspring-validation-summary.md"
+  ],
+  "said": [
+   "05-btsp-security-deep-dive.ipynb"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/notebooks/05-btsp-security-deep-dive.ipynb",
+    "sha256": "4773a0df013e3549f853a172dd0ab3a54344c822106e999a4dc25a10b6aa9734",
+    "bytes": 10268
+   },
+   {
+    "where": "gardens/springs/neuralSpring/notebooks/05-btsp-security-deep-dive.ipynb",
+    "sha256": "4773a0df013e3549f853a172dd0ab3a54344c822106e999a4dc25a10b6aa9734",
+    "bytes": 10268
+   },
+   {
+    "where": "primalSpring/notebooks/05-btsp-security-deep-dive.ipynb",
+    "sha256": "7476b43be400d586407b9b4314f0fb67d252b623e98595f915856a74505781a0",
+    "bytes": 12310
+   }
+  ]
+ },
+ {
+  "name": "__init__.py",
+  "why": "10 different files carry this name",
+  "pages": [
+   "content/science/114_the_phenotype.md"
+  ],
+  "said": [
+   "__init__.py"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bonsai-bt-upstream/bonsai-py/examples/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bonsai-bt-upstream/bonsai-py/python/bonsai_bt/__init__.py",
+    "sha256": "04b6c601f96459814a509f27c44997c1a311ba03837dc132309e19ac10075b18",
+    "bytes": 736
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bonsai-bt-upstream/bonsai-py/tests/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/brainchip_devhub/brainchip_utils/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/ltee_symbiont_pkpd/__init__.py",
+    "sha256": "0ed7447a2ff3267526a60f3f472d3e63f896b2f17d689f067b0fd197310ff5c0",
+    "bytes": 45
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-bluegate-tenancy/tools/osint/sources/__init__.py",
+    "sha256": "f2963c1306d11e71c68649c8afebeef7c437466cc4e8b9a1a5cc249beae77577",
+    "bytes": 29
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/anderson_localization/__init__.py",
+    "sha256": "6df254c6476081b6f187ab7b79afd7c0cf526f10944c2d0d260a2a3d2d25bb0e",
+    "bytes": 105
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/counterdiabatic/__init__.py",
+    "sha256": "0ed7447a2ff3267526a60f3f472d3e63f896b2f17d689f067b0fd197310ff5c0",
+    "bytes": 45
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/directed_evolution/__init__.py",
+    "sha256": "0ed7447a2ff3267526a60f3f472d3e63f896b2f17d689f067b0fd197310ff5c0",
+    "bytes": 45
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/eco_dynamics/__init__.py",
+    "sha256": "0ed7447a2ff3267526a60f3f472d3e63f896b2f17d689f067b0fd197310ff5c0",
+    "bytes": 45
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/game_theory/__init__.py",
+    "sha256": "0ed7447a2ff3267526a60f3f472d3e63f896b2f17d689f067b0fd197310ff5c0",
+    "bytes": 45
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/hmm_phylo/__init__.py",
+    "sha256": "0ed7447a2ff3267526a60f3f472d3e63f896b2f17d689f067b0fd197310ff5c0",
+    "bytes": 45
+   }
+  ]
+ },
+ {
+  "name": "anderson_localization.py",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/exp-008-anderson-localization.md"
+  ],
+  "said": [
+   "control/anderson_localization/anderson_localization.py"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/anderson_localization/anderson_localization.py",
+    "sha256": "2e23f94ddcf7669e8ab9646ed2ea826bc1f3bc2b873c2a4a0062fd923d534045",
+    "bytes": 10179
+   },
+   {
+    "where": "gardens/springs/groundSpring/control/anderson_localization/anderson_localization.py",
+    "sha256": "bb7b5df831fa06f2b7570c8c0e94b90da504294ac2c3b1eed0eff83c048456b0",
+    "bytes": 8430
+   },
+   {
+    "where": "gardens/springs/neuralSpring/control/anderson_localization/anderson_localization.py",
+    "sha256": "2e23f94ddcf7669e8ab9646ed2ea826bc1f3bc2b873c2a4a0062fd923d534045",
+    "bytes": 10179
+   }
+  ]
+ },
+ {
+  "name": "antifungal-neurotoxin-dataset.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/139_fruit_mycelium_antifungal_neurotoxin.md"
+  ],
+  "said": [
+   "primals.eco/data/antifungal-neurotoxin-dataset.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/antifungal-neurotoxin-dataset.json",
+    "sha256": "72822382eb565b94c87e802edbe8764925b6f941b7e4add1f26b327548683799",
+    "bytes": 6544
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/antifungal-neurotoxin-dataset.json",
+    "sha256": "e300abbdaf926edb63a2531db9a4b49be619909f46a60df1112c22f7779ffa72",
+    "bytes": 6579
+   }
+  ]
+ },
+ {
+  "name": "beat_classify_batch_f64.wgsl",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "beat_classify_batch_f64.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/health/beat_classify_batch_f64.wgsl",
+    "sha256": "71d00bd8e7621a166be213b7c1d8c4ec2b6c7f14280727a0e63c413af95114d6",
+    "bytes": 2683
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/shaders/health/beat_classify_batch_f64.wgsl",
+    "sha256": "9f0a432425f7a2e969e324f9d039a8db552d933a6f5b61391d9bc911541a135f",
+    "bytes": 2947
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/shaders/health/beat_classify_batch_f64.wgsl",
+    "sha256": "9f0a432425f7a2e969e324f9d039a8db552d933a6f5b61391d9bc911541a135f",
+    "bytes": 2947
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/health/beat_classify_batch_f64.wgsl",
+    "sha256": "71d00bd8e7621a166be213b7c1d8c4ec2b6c7f14280727a0e63c413af95114d6",
+    "bytes": 2683
+   }
+  ]
+ },
+ {
+  "name": "benchmark_timing.json",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/02-benchmark-comparison.md",
+   "content/lab/notebooks/05-domain-deep-dive.md",
+   "content/lab/notebooks/05-measurement-science-deep-dive.md",
+   "content/lab/notebooks/05-physics-deep-dive.md"
+  ],
+  "said": [
+   "benchmark_timing.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/experiments/results/benchmark_timing.json",
+    "sha256": "41663a9aad171309ba232ec080a01344106b3db851faa3373a36959d130612aa",
+    "bytes": 2865
+   },
+   {
+    "where": "gardens/springs/airSpring/experiments/results/benchmark_timing.json",
+    "sha256": "6730a326dd7f47b2c75e6efa826c3c8e782e4ced45cd320e033562ec7e62675d",
+    "bytes": 3397
+   },
+   {
+    "where": "gardens/springs/groundSpring/experiments/results/benchmark_timing.json",
+    "sha256": "fa3b54d1f14aac972cf5a97ee28496fbacea406bd60a299cf37e015aca4d3cd5",
+    "bytes": 1977
+   },
+   {
+    "where": "gardens/springs/hotSpring/experiments/results/benchmark_timing.json",
+    "sha256": "41663a9aad171309ba232ec080a01344106b3db851faa3373a36959d130612aa",
+    "bytes": 2865
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/benchmark_timing.json",
+    "sha256": "27c15a1d60f5056b17d3b24f106a13e751bc72effba641cc820339412d97ebe7",
+    "bytes": 4221
+   }
+  ]
+ },
+ {
+  "name": "braid.json",
+  "why": "8 different files carry this name",
+  "pages": [
+   "content/lab/provenance-pipeline.md"
+  ],
+  "said": [
+   "braid.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/compost/braid.json",
+    "sha256": "53798a42971153381ecefa6626313f2d7f9e77b18499454733c8e4cc4d55a480",
+    "bytes": 210
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/braid.json",
+    "sha256": "d026d299ae61fe9600988c9c48a32af01c6b8ad1a8e74bfb6d74411cbce9bd54",
+    "bytes": 5557
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/braid.json",
+    "sha256": "208154f90aa697a8d0b67d7ef25f7d0d594a3829df3af22ce855f1fdebc09bce",
+    "bytes": 137
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/body/braid.json",
+    "sha256": "53798a42971153381ecefa6626313f2d7f9e77b18499454733c8e4cc4d55a480",
+    "bytes": 210
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/tuebor-braid/braid.json",
+    "sha256": "5324fd16821fc47569b0d3591f1bce918161da2c184b1949da17ba220da51361",
+    "bytes": 3155
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/braid.json",
+    "sha256": "b69921754a4a1812073f639791bfbd247e8fc762b3a5d9fae9e6d57809114a7a",
+    "bytes": 13234
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/braid.json",
+    "sha256": "53a444e97208ca60f8828e2bd8d692a353fbf6bc2405109f95cd1b256b9e2b3e",
+    "bytes": 104
+   },
+   {
+    "where": "data/tuebor-braid/braid.json",
+    "sha256": "5324fd16821fc47569b0d3591f1bce918161da2c184b1949da17ba220da51361",
+    "bytes": 3155
+   },
+   {
+    "where": "gardens/projectFOUNDATION/validation/ag-20260511/braid.json",
+    "sha256": "d5fee97dbdeff426ff8dc9451a70661d4c397950ce7d84ea80bcc0198aa6fae7",
+    "bytes": 3022
+   },
+   {
+    "where": "gardens/projectFOUNDATION/validation/anderson-20260511/braid.json",
+    "sha256": "e733d15a67a676228e912525879f2942fc05c2a115f508af970ff65a7f77834b",
+    "bytes": 2227
+   },
+   {
+    "where": "membrane/local-terminal/remote/braid.json",
+    "sha256": "b69921754a4a1812073f639791bfbd247e8fc762b3a5d9fae9e6d57809114a7a",
+    "bytes": 13234
+   }
+  ]
+ },
+ {
+  "name": "bridge.rs",
+  "why": "6 different files carry this name",
+  "pages": [
+   "content/science/24_esotericwebb_composition_patterns.md"
+  ],
+  "said": [
+   "bridge.rs"
+  ],
+  "candidates": [
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/bridge.rs",
+    "sha256": "98e2773619d1ef96fd37ae630c840a89a9bf596e779f6ac7e39883664fb3c3f4",
+    "bytes": 10797
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/metalForge/forge/src/bridge.rs",
+    "sha256": "11cc2a95ff995037a8bcac87ee0ea725f3d83c53d8d3141aff3ce3cbd6d247b0",
+    "bytes": 5085
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-cellMembrane/crates/membrane-shadow/src/bridge.rs",
+    "sha256": "98e2773619d1ef96fd37ae630c840a89a9bf596e779f6ac7e39883664fb3c3f4",
+    "bytes": 10797
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/metalForge/forge/src/bridge.rs",
+    "sha256": "003c911f6e1f8d5e8da928ba7d1888c04637ac01c8668f7fe7eaed9eca84764d",
+    "bytes": 4325
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/songBird/crates/songbird-primal-coordination/src/bridge.rs",
+    "sha256": "c0ee4dc91295a05b4482dc4d0ce94ed0adabb5f0ceb8ced179ec0e1d09aa776d",
+    "bytes": 27679
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/metalForge/forge/src/bridge.rs",
+    "sha256": "bb72c6fabdf649a706904d470510e437afc430c4b63791f4e9ef7ea613644b7a",
+    "bytes": 9354
+   },
+   {
+    "where": "data/gut/forgejo-clones/syntheticChemistry/ionChannel/crates/ion-core/src/capabilities/bridge.rs",
+    "sha256": "f3dabf6e5e75098582515edfd6b1a52f904b981496a7e179280023eb432ccd2b",
+    "bytes": 16229
+   },
+   {
+    "where": "data/sourdough-ball/northgate-gardens/cellMembrane/crates/membrane-shadow/src/bridge.rs",
+    "sha256": "98e2773619d1ef96fd37ae630c840a89a9bf596e779f6ac7e39883664fb3c3f4",
+    "bytes": 10797
+   },
+   {
+    "where": "gardens/springs/hotSpring/metalForge/forge/src/bridge.rs",
+    "sha256": "11cc2a95ff995037a8bcac87ee0ea725f3d83c53d8d3141aff3ce3cbd6d247b0",
+    "bytes": 5085
+   },
+   {
+    "where": "gardens/springs/ionChannel/crates/ion-core/src/capabilities/bridge.rs",
+    "sha256": "f3dabf6e5e75098582515edfd6b1a52f904b981496a7e179280023eb432ccd2b",
+    "bytes": 16229
+   },
+   {
+    "where": "gardens/springs/neuralSpring/metalForge/forge/src/bridge.rs",
+    "sha256": "003c911f6e1f8d5e8da928ba7d1888c04637ac01c8668f7fe7eaed9eca84764d",
+    "bytes": 4325
+   },
+   {
+    "where": "gardens/springs/wetSpring/metalForge/forge/src/bridge.rs",
+    "sha256": "bb72c6fabdf649a706904d470510e437afc430c4b63791f4e9ef7ea613644b7a",
+    "bytes": 9354
+   }
+  ]
+ },
+ {
+  "name": "campfire.json",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/science/111_the_omnibus.md",
+   "content/science/78_deploy_your_own_membrane.md"
+  ],
+  "said": [
+   "campfire.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/compost/campfire.json",
+    "sha256": "9d6f3e6a4b2a8a40c9db4087ea25d5acb6ab651ae85c2e604876c6878b60e5f1",
+    "bytes": 99
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/campfire.json",
+    "sha256": "6f5cddc9baf6cb9a2ca6f6e1a5626d2b84e7d72e81a0dc29e32e748e5773065d",
+    "bytes": 412
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/campfire.json",
+    "sha256": "cf5ca5deb5a7cde395df6e155d236fd57c8377161c2bd7e13dafa0b6830c490e",
+    "bytes": 9648
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/body/campfire.json",
+    "sha256": "9d6f3e6a4b2a8a40c9db4087ea25d5acb6ab651ae85c2e604876c6878b60e5f1",
+    "bytes": 99
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/campfire.json",
+    "sha256": "6f5cddc9baf6cb9a2ca6f6e1a5626d2b84e7d72e81a0dc29e32e748e5773065d",
+    "bytes": 412
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/campfire.json",
+    "sha256": "235e35532ea7a1206a360e902d94847e3d043dbe84f1ea4e1e0a09dccbca963c",
+    "bytes": 3191
+   },
+   {
+    "where": "membrane/local-terminal/remote/campfire.json",
+    "sha256": "6f5cddc9baf6cb9a2ca6f6e1a5626d2b84e7d72e81a0dc29e32e748e5773065d",
+    "bytes": 412
+   }
+  ]
+ },
+ {
+  "name": "capability_registry.toml",
+  "why": "27 different files carry this name",
+  "pages": [
+   "content/architecture/membrane_visibility.md",
+   "content/lab/nestgate-validation-summary.md",
+   "content/lab/springs/primalspring.md"
+  ],
+  "said": [
+   "capability_registry.toml"
+  ],
+  "candidates": [
+   {
+    "where": "cellMembrane/config/capability_registry.toml",
+    "sha256": "907abc679df2a8a1118f6df935bd7e1e8cac694ca1bb36becc01a53b18bd3009",
+    "bytes": 12919
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/config/capability_registry.toml",
+    "sha256": "1e2200f598734c638f16de5dbea67a830cb77d575f1484642d60c5662da098fc",
+    "bytes": 23628
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/config/capability_registry.toml",
+    "sha256": "c51ae43df9ff1ae02d5443dc98b41c66284b1079281779a9994d9bb853f395db",
+    "bytes": 68654
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/config/capability_registry.toml",
+    "sha256": "6235dd84b82926ea32743960f0178a7f21722cf682340d2e21f0563cc2b2375c",
+    "bytes": 4537
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/webb/capability_registry.toml",
+    "sha256": "95ccafdaa2c7e7c8776dc756577ebb18dfff2b6cdee55c96ed096715e0daae63",
+    "bytes": 4650
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/config/capability_registry.toml",
+    "sha256": "4afd9651eeb5d31e8e01371326c65df5d217152032f9934351bb895a5f5ed70f",
+    "bytes": 11114
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/config/capability_registry.toml",
+    "sha256": "d393cb3d86377a6b3ee3f6c344fed79d59e33f782c923157831389c65e300744",
+    "bytes": 24860
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-cellMembrane/config/capability_registry.toml",
+    "sha256": "907abc679df2a8a1118f6df935bd7e1e8cac694ca1bb36becc01a53b18bd3009",
+    "bytes": 12919
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-wateringHole/capability_registry.toml",
+    "sha256": "bbbd0b72ffbaec52e3fc42f619a661b3456e1a94562439d2d3def0e88359d21b",
+    "bytes": 13558
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/config/capability_registry.toml",
+    "sha256": "9468c6032e1129c42d9a5625430c34fc8e72699b1fd84093388a1f34cefde541",
+    "bytes": 6561
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/crates/litho-core/tests/fixtures/capability_registry.toml",
+    "sha256": "14d3a53758c942ad66898f1ee17e24c4035ed1de4b8deec5904205cace52fa54",
+    "bytes": 4747
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/loamSpine/config/capability_registry.toml",
+    "sha256": "fa7240b6e5906dbe53d3aa316404d7ebf8a4bda3dafd5579ae90d2e8054b8d46",
+    "bytes": 10858
+   }
+  ]
+ },
+ {
+  "name": "Cargo.toml",
+  "why": "712 different files carry this name",
+  "pages": [
+   "content/science/128_the_immiscible_grease.md",
+   "content/science/82_thesis_validation_crush_mix.md"
+  ],
+  "said": [
+   "Cargo.toml"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/crates/spore-validate/Cargo.toml",
+    "sha256": "a28efeacd78ab74fd57531bdbbcef6364eb7ceef2fb794b4d2f9d99da0287006",
+    "bytes": 1785
+   },
+   {
+    "where": "cellMembrane/Cargo.toml",
+    "sha256": "1510682e33f6f964c95613a522989cef5e3e4f0646a1e0b5faf198ff8765a36e",
+    "bytes": 724
+   },
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/Cargo.toml",
+    "sha256": "dbaccb5de33414b8236d944b05c3c68d6719ee7713fe47f6406da2fd39f99263",
+    "bytes": 458
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/Cargo.toml",
+    "sha256": "176a0cec76acdfe44cd381756bff1a4e7d8e48daba82966c1dc35ea6cc56dacf",
+    "bytes": 1507
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/Cargo.toml",
+    "sha256": "08a0ccb05c1bcde6cd3b1f172be9f2e035ce181c6c709b9c9586ae46606d76be",
+    "bytes": 6951
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda-core/Cargo.toml",
+    "sha256": "bd643b8ba336d83fada2545e8031e8377ca9e091999e2ce3fad36655985fd255",
+    "bytes": 1557
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda-naga-exec/Cargo.toml",
+    "sha256": "f42dcdce9feefb098f7674b4b29b9d3a348bfb128835bef4cb8446b9b3f0b9b0",
+    "bytes": 441
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda-spirv/Cargo.toml",
+    "sha256": "6a279f9b3affbd6c5189124885e4d2f41e71bf496c6cd4a14978cf6ce528456a",
+    "bytes": 749
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/Cargo.toml",
+    "sha256": "5390bd5ddc7ce4c7078c366cf690307fd9502e7b9133b61bda3e9a1ecbee550c",
+    "bytes": 5874
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/Cargo.toml",
+    "sha256": "f1276bb1793552005be8e6dd0cc50cf43ea0e1dd312e811d202830c70163a291",
+    "bytes": 15514
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/benchmarks/Cargo.toml",
+    "sha256": "966e9426796cb7ed18149fcae6311c76d8b1a4f2e8710631283f2936c2cc0d5f",
+    "bytes": 1691
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-acme/Cargo.toml",
+    "sha256": "08137c9a3c3682339f9d5aeb8829b0d57fa73613464edbe46d4866fbbe975e2f",
+    "bytes": 1614
+   }
+  ]
+ },
+ {
+  "name": "checksums.toml",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/architecture/DEPLOYMENT_MODEL.md",
+   "content/architecture/SOVEREIGN_DEPLOYMENT.md",
+   "content/architecture/SPOREGATE_IMPRINT.md",
+   "content/glossary/_index.md",
+   "content/lab/depot-status.md",
+   "content/lab/getting-started-plasmidbin.md"
+  ],
+  "said": [
+   "checksums.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/livespore-usb/x86_64/checksums.toml",
+    "sha256": "3c0d29a49b356887d6c6e3a4a2e7acf086cd6b9f3c44039dd6ea9994f59a5ea2",
+    "bytes": 3501
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-plasmidBin/checksums.toml",
+    "sha256": "510bdfec83cabb5d3f87103f3caa575cdbf12c41e7277a9eb4d03864e9df1058",
+    "bytes": 4976
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-wateringHole/compute-sharing/configs/checksums.toml",
+    "sha256": "95657cd8e3a6acfabb58a9afc1a61f49ea97d7a2004085d67a2b8b2681413a13",
+    "bytes": 1788
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/petalTongue/checksums.toml",
+    "sha256": "cd085413955a2f5757ade765a511a5c03bdeeac194bc79caa88e891fe91b2a7c",
+    "bytes": 719
+   },
+   {
+    "where": "data/sourdough-ball/northgate-plasmid/checksums.toml",
+    "sha256": "d5819c1bbffe1e9f60e68ed41a1d16d2de9bf055557214b538ddf895bc0a56f0",
+    "bytes": 5049
+   },
+   {
+    "where": "plasmidBin/checksums.toml",
+    "sha256": "510bdfec83cabb5d3f87103f3caa575cdbf12c41e7277a9eb4d03864e9df1058",
+    "bytes": 4976
+   },
+   {
+    "where": "primals/biomeOS/livespore-usb/x86_64/checksums.toml",
+    "sha256": "3c0d29a49b356887d6c6e3a4a2e7acf086cd6b9f3c44039dd6ea9994f59a5ea2",
+    "bytes": 3501
+   },
+   {
+    "where": "primals/petalTongue/checksums.toml",
+    "sha256": "cd085413955a2f5757ade765a511a5c03bdeeac194bc79caa88e891fe91b2a7c",
+    "bytes": 719
+   },
+   {
+    "where": "primals/wateringHole/compute-sharing/configs/checksums.toml",
+    "sha256": "95657cd8e3a6acfabb58a9afc1a61f49ea97d7a2004085d67a2b8b2681413a13",
+    "bytes": 1788
+   },
+   {
+    "where": "wateringHole/compute-sharing/configs/checksums.toml",
+    "sha256": "95657cd8e3a6acfabb58a9afc1a61f49ea97d7a2004085d67a2b8b2681413a13",
+    "bytes": 1788
+   }
+  ]
+ },
+ {
+  "name": "chipmunk.json",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/science/111_the_omnibus.md",
+   "content/science/80_the_artisan_and_the_comedian.md"
+  ],
+  "said": [
+   "chipmunk.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/chipmunk.json",
+    "sha256": "d5c3e72af88828efa6ffa1107bf46a840ff115a99910ba91165e6fce69b6f326",
+    "bytes": 287
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/chipmunk.json",
+    "sha256": "a6a52eb5d290c45b933835a3170b662a6c2198352265a3f4378b4523d59b1a0f",
+    "bytes": 1083
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/chipmunk.json",
+    "sha256": "3e1b623fae73292c6ac5c3ad594bda8dd4e04b3b945bee107aad1829b10ae8fe",
+    "bytes": 154
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/body/chipmunk.json",
+    "sha256": "d5c3e72af88828efa6ffa1107bf46a840ff115a99910ba91165e6fce69b6f326",
+    "bytes": 287
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/chipmunk.json",
+    "sha256": "feefcaec03c5ea9284b79c46559a658d1fa64cd76d07fcc36c1b14fdcc97cfc6",
+    "bytes": 12805
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/body/chipmunk.json",
+    "sha256": "d5c3e72af88828efa6ffa1107bf46a840ff115a99910ba91165e6fce69b6f326",
+    "bytes": 287
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/chipmunk.json",
+    "sha256": "dcadba485950bb9c3887c05679dc0947ea450213e81aa73cca9dce66f23ce08b",
+    "bytes": 372
+   },
+   {
+    "where": "membrane/local-terminal/remote/chipmunk.json",
+    "sha256": "feefcaec03c5ea9284b79c46559a658d1fa64cd76d07fcc36c1b14fdcc97cfc6",
+    "bytes": 12805
+   }
+  ]
+ },
+ {
+  "name": "config.json",
+  "why": "37 different files carry this name",
+  "pages": [
+   "content/science/59_vitality_negentropy_mobility_edge.md"
+  ],
+  "said": [
+   ".docker/config.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/ar/config.json",
+    "sha256": "d55101654ce1a73549c0d1e50bf96028d7338e70b023580e97a4930f895b4ead",
+    "bytes": 9543
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/be/config.json",
+    "sha256": "dcff5694ca821c78bd598774ffd757a99e4f607c48e423f066e03078d7433ca9",
+    "bytes": 10808
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/bg/config.json",
+    "sha256": "25580c365b5f9258c9d54fc7e74b72955872a446769096f3572e0acb2f410967",
+    "bytes": 11612
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/ca/config.json",
+    "sha256": "ddc20ae36ec94af6399fec493a5b4d87f9541eeaf05b560cba2e1cebc07bca3b",
+    "bytes": 8051
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/cs/config.json",
+    "sha256": "d3d5fc0e327f9aba7958b188278717b6bf495c373243e28201e6c666010ba7f7",
+    "bytes": 7964
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/da/config.json",
+    "sha256": "7e23b975b0b81a609e924146e7e58b308c61cca402d93bf93d79d267db92c138",
+    "bytes": 7717
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/de/config.json",
+    "sha256": "042d28fc492fef92bece094844f339388ab43cd5ea0159b5839ed16317f39e1a",
+    "bytes": 8314
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/en/config.json",
+    "sha256": "80c077ffc220eeaf165af16c2243c6cd0f8113df571604599c6aba4d141cced8",
+    "bytes": 7568
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/eo/config.json",
+    "sha256": "de4100719f3fec77b06e74366d2fec7c5f0b25ae4d35174cca14a91fc70f172d",
+    "bytes": 7624
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/es/config.json",
+    "sha256": "71851a4bc656c89db4d4d9fcd709a821730fd3676aed44089d3ec5ad7618bdda",
+    "bytes": 8103
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/eu/config.json",
+    "sha256": "010d7d46e4a50c0ee2a982e55a8e85818938c8a90080a0bb53a9a04ad79f35d8",
+    "bytes": 7846
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/giscus/locales/fa/config.json",
+    "sha256": "4d69995f4da306bcda9a3ade0b4e36869184b0f1ee497400b9b37411fa95eda2",
+    "bytes": 10372
+   }
+  ]
+ },
+ {
+  "name": "config.toml",
+  "why": "40 different files carry this name",
+  "pages": [
+   "content/architecture/GUIDESTONE_PUBLICATION.md",
+   "content/architecture/RENVOIS_KNOWLEDGE_TOPOLOGY.md",
+   "content/architecture/SOVEREIGN_CI.md"
+  ],
+  "said": [
+   ".cargo/config.toml",
+   "config.toml"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/config.toml",
+    "sha256": "3c420d620333fe2bb4912453398c2afafd4b9a37c34a6198f2292ee010af485c",
+    "bytes": 69166
+   },
+   {
+    "where": "cellMembrane/.cargo/config.toml",
+    "sha256": "777ef481d930850ee500e7667586445adb13ab8ff23494dcde3ae545bc387724",
+    "bytes": 1426
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/.cargo/config.toml",
+    "sha256": "b07777344608a2fca8dd6c6edf657ec6a69d1ae055ae15e3a1584049aadc03e9",
+    "bytes": 2009
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/.cargo/config.toml",
+    "sha256": "16b218b7bb504f0bcf43b4331dd0d13c17cb471495a545cbf3a89f7d5a90a7f1",
+    "bytes": 1297
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/profiling/config.toml",
+    "sha256": "328f2bfb5f9064917ecaada1ebdf11153cf58b72037f2aef3efb306d6c45d12c",
+    "bytes": 829
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/.cargo/config.toml",
+    "sha256": "56aebfa3ff919bc03af7cd00a687f0e0f402bc1ccfbe16e52c38b738f284da1d",
+    "bytes": 2031
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-boot/.cargo/config.toml",
+    "sha256": "502064e27a8b65c5688e8c86163411a0b00ad3a0c0473cc39e4b8f111194c191",
+    "bytes": 591
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/.cargo/config.toml",
+    "sha256": "c31bf7b1e29b2221e1a92bc7f3e9273894fec74f741ed68f106c2c86c1dc4d6c",
+    "bytes": 3384
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/.cargo/config.toml",
+    "sha256": "ae69e8c3ff4bc492e59a02efef0d8a1637c5c2bd0f10abf2af2dd852052cbc06",
+    "bytes": 70
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-cellMembrane/.cargo/config.toml",
+    "sha256": "777ef481d930850ee500e7667586445adb13ab8ff23494dcde3ae545bc387724",
+    "bytes": 1426
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hypothesis/site/config.toml",
+    "sha256": "f1dbc170629a1073380db85ae911b0f6659f3c2764d3ea4a05de6151e1576c23",
+    "bytes": 648
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-publicRecord/site/config.toml",
+    "sha256": "0134187c864f8682cdd19af81a6a91191e9af89424e2d13a712197cc7156f74f",
+    "bytes": 36140
+   }
+  ]
+ },
+ {
+  "name": "content-manifest.toml",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/architecture/SOVEREIGN_DEPLOYMENT.md",
+   "content/science/113_the_full_trace.md"
+  ],
+  "said": [
+   "content-manifest.toml"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/content-manifest.toml",
+    "sha256": "312769aa001bc6fb2d3f052ca10fbd542cfb90d1eee249d3669b3933c937e2d7",
+    "bytes": 97303
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-publicRecord/content-manifest.toml",
+    "sha256": "a452614e5ff51d38c83f6fa155929f589c2faf4d4e5d1f7fd85640033de95894",
+    "bytes": 11892
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-sporePrint/content-manifest.toml",
+    "sha256": "312769aa001bc6fb2d3f052ca10fbd542cfb90d1eee249d3669b3933c937e2d7",
+    "bytes": 97303
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-tuebor-repo/content-manifest.toml",
+    "sha256": "ecc44d020e6513e3f15c934068e5a0be0349ef6b88316b7524ac6c26a0f960a0",
+    "bytes": 9920
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/lansing/content-manifest.toml",
+    "sha256": "f34e1e85f2f78bace580627449efac69b45f6c2885e97daa660734d8748a452d",
+    "bytes": 1842
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/tuebor/content-manifest.toml",
+    "sha256": "ecc44d020e6513e3f15c934068e5a0be0349ef6b88316b7524ac6c26a0f960a0",
+    "bytes": 9920
+   },
+   {
+    "where": "data/gut/github-clones/defendDetroit/publicRecord/content-manifest.toml",
+    "sha256": "a452614e5ff51d38c83f6fa155929f589c2faf4d4e5d1f7fd85640033de95894",
+    "bytes": 11892
+   },
+   {
+    "where": "data/sourdough-ball/northgate-sporeprint/content-manifest.toml",
+    "sha256": "312769aa001bc6fb2d3f052ca10fbd542cfb90d1eee249d3669b3933c937e2d7",
+    "bytes": 97303
+   },
+   {
+    "where": "gardens/amicus/lansing/content-manifest.toml",
+    "sha256": "f34e1e85f2f78bace580627449efac69b45f6c2885e97daa660734d8748a452d",
+    "bytes": 1842
+   },
+   {
+    "where": "gardens/amicus/publicRecord/content-manifest.toml",
+    "sha256": "a452614e5ff51d38c83f6fa155929f589c2faf4d4e5d1f7fd85640033de95894",
+    "bytes": 11892
+   },
+   {
+    "where": "gardens/amicus/tuebor/content-manifest.toml",
+    "sha256": "ecc44d020e6513e3f15c934068e5a0be0349ef6b88316b7524ac6c26a0f960a0",
+    "bytes": 9920
+   },
+   {
+    "where": "sporePrint/content-manifest.toml",
+    "sha256": "312769aa001bc6fb2d3f052ca10fbd542cfb90d1eee249d3669b3933c937e2d7",
+    "bytes": 97303
+   }
+  ]
+ },
+ {
+  "name": "cross_spring_matrix.json",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/04-cross-spring-connections.md"
+  ],
+  "said": [
+   "cross_spring_matrix.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/experiments/results/cross_spring_matrix.json",
+    "sha256": "0ed6807650549dede96d06dbbc7d9a9060e46402c8c65af6712fe6a6712139cb",
+    "bytes": 4324
+   },
+   {
+    "where": "gardens/springs/airSpring/experiments/results/cross_spring_matrix.json",
+    "sha256": "7c99a390cb6c545d59621e41137ac38cf99ea4e807ce68a3da5d4c287f889cdd",
+    "bytes": 3227
+   },
+   {
+    "where": "gardens/springs/groundSpring/experiments/results/cross_spring_matrix.json",
+    "sha256": "6820d9be2fc10860d45959121e845ec53f7b06690844447461c011f37d3fd36a",
+    "bytes": 3578
+   },
+   {
+    "where": "gardens/springs/hotSpring/experiments/results/cross_spring_matrix.json",
+    "sha256": "0ed6807650549dede96d06dbbc7d9a9060e46402c8c65af6712fe6a6712139cb",
+    "bytes": 4324
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/cross_spring_matrix.json",
+    "sha256": "9a37d0292d421143cf94ba7307b5613fb8b3264e10613c50b923f44fb318ee44",
+    "bytes": 4100
+   }
+  ]
+ },
+ {
+  "name": "dashboard.json",
+  "why": "6 different files carry this name",
+  "pages": [
+   "content/architecture/hud_observation_surface.md"
+  ],
+  "said": [
+   "signal.primals.eco/dashboard.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/compost/dashboard.json",
+    "sha256": "d8bf5488da1a2bd81d915e378a090f94e03d216e86022cabbc864b4345fb7c4c",
+    "bytes": 133
+   },
+   {
+    "where": "data/dashboard.json",
+    "sha256": "15f1b166a695eca8440d32a3079f82696f3e3e21740c3d1a8effa2ad5d1e06b9",
+    "bytes": 781
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/dashboard.json",
+    "sha256": "a36a3706e3c576919f72872b58cd874c2ac363d70f951a512b5aec41e31ce695",
+    "bytes": 883
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/dashboard.json",
+    "sha256": "173f7252000fb51746a9b25c45e437db2388c14730e34eb7fcc00aaeedbf7304",
+    "bytes": 233
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/body/dashboard.json",
+    "sha256": "d8bf5488da1a2bd81d915e378a090f94e03d216e86022cabbc864b4345fb7c4c",
+    "bytes": 133
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/dashboard.json",
+    "sha256": "15f1b166a695eca8440d32a3079f82696f3e3e21740c3d1a8effa2ad5d1e06b9",
+    "bytes": 781
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/dashboard.json",
+    "sha256": "485d941768fc51a9199d69193f98549d7d7f12412157e269f53dcf9d6da9d860",
+    "bytes": 343
+   },
+   {
+    "where": "data/pixel-harvest/gaia-data/dashboard.json",
+    "sha256": "15f1b166a695eca8440d32a3079f82696f3e3e21740c3d1a8effa2ad5d1e06b9",
+    "bytes": 781
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/dashboard.json",
+    "sha256": "15f1b166a695eca8440d32a3079f82696f3e3e21740c3d1a8effa2ad5d1e06b9",
+    "bytes": 781
+   },
+   {
+    "where": "data/sourdough-ball/northgate-data/dashboard.json",
+    "sha256": "1600ef9a57655a2d1d07835db45f5e0ddc35c6960e598bf5b89ac85a11069a2a",
+    "bytes": 824
+   },
+   {
+    "where": "membrane/local-terminal/remote/dashboard.json",
+    "sha256": "485d941768fc51a9199d69193f98549d7d7f12412157e269f53dcf9d6da9d860",
+    "bytes": 343
+   }
+  ]
+ },
+ {
+  "name": "data.json",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/observatory/_index.md"
+  ],
+  "said": [
+   "observatory/data.json"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/static/observatory/data.json",
+    "sha256": "531d0640416b6f90c381c7e8a4cec8f664d9ec222b8e0b8f4c190cb7e1199e3f",
+    "bytes": 41823
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/observatory/data.json",
+    "sha256": "506023f9a8fa278c1a18f2c323ee9485f0c7bd23507750f40c9ca95638a2c74c",
+    "bytes": 41882
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/sporeprint/observatory/data.json",
+    "sha256": "506023f9a8fa278c1a18f2c323ee9485f0c7bd23507750f40c9ca95638a2c74c",
+    "bytes": 41882
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-sporePrint/static/observatory/data.json",
+    "sha256": "531d0640416b6f90c381c7e8a4cec8f664d9ec222b8e0b8f4c190cb7e1199e3f",
+    "bytes": 41823
+   },
+   {
+    "where": "data/sourdough-ball/northgate-sporeprint/public/observatory/data.json",
+    "sha256": "c3a984f70137d7375a9f4167d4befc4e6d60019e8dc1aeba6deee9a36e355b2a",
+    "bytes": 43164
+   },
+   {
+    "where": "data/sourdough-ball/northgate-sporeprint/static/observatory/data.json",
+    "sha256": "531d0640416b6f90c381c7e8a4cec8f664d9ec222b8e0b8f4c190cb7e1199e3f",
+    "bytes": 41823
+   },
+   {
+    "where": "sporePrint/public/observatory/data.json",
+    "sha256": "c3a984f70137d7375a9f4167d4befc4e6d60019e8dc1aeba6deee9a36e355b2a",
+    "bytes": 43164
+   },
+   {
+    "where": "sporePrint/static/observatory/data.json",
+    "sha256": "531d0640416b6f90c381c7e8a4cec8f664d9ec222b8e0b8f4c190cb7e1199e3f",
+    "bytes": 41823
+   }
+  ]
+ },
+ {
+  "name": "data.toml",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/products/lithoSpore.md"
+  ],
+  "said": [
+   "data.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/artifact/data.toml",
+    "sha256": "197e126b642f11d134dbf55f367feed79ba85581e24d06160563003c75b3cbff",
+    "bytes": 7906
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/data.toml",
+    "sha256": "92bf81f13f14229da54f25d72f7217d95f3322e893ea4174725ced2cf9da44c9",
+    "bytes": 1614
+   },
+   {
+    "where": "gardens/spore/lithoSpore/artifact/data.toml",
+    "sha256": "197e126b642f11d134dbf55f367feed79ba85581e24d06160563003c75b3cbff",
+    "bytes": 7906
+   },
+   {
+    "where": "gardens/spore/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/data.toml",
+    "sha256": "92bf81f13f14229da54f25d72f7217d95f3322e893ea4174725ced2cf9da44c9",
+    "bytes": 1614
+   }
+  ]
+ },
+ {
+  "name": "deny.toml",
+  "why": "39 different files carry this name",
+  "pages": [
+   "content/science/17_game_design_rigorous_science.md",
+   "content/science/18_rpgpt_sovereign_rpg_engine.md"
+  ],
+  "said": [
+   "deny.toml"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/deny.toml",
+    "sha256": "946a5ef96db55990a983b2aab5205758c6594b69d5b0bcde055a019f960a6a00",
+    "bytes": 676
+   },
+   {
+    "where": "cellMembrane/deny.toml",
+    "sha256": "24eb35eae3e6b868a69a322d22923c5076850d08393acdcb7536b79b21b720f3",
+    "bytes": 1461
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/deny.toml",
+    "sha256": "d88f0ee6fb68c25068fd629c0458eab7ba77d8b3ddc939f32c2d0b096b867356",
+    "bytes": 1170
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/deny.toml",
+    "sha256": "2e51a00d154f34d0ab6a74cfe8190ad982ebe1029cb064590340a788621f9427",
+    "bytes": 5073
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/deny.toml",
+    "sha256": "eb1900d7dc70300228661ba0cbf3b9b08f5932be727a7405ed190a8105706318",
+    "bytes": 2107
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/blueFish/deny.toml",
+    "sha256": "2cdb97f45646b5b9fad21570f1371b38175a32cd8a4417222fbb53aad76a6a07",
+    "bytes": 703
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/deny.toml",
+    "sha256": "f1e4d11a1ab617dc5d2a6a80f2dd66b6bd1769d4efc3f70213238e974d4649ac",
+    "bytes": 2707
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/deny.toml",
+    "sha256": "9e31dd032764008e04ae8dfd49152ae3e82d83de1d9239efeb7129856e544c1a",
+    "bytes": 1710
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/deny.toml",
+    "sha256": "664c08b6715c86a6807441653b8909c3556b992681f032cb0987d70498586252",
+    "bytes": 2197
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/helixVision/deny.toml",
+    "sha256": "da21b86ccd8f000ec76c06dd9b9c3e9bf90532316b56e84c5d546c694b10d2a4",
+    "bytes": 706
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/deny.toml",
+    "sha256": "e3e4791615c98af8578882428a7bbad5f135c16d055b561353ca2c727699c577",
+    "bytes": 3943
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/metalForge/forge/deny.toml",
+    "sha256": "ba09153990e7d9319eb93ae6f14f96a2bde131b4dc18cc8148b2617b74582a94",
+    "bytes": 1558
+   }
+  ]
+ },
+ {
+  "name": "deploy.sh",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/lab/reproduce.md"
+  ],
+  "said": [
+   "deploy.sh"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-cellMembrane/deploy/golgi/deploy.sh",
+    "sha256": "6b37729398e57a13259aa10f32c2b035607378da830d376a4a4c893960b94549",
+    "bytes": 3457
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-tuebor-repo/deploy.sh",
+    "sha256": "d191fb75951d6ebe140ba31429b809da9f410514add4ed6aa7b6c611f4afd9a0",
+    "bytes": 5414
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/infra/frame-inject/deploy.sh",
+    "sha256": "70dd7e71daae67e91c4da08d78baa4c91c7d85e44f9b4754c918fa81c4b076a7",
+    "bytes": 1080
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/tuebor/deploy.sh",
+    "sha256": "d191fb75951d6ebe140ba31429b809da9f410514add4ed6aa7b6c611f4afd9a0",
+    "bytes": 5414
+   },
+   {
+    "where": "gardens/amicus/tuebor/deploy.sh",
+    "sha256": "d191fb75951d6ebe140ba31429b809da9f410514add4ed6aa7b6c611f4afd9a0",
+    "bytes": 5414
+   }
+  ]
+ },
+ {
+  "name": "diversity_f64.wgsl",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "diversity_f64.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/health/diversity_f64.wgsl",
+    "sha256": "d7442198593bcec74952e2d0f8983da99455bbe6d439f0b9f3b90ecb74033817",
+    "bytes": 2136
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/diversity_f64.wgsl",
+    "sha256": "7ae21810b42c53b5fead6916a8f943bd6713a289e59a98218af59ef24e56dbac",
+    "bytes": 2023
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/shaders/health/diversity_f64.wgsl",
+    "sha256": "545ab2ba29c1bccffe652bbb0b378519d9d8d9f99d16688a937752104f78674d",
+    "bytes": 2192
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/shaders/health/diversity_f64.wgsl",
+    "sha256": "545ab2ba29c1bccffe652bbb0b378519d9d8d9f99d16688a937752104f78674d",
+    "bytes": 2192
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/health/diversity_f64.wgsl",
+    "sha256": "d7442198593bcec74952e2d0f8983da99455bbe6d439f0b9f3b90ecb74033817",
+    "bytes": 2136
+   },
+   {
+    "where": "primals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/diversity_f64.wgsl",
+    "sha256": "7ae21810b42c53b5fead6916a8f943bd6713a289e59a98218af59ef24e56dbac",
+    "bytes": 2023
+   }
+  ]
+ },
+ {
+  "name": "domain_profile.toml",
+  "why": "9 different files carry this name",
+  "pages": [
+   "content/lab/spores/healthspring-clinical-pkpd.md"
+  ],
+  "said": [
+   "domain_profile.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/domain_profile.toml",
+    "sha256": "f2472ca876f0a5fb3c5597e0d7d58c45d1803d0fb2513b9ab61f9f37c4db0af5",
+    "bytes": 5881
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/domain_profile.toml",
+    "sha256": "8e26d8648d292716ce575bb8cd85ceef1a707a7c744446b07390ded323d21a5c",
+    "bytes": 5972
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/domain_profile.toml",
+    "sha256": "b6bbfb45314e46ffa092e26951fb48283648e3295fa02a363cc895a7e7b410ae",
+    "bytes": 7782
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/domain_profile.toml",
+    "sha256": "6eaca8acea1c8d14aa0f3e68cdc5c911cf6b4a6dff4f989e6d13a71b668e5f6d",
+    "bytes": 5858
+   },
+   {
+    "where": "data/sourdough-ball/northgate-gardens/proto/tideGlass/domain_profile.toml",
+    "sha256": "a2be5f0f614d44eeeb87eb81b673d13a9e6db9040f55ad847357b883d533036b",
+    "bytes": 6469
+   },
+   {
+    "where": "gardens/proto/tideGlass/domain_profile.toml",
+    "sha256": "a2be5f0f614d44eeeb87eb81b673d13a9e6db9040f55ad847357b883d533036b",
+    "bytes": 6469
+   },
+   {
+    "where": "gardens/springs/airSpring/domain_profile.toml",
+    "sha256": "66156dd7e6f5a76b8f5525250afac52639f79f0abc1c9d06ed62f21153ca9ed1",
+    "bytes": 5599
+   },
+   {
+    "where": "gardens/springs/groundSpring/domain_profile.toml",
+    "sha256": "1d27921d9673f8207b81f3bcfb2da2d2c05fb1336504b5d22903e3d9ad646cba",
+    "bytes": 5262
+   },
+   {
+    "where": "gardens/springs/groundSpring/validation/domain_profile.toml",
+    "sha256": "8ce345277b5eba1286e41b49e7df8673ed68417c57ed19c4b1d2fc9eca0bcd8b",
+    "bytes": 4646
+   },
+   {
+    "where": "gardens/springs/healthSpring/domain_profile.toml",
+    "sha256": "f2472ca876f0a5fb3c5597e0d7d58c45d1803d0fb2513b9ab61f9f37c4db0af5",
+    "bytes": 5881
+   },
+   {
+    "where": "gardens/springs/hotSpring/domain_profile.toml",
+    "sha256": "8e26d8648d292716ce575bb8cd85ceef1a707a7c744446b07390ded323d21a5c",
+    "bytes": 5972
+   },
+   {
+    "where": "gardens/springs/ludoSpring/domain_profile.toml",
+    "sha256": "39b82188dda4147c2bddd3bd324835f65e40804ffb822e2705b7529156077443",
+    "bytes": 5396
+   }
+  ]
+ },
+ {
+  "name": "ear-state.json",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/architecture/SPOREGATE_IMPRINT.md"
+  ],
+  "said": [
+   "ear-state.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/ear-state.json",
+    "sha256": "e2a99fc3e8b617b680e9425ba020894ccfa8bd936078e121750bdd48810a59b0",
+    "bytes": 440
+   },
+   {
+    "where": "data/ear/ear-state.json",
+    "sha256": "796e09688c01cba6c2dc5ce4f1c0b1a1ea97f8fd18b154c67fcb532e5213f3d3",
+    "bytes": 160
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/body/ear-state.json",
+    "sha256": "e2a99fc3e8b617b680e9425ba020894ccfa8bd936078e121750bdd48810a59b0",
+    "bytes": 440
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/ear/ear-state.json",
+    "sha256": "595f82c6373d50d0d753da4eb64395dcaae87e0a136d9a14063c92e4482110d3",
+    "bytes": 160
+   },
+   {
+    "where": "data/sourdough-ball/northgate-cloud/terra/data/ear-state.json",
+    "sha256": "3f953fb50af563cb179f3683069ca65563ba6254f0ef4298c582a138a1fceb0c",
+    "bytes": 466
+   },
+   {
+    "where": "wateringHole/data/ear-state.json",
+    "sha256": "df8260309e5bed3306ebdbe4a39cc431012b02cbdcbbcca9a3aa5cbc1d82c98a",
+    "bytes": 441
+   }
+  ]
+ },
+ {
+  "name": "ecosystem_manifest.toml",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/architecture/SOVEREIGN_CI.md",
+   "content/architecture/SOVEREIGN_DEPLOYMENT.md",
+   "content/architecture/membrane_visibility.md",
+   "content/lab/gate-status.md"
+  ],
+  "said": [
+   "ecosystem_manifest.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-wateringHole/ecosystem_manifest.toml",
+    "sha256": "0b5ae1f8a7f4baf84033bf41cf574e040f6510c96ec8d8b9ad6b0f194bb49e28",
+    "bytes": 57714
+   },
+   {
+    "where": "primalSpring/config/ecosystem/ecosystem_manifest.toml",
+    "sha256": "80efe8c8140269baafbae9a9174cef1145beea0a77939415720944924af2552f",
+    "bytes": 54
+   },
+   {
+    "where": "primals/wateringHole/ecosystem_manifest.toml",
+    "sha256": "8b026eba39448442db4ab0435eecbaf11cef0e6539b7ea82b9f38b2161f0d927",
+    "bytes": 56371
+   },
+   {
+    "where": "wateringHole/ecosystem_manifest.toml",
+    "sha256": "0b5ae1f8a7f4baf84033bf41cf574e040f6510c96ec8d8b9ad6b0f194bb49e28",
+    "bytes": 57714
+   }
+  ]
+ },
+ {
+  "name": "esn_readout.wgsl",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/thesis/08_results_hotspring.md"
+  ],
+  "said": [
+   "esn_readout.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/ml/esn_readout.wgsl",
+    "sha256": "e95b2c743167e8805ce2936cbef821a2b481766fc23f7fd38f59ab58f6f11d17",
+    "bytes": 1297
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/esn_readout.wgsl",
+    "sha256": "06f0a830cd42606d72eb660dc94111f9ae843af1f7d1d3073cae638b16fac7ff",
+    "bytes": 1207
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/md/shaders/esn_readout.wgsl",
+    "sha256": "06f0a830cd42606d72eb660dc94111f9ae843af1f7d1d3073cae638b16fac7ff",
+    "bytes": 1207
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/src/md/shaders/esn_readout.wgsl",
+    "sha256": "06f0a830cd42606d72eb660dc94111f9ae843af1f7d1d3073cae638b16fac7ff",
+    "bytes": 1207
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/md/shaders/esn_readout.wgsl",
+    "sha256": "06f0a830cd42606d72eb660dc94111f9ae843af1f7d1d3073cae638b16fac7ff",
+    "bytes": 1207
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/src/md/shaders/esn_readout.wgsl",
+    "sha256": "06f0a830cd42606d72eb660dc94111f9ae843af1f7d1d3073cae638b16fac7ff",
+    "bytes": 1207
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/ml/esn_readout.wgsl",
+    "sha256": "e95b2c743167e8805ce2936cbef821a2b481766fc23f7fd38f59ab58f6f11d17",
+    "bytes": 1297
+   },
+   {
+    "where": "primals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/esn_readout.wgsl",
+    "sha256": "06f0a830cd42606d72eb660dc94111f9ae843af1f7d1d3073cae638b16fac7ff",
+    "bytes": 1207
+   }
+  ]
+ },
+ {
+  "name": "evolve-state.json",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/111_the_omnibus.md",
+   "content/science/90_the_evolutionary_sort.md"
+  ],
+  "said": [
+   "evolve-state.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/evolve-state.json",
+    "sha256": "54cb616665ddaea5e6b2bd914b97256759889a5cb94b8fada453a2323508dab4",
+    "bytes": 976
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/evolve-state.json",
+    "sha256": "a6ad6a0c492fff52fd507629d6398fb0a7410b8cc38f29a33756f6204431674a",
+    "bytes": 435
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/evolve-state.json",
+    "sha256": "54cb616665ddaea5e6b2bd914b97256759889a5cb94b8fada453a2323508dab4",
+    "bytes": 976
+   },
+   {
+    "where": "membrane/local-terminal/remote/evolve-state.json",
+    "sha256": "d6197ad15bcbc7499ff7c52bfa76566e2156d8fae94cc48ac3083816eb7dfa35",
+    "bytes": 435
+   }
+  ]
+ },
+ {
+  "name": "expected_values.json",
+  "why": "19 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/tenaillon-ltee-mutation.md"
+  ],
+  "said": [
+   "expected_values.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/biosignal/expected_values.json",
+    "sha256": "7d135420ab758942575c2c30d003f9d559c382a5c19c010dba2f9826d33bc934",
+    "bytes": 1541
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/comparative/expected_values.json",
+    "sha256": "64e2d44054c4612685aebf4bdee6844a8120e6bef03da87e1bd2521061815ea3",
+    "bytes": 2114
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/discovery/expected_values.json",
+    "sha256": "c9f62b286670de32df57a9e2a93d61b43a0e3479f310c4a99a076849fd958e4c",
+    "bytes": 1415
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/endocrine/expected_values.json",
+    "sha256": "3a301e0d05fe15d6d93014163a5bf38a5628fd0a0e3bd0558fc4a13d79289b33",
+    "bytes": 3781
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/ltee_symbiont_pkpd/expected_values.json",
+    "sha256": "5888210213808af3d63597560c43d872ecb916d3f106b7b4fb2c953becbd7a74",
+    "bytes": 2686
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/microbiome/expected_values.json",
+    "sha256": "ecb16de3685d6f1318c1091e861f6b26e5115db3bb1edd9f1483332408516f44",
+    "bytes": 4206
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/pkpd/expected_values.json",
+    "sha256": "cf5def67f6d29b3522c60ec4f2ffc1c37f69b472734b7d5cba784b2333fed924",
+    "bytes": 4581
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/simulation/expected_values.json",
+    "sha256": "1ffbbd8e54656b2fe6a048a82a5db61a70e17b21f1536a25045665b3d57c2d7e",
+    "bytes": 609
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/control/toxicology/expected_values.json",
+    "sha256": "b91b4f01fc7c525aabcef4514debffd6deadf30dde727665f332fdd5912f759b",
+    "bytes": 806
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/control/ltee_b2_anderson/expected_values.json",
+    "sha256": "df60f5399b97d40a4b0403f934207c22aaee45d136a42023ad1a69645fc2aa3d",
+    "bytes": 61
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/ltee_allele_trajectory/expected_values.json",
+    "sha256": "12d8370290601573a3cb66e2c285acdd83cf01914871153a08e932c843c52f89",
+    "bytes": 853004
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/control/ltee_citrate_esn/expected_values.json",
+    "sha256": "a783e3ac0bcd67663ff5096c6f128f7d1eb6c2a1392a154cd5912b0ba9c92df1",
+    "bytes": 1774227
+   }
+  ]
+ },
+ {
+  "name": "experiment_catalog.json",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/03-ecosystem-evidence.md",
+   "content/lab/notebooks/03-experiment-evidence.md",
+   "content/lab/notebooks/05-domain-deep-dive.md",
+   "content/lab/notebooks/05-measurement-science-deep-dive.md"
+  ],
+  "said": [
+   "experiment_catalog.json",
+   "experiments/results/experiment_catalog.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/experiments/results/experiment_catalog.json",
+    "sha256": "396f1d9cf760deb928209ab26e601d13741df212db87e46af6dcd4d6094bff82",
+    "bytes": 4663
+   },
+   {
+    "where": "gardens/springs/airSpring/experiments/results/experiment_catalog.json",
+    "sha256": "5efa151ee43f821ea28d102d0dd5106e76402f3c5d7c6169354710c1d7b6c06b",
+    "bytes": 3677
+   },
+   {
+    "where": "gardens/springs/groundSpring/experiments/results/experiment_catalog.json",
+    "sha256": "312df5531f5d6c9c5f1335d84909ee8242bb9afeeb6afeba2ad6b6df395a2a76",
+    "bytes": 7873
+   },
+   {
+    "where": "gardens/springs/hotSpring/experiments/results/experiment_catalog.json",
+    "sha256": "396f1d9cf760deb928209ab26e601d13741df212db87e46af6dcd4d6094bff82",
+    "bytes": 4663
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/experiment_catalog.json",
+    "sha256": "6bfe8904033355609a7462f83bcfcc3dc38d5be78ffcde699c4cee8b5973ef16",
+    "bytes": 6107
+   }
+  ]
+ },
+ {
+  "name": "falsification.json",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/70_falsification_apparatus.md"
+  ],
+  "said": [
+   "falsification.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/falsification.json",
+    "sha256": "448c31fcb01679da48ac076f023b9ef7db63a32fca0cc67aa1779d6f2b6bdbae",
+    "bytes": 4342
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/falsification.json",
+    "sha256": "06146f3c4d8649619b7cd25c7ce0352f7621143b05206a3bf91aa5308fd16c89",
+    "bytes": 828
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/falsification.json",
+    "sha256": "ecf1eac7fd7027e92c8a8ca1a459a8367e52f06f82e572cc115c16df79aad4bf",
+    "bytes": 5117
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/falsification.json",
+    "sha256": "448c31fcb01679da48ac076f023b9ef7db63a32fca0cc67aa1779d6f2b6bdbae",
+    "bytes": 4342
+   },
+   {
+    "where": "membrane/local-terminal/remote/falsification.json",
+    "sha256": "ecf1eac7fd7027e92c8a8ca1a459a8367e52f06f82e572cc115c16df79aad4bf",
+    "bytes": 5117
+   }
+  ]
+ },
+ {
+  "name": "footprint_composition.toml",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/products/footprint.md"
+  ],
+  "said": [
+   "footprint_composition.toml"
+  ],
+  "candidates": [
+   {
+    "where": "primalSpring/config/compositions/footprint_composition.toml",
+    "sha256": "1bcfa8a86eb351e72ad311a17cd5495ea5571d8ef6462d77cf16d16bb374454b",
+    "bytes": 5204
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/gardens/projectNUCLEUS/graphs/footprint_composition.toml",
+    "sha256": "ee18a4939409f3ecbb2db022e3d694b404ab660103f5663c27a95a4e01121e26",
+    "bytes": 2915
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/springs/primalSpring/config/compositions/footprint_composition.toml",
+    "sha256": "1bcfa8a86eb351e72ad311a17cd5495ea5571d8ef6462d77cf16d16bb374454b",
+    "bytes": 5204
+   }
+  ]
+ },
+ {
+  "name": "fungi-fruit-vs-mycelium.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/139_fruit_mycelium_antifungal_neurotoxin.md"
+  ],
+  "said": [
+   "primals.eco/data/fungi-fruit-vs-mycelium.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/fungi-fruit-vs-mycelium.json",
+    "sha256": "5b2dfa02437934730e65d181b08d506344f12d8dcb83a5b1695aead129aec61a",
+    "bytes": 4402
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/fungi-fruit-vs-mycelium.json",
+    "sha256": "1e8b3f763f29d7bea947a5d0a1e5f121f23948008da55ab599c116b7ad8e61b0",
+    "bytes": 4437
+   }
+  ]
+ },
+ {
+  "name": "graph.json",
+  "why": "8 different files carry this name",
+  "pages": [
+   "content/science/42_bingocube_behavioral_trio.md"
+  ],
+  "said": [
+   "graph.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/api/graph.json",
+    "sha256": "5430e601bc73cf8cda277aecf19b7bef6307900f5788aeecde8c2610ca362b53",
+    "bytes": 501025
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/detroit-site/graph.json",
+    "sha256": "3b4041dbde9b521a9c79ea8f517fd9e1328a1dd77b9cd8dc62435ba245880bb9",
+    "bytes": 133
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/api/graph.json",
+    "sha256": "5430e601bc73cf8cda277aecf19b7bef6307900f5788aeecde8c2610ca362b53",
+    "bytes": 501025
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-publicRecord/site/public/graph.json",
+    "sha256": "3b4041dbde9b521a9c79ea8f517fd9e1328a1dd77b9cd8dc62435ba245880bb9",
+    "bytes": 133
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-tuebor-repo/site/static/graph.json",
+    "sha256": "a4da231c990c23720b1ed85c87bcde16c80f2e3a8915746c0196de99ef424866",
+    "bytes": 132
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/clutch/site/static/api/graph.json",
+    "sha256": "77ea091c61af46e6155de61205510b4acfb1166bbd44731f16f3673cf6594e4f",
+    "bytes": 61284
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/lansing/site/static/graph.json",
+    "sha256": "fb1cfecd84063715741313db6ad182af92bb5a93d2f4c85005c97813341f0582",
+    "bytes": 10738
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/tuebor/site/static/graph.json",
+    "sha256": "a4da231c990c23720b1ed85c87bcde16c80f2e3a8915746c0196de99ef424866",
+    "bytes": 132
+   },
+   {
+    "where": "data/gut/github-clones/defendDetroit/publicRecord/site/public/graph.json",
+    "sha256": "3b4041dbde9b521a9c79ea8f517fd9e1328a1dd77b9cd8dc62435ba245880bb9",
+    "bytes": 133
+   },
+   {
+    "where": "data/gut/github-clones/defendDetroit/publicRecord/site/static/graph.json",
+    "sha256": "b18a5213552e11ae56b88590e0ff7304f69810305b68d4ef7bfe297e3a77be0c",
+    "bytes": 133
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/crates/pokered-data/story/graph.json",
+    "sha256": "3c00ddf47c3ead190a46ece95c86e7f8cce4952c5eb33158eb6df26f4c8f73fd",
+    "bytes": 428254
+   },
+   {
+    "where": "gardens/amicus/clutch/site/static/api/graph.json",
+    "sha256": "77ea091c61af46e6155de61205510b4acfb1166bbd44731f16f3673cf6594e4f",
+    "bytes": 61284
+   }
+  ]
+ },
+ {
+  "name": "harvest.sh",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/architecture/DEPLOYMENT_MODEL.md"
+  ],
+  "said": [
+   "harvest.sh"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-fossilRecord/jellyfish-wave137b/harvest.sh",
+    "sha256": "ea3ee13f81224038f5b55526a3e24d4da334977359288d9bc5d257ab52a5450e",
+    "bytes": 11651
+   },
+   {
+    "where": "fossilRecord/jellyfish-wave137b/harvest.sh",
+    "sha256": "ea3ee13f81224038f5b55526a3e24d4da334977359288d9bc5d257ab52a5450e",
+    "bytes": 11651
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/gardens/projectNUCLEUS/genomeBin/harvest.sh",
+    "sha256": "b559eb8a54ef2a1aa83687dab4430c67b1089bc1dbaf37911710c17c018cadcd",
+    "bytes": 4055
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/fossilRecord/jellyfish-wave137b/harvest.sh",
+    "sha256": "ea3ee13f81224038f5b55526a3e24d4da334977359288d9bc5d257ab52a5450e",
+    "bytes": 11651
+   }
+  ]
+ },
+ {
+  "name": "heartbeat-history.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/134_the_iron_peak.md"
+  ],
+  "said": [
+   "heartbeat-history.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/heartbeat-history.json",
+    "sha256": "78b02d7d16841e4b070006a447b47ada50a11b938ab3790bb0bc0f5b829192de",
+    "bytes": 37081
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/heartbeat-history.json",
+    "sha256": "e98171686065135a18dcecc1f5a6611e5cfa343620b2bf4ced22f1acd022f5c7",
+    "bytes": 37771
+   }
+  ]
+ },
+ {
+  "name": "heartbeat.json",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/science/134_the_iron_peak.md",
+   "content/science/136_the_compound_eye.md"
+  ],
+  "said": [
+   "heartbeat.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/api/heartbeat.json",
+    "sha256": "6b7ed0b8d0b313900205ac6b5dd8629cfe88b54643cc9ee5839b26ea52cf8c3c",
+    "bytes": 1022
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/heartbeat.json",
+    "sha256": "858060e8d73f773706804e043bc8e1ef2d59361df4d6fb5fe332066cb765f9cd",
+    "bytes": 1616
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/api/heartbeat.json",
+    "sha256": "6b7ed0b8d0b313900205ac6b5dd8629cfe88b54643cc9ee5839b26ea52cf8c3c",
+    "bytes": 1022
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/heartbeat.json",
+    "sha256": "4b17349b0082fc9da351d41fb26b74513cf86122ec3317a5a0b1270a297303ca",
+    "bytes": 1645
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/heartbeat.json",
+    "sha256": "27580f0079f257b3409ac9f67831411265ba79dee36da7ca19eac118b1368b15",
+    "bytes": 1617
+   },
+   {
+    "where": "membrane/local-terminal/remote/heartbeat.json",
+    "sha256": "4b17349b0082fc9da351d41fb26b74513cf86122ec3317a5a0b1270a297303ca",
+    "bytes": 1645
+   },
+   {
+    "where": "runtime/waterfall/heartbeat.json",
+    "sha256": "d56ab6f9f035fbed89861fdb9bf25a6f3d1137b47ad539df2030901cf968161a",
+    "bytes": 142
+   }
+  ]
+ },
+ {
+  "name": "hill_dose_response_f64.wgsl",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "hill_dose_response_f64.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/health/hill_dose_response_f64.wgsl",
+    "sha256": "6c802cb53af6230cfa302270eb9348b28b5540bc2c933d647acc5b0241995f63",
+    "bytes": 1317
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/hill_dose_response_f64.wgsl",
+    "sha256": "747edfb5d15405546059f245cd97fc7fba4d4bf889c49458c3fed4745493462e",
+    "bytes": 1513
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/shaders/health/hill_dose_response_f64.wgsl",
+    "sha256": "4fcb9052aaa60878dad06012c5850e4de259c24e897611bceaa3a4e11ce405c2",
+    "bytes": 1598
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/shaders/health/hill_dose_response_f64.wgsl",
+    "sha256": "4fcb9052aaa60878dad06012c5850e4de259c24e897611bceaa3a4e11ce405c2",
+    "bytes": 1598
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/health/hill_dose_response_f64.wgsl",
+    "sha256": "6c802cb53af6230cfa302270eb9348b28b5540bc2c933d647acc5b0241995f63",
+    "bytes": 1317
+   },
+   {
+    "where": "primals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/hill_dose_response_f64.wgsl",
+    "sha256": "747edfb5d15405546059f245cd97fc7fba4d4bf889c49458c3fed4745493462e",
+    "bytes": 1513
+   }
+  ]
+ },
+ {
+  "name": "hmm.rs",
+  "why": "6 different files carry this name",
+  "pages": [
+   "content/science/05_cross_species_signaling.md",
+   "content/thesis/12_results_neuralspring.md"
+  ],
+  "said": [
+   "hmm.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/ops/bio/hmm.rs",
+    "sha256": "9217560e68499fc8d7d273e4c5e6d915b684678636e3c19d6b1e804338e1930c",
+    "bytes": 13842
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/gpu_ops/bio/hmm.rs",
+    "sha256": "d66daae6df01923f0110c355ec52295be72bcfb0fcad0f1c0818965b44314af1",
+    "bytes": 18251
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/hmm.rs",
+    "sha256": "7213ca004669e3379578258c164a84e6aa16c70297758c2b2e8453c0a4655c98",
+    "bytes": 16317
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/visualization/scenarios/hmm.rs",
+    "sha256": "db74e4cd0bf84f3c0ef92f083e34d7c085fb13910af9442146eaafd57e3ebb57",
+    "bytes": 4244
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/barracuda/src/bio/hmm.rs",
+    "sha256": "05d5ba268065297f9c008988bee832191a8830c8e2e10981632b5f10595639f5",
+    "bytes": 15784
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/barracuda/src/visualization/scenarios/hmm.rs",
+    "sha256": "0bc39a6bcbbc9f0202490baf4c754d5f7c909084bc8dc1582f7cee3d4cfea95c",
+    "bytes": 4916
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/gpu_ops/bio/hmm.rs",
+    "sha256": "d66daae6df01923f0110c355ec52295be72bcfb0fcad0f1c0818965b44314af1",
+    "bytes": 18251
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/hmm.rs",
+    "sha256": "7213ca004669e3379578258c164a84e6aa16c70297758c2b2e8453c0a4655c98",
+    "bytes": 16317
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/visualization/scenarios/hmm.rs",
+    "sha256": "db74e4cd0bf84f3c0ef92f083e34d7c085fb13910af9442146eaafd57e3ebb57",
+    "bytes": 4244
+   },
+   {
+    "where": "gardens/springs/wetSpring/barracuda/src/bio/hmm.rs",
+    "sha256": "05d5ba268065297f9c008988bee832191a8830c8e2e10981632b5f10595639f5",
+    "bytes": 15784
+   },
+   {
+    "where": "gardens/springs/wetSpring/barracuda/src/visualization/scenarios/hmm.rs",
+    "sha256": "0bc39a6bcbbc9f0202490baf4c754d5f7c909084bc8dc1582f7cee3d4cfea95c",
+    "bytes": 4916
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/ops/bio/hmm.rs",
+    "sha256": "9217560e68499fc8d7d273e4c5e6d915b684678636e3c19d6b1e804338e1930c",
+    "bytes": 13842
+   }
+  ]
+ },
+ {
+  "name": "hud-widget.js",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/architecture/hud_observation_surface.md",
+   "content/science/59_vitality_negentropy_mobility_edge.md"
+  ],
+  "said": [
+   "hud-widget.js",
+   "js/hud-widget.js"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/js/hud-widget.js",
+    "sha256": "419dfb2839fbd83be5944709fde587ddc0f59cf21c05a34667f4de5202267f58",
+    "bytes": 470
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/hud/site/public/js/hud-widget.js",
+    "sha256": "6e1af9d0a6c21375240c35f39344a06217a9bfde2c8af4653c161b0ddc2bcb63",
+    "bytes": 748
+   },
+   {
+    "where": "hud/site/public/js/hud-widget.js",
+    "sha256": "6e1af9d0a6c21375240c35f39344a06217a9bfde2c8af4653c161b0ddc2bcb63",
+    "bytes": 748
+   }
+  ]
+ },
+ {
+  "name": "index.html",
+  "why": "2519 different files carry this name",
+  "pages": [
+   "content/lab/nestgate-validation-summary.md",
+   "content/science/60_body_universality_epitope_triangulation.md"
+  ],
+  "said": [
+   "/about/index.html",
+   "/index.html",
+   "signal/site/static/epitope-sort/index.html"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/templates/index.html",
+    "sha256": "dba74c32e380bcb77533010a769f7a55e96ff328c56eccfb23c59ff58824dee7",
+    "bytes": 10161
+   },
+   {
+    "where": "data/eaten/archaeology/quake3/code/unix/LinuxSupport/index.html",
+    "sha256": "c6d7e33a2ca53255e286b3d0420587997dcd8f5892daa341a3f3b5e945c99ddc",
+    "bytes": 18728
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bonsai-bt-upstream/bonsai/src/index.html",
+    "sha256": "986afccb116b4d9bb81d1be5ea9a26ec6bf2553b733121de1de0af8859255f5e",
+    "bytes": 10455
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/webb/static/index.html",
+    "sha256": "169d103d9178f7dd262b00f9d117decdc637ee3a3aac54787a48834130652d90",
+    "bytes": 11768
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/footPrint/index.html",
+    "sha256": "1db69ddba05f50b6c7c4e7f27fa96928419c6431c2edfd9a774475df1dae21f7",
+    "bytes": 5955
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/abc/index.html",
+    "sha256": "578d63053680c2b094959a0acf8cd51930a00f2f405487fc0c2c973c1cc04539",
+    "bytes": 231
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/air/index.html",
+    "sha256": "ee722599afd3e4b99d6879b750d6a0a4cf6e7d517f38c2f5feca57b296d4bd29",
+    "bytes": 231
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/alan/index.html",
+    "sha256": "9ba1ed8e4b991c454f8c67a3a903f86ea3dc93ba9b36c6f93d09b243615838c0",
+    "bytes": 235
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/and/index.html",
+    "sha256": "5eb8a8ad91ecd42d988c537de31ddd2fd27d12456ae6a0b175ffa90833ca62d0",
+    "bytes": 231
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/anti-slapp/index.html",
+    "sha256": "100d88d0c16080bc68438a01616471c01b4646214f9873d10f01a7fe510adbe3",
+    "bytes": 28514
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/beacon/index.html",
+    "sha256": "f56a46641a0b47f05fe0e081116ba430e35b01e1d5b4ea8ce2c10de0a979be56",
+    "bytes": 2348
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/braid/index.html",
+    "sha256": "0842dd899a5f1e97335fcd277c323a740a3d72c6e4415be9d393f192dc08adde",
+    "bytes": 239
+   }
+  ]
+ },
+ {
+  "name": "insect-body-plan.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/136_the_compound_eye.md"
+  ],
+  "said": [
+   "insect-body-plan.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/insect-body-plan.json",
+    "sha256": "65ff0e934845d0059d1dfaef09183da318e489e813d62f1e7f77a140225b47e7",
+    "bytes": 13397
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/insect-body-plan.json",
+    "sha256": "ddf0eb56c537730b2dd0e7063d14ab2d3b71910a52eb990903c23fc13c6d6f63",
+    "bytes": 15039
+   }
+  ]
+ },
+ {
+  "name": "ioctls.rs",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/26_neuromorphic_sovereign_driver.md"
+  ],
+  "said": [
+   "vfio/ioctls.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/rustChip/crates/akida-driver/src/vfio/ioctls.rs",
+    "sha256": "0cda487454cd1db7098e749949e7aa32f946161c05cefdab4712b3fbac8795d8",
+    "bytes": 10116
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/neuromorphic/akida-driver/src/vfio/ioctls.rs",
+    "sha256": "cf5b7ef3be4c05e728aab056ec90d78d7726307ac6bfcd05aaa7af424ea2c0de",
+    "bytes": 4458
+   },
+   {
+    "where": "gardens/springs/rustChip/crates/akida-driver/src/vfio/ioctls.rs",
+    "sha256": "0cda487454cd1db7098e749949e7aa32f946161c05cefdab4712b3fbac8795d8",
+    "bytes": 10116
+   },
+   {
+    "where": "primals/toadStool/crates/neuromorphic/akida-driver/src/vfio/ioctls.rs",
+    "sha256": "cf5b7ef3be4c05e728aab056ec90d78d7726307ac6bfcd05aaa7af424ea2c0de",
+    "bytes": 4458
+   }
+  ]
+ },
+ {
+  "name": "kokkos_parity.rs",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "benches/kokkos_parity.rs",
+   "ecoPrimal/benches/kokkos_parity.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/benches/kokkos_parity.rs",
+    "sha256": "29f8c615be6120e2e5df3d02bac2cb78fc89653db1975b5514738eda9f2755c4",
+    "bytes": 4043
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/benches/kokkos_parity.rs",
+    "sha256": "d953802e665ac6147b8f5fbc1fa642efc5da97414ee306c355bc3d8114fe1e33",
+    "bytes": 9301
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/visualization/scenarios/kokkos_parity.rs",
+    "sha256": "83c4911f8dec85349a10089376f10e17701a919e3f455bc54072f1218f2acfd8",
+    "bytes": 13814
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/benches/kokkos_parity.rs",
+    "sha256": "d953802e665ac6147b8f5fbc1fa642efc5da97414ee306c355bc3d8114fe1e33",
+    "bytes": 9301
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/visualization/scenarios/kokkos_parity.rs",
+    "sha256": "83c4911f8dec85349a10089376f10e17701a919e3f455bc54072f1218f2acfd8",
+    "bytes": 13814
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/benches/kokkos_parity.rs",
+    "sha256": "29f8c615be6120e2e5df3d02bac2cb78fc89653db1975b5514738eda9f2755c4",
+    "bytes": 4043
+   }
+  ]
+ },
+ {
+  "name": "LICENSE.txt",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/31_lysogeny_protocol.md"
+  ],
+  "said": [
+   "/LICENSE.txt"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/static/LICENSE.txt",
+    "sha256": "318dadf116fb5f6f356a4b227fc5ea7860c2dba19c49096d90284c4e6e7423e6",
+    "bytes": 6148
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/LICENSE.txt",
+    "sha256": "318dadf116fb5f6f356a4b227fc5ea7860c2dba19c49096d90284c4e6e7423e6",
+    "bytes": 6148
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/sporeprint/LICENSE.txt",
+    "sha256": "318dadf116fb5f6f356a4b227fc5ea7860c2dba19c49096d90284c4e6e7423e6",
+    "bytes": 6148
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-sporePrint/static/LICENSE.txt",
+    "sha256": "318dadf116fb5f6f356a4b227fc5ea7860c2dba19c49096d90284c4e6e7423e6",
+    "bytes": 6148
+   },
+   {
+    "where": "data/sourdough-ball/northgate-sporeprint/public/LICENSE.txt",
+    "sha256": "f2fefa2883b6b5b368637c6a78fb143a8d34fbaba63786a1cc27312f0b4b3858",
+    "bytes": 6281
+   },
+   {
+    "where": "data/sourdough-ball/northgate-sporeprint/static/LICENSE.txt",
+    "sha256": "318dadf116fb5f6f356a4b227fc5ea7860c2dba19c49096d90284c4e6e7423e6",
+    "bytes": 6148
+   },
+   {
+    "where": "sporePrint/public/LICENSE.txt",
+    "sha256": "f2fefa2883b6b5b368637c6a78fb143a8d34fbaba63786a1cc27312f0b4b3858",
+    "bytes": 6281
+   },
+   {
+    "where": "sporePrint/static/LICENSE.txt",
+    "sha256": "318dadf116fb5f6f356a4b227fc5ea7860c2dba19c49096d90284c4e6e7423e6",
+    "bytes": 6148
+   }
+  ]
+ },
+ {
+  "name": "liveSpore.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/guidestone/deployable_artifact_standard.md",
+   "content/guidestone/deployment_artifacts.md",
+   "content/guidestone/lithospore_artifact.md",
+   "content/guidestone/live_spore_feed.md",
+   "content/products/lithoSpore.md"
+  ],
+  "said": [
+   "/tmp/source-repo/liveSpore.json",
+   "liveSpore.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/artifact/liveSpore.json",
+    "sha256": "eca7ba2f53f4b477fff433c008eec34ff6d10a76fe510a697f0b11ec24fb84e5",
+    "bytes": 7765
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/liveSpore.json",
+    "sha256": "2221d4efe4be737191e3f397d8f83188ddca76ee85e5db6a9fbb0b939a8535c8",
+    "bytes": 326
+   },
+   {
+    "where": "gardens/spore/lithoSpore/artifact/liveSpore.json",
+    "sha256": "eca7ba2f53f4b477fff433c008eec34ff6d10a76fe510a697f0b11ec24fb84e5",
+    "bytes": 7765
+   },
+   {
+    "where": "gardens/spore/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/liveSpore.json",
+    "sha256": "2221d4efe4be737191e3f397d8f83188ddca76ee85e5db6a9fbb0b939a8535c8",
+    "bytes": 326
+   }
+  ]
+ },
+ {
+  "name": "mean_reduce.wgsl",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/lab/hotspring_phase_b_evidence.md",
+   "content/lab/murillo_reproduction_plan.md",
+   "content/technical/barracuda_compute_gaps.md"
+  ],
+  "said": [
+   "mean_reduce.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/reduce/mean_reduce.wgsl",
+    "sha256": "f8d795d1cbc4c4d91f0f902c026cc140cac95ab3bfb251f3f595356cf9645d2d",
+    "bytes": 837
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/mean_reduce.wgsl",
+    "sha256": "b8afd1097af3e3fa96f1982fb985506583fbe0423a3869b4ddca3f87def1830f",
+    "bytes": 1086
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/metalForge/shaders/mean_reduce.wgsl",
+    "sha256": "b8afd1097af3e3fa96f1982fb985506583fbe0423a3869b4ddca3f87def1830f",
+    "bytes": 1086
+   },
+   {
+    "where": "gardens/springs/neuralSpring/metalForge/shaders/mean_reduce.wgsl",
+    "sha256": "b8afd1097af3e3fa96f1982fb985506583fbe0423a3869b4ddca3f87def1830f",
+    "bytes": 1086
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/reduce/mean_reduce.wgsl",
+    "sha256": "f8d795d1cbc4c4d91f0f902c026cc140cac95ab3bfb251f3f595356cf9645d2d",
+    "bytes": 837
+   },
+   {
+    "where": "primals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/mean_reduce.wgsl",
+    "sha256": "b8afd1097af3e3fa96f1982fb985506583fbe0423a3869b4ddca3f87def1830f",
+    "bytes": 1086
+   }
+  ]
+ },
+ {
+  "name": "membrane.json",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/science/136_the_compound_eye.md",
+   "content/science/75_membrane_is_its_own_frame.md",
+   "content/science/76_transport_channel_jitter.md",
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "membrane.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/membrane.json",
+    "sha256": "9d90adfb71dd7365337a4f376be165423777aec37312c0b33265a3001920ca46",
+    "bytes": 983
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/membrane.json",
+    "sha256": "89050a1e985aad841200be01b26c7968f79c8d09957e23285afaed67a9fc297b",
+    "bytes": 6805
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/membrane.json",
+    "sha256": "5e2207744bd32b8ddf188508702b2d2f70cd65cc0a7eceaf5eac4e3c3abefb77",
+    "bytes": 11785
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/plasmids/membrane.json",
+    "sha256": "5e678d584d2ac05c5a7b80ad09b53abfdc9191b71be77b92305d06c0b59c5269",
+    "bytes": 1738
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/membrane.json",
+    "sha256": "7a1b3446437863c7af52dae207fe20b190d729fb11f097bc075d346b725807d5",
+    "bytes": 112
+   },
+   {
+    "where": "membrane/local-terminal/remote/membrane.json",
+    "sha256": "5e2207744bd32b8ddf188508702b2d2f70cd65cc0a7eceaf5eac4e3c3abefb77",
+    "bytes": 11785
+   },
+   {
+    "where": "plasmids/membrane.json",
+    "sha256": "5e678d584d2ac05c5a7b80ad09b53abfdc9191b71be77b92305d06c0b59c5269",
+    "bytes": 1738
+   }
+  ]
+ },
+ {
+  "name": "methods.rs",
+  "why": "8 different files carry this name",
+  "pages": [
+   "content/lab/airspring-validation-summary.md"
+  ],
+  "said": [
+   "methods.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-benchScale/src/server/methods.rs",
+    "sha256": "081ee31bf8f143c393adc743d23305f53146353b3c1a907ebf6854cae9468255",
+    "bytes": 16152
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/petalTongue/crates/petal-tongue-discovery/src/discovery_service_client/methods.rs",
+    "sha256": "cd76968ceee7708743eaae5e78602af4c3ec8944192c13151141dbf57db0c912",
+    "bytes": 6483
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/rhizoCrypt/crates/rhizo-crypt-core/src/constants/methods.rs",
+    "sha256": "14171fe6868715d1d0402ea52b8e947e2fbb5deb0390db900b23aa5f1ba2d250",
+    "bytes": 2030
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/sourDough/crates/sourdough-core/src/methods.rs",
+    "sha256": "fc2fe5f02b324f28113e24b8150aa7468c38b904886b4c73a726301abc5b90b6",
+    "bytes": 3119
+   },
+   {
+    "where": "gardens/projectFOUNDATION/crates/foundation-ipc/src/methods.rs",
+    "sha256": "26be14f8aeaad2618ea0e6c0b31f89f1b9ecffea6feaa45fe00d94240d2d0b64",
+    "bytes": 11419
+   },
+   {
+    "where": "gardens/springs/airSpring/barracuda/src/methods.rs",
+    "sha256": "d2dd99aca285f7cd821733f9c3c4d1eec4872c190b0eea2c607de8fc2c7b3088",
+    "bytes": 10135
+   },
+   {
+    "where": "gardens/springs/ludoSpring/barracuda/src/ipc/methods.rs",
+    "sha256": "8a6eb99bc2c1910f353a0ef31b0625e7f396bddab7f65cd47e66e9102f444fa7",
+    "bytes": 17051
+   },
+   {
+    "where": "primalSpring/ecoPrimal/src/ipc/methods.rs",
+    "sha256": "1c84ad16b9a493b3fd6cf738ecf07c0ea1d4860b11e65a5fa74dbe6ea51c5dad",
+    "bytes": 9198
+   },
+   {
+    "where": "primals/amoeba/testing/benchScale/src/server/methods.rs",
+    "sha256": "081ee31bf8f143c393adc743d23305f53146353b3c1a907ebf6854cae9468255",
+    "bytes": 16152
+   },
+   {
+    "where": "primals/petalTongue/crates/petal-tongue-discovery/src/discovery_service_client/methods.rs",
+    "sha256": "cd76968ceee7708743eaae5e78602af4c3ec8944192c13151141dbf57db0c912",
+    "bytes": 6483
+   },
+   {
+    "where": "primals/rhizoCrypt/crates/rhizo-crypt-core/src/constants/methods.rs",
+    "sha256": "14171fe6868715d1d0402ea52b8e947e2fbb5deb0390db900b23aa5f1ba2d250",
+    "bytes": 2030
+   },
+   {
+    "where": "primals/sourDough/crates/sourdough-core/src/methods.rs",
+    "sha256": "fc2fe5f02b324f28113e24b8150aa7468c38b904886b4c73a726301abc5b90b6",
+    "bytes": 3119
+   }
+  ]
+ },
+ {
+  "name": "michaelis_menten_batch_f64.wgsl",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "michaelis_menten_batch_f64.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/health/michaelis_menten_batch_f64.wgsl",
+    "sha256": "f6c1d6d2d5343a95fcc8eb793e48b23f485ab811a6fae47332c29e3514765110",
+    "bytes": 2104
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/shaders/health/michaelis_menten_batch_f64.wgsl",
+    "sha256": "3aba7ba7df0a43cdcef040aedee832d7a2542efe81fdc53b3a04324644b40e28",
+    "bytes": 2496
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/shaders/health/michaelis_menten_batch_f64.wgsl",
+    "sha256": "3aba7ba7df0a43cdcef040aedee832d7a2542efe81fdc53b3a04324644b40e28",
+    "bytes": 2496
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/health/michaelis_menten_batch_f64.wgsl",
+    "sha256": "f6c1d6d2d5343a95fcc8eb793e48b23f485ab811a6fae47332c29e3514765110",
+    "bytes": 2104
+   }
+  ]
+ },
+ {
+  "name": "mmio.rs",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/26_neuromorphic_sovereign_driver.md"
+  ],
+  "said": [
+   "mmio.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/rustChip/crates/akida-driver/src/mmio.rs",
+    "sha256": "baea84dd5efe7537b23e6a78c8a135563513c3f42de757098469eb7b42b5a460",
+    "bytes": 12079
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/neuromorphic/akida-driver/src/mmio.rs",
+    "sha256": "b50e2d1ba9208c26ebe87ca51d858a83ffae36c4e308415cab26229b901b2408",
+    "bytes": 10449
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/server/src/pure_jsonrpc/handler/mmio.rs",
+    "sha256": "0fa4286a1d559c0aef94d10b62c8bb8a446abd27cce1e9d2284c52601c852f35",
+    "bytes": 10636
+   },
+   {
+    "where": "gardens/springs/rustChip/crates/akida-driver/src/mmio.rs",
+    "sha256": "baea84dd5efe7537b23e6a78c8a135563513c3f42de757098469eb7b42b5a460",
+    "bytes": 12079
+   },
+   {
+    "where": "primals/toadStool/crates/neuromorphic/akida-driver/src/mmio.rs",
+    "sha256": "b50e2d1ba9208c26ebe87ca51d858a83ffae36c4e308415cab26229b901b2408",
+    "bytes": 10449
+   },
+   {
+    "where": "primals/toadStool/crates/server/src/pure_jsonrpc/handler/mmio.rs",
+    "sha256": "0fa4286a1d559c0aef94d10b62c8bb8a446abd27cce1e9d2284c52601c852f35",
+    "bytes": 10636
+   }
+  ]
+ },
+ {
+  "name": "mod.rs",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/24_esotericwebb_composition_patterns.md",
+   "content/science/58_tufte_pipeline_wiring.md"
+  ],
+  "said": [
+   "bridge/mod.rs",
+   "compiler/mod.rs",
+   "content/mod.rs"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/crates/spore-validate/tests/common/mod.rs",
+    "sha256": "7001d483327ff513e8371bc8714b56d564f19d8007d5426b22926cc80af7dc46",
+    "bytes": 1157
+   },
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/src/arch/mod.rs",
+    "sha256": "da58333b13f151fc6c3452a7d34c34b12cba33d85bda864fadf57c996d55b5f2",
+    "bytes": 16120
+   },
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/src/config/mod.rs",
+    "sha256": "2317e53f994c07e2664b971ca047902e210fcc3cce09dfc73a85dca37d18c29f",
+    "bytes": 14248
+   },
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/src/fleet/mod.rs",
+    "sha256": "d63ebaa8c81047a99b82d545a962c5bf2affb98cb34c6872c070c711403401ef",
+    "bytes": 14803
+   },
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/src/service/mod.rs",
+    "sha256": "8303c1640cd776f63ac0fa32badfb3d635f37474cdcb144b4ec0906684490db0",
+    "bytes": 20852
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/caddy/mod.rs",
+    "sha256": "a9d505e38f8eb61f8744b505d36cf6bbd63226194c7a32b04308b93d5f3d7c26",
+    "bytes": 28111
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/cloudflare/mod.rs",
+    "sha256": "0bc6a62d28fd9b04c86e1cf68b478b8177abbd352ebb4ca4a297e282d26b2d2d",
+    "bytes": 19779
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/dispatch/alphafold_dispatch/mod.rs",
+    "sha256": "29c2770112d149a5be9ea3e4f25199f5676d3f517c5a377c84c8818d11658f64",
+    "bytes": 6542
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/dispatch/experiment_dispatch/mod.rs",
+    "sha256": "07df1caf8071da8a11cf4818cac12c5f9fb997c353473912908452e2ae6d9db4",
+    "bytes": 7856
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/dispatch/mod.rs",
+    "sha256": "1414f4b1b90a17c41aab757d0721fa67e50a4e8b64c93baf03c9780528166120",
+    "bytes": 14131
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/dns/mod.rs",
+    "sha256": "a812cebcbb356d43ab81384c8c67679673b70ea7b54776bc60efe8364f68d5b8",
+    "bytes": 15898
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/evidence/mod.rs",
+    "sha256": "db17ed7f63f7f30671c017d2cfd8c0f610e3c8c220ba3017d64ec33c463c9770",
+    "bytes": 17351
+   }
+  ]
+ },
+ {
+  "name": "neutron.json",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/136_the_compound_eye.md",
+   "content/science/89_klein_bottle_is_inside_out_donut.md",
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "/neutron.json",
+   "neutron.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/neutron.json",
+    "sha256": "84919adde703295293659a385200a7dc96ec274e8250736927cbcb4967ee24e7",
+    "bytes": 1073
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/neutron.json",
+    "sha256": "fb24ca44ffa5ec27e9b7d262e4385f35f965ad973608cec8bf0776acbca59080",
+    "bytes": 760
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/neutron.json",
+    "sha256": "1477d067d26e3778cbb19cfa4babf90afac30dc58b94b1f588893fcc4a57927d",
+    "bytes": 16667
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/neutron.json",
+    "sha256": "84919adde703295293659a385200a7dc96ec274e8250736927cbcb4967ee24e7",
+    "bytes": 1073
+   },
+   {
+    "where": "membrane/local-terminal/remote/neutron.json",
+    "sha256": "1477d067d26e3778cbb19cfa4babf90afac30dc58b94b1f588893fcc4a57927d",
+    "bytes": 16667
+   }
+  ]
+ },
+ {
+  "name": "niche.rs",
+  "why": "12 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/01-composition-validation.md"
+  ],
+  "said": [
+   "niche.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-cli/src/commands/niche.rs",
+    "sha256": "2062eaae1e504ad02ef6719278731370f9c4b6a99d0a4b458027dc93bc41a99b",
+    "bytes": 17836
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-manifest/src/niche.rs",
+    "sha256": "4f85a57cda0d8ccf8ceae844cc1411a19177c8232358c4c6c2c7a8b18b944ffb",
+    "bytes": 16433
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/webb/src/niche.rs",
+    "sha256": "12038b243f8bf2c52b8b8077c417ca0e69eff8c386b44537a638572080fe810f",
+    "bytes": 7033
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/src/niche.rs",
+    "sha256": "da11a961ab140454490000eeac4003e9033aa7baa52eb3d816d2fef9aa0fb73b",
+    "bytes": 17559
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/loamSpine/crates/loam-spine-core/src/niche.rs",
+    "sha256": "242d089da863a27ed4a6f97bfb504f64e160bd74d5c245ac45748366b34601ea",
+    "bytes": 12866
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/niche.rs",
+    "sha256": "716a7ade03572b3aaab07fc42e9d496153be60ed66272ff2a82ecf3675f33c47",
+    "bytes": 17208
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/rhizoCrypt/crates/rhizo-crypt-core/src/niche.rs",
+    "sha256": "9ac739f552fa4195dfa8eac2ebc9659e1ba5aa120eebf57f38d3e54b08ca0f02",
+    "bytes": 14746
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/squirrel/crates/main/src/niche.rs",
+    "sha256": "5f854cf07665dd66afce0fc68e3b61cd24cd0cc64d1e17e4e87562ea51c70b5b",
+    "bytes": 21398
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/sweetGrass/crates/sweet-grass-core/src/niche.rs",
+    "sha256": "58b2df0e9affa90a3c711ef15ba4a2fbff4b9c1abdb520b4f7cb5611577ae2c9",
+    "bytes": 16457
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/barracuda/src/niche.rs",
+    "sha256": "906f10788b01c73a8e2723ec80f285cf2fb509d887447774f6578853938b6046",
+    "bytes": 22668
+   },
+   {
+    "where": "gardens/springs/airSpring/barracuda/src/niche.rs",
+    "sha256": "3ff19b133b487be0027debb7809e0f55ae389748c7bdca4ac4da2511cb024752",
+    "bytes": 16838
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/src/niche.rs",
+    "sha256": "da11a961ab140454490000eeac4003e9033aa7baa52eb3d816d2fef9aa0fb73b",
+    "bytes": 17559
+   }
+  ]
+ },
+ {
+  "name": "PAPER_REVIEW_QUEUE.md",
+  "why": "7 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/05-physics-deep-dive.md",
+   "content/science/07_sovereign_wdm.md",
+   "content/science/13_sovereign_human_health.md",
+   "content/thesis/12_results_neuralspring.md"
+  ],
+  "said": [
+   "healthSpring/specs/PAPER_REVIEW_QUEUE.md",
+   "hotSpring/specs/PAPER_REVIEW_QUEUE.md",
+   "specs/PAPER_REVIEW_QUEUE.md"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "fca8304b70434048e34d8421cd9a147b885e5c1e0b5237c3a72d223bfc3d8fcb",
+    "bytes": 1817
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "7fa451f77986a887c0505cda3f8b0730035f3bf6cbad95ec0daea6a13548b456",
+    "bytes": 21058
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "b94a69ddac77144c8c660c763bff60b950731054586613dbc0bb26eae05a763d",
+    "bytes": 68772
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "bb9088b0d4250f23cce83c82a762e4fa5f64ed2ada386c04401d6760e3a9d542",
+    "bytes": 81297
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "764e36882c0ecbf3844ef035855adc1601f600dda106d55a2f4e54a1c8086b05",
+    "bytes": 46295
+   },
+   {
+    "where": "gardens/springs/airSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "989720ef1e88be83dc629710e1f798e5cb50c9b1bfbcc41940ce92026c385ba6",
+    "bytes": 28793
+   },
+   {
+    "where": "gardens/springs/groundSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "3c0c4959475d39a38fe26bcd1ce1a715989ba42f74cbc3f78057fea6011e0e6f",
+    "bytes": 41940
+   },
+   {
+    "where": "gardens/springs/healthSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "7fa451f77986a887c0505cda3f8b0730035f3bf6cbad95ec0daea6a13548b456",
+    "bytes": 21058
+   },
+   {
+    "where": "gardens/springs/hotSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "b94a69ddac77144c8c660c763bff60b950731054586613dbc0bb26eae05a763d",
+    "bytes": 68772
+   },
+   {
+    "where": "gardens/springs/neuralSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "bb9088b0d4250f23cce83c82a762e4fa5f64ed2ada386c04401d6760e3a9d542",
+    "bytes": 81297
+   },
+   {
+    "where": "gardens/springs/wetSpring/specs/PAPER_REVIEW_QUEUE.md",
+    "sha256": "764e36882c0ecbf3844ef035855adc1601f600dda106d55a2f4e54a1c8086b05",
+    "bytes": 46295
+   },
+   {
+    "where": "primalSpring/specs/archive/PAPER_REVIEW_QUEUE.md",
+    "sha256": "a4531690494290bcbe89d20d42538deda36bd2ee45faf8310d57ce141dcba3c3",
+    "bytes": 6196
+   }
+  ]
+ },
+ {
+  "name": "peers.toml",
+  "why": "the name says what kind of file it is, not which one",
+  "pages": [
+   "content/architecture/MESH_TOPOLOGY.md"
+  ],
+  "said": [
+   "peers.toml"
+  ],
+  "candidates": [
+   {
+    "where": "eastGate:/home/eastgate/.config/rustdesk/peers.toml",
+    "sha256": "480fda59703ba192a484e4842d25934a8031ee9c2812c6b98a78b71b0072a99d",
+    "bytes": 1097
+   }
+  ]
+ },
+ {
+  "name": "physics.rs",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/53_focal_points_tangent_membrane.md"
+  ],
+  "said": [
+   "physics.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/physics/hfb_deformed_gpu/physics.rs",
+    "sha256": "5aff43266f2f7f03df7b672fa0005c2434ed5df04e368b72bb564d7edc6fd6f5",
+    "bytes": 16471
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/tolerances/physics.rs",
+    "sha256": "ceeef6b948cac4ca72f30358bb3fe2e3433716c135a98c1cca317c3cdd13f387",
+    "bytes": 23669
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/src/physics/hfb_deformed_gpu/physics.rs",
+    "sha256": "5aff43266f2f7f03df7b672fa0005c2434ed5df04e368b72bb564d7edc6fd6f5",
+    "bytes": 16471
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/src/tolerances/physics.rs",
+    "sha256": "ceeef6b948cac4ca72f30358bb3fe2e3433716c135a98c1cca317c3cdd13f387",
+    "bytes": 23669
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/petalTongue/crates/petal-tongue-scene/src/physics.rs",
+    "sha256": "ec028de5ea9e3aa1c102ae1c0512901f797f396784d351703ff2ee42d1246ff0",
+    "bytes": 7223
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/physics/hfb_deformed_gpu/physics.rs",
+    "sha256": "5aff43266f2f7f03df7b672fa0005c2434ed5df04e368b72bb564d7edc6fd6f5",
+    "bytes": 16471
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/tolerances/physics.rs",
+    "sha256": "ceeef6b948cac4ca72f30358bb3fe2e3433716c135a98c1cca317c3cdd13f387",
+    "bytes": 23669
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/src/physics/hfb_deformed_gpu/physics.rs",
+    "sha256": "5aff43266f2f7f03df7b672fa0005c2434ed5df04e368b72bb564d7edc6fd6f5",
+    "bytes": 16471
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/src/tolerances/physics.rs",
+    "sha256": "ceeef6b948cac4ca72f30358bb3fe2e3433716c135a98c1cca317c3cdd13f387",
+    "bytes": 23669
+   },
+   {
+    "where": "primals/petalTongue/crates/petal-tongue-scene/src/physics.rs",
+    "sha256": "ec028de5ea9e3aa1c102ae1c0512901f797f396784d351703ff2ee42d1246ff0",
+    "bytes": 7223
+   }
+  ]
+ },
+ {
+  "name": "population_pk_f64.wgsl",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "population_pk_f64.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/health/population_pk_f64.wgsl",
+    "sha256": "880fe4ab336325a7b1a4cadffcb17abee4ae3004f4c40b721abc7b851dae7b94",
+    "bytes": 1511
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/science/population_pk_f64.wgsl",
+    "sha256": "e6175452775970922c6bd2d6bd6ec7aad8ca67f8d0519f8af939d62c8eedf523",
+    "bytes": 1541
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/population_pk_f64.wgsl",
+    "sha256": "a77748a7c53a1c9efada8e757db7a4bd579d43835edab09f039e3af40d41e00d",
+    "bytes": 1700
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/shaders/health/population_pk_f64.wgsl",
+    "sha256": "e30af224efb3732b9ea88bdbac337e0db15e73a4b7e44ffbc526dd4bbe86921d",
+    "bytes": 2035
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/shaders/health/population_pk_f64.wgsl",
+    "sha256": "e30af224efb3732b9ea88bdbac337e0db15e73a4b7e44ffbc526dd4bbe86921d",
+    "bytes": 2035
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/health/population_pk_f64.wgsl",
+    "sha256": "880fe4ab336325a7b1a4cadffcb17abee4ae3004f4c40b721abc7b851dae7b94",
+    "bytes": 1511
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/science/population_pk_f64.wgsl",
+    "sha256": "e6175452775970922c6bd2d6bd6ec7aad8ca67f8d0519f8af939d62c8eedf523",
+    "bytes": 1541
+   },
+   {
+    "where": "primals/coralReef/crates/coral-reef/tests/fixtures/wgsl/corpus/population_pk_f64.wgsl",
+    "sha256": "a77748a7c53a1c9efada8e757db7a4bd579d43835edab09f039e3af40d41e00d",
+    "bytes": 1700
+   }
+  ]
+ },
+ {
+  "name": "provenance.toml",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/architecture/SPOREGATE_IMPRINT.md"
+  ],
+  "said": [
+   "provenance.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-plasmidBin/provenance.toml",
+    "sha256": "ae31d9393add91e2f5096066667992a9ab4b7e61ed5ce803e37a75e0d824e98d",
+    "bytes": 643
+   },
+   {
+    "where": "data/sourdough-ball/northgate-plasmid/provenance.toml",
+    "sha256": "4e9f5774729b2eb331894b867dcb73bf4d038ffb1e586b69e3af6fbc3f5ded15",
+    "bytes": 691
+   },
+   {
+    "where": "plasmidBin/provenance.toml",
+    "sha256": "ae31d9393add91e2f5096066667992a9ab4b7e61ed5ce803e37a75e0d824e98d",
+    "bytes": 643
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/plasmidBin/provenance.toml",
+    "sha256": "ae31d9393add91e2f5096066667992a9ab4b7e61ed5ce803e37a75e0d824e98d",
+    "bytes": 643
+   }
+  ]
+ },
+ {
+  "name": "pulse.json",
+  "why": "9 different files carry this name",
+  "pages": [
+   "content/science/136_the_compound_eye.md",
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "pulse.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/pulse.json",
+    "sha256": "199a49797273290fe6c1338b601be78d0c7270fec727a3c2a43378b2a078d0d6",
+    "bytes": 16787
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/pulse.json",
+    "sha256": "efc09899a0fa94872f29992b7cefb01b14f5e7f23f597667079588e71431e5b3",
+    "bytes": 1854
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/pulse.json",
+    "sha256": "fe1371a8ebd5bc0fa211076fdee4c1a88e4d47ed2fe3a0f2daaa639574baf3e9",
+    "bytes": 284
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/pulse.json",
+    "sha256": "a92d9cd48e7fa0f9cf7c7fa7b6605da23176f8f8e849f1041ea3813fadc62217",
+    "bytes": 2805
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/ecoPrimals.github.io/hooks/pulse.json",
+    "sha256": "c02827478b1e26e35b3739fd1d6f0aaedbd0bb59b6425317667c54421e85bc25",
+    "bytes": 11107
+   },
+   {
+    "where": "data/pixel-harvest/gaia-data/pulse.json",
+    "sha256": "18c6cc239aecb4aa5a50a8e14a5ba99f0aaca62a2bd030d2c7c9f14063a2dfa3",
+    "bytes": 10078
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/pulse.json",
+    "sha256": "cf36617f44157c677401c4e378a6da11c4e0f0316eca1865a42d5b553732e8c1",
+    "bytes": 10563
+   },
+   {
+    "where": "data/sourdough-ball/northgate-cloud/hooks/pulse.json",
+    "sha256": "59e1efd2914ca7fd433008c2969f13c52c16d8dc5b5071335f6a9d16fd7a247a",
+    "bytes": 11108
+   },
+   {
+    "where": "membrane/local-terminal/remote/pulse.json",
+    "sha256": "a92d9cd48e7fa0f9cf7c7fa7b6605da23176f8f8e849f1041ea3813fadc62217",
+    "bytes": 2805
+   },
+   {
+    "where": "runtime/waterfall/pulse.json",
+    "sha256": "6fd4d2e61f2600846cb6457e075035911b0b9b506b7298ded33853c2deafed1a",
+    "bytes": 4509
+   }
+  ]
+ },
+ {
+  "name": "python_baseline.json",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/cahill-smallwood-algae.md",
+   "content/lab/notebooks/fajgenbaum-drug-repurposing.md",
+   "content/lab/notebooks/jones-pfas-chemistry.md"
+  ],
+  "said": [
+   "039_algae_timeseries/python_baseline.json",
+   "040_bloom_surveillance/python_baseline.json",
+   "041_epa_pfas_ml/python_baseline.json",
+   "042_massbank_spectral/python_baseline.json",
+   "experiments/results/*/python_baseline.json",
+   "python_baseline.json"
+  ],
+  "candidates": [
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/036_phynetpy_rf/python_baseline.json",
+    "sha256": "2ed71e71489ac184860744d099c73f4dce71b3bf9dd60493caa99798092397c1",
+    "bytes": 20256
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/037_phylohmm/python_baseline.json",
+    "sha256": "7c47dd6dbc34c669706f59b22e53304421885813ff4e56d8d6a9c402da6e3b10",
+    "bytes": 1329
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/038_sate_pipeline/python_baseline.json",
+    "sha256": "002f401e91692c842fff344797d4895fdba8cbdbefd966a532c696b8bb6eb6f0",
+    "bytes": 18841
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/039_algae_timeseries/python_baseline.json",
+    "sha256": "e999132e06f16080d4ea0587b0bc8d79da4341beb53471f45bcd49033014b359",
+    "bytes": 1181
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/040_bloom_surveillance/python_baseline.json",
+    "sha256": "9d5465115b801c49a76afdb72862d0dc4f6bf07e2fbfe88fd28d726f5c30ef2c",
+    "bytes": 1098
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/041_epa_pfas_ml/python_baseline.json",
+    "sha256": "2b19e1e654f3ebb8fbc6d5a7bc86c384dfdc79c5cb546c06bc2918b5bb65666e",
+    "bytes": 501
+   },
+   {
+    "where": "gardens/springs/wetSpring/experiments/results/042_massbank_spectral/python_baseline.json",
+    "sha256": "32e2067fd884e60633685670b71183dba2ecd890ca42a326a72a8647d41eb9d0",
+    "bytes": 2080
+   }
+  ]
+ },
+ {
+  "name": "README.md",
+  "why": "887 different files carry this name",
+  "pages": [
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "docs-fossil-feb-2026/api/README.md",
+   "docs-fossil-feb-2026/core/README.md"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/README.md",
+    "sha256": "2eb5e96498802c10feda7b30627e64184a72254d8e47e99fff3fb949051a7be7",
+    "bytes": 11347
+   },
+   {
+    "where": "sporePrint/crates/spore-validate/README.md",
+    "sha256": "939240db6ec539490e4492d34eb623c53b42a9b988cee5ff64458b4ed94f8ade",
+    "bytes": 1078
+   },
+   {
+    "where": "sporePrint/specs/README.md",
+    "sha256": "a9dd4ee9613be63c543332672c7e418a3c5b0ffc2de22e9fa9bf70e55dc76205",
+    "bytes": 2359
+   },
+   {
+    "where": "sporePrint/static/pseudospore-bundles/README.md",
+    "sha256": "fb4c1b87a3fcbdd2aad32563e2886226b451ff782da74f556b0dc9b36ae26648",
+    "bytes": 2249
+   },
+   {
+    "where": "README.md",
+    "sha256": "2d3fac0e7338dee82731ea9a26b98048819c45be813baf3921c44f2e48d8c16b",
+    "bytes": 8536
+   },
+   {
+    "where": "agentReagents/README.md",
+    "sha256": "730a0f5a871f5d38059a01dde12a78090e6028371ae7c427d3cff714fd6c1b7b",
+    "bytes": 863
+   },
+   {
+    "where": "benchScale/README.md",
+    "sha256": "61fa9cf6a2f07ebf11ed5314e7a627042c4d974156002b823f2d1272f0c6e27f",
+    "bytes": 711
+   },
+   {
+    "where": "cellMembrane/README.md",
+    "sha256": "c88720194b74ff5352ff614907b6ad220b7f4a53a72102bd2c1b3a5bb7bc60d8",
+    "bytes": 38505
+   },
+   {
+    "where": "data/atoms/investigation/README.md",
+    "sha256": "9406f7cf52fee59f8fd1ac1cf0710dd3fee59a1f7622f1973fcff9eb6294fcaf",
+    "bytes": 1370
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/agentReagents/README.md",
+    "sha256": "817b30aef294354714be5a332a960bfd7c57903906cbfb469caacdce4357c1e9",
+    "bytes": 612
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/README.md",
+    "sha256": "bf675b4a1261dd26f500b310b839d58844f2ed682c5968b97c4c173fecb2d0c1",
+    "bytes": 37037
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/README.md",
+    "sha256": "430e3aac4479ea8b1929c00bf3b206ba739a251497ea6d59ffa0d05c7ffe4fe8",
+    "bytes": 13686
+   }
+  ]
+ },
+ {
+  "name": "registers.rs",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/14_sovereign_compute_hardware.md"
+  ],
+  "said": [
+   "registers.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/bin_helpers/k80_gr_sovereign/registers.rs",
+    "sha256": "1f331d1fa05c8434bbae88b0c8266631f38b09fc6c009a05a3cdb51f1588d802",
+    "bytes": 4215
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/src/bin_helpers/k80_gr_sovereign/registers.rs",
+    "sha256": "1f331d1fa05c8434bbae88b0c8266631f38b09fc6c009a05a3cdb51f1588d802",
+    "bytes": 4215
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/core/cylinder/src/vfio/channel/registers.rs",
+    "sha256": "ac2b83b249c85aa8a99a4f4783ddbc6f80a27130516a1381a01e3925f46b5396",
+    "bytes": 24559
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/core/nvpmu/src/registers.rs",
+    "sha256": "83d290ae52dcdac1c4ff6e14c5e25a250111ea7d15569fc8cc24bcf9c4f33b45",
+    "bytes": 5957
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/archive/_fossilized/v0.6.32-full/src/bin_helpers/k80_gr_sovereign/registers.rs",
+    "sha256": "1f331d1fa05c8434bbae88b0c8266631f38b09fc6c009a05a3cdb51f1588d802",
+    "bytes": 4215
+   },
+   {
+    "where": "gardens/springs/hotSpring/barracuda/src/bin_helpers/k80_gr_sovereign/registers.rs",
+    "sha256": "1f331d1fa05c8434bbae88b0c8266631f38b09fc6c009a05a3cdb51f1588d802",
+    "bytes": 4215
+   },
+   {
+    "where": "primals/toadStool/crates/core/cylinder/src/vfio/channel/registers.rs",
+    "sha256": "ac2b83b249c85aa8a99a4f4783ddbc6f80a27130516a1381a01e3925f46b5396",
+    "bytes": 24559
+   },
+   {
+    "where": "primals/toadStool/crates/core/nvpmu/src/registers.rs",
+    "sha256": "83d290ae52dcdac1c4ff6e14c5e25a250111ea7d15569fc8cc24bcf9c4f33b45",
+    "bytes": 5957
+   }
+  ]
+ },
+ {
+  "name": "rng.rs",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "rng.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/rng.rs",
+    "sha256": "b84bacc631e2d36d6ef5c50b0b246ee1423d1d66f5de16047433b6307a76c042",
+    "bytes": 13800
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/src/rng.rs",
+    "sha256": "6d535e63c547c704f31b605e3cfc1b6c5b92236e93fb5656db5e3afb40f3f744",
+    "bytes": 7244
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/rng.rs",
+    "sha256": "a06046c4128049f4c127029a38dfa349958e76c2eed46e9f25b0dfe7b047abd8",
+    "bytes": 8629
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/crates/pokered-core/src/link/rng.rs",
+    "sha256": "30293453e74bb52e72a4becb031cb197e691920315df779b489c74e73e7bf92e",
+    "bytes": 8012
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/crates/pokered-core/src/rng.rs",
+    "sha256": "796668c8a209548f020419de6cd8fdc4c250dc600df25649080982fd141f5ff1",
+    "bytes": 2551
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/src/rng.rs",
+    "sha256": "6d535e63c547c704f31b605e3cfc1b6c5b92236e93fb5656db5e3afb40f3f744",
+    "bytes": 7244
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/rng.rs",
+    "sha256": "a06046c4128049f4c127029a38dfa349958e76c2eed46e9f25b0dfe7b047abd8",
+    "bytes": 8629
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/rng.rs",
+    "sha256": "b84bacc631e2d36d6ef5c50b0b246ee1423d1d66f5de16047433b6307a76c042",
+    "bytes": 13800
+   }
+  ]
+ },
+ {
+  "name": "robots.txt",
+  "why": "16 different files carry this name",
+  "pages": [
+   "content/science/36_bloom_monitor_human_signal_detection.md"
+  ],
+  "said": [
+   "/robots.txt"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/static/robots.txt",
+    "sha256": "7116e3976f93f5468de83d1386c02666ae82fb74bf23c55350a199935148eca8",
+    "bytes": 2230
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/detroit-site/robots.txt",
+    "sha256": "b6f169f67db6a0843eea0bd23452a73eb5e8c80ec6ffe59f4cfdac374362255e",
+    "bytes": 258
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/robots.txt",
+    "sha256": "a216571d475f45eccea2f3ed4e59e3ac53139fc747b74b58ea9deba3d4deb536",
+    "bytes": 964
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/robots.txt",
+    "sha256": "7116e3976f93f5468de83d1386c02666ae82fb74bf23c55350a199935148eca8",
+    "bytes": 2230
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/robots.txt",
+    "sha256": "9caa6375e4137e81a4ba68d27541804b703864aa7a35f8feabc60e77630609cb",
+    "bytes": 1415
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/sporeprint/robots.txt",
+    "sha256": "7116e3976f93f5468de83d1386c02666ae82fb74bf23c55350a199935148eca8",
+    "bytes": 2230
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hypothesis/site/public/robots.txt",
+    "sha256": "a1f5616b91bd4158434b2d3821716ed69ae0ea4bac8b715cc2bcc3235415ac27",
+    "bytes": 76
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hypothesis/site/static/robots.txt",
+    "sha256": "823bc012c8b0a193393a7583b1fa74cbe97da0b1d131f7581855bbeb2cf1f33e",
+    "bytes": 167
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-publicRecord/site/public/robots.txt",
+    "sha256": "b6f169f67db6a0843eea0bd23452a73eb5e8c80ec6ffe59f4cfdac374362255e",
+    "bytes": 258
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-publicRecord/site/static/robots.txt",
+    "sha256": "576a955b16419de617729c2f6974c45596dcfd83bfc5d735fd1b8cd9d6538a1f",
+    "bytes": 346
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-sporePrint/static/robots.txt",
+    "sha256": "7116e3976f93f5468de83d1386c02666ae82fb74bf23c55350a199935148eca8",
+    "bytes": 2230
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-tuebor-repo/site/static/robots.txt",
+    "sha256": "dcd6dfa99e1eb75dc7732e8d9dd33bc0649988a53ac51e8a6712ac5f750f2d28",
+    "bytes": 4031
+   }
+  ]
+ },
+ {
+  "name": "runtime.rs",
+  "why": "24 different files carry this name",
+  "pages": [
+   "content/science/55_rotation_locked_anderson_wind.md",
+   "content/science/57_aar_wateringhole_convergence_scan.md",
+   "content/science/58_tufte_pipeline_wiring.md"
+  ],
+  "said": [
+   "runtime.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/runtime.rs",
+    "sha256": "4c7b76c11a0f1414753ce71a532130e4be8340909ea18e2c1ee830ae55e5754a",
+    "bytes": 3291
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-config/src/env_keys/runtime.rs",
+    "sha256": "158435d1d2999d179bd4b4002b22144a598f382ad7d6bda6a90fd7036b953b2f",
+    "bytes": 13515
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-production/src/config_management/runtime.rs",
+    "sha256": "7ba23b5db06d31cf52550144960f56d7e1ce750fe130c9d0b178a63f5252f923",
+    "bytes": 13223
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-core/src/universal_biomeos_manager/runtime.rs",
+    "sha256": "8ab6bdf36706e900f4d25ea3cb56d06d2054e77de46256b2b16e6f73607b3c5a",
+    "bytes": 18855
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-genomebin-v3/src/runtime.rs",
+    "sha256": "ab4bcfb6316cd35425f5a275b81e2118be8e28ec96c34500acde8f17c6250de3",
+    "bytes": 8592
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-primal-sdk/src/discovery/runtime.rs",
+    "sha256": "6d940d9778810bcaa1ea3430d073c7d78129ad244fb7dc8841c88ebcaa2d898b",
+    "bytes": 6693
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-types/src/paths_tests/runtime.rs",
+    "sha256": "87a0b2519abc7e4cd26cbfc506ebf0b99cadafd9a9519dcfe422324a7ae36988",
+    "bytes": 4356
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-types/src/service/runtime.rs",
+    "sha256": "fa928dc60d1f77a5fe7b5a40870d13f3a8a585055f476766c64c7b0d355add44",
+    "bytes": 14135
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/nestGate/code/crates/nestgate-bin/src/cli/runtime.rs",
+    "sha256": "ed315da974dc54dbeeb888ed8ca02a09cc5ffd75277ed5b4965655a8a83f27b1",
+    "bytes": 669
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/petalTongue/crates/petal-tongue-platform/src/runtime.rs",
+    "sha256": "6ebd2b367470cd9c8442be4288a498c81e937513f137639a9ec2f2d047a07d23",
+    "bytes": 31874
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/cli/src/executor/workload/runtime.rs",
+    "sha256": "9e973f2171587e69379804217b0fbf3e8b6503819ef4c365938e623f759d4538",
+    "bytes": 6250
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/core/config/src/runtime_defaults/env_overrides/runtime.rs",
+    "sha256": "39d9e75bfc9e9c522bb988b267500da1522899de37fdad1536143b14023db522",
+    "bytes": 1906
+   }
+  ]
+ },
+ {
+  "name": "rust-toolchain.toml",
+  "why": "17 different files carry this name",
+  "pages": [
+   "content/architecture/SOVEREIGN_CI.md",
+   "content/lab/gate-status.md",
+   "content/science/82_thesis_validation_crush_mix.md"
+  ],
+  "said": [
+   "rust-toolchain.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/rust-toolchain.toml",
+    "sha256": "5cf234918bb81fcbdfaf0ba507fcc3bb41747fe2d6e719e3c6a3c5b760388087",
+    "bytes": 316
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/rust-toolchain.toml",
+    "sha256": "102cb62fba31c285ba2c40ca1191ebba4b8a8e8cf9260f00c3f44056076b5381",
+    "bytes": 226
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/rust-toolchain.toml",
+    "sha256": "447440f5ffde3bc54e455dea44cdcfb16c3f0986f5ef17c17957b73a70b6adeb",
+    "bytes": 88
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/rust-toolchain.toml",
+    "sha256": "d3a9cfd7a8a43bb34fd75a4f0c38568f96616387d69131a9a73c025e6a009752",
+    "bytes": 323
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/metalForge/rust-toolchain.toml",
+    "sha256": "e5cc0545f232bde807bd9394c2433322d1cd2cf42b060ceab2ac7329bc9cdaa2",
+    "bytes": 31
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/nestGate/rust-toolchain.toml",
+    "sha256": "cd421951211d14b672955f6bad192bb195f30a7227e1838e5edfeea7a5f848b4",
+    "bytes": 88
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/rust-toolchain.toml",
+    "sha256": "d0ef741e2c9cf7d4b5d65ee7dd942755cf6b405408adb8c02aaecd6177011eeb",
+    "bytes": 260
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/petalTongue/rust-toolchain.toml",
+    "sha256": "17ee1f2c89df7c08eb464127abd414f7287b92f62931392942e083dd37d495c6",
+    "bytes": 133
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/rhizoCrypt/rust-toolchain.toml",
+    "sha256": "238b4fc8917827e6ce8d70390e4bc484f58aff08f2b25c772a469fb9b9175e90",
+    "bytes": 265
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/skunkBat/rust-toolchain.toml",
+    "sha256": "447440f5ffde3bc54e455dea44cdcfb16c3f0986f5ef17c17957b73a70b6adeb",
+    "bytes": 88
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/songBird/rust-toolchain.toml",
+    "sha256": "18b9e8ee45cd4e0f6aa66723146c5dbecdfb0121379e492b0a633b138519daf8",
+    "bytes": 338
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/squirrel/rust-toolchain.toml",
+    "sha256": "b67ce81d6d8714aeb79e8019ae5c3fb7abbc281d11e0c41361479b1fc48b8f9f",
+    "bytes": 156
+   }
+  ]
+ },
+ {
+  "name": "scan_sweep_sort.py",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "scan_sweep_sort.py"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-cellMembrane/deploy/golgi/scripts/scan_sweep_sort.py",
+    "sha256": "c9d789695b652c259797daba77fe971669ee94b1eaa38670003c249c700518ba",
+    "bytes": 122563
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/membrane-recipe/scan_sweep_sort.py",
+    "sha256": "ff872e73bf171680d175ce13b79401b3301a918e57c3241391c1c974e559927c",
+    "bytes": 118444
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/squirrel/observe/scan_sweep_sort.py",
+    "sha256": "e736a67b6632e70a6e374cd8666b97b5e0a8e82287abde3026b37db7ee336157",
+    "bytes": 20785
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/gardens/cellMembrane/deploy/golgi/scripts/scan_sweep_sort.py",
+    "sha256": "c9d789695b652c259797daba77fe971669ee94b1eaa38670003c249c700518ba",
+    "bytes": 122563
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/cellMembrane/deploy/golgi/scripts/scan_sweep_sort.py",
+    "sha256": "c9d789695b652c259797daba77fe971669ee94b1eaa38670003c249c700518ba",
+    "bytes": 122563
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/primals/squirrel/observe/scan_sweep_sort.py",
+    "sha256": "e736a67b6632e70a6e374cd8666b97b5e0a8e82287abde3026b37db7ee336157",
+    "bytes": 20785
+   }
+  ]
+ },
+ {
+  "name": "scatter_server.rs",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "scatter_server.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/skunkBat/crates/skunky-ingest/src/scatter_server.rs",
+    "sha256": "9262e4ecb3ca4fd9112a5006b0b51cd844722166607406abda59343cde8bfafe",
+    "bytes": 51117
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/skunkBat/crates/skunky-scatter/src/scatter_server.rs",
+    "sha256": "2f86cc4a5a2cbaaacc92c7788238dd2969fad4b375fe8078c2d32621b779db85",
+    "bytes": 51237
+   },
+   {
+    "where": "primals/skunkBat/crates/skunky-ingest/src/scatter_server.rs",
+    "sha256": "9262e4ecb3ca4fd9112a5006b0b51cd844722166607406abda59343cde8bfafe",
+    "bytes": 51117
+   },
+   {
+    "where": "primals/skunkBat/crates/skunky-scatter/src/scatter_server.rs",
+    "sha256": "2f86cc4a5a2cbaaacc92c7788238dd2969fad4b375fe8078c2d32621b779db85",
+    "bytes": 51237
+   }
+  ]
+ },
+ {
+  "name": "scfa_batch_f64.wgsl",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/13_sovereign_human_health.md"
+  ],
+  "said": [
+   "scfa_batch_f64.wgsl"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/shaders/health/scfa_batch_f64.wgsl",
+    "sha256": "149a7c164afb360b3c24290c6d5e541dfaf15f9766f7d4be2d5134e78291e7f1",
+    "bytes": 1432
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/healthSpring/ecoPrimal/shaders/health/scfa_batch_f64.wgsl",
+    "sha256": "4e04a01332a14b5790bfa462a8a7bb157eafc43251741657ba20493234fc8637",
+    "bytes": 1311
+   },
+   {
+    "where": "gardens/springs/healthSpring/ecoPrimal/shaders/health/scfa_batch_f64.wgsl",
+    "sha256": "4e04a01332a14b5790bfa462a8a7bb157eafc43251741657ba20493234fc8637",
+    "bytes": 1311
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda/src/shaders/health/scfa_batch_f64.wgsl",
+    "sha256": "149a7c164afb360b3c24290c6d5e541dfaf15f9766f7d4be2d5134e78291e7f1",
+    "bytes": 1432
+   }
+  ]
+ },
+ {
+  "name": "scheduler.rs",
+  "why": "10 different files carry this name",
+  "pages": [
+   "content/lab/murillo_reproduction_plan.md"
+  ],
+  "said": [
+   "scheduler.rs"
+  ],
+  "candidates": [
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/plasmid/scheduler.rs",
+    "sha256": "2ee2321463c6e645d1fc8d5a5fa2dfe43a16633879c7d065d0bde2ab6a15bae5",
+    "bytes": 18579
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/scheduler.rs",
+    "sha256": "0b131521cdf8c287203d16caaa125f8370f69b0efa0118f13f02b8f85f7d5c05",
+    "bytes": 10122
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda/src/unified_hardware/scheduler.rs",
+    "sha256": "c7cce17f9b87ff7bafce1cbf44dc045937950d255c402b9698f99073a38dbc84",
+    "bytes": 1965
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-cellMembrane/crates/membrane-shadow/src/plasmid/scheduler.rs",
+    "sha256": "2ee2321463c6e645d1fc8d5a5fa2dfe43a16633879c7d065d0bde2ab6a15bae5",
+    "bytes": 18579
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/nestGate/code/crates/nestgate-zfs/src/snapshot/scheduler.rs",
+    "sha256": "c1ba0a221cfa35d47cbcc33f261b309d86ad6ccfe35725386fdb3c9e65516cd2",
+    "bytes": 20194
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/songBird/crates/songbird-orchestrator/src/graph/coordination/scheduler.rs",
+    "sha256": "b470f4e357460c31388497751c47d8391a567fbecee2fa3e034c95c613d79db5",
+    "bytes": 11288
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/songBird/crates/songbird-orchestrator/src/resource_management/scheduler.rs",
+    "sha256": "cc10937531d70cf7ae412fb65dec9a383596f6b909fe455b857c6321160019fa",
+    "bytes": 17380
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/core/cylinder/src/vfio/channel/diagnostic/experiments/scheduler.rs",
+    "sha256": "48d2a45b65b8fea1bdf0e503f6823b73d852d7e833f51c2d2067c35774b8e9b8",
+    "bytes": 2786
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/distributed/src/universal/scheduler.rs",
+    "sha256": "17c87eb760a45f45bb2260b73bc165cbe4f8494781b2d74d1268a0083c50e015",
+    "bytes": 14454
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/runtime/gpu/src/scheduler.rs",
+    "sha256": "ed506849fdf11db8238d57acbb42cc4f784c5f8698fb433a9023168ad56eddce",
+    "bytes": 16351
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/toadStool/crates/runtime/orchestration/src/scheduler.rs",
+    "sha256": "01799f9f79af15cb00a0eeba3e4fbd8e4d69e94e5841e2ecbf442f3e2b0bd8d6",
+    "bytes": 2083
+   },
+   {
+    "where": "data/sourdough-ball/northgate-gardens/cellMembrane/crates/membrane-shadow/src/plasmid/scheduler.rs",
+    "sha256": "2ee2321463c6e645d1fc8d5a5fa2dfe43a16633879c7d065d0bde2ab6a15bae5",
+    "bytes": 18579
+   }
+  ]
+ },
+ {
+  "name": "scope.toml",
+  "why": "5 different files carry this name",
+  "pages": [
+   "content/products/lithoSpore.md"
+  ],
+  "said": [
+   "scope.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/fossilRecord/lithoSpore_handoff_v0.7.0/scope.toml",
+    "sha256": "c4708bdf630acdca00964e6ff1b00fdc261e3da8a1636e204f1b4c9ed494d0ce",
+    "bytes": 4187
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-whitePaper/attsi/non-anon/contact/gonzales/gps/scope.toml",
+    "sha256": "76c2f94d6c26eb5aa3fe0f3a01ce6548efa4bac53e2e25fabfde8265c0710981",
+    "bytes": 7520
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/artifact/scope.toml",
+    "sha256": "f6b407048fb1cfbc21decfaf1ae864bfda38dfbd5ebf9cc010c96245bf6edf43",
+    "bytes": 5502
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/scope.toml",
+    "sha256": "1da26a1e144de185015793a315188a90949366134e28839e8ce6042445888b53",
+    "bytes": 1502
+   },
+   {
+    "where": "data/sourdough-ball/northgate-gardens/proto/tideGlass/scope.toml",
+    "sha256": "4f98a2e005ca990b0eff3e175dbbec953965255335fc3493de7b5c6684c88bf9",
+    "bytes": 8856
+   },
+   {
+    "where": "data/sourdough-ball/northgate-whitepaper/attsi/non-anon/contact/gonzales/gps/scope.toml",
+    "sha256": "76c2f94d6c26eb5aa3fe0f3a01ce6548efa4bac53e2e25fabfde8265c0710981",
+    "bytes": 7520
+   },
+   {
+    "where": "gardens/proto/tideGlass/scope.toml",
+    "sha256": "4f98a2e005ca990b0eff3e175dbbec953965255335fc3493de7b5c6684c88bf9",
+    "bytes": 8856
+   },
+   {
+    "where": "gardens/spore/lithoSpore/artifact/scope.toml",
+    "sha256": "f6b407048fb1cfbc21decfaf1ae864bfda38dfbd5ebf9cc010c96245bf6edf43",
+    "bytes": 5502
+   },
+   {
+    "where": "gardens/spore/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/scope.toml",
+    "sha256": "1da26a1e144de185015793a315188a90949366134e28839e8ce6042445888b53",
+    "bytes": 1502
+   },
+   {
+    "where": "gardens/springs/hotSpring/fossilRecord/lithoSpore_handoff_v0.7.0/scope.toml",
+    "sha256": "c4708bdf630acdca00964e6ff1b00fdc261e3da8a1636e204f1b4c9ed494d0ce",
+    "bytes": 4187
+   },
+   {
+    "where": "whitePaper/attsi/non-anon/contact/gonzales/gps/scope.toml",
+    "sha256": "76c2f94d6c26eb5aa3fe0f3a01ce6548efa4bac53e2e25fabfde8265c0710981",
+    "bytes": 7520
+   }
+  ]
+ },
+ {
+  "name": "security_convergence.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/03-ecosystem-evidence.md",
+   "content/lab/notebooks/03-experiment-evidence.md",
+   "content/lab/notebooks/05-physics-deep-dive.md"
+  ],
+  "said": [
+   "security_convergence.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/experiments/results/security_convergence.json",
+    "sha256": "4e981fedad73aaa83e31b52307f975c25ad6ed05603af0b8e1de9017c02d9d73",
+    "bytes": 3912
+   },
+   {
+    "where": "gardens/springs/airSpring/experiments/results/security_convergence.json",
+    "sha256": "3bde70341ae8634f4570b504de5e229d15a69cbb7e115a88e81f4ca229ab18d3",
+    "bytes": 1892
+   },
+   {
+    "where": "gardens/springs/hotSpring/experiments/results/security_convergence.json",
+    "sha256": "4e981fedad73aaa83e31b52307f975c25ad6ed05603af0b8e1de9017c02d9d73",
+    "bytes": 3912
+   }
+  ]
+ },
+ {
+  "name": "signatures.toml",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/architecture/SPOREGATE_IMPRINT.md"
+  ],
+  "said": [
+   "signatures.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-plasmidBin/signatures.toml",
+    "sha256": "93c2ab207a00a8e589d58d968670f52f88af3ac70b96bf19007007903157d335",
+    "bytes": 407
+   },
+   {
+    "where": "data/sourdough-ball/northgate-plasmid/signatures.toml",
+    "sha256": "bd527833f94d8cb1ea8a52d8d4c7ec49d04d1e765999309c4d1e7c3e9bef447f",
+    "bytes": 414
+   },
+   {
+    "where": "plasmidBin/signatures.toml",
+    "sha256": "93c2ab207a00a8e589d58d968670f52f88af3ac70b96bf19007007903157d335",
+    "bytes": 407
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/plasmidBin/primals/x86_64-unknown-linux-musl/signatures.toml",
+    "sha256": "93c2ab207a00a8e589d58d968670f52f88af3ac70b96bf19007007903157d335",
+    "bytes": 407
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/plasmidBin/signatures.toml",
+    "sha256": "93c2ab207a00a8e589d58d968670f52f88af3ac70b96bf19007007903157d335",
+    "bytes": 407
+   }
+  ]
+ },
+ {
+  "name": "sonar-unknowns.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/134_the_iron_peak.md"
+  ],
+  "said": [
+   "sonar-unknowns.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/sonar-unknowns.json",
+    "sha256": "7e4d17af8798e486f091827fcafef3df5752bd942f05e93d937dde910ab6fc71",
+    "bytes": 102365
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/sonar-unknowns.json",
+    "sha256": "6455aabe015cf96298119411e293a56e1381841ac939a61865cc10a1362c87b1",
+    "bytes": 103286
+   }
+  ]
+ },
+ {
+  "name": "sources.toml",
+  "why": "6 different files carry this name",
+  "pages": [
+   "content/architecture/SPOREGATE_IMPRINT.md"
+  ],
+  "said": [
+   "sources.toml"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/sources.toml",
+    "sha256": "56ba9dc7cf55d617b7e4fc44b5c79995c6bc64746db43068b2fbd2d0ef45d373",
+    "bytes": 5975
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-plasmidBin/sources.toml",
+    "sha256": "8a504c50acca239755a7d3e87881e737bfcade47bb23929055da646b9ffd78ec",
+    "bytes": 5235
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-sporePrint/sources.toml",
+    "sha256": "56ba9dc7cf55d617b7e4fc44b5c79995c6bc64746db43068b2fbd2d0ef45d373",
+    "bytes": 5975
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-tuebor-repo/site/static/sources.toml",
+    "sha256": "df5efc8da4c80d40bd1b876a27de4f4d937fc76ed58d3728b22403542758d8eb",
+    "bytes": 217
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/lansing/site/static/sources.toml",
+    "sha256": "82022a2218f4d9d8d3dadfdedee9d09b880db2a697f303353441dfb04d4def3b",
+    "bytes": 452
+   },
+   {
+    "where": "data/gut/github-clones/amicusContra/tuebor/site/static/sources.toml",
+    "sha256": "df5efc8da4c80d40bd1b876a27de4f4d937fc76ed58d3728b22403542758d8eb",
+    "bytes": 217
+   },
+   {
+    "where": "data/sourdough-ball/northgate-plasmid/sources.toml",
+    "sha256": "dec9dc8fc6fa0cc3cee6644ae4301e3676c780748c61e9de7196207dae2462fc",
+    "bytes": 4843
+   },
+   {
+    "where": "data/sourdough-ball/northgate-sporeprint/sources.toml",
+    "sha256": "56ba9dc7cf55d617b7e4fc44b5c79995c6bc64746db43068b2fbd2d0ef45d373",
+    "bytes": 5975
+   },
+   {
+    "where": "gardens/amicus/lansing/site/static/sources.toml",
+    "sha256": "82022a2218f4d9d8d3dadfdedee9d09b880db2a697f303353441dfb04d4def3b",
+    "bytes": 452
+   },
+   {
+    "where": "gardens/amicus/tuebor/site/static/sources.toml",
+    "sha256": "df5efc8da4c80d40bd1b876a27de4f4d937fc76ed58d3728b22403542758d8eb",
+    "bytes": 217
+   },
+   {
+    "where": "plasmidBin/sources.toml",
+    "sha256": "cda7a7778babcb4ad32ce3da5b295f982a6ed027f7fe71a515fdf83699f0ad6b",
+    "bytes": 4701
+   },
+   {
+    "where": "sporePrint/sources.toml",
+    "sha256": "56ba9dc7cf55d617b7e4fc44b5c79995c6bc64746db43068b2fbd2d0ef45d373",
+    "bytes": 5975
+   }
+  ]
+ },
+ {
+  "name": "spectral.rs",
+  "why": "7 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/10-spectral-theory.md"
+  ],
+  "said": [
+   "barracuda/src/spectral.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/barraCuda/crates/barracuda-core/src/ipc/methods/spectral.rs",
+    "sha256": "2d778d3b1c58e3de467997d15ad8139af09548ffed0b6639d2d3340a5fdab25e",
+    "bytes": 5797
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/bin/neuralspring_primal/spectral.rs",
+    "sha256": "7dadd724667688d3196579812c17a4fd0d36683f2fbd4bab901ed56a427d5a07",
+    "bytes": 11976
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/neuralSpring/src/visualization/scenarios/spectral.rs",
+    "sha256": "92effff7c540bba51da0609b3041502eefaa9eb896fd0213a485958a430a8ba5",
+    "bytes": 5394
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/barracuda/src/tolerances/spectral.rs",
+    "sha256": "266958fb9d68f7be660a7622dc72a268c4ca1cb80f8b51a57bc4120f393aef01",
+    "bytes": 10413
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/wetSpring/metalForge/forge/src/workloads/spectral.rs",
+    "sha256": "bd6e6620d1e072aefaf56380e713c6c82489de16a7ed059f292d33e7807ad919",
+    "bytes": 2288
+   },
+   {
+    "where": "gardens/springs/groundSpring/crates/groundspring/src/anderson/spectral.rs",
+    "sha256": "57547886b4cf4efe868862dc2d128716045b287191191545d8cd778333b8ff26",
+    "bytes": 13544
+   },
+   {
+    "where": "gardens/springs/groundSpring/metalForge/forge/src/bin/validate_gpu_tier/spectral.rs",
+    "sha256": "7b164dee5dbd468ddf67333524cd4a5d9d6b897daf915393002eca590939870a",
+    "bytes": 10710
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/bin/neuralspring_primal/spectral.rs",
+    "sha256": "7dadd724667688d3196579812c17a4fd0d36683f2fbd4bab901ed56a427d5a07",
+    "bytes": 11976
+   },
+   {
+    "where": "gardens/springs/neuralSpring/src/visualization/scenarios/spectral.rs",
+    "sha256": "92effff7c540bba51da0609b3041502eefaa9eb896fd0213a485958a430a8ba5",
+    "bytes": 5394
+   },
+   {
+    "where": "gardens/springs/wetSpring/barracuda/src/tolerances/spectral.rs",
+    "sha256": "266958fb9d68f7be660a7622dc72a268c4ca1cb80f8b51a57bc4120f393aef01",
+    "bytes": 10413
+   },
+   {
+    "where": "gardens/springs/wetSpring/metalForge/forge/src/workloads/spectral.rs",
+    "sha256": "bd6e6620d1e072aefaf56380e713c6c82489de16a7ed059f292d33e7807ad919",
+    "bytes": 2288
+   },
+   {
+    "where": "primals/barraCuda/crates/barracuda-core/src/ipc/methods/spectral.rs",
+    "sha256": "2d778d3b1c58e3de467997d15ad8139af09548ffed0b6639d2d3340a5fdab25e",
+    "bytes": 5797
+   }
+  ]
+ },
+ {
+  "name": "state.json",
+  "why": "7 different files carry this name",
+  "pages": [
+   "content/science/136_the_compound_eye.md",
+   "content/science/89_klein_bottle_is_inside_out_donut.md",
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "/state.json",
+   "state.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/state.json",
+    "sha256": "781878e7fd64863b5efa7f7f6b5496d27aba5c80b0375cf458b85b8a32eaf648",
+    "bytes": 1034
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/state.json",
+    "sha256": "db663d3a5494682b165c99d29035c65849719ac6e14fd5431387f40e51268fc2",
+    "bytes": 239
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/gut/state.json",
+    "sha256": "0f4b9ee0c2c932c84074fddda6f8f29719780f4a248062de0d7a6735cf6ff85c",
+    "bytes": 1768
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/nucleus/state.json",
+    "sha256": "4f5f96b5f9d7dcd57e7de1b398fe27e35dd5a913269dd04430bf4e6e31efda46",
+    "bytes": 1910
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/old-web/state.json",
+    "sha256": "3aa4c0230d933d1f51bf8574d726f6a33dbf2c9055d2533a7e8bce5dc3583fab",
+    "bytes": 7568
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/pspace/state.json",
+    "sha256": "18d60c409532d1efd86e49d12130c9bf8ca88151b3fbec8c5f98967d2c70ead3",
+    "bytes": 1992
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/suncloud/state.json",
+    "sha256": "50aca5139105233479ed6c36eb470604df1e91254cf7d05430a22e99bfbbe795",
+    "bytes": 488
+   },
+   {
+    "where": "data/gut/state.json",
+    "sha256": "0f4b9ee0c2c932c84074fddda6f8f29719780f4a248062de0d7a6735cf6ff85c",
+    "bytes": 1768
+   },
+   {
+    "where": "data/nucleus/state.json",
+    "sha256": "4f5f96b5f9d7dcd57e7de1b398fe27e35dd5a913269dd04430bf4e6e31efda46",
+    "bytes": 1910
+   },
+   {
+    "where": "data/old-web/state.json",
+    "sha256": "3aa4c0230d933d1f51bf8574d726f6a33dbf2c9055d2533a7e8bce5dc3583fab",
+    "bytes": 7568
+   },
+   {
+    "where": "data/pspace/state.json",
+    "sha256": "18d60c409532d1efd86e49d12130c9bf8ca88151b3fbec8c5f98967d2c70ead3",
+    "bytes": 1992
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/state.json",
+    "sha256": "781878e7fd64863b5efa7f7f6b5496d27aba5c80b0375cf458b85b8a32eaf648",
+    "bytes": 1034
+   }
+  ]
+ },
+ {
+  "name": "test_suite_report.json",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/01-composition-validation.md",
+   "content/lab/notebooks/03-ecosystem-evidence.md",
+   "content/lab/notebooks/05-physics-deep-dive.md"
+  ],
+  "said": [
+   "test_suite_report.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/experiments/results/test_suite_report.json",
+    "sha256": "560ccfca7895fba2c28cf3eaa0fea291d5130dd5432fe7c4b3581b0bf85ac14d",
+    "bytes": 2667
+   },
+   {
+    "where": "gardens/springs/airSpring/experiments/results/test_suite_report.json",
+    "sha256": "54a4a2d24e0887c35902f26018bc72bcad0d8d86e1d96058ba0f3210bfb67188",
+    "bytes": 1905
+   },
+   {
+    "where": "gardens/springs/groundSpring/experiments/results/test_suite_report.json",
+    "sha256": "5809685b2f3cb058c349ad5a6b659825450d5b4d4c8c35760df6a44b4dfea4f0",
+    "bytes": 1375
+   },
+   {
+    "where": "gardens/springs/hotSpring/experiments/results/test_suite_report.json",
+    "sha256": "560ccfca7895fba2c28cf3eaa0fea291d5130dd5432fe7c4b3581b0bf85ac14d",
+    "bytes": 2667
+   }
+  ]
+ },
+ {
+  "name": "topology.json",
+  "why": "6 different files carry this name",
+  "pages": [
+   "content/architecture/hud_observation_surface.md",
+   "content/science/136_the_compound_eye.md",
+   "content/science/59_vitality_negentropy_mobility_edge.md",
+   "content/science/70_falsification_apparatus.md",
+   "content/science/71_epitope_energy_spectrum.md",
+   "content/science/76_transport_channel_jitter.md",
+   "content/science/78_deploy_your_own_membrane.md",
+   "content/science/89_klein_bottle_is_inside_out_donut.md",
+   "content/science/91_the_homunculus.md"
+  ],
+  "said": [
+   "/topology.json",
+   "topology.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/body/topology.json",
+    "sha256": "9bcd4be4141918be82fd3e6c491c3662e8a3c45a548c6b1bae557906fa24bf57",
+    "bytes": 3122
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/topology.json",
+    "sha256": "ba5c591fedfca01e38f96cd7879312abf72983e7967a0616962dd5fcab309f8d",
+    "bytes": 2700
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/topology.json",
+    "sha256": "ef13117c90411490c22cf97dd3927d70f39832035a2d03fd640022770a1c2a7e",
+    "bytes": 747
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/data/body/topology.json",
+    "sha256": "9bcd4be4141918be82fd3e6c491c3662e8a3c45a548c6b1bae557906fa24bf57",
+    "bytes": 3122
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/topology.json",
+    "sha256": "499e7f1819da721f93716371e779135b63cc8f41403b004f176dd609a21083bb",
+    "bytes": 4461
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/plasmids/topology.json",
+    "sha256": "8600cbdea2477b33306e10a6cebd2c487e79352650c53073433e788c40debed2",
+    "bytes": 32371
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/body/topology.json",
+    "sha256": "9bcd4be4141918be82fd3e6c491c3662e8a3c45a548c6b1bae557906fa24bf57",
+    "bytes": 3122
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/topology.json",
+    "sha256": "50f41091bb99fb084b0a25be0625031d3ae585c4275a1aecfdbada725b2b5e5e",
+    "bytes": 3186
+   },
+   {
+    "where": "membrane/local-terminal/remote/topology.json",
+    "sha256": "499e7f1819da721f93716371e779135b63cc8f41403b004f176dd609a21083bb",
+    "bytes": 4461
+   },
+   {
+    "where": "plasmids/topology.json",
+    "sha256": "8600cbdea2477b33306e10a6cebd2c487e79352650c53073433e788c40debed2",
+    "bytes": 32371
+   }
+  ]
+ },
+ {
+  "name": "transform.rs",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/science/58_tufte_pipeline_wiring.md"
+  ],
+  "said": [
+   "transform.rs"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/petalTongue/crates/petal-tongue-scene/src/transform.rs",
+    "sha256": "1f3c79d342368b5f88933938b4778a8a29430ea50e8310791e9ca0fd98d3b6b5",
+    "bytes": 12638
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/cyrus/crates/cyrus-world/src/transform.rs",
+    "sha256": "18bddb7899eb45b3c3a9f739583e970edd4f7eedf85e69d6248666061d5d2768",
+    "bytes": 26421
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/cyrus/crates/cyrus-world/tests/transform.rs",
+    "sha256": "e1e2bf3c00c5d8546a7865910676081ed53c8002d44f77fb4391d3d50cc32248",
+    "bytes": 8056
+   },
+   {
+    "where": "primals/petalTongue/crates/petal-tongue-scene/src/transform.rs",
+    "sha256": "1f3c79d342368b5f88933938b4778a8a29430ea50e8310791e9ca0fd98d3b6b5",
+    "bytes": 12638
+   }
+  ]
+ },
+ {
+  "name": "transport.rs",
+  "why": "48 different files carry this name",
+  "pages": [
+   "content/lab/notebooks/05-stanton-murillo-transport.md"
+  ],
+  "said": [
+   "barracuda/src/physics/transport.rs"
+  ],
+  "candidates": [
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/src/transport.rs",
+    "sha256": "198529ab3ae3c4f9031eff2f1a6f2488c8a67267c5b4800fc248751b23acc953",
+    "bytes": 10988
+   },
+   {
+    "where": "cellMembrane/crates/cellmembrane-types/tests/transport.rs",
+    "sha256": "c4aa1dc3c0a05dfe7bbce7f137281e9e0155061d30ee2999711385efcadeed78",
+    "bytes": 6656
+   },
+   {
+    "where": "cellMembrane/crates/membrane-shadow/src/transport.rs",
+    "sha256": "a272bbac0fd54f5c7f670439ae1ac13fb424c35f844e02788c446dc162659259",
+    "bytes": 9555
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-cli/src/handlers/server/transport.rs",
+    "sha256": "0ff71bfae592a00f7f28f8e9503c34495514733b34da638dde84cb87e21aeb8a",
+    "bytes": 2787
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-security/src/hsm/fido2/ctap2/transport.rs",
+    "sha256": "47334deac34a1d24721e7318c02870b21aa1865be02af26cb4199edcc9771659",
+    "bytes": 13029
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-tunnel/src/tunnel/hsm/solo_v2/transport.rs",
+    "sha256": "136ac04f3b5b59007f3dc579eca94639d900527e1fcc56366c3573956b69cf3f",
+    "bytes": 1007
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/bearDog/crates/beardog-types/src/btsp/transport.rs",
+    "sha256": "6fd7ac4b1e99e28815b49a7f7173b7567815968912b1614574f140c91d3c49a6",
+    "bytes": 15877
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-core/src/socket_discovery/transport.rs",
+    "sha256": "43ab7f6bd2652fabc9e60a3e9c80939cdd22ff03878959bda19627ddfbe441e7",
+    "bytes": 16534
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/biomeOS/crates/biomeos-nucleus/src/client/transport.rs",
+    "sha256": "55e1384b158afa881b589177a39f134f1616a6722eea73c84bc605227a5e3204",
+    "bytes": 3208
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/coralreef-core/src/ipc/transport.rs",
+    "sha256": "874855ec26da1eea4cf305bdb7aeb758b994387187bfec6424c0ce58c62b4993",
+    "bytes": 421
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/coralReef/crates/primal-rpc-client/src/transport.rs",
+    "sha256": "09ada3f05d50597bf6702f63773e1ac5b0c3a3056c7c32d3ad9d90273ec98a8d",
+    "bytes": 7501
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/esotericWebb/webb/src/ipc/transport.rs",
+    "sha256": "9548b03a6185c10c45f9fff41e65fc8708abfab043bbd36d12df7d73d481e843",
+    "bytes": 4728
+   }
+  ]
+ },
+ {
+  "name": "tube-foot.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/136_the_compound_eye.md"
+  ],
+  "said": [
+   "tube-foot.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/data/tube-foot.json",
+    "sha256": "91b09e83718dd24f2a678fd8cca4d0a306ff7c2719182c1abed06b2d03da5773",
+    "bytes": 6855
+   },
+   {
+    "where": "data/sourdough-ball/eastgate-data/tube-foot.json",
+    "sha256": "e63615de6f47250f524081301efc12c9fbd6f93db8998729963c180b06536785",
+    "bytes": 7008
+   }
+  ]
+ },
+ {
+  "name": "validate.sh",
+  "why": "3 different files carry this name",
+  "pages": [
+   "content/data/transplant.md",
+   "content/pseudospore/_index.md",
+   "content/pseudospore/hotspring-qcd-sun-paper.md",
+   "content/pseudospore/hotspring-qcd-sun.md",
+   "content/pseudospore/verify.md"
+  ],
+  "said": [
+   "./validate.sh",
+   "validate.sh"
+  ],
+  "candidates": [
+   {
+    "where": "sporePrint/static/pseudospore-bundles/pseudospore-ame2020/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "sporePrint/static/pseudospore-bundles/pseudospore-chembl37-sample/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "sporePrint/static/pseudospore-bundles/pseudospore-lincs-sample/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "sporePrint/static/pseudospore-bundles/pseudospore-ltee-rel606/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "sporePrint/static/pseudospore-bundles/pseudospore-pdb-sample/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "sporePrint/static/pseudospore-bundles/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/barracuda/scripts/validate.sh",
+    "sha256": "2c53707a15201e32b9e583355cdeefab455bfb79ce991517d9f6080f9e8e9f02",
+    "bytes": 6478
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/pseudospore-bundles/pseudospore-ame2020/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/pseudospore-bundles/pseudospore-chembl37-sample/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/pseudospore-bundles/pseudospore-lincs-sample/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/pseudospore-bundles/pseudospore-ltee-rel606/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/sporeprint/pseudospore-bundles/pseudospore-pdb-sample/validate.sh",
+    "sha256": "e068fa955081bec0a2362e92b8dffe0f5bf683b032475ea7b18ab527c85df9e8",
+    "bytes": 4431
+   }
+  ]
+ },
+ {
+  "name": "validation.json",
+  "why": "18 different files carry this name",
+  "pages": [
+   "content/lab/spores/healthspring-clinical-pkpd.md"
+  ],
+  "said": [
+   "validation.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hotSpring/fossilRecord/lithoSpore_handoff_v0.7.0/validation.json",
+    "sha256": "20ff70bc50e1386dde43f1e8d5c20a562f118caeb4cacce7f814e7d0dacacac8",
+    "bytes": 5529
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/lithoSpore/pseudoSpore_hotSpring-QCD-Lattice_v1.0.0-rung1/validation.json",
+    "sha256": "8dc0ff0cabf9fc7e6b8b0d21dc2d8594b0aa0c565893a159cf3d99b030bcfafa",
+    "bytes": 4510
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/audits/fidelity-split-integration/validation.json",
+    "sha256": "982f840ee00c55703ae381bca15d5db7764b2cf7b4b23af6bed21d2ca7ffde78",
+    "bytes": 1337
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/audits/hof-pc-cry/validation.json",
+    "sha256": "f2c7d00d47c9e310c1ac34c136da9f7cf0927f82257ec1c68113d0c014f8c109",
+    "bytes": 5088
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/audits/hof-pc-load/validation.json",
+    "sha256": "2b76800806b9d83505614dbdd5e723807a9728191b27e599b18afa8c338a8fee",
+    "bytes": 6444
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/audits/name-rater-flow/validation.json",
+    "sha256": "b7aac68d922d1dadf398f1d010983ca6cdbbe43070cdc74e6bcec7850f9ba85f",
+    "bytes": 802
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/audits/ui-overlay-font-padding/validation.json",
+    "sha256": "7ee47de7be8618802832e0c604995b24af825cc97254cde0b9eeeb0268aa6b49",
+    "bytes": 2232
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/validation/bedroom-script-1077/validation.json",
+    "sha256": "31c53d01c686595e33c6c628507d68fc70c0573e94b7c0ebccc0539f4dc609e1",
+    "bytes": 1628
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/validation/bike-no-delay-1078/validation.json",
+    "sha256": "e5691f3c3335cf5c8c43cd46caadc9c95fef235235808e68d54378163bd02a3d",
+    "bytes": 4071
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/validation/cinnabar-trainer-victory-1056/validation.json",
+    "sha256": "cdf7487063ac4f0ed32c8c7915a7c85d3f9fd8f64d90748a2a40f82170b37c87",
+    "bytes": 7496
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/validation/gba-soft-reset-1079/validation.json",
+    "sha256": "5afd06273e190c4a4bc2ed5dea605bdbcbab9034e838db2a9f7e77dc77717564",
+    "bytes": 5379
+   },
+   {
+    "where": "data/gut/github-clones/ecoPrimals/open-pokered/docs/validation/inner-pet-cry-1083/validation.json",
+    "sha256": "eb9da9b832ee71ec154e79c68407726b55ca8d0000ce0f9611d07b9638aff765",
+    "bytes": 13670
+   }
+  ]
+ },
+ {
+  "name": "vitruvian-evolve.py",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/111_the_omnibus.md",
+   "content/science/90_the_evolutionary_sort.md",
+   "content/science/92_the_extraction_pattern.md"
+  ],
+  "said": [
+   "vitruvian-evolve.py"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-scripts/vitruvian-evolve.py",
+    "sha256": "097edfdab8797fa51f58c6fbc01ef081ec4aba191dbbd9bcd1373c24e1122e3a",
+    "bytes": 13184
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-whitePaper/scripts/vitruvian-evolve.py",
+    "sha256": "097edfdab8797fa51f58c6fbc01ef081ec4aba191dbbd9bcd1373c24e1122e3a",
+    "bytes": 13184
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-whitePaper/vitruvian-evolve.py",
+    "sha256": "cc9838aec8ef1e2a578cb1fac3d3955dfab37f38e583498daa7da69fd945e916",
+    "bytes": 12637
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/scripts/vitruvian-evolve.py",
+    "sha256": "097edfdab8797fa51f58c6fbc01ef081ec4aba191dbbd9bcd1373c24e1122e3a",
+    "bytes": 13184
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/whitePaper/scripts/vitruvian-evolve.py",
+    "sha256": "097edfdab8797fa51f58c6fbc01ef081ec4aba191dbbd9bcd1373c24e1122e3a",
+    "bytes": 13184
+   },
+   {
+    "where": "eastGate:/home/eastgate/Development/ecoPrimals/infra/whitePaper/vitruvian-evolve.py",
+    "sha256": "cc9838aec8ef1e2a578cb1fac3d3955dfab37f38e583498daa7da69fd945e916",
+    "bytes": 12637
+   }
+  ]
+ },
+ {
+  "name": "was.json",
+  "why": "2 different files carry this name",
+  "pages": [
+   "content/science/111_the_omnibus.md"
+  ],
+  "said": [
+   "was.json"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/hud/site/public/api/was.json",
+    "sha256": "135aef54819bb889fe19878e022a6ec4e380f5d4e6d5fb0710dad01502857a6e",
+    "bytes": 2336
+   },
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-hud/site/public/api/was.json",
+    "sha256": "135aef54819bb889fe19878e022a6ec4e380f5d4e6d5fb0710dad01502857a6e",
+    "bytes": 2336
+   },
+   {
+    "where": "data/gut/forgejo-clones/gaia/ecoPrimals/membrane/local-terminal/remote/was.json",
+    "sha256": "4dae00b36f9b3f570fb6a8239a29831d4722bab23c01f4f1fc75199d8b3ae64a",
+    "bytes": 2278
+   },
+   {
+    "where": "membrane/local-terminal/remote/was.json",
+    "sha256": "4dae00b36f9b3f570fb6a8239a29831d4722bab23c01f4f1fc75199d8b3ae64a",
+    "bytes": 2278
+   }
+  ]
+ },
+ {
+  "name": "wave.toml",
+  "why": "4 different files carry this name",
+  "pages": [
+   "content/architecture/SOVEREIGN_CI.md"
+  ],
+  "said": [
+   "wave.toml"
+  ],
+  "candidates": [
+   {
+    "where": "data/gut/forgejo-clones/ecoPrimals/infra-wateringHole/wave.toml",
+    "sha256": "7e76c9b38d479f7f18d64ffd6fed9a6e76d8f1a7456b978a1b132354e36c2c2c",
+    "bytes": 1803
+   },
+   {
+    "where": "primalSpring/config/ecosystem/wave.toml",
+    "sha256": "da2bc3a9b0bd5d6b997b6c6551154ac8f23c14ad24ceb7dec0b1afc234a1c56a",
+    "bytes": 40
+   },
+   {
+    "where": "primals/wateringHole/wave.toml",
+    "sha256": "9622124d49aa25524212ceac8527c060c9c3484767a85ae58a3d45e6fda45028",
+    "bytes": 1236
+   },
+   {
+    "where": "wateringHole/wave.toml",
+    "sha256": "2dc6403c07b8206be6c03ef09b6ae847287219d4b4f2e86236bff4d931a9b527",
+    "bytes": 1375
+   }
+  ]
+ }
+]

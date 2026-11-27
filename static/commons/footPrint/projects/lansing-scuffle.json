@@ -1,0 +1,197 @@
+{
+  "name": "Lansing Scuffle — John Bean Building",
+  "savedAt": "2026-07-20T11:45:00Z",
+  "layers": {
+    "parcel": {
+      "name": "Parcel Boundary",
+      "color": "#e94560",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "John Bean Building Parcel",
+            "address": "1305 S Cedar St, Lansing, MI 48910",
+            "area_sf": 522720,
+            "acres": 12.0,
+            "zoning": "DI — Industrial",
+            "notes": "464K SF factory, 1941 wartime construction, rail spur access"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-84.5460, 42.7198],
+              [-84.5420, 42.7198],
+              [-84.5420, 42.7170],
+              [-84.5460, 42.7170],
+              [-84.5460, 42.7198]
+            ]]
+          }
+        }
+      ]
+    },
+    "building": {
+      "name": "Building Footprint",
+      "color": "#4FC3F7",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Main Factory Structure",
+            "area_sf": 464000,
+            "floors": 3,
+            "ceiling_height_ft": 14.58,
+            "year_built": 1941,
+            "power_mw": 8,
+            "cooling_tons": 600,
+            "hvac_units": 18,
+            "notes": "Wartime industrial, former cannabis cultivation facility"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-84.5456, 42.7196],
+              [-84.5424, 42.7196],
+              [-84.5424, 42.7172],
+              [-84.5456, 42.7172],
+              [-84.5456, 42.7196]
+            ]]
+          }
+        }
+      ]
+    },
+    "kderm-zones": {
+      "name": "K-Derm Zones",
+      "color": "#2ecc71",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Zone 1 — Community (Ground Floor)",
+            "floor": 1,
+            "kderm_zone": "community",
+            "functions": [
+              "Humanitarian station (hot water, WiFi, charging, warming)",
+              "The Fledge sanctuary partnership",
+              "Community workshop and maker space",
+              "Public event hall"
+            ]
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-84.5456, 42.7180],
+              [-84.5424, 42.7180],
+              [-84.5424, 42.7172],
+              [-84.5456, 42.7172],
+              [-84.5456, 42.7180]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Zone 2 — Science (Second Floor)",
+            "floor": 2,
+            "kderm_zone": "science",
+            "functions": [
+              "BSL-1 wet lab (metagenomics, airSpring sensors)",
+              "Spectral analysis lab (wetSpring)",
+              "Computational chemistry workspace",
+              "Office and collaboration space"
+            ]
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-84.5456, 42.7188],
+              [-84.5424, 42.7188],
+              [-84.5424, 42.7180],
+              [-84.5456, 42.7180],
+              [-84.5456, 42.7188]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Zone 3 — Compute (Third Floor)",
+            "floor": 3,
+            "kderm_zone": "compute",
+            "functions": [
+              "GPU compute cluster (barraCuda, toadStool)",
+              "Sovereign data center (nestGate CAS)",
+              "Network backbone (songBird, petalTongue)",
+              "Thermal capture (glycol loops → sand batteries)"
+            ]
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-84.5456, 42.7196],
+              [-84.5424, 42.7196],
+              [-84.5424, 42.7188],
+              [-84.5456, 42.7188],
+              [-84.5456, 42.7196]
+            ]]
+          }
+        }
+      ]
+    },
+    "infrastructure": {
+      "name": "Infrastructure",
+      "color": "#f39c12",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Rail Spur Access",
+            "type": "rail",
+            "notes": "Active rail spur for equipment delivery"
+          },
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [-84.5460, 42.7170],
+              [-84.5470, 42.7165],
+              [-84.5480, 42.7162]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Rooftop Solar Zone",
+            "area_sf": 100000,
+            "type": "solar",
+            "notes": "100K SF flat roof, ideal for solar panel installation"
+          },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[
+              [-84.5454, 42.7194],
+              [-84.5426, 42.7194],
+              [-84.5426, 42.7174],
+              [-84.5454, 42.7174],
+              [-84.5454, 42.7194]
+            ]]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "name": "Beachhead Entry Point",
+            "type": "beachhead",
+            "cost_monthly": 253,
+            "power": "400A/480V",
+            "hvac_tons": 35,
+            "notes": "Single room, pre-installed power and cooling — Year 0 entry"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [-84.5440, 42.7184]
+          }
+        }
+      ]
+    }
+  }
+}
