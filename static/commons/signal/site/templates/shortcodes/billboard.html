@@ -1,0 +1,70 @@
+{# ecoPrimal Billboard — mixed chapters from the membrane braid #}
+{# Usage: {{ billboard() }} — works on any primals.eco site #}
+{# Fetches mix from signal.primals.eco/billboard-mix.json, falls back to /billboard #}
+<div id="billboard" style="background:#0d1117; border:1px solid #30363d; border-radius:8px; padding:1em 1.5em; margin-bottom:1.5em; display:none; cursor:pointer;" title="click for next chapter">
+  <div style="display:flex; align-items:center; gap:0.8em; margin-bottom:0.5em;">
+    <span style="width:8px; height:8px; background:#3fb950; border-radius:50%; animation:pulse 2s infinite; flex-shrink:0;"></span>
+    <span id="billboard-label" style="font-family:monospace; font-size:0.8em; color:#8b949e; text-transform:uppercase; letter-spacing:0.05em;">ecoPrimal — live</span>
+    <span id="billboard-counter" style="font-family:monospace; font-size:0.7em; color:#484f58; margin-left:auto;"></span>
+  </div>
+  <div id="billboard-msg" style="font-family:Georgia,serif; font-size:1.05em; color:#e8e8e8; line-height:1.6; white-space:pre-wrap;"></div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('billboard');
+  var msg=document.getElementById('billboard-msg');
+  var counter=document.getElementById('billboard-counter');
+  if(!el||!msg)return;
+
+  var chapters=[];
+  var currentIdx=-1;
+  var host=window.location.hostname;
+  var mixSrc=host==='signal.primals.eco'?'/billboard-mix.json':'https://signal.primals.eco/billboard-mix.json';
+  var fallbackSrc=host==='signal.primals.eco'?'/billboard':'https://signal.primals.eco/billboard';
+
+  function show(idx){
+    if(!chapters.length)return;
+    idx=((idx%chapters.length)+chapters.length)%chapters.length;
+    currentIdx=idx;
+    var ch=chapters[idx];
+    el.style.display='';
+    msg.textContent=ch.text||ch.title||'';
+    counter.textContent=(idx+1)+'/'+chapters.length;
+  }
+
+  function shuffle(){
+    if(!chapters.length)return;
+    show(Math.floor(Math.random()*chapters.length));
+  }
+
+  // Click to cycle forward
+  el.addEventListener('click',function(){
+    if(chapters.length>1) show(currentIdx+1);
+  });
+
+  // Load mix
+  fetch(mixSrc,{cache:'no-store'})
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d.billboards&&d.billboards.length>0){
+        chapters=d.billboards;
+        shuffle();
+      }
+    })
+    .catch(function(){
+      // Fallback to single billboard
+      fetch(fallbackSrc,{cache:'no-store'})
+        .then(function(r){return r.text()})
+        .then(function(t){
+          t=t.trim();
+          if(t){chapters=[{text:t,title:t.split('\n')[0]}];show(0);}
+        })
+        .catch(function(){el.style.display='none';});
+    });
+
+  // Auto-rotate every 45 seconds
+  setInterval(function(){
+    if(chapters.length>1) show(currentIdx+1);
+  },45000);
+})();
+</script>

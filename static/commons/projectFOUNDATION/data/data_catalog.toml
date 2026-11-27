@@ -1,0 +1,808 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Data Braid Catalog — machine-readable inventory of all datasets ingested
+# through the Provenance Trio pipeline on westGate.
+#
+# Each entry records the sweetGrass braid metadata: source, license,
+# ingestion gate, provenance status, and which springs/gardens consume
+# the data. The braid URN references the W3C PROV-O JSON-LD attestation
+# created by sweetGrass braid.create.
+#
+# This catalog is the source of truth for the sporePrint /data/ pages
+# and the projectFOUNDATION thread lineage cross-references.
+
+[meta]
+version = "2.0.0"
+generated = "2026-08-02"
+wave = 155
+gate = "westGate"
+total_datasets = 38
+total_size_gb = 362.0
+total_files = 260000
+total_cas_objects = 5800
+provenance_coverage = "100%"
+tideglass_modules = "7/7 COMPLETE"
+pipeline = "content.put → rhizoCrypt DAG → loamSpine spine → bearDog Ed25519 → sweetGrass braid.create"
+
+# ─── Structural Biology ────────────────────────────────────────────────
+
+[[datasets]]
+id = "pdb-mmcif"
+name = "PDB mmCIF (full mirror)"
+domain = "structural-biology"
+domain_label = "Structural Biology"
+size_bytes = 94489280512       # ~88 GB
+size_human = "88 GB"
+file_count = 257179
+cas_objects = 257179
+source_url = "https://files.rcsb.org/pub/pdb/data/structures/divided/mmCIF/"
+source_org = "RCSB PDB"
+license = "CC0-1.0"
+ingestion_date = "2026-07-30"
+provenance = "Manifest + BLAKE3"
+springs = ["hotSpring", "neuralSpring"]
+gardens = []
+threads = [1, 2, 3]
+description = "Complete Protein Data Bank mirror in mmCIF format. 257K experimentally determined 3D structures of proteins, nucleic acids, and complex assemblies."
+what_possible = "Cross-reference with ChEMBL binding data for structure-activity analysis. Feed neuralSpring for structure prediction validation. Combine with UniProt for function-structure mapping."
+
+[[datasets]]
+id = "uniprot-swissprot"
+name = "UniProt Swiss-Prot"
+domain = "structural-biology"
+domain_label = "Structural Biology"
+size_bytes = 801112064         # ~764 MB
+size_human = "764 MB"
+file_count = 3
+cas_objects = 3
+source_url = "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/"
+source_org = "UniProt Consortium"
+license = "CC-BY-4.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["wetSpring", "hotSpring"]
+gardens = []
+threads = [1, 4, 5]
+description = "Curated protein sequence database. 570K+ reviewed entries with functional annotations, post-translational modifications, and cross-references to 180+ external databases."
+what_possible = "Map tissue-specific expression (GTEx) to protein function annotations. Combine with PDB for sequence-structure-function triangulation."
+
+[[datasets]]
+id = "uniprot-trembl"
+name = "UniProt TrEMBL (unreviewed)"
+domain = "structural-biology"
+domain_label = "Structural Biology"
+size_bytes = 158913789952      # ~148 GB
+size_human = "148 GB"
+file_count = 3
+cas_objects = 3
+source_url = "https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/"
+source_org = "UniProt Consortium"
+license = "CC-BY-4.0"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["wetSpring", "neuralSpring"]
+gardens = []
+threads = [1, 4, 5]
+description = "251M+ unreviewed protein sequences from automated annotation. Complete proteome coverage for computational biology workflows."
+what_possible = "Massive sequence space for homology searches. Combine with UniRef90 for clustered analysis. Feed neuralSpring for structure prediction at scale."
+
+[[datasets]]
+id = "pdb70"
+name = "PDB70 HHblits database"
+domain = "structural-biology"
+domain_label = "Structural Biology"
+size_bytes = 28991029248       # ~27 GB
+size_human = "27 GB"
+file_count = 4
+cas_objects = 4
+source_url = "https://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/"
+source_org = "Söding Lab"
+license = "CC-BY-SA-4.0"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["neuralSpring"]
+gardens = []
+threads = [1, 2]
+description = "PDB70 clustered at 70% sequence identity for HHblits remote homology detection. Used for profile-profile alignment and template-based structure prediction."
+what_possible = "Template detection for neuralSpring structure prediction. Combine with PDB mmCIF for full template-based modeling pipeline."
+
+# ─── Drug Discovery ────────────────────────────────────────────────────
+
+[[datasets]]
+id = "chembl-37"
+name = "ChEMBL 37"
+domain = "drug-discovery"
+domain_label = "Drug Discovery"
+size_bytes = 16106127360       # ~15 GB
+size_human = "15 GB"
+file_count = 2
+cas_objects = 2
+source_url = "https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/latest/"
+source_org = "EMBL-EBI"
+license = "CC-BY-SA-3.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "2.9M compounds, 24.5M bioactivity measurements, 1.6M assays. The largest open drug discovery database mapping chemical structures to biological targets."
+what_possible = "Combine with LINCS L1000 gene expression signatures for drug repurposing without wet lab access. Cross-reference with PDB for structure-based virtual screening. Feed tideGlass for pharmacometric modeling."
+
+[[datasets]]
+id = "zinc20"
+name = "ZINC20 SMILES (drug-like subset)"
+domain = "drug-discovery"
+domain_label = "Drug Discovery"
+size_bytes = 167772160         # ~160 MB
+size_human = "160 MB"
+file_count = 110
+cas_objects = 110
+source_url = "https://zinc20.docking.org/"
+source_org = "UCSF Irwin Lab"
+license = "Free for research"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3]
+description = "Drug-like compound subset from ZINC20 in SMILES format. Commercially available molecules filtered for drug-likeness (Lipinski)."
+what_possible = "Virtual screening library for tideGlass. Combine with ChEMBL bioactivity to prioritize compounds. Cross-reference with PDB binding sites."
+
+[[datasets]]
+id = "pubchem"
+name = "PubChem (SMILES + InChI-Key + Synonym + Mass)"
+domain = "drug-discovery"
+domain_label = "Drug Discovery"
+size_bytes = 11811160064       # ~11 GB
+size_human = "11 GB"
+file_count = 5
+cas_objects = 5
+source_url = "https://ftp.ncbi.nlm.nih.gov/pubchem/"
+source_org = "NCBI"
+license = "Public Domain"
+ingestion_date = "2026-07-30"
+provenance = "FULL"
+springs = ["healthSpring", "wetSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "Chemical compound identifiers, structures (SMILES/InChI-Key), synonyms, and molecular masses from the world's largest free chemistry database."
+what_possible = "Chemical identifier resolution for cross-database linking. Map ChEMBL bioactivity to PubChem compound metadata. Feed MassBank spectral matching with exact masses."
+
+[[datasets]]
+id = "bindingdb"
+name = "BindingDB binding affinity"
+domain = "drug-discovery"
+domain_label = "Drug Discovery"
+size_bytes = 611319808         # ~583 MB
+size_human = "583 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://www.bindingdb.org/rwd/bind/index.jsp"
+source_org = "BindingDB"
+license = "CC-BY-3.0"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "2.9M+ binding affinity measurements linking drug compounds to protein targets. Ki, Kd, IC50, and EC50 values for structure-activity relationship analysis."
+what_possible = "Combine with ChEMBL for comprehensive bioactivity landscape. Cross-reference with PDB for structure-based affinity prediction. Feed tideGlass compound ranking."
+
+[[datasets]]
+id = "nf-data-portal"
+name = "NF Data Portal (Synapse)"
+domain = "drug-discovery"
+domain_label = "Drug Discovery"
+size_bytes = 698351616         # ~666 MB
+size_human = "666 MB"
+file_count = 658
+cas_objects = 658
+source_url = "https://nf.synapse.org/"
+source_org = "NF Data Portal / Sage Bionetworks"
+license = "Synapse Terms of Use"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "NF1 high-throughput drug screening (8K compounds + structures), NF2 Synodos drug screen, NF2 kinomics (peptide-level, protein-level, differential expression). Neurofibromatosis research data."
+what_possible = "tideGlass Module 7 base data. NF drug repurposing pipeline: combine NF drug sensitivity with LINCS perturbation signatures for NF-specific therapeutic candidates."
+
+# ─── Gene Expression ───────────────────────────────────────────────────
+
+[[datasets]]
+id = "lincs-l1000"
+name = "LINCS L1000 Level 5 + metadata"
+domain = "gene-expression"
+domain_label = "Gene Expression"
+size_bytes = 21474836480       # ~20 GB
+size_human = "20 GB"
+file_count = 6
+cas_objects = 6
+source_url = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE92742"
+source_org = "NCBI GEO / Broad Institute"
+license = "CC-BY-4.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["wetSpring"]
+gardens = ["tideGlass"]
+threads = [3, 5, 8]
+description = "473K gene expression signatures across 12K genes. Drug perturbation, gene knockdown, and overexpression profiles across 77 cell lines. The core dataset for computational drug repurposing."
+what_possible = "Combine with ChEMBL for drug mechanism inference. Map perturbation signatures to GTEx tissue expression for tissue-specific drug effects. The gen5 critical path for tideGlass drug repurposing."
+
+[[datasets]]
+id = "gtex-v8"
+name = "GTEx V8 expression"
+domain = "gene-expression"
+domain_label = "Gene Expression"
+size_bytes = 2576980378        # ~2.4 GB
+size_human = "2.4 GB"
+file_count = 4
+cas_objects = 4
+source_url = "https://gtexportal.org/home/downloads/adult-gtex/bulk_tissue_expression"
+source_org = "GTEx Consortium / Broad Institute"
+license = "dbGaP (public summary)"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["wetSpring", "healthSpring"]
+gardens = []
+threads = [5, 8]
+description = "Gene expression across 54 human tissues from 948 donors. TPM and read count matrices for tissue-specific expression analysis."
+what_possible = "Map tissue-specific protein expression (with UniProt). Identify tissue selectivity of drug candidates (with ChEMBL + LINCS). Feed healthSpring clinical models."
+
+[[datasets]]
+id = "geo-soft-cancer"
+name = "GEO SOFT cancer series (11 series)"
+domain = "gene-expression"
+domain_label = "Gene Expression"
+size_bytes = 3221225472        # ~3 GB
+size_human = "3 GB"
+file_count = 11
+cas_objects = 11
+source_url = "https://www.ncbi.nlm.nih.gov/geo/"
+source_org = "NCBI GEO"
+license = "Public Domain"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["wetSpring", "healthSpring"]
+gardens = ["tideGlass"]
+threads = [5, 8]
+description = "11 GEO cancer expression series including CCLE (GSE36139), GDSC (GSE68379), and other cancer cell line profiling datasets. Pre-processed SOFT format."
+what_possible = "Drug sensitivity modeling: combine CCLE/GDSC expression with ChEMBL bioactivity. Cancer-specific perturbation profiles for tideGlass. Cross-reference with TCGA clinical data."
+
+# ─── Proteomics ────────────────────────────────────────────────────────
+
+[[datasets]]
+id = "uniref90"
+name = "UniRef90"
+domain = "proteomics"
+domain_label = "Proteomics"
+size_bytes = 32212254720       # ~30 GB
+size_human = "30 GB"
+file_count = 1
+cas_objects = 1
+source_url = "https://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/"
+source_org = "UniProt Consortium"
+license = "CC-BY-4.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["wetSpring", "neuralSpring"]
+gardens = []
+threads = [1, 4, 5]
+description = "Clustered protein sequences at 90% identity. Reduces redundancy while preserving diversity for homology searches and MSA construction."
+what_possible = "Build multiple sequence alignments for structure prediction (neuralSpring). Feed evolutionary analysis pipelines (wetSpring). Cross-reference with PDB for template-based modeling."
+
+[[datasets]]
+id = "pdb-structures"
+name = "PDB structures (506 individual)"
+domain = "proteomics"
+domain_label = "Proteomics"
+size_bytes = 378535936         # ~361 MB
+size_human = "361 MB"
+file_count = 506
+cas_objects = 506
+source_url = "https://files.rcsb.org/download/"
+source_org = "RCSB PDB"
+license = "CC0-1.0"
+ingestion_date = "2026-07-28"
+provenance = "FULL"
+springs = ["hotSpring", "neuralSpring"]
+gardens = []
+threads = [1, 2]
+description = "506 individually retrieved PDB structures in PDB format. High-priority targets for molecular dynamics and structure prediction validation."
+what_possible = "Direct input for hotSpring molecular dynamics simulations. Validation targets for neuralSpring structure prediction. Cross-reference with UniProt annotations."
+
+# ─── Cancer Genomics ──────────────────────────────────────────────────
+
+[[datasets]]
+id = "tcga-xena"
+name = "TCGA Xena Hub"
+domain = "cancer-genomics"
+domain_label = "Cancer Genomics"
+size_bytes = 470548480         # ~449 MB
+size_human = "449 MB"
+file_count = 8
+cas_objects = 8
+source_url = "https://xenabrowser.net/datapages/?cohort=TCGA%20Pan-Cancer%20(PANCAN)"
+source_org = "UCSC Xena / NCI"
+license = "Public Domain"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [5, 8]
+description = "TCGA Pan-Cancer expression, mutation, and clinical data via UCSC Xena Hub. 33 cancer types, 11K+ samples."
+what_possible = "Cancer subtype classification and drug sensitivity prediction. Combine with GDSC/CCLE expression for multi-dataset cancer modeling. tideGlass Module 5 base data."
+
+# ─── Disease Ontology ─────────────────────────────────────────────────
+
+[[datasets]]
+id = "mondo-disease"
+name = "MONDO Disease Ontology"
+domain = "disease-ontology"
+domain_label = "Disease Ontology"
+size_bytes = 107374182         # ~103 MB
+size_human = "103 MB"
+file_count = 2
+cas_objects = 2
+source_url = "https://mondo.monarchinitiative.org/"
+source_org = "Monarch Initiative"
+license = "CC-BY-4.0"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "Unified disease ontology merging OMIM, Orphanet, EFO, DOID, and NCIt. Provides disease-gene and disease-phenotype mappings."
+what_possible = "Disease term resolution for drug repurposing queries. Combine with ChEMBL indication data for systematic repurposing. tideGlass Module 4 base data."
+
+[[datasets]]
+id = "reactome-pathways"
+name = "Reactome Pathway Database"
+domain = "disease-ontology"
+domain_label = "Disease Ontology"
+size_bytes = 100663296         # ~96 MB
+size_human = "96 MB"
+file_count = 3
+cas_objects = 3
+source_url = "https://reactome.org/download-data"
+source_org = "Reactome"
+license = "CC-BY-4.0"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["healthSpring", "wetSpring"]
+gardens = ["tideGlass"]
+threads = [3, 5, 8]
+description = "2,700+ curated biological pathways covering metabolism, signaling, gene expression, transport, and disease. Gold standard for pathway enrichment analysis."
+what_possible = "Pathway enrichment for LINCS perturbation signatures. Drug-pathway impact analysis with ChEMBL. tideGlass Module 4 base data."
+
+# ─── Genomic Reference ────────────────────────────────────────────────
+
+[[datasets]]
+id = "refseq-grch38"
+name = "RefSeq GRCh38 reference genome"
+domain = "genomic-reference"
+domain_label = "Genomic Reference"
+size_bytes = 1028653056        # ~981 MB
+size_human = "981 MB"
+file_count = 3
+cas_objects = 3
+source_url = "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.40_GRCh38.p14/"
+source_org = "NCBI RefSeq"
+license = "Public Domain"
+ingestion_date = "2026-08-01"
+provenance = "FULL"
+springs = ["wetSpring"]
+gardens = []
+threads = [4, 5]
+description = "Human reference genome GRCh38.p14. Primary assembly plus alternate loci. The coordinate system for all human genomics."
+what_possible = "Genomic coordinate mapping for expression data (GTEx, LINCS). Reference for variant calling. Anchor for all human genomic analysis."
+
+[[datasets]]
+id = "ncbi-gene"
+name = "NCBI Gene (Homo sapiens)"
+domain = "genomic-reference"
+domain_label = "Genomic Reference"
+size_bytes = 7516192768        # ~7 GB
+size_human = "7 GB"
+file_count = 5
+cas_objects = 5
+source_url = "https://ftp.ncbi.nlm.nih.gov/gene/DATA/"
+source_org = "NCBI"
+license = "Public Domain"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["wetSpring", "healthSpring"]
+gardens = ["tideGlass"]
+threads = [4, 5, 8]
+description = "NCBI Gene database: gene information, gene2GO mappings, gene2refseq cross-references. Comprehensive gene annotation for human and model organisms."
+what_possible = "Gene ID resolution for cross-database linking. GO term enrichment for LINCS perturbation analysis. tideGlass Module 6 base data."
+
+# ─── Microbial Evolution ───────────────────────────────────────────────
+
+[[datasets]]
+id = "ltee-rel606"
+name = "LTEE REL606 genome"
+domain = "microbial-evolution"
+domain_label = "Microbial Evolution"
+size_bytes = 6082355           # ~5.8 MB
+size_human = "5.8 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://www.ncbi.nlm.nih.gov/nuccore/CP000819.1"
+source_org = "NCBI"
+license = "Public Domain"
+ingestion_date = "2026-07-28"
+provenance = "FULL"
+springs = ["wetSpring"]
+gardens = ["lithoSpore"]
+threads = [5]
+description = "Reference genome for E. coli B strain REL606 — the ancestral strain of Lenski's Long-Term Evolution Experiment (LTEE). 4.6M bp, 4,432 genes."
+what_possible = "Anchor for LTEE evolutionary dynamics analysis. Combine with SILVA 16S for phylogenetic context. Feed lithoSpore for self-verifying genomic artifacts."
+
+[[datasets]]
+id = "silva-138"
+name = "SILVA 138.1 (16S ref)"
+domain = "microbial-evolution"
+domain_label = "Microbial Evolution"
+size_bytes = 197132288         # ~188 MB
+size_human = "188 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://www.arb-silva.de/download/archive/"
+source_org = "SILVA"
+license = "CC-BY-4.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["wetSpring"]
+gardens = []
+threads = [4, 5]
+description = "16S rRNA reference taxonomy database. Gold standard for microbial community classification via amplicon sequencing."
+what_possible = "Classify microbial communities from 16S amplicon data (wetSpring DADA2 pipeline). Combine with LTEE for evolutionary context."
+
+# ─── Environmental ─────────────────────────────────────────────────────
+
+[[datasets]]
+id = "noaa-ghcnd"
+name = "NOAA GHCND"
+domain = "environmental"
+domain_label = "Environmental"
+size_bytes = 3758096384        # ~3.5 GB
+size_human = "3.5 GB"
+file_count = 3
+cas_objects = 3
+source_url = "https://www.ncbi.noaa.gov/pub/data/ghcn/daily/"
+source_org = "NOAA"
+license = "Public Domain"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["groundSpring", "airSpring"]
+gardens = []
+threads = [4, 6]
+description = "Global Historical Climatology Network daily weather observations. 100K+ stations worldwide, daily temperature, precipitation, snowfall records spanning 1700s to present."
+what_possible = "Correlate weather patterns with agricultural yields (USDA NASS). Feed airSpring atmospheric models. Combine with USGS seismic data for multi-hazard analysis."
+
+[[datasets]]
+id = "usgs-earthquake"
+name = "USGS earthquake catalog (monthly)"
+domain = "environmental"
+domain_label = "Environmental"
+size_bytes = 2202009           # ~2.1 MB
+size_human = "2.1 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://earthquake.usgs.gov/fdsnws/event/1/"
+source_org = "USGS"
+license = "Public Domain"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["groundSpring"]
+gardens = []
+threads = [4]
+description = "Monthly earthquake catalog from USGS FDSN web service. Magnitude, location, depth, and focal mechanism for global seismic events."
+what_possible = "Seismic pattern analysis for groundSpring. Combine with NOAA weather for multi-hazard correlation studies."
+
+# ─── Analytical Chemistry ──────────────────────────────────────────────
+
+[[datasets]]
+id = "massbank-nist"
+name = "MassBank NIST reference spectra"
+domain = "analytical-chemistry"
+domain_label = "Analytical Chemistry"
+size_bytes = 66060288          # ~63 MB
+size_human = "63 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://massbank.eu/MassBank/"
+source_org = "MassBank Consortium"
+license = "CC-BY-4.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["wetSpring"]
+gardens = []
+threads = [4]
+description = "NIST-validated mass spectrometry reference spectra. Standard compounds for metabolomics and environmental chemistry (including PFAS detection)."
+what_possible = "Spectral matching for PFAS detection in environmental samples (wetSpring). Cross-reference with PubChem for compound identification."
+
+# ─── Biosignals ────────────────────────────────────────────────────────
+
+[[datasets]]
+id = "physionet-mitbih"
+name = "PhysioNet MIT-BIH"
+domain = "biosignals"
+domain_label = "Biosignals"
+size_bytes = 23068672          # ~22 MB
+size_human = "22 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://physionet.org/content/mitdb/"
+source_org = "PhysioNet"
+license = "ODbl-1.0"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = []
+threads = [8]
+description = "MIT-BIH Arrhythmia Database. 48 half-hour ECG recordings from 47 subjects. Gold standard for cardiac arrhythmia detection algorithm development."
+what_possible = "Train and validate arrhythmia detection models (healthSpring). Baseline for sovereign health monitoring on gate hardware."
+
+# ─── Nuclear Physics ───────────────────────────────────────────────────
+
+[[datasets]]
+id = "ame2020"
+name = "AME2020 nuclear masses"
+domain = "nuclear-physics"
+domain_label = "Nuclear Physics"
+size_bytes = 1258291           # ~1.2 MB
+size_human = "1.2 MB"
+file_count = 2
+cas_objects = 2
+source_url = "https://www-nds.iaea.org/amdc/"
+source_org = "IAEA Nuclear Data Services"
+license = "Public Domain"
+ingestion_date = "2026-07-28"
+provenance = "FULL"
+springs = ["hotSpring"]
+gardens = []
+threads = [2]
+description = "Atomic Mass Evaluation 2020. Experimentally measured and predicted masses for 3,500+ nuclides. The reference table for nuclear binding energy calculations."
+what_possible = "Direct input for hotSpring nuclear binding energy calculations on GPU. Validate lattice QCD results against experimental nuclear masses."
+
+# ─── Agriculture ───────────────────────────────────────────────────────
+
+[[datasets]]
+id = "usda-nass"
+name = "USDA NASS Census 2017"
+domain = "agriculture"
+domain_label = "Agriculture"
+size_bytes = 138412032         # ~132 MB
+size_human = "132 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://www.nass.usda.gov/AgCensus/"
+source_org = "USDA National Agricultural Statistics Service"
+license = "Public Domain"
+ingestion_date = "2026-07-29"
+provenance = "FULL"
+springs = ["airSpring"]
+gardens = []
+threads = [6]
+description = "Complete Census of Agriculture 2017. Farm counts, acreage, production, economics, and demographics for every US county."
+what_possible = "Correlate agricultural production with weather patterns (NOAA GHCND). Feed airSpring precision agriculture models. Ground truth for yield prediction."
+
+# ─── Cancer Mutation ───────────────────────────────────────────────────
+
+[[datasets]]
+id = "cosmic-v104"
+name = "COSMIC v104 (CGC + Genome/Targeted Screens + Breakpoints)"
+domain = "cancer-genomics"
+domain_label = "Cancer Genomics"
+size_bytes = 4939212800        # ~4.6 GB
+size_human = "4.6 GB"
+file_count = 5
+cas_objects = 5
+source_url = "https://cancer.sanger.ac.uk/cosmic/download"
+source_org = "Sanger Institute"
+license = "Non-commercial (COSMIC)"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [5, 8]
+description = "Cancer Gene Census, genome-wide and targeted mutation screens, and genomic breakpoints from the Catalogue of Somatic Mutations in Cancer."
+what_possible = "Map somatic mutations to drug targets (ChEMBL + BindingDB). Cancer driver gene identification. Cross-reference with TCGA Xena clinical data."
+
+# ─── Enzyme Kinetics ──────────────────────────────────────────────────
+
+[[datasets]]
+id = "brenda-kinetics"
+name = "BRENDA enzyme kinetics (Km, kcat, Ki)"
+domain = "biochemistry"
+domain_label = "Biochemistry"
+size_bytes = 1677722           # ~1.6 MB
+size_human = "1.6 MB"
+file_count = 74
+cas_objects = 74
+source_url = "https://www.brenda-enzymes.org/"
+source_org = "BRENDA"
+license = "Academic use"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["hotSpring"]
+gardens = []
+threads = [2, 3]
+description = "Enzyme kinetic parameters (Km, kcat, Ki) across 20 EC classes from the BRENDA SOAP API. Experimentally measured rates for metabolic modeling."
+what_possible = "Metabolic flux modeling with Reactome pathways. Drug-enzyme interaction analysis with ChEMBL. Feed hotSpring molecular dynamics with experimental rate constants."
+
+# ─── Molecular Simulation ─────────────────────────────────────────────
+
+[[datasets]]
+id = "charmm36-ff"
+name = "CHARMM36 molecular force fields"
+domain = "molecular-simulation"
+domain_label = "Molecular Simulation"
+size_bytes = 1153434           # ~1.1 MB
+size_human = "1.1 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://mackerell.umaryland.edu/charmm_ff.shtml"
+source_org = "MacKerell Lab"
+license = "Academic use"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["hotSpring"]
+gardens = []
+threads = [2]
+description = "CHARMM36 all-atom force field parameters for proteins, lipids, nucleic acids, and carbohydrates. Gold standard for molecular dynamics simulations."
+what_possible = "Direct input for hotSpring molecular dynamics on sovereign hardware. Combine with PDB structures for production MD runs."
+
+# ─── Biosignals (additional) ──────────────────────────────────────────
+
+[[datasets]]
+id = "physionet-ptbxl"
+name = "PhysioNet PTB-XL ECG"
+domain = "biosignals"
+domain_label = "Biosignals"
+size_bytes = 1610612736        # ~1.5 GB
+size_human = "1.5 GB"
+file_count = 1
+cas_objects = 1
+source_url = "https://physionet.org/content/ptb-xl/"
+source_org = "PhysioNet"
+license = "ODbl-1.0"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = []
+threads = [8]
+description = "21,837 clinical 12-lead ECG recordings (10 seconds each) with diagnostic labels. Largest freely available clinical ECG dataset."
+what_possible = "Train diagnostic ECG models (healthSpring). Combine with MIT-BIH for multi-dataset cardiac analysis. Sovereign health monitoring on gate hardware."
+
+# ─── Drug Discovery (additional) ──────────────────────────────────────
+
+[[datasets]]
+id = "pubchem-bioassay"
+name = "PubChem BioAssay"
+domain = "drug-discovery"
+domain_label = "Drug Discovery"
+size_bytes = 11811160064       # ~11 GB
+size_human = "11 GB"
+file_count = 5
+cas_objects = 5
+source_url = "https://ftp.ncbi.nlm.nih.gov/pubchem/Bioassay/"
+source_org = "NCBI"
+license = "Public Domain"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "PubChem BioAssay data: biological screening results linking compounds to target activity. Complements ChEMBL bioactivity and BindingDB affinity data."
+what_possible = "Cross-reference with ChEMBL for comprehensive bioactivity coverage. Feed tideGlass compound prioritization. Map assay results to PubChem compound metadata."
+
+# ─── Taxonomy ─────────────────────────────────────────────────────────
+
+[[datasets]]
+id = "ncbi-taxonomy"
+name = "NCBI Taxonomy"
+domain = "genomic-reference"
+domain_label = "Genomic Reference"
+size_bytes = 77594624          # ~74 MB
+size_human = "74 MB"
+file_count = 1
+cas_objects = 1
+source_url = "https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/"
+source_org = "NCBI"
+license = "Public Domain"
+ingestion_date = "2026-08-02"
+provenance = "FULL"
+springs = ["wetSpring"]
+gardens = []
+threads = [4, 5]
+description = "NCBI Taxonomy database: hierarchical classification of all organisms with sequences in GenBank. 2.4M+ taxon nodes."
+what_possible = "Taxonomic context for all genomic data. Combine with SILVA for 16S classification. Cross-reference with LTEE for evolutionary lineage tracking."
+
+# ─── Cross-Domain Combinations ─────────────────────────────────────────
+# These entries describe dataset combinations that enable science neither
+# alone provides. This is the projectFOUNDATION thread lineage concept:
+# data braid A + data braid B + spring C = science D.
+
+[[combinations]]
+id = "drug-repurposing"
+name = "Drug Repurposing Pipeline"
+datasets = ["chembl-37", "lincs-l1000", "gtex-v8", "pubchem"]
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "ChEMBL bioactivity + LINCS perturbation signatures + GTEx tissue expression = computational drug repurposing without wet lab access. The gen5 critical path for tideGlass."
+readiness = "data-complete"
+
+[[combinations]]
+id = "structure-function"
+name = "Structure-Function Triangulation"
+datasets = ["pdb-mmcif", "uniprot-swissprot", "uniref90"]
+springs = ["neuralSpring", "hotSpring"]
+gardens = []
+threads = [1, 2]
+description = "PDB 3D structures + UniProt function annotations + UniRef90 evolutionary context = complete protein characterization from sequence to structure to function."
+readiness = "data-complete"
+
+[[combinations]]
+id = "environmental-genomics"
+name = "Environmental Genomics + Climate"
+datasets = ["ltee-rel606", "silva-138", "noaa-ghcnd", "usgs-earthquake"]
+springs = ["wetSpring", "groundSpring", "airSpring"]
+gardens = []
+threads = [4, 5, 6]
+description = "Microbial reference genomes + climate data + seismic data = multi-domain environmental analysis. Correlate microbial evolution with environmental forcing."
+readiness = "data-complete"
+
+[[combinations]]
+id = "nuclear-gpu"
+name = "Nuclear Physics on Consumer GPU"
+datasets = ["ame2020", "pdb-structures"]
+springs = ["hotSpring"]
+gardens = []
+threads = [2]
+description = "AME2020 nuclear masses + hotSpring QCD on GPU = nuclear binding energy calculations validated against experimental data, running on consumer hardware."
+readiness = "data-complete"
+
+[[combinations]]
+id = "precision-agriculture"
+name = "Precision Agriculture"
+datasets = ["usda-nass", "noaa-ghcnd"]
+springs = ["airSpring", "groundSpring"]
+gardens = []
+threads = [6]
+description = "USDA Census farm data + NOAA daily weather = yield prediction models correlated with historical climate. Sovereign precision agriculture on local compute."
+readiness = "data-complete"
+
+[[combinations]]
+id = "pfas-detection"
+name = "PFAS Environmental Detection"
+datasets = ["massbank-nist", "pubchem"]
+springs = ["wetSpring"]
+gardens = []
+threads = [4]
+description = "MassBank reference spectra + PubChem compound database = environmental PFAS detection pipeline. Match unknown spectra against verified reference library."
+readiness = "data-complete"
+
+[[combinations]]
+id = "nf-drug-repurposing"
+name = "NF Drug Repurposing (tideGlass Module 7)"
+datasets = ["nf-data-portal", "lincs-l1000", "chembl-37", "bindingdb"]
+springs = ["healthSpring"]
+gardens = ["tideGlass"]
+threads = [3, 8]
+description = "NF drug screening data + LINCS perturbation signatures + ChEMBL bioactivity + BindingDB affinity = NF-specific drug repurposing without wet lab. tideGlass 7/7 modules complete."
+readiness = "data-complete"
+
+[[combinations]]
+id = "cancer-multiomics"
+name = "Cancer Multi-Omics Integration"
+datasets = ["tcga-xena", "geo-soft-cancer", "lincs-l1000", "chembl-37", "reactome-pathways"]
+springs = ["healthSpring", "wetSpring"]
+gardens = ["tideGlass"]
+threads = [3, 5, 8]
+description = "TCGA clinical + GEO cancer expression + LINCS perturbation + ChEMBL bioactivity + Reactome pathways = comprehensive cancer drug discovery pipeline spanning genomics to pharmacology."
+readiness = "data-complete"

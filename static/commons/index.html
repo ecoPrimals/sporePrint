@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The commons — the files the pages name | sporePrint</title>
+<meta name="description" content="Every data file, script and feed the sporePrint pages name: held here with its hash and where it came from, or listed with the reason it is not.">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  body { margin: 0; }
+  .commons { max-width: 72rem; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+  .commons h1 { margin: .2rem 0 .4rem; }
+  .commons .lede { max-width: 46rem; color: var(--c-text-muted); }
+  .back { font-size: .9rem; }
+  .counts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .6rem; margin: 1.2rem 0; }
+  .count { border: 1px solid var(--c-border); border-radius: 8px; padding: .6rem .8rem; background: var(--c-bg-alt); }
+  .count b { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  .count span { font-size: .85rem; color: var(--c-text-muted); }
+  .tools { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1rem 0 .6rem; }
+  .tools input, .tools select { font: inherit; padding: .35rem .5rem; border: 1px solid var(--c-border); border-radius: 6px;
+    background: var(--c-bg); color: var(--c-text); }
+  .tools input { flex: 1 1 16rem; min-width: 10rem; }
+  .shown { font-size: .85rem; color: var(--c-text-muted); }
+  .wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--c-text-muted); white-space: nowrap; }
+  td.name { font-family: var(--font-mono); word-break: break-all; min-width: 12rem; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .state { display: inline-block; padding: 0 .45rem; border-radius: 999px; font-size: .78rem; border: 1px solid var(--c-border); white-space: nowrap; }
+  .state.held { background: var(--c-accent-light); color: var(--c-accent); border-color: var(--c-accent); }
+  .why { color: var(--c-text-muted); font-size: .84rem; }
+  .hash { font-family: var(--font-mono); font-size: .76rem; color: var(--c-text-muted); }
+  .check { margin-top: 2rem; max-width: 46rem; }
+  .check pre { background: var(--c-code-bg); padding: .7rem .9rem; border-radius: 6px; overflow-x: auto; }
+  .fail { border: 1px solid var(--c-border); border-radius: 8px; padding: 1rem; }
+</style>
+</head>
+<body>
+<main class="commons" id="main">
+  <p class="back"><a href="../">sporePrint</a> / commons</p>
+  <h1>The commons</h1>
+  <p class="lede">The pages of the sporePrint name data files, scripts and feeds. This is every one of them:
+    held here with its hash and where it came from, or listed with the reason it is not.
+    Whoever holds a copy of this repository holds the files, and can check them.</p>
+
+  <div class="counts" id="counts" aria-live="polite"></div>
+  <p class="shown" id="made"></p>
+
+  <div class="tools">
+    <input id="q" type="search" placeholder="Filter by file, repository or page" aria-label="Filter by file, repository or page">
+    <select id="state" aria-label="Standing">
+      <option value="">Every standing</option>
+      <option value="held">Held</option>
+      <option value="held back">Held back</option>
+      <option value="undecided">Undecided</option>
+      <option value="not found">Not found</option>
+    </select>
+    <select id="kind" aria-label="Kind">
+      <option value="">Every kind</option>
+      <option value="data">Data</option>
+      <option value="code">Code</option>
+      <option value="other">Other</option>
+    </select>
+    <span class="shown" id="shown"></span>
+  </div>
+
+  <div class="wrap">
+    <table>
+      <thead><tr><th>File</th><th>Standing</th><th>Bytes</th><th>From</th><th>Named by</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <section class="check">
+    <h2>Check a copy</h2>
+    <p>The manifest is <a href="manifest.json">manifest.json</a>: one entry per file, with its SHA-256.
+      With a copy of the repository:</p>
+    <pre>python scripts/commons.py check                                  # this copy
+python scripts/commons.py check https://sporeprint.primals.eco   # what the site serves</pre>
+    <p>Held back means the file was found and not copied: it names an address inside the house, carries
+      something that looks like a login or a secret, or is larger than 5 MB. Undecided means several different
+      files carry the name and the page does not say which (<a href="undecided.json">undecided.json</a> lists
+      them). Not found means no tree the gathering was given holds a file of that name.</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  var rows = document.getElementById("rows"), blobs = [];
+  var q = document.getElementById("q"), state = document.getElementById("state"), kind = document.getElementById("kind");
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function pageAddress(page) {          // content/science/111_the_omnibus.md -> ../science/111-the-omnibus/
+    var p = page.replace(/^content\//, "").replace(/\.md$/, "").replace(/\/?_index$/, "");
+    return "../" + p.replace(/[_\s]+/g, "-").toLowerCase() + (p ? "/" : "");
+  }
+  function pageLabel(page) {
+    return page.replace(/^content\//, "").replace(/\.md$/, "");
+  }
+  function fileLink(b) {
+    if (b.state !== "held") return null;
+    if (b.path.indexOf("static/commons/") === 0) return b.path.slice("static/commons/".length);
+    if (b.path.indexOf("static/") === 0) return "../" + b.path.slice("static/".length);
+    return "https://github.com/ecoPrimals/sporePrint/blob/main/" + b.path;
+  }
+  function row(b) {
+    var tr = el("tr");
+    var name = el("td", "name"), link = fileLink(b);
+    if (link) { var a = el("a", "", b.name); a.href = link; name.appendChild(a); } else name.textContent = b.name;
+    if (b.sha256) name.appendChild(el("div", "hash", "sha256 " + b.sha256.slice(0, 16) + "…"));
+    tr.appendChild(name);
+
+    var st = el("td");
+    st.appendChild(el("span", "state" + (b.state === "held" ? " held" : ""), b.state));
+    if (b.why || b.how) st.appendChild(el("div", "why", b.why || b.how));
+    tr.appendChild(st);
+
+    tr.appendChild(el("td", "num", b.bytes !== undefined ? b.bytes.toLocaleString() : ""));
+
+    var from = el("td");
+    if (b.from) {
+      from.appendChild(el("div", "", b.from.repo || "no repository"));
+      var note = b.from.note || (b.from.committed && b.from.committed !== "yes" ? "committed there: " + b.from.committed : "");
+      if (note) from.appendChild(el("div", "why", note));
+    }
+    tr.appendChild(from);
+
+    var pages = el("td");
+    b.pages.slice(0, 3).forEach(function (p) {
+      var a = el("a", "", pageLabel(p)); a.href = pageAddress(p);
+      var d = el("div"); d.appendChild(a); pages.appendChild(d);
+    });
+    if (b.pages.length > 3) pages.appendChild(el("div", "why", "and " + (b.pages.length - 3) + " more"));
+    tr.appendChild(pages);
+    return tr;
+  }
+  function draw() {
+    var words = q.value.trim().toLowerCase(), n = 0, frag = document.createDocumentFragment();
+    blobs.forEach(function (b) {
+      if (state.value && b.state !== state.value) return;
+      if (kind.value && b.kind !== kind.value) return;
+      if (words && b._text.indexOf(words) < 0) return;
+      n++; frag.appendChild(row(b));
+    });
+    rows.textContent = ""; rows.appendChild(frag);
+    document.getElementById("shown").textContent = n + " of " + blobs.length + " shown";
+  }
+
+  fetch("manifest.json").then(function (r) {
+    if (!r.ok) throw new Error("the manifest answered " + r.status);
+    return r.json();
+  }).then(function (m) {
+    var c = m.counts, counts = document.getElementById("counts");
+    [["named", "files the pages name"], ["held", "held here"], ["held back", "found, held back"],
+     ["undecided", "undecided"], ["not found", "not found"]].forEach(function (pair) {
+      var box = el("div", "count"); box.appendChild(el("b", "", String(c[pair[0]]))); box.appendChild(el("span", "", pair[1]));
+      counts.appendChild(box);
+    });
+    document.getElementById("made").textContent = "Gathered " + m.made.slice(0, 10) + " from " + m.pages_read +
+      " pages; " + (c.bytes_held / 1e6).toFixed(1) + " MB held.";
+    blobs = m.blobs;
+    blobs.forEach(function (b) {
+      b._text = [b.name, b.state, b.kind, b.from ? b.from.repo : "", b.why || "", b.pages.join(" ")].join(" ").toLowerCase();
+    });
+    draw();
+  }).catch(function (e) {
+    var box = el("div", "fail");
+    box.appendChild(el("p", "", "The manifest could not be read (" + e.message + "). It is the file manifest.json beside this page."));
+    document.querySelector(".wrap").replaceWith(box);
+  });
+  [q, state, kind].forEach(function (x) { x.addEventListener("input", draw); });
+})();
+</script>
+</body>
+</html>

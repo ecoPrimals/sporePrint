@@ -1,0 +1,1035 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (c) 2025-2026 ecoPrimal <ecoPrimal@pm.me>
+
+//! Entity profile types and topology output structures.
+//!
+//! Extracted from entity_classifier.rs for modularity. Contains the
+//! accumulated behavioral profile, epitope scoring, and comparative
+//! fingerprint table.
+
+#![allow(missing_docs)]
+
+use std::collections::{BTreeMap, HashMap, HashSet};
+
+use serde::{Deserialize, Serialize};
+
+use crate::entity_classifier::{EntityId, PathOp};
+
+/// Accumulated behavioral profile for one entity.
+#[derive(Debug, Serialize)]
+pub struct EntityProfile {
+    pub entity: EntityId,
+    pub label: String,
+    pub is_fleet: bool,
+    pub is_honest: bool,
+    pub total_requests: u64,
+    pub unique_ips: usize,
+    pub unique_subnets: usize,
+    pub first_seen: f64,
+    pub last_seen: f64,
+    pub duration_hours: f64,
+    pub avg_rps: f64,
+
+    /// Header fingerprint.
+    pub header_fingerprint: HeaderFingerprint,
+
+    /// Chrome version distribution.
+    pub chrome_versions: BTreeMap<u16, u64>,
+    pub chrome_lag: u16,
+
+    /// UA impersonation pool.
+    pub ua_os_distribution: BTreeMap<String, u64>,
+    pub ua_pool_size: usize,
+
+    /// IP rotation pattern.
+    pub ip_rotation: IpRotation,
+
+    /// Path operation breakdown.
+    pub path_ops: BTreeMap<String, u64>,
+    pub blame_pct: f64,
+
+    /// Repository targeting.
+    pub top_repos: Vec<(String, u64)>,
+    pub targets_real_only: bool,
+    pub targets_scatter_only: bool,
+
+    /// Timing signature.
+    pub timing: TimingProfile,
+
+    /// Sub-systems detected within this entity.
+    pub sub_systems: Vec<SubSystem>,
+
+    /// Wave 166f: Conserved epitope scores — signals fleet can't cheaply evade.
+    pub epitopes: EpitopeScores,
+    /// Composite fleet confidence (% of epitopes triggered), reflected by vitality.
+    pub fleet_confidence: f64,
+    /// Mean vitality across evaluated epitopes.  High = near the mobility edge = uncertain = alive.
+    pub vitality: f64,
+
+    /// Wave 171: Negentropy — defensive information provided TO the organism.
+    ///
+    /// Vuln scanners, path probers, and traversal attempts generate information
+    /// about the attack surface.  Every `.env` probe they run is a diagnostic
+    /// the organism didn't have to pay for.  They are free pen testers.
+    ///
+    /// `negentropy` measures how much defensive information this entity provides:
+    /// unique vulnerability paths probed × probe diversity.  Higher = more useful.
+    /// Entities with high negentropy defend others by mapping the attack surface.
+    pub negentropy: f64,
+    /// The unique vulnerability paths this entity has probed.
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub vuln_probes: Vec<String>,
+
+    /// Wave 171: Per-surface request counts — which surfaces this entity visits.
+    /// Keyed by hostname (e.g. "git.primals.eco", "detroit.primals.eco").
+    pub hosts: BTreeMap<String, u64>,
+
+    // ── Wave 180: Symbiotic classification (tit-for-tat-forgive-one) ──
+
+    /// Symbiotic relationship classification.
+    /// The golden rule: mirror their behavior, forgive one defection.
+    pub symbiotic_class: String,
+    /// Friction level applied (0.0 = mutualist, 1.0 = pathogen).
+    pub friction: f64,
+    /// Reciprocity ratio: cooperation / (cooperation + defection).
+    pub reciprocity: f64,
+    /// Number of consecutive defections observed.
+    pub consecutive_defections: u32,
+    /// Whether this entity is in forgiveness state (first defection forgiven).
+    pub in_forgiveness: bool,
+    /// What we can offer them (waste = things they want that cost us nothing).
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub waste_offered: Vec<String>,
+}
+
+/// Seven conserved epitopes from antigenic drift analysis (Wave 166f+167).
+///
+/// Each epitope costs the fleet more to evade than the last.
+/// The terminal epitope (reading pauses) would reduce throughput to
+/// human levels, collapsing the economics of scraping a $6 VPS.
+#[derive(Debug, Serialize)]
+pub struct EpitopeScores {
+    /// Same Sec-Fetch triplet on >95% of requests (real browsers vary by type).
+    pub sec_fetch_monotone: Option<EpitopeResult>,
+    /// <10% of intervals >8s (can't add pauses without killing throughput).
+    pub reading_deficit: Option<EpitopeResult>,
+    /// Too few UAs for visit count (adding diversity requires tracking Chrome releases).
+    pub ua_pool_poverty: Option<EpitopeResult>,
+    /// No cookies across multi-page visits (stateful sessions kill parallelism).
+    pub session_absent: Option<EpitopeResult>,
+    /// No external referers (can't fake Google arrival).
+    pub referer_self_loop: Option<EpitopeResult>,
+    /// >50% of intervals <3s (reducing bursts conflicts with extraction economics).
+    pub burst_ratio: Option<EpitopeResult>,
+    /// Wave 167: >95% of Sec-Fetch-bearing requests have no referer.
+    /// Residential proxy exits are programmatic → no referer chain.
+    /// Faking referrer chains creates detectable patterns (self-loops, impossible
+    /// navigation sequences). Absence is the conserved epitope.
+    pub referer_absence: Option<EpitopeResult>,
+}
+
+/// Result for a single epitope check.
+///
+/// The `vitality` field is the reflected score — the mirror of the epitope
+/// at the threshold boundary.  Entities far from the threshold in either
+/// direction have vitality ≈ 0 (certain machine or certain human).
+/// Entities *at* the threshold have maximum vitality — the uncertainty
+/// itself is the sign of life.
+///
+/// Mathematically: `vitality = 1.0 - |score - threshold| / threshold`
+/// clamped to \[0, 1\].  This is the Anderson delocalization signal:
+/// at the mobility edge the localization length diverges.
+#[derive(Debug, Serialize)]
+pub struct EpitopeResult {
+    pub score: f64,
+    pub triggered: bool,
+    /// Reflected life-signal: peaks at the threshold boundary.
+    /// Uncertainty is a sign of life.
+    pub vitality: f64,
+    pub description: String,
+}
+
+// ── Epitope sort order (Paper 48 — information-content ordering) ──
+
+/// The six conserved epitopes ordered by information content (compression power),
+/// NOT by detection priority. This is the canonical sort key for the epitope
+/// sort compression (Paper 48).
+///
+/// Ordering rationale — each epitope's mutual information with fleet identity:
+///
+/// 1. `burst_ratio`       — timing regularity is the strongest fleet signal (CV < 0.15
+///                          is definitive). Cannot be cheaply evaded without throttling.
+/// 2. `reading_deficit`   — absence of reading pauses (>8s gaps) cleanly separates
+///                          machines from humans. Adding pauses kills throughput.
+/// 3. `ua_pool_poverty`   — small UA pool ÷ visit count reveals coordinated fleet.
+///                          Growing the pool requires tracking Chrome releases.
+/// 4. `sec_fetch_monotone` — identical Sec-Fetch triplets across 95%+ of requests
+///                          proves non-browser automation. Can be faked but creates
+///                          new detectable patterns.
+/// 5. `session_absent`    — no cookies/session across multi-page visits. Stateful
+///                          sessions kill parallelism, but absence is not unique to
+///                          fleets (privacy-conscious humans also block cookies).
+/// 6. `referer_self_loop` — no external referrers. Weakest signal because privacy
+///                          tools strip referrers (and we protect that choice).
+pub const EPITOPE_SORT_ORDER: [&str; 6] = [
+    "burst_ratio",
+    "reading_deficit",
+    "ua_pool_poverty",
+    "sec_fetch_monotone",
+    "session_absent",
+    "referer_self_loop",
+];
+
+impl EpitopeScores {
+    /// Returns a 6-byte sort key ordered by information content (Paper 48).
+    ///
+    /// Each byte encodes: 0x00 = not evaluated, 0x01 = evaluated but not triggered,
+    /// 0x02 = triggered. The key sorts entities by their strongest-first epitope
+    /// signature, maximizing compression of the fleet search space.
+    ///
+    /// The ordering is `burst_ratio > reading_deficit > ua_pool_poverty >
+    /// sec_fetch_monotone > session_absent > referer_self_loop`.
+    pub fn epitope_sort_key(&self) -> [u8; 6] {
+        let fields: [&Option<EpitopeResult>; 6] = [
+            &self.burst_ratio,
+            &self.reading_deficit,
+            &self.ua_pool_poverty,
+            &self.sec_fetch_monotone,
+            &self.session_absent,
+            &self.referer_self_loop,
+        ];
+        let mut key = [0u8; 6];
+        for (i, field) in fields.iter().enumerate() {
+            key[i] = match field {
+                None => 0x00,
+                Some(r) if r.triggered => 0x02,
+                Some(_) => 0x01,
+            };
+        }
+        key
+    }
+
+    /// Returns the information-content compression score.
+    ///
+    /// Each triggered epitope contributes its rank weight (strongest = 6,
+    /// weakest = 1). The score ranges from 0 (no epitopes triggered, no
+    /// compression) to 21 (all 6 triggered, maximum compression).
+    ///
+    /// The score represents how many bits of fleet-vs-human uncertainty
+    /// have been eliminated by the epitope sort.
+    pub fn compression_score(&self) -> u32 {
+        let fields: [&Option<EpitopeResult>; 6] = [
+            &self.burst_ratio,
+            &self.reading_deficit,
+            &self.ua_pool_poverty,
+            &self.sec_fetch_monotone,
+            &self.session_absent,
+            &self.referer_self_loop,
+        ];
+        let weights: [u32; 6] = [6, 5, 4, 3, 2, 1];
+        fields.iter().zip(weights.iter())
+            .filter_map(|(f, w)| {
+                f.as_ref().filter(|r| r.triggered).map(|_| *w)
+            })
+            .sum()
+    }
+}
+
+/// Header presence/absence fingerprint.
+#[derive(Debug, Serialize)]
+pub struct HeaderFingerprint {
+    pub sec_fetch_pct: f64,
+    pub sec_ch_ua_pct: f64,
+    pub connection_pct: f64,
+    pub accept_encoding_values: Vec<String>,
+    pub accept_language_values: Vec<String>,
+    pub accept_values: Vec<String>,
+}
+
+/// IP rotation pattern.
+#[derive(Debug, Serialize)]
+pub struct IpRotation {
+    pub strategy: String,
+    pub single_request_ips_pct: f64,
+    pub max_per_ip: u64,
+    pub median_per_ip: f64,
+    pub all_generalists: bool,
+}
+
+/// Timing profile.
+#[derive(Debug, Serialize)]
+pub struct TimingProfile {
+    pub mean_interval_ms: f64,
+    pub median_interval_ms: f64,
+    pub cv: f64,
+    pub classification: String,
+    pub burst_count: u64,
+    pub pause_count: u64,
+    /// Wave 173: Transport channel jitter correction (Paper 76).
+    ///
+    /// Mobile connections (cell tower) introduce jitter that inflates burst_ratio.
+    /// The cell tower is a membrane — it distorts the timing signal.
+    /// `transport_correction` is the burst threshold multiplier (1.0 = no correction).
+    pub transport_correction: f64,
+    /// True when the entity's platform is mobile (iPhone/Android).
+    pub is_mobile: bool,
+}
+
+/// A detected sub-system within an entity.
+#[derive(Debug, Serialize)]
+pub struct SubSystem {
+    pub name: String,
+    pub description: String,
+    pub evidence: Vec<String>,
+}
+
+// ── Known real repos (for scatter vs real classification) ──
+
+/// Returns true if the repo name belongs to a real ecoPrimals repository.
+fn is_real_repo(name: &str) -> bool {
+    let known_orgs = ["ecoPrimals/", "syntheticChemistry/", "sporeGarden/"];
+    known_orgs.iter().any(|org| name.starts_with(org))
+}
+
+#[derive(Clone, Serialize, Deserialize)]
+pub(crate) struct EntityAccum {
+    /// IP hashes (SipHash of raw IP). Raw IPs never stored — ZK boundary.
+    pub(crate) ip_hashes: HashSet<u64>,
+    pub(crate) subnets: HashSet<String>,
+    pub(crate) uas: HashSet<String>,
+    pub(crate) timestamps: Vec<f64>,
+    pub(crate) chrome_versions: HashMap<u16, u64>,
+    pub(crate) ua_os: HashMap<String, u64>,
+    pub(crate) path_ops: HashMap<PathOp, u64>,
+    pub(crate) repos: HashMap<String, u64>,
+    pub(crate) accept_enc: HashSet<String>,
+    pub(crate) accept_lang: HashSet<String>,
+    pub(crate) accept: HashSet<String>,
+    pub(crate) sec_fetch_present: u64,
+    pub(crate) sec_fetch_absent: u64,
+    pub(crate) sec_ch_ua_present: u64,
+    pub(crate) sec_ch_ua_absent: u64,
+    pub(crate) conn_present: u64,
+    pub(crate) conn_absent: u64,
+    pub(crate) total: u64,
+    pub(crate) first_ts: f64,
+    pub(crate) last_ts: f64,
+    // Per-IP repo tracking (for specialist vs generalist detection) — keyed by ip hash
+    pub(crate) ip_repos: HashMap<u64, HashMap<String, u64>>,
+    // Wave 166f epitope tracking
+    pub(crate) sec_fetch_triplets: HashMap<String, u64>,
+    pub(crate) cookie_present: u64,
+    pub(crate) cookie_absent: u64,
+    pub(crate) referer_external: u64,
+    pub(crate) referer_absent: u64,
+    /// Wave 171: Per-surface request counts (keyed by host, e.g. "git.primals.eco").
+    pub(crate) hosts: HashMap<String, u64>,
+}
+
+impl EntityAccum {
+    /// Duration of the visit in minutes.
+    ///
+    /// Returns 0.0 if timestamps are invalid (first >= last).
+    pub(crate) fn duration_min(&self) -> f64 {
+        if self.last_ts > self.first_ts {
+            (self.last_ts - self.first_ts) / 60.0
+        } else {
+            0.0
+        }
+    }
+
+    /// Detect the visitor's platform from the most common UA OS entry.
+    pub(crate) fn platform(&self) -> &'static str {
+        if let Some((os, _)) = self.ua_os.iter().max_by_key(|(_, c)| *c) {
+            if os.contains("Windows") || os.contains("Win") { return "Win"; }
+            if os.contains("Macintosh") || os.contains("Mac") { return "Mac"; }
+            if os.contains("iPhone") { return "iPhone"; }
+            if os.contains("Android") { return "Android"; }
+            if os.contains("Linux") { return "Linux"; }
+        }
+        "?"
+    }
+
+    /// Number of hits to the HUD polling surface.
+    pub(crate) fn hud_polls(&self) -> u64 {
+        self.hosts.get("hud.primals.eco")
+            .or_else(|| self.hosts.get("signal.primals.eco"))
+            .copied()
+            .unwrap_or(0)
+    }
+
+    /// Surface keys with `.primals.eco` suffix stripped.
+    pub(crate) fn surface_keys(&self) -> Vec<&str> {
+        self.hosts.keys()
+            .map(|h| crate::surface_registry::strip_host(h.as_str()))
+            .collect()
+    }
+
+    pub(crate) fn new() -> Self {
+        Self {
+            ip_hashes: HashSet::new(),
+            subnets: HashSet::new(),
+            uas: HashSet::new(),
+            timestamps: Vec::new(),
+            chrome_versions: HashMap::new(),
+            ua_os: HashMap::new(),
+            path_ops: HashMap::new(),
+            repos: HashMap::new(),
+            accept_enc: HashSet::new(),
+            accept_lang: HashSet::new(),
+            accept: HashSet::new(),
+            sec_fetch_present: 0,
+            sec_fetch_absent: 0,
+            sec_ch_ua_present: 0,
+            sec_ch_ua_absent: 0,
+            conn_present: 0,
+            conn_absent: 0,
+            total: 0,
+            first_ts: f64::INFINITY,
+            last_ts: 0.0,
+            ip_repos: HashMap::new(),
+            sec_fetch_triplets: HashMap::new(),
+            cookie_present: 0,
+            cookie_absent: 0,
+            referer_external: 0,
+            referer_absent: 0,
+            hosts: HashMap::new(),
+        }
+    }
+}
+
+/// Chrome stable version. Updated when Chrome releases.
+const CHROME_CURRENT_STABLE: u16 = 155;
+
+
+// ── Extracted helpers — compassion refactor (Wave 173) ──
+//
+// build_profile was 504 lines. Each helper owns one concern.
+
+/// Compute timing profile from sorted timestamps.
+/// Includes transport channel jitter correction (Paper 76).
+fn compute_timing(timestamps: Vec<f64>, is_mobile: bool) -> (TimingProfile, Vec<f64>) {
+    let mut ts_sorted = timestamps;
+    ts_sorted.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+    let intervals: Vec<f64> = ts_sorted.windows(2)
+        .map(|w| w[1] - w[0])
+        .filter(|&i| i > 0.001 && i < 60.0)
+        .collect();
+
+    let profile = if intervals.len() > 2 {
+        let sum: f64 = intervals.iter().sum();
+        let mean = sum / intervals.len() as f64;
+        let mut sorted = intervals.clone();
+        sorted.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+        let median = sorted[sorted.len() / 2];
+        let variance: f64 = intervals.iter()
+            .map(|i| (i - mean).powi(2)).sum::<f64>() / intervals.len() as f64;
+        let cv = if mean > 0.0 { variance.sqrt() / mean } else { 0.0 };
+        let bursts = intervals.iter().filter(|&&i| i < 0.1).count() as u64;
+        let pauses = intervals.iter().filter(|&&i| i > 2.0).count() as u64;
+        let classification = if cv < 0.15 { "METRONOMIC" }
+            else if cv < 0.5 { "SEMI-REGULAR" }
+            else { "VARIED" };
+
+        let transport_correction = if is_mobile {
+            let jitter_excess = (cv - 0.5).max(0.0);
+            1.0 + jitter_excess.min(1.0)
+        } else {
+            1.0
+        };
+
+        TimingProfile {
+            mean_interval_ms: (mean * 1000.0 * 10.0).round() / 10.0,
+            median_interval_ms: (median * 1000.0 * 10.0).round() / 10.0,
+            cv: (cv * 1000.0).round() / 1000.0,
+            classification: classification.to_string(),
+            burst_count: bursts,
+            pause_count: pauses,
+            transport_correction: (transport_correction * 1000.0).round() / 1000.0,
+            is_mobile,
+        }
+    } else {
+        TimingProfile {
+            mean_interval_ms: 0.0,
+            median_interval_ms: 0.0,
+            cv: 0.0,
+            classification: "INSUFFICIENT_DATA".to_string(),
+            burst_count: 0,
+            pause_count: 0,
+            transport_correction: 1.0,
+            is_mobile,
+        }
+    };
+    (profile, intervals)
+}
+
+/// Detect sub-systems within a fleet entity.
+fn detect_sub_systems(accum: &EntityAccum, top_chrome: u16, chrome_lag: u16, blame_pct: f64) -> Vec<SubSystem> {
+    let mut out = Vec::new();
+
+    if accum.chrome_versions.len() > 1 {
+        let versions: Vec<String> = accum.chrome_versions.iter()
+            .map(|(v, c)| format!("Chrome/{}: {}", v, c))
+            .collect();
+        out.push(SubSystem {
+            name: "Chrome Deployment Pipeline".to_string(),
+            description: format!(
+                "Primary: Chrome/{} ({} versions behind stable {}). {} version variants detected.",
+                top_chrome, chrome_lag, CHROME_CURRENT_STABLE, accum.chrome_versions.len()
+            ),
+            evidence: versions,
+        });
+    }
+
+    if accum.ua_os.len() >= 2 {
+        let os_evidence: Vec<String> = accum.ua_os.iter()
+            .map(|(os, c)| format!("{}: {}", os, c))
+            .collect();
+        out.push(SubSystem {
+            name: "OS Impersonation Pool".to_string(),
+            description: format!(
+                "{} OS variants from {} IPs with {} unique UA strings. \
+                 Ratio reveals pool size, not real OS diversity.",
+                accum.ua_os.len(), accum.ip_hashes.len(), accum.uas.len()
+            ),
+            evidence: os_evidence,
+        });
+    }
+
+    if blame_pct > 5.0 {
+        let blame_total = accum.path_ops.get(&PathOp::Blame).copied().unwrap_or(0);
+        out.push(SubSystem {
+            name: "Author Attribution System".to_string(),
+            description: format!(
+                "{:.1}% of requests are /blame/ operations — tracking who wrote each line of code. \
+                 This is not source collection; this is authorship mapping.",
+                blame_pct
+            ),
+            evidence: vec![format!("{} blame requests out of {} total", blame_total, accum.total)],
+        });
+    }
+
+    if accum.accept_enc.len() == 1 && accum.total > 10 {
+        let enc = accum.accept_enc.iter().next().cloned().unwrap_or_default();
+        out.push(SubSystem {
+            name: "Shared Configuration".to_string(),
+            description: format!(
+                "All {} requests share identical Accept-Encoding: '{}'. \
+                 {} IPs, one config. This is a fleet, not browsers.",
+                accum.total, enc, accum.ip_hashes.len()
+            ),
+            evidence: vec![
+                format!("Accept-Encoding: {}", enc),
+                format!("Accept-Language: {}", accum.accept_lang.iter()
+                    .next().cloned().unwrap_or_default()),
+            ],
+        });
+    }
+    out
+}
+
+/// Evaluate a single epitope. Vitality peaks at the threshold boundary.
+fn eval_epitope(score: f64, threshold: f64, above_triggers: bool, description: String) -> EpitopeResult {
+    let triggered = if above_triggers { score > threshold } else { score < threshold };
+    let v = (1.0 - (score - threshold).abs() / threshold).max(0.0);
+    EpitopeResult {
+        score: (score * 10.0).round() / 10.0,
+        triggered,
+        vitality: (v * 1000.0).round() / 1000.0,
+        description,
+    }
+}
+
+/// Score all seven conserved epitopes and compute fleet confidence.
+fn score_epitopes(accum: &EntityAccum, intervals: &[f64], timing: &TimingProfile) -> (EpitopeScores, f64, f64) {
+    let mut count = 0u32;
+    let mut fired = 0u32;
+    let mut vit_sum = 0.0_f64;
+    let mut tally = |r: &EpitopeResult| {
+        count += 1;
+        if r.triggered { fired += 1; }
+        vit_sum += r.vitality;
+    };
+
+    let sec_fetch_monotone = if !accum.sec_fetch_triplets.is_empty() && accum.total > 10 {
+        let top = accum.sec_fetch_triplets.values().max().copied().unwrap_or(0);
+        let pct = top as f64 / accum.total as f64 * 100.0;
+        let r = eval_epitope(pct, 95.0, true,
+            format!("Same Sec-Fetch triplet on {:.1}% of requests", pct));
+        tally(&r); Some(r)
+    } else { None };
+
+    let reading_deficit = if intervals.len() > 10 {
+        let pauses = intervals.iter().filter(|&&i| i > 8.0).count();
+        let pct = pauses as f64 / intervals.len() as f64 * 100.0;
+        let r = eval_epitope(pct, 10.0, false,
+            format!("Only {:.1}% of intervals >8s (reading pauses)", pct));
+        tally(&r); Some(r)
+    } else { None };
+
+    let ua_pool_poverty = if accum.total > 50 {
+        let pool = accum.uas.len();
+        let threshold = std::cmp::max(10, (accum.total as f64 * 0.05) as usize);
+        let r = eval_epitope(pool as f64, threshold as f64, false,
+            format!("{} unique UAs for {} visits", pool, accum.total));
+        tally(&r); Some(r)
+    } else { None };
+
+    let session_absent = if accum.total > 20 {
+        let pct = accum.cookie_present as f64 / accum.total as f64 * 100.0;
+        let r = eval_epitope(pct, 5.0, false,
+            format!("Cookies on {:.1}% of requests", pct));
+        tally(&r); Some(r)
+    } else { None };
+
+    let referer_self_loop = if accum.total > 20 {
+        let pct = accum.referer_external as f64 / accum.total as f64 * 100.0;
+        let r = eval_epitope(pct, 2.0, false,
+            format!("External referers on {:.1}% of requests", pct));
+        tally(&r); Some(r)
+    } else { None };
+
+    let burst_ratio = if intervals.len() > 10 {
+        let bursts = intervals.iter().filter(|&&i| i < 3.0).count();
+        let pct = bursts as f64 / intervals.len() as f64 * 100.0;
+        let threshold = 50.0 * timing.transport_correction;
+        let desc = if timing.transport_correction > 1.001 {
+            format!("{:.1}% of intervals <3s (threshold={:.0}%, mobile transport correction={:.2}×)",
+                pct, threshold, timing.transport_correction)
+        } else {
+            format!("{:.1}% of intervals <3s", pct)
+        };
+        let r = eval_epitope(pct, threshold, true, desc);
+        tally(&r); Some(r)
+    } else { None };
+
+    let referer_absence = if accum.sec_fetch_present > 20 {
+        let total = accum.sec_fetch_present;
+        let pct = accum.referer_absent as f64 / total as f64 * 100.0;
+        let r = eval_epitope(pct, 95.0, true,
+            format!("{:.1}% of Sec-Fetch requests have no referer ({} absent / {} with sec-fetch)",
+                pct, accum.referer_absent, total));
+        tally(&r); Some(r)
+    } else { None };
+
+    // Fleet confidence with vitality × entropy gating (Wave 171)
+    let vit_mean = if count > 0 { vit_sum / count as f64 } else { 0.0 };
+    let fleet_raw = if count > 0 { fired as f64 / count as f64 * 100.0 } else { 0.0 };
+    let p = if count > 0 { fired as f64 / count as f64 } else { 0.0 };
+    let entropy = if p > 0.0 && p < 1.0 {
+        -(p * p.log2() + (1.0 - p) * (1.0 - p).log2())
+    } else { 0.0 };
+    let eff_vit = vit_mean * entropy;
+    let fleet_confidence = (fleet_raw * (1.0 - eff_vit) * 10.0).round() / 10.0;
+
+    (EpitopeScores { sec_fetch_monotone, reading_deficit, ua_pool_poverty,
+        session_absent, referer_self_loop, burst_ratio, referer_absence },
+     fleet_confidence, eff_vit)
+}
+
+/// Compute IP rotation pattern from accumulated IP data.
+fn compute_ip_rotation(accum: &EntityAccum) -> IpRotation {
+    let ip_req_counts: Vec<u64> = {
+        let mut counts: HashMap<u64, u64> = HashMap::new();
+        for (ip_hash, repos) in &accum.ip_repos {
+            let total: u64 = repos.values().sum();
+            *counts.entry(*ip_hash).or_insert(0) += total;
+        }
+        let mut v: Vec<u64> = counts.values().copied().collect();
+        v.sort();
+        v
+    };
+    let single_req_ips = ip_req_counts.iter().filter(|&&c| c <= 1).count();
+    let single_pct = if !ip_req_counts.is_empty() {
+        single_req_ips as f64 / ip_req_counts.len() as f64 * 100.0
+    } else { 0.0 };
+    let max_per_ip = ip_req_counts.last().copied().unwrap_or(0);
+    let median_per_ip = if !ip_req_counts.is_empty() {
+        ip_req_counts[ip_req_counts.len() / 2] as f64
+    } else { 0.0 };
+    let all_generalists = accum.ip_repos.values().all(|repos| {
+        let total: u64 = repos.values().sum();
+        if total < 5 { return true; }
+        let max_repo: u64 = repos.values().copied().max().unwrap_or(0);
+        (max_repo as f64 / total as f64) <= 0.5
+    });
+    let strategy = if accum.ip_hashes.len() == 1 {
+        "single-IP (no rotation)".to_string()
+    } else if single_pct > 80.0 {
+        "heavy rotation (>80% single-request IPs)".to_string()
+    } else if all_generalists {
+        format!("{} generalist IPs", accum.ip_hashes.len())
+    } else {
+        format!("{} IPs with some specialization", accum.ip_hashes.len())
+    };
+    IpRotation {
+        strategy,
+        single_request_ips_pct: (single_pct * 10.0).round() / 10.0,
+        max_per_ip,
+        median_per_ip,
+        all_generalists,
+    }
+}
+
+/// Scan repos for vulnerability probe paths and compute negentropy.
+fn compute_negentropy(repos: &[(String, u64)], total: u64) -> (f64, Vec<String>) {
+    const VULN_MARKERS: &[&str] = &[
+        ".env", ".git/", ".git-", ".aws/", ".docker/",
+        "wp-admin", "wp-login", "wp-includes", "wp-content",
+        "actuator", "phpinfo", "phpmyadmin", "adminer",
+        "config.", "backup.", "database.", ".sql",
+        "xmlrpc", "shell", "cgi-bin", "eval-stdin",
+        "%2e%2e", "../", "etc/passwd", "proc/self",
+    ];
+    let vuln_paths: Vec<String> = repos.iter()
+        .filter(|(path, _)| {
+            let lp = path.to_lowercase();
+            VULN_MARKERS.iter().any(|m| lp.contains(m))
+        })
+        .map(|(path, _)| path.clone())
+        .take(30)
+        .collect();
+    let n = vuln_paths.len();
+    let score = if n > 0 {
+        let diversity = ((n + 1) as f64).log2();
+        let coverage = n as f64 / total.max(1) as f64;
+        (diversity * coverage * 100.0 * 100.0).min(100.0)
+    } else { 0.0 };
+    ((score * 100.0).round() / 100.0, vuln_paths)
+}
+
+// ── Profile builder ──
+
+pub(crate) fn build_profile(entity_id: EntityId, accum: EntityAccum) -> EntityProfile {
+    let duration_secs = if accum.last_ts > accum.first_ts {
+        accum.last_ts - accum.first_ts
+    } else { 0.0 };
+    let duration_hours = duration_secs / 3600.0;
+    let avg_rps = if duration_secs > 0.0 { accum.total as f64 / duration_secs } else { 0.0 };
+
+    let top_chrome: u16 = accum.chrome_versions.iter()
+        .max_by_key(|(_, c)| *c).map(|(v, _)| *v).unwrap_or(0);
+    let chrome_lag = if top_chrome > 0 { CHROME_CURRENT_STABLE.saturating_sub(top_chrome) } else { 0 };
+
+    let is_mobile = matches!(accum.platform(), "iPhone" | "Android");
+    let (timing, intervals) = compute_timing(accum.timestamps.clone(), is_mobile);
+
+    let blame_total = accum.path_ops.get(&PathOp::Blame).copied().unwrap_or(0);
+    let blame_pct = if accum.total > 0 {
+        (blame_total as f64 / accum.total as f64 * 1000.0).round() / 10.0
+    } else { 0.0 };
+    let path_ops: BTreeMap<String, u64> = accum.path_ops.iter()
+        .map(|(op, &count)| (format!("{}", op.label()), count))
+        .collect();
+
+    let mut repo_vec: Vec<(String, u64)> = accum.repos.clone().into_iter().collect();
+    repo_vec.sort_by(|a, b| b.1.cmp(&a.1));
+    let has_real = repo_vec.iter().any(|(r, _)| is_real_repo(r));
+    let has_scatter = repo_vec.iter().any(|(r, _)| !is_real_repo(r));
+
+    let ip_rotation = compute_ip_rotation(&accum);
+    let sub_systems = detect_sub_systems(&accum, top_chrome, chrome_lag, blame_pct);
+    let (epitopes, fleet_confidence, effective_vitality) =
+        score_epitopes(&accum, &intervals, &timing);
+    let (negentropy, vuln_probes) = compute_negentropy(&repo_vec, accum.total);
+
+    // Wave 180: compute symbiotic classification before struct takes ownership
+    let sym_class = classify_symbiotic_from_profile(&entity_id, &epitopes, negentropy, avg_rps);
+    let sym_friction = symbiotic_friction(&entity_id, &epitopes, negentropy, avg_rps);
+    let sym_reciprocity = compute_reciprocity(&entity_id, &epitopes);
+    let sym_defections = count_defections(&entity_id, &epitopes);
+    let sym_forgiveness = is_in_forgiveness(&entity_id, &epitopes);
+    let sym_waste = compute_waste(&entity_id);
+
+    EntityProfile {
+        label: entity_id.label().to_string(),
+        is_fleet: entity_id.is_fleet(),
+        is_honest: entity_id.is_honest(),
+        entity: entity_id,
+        total_requests: accum.total,
+        unique_ips: accum.ip_hashes.len(),
+        unique_subnets: accum.subnets.len(),
+        first_seen: accum.first_ts,
+        last_seen: accum.last_ts,
+        duration_hours: (duration_hours * 100.0).round() / 100.0,
+        avg_rps: (avg_rps * 100.0).round() / 100.0,
+        header_fingerprint: HeaderFingerprint {
+            sec_fetch_pct: if accum.total > 0 {
+                (accum.sec_fetch_present as f64 / accum.total as f64 * 1000.0).round() / 10.0
+            } else { 0.0 },
+            sec_ch_ua_pct: if accum.total > 0 {
+                (accum.sec_ch_ua_present as f64 / accum.total as f64 * 1000.0).round() / 10.0
+            } else { 0.0 },
+            connection_pct: if accum.total > 0 {
+                (accum.conn_present as f64 / accum.total as f64 * 1000.0).round() / 10.0
+            } else { 0.0 },
+            accept_encoding_values: accum.accept_enc.into_iter().collect(),
+            accept_language_values: accum.accept_lang.into_iter().collect(),
+            accept_values: accum.accept.into_iter().collect(),
+        },
+        chrome_versions: accum.chrome_versions.into_iter().collect(),
+        chrome_lag,
+        ua_os_distribution: accum.ua_os.into_iter().collect(),
+        ua_pool_size: accum.uas.len(),
+        ip_rotation,
+        path_ops,
+        blame_pct,
+        top_repos: repo_vec.into_iter().take(20).collect(),
+        targets_real_only: has_real && !has_scatter,
+        targets_scatter_only: !has_real && has_scatter,
+        timing,
+        sub_systems,
+        epitopes,
+        fleet_confidence,
+        vitality: (effective_vitality * 1000.0).round() / 1000.0,
+        negentropy,
+        vuln_probes,
+        hosts: accum.hosts.into_iter().collect(),
+
+        // Wave 180: tit-for-tat-forgive-one symbiotic classification
+        symbiotic_class: sym_class.to_string(),
+        friction: sym_friction,
+        reciprocity: sym_reciprocity,
+        consecutive_defections: sym_defections,
+        in_forgiveness: sym_forgiveness,
+        waste_offered: sym_waste,
+    }
+}
+
+// Sort output types (EntityTopology, SurfaceMomentum, EntitySortEntry,
+// EpitopeSortSnapshot, ComparativeRow, build_comparative) live in
+// entity_sort.rs — the π split.
+
+
+// ── Tests ──
+
+
+// ── Wave 180: Symbiotic classification helpers ──────────────────────────
+// Tit-for-tat-forgive-one. The golden rule in code.
+// Mirror their behavior, forgive the first defection.
+
+
+/// Classify the symbiotic relationship from behavioral profile data.
+///
+/// This is the golden rule: treat them how we'd want to be treated.
+/// If they're honest and respectful → commensal (they read, we're neutral).
+/// If they contribute back → mutualist (both benefit).
+/// If they scrape aggressively with no attribution → parasite (forgive one first).
+/// If they probe for vulnerabilities → pathogen (but even they give us negentropy).
+fn classify_symbiotic_from_profile(
+    entity: &EntityId,
+    epitopes: &EpitopeScores,
+    negentropy: f64,
+    avg_rps: f64,
+) -> &'static str {
+    // Pathogen: vulnerability scanners actively harm
+    if matches!(entity, EntityId::VulnScanner) {
+        return "pathogen";
+    }
+
+    // Mutualist: honest identity + low aggression + provides useful signal
+    // Search engines index and link back. That's mutualist.
+    if matches!(entity, EntityId::GoogleBot | EntityId::MicrosoftBingBot |
+                EntityId::AppleBot | EntityId::HuaweiPetalBot) {
+        return "mutualist";
+    }
+
+    // Human browsers are always commensal — they read, we serve
+    if matches!(entity, EntityId::HumanBrowser) {
+        return "commensal";
+    }
+
+    // Honest bots that identify themselves start as commensal
+    // (forgive-one means first defection stays commensal)
+    if entity.is_honest() {
+        // But if they're aggressive (>1 RPS sustained), escalate
+        let defection_count = count_defections(entity, epitopes);
+        if defection_count >= 2 {
+            return "parasite";
+        }
+        return "commensal";
+    }
+
+    // Stealth scrapers: spoofing identity is a defection
+    if matches!(entity, EntityId::StealthScraper | EntityId::MetaFleet) {
+        // Meta: spoofs identity (no UA) + aggressive = 2 defections = parasite
+        return "parasite";
+    }
+
+    // Ghost: not enough signal, but suspicious
+    if matches!(entity, EntityId::Ghost) {
+        return "null";
+    }
+
+    // Default: not enough info
+    "null"
+}
+
+/// Friction level for an entity's symbiotic class.
+fn symbiotic_friction(
+    entity: &EntityId,
+    epitopes: &EpitopeScores,
+    negentropy: f64,
+    avg_rps: f64,
+) -> f64 {
+    match classify_symbiotic_from_profile(entity, epitopes, negentropy, avg_rps) {
+        "mutualist" => 0.0,
+        "commensal" => 0.1,
+        "parasite"  => 0.6,
+        "pathogen"  => 1.0,
+        _           => 0.3,
+    }
+}
+
+/// Reciprocity: cooperation / (cooperation + defection).
+fn compute_reciprocity(entity: &EntityId, epitopes: &EpitopeScores) -> f64 {
+    let coop: f64 = if entity.is_honest() { 1.0 } else { 0.0 }
+        + if !matches!(entity, EntityId::VulnScanner | EntityId::StealthScraper) { 1.0 } else { 0.0 };
+    let defect: f64 = count_defections(entity, epitopes) as f64;
+    if coop + defect == 0.0 { 0.5 } else { coop / (coop + defect) }
+}
+
+/// Count behavioral defections from epitope evidence.
+fn count_defections(entity: &EntityId, epitopes: &EpitopeScores) -> u32 {
+    let mut d: u32 = 0;
+    // Spoofing identity is a defection
+    if !entity.is_honest() && !matches!(entity, EntityId::Unknown | EntityId::Ghost) { d += 1; }
+    // Aggressive burst rate is a defection
+    if let Some(ref burst) = epitopes.burst_ratio {
+        if burst.triggered { d += 1; }
+    }
+    // No reading pauses (metronomic extraction) is a defection
+    if let Some(ref reading) = epitopes.reading_deficit {
+        if reading.triggered { d += 1; }
+    }
+    d
+}
+
+/// Whether this entity is in forgiveness state.
+fn is_in_forgiveness(entity: &EntityId, epitopes: &EpitopeScores) -> bool {
+    let d = count_defections(entity, epitopes);
+    d == 1  // exactly one defection = forgiven
+}
+
+/// What waste we can offer: things they want that cost us nothing.
+/// If a bot wants our content — and we publish it freely — that's not theft.
+/// It's commensal. Our waste is their food. That's biology.
+fn compute_waste(entity: &EntityId) -> Vec<String> {
+    match entity {
+        EntityId::GoogleBot | EntityId::MicrosoftBingBot |
+        EntityId::AppleBot | EntityId::HuaweiPetalBot => {
+            vec!["sitemap.xml".into(), "robots.txt".into(), "public pages".into()]
+        }
+        EntityId::AnthropicClaudeBot => {
+            vec!["published papers".into(), "public analysis".into(), "legal filings".into()]
+        }
+        EntityId::OpenAiGptBot | EntityId::ByteDanceBytespider => {
+            vec!["published papers".into(), "public analysis".into()]
+        }
+        EntityId::SeoTooling => {
+            vec!["sitemap.xml".into(), "meta tags".into()]
+        }
+        EntityId::VulnScanner => {
+            vec!["negentropy (they pen-test us for free)".into()]
+        }
+        _ => vec![],
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn make_result(score: f64, triggered: bool) -> EpitopeResult {
+        EpitopeResult { score, triggered, vitality: 0.0, description: String::new() }
+    }
+
+    fn empty_scores() -> EpitopeScores {
+        EpitopeScores {
+            sec_fetch_monotone: None,
+            reading_deficit: None,
+            ua_pool_poverty: None,
+            session_absent: None,
+            referer_self_loop: None,
+            burst_ratio: None,
+            referer_absence: None,
+        }
+    }
+
+    #[test]
+    fn sort_key_all_none_is_zeros() {
+        let scores = empty_scores();
+        assert_eq!(scores.epitope_sort_key(), [0, 0, 0, 0, 0, 0]);
+    }
+
+    #[test]
+    fn sort_key_all_triggered() {
+        let scores = EpitopeScores {
+            burst_ratio: Some(make_result(90.0, true)),
+            reading_deficit: Some(make_result(2.0, true)),
+            ua_pool_poverty: Some(make_result(3.0, true)),
+            sec_fetch_monotone: Some(make_result(98.0, true)),
+            session_absent: Some(make_result(0.5, true)),
+            referer_self_loop: Some(make_result(0.1, true)),
+            referer_absence: None,
+        };
+        assert_eq!(scores.epitope_sort_key(), [2, 2, 2, 2, 2, 2]);
+    }
+
+    #[test]
+    fn sort_key_mixed() {
+        let scores = EpitopeScores {
+            burst_ratio: Some(make_result(90.0, true)),
+            reading_deficit: Some(make_result(25.0, false)),
+            ua_pool_poverty: None,
+            sec_fetch_monotone: Some(make_result(98.0, true)),
+            session_absent: None,
+            referer_self_loop: Some(make_result(15.0, false)),
+            referer_absence: None,
+        };
+        assert_eq!(scores.epitope_sort_key(), [0x02, 0x01, 0x00, 0x02, 0x00, 0x01]);
+    }
+
+    #[test]
+    fn compression_score_none_is_zero() {
+        let scores = empty_scores();
+        assert_eq!(scores.compression_score(), 0);
+    }
+
+    #[test]
+    fn compression_score_all_triggered() {
+        let scores = EpitopeScores {
+            burst_ratio: Some(make_result(90.0, true)),
+            reading_deficit: Some(make_result(2.0, true)),
+            ua_pool_poverty: Some(make_result(3.0, true)),
+            sec_fetch_monotone: Some(make_result(98.0, true)),
+            session_absent: Some(make_result(0.5, true)),
+            referer_self_loop: Some(make_result(0.1, true)),
+            referer_absence: None,
+        };
+        assert_eq!(scores.compression_score(), 6 + 5 + 4 + 3 + 2 + 1);
+    }
+
+    #[test]
+    fn compression_score_partial() {
+        let scores = EpitopeScores {
+            burst_ratio: Some(make_result(90.0, true)),
+            reading_deficit: Some(make_result(25.0, false)),
+            ua_pool_poverty: None,
+            sec_fetch_monotone: Some(make_result(98.0, true)),
+            session_absent: None,
+            referer_self_loop: Some(make_result(0.1, true)),
+            referer_absence: None,
+        };
+        assert_eq!(scores.compression_score(), 6 + 3 + 1);
+    }
+
+    #[test]
+    fn sort_order_matches_information_content() {
+        assert_eq!(EPITOPE_SORT_ORDER[0], "burst_ratio");
+        assert_eq!(EPITOPE_SORT_ORDER[1], "reading_deficit");
+        assert_eq!(EPITOPE_SORT_ORDER[2], "ua_pool_poverty");
+        assert_eq!(EPITOPE_SORT_ORDER[3], "sec_fetch_monotone");
+        assert_eq!(EPITOPE_SORT_ORDER[4], "session_absent");
+        assert_eq!(EPITOPE_SORT_ORDER[5], "referer_self_loop");
+    }
+}

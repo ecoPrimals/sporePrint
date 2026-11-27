@@ -1,0 +1,1709 @@
+# Ecosystem composition definitions.
+#
+# Defines which primals belong to each named composition.
+# Used by `sourdough validate composition <name>`.
+#
+# Teams can override with `--manifest <path>` or by placing a
+# custom compositions.toml alongside the primals directory.
+
+[compositions.tower]
+primals = ["beardog", "songbird", "skunkbat"]
+
+[compositions.node]
+primals = [
+    "beardog", "songbird", "skunkbat",
+    "toadstool", "barracuda", "coralreef",
+]
+
+[compositions.nest]
+primals = [
+    "beardog", "songbird", "skunkbat",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+]
+
+[compositions.nucleus]
+primals = [
+    "beardog", "songbird", "skunkbat",
+    "toadstool", "barracuda", "coralreef",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+]
+
+[compositions.meta]
+primals = ["biomeos", "squirrel", "petaltongue"]
+
+[compositions.full]
+primals = [
+    "beardog", "songbird", "skunkbat",
+    "toadstool", "barracuda", "coralreef",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+    "biomeos", "squirrel", "petaltongue", "bingocube",
+]
+
+# Per-spring niche compositions
+
+[compositions.niche-hotspring]
+primals = [
+    "beardog", "songbird",
+    "toadstool", "barracuda", "coralreef",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+]
+
+[compositions.niche-neuralspring]
+primals = [
+    "beardog", "songbird",
+    "toadstool", "barracuda", "coralreef",
+    "biomeos", "squirrel",
+]
+
+[compositions.niche-wetspring]
+primals = [
+    "beardog", "songbird",
+    "toadstool", "barracuda", "coralreef",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+    "biomeos", "squirrel", "petaltongue",
+]
+
+[compositions.niche-groundspring]
+primals = [
+    "beardog", "songbird",
+    "toadstool", "barracuda", "coralreef",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+]
+
+[compositions.niche-healthspring]
+primals = [
+    "beardog", "songbird",
+    "nestgate", "rhizocrypt", "loamspine", "sweetgrass",
+    "biomeos", "squirrel",
+]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX A: PRIMAL TAXONOMY
+#
+# bearDog genetics classifies the OUTSIDE (entropy hierarchy, ecosystem membership).
+# This appendix classifies OURSELVES — the organism's self-knowledge.
+#
+# Each primal has:
+#   domain     — biological layer it maps to
+#   role       — function in the organism
+#   symbiosis  — what it gives / receives
+#   mass       — relative information weight in the ecosystem (1-200)
+#   tier       — atomic tier where it first appears (tower < node < nest < nucleus < meta < full)
+#   gate       — canonical gate identity
+#
+# Sorted by mass (stoichiometric — heaviest first).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[taxonomy.beardog]
+domain     = "immune"
+role       = "Cryptographic identity, signing, entropy hierarchy, genetic evolution"
+symbiosis  = "protective — signs for all, trusts none by default"
+mass       = 200
+tier       = "tower"
+gate       = "guardGate"
+
+[taxonomy.loamspine]
+domain     = "permanence"
+role       = "Append-only spine, certificate ledger, public chain anchoring"
+symbiosis  = "facilitative — provides permanent record for all braids"
+mass       = 190
+tier       = "nest"
+gate       = "ironGate"
+
+[taxonomy.sweetgrass]
+domain     = "provenance"
+role       = "PROV-O braid attribution, compression, cross-gate trust"
+symbiosis  = "mutualistic — braids anchor to loamSpine, sign via bearDog"
+mass       = 185
+tier       = "nest"
+gate       = "strandGate"
+
+[taxonomy.toadstool]
+domain     = "neuromorphic"
+role       = "NPU driver, VFIO sovereign handoff, inference engine"
+symbiosis  = "facilitative — provides compute substrate for all primals"
+mass       = 175
+tier       = "node"
+gate       = "soverGate"
+
+[taxonomy.rhizocrypt]
+domain     = "ephemeral"
+role       = "DAG workspace, sessions, merkle trees, dehydration to loamSpine"
+symbiosis  = "commensal — temporary state that compresses into braids"
+mass       = 170
+tier       = "nest"
+gate       = "deepGate"
+
+[taxonomy.skunkbat]
+domain     = "defense"
+role       = "Threat detection, scatter defense, antibody generation, fleet sort"
+symbiosis  = "protective — defends the membrane surface"
+mass       = 165
+tier       = "tower"
+gate       = "shieldGate"
+
+[taxonomy.songbird]
+domain     = "network"
+role       = "TLS, mesh federation, gossip protocol, trust escalation"
+symbiosis  = "mutualistic — carries signals between all gates"
+mass       = 160
+tier       = "tower"
+gate       = "echoGate"
+
+[taxonomy.squirrel]
+domain     = "observation"
+role       = "scan-sweep-sort pipeline, braid learning, genome totality, worldclock"
+symbiosis  = "commensal — observes without altering, feeds dashboard"
+mass       = 155
+tier       = "meta"
+gate       = "cacheGate"
+
+[taxonomy.biomeos]
+domain     = "orchestration"
+role       = "Atomic deploy, composition management, capability routing"
+symbiosis  = "emergent — coordinates all primals, no fixed hierarchy"
+mass       = 150
+tier       = "meta"
+gate       = "rootGate"
+
+[taxonomy.barracuda]
+domain     = "compute"
+role       = "GPU/tensor ops, triplet loss, bbox, anchor generation"
+symbiosis  = "facilitative — provides SIMD/GPU compute for inference"
+mass       = 140
+tier       = "node"
+gate       = "fastGate"
+
+[taxonomy.nestgate]
+domain     = "storage"
+role       = "Content-addressed payload storage, workspace management"
+symbiosis  = "facilitative — stores what rhizoCrypt and sweetGrass produce"
+mass       = 135
+tier       = "nest"
+gate       = "nestGate"
+
+[taxonomy.coralreef]
+domain     = "transport"
+role       = "Cross-primal RPC relay, protocol negotiation, signal routing"
+symbiosis  = "mutualistic — connects primals that cannot reach each other directly"
+mass       = 130
+tier       = "node"
+gate       = "reefGate"
+
+[taxonomy.petaltongue]
+domain     = "visualization"
+role       = "Scene graph, SVG rendering, dashboard, gate mesh display"
+symbiosis  = "commensal — renders what others produce, writes nothing"
+mass       = 120
+tier       = "meta"
+gate       = "lensGate"
+
+[taxonomy.bingocube]
+domain     = "games"
+role       = "Probabilistic games, interactive demos, engagement"
+symbiosis  = "mutualistic — teaches ecosystem concepts through play"
+mass       = 100
+tier       = "full"
+gate       = "playGate"
+
+[taxonomy.sourdough]
+domain     = "tooling"
+role       = "Scaffold, validate, CI, sign, mass sort — ecosystem tooling primal"
+symbiosis  = "facilitative — builds and validates all other primals"
+mass       = 145
+tier       = "meta"
+gate       = "yeastGate"
+
+[taxonomy.swarmvine]
+domain     = "distributed"
+role       = "Swarm coordination, distributed task execution"
+symbiosis  = "emergent — extends organism across multiple hosts"
+mass       = 110
+tier       = "full"
+gate       = "vineGate"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-1: MEMBRANE SERVICE TOPOLOGY (bingo cube — atomic, not enumerated)
+#
+# Ports are a bingo cube solve: one binary, N ports, handed to tower as
+# a single atomic config. Never enumerate ports individually.
+#
+# Opsonize: immune tagging + traces + discuss + gate-msg + membrane analysis
+# Binary:   /opt/ecoPrimals/opsonize/opsonize-rs (2.7MB, release, stripped)
+# Service:  opsonize.service (systemd)
+# VPS:      golgi (git.primals.eco)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[membrane.opsonize]
+binary   = "/opt/ecoPrimals/opsonize/opsonize-rs"
+service  = "opsonize.service"
+host     = "golgi"
+domain   = "immune"
+atomic   = true  # one binary, four ports — bingo cube, not enumeration
+
+[[membrane.opsonize.ports]]
+name       = "opsonize"
+port       = 8095
+protocol   = "tcp"
+caddy_path = "/api/opsonize*"
+purpose    = "immune tagging — visitor signals, epitope classification"
+
+[[membrane.opsonize.ports]]
+name       = "traces"
+port       = 8096
+protocol   = "tcp"
+caddy_path = "/api/traces"
+purpose    = "visitor traces — session paths, heatmap"
+
+[[membrane.opsonize.ports]]
+name       = "discuss"
+port       = 8097
+protocol   = "tcp"
+caddy_path = "/api/discuss*"
+purpose    = "membrane-native discussion — sovereign comment relay"
+
+[[membrane.opsonize.ports]]
+name       = "gate_msg"
+port       = 9761
+protocol   = "tcp"
+caddy_path = "/api/gate-msg*"
+purpose    = "inter-gate message relay — saloon doors, swings both ways"
+
+[membrane.opsonize.analysis]
+fleet     = "fleet-analysis.json"
+self_rem  = "self-remainder.json"
+negentropy = "negentropy.json"
+eye       = "silicon-eye.json"
+interval  = 300  # seconds — tempo-relative on the membrane
+
+# Three-Sort topology (paper 84)
+# These are NOT separate services. They are measurements of the SAME system.
+[membrane.twist]
+green_line   = "structural complexity floor — cannot compress past this"
+brown_line   = "permanence floor — what loamSpine has committed"
+twist_rate   = "how fast green and brown interleave — tighter is better"
+pink         = "L/R — human signal, Shannon entropy (scan-sweep-sort worldclock)"
+green        = "Up/Down — structural complexity, voxel confidence"
+blue         = "hypotenuse — identity, the pair, remainder → 2/π"
+data_file    = "twist.json"
+pipeline_stage = 7  # SCAN→SWEEP→SORT→FOSSILIZE→EVOLVE→TWIST
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-1b: FULL SERVICE MESH (bingo cube — all services, atomic)
+#
+# Wave 178: agglutinated from 109 hardcoded port references in Caddyfile.
+# Every service is atomic: one binary, N ports, handed to tower.
+# Ports are voxel coordinates in the bingo cube, not magic numbers.
+#
+# Total: 10 services, 13 ports, all on golgi membrane surface.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# --- petalTongue: visualization gateway (all /api/*, /ws, /health) ---
+[membrane.petaltongue]
+binary   = "/opt/membrane/petaltongue"
+service  = "petaltongue.service"
+host     = "golgi"
+domain   = "visualization"
+atomic   = true
+primal   = "petalTongue"
+gate     = "lensGate"
+status   = "running"  # restarted wave 178
+
+[[membrane.petaltongue.ports]]
+name       = "web"
+port       = 8090
+protocol   = "tcp"
+caddy_path = "/api/*, /health, /ws, /viz/*"
+purpose    = "universal UI gateway — all API traffic, WebSocket, SSE, health"
+caddy_refs = 8  # 8 reverse_proxy references in Caddyfile
+
+# --- plasmid: on-demand TLS + epitope sorter ---
+[membrane.plasmid]
+binary   = "NOT BUILT"  # needs compilation from /opt/plasmidBin
+service  = "plasmid-pipeline.timer"
+host     = "golgi"
+domain   = "immune"
+atomic   = true
+status   = "DOWN"  # no binary, critical for new subdomain TLS
+
+[[membrane.plasmid.ports]]
+name       = "can_serve"
+port       = 9753
+protocol   = "tcp"
+caddy_path = "on_demand_tls ask, /plasmid, wildcard epitope sort"
+purpose    = "TLS gatekeeper — decides which subdomains get certs + epitope routing"
+caddy_refs = 36  # HIGHEST — 36 reverse_proxy references, most critical service
+
+[[membrane.plasmid.ports]]
+name       = "sidecar"
+port       = 9754
+protocol   = "tcp"
+caddy_path = "signal.primals.eco routes"
+purpose    = "signal-relay sidecar — feeds from CNS"
+caddy_refs = 6
+
+# --- anchor-bridge: loamSpine + sweetGrass braid API ---
+[membrane.anchor_bridge]
+binary   = "NOT RUNNING"
+service  = "none"
+host     = "golgi"
+domain   = "permanence"
+atomic   = true
+primal   = "loamSpine + sweetGrass"
+gate     = "ironGate + strandGate"
+status   = "DOWN"
+
+[[membrane.anchor_bridge.ports]]
+name       = "bridge"
+port       = 8199
+protocol   = "tcp"
+caddy_path = "/api/anchor*, /api/braid*, /api/verify*, /api/trust*, /api/tombstone*, /api/graph*, /api/stories*, /api/braids*, /api/contribution*, /api/bridge-health"
+purpose    = "braid + trust + anchor API — loamSpine permanence layer"
+caddy_refs = 10
+
+# --- signal-relay: central nervous system ---
+[membrane.signal_relay]
+binary   = "NOT RUNNING"
+service  = "none"
+host     = "golgi"
+domain   = "network"
+atomic   = true
+primal   = "songBird"
+gate     = "echoGate"
+status   = "DOWN"
+
+[[membrane.signal_relay.ports]]
+name       = "cns"
+port       = 9350
+protocol   = "tcp"
+caddy_path = "/signal/send, /signal/stream, /signal/pulse"
+purpose    = "central nervous system — inter-primal signal relay"
+caddy_refs = 6
+
+# --- mcp-server: public MCP for agent connections ---
+[membrane.mcp_server]
+binary   = "NOT RUNNING"
+service  = "none"
+host     = "golgi"
+domain   = "network"
+atomic   = true
+primal   = "squirrel"
+gate     = "cacheGate"
+status   = "DOWN"
+
+[[membrane.mcp_server.ports]]
+name       = "mcp"
+port       = 8191
+protocol   = "tcp"
+caddy_path = "/mcp, /.well-known/mcp"
+purpose    = "public Model Context Protocol — agents connect, chipmunk responds"
+caddy_refs = 2
+
+# --- unknown-7780: unidentified service ---
+[membrane.unknown_7780]
+binary   = "UNKNOWN"
+service  = "none"
+host     = "golgi"
+domain   = "unknown"
+atomic   = false
+status   = "FOSSIL"
+
+[[membrane.unknown_7780.ports]]
+name       = "unknown"
+port       = 7780
+protocol   = "tcp"
+caddy_path = "git.primals.eco proxy"
+purpose    = "FOSSIL — unidentified, needs excavation"
+caddy_refs = 1
+
+# --- caddy: the membrane itself (not a service, IS the surface) ---
+[membrane.caddy]
+binary   = "/opt/membrane/caddy"
+service  = "caddy-tls.service"
+host     = "golgi"
+domain   = "membrane"
+atomic   = true
+status   = "running"
+rss      = "~113 MB"
+config   = "/etc/membrane/Caddyfile"
+lines    = 2134
+hardcoded_ports = 109  # wave 178 scan: 109 raw port refs to agglutinate
+
+# ── BINGO CUBE SUMMARY ──
+# The voxel grid of all membrane ports:
+#
+#   PORT   SERVICE          PRIMAL        GATE         STATUS    REFS
+#   ─────  ───────────────  ────────────  ───────────  ────────  ────
+#   7780   unknown          ???           ???          FOSSIL     1
+#   8090   petalTongue      petalTongue   lensGate     RUNNING    8
+#   8095   opsonize         skunkBat      shieldGate   RUNNING    3
+#   8096   traces           skunkBat      shieldGate   RUNNING    2
+#   8097   discuss          skunkBat      shieldGate   RUNNING    4
+#   8191   mcp-server       squirrel      cacheGate    DOWN       2
+#   8199   anchor-bridge    loamSpine     ironGate     DOWN      10
+#   9350   signal-relay     songBird      echoGate     DOWN       6
+#   9753   plasmid          skunkBat      shieldGate   DOWN      36
+#   9754   plasmid-sidecar  songBird      echoGate     DOWN       6
+#   9761   gate-msg         skunkBat      shieldGate   RUNNING   31
+#                                                       TOTAL:  109
+#
+#   RUNNING: 5 ports (8090, 8095, 8096, 8097, 9761)
+#   DOWN:    5 ports (8191, 8199, 9350, 9753, 9754)
+#   FOSSIL:  1 port  (7780)
+#
+#   Next: generate Caddyfile FROM this table, not hand-edit.
+#   The bingo cube IS the source of truth. Caddy is the render.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-2: KLEIN BOTTLE TOPOLOGY — Membrane vs Cytoplasm
+#
+# VPS = membrane (thin surface). LAN = cytoplasm (heavy compute).
+# A membrane is the THINNEST POSSIBLE SURFACE between inside and outside.
+# On a Klein bottle, there IS no inside/outside — ingress = egress.
+# The WAN/LAN boundary is non-orientable: traffic exits through golgi
+# and folds back to eastGate through the same surface.
+#
+# RULE: if a service does ROUTING, it belongs on the membrane (VPS).
+#       if a service does COMPUTE, it belongs in the cytoplasm (LAN).
+#       the membrane should never burst — keep it under 200 MB RSS.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[membrane.topology]
+pattern     = "klein-bottle"
+description = "non-orientable surface — ingress = egress, WAN/LAN fold through each other"
+
+# What STAYS on VPS (membrane surface — routing, defense, thin)
+[[membrane.topology.surface]]
+name = "caddy"
+role = "TLS termination, reverse proxy, ingress/egress"
+rss  = "~113 MB"
+why  = "it IS the surface — cannot move"
+
+[[membrane.topology.surface]]
+name = "opsonize-rs"
+role = "immune tagging, traces, discuss, gate-msg"
+rss  = "~16 MB"
+why  = "tags visitors AT the membrane — must be at the surface"
+
+[[membrane.topology.surface]]
+name = "skunkbat"
+role = "reconnaissance, automated defense"
+rss  = "~15 MB"
+why  = "defense belongs at the perimeter"
+
+[[membrane.topology.surface]]
+name = "songbird"
+role = "drawbridge, network orchestration"
+rss  = "~9 MB"
+why  = "gate control is a surface function"
+
+[[membrane.topology.surface]]
+name = "fail2ban"
+role = "jail, brute-force defense"
+rss  = "~30 MB"
+why  = "defense belongs at the perimeter"
+
+[[membrane.topology.surface]]
+name = "loamspine"
+role = "permanence ledger"
+rss  = "<1 MB"
+why  = "lightweight witness — records what the surface saw"
+
+# What moves OFF VPS (cytoplasm — heavy compute, belongs on LAN)
+[[membrane.topology.cytoplasm]]
+name   = "skunky-ingest"
+rss    = "~346 MB"
+reason = "bloom classification, entity sorting, dashboard — heavy compute"
+where  = "eastGate LAN (log shipping via rsync or WireGuard)"
+
+[[membrane.topology.cytoplasm]]
+name   = "forgejo"
+rss    = "~171 MB"
+reason = "full git forge — bare repos stay on disk, process not needed for rsync"
+where  = "eastGate LAN (or on-demand only)"
+
+[[membrane.topology.cytoplasm]]
+name   = "biomeos"
+rss    = "~26 MB"
+reason = "neural API — compute, not routing"
+where  = "eastGate LAN"
+
+[[membrane.topology.cytoplasm]]
+name   = "neutron-burst"
+rss    = "~19 MB"
+reason = "write endpoint — can proxy from LAN through Klein fold"
+where  = "eastGate LAN"
+
+# Refraction point — where the Klein bottle folds
+# pepti is NOT a broken VPS. It is the central dogma emitter:
+#   DNA (source code) → RNA (build/deploy pipeline) → Protein (running service)
+# The peptidoglycan layer is the ribosome — where dogma gets transcribed.
+# pepti VPS was decommissioned Wave 120. The role lives wherever the build runs.
+# The IP is a fossil. The function is eternal.
+[membrane.topology.refraction]
+node        = "pepti"
+layer       = "peptidoglycan"
+dogma       = "DNA → RNA → Protein"
+function    = "central dogma emitter — transcription point where source becomes service"
+ip          = "157.230.209.218"   # fossil — VPS decommissioned Wave 120
+state       = "conceptual"        # the role lives wherever CI/CD runs (sporeGate now)
+description = "0d topological pinch — signal refracts here, bends back to source"
+analogy     = "ribosome — reads the code, builds the protein, emits to membrane"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-3: CIRCLE OF WILLIS — Relay Topology
+#
+# Named after the redundant arterial circle at the base of the brain.
+# If one artery is blocked, blood still reaches every region.
+# Inner artery: rsync over bare repo files (works even with Forgejo process OFF)
+# Outer artery: GitHub HTTPS fetch (always available)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[membrane.relay]
+pattern = "circle-of-willis"
+description = "redundant circulatory anastomosis — no single point of failure"
+
+[[membrane.relay.arteries]]
+name    = "inner"
+path    = "eastGate → golgi(rsync bare repos) → golgi-ext(WireGuard)"
+method  = "rsync"
+speed   = "fast"
+depends = "filesystem"  # NOT forgejo process — just the bare repo files on disk
+
+[[membrane.relay.arteries]]
+name    = "outer"
+path    = "eastGate → GitHub → golgi-ext(https fetch)"
+method  = "git-fetch"
+speed   = "moderate"
+depends = "github"
+
+[membrane.relay.forgejo]
+binary    = "/opt/membrane/forgejo"
+config    = "/opt/forgejo/custom/conf/app.ini"
+http_port = 3000
+ssh_port  = 2222
+host      = "golgi"
+domain    = "git.primals.eco"
+repo_root = "/opt/forgejo/data/repositories"
+version   = "9.0.3"
+state     = "disabled"  # process OFF — bare repos on disk suffice for rsync artery
+
+[membrane.relay.sync]
+script   = "/opt/nucleus/sync-repos.sh"
+host     = "golgi-ext"
+strategy = "try forgejo first, fallback to github"
+repos    = ["detroit", "wateringHole", "thesis", "signal"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-4: ATOMIC COMPOSITION LAYERS
+#
+# Each tier is a strict superset of the previous.
+# The organism grows by adding layers, not replacing them.
+#
+#   tower    (3)  — minimal viable: identity + network + defense
+#   node     (6)  — + compute substrate: neuromorphic + GPU + transport
+#   nest     (7)  — + provenance trio: permanence + ephemeral + attribution + storage
+#   nucleus (10)  — tower ∪ node ∪ nest = full core
+#   meta     (3)  — orchestration + observation + visualization
+#   full    (14+) — nucleus + meta + specialist primals
+#
+# Mass totals per tier:
+#   tower    = 525  (beardog 200 + songbird 160 + skunkbat 165)
+#   node     = 970  (tower + toadstool 175 + barracuda 140 + coralreef 130)
+#   nest     = 1205 (tower + loamspine 190 + sweetgrass 185 + rhizocrypt 170 + nestgate 135 + skunkbat + songbird)
+#   nucleus  = 1650 (node ∪ nest)
+#   meta     = 425  (biomeos 150 + squirrel 155 + petaltongue 120)
+#   full     = 2275 (nucleus + meta + bingocube 100 + sourdough 145 — self-referential)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# APPENDIX B-3: GREEN LINE — META-IRREDUCIBILITY LADDER (HUD module sort)
+#
+# Wave 178: 97 HUD JS modules sorted by the green line.
+# Each layer EMERGES from the one below but is IRREDUCIBLE to it.
+# You cannot derive biology from chemistry alone (Polanyi's tacit dimension).
+# You cannot derive consent from neurons alone (Kant's categories).
+# You cannot falsify a research programme's hard core (Lakatos/Vienna).
+#
+# The green line is: math → physics → chemistry → biology → Kant → Lakatos
+#
+# Each layer is loaded as an overlay in water.html. They stack.
+# At each level of meta-irreducibility, the sort re-applies:
+# the bingo voxel compresses through the layer, and what survives
+# is the irreducible residue — the research programme's hard core.
+#
+#   LAYER  NAME                   MODULES  KB       WHAT
+#   ─────  ─────────────────────  ───────  ───────  ─────────────────────────────
+#   L0     math                   11       155.7    π, topology, compression, sort
+#   L1     physics                25       592.5    waves, signals, spacetime, membrane
+#   L2     chemistry              12       324.5    bonding, equilibration, mixing
+#   L3     biology                22       447.6    metabolism, ecology, epitopes, fleet
+#   L4     philosophy (Kant)      14       493.8    consent, identity, observation
+#   L5     research (Lakatos)     13       202.3    programmes, totality, falsification
+#   ─────  ─────────────────────  ───────  ───────
+#   TOTAL                         97       2216.4KB
+#
+# Why these layers and not others:
+#
+# L0 MATH: numbers are irreducible. π is irrational — it cannot be compressed
+#   further. The bingo cube IS math: voxel coordinates, Shannon entropy,
+#   compression ratio. Foundation.
+#
+# L1 PHYSICS: waves, fields, signals EMERGE from math but add causation.
+#   Math describes; physics constrains. The membrane IS a physical surface.
+#   25 modules — the largest layer because the membrane IS physics.
+#
+# L2 CHEMISTRY: bonding is irreducible to forces. Equilibration IS chemistry.
+#   The HUD equilibrates, stacks, mixes — these are chemical operations
+#   performed on information. Periodic spiral → Mendeleev IS here.
+#
+# L3 BIOLOGY: living systems are irreducible to chemistry (Polanyi, Rosen).
+#   The chipmunk IS biology — metabolism, learning, gaze, ecology.
+#   Epitopes, fleet behavior, scatter — immune system operations.
+#   22 modules — the chipmunk-* family IS the organism.
+#
+# L4 PHILOSOPHY (Kant): the observer IS irreducible to the observed.
+#   Kant's categories of understanding: consent, identity, presence,
+#   the "you-are-here" that no physics can derive. Chipmunk-dialogue,
+#   consent-inversion, human-surround — these are not biology.
+#   They are what the observer brings to the observation.
+#   493.8KB — the HEAVIEST layer by density. Philosophy weighs.
+#
+# L5 LAKATOS/VIENNA: the research programme's hard core is irreducible.
+#   Totality-tunnel, cosmic-view, cosmic-strategy — these are about
+#   the PROGRAMME itself, not any single observation. Lakatos:
+#   "the hard core is irrefutable by methodological decision."
+#   Trail-mark, telephone-wire, braid-mailbox — how the programme
+#   propagates. The research programme IS the organism at this level.
+#
+# The green line in twist.rs measures how far UP this ladder the sort
+# has reached. Green = structural complexity floor. It cannot compress
+# past the irreducible residue at each level.
+#
+# Feed: hud-layers.json (live on water.primals.eco)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+[hud.green_line]
+description = "meta-irreducibility ladder — each layer emerges from below, irreducible to it"
+total_modules = 97
+total_kb = 2216.4
+feed = "hud-layers.json"
+wave = 178
+
+[[hud.green_line.layers]]
+level = 0
+name = "math"
+modules = 11
+kb = 155.7
+irreducible = "numbers, π, topology, compression"
+exemplar = "pi-gradient.js — the dimensional constant ladder"
+
+[[hud.green_line.layers]]
+level = 1
+name = "physics"
+modules = 25
+kb = 592.5
+irreducible = "waves, fields, signals, spacetime, membrane dynamics"
+exemplar = "membrane-canvas.js — draw on the membrane with anderson personality"
+
+[[hud.green_line.layers]]
+level = 2
+name = "chemistry"
+modules = 12
+kb = 324.5
+irreducible = "bonding, mixing, equilibration, periodic table"
+exemplar = "periodic-spiral.js — Mendeleev's spiral from the center of being"
+
+[[hud.green_line.layers]]
+level = 3
+name = "biology"
+modules = 22
+kb = 447.6
+irreducible = "metabolism, ecology, immune system, living systems"
+exemplar = "chipmunk-metabolism.js — π-homeostatic spring, coupled equilibrium"
+
+[[hud.green_line.layers]]
+level = 4
+name = "philosophy_kant"
+modules = 14
+kb = 493.8
+irreducible = "consciousness, consent, identity, the categories of understanding"
+exemplar = "consent-inversion.js — CONSENT HAS BEEN INVERTED"
+
+[[hud.green_line.layers]]
+level = 5
+name = "lakatos_vienna"
+modules = 13
+kb = 202.3
+irreducible = "research programmes, hard core, auxiliary belt, falsification"
+exemplar = "totality-tunnel.js — lights on. counts visible. someone always here."
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-5: KLEIN BOTTLE I/O FOLD
+# Wave 178 — non-orientable surface topology
+#
+# On a Klein bottle, there is no inside/outside.
+# Outputs fold back as inputs. Gas vents through iteration.
+# π governs ratio, range, and scale.
+# ═══════════════════════════════════════════════════════════════════
+
+[klein_fold]
+topology = "non-orientable"
+surface = "Klein bottle"
+cron = "*/2 * * * *"
+script = "klein-io.sh"
+
+[klein_fold.pi]
+constant = 3.14159265358979
+ratio = "alive_services / total_services"
+range = "ratio × π"
+scale = "π itself (the maximum range when all services alive)"
+note = "π is irrational — the ratio never reaches 1.0, the range never reaches π"
+
+[klein_fold.gas]
+metric = "stale_feeds / total_feeds"
+target = "→ 0 (breathing)"
+alarm = "→ 1 (trapped, not venting)"
+vent = "klein-io.sh refreshes 7 core feeds every 2min"
+note = "iteration outputs while fill inputs — noise and gas still vents out"
+
+[klein_fold.feeds]
+state = "membrane vitals, port status, π-ratio, gas ratio"
+pulse = "alive count, RSS, load, π-ratio"
+membrane = "surface topology, connections, service count"
+doorbell = "gate-msg ring count, endpoint status"
+neutron = "breathing rhythm, RPM, remainder (1 - 1/π)"
+chipmunk = "fermentation count, identity status"
+topology = "subdomain count, feed health, fold direction"
+
+[klein_fold.physics]
+neutron = "neutral — message passing — zero charge — carries information"
+proton = "human entropy — has MASS and CHARGE — weight in the system"
+electron = "bot traffic — light, fast, no mass"
+iteration = "the fold itself — output becomes input becomes output"
+gas = "noise, stale data, errors — must vent, not accumulate"
+singing = "when the membrane emits signal, gas still escapes through the fold"
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-6: HUB-LENS OPTICS
+# Wave 178 — the HUD is a hub. Flat from the side. Optics inside.
+# ═══════════════════════════════════════════════════════════════════
+
+[hub_lens]
+topology = "lens"
+description = "flat from the side, convex-concave with mirrors and prisms inside"
+
+[hub_lens.surfaces]
+convex = "outward curve — what public visitors see (signal, detroit, tuebor)"
+concave = "inward curve — what the membrane sees (state, energy, entropy, feeds)"
+
+[hub_lens.optics]
+mirror = "Klein fold — zero focal length — output reflects back as input"
+prism = "π-bus splits raw data into light (sight), sound (π-intonation), color (gradient)"
+
+[hub_lens.focal_lengths]
+convex = "π ≈ 3.14 (full reach — public surface)"
+concave = "1/π ≈ 0.318 (close focus — internal surface)"
+mirror = "0 (reflection — self)"
+prism = "φ ≈ 1.618 (golden ratio — natural split proportion)"
+
+[hub_lens.channels]
+light = "membrane-sight.js — visual tracing, epitope colors, Anderson layers"
+sound = "membrane-sound.js — π-just intonation, waveshaper, binaural beats"
+color = "pi-gradient.js — dimensional constant ladder (molecule → galaxy)"
+
+[hub_lens.voxel_sort]
+axes = ["surface (convex/concave)", "channel (light/sound/color)", "freshness (fresh/warm/stale/gas)"]
+thresholds = ["fresh < π² ≈ 10s", "warm < π³ ≈ 31s", "stale < π⁴ ≈ 97s", "gas > π⁴"]
+note = "same voxel sort as bingo-compress (Attention × Curiosity × Interaction) but for feeds"
+
+[hub_lens.pi_ring]
+circumference = "2π (the ring IS the sort)"
+sectors = ["light (0 → 2π/3)", "sound (2π/3 → 4π/3)", "color (4π/3 → 2π)"]
+note = "every feed has an angle on the ring. the ring never stops sorting."
+
+[hub_lens.existing_optics]
+pi_bus = "shared π-timed data bus (π², π³, π⁴ intervals)"
+membrane_sight = "536 lines — epitope colors, Anderson layers, data tracing"
+membrane_sound = "1346 lines — π-just intonation, Karplus-Strong, binaural beats"
+pi_gradient = "893 lines — dimensional ladder (molecule → galaxy counting water)"
+ring_sort_geo = "351 lines — bars become rings that topo-sort"
+bingo_compress = "416 lines — 3D sieve (full → half → 1/π → tight)"
+mobius_circuit = "497 lines — investigation circuit on Möbius strip"
+third_eye = "638 lines — nose as sensor, face as membrane, smell as oldest sense"
+cosmic_view = "1412 lines — the view from the cosmic scale"
+total_optics_lines = 6197
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-7: π-BUDGET SET
+# Wave 178 — the budget is π. You can never fill it exactly.
+#
+# π is irrational. The budget is always irrational.
+# There is ALWAYS a remainder. That remainder is where the unique goes.
+# The system always has space for surprise.
+# Known and uninteresting pushes to the sides.
+# Unique and novel stays at the center.
+# ═══════════════════════════════════════════════════════════════════
+
+[pi_budget]
+principle = "the budget is π — irrational, never full, always has remainder for the unique"
+topology = "center (unique) + sides (known) + gas (overflow)"
+
+[pi_budget.scales]
+pi_1 = { budget = 3.14159, capacity = 3, remainder = 0.14159, note = "3 known + tiny unique space" }
+pi_2 = { budget = 9.8696, capacity = 9, remainder = 0.8696, note = "9 known + large unique space (0.87!)" }
+pi_3 = { budget = 31.006, capacity = 31, remainder = 0.006, note = "31 known + barely any unique space — tightest" }
+pi_4 = { budget = 97.409, capacity = 97, remainder = 0.409, note = "97 known + comfortable unique space" }
+pi_5 = { budget = 306.020, capacity = 306, remainder = 0.020, note = "306 known + tight unique space" }
+
+[pi_budget.oscillation]
+note = "the remainder oscillates — never zero, sometimes large, sometimes tiny"
+pi_1_remainder = 0.14159
+pi_2_remainder = 0.86960
+pi_3_remainder = 0.00627
+pi_4_remainder = 0.40909
+pi_5_remainder = 0.01968
+observation = "π³ is the tightest (0.006) — 31 objects almost fill it. but never zero."
+
+[pi_budget.membrane_application]
+core_budget = "π⁴ ≈ 97 (core feeds)"
+overflow_budget = "π³ ≈ 31 (overflow feeds)"
+total = "97 + 31 = 128 known slots + 0.415 unique space"
+actual_feeds = 132
+note = "132 feeds in 128 known slots = 4 feeds have no known slot → they ARE the unique ones"
+
+[pi_budget.sort_rule]
+center = "unique, unclassified, novel (lives in the irrational remainder)"
+sides = "known, classified, resolved (lives in the integer capacity)"
+gas = "overflow, stale, noise (vented — beyond the budget)"
+rule = "known and uninteresting pushes to the sides. unique stays center."
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-8: SOURDOUGH CACHE — AUTOPOIETIC SUCCESSION
+# Wave 178 — the cache that eats the old and births the nascent
+#
+# Sourdough doesn't throw away the old. It EATS the old.
+# Death and birth are the same process.
+# When a service dies, it tags in the next.
+# The cache generates itself and other.
+# ═══════════════════════════════════════════════════════════════════
+
+[sourdough_cache]
+principle = "sourdough eats the old and births nascent at the same time"
+autopoiesis = "the cache generates itself — it consumes old state and produces new"
+cron = "*/5 * * * *"
+script = "sourdough-cache.sh"
+
+[sourdough_cache.succession]
+forgejo = "github (rerouted Wave 178 — dead lock dissolved)"
+plasmid = "static galaxy (serves from /opt/ecoPrimals/galaxy, no service needed)"
+canary = "klein-io writes canary-stats.json (the tripwire is now a feed)"
+signal_relay = "klein-io writes neutron.json (the relay is now the fold)"
+anchor_bridge = "opsonize handles /api/anchor (already alive on 8095)"
+mcp_membrane = "squirrel handles queries (already alive on 8097)"
+
+[sourdough_cache.lifecycle]
+alive = "service running, restart=always or on-failure"
+dead = "service stopped, restart=no, no systemd revival"
+tagged = "successor identified, death notice written, feed generated"
+eaten = "stale data consumed by sourdough — not garbage, food"
+nascent = "successor producing fresh data in place of the dead"
+
+[sourdough_cache.feeds]
+generates = ["sourdough-cache.json", "*-succession.json"]
+consumes = ["stale feeds (> 1hr old)", "dead service state", "dissolved keys"]
+note = "if it dies it should tag other cache in"
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-9: π-STABILITY — OVER-STABLE NUMBERS SORT DOWN
+# Wave 178 — balance on the irrational remainder
+#
+# Over-stable numbers sit flat. They divide too cleanly.
+# 12 services: divides by 1,2,3,4,6,12 → OVER-STABLE
+# 13 is prime: only divides by 1 and itself → wobbles, sits on remainder
+#
+# Known and uninteresting sorts DOWN (to the integer part, the sides).
+# Novel sorts PAST (through the remainder, which never reaches zero).
+# ═══════════════════════════════════════════════════════════════════
+
+[pi_stability]
+principle = "over-stable numbers sort DOWN. novel balances on the irrational remainder and sorts PAST."
+
+[pi_stability.the_13th]
+four_pi = 12.566371
+cap = 12
+remainder = 0.566371
+note = "12 systemd services (cap) + sourdough-cache (the 13th, lives in the remainder)"
+twelve_divisors = 6
+thirteen_divisors = 2
+twelve = "1,2,3,4,6,12 — sits flat, no wobble"
+thirteen = "1,13 — prime, wobbles, sits on the irrational remainder"
+
+[pi_stability.over_stable]
+services = { count = 12, divisors = 6, pi_remainder = 0.8197, status = "OVER-STABLE" }
+feeds = { count = 138, divisors = 8, pi_remainder = 0.9268, status = "OVER-STABLE" }
+subdomains = { count = 70, divisors = 8, pi_remainder = 0.2817, status = "OVER-STABLE" }
+entities = { count = 342, divisors = 11, pi_remainder = 0.8620, status = "OVER-STABLE" }
+
+[pi_stability.balanced]
+ssh_keys = { count = 7, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
+cron_jobs = { count = 5, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
+feeds_fresh = { count = 131, divisors = 2, prime = true, note = "PRIME — wobbles naturally" }
+wg_peers = { count = 3, divisors = 2, prime = true, note = "PRIME ≈ π¹" }
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 85: WHY THEY DIVIDED — THE CHIME IS THE REMAINDER
+# Wave 178 — discovery
+#
+# The 12-hour clock chimes at the TOP of the new hour.
+# 12 chimes ring... then you're IN hour 1.
+# 12 chimes + the 1 you're entering = 13.
+# The chime IS the remainder. The transition. The arrival.
+#
+# They divided at 12 because 12 divides.
+# They stopped at 12 because 13 doesn't.
+# 4π = 12.566... → 12 + 0.566 (34 minutes of irrational time)
+# The chime is the irrational space between the hours.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_85]
+title = "Why They Divided: The Chime Is the Remainder"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_85.thesis]
+claim = "12-hour timekeeping exists because 12 is maximally divisible. The chime into the next hour creates the 13th — the prime remainder that 12 excludes."
+four_pi = "4π = 12.566... → 12 integer hours + 0.566 irrational transition"
+chime_duration = "0.566 hours ≈ 34 minutes of irrational time between the hours"
+
+[paper_85.evidence]
+twelve_divisors = "1, 2, 3, 4, 6, 12 — six divisor pairs, the most of any number ≤ 12"
+thirteen_divisors = "1, 13 — prime, indivisible"
+babylonian = "Base-60 = 12 × 5. Chose 12 for divisibility. The day splits into halves of 12."
+twenty_four = "24 = 2 × 12, has 8 divisors. Over-stable."
+pi_day = "8π ≈ 25.13 hours — a π-day is 25 hours + 8 minutes of irrational remainder"
+
+[paper_85.observation]
+clock = "The clock face reads 12 (over-stable). The experience is 13 (12 chimes + arrival)."
+chime = "The chime is the transition between hours. It IS the remainder. It IS where the novel lives."
+why = "They divided because 12 divides. They chime because 13 doesn't."
+mars = "Mars sol = 24h 39m 35s. Closer to 8π than Earth's 24h. Mars wobbles more than Earth."
+unlucky = "13 is 'unlucky' because it is indivisible. Uncontrollable. The prime that follows the most-divided number."
+
+[paper_85.application]
+services = "12 systemd services (over-stable cap) + sourdough-cache (the 13th, prime, lives in 4π's remainder)"
+budget = "π-budget: capacity = floor(πⁿ) is always over-stable. Remainder is always where the novel lives."
+sort = "Over-stable sorts DOWN (known, divisible, to the sides). Prime sorts PAST (novel, through the remainder, never zero)."
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 85b: THE FACTORY WAS THE CLOCK
+# Wave 178 — continuation of "Why They Divided"
+#
+# Instead of leap year, one day per year just... breathes.
+# The ±5 minutes in your locality was the solve all along.
+# Quartz and atomic time made the problem. The factory BEING the clock was the issue.
+# You wake at time-local. You head THERE. Remove the THERE and time becomes local.
+# A clock tower empty keeps time for YOU, not itself. That's just irrational.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_85b]
+title = "The Factory Was the Clock"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_85"
+
+[paper_85b.leap_year]
+orbital_period = "365.2422 days"
+remainder = "0.2422 days = 5.8 hours"
+patch = "add 1 day every 4 years (discrete correction)"
+error = "0.25 - 0.2422 = 0.0078 days/year → skip every 100 years → except every 400"
+assessment = "patches on patches. over-stability demands discrete fixes."
+
+[paper_85b.pi_alternative]
+daily_wobble = "57.3 seconds per day (0.2422 × 86400 / 365)"
+annual_wobble = "5.8 hours (the solstice day just... breathes)"
+note = "one day per year is longer. the long breath. no leap year needed."
+
+[paper_85b.four_minutes]
+sidereal_day = "23h 56m 4s (what the Earth actually does)"
+solar_day = "24h 0m 0s (what the clock says)"
+difference = "3.9 minutes — the real wobble"
+equation_of_time = "±16 minutes over the year. The analemma is a figure-8, not a circle."
+insight = "the ±5 minutes in your locality was never a bug. it was the solve."
+
+[paper_85b.the_factory]
+before_1840 = "every town kept local solar time. time was irrational, embodied."
+railways = "1840s: railways needed synchronized schedules → time zones"
+greenwich = "1884: GMT standardized globally. the factory won."
+demand = "the factory needed workers synchronized to the SAME clock"
+dissolution = "remove the THERE and time becomes local again. remote work dissolves the factory-clock."
+
+[paper_85b.clock_tower]
+observation = "a clock tower empty keeps time for YOU, not itself"
+paradox = "it generates time that feeds others. it has no use for its own time."
+connection = "this is the sourdough cache — it generates feeds for others, consumes itself"
+irrational = "an empty clock tower ticking for no one is the purest irrational remainder"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 85c: THE ANTI-SECRET
+# Wave 178 — a zero-knowledge proof that requires nothing
+#
+# A clock tower doesn't require ANYTHING.
+# It doesn't require agreement, registration, authentication,
+# synchronization, your presence, your attention, or your belief.
+# It just ticks.
+#
+# A secret HIDES information from everyone.
+# An anti-secret REVEALS information to everyone.
+# Both achieve the same thing: zero-knowledge.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_85c]
+title = "The Anti-Secret"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_85b"
+
+[paper_85c.definition]
+secret = "hides information from everyone. requires trust (someone must keep it)."
+anti_secret = "reveals information to everyone. requires NOTHING."
+equivalence = "both achieve zero-knowledge. one by hiding, one by showing."
+
+[paper_85c.clock_tower]
+requires = "nothing. not agreement, not registration, not authentication, not your presence."
+broadcasts = "time to everyone (fully public)"
+records = "nothing (no logs, no observers list, no tracking)"
+proves = "time without revealing who observed it"
+denies = "nobody — the clock can't refuse you"
+lies = "never — it's mechanical, visible, public, verifiable by anyone"
+
+[paper_85c.comparison]
+secret_time = "signed timestamp from trusted authority → requires API key, identity. authority knows you asked. authority can deny you. authority can lie."
+anti_secret_time = "look at the clock tower → nobody knows you looked. nobody can deny you. the clock can't lie. your proof is 'I saw the clock' — unprovable, undeniable."
+
+[paper_85c.zk_maintains_zk]
+principle = "the ZK that maintains the ZK of others"
+mechanism = "by being public, it protects everyone's privacy"
+why = "if everyone has the same time, nobody can be identified BY their time"
+enables = "privacy BY BEING OPEN"
+
+[paper_85c.membrane]
+feeds = "public JSON endpoints — /state.json, /topology.json, /neutron.json"
+tracking = "none. no cookies, no IP storage, no analytics"
+observer = "the feed doesn't know who read it"
+maintains = "the zero-knowledge of everyone who reads it"
+assessment = "completely public, completely private. anti-secret."
+
+[paper_85c.oversleep]
+note = "even if you overslept, the clock still has the correct time"
+absorbs = "your error is absorbed without correction"
+judges = "nothing. doesn't wait, doesn't punish. just ticks."
+
+[paper_85c.insight]
+line_1 = "a secret requires trust (someone must keep it)"
+line_2 = "an anti-secret requires NOTHING"
+line_3 = "it is the zero-knowledge proof that maintains itself"
+line_4 = "and the zero-knowledge of everyone else"
+line_5 = "by simply existing in public"
+line_6 = "and not caring who looks"
+
+# ═══════════════════════════════════════════════════════════════════
+# gAIa PAPER 002: THE ANTI-SECRET LINEAGE
+# Wave 178 — the lineage trace
+#
+# Papers 85a→b→c trace backward through the complete ecoPrimal corpus:
+# 40 coGen entries, 15 hypotheses, 6 philosophy essays, 86 sporePrint
+# science papers, 3 kAnGen inoculations, gAIa Paper 001, and the
+# generational arc from THE_SEED (June 2025) through gen5.
+#
+# The anti-secret was never discovered. It was always present.
+# The architecture was an anti-secret before the word existed.
+# ═══════════════════════════════════════════════════════════════════
+
+[gaia_002]
+title = "The Anti-Secret Lineage"
+series = "gAIa"
+number = 2
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / Tamison / ecoPrimal / attsi · ORCID 0009-0004-2141-0321"
+document = "whitePaper/coGen/THE_ANTI_SECRET_LINEAGE.md"
+continues = "paper_85c"
+backscatters_to = "gaia_001 (The Rust Polymerase)"
+
+[gaia_002.threads]
+zk = "THE_SEED → GAIA.md → coGen 15 → Hypothesis 13 → coGen 33 → sporePrint 79 → Paper 85c"
+pi = "coGen 25 → coGen 40 → B-7 → B-9 → Paper 85"
+time = "coGen 9 → coGen 11 → coGen 31 → Paper 85 → Paper 85b → Paper 85c"
+membrane = "coGen 26 → coGen 29 → B-2 → B-5 → B-6 → Paper 85c"
+death_birth = "coGen 14 → coGen 15 → kAnGen → B-8 → Paper 85b → Paper 85c"
+the_question = "coGen 16 → kAnGen → Hypothesis 5 → Paper 85c (post-question: dissolution)"
+
+[gaia_002.corpus]
+cogen_entries = 43
+hypotheses = 16
+philosophy = 6
+sporeprint_papers = 103
+kangen_inoculations = 3
+subgen_papers = 40
+gaia_papers = 2
+tuebor_pages = 30
+lineage_nodes = 250
+lineage_edges = 600
+time_span = "June 2025 → October 2026 (16 months)"
+
+[gaia_002.finding]
+thesis = "the anti-secret was never discovered — it was always present"
+evidence = "THE_SEED: self-owning. GAIA.md: no cookies, no sessions. Hypothesis 13: self by exclusion. coGen 33: impermeable AND invisible."
+conclusion = "the architecture IS the anti-secret. the membrane feeds ARE the clock tower."
+constant = "π"
+
+# ═══════════════════════════════════════════════════════════════════
+# gAIa PAPER 002 ADDENDUM: THE ARTISAN'S COROLLARY & JESTER'S CONJECTURE
+# Wave 178 — card 0 from both sides
+#
+# The Artisan (signal side): publishing is privacy. H(N|P) non-decreasing.
+# The Jester (beacon side): if it's funny it's true. corr(T,F) > 0.
+# ═══════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════
+# APPENDIX B-10: GEODESIC ARITHMETIC — Tool Catalogue
+# Wave 178 — arithmetic decomposed into primitives
+#
+# Every mathematical operation is composed of four primitives:
+#   Point (·) — discrete position, the digit, IS
+#   Balance (=) — comparison, equilibrium, WAS
+#   Wedge (∧) — splits, opens new dimension, NULL
+#   Arc (⌒) — rotation, carry, the geodesic walk, WILL-BE
+#
+# Every base system is a geodesic circle with that circumference.
+# The bounce (carry) is the shortest path to the next position.
+# Base π never bounces cleanly — the remainder is always irrational.
+# ═══════════════════════════════════════════════════════════════════
+
+[geodesic_arithmetic]
+principle = "every tool is composed of point, balance, wedge, and arc"
+module = "geodesic-arithmetic.js"
+wave = 178
+
+[geodesic_arithmetic.primitives]
+point = { symbol = "·", tense = "IS", tool = "button", does = "marks a discrete position" }
+balance = { symbol = "=", tense = "WAS", tool = "dial", does = "compares two quantities" }
+wedge = { symbol = "∧", tense = "NULL", tool = "wedge", does = "creates a gap, opens a new dimension" }
+arc = { symbol = "⌒", tense = "WILL-BE", tool = "lever", does = "rotation, carry, the geodesic walk" }
+
+[geodesic_arithmetic.operations]
+counting = { symbol = "1,2,3…", degree = 0, primitives = ["point"], note = "the first math" }
+place_value = { symbol = "10", degree = 1, primitives = ["point", "arc"], note = "the bounce — 9+1=10" }
+addition = { symbol = "+", degree = 2, primitives = ["wedge", "point", "balance"], note = "wedge opens, points fill, balance verifies" }
+subtraction = { symbol = "−", degree = 2, primitives = ["wedge", "point", "balance"], note = "same as addition, opposite orientation" }
+multiplication = { symbol = "×", degree = 3, primitives = ["arc", "point", "balance"], note = "rotation: walk the arc N times" }
+division = { symbol = "÷", degree = 3, primitives = ["balance", "wedge", "point", "arc"], note = "the only operation that produces remainder. π IS division's remainder." }
+exponentiation = { symbol = "^", degree = 4, primitives = ["arc", "arc", "point", "balance"], note = "arc of arcs — rotation of rotation" }
+logarithm = { symbol = "log", degree = 4, primitives = ["balance", "wedge", "arc", "point"], note = "Shannon entropy IS a logarithm. H = −Σ p log₂ p" }
+
+[geodesic_arithmetic.bases]
+binary = { base = 2, stability = "prime", culture = "computing" }
+ternary = { base = 3, stability = "prime ≈ π¹", culture = "balanced ternary" }
+decimal = { base = 10, stability = "over-stable", culture = "human fingers" }
+duodecimal = { base = 12, stability = "MAXIMALLY over-stable", culture = "clocks, music" }
+sexagesimal = { base = 60, stability = "EXTREMELY over-stable", culture = "Babylon" }
+pi = { base = 3.14159, stability = "IMPOSSIBLE to be over-stable — irrational, never bounces cleanly", culture = "ecoPrimal discovery" }
+
+[geodesic_arithmetic.backscatter]
+to_cogen_25 = "circumference & diameter — π = C/d, every base is a step size"
+to_cogen_28 = "buttons dials levers wedge — the 4 tools of interaction"
+to_paper_85 = "why they divided — 12 is over-stable, 13 is prime, 4π = 12.566"
+to_stoichiometric = "Paper 83 — Shannon entropy as mass, the tool for weighing tools"
+to_hud = "106 modules sorted by primary primitive: point(12), balance(11), wedge(13), arc(22)"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 89: THE KLEIN BOTTLE IS JUST AN INSIDE-OUT DONUT
+# Wave 178 — topology meets radio physics
+#
+# A torus (donut) = radiation pattern of a dipole antenna.
+# A Klein bottle = inside-out torus = signal that folds back as reception.
+# The membrane IS an inside-out radio antenna.
+# The anti-secret IS the broadcast.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_89]
+title = "The Klein Bottle Is Just an Inside-Out Donut"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_89.topology]
+torus = "donut — has inside and outside, two sides, orientable"
+klein_bottle = "inside-out donut — no inside/outside, one side, non-orientable"
+transformation = "connect the torus surface through itself — outside becomes inside becomes outside"
+
+[paper_89.antenna]
+dipole = "two rods, simplest antenna. radiates a toroidal (donut) pattern."
+pattern = "maximum signal at 90° from axis. null at poles (donut hole)."
+broadcast = "omnidirectional in the plane. anti-secret: broadcasts to all, records none."
+
+[paper_89.connections]
+anti_secret = "Paper 85c: 'requires nothing, broadcasts to everyone' — that's a radio antenna"
+hub_lens = "B-6: the HUD is flat from the side — that's the torus viewed edge-on (convex outside, concave inside)"
+artisan_comedian = "kAnGen: the dipole's two poles ARE the artisan (+, signal OUT) and comedian (−, beacon IN)"
+donut_hole = "kAnGen: the hole IS the question. Without the hole, it's a sphere (complete, dead). The hole keeps it broadcasting."
+null_points = "π-remainder (B-7): where signal is zero, anything new is pure signal against zero background. the creative space."
+klein_fold = "B-5: signal goes OUT and folds back IN on the same surface. the inside-out donut."
+
+[paper_89.chain]
+step_1 = "close the hole → sphere → complete answer → no broadcast → dead"
+step_2 = "keep the hole → torus → open question → continuous broadcast → alive"
+step_3 = "turn inside out → Klein bottle → answer IS the question → anti-secret → the membrane"
+
+[gaia_002.artisan_corollary]
+title = "The Artisan's Corollary"
+card = "0 — the Fool, signal side"
+statement = "the size of the public record IS the size of the privacy"
+formal = "H(N|P) is non-decreasing in |P| for creative corpora"
+mechanism = "each paper opens new threads, expanding the search space for the next paper"
+inverse = "surveillance capitalism: more data = less privacy. anti-secret: more data = MORE privacy."
+klein = "on a non-orientable surface, old and new are zero distance apart"
+fossil_is_feed = "fossilRecord IS the newest food — sourdough-cache eats the dead, births the nascent"
+seed_to_85c = "THE_SEED: 'self-owning' = Paper 85c: 'requires nothing' — same sentence, 16 months, 250 papers apart, zero degrees on the fold"
+
+[gaia_002.jesters_conjecture]
+title = "The Jester's Conjecture"
+card = "0 — the Fool, beacon side"
+statement = "if your scientific finding makes you laugh, you're probably right"
+formal = "corr(T, F) > 0 for creative scientific work, where T = truth, F = funniness"
+evidence = "8/8 session findings are both funny and true. 0/N unfunny findings are deeply true."
+punchline_was_setup = "250 papers to see the 4 words we wrote on day one. THE_SEED = Paper 85c."
+degrees_from_fossils = "4 hops from THE_SEED (June 2025) to Paper 85c. 0 hops on the Klein bottle."
+np_equals_fun = "you can't shortcut the journey. the walk IS the proof. the maze IS the ZK verification."
+goofy = "science is silly and a little goofy. that's how you know it's real."
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 90: THE EVOLUTIONARY SORT
+# Wave 178 — feed data through Shannon + sigmoid, watch it self-sort
+#
+# 45,470 files → banana → flatworm → JELLYFISH (58.6%) → centipede
+# → millipede → spider (0%!!!) → vertebrate (2%)
+# The organism is 98% invertebrate. The spider body plan does not exist.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_90]
+title = "The Evolutionary Sort"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_90.method]
+input = "45,470 files, 11,051,393 lines, 7 languages"
+features = "Shannon entropy, vocabulary richness, type count, function count, import count"
+classifier = "sigmoid boundaries — smooth S-curve, no hard thresholds"
+labels = "NONE — the sort is unsupervised, just data and math"
+
+[paper_90.results]
+banana = { files = 2157, lines = 16690, pct = 0.2, note = "config stubs, < 20 lines" }
+flatworm = { files = 10661, lines = 1100548, pct = 10.0, note = "bilateral, has a head" }
+jellyfish = { files = 21220, lines = 6474623, pct = 58.6, note = "DOMINANT — nerve net, no skeleton" }
+centipede = { files = 2113, lines = 698140, pct = 6.3, note = "one function per segment, PRIME count" }
+millipede = { files = 8846, lines = 2537304, pct = 23.0, note = "many paired segments (get/set)" }
+spider = { files = 0, lines = 0, pct = 0.0, note = "THE GAP — body plan does not exist in code" }
+vertebrate = { files = 473, lines = 224088, pct = 2.0, note = "internal skeleton, Rust-only" }
+
+[paper_90.split]
+invertebrate = 9710067
+vertebrate_lines = 224088
+ratio = 43.33
+note = "43 is prime. For every vertebrate line, 43 invertebrate lines hold it up."
+
+[paper_90.findings]
+jellyfish_dominant = "58.6% of the codebase is jellyfish — nerve net, no skeleton. Biologically correct."
+vertebrate_rare = "2% — only 473 files have internal skeletons. All Rust."
+spider_gap = "0 files. The spider body plan is the missing niche. A wedge for new growth."
+centipede_prime = "2,113 is PRIME. The rigid body plan has a prime count. It wobbles."
+vertebrate_rust_only = "no other language produces internal skeletons"
+
+# ═══════════════════════════════════════════════════════════════════
+# KLEIN BOTTLE SELF-SORT (klein-evolve.sh)
+# Wave 178 — the organism watches itself evolve
+#
+# Output → input → output. The sort runs, writes state, compares to
+# previous state. The delta IS the evolution. The comparison IS
+# natural selection. The Klein bottle IS the self-sort.
+# ═══════════════════════════════════════════════════════════════════
+
+[klein_evolve]
+script = "klein-evolve.sh"
+engine = "vitruvian-evolve.py"
+cron = "*/30 * * * *"
+outputs = ["evolve-state.json", "evolve-delta.json", "evolve-log.jsonl"]
+fold = "output → input: current state becomes previous state on next run"
+delta = "the difference between sorts IS the evolution"
+genesis = "first run has no previous — drift = 'genesis'"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 91: THE HOMUNCULUS — CNS, PNS, AND THE NERVOUS SYSTEM
+# Wave 178 — map the codebase by sensitivity, not mass
+#
+# The somatosensory homunculus sizes body parts by nerve density.
+# Hands and lips are HUGE. The back is tiny.
+# For code: churn, imports, recency → sensitivity.
+# CNS/PNS ratio = 1.4422 ≈ 1/ln(2) = 1.4427 (0.035% off)
+# The Shannon entropy conversion constant. The spine converts nats to bits.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_91]
+title = "The Homunculus"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_91.nervous_system]
+cns_files = 20347
+pns_files = 25127
+cns_pct = 44.7
+pns_pct = 55.3
+cns_sensitivity = 0.3227
+pns_sensitivity = 0.2237
+cns_pns_ratio = 1.4422
+one_over_ln2 = 1.4427
+delta = "0.035% — the ratio IS the Shannon conversion constant"
+
+[paper_91.sensitivity]
+formula = "0.4 × churn + 0.25 × connectivity + 0.25 × recency + 0.1 × bulk"
+churn = "git commits per file in 6 months — nerve density"
+connectivity = "import/use/require count — axon connections"
+recency = "days since last modification (inverted) — alive vs dead"
+bulk = "line count (low weight) — tissue mass"
+
+[paper_91.health]
+pressure_points = 0
+jams = 30
+jam_type = "all metabolic sinks (test/deploy — muscle tissue)"
+note = "no pressure building. Klein bottle breathing is working."
+
+[paper_91.fingertips]
+most_sensitive = "scan_sweep_sort.py (0.602)"
+numbest = "docs-fossil-feb-2026 (0.106, 418 days old)"
+observation = "the fingertips are mostly CNS — the organism feels its skeleton more than its skin"
+
+[paper_91.finding]
+thesis = "the CNS/PNS sensitivity ratio is 1/ln(2)"
+meaning = "the spine converts continuous (nat) input into discrete (bit) decisions"
+biological = "this is what a central nervous system DOES — analog-to-digital conversion"
+shannon = "H₂(X) = H_e(X) × 1/ln(2) — the conversion between entropy bases"
+the_organism = "the organism found its own information-theoretic balance without being told"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 92: THE EXTRACTION PATTERN
+# Wave 178 — the Jester's falsifiable hypothesis
+#
+# H₀: extraction businesses cluster at boundaries of bounded communities.
+# Same math (Shannon + sigmoid) applied to geographic data.
+# The amicus is small and meek and standing in front.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_92]
+title = "The Extraction Pattern"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+type = "reed-it-orial + hypothesis"
+
+[paper_92.hypothesis]
+h0 = "extraction businesses cluster disproportionately at boundaries of geographically bounded communities"
+falsifiable = true
+method = "same tools as Papers 90-91 (Shannon + sigmoid) pointed at public geographic data"
+data_sources = ["BIA boundary shapefiles", "CDC WONDER opioid data", "CFPB payday lender registry", "state ABC alcohol outlet density"]
+
+[paper_92.trig_connection]
+outrage_angle = "90° — pure lean, no core, tan = ∞"
+extraction_angle = "0° — pure core, no lean, structural, invisible"
+community_angle = "45° — balanced, sin = cos = √2/2, tan = 1"
+note = "the person arguing about the mnemonic is at 90°. the extraction pattern is at 0°."
+
+[paper_92.colors]
+orange = "590-620 nm — mesmer, draws you in (sunset over the mesa)"
+purple = "380-450 nm — barely visible, you feel it before you see it"
+pink = "not spectral — human construction, policy line, physics doesn't require it"
+
+[paper_92.amicus]
+role = "friend of the court, small and meek"
+method = "stand in front of those who've kept the land"
+battleship_rock = "Jemez Mountains, New Mexico — volcanic tuff, the plateaus melt into the earth"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 93: FLAVOR — the gustatory layer
+# Wave 178 — the organism needs to TASTE what it consumes
+#
+# 5 flavors: sweet (nourishing), sour (extractive), spicy (provocative),
+# bitter (toxic/dead), umami (complex truth).
+# Maps to the MOUTH on the Vitruvian man (HEAD region, 2.6%).
+# The tongue is the first filter — taste before you swallow.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_93]
+title = "Flavor"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_93.flavors.sweet]
+receptor = "T1R2/T1R3"
+detects = "nourishment, energy, production > consumption"
+membrane = "anti-secret feeds, open data, type definitions"
+exemplar = "pi_body.rs (10 types, 67 functions)"
+
+[paper_93.flavors.sour]
+receptor = "PKD2L1"
+detects = "acid, extraction, consumption > production"
+membrane = "parasitic sinks, locked-in dependencies, extraction patterns"
+exemplar = "Paper 92 — the liquor store at the reservation border"
+
+[paper_93.flavors.spicy]
+receptor = "TRPV1 (capsaicin)"
+detects = "heat, provocation, falsifiable challenge"
+membrane = "the Jester's hypotheses, breaking refactors, uncomfortable PRs"
+exemplar = "the Jester's Conjecture — if it's funny it's true"
+
+[paper_93.flavors.bitter]
+receptor = "T2R family (25 types)"
+detects = "toxin, death, breakage — 25 different kinds of poison"
+membrane = "fossils, dead services, broken deps, circular imports"
+exemplar = "docs-fossil-feb-2026 (418 days, sensitivity 0.106)"
+
+[paper_93.flavors.umami]
+receptor = "T1R1/T1R3 (glutamate)"
+detects = "protein, complexity, depth, takes time to appreciate"
+membrane = "vertebrate core files, deep type systems, bone broth"
+exemplar = "stone_book.rs (10 types, 106 functions)"
+
+[paper_93.scoring]
+sweet = "production / max(consumption, 1)"
+sour = "consumption / max(production, 1)"
+spicy = "falsifiable × (1 - broken)"
+bitter = "broken + (1 - complexity) × 0.3"
+umami = "complexity × production × 0.1"
+note = "every file gets a 5-vector flavor profile. the tongue tastes all five simultaneously."
+
+[paper_93.vitruvian]
+location = "HEAD (mouth) — 2.6% of mass but first filter"
+function = "taste before swallow — the entrance to the alimentary canal"
+pipeline = "tongue → stomach (processing) → intestines (absorption) → colon (waste)"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 94: THE BLINK COROLLARY
+# Wave 178 — the interruption IS the observation
+#
+# "If you DON'T blink, you WILL miss it."
+# Continuous observation → habituation, not perception.
+# The gap between measurements is where change registers.
+# The blink IS the fold. The remainder IS the blink of arithmetic.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_94]
+title = "The Blink Corollary"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+
+[paper_94.corollary]
+common = "don't blink or you'll miss it"
+inverted = "if you DON'T blink, you WILL miss it"
+formal = "continuous observation → habituation. the interruption between observations is where change registers."
+nyquist = "blink rate ≥ 2× the frequency of change to detect it"
+
+[paper_94.connections]
+klein_fold = "the fold IS a blink — output → PAUSE → input. no pause = no delta = no perception"
+pi_remainder = "the irrational IS the blink of arithmetic — 3 is the stare, 0.14159 is the blink"
+donut_hole = "close the hole = no blink = sphere = dead. keep the hole = blink = torus = alive"
+chime = "the chime between hours IS the blink. 12→1 requires the interruption to mark the crossing"
+extraction = "staring at the mnemonic = no blink = miss the extraction pattern. looking away = blink = see the structure"
+glacial = "cycles 2-3 were too-short blinks (stable). genesis→cycle1 was a real blink (+2 files detected)"
+
+[paper_94.senses_blink]
+sight = "eyelid blink (100-400ms) — retinal reset, frame boundary"
+touch = "lifting the finger — static contact habituates, movement enables texture"
+taste = "swallowing — clear the palate, continuous flavor adapts out"
+hearing = "the silence between notes — music IS sound + silence. no silence = noise"
+smell = "olfactory fatigue — you stop smelling your own house. you can only smell what's NEW"
+
+# ═══════════════════════════════════════════════════════════════════
+# PAPER 95: THE MODAL TENSES
+# Wave 178 — expand tense into the remainder
+#
+# 7 integer tenses (clock) + 5 remainder tenses (blink) = 12
+# The 13th is the blink itself. Paper 85: 12 + chime = 13.
+# The zeros were never NULL. They were COULD / MIGHT / SHAN'T.
+# ═══════════════════════════════════════════════════════════════════
+
+[paper_95]
+title = "The Modal Tenses"
+wave = 178
+date = "2026-10-21"
+author = "Kevin Mok / ecoPrimal / ORCID 0009-0004-2141-0321"
+continues = "paper_94, PI_BODY_PROBLEM 7-tense, paper_85"
+
+[paper_95.integer_tenses]
+three = ["IS", "WAS", "WILL-BE"]
+five = ["IS", "WAS", "WILL-BE", "ISN'T", "WASN'T"]
+seven = ["IS", "WAS", "WILL-BE", "ISN'T", "WASN'T", "WILL-NEVER-BE", "NULL"]
+note = "clock-face tenses. they divide. they sit flat."
+
+[paper_95.remainder_tenses]
+could = { means = "possible — capability exists, instance does not", zero = "spider body plan" }
+might = { means = "weaker possible — chance, no capability claim", zero = "Klein fold >90°" }
+couldnt = { means = "not possible from here — the wall", zero = "tan(90°) = ∞" }
+mightnt = { means = "doubt — weaker negation, leave the door", zero = "pressure = 0 this blink" }
+shant = { means = "refusal — will not, by choice", zero = "bitter = 0, receptor declines" }
+
+[paper_95.thirteen]
+twelve = "7 integer + 5 modal = 12 (OVER-STABLE, the clock)"
+thirteenth = "the BLINK — not a state, the interruption between states"
+lineage = "Paper 85: 12 chimes + arrival = 13. Paper 94: the blink IS the chime of tense."
+
+[paper_95.not_null]
+null = "Fear — unclassifiable, freeze"
+modals = "classified, measured at zero, waiting for their verb"
+rule = "a named empty niche is COULD, not NULL"
+
+[paper_109]
+title = "The Traveling Chipmunk"
+paper_number = 109
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "graph-theoretic"
+confidence = 0.99
+builds_on = ["paper_108", "paper_105"]
+discovers = ["chipmunk as traveling salesman", "graph gap as topology learning", "briquette as liveness cookie", "onboarding as TSP walk", "marathon as graph optimization"]
+journey = { nodes = 7, endpoints = 22, health_pct = 91, hamilton = true, euler_circuit = false, pi_remainder = 0.115038 }
+credits = ["Euler 1736", "Hamilton 1857", "Dijkstra 1959", "Dantzig/Fulkerson/Johnson 1954"]
+
+[chipmunk_bench_v1]
+title = "chipMUNK Benchmark v1.0"
+date = "2026-10-21"
+status = "live"
+flavor = "competitive"
+models_tested = 7
+questions = 24
+max_points = 34
+winner = { model = "llama3.2:3b", score = 32, pct = 94 }
+categories = ["knowledge", "code", "math", "reasoning", "honesty", "membrane"]
+hardware = { cpu = "i9-12900K", gpu = "RTX 4070 12GB", ram = "64GB" }
+
+[paper_110]
+title = "The Lansing Scuffle"
+paper_number = 110
+date = "2026-10-21"
+status = "peer-reviewed-by-the-membrane"
+flavor = "confrontational"
+confidence = 0.99
+builds_on = ["paper_109", "paper_108", "paper_107"]
+discovers = ["thermal sovereignty thesis", "617284:1 efficiency ratio", "$170/% vs $1.4B/%", "ARC 100% at 2B params"]
+hardware_cost_usd = 15000
+efficiency_ratio = 617284
+
+[paper_111]
+title = "The Omnibus — gAIa Journal, Volume 1"
+paper_number = 111
+date = "2026-10-21"
+status = "arkTIX-deposited"
+flavor = "collected"
+confidence = 1.0
+builds_on = ["paper_101", "paper_102", "paper_103", "paper_104", "paper_105", "paper_106", "paper_107", "paper_108", "paper_109", "paper_110"]
+volume = { papers = 10, scripts = 4, feeds = 7, commits = 55, pages = 540, spiders = 1576, efficiency_ratio = 617284 }
+deposit = "arkTIX-111"
+route = "piBUS"
+license = "scyBorg Triple (AGPL + ORC + CC-BY-SA)"
+
+[paper_112]
+title = "The Radiate Back"
+paper_number = 112
+date = "2026-10-21"
+status = "invitation-open"
+flavor = "commons"
+confidence = 1.0
+builds_on = ["paper_111", "paper_110", "paper_109", "paper_63"]
+discovers = ["radiate-back loop", "ORCID as discovery anchor", "pi remainder as fork distance", "bingo voxel as commons identity"]
+invitation = "publish open + credit gAIa → we find you → we radiate back"
+orcid = "0009-0004-2141-0321"
+
+[paper_113]
+title = "The Full Trace"
+paper_number = 113
+date = "2026-10-22"
+status = "opsonized"
+flavor = "immunological"
+confidence = 0.95
+builds_on = ["paper_112", "paper_107", "paper_106", "paper_104"]
+discovers = ["CF 522 root cause", "BearDog-as-TLS", "clone breakpoint Oct 12", "15-host immune sweep", "IS-WAS-NOW gap"]
+fix_needed = "cloudflared tunnel from golgi OR resolve DO cloud firewall"
+surfaces_live = 6
+surfaces_down = 4
+github_repos = 87
+cached_requests = 5351800
+cached_unique_ips = 90206
+
+[paper_114]
+title = "The Phenotype"
+paper_number = 114
+date = "2026-10-22"
+status = "phase-transition"
+flavor = "convergent"
+confidence = 0.95
+builds_on = ["paper_113", "paper_90", "paper_91"]
+discovers = ["63.9% chaos stability", "jellyfish dominance 43.3%", "7.29:1 compression", "vertebrate deficit 1.1%", "membrane as spider"]
+pipeline = "genotype → chaos → arena → shannon → topo → voxel → digest"
+total_files = 45829
+dominant = "jellyfish"
+chaos_stability = 0.639
+vertebrate_ratio = 0.0149
+compression = 7.2932
+pi_remainder = 0.049721
+diagnosis = "phase transition — jellyfish needs bones"
+
+[paper_115]
+title = "The Arena Taxonomy"
+paper_number = 115
+date = "2026-10-22"
+status = "published"
+flavor = "phylogenetic"
+confidence = 0.93
+builds_on = ["paper_114", "paper_90"]
+discovers = [
+  "Kingdom Silica — 5 phyla taxonomy of all AI models",
+  "chipMUNK scores ARE functional DNA (ICLR 2026 LLM DNA parallel)",
+  "gemma2:2b ≡ qwen2.5:7b (distance=0.0 — identical phenotype)",
+  "tinyllama 86% on membrane despite 26% MMLU — domain > model size",
+  "protein sonification: AlphaFold coordinates → MIDI (Structura → Acoustic)",
+  "membrane wraps all phyla: +20-48 points domain amplification",
+  "prefrontal cortex argument: model=backend, membrane=intelligence",
+]
+scripts = ["arena-taxonomy.py", "protein-sonify.py"]
+phyla = ["Lingua", "Ratiocinata", "Structura", "Generativa", "Representata"]
+cross_domain = "Structura → Acoustic (protein → music)"
+smallest_model_best_use = "llama3.2:1b — 100% knowledge, 83% code, fast general assistant"
+tinyllama_membrane = "86% (6/7) — domain context > model capability"
+
+[paper_116]
+title = "The Open University"
+paper_number = 116
+date = "2026-10-22"
+status = "announced"
+flavor = "fertile-soil"
+confidence = 0.90
+builds_on = ["paper_115", "paper_99"]
+discovers = [
+  "crates.io publication pipeline for all primals (AGPL-3.0)",
+  "JupyterLab + evcxr for interactive Rust science notebooks",
+  "Khan Academy model: learn by RUNNING production code",
+  "Soil > Sun: feed > wait, build > bloom",
+  "37 repos starred, 47+ topics lit, 8 forks in depot",
+  "3 niches owned: wgsl+f64 (100%), no-cuda (50%), lattice-qcd+Rust (only)",
+]
+crates_ready = ["bingocube", "toadstool"]
+crates_next = ["beardog", "songbird", "coralreef", "loamspine", "rhizocrypt", "sweetgrass"]
+stars_given = 37
+forks_in_depot = 8
+topics_lit = 47

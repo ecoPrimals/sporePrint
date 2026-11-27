@@ -1,0 +1,21 @@
+{
+  "PRJNA488170_SRR7760408": {
+    "name": "PRJNA488170 / SRR7760408 (Nannochloropsis outdoor 16S, Wageningen)",
+    "fastq": "/home/irongate/Development/ecoPrimals/springs/wetSpring/data/paper_proxy/nannochloropsis_16s/SRR7760408/SRR7760408_1.fastq.gz",
+    "reads_parsed": 50000,
+    "mean_read_length_bp": 301.0,
+    "reads_after_qc": 49650,
+    "quality_retention_pct": 99.3,
+    "unique_sequences": 1345,
+    "min_abundance_threshold": 2,
+    "diversity": {
+      "shannon": 7.030661,
+      "simpson": 0.998799,
+      "observed_features": 1345,
+      "chao1": 1345.0
+    },
+    "elapsed_seconds": 1.21,
+    "python_version": "3.12.13",
+    "numpy_version": "2.4.3"
+  }
+}

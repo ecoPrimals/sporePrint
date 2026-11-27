@@ -1,0 +1,94 @@
+{
+  "spring": "neuralSpring",
+  "version": "0.1.0",
+  "session": "S223",
+  "date": "2026-06-01",
+  "tests": {
+    "lib": 754,
+    "integration": 11,
+    "forge": 73,
+    "playground": 80,
+    "exp094": 12,
+    "total_workspace": 930,
+    "total_workspace_barracuda": 1473,
+    "proptest_properties": 24,
+    "python_baselines": 397,
+    "rust_gpu_checks": 4500,
+    "total_validation_checks": 4900
+  },
+  "binaries": {
+    "total": 269,
+    "validate": 244,
+    "bench": 18,
+    "other": 7
+  },
+  "capabilities": {
+    "total": 45,
+    "science": 14,
+    "health": 3,
+    "inference": 3,
+    "provenance": 4,
+    "primal": 2,
+    "niche": 1,
+    "compute": 1,
+    "identity": 1,
+    "mcp": 1,
+    "composition": 2,
+    "security": 1,
+    "litho_surrogate": 4,
+    "ipc_typed": 8
+  },
+  "tolerances": {
+    "named_constants": 233,
+    "categories": ["machine", "cross_language", "training", "literature", "gpu", "evolutionary"],
+    "files": ["mod.rs", "gpu.rs", "evolutionary.rs", "training.rs"]
+  },
+  "deploy_graph": {
+    "nodes": 15,
+    "capabilities_provided": 45,
+    "bond_type": "Metallic",
+    "trust_model": "InternalNucleus",
+    "fragments": ["tower_atomic", "node_atomic", "meta_tier"],
+    "primals": ["biomeos", "beardog", "songbird", "skunkbat", "coralreef", "toadstool", "barracuda", "nestgate", "squirrel", "rhizocrypt", "loamspine", "sweetgrass", "petaltongue"],
+    "target_node": "southgate"
+  },
+  "guidestone": {
+    "version": "v0.4.0",
+    "level": 5,
+    "bare_checks": "30/37",
+    "certification_tests": 19,
+    "properties_certified": ["P1_Deterministic", "P2_Traceable", "P3_SelfVerifying", "P4_EnvironmentAgnostic", "P5_ToleranceDocumented"],
+    "level4_status": "PARTIAL",
+    "level5_status": "PARTIAL"
+  },
+  "code_quality": {
+    "clippy_warnings": 0,
+    "fmt_diffs": 0,
+    "doc_warnings": 0,
+    "unsafe_blocks": 0,
+    "allow_attributes": 0,
+    "todo_fixme_hack": 0,
+    "mocks_in_production": 0,
+    "forbid_unsafe": true,
+    "edition": "2024",
+    "msrv": "1.87"
+  },
+  "codebase": {
+    "rs_files": 521,
+    "modules": 68,
+    "papers_reproduced": 27,
+    "novel_compositions": 5,
+    "experiments": 134
+  },
+  "ipc_tree": {
+    "modules": 7,
+    "primals": ["barracuda", "toadstool", "beardog", "squirrel", "coralreef", "skunkbat", "nestgate"],
+    "live_deployment": {
+      "gate": "southgate",
+      "uds_healthy": 9,
+      "tcp_abstract": 2,
+      "upstream_failed": 2,
+      "total": 13
+    }
+  }
+}
