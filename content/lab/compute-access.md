@@ -1,7 +1,8 @@
 +++
 title = "Compute Access — ABG Compute Lab"
-description = "Live compute environment on sovereign mesh hardware — RTX 5070 Ti GPU, 64-core EPYC CPU, JupyterHub via songBird capability routing at lab.primals.eco"
+description = "Compute environment on sovereign mesh hardware — RTX 5070 Ti GPU, 64-core EPYC CPU, JupyterHub via songBird capability routing. Not online at present."
 date = 2026-05-07
+updated = 2026-11-27
 weight = 10
 
 [taxonomies]
@@ -9,11 +10,19 @@ primals = ["barracuda", "biomeos", "nestgate", "toadstool", "songbird", "rhizocr
 springs = ["primalspring"]
 +++
 
-## Live at [lab.primals.eco](https://lab.primals.eco)
+## Status: not online at present
 
-**JupyterHub 5.4.5** is live on [songBird](/primals/#songbird)-routed sovereign hardware at [lab.primals.eco](https://lab.primals.eco). No cloud. No exposed ports. Students, researchers, and collaborators connect through the WireGuard sovereign mesh — songBird's drawbridge routes HTTP traffic from golgi (VPS) to ironGate (compute node) via capability-based dispatch.
+As of 27 November 2026 the JupyterHub cannot be reached. The relay path described below is not in service, and `lab.primals.eco` shows the Gaia home page instead of the hub. This page describes the lab as it was set up and ran. Until it is back:
 
-The compute substrate runs on a 64-core AMD EPYC 9124 with an RTX 5070 Ti GPU, 128GB ECC RAM, and NVMe storage. All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305) and bind to `127.0.0.1` by default. Every notebook runs against real primals, not mocks — the same infrastructure that produced the baseCamp results.
+- the notebooks published from it are at [/lab/notebooks/](/lab/notebooks/), with their outputs;
+- one experiment needs no account at all and runs in your own browser: [the Anderson model](https://primals.eco/static/anderson.html);
+- the whole system can be stood up on your own machine: [Reproduce Results](@/lab/reproduce.md).
+
+## How it ran
+
+**JupyterHub 5.4.5** ran on [songBird](/primals/#songbird)-routed sovereign hardware at `lab.primals.eco`. No cloud. No exposed ports. Students, researchers, and collaborators connected through the WireGuard sovereign mesh — songBird's drawbridge routed HTTP traffic from golgi (VPS) to ironGate (compute node) via capability-based dispatch.
+
+The compute substrate ran on a 64-core AMD EPYC 9124 with an RTX 5070 Ti GPU, 128GB ECC RAM, and NVMe storage. All primals communicate via BTSP Phase 3 AEAD (ChaCha20-Poly1305) and bind to `127.0.0.1` by default. Every notebook runs against real primals, not mocks — the same infrastructure that produced the baseCamp results.
 
 ## Who Can Access
 
@@ -38,27 +47,29 @@ The shared workspace at `/shared/abg/` is visible to all members. Results, noteb
 
 ## How to Request Access
 
+Accounts are not being opened while the hub is offline. The steps below are how access worked, and how it will work when the hub returns.
+
 1. Contact the ecoPrimals team with your research interest and desired tier
 2. An account is created with appropriate Linux group membership
-3. Navigate to [lab.primals.eco](https://lab.primals.eco) — no VPN, no port forwarding, no cloud tunnel
+3. Navigate to `lab.primals.eco` — no VPN, no port forwarding, no cloud tunnel
 4. Log in with your credentials — your JupyterHub session starts with the shared workspace linked and all 13 primal ports available as environment variables
 
 For PIs and administrators: the shared workspace demonstrates what your researchers want to run on institutional HPC. Every notebook has full provenance — point your HPC team at the exact pipeline.
 
-## Architecture
+## Architecture (as it ran)
 
 ```
 Browser → lab.primals.eco
     │
-    ├─ DNS → golgi VPS (157.230.3.183)
+    ├─ DNS → golgi VPS
     │        Caddy :443 (TLS termination, Let's Encrypt)
     │        └─ reverse_proxy → WireGuard mesh
     │
-    ├─ WireGuard → sporeGate (10.13.37.2)
+    ├─ WireGuard → sporeGate
     │              songBird drawbridge :7780
     │              └─ capability.call("jupyter") → ironGate
     │
-    └─ ironGate (10.13.37.7)
+    └─ ironGate
        JupyterHub :8000 (PAM auth, tiered pre_spawn_hook)
        │
        ├── /shared/abg/          ← collaborative workspace (all tiers read)
@@ -78,7 +89,7 @@ Browser → lab.primals.eco
            └── songBird (mesh routing + capability discovery)
 ```
 
-The path from browser to notebook is fully sovereign: DNS → golgi TLS → WireGuard tunnel → songBird capability routing → JupyterHub. No Cloudflare. No cloud tunnels. Every hop is inspectable.
+The path from browser to notebook was fully sovereign: DNS → golgi TLS → WireGuard tunnel → songBird capability routing → JupyterHub. No Cloudflare. No cloud tunnels. Every hop is inspectable.
 
 ## Connection to sporePrint
 

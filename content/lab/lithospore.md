@@ -17,7 +17,7 @@ Long-Term Evolution Experiment (LTEE) reproduction — power-law fitness, mutati
 
 ## The Science Story
 
-lithoSpore is the ecosystem's first **Targeted GuideStone** — a self-contained artifact that reproduces key results from the LTEE, the longest-running evolutionary biology experiment in history. It targets the Barrick Lab at UT Austin, where the experiment continues past 75,000 generations with *E. coli*.
+lithoSpore is the ecosystem's first **Targeted GuideStone** — a self-contained artifact that reproduces key results from the LTEE, the longest-running evolutionary biology experiment in history. It targets the Barrick Lab, which moved from UT Austin to Michigan State University in 2025 and where the experiment continues past 75,000 generations with *E. coli*.
 
 The artifact proves two things simultaneously: (1) the LTEE's published results are computationally reproducible from public data, and (2) the ecoPrimals infrastructure — pure Rust, musl-static, zero dependencies — can carry scientific validation to any machine on the planet.
 
@@ -46,7 +46,7 @@ The artifact proves two things simultaneously: (1) the LTEE's published results 
 
 | Researcher | Department | Domain |
 |------------|-----------|--------|
-| Jeffrey Barrick | Molecular Biosciences, UT Austin | LTEE continuation, mutation dynamics |
+| Jeffrey Barrick | Microbiology, Genetics & Immunology, Michigan State University (at UT Austin until 2025) | LTEE continuation, mutation dynamics |
 | Richard Lenski | BEACON Center, MSU | LTEE founder, evolutionary biology |
 | Michael Wiser | BEACON Center, MSU | Power-law fitness models |
 | Benjamin Good | Physics, Stanford | Allele dynamics, clonal interference |

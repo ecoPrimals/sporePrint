@@ -1,7 +1,8 @@
 +++
 title = "tideGlass — Sovereign GPS Platform"
-description = "Sovereign GPS data analysis platform — AlphaFold pipeline mapped on strandGate (20-30/day capacity). Phase 0: GPS paper reproduction underway."
+description = "Sovereign rebuild of the GPS drug-screening platform (Bin Chen Lab, MSU; Cell 2026) in Rust — seven science modules, 220 tests. Reproduction, validation and rebuild complete; packaging in progress."
 date = 2026-07-15
+updated = 2026-11-27
 
 [taxonomies]
 primals = ["beardog", "biomeos", "cellmembrane", "nestgate", "rhizocrypt", "songbird", "sweetgrass", "barracuda", "coralreef"]
@@ -9,7 +10,7 @@ springs = ["wetspring", "hotspring", "neuralspring", "groundspring"]
 trails = ["nf-pipeline"]
 
 [extra]
-maturity = "architectural"
+maturity = "implemented"
 
 [[extra.companions]]
 url = "/products/nf-case-study/"
@@ -36,7 +37,7 @@ relation = "pairs_with"
 label = "GPS platform rebuild as first tideGlass deliverable"
 +++
 
-{{ maturity(level="architectural") }} Phase 0: GPS paper reproduction in progress. Sovereign pallet hardware designed.
+{{ maturity(level="implemented") }} GPS platform: reconstruction, reproduction, validation and the Rust rebuild are complete (220 tests); Phase 4, packaging, is in progress. Sovereign pallet: hardware designed, not built.
 
 ---
 
@@ -44,10 +45,13 @@ label = "GPS platform rebuild as first tideGlass deliverable"
 
 tideGlass has two identities that share one architecture:
 
-1. **Sovereign GPS Platform** (Phase 0, active) — reproducing published GPS
-   methodology in pure Rust, validated against Python baselines. This is the
-   immediate deliverable: a self-hosted GPS data analysis tool that replaces
-   commercial platforms with sovereign computation.
+1. **Sovereign GPS Platform** (Phase 4, packaging) — a rebuild of GPS, the
+   gene-expression-based drug-screening platform from the Bin Chen Lab at
+   Michigan State University (Xing et al., *Cell*, 2026), in pure Rust. GPS
+   predicts how a compound changes gene expression from its chemical structure
+   and searches compound libraries for ones that reverse a disease's expression
+   signature. It is not satellite positioning. This is the immediate
+   deliverable: the same science as one self-hosted, self-checking program.
 
 2. **Sovereign Pallet** (future) — a self-sustaining deployable unit providing
    power, compute, connectivity, and sovereign identity storage for field science
@@ -58,25 +62,43 @@ software first, then deploy it to sovereign hardware.
 
 ---
 
-## GPS Platform — Phase 0
+## GPS Platform — Where It Stands
 
-The immediate focus: reproduce GPS paper figures from the Gonzales NF data
-mining collaboration, validated against the Python baseline. This proves
-that sovereign Rust can replace commercial GPS analysis tools.
+The task came from the Gonzales NF data mining collaboration: rebuild the GPS
+platform so that it can be handed on, and extend it to neurofibromatosis. The
+work was done from the published methods and the primary data rather than by
+porting the original code: read the methods as a specification, fetch the raw
+data from its source, implement from the mathematics, and compare the outputs
+with the published claims.
 
-### Validation Modules (per guideStone spec)
+The result is one Rust program (nine crates, a single `tideglass` binary) with
+220 tests. Code: [github.com/protoKarya/tideGlass](https://github.com/protoKarya/tideGlass).
 
-Seven validation modules, each reproducing a specific GPS analysis capability:
+### Seven Science Modules
 
-| Module | What it validates | Status |
-|--------|------------------|--------|
-| Coordinate transforms | WGS84 ↔ UTM ↔ local frames | Planned |
-| Signal processing | L1/L2 carrier phase, pseudorange | Planned |
-| Positioning engine | Least-squares + Kalman filter | Planned |
-| Atmospheric correction | Troposphere/ionosphere models | Planned |
-| Time series analysis | Station velocity, seasonal signals | Planned |
-| Network adjustment | Multi-station baseline resolution | Planned |
-| Visualization | Displacement maps, time series plots | Planned |
+Each module takes one published claim as its target:
+
+| Module | Paper | Claim it is checked against |
+|--------|-------|-----------------------------|
+| RGES correlation | Chen 2017 (*Nat Commun*) | Reversal score correlates with drug potency (r = 0.52) |
+| RCL noise cleaning | Xing 2026 (*Cell*) | Cleaning improves signal-to-noise in the expression profiles |
+| Expression prediction | Xing 2026 (*Cell*) | Expression change predicted from chemical structure |
+| Reversal screening | Xing 2026 (*Cell*) | A library screen recovers known liver-cancer actives |
+| Lead optimisation (tree search) | Xing 2026 (*Cell*) | Search improves a liver-cancer lead compound |
+| OCTAD parity | Zeng 2021 (*Nat Protocols*) | GPS compared with the earlier OCTAD method |
+| NF extension | New work | Reversal scoring for NF1-driven tumours |
+
+### Phases
+
+| Phase | Scope | Status |
+|-------|-------|--------|
+| 0. Archaeology | Fetch the published artifact, inventory it, map its dependencies | Complete |
+| 1. Reproduce | Stand up each module and match the published outputs | Complete |
+| 2. Validate | Cross-validate against the primary data sources | Complete |
+| 3. Rebuild | Rust workspace, content-addressed data, provenance | Complete |
+| 4. Package | Self-verifying artifact, NF extension, review by the Bin Chen lab | In progress |
+
+Status as of the repository's record, August 2026.
 
 ### Drawbridge Bonds
 
@@ -93,11 +115,11 @@ tideGlass consumes external data via {{ entity(name="songbird") }} drawbridge:
 
 | Step | Owner | Status |
 |------|-------|--------|
-| Clone repo into `protists/tideGlass` | overwatch | Planned |
-| Phase 0: reproduce GPS paper figures | tideGlass team | Planned |
+| Repository at `protoKarya/tideGlass` | overwatch | Done |
+| Phases 0–3: reconstruct, reproduce, validate, rebuild | tideGlass team | Done |
 | Caddy block at `tideglass.primals.eco` | cellMembrane team | Planned |
 | Drawbridge bond registration | songBird team | Planned |
-| {{ entity(name="lithospore") }} packaging | lithoSpore team | Planned |
+| {{ entity(name="lithospore") }} packaging | lithoSpore team | In progress (Phase 4) |
 | `tideglass-composition-routing` scenario | {{ entity(name="primalspring") }} | Missing |
 
 ---

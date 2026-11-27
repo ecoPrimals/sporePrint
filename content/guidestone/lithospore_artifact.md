@@ -17,7 +17,7 @@ computational physics on consumer GPUs, lithoSpore proves evolutionary biology: 
 modules reproducing LTEE papers from Barrick, Lenski, and collaborators across 75,000+
 generations of continuous evolution.
 
-The target audience is **Barrick Lab, UT Austin** — the continuation of Richard Lenski's
+The target audience is the **Barrick Lab** (Michigan State University since 2025; previously UT Austin) — the continuation of Richard Lenski's
 Long-Term Evolution Experiment. The artifact is designed to be handed to a researcher as
 a USB drive, plugged into any Linux machine, and validated with zero dependencies.
 

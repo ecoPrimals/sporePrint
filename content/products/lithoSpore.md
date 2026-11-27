@@ -16,7 +16,7 @@ maturity = "implemented"
 
 lithoSpore is the ecosystem's deployment system for **self-verifying scientific artifacts**. A lithoSpore is a USB drive (or network-deployable archive) that carries validated science, its data, its tools, and its provenance chain — everything needed to independently reproduce results on any machine, with zero dependencies and no internet.
 
-The first instance targets the **Barrick Lab at UT Austin** — the continuation of Richard Lenski's Long-Term Evolution Experiment (LTEE), the longest-running evolutionary biology experiment in history.
+The first instance targets the **Barrick Lab** (Michigan State University since 2025; previously UT Austin) — the continuation of Richard Lenski's Long-Term Evolution Experiment (LTEE), the longest-running evolutionary biology experiment in history.
 
 **Repository**: [sporeGarden/lithoSpore](https://github.com/sporeGarden/lithoSpore)
 
