@@ -28,6 +28,7 @@ import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
@@ -433,12 +434,25 @@ def check(args):
             if remote:
                 # a site serves static/ at its root; a raw view of the repository serves the path as it is
                 tail = b["path"][len("static/"):] if (b["path"].startswith("static/") and not args.raw) else b["path"]
-                req = urllib.request.Request(holder.rstrip("/") + "/" + tail, headers={"User-Agent": "sporePrint-commons"})
-                with urllib.request.urlopen(req, timeout=30) as r:
-                    raw = r.read()
+                req = urllib.request.Request(holder.rstrip("/") + "/" + urllib.parse.quote(tail),
+                                             headers={"User-Agent": "sporePrint-commons"})
+                for attempt in range(4):            # a busy server is asked again; a plain "not here" is believed
+                    try:
+                        with urllib.request.urlopen(req, timeout=30) as r:
+                            raw = r.read()
+                        break
+                    except urllib.error.HTTPError as e:
+                        if e.code in (404, 410):
+                            return b["name"], "missing"
+                        if attempt == 3:
+                            return b["name"], "no answer"
+                    except (OSError, urllib.error.URLError):
+                        if attempt == 3:
+                            return b["name"], "no answer"
+                    time.sleep(1.5 * (attempt + 1))
             else:
                 raw = (Path(holder) / b["path"]).read_bytes()
-        except (OSError, urllib.error.URLError, ValueError):
+        except (OSError, ValueError):
             return b["name"], "missing"
         if sha256(raw) == b["sha256"]:
             return b["name"], "same"
@@ -448,17 +462,17 @@ def check(args):
         return b["name"], "differs"
 
     servable = [b for b in held if not remote or args.raw or b["path"].startswith("static/")]
-    with ThreadPoolExecutor(8 if remote else 1) as pool:
+    with ThreadPoolExecutor(4 if remote else 1) as pool:
         results = list(pool.map(one, servable))
     tally = Counter(state for _, state in results)
     out = {"holder": holder, "checked": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "manifest_made": manifest["made"],
            "of": len(servable), "same": tally["same"], "differs": tally["differs"], "missing": tally["missing"],
-           "not_same": sorted(n for n, s in results if s != "same")[:40]}
+           "no_answer": tally["no answer"], "not_same": sorted(n for n, s in results if s != "same")[:40]}
     if args.json:
         print(json.dumps(out, ensure_ascii=False))
     else:
-        print("%s: %d of %d the same as the manifest; %d differ; %d missing" % (
-            holder, out["same"], out["of"], out["differs"], out["missing"]))
+        print("%s: %d of %d the same as the manifest; %d differ; %d missing; %d did not answer" % (
+            holder, out["same"], out["of"], out["differs"], out["missing"], out["no_answer"]))
         for n in out["not_same"][:12]:
             print("  not the same: %s" % n)
     return 0 if out["same"] == out["of"] else 1
